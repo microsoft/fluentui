@@ -13,19 +13,20 @@ module.exports = main;
  */
 async function main(options) {
   const rootDir = 'screenshots';
+  const reportPath = join(rootDir, 'screenshots-report.json');
   const graph = await createProjectGraphAsync();
+
+  mkdirSync(rootDir);
 
   /**
    * @type {{[project_name:string]:{path:string}}}
    */
-  const report = {};
-
-  options.config.projects.forEach(project => {
+  const report = options.config.projects.reduce((acc, project) => {
     const projectConfig = graph.nodes[project];
     const screenshotsPath = join(projectConfig.data.root, 'dist/screenshots');
 
     if (!existsSync(screenshotsPath)) {
-      return;
+      return acc;
     }
 
     const destinationFolder = join(rootDir, project);
@@ -37,10 +38,11 @@ async function main(options) {
     });
 
     console.info(`✅ ${screenshotsPath} contents copied to ${destinationFolder}`);
-    report[project] = { path: project };
-  });
+    acc[project] = { path: project };
+    return acc;
+  }, /** @type {{[project_name:string]: {path:string}}} */ ({}));
 
-  writeFileSync(join(rootDir, 'screenshots-report.json'), JSON.stringify(report, null, 2));
+  writeFileSync(reportPath, JSON.stringify(report, null, 2));
 
   return rootDir;
 }

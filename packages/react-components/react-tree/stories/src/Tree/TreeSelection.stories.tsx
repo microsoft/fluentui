@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FlatTree,
   FlatTreeItem,
@@ -24,7 +25,7 @@ const items: CustomItem[] = [
   { value: '3', content: 'Level 1, item 3' },
 ];
 
-export const Selection = () => {
+export const Selection = (): JSXElement => {
   const flatTree = useHeadlessFlatTree_unstable(items, {
     defaultOpenItems: ['1', '2', '2-1', '2-2'],
     defaultCheckedItems: ['1-2'],

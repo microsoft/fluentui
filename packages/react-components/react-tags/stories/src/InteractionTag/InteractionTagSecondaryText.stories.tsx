@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-components';
 
-export const SecondaryText = () => (
+export const SecondaryText = (): JSXElement => (
   <InteractionTag>
     <InteractionTagPrimary secondaryText="Secondary text">Primary text</InteractionTagPrimary>
   </InteractionTag>

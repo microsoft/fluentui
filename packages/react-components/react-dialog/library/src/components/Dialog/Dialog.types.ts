@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, JSXElement, Slot } from '@fluentui/react-utilities';
 
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
@@ -99,7 +99,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Can contain two children including `DialogTrigger` and `DialogSurface`.
    * Alternatively can only contain `DialogSurface` if using trigger outside dialog, or controlling state.
    */
-  children: [JSX.Element, JSX.Element] | JSX.Element;
+  children: [JSXElement, JSXElement] | JSXElement;
   /**
    * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
    * where the focus trap involves setting outside elements inert.

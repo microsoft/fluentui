@@ -57,8 +57,8 @@ export const validateBehavior = (rules: Rule[], testFacade: TestFacade) => {
           validateSlot(rule, testFacade);
         });
       }
-    } catch (e) {
-      errors.push({ rule: rule.stringify(), error: e.message });
+    } catch (err) {
+      errors.push({ rule: rule.stringify(), error: (err as Error).message });
     }
   });
   return errors;

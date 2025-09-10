@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TagPickerOption } from '../TagPickerOption';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 type UseTagPickerFilterConfig = {
   query: string;
@@ -11,10 +12,10 @@ type UseTagPickerFilterConfig = {
   filter?: (option: string, index: number) => boolean;
 
   /** Provides an element to be displayed when there are no options. */
-  noOptionsElement: JSX.Element;
+  noOptionsElement: JSXElement;
 
   /** Provides a custom render for the option. */
-  renderOption?: (option: string) => JSX.Element;
+  renderOption?: (option: string) => JSXElement;
 };
 
 function defaultRenderOption(option: string) {
@@ -31,7 +32,7 @@ export function useTagPickerFilter({
   renderOption = defaultRenderOption,
   query,
   options,
-}: UseTagPickerFilterConfig) {
+}: UseTagPickerFilterConfig): JSXElement[] {
   const defaultFilter = React.useCallback(
     (option: string) => {
       const trimmedQuery = query.trim();
@@ -45,7 +46,7 @@ export function useTagPickerFilter({
   const filter = filterOverride ?? defaultFilter;
   const filteredOptions = React.useMemo(
     () =>
-      options.reduce<JSX.Element[]>((accumulator, option, index) => {
+      options.reduce<JSXElement[]>((accumulator, option, index) => {
         if (filter(option, index)) {
           accumulator.push(renderOption(option));
         }

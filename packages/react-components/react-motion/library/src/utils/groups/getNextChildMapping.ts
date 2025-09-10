@@ -4,7 +4,7 @@ import type { PresenceGroupChildMapping } from './types';
 export function getNextChildMapping(
   prevChildMapping: PresenceGroupChildMapping,
   nextChildMapping: PresenceGroupChildMapping,
-) {
+): PresenceGroupChildMapping {
   const childrenMapping = mergeChildMappings(prevChildMapping, nextChildMapping);
 
   Object.entries(childrenMapping).forEach(([key, childDefinition]) => {

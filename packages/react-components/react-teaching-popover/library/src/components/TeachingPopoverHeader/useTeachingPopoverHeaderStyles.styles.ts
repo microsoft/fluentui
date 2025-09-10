@@ -72,7 +72,9 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverHeaderStyles_unstable = (state: TeachingPopoverHeaderState) => {
+export const useTeachingPopoverHeaderStyles_unstable = (
+  state: TeachingPopoverHeaderState,
+): TeachingPopoverHeaderState => {
   'use no memo';
 
   const styles = useStyles();

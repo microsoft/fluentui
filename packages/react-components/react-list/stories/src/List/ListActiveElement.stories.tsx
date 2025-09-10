@@ -1,8 +1,8 @@
 import { Button, makeStyles, Persona, mergeClasses, Text, tokens, SelectionItemId } from '@fluentui/react-components';
 import { Mic16Regular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-components';
-
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 type Item = {
   name: string;
@@ -51,21 +51,24 @@ const useStyles = makeStyles({
   },
 });
 
-export const ListActiveElement = () => {
+export const ListActiveElement = (): JSXElement => {
   const classes = useStyles();
 
   const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(['Melda Bevel']);
 
-  const onSelectionChange = React.useCallback((_, data) => {
-    setSelectedItems(data.selectedItems);
-  }, []);
+  const onSelectionChange = React.useCallback(
+    (_: React.SyntheticEvent | Event, data: { selectedItems: SelectionItemId[] }) => {
+      setSelectedItems(data.selectedItems);
+    },
+    [],
+  );
 
-  const onFocus = React.useCallback(event => {
+  const onFocus = React.useCallback((event: React.FocusEvent<HTMLLIElement>) => {
     // Ignore bubbled up events from the children
     if (event.target !== event.currentTarget) {
       return;
     }
-    setSelectedItems([event.target.dataset.value]);
+    setSelectedItems([event.currentTarget.dataset.value as SelectionItemId]);
   }, []);
 
   return (

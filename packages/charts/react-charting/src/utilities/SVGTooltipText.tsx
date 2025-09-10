@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ITooltipHost, ITooltipProps, Tooltip, TooltipDelay } from '@fluentui/react/lib/Tooltip';
 import { Async, KeyCodes, getId, portalContainsElement } from '../Utilities';
-import { getRTL, ITheme } from '@fluentui/react';
+import { ITheme } from '@fluentui/react';
 
-interface ISVGTooltipTextProps {
+export interface ISVGTooltipTextProps {
   /**
    * Number of milliseconds to delay closing the tooltip, so that the user has time to hover over
    * the tooltip and interact with it. Hovering over the tooltip will count as hovering over the
@@ -74,6 +74,11 @@ interface ISVGTooltipTextProps {
    * Prop to selectively display the tooltip background
    */
   showBackground?: boolean;
+
+  /**
+   * Prop to set classname
+   */
+  className?: string;
 }
 
 interface ISVGTooltipTextState {
@@ -85,7 +90,7 @@ interface ISVGTooltipTextState {
   textHeight?: number;
 }
 
-const PADDING = 4;
+const PADDING = 3;
 
 /**
  * Component to render an SVG text element with an optional tooltip.
@@ -123,7 +128,7 @@ export class SVGTooltipText
 
   public render(): React.ReactNode {
     const { content, tooltipProps, textProps, shouldReceiveFocus = true, showBackground = false } = this.props;
-    const { isTooltipVisible, textX, textY, textWidth, textHeight } = this.state;
+    const { isTooltipVisible, textWidth, textHeight } = this.state;
     const tooltipRenderProps: ITooltipProps = {
       content,
       targetElement: this._getTargetElement(),
@@ -139,19 +144,18 @@ export class SVGTooltipText
 
     const showTooltip =
       (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
-    const backgroundColor = this.props.theme ? this.props.theme.semanticColors.bodyBackground : undefined;
-    const isRTL = getRTL();
-    const rectX = isRTL ? (textX ?? 0) + (textWidth ?? 0) - PADDING : (textX ?? 0) - PADDING;
+    const rectX = (typeof textProps?.x === 'number' ? textProps.x : 0) - (textWidth ?? 0) / 2 - PADDING;
+    const rectY = (typeof textProps?.y === 'number' ? textProps.y : 0) - (textHeight ?? 0) / 2 - 2 * PADDING;
     return (
       <>
         {showBackground && (
           <rect
             x={rectX}
-            y={(textY ?? 0) - PADDING}
+            y={rectY}
             width={(textWidth ?? 0) + 2 * PADDING}
-            height={(textHeight ?? 0) + 2 * PADDING}
-            fill={backgroundColor}
+            height={(textHeight ?? 0) + PADDING}
             transform={textProps?.transform}
+            className={this.props.className}
           />
         )}
         <text

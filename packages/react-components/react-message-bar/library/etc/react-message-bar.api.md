@@ -4,12 +4,11 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -157,19 +156,19 @@ export type MessageBarTransitionContextValue = {
 };
 
 // @public
-export const renderMessageBar_unstable: (state: MessageBarState, contexts: MessageBarContextValues) => JSX.Element;
+export const renderMessageBar_unstable: (state: MessageBarState, contexts: MessageBarContextValues) => JSXElement;
 
 // @public
-export const renderMessageBarActions_unstable: (state: MessageBarActionsState, contexts: MessageBarActionsContextValues) => JSX.Element;
+export const renderMessageBarActions_unstable: (state: MessageBarActionsState, contexts: MessageBarActionsContextValues) => JSXElement;
 
 // @public
-export const renderMessageBarBody_unstable: (state: MessageBarBodyState, contextValues: MessageBarBodyContextValues) => JSX.Element;
+export const renderMessageBarBody_unstable: (state: MessageBarBodyState, contextValues: MessageBarBodyContextValues) => JSXElement;
 
 // @public
-export const renderMessageBarGroup_unstable: (state: MessageBarGroupState) => JSX.Element;
+export const renderMessageBarGroup_unstable: (state: MessageBarGroupState) => JSXElement;
 
 // @public
-export const renderMessageBarTitle_unstable: (state: MessageBarTitleState) => JSX.Element;
+export const renderMessageBarTitle_unstable: (state: MessageBarTitleState) => JSXElement;
 
 // @public
 export const useMessageBar_unstable: (props: MessageBarProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarState;

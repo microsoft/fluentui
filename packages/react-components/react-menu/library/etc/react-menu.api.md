@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonElement } from '@fluentui/react-aria';
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
@@ -13,6 +11,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -42,7 +41,7 @@ export type MenuCheckedValueChangeData = {
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange'> & {
+export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'safeZone'> & {
     open: boolean;
     triggerId: string;
     defaultCheckedValues?: Record<string, string[]>;
@@ -277,6 +276,12 @@ export type MenuOpenChangeData = {
     type: 'menuTriggerMouseEnter';
     event: React_2.MouseEvent<HTMLElement>;
 } | {
+    type: 'menuSafeZoneMouseEnter';
+    event: React_2.MouseEvent;
+} | {
+    type: 'menuSafeZoneTimeout';
+    event: Event;
+} | {
     type: 'menuTriggerMouseLeave';
     event: React_2.MouseEvent<HTMLElement>;
 } | {
@@ -328,11 +333,12 @@ export type MenuPopoverSlots = {
 // @public
 export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalProps, 'mountNode'> & {
     inline: boolean;
+    safeZone?: React_2.ReactElement | null;
 };
 
 // @public
 export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSXElement, JSXElement] | JSXElement;
     hoverDelay?: number;
     inline?: boolean;
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
@@ -373,14 +379,17 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
-    menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
+    menuPopoverRef: React_2.MutableRefObject<HTMLElement | null>;
     menuTrigger: React_2.ReactNode;
     setContextTarget: SetVirtualMouseTarget;
-    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData & {
+        ignoreHoverDelay?: boolean;
+    }) => void;
     triggerId: string;
-    triggerRef: React_2.MutableRefObject<HTMLElement>;
+    triggerRef: React_2.MutableRefObject<HTMLElement | null>;
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     defaultCheckedValues?: Record<string, string[]>;
+    safeZone?: React_2.ReactElement | null;
 };
 
 // @public
@@ -395,6 +404,7 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseMove: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseOver?: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
 }>;
 
@@ -413,43 +423,43 @@ export type MenuTriggerState = {
 };
 
 // @public
-export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
+export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSXElement;
 
 // @public
-export const renderMenuDivider_unstable: (state: MenuDividerState) => JSX.Element;
+export const renderMenuDivider_unstable: (state: MenuDividerState) => JSXElement;
 
 // @public
-export const renderMenuGroup_unstable: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSX.Element;
+export const renderMenuGroup_unstable: (state: MenuGroupState, contextValues: MenuGroupContextValues) => JSXElement;
 
 // @public
-export const renderMenuGroupHeader_unstable: (state: MenuGroupHeaderState) => JSX.Element;
+export const renderMenuGroupHeader_unstable: (state: MenuGroupHeaderState) => JSXElement;
 
 // @public
-export const renderMenuItem_unstable: (state: MenuItemState) => JSX.Element;
+export const renderMenuItem_unstable: (state: MenuItemState) => JSXElement;
 
 // @public
-export const renderMenuItemCheckbox_unstable: (state: MenuItemCheckboxState) => JSX.Element;
+export const renderMenuItemCheckbox_unstable: (state: MenuItemCheckboxState) => JSXElement;
 
 // @public
-export const renderMenuItemLink_unstable: (state: MenuItemLinkState) => JSX.Element;
+export const renderMenuItemLink_unstable: (state: MenuItemLinkState) => JSXElement;
 
 // @public
-export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSX.Element;
+export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSXElement;
 
 // @public
-export const renderMenuItemSwitch_unstable: (state: MenuItemSwitchState) => JSX.Element;
+export const renderMenuItemSwitch_unstable: (state: MenuItemSwitchState) => JSXElement;
 
 // @public
-export const renderMenuList_unstable: (state: MenuListState, contextValues: MenuListContextValues) => JSX.Element;
+export const renderMenuList_unstable: (state: MenuListState, contextValues: MenuListContextValues) => JSXElement;
 
 // @public
-export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Element;
+export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSXElement;
 
 // @public
-export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState, contexts?: MenuSplitGroupContextValues) => JSX.Element;
+export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState, contexts?: MenuSplitGroupContextValues) => JSXElement;
 
 // @public
-export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Element;
+export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSXElement;
 
 // @public (undocumented)
 export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;
@@ -458,10 +468,14 @@ export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, 
 export type UninitializedMenuListState = Omit<MenuListState, 'checkedValues' | 'selectRadio' | 'setFocusByFirstCharacter' | 'toggleCheckbox'> & Partial<Pick<MenuListState, 'checkedValues'>>;
 
 // @public
-export const useCheckmarkStyles_unstable: (state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>) => void;
+export const useCheckmarkStyles_unstable: (state: MenuItemSelectableState & Pick<MenuItemState, "checkmark">) => void;
 
 // @public
-export const useMenu_unstable: (props: MenuProps) => MenuState;
+export const useMenu_unstable: (props: MenuProps & {
+    safeZone?: boolean | {
+        timeout?: number;
+    };
+}) => MenuState;
 
 // @public (undocumented)
 export const useMenuContext_unstable: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
@@ -494,10 +508,10 @@ export const useMenuGroupHeaderStyles_unstable: (state: MenuGroupHeaderState) =>
 export const useMenuGroupStyles_unstable: (state: MenuGroupState) => MenuGroupState;
 
 // @public
-export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemState;
+export const useMenuItem_unstable: (props: MenuItemProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemState;
 
 // @public
-export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemCheckboxState;
+export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemCheckboxState;
 
 // @public (undocumented)
 export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => MenuItemCheckboxState;
@@ -509,7 +523,7 @@ export const useMenuItemLink_unstable: (props: MenuItemLinkProps, ref: React_2.R
 export const useMenuItemLinkStyles_unstable: (state: MenuItemLinkState) => MenuItemLinkState;
 
 // @public
-export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemRadioState;
+export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<"div">>) => MenuItemRadioState;
 
 // @public (undocumented)
 export const useMenuItemRadioStyles_unstable: (state: MenuItemRadioState) => void;

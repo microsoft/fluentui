@@ -4,5 +4,13 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-portal/stories/src",
   "tags": ["vNext", "platform:web", "type:stories"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "test-ssr": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn test-ssr \"./src/**/*.stories.tsx\" --exclude \"./src/**\""
+      }
+    }
+  }
 }

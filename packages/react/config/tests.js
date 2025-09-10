@@ -1,11 +1,10 @@
 /** Jest test setup file. */
 
-const { configure } = require('enzyme');
+const { TextEncoder, TextDecoder } = require('node:util');
+
 const { initializeIcons } = require('@fluentui/font-icons-mdl2');
-const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
+
+Object.assign(global, { TextDecoder, TextEncoder });
 
 // Initialize icons.
 initializeIcons('');
-
-// Configure enzyme.
-configure({ adapter: new Adapter() });

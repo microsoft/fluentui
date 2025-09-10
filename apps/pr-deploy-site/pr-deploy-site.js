@@ -25,12 +25,6 @@ var siteInfo = [
     title: 'Website',
   },
   {
-    package: '@fluentui/docs',
-    link: './react-northstar',
-    icon: 'CompassNW',
-    title: 'react-northstar',
-  },
-  {
     package: '@fluentui/public-docsite-v9',
     link: './public-docsite-v9/storybook/index.html',
     icon: 'Teamwork',

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Popover, PopoverSurface, useId, useRestoreFocusTarget } from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
 const useStyles = makeStyles({
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithoutTrigger = () => {
+export const WithoutTrigger = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
   const headerId = useId();
   const buttonRef = React.useRef<HTMLButtonElement>(null);
@@ -31,7 +32,19 @@ export const WithoutTrigger = () => {
       <Button {...restoreFocusTargetAttribute} ref={buttonRef} onClick={() => setOpen(s => !s)}>
         Toggle popover
       </Button>
-      <Popover onOpenChange={(_, data) => setOpen(data.open)} trapFocus open={open} positioning={{ positioningRef }}>
+      <Popover
+        onOpenChange={(e, data) => {
+          if (e.target === buttonRef.current) {
+            // Ignore events that are triggered by the button to avoid re-opening the popover
+            return;
+          }
+
+          setOpen(data.open);
+        }}
+        trapFocus
+        open={open}
+        positioning={{ positioningRef }}
+      >
         <PopoverSurface aria-labelledby={headerId}>
           <div>
             <h3 id={headerId} className={styles.contentHeader}>

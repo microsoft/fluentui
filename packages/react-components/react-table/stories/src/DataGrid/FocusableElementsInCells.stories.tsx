@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -25,9 +26,11 @@ import {
   DataGridCellFocusMode,
 } from '@fluentui/react-components';
 
+import type { JSXElement } from '@fluentui/react-components';
+
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -138,7 +141,7 @@ const getCellFocusMode = (columnId: TableColumnId): DataGridCellFocusMode => {
   }
 };
 
-export const FocusableElementsInCells = () => {
+export const FocusableElementsInCells = (): JSXElement => {
   return (
     <DataGrid
       items={items}

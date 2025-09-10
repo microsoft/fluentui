@@ -6,12 +6,11 @@ import type {
   UnknownSlotProps,
 } from './types';
 import * as React from 'react';
-import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import type { JSXIntrinsicElementKeys } from '../utils/types';
 
 export type SlotOptions<Props extends UnknownSlotProps> = {
-  elementType:
-    | React.ComponentType<Props>
-    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+  elementType: React.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : JSXIntrinsicElementKeys);
   defaultProps?: Partial<Props>;
 };
 
@@ -41,6 +40,7 @@ export function always<Props extends UnknownSlotProps>(
     ...defaultProps,
     ...props,
     [SLOT_ELEMENT_TYPE_SYMBOL]: elementType,
+    [SLOT_CLASS_NAME_PROP_SYMBOL]: props?.className,
   } as SlotComponentType<Props>;
 
   if (props && typeof props.children === 'function') {
@@ -85,7 +85,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
   if (
     typeof value === 'string' ||
     typeof value === 'number' ||
-    Array.isArray(value) ||
+    isIterable(value) ||
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     React.isValidElement<any>(value)
   ) {
@@ -104,3 +104,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
 
   return value;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isIterable = (value: unknown): value is Iterable<any> =>
+  typeof value === 'object' && value !== null && Symbol.iterator in value;

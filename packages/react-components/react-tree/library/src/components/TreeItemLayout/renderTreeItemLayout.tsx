@@ -1,13 +1,14 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { TreeItemLayoutState, TreeItemLayoutSlots } from './TreeItemLayout.types';
 import { ButtonContextProvider } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of TreeItemLayout
  */
-export const renderTreeItemLayout_unstable = (state: TreeItemLayoutState) => {
+export const renderTreeItemLayout_unstable = (state: TreeItemLayoutState): JSXElement => {
   assertSlots<TreeItemLayoutSlots>(state);
 
   return (

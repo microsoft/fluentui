@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DialogTrigger } from './DialogTrigger';
-import * as renderer from 'react-test-renderer';
 import { createEvent, fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { mockUseDialogContext } from '../../testing/mockUseDialogContext';
@@ -33,13 +32,12 @@ describe('DialogTrigger', () => {
    * Note: see more visual regression tests for DialogTrigger in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DialogTrigger disableButtonEnhancement>
         <button>Dialog trigger</button>
       </DialogTrigger>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should retain original child callback ref', () => {

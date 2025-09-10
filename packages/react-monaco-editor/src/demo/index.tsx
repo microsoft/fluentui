@@ -16,6 +16,7 @@ mergeStyles({
   },
 });
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 ReactDOM.render(
   <ThemeProvider>
     <App />

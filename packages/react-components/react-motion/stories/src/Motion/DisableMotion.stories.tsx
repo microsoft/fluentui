@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const DisableMotion = () => {
+export const DisableMotion = (): JSXElement => {
   const classes = useStyles();
 
   return (

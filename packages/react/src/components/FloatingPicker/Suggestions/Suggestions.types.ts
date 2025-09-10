@@ -11,6 +11,7 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderSuggestion?: (props: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
 
   /**
@@ -84,6 +85,7 @@ export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>,
 }
 
 export interface ISuggestionsHeaderFooterProps {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   renderItem: () => JSX.Element;
   onExecute?: () => void;
   className?: string;
@@ -93,6 +95,7 @@ export interface ISuggestionsHeaderFooterProps {
 
 export interface ISuggestionsHeaderFooterItemProps {
   componentRef?: IRefObject<{}>;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   renderItem: () => JSX.Element;
   onExecute?: () => void;
   isSelected: boolean;

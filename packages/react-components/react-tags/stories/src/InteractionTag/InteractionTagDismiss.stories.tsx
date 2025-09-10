@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   InteractionTag,
   InteractionTagPrimary,
@@ -14,6 +15,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     rowGap: '10px',
+  },
+  tagGroup: {
+    flexWrap: 'wrap',
   },
   resetButton: {
     width: 'fit-content',
@@ -47,7 +51,7 @@ const useResetExample = (visibleTagsLength: number) => {
   return { firstTagRef, resetButtonRef };
 };
 
-export const Dismiss = () => {
+export const Dismiss = (): JSXElement => {
   const [visibleTags, setVisibleTags] = React.useState(initialTags);
   const removeItem: TagGroupProps['onDismiss'] = (_e, { value }) => {
     setVisibleTags([...visibleTags].filter(tag => tag.value !== value));
@@ -60,7 +64,7 @@ export const Dismiss = () => {
   return (
     <div className={styles.container}>
       {visibleTags.length !== 0 && (
-        <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
+        <TagGroup className={styles.tagGroup} onDismiss={removeItem} aria-label="Dismiss example">
           {visibleTags.map((tag, index) => (
             <InteractionTag value={tag.value} key={tag.value}>
               <InteractionTagPrimary hasSecondaryAction ref={index === 0 ? firstTagRef : null}>

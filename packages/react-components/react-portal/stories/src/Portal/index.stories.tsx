@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { Meta } from '@storybook/react';
 import { Portal } from '@fluentui/react-components';
 import descriptionMd from './PortalDescription.md';

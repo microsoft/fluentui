@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   TableColumnDefinition,
   DataGrid,
@@ -9,7 +10,7 @@ import {
   DataGridBody,
   DataGridHeaderCell,
 } from '@fluentui/react-table';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
@@ -35,7 +36,7 @@ const testItems: Item[] = [
   { first: '7-1', second: '7-2', third: '7-3' },
 ];
 
-const mount = (element: JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
@@ -56,7 +57,8 @@ describe('DataGrid', () => {
   it('should move focus with arrow keys', () => {
     mount(<Example />);
 
-    cy.contains('header-1').focus().realPress('ArrowRight');
+    cy.contains('header-1').click();
+    cy.focused().should('have.text', 'header-1').realPress('ArrowRight');
     cy.focused().should('have.text', 'header-2').realPress('ArrowLeft');
     cy.focused().should('have.text', 'header-1').realPress('ArrowDown');
     cy.focused().should('have.text', '1-1').realPress('ArrowRight');
@@ -68,42 +70,42 @@ describe('DataGrid', () => {
   it('should move focus to last cell with End', () => {
     mount(<Example />);
 
-    cy.contains('1-1').focus().realPress('End');
+    cy.contains('1-1').click().realPress('End');
     cy.focused().should('have.text', '1-3');
   });
 
   it('should move focus to first cell with Home', () => {
     mount(<Example />);
 
-    cy.contains('1-3').focus().realPress('Home');
+    cy.contains('1-3').click().realPress('Home');
     cy.focused().should('have.text', '1-1');
   });
 
   it('should move focus to last cell with End', () => {
     mount(<Example />);
 
-    cy.contains('1-1').focus().realPress('End');
+    cy.contains('1-1').click().realPress('End');
     cy.focused().should('have.text', '1-3');
   });
 
   it('should move focus to first cell with Home', () => {
     mount(<Example />);
 
-    cy.contains('1-3').focus().realPress('Home');
+    cy.contains('1-3').click().realPress('Home');
     cy.focused().should('have.text', '1-1');
   });
 
   it('should move to first cell in first row with CTRL+Home', () => {
     mount(<Example />);
 
-    cy.contains('4-1').focus().realPress(['Control', 'Home']);
+    cy.contains('4-1').click().realPress(['Control', 'Home']);
     cy.focused().should('have.text', 'header-1');
   });
 
   it('should move to last cell in last row with CTRL+Home', () => {
     mount(<Example />);
 
-    cy.contains('4-1').focus().realPress(['Control', 'End']);
+    cy.contains('4-1').click().realPress(['Control', 'End']);
     cy.focused().should('have.text', '7-3');
   });
 
@@ -129,7 +131,8 @@ describe('DataGrid', () => {
     );
     mount(<NestedFocusableExample />);
 
-    cy.contains('1-1-11-1-2').focus().realPress('Enter');
+    cy.contains('header-1').click().realPress('ArrowDown');
+    cy.focused().contains('1-1-11-1-2').focus().realPress('Enter');
     cy.focused().should('have.text', '1-1-1').realPress('Tab');
     cy.focused().should('have.text', '1-1-2').realPress('Tab');
     cy.focused().should('have.text', '1-1-1').realPress('ArrowDown');
@@ -162,12 +165,14 @@ describe('DataGrid', () => {
     );
     mount(<CompositeExample />);
 
-    cy.contains('header-1').focus().realPress('ArrowRight');
+    cy.contains('header-1').click().realPress('ArrowRight');
     cy.focused().should('have.text', 'header-2').realPress('ArrowDown');
     cy.focused().should('have.attr', 'role', 'row').realPress('ArrowRight');
     cy.focused().should('have.text', '1-1').should('have.attr', 'role', 'gridcell').realPress('ArrowRight');
     cy.focused().should('have.text', '1-2').should('have.attr', 'role', 'gridcell').realPress('ArrowDown');
     cy.focused().should('have.attr', 'role', 'row').realPress('ArrowRight');
+    cy.focused().should('have.text', '2-1').should('have.attr', 'role', 'gridcell').realPress('ArrowLeft');
+    cy.focused().should('have.attr', 'role', 'row').should('have.text', '2-12-22-3').realPress('ArrowRight');
     cy.focused().should('have.text', '2-1').should('have.attr', 'role', 'gridcell').realPress('Tab');
     cy.focused().should('have.text', 'After').realPress(['Shift', 'Tab']);
     cy.focused().should('have.attr', 'role', 'row').should('have.text', '2-12-22-3').realPress('PageUp');
@@ -210,7 +215,7 @@ describe('DataGrid', () => {
     );
     mount(<CompositeExample />);
 
-    cy.contains('header-1').focus().realPress('ArrowRight');
+    cy.contains('header-1').click().realPress('ArrowRight');
     cy.realPress('ArrowRight');
     cy.realPress('ArrowRight');
     cy.realPress('ArrowRight');

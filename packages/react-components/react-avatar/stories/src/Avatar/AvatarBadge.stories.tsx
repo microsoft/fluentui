@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 
-export const Badge = () => (
+export const Badge = (): JSXElement => (
   <>
     <Avatar name="Lydia Bauer" badge={{ status: 'available' }} />
     <Avatar name="Amanda Brady" badge={{ status: 'busy' }} />

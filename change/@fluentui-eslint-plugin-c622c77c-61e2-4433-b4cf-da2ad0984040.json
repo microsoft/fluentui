@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: removes type dependency on @fluentui/react-utilities internals in ban-instanceof-html-element",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

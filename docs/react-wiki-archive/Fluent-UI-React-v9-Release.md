@@ -14,8 +14,8 @@ You can find the latest documentation of Fluent UI React v9 at https://react.flu
 
 Migration is unique to each project and there is a dedicated section focusing on migration in our documentation. It's recommended to start there to understand what's changing, how to use the two libraries side-by-side, and strategies on how to approach migration for your project.
 
-1. [Upgrading from v8 to v9](https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-components-checkbox-migration--page)
-2. [Upgrading from v0 to v9](https://react.fluentui.dev/?path=/docs/concepts-migration-from-v0-components-checkbox-migration--page)
+1. [Upgrading from v8 to v9](https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-components-checkbox-migration--docs)
+2. [Upgrading from v0 to v9](https://react.fluentui.dev/?path=/docs/concepts-migration-from-v0-components-checkbox-migration--docs)
 3. Example app of [upgrading from v8 to v9](https://github.com/GeoffCox/fluentui-app-v8-v9)
 
 ## Questions

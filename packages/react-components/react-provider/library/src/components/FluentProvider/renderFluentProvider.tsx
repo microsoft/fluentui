@@ -1,6 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { canUseDOM, assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { TextDirectionProvider } from '@griffel/react';
 import {
   OverridesProvider_unstable as OverridesProvider,
@@ -20,7 +21,7 @@ import { IconDirectionContextProvider } from '@fluentui/react-icons/lib/provider
 export const renderFluentProvider_unstable = (
   state: FluentProviderState,
   contextValues: FluentProviderContextValues,
-) => {
+): JSXElement => {
   assertSlots<FluentProviderSlots>(state);
 
   // Typescript (vscode) incorrectly references the FluentProviderProps.customStyleHooks_unstable

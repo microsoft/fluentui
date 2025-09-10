@@ -61,10 +61,10 @@ const isV8Package: typeof isConvergedPackage = metadata => {
   return hasV8Tag && !isWebComponentPackage(metadata) && !isConvergedPackage(metadata);
 };
 const isToolsPackage: typeof isConvergedPackage = metadata => {
-  const hasVNextTag = Boolean(metadata.project.tags?.includes('vNext'));
   const hasToolsTag = Boolean(metadata.project.tags?.includes('tools'));
+  const isPrivate = Boolean(metadata.packageJson.private);
 
-  return hasToolsTag && !isV8Package(metadata) && !hasVNextTag;
+  return hasToolsTag && !isPrivate && !isV8Package(metadata);
 };
 
 function getPackagePaths() {

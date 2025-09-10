@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { makeStyles, tokens, Button, Tooltip } from '@fluentui/react-components';
 import { SlideTextRegular } from '@fluentui/react-icons';
@@ -11,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Styled = (props: Partial<TooltipProps>) => {
+export const Styled = (props: Partial<TooltipProps>): JSXElement => {
   const styles = useStyles();
   return (
     <Tooltip

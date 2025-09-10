@@ -1,0 +1,44 @@
+{
+  "name": "@fluentui/react-17-tests-v9",
+  "description": "React 17 test application and playground",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "type-check": "just-scripts type-check",
+    "type-check:integration": "tsc -p tsconfig.react-17.json --noEmit",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
+    "test": "jest --passWithNoTests",
+    "test:integration": "jest --passWithNoTests -u -c jest-react-17.config.js",
+    "format": "prettier -w . --ignore-path ../.prettierignore",
+    "format:check": "yarn format -c",
+    "start": "webpack-dev-server --mode=development",
+    "e2e": "npx --yes cypress@13 run --component",
+    "e2e:local": "npx --yes cypress@13 open --component",
+    "e2e:integration": "npx --yes cypress@13 run --component --config-file cypress-react-17.config.ts"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-calendar-compat": "*",
+    "@fluentui/react-datepicker-compat": "*",
+    "@fluentui/react-timepicker-compat": "*",
+    "@fluentui/react-migration-v8-v9": "*",
+    "@fluentui/react-menu-grid-preview": "*",
+    "@cypress/react": "8.0.0",
+    "@testing-library/dom": "8.11.3",
+    "@testing-library/react": "12.1.2",
+    "@testing-library/react-hooks": "8.0.1",
+    "@types/react": "17.0.44",
+    "@types/react-dom": "17.0.15",
+    "@types/react-test-renderer": "17.0.2",
+    "cypress-real-events": "1.13.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-test-renderer": "17.0.2",
+    "tslib": "^2.1.0"
+  }
+}

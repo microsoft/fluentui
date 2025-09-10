@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { SearchBoxState, SearchBoxSlots } from './SearchBox.types';
 
 /**
  * Render the final JSX of SearchBox
  */
-export const renderSearchBox_unstable = (state: SearchBoxState) => {
+export const renderSearchBox_unstable = (state: SearchBoxState): JSXElement => {
   assertSlots<SearchBoxSlots>(state);
 
   return (

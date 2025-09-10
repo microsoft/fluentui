@@ -1,4 +1,5 @@
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { create } from '@fluentui/test-utilities';
@@ -31,10 +32,10 @@ describe('Link', () => {
   });
 
   it('Set type=button property when link is a button', () => {
-    const component = mount(<Link>I'm link as a button</Link>);
+    render(<Link>I'm link as a button</Link>);
 
-    expect(Object.keys(component.find('button').props())).toContain('type');
-    expect(component.find('button').props().type).toBe('button');
+    const buttonElement = screen.getByRole('button');
+    expect(buttonElement).toHaveAttribute('type', 'button');
   });
 
   it('renders disabled Link with no href as a button correctly', () => {
@@ -109,7 +110,7 @@ describe('Link', () => {
     const myRef = React.createRef<HTMLDivElement>();
 
     const renderLinkWithComponentRef = () =>
-      mount(
+      render(
         <Link as="div" className="customClassName" componentRef={myRef}>
           I'm a div
         </Link>,
@@ -121,12 +122,13 @@ describe('Link', () => {
   it('does not pass the componentRef property through to the button element', () => {
     const myRef = React.createRef<HTMLDivElement>();
 
-    const component = mount(
+    render(
       <Link className="customClassName" componentRef={myRef}>
         I'm a div
       </Link>,
     );
 
-    expect(Object.keys(component.find('button').props())).not.toContain('componentRef');
+    const buttonElement = screen.getByRole('button');
+    expect(buttonElement).not.toHaveAttribute('componentRef');
   });
 });

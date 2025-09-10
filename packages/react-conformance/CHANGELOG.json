@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Wed, 14 May 2025 13:28:52 GMT",
+      "tag": "@fluentui/react-conformance_v0.20.0",
+      "version": "0.20.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "0d3f8da91e559a2d761cf1690472cf11ba5ac004",
+            "comment": "feat: add react 18 support"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:17 GMT",
       "tag": "@fluentui/react-conformance_v0.19.3",
       "version": "0.19.3",

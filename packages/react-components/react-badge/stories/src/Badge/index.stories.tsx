@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { Meta } from '@storybook/react';
 import { Badge } from '@fluentui/react-components';
 import descriptionMd from './BadgeDescription.md';
@@ -9,6 +10,7 @@ export { Sizes } from './BadgeSizes.stories';
 export { Shapes } from './BadgeShapes.stories';
 export { Color } from './BadgeColor.stories';
 export { Icon } from './BadgeIcon.stories';
+export { ColorAndAppearance } from './BadgeColorVsAppearance.stories';
 
 export default {
   title: 'Components/Badge/Badge',

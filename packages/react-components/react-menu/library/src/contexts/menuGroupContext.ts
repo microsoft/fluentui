@@ -20,4 +20,5 @@ export type MenuGroupContextValue = {
 };
 
 export const MenuGroupContextProvider = MenuGroupContext.Provider;
-export const useMenuGroupContext_unstable = () => React.useContext(MenuGroupContext) ?? menuGroupContextDefaultValue;
+export const useMenuGroupContext_unstable = (): MenuGroupContextValue =>
+  React.useContext(MenuGroupContext) ?? menuGroupContextDefaultValue;

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 import { Image20Regular, LockClosed20Regular, Person20Regular, Warning20Regular } from '@fluentui/react-icons';
 
-export const IconBeforeAndAfter = () => {
+export const IconBeforeAndAfter = (): JSXElement => {
   return (
     <Tree aria-label="Icon Before & After">
       <TreeItem itemType="branch">

@@ -24,5 +24,5 @@ const accordionHeaderContextDefaultValue = {
 
 export const { Provider: AccordionHeaderProvider } = AccordionHeaderContext;
 
-export const useAccordionHeaderContext_unstable = () =>
+export const useAccordionHeaderContext_unstable = (): AccordionHeaderContextValue =>
   React.useContext(AccordionHeaderContext) ?? accordionHeaderContextDefaultValue;

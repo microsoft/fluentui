@@ -22,7 +22,7 @@ const MONTHS_PER_ROW = 4;
 function useAnimateBackwards({ navigatedDate }: { navigatedDate: CalendarMonthProps['navigatedDate'] }) {
   const currentYear = navigatedDate.getFullYear();
 
-  const previousYearRef = React.useRef<number | undefined>();
+  const previousYearRef = React.useRef<number | undefined>(undefined);
   React.useEffect(() => {
     previousYearRef.current = currentYear;
   });
@@ -327,7 +327,7 @@ function getYearStrings({
       rangeAriaLabel: yearRangeToString,
       prevRangeAriaLabel: yearRangeToPrevDecadeLabel,
       nextRangeAriaLabel: yearRangeToNextDecadeLabel,
-      headerAriaLabelFormatString: strings.yearPickerHeaderAriaLabel,
+      headerAriaLabelFormatString: strings.monthPickerHeaderAriaLabel,
     } as const,
   ] as const;
 }

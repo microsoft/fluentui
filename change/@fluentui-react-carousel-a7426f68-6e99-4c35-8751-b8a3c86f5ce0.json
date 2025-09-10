@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "feat/enhance-carousel-styles-theme-tokens",
+  "comment": "fix(carousel): add rounded corners and elevation using theme tokens",
   "packageName": "@fluentui/react-carousel",
-  "email": "Oleksandr.Katrukhin@microsoft.com",
+  "email": "oleksandr.katrukhin@microsoft.com",
   "dependentChangeType": "patch"
 }

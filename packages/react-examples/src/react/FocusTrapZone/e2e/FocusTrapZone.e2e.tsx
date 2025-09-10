@@ -189,13 +189,24 @@ describe('FocusTrapZone', () => {
     });
 
     it('Focuses on firstFocusableSelector on mount', () => {
-      mount(<PropValues firstFocusableSelector="last-class" />);
+      mount(
+        <PropValues
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          firstFocusableSelector="last-class"
+        />,
+      );
 
       cy.focused().should('have.text', 'last');
     });
 
     it('Does not focus on firstFocusableSelector on mount while disabled', () => {
-      mount(<PropValues firstFocusableSelector="last-class" disabled />);
+      mount(
+        <PropValues
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          firstFocusableSelector="last-class"
+          disabled
+        />,
+      );
 
       // verify story rendered (to make sure we're not checking the base state of the page)
       cy.contains('first').should('exist');
@@ -204,7 +215,12 @@ describe('FocusTrapZone', () => {
     });
 
     it('Falls back to first focusable element with invalid firstFocusableSelector', () => {
-      mount(<PropValues firstFocusableSelector="invalidSelector" />);
+      mount(
+        <PropValues
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          firstFocusableSelector="invalidSelector"
+        />,
+      );
 
       cy.focused().should('have.text', 'first');
     });
@@ -586,7 +602,12 @@ describe('FocusTrapZone', () => {
     });
 
     it('does not return focus on unmount if ignoreExternalFocusing (deprecated) is set', () => {
-      mount(<ReturnFocus ignoreExternalFocusing />);
+      mount(
+        <ReturnFocus
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          ignoreExternalFocusing
+        />,
+      );
 
       // show the FTZ
       cy.contains('show FTZ').realClick();

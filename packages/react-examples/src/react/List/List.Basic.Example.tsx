@@ -70,6 +70,7 @@ export const ListBasicExample: React.FunctionComponent = () => {
           <Image
             className={classNames.itemImage}
             src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
+            alt=""
             width={50}
             height={50}
             imageFit={ImageFit.cover}

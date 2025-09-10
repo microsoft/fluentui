@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { RatingDisplay } from '@fluentui/react-components';
 
-export const Compact = () => <RatingDisplay compact value={3} count={1160} />;
+export const Compact = (): JSXElement => <RatingDisplay compact value={3} count={1160} />;
 
 Compact.parameters = {
   docs: {

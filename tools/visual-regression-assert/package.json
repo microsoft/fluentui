@@ -1,0 +1,33 @@
+{
+  "name": "@fluentui/visual-regression-assert",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "bin": {
+    "visual-regression-assert": "./bin/visual-regression-assert.js"
+  },
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ],
+  "dependencies": {
+    "@swc/helpers": "^0.5.1",
+    "pixelmatch": "^7.1.0",
+    "pngjs": "^7.0.0",
+    "ejs": "^3.1.10",
+    "glob": "^11.0.1",
+    "find-up": "^5.0.0",
+    "cli-table3": "^0.6.5",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.5",
+    "@types/pngjs": "^6.0.5",
+    "@types/yargs": "^17.0.33"
+  },
+  "peerDependencies": {}
+}

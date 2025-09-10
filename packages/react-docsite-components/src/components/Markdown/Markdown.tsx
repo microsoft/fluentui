@@ -36,7 +36,7 @@ const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = () => {
 
 const getClassNames = classNamesFunction<IMarkdownStyleProps, IMarkdownStyles>();
 
-const MarkdownBase: React.FunctionComponent<IMarkdownProps> = props => {
+const MarkdownBase: React.FunctionComponent<React.PropsWithChildren<IMarkdownProps>> = props => {
   const { styles, theme, children } = props;
   const classNames = getClassNames(styles, { theme: theme! });
 
@@ -131,7 +131,7 @@ function getOverrides(subComponentStyles: IMarkdownSubComponentStyles, props: IM
   };
 }
 
-export const Markdown: React.FunctionComponent<IMarkdownProps> = styled<
+export const Markdown: React.FunctionComponent<React.PropsWithChildren<IMarkdownProps>> = styled<
   IMarkdownProps,
   IMarkdownStyleProps,
   IMarkdownStyles

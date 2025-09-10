@@ -369,6 +369,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
   return (
     <TextField
       {...props}
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       elementRef={ref}
       onFocus={handleFocus}
       onBlur={handleBlur}

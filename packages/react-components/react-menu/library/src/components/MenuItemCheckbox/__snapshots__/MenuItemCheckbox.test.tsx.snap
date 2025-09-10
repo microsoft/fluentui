@@ -2,22 +2,18 @@
 
 exports[`MenuItemCheckbox conformance renders a default state 1`] = `
 <div
-  aria-checked={false}
-  className="fui-MenuItem fui-MenuItemCheckbox"
+  aria-checked="false"
+  class="fui-MenuItem fui-MenuItemCheckbox"
   name="checkbox"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  onKeyUp={[Function]}
-  onMouseMove={[Function]}
   role="menuitemcheckbox"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="fui-MenuItem__checkmark fui-MenuItemCheckbox__checkmark"
+    class="fui-MenuItem__checkmark fui-MenuItemCheckbox__checkmark"
   >
     <svg
-      aria-hidden={true}
-      className=""
+      aria-hidden="true"
+      class=""
       fill="currentColor"
       height="16"
       viewBox="0 0 16 16"
@@ -31,7 +27,7 @@ exports[`MenuItemCheckbox conformance renders a default state 1`] = `
     </svg>
   </span>
   <span
-    className="fui-MenuItem__content fui-MenuItemCheckbox__content"
+    class="fui-MenuItem__content fui-MenuItemCheckbox__content"
   >
     Default MenuItemCheckbox
   </span>

@@ -2,6 +2,132 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 08 Sep 2025 12:50:33 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.25.1",
+      "version": "9.25.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Aug 2025 12:25:18 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.25.0",
+      "version": "9.25.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "e9d9ff6670189ffa97f9c21450fe4ddba15a461d",
+            "comment": "feat: Add DrawerSurfaceStyle custom style hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jul 2025 16:55:33 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.24.1",
+      "version": "9.24.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "8341f03de463b84bdbea893da086d98abfa82f69",
+            "comment": "chore:"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jul 2025 13:10:57 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.24.1",
+      "version": "9.24.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.2.0",
+            "commit": "be736930143d28b05665f11c576cca9671cfb0fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jun 2025 17:33:58 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.24.0",
+      "version": "9.24.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "cd6eba709691ea2d8d7d391b1b76c46646a44ef5",
+            "comment": "feat: add support for custom style hooks for nav components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Mar 2025 21:12:49 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.23.1",
+      "version": "9.23.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 15:40:42 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.23.0",
+      "version": "9.23.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "18134c1eb5e8d3bd8508cef24971ab7874661531",
+            "comment": "feat: added CustomStyleHooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Mar 2025 18:58:52 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.22.0",
+      "version": "9.22.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "81f584430d55ea58d88d1529282b41ddba0e83b5",
+            "comment": "feat: Adds custom style hooks to TeachingPopoverCarousel and related subcomponents."
+          },
+          {
+            "author": "terynkum@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "b0005b5ade58b047930e4f5404efd5081da6136d",
+            "comment": "fix: Implemented customStyleHooks for SearchBox Component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.21.2",
       "version": "9.21.2",

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   BriefcaseRegular,
   CalendarLtrRegular,
@@ -11,7 +12,7 @@ import {
 
 import { Avatar } from '@fluentui/react-components';
 
-export const Icon = () => (
+export const Icon = (): JSXElement => (
   <>
     <Avatar icon={<GuestRegular />} aria-label="Guest" />
     <Avatar icon={<PeopleRegular />} aria-label="Group" />

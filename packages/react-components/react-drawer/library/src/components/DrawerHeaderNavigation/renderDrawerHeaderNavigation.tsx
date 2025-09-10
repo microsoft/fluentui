@@ -1,13 +1,14 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import type { DrawerHeaderNavigationSlots, DrawerHeaderNavigationState } from './DrawerHeaderNavigation.types';
 
 /**
  * Render the final JSX of DrawerHeaderNavigation
  */
-export const renderDrawerHeaderNavigation_unstable = (state: DrawerHeaderNavigationState) => {
+export const renderDrawerHeaderNavigation_unstable = (state: DrawerHeaderNavigationState): JSXElement => {
   assertSlots<DrawerHeaderNavigationSlots>(state);
 
   return <state.root />;

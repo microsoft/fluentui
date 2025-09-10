@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -11,7 +12,7 @@ import {
 } from '@fluentui/react-components';
 import story from './DialogControllingOpenAndClose.md';
 
-export const ControllingOpenAndClose = () => {
+export const ControllingOpenAndClose = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
   return (
     <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>

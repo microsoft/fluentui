@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Input, LabelProps } from '@fluentui/react-components';
 import { InfoLabel } from '@fluentui/react-components';
 
-export const Info = () => (
+export const Info = (): JSXElement => (
   <Field
     label={{
       // Setting children to a render function allows you to replace the entire slot.
@@ -27,7 +28,7 @@ Info.parameters = {
       story:
         "Add an info button to the label by replacing the Field's label with an `InfoLabel`. " +
         'This can be done using a [slot render function]' +
-        '(./?path=/docs/concepts-developer-customizing-components-with-slots--page#replacing-the-entire-slot). ' +
+        '(./?path=/docs/concepts-developer-customizing-components-with-slots--docs#replacing-the-entire-slot). ' +
         'See the code from this story for more details.',
     },
   },

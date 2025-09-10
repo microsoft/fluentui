@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   AvatarGroup,
   AvatarGroupItem,
@@ -21,7 +22,7 @@ const names = [
   'Elliot Woodward',
 ];
 
-export const Tooltip = (props: Partial<AvatarGroupProps>) => {
+export const Tooltip = (props: Partial<AvatarGroupProps>): JSXElement => {
   const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (

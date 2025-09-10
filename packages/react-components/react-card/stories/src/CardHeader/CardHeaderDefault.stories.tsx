@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { CardHeader } from '@fluentui/react-components';
 import { makeStyles, Button, Body1, Caption1 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
@@ -22,7 +23,7 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   const powerpointLogoURL = resolveAsset('pptx.png');

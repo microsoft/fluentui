@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Link } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import dedent from 'dedent';
 import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
-export const ExportLink = () => {
+export const ExportLink = (): JSXElement => {
   const {
     state: { themeName, brand, darkThemeOverrides, lightThemeOverrides },
   } = useThemeDesigner();

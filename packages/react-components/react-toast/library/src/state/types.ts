@@ -112,7 +112,7 @@ export interface Toast<TData = object> extends ToastOptions<TData> {
    */
   order: number;
 
-  imperativeRef: React.RefObject<ToastImperativeRef>;
+  imperativeRef: React.RefObject<ToastImperativeRef | null>;
 }
 
 export interface CommonToastDetail {

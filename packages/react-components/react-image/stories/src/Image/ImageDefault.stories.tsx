@@ -1,11 +1,19 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Image } from '@fluentui/react-components';
 import type { ImageProps } from '@fluentui/react-components';
 import type { ArgTypes, Parameters } from '@storybook/react';
 
-export const Default = (props: ImageProps) => {
-  return <Image {...props} />;
+export const Default = (props: ImageProps): JSXElement => {
+  return (
+    <Image
+      {...props}
+      alt="Allan's avatar"
+      src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+    />
+  );
 };
+
 Default.argTypes = {
   alt: {
     control: 'text',

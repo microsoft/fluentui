@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Select, useId } from '@fluentui/react-components';
 
-export const InitialValue = () => {
+export const InitialValue = (): JSXElement => {
   const selectId = useId();
 
   return (

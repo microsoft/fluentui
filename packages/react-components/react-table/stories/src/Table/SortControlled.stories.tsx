@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -27,7 +29,7 @@ import {
 
 type FileCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -37,7 +39,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element;
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -118,7 +120,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SortControlled = () => {
+export const SortControlled = (): JSXElement => {
   const [sortState, setSortState] = React.useState<{
     sortDirection: 'ascending' | 'descending';
     sortColumn: TableColumnId | undefined;

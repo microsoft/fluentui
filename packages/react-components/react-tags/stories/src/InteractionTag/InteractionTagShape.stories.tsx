@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   InteractionTag,
   InteractionTagPrimary,
@@ -9,41 +10,50 @@ import {
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useContainerStyles = makeStyles({
-  root: {
-    display: 'grid',
-    rowGap: '10px',
+  innerWrapper: {
+    alignItems: 'start',
     columnGap: '10px',
-    gridTemplateColumns: 'auto 1fr',
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  outerWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '10px',
   },
 });
 
-export const Shape = () => {
+export const Shape = (): JSXElement => {
   const containerStyles = useContainerStyles();
   return (
-    <div className={containerStyles.root}>
-      <InteractionTag>
-        <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
-          Rounded
-        </InteractionTagPrimary>
-      </InteractionTag>
-      <InteractionTag shape="circular">
-        <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
-          Circular
-        </InteractionTagPrimary>
-      </InteractionTag>
+    <div className={containerStyles.outerWrapper}>
+      <div className={containerStyles.innerWrapper}>
+        <InteractionTag>
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
+            Rounded
+          </InteractionTagPrimary>
+        </InteractionTag>
+        <InteractionTag shape="circular">
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
+            Circular
+          </InteractionTagPrimary>
+        </InteractionTag>
+      </div>
 
-      <InteractionTag>
-        <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
-          Rounded
-        </InteractionTagPrimary>
-        <InteractionTagSecondary aria-label="remove" />
-      </InteractionTag>
-      <InteractionTag shape="circular">
-        <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
-          Circular
-        </InteractionTagPrimary>
-        <InteractionTagSecondary aria-label="remove" />
-      </InteractionTag>
+      <div className={containerStyles.innerWrapper}>
+        <InteractionTag>
+          <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
+            Rounded
+          </InteractionTagPrimary>
+          <InteractionTagSecondary aria-label="remove" />
+        </InteractionTag>
+        <InteractionTag shape="circular">
+          <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
+            Circular
+          </InteractionTagPrimary>
+          <InteractionTagSecondary aria-label="remove" />
+        </InteractionTag>
+      </div>
     </div>
   );
 };

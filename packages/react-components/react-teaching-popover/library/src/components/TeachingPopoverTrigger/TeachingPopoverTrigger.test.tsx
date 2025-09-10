@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
-import * as renderer from 'react-test-renderer';
 import { TeachingPopoverTrigger } from './TeachingPopoverTrigger';
+import { render } from '@testing-library/react';
 
 describe('TeachingPopoverTrigger', () => {
   isConformant({
@@ -21,12 +21,11 @@ describe('TeachingPopoverTrigger', () => {
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
   it('renders a default state', () => {
-    const component = renderer.create(
+    const { container } = render(
       <TeachingPopoverTrigger disableButtonEnhancement>
         <button>Popover trigger</button>
       </TeachingPopoverTrigger>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

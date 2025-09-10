@@ -1,5 +1,5 @@
 import semver from 'semver';
-import { Tree, formatFiles, updateJson, readJson, ProjectConfiguration, getProjects } from '@nrwl/devkit';
+import { Tree, formatFiles, updateJson, readJson, ProjectConfiguration, getProjects } from '@nx/devkit';
 
 import { getNpmScope, getProjectPaths, isPackageVersionPrerelease } from '../../utils';
 import type { PackageJson } from '../../types';

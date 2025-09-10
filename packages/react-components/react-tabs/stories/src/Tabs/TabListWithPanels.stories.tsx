@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Tab, TabList } from '@fluentui/react-components';
 import {
   AirplaneRegular,
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithPanels = () => {
+export const WithPanels = (): JSXElement => {
   const styles = useStyles();
 
   const [selectedValue, setSelectedValue] = React.useState<TabValue>('conditions');

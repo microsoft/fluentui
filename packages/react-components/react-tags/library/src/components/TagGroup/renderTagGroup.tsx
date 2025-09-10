@@ -2,13 +2,14 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { TagGroupState, TagGroupSlots, TagGroupContextValues } from './TagGroup.types';
 import { TagGroupContextProvider } from '../../contexts/tagGroupContext';
 
 /**
  * Render the final JSX of TagGroup
  */
-export const renderTagGroup_unstable = (state: TagGroupState, contextValue: TagGroupContextValues) => {
+export const renderTagGroup_unstable = (state: TagGroupState, contextValue: TagGroupContextValues): JSXElement => {
   assertSlots<TagGroupSlots>(state);
 
   return (

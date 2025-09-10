@@ -207,6 +207,7 @@ describe(`workspace-plugin`, () => {
                         ],
                       },
                       "options": Object {
+                        "enableGriffelRawStyles": true,
                         "moduleOutput": Array [
                           Object {
                             "module": "es6",

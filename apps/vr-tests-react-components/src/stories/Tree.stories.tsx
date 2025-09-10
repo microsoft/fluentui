@@ -16,7 +16,7 @@ import { Button } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import {
   CaretDownRegular,
   CaretRightRegular,
@@ -33,6 +33,9 @@ import { Avatar } from '@fluentui/react-avatar';
 
 export default {
   title: 'Tree',
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Tree>;
 
 export const Default = () => (
@@ -128,22 +131,7 @@ export const DefaultOpenTreeRTL = getStoryVariant(DefaultOpenTree, RTL);
 
 export const Appearance = () => {
   return (
-    <StoryWright
-      steps={new Steps()
-        .hover('#subtle-tree')
-        .snapshot('Subtle tree hover')
-        .mouseDown('#subtle-tree')
-        .snapshot('Subtle tree mousedown')
-        .hover('#subtle-alpha-tree')
-        .snapshot('Subtle alpha tree hover')
-        .mouseDown('#subtle-alpha-tree')
-        .snapshot('Subtle alpha tree mousedown')
-        .hover('#transparent-tree')
-        .snapshot('Transparent tree hover')
-        .mouseDown('#transparent-tree')
-        .snapshot('Transparent tree mousedown')
-        .end()}
-    >
+    <>
       <Tree id="subtle-tree" aria-label="Tree">
         <TreeItem itemType="leaf">
           <TreeItemLayout>Subtle tree item</TreeItemLayout>
@@ -159,10 +147,28 @@ export const Appearance = () => {
           <TreeItemLayout>Transparent tree item</TreeItemLayout>
         </TreeItem>
       </Tree>
-    </StoryWright>
+    </>
   );
 };
 Appearance.storyName = 'appearance';
+Appearance.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .hover('#subtle-tree')
+      .snapshot('Subtle tree hover')
+      .mouseDown('#subtle-tree')
+      .snapshot('Subtle tree mousedown')
+      .hover('#subtle-alpha-tree')
+      .snapshot('Subtle alpha tree hover')
+      .mouseDown('#subtle-alpha-tree')
+      .snapshot('Subtle alpha tree mousedown')
+      .hover('#transparent-tree')
+      .snapshot('Transparent tree hover')
+      .mouseDown('#transparent-tree')
+      .snapshot('Transparent tree mousedown')
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const AppearanceDarkMode = getStoryVariant(Appearance, DARK_MODE);
 
@@ -539,20 +545,26 @@ export const FlatTreeSingleSelection = () => {
   });
 
   return (
-    <StoryWright steps={new Steps().click('#2-1').snapshot('flat tree single selection selected 1').end()}>
-      <FlatTree selectionMode="single" {...flatTree.getTreeProps()} aria-label="Tree">
-        {Array.from(flatTree.items(), item => {
-          return (
-            <TreeItem {...item.getTreeItemProps()} key={item.value}>
-              <TreeItemLayout>{item.value}</TreeItemLayout>
-            </TreeItem>
-          );
-        })}
-      </FlatTree>
-    </StoryWright>
+    <FlatTree selectionMode="single" {...flatTree.getTreeProps()} aria-label="Tree">
+      {Array.from(flatTree.items(), item => {
+        return (
+          <TreeItem {...item.getTreeItemProps()} key={item.value}>
+            <TreeItemLayout>{item.value}</TreeItemLayout>
+          </TreeItem>
+        );
+      })}
+    </FlatTree>
   );
 };
 FlatTreeSingleSelection.storyName = 'flat tree single selection';
+FlatTreeSingleSelection.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .click(`#${CSS.escape('2-1')}`)
+      .snapshot('flat tree single selection selected 1')
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const FlatTreeSingleSelectionDarkMode = getStoryVariant(FlatTreeSingleSelection, DARK_MODE);
 
@@ -567,20 +579,26 @@ export const FlatTreeMultiSelection = () => {
   });
 
   return (
-    <StoryWright steps={new Steps().click('#1-1').snapshot('flat tree multi selection selected 1-1').end()}>
-      <FlatTree {...flatTree.getTreeProps()} aria-label="Tree">
-        {Array.from(flatTree.items(), item => {
-          return (
-            <TreeItem {...item.getTreeItemProps()} key={item.value}>
-              <TreeItemLayout>{item.value}</TreeItemLayout>
-            </TreeItem>
-          );
-        })}
-      </FlatTree>
-    </StoryWright>
+    <FlatTree {...flatTree.getTreeProps()} aria-label="Tree">
+      {Array.from(flatTree.items(), item => {
+        return (
+          <TreeItem {...item.getTreeItemProps()} key={item.value}>
+            <TreeItemLayout>{item.value}</TreeItemLayout>
+          </TreeItem>
+        );
+      })}
+    </FlatTree>
   );
 };
 FlatTreeMultiSelection.storyName = 'flat tree multi selection';
+FlatTreeMultiSelection.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .click(`#${CSS.escape('1-1')}`)
+      .snapshot('flat tree multi selection selected 1-1')
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const FlatTreeMultiSelectionDarkMode = getStoryVariant(FlatTreeMultiSelection, DARK_MODE);
 

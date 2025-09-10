@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Button,
   Menu,
@@ -25,7 +26,7 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
-export const SelectionGroup = () => (
+export const SelectionGroup = (): JSXElement => (
   <Menu>
     <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>

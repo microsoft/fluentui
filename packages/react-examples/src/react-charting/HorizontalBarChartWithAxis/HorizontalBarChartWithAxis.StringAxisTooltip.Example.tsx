@@ -50,28 +50,28 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
       {
         y: 'String One',
         x: 1000,
-        color: getColorFromToken(DataVizPalette.color9),
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         y: 'String Two',
         x: 5000,
-        color: getColorFromToken(DataVizPalette.color10),
+        color: getColorFromToken(DataVizPalette.color2),
       },
       {
         y: 'String Three',
         x: 3000,
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color3),
       },
       {
         y: 'String Four',
         x: 2000,
-        color: getColorFromToken(DataVizPalette.color12),
+        color: getColorFromToken(DataVizPalette.color4),
       },
     ];
 
     const rootStyle = { width: '650px', height: '350px' };
     return (
-      <>
+      <div className="containerDiv">
         <div>
           <ChoiceGroup
             options={options}
@@ -102,7 +102,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

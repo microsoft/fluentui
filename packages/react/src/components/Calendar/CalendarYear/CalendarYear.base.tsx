@@ -127,9 +127,12 @@ const CalendarYearGrid: React.FunctionComponent<ICalendarYearGridProps> = props 
     componentRef,
   } = props;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const selectedCellRef = React.useRef<ICalendarYearGridCell>(null);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const currentCellRef = React.useRef<ICalendarYearGridCell>(null);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useImperativeHandle(
     componentRef,
     () => ({

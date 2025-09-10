@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Label } from '@fluentui/react-components';
 
 import descriptionMd from './LabelDescription.md';
@@ -9,7 +9,7 @@ export { Weight } from './LabelWeight.stories';
 export { Disabled } from './LabelDisabled.stories';
 export { Required } from './LabelRequired.stories';
 
-const meta: Meta = {
+const meta = {
   title: 'Components/Label',
   component: Label,
   parameters: {
@@ -33,6 +33,6 @@ const meta: Meta = {
       </div>
     ),
   ],
-};
+} satisfies Meta<typeof Label>;
 
 export default meta;

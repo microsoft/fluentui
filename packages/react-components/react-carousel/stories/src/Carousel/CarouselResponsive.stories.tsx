@@ -18,6 +18,7 @@ import {
   CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   slider: {
@@ -94,7 +95,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const Responsive = () => {
+export const Responsive = (): JSXElement => {
   const classes = useClasses();
 
   return (

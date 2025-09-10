@@ -5,7 +5,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { ProviderContext as ProviderContextV1 } from './testing/fake_node_modules/context-v1.0.0';
 import { ProviderContext as ProviderContextV11 } from './testing/fake_node_modules/context-v1.1.0';
 import { ProviderContext as ProviderContextV2 } from './testing/fake_node_modules/context-v2.0.0';

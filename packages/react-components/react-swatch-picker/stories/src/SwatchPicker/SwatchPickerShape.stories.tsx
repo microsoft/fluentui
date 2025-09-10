@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, SwatchPicker, ColorSwatch } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -21,7 +22,7 @@ const colors = [
   { color: '#712F9E', value: '712F9E', 'aria-label': 'purple' },
 ];
 
-export const SwatchPickerShape = () => {
+export const SwatchPickerShape = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.example}>

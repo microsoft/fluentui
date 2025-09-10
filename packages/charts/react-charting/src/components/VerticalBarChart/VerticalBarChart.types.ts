@@ -122,7 +122,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * Specifies the mode of the chart.
    * @default 'default'
    */
-  mode?: 'default' | 'plotly';
+  mode?: 'default' | 'plotly' | 'histogram';
 }
 
 /**

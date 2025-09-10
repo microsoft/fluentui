@@ -17,7 +17,7 @@ interface UseScrollbarWidthOptions {
 /**
  * @returns The width in pixels of the scrollbar in the user agent
  */
-export function useScrollbarWidth(options: UseScrollbarWidthOptions) {
+export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined {
   const { targetDocument, force } = options;
   return React.useMemo(() => {
     if (!targetDocument) {

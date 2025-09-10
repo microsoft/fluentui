@@ -6,6 +6,22 @@ test.describe('Button', () => {
     innerHTML: 'Button',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-button');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should NOT submit the parent form when clicked and `type` attribute is not set', async ({ fastPage, page }) => {
     const { element } = fastPage;
 

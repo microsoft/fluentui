@@ -5,6 +5,12 @@ trigger: none
 # Example: web-components_20201022.1
 name: 'web-components_$(Date:yyyyMMdd)$(Rev:.r)'
 
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
+
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
@@ -78,7 +84,7 @@ extends:
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
-                condition: eq(variables.dryRun, false)
+                condition: not(${{ parameters.dryRun }})
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

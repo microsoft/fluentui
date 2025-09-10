@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, makeStyles, Option, OptionGroup, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Grouped = (props: Partial<ComboboxProps>) => {
+export const Grouped = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-grouped');
   const land = ['Cat', 'Dog', 'Ferret', 'Hamster'];
   const water = ['Fish', 'Jellyfish', 'Octopus', 'Seal'];

@@ -13,7 +13,9 @@
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "For which project do you want to add Cypress component testing?"
+      "pattern": "^[a-zA-Z].*$",
+      "x-prompt": "For which project do you want to add Cypress component testing?",
+      "x-dropdown": "projects"
     }
   },
   "required": ["project"]

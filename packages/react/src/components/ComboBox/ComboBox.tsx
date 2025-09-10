@@ -26,6 +26,7 @@ import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox
 import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 import { BaseButton, Button, CommandButton, IconButton } from '../../Button';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import type { IAutofill } from '../../Autofill';
@@ -110,6 +111,7 @@ interface IComboBoxOptionWrapperProps extends IComboBoxOption {
    * children methods don't get called unnecessarily if the component doesn't need to be updated. This leads
    * to a significant performance increase in ComboBoxes with many options and/or complex onRenderOption functions
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   render: () => JSX.Element;
 }
 
@@ -247,6 +249,7 @@ function findFirstDescendant(element: HTMLElement, match: (element: HTMLElement)
 @customizable('ComboBox', ['theme', 'styles'], true)
 class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> implements IComboBox {
   public static contextType = WindowContext;
+  public context: any;
 
   /** The input aspect of the combo box */
   private _autofill = React.createRef<IAutofill>();
@@ -462,6 +465,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   // Primary Render
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const id = this._id;
     const errorMessageId = id + '-error';
@@ -611,6 +615,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _renderComboBoxWrapper = (
     multiselectAccessibleText: string | undefined,
     errorMessageId: string,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element => {
     const {
       label,
@@ -686,6 +691,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
           shouldSelectFullInputValueInComponentDidUpdate={
             this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
@@ -1378,6 +1384,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   // Render Callout container and pass in list
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderContainer = (props: IComboBoxProps, defaultRender: IRenderFunction<IComboBoxProps>): JSX.Element => {
     const {
       onRenderList,
@@ -1421,6 +1428,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         }
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         shouldRestoreFocus={shouldRestoreFocus}
         // eslint-disable-next-line react/jsx-no-bind
         preventDismissOnEvent={(ev: Event) => this._preventDismissOnScrollOrResize(ev)}
@@ -1456,6 +1464,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderLabel = (onRenderLabelProps: IOnRenderComboBoxLabelProps): JSX.Element | null => {
     const { label, disabled, required } = onRenderLabelProps.props;
 
@@ -1474,10 +1483,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   // Render List of items
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderList = (props: IComboBoxProps): JSX.Element => {
     const { onRenderItem = this._onRenderItem, label, ariaLabel, multiSelect } = props;
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let queue: { id?: string; items: JSX.Element[] } = { items: [] };
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let renderedList: JSX.Element[] = [];
 
     const emptyQueue = (): void => {
@@ -1548,6 +1560,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   // Render items
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderItem = (item: IComboBoxOption): JSX.Element | null => {
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
@@ -1570,6 +1583,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   };
 
   // Render separator
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSeparator(item: IComboBoxOption): JSX.Element | null {
     const { index, key } = item;
 
@@ -1579,6 +1593,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     return null;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderHeader(item: IComboBoxOption): JSX.Element {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
 
@@ -1589,11 +1604,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCheckboxLabel(item: IComboBoxOption): JSX.Element | null {
     const { onRenderOption = this._onRenderMultiselectOptionContent } = this.props;
     return onRenderOption(item, this._onRenderMultiselectOptionContent);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderOption = (item: IComboBoxOption): JSX.Element => {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = item.id ?? this._id + '-list' + item.index;
@@ -1851,6 +1868,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderOptionContent = (item: IComboBoxOption): JSX.Element => {
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     return <span className={optionClassNames.optionText}>{item.text}</span>;
@@ -1860,6 +1878,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * Render content of a multiselect item label.
    * Text within the label is aria-hidden, to prevent duplicate input/label exposure
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderMultiselectOptionContent = (item: IComboBoxOption): JSX.Element => {
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     return (

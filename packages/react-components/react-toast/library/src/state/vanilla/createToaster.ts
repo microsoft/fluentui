@@ -31,7 +31,15 @@ let counter = 0;
  * dispatched imperatively. Therefore the state of toast visibility can't
  * really be managed properly by a declarative lifecycle.
  */
-export function createToaster(options: Partial<ToasterOptions>) {
+export function createToaster(options: Partial<ToasterOptions>): {
+  buildToast: (toastOptions: Partial<ToastOptions> & { toastId: ToastId }, onUpdate: () => void) => void;
+  dismissAllToasts: () => void;
+  dismissToast: (toastId: ToastId) => void;
+  isToastVisible: (toastId: ToastId) => boolean;
+  updateToast: (options: UpdateToastEventDetail) => void;
+  visibleToasts: Set<ToastId>;
+  toasts: Map<ToastId, Toast>;
+} {
   const { limit = Number.POSITIVE_INFINITY } = options;
   const visibleToasts = new Set<ToastId>();
   const toasts = new Map<ToastId, Toast>();

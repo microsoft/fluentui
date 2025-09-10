@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Attachment, AttachmentHeader, AttachmentAction, AttachmentBody } from '@fluentui/react-migration-v0-v9';
 import { DismissRegular as Dismiss, MoreHorizontalRegular as MoreHorizontal } from '@fluentui/react-icons';
 
-export const Action = () => {
+export const Action = (): JSXElement => {
   const handleClick = (action: string) => () => alert(`'${action}' was clicked`);
 
   return (

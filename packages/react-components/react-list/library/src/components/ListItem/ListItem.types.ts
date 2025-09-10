@@ -18,9 +18,14 @@ export type ListItemActionEventData = EventData<typeof ListItemActionEventName, 
 export type ListItemProps = ComponentProps<ListItemSlots> & {
   value?: ListItemValue;
   onAction?: EventHandler<ListItemActionEventData>;
+  disabledSelection?: boolean;
 };
 
 /**
  * State used in rendering ListItem
  */
-export type ListItemState = ComponentState<ListItemSlots> & { selectable: boolean; navigable: boolean };
+export type ListItemState = ComponentState<ListItemSlots> & {
+  selectable: boolean;
+  navigable: boolean;
+  disabled?: boolean;
+};

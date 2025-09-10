@@ -8,6 +8,7 @@ export interface ISignalProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 export type Signal = React.FunctionComponent<ISignalProps>;
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const Signal: Signal = (props: ISignalProps): JSX.Element => {
   const { ariaLabel, className, children, ...spanProps } = props;
 

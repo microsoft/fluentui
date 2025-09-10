@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  ColorPicker,
-  ColorArea,
-  AlphaSlider,
-  ColorSlider,
-  type ColorPickerProps,
-} from '@fluentui/react-color-picker-preview';
+import { ColorPicker, ColorArea, AlphaSlider, ColorSlider, type ColorPickerProps } from '@fluentui/react-color-picker';
 import { makeStyles } from '@griffel/react';
 
 const useStyles = makeStyles({

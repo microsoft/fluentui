@@ -1,16 +1,18 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import type { BaseDropdown } from '../dropdown/dropdown.js';
+import type { BaseDropdown } from '../dropdown/dropdown.base.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
 import { toggleState } from '../utils/element-internals.js';
+import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { uniqueId } from '../utils/unique-id.js';
 
 /**
  * A Listbox Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#listbox | ARIA listbox } role.
  *
+ * @tag fluent-listbox
+ *
  * @slot - The default slot for the options.
- * @emits connected - Dispatched when the element is connected to the DOM.
  *
  * @remarks
  * The listbox component represents a list of options that can be selected.
@@ -144,6 +146,10 @@ export class Listbox extends FASTElement {
    * @public
    */
   public clickHandler(e: PointerEvent): boolean | void {
+    if (this.dropdown) {
+      return true;
+    }
+
     const target = e.target as HTMLElement;
 
     if (isDropdownOption(target)) {
@@ -157,12 +163,6 @@ export class Listbox extends FASTElement {
     super();
 
     this.elementInternals.role = 'listbox';
-  }
-
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    this.$emit('connected');
   }
 
   /**
@@ -206,5 +206,23 @@ export class Listbox extends FASTElement {
     }
 
     this.selectedIndex = selectedIndex;
+  }
+
+  /**
+   * Handles the `slotchange` event for the default slot.
+   * Sets the `options` property to the list of slotted options.
+   *
+   * @param e - The slotchange event
+   * @public
+   */
+  public slotchangeHandler(e: Event): void {
+    const target = e.target as HTMLSlotElement;
+    waitForConnectedDescendants(this, () => {
+      const options = target
+        .assignedElements()
+        .filter<DropdownOption>((option): option is DropdownOption => isDropdownOption(option));
+
+      this.options = options;
+    });
   }
 }

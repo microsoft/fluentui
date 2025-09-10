@@ -130,5 +130,5 @@ export interface ISlotOptions<TProps> {
  */
 export type ISlotRender<TProps> = (
   props: React.PropsWithChildren<TProps>,
-  defaultComponent: React.ComponentType<TProps>,
-) => ReturnType<React.FunctionComponent<TProps>>;
+  defaultComponent: React.ComponentType<React.PropsWithChildren<TProps>>,
+) => ReturnType<React.FunctionComponent<React.PropsWithChildren<TProps>>>;

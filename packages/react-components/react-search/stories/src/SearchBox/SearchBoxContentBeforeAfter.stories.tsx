@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, ButtonProps, Field, makeStyles, SearchBox, Text, tokens } from '@fluentui/react-components';
 import { PersonRegular, MicRegular } from '@fluentui/react-icons';
 
@@ -16,7 +17,7 @@ const MicButton: React.FC<ButtonProps> = props => {
   return <Button {...props} appearance="transparent" icon={<MicRegular />} size="small" />;
 };
 
-export const ContentBeforeAfter = () => {
+export const ContentBeforeAfter = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.root}>

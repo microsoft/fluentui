@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 import type { MenuProps, MenuTriggerChildProps } from '@fluentui/react-components';
 
@@ -10,7 +11,7 @@ const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, Partial<MenuTrigge
   );
 });
 
-export const CustomTrigger = () => {
+export const CustomTrigger = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
   const onOpenChange: MenuProps['onOpenChange'] = (e, data) => {
     setOpen(data.open);

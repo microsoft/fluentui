@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState) => {
+export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState): MenuGroupHeaderState => {
   'use no memo';
 
   const styles = useStyles();

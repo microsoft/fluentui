@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, Label, makeStyles, Option, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -10,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Clearable = () => {
+export const Clearable = (): JSXElement => {
   const comboboxId = useId('combobox');
   const styles = useStyles();
 

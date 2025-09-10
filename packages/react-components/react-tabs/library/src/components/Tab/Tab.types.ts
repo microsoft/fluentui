@@ -30,7 +30,7 @@ export type TabInternalSlots = TabSlots & {
 /**
  * Tab Props
  */
-export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> &
+export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content' | 'value'> &
   Pick<Partial<TabSlots>, 'content'> & {
     /**
      * A tab can be set to disable interaction.

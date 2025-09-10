@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import type { PopoverTriggerChildProps } from '@fluentui/react-components';
 const useStyles = makeStyles({
@@ -26,7 +27,7 @@ const CustomPopoverTrigger = React.forwardRef<HTMLButtonElement, Partial<Popover
   );
 });
 
-export const CustomTrigger = () => {
+export const CustomTrigger = (): JSXElement => {
   return (
     <Popover>
       <PopoverTrigger>

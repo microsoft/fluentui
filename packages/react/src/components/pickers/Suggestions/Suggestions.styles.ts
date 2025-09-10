@@ -82,7 +82,10 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
     root: [
       classNames.root,
       {
+        display: 'flex',
+        flexDirection: 'column',
         minWidth: 260,
+        maxHeight: '100%',
       },
       className,
     ],

@@ -4,6 +4,7 @@ export { renderTab_unstable } from './renderTab';
 export { useTab_unstable } from './useTab';
 export {
   tabClassNames,
+  tabReservedSpaceClassNames,
   useTabButtonStyles_unstable,
   useTabContentStyles_unstable,
   useTabIndicatorStyles_unstable,

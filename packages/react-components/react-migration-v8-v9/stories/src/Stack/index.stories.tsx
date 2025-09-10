@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles } from '@fluentui/react-components';
 import { Checkbox, Dropdown, DropdownMenuItemType, Stack, TextField } from '@fluentui/react';
 import type { IDropdownOption } from '@fluentui/react';
@@ -57,7 +58,7 @@ const useCustomStyles = makeStyles({
   },
 });
 
-export const Playground = () => {
+export const Playground = (): JSXElement => {
   const [state, setState] = React.useState({
     verticalFill: false,
     horizontal: false,

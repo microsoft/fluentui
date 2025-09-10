@@ -1,10 +1,11 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, ProgressBar } from '@fluentui/react-components';
 
 const intervalDelay = 100;
 const intervalIncrement = 1;
 
-export const Max = () => {
+export const Max = (): JSXElement => {
   const [value, setValue] = React.useState(0);
 
   React.useEffect(() => {

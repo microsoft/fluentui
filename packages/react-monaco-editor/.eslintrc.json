@@ -3,6 +3,7 @@
   "root": true,
   "rules": {
     "import/no-webpack-loader-syntax": "off", // ok in this project
-    "no-restricted-globals": "off"
+    "no-restricted-globals": "off",
+    "react-hooks/rules-of-hooks": "warn"
   }
 }

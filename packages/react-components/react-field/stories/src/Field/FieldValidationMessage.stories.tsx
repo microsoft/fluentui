@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Input, makeResetStyles, tokens } from '@fluentui/react-components';
 import { SparkleFilled } from '@fluentui/react-icons';
@@ -9,7 +10,7 @@ const useStackClassName = makeResetStyles({
   rowGap: tokens.spacingVerticalL,
 });
 
-export const ValidationMessage = () => (
+export const ValidationMessage = (): JSXElement => (
   <div className={useStackClassName()}>
     <Field label="Error state" validationMessage="This is an error message.">
       <Input />

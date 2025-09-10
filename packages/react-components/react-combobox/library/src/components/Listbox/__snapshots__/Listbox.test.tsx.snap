@@ -3,7 +3,7 @@
 exports[`Listbox renders a default state 1`] = `
 <div>
   <div
-    aria-activedescendant="fluent-option1"
+    aria-activedescendant="fluent-optionr0"
     class="fui-Listbox"
     role="listbox"
     tabindex="0"
@@ -12,7 +12,7 @@ exports[`Listbox renders a default state 1`] = `
       aria-selected="false"
       class="fui-Option"
       data-activedescendant=""
-      id="fluent-option1"
+      id="fluent-optionr0"
       role="option"
     >
       <span
@@ -39,7 +39,7 @@ exports[`Listbox renders a default state 1`] = `
     <div
       aria-selected="false"
       class="fui-Option"
-      id="fluent-option2"
+      id="fluent-optionr1"
       role="option"
     >
       <span
@@ -66,7 +66,7 @@ exports[`Listbox renders a default state 1`] = `
     <div
       aria-selected="false"
       class="fui-Option"
-      id="fluent-option3"
+      id="fluent-optionr2"
       role="option"
     >
       <span
@@ -97,7 +97,7 @@ exports[`Listbox renders a default state 1`] = `
 exports[`Listbox renders with a selected option 1`] = `
 <div>
   <div
-    aria-activedescendant="fluent-option4"
+    aria-activedescendant="fluent-optionr3"
     class="fui-Listbox"
     role="listbox"
     tabindex="0"
@@ -106,7 +106,7 @@ exports[`Listbox renders with a selected option 1`] = `
       aria-selected="true"
       class="fui-Option"
       data-activedescendant=""
-      id="fluent-option4"
+      id="fluent-optionr3"
       role="option"
     >
       <span
@@ -133,7 +133,7 @@ exports[`Listbox renders with a selected option 1`] = `
     <div
       aria-selected="false"
       class="fui-Option"
-      id="fluent-option5"
+      id="fluent-optionr4"
       role="option"
     >
       <span
@@ -160,7 +160,7 @@ exports[`Listbox renders with a selected option 1`] = `
     <div
       aria-selected="false"
       class="fui-Option"
-      id="fluent-option6"
+      id="fluent-optionr5"
       role="option"
     >
       <span

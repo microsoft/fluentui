@@ -13,8 +13,8 @@ const menuContextDefaultValue: MenuContextValue = {
   checkedValues: {},
   onCheckedValueChange: () => null,
   isSubmenu: false,
-  triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
-  menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
+  triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
+  menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
   mountNode: null,
   triggerId: '',
   openOnContext: false,
@@ -46,6 +46,7 @@ export type MenuContextValue = Pick<
   | 'inline'
   | 'checkedValues'
   | 'onCheckedValueChange'
+  | 'safeZone'
 > & {
   open: boolean;
   triggerId: string;
@@ -59,5 +60,5 @@ export type MenuContextValue = Pick<
 
 export const MenuProvider = MenuContext.Provider;
 
-export const useMenuContext_unstable = <T>(selector: ContextSelector<MenuContextValue, T>) =>
+export const useMenuContext_unstable = <T>(selector: ContextSelector<MenuContextValue, T>): T =>
   useContextSelector(MenuContext, (ctx = menuContextDefaultValue) => selector(ctx));

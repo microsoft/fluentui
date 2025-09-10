@@ -1,19 +1,18 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { render, act } from '@testing-library/react';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { PlainCardBase } from './PlainCard/PlainCard.base';
 import { ExpandingCardBase } from './ExpandingCard.base';
 import { HoverCard } from './HoverCard';
 import { HoverCardBase } from './HoverCard.base';
-import { HoverCardType } from './HoverCard.types';
 import { KeyCodes } from '../../Utilities';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import type { IPlainCardProps } from './PlainCard/PlainCard.types';
 import type { IExpandingCardProps } from './ExpandingCard.types';
-import type { IHoverCardProps } from './HoverCard.types';
+import { HoverCardType, type IHoverCardProps } from './HoverCard.types';
 
 const expandingCardProps: IExpandingCardProps = {
   onRenderCompactCard: (item: any) => {
@@ -36,7 +35,7 @@ const PlainCardProps: IPlainCardProps = {
 
 describe('HoverCard', () => {
   it('renders target wrapped by HoverCard correctly', () => {
-    const createNodeMock = (el: React.ReactElement<{}>) => {
+    const createNodeMock = (_el: React.ReactElement<{}>) => {
       return {
         __events__: {},
       };
@@ -86,21 +85,36 @@ describe('HoverCard', () => {
   });
 
   it('uses default documented properties', () => {
-    const component = mount(<HoverCardBase />);
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+    const component = renderer.create(<HoverCardBase />);
 
-    expect(component.prop('cardOpenDelay')).toEqual(500);
-    expect(component.prop('cardDismissDelay')).toEqual(100);
-    expect(component.prop('expandedCardOpenDelay')).toEqual(1500);
-    expect(component.prop('instantOpenOnClick')).toEqual(false);
-    expect(component.prop('setInitialFocus')).toEqual(false);
-    expect(component.prop('openHotKey')).toEqual(KeyCodes.c);
-    expect(component.prop('type')).toEqual(HoverCardType.expanding);
+    expect(component.root.props.cardOpenDelay).toEqual(500);
+    expect(component.root.props.cardDismissDelay).toEqual(100);
+    expect(component.root.props.expandedCardOpenDelay).toEqual(1500);
+    expect(component.root.props.instantOpenOnClick).toEqual(false);
+    expect(component.root.props.setInitialFocus).toEqual(false);
+    expect(component.root.props.openHotKey).toEqual(KeyCodes.c);
+    expect(component.root.props.type).toEqual(HoverCardType.expanding);
 
     component.unmount();
+
+    ReactDOM.createPortal = createPortal;
   });
 
   it('uses specified properties when rendering an ExpandedCard', () => {
-    const component = mount(
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    const component = renderer.create(
       <HoverCardBase
         expandingCardProps={expandingCardProps}
         cardDismissDelay={300}
@@ -113,21 +127,23 @@ describe('HoverCard', () => {
       />,
     );
 
-    expect(component.prop('cardOpenDelay')).toEqual(1000);
-    expect(component.prop('cardDismissDelay')).toEqual(300);
-    expect(component.prop('expandedCardOpenDelay')).toEqual(2000);
-    expect(component.prop('instantOpenOnClick')).toEqual(true);
-    expect(component.prop('setInitialFocus')).toEqual(true);
-    expect(component.prop('openHotKey')).toEqual(KeyCodes.enter);
-    expect(component.prop('expandingCardProps')).toMatchObject(expandingCardProps);
+    expect(component.root.props.cardOpenDelay).toEqual(1000);
+    expect(component.root.props.cardDismissDelay).toEqual(300);
+    expect(component.root.props.expandedCardOpenDelay).toEqual(2000);
+    expect(component.root.props.instantOpenOnClick).toEqual(true);
+    expect(component.root.props.setInitialFocus).toEqual(true);
+    expect(component.root.props.openHotKey).toEqual(KeyCodes.enter);
+    expect(component.root.props.expandingCardProps).toMatchObject(expandingCardProps);
 
     component.unmount();
+
+    ReactDOM.createPortal = createPortal;
   });
 
   it('fires onCardVisible and onCardHide', () => {
     let cardVisible = false;
     let cardHidden = false;
-    let hoverCard: any;
+    let hoverCardRef: any;
 
     const onCardVisible = () => {
       cardVisible = true;
@@ -137,34 +153,42 @@ describe('HoverCard', () => {
       cardHidden = true;
     };
 
-    const component = mount(
+    const { unmount } = render(
       <HoverCardBase
         expandingCardProps={expandingCardProps}
         onCardVisible={onCardVisible}
         onCardHide={onCardHide}
-        componentRef={ref => (hoverCard = ref)}
+        componentRef={ref => (hoverCardRef = ref)}
       >
         <div>Child</div>
       </HoverCardBase>,
     );
     jest.useFakeTimers();
 
-    expect(hoverCard).toBeTruthy();
+    expect(hoverCardRef).toBeTruthy();
 
     // firing the onCardVisible callback after the component is updated.
-    component.setState({ isHoverCardVisible: true });
+    act(() => {
+      hoverCardRef.setState({ isHoverCardVisible: true });
+    });
     expect(cardVisible).toEqual(true);
 
     // firing the onCardHide callback after the component is updated.
-    component.setState({ isHoverCardVisible: false });
+    act(() => {
+      hoverCardRef.setState({ isHoverCardVisible: false });
+    });
     expect(cardHidden).toEqual(true);
 
     // firing the onCardHide callback after the component is dismissed directly.
-    component.setState({ isHoverCardVisible: true });
+    act(() => {
+      hoverCardRef.setState({ isHoverCardVisible: true });
+    });
     cardHidden = false;
-    hoverCard.dismiss();
+    act(() => {
+      hoverCardRef.dismiss();
+    });
     expect(cardHidden).toEqual(true);
 
-    component.unmount();
+    unmount();
   });
 });

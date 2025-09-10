@@ -4,7 +4,7 @@ function shouldRegisterInternal() {
   try {
     const hasNxEslintPlugin = require.resolve('@nx/eslint-plugin');
     return Boolean(hasNxEslintPlugin);
-  } catch (err) {
+  } catch {
     return false;
   }
 }

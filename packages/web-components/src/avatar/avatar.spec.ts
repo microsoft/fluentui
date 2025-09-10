@@ -6,6 +6,22 @@ test.describe('Avatar', () => {
     tagName: 'fluent-avatar',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-avatar');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should have a `role` of `img`', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -58,16 +74,16 @@ test.describe('Avatar', () => {
     await expect(element).toHaveJSProperty('active', 'inactive');
   });
 
-  test('should have a custom state of `neutral` when no color is provided', async ({ fastPage }) => {
-    await expect(fastPage.element).toHaveCustomState('neutral');
+  test('should have a data-color attribute of `neutral` when no color is provided', async ({ fastPage }) => {
+    await expect(fastPage.element).toHaveAttribute('data-color', 'neutral');
   });
 
-  test('should add a custom state of `brand` when `brand is provided as the color', async ({ fastPage }) => {
+  test('should add a data-color attribute of `brand` when `brand is provided as the color', async ({ fastPage }) => {
     const { element } = fastPage;
 
     await fastPage.setTemplate({ attributes: { color: 'brand', 'color-id': 'pumpkin', name: 'John Doe' } });
 
-    await expect(element).toHaveCustomState('brand');
+    await expect(element).toHaveAttribute('data-color', 'brand');
   });
 
   test('should prioritize color derivation from `colorId` over `name` when set to "colorful"', async ({ fastPage }) => {
@@ -75,10 +91,10 @@ test.describe('Avatar', () => {
 
     await fastPage.setTemplate({ attributes: { color: 'colorful', 'color-id': 'pumpkin', name: 'Steve Smith' } });
 
-    await expect(element).toHaveCustomState('pumpkin');
+    await expect(element).toHaveAttribute('data-color', 'pumpkin');
   });
 
-  test('should set the `color` property to match the `color` attribute', async ({ fastPage }) => {
+  test('should set the `data-color` attribute to match the `color` attribute', async ({ fastPage }) => {
     const { element } = fastPage;
 
     for (const color of Object.values(AvatarColor)) {
@@ -91,7 +107,7 @@ test.describe('Avatar', () => {
 
         // eslint-disable-next-line playwright/no-conditional-in-test
         if (color !== AvatarColor.colorful) {
-          await expect.soft(element).toHaveCustomState(color);
+          await expect.soft(element).toHaveAttribute('data-color', color);
         }
       });
     }

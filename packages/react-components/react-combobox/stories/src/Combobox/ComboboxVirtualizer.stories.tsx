@@ -1,7 +1,10 @@
+/* eslint @typescript-eslint/no-deprecated: 0 */
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, Option, makeStyles, useId, useMergedRefs, useTimeout } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
+// TODO: Migrate virtualizer to fluentui-contrib dependency once released
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
@@ -14,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
+export const ComboboxVirtualizer = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combobox');
 
   //This should include the item height (32px) and account for rowGap (2px)

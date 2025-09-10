@@ -4,39 +4,36 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElementConstructor } from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
-import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
-export const renderToast_unstable: (state: ToastState, contextValues: ToastContextValues) => JSX.Element;
+export const renderToast_unstable: (state: ToastState, contextValues: ToastContextValues) => JSXElement;
 
 // @public
-export const renderToastBody_unstable: (state: ToastBodyState) => JSX.Element;
+export const renderToastBody_unstable: (state: ToastBodyState) => JSXElement;
 
 // @public
-export const renderToaster_unstable: (state: ToasterState) => JSX.Element;
+export const renderToaster_unstable: (state: ToasterState) => JSXElement;
 
 // @public
-export const renderToastFooter_unstable: (state: ToastFooterState) => JSX.Element;
+export const renderToastFooter_unstable: (state: ToastFooterState) => JSXElement;
 
 // @public
-export const renderToastTitle_unstable: (state: ToastTitleState) => JSX.Element;
+export const renderToastTitle_unstable: (state: ToastTitleState) => JSXElement;
 
 // @public
-export const renderToastTrigger_unstable: (state: ToastTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
+export const renderToastTrigger_unstable: (state: ToastTriggerState) => JSXElement | null;
 
 // @public
 export const Toast: ForwardRefComponent<ToastProps>;
@@ -63,6 +60,21 @@ export type ToastBodyState = ComponentState<ToastBodySlots> & {
 
 // @public (undocumented)
 export const toastClassNames: SlotClassNames<ToastSlots>;
+
+// @public (undocumented)
+export const toastContainerClassNames: SlotClassNames<ToastContainerSlots>;
+
+// @public
+export type ToastContainerState = ComponentState<ToastContainerSlots> & Pick<ToastContainerProps, 'remove' | 'close' | 'updateId' | 'visible' | 'intent'> & Pick<ToastContainerContextValue, 'titleId' | 'bodyId'> & {
+    transitionTimeout: number;
+    timerTimeout: number;
+    running: boolean;
+    onTransitionEntering: () => void;
+    nodeRef: React_2.Ref<HTMLDivElement>;
+    onMotionFinish?: (event: null, data: {
+        direction: 'enter' | 'exit';
+    }) => void;
+};
 
 // @public
 export const Toaster: React_2.FC<ToasterProps>;

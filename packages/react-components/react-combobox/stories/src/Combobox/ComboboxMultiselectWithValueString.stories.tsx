@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const MultiselectWithValueString = (props: Partial<ComboboxProps>) => {
+export const MultiselectWithValueString = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-multi');
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const [value, setValue] = React.useState('');

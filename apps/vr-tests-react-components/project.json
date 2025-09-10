@@ -3,5 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": [],
-  "tags": ["vNext"]
+  "tags": ["vNext"],
+  "targets": {
+    "build-storybook": {
+      "dependsOn": [{ "projects": ["react-storybook-addon"], "target": "build" }]
+    }
+  }
 }

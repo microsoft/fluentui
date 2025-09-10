@@ -2,19 +2,19 @@ import * as React from 'react';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
-const steps = new Steps().snapshot('default').end();
-
 export default {
   title: 'InteractionTag Converged',
   component: InteractionTag,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof InteractionTag>;
 
 export const Default = () => (
@@ -109,6 +109,40 @@ export const SizeExtraSmallWithMedia = () => (
     </InteractionTagPrimary>
   </InteractionTag>
 );
+
+// selected
+export const Selected = () => (
+  <InteractionTag selected>
+    <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </InteractionTagPrimary>
+    <InteractionTagSecondary />
+  </InteractionTag>
+);
+export const SelectedHighContrast = getStoryVariant(Selected, HIGH_CONTRAST);
+export const SelectedDarkMode = getStoryVariant(Selected, DARK_MODE);
+
+export const OutlineSelected = () => (
+  <InteractionTag appearance="outline" selected>
+    <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </InteractionTagPrimary>
+    <InteractionTagSecondary />
+  </InteractionTag>
+);
+export const OutlineSelectedHighContrast = getStoryVariant(OutlineSelected, HIGH_CONTRAST);
+export const OutlineSelectedDarkMode = getStoryVariant(OutlineSelected, DARK_MODE);
+
+export const BrandSelected = () => (
+  <InteractionTag appearance="brand" selected>
+    <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
+      Primary Text
+    </InteractionTagPrimary>
+    <InteractionTagSecondary />
+  </InteractionTag>
+);
+export const BrandSelectedHighContrast = getStoryVariant(BrandSelected, HIGH_CONTRAST);
+export const BrandSelectedDarkMode = getStoryVariant(BrandSelected, DARK_MODE);
 
 const useBoxSizingContainerStyles = makeStyles({
   container: {

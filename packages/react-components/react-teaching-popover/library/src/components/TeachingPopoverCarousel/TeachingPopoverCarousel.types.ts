@@ -1,8 +1,8 @@
-import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { type PopoverContextValue } from '@fluentui/react-popover';
 
 import { type CarouselContextValue } from './Carousel/CarouselContext';
-import type { CarouselValueChangeData } from './Carousel/Carousel.types';
+import type { UseCarouselOptions } from './Carousel/Carousel.types';
 
 export type TeachingPopoverCarouselSlots = {
   /**
@@ -14,27 +14,7 @@ export type TeachingPopoverCarouselSlots = {
 /**
  * TeachingPopoverCarousel Props
  */
-export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {
-  /**
-   * The initial page to display in uncontrolled mode.
-   */
-  defaultValue?: string;
-
-  /**
-   * The value of the currently active page.
-   */
-  value?: string;
-
-  /**
-   * Callback to notify a page change.
-   */
-  onValueChange?: EventHandler<CarouselValueChangeData>;
-
-  /**
-   * Callback to notify when the final button step of a carousel has been activated.
-   */
-  onFinish?: EventHandler<CarouselValueChangeData>;
-};
+export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & UseCarouselOptions;
 
 /**
  * TeachingPopoverCarousel State and Context Hooks

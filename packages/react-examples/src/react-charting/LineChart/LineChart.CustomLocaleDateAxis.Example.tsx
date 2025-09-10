@@ -146,7 +146,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
     const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_basic">Change Width:</label>
         <input
           type="range"
@@ -191,7 +191,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
             enablePerfOptimization={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

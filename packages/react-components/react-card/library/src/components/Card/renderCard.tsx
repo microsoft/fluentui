@@ -2,13 +2,14 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { CardContextValue, CardSlots, CardState } from './Card.types';
 import { CardProvider } from './CardContext';
 
 /**
  * Render the final JSX of Card.
  */
-export const renderCard_unstable = (state: CardState, cardContextValue: CardContextValue) => {
+export const renderCard_unstable = (state: CardState, cardContextValue: CardContextValue): JSXElement => {
   assertSlots<CardSlots>(state);
 
   return (

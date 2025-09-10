@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerList,
@@ -103,7 +104,7 @@ const CustomTagPickerInput = React.forwardRef<HTMLInputElement, CustomTagPickerI
   },
 );
 
-export const SingleLine = () => {
+export const SingleLine = (): JSXElement => {
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);

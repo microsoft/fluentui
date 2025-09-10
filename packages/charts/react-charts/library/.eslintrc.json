@@ -1,0 +1,22 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "root": true,
+  "rules": {
+    "@fluentui/no-global-react": "warn",
+    "@nx/workspace-no-restricted-globals": "warn",
+    "@rnx-kit/no-export-all": "warn",
+    "@typescript-eslint/naming-convention": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-shadow": "warn",
+    "array-callback-return": "warn",
+    "eqeqeq": "warn",
+    "import/no-extraneous-dependencies": "warn",
+    "jsdoc/check-tag-names": "warn",
+    "no-restricted-syntax": "warn",
+    "object-shorthand": "warn",
+    "prefer-const": "warn",
+    "react-compiler/react-compiler": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-no-bind": "warn"
+  }
+}

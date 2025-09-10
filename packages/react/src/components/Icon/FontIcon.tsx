@@ -6,6 +6,7 @@ import type { IFontIconProps } from './Icon.types';
 import type { IIconRecord, IIconSubsetRecord } from '../../Styling';
 
 export interface IIconContent {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   children?: string | JSX.Element;
   iconClassName?: string;
   fontFamily?: string;

@@ -48,6 +48,9 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -68,6 +71,9 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={true}
           dy={42.608695652173914}
           textAnchor="middle"
@@ -84,6 +90,9 @@ subText subtext Root Node"
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={715}
@@ -108,6 +117,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -128,6 +140,9 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -144,6 +159,9 @@ subText subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={321.25}
@@ -168,6 +186,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -188,6 +209,9 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -204,6 +228,9 @@ subText sub Parent info parentId: 1
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={260}
@@ -228,6 +255,9 @@ subText undefined Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -247,6 +277,9 @@ subText undefined Parent info parentId: 1
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 20px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           data-is-focusable={false}
           dy={300.7608695652174}
@@ -272,6 +305,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -292,6 +328,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -308,6 +347,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={260}
@@ -332,6 +374,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -352,6 +397,9 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -368,6 +416,9 @@ subText sub Parent info parentId: 1
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={382.5}
@@ -392,6 +443,9 @@ subText undefined Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -411,6 +465,9 @@ subText undefined Parent info parentId: 0
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 20px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           data-is-focusable={false}
           dy={170.76086956521738}
@@ -436,6 +493,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -456,6 +516,9 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -472,6 +535,9 @@ subText sub Parent info parentId: 6
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={522.5}
@@ -496,6 +562,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -516,6 +585,9 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -532,6 +604,9 @@ subText sub Parent info parentId: 6
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={645}
@@ -556,6 +631,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -576,6 +654,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -592,6 +673,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={846.25}
@@ -616,6 +700,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -636,6 +723,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -652,6 +742,9 @@ subText sub Parent info parentId: 9
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={785}
@@ -676,6 +769,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -696,6 +792,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -712,6 +811,9 @@ subText sub Parent info parentId: 9
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={907.5}
@@ -736,6 +838,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -756,6 +861,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -772,6 +880,9 @@ subText sub Parent info parentId: 9
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={785}
@@ -796,6 +907,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -816,6 +930,9 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -832,6 +949,9 @@ subText subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={1108.75}
@@ -856,6 +976,9 @@ subText sub Parent info parentId: 13
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -876,6 +999,9 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -892,6 +1018,9 @@ subText sub Parent info parentId: 13
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={1108.75}
@@ -1012,6 +1141,9 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1032,6 +1164,9 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={true}
           dy={42.608695652173914}
           textAnchor="middle"
@@ -1048,6 +1183,9 @@ subText subtext Root Node"
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={715}
@@ -1072,6 +1210,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1092,6 +1233,9 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -1108,6 +1252,9 @@ subText subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={321.25}
@@ -1132,6 +1279,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1152,6 +1302,9 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -1168,6 +1321,9 @@ subText sub Parent info parentId: 1
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={321.25}
@@ -1192,6 +1348,9 @@ subText undefined Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1211,6 +1370,9 @@ subText undefined Parent info parentId: 1
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 20px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           data-is-focusable={false}
           dy={385.9782608695652}
@@ -1236,6 +1398,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1256,6 +1421,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={463.04347826086956}
           textAnchor="middle"
@@ -1272,6 +1440,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={321.25}
@@ -1296,6 +1467,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1316,6 +1490,9 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={548.2608695652174}
           textAnchor="middle"
@@ -1332,6 +1509,9 @@ subText sub Parent info parentId: 1
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={321.25}
@@ -1356,6 +1536,9 @@ subText undefined Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1375,6 +1558,9 @@ subText undefined Parent info parentId: 0
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 20px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           data-is-focusable={false}
           dy={170.76086956521738}
@@ -1400,6 +1586,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1420,6 +1609,9 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -1436,6 +1628,9 @@ subText sub Parent info parentId: 6
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={583.75}
@@ -1460,6 +1655,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1480,6 +1678,9 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -1496,6 +1697,9 @@ subText sub Parent info parentId: 6
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={583.75}
@@ -1520,6 +1724,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1540,6 +1747,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -1556,6 +1766,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={846.25}
@@ -1580,6 +1793,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1600,6 +1816,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -1616,6 +1835,9 @@ subText sub Parent info parentId: 9
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={846.25}
@@ -1640,6 +1862,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1660,6 +1885,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -1676,6 +1904,9 @@ subText sub Parent info parentId: 9
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={846.25}
@@ -1700,6 +1931,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1720,6 +1954,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={463.04347826086956}
           textAnchor="middle"
@@ -1736,6 +1973,9 @@ subText sub Parent info parentId: 9
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={846.25}
@@ -1760,6 +2000,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1780,6 +2023,9 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -1796,6 +2042,9 @@ subText subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={1108.75}
@@ -1820,6 +2069,9 @@ subText sub Parent info parentId: 13
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1840,6 +2092,9 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -1856,6 +2111,9 @@ subText sub Parent info parentId: 13
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={1108.75}
@@ -1976,6 +2234,9 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1996,6 +2257,9 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={true}
           dy={42.608695652173914}
           textAnchor="middle"
@@ -2012,6 +2276,9 @@ subText subtext Root Node"
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={715}
@@ -2036,6 +2303,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2056,6 +2326,9 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -2072,6 +2345,9 @@ subText subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={321.25}
@@ -2096,6 +2372,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2116,6 +2395,9 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2132,6 +2414,9 @@ subText sub Parent info parentId: 1
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={260}
@@ -2156,6 +2441,9 @@ subText undefined Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2175,6 +2463,9 @@ subText undefined Parent info parentId: 1
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 20px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           data-is-focusable={false}
           dy={300.7608695652174}
@@ -2200,6 +2491,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2220,6 +2514,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -2236,6 +2533,9 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={260}
@@ -2260,6 +2560,9 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2280,6 +2583,9 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -2296,6 +2602,9 @@ subText sub Parent info parentId: 1
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={382.5}
@@ -2320,6 +2629,9 @@ subText undefined Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2339,6 +2651,9 @@ subText undefined Parent info parentId: 0
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 20px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           data-is-focusable={false}
           dy={170.76086956521738}
@@ -2364,6 +2679,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2384,6 +2702,9 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2400,6 +2721,9 @@ subText sub Parent info parentId: 6
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={583.75}
@@ -2424,6 +2748,9 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2444,6 +2771,9 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -2460,6 +2790,9 @@ subText sub Parent info parentId: 6
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={583.75}
@@ -2484,6 +2817,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2504,6 +2840,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -2520,6 +2859,9 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={846.25}
@@ -2544,6 +2886,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2564,6 +2909,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2580,6 +2928,9 @@ subText sub Parent info parentId: 9
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={785}
@@ -2604,6 +2955,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2624,6 +2978,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2640,6 +2997,9 @@ subText sub Parent info parentId: 9
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={907.5}
@@ -2664,6 +3024,9 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2684,6 +3047,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -2700,6 +3066,9 @@ subText sub Parent info parentId: 9
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={785}
@@ -2724,6 +3093,9 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2744,6 +3116,9 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -2760,6 +3135,9 @@ subText subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={1108.75}
@@ -2784,6 +3162,9 @@ subText sub Parent info parentId: 13
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2804,6 +3185,9 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2820,6 +3204,9 @@ subText sub Parent info parentId: 13
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={1108.75}
@@ -2940,6 +3327,9 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2960,6 +3350,9 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={true}
           dy={42.608695652173914}
           textAnchor="middle"
@@ -2976,6 +3369,9 @@ subText subtext Root Node"
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={715}
@@ -3000,6 +3396,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -3020,6 +3419,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -3036,6 +3438,9 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={321.25}
@@ -3060,6 +3465,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -3080,6 +3488,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -3096,6 +3507,9 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={583.75}
@@ -3120,6 +3534,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -3140,6 +3557,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -3156,6 +3576,9 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={846.25}
@@ -3180,6 +3603,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
+              }
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -3200,6 +3626,9 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -3216,6 +3645,9 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             dy="1.4em"
             x={1108.75}

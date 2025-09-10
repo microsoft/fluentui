@@ -36,6 +36,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     initializeComponentRef(this);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const {
       comboBoxAriaLabel,
@@ -58,7 +59,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      format: format,
+      format,
     });
 
     const canPrevious = selectedPageIndex! > 0;
@@ -207,7 +208,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
   private _handleNextPage = () => {
     this._handleSelectedPage(this.props.selectedPageIndex! + 1);
   };
-
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _pageElement(index: number): JSX.Element {
     const { pageAriaLabel, pageCount, selectedPageIndex, selectedAriaLabel, strings } = this.props;
     const isSelected = index === selectedPageIndex;
@@ -229,6 +230,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _pageList(): JSX.Element[] {
     const { numberOfPageButton, pageCount, selectedPageIndex } = this.props;
     const pageList = [];
@@ -256,6 +258,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     return pageList;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderVisibleItemLabel = (props: IPaginationProps): JSX.Element | null => {
     if (props.onRenderVisibleItemLabel) {
       return <div className={this._classNames.visibleItemLabel}>{props.onRenderVisibleItemLabel(props)}</div>;

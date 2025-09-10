@@ -16,6 +16,19 @@ const storyTemplate = html<StoryArgs<FluentProgressBar>>`
   ></fluent-progress-bar>
 `;
 
+const withText = html`
+  <fluent-progress-bar
+    thickness="${story => story.thickness}"
+    shape="${story => story.shape}"
+    max="${story => story.max}"
+    min="${story => story.min}"
+    value="${story => story.value}"
+    validation-state="${story => story.validationState}"
+    aria-describedby="${story => story.messageid}"
+  ></fluent-progress-bar>
+  <div id="${story => story.messageid}">${story => story.message}</div>
+`;
+
 export default {
   title: 'Components/ProgressBar',
   render: renderComponent(storyTemplate),
@@ -105,19 +118,29 @@ export const SquareShape: Story = {
 };
 
 export const SuccessValidationState: Story = {
+  render: renderComponent(withText),
   args: {
+    message: 'Success ProgressBar',
+    messageid: 'success',
     validationState: 'success',
+    value: 75,
   },
 };
 
 export const WarningValidationState: Story = {
+  render: renderComponent(withText),
   args: {
+    message: 'Warning ProgressBar',
     validationState: 'warning',
+    value: 50,
   },
 };
 
 export const ErrorValidationState: Story = {
+  render: renderComponent(withText),
   args: {
+    message: 'Error ProgressBar',
     validationState: 'error',
+    value: 25,
   },
 };

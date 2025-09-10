@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FlatTree,
   FlatTreeItem,
@@ -42,7 +43,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const InfiniteScrolling = () => {
+export const InfiniteScrolling = (): JSXElement => {
   const [page, setPage] = React.useState(1);
   const [isLoading, setIsLoading] = React.useState(false);
 

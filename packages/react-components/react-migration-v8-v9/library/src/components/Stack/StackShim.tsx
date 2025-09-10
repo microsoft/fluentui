@@ -5,6 +5,7 @@ import * as React from 'react';
 
 import { getChildrenGapStyles } from './stackUtils';
 import type { StackShimStyles } from './stackUtils';
+import type { JSXElement } from '@fluentui/react-utilities';
 import {
   useFlexAlignItemsStyles,
   useFlexGrowStyles,
@@ -18,8 +19,7 @@ const stackClassNames = {
 };
 
 const getClassNames = classNamesFunction<IStackProps, StackShimStyles>();
-
-export const StackShim = (props: IStackProps) => {
+export const StackShim = (props: IStackProps): JSXElement => {
   const styles = useStackStyles();
   const alignItemsFlexStyles = useFlexAlignItemsStyles();
   const justifyContentFlexStyles = useFlexJustifyContentStyles();

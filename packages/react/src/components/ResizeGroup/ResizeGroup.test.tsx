@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { ResizeGroup } from './ResizeGroup';
 import { getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
+import { getBySelector } from '../../common/testUtilities';
 import type { IResizeGroupState } from './ResizeGroup.base';
 
 interface ITestScalingData {
@@ -65,11 +66,11 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
 
-    const wrapper = mount(
+    const { container } = render(
       <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} />,
     );
 
-    expect(wrapper.find('#' + renderedDataId).length).toEqual(1);
+    expect(getBySelector(container, '#' + renderedDataId)).toBeTruthy();
   });
 
   describe('getNextResizeGroupStateProvider', () => {

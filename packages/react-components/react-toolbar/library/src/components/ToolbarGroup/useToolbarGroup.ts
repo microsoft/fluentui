@@ -1,6 +1,8 @@
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup.types';
+
+import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
+import type { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup.types';
 
 /**
  * Given user props, defines default props for the Group
@@ -11,6 +13,8 @@ export const useToolbarGroup_unstable = (
   props: ToolbarGroupProps,
   ref: React.Ref<HTMLDivElement>,
 ): ToolbarGroupState => {
+  const vertical = useToolbarContext_unstable(ctx => ctx.vertical);
+
   return {
     components: {
       root: 'div',
@@ -23,5 +27,6 @@ export const useToolbarGroup_unstable = (
       }),
       { elementType: 'div' },
     ),
+    vertical,
   };
 };

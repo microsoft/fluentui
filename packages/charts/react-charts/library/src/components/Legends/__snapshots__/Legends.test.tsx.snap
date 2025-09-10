@@ -1,0 +1,3808 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Legends - basic props Should render data-is-focusable correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: unset;"
+        >
+          <button
+            aria-label="Legend 1"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #FF0000; --rect-borderColor: #FF0000;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(255, 0, 0); border-color: #ff0000; --rect-content-high-contrast: linear-gradient(to right, #FF0000, #FF0000);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 1
+            </div>
+          </button>
+          <button
+            aria-label="Legend 2"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #000000; --rect-borderColor: #000000;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 0, 0); border-color: #000000; --rect-content-high-contrast: linear-gradient(to right, #000000, #000000);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 2
+            </div>
+          </button>
+          <button
+            aria-label="Legend 3"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #008000; --rect-borderColor: #008000;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 128, 0); border-color: #008000; --rect-content-high-contrast: linear-gradient(to right, #008000, #008000);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 3
+            </div>
+          </button>
+          <button
+            aria-label="Legend 4"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0000ff; --rect-borderColor: #0000ff;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 0, 255); border-color: #0000ff; --rect-content-high-contrast: linear-gradient(to right, #0000ff, #0000ff);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 4
+            </div>
+          </button>
+          <button
+            aria-label="Legend 5"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #191970; --rect-borderColor: #191970;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(25, 25, 112); border-color: #191970; --rect-content-high-contrast: linear-gradient(to right, #191970, #191970);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 5
+            </div>
+          </button>
+          <button
+            aria-label="Legend 6"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E4E3E9; --rect-borderColor: #E4E3E9;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(228, 227, 233); border-color: #e4e3e9; --rect-content-high-contrast: linear-gradient(to right, #E4E3E9, #E4E3E9);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 6
+            </div>
+          </button>
+          <button
+            aria-label="Legend 7"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #013220; --rect-borderColor: #013220;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(1, 50, 32); border-color: #013220; --rect-content-high-contrast: linear-gradient(to right, #013220, #013220);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 7
+            </div>
+          </button>
+          <button
+            aria-label="Legend 8"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #00008B; --rect-borderColor: #00008B;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 0, 139); border-color: #00008b; --rect-content-high-contrast: linear-gradient(to right, #00008B, #00008B);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 8
+            </div>
+          </button>
+          <button
+            aria-label="Legend 9"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #FFA500; --rect-borderColor: #FFA500;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(255, 165, 0); border-color: #ffa500; --rect-content-high-contrast: linear-gradient(to right, #FFA500, #FFA500);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 9
+            </div>
+          </button>
+          <button
+            aria-label="Legend 10"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #301934; --rect-borderColor: #301934;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(48, 25, 52); border-color: #301934; --rect-content-high-contrast: linear-gradient(to right, #301934, #301934);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 10
+            </div>
+          </button>
+          <button
+            aria-label="Legend 11"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #Ffffed; --rect-borderColor: #Ffffed;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(255, 255, 237); border-color: #ffffed; --rect-content-high-contrast: linear-gradient(to right, #Ffffed, #Ffffed);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 11
+            </div>
+          </button>
+          <button
+            aria-label="Legend 12"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #90ee90; --rect-borderColor: #90ee90;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(144, 238, 144); border-color: #90ee90; --rect-content-high-contrast: linear-gradient(to right, #90ee90, #90ee90);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 12
+            </div>
+          </button>
+          <button
+            aria-label="Legend 13"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #FFA500; --rect-borderColor: #FFA500;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(255, 165, 0); border-color: #ffa500; --rect-content-high-contrast: linear-gradient(to right, #FFA500, #FFA500);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 13
+            </div>
+          </button>
+          <button
+            aria-label="Legend 14"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #008080; --rect-borderColor: #008080;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 128, 128); border-color: #008080; --rect-content-high-contrast: linear-gradient(to right, #008080, #008080);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 14
+            </div>
+          </button>
+          <button
+            aria-label="Legend 15"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #008080; --rect-borderColor: #008080;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 128, 128); border-color: #008080; --rect-content-high-contrast: linear-gradient(to right, #008080, #008080);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 15
+            </div>
+          </button>
+          <button
+            aria-label="Legend 16"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: FF0000; --rect-borderColor: FF0000;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, FF0000, FF0000);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 16
+            </div>
+          </button>
+          <button
+            aria-label="Legend 17"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #FFFFFF; --rect-borderColor: #FFFFFF;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(255, 255, 255); border-color: #ffffff; --rect-content-high-contrast: linear-gradient(to right, #FFFFFF, #FFFFFF);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Legend 17
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      aria-label="Legends"
+      aria-multiselectable="false"
+      class="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        class="fui-Overflow fui-legend__resizableArea"
+        style="text-align: unset;"
+      >
+        <button
+          aria-label="Legend 1"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #FF0000; --rect-borderColor: #FF0000;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(255, 0, 0); border-color: #ff0000; --rect-content-high-contrast: linear-gradient(to right, #FF0000, #FF0000);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 1
+          </div>
+        </button>
+        <button
+          aria-label="Legend 2"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #000000; --rect-borderColor: #000000;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 0, 0); border-color: #000000; --rect-content-high-contrast: linear-gradient(to right, #000000, #000000);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 2
+          </div>
+        </button>
+        <button
+          aria-label="Legend 3"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #008000; --rect-borderColor: #008000;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 128, 0); border-color: #008000; --rect-content-high-contrast: linear-gradient(to right, #008000, #008000);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 3
+          </div>
+        </button>
+        <button
+          aria-label="Legend 4"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #0000ff; --rect-borderColor: #0000ff;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 0, 255); border-color: #0000ff; --rect-content-high-contrast: linear-gradient(to right, #0000ff, #0000ff);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 4
+          </div>
+        </button>
+        <button
+          aria-label="Legend 5"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #191970; --rect-borderColor: #191970;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(25, 25, 112); border-color: #191970; --rect-content-high-contrast: linear-gradient(to right, #191970, #191970);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 5
+          </div>
+        </button>
+        <button
+          aria-label="Legend 6"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #E4E3E9; --rect-borderColor: #E4E3E9;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(228, 227, 233); border-color: #e4e3e9; --rect-content-high-contrast: linear-gradient(to right, #E4E3E9, #E4E3E9);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 6
+          </div>
+        </button>
+        <button
+          aria-label="Legend 7"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #013220; --rect-borderColor: #013220;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(1, 50, 32); border-color: #013220; --rect-content-high-contrast: linear-gradient(to right, #013220, #013220);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 7
+          </div>
+        </button>
+        <button
+          aria-label="Legend 8"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #00008B; --rect-borderColor: #00008B;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 0, 139); border-color: #00008b; --rect-content-high-contrast: linear-gradient(to right, #00008B, #00008B);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 8
+          </div>
+        </button>
+        <button
+          aria-label="Legend 9"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #FFA500; --rect-borderColor: #FFA500;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(255, 165, 0); border-color: #ffa500; --rect-content-high-contrast: linear-gradient(to right, #FFA500, #FFA500);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 9
+          </div>
+        </button>
+        <button
+          aria-label="Legend 10"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #301934; --rect-borderColor: #301934;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(48, 25, 52); border-color: #301934; --rect-content-high-contrast: linear-gradient(to right, #301934, #301934);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 10
+          </div>
+        </button>
+        <button
+          aria-label="Legend 11"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #Ffffed; --rect-borderColor: #Ffffed;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(255, 255, 237); border-color: #ffffed; --rect-content-high-contrast: linear-gradient(to right, #Ffffed, #Ffffed);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 11
+          </div>
+        </button>
+        <button
+          aria-label="Legend 12"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #90ee90; --rect-borderColor: #90ee90;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(144, 238, 144); border-color: #90ee90; --rect-content-high-contrast: linear-gradient(to right, #90ee90, #90ee90);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 12
+          </div>
+        </button>
+        <button
+          aria-label="Legend 13"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #FFA500; --rect-borderColor: #FFA500;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(255, 165, 0); border-color: #ffa500; --rect-content-high-contrast: linear-gradient(to right, #FFA500, #FFA500);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 13
+          </div>
+        </button>
+        <button
+          aria-label="Legend 14"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #008080; --rect-borderColor: #008080;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 128, 128); border-color: #008080; --rect-content-high-contrast: linear-gradient(to right, #008080, #008080);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 14
+          </div>
+        </button>
+        <button
+          aria-label="Legend 15"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #008080; --rect-borderColor: #008080;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(0, 128, 128); border-color: #008080; --rect-content-high-contrast: linear-gradient(to right, #008080, #008080);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 15
+          </div>
+        </button>
+        <button
+          aria-label="Legend 16"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: FF0000; --rect-borderColor: FF0000;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, FF0000, FF0000);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 16
+          </div>
+        </button>
+        <button
+          aria-label="Legend 17"
+          aria-selected="false"
+          class="fui-Button fui-legend__legend"
+          data-overflow-item=""
+          role="option"
+          style="--rect-height: 12px; --rect-backgroundColor: #FFFFFF; --rect-borderColor: #FFFFFF;"
+          type="button"
+        >
+          <div
+            class="fui-legend__rect"
+            style="height: 12px; background-color: rgb(255, 255, 255); border-color: #ffffff; --rect-content-high-contrast: linear-gradient(to right, #FFFFFF, #FFFFFF);"
+          />
+          <div
+            class="fui-legend__text"
+          >
+            Legend 17
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Legends snapShot testing renders Legends correctly 1`] = `
+<div
+  aria-label="Legends"
+  aria-multiselectable={false}
+  className="fui-legend__root"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  role="listbox"
+>
+  <div
+    className="fui-Overflow fui-legend__resizableArea"
+    style={
+      Object {
+        "textAlign": "unset",
+      }
+    }
+  >
+    <button
+      aria-label="Legend 1"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FF0000",
+          "--rect-borderColor": "#FF0000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FF0000, #FF0000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FF0000",
+            "borderColor": "#FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 1
+      </div>
+    </button>
+    <button
+      aria-label="Legend 2"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#000000",
+          "--rect-borderColor": "#000000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #000000, #000000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#000000",
+            "borderColor": "#000000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 2
+      </div>
+    </button>
+    <button
+      aria-label="Legend 3"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008000",
+          "--rect-borderColor": "#008000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008000, #008000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008000",
+            "borderColor": "#008000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 3
+      </div>
+    </button>
+    <button
+      aria-label="Legend 4"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#0000ff",
+          "--rect-borderColor": "#0000ff",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #0000ff, #0000ff)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#0000ff",
+            "borderColor": "#0000ff",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 4
+      </div>
+    </button>
+    <button
+      aria-label="Legend 5"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#191970",
+          "--rect-borderColor": "#191970",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #191970, #191970)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#191970",
+            "borderColor": "#191970",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 5
+      </div>
+    </button>
+    <button
+      aria-label="Legend 6"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#E4E3E9",
+          "--rect-borderColor": "#E4E3E9",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #E4E3E9, #E4E3E9)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#E4E3E9",
+            "borderColor": "#E4E3E9",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 6
+      </div>
+    </button>
+    <button
+      aria-label="Legend 7"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#013220",
+          "--rect-borderColor": "#013220",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #013220, #013220)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#013220",
+            "borderColor": "#013220",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 7
+      </div>
+    </button>
+    <button
+      aria-label="Legend 8"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#00008B",
+          "--rect-borderColor": "#00008B",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #00008B, #00008B)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#00008B",
+            "borderColor": "#00008B",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 8
+      </div>
+    </button>
+    <button
+      aria-label="Legend 9"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 9
+      </div>
+    </button>
+    <button
+      aria-label="Legend 10"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#301934",
+          "--rect-borderColor": "#301934",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #301934, #301934)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#301934",
+            "borderColor": "#301934",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 10
+      </div>
+    </button>
+    <button
+      aria-label="Legend 11"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#Ffffed",
+          "--rect-borderColor": "#Ffffed",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #Ffffed, #Ffffed)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#Ffffed",
+            "borderColor": "#Ffffed",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 11
+      </div>
+    </button>
+    <button
+      aria-label="Legend 12"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#90ee90",
+          "--rect-borderColor": "#90ee90",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #90ee90, #90ee90)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#90ee90",
+            "borderColor": "#90ee90",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 12
+      </div>
+    </button>
+    <button
+      aria-label="Legend 13"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 13
+      </div>
+    </button>
+    <button
+      aria-label="Legend 14"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 14
+      </div>
+    </button>
+    <button
+      aria-label="Legend 15"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 15
+      </div>
+    </button>
+    <button
+      aria-label="Legend 16"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "FF0000",
+          "--rect-borderColor": "FF0000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, FF0000, FF0000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "FF0000",
+            "borderColor": "FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 16
+      </div>
+    </button>
+    <button
+      aria-label="Legend 17"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFFFFF",
+          "--rect-borderColor": "#FFFFFF",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFFFFF, #FFFFFF)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#FFFFFF",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 17
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
+<div
+  aria-label="Legends"
+  aria-multiselectable={false}
+  className="fui-legend__root"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  role="listbox"
+>
+  <div
+    className="fui-Overflow fui-legend__resizableArea"
+    style={
+      Object {
+        "textAlign": "unset",
+      }
+    }
+  >
+    <button
+      aria-label="Legend 1"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FF0000",
+          "--rect-borderColor": "#FF0000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FF0000, #FF0000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FF0000",
+            "borderColor": "#FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 1
+      </div>
+    </button>
+    <button
+      aria-label="Legend 2"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#000000",
+          "--rect-borderColor": "#000000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #000000, #000000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#000000",
+            "borderColor": "#000000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 2
+      </div>
+    </button>
+    <button
+      aria-label="Legend 3"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008000",
+          "--rect-borderColor": "#008000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008000, #008000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008000",
+            "borderColor": "#008000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 3
+      </div>
+    </button>
+    <button
+      aria-label="Legend 4"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#0000ff",
+          "--rect-borderColor": "#0000ff",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #0000ff, #0000ff)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#0000ff",
+            "borderColor": "#0000ff",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 4
+      </div>
+    </button>
+    <button
+      aria-label="Legend 5"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#191970",
+          "--rect-borderColor": "#191970",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #191970, #191970)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#191970",
+            "borderColor": "#191970",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 5
+      </div>
+    </button>
+    <button
+      aria-label="Legend 6"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#E4E3E9",
+          "--rect-borderColor": "#E4E3E9",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #E4E3E9, #E4E3E9)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#E4E3E9",
+            "borderColor": "#E4E3E9",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 6
+      </div>
+    </button>
+    <button
+      aria-label="Legend 7"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#013220",
+          "--rect-borderColor": "#013220",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #013220, #013220)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#013220",
+            "borderColor": "#013220",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 7
+      </div>
+    </button>
+    <button
+      aria-label="Legend 8"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#00008B",
+          "--rect-borderColor": "#00008B",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #00008B, #00008B)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#00008B",
+            "borderColor": "#00008B",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 8
+      </div>
+    </button>
+    <button
+      aria-label="Legend 9"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 9
+      </div>
+    </button>
+    <button
+      aria-label="Legend 10"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#301934",
+          "--rect-borderColor": "#301934",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #301934, #301934)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#301934",
+            "borderColor": "#301934",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 10
+      </div>
+    </button>
+    <button
+      aria-label="Legend 11"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#Ffffed",
+          "--rect-borderColor": "#Ffffed",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #Ffffed, #Ffffed)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#Ffffed",
+            "borderColor": "#Ffffed",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 11
+      </div>
+    </button>
+    <button
+      aria-label="Legend 12"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#90ee90",
+          "--rect-borderColor": "#90ee90",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #90ee90, #90ee90)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#90ee90",
+            "borderColor": "#90ee90",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 12
+      </div>
+    </button>
+    <button
+      aria-label="Legend 13"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 13
+      </div>
+    </button>
+    <button
+      aria-label="Legend 14"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 14
+      </div>
+    </button>
+    <button
+      aria-label="Legend 15"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 15
+      </div>
+    </button>
+    <button
+      aria-label="Legend 16"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "FF0000",
+          "--rect-borderColor": "FF0000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, FF0000, FF0000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "FF0000",
+            "borderColor": "FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 16
+      </div>
+    </button>
+    <button
+      aria-label="Legend 17"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFFFFF",
+          "--rect-borderColor": "#FFFFFF",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFFFFF, #FFFFFF)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#FFFFFF",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 17
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`] = `
+<div
+  aria-label="Legends"
+  aria-multiselectable={true}
+  className="fui-legend__root"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  role="listbox"
+>
+  <div
+    className="fui-Overflow fui-legend__resizableArea"
+    style={
+      Object {
+        "textAlign": "unset",
+      }
+    }
+  >
+    <button
+      aria-label="Legend 1"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FF0000",
+          "--rect-borderColor": "#FF0000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FF0000, #FF0000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FF0000",
+            "borderColor": "#FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 1
+      </div>
+    </button>
+    <button
+      aria-label="Legend 2"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#000000",
+          "--rect-borderColor": "#000000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #000000, #000000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#000000",
+            "borderColor": "#000000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 2
+      </div>
+    </button>
+    <button
+      aria-label="Legend 3"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008000",
+          "--rect-borderColor": "#008000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008000, #008000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008000",
+            "borderColor": "#008000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 3
+      </div>
+    </button>
+    <button
+      aria-label="Legend 4"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#0000ff",
+          "--rect-borderColor": "#0000ff",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #0000ff, #0000ff)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#0000ff",
+            "borderColor": "#0000ff",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 4
+      </div>
+    </button>
+    <button
+      aria-label="Legend 5"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#191970",
+          "--rect-borderColor": "#191970",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #191970, #191970)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#191970",
+            "borderColor": "#191970",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 5
+      </div>
+    </button>
+    <button
+      aria-label="Legend 6"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#E4E3E9",
+          "--rect-borderColor": "#E4E3E9",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #E4E3E9, #E4E3E9)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#E4E3E9",
+            "borderColor": "#E4E3E9",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 6
+      </div>
+    </button>
+    <button
+      aria-label="Legend 7"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#013220",
+          "--rect-borderColor": "#013220",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #013220, #013220)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#013220",
+            "borderColor": "#013220",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 7
+      </div>
+    </button>
+    <button
+      aria-label="Legend 8"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#00008B",
+          "--rect-borderColor": "#00008B",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #00008B, #00008B)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#00008B",
+            "borderColor": "#00008B",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 8
+      </div>
+    </button>
+    <button
+      aria-label="Legend 9"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 9
+      </div>
+    </button>
+    <button
+      aria-label="Legend 10"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#301934",
+          "--rect-borderColor": "#301934",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #301934, #301934)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#301934",
+            "borderColor": "#301934",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 10
+      </div>
+    </button>
+    <button
+      aria-label="Legend 11"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#Ffffed",
+          "--rect-borderColor": "#Ffffed",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #Ffffed, #Ffffed)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#Ffffed",
+            "borderColor": "#Ffffed",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 11
+      </div>
+    </button>
+    <button
+      aria-label="Legend 12"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#90ee90",
+          "--rect-borderColor": "#90ee90",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #90ee90, #90ee90)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#90ee90",
+            "borderColor": "#90ee90",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 12
+      </div>
+    </button>
+    <button
+      aria-label="Legend 13"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 13
+      </div>
+    </button>
+    <button
+      aria-label="Legend 14"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 14
+      </div>
+    </button>
+    <button
+      aria-label="Legend 15"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 15
+      </div>
+    </button>
+    <button
+      aria-label="Legend 16"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "FF0000",
+          "--rect-borderColor": "FF0000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, FF0000, FF0000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "FF0000",
+            "borderColor": "FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 16
+      </div>
+    </button>
+    <button
+      aria-label="Legend 17"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFFFFF",
+          "--rect-borderColor": "#FFFFFF",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFFFFF, #FFFFFF)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#FFFFFF",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 17
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Legends snapShot testing renders styles correctly 1`] = `
+<div
+  aria-label="Legends"
+  aria-multiselectable={false}
+  className="fui-legend__root"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  role="listbox"
+>
+  <div
+    className="fui-Overflow fui-legend__resizableArea"
+    style={
+      Object {
+        "textAlign": "unset",
+      }
+    }
+  >
+    <button
+      aria-label="Legend 1"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FF0000",
+          "--rect-borderColor": "#FF0000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FF0000, #FF0000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FF0000",
+            "borderColor": "#FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 1
+      </div>
+    </button>
+    <button
+      aria-label="Legend 2"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#000000",
+          "--rect-borderColor": "#000000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #000000, #000000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#000000",
+            "borderColor": "#000000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 2
+      </div>
+    </button>
+    <button
+      aria-label="Legend 3"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008000",
+          "--rect-borderColor": "#008000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008000, #008000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008000",
+            "borderColor": "#008000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 3
+      </div>
+    </button>
+    <button
+      aria-label="Legend 4"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#0000ff",
+          "--rect-borderColor": "#0000ff",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #0000ff, #0000ff)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#0000ff",
+            "borderColor": "#0000ff",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 4
+      </div>
+    </button>
+    <button
+      aria-label="Legend 5"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#191970",
+          "--rect-borderColor": "#191970",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #191970, #191970)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#191970",
+            "borderColor": "#191970",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 5
+      </div>
+    </button>
+    <button
+      aria-label="Legend 6"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#E4E3E9",
+          "--rect-borderColor": "#E4E3E9",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #E4E3E9, #E4E3E9)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#E4E3E9",
+            "borderColor": "#E4E3E9",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 6
+      </div>
+    </button>
+    <button
+      aria-label="Legend 7"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#013220",
+          "--rect-borderColor": "#013220",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #013220, #013220)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#013220",
+            "borderColor": "#013220",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 7
+      </div>
+    </button>
+    <button
+      aria-label="Legend 8"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#00008B",
+          "--rect-borderColor": "#00008B",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #00008B, #00008B)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#00008B",
+            "borderColor": "#00008B",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 8
+      </div>
+    </button>
+    <button
+      aria-label="Legend 9"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 9
+      </div>
+    </button>
+    <button
+      aria-label="Legend 10"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#301934",
+          "--rect-borderColor": "#301934",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #301934, #301934)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#301934",
+            "borderColor": "#301934",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 10
+      </div>
+    </button>
+    <button
+      aria-label="Legend 11"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#Ffffed",
+          "--rect-borderColor": "#Ffffed",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #Ffffed, #Ffffed)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#Ffffed",
+            "borderColor": "#Ffffed",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 11
+      </div>
+    </button>
+    <button
+      aria-label="Legend 12"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#90ee90",
+          "--rect-borderColor": "#90ee90",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #90ee90, #90ee90)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#90ee90",
+            "borderColor": "#90ee90",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 12
+      </div>
+    </button>
+    <button
+      aria-label="Legend 13"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFA500, #FFA500)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFA500",
+            "borderColor": "#FFA500",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 13
+      </div>
+    </button>
+    <button
+      aria-label="Legend 14"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 14
+      </div>
+    </button>
+    <button
+      aria-label="Legend 15"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #008080, #008080)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#008080",
+            "borderColor": "#008080",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 15
+      </div>
+    </button>
+    <button
+      aria-label="Legend 16"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "FF0000",
+          "--rect-borderColor": "FF0000",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, FF0000, FF0000)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "FF0000",
+            "borderColor": "FF0000",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 16
+      </div>
+    </button>
+    <button
+      aria-label="Legend 17"
+      aria-selected={false}
+      className="fui-Button fui-legend__legend"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      role="option"
+      style={
+        Object {
+          "--rect-backgroundColor": "#FFFFFF",
+          "--rect-borderColor": "#FFFFFF",
+          "--rect-content": "",
+          "--rect-height": "12px",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="fui-legend__rect"
+        style={
+          Object {
+            "--rect-content-high-contrast": "linear-gradient(to right, #FFFFFF, #FFFFFF)",
+            "--rect-opacity-high-contrast": "",
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#FFFFFF",
+            "content": "",
+            "height": "12px",
+          }
+        }
+      />
+      <div
+        className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
+      >
+        Legend 17
+      </div>
+    </button>
+  </div>
+</div>
+`;

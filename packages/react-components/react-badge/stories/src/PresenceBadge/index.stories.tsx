@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { Meta } from '@storybook/react';
 import { PresenceBadge } from '@fluentui/react-components';
 import descriptionMd from './PresenceBadgeDescription.md';

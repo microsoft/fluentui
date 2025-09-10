@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { useId, Button, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-components';
 
-export const DefaultToastOptions = () => {
+export const DefaultToastOptions = (): JSXElement => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
   const notify = () =>

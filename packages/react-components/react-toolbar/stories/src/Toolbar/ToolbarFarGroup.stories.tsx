@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles } from '@fluentui/react-components';
 import { FontIncreaseRegular, FontDecreaseRegular, TextFontRegular } from '@fluentui/react-icons';
 import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarGroup } from '@fluentui/react-components';
@@ -10,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const FarGroup = (props: Partial<ToolbarProps>) => {
+export const FarGroup = (props: Partial<ToolbarProps>): JSXElement => {
   const farGroupStyles = useStyles();
   return (
     <Toolbar aria-label="with Separeted Groups" {...props} className={farGroupStyles.toolbar}>

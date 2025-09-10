@@ -1,10 +1,11 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Tooltip } from '@fluentui/react-tooltip';
 import type { PositioningProps } from '@fluentui/react-positioning';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useStyles } from './utils';
-import { getStoryVariant, withStoryWrightSteps, TestWrapperDecorator, RTL, HIGH_CONTRAST } from '../../utilities';
+import { getStoryVariant, TestWrapperDecorator, RTL, HIGH_CONTRAST } from '../../utilities';
 
 const TooltipPositioning: React.FC = () => {
   const positions = [
@@ -50,7 +51,7 @@ const TooltipPositioning: React.FC = () => {
 const TooltipPositioningWithFallbacks: React.FC = () => {
   const [boundaryRef, setBoundaryRef] = React.useState<HTMLDivElement | null>(null);
 
-  const wrapWithTooltip = (content: string, element: JSX.Element, fallback: PositioningProps['fallbackPositions']) => (
+  const wrapWithTooltip = (content: string, element: JSXElement, fallback: PositioningProps['fallbackPositions']) => (
     <Tooltip
       content={content}
       relationship="label"
@@ -129,24 +130,26 @@ const TooltipPositioningWithFallbacks: React.FC = () => {
 
 export default {
   title: 'Tooltip Converged',
-
-  decorators: [
-    TestWrapperDecorator,
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps().click('#show-tooltips').snapshot('positioned tooltips', { cropTo: '.testWrapper' }).end(),
-      }),
-  ],
+  decorators: [TestWrapperDecorator],
 } satisfies Meta<typeof Tooltip>;
 
 export const Positioning = () => <TooltipPositioning />;
 
 Positioning.storyName = 'positioning';
+Positioning.parameters = {
+  storyWright: {
+    steps: new Steps().click('#show-tooltips').snapshot('positioned tooltips', { cropTo: '.testWrapper' }).end(),
+  },
+} satisfies StoryParameters;
 
 export const PositioningwithFallbacks = () => <TooltipPositioningWithFallbacks />;
 
 PositioningwithFallbacks.storyName = 'positioning with fallbacks';
+PositioningwithFallbacks.parameters = {
+  storyWright: {
+    steps: new Steps().snapshot('positioning fallbacks', { cropTo: '.testWrapper' }).end(),
+  },
+} satisfies StoryParameters;
 
 export const PositioningRTL = getStoryVariant(Positioning, RTL);
 

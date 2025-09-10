@@ -205,7 +205,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private _getPreviewComponent = memoizeFunction(
-    (activeTheme: Theme | undefined, scheme: ISchemeNames): React.FunctionComponent => {
+    (activeTheme: Theme | undefined, scheme: ISchemeNames): React.FunctionComponent<React.PropsWithChildren> => {
       // Generate a component which renders the children with the current
       return props => {
         const { children } = props;

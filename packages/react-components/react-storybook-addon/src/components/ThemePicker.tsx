@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IconButton, Icons, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { useParameter } from '@storybook/manager-api';
 
+import type { JSXElement } from '@fluentui/react-utilities';
 import { ThemeIds, themes, defaultTheme } from '../theme';
 import { THEME_ID } from '../constants';
 import { useGlobals, FluentParameters } from '../hooks';
@@ -32,7 +33,7 @@ function createThemeItems(
   });
 }
 
-export const ThemePicker = () => {
+export const ThemePicker = (): JSXElement => {
   const [globals, updateGlobals] = useGlobals();
   const fluentTheme: FluentParameters['fluentTheme'] = useParameter('fluentTheme');
 

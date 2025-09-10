@@ -27,7 +27,8 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     };
   }
 
-  public render() {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  public render(): JSX.Element {
     const { children, className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage =

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
@@ -83,7 +84,7 @@ const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...p
   );
 };
 
-export const Inline = () => {
+export const Inline = (): JSXElement => {
   const styles = useStyles();
 
   const [startOpen, setStartOpen] = React.useState(false);

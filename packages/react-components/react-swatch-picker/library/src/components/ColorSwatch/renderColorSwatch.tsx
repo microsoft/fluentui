@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { ColorSwatchState, ColorSwatchSlots } from './ColorSwatch.types';
 
 /**
  * Render the final JSX of ColorSwatch
  */
-export const renderColorSwatch_unstable = (state: ColorSwatchState) => {
+export const renderColorSwatch_unstable = (state: ColorSwatchState): JSXElement => {
   assertSlots<ColorSwatchSlots>(state);
 
   return (

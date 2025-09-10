@@ -81,3 +81,28 @@ export const SizeExtraSmallWithMedia = () => (
     Primary Text
   </Tag>
 );
+
+// selected
+export const Selected = () => (
+  <Tag selected dismissible icon={<CalendarMonth />}>
+    Primary Text
+  </Tag>
+);
+export const SelectedHighContrast = getStoryVariant(Selected, HIGH_CONTRAST);
+export const SelectedDarkMode = getStoryVariant(Selected, DARK_MODE);
+
+export const OutlineSelected = () => (
+  <Tag appearance="outline" selected dismissible icon={<CalendarMonth />}>
+    Primary Text
+  </Tag>
+);
+export const OutlineSelectedHighContrast = getStoryVariant(OutlineSelected, HIGH_CONTRAST);
+export const OutlineSelectedDarkMode = getStoryVariant(OutlineSelected, DARK_MODE);
+
+export const BrandSelected = () => (
+  <Tag appearance="brand" selected dismissible icon={<CalendarMonth />}>
+    Primary Text
+  </Tag>
+);
+export const BrandSelectedHighContrast = getStoryVariant(BrandSelected, HIGH_CONTRAST);
+export const BrandSelectedDarkMode = getStoryVariant(BrandSelected, DARK_MODE);

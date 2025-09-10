@@ -18,6 +18,7 @@ import {
   webLightTheme,
 } from '@fluentui/react-components';
 import { DismissSquare24Regular } from '@fluentui/react-icons';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
@@ -48,7 +49,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ExportPanel = () => {
+export const ExportPanel = (): JSXElement => {
   const {
     dispatch,
     state: { showExportPanel, themeName, brand, lightThemeOverrides, darkThemeOverrides },

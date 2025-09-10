@@ -2,6 +2,6 @@
 
 exports[`CounterBadge renders a default state 1`] = `
 <div
-  className="fui-Badge fui-CounterBadge"
+  class="fui-Badge fui-CounterBadge"
 />
 `;

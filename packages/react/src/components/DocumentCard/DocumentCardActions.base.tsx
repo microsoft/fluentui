@@ -23,6 +23,7 @@ export class DocumentCardActionsBase extends React.Component<IDocumentCardAction
     initializeComponentRef(this);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { actions, views, styles, theme, className } = this.props;
 

@@ -14,7 +14,7 @@ export default {
       <StoryWright
         steps={new Steps()
           .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('[role=option]')
+          .hover('[role=combobox]')
           .snapshot('hover', { cropTo: '.testWrapper' })
           .keys('input', 'ArrowDown')
           .snapshot('active option', { cropTo: '.testWrapper' })

@@ -21,6 +21,7 @@ function createComposedComponent<TProps extends {}>(
     const innerMemoizer = createMemoizer((defaultRender: IComponentAs<TProps>) => {
       const InnerWithDefaultRender: React.ComponentType<IComponentAsProps<TProps>> = (
         innerProps: IComponentAsProps<TProps>,
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
       ): JSX.Element => {
         return <Inner {...innerProps} defaultRender={defaultRender} />;
       };
@@ -30,6 +31,7 @@ function createComposedComponent<TProps extends {}>(
 
     const OuterWithDefaultRender: React.ComponentType<IComponentAsProps<TProps>> = (
       outerProps: IComponentAsProps<TProps>,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSX.Element => {
       const { defaultRender } = outerProps;
 

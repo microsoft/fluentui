@@ -1,0 +1,16 @@
+{
+  "name": "@fluentui/react-charts-stories",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "d3-format": "^3.0.0",
+    "d3-time-format": "^3.0.0",
+    "@fluentui/react-charts": "*",
+    "@fluentui/react-components": "*",
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/scripts-storybook": "*",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*"
+  }
+}

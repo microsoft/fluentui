@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Button,
   Carousel,
@@ -67,7 +68,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}, ${PAGES[index].header}`;
 };
 
-export const FirstRunExperience = () => {
+export const FirstRunExperience = (): JSXElement => {
   const styles = useStyles();
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [open, setModalOpen] = React.useState(false);

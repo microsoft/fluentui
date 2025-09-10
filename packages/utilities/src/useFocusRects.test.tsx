@@ -1,15 +1,17 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
+
+import * as renderer from 'react-test-renderer';
 import { FocusRects } from './useFocusRects';
 import { FocusRectsProvider } from './FocusRectsProvider';
 import { IsFocusHiddenClassName, IsFocusVisibleClassName } from './setFocusVisibility';
 import { KeyCodes } from './KeyCodes';
 import { addDirectionalKeyCode, removeDirectionalKeyCode } from './keyboard';
-import { mount, ReactWrapper } from 'enzyme';
+
+const { act } = renderer;
 
 describe('useFocusRects', () => {
-  let focusRects1: ReactWrapper;
-  let focusRects2: ReactWrapper;
+  let focusRects1: renderer.ReactTestRenderer;
+  let focusRects2: renderer.ReactTestRenderer;
 
   class MockWindow {
     public classNames: string[] = [];
@@ -87,8 +89,10 @@ describe('useFocusRects', () => {
 
   describe('when attaching the classnames to the window body', () => {
     it('can hint to show focus when you press a directional key', () => {
-      focusRects1 = mount(<FocusRects rootRef={mockRefObject} />);
-      focusRects2 = mount(<FocusRects rootRef={mockRefObject} />);
+      act(() => {
+        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+        focusRects2 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+      });
 
       const { eventListeners } = mockWindow;
       expect(eventListeners.keyup).toBeDefined();
@@ -138,19 +142,23 @@ describe('useFocusRects', () => {
 
       expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects2.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(4);
     });
 
     it('can hint to show focus when you press a directional key with multi-window', () => {
-      focusRects1 = mount(<FocusRects rootRef={mockRefObject} />);
-      focusRects2 = mount(<FocusRects rootRef={mockRefObject2} />);
+      act(() => {
+        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+        focusRects2 = renderer.create(<FocusRects rootRef={mockRefObject2} />);
+      });
 
       expect(mockWindow.eventListeners.keyup).toBeDefined();
       mockWindow.eventListeners.keyup!({ target: mockTarget, which: KeyCodes.up });
@@ -175,22 +183,26 @@ describe('useFocusRects', () => {
 
       expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(4);
 
       expect(mockWindow2.addEventListenerCallCount).toBe(4);
       expect(mockWindow2.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects2.unmount();
       });
       expect(mockWindow2.removeEventListenerCallCount).toBe(4);
     });
 
     it('no-ops when you press a non-directional key', () => {
-      focusRects1 = mount(<FocusRects rootRef={mockRefObject} />);
-      focusRects2 = mount(<FocusRects rootRef={mockRefObject} />);
+      act(() => {
+        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+        focusRects2 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+      });
 
       const { eventListeners } = mockWindow;
 
@@ -201,18 +213,22 @@ describe('useFocusRects', () => {
 
       expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects2.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(4);
     });
 
     it('can hint to hide focus on mouse click', () => {
-      focusRects1 = mount(<FocusRects rootRef={mockRefObject} />);
+      act(() => {
+        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+      });
 
       const { eventListeners } = mockWindow;
 
@@ -228,15 +244,18 @@ describe('useFocusRects', () => {
 
       expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(4);
     });
 
     it('can hint to show focus when you press a custom directional key', () => {
-      focusRects1 = mount(<FocusRects rootRef={mockRefObject} />);
-      focusRects2 = mount(<FocusRects rootRef={mockRefObject} />);
+      act(() => {
+        focusRects1 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+        focusRects2 = renderer.create(<FocusRects rootRef={mockRefObject} />);
+      });
 
       const { eventListeners } = mockWindow;
 
@@ -253,11 +272,13 @@ describe('useFocusRects', () => {
 
       expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects2.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(4);
@@ -269,7 +290,10 @@ describe('useFocusRects', () => {
       mockWindow.FabricConfig = {
         disableFocusRects: true,
       };
-      const focusRect = mount(<FocusRects rootRef={mockRefObject} />);
+      let component: renderer.ReactTestRenderer;
+      act(() => {
+        component = renderer.create(<FocusRects rootRef={mockRefObject} />);
+      });
 
       const { eventListeners } = mockWindow;
 
@@ -279,8 +303,9 @@ describe('useFocusRects', () => {
 
       expect(mockWindow.addEventListenerCallCount).toBe(0);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
-        focusRect.unmount();
+
+      act(() => {
+        component.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
@@ -379,13 +404,15 @@ describe('useFocusRects', () => {
     it('can hint to show focus when you press a directional key', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
-      focusRects1 = mount(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      act(() => {
+        focusRects1 = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      });
 
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
       expect(eventListeners.keyup).toBeDefined();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.up });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -394,7 +421,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       classNames = [];
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.down });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -402,7 +429,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.left });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -410,7 +437,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.right });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -418,7 +445,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.tab });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -426,7 +453,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.pageUp });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -434,7 +461,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.pageDown });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -442,7 +469,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.home });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -450,7 +477,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.end });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -461,7 +488,8 @@ describe('useFocusRects', () => {
       expect(mockWindow.addEventListenerCallCount).toBe(0);
       expect(addEventListenerCallCount).toBe(4);
       expect(removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
@@ -471,13 +499,15 @@ describe('useFocusRects', () => {
     it('no-ops when you press a non-directional key', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
-      focusRects1 = mount(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      act(() => {
+        focusRects1 = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      });
 
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
       expect(eventListeners.keyup).toBeDefined();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: 127 });
       });
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -487,7 +517,8 @@ describe('useFocusRects', () => {
       expect(mockWindow.addEventListenerCallCount).toBe(0);
       expect(addEventListenerCallCount).toBe(4);
       expect(removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
@@ -497,14 +528,16 @@ describe('useFocusRects', () => {
     it('can hint to hide focus on mouse click', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
-      focusRects1 = mount(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      act(() => {
+        focusRects1 = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      });
 
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
       expect(eventListeners.keyup).toBeDefined();
       expect(eventListeners.mousedown).toBeDefined();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.down });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -512,7 +545,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.mousedown!({ target: mockTarget });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -523,7 +556,8 @@ describe('useFocusRects', () => {
       expect(mockWindow.addEventListenerCallCount).toBe(0);
       expect(addEventListenerCallCount).toBe(4);
       expect(removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
@@ -533,13 +567,15 @@ describe('useFocusRects', () => {
     it('can hint to show focus when you press a custom directional key', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
-      focusRects1 = mount(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      act(() => {
+        focusRects1 = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      });
 
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
       expect(eventListeners.keyup).toBeDefined();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.f6 });
       });
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -548,7 +584,7 @@ describe('useFocusRects', () => {
 
       addDirectionalKeyCode(KeyCodes.f6);
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.f6 });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -559,7 +595,8 @@ describe('useFocusRects', () => {
       expect(mockWindow.addEventListenerCallCount).toBe(0);
       expect(addEventListenerCallCount).toBe(4);
       expect(removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
+
+      act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
@@ -575,7 +612,10 @@ describe('useFocusRects', () => {
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const providerRef = React.createRef<any>();
-      const focusRect = mount(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      let component: renderer.ReactTestRenderer;
+      act(() => {
+        component = renderer.create(<FocusRectsWithProvider providerRef={providerRef} rootRef={mockRefObject} />);
+      });
 
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
@@ -589,8 +629,9 @@ describe('useFocusRects', () => {
       expect(mockWindow.addEventListenerCallCount).toBe(0);
       expect(addEventListenerCallCount).toBe(0);
       expect(removeEventListenerCallCount).toBe(0);
-      ReactTestUtils.act(() => {
-        focusRect.unmount();
+
+      act(() => {
+        component.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
       expect(removeEventListenerCallCount).toBe(0);

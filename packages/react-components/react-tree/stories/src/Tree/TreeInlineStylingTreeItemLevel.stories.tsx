@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Tree,
   TreeItem,
@@ -7,7 +8,7 @@ import {
   useSubtreeContext_unstable,
 } from '@fluentui/react-components';
 
-export const InlineStylingTreeItemLevel = () => {
+export const InlineStylingTreeItemLevel = (): JSXElement => {
   const { level } = useSubtreeContext_unstable();
   return level === 0 ? (
     <Tree aria-label="Inline Styling Tree Item Level">

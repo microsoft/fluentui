@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Tag, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
@@ -6,9 +7,10 @@ const useContainerStyles = makeStyles({
   container: {
     columnGap: '10px',
     display: 'flex',
+    flexWrap: 'wrap',
   },
 });
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   const styles = useContainerStyles();
   return (
     <div className={styles.container}>

@@ -12,6 +12,7 @@ const personaCoinImageStyles: IPersonaCoinComponent['styles'] = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 const PersonaCoinImageView = (props: IPersonaCoinImageProps): JSX.Element | null => {
   if (!props.src) {
     return null;

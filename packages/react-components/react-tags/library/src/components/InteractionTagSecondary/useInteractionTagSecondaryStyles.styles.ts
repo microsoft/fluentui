@@ -42,6 +42,8 @@ const useRootStyles = makeStyles({
   filled: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorNeutralBackground3Hover,
@@ -52,6 +54,8 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForeground2BrandPressed,
     },
     '@media (forced-colors: active)': {
+      borderTopWidth: `${tokens.strokeWidthThin}`,
+      borderBottomWidth: `${tokens.strokeWidthThin}`,
       ':hover': {
         backgroundColor: 'HighlightText',
       },
@@ -86,6 +90,8 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
     borderLeftColor: tokens.colorBrandStroke2, // divider
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,
@@ -96,6 +102,8 @@ const useRootStyles = makeStyles({
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
     '@media (forced-colors: active)': {
+      borderTopWidth: `${tokens.strokeWidthThin}`,
+      borderBottomWidth: `${tokens.strokeWidthThin}`,
       ':hover': {
         backgroundColor: 'HighlightText',
       },
@@ -103,6 +111,35 @@ const useRootStyles = makeStyles({
         backgroundColor: 'HighlightText',
       },
     },
+  },
+  selected: {
+    background: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorBrandStroke1),
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+    },
+
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackgroundHover,
+      color: tokens.colorNeutralForegroundOnBrand,
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
+      },
+    },
+    ':active': {
+      backgroundColor: tokens.colorBrandBackgroundPressed,
+      color: tokens.colorNeutralForegroundOnBrand,
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
+      },
+    },
+    // divider
+    borderLeftColor: tokens.colorNeutralStrokeOnBrand2,
   },
 
   rounded: {
@@ -128,6 +165,23 @@ const useRootStyles = makeStyles({
     fontSize: extraSmallIconSize,
     paddingLeft: '5px',
     paddingRight: '5px',
+    position: 'relative',
+
+    '@media (forced-colors: none)': {
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        height: '2px',
+        left: '0',
+        width: '100%',
+      },
+      '&:before': {
+        bottom: '100%',
+      },
+      '&:after': {
+        top: '100%',
+      },
+    },
   },
 });
 const useRootDisabledStyles = makeStyles({
@@ -162,14 +216,15 @@ export const useInteractionTagSecondaryStyles_unstable = (
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
 
-  const { shape, size, appearance } = state;
+  const { disabled, selected, shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     interactionTagSecondaryClassNames.root,
     rootBaseClassName,
-    state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
+    disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
     rootStyles[shape],
     rootStyles[size],
+    selected && !disabled && rootStyles.selected,
     state.root.className,
   );
 

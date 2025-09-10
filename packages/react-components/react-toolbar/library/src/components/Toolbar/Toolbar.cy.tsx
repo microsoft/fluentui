@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import {
   Toolbar,
@@ -14,7 +15,7 @@ import {
 
 const button = "[type='button']";
 
-const mount = (element: JSX.Element) => {
+const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
@@ -30,32 +31,20 @@ describe('Toolbar', () => {
         </Toolbar>,
       );
 
-      cy.get(button)
-        .eq(0)
-        .focus()
-        .get(button)
-        .eq(0)
-        .should('be.focused')
-        // Navigate with right arrow to the right
-        .type('{rightArrow}')
-        .get(button)
-        .eq(1)
-        .should('be.focused')
-        // Navigate with down arrow to the right
-        .type('{downArrow}')
-        .get(button)
-        .eq(2)
-        .should('be.focused')
-        // Navigate with up arrow to the right
-        .type('{upArrow}')
-        .get(button)
-        .eq(1)
-        .should('be.focused')
-        // Navigate with left arrow to the right
-        .type('{leftArrow}')
-        .get(button)
-        .eq(0)
-        .should('be.focused');
+      cy.get(button).eq(0).click();
+      cy.get(button).eq(0).should('be.focused');
+
+      cy.get(button).eq(0).type('{rightArrow}');
+      cy.get(button).eq(1).should('be.focused');
+
+      cy.get(button).eq(1).type('{downArrow}');
+      cy.get(button).eq(2).should('be.focused');
+
+      cy.get(button).eq(2).type('{upArrow}');
+      cy.get(button).eq(1).should('be.focused');
+
+      cy.get(button).eq(1).type('{leftArrow}');
+      cy.get(button).eq(0).should('be.focused');
     });
 
     it('should have circular navigation', () => {
@@ -68,22 +57,14 @@ describe('Toolbar', () => {
         </Toolbar>,
       );
 
-      cy.get(button)
-        .eq(3)
-        .focus()
-        .get(button)
-        .eq(3)
-        .should('be.focused')
-        // Navigate from last to first
-        .type('{rightArrow}')
-        .get(button)
-        .eq(0)
-        .should('be.focused')
-        // Navigate from first to last
-        .type('{leftArrow}')
-        .get(button)
-        .eq(3)
-        .should('be.focused');
+      cy.get(button).eq(3).click();
+      cy.get(button).eq(3).should('be.focused');
+
+      cy.get(button).eq(3).type('{rightArrow}');
+      cy.get(button).eq(0).should('be.focused');
+
+      cy.get(button).eq(0).type('{leftArrow}');
+      cy.get(button).eq(3).should('be.focused');
     });
   });
 
@@ -97,18 +78,13 @@ describe('Toolbar', () => {
         </Toolbar>,
       );
 
-      cy.get(button)
-        .eq(0)
-        .focus()
-        .get(button)
-        .eq(0)
-        .should('have.attr', 'aria-pressed', 'false')
-        .get(button)
-        .eq(0)
-        .click()
-        .get(button)
-        .eq(0)
-        .should('have.attr', 'aria-pressed', 'true');
+      cy.get(button).eq(0).should('have.attr', 'aria-pressed', 'false');
+
+      cy.get(button).eq(0).click();
+      cy.get(button).eq(0).should('have.attr', 'aria-pressed', 'true');
+
+      cy.get(button).eq(0).click();
+      cy.get(button).eq(0).should('have.attr', 'aria-pressed', 'false');
     });
 
     it('should set default checked values', () => {
@@ -138,18 +114,13 @@ describe('Toolbar', () => {
         </Toolbar>,
       );
 
-      cy.get(button)
-        .eq(0)
-        .focus()
-        .get(button)
-        .eq(0)
-        .should('have.attr', 'aria-checked', 'false')
-        .get(button)
-        .eq(0)
-        .click()
-        .get(button)
-        .eq(0)
-        .should('have.attr', 'aria-checked', 'true');
+      cy.get(button).eq(0).should('have.attr', 'aria-checked', 'false');
+
+      cy.get(button).eq(0).click();
+      cy.get(button).eq(0).should('have.attr', 'aria-checked', 'true');
+
+      cy.get(button).eq(0).click();
+      cy.get(button).eq(0).should('have.attr', 'aria-checked', 'true');
     });
 
     it('should set default checked values', () => {
@@ -184,23 +155,16 @@ describe('Toolbar', () => {
         </Toolbar>,
       );
 
-      cy.get(button)
-        .eq(0)
-        .should('have.attr', 'aria-checked', 'true')
-        .get(button)
-        .eq(1)
-        .click()
-        .get(button)
-        .eq(1)
-        .should('have.attr', 'aria-checked', 'true')
-        .get(button)
-        .eq(0)
-        .should('have.attr', 'aria-checked', 'false');
+      cy.get(button).eq(0).should('have.attr', 'aria-checked', 'true');
+      cy.get(button).eq(1).click();
+
+      cy.get(button).eq(1).should('have.attr', 'aria-checked', 'true');
+      cy.get(button).eq(0).should('have.attr', 'aria-checked', 'false');
     });
   });
 });
 
-describe('MenuTrigger', () => {
+describe('ToolbarDivider', () => {
   it('should focus first element', () => {
     mount(
       <Toolbar>
@@ -211,7 +175,8 @@ describe('MenuTrigger', () => {
       </Toolbar>,
     );
 
-    cy.get('html').type('Tab').type('{rightarrow}').get('[type="button"]').eq(0).should('be.focused');
+    cy.get('html').type('Tab').type('{rightarrow}');
+    cy.get(button).eq(0).should('be.focused');
   });
 
   it('should navigate with arrow key', () => {
@@ -223,14 +188,11 @@ describe('MenuTrigger', () => {
         <ToolbarButton>Item 3</ToolbarButton>
       </Toolbar>,
     );
-    cy.get('[type="button"]')
-      .eq(0)
-      .focus()
-      .type('{rightarrow}')
-      .type('{rightarrow}')
-      .get('[type="button"]')
-      .eq(1)
-      .should('be.focused');
+
+    cy.get(button).eq(0).click();
+
+    cy.get(button).eq(0).type('{rightarrow}');
+    cy.get(button).eq(1).should('be.focused');
   });
 
   it('should have circular navigation', () => {
@@ -242,6 +204,10 @@ describe('MenuTrigger', () => {
         <ToolbarButton>Item 3</ToolbarButton>
       </Toolbar>,
     );
-    cy.get('[type="button"]').eq(0).focus().type('{leftarrow}').get('[type="button"]').eq(2).should('be.focused');
+
+    cy.get(button).eq(0).click();
+
+    cy.get(button).eq(0).type('{leftarrow}');
+    cy.get(button).eq(2).should('be.focused');
   });
 });

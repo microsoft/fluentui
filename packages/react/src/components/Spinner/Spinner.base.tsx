@@ -12,7 +12,8 @@ export class SpinnerBase extends React.Component<ISpinnerProps, any> {
     labelPosition: 'bottom',
   };
 
-  public render() {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  public render(): JSX.Element {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { type, size, ariaLabel, ariaLive, styles, label, theme, className, labelPosition } = this.props;
     const statusMessage = ariaLabel;

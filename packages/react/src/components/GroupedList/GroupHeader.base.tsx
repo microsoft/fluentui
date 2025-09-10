@@ -59,6 +59,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element | null {
     const {
       group,
@@ -245,6 +246,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     return <FastCheck theme={checkboxProps.theme} checked={checkboxProps.checked} />;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderTitle = (props: IGroupHeaderProps): JSX.Element | null => {
     const { group } = props;
 
@@ -270,6 +272,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderName = (props: IGroupHeaderProps): JSX.Element | null => {
     const { group } = props;
 

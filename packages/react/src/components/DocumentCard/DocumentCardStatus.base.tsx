@@ -23,6 +23,7 @@ export class DocumentCardStatusBase extends React.Component<IDocumentCardStatusP
     initializeComponentRef(this);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { statusIcon, status, styles, theme, className } = this.props;
     const iconProps = {

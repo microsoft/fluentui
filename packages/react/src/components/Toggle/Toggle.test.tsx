@@ -1,9 +1,11 @@
+import '@testing-library/jest-dom';
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { create } from '@fluentui/test-utilities';
 import { resetIds } from '@fluentui/utilities';
 import { Toggle } from './Toggle';
 import { isConformant } from '../../common/isConformant';
+import { getBySelector } from '../../common/testUtilities';
 
 describe('Toggle', () => {
   beforeEach(() => {
@@ -11,8 +13,8 @@ describe('Toggle', () => {
   });
 
   it('renders a label', () => {
-    const component = mount(<Toggle label="Label" />);
-    expect(component.find('.ms-Toggle-label').first().text()).toEqual('Label');
+    render(<Toggle label="Label" />);
+    expect(screen.getByText('Label')).toBeInTheDocument();
   });
 
   it('renders toggle correctly', () => {
@@ -51,9 +53,9 @@ describe('Toggle', () => {
   });
 
   it('renders aria-label', () => {
-    const component = mount(<Toggle label="Label" ariaLabel="AriaLabel" />);
-
-    expect(component.find('button').first().getDOMNode().getAttribute('aria-label')).toEqual('AriaLabel');
+    const { container } = render(<Toggle label="Label" ariaLabel="AriaLabel" />);
+    const button = getBySelector(container, 'button') as HTMLButtonElement;
+    expect(button.getAttribute('aria-label')).toEqual('AriaLabel');
   });
 
   it('can call the callback on a change of toggle', () => {
@@ -62,37 +64,39 @@ describe('Toggle', () => {
       isToggledValue = isToggled;
     };
 
-    const component = mount<React.ReactInstance>(<Toggle label="Label" onChange={callback} />);
+    const { container } = render(<Toggle label="Label" onChange={callback} />);
+    const button = getBySelector(container, 'button') as HTMLButtonElement;
 
-    expect(component.find('button').first().getDOMNode().getAttribute('aria-checked')).toEqual('false');
+    expect(button.getAttribute('aria-checked')).toEqual('false');
 
-    component.find('button').first().simulate('click');
+    fireEvent.click(button);
 
     expect(isToggledValue).toEqual(true);
 
-    expect(component.find('button').first().getDOMNode().getAttribute('aria-checked')).toEqual('true');
+    expect(button.getAttribute('aria-checked')).toEqual('true');
   });
 
   it(`doesn't update the state if the user provides checked`, () => {
-    const component = mount(<Toggle label="Label" checked={false} />);
+    const { container } = render(<Toggle label="Label" checked={false} />);
+    const button = getBySelector(container, 'button') as HTMLButtonElement;
 
-    expect(component.find('button').first().getDOMNode().getAttribute('aria-checked')).toEqual('false');
+    expect(button.getAttribute('aria-checked')).toEqual('false');
 
-    component.find('button').first().simulate('click');
+    fireEvent.click(button);
 
-    expect(component.update().find('button').first().getDOMNode().getAttribute('aria-checked')).toEqual('false');
+    expect(button.getAttribute('aria-checked')).toEqual('false');
   });
 
   it(`doesn't render a label element if none is provided`, () => {
-    const component = mount(<Toggle checked={false} />);
+    render(<Toggle checked={false} />);
 
-    expect(component.find('label').length).toEqual(0);
+    expect(screen.queryByText('label')).toBeNull();
   });
 
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
     const onSubmit = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <form
         action="#"
         onSubmit={e => {
@@ -103,36 +107,39 @@ describe('Toggle', () => {
         <Toggle label="Label" />
       </form>,
     );
-    const button = wrapper.find('button');
+    const button = getBySelector(container, 'button') as HTMLButtonElement;
     // simulate to change toggle state
-    button.simulate('click');
-    expect(button.getDOMNode().getAttribute('aria-checked')).toEqual('true');
+    fireEvent.click(button);
+    expect(button.getAttribute('aria-checked')).toEqual('true');
     expect(onSubmit).not.toHaveBeenCalled();
   });
 
   describe('aria-labelledby', () => {
     it('has no aria-labelledby attribute if ariaLabel is provided', () => {
-      const component = mount(<Toggle label="Label" ariaLabel="AriaLabel" />);
+      const { container } = render(<Toggle label="Label" ariaLabel="AriaLabel" />);
+      const button = getBySelector(container, 'button') as HTMLButtonElement;
 
-      expect(component.find('button').first().getDOMNode().getAttribute('aria-labelledby')).toBeNull();
+      expect(button.getAttribute('aria-labelledby')).toBeNull();
     });
 
     it('is labelled by the label element if no aria labels are provided', () => {
-      const component = mount(<Toggle label="Label" id="ToggleId" />);
+      const { container } = render(<Toggle label="Label" id="ToggleId" />);
+      const button = getBySelector(container, 'button') as HTMLButtonElement;
 
-      expect(component.find('button').first().getDOMNode().getAttribute('aria-labelledby')).toBe('ToggleId-label');
+      expect(button.getAttribute('aria-labelledby')).toBe('ToggleId-label');
     });
 
     it('is labelled by the state text element if no aria labels are provided and no label is provided', () => {
-      const component = mount(<Toggle onText="On" offText="Off" id="ToggleId" />);
+      const { container } = render(<Toggle onText="On" offText="Off" id="ToggleId" />);
+      const button = getBySelector(container, 'button') as HTMLButtonElement;
 
-      expect(component.find('button').first().getDOMNode().getAttribute('aria-labelledby')).toBe('ToggleId-stateText');
+      expect(button.getAttribute('aria-labelledby')).toBe('ToggleId-stateText');
     });
 
     it('is labelled by the label element alone if no aria labels are provided, and state text is provided', () => {
-      const component = mount(<Toggle label="Label" onText="On" offText="Off" id="ToggleId" />);
-
-      expect(component.find('button').first().getDOMNode().getAttribute('aria-labelledby')).toBe('ToggleId-label');
+      const { container } = render(<Toggle label="Label" onText="On" offText="Off" id="ToggleId" />);
+      const button = getBySelector(container, 'button') as HTMLButtonElement;
+      expect(button.getAttribute('aria-labelledby')).toBe('ToggleId-label');
     });
   });
 });

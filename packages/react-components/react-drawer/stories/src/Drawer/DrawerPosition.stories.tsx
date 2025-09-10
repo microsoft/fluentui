@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
@@ -8,6 +9,8 @@ import {
   Button,
   makeStyles,
   tokens,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -22,7 +25,7 @@ const useStyles = makeStyles({
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const Position = () => {
+export const Position = (): JSXElement => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
@@ -43,9 +46,19 @@ export const Position = () => {
     setIsOpen(true);
   }, []);
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div>
-      <OverlayDrawer position={position} open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer
+        position={position}
+        {...restoreFocusSourceAttributes}
+        open={isOpen}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
+      >
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -67,15 +80,15 @@ export const Position = () => {
       </OverlayDrawer>
 
       <div className={styles.content}>
-        <Button appearance="primary" onClick={onClickStartButton}>
+        <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={onClickStartButton}>
           Open start
         </Button>
 
-        <Button appearance="primary" onClick={onClickEndButton}>
+        <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={onClickEndButton}>
           Open end
         </Button>
 
-        <Button appearance="primary" onClick={onClickBottomButton}>
+        <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={onClickBottomButton}>
           Open Bottom
         </Button>
       </div>

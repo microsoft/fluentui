@@ -66,6 +66,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>,
    * Function to render the data. Called when rendering the contents to the screen and when
    * rendering in a hidden div to measure the size of the contents.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderData: (data: any) => JSX.Element;
 
   /**

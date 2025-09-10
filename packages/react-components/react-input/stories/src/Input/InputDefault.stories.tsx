@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import type { ArgTypes } from '@storybook/react';
 import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 import type { InputProps } from '@fluentui/react-components';
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: InputProps) => {
+export const Default = (props: InputProps): JSXElement => {
   const inputId = useId('input');
   const styles = useStyles();
 

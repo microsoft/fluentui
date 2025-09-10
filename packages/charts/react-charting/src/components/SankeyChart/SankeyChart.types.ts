@@ -108,6 +108,7 @@ export interface ISankeyChartStyleProps {
   width: number;
   height: number;
   pathColor?: string;
+  enableReflow?: boolean;
 }
 
 /**
@@ -150,6 +151,11 @@ export interface ISankeyChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
+
+  /**
+   * Styles for the chart svg element
+   */
+  chart?: IStyle;
 }
 
 /**

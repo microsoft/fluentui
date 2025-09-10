@@ -7,7 +7,6 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
@@ -88,7 +87,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 0,
         y: 10000,
         legend: 'Oranges',
-        color: DefaultPalette.accent,
+        color: getColorFromToken(DataVizPalette.color21),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '4%',
         lineData: {
@@ -100,7 +99,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 10000,
         y: -50000,
         legend: 'Dogs',
-        color: DefaultPalette.blueDark,
+        color: getColorFromToken(DataVizPalette.color22),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '-21%',
         lineData: {
@@ -112,7 +111,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 25000,
         y: 30000,
         legend: 'Apples',
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color23),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '12%',
         lineData: {
@@ -145,7 +144,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
         x: 68000,
         y: -30000,
         legend: 'Cats',
-        color: DefaultPalette.blueDark,
+        color: getColorFromToken(DataVizPalette.color24),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '-12%',
         lineData: {
@@ -184,7 +183,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <Label>
           In this example the supportNegativeData property is enabled and some positive and some negative y points are
           passed to the data. As a result chart with negative y axis data is rendered.
@@ -289,7 +288,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
             />
           </div>
         )}
-      </>
+      </div>
     );
   }
 }

@@ -298,7 +298,7 @@ export const HeatMapChartBasicExample: React.FunctionComponent<{}> = () => {
   };
 
   return (
-    <>
+    <div className="containerDiv">
       <label htmlFor="changeWidth_Example">Change Width:</label>
       <input
         type="range"
@@ -341,6 +341,6 @@ export const HeatMapChartBasicExample: React.FunctionComponent<{}> = () => {
           enableReflow={true}
         />
       </div>
-    </>
+    </div>
   );
 };

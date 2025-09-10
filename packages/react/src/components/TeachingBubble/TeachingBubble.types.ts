@@ -88,6 +88,7 @@ export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement
    * Text that will be rendered in the footer of the TeachingBubble.
    * May be rendered alongside primary and secondary buttons.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   footerContent?: string | JSX.Element;
 
   /**

@@ -1,12 +1,14 @@
 import { FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import { isHTMLElement, keyArrowDown, keyArrowUp, keyEnd, keyHome } from '@microsoft/fast-web-utilities';
 import type { MenuItemColumnCount } from '../menu-item/menu-item.js';
-import { MenuItem } from '../menu-item/menu-item.js';
-import { MenuItemRole } from '../menu-item/menu-item.options.js';
+import type { MenuItem } from '../menu-item/menu-item.js';
+import { isMenuItem, MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
  * A Menu Custom HTML Element.
  * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#menu | ARIA menu }.
+ *
+ * @tag fluent-menu-list
  *
  * @slot - The default slot for the menu items
  *
@@ -205,9 +207,7 @@ export class MenuList extends FASTElement {
     }, 0);
 
     filteredMenuListItems?.forEach((item: HTMLElement) => {
-      if (item instanceof MenuItem) {
-        item.setAttribute('data-indent', `${indent}`);
-      }
+      item.dataset.indent = `${indent}`;
     });
   }
 
@@ -264,8 +264,7 @@ export class MenuList extends FASTElement {
    */
   protected isMenuItemElement = (el: Element): el is HTMLElement => {
     return (
-      el instanceof MenuItem ||
-      (isHTMLElement(el) && (el.getAttribute('role') as string) in MenuList.focusableElementRoles)
+      isMenuItem(el) || (isHTMLElement(el) && (el.getAttribute('role') as string) in MenuList.focusableElementRoles)
     );
   };
 

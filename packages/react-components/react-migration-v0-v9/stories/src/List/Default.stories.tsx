@@ -1,14 +1,14 @@
+import * as React from 'react';
 import { Button, Image } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-migration-v0-v9';
-
-import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 type Item = {
   key: string;
   media: string;
   header: string;
   headerMedia: string;
-  content: string | JSX.Element;
+  content: string | JSXElement;
 };
 
 const items: Item[] = [
@@ -40,7 +40,7 @@ const items: Item[] = [
   },
 ];
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   return (
     <List truncateContent truncateHeader>
       {items.map(({ key, media, header, headerMedia, content }) => (

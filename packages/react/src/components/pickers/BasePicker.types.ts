@@ -3,7 +3,7 @@ import { Autofill } from '../../Autofill';
 import type { IPickerItemProps } from './PickerItem.types';
 import type { IReactProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
-import type { ICalloutProps } from '../../Callout';
+import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import type { ITheme, IStyle } from '../../Styling';
 import type { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 import { IIconProps } from '../Icon/Icon.types';
@@ -53,11 +53,13 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
   /**
    * Function that specifies how the selected item will appear.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
 
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
 
   /**
@@ -146,6 +148,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
    * change the error message displayed (if any) based on the current value. `errorMessage` and
    * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   errorMessage?: string | JSX.Element;
 
   /**
@@ -161,6 +164,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
    * - The resolved value is displayed as the error message.
    * - If rejected, the value is thrown away.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onGetErrorMessage?: (items: T[]) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
 
   /**
@@ -367,6 +371,9 @@ export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'class
 export interface IBasePickerSubComponentStyles {
   /** Styling for Label child component. */
   label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+
+  /** Styling for Callout child component. */
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
 }
 
 /**

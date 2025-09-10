@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Checkbox } from '@fluentui/react-components';
 
-export const LabelWrapping = () => (
+export const LabelWrapping = (): JSXElement => (
   <Checkbox
     style={{ maxWidth: '400px' }}
     label="Here is an example of a checkbox with a long label and it starts to wrap to a second line"

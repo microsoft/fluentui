@@ -4,4 +4,4 @@ The height of each column is proportional to the size of data, similar to a pie 
 
 Sankey charts are best used to visualize important relationships in a multi-level flow and help to investigate and monitor flow of information within workflows. Eg - Flow of mail data through different ip addresses.
 
-Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.
+Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/charts/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.

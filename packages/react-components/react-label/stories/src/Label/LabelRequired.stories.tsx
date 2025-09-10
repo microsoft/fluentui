@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Label } from '@fluentui/react-components';
 
-export const Required = () => (
+export const Required = (): JSXElement => (
   <>
     <Label required>Required label</Label>
     <Label required="***">Required label</Label>

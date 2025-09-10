@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 
@@ -7,12 +7,13 @@ import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
 import { OverlayDrawer } from './OverlayDrawer';
 import { OverlayDrawerProps } from './OverlayDrawer.types';
 import { overlayDrawerClassNames } from './useOverlayDrawerStyles.styles';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
-const LongPageContent = ({ children }: React.PropsWithChildren<{}>) => (
+const LongPageContent = ({ children }: { children?: React.ReactNode }) => (
   <>
     {Array.from({ length: 10 }).map((_, index) => (
       <p key={index}>

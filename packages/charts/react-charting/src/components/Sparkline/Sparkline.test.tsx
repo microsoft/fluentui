@@ -1,14 +1,12 @@
-jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { ISparklineProps, Sparkline } from './index';
+import { render, act } from '@testing-library/react';
+import { Sparkline } from './index';
 import { IChartProps } from '../../index';
-import { mount, ReactWrapper } from 'enzyme';
-import { ISparklineState, SparklineBase } from './Sparkline.base';
 import { resetIds } from '@fluentui/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
-// Wrapper of the SparklineChart to be tested.
-let wrapper: ReactWrapper<ISparklineProps, ISparklineState, SparklineBase> | undefined;
+expect.extend(toHaveNoViolations);
 
 function sharedBeforeEach() {
   resetIds();
@@ -124,15 +122,33 @@ describe('Sparkline snapShot testing', () => {
 describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(sharedBeforeEach);
 
-  it('No empty chart aria label div rendered', () => {
-    wrapper = mount(<Sparkline data={sparkline1Points} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+  it('No empty chart aria label div rendered for non-empty data', () => {
+    const wrapper = render(<Sparkline data={sparkline1Points} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
-  it('Empty chart aria label div rendered', () => {
-    wrapper = mount(<Sparkline data={emptySparklinePoints} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
-    expect(renderedDOM!.length).toBe(1);
+  it('Empty chart aria label div rendered for empty data', () => {
+    const component = renderer.create(<Sparkline data={emptySparklinePoints} />);
+    const tree = component.toJSON();
+    if (tree && !Array.isArray(tree)) {
+      expect(tree.props['aria-label']).toBe('Graph has no data to display');
+    } else {
+      // This should not happen, but TypeScript needs this check
+      fail('Tree should be a single element, not an array or null');
+    }
+  });
+});
+
+describe('Sparkline Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<Sparkline data={sparkline1Points} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
   });
 });

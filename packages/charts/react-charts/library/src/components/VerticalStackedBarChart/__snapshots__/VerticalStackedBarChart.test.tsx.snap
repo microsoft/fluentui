@@ -1,0 +1,5839 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. "
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 230)"
+        >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)rotate(-45)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              January
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)rotate(-45)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)rotate(-45)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,230.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,230.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,178)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,125.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,73)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#0078d4"
+                height="4.2"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="225.8"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#002050"
+                height="1.05"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="224.75"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="218.75"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              id="1-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#0078d4"
+                height="62.999999999999986"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="167"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#002050"
+                height="6.299999999999999"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="160.7"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#00188f"
+                height="83.99999999999999"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="76.7"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="70.7"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              id="2-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#0078d4"
+                height="21"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="209"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#002050"
+                height="126"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="83"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#00188f"
+                height="63"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="20"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="14"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <line
+            opacity="1"
+            stroke="#0078d4"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="141.8"
+            y2="143.9"
+          />
+          <line
+            opacity="1"
+            stroke="#0078d4"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="143.9"
+            y2="20"
+          />
+          <circle
+            cx="279"
+            cy="141.8"
+            fill="var(--colorNeutralBackground1)"
+            opacity="0"
+            r="8"
+            stroke="#0078d4"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="327"
+            cy="143.9"
+            fill="var(--colorNeutralBackground1)"
+            opacity="0"
+            r="8"
+            stroke="#0078d4"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="375"
+            cy="20"
+            fill="var(--colorNeutralBackground1)"
+            opacity="0"
+            r="8"
+            stroke="#0078d4"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+        </g>
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: unset;"
+        >
+          <button
+            aria-label="Supported Builds"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Supported Builds
+            </div>
+          </button>
+          <button
+            aria-label="Metadata1"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+          <button
+            aria-label="Metadata3"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata3
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged on zoom out 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. "
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 230)"
+        >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)rotate(-45)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              January
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)rotate(-45)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)rotate(-45)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,230.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,230.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,178)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,125.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,73)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#0078d4"
+                height="4.2"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="225.8"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#002050"
+                height="1.05"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="224.75"
+              />
+            </g>
+            <text
+              aria-label="Total: 2.5"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="218.75"
+            >
+              2.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              id="1-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#0078d4"
+                height="62.999999999999986"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="167"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#002050"
+                height="6.299999999999999"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="160.7"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#00188f"
+                height="83.99999999999999"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="76.7"
+              />
+            </g>
+            <text
+              aria-label="Total: 73"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="70.7"
+            >
+              73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              id="2-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#0078d4"
+                height="21"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="209"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#002050"
+                height="126"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="83"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="#00188f"
+                height="63"
+                opacity="1"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="20"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="14"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <line
+            opacity="1"
+            stroke="#0078d4"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="141.8"
+            y2="143.9"
+          />
+          <line
+            opacity="1"
+            stroke="#0078d4"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="143.9"
+            y2="20"
+          />
+          <circle
+            cx="279"
+            cy="141.8"
+            fill="var(--colorNeutralBackground1)"
+            opacity="0"
+            r="8"
+            stroke="#0078d4"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="327"
+            cy="143.9"
+            fill="var(--colorNeutralBackground1)"
+            opacity="0"
+            r="8"
+            stroke="#0078d4"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="375"
+            cy="20"
+            fill="var(--colorNeutralBackground1)"
+            opacity="0"
+            r="8"
+            stroke="#0078d4"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+        </g>
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: unset;"
+        >
+          <button
+            aria-label="Supported Builds"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Supported Builds
+            </div>
+          </button>
+          <button
+            aria-label="Metadata1"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+          <button
+            aria-label="Metadata3"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata3
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical stacked bar chart rendering Should render the vertical stacked bar chart with numeric x-axis data 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        aria-label="Vertical bar chart with 2 stacked bars. "
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 265)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(112.30000000000001,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(168.10000000000002,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              4
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(223.89999999999998,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              6
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(279.70000000000005,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              8
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(391.29999999999995,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              12
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(447.09999999999997,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(502.90000000000003,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              16
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(558.7,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              18
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,265.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,265.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,204.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,143)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              52
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              id="0-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 40%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="aqua"
+                height="188.46153846153845"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="76.53846153846155"
+              />
+              <rect
+                aria-label="2020/04/30. Metadata2, 5%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="navy"
+                height="23.557692307692307"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="52.98076923076924"
+              />
+            </g>
+            <text
+              aria-label="Total: 45"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="46.98076923076924"
+            >
+              45
+            </text>
+          </g>
+          <g>
+            <g
+              id="1-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 30%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="aqua"
+                height="141.34615384615384"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="123.65384615384616"
+              />
+              <rect
+                aria-label="2020/04/30. Metadata2, 20%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="navy"
+                height="94.23076923076923"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="29.423076923076934"
+              />
+            </g>
+            <text
+              aria-label="Total: 50"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="23.423076923076934"
+            >
+              50
+            </text>
+          </g>
+        </g>
+        <g />
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: unset;"
+        >
+          <button
+            aria-label="Metadata1"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata1
+            </div>
+          </button>
+          <button
+            aria-label="Metadata2"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart - mouse events Should render callout correctly on mouseover 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        aria-label="Vertical bar chart with 2 stacked bars. "
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 265)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(112.30000000000001,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(168.10000000000002,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              4
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(223.89999999999998,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              6
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(279.70000000000005,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              8
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(391.29999999999995,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              12
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(447.09999999999997,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(502.90000000000003,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              16
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(558.7,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              18
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,265.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,265.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,204.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,143)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              52
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              id="0-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 40%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="aqua"
+                height="188.46153846153845"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="76.53846153846155"
+              />
+              <rect
+                aria-label="2020/04/30. Metadata2, 5%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="navy"
+                height="23.557692307692307"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="52.98076923076924"
+              />
+            </g>
+            <text
+              aria-label="Total: 45"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="46.98076923076924"
+            >
+              45
+            </text>
+          </g>
+          <g>
+            <g
+              id="1-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 30%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="aqua"
+                height="141.34615384615384"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="123.65384615384616"
+              />
+              <rect
+                aria-label="2020/04/30. Metadata2, 20%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="navy"
+                height="94.23076923076923"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="29.423076923076934"
+              />
+            </g>
+            <text
+              aria-label="Total: 50"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="23.423076923076934"
+            >
+              50
+            </text>
+          </g>
+        </g>
+        <g />
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+        style="justify-content: unset; flex-wrap: wrap;"
+      >
+        <div
+          class="fui-legend__resizableArea"
+          style="display: flex; flex-wrap: wrap; overflow: auto;"
+        >
+          <div
+            class="fui-legend__legendContainer"
+          >
+            <button
+              aria-label="Metadata1"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata1
+              </div>
+            </button>
+          </div>
+          <div
+            class="fui-legend__legendContainer"
+          >
+            <button
+              aria-label="Metadata2"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata2
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutr2k"
+    >
+      <div
+        class="fui-PopoverSurface"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
+        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+      >
+        <div
+          class="fui-cart__calloutContentRoot"
+        >
+          <div
+            class="fui-cart__calloutDateTimeContainer"
+          >
+            <div
+              class="fui-cart__calloutContentX"
+            >
+              2020/04/30
+               
+            </div>
+          </div>
+          <div
+            class="fui-cart__calloutInfoContainer"
+            style="border-inline-start: 4px solid aqua; margin-top: 11px;"
+          >
+            <div
+              class="fui-cart__calloutBlockContainer"
+            >
+              <div
+                class="fui-cart__calloutlegendText"
+              >
+                Metadata1
+              </div>
+              <div
+                class="fui-cart__calloutContentY"
+                style="color: aqua;"
+              >
+                40%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart - mouse events Should render customized callout on mouseover 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        aria-label="Vertical bar chart with 2 stacked bars. "
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 265)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(112.30000000000001,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(168.10000000000002,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              4
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(223.89999999999998,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              6
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(279.70000000000005,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              8
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(391.29999999999995,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              12
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(447.09999999999997,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(502.90000000000003,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              16
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(558.7,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              18
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,265.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,265.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,204.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,143)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              52
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              id="0-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 40%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="aqua"
+                height="188.46153846153845"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="76.53846153846155"
+              />
+              <rect
+                aria-label="2020/04/30. Metadata2, 5%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="navy"
+                height="23.557692307692307"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="52.98076923076924"
+              />
+            </g>
+            <text
+              aria-label="Total: 45"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="46.98076923076924"
+            >
+              45
+            </text>
+          </g>
+          <g>
+            <g
+              id="1-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 30%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="aqua"
+                height="141.34615384615384"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="123.65384615384616"
+              />
+              <rect
+                aria-label="2020/04/30. Metadata2, 20%."
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="navy"
+                height="94.23076923076923"
+                opacity="1"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="29.423076923076934"
+              />
+            </g>
+            <text
+              aria-label="Total: 50"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="23.423076923076934"
+            >
+              50
+            </text>
+          </g>
+        </g>
+        <g />
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+        style="justify-content: unset; flex-wrap: wrap;"
+      >
+        <div
+          class="fui-legend__resizableArea"
+          style="display: flex; flex-wrap: wrap; overflow: auto;"
+        >
+          <div
+            class="fui-legend__legendContainer"
+          >
+            <button
+              aria-label="Metadata1"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata1
+              </div>
+            </button>
+          </div>
+          <div
+            class="fui-legend__legendContainer"
+          >
+            <button
+              aria-label="Metadata2"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata2
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutr2u"
+    >
+      <div
+        class="fui-PopoverSurface"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
+        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+      >
+        <div>
+          <pre>
+            {
+  "legend": "Metadata1",
+  "data": 40,
+  "color": "aqua",
+  "xAxisCalloutData": "2020/04/30",
+  "yAxisCalloutData": "40%"
+}
+          </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart - mouse events Should render customized callout per stack on mouseover 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        aria-label="Vertical bar chart with 2 stacked bars and 1 lines. "
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 265)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(112.30000000000001,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              2
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(168.10000000000002,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              4
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(223.89999999999998,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              6
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(279.70000000000005,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              8
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(391.29999999999995,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              12
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(447.09999999999997,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(502.90000000000003,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              16
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(558.7,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              18
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,265.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,265.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,204.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,143)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              52
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="0. Metadata1, 40%. Metadata2, 5%. Line1, 15."
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="aqua"
+                height="188.46153846153845"
+                opacity="1"
+                rx="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="76.53846153846155"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="navy"
+                height="23.557692307692307"
+                opacity="1"
+                rx="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="52.98076923076924"
+              />
+            </g>
+            <text
+              aria-label="Total: 45"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="46.98076923076924"
+            >
+              45
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="20. Metadata1, 30%. Metadata2, 20%. Line1, 30."
+              id="1-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="aqua"
+                height="141.34615384615384"
+                opacity="1"
+                rx="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="123.65384615384616"
+              />
+              <rect
+                class="fui-vsbc__opacityChangeOnHover default"
+                cursor="default"
+                fill="navy"
+                height="94.23076923076923"
+                opacity="1"
+                rx="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="614"
+                y="29.423076923076934"
+              />
+            </g>
+            <text
+              aria-label="Total: 50"
+              class="fui-vsbc__barLabel"
+              role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="23.423076923076934"
+            >
+              50
+            </text>
+          </g>
+        </g>
+        <g>
+          <line
+            opacity="1"
+            stroke="yellow"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(0, 0)"
+            x1="56"
+            x2="614"
+            y1="194.3269230769231"
+            y2="123.65384615384616"
+          />
+          <circle
+            cx="56"
+            cy="194.3269230769231"
+            fill="var(--colorNeutralBackground1)"
+            opacity="1"
+            r="8"
+            stroke="yellow"
+            stroke-width="3"
+            transform="translate(0, 0)"
+          />
+          <circle
+            cx="614"
+            cy="123.65384615384616"
+            fill="var(--colorNeutralBackground1)"
+            opacity="0"
+            r="8"
+            stroke="yellow"
+            stroke-width="3"
+            transform="translate(0, 0)"
+          />
+        </g>
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+        style="justify-content: unset; flex-wrap: wrap;"
+      >
+        <div
+          class="fui-legend__resizableArea"
+          style="display: flex; flex-wrap: wrap; overflow: auto;"
+        >
+          <div
+            class="fui-legend__legendContainer"
+          >
+            <button
+              aria-label="Line1"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              role="option"
+              style="--rect-height: 4px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 4px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Line1
+              </div>
+            </button>
+          </div>
+          <div
+            class="fui-legend__legendContainer"
+          >
+            <button
+              aria-label="Metadata1"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata1
+              </div>
+            </button>
+          </div>
+          <div
+            class="fui-legend__legendContainer"
+          >
+            <button
+              aria-label="Metadata2"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Metadata2
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutr33"
+    >
+      <div
+        class="fui-PopoverSurface"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
+        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+      >
+        <div>
+          <pre>
+            {
+  "chartData": [
+    {
+      "legend": "Metadata1",
+      "data": 40,
+      "color": "aqua",
+      "xAxisCalloutData": "2020/04/30",
+      "yAxisCalloutData": "40%"
+    },
+    {
+      "legend": "Metadata2",
+      "data": 5,
+      "color": "navy",
+      "xAxisCalloutData": "2020/04/30",
+      "yAxisCalloutData": "5%"
+    }
+  ],
+  "xAxisPoint": 0,
+  "lineData": [
+    {
+      "y": 15,
+      "legend": "Line1",
+      "color": "yellow",
+      "data": 15,
+      "shouldDrawBorderBottom": true
+    }
+  ]
+}
+          </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing Should render gradients on bars 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing Should render rounded corners on bars 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={3}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={3}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={3}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={3}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChart correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+      style={
+        Object {
+          "flexWrap": "wrap",
+          "justifyContent": "unset",
+        }
+      }
+    >
+      <div
+        className="fui-legend__resizableArea"
+        style={
+          Object {
+            "display": "flex",
+            "flexWrap": "wrap",
+            "overflow": "auto",
+          }
+        }
+      >
+        <div
+          className="fui-legend__legendContainer"
+        >
+          <button
+            aria-label="Metadata1"
+            aria-selected={false}
+            className="fui-Button fui-legend__legend"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="option"
+            style={
+              Object {
+                "--rect-backgroundColor": "aqua",
+                "--rect-borderColor": "aqua",
+                "--rect-content": "",
+                "--rect-height": "12px",
+              }
+            }
+            type="button"
+          >
+            <div
+              className="fui-legend__rect"
+              style={
+                Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                  "--rect-opacity-high-contrast": "",
+                  "backgroundColor": "aqua",
+                  "borderColor": "aqua",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
+            />
+            <div
+              className="fui-legend__text"
+              style={
+                Object {
+                  "opacity": "",
+                }
+              }
+            >
+              Metadata1
+            </div>
+          </button>
+        </div>
+        <div
+          className="fui-legend__legendContainer"
+        >
+          <button
+            aria-label="Metadata2"
+            aria-selected={false}
+            className="fui-Button fui-legend__legend"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="option"
+            style={
+              Object {
+                "--rect-backgroundColor": "navy",
+                "--rect-borderColor": "navy",
+                "--rect-content": "",
+                "--rect-height": "12px",
+              }
+            }
+            type="button"
+          >
+            <div
+              className="fui-legend__rect"
+              style={
+                Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                  "--rect-opacity-high-contrast": "",
+                  "backgroundColor": "navy",
+                  "borderColor": "navy",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
+            />
+            <div
+              className="fui-legend__text"
+              style={
+                Object {
+                  "opacity": "",
+                }
+              }
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
+            id="0-singleBar"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            tabIndex={0}
+          >
+            <rect
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              opacity={1}
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              opacity={1}
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
+            id="1-singleBar"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            tabIndex={0}
+          >
+            <rect
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              opacity={1}
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              opacity={1}
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      className="fui-cart__chart"
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="aqua"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              fill="navy"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              tabIndex={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

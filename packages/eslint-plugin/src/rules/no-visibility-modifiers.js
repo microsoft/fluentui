@@ -12,30 +12,14 @@ const MemberNameType = {
 };
 
 /**
- * @typedef {import('@typescript-eslint/utils').TSESTree.MethodDefinition} MethodDefinition
- * @typedef {import('@typescript-eslint/utils').TSESTree.PropertyDefinition} PropertyDefinition
- * @typedef {import('@typescript-eslint/utils').TSESTree.Property} Property
- * @typedef {import('@typescript-eslint/utils').TSESTree.TSAbstractMethodDefinition} TSAbstractMethodDefinition
- * @typedef {import('@typescript-eslint/utils').TSESTree.TSAbstractPropertyDefinition} TSAbstractPropertyDefinition
- * @typedef {import('@typescript-eslint/utils').TSESTree.TSMethodSignature} TSMethodSignature
- * @typedef {import('@typescript-eslint/utils').TSESTree.TSPropertySignature} TSProperySignature
- * @typedef {import('@typescript-eslint/utils').TSESLint.SourceCode}  SourceCode
- */
-
-// Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
-// For some reason just importing TSESTree and accessing properties off that doesn't work.
-/**
- * @typedef {import("@typescript-eslint/utils").TSESTree.PropertyDefinition} ClassProperty
- * @typedef {import("@typescript-eslint/utils").TSESTree.Identifier} Identifier
- * @typedef {import("@typescript-eslint/utils").TSESTree.Node} Node
- * @typedef {import("@typescript-eslint/utils").TSESTree.TSParameterProperty} ParameterProperty
+ * @import { TSESLint, TSESTree } from "@typescript-eslint/utils"
  */
 
 /**
  * Gets a string name representation of the name of the given MethodDefinition
  * or PropertyDefinition node, with handling for computed property names.
- * @param {MethodDefinition | PropertyDefinition | Property | TSAbstractMethodDefinition | TSAbstractPropertyDefinition | TSMethodSignature | TSProperySignature} member The node to get the name of.
- * @param {SourceCode} sourceCode The source code object.
+ * @param {TSESTree.MethodDefinition | TSESTree.PropertyDefinition | TSESTree.Property | TSESTree.TSAbstractMethodDefinition | TSESTree.TSAbstractPropertyDefinition | TSESTree.TSMethodSignature | TSESTree.TSPropertySignature} member The node to get the name of.
+ * @param {TSESLint.SourceCode} sourceCode The source code object.
  * @returns {{ type: number; name: string }} The name of the member.
  */
 
@@ -92,7 +76,7 @@ module.exports = createRule({
     /**
      * Generates the report for rule violations
      * @param {string} nodeType
-     * @param {Node} node
+     * @param {TSESTree.Node} node
      * @param  {{ type: number; name: string } | string} nodeName
      */
     function reportIssue(nodeType, node, nodeName) {
@@ -113,7 +97,7 @@ module.exports = createRule({
 
     /**
      * Checks if a method declaration has an accessibility modifier.
-     * @param {MethodDefinition} methodDefinition The node representing a MethodDefinition.
+     * @param {TSESTree.MethodDefinition} methodDefinition The node representing a MethodDefinition.
      */
     function checkMethodAccessibilityModifier(methodDefinition) {
       let nodeType = 'method definition';
@@ -133,7 +117,7 @@ module.exports = createRule({
 
     /**
      * Checks if property has an accessibility modifier.
-     * @param {ClassProperty} classProperty The node representing a ClassProperty.
+     * @param {TSESTree.PropertyDefinition} classProperty The node representing a ClassProperty.
      */
     function checkPropertyAccessibilityModifier(classProperty) {
       const nodeType = 'class property';
@@ -149,7 +133,7 @@ module.exports = createRule({
 
     /**
      * Checks that the parameter property has the desired accessibility modifiers set.
-     * @param {ParameterProperty} node The node representing a Parameter Property
+     * @param {TSESTree.ParameterProperty} node The node representing a Parameter Property
      */
     function checkParameterPropertyAccessibilityModifier(node) {
       const nodeType = 'parameter property';
@@ -167,7 +151,7 @@ module.exports = createRule({
           node.parameter.type === AST_NODE_TYPES.Identifier
             ? node.parameter.name
             : // has to be an Identifier or TSC will throw an error
-              /** @type {Identifier} */ (node.parameter.left).name;
+              /** @type {TSESTree.Identifier} */ (node.parameter.left).name;
 
         if (node.accessibility) {
           reportIssue(nodeType, node, nodeName);

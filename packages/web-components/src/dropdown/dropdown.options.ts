@@ -1,6 +1,6 @@
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import type { ValuesOf } from '../utils/typings.js';
-import type { BaseDropdown } from './dropdown.js';
+import type { BaseDropdown } from './dropdown.base.js';
 
 /**
  * Predicate function that determines if the element should be considered a dropdown.

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { RatingDisplay } from '@fluentui/react-components';
 import { CircleFilled, SquareFilled } from '@fluentui/react-icons';
 import { makeStyles } from '@fluentui/react-components';
@@ -11,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Shape = () => {
+export const Shape = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.root}>

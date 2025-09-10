@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogTrigger,
@@ -11,7 +12,7 @@ import {
 } from '@fluentui/react-components';
 import story from './DialogAlert.md';
 
-export const Alert = () => {
+export const Alert = (): JSXElement => {
   return (
     <Dialog modalType="alert">
       <DialogTrigger disableButtonEnhancement>

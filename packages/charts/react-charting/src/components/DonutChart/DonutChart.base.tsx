@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, getId, initializeComponentRef } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { ScaleOrdinal } from 'd3-scale';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -13,9 +13,12 @@ import {
   getNextColor,
   getNextGradient,
   areArraysEqual,
+  MIN_DONUT_RADIUS,
 } from '../../utilities/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
-import { IChart } from '../../types/index';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
+import { ILegendContainer } from '../Legends/index';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
@@ -50,6 +53,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -92,6 +96,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._calloutId = getId('callout');
     this._uniqText = getId('_Pie_');
     this._emptyChartId = getId('_DonutChart_empty');
+    this._legendsRef = React.createRef();
   }
 
   public componentDidMount(): void {
@@ -111,63 +116,78 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { data, hideLegend = false } = this.props;
     const points = this._addDefaultColors(data?.chartData);
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
-      width: this.state._width!,
-      height: this.state._height!,
       color: this.state.color!,
       className: this.props.className!,
     });
 
-    const legendBars = this._createLegends(points);
+    const legendBars = this._createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
-    const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
+    const chartData = this._elevateToMinimums(points);
     const valueInsideDonut =
-      this.props.innerRadius !== 0 ? this._valueInsideDonut(this.props.valueInsideDonut!, chartData!) : '';
+      this.props.innerRadius! > MIN_DONUT_RADIUS
+        ? this._valueInsideDonut(this.props.valueInsideDonut!, chartData!)
+        : '';
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
         ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
         onMouseLeave={this._handleChartMouseLeave}
       >
-        <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all}>
-          <div>
-            <svg
-              className={this._classNames.chart}
-              aria-label={data?.chartTitle}
-              ref={(node: SVGElement | null) => this._setViewBox(node)}
-            >
-              <Pie
-                width={this.state._width!}
-                height={this.state._height!}
-                outerRadius={outerRadius}
-                innerRadius={this.props.innerRadius!}
-                data={chartData!}
-                enableGradient={this.props.enableGradient}
-                roundCorners={this.props.roundCorners}
-                onFocusCallback={this._focusCallback}
-                hoverOnCallback={this._hoverCallback}
-                hoverLeaveCallback={this._hoverLeave}
-                uniqText={this._uniqText}
-                onBlurCallback={this._onBlur}
-                activeArc={this._getHighlightedLegend()}
-                focusedArcId={this.state.focusedArcId || ''}
-                href={this.props.href!}
-                calloutId={this._calloutId}
-                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
-                theme={this.props.theme!}
-                showLabelsInPercent={this.props.showLabelsInPercent}
-                hideLabels={this.props.hideLabels}
-              />
-            </svg>
-          </div>
+        {this.props.xAxisAnnotation && (
+          <text
+            className={this._classNames.axisAnnotation}
+            x={this.state._width! / 2}
+            y={this.state._height! - 10}
+            textAnchor="middle"
+          >
+            {this.props.xAxisAnnotation}
+          </text>
+        )}
+        <FocusZone
+          direction={FocusZoneDirection.horizontal}
+          handleTabKey={FocusZoneTabbableElements.all}
+          className={this._classNames.chartWrapper}
+        >
+          <svg
+            className={this._classNames.chart}
+            aria-label={data?.chartTitle}
+            ref={(node: SVGElement | null) => this._setViewBox(node)}
+            width={this.state._width}
+            height={this.state._height}
+          >
+            <Pie
+              width={this.state._width!}
+              height={this.state._height!}
+              outerRadius={outerRadius}
+              innerRadius={this.props.innerRadius!}
+              data={chartData!}
+              enableGradient={this.props.enableGradient}
+              roundCorners={this.props.roundCorners}
+              onFocusCallback={this._focusCallback}
+              hoverOnCallback={this._hoverCallback}
+              hoverLeaveCallback={this._hoverLeave}
+              uniqText={this._uniqText}
+              onBlurCallback={this._onBlur}
+              activeArc={this._getHighlightedLegend()}
+              focusedArcId={this.state.focusedArcId || ''}
+              href={this.props.href!}
+              calloutId={this._calloutId}
+              valueInsideDonut={this._toLocaleString(valueInsideDonut)}
+              theme={this.props.theme!}
+              showLabelsInPercent={this.props.showLabelsInPercent}
+              hideLabels={this.props.hideLabels}
+            />
+          </svg>
         </FocusZone>
         <Callout
           target={this._currentHoverElement}
@@ -212,6 +232,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return this._rootElem;
   }
 
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return toImage(this._rootElem, this._legendsRef.current?.toSVG, getRTL(), opts);
+  };
+
   private _closeCallout = () => {
     this.setState({
       showHover: false,
@@ -254,7 +278,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     node.setAttribute('viewBox', viewbox);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
+    if (this.props.order === 'sorted') {
+      chartData.sort((a: IChartDataPoint, b: IChartDataPoint) => {
+        return b.data! - a.data!;
+      });
+    }
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
       const color: string = this.props.enableGradient
         ? point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0]
@@ -285,6 +315,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         {...this.props.legendProps}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={this._onLegendSelectionChange.bind(this)}
+        ref={this._legendsRef}
       />
     );
     return legends;
@@ -381,7 +412,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   private _toLocaleString(data: string | number | undefined) {
-    const localeString = convertToLocaleString(data, this.props.culture);
+    const localeString = formatToLocaleString(data, this.props.culture, this.props.useUTC);
     if (!localeString) {
       return data;
     }

@@ -27,6 +27,7 @@ export interface IBaseExtendedPickerProps<T> {
   /**
    * Header/title element for the picker
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   headerComponent?: JSX.Element;
 
   /**

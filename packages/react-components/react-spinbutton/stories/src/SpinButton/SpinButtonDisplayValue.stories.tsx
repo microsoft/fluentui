@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
 import type { SpinButtonProps } from '@fluentui/react-components';
 
@@ -17,7 +18,7 @@ const useLayoutStyles = makeStyles({
 type FormatterFn = (value: number) => string;
 type ParserFn = (formattedValue: string) => number;
 
-export const DisplayValue = () => {
+export const DisplayValue = (): JSXElement => {
   const formatter: FormatterFn = value => {
     return `$${value}`;
   };

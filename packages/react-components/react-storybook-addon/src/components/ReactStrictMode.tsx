@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { IconButton, Icons } from '@storybook/components';
 
+import { JSXElement } from '@fluentui/react-utilities';
 import { STRICT_MODE_ID } from '../constants';
 import { useGlobals } from '../hooks';
 
-export const ReactStrictMode = () => {
+export const ReactStrictMode = (): JSXElement => {
   const [globals, updateGlobals] = useGlobals();
 
   const isActive = globals[STRICT_MODE_ID] ?? false;

@@ -1,6 +1,7 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
-  createPresenceComponent,
+  createPresenceComponentVariant,
   Field,
   makeStyles,
   mergeClasses,
@@ -10,7 +11,7 @@ import {
   Switch,
   tokens,
 } from '@fluentui/react-components';
-import { createFadePresence } from '@fluentui/react-motion-components-preview';
+import { Fade } from '@fluentui/react-motion-components-preview';
 
 import description from './FadeCustomization.stories.md';
 
@@ -54,13 +55,10 @@ const useClasses = makeStyles({
   },
 });
 
-const CustomFadeVariant = createPresenceComponent(
-  createFadePresence({
-    enterDuration: motionTokens.durationSlow,
-    enterEasing: motionTokens.curveEasyEaseMax,
-    exitDuration: motionTokens.durationNormal,
-  }),
-);
+const CustomFadeVariant = createPresenceComponentVariant(Fade, {
+  duration: motionTokens.durationSlower,
+  exitDuration: motionTokens.durationFast,
+});
 
 const LoremIpsum = () => (
   <>
@@ -70,9 +68,9 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Customization = () => {
+export const Customization = (): JSXElement => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);

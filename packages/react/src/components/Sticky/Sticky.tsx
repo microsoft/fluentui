@@ -25,6 +25,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
   };
 
   public static contextType = ScrollablePaneContext;
+  public context: any;
 
   private _root = React.createRef<HTMLDivElement>();
   private _stickyContentTop = React.createRef<HTMLDivElement>();
@@ -152,6 +153,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
       _isOffsetHeightDifferent(this._nonStickyContent, this._placeHolder)) as boolean;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyClassName, children } = this.props;

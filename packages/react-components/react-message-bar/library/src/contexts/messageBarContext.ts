@@ -16,4 +16,5 @@ export const messageBarContextDefaultValue: MessageBarContextValue = {
 };
 
 export const MessageBarContextProvider = messageBarContext.Provider;
-export const useMessageBarContext = () => React.useContext(messageBarContext) ?? messageBarContextDefaultValue;
+export const useMessageBarContext = (): MessageBarContextValue =>
+  React.useContext(messageBarContext) ?? messageBarContextDefaultValue;

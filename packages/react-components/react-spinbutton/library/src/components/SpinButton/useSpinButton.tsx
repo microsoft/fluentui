@@ -6,6 +6,7 @@ import {
   useControllableState,
   useTimeout,
   slot,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
@@ -86,6 +87,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     initialState: 0,
   });
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
   const isControlled = value !== undefined;
 
   const [textValue, setTextValue] = React.useState<string | undefined>(undefined);
@@ -151,6 +154,11 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }
     const newValue = e.target.value;
     setTextValue(newValue);
+    if (inputRef.current) {
+      // we need to set this here using the IDL attribute directly, because otherwise the timing of the ARIA value update
+      // is not in sync with the user-entered native input value, and some screen readers end up reading the wrong value.
+      inputRef.current.ariaValueNow = newValue;
+    }
   };
 
   const handleIncrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -285,7 +293,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }),
     input: slot.always(input, {
       defaultProps: {
-        ref,
         autoComplete: 'off',
         role: 'spinbutton',
         appearance,
@@ -323,8 +330,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   };
 
   state.input.value = valueToDisplay;
+  state.input.ref = useMergedRefs(inputRef, ref);
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
+  state.input['aria-valuenow'] = internalState.current.value ?? undefined;
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
   state.input.onChange = mergeCallbacks(state.input.onChange, handleInputChange);
   state.input.onInput = mergeCallbacks(state.input.onInput, handleInputChange);

@@ -1,22 +1,21 @@
+import '@testing-library/jest-dom';
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount, ReactWrapper } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import { ColorRectangle } from './ColorRectangle';
 import { ColorRectangleBase, _getNewColor } from './ColorRectangle.base';
 import { getColorFromString } from '../../../utilities/color/colors';
 import { KeyCodes } from '../../../Utilities';
-import type { IColorRectangleState } from './ColorRectangle.base';
-import type { IColorRectangleProps } from './ColorRectangle.types';
 import type { IColor } from '../../../utilities/color/colors';
 
 describe('ColorRectangle', () => {
-  let wrapper: ReactWrapper<IColorRectangleProps, IColorRectangleState, ColorRectangleBase> | undefined;
   let component: renderer.ReactTestRenderer | undefined;
   let colorRectangle: ColorRectangleBase | null = null;
   const colorRectRef = (ref: ColorRectangleBase | null) => {
     colorRectangle = ref;
   };
+
   const getBoundingClientRect =
     (size: number, offset: number = 0) =>
     (): DOMRect =>
@@ -30,10 +29,6 @@ describe('ColorRectangle', () => {
       } as DOMRect);
 
   afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
     if (component) {
       component.unmount();
       component = undefined;
@@ -47,43 +42,41 @@ describe('ColorRectangle', () => {
   });
 
   it('uses provided color', () => {
-    wrapper = mount(<ColorRectangle color={getColorFromString('#abcdef')!} componentRef={colorRectRef} />);
-
+    render(<ColorRectangle color={getColorFromString('#abcdef')!} componentRef={colorRectRef} />);
     expect(colorRectangle!.color.hex).toEqual('abcdef');
   });
 
   it('respects color prop change', () => {
     const onChange = jest.fn();
-    wrapper = mount(
+    const { rerender } = render(
       <ColorRectangle color={getColorFromString('#abcdef')!} onChange={onChange} componentRef={colorRectRef} />,
     );
 
-    wrapper.setProps({ color: getColorFromString('#AEAEAE')! });
+    rerender(<ColorRectangle color={getColorFromString('#AEAEAE')!} onChange={onChange} componentRef={colorRectRef} />);
     expect(colorRectangle!.color.hex).toEqual('aeaeae');
-    // shouldn't call onChange when the consumer updates the color prop
     expect(onChange).toHaveBeenCalledTimes(0);
   });
 
   it('uses default aria values', () => {
     const color = getColorFromString('#abcdef')!;
-    wrapper = mount(<ColorRectangle color={color} />);
+    render(<ColorRectangle color={color} />);
 
-    const element = wrapper.getDOMNode();
-    expect(element.getAttribute('aria-label')).toBe('Saturation and brightness');
-    expect(element.getAttribute('aria-valuetext')).toBe(`Saturation ${color.s} brightness ${color.v}`);
+    const element = screen.getByRole('slider');
+    expect(element).toHaveAttribute('aria-label', 'Saturation and brightness');
+    expect(element).toHaveAttribute('aria-valuetext', `Saturation ${color.s} brightness ${color.v}`);
 
     const descriptionId = element.getAttribute('aria-describedby');
     expect(descriptionId).toBeTruthy();
-    const descriptionEl = element.querySelectorAll('#' + descriptionId)[0];
+    const descriptionEl = document.getElementById(descriptionId!);
     expect(descriptionEl).toBeTruthy();
-    expect(descriptionEl.textContent).toBe(
+    expect(descriptionEl!.textContent).toBe(
       'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
     );
   });
 
   it('uses custom aria values', () => {
     const color = getColorFromString('#abcdef')!;
-    wrapper = mount(
+    render(
       <ColorRectangle
         color={color}
         ariaLabel="custom label"
@@ -92,13 +85,13 @@ describe('ColorRectangle', () => {
       />,
     );
 
-    const element = wrapper.getDOMNode();
-    expect(element.getAttribute('aria-label')).toBe('custom label');
-    expect(element.getAttribute('aria-valuetext')).toBe(`v ${color.v} s ${color.s}`);
+    const element = screen.getByRole('slider');
+    expect(element).toHaveAttribute('aria-label', 'custom label');
+    expect(element).toHaveAttribute('aria-valuetext', `v ${color.v} s ${color.s}`);
 
     const descriptionId = element.getAttribute('aria-describedby');
-    const descriptionEl = element.querySelectorAll('#' + descriptionId)[0];
-    expect(descriptionEl.textContent).toBe('custom description');
+    const descriptionEl = document.getElementById(descriptionId!);
+    expect(descriptionEl!.textContent).toBe('custom description');
   });
 
   it('correctly calculates new color', () => {
@@ -151,8 +144,9 @@ describe('ColorRectangle', () => {
     const onChange = jest.fn((ev: any, newColor: IColor) => {
       color = newColor;
     });
-    wrapper = mount(<ColorRectangle color={color1} onChange={onChange} componentRef={colorRectRef} />);
-    wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRect(100);
+    render(<ColorRectangle color={color1} onChange={onChange} componentRef={colorRectRef} />);
+    const element = screen.getByRole('slider');
+    element.getBoundingClientRect = getBoundingClientRect(100);
 
     const checkResult = (s: number, v: number, onChangeCount: number) => {
       expect(onChange).toHaveBeenCalledTimes(onChangeCount);
@@ -162,31 +156,30 @@ describe('ColorRectangle', () => {
       expect(colorRectangle!.color.v).toBe(v);
     };
 
-    wrapper.simulate('keydown', { which: KeyCodes.left });
+    fireEvent.keyDown(element, { key: 'ArrowLeft', keyCode: KeyCodes.left });
     checkResult(color1.s - 1, color1.v, 1);
 
-    wrapper.simulate('keydown', { which: KeyCodes.right });
+    fireEvent.keyDown(element, { key: 'ArrowRight', keyCode: KeyCodes.right });
     checkResult(color1.s, color1.v, 2);
 
-    wrapper.simulate('keydown', { which: KeyCodes.up });
+    fireEvent.keyDown(element, { key: 'ArrowUp', keyCode: KeyCodes.up });
     checkResult(color1.s, color1.v + 1, 3);
 
-    wrapper.simulate('keydown', { which: KeyCodes.down });
+    fireEvent.keyDown(element, { key: 'ArrowDown', keyCode: KeyCodes.down });
     checkResult(color1.s, color1.v, 4);
 
-    wrapper.simulate('keydown', { which: KeyCodes.down, shiftKey: true });
+    fireEvent.keyDown(element, { key: 'ArrowDown', shiftKey: true, keyCode: KeyCodes.down });
     checkResult(color1.s, color1.v - 10, 5);
   });
 
   it('ignores key events that put value out of range', () => {
     const onChange = jest.fn();
-    wrapper = mount(
-      <ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />,
-    );
+    render(<ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />);
+    const element = screen.getByRole('slider');
     const initialColor = colorRectangle!.color;
 
     // white is at top left corner, so going up isn't valid
-    wrapper.simulate('keydown', { which: KeyCodes.up });
+    fireEvent.keyDown(element, { key: 'ArrowUp' });
     expect(colorRectangle!.color).toEqual(initialColor);
     expect(onChange).toHaveBeenCalledTimes(0);
   });
@@ -197,12 +190,11 @@ describe('ColorRectangle', () => {
       updatedColor = newColor;
       ev.preventDefault();
     });
-    wrapper = mount(
-      <ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />,
-    );
+    render(<ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />);
+    const element = screen.getByRole('slider');
     const initialColor = colorRectangle!.color;
 
-    wrapper.simulate('keydown', { which: KeyCodes.down });
+    fireEvent.keyDown(element, { key: 'ArrowDown', keyCode: KeyCodes.down });
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(updatedColor!.v).toBe(99);
     expect(colorRectangle!.color).toEqual(initialColor);
@@ -210,24 +202,23 @@ describe('ColorRectangle', () => {
 
   it('handles mouse events', () => {
     const onChange = jest.fn();
-    wrapper = mount(
-      <ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />,
-    );
-    wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRect(100);
+    render(<ColorRectangle color={getColorFromString('#fff')!} onChange={onChange} componentRef={colorRectRef} />);
+    const element = screen.getByRole('slider');
+    element.getBoundingClientRect = getBoundingClientRect(100);
 
     // click in top right => red
     const red = getColorFromString('#ff0000')!;
-    wrapper.simulate('mousedown', { type: 'mousedown', clientX: 100, clientY: 0, buttons: 1 });
+    fireEvent.mouseDown(element, { clientX: 100, clientY: 0, buttons: 1 });
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(colorRectangle!.color).toEqual(red);
 
     // move farther to right => ignored (keep previous)
-    wrapper.simulate('mousemove', { type: 'mousemove', clientX: 200, clientY: 0, buttons: 1 });
+    fireEvent.mouseMove(element, { clientX: 200, clientY: 0, buttons: 1 });
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(colorRectangle!.color).toEqual(red);
 
     // mouse up => keep color
-    wrapper.simulate('mouseup');
+    fireEvent.mouseUp(element);
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(colorRectangle!.color).toEqual(red);
   });

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { render, fireEvent } from '@testing-library/react';
 import { MenuItemRadio } from './MenuItemRadio';
@@ -36,13 +35,12 @@ describe('MenuItemRadio', () => {
    * Note: see more visual regression tests for MenuItemRadio in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(
+    const { container } = render(
       <MenuItemRadio name="radio" value="1">
         Default MenuItemRadio
       </MenuItemRadio>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
 

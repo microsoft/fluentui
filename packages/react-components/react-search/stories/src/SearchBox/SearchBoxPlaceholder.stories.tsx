@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, SearchBox } from '@fluentui/react-components';
 
-export const Placeholder = () => {
+export const Placeholder = (): JSXElement => {
   return (
     <Field label="SearchBox with a placeholder">
       <SearchBox placeholder="This is a placeholder" />

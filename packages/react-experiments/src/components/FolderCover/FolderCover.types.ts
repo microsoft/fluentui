@@ -39,5 +39,5 @@ export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<HTML
    * The children to pass into the content area of the folder cover.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  children?: React.Props<{}>['children'] | ((childrenProps: IFolderCoverChildrenProps) => JSX.Element | null);
+  children?: React.ReactNode | ((childrenProps: IFolderCoverChildrenProps) => JSX.Element | null);
 }

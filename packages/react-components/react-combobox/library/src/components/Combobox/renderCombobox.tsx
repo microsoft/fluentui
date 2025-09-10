@@ -4,6 +4,7 @@ import { Portal } from '@fluentui/react-portal';
 import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Combobox.types';
 import { ListboxProvider } from '../../contexts/ListboxContext';
@@ -11,7 +12,7 @@ import { ListboxProvider } from '../../contexts/ListboxContext';
 /**
  * Render the final JSX of Combobox
  */
-export const renderCombobox_unstable = (state: ComboboxState, contextValues: ComboboxContextValues) => {
+export const renderCombobox_unstable = (state: ComboboxState, contextValues: ComboboxContextValues): JSXElement => {
   assertSlots<ComboboxSlots>(state);
 
   return (

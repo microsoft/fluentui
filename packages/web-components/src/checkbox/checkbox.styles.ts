@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { checkedState, circularState, indeterminateState, largeState } from '../styles/states/index.js';
+import { checkedState, indeterminateState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -122,17 +122,17 @@ export const styles = css`
     inset: 0;
   }
 
-  :host(${largeState}) {
+  :host([size='large']) {
     --size: 20px;
   }
 
-  :host(${largeState}) ::slotted([slot='checked-indicator']),
-  :host(${largeState}) .checked-indicator {
+  :host([size='large']) ::slotted([slot='checked-indicator']),
+  :host([size='large']) .checked-indicator {
     width: 16px;
   }
 
-  :host(${circularState}),
-  :host(${circularState}) .indeterminate-indicator {
+  :host([shape='circular']),
+  :host([shape='circular']) .indeterminate-indicator {
     border-radius: ${borderRadiusCircular};
   }
 

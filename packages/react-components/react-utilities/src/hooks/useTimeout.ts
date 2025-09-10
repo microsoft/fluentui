@@ -12,7 +12,7 @@ const clearTimeoutNoop = (_handle: number) => undefined;
  *
  * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
  */
-export function useTimeout() {
+export function useTimeout(): readonly [(fn: () => void, delay?: number) => number, () => void] {
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
 

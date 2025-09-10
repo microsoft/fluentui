@@ -1,19 +1,21 @@
+/** @import { Configuration, WebpackPluginInstance, ModuleOptions } from "webpack" */
+
 /**
- * @typedef {import("webpack").Configuration} WebpackConfig
- * @typedef {WebpackConfig & { devServer?: object }} WebpackServeConfig
- * @typedef {import("webpack").ModuleOptions} WebpackModule
- * @typedef {import("webpack").Configuration['output']} WebpackOutput
+ * @typedef {Configuration & { devServer?: object }} WebpackServeConfig
+ * @typedef {Configuration['output']} WebpackOutput
  */
 
-const webpack = require('webpack');
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
+
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const webpack = require('webpack');
+
 // @ts-ignore - accessing package.json is a private API access, thus ignoring TS here
 const webpackVersion = /** @type {string} */ (require('webpack/package.json').version);
-
 const { merge } = require('@fluentui/scripts-utils');
 const { getDefaultEnvironmentVars, findGitRoot } = require('@fluentui/scripts-monorepo');
+
 const { getResolveAlias } = require('./getResolveAlias');
 
 console.log(`Webpack version: ${webpackVersion}`);
@@ -47,16 +49,16 @@ const api = {
    * @param {string} bundleName - Name for the bundle file. Usually either the unscoped name, or
    * the scoped name with a - instead of / between the parts.
    * @param {boolean} isProduction - whether it's a production build.
-   * @param {Partial<WebpackConfig>} customConfig - partial custom webpack config, merged into each full config object.
+   * @param {Partial<Configuration>} customConfig - partial custom webpack config, merged into each full config object.
    * @param {boolean} [onlyProduction] - whether to only generate the production config.
    * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps.
    * @param {boolean} [profile] - whether to profile the bundle using webpack-bundle-analyzer.
-   * @returns {WebpackConfig[]} array of configs.
+   * @returns {Configuration[]} array of configs.
    */
   createConfig(bundleName, isProduction, customConfig, onlyProduction, excludeSourceMaps, profile) {
     const packageName = path.basename(process.cwd());
 
-    /** @type {WebpackModule} */
+    /** @type {ModuleOptions} */
     const module = {
       noParse: [/autoit.js/],
       rules: excludeSourceMaps
@@ -137,8 +139,8 @@ const api = {
    * @param {string} [options.entry] - custom entry if not `./lib/index.js`
    * @param {boolean} [options.isProduction] - whether it's a production build.
    * @param {boolean} [options.onlyProduction] - whether to generate the production config.
-   * @param {Partial<WebpackConfig>} [options.customConfig] - partial custom webpack config, merged into each full config object
-   * @returns {WebpackConfig[]}
+   * @param {Partial<Configuration>} [options.customConfig] - partial custom webpack config, merged into each full config object
+   * @returns {Configuration[]}
    */
   createBundleConfig(options) {
     const {
@@ -325,7 +327,7 @@ module.exports = api;
  */
 function getPlugins(bundleName, isProduction, profile) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-  /** @type {webpack.WebpackPluginInstance[]} */
+  /** @type {WebpackPluginInstance[]} */
   const plugins = [new webpack.DefinePlugin(getDefaultEnvironmentVars(isProduction))];
 
   if (isProduction && profile) {

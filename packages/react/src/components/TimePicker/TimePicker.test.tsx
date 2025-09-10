@@ -1,14 +1,34 @@
+import '@testing-library/jest-dom';
+
 import * as React from 'react';
-import { TimePicker } from './TimePicker';
-import { ITimeRange, TimePickerValidationResultData } from './TimePicker.types';
-import { create } from '@fluentui/test-utilities';
-import { mount } from 'enzyme';
-import type { IComboBox } from '../ComboBox/ComboBox.types';
-import { KeyCodes } from '../../Utilities';
-import { render } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { setWarningCallback, resetIds } from '@fluentui/utilities';
+import { create } from '@fluentui/test-utilities';
+import { TimePicker } from './TimePicker';
+import type { ITimeRange, TimePickerValidationResultData } from './TimePicker.types';
+import type { IComboBox } from '../ComboBox/ComboBox.types';
 
 describe('TimePicker', () => {
+  beforeAll(() => {
+    // Prevent deprecation warnings from failing the tests
+    setWarningCallback(() => {
+      /* no-op */
+    });
+  });
+
+  afterAll(() => {
+    setWarningCallback();
+  });
+
+  afterEach(() => {
+    cleanup();
+  });
+
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders correctly', () => {
     const timeRange: ITimeRange = {
       start: 0,
@@ -22,37 +42,36 @@ describe('TimePicker', () => {
   });
 
   it('generates the formatted option', () => {
-    const onFormatDate = (date: Date) => {
-      return 'custom date option';
-    };
-    const timePicker = React.createRef<IComboBox>();
+    const onFormatDate = (date: Date) => 'custom date option';
+    const timePickerRef = React.createRef<IComboBox>();
     const dateAnchor = new Date('November 25, 2021 09:00:00');
 
-    mount(
+    render(
       <TimePicker
         label="I am a TimePicker"
         onFormatDate={onFormatDate}
         dateAnchor={dateAnchor}
         defaultValue={dateAnchor}
-        componentRef={timePicker}
+        componentRef={timePickerRef}
       />,
     );
 
-    expect(timePicker!.current!.selectedOptions[0].text).toBe('custom date option');
+    const selected = timePickerRef.current!.selectedOptions[0];
+    expect(selected.text).toBe('custom date option');
   });
 
-  it('shows controlled time correctly', () => {
+  it('shows controlled time correctly', async () => {
     let _selectedTime = new Date('February 27, 2023 10:00:00');
-    const onChange = (_ev: React.FormEvent<IComboBox>, time: Date): void => {
+    const onChange = (_e: React.FormEvent<IComboBox>, time: Date) => {
       if (time) {
         _selectedTime = time;
       }
     };
     const dateAnchor = new Date('February 27, 2023 08:00:00');
 
-    const { getByRole, getAllByRole } = render(
+    render(
       <TimePicker
-        showSeconds={true}
+        showSeconds
         allowFreeform={false}
         increments={15}
         autoComplete="on"
@@ -63,93 +82,83 @@ describe('TimePicker', () => {
       />,
     );
 
-    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
-    expect(timePickerComboBox.value).toEqual('10:00:00');
+    const combobox = screen.getByRole('combobox') as HTMLInputElement;
+    expect(combobox.value).toBe('10:00:00');
 
-    userEvent.click(timePickerComboBox);
-    const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
-    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(combobox);
+    const options = await screen.findAllByRole('option');
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
 
-    const formattedSelectedTime = _selectedTime.toLocaleTimeString([], {
+    const formatted = _selectedTime.toLocaleTimeString([], {
       hour: 'numeric',
       minute: '2-digit',
       second: '2-digit',
       hour12: false,
     });
-
-    const expectedTime = '08:30:00';
-    expect(formattedSelectedTime).toEqual(expectedTime);
+    expect(formatted).toBe('08:30:00');
   });
 
-  it('correctly renders options using value as date anchor', () => {
+  it('correctly renders options using value as date anchor', async () => {
     let _selectedTime = new Date('March 12, 2023 17:00:00');
-    const onChange = (_ev: React.FormEvent<IComboBox>, time: Date): void => {
+    const onChange = (_e: React.FormEvent<IComboBox>, time: Date) => {
       if (time) {
         _selectedTime = time;
       }
     };
 
-    const { getByRole, getAllByRole } = render(
+    render(
       <TimePicker
-        showSeconds={true}
+        showSeconds
         allowFreeform={false}
         autoComplete="on"
         label="I am a TimePicker with the value prop"
         value={_selectedTime}
         onChange={onChange}
-        useHour12={true}
+        useHour12
       />,
     );
 
-    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
-    expect(timePickerComboBox.value).toEqual('5:00:00 PM');
+    const combobox = screen.getByRole('combobox') as HTMLInputElement;
+    expect(combobox.value).toBe('5:00:00 PM');
 
-    userEvent.click(timePickerComboBox);
-    const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
-    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(combobox);
+    const options = await screen.findAllByRole('option');
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
 
-    const formattedSelectedTime = _selectedTime.toLocaleTimeString([], {
+    const formatted = _selectedTime.toLocaleTimeString([], {
       hour: 'numeric',
       minute: '2-digit',
       second: '2-digit',
       hour12: true,
     });
-
-    const expectedTime = '6:00:00 PM';
-    expect(formattedSelectedTime).toEqual(expectedTime);
+    expect(formatted).toBe('6:00:00 PM');
   });
 
-  it('allows time selection in locales that format time without "am/pm"', () => {
-    const { toLocaleTimeString } = Date.prototype;
-    const toLocaleTimeStringMock = jest.spyOn(Date.prototype, 'toLocaleTimeString');
-
-    // Mock toLocaleTimeString to simulate running in a Japanese locale
-    toLocaleTimeStringMock.mockImplementation(function (this: Date, _locales, options) {
-      return toLocaleTimeString.call(this, 'ja-JP', options);
+  it('allows time selection in locales without AM/PM', async () => {
+    const original = Date.prototype.toLocaleTimeString;
+    jest.spyOn(Date.prototype, 'toLocaleTimeString').mockImplementation(function (this: Date, _loc, opts) {
+      return original.call(this, 'ja-JP', opts);
     });
 
     const dateAnchor = new Date('February 27, 2023 08:00:00');
-
     const onChange = jest.fn();
 
-    const { getByRole, getAllByRole } = render(
-      <TimePicker allowFreeform={false} increments={15} dateAnchor={dateAnchor} useHour12 onChange={onChange} />,
-    );
+    render(<TimePicker allowFreeform={false} increments={15} dateAnchor={dateAnchor} useHour12 onChange={onChange} />);
 
-    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
-    userEvent.click(timePickerComboBox);
-    const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
-    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+    const combobox = screen.getByRole('combobox');
+    userEvent.click(combobox);
+    const options = await screen.findAllByRole('option');
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
 
     expect(onChange).toHaveBeenLastCalledWith(expect.anything(), new Date('February 27, 2023 08:30:00'));
 
-    toLocaleTimeStringMock.mockRestore();
+    (Date.prototype.toLocaleTimeString as jest.Mock).mockRestore();
   });
 
-  it('correctly renders options using default value as date anchor', () => {
+  it('correctly renders options using defaultValue as date anchor', async () => {
     const defaultValue = new Date('April 1, 2023 13:00:00');
 
-    const { getByRole, getAllByRole } = render(
+    render(
       <TimePicker
         allowFreeform={false}
         autoComplete="on"
@@ -158,28 +167,24 @@ describe('TimePicker', () => {
       />,
     );
 
-    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
-    expect(timePickerComboBox.value).toEqual('13:00');
+    const combobox = screen.getByRole('combobox') as HTMLInputElement;
+    expect(combobox.value).toBe('13:00');
 
-    userEvent.click(timePickerComboBox);
-    const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
-    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(combobox);
+    const options = await screen.findAllByRole('option');
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
 
-    expect(timePickerComboBox.value).toEqual('14:00');
+    expect(combobox.value).toBe('14:00');
   });
 
-  it('shows the error message under the ComboBox on input validation error', () => {
+  it('shows the error message under the ComboBox on input validation error', async () => {
     const onValidationResult = jest.fn();
-
     const dateAnchor = new Date('March 15, 2023 10:00:00');
-    const timeRange: ITimeRange = {
-      start: 10,
-      end: 17,
-    };
+    const timeRange: ITimeRange = { start: 10, end: 17 };
 
-    const { getByRole } = render(
+    render(
       <TimePicker
-        showSeconds={true}
+        showSeconds
         increments={15}
         timeRange={timeRange}
         autoComplete="on"
@@ -190,39 +195,33 @@ describe('TimePicker', () => {
       />,
     );
 
-    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
-
-    userEvent.click(timePickerComboBox);
-    userEvent.type(timePickerComboBox, '10:45:00{enter}');
+    const combobox = screen.getByRole('combobox');
+    userEvent.click(combobox);
+    userEvent.type(combobox, '10:45:00{enter}');
     expect(onValidationResult).toHaveBeenCalledTimes(0);
 
-    userEvent.clear(timePickerComboBox);
-    userEvent.click(timePickerComboBox);
-    userEvent.type(timePickerComboBox, '11111 AM{enter}');
-
+    userEvent.clear(combobox);
+    userEvent.click(combobox);
+    userEvent.type(combobox, '11111 AM{enter}');
     expect(onValidationResult).toHaveBeenCalledTimes(1);
-    const errorMessageElement = getByRole('alert') as HTMLDivElement;
-    expect(errorMessageElement).not.toBe(null);
+
+    const alert = await screen.findByRole('alert');
+    expect(alert).toBeInTheDocument();
   });
 
-  it('calls onValidationResult only when the error message changes', () => {
-    let _errorMessage: string = '';
-    const onValidationResult = jest.fn(
-      (_ev: React.FormEvent<IComboBox>, timePickerErrorData: TimePickerValidationResultData): void => {
-        if (timePickerErrorData.errorMessage !== undefined) {
-          _errorMessage = timePickerErrorData.errorMessage;
-        }
-      },
-    );
+  it('calls onValidationResult only when the error message changes', async () => {
+    let lastError = '';
+    const onValidationResult = jest.fn((_e: React.FormEvent<IComboBox>, data: TimePickerValidationResultData) => {
+      if (data.errorMessage !== undefined) {
+        lastError = data.errorMessage;
+      }
+    });
     const dateAnchor = new Date('February 27, 2023 08:00:00');
-    const timeRange: ITimeRange = {
-      start: 8,
-      end: 20,
-    };
+    const timeRange: ITimeRange = { start: 8, end: 20 };
 
-    const { getByRole } = render(
+    render(
       <TimePicker
-        showSeconds={true}
+        showSeconds
         increments={15}
         timeRange={timeRange}
         autoComplete="on"
@@ -233,103 +232,81 @@ describe('TimePicker', () => {
       />,
     );
 
-    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
-    expect(_errorMessage).toEqual('');
+    const combobox = screen.getByRole('combobox');
+    expect(lastError).toBe('');
 
-    userEvent.click(timePickerComboBox);
-    userEvent.type(timePickerComboBox, '11111 AM{enter}');
-    const firstExpectedErrorMessage = 'Enter a valid time in the 24-hour format: hh:mm:ss';
-    expect(_errorMessage).toEqual(firstExpectedErrorMessage);
+    // First invalid
+    userEvent.click(combobox);
+    userEvent.type(combobox, '11111 AM{enter}');
+    const firstError = 'Enter a valid time in the 24-hour format: hh:mm:ss';
+    expect(lastError).toBe(firstError);
     expect(onValidationResult).toHaveBeenCalled();
     onValidationResult.mockClear();
 
-    // verify that onValidationResult is not called twice for the same error message
-    userEvent.clear(timePickerComboBox);
-    userEvent.click(timePickerComboBox);
-    userEvent.type(timePickerComboBox, '88888 AM{enter}');
-    expect(_errorMessage).toEqual(firstExpectedErrorMessage);
+    // Same invalid again => no callback
+    userEvent.clear(combobox);
+    userEvent.click(combobox);
+    userEvent.type(combobox, '88888 AM{enter}');
+    expect(lastError).toBe(firstError);
     expect(onValidationResult).not.toHaveBeenCalled();
 
-    // verify that onValidationResult is finally called again for a new error message
-    userEvent.click(timePickerComboBox);
-    userEvent.type(timePickerComboBox, '03:00:00{enter}');
+    // New error (out of range)
+    userEvent.click(combobox);
+    userEvent.type(combobox, '03:00:00{enter}');
     expect(onValidationResult).toHaveBeenCalled();
-
-    const secondExpectedErrorMessage = 'Please enter a time within the range';
-    expect(_errorMessage).toContain(secondExpectedErrorMessage);
+    const secondError = 'Please enter a time within the range';
+    expect(lastError).toContain(secondError);
   });
 
   describe('validates entered text when', () => {
-    it('receives an invalid hour input for 24-hour-no-seconds format', () => {
-      const wrapper = mount(<TimePicker id="test" allowFreeform useHour12={false} showSeconds={false} />);
-      const input = wrapper.find('input');
-      input.simulate('input', { target: { value: '95:22' } });
+    const renderAndValidate = async (component: React.ReactElement) => {
+      render(component);
+      const input = screen.getByRole('combobox');
+      return input;
+    };
 
-      // Trigger validation
-      input.simulate('keydown', { which: KeyCodes.enter });
-
-      // ComboBox sets the error element's ID to `id` from props plus "-error"
-      expect(wrapper.find('#test-error').text()).toMatch('24-hour format: hh:mm');
+    it('invalid hour for 24-hour no-seconds format', async () => {
+      const input = await renderAndValidate(
+        <TimePicker id="test" allowFreeform useHour12={false} showSeconds={false} />,
+      );
+      userEvent.type(input, '95:22{enter}');
+      const alert = await screen.findByRole('alert');
+      expect(alert.textContent).toMatch(/24-hour format: hh:mm/);
     });
 
-    it('receives an invalid hour input for 24-hour-with-seconds format', () => {
-      const wrapper = mount(<TimePicker id="test" allowFreeform useHour12={false} showSeconds={true} />);
-      const input = wrapper.find('input');
-      input.simulate('input', { target: { value: '24:22:42' } });
-
-      // Trigger validation
-      input.simulate('keydown', { which: KeyCodes.enter });
-
-      // ComboBox sets the error element's ID to `id` from props plus "-error"
-      expect(wrapper.find('#test-error').text()).toMatch('24-hour format: hh:mm:ss');
+    it('invalid hour for 24-hour with-seconds format', async () => {
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12={false} showSeconds />);
+      userEvent.type(input, '24:22:42{enter}');
+      const alert = await screen.findByRole('alert');
+      expect(alert.textContent).toMatch(/24-hour format: hh:mm:ss/);
     });
 
-    it('receives an invalid hour input for 12-hour-no-seconds format', () => {
-      const wrapper = mount(<TimePicker id="test" allowFreeform useHour12={true} showSeconds={false} />);
-      const input = wrapper.find('input');
-      input.simulate('input', { target: { value: '13:26 PM' } });
-
-      // Trigger validation
-      input.simulate('keydown', { which: KeyCodes.enter });
-
-      // ComboBox sets the error element's ID to `id` from props plus "-error"
-      expect(wrapper.find('#test-error').text()).toMatch('12-hour format: hh:mm AP');
+    it('invalid hour for 12-hour no-seconds format', async () => {
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12 showSeconds={false} />);
+      userEvent.type(input, '13:26 PM{enter}');
+      const alert = await screen.findByRole('alert');
+      expect(alert.textContent).toMatch(/12-hour format: hh:mm AP/);
     });
 
-    it('does not receive a complete time input for 12-hour-no-seconds format', () => {
-      const wrapper = mount(<TimePicker id="test" allowFreeform useHour12={true} showSeconds={false} />);
-      const input = wrapper.find('input');
-      input.simulate('input', { target: { value: '3:26' } });
-
-      // Trigger validation
-      input.simulate('keydown', { which: KeyCodes.enter });
-
-      // ComboBox sets the error element's ID to `id` from props plus "-error"
-      expect(wrapper.find('#test-error').text()).toMatch('12-hour format: hh:mm AP');
+    it('incomplete time for 12-hour no-seconds format', async () => {
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12 showSeconds={false} />);
+      userEvent.type(input, '3:26{enter}');
+      const alert = await screen.findByRole('alert');
+      expect(alert.textContent).toMatch(/12-hour format: hh:mm AP/);
     });
 
-    it('receives an invalid hour input for 12-hour-with-seconds format', () => {
-      const wrapper = mount(<TimePicker id="test" allowFreeform useHour12={true} showSeconds={true} />);
-      const input = wrapper.find('input');
-      input.simulate('input', { target: { value: '15:26:37 AM' } });
-
-      // Trigger validation
-      input.simulate('keydown', { which: KeyCodes.enter });
-
-      // ComboBox sets the error element's ID to `id` from props plus "-error"
-      expect(wrapper.find('#test-error').text()).toMatch('12-hour format: hh:mm:ss AP');
+    it('invalid hour for 12-hour with-seconds format', async () => {
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12 showSeconds />);
+      userEvent.type(input, '15:26:37 AM{enter}');
+      const alert = await screen.findByRole('alert');
+      expect(alert.textContent).toMatch(/12-hour format: hh:mm:ss AP/);
     });
 
-    it('does not receive a complete time input for 12-hour-with-seconds format', () => {
-      const wrapper = mount(<TimePicker id="test" allowFreeform useHour12={true} showSeconds={true} />);
-      const input = wrapper.find('input');
-      input.simulate('input', { target: { value: '5:26:37' } });
-
-      // Trigger validation
-      input.simulate('keydown', { which: KeyCodes.enter });
-
-      // ComboBox sets the error element's ID to `id` from props plus "-error"
-      expect(wrapper.find('#test-error').text()).toMatch('12-hour format: hh:mm:ss AP');
+    it('incomplete time for 12-hour with-seconds format', async () => {
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12 showSeconds />);
+      userEvent.type(input, '5:26:37{enter}');
+      const alert = await screen.findByRole('alert');
+      expect(alert.textContent).toMatch(/12-hour format: hh:mm:ss AP/);
     });
   });
 });

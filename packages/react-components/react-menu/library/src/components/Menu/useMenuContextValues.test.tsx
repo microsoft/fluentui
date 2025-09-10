@@ -19,20 +19,17 @@ describe('useMenuContextValues_unstable', () => {
         "hasIcons": false,
         "inline": false,
         "isSubmenu": false,
-        "menuPopoverRef": Object {
-          "current": null,
-        },
+        "menuPopoverRef": [Function],
         "mountNode": null,
         "onCheckedValueChange": [Function],
         "open": false,
         "openOnContext": false,
         "openOnHover": false,
         "persistOnItemClick": false,
+        "safeZone": null,
         "setOpen": [Function],
-        "triggerId": "menu1",
-        "triggerRef": Object {
-          "current": null,
-        },
+        "triggerId": "menur0",
+        "triggerRef": [Function],
       }
     `);
   });

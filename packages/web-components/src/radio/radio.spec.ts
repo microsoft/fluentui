@@ -10,6 +10,22 @@ test.describe('Radio', () => {
     await expect(element).toHaveJSProperty('elementInternals.role', 'radio');
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-radio');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set ARIA attributes to match the state', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -26,7 +42,7 @@ test.describe('Radio', () => {
     });
 
     await test.step('ariaDisabled', async () => {
-      await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', null);
+      await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
 
       await element.evaluate((node: Radio) => (node.disabled = true));
 
@@ -44,12 +60,12 @@ test.describe('Radio', () => {
     await expect(element).toHaveAttribute('tabindex', '0');
   });
 
-  test('should set the tabindex to -1 when disabled is `true`', async ({ fastPage }) => {
+  test('should not be focusable when disabled is `true`', async ({ fastPage }) => {
     const { element } = fastPage;
 
     await fastPage.setTemplate({ attributes: { disabled: true } });
 
-    await expect(element).toHaveAttribute('tabindex', '-1');
+    await expect(element).toHaveJSProperty('tabIndex', -1);
   });
 
   test('should initialize to the initial value if no value property is set', async ({ fastPage }) => {

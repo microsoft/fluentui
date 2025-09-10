@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ComplexOptions = (props: Partial<ComboboxProps>) => {
+export const ComplexOptions = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-default');
   const styles = useStyles();
   return (

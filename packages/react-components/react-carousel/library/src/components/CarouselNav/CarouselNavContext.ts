@@ -7,7 +7,8 @@ export const carouselNavContextDefaultValue: CarouselNavContextValue = {
   appearance: undefined,
 };
 
-export const useCarouselNavContext = () => React.useContext(carouselNavContext) ?? carouselNavContextDefaultValue;
+export const useCarouselNavContext = (): CarouselNavContextValue =>
+  React.useContext(carouselNavContext) ?? carouselNavContextDefaultValue;
 
 export const CarouselNavContextProvider = carouselNavContext.Provider;
 

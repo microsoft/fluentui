@@ -2,8 +2,10 @@ import './version';
 export {
   Async,
   AutoScroll,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   BaseComponent,
   Customizations,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   Customizer,
   CustomizerContext,
   DATA_IS_SCROLLABLE_ATTRIBUTE,
@@ -90,6 +92,7 @@ export {
   getRTL,
   getRTLSafeKeyCode,
   getRect,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getResourceUrl,
   getScrollbarWidth,
   getVirtualParent,
@@ -101,9 +104,11 @@ export {
   hoistStatics,
   htmlElementProperties,
   iframeProperties,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   imageProperties,
   imgProperties,
   initializeComponentRef,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   initializeFocusRects,
   inputProperties,
   isControlled,
@@ -137,6 +142,7 @@ export {
   optionProperties,
   portalContainsElement,
   precisionRound,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   raiseClick,
   removeDirectionalKeyCode,
   removeIndex,
@@ -147,12 +153,15 @@ export {
   safeRequestAnimationFrame,
   safeSetTimeout,
   selectProperties,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   setBaseUrl,
   setFocusVisibility,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   setLanguage,
   setMemoizeWeakMap,
   setPortalAttribute,
   setRTL,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   setSSR,
   setVirtualParent,
   setWarningCallback,
@@ -194,6 +203,7 @@ export type {
   ICancelable,
   IChangeDescription,
   IChangeEventCallback,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IClassNames,
   IClassNamesFunctionOptions,
   IComponentAs,
@@ -217,6 +227,7 @@ export type {
   IPerfData,
   IPerfMeasurement,
   IPerfSummary,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   IPoint,
   IPropsWithStyles,
   IReactProps,
@@ -236,10 +247,13 @@ export type {
   IStyleFunctionOrObject,
   IVirtualElement,
   IWarnControlledUsageParams,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   Omit,
   Point,
   RefObject,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   Settings,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   SettingsFunction,
   ShadowConfigHook,
   StyleFunction,

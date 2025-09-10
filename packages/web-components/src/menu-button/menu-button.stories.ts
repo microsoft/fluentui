@@ -31,7 +31,7 @@ export default {
   title: 'Components/Button/Menu Button',
   render: renderComponent(storyTemplate),
   args: {
-    content: 'Menu Button',
+    slottedContent: () => 'Menu Button',
     disabled: false,
     disabledFocusable: false,
   },
@@ -154,9 +154,7 @@ export default {
 export const Default: Story = {};
 
 export const IconOnly: Story = {
-  args: {
-    iconOnly: true,
-  },
+  render: renderComponent(html<StoryArgs<FluentMenuButton>>` <fluent-menu-button icon-only></fluent-menu-button> `),
 };
 
 export const Appearance: Story = {

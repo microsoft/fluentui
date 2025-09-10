@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import { mount } from 'enzyme';
+import { render, act } from '@testing-library/react';
 import { useUnmount } from './useUnmount';
 
 describe('useUnmount', () => {
@@ -16,11 +15,16 @@ describe('useUnmount', () => {
     };
 
     expect(onUnmount).toHaveBeenCalledTimes(0);
-    const wrapper = mount(<TestComponent />);
+
+    // Use React Testing Library instead of Enzyme
+    const container = document.createElement('div');
+    const { unmount } = render(<TestComponent />, { container });
     expect(onUnmount).toHaveBeenCalledTimes(0);
-    ReactTestUtils.act(() => {
-      wrapper.unmount();
+
+    act(() => {
+      unmount();
     });
+
     expect(onUnmount).toHaveBeenCalledTimes(1);
   });
 });

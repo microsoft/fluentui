@@ -7,13 +7,15 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
  * Instantiates [keyborg](https://github.com/microsoft/keyborg)
  * @returns - keyborg instance
  */
-export function useKeyborgRef() {
+export function useKeyborgRef(): React.RefObject<Keyborg | null> {
   const { targetDocument } = useFluent();
   const keyborgRef = React.useRef<Keyborg | null>(null);
 
   React.useEffect(() => {
-    if (targetDocument) {
-      const keyborg = createKeyborg(targetDocument.defaultView!);
+    const targetWindow = targetDocument?.defaultView;
+
+    if (targetWindow) {
+      const keyborg = createKeyborg(targetWindow);
       keyborgRef.current = keyborg;
 
       return () => {

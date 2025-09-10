@@ -2,25 +2,31 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { MessageBarGroupState, MessageBarGroupSlots } from './MessageBarGroup.types';
-import { PresenceGroup } from '@fluentui/react-motion';
-import { MessageBarMotion } from './MessageBarGroup.motions';
+import { TransitionGroup } from 'react-transition-group';
+import { MessageBarTransition } from './MessageBarTransition';
 
 /**
  * Render the final JSX of MessageBarGroup
  */
-export const renderMessageBarGroup_unstable = (state: MessageBarGroupState) => {
+export const renderMessageBarGroup_unstable = (state: MessageBarGroupState): JSXElement => {
   assertSlots<MessageBarGroupSlots>(state);
 
   return (
     <state.root>
-      <PresenceGroup>
+      <TransitionGroup component={null}>
         {state.children.map(child => (
-          <MessageBarMotion key={child.key} animate={state.animate}>
+          <MessageBarTransition
+            animate={state.animate}
+            key={child.key}
+            enterClassName={state.enterStyles}
+            exitClassName={state.exitStyles}
+          >
             {child}
-          </MessageBarMotion>
+          </MessageBarTransition>
         ))}
-      </PresenceGroup>
+      </TransitionGroup>
     </state.root>
   );
 };

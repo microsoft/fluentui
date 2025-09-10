@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 
 interface IVerticalBarState {}
 
@@ -16,22 +22,22 @@ export class VerticalBarChartRotatedLabelExample extends React.Component<{}, IVe
       {
         x: 'This is a medium long label. ',
         y: 3500,
-        color: '#627CEF',
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         x: 'This is a long label This is a long label',
         y: 2500,
-        color: '#C19C00',
+        color: getColorFromToken(DataVizPalette.color2),
       },
       {
         x: 'This label is as long as the previous one',
         y: 1900,
-        color: '#E650AF',
+        color: getColorFromToken(DataVizPalette.color3),
       },
       {
         x: 'A short label',
         y: 2800,
-        color: '#0E7878',
+        color: getColorFromToken(DataVizPalette.color4),
       },
     ];
 

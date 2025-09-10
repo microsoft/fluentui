@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Link, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
@@ -19,7 +20,7 @@ const ExampleContent = () => {
   );
 };
 
-export const InternalUpdateContent = () => {
+export const InternalUpdateContent = (): JSXElement => {
   const [visible, setVisible] = React.useState(false);
   const focusRef = React.useRef<HTMLAnchorElement>(null);
 

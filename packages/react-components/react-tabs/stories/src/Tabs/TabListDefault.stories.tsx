@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Tab, TabList } from '@fluentui/react-components';
 import type { TabListProps } from '@fluentui/react-components';
 
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: Partial<TabListProps>) => {
+export const Default = (props: Partial<TabListProps>): JSXElement => {
   const styles = useStyles();
 
   return (

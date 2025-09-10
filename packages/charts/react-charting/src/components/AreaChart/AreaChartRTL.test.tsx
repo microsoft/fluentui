@@ -16,6 +16,9 @@ import {
   isTestEnv,
 } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
@@ -702,6 +705,9 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
     },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithWait(

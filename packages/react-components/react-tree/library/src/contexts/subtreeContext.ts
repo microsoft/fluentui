@@ -20,6 +20,6 @@ export const SubtreeContext: React.Context<SubtreeContextValue> = React.createCo
   undefined,
 ) as React.Context<SubtreeContextValue>;
 
-export const useSubtreeContext_unstable = () => {
+export const useSubtreeContext_unstable = (): SubtreeContextValue => {
   return React.useContext(SubtreeContext) ?? defaultSubTreeContextValue;
 };

@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { Slider } from '@fluentui/react-components';
 import type { Meta } from '@storybook/react';
 

@@ -37,7 +37,14 @@ const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIAButtonElement<'div'>>): MenuItemState => {
   const isSubmenuTrigger = useMenuTriggerContext_unstable();
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
-  const { as = 'div', disabled = false, hasSubmenu = isSubmenuTrigger, persistOnClick = persistOnClickContext } = props;
+  const {
+    as = 'div',
+    disabled = false,
+    hasSubmenu = isSubmenuTrigger,
+    persistOnClick = persistOnClickContext,
+    content: _content, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
+    ...rest
+  } = props;
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   useNotifySplitItemMultiline({ multiline: !!props.subText, hasSubmenu });
@@ -64,7 +71,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
         as,
         useARIAButtonProps<'div', ARIAButtonProps<'div'>>(as, {
           role: 'menuitem',
-          ...props,
+          ...rest,
           disabled: false,
           disabledFocusable: disabled,
           ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,

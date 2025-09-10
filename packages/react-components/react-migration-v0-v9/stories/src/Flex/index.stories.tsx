@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Flex, FlexItem, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { makeStyles } from '@fluentui/react-components';
@@ -28,7 +29,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   return (
@@ -45,7 +46,7 @@ export const Default = () => {
   );
 };
 
-export const FlexItemAlign = () => {
+export const FlexItemAlign = (): JSXElement => {
   const styles = useStyles();
 
   return (
@@ -68,7 +69,7 @@ export const FlexItemAlign = () => {
   );
 };
 
-export const FlexItemPush = () => {
+export const FlexItemPush = (): JSXElement => {
   const styles = useStyles();
 
   return (

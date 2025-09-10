@@ -9,7 +9,7 @@ import type { KeyborgCallback } from 'keyborg';
  * attribute to a referenced element to ensure keyboard navigation awareness
  * synced to keyborg logic without having to cause a re-render on react tree.
  */
-export function useKeyboardNavAttribute<E extends HTMLElement>() {
+export function useKeyboardNavAttribute<E extends HTMLElement>(): React.RefObject<E> {
   const { targetDocument } = useFluent();
   const keyborg = React.useMemo(() => targetDocument && createKeyborg(targetDocument.defaultView!), [targetDocument]);
   const ref = React.useRef<E>(null);

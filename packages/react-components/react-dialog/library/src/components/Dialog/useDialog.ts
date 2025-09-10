@@ -1,6 +1,6 @@
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { presenceMotionSlot, type PresenceMotionSlotProps } from '@fluentui/react-motion';
+import { presenceMotionSlot } from '@fluentui/react-motion';
 import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -48,11 +48,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
 
   return {
     components: {
-      // TODO: remove once React v18 slot API is modified
-      // This is a problem at the moment due to UnknownSlotProps assumption
-      // that `children` property is `ReactNode`, which in this case is not valid
-      // as PresenceComponentProps['children'] is `ReactElement`
-      surfaceMotion: DialogSurfaceMotion as React.FC<PresenceMotionSlotProps>,
+      surfaceMotion: DialogSurfaceMotion,
     },
     inertTrapFocus,
     open,

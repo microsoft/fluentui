@@ -129,9 +129,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
           border-color: Highlight;
         }
     title=""
-  >
-    
-  </div>
+  />
   <div
     className=
         ms-DocumentCardActivity
@@ -271,9 +269,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-      >
-        
-      </span>
+      />
       <span
         className=
             ms-DocumentCardActivity-activity
@@ -287,9 +283,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-      >
-        
-      </span>
+      />
     </div>
   </div>
 </div>

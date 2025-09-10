@@ -92,7 +92,7 @@ export const PeoplePickerProcessSelectionExample: React.FunctionComponent = () =
       <NormalPeoplePicker
         // eslint-disable-next-line react/jsx-no-bind
         onResolveSuggestions={onFilterChanged}
-        // eslint-disable-next-line react/jsx-no-bind
+        // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-deprecated
         onEmptyInputFocus={returnMostRecentlyUsed}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={suggestionProps}

@@ -52,7 +52,7 @@ const listboxContextDefaultValue = {
 
 export const ListboxContext = createContext<ListboxContextValue | undefined>(undefined);
 
-export const useListboxContext_unstable = <T>(selector: ContextSelector<ListboxContextValue, T>) =>
+export const useListboxContext_unstable = <T>(selector: ContextSelector<ListboxContextValue, T>): T =>
   useContextSelector(ListboxContext, (ctx = listboxContextDefaultValue) => selector(ctx));
 
 export const ListboxProvider = ListboxContext.Provider;

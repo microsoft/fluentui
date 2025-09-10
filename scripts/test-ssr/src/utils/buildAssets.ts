@@ -41,7 +41,7 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
       outfile: cjsOutfile,
 
       // External dependencies should not be bundled
-      external: ['@griffel/core', '@griffel/react', 'react', 'react-dom', 'scheduler'],
+      external: ['@griffel/core', '@griffel/react', 'react', 'react-dom', 'react-dom/server', 'scheduler'],
       format: 'cjs',
       target: `node${NODE_MAJOR_VERSION}`,
       plugins: [pluginInstance],

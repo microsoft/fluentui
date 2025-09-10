@@ -8,9 +8,25 @@ const STEP = 20;
 const PRECISION_MODIFIER = Shift;
 const PRECISION_FACTOR = 1 / 4;
 
-export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
+export function useKeyboardResizing(columnResizeState: ColumnResizeState): {
+  toggleInteractiveMode: (colId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) => void;
+  columnId: TableColumnId | undefined;
+  getKeyboardResizingProps: (
+    colId: TableColumnId,
+    currentWidth: number,
+  ) => {
+    onKeyDown: (event: React.KeyboardEvent) => void;
+    onBlur: () => void;
+    ref: React.RefObject<HTMLDivElement>;
+    role: string;
+    'aria-label': string;
+    'aria-valuetext': string;
+    'aria-hidden': boolean;
+    tabIndex?: number;
+  };
+} {
   const [columnId, setColumnId] = React.useState<TableColumnId>();
-  const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
+  const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>(undefined);
   const { findPrevFocusable } = useFocusFinders();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
@@ -18,7 +34,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
     columnResizeStateRef.current = columnResizeState;
   }, [columnResizeState]);
 
-  const [resizeHandleRefs] = React.useState(() => new Map<TableColumnId, React.RefObject<HTMLDivElement>>());
+  const [resizeHandleRefs] = React.useState(() => new Map<TableColumnId, React.RefObject<HTMLDivElement | null>>());
 
   const keyboardHandler = useEventCallback((event: React.KeyboardEvent) => {
     if (!columnId) {
@@ -130,7 +146,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       (colId: TableColumnId, currentWidth: number) => ({
         onKeyDown: keyboardHandler,
         onBlur: disableInteractiveMode,
-        ref: getKeyboardResizingRef(colId),
+        ref: getKeyboardResizingRef(colId) as React.RefObject<HTMLDivElement>,
         role: 'separator',
         'aria-label': 'Resize column',
         'aria-valuetext': `${currentWidth} pixels`,

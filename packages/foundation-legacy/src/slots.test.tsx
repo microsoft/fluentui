@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
 import { withSlots, createFactory, getSlots } from './slots';
 import { IHTMLElementSlot, IHTMLSlot } from './IHTMLSlots';
 import {
@@ -213,14 +212,14 @@ describe('createFactory', () => {
   };
 
   it(`passes componentProps without userProps`, () => {
-    const component = mount(
+    const component = renderer.create(
       createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined, undefined) as JSX.Element,
     );
-    expect(component.props()).toEqual({ ...componentProps, ...emptyClassName });
+    expect(component.root.props).toEqual({ ...componentProps, ...emptyClassName });
   });
 
   it(`passes userProp string as child`, () => {
-    const component = mount(
+    const component = renderer.create(
       createFactory<TComponentProps, string>(TestDiv)(
         componentProps,
         userPropString,
@@ -228,18 +227,18 @@ describe('createFactory', () => {
         undefined,
       ) as JSX.Element,
     );
-    expect(component.props()).toEqual({ ...componentProps, children: userPropString, ...emptyClassName });
+    expect(component.root.props).toEqual({ ...componentProps, children: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as child`, () => {
-    const component = mount(
+    const component = renderer.create(
       createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSX.Element,
     );
-    expect(component.props()).toEqual({ ...componentProps, children: 42, ...emptyClassName });
+    expect(component.root.props).toEqual({ ...componentProps, children: 42, ...emptyClassName });
   });
 
   it(`passes userProp string as defaultProp`, () => {
-    const component = mount(
+    const component = renderer.create(
       createFactory<TComponentProps, string>(TestDiv, factoryOptions)(
         componentProps,
         userPropString,
@@ -247,11 +246,11 @@ describe('createFactory', () => {
         undefined,
       ) as JSX.Element,
     );
-    expect(component.props()).toEqual({ ...componentProps, [defaultProp]: userPropString, ...emptyClassName });
+    expect(component.root.props).toEqual({ ...componentProps, [defaultProp]: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as defaultProp`, () => {
-    const component = mount(
+    const component = renderer.create(
       createFactory<TComponentProps, number>(TestDiv, factoryOptions)(
         componentProps,
         42,
@@ -259,11 +258,11 @@ describe('createFactory', () => {
         undefined,
       ) as JSX.Element,
     );
-    expect(component.props()).toEqual({ ...componentProps, [defaultProp]: 42, ...emptyClassName });
+    expect(component.root.props).toEqual({ ...componentProps, [defaultProp]: 42, ...emptyClassName });
   });
 
   it('merges userProps over componentProps', () => {
-    const component = mount(
+    const component = renderer.create(
       createFactory<TComponentProps>(TestDiv, factoryOptions)(
         componentProps,
         userProps,
@@ -271,7 +270,7 @@ describe('createFactory', () => {
         undefined,
       ) as JSX.Element,
     );
-    expect(component.props()).toEqual({ ...componentProps, ...userProps, ...emptyClassName });
+    expect(component.root.props).toEqual({ ...componentProps, ...userProps, ...emptyClassName });
   });
 
   it('renders div and userProp integer as children', () => {
@@ -429,7 +428,7 @@ describe('getSlots', () => {
     expect(createdSlots.testSlot2.isSlot).toBeTruthy();
 
     // Mount to trigger slot component render functions
-    mount(createdSlots.testSlot1(testSlot1Props) as JSX.Element);
-    mount(createdSlots.testSlot2(testSlot2Props) as JSX.Element);
+    renderer.create(createdSlots.testSlot1(testSlot1Props) as JSX.Element);
+    renderer.create(createdSlots.testSlot2(testSlot2Props) as JSX.Element);
   });
 });

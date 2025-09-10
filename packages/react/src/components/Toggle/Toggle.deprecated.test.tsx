@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { setWarningCallback } from '@fluentui/utilities';
 import { Toggle } from './Toggle';
 
@@ -16,26 +16,30 @@ describe('Toggle', () => {
   });
 
   it('renders aria-label based on offAriaLabel', () => {
-    const component = mount(<Toggle label="Label" offAriaLabel="offLabel" />);
+    const { container } = render(<Toggle label="Label" offAriaLabel="offLabel" />);
+    const toggleButton = container.querySelector('button');
 
-    expect(component.find('button').first().getDOMNode().getAttribute('aria-label')).toEqual('offLabel');
+    expect(toggleButton?.getAttribute('aria-label')).toEqual('offLabel');
   });
 
   it('renders aria-label based on onAriaLabel when Toggle is ON', () => {
-    const component = mount(<Toggle label="Label" onAriaLabel="onLabel" defaultChecked />);
+    const { container } = render(<Toggle label="Label" onAriaLabel="onLabel" defaultChecked />);
+    const toggleButton = container.querySelector('button');
 
-    expect(component.find('button').first().getDOMNode().getAttribute('aria-label')).toEqual('onLabel');
+    expect(toggleButton?.getAttribute('aria-label')).toEqual('onLabel');
   });
 
   it('has no aria-labelledby attribute when checked if onAriaLabel is provided', () => {
-    const component = mount(<Toggle label="Label" onAriaLabel="OnAriaLabel" defaultChecked />);
+    const { container } = render(<Toggle label="Label" onAriaLabel="OnAriaLabel" defaultChecked />);
+    const toggleButton = container.querySelector('button');
 
-    expect(component.find('button').first().getDOMNode().getAttribute('aria-labelledby')).toBeNull();
+    expect(toggleButton?.getAttribute('aria-labelledby')).toBeNull();
   });
 
   it('has no aria-labelledby attribute when unchecked if offAriaLabel is provided', () => {
-    const component = mount(<Toggle label="Label" offAriaLabel="OffAriaLabel" />);
+    const { container } = render(<Toggle label="Label" offAriaLabel="OffAriaLabel" />);
+    const toggleButton = container.querySelector('button');
 
-    expect(component.find('button').first().getDOMNode().getAttribute('aria-labelledby')).toBeNull();
+    expect(toggleButton?.getAttribute('aria-labelledby')).toBeNull();
   });
 });

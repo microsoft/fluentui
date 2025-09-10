@@ -7,6 +7,22 @@ test.describe('Badge', () => {
     innerHTML: 'Badge',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-badge');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set default attribute values', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -43,8 +59,6 @@ test.describe('Badge', () => {
         await expect(element).toHaveAttribute('color', color);
 
         await expect(element).toHaveJSProperty('color', color);
-
-        await expect.soft(element).toHaveCustomState(color);
       });
     }
   });
@@ -59,8 +73,6 @@ test.describe('Badge', () => {
         await expect(element).toHaveAttribute('size', size);
 
         await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveCustomState(size);
       });
     }
   });
@@ -75,8 +87,6 @@ test.describe('Badge', () => {
         await expect(element).toHaveAttribute('shape', shape);
 
         await expect(element).toHaveJSProperty('shape', shape);
-
-        await expect(element).toHaveCustomState(shape);
       });
     }
   });

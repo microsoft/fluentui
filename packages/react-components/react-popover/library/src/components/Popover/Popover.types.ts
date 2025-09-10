@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   PositioningVirtualElement,
   PositioningShorthand,
@@ -25,7 +26,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    * Can contain two children including `PopoverTrigger` and `PopoverSurface`.
    * Alternatively can only contain `PopoverSurface` if using a custom `target`.
    */
-  children: [JSX.Element, JSX.Element] | JSX.Element;
+  children: [JSXElement, JSXElement] | JSXElement;
 
   /**
    * Close when scroll outside of it
@@ -96,7 +97,8 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   closeOnIframeFocus?: boolean;
 
   /**
-   * Configures the position of the Popover
+   * Configures the position of the Popover.
+   * Explore [Positioning docs](?path=/docs/concepts-developer-positioning-components--docs) for more options.
    */
   positioning?: PositioningShorthand;
 

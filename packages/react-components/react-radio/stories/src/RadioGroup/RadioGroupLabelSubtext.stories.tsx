@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Radio, RadioGroup, Text } from '@fluentui/react-components';
 
-export const LabelSubtext = () => (
+export const LabelSubtext = (): JSXElement => (
   <Field label="Favorite Fruit">
     <RadioGroup>
       <Radio

@@ -2,6 +2,7 @@ import { Image } from '@fluentui/react-components';
 import { List, ListItem, useListSelection } from '@fluentui/react-migration-v0-v9';
 
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 type Item = {
   key: string;
@@ -35,7 +36,7 @@ const items: Item[] = [
   },
 ];
 
-export const Selectable = () => {
+export const Selectable = (): JSXElement => {
   const selection = useListSelection({ selectionMode: 'single' });
 
   return (

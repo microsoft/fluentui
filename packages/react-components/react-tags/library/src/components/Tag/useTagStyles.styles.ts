@@ -62,10 +62,7 @@ const useRootRoundedBaseClassName = makeResetStyles({
       content: '""',
       borderTop: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderTopLeftRadius: tokens.borderRadiusMedium,
       borderTopRightRadius: tokens.borderRadiusMedium,
     },
@@ -93,10 +90,7 @@ const useRootCircularBaseClassName = makeResetStyles({
       borderLeft: `${tokens.strokeWidthThin} solid`,
       borderRight: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
-      top: '-1px',
-      left: '-1px',
-      right: '-1px',
-      bottom: '-1px',
+      inset: '-1px',
       borderRadius: tokens.borderRadiusCircular,
     },
   },
@@ -116,7 +110,17 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
   },
+  selected: {
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorBrandStroke1),
 
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+    },
+  },
   medium: {
     height: '32px',
   },
@@ -124,7 +128,26 @@ const useRootStyles = makeStyles({
     height: '24px',
   },
   'extra-small': {
+    position: 'relative',
     height: '20px',
+
+    // Increase clickable area to meet WCAG 2.2 AA
+    // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+    '@media (forced-colors: none)': {
+      '&:before, &:after': {
+        content: '""',
+        position: 'absolute',
+        height: '2px',
+        left: '0',
+        width: '100%',
+      },
+      '&:before': {
+        bottom: '100%',
+      },
+      '&:after': {
+        top: '100%',
+      },
+    },
   },
 });
 
@@ -281,6 +304,14 @@ const useDismissIconStyles = makeStyles({
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
+  selected: {
+    ':hover': {
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+    ':active': {
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+  },
 });
 
 export const usePrimaryTextStyles = makeStyles({
@@ -342,14 +373,15 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
 
-  const { shape, size, appearance } = state;
+  const { disabled, shape, size, appearance, selected } = state;
 
   state.root.className = mergeClasses(
     tagClassNames.root,
 
     shape === 'rounded' ? rootRoundedBaseClassName : rootCircularBaseClassName,
 
-    state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
+    disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
+    selected && !disabled && rootStyles.selected,
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
@@ -393,7 +425,8 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       tagClassNames.dismissIcon,
       dismissIconStyles.base,
       dismissIconStyles[size],
-      !state.disabled && dismissIconStyles[appearance],
+      !disabled && dismissIconStyles[appearance],
+      selected && !disabled && dismissIconStyles.selected,
       state.dismissIcon.className,
     );
   }

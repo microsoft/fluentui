@@ -25,7 +25,7 @@ The following table will help you navigate the 3 projects and understand their d
 | **Issues**      | [![Fluent UI React Components GitHub Issues](https://img.shields.io/github/issues/microsoft/fluentui/Fluent%20UI%20react-components%20(v9)?label=issues&style=flat-square)](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22Fluent+UI+react-components+%28v9%29%22) | [![Fluent UI React GitHub Issues](https://img.shields.io/github/issues/microsoft/fluentui/Fluent%20UI%20react%20(v8)?label=issues&style=flat-square)](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22Fluent+UI+react+(v8)%22) | [![Fluent UI Web Components GitHub Issues](https://img.shields.io/github/issues/microsoft/fluentui/web-components?label=issues&style=flat-square)](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22web-components%22) |
 <!-- prettier-ignore-end -->
 
-> Why are there two React versions? Fluent UI v8 is still widely used. We encourage you to migrate to Fluent UI v9. See the [Migration overview](https://react.fluentui.dev/?path=/docs/concepts-migration-overview--page).
+> Why are there two React versions? Fluent UI v8 is still widely used. We encourage you to migrate to Fluent UI v9. See the [Migration overview](https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-component-mapping--docs).
 
 ## FluentUI Insights
 
@@ -59,7 +59,9 @@ We have a lot in store for Fluent UI - [Read our announcement here.](https://dev
 
 ## Looking for Fluent UI React Northstar?
 
-Fluent UI React Northstar has been superseded by Fluent UI React Components v9. For more details about Fluent UI React Northstar, see its [README.md](/packages/fluentui/README.md).
+Fluent UI React Northstar has been superseded by Fluent UI React Components v9 and reached End Of Life in July 2025.
+
+For more details about Fluent UI React Northstar, see its [source](https://github.com/microsoft/fluentui/tree/react-v0/packages/fluentui) and [README.md](https://github.com/microsoft/fluentui/tree/react-v0/packages/fluentui/README.md).
 
 ---
 

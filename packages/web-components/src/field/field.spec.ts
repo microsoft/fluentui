@@ -8,6 +8,22 @@ test.describe('Field', () => {
     waitFor: ['fluent-text-input'],
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-field');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should set the `disabled` state when the slotted input is disabled', async ({ fastPage }) => {
     const { element } = fastPage;
     const input = element.locator('input');

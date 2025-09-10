@@ -1,6 +1,11 @@
 export { motionTokens, durations, curves } from './motions/motionTokens';
 
-export { createMotionComponent, type MotionComponentProps } from './factories/createMotionComponent';
+export {
+  createMotionComponent,
+  type MotionComponentProps,
+  type MotionComponent,
+} from './factories/createMotionComponent';
+export { createMotionComponentVariant } from './factories/createMotionComponentVariant';
 export {
   createPresenceComponent,
   type PresenceComponentProps,
@@ -11,6 +16,12 @@ export { createPresenceComponentVariant } from './factories/createPresenceCompon
 export { PresenceGroup } from './components/PresenceGroup';
 
 export { presenceMotionSlot, type PresenceMotionSlotProps } from './slots/presenceMotionSlot';
+
+export {
+  PresenceGroupChildProvider,
+  usePresenceGroupChildContext,
+  type PresenceGroupChildContextValue,
+} from './contexts/PresenceGroupChildContext';
 
 export type {
   AtomMotion,

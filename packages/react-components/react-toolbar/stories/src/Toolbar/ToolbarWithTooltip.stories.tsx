@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import type { ToolbarProps } from '@fluentui/react-components';
 import { Toolbar, ToolbarToggleButton, ToolbarDivider, ToolbarButton, Tooltip } from '@fluentui/react-components';
 import { TextUnderlineRegular, TextBoldRegular, TextItalicRegular, HighlightFilled } from '@fluentui/react-icons';
 
-export const WithTooltip = (props: Partial<ToolbarProps>) => (
+export const WithTooltip = (props: Partial<ToolbarProps>): JSXElement => (
   <Toolbar aria-label="with Tooltip" {...props} size="small">
     <Tooltip content="Makes selected text Bold" relationship="description" withArrow>
       <ToolbarToggleButton aria-label="Bold" icon={<TextBoldRegular />} name="textOptions" value="bold" />

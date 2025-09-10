@@ -1,0 +1,13 @@
+{
+  "name": "@fluentui/react-menu-grid-preview-stories",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-menu-grid-preview": "*",
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/scripts-storybook": "*",
+    "@fluentui/eslint-plugin": "*"
+  }
+}

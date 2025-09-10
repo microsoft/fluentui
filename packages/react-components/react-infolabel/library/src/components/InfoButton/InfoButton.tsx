@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderInfoButton_unstable } from './renderInfoButton';
 import { useInfoButton_unstable } from './useInfoButton';
@@ -12,6 +13,8 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef
   const state = useInfoButton_unstable(props, ref);
 
   useInfoButtonStyles_unstable(state);
+  useCustomStyleHook_unstable('useInfoButtonStyles_unstable')(state);
+
   return renderInfoButton_unstable(state);
 });
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FontDecrease24Regular,
   TextFont24Regular,
@@ -122,7 +123,7 @@ const ToolbarOverflowButton = ({ overflowId, overflowGroupId, ...props }: Toolba
   );
 };
 
-export const OverflowItems = (props: Partial<ToolbarProps>) => (
+export const OverflowItems = (props: Partial<ToolbarProps>): JSXElement => (
   <div
     style={{
       resize: 'horizontal',
@@ -232,7 +233,7 @@ OverflowItems.parameters = {
     description: {
       story: [
         'This example uses the',
-        '<a href="#" data-sb-kind="components-overflow--default">Overflow component and utilities</a>,',
+        '<a href="" data-sb-kind="components-overflow">Overflow component and utilities</a>,',
         'Please refer to the documentation to achieve more complex scenarios.',
       ].join('\n'),
     },

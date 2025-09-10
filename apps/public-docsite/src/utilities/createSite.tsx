@@ -39,9 +39,11 @@ addCSSToHeader(`${cdnUrl}/office-ui-fabric-core/11.1.0/css/fabric.min.css`);
 
 let rootElement: HTMLElement;
 
+type ComponentLike = React.ComponentProps<typeof Route>['component'];
+
 export function createSite<TPlatforms extends string>(
   siteDefinition: ISiteDefinition<TPlatforms>,
-  defaultRouteComponent?: React.ComponentType | React.ComponentType[],
+  defaultRouteComponent?: React.ComponentType<{}> | React.ComponentType<{}>[],
 ) {
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
     _onLoad();
@@ -84,10 +86,10 @@ export function createSite<TPlatforms extends string>(
     if (defaultRouteComponent) {
       if (Array.isArray(defaultRouteComponent)) {
         defaultRouteComponent.forEach((Component, index) => {
-          routes.push(<Route key={`default${index}`} component={Component} />);
+          routes.push(<Route key={`default${index}`} component={Component as ComponentLike} />);
         });
       } else {
-        routes.push(<Route key="home" component={defaultRouteComponent} />);
+        routes.push(<Route key="home" component={defaultRouteComponent as ComponentLike} />);
       }
     }
 

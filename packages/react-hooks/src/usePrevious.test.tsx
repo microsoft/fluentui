@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { usePrevious } from './usePrevious';
 
 describe('usePrevious', () => {
@@ -12,12 +12,11 @@ describe('usePrevious', () => {
       return null;
     };
 
-    const wrapper = mount(<TestComponent />);
+    const wrapper = render(<TestComponent />);
     expect(value).toBe(1);
     expect(prevValue).toBeUndefined();
 
-    wrapper.setProps({});
-    wrapper.update();
+    wrapper.rerender(<TestComponent />);
 
     expect(value).toBe(2);
     expect(prevValue).toBe(1);

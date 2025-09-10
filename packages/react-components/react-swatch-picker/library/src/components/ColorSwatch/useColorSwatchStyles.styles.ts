@@ -92,16 +92,36 @@ const useStyles = makeStyles({
       boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke2Pressed}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
     },
   },
+  selectedSmall: {
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
+    ':hover': {
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorCompoundBrandStrokeHover}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
+    },
+    ':hover:active': {
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
+    },
+  },
 });
 
 const useSizeStyles = makeStyles({
   'extra-small': {
     width: '20px',
     height: '20px',
+    ':hover': {
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
+    },
+    ':hover:active': {
+      border: 'none',
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
+    },
   },
   small: {
     width: '24px',
     height: '24px',
+    ':hover:active': {
+      border: 'none',
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
+    },
   },
   medium: {
     width: '28px',
@@ -158,13 +178,14 @@ const useIconStyles = makeStyles({
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
   'use no memo';
 
+  const { size = 'medium', shape = 'square' } = state;
+
   const resetStyles = useResetStyles();
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
   const iconStyles = useIconStyles();
-
-  const { size = 'medium', shape = 'square' } = state;
+  const smallerSelectedStyles = size === 'small' || size === 'extra-small' ? styles.selectedSmall : '';
 
   state.root.className = mergeClasses(
     colorSwatchClassNames.root,
@@ -172,6 +193,7 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
     sizeStyles[size],
     shapeStyles[shape],
     state.selected && styles.selected,
+    state.selected && smallerSelectedStyles,
     state.disabled && styles.disabled,
     state.root.className,
   );

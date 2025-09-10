@@ -31,5 +31,6 @@ const overflowContextDefaultValue: OverflowContextValue = {
 /**
  * @internal
  */
-export const useOverflowContext = <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) =>
-  useContextSelector(OverflowContext, (ctx = overflowContextDefaultValue) => selector(ctx));
+export const useOverflowContext = <SelectedValue>(
+  selector: ContextSelector<OverflowContextValue, SelectedValue>,
+): SelectedValue => useContextSelector(OverflowContext, (ctx = overflowContextDefaultValue) => selector(ctx));

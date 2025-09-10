@@ -2,6 +2,27 @@
   "name": "@fluentui/react-portal-compat-context",
   "entries": [
     {
+      "date": "Mon, 08 Sep 2025 12:51:15 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.14",
+      "version": "9.0.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Nov 2024 10:00:51 GMT",
       "tag": "@fluentui/react-portal-compat-context_v9.0.13",
       "version": "9.0.13",

@@ -4,6 +4,7 @@ import { useTeachingPopoverCarouselFooterButton_unstable } from './useTeachingPo
 import { renderTeachingPopoverCarouselFooterButton_unstable } from './renderTeachingPopoverCarouselFooterButton';
 import { useTeachingPopoverCarouselFooterButtonStyles_unstable } from './useTeachingPopoverCarouselFooterButtonStyles.styles';
 import type { TeachingPopoverCarouselFooterButtonProps } from './TeachingPopoverCarouselFooterButton.types';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * TeachingPopoverCarouselFooterButton component
@@ -16,6 +17,8 @@ export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPo
     const state = useTeachingPopoverCarouselFooterButton_unstable(props, ref);
 
     useTeachingPopoverCarouselFooterButtonStyles_unstable(state);
+
+    useCustomStyleHook_unstable('useTeachingPopoverCarouselFooterButtonStyles_unstable')(state);
 
     return renderTeachingPopoverCarouselFooterButton_unstable(state);
   });

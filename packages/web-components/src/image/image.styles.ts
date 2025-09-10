@@ -6,17 +6,6 @@ import {
   shadow4,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import {
-  blockState,
-  borderedState,
-  circularState,
-  fitCenterState,
-  fitContainState,
-  fitCoverState,
-  fitNoneState,
-  roundedState,
-  shadowState,
-} from '../styles/states/index.js';
 
 /** Image styles
  *
@@ -33,44 +22,44 @@ export const styles = css`
     min-width: 8px;
     display: inline-block;
   }
-  :host(${blockState}) ::slotted(img) {
+  :host([block]) ::slotted(img) {
     width: 100%;
     height: auto;
   }
-  :host(${borderedState}) ::slotted(img) {
+  :host([bordered]) ::slotted(img) {
     border: ${strokeWidthThin} solid ${colorNeutralStroke2};
   }
-  :host(${fitNoneState}) ::slotted(img) {
+  :host([fit='none']) ::slotted(img) {
     object-fit: none;
     object-position: top left;
     height: 100%;
     width: 100%;
   }
-  :host(${fitCenterState}) ::slotted(img) {
+  :host([fit='center']) ::slotted(img) {
     object-fit: none;
     object-position: center;
     height: 100%;
     width: 100%;
   }
-  :host(${fitContainState}) ::slotted(img) {
+  :host([fit='contain']) ::slotted(img) {
     object-fit: contain;
     object-position: center;
     height: 100%;
     width: 100%;
   }
-  :host(${fitCoverState}) ::slotted(img) {
+  :host([fit='cover']) ::slotted(img) {
     object-fit: cover;
     object-position: center;
     height: 100%;
     width: 100%;
   }
-  :host(${shadowState}) ::slotted(img) {
+  :host([shadow]) ::slotted(img) {
     box-shadow: ${shadow4};
   }
-  :host(${circularState}) ::slotted(img) {
+  :host([shape='circular']) ::slotted(img) {
     border-radius: ${borderRadiusCircular};
   }
-  :host(${roundedState}) ::slotted(img) {
+  :host([shape='rounded']) ::slotted(img) {
     border-radius: ${borderRadiusMedium};
   }
 `;

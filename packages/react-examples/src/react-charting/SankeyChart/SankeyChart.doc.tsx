@@ -4,11 +4,14 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { SankeyChartBasicExample } from './SankeyChart.Basic.Example';
 import { SankeyChartInboxExample } from './SankeyChart.Inbox.Example';
+import { SankeyChartResponsiveExample } from './SankeyChart.Responsive.Example';
 
 const SankeyChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Basic.Example.tsx') as string;
 const SankeyChartInboxExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Inbox.Example.tsx') as string;
+const SankeyChartResponsiveExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Responsive.Example.tsx') as string;
 
 export const SankeyChartPageProps: IDocPageProps = {
   title: 'SankeyChart',
@@ -25,6 +28,11 @@ export const SankeyChartPageProps: IDocPageProps = {
       title: 'SankeyChart inbox',
       code: SankeyChartInboxExampleCode,
       view: <SankeyChartInboxExample />,
+    },
+    {
+      title: 'SankeyChart responsive',
+      code: SankeyChartResponsiveExampleCode,
+      view: <SankeyChartResponsiveExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/docs/SankeyChartOverview.md'),

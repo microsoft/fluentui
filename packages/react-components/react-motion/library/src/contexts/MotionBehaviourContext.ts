@@ -8,4 +8,5 @@ export type MotionBehaviourType = 'skip' | 'default';
 const MotionBehaviourContext = React.createContext<MotionBehaviourType | undefined>(undefined);
 
 export const MotionBehaviourProvider = MotionBehaviourContext.Provider;
-export const useMotionBehaviourContext = () => React.useContext(MotionBehaviourContext) ?? 'default';
+export const useMotionBehaviourContext = (): MotionBehaviourType =>
+  React.useContext(MotionBehaviourContext) ?? 'default';

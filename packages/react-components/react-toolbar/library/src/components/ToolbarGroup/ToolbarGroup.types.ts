@@ -12,4 +12,6 @@ export type ToolbarGroupProps = ComponentProps<ToolbarGroupSlots>;
 /**
  * State used in rendering ToolbarButton
  */
-export type ToolbarGroupState = ComponentState<ToolbarGroupSlots>;
+export type ToolbarGroupState = ComponentState<ToolbarGroupSlots> & {
+  vertical?: boolean;
+};

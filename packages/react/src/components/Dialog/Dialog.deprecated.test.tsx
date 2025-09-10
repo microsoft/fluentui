@@ -1,9 +1,15 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 
 import { resetIds, setWarningCallback } from '../../Utilities';
 import { DialogBase } from './Dialog.base';
+
+jest.mock('react-dom', () => {
+  return {
+    ...jest.requireActual('react-dom'),
+    createPortal: jest.fn((node: any) => node),
+  };
+});
 
 describe('Dialog deprecated props', () => {
   beforeAll(() => {
@@ -15,9 +21,6 @@ describe('Dialog deprecated props', () => {
 
   beforeEach(() => {
     resetIds();
-    (ReactDOM.createPortal as any) = jest.fn((element, node) => {
-      return element;
-    });
   });
 
   afterAll(() => {
@@ -25,7 +28,6 @@ describe('Dialog deprecated props', () => {
   });
 
   afterEach(() => {
-    (ReactDOM.createPortal as any).mockClear();
     jest.useRealTimers();
   });
 

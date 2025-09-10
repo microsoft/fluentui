@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   tokens,
@@ -70,7 +71,7 @@ const RadialBackdropMotion = createPresenceComponent(() => {
   };
 });
 
-export const CustomMotion = () => {
+export const CustomMotion = (): JSXElement => {
   const classes = useStyles();
 
   return (

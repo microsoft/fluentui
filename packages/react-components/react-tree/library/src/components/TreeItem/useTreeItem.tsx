@@ -90,6 +90,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   }
 
   React.useEffect(() => {
+    // When the tree item is mounted, we might need to update the roving tab index
+    // in edge cases where the tree is empty and then populated
+    forceUpdateRovingTabIndex?.();
     const treeItem = treeItemRef.current;
     return () => {
       // When the tree item is unmounted, we need to update the roving tab index
@@ -119,7 +122,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     } else if (!isEventFromExpandIcon) {
       onClick?.(event);
     }
-    if (event.isDefaultPrevented() || itemType === 'leaf') {
+    if (event.isDefaultPrevented()) {
       return;
     }
 
@@ -131,12 +134,14 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         target: event.currentTarget,
         type: isEventFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
       } as const;
-      props.onOpenChange?.(event, data);
-      requestTreeResponse({
-        ...data,
-        itemType,
-        requestType: 'open',
-      });
+      if (itemType !== 'leaf') {
+        props.onOpenChange?.(event, data);
+        requestTreeResponse({
+          ...data,
+          itemType,
+          requestType: 'open',
+        });
+      }
       requestTreeResponse({
         ...data,
         itemType,

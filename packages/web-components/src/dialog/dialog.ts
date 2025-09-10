@@ -4,6 +4,8 @@ import { DialogType } from './dialog.options.js';
 /**
  * A Dialog Custom HTML Element.
  *
+ * @tag fluent-dialog
+ *
  * @public
  */
 export class Dialog extends FASTElement {
@@ -34,6 +36,29 @@ export class Dialog extends FASTElement {
    */
   @attr
   public type: DialogType = DialogType.modal;
+  protected typeChanged(prev: DialogType | undefined, next: DialogType | undefined) {
+    if (!this.dialog) {
+      return;
+    }
+
+    if (next === DialogType.alert) {
+      this.dialog.setAttribute('role', 'alertdialog');
+    } else {
+      this.dialog.removeAttribute('role');
+    }
+
+    if (next !== DialogType.nonModal) {
+      this.dialog.setAttribute('aria-modal', 'true');
+    } else {
+      this.dialog.removeAttribute('aria-modal');
+    }
+  }
+
+  /** @internal */
+  connectedCallback() {
+    super.connectedCallback();
+    this.typeChanged(undefined, this.type);
+  }
 
   /**
    * @public
@@ -92,10 +117,10 @@ export class Dialog extends FASTElement {
    * @returns boolean
    */
   public clickHandler(event: Event): boolean {
-    event.preventDefault();
     if (this.dialog.open && this.type !== DialogType.alert && event.target === this.dialog) {
       this.hide();
     }
+
     return true;
   }
 }

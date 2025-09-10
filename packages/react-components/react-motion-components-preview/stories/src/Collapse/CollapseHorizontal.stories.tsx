@@ -1,6 +1,7 @@
 import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
 import { Collapse } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CollapseHorizontal.stories.md';
 
@@ -41,7 +42,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Horizontal = () => {
+export const Horizontal = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
 

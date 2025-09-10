@@ -7,6 +7,7 @@ import {
   ListPeoplePicker,
   ValidationState,
   PeoplePickerItemSuggestion,
+  IPeoplePickerItemSuggestionStyles,
 } from '@fluentui/react/lib/Pickers';
 import { people, mru } from '@fluentui/example-data';
 
@@ -38,6 +39,10 @@ const personaStyles: Partial<IPersonaStyles> = {
     height: 'auto',
     whiteSpace: 'normal',
   },
+};
+
+const suggestionItemStyles: Partial<IPeoplePickerItemSuggestionStyles> = {
+  subComponentStyles: { persona: personaStyles },
 };
 
 export const PeoplePickerListExample: React.FunctionComponent = () => {
@@ -125,8 +130,9 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
   const onRenderSuggestionItem = (personaProps: IPersonaProps, suggestionsProps: IBasePickerSuggestionsProps) => {
     return (
       <PeoplePickerItemSuggestion
-        personaProps={{ ...personaProps, styles: personaStyles }}
+        personaProps={personaProps}
         suggestionsProps={suggestionsProps}
+        styles={suggestionItemStyles}
       />
     );
   };
@@ -144,7 +150,7 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
         label={showPickerLabel ? pickerLabel : undefined}
         // eslint-disable-next-line react/jsx-no-bind
         onResolveSuggestions={onFilterChanged}
-        // eslint-disable-next-line react/jsx-no-bind
+        // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-deprecated
         onEmptyInputFocus={returnMostRecentlyUsed}
         getTextFromItem={getTextFromItem}
         className={'ms-PeoplePicker'}

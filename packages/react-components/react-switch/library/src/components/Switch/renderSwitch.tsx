@@ -2,12 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { SwitchState, SwitchSlots } from './Switch.types';
 
 /**
  * Render a Switch component by passing the state defined props to the appropriate slots.
  */
-export const renderSwitch_unstable = (state: SwitchState) => {
+export const renderSwitch_unstable = (state: SwitchState): JSXElement => {
   assertSlots<SwitchSlots>(state);
   const { labelPosition } = state;
 

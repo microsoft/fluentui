@@ -12,7 +12,6 @@ const { readProjectConfiguration } = require('@nx/devkit');
 /**
  *  @typedef {{root: string, name: string}} Options
  *  @typedef {{name: string, version: string, dependencies: {[key: string]: string}}} PackageJson
- *  @typedef {import("@nx/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
  */
 
 // FIXME: this is not ok (to depend on nx packages within this plugin - redo)
@@ -86,6 +85,9 @@ module.exports = {
    *   - the stories suffix is also used for storywright stories in `vr-tests`
    */
   devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, ...storyFiles],
+
+  /** Storybook stories */
+  storyFiles,
 
   /**
    * Whether linting is running in context of lint-staged (which should disable rules requiring

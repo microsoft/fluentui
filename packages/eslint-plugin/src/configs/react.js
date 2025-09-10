@@ -23,6 +23,8 @@ module.exports = {
     'jsdoc/check-tag-names': [
       'error',
       {
+        // Allow TSDoc tags
+        definedTags: ['remarks'],
         jsxTags: true,
       },
     ],
@@ -35,6 +37,51 @@ module.exports = {
       },
     ],
     'react-compiler/react-compiler': ['error'],
+    '@typescript-eslint/no-restricted-types': [
+      'error',
+      {
+        types: {
+          'React.RefAttributes': {
+            message:
+              '`React.RefAttributes` is leaking string starting @types/react@18.2.61 creating invalid type contracts. Use `RefAttributes` from @fluentui/react-utilities instead',
+            fixWith: 'RefAttributes',
+          },
+          'JSX.IntrinsicElements': {
+            message:
+              '`JSX.IntrinsicElements` is not compatible with @types/react@>=19. To access intrinsic element keys Use `JSXIntrinsicElementKeys`, otherwise use `JSXIntrinsicElement<T>` from @fluentui/react-utilities instead',
+            suggest: ['JSXIntrinsicElementKeys', 'JSXIntrinsicElement'],
+          },
+          'React.JSX.IntrinsicElements': {
+            message:
+              '`JSX.IntrinsicElements` is not backwards compatible with @types/react@17. To access intrinsic element keys Use `JSXIntrinsicElementKeys`, otherwise use `JSXIntrinsicElement<T>` from @fluentui/react-utilities instead',
+            suggest: ['JSXIntrinsicElementKeys', 'JSXIntrinsicElement'],
+          },
+          'JSX.Element': {
+            message:
+              '`JSX.Element` is not compatible with @types/react@>=19. Use `JSXElement` from @fluentui/react-utilities instead',
+            fixWith: 'JSXElement',
+          },
+          'React.JSX.Element': {
+            message:
+              '`React.JSX.Element` is not backwards compatible with @types/react@17. Use `JSXElement` from @fluentui/react-utilities instead',
+            fixWith: 'JSXElement',
+          },
+        },
+      },
+    ],
+    /**
+     * Require explicit type annotations for all module exports.
+     * This ensures that exports have clearly defined types,
+     * preventing accidental exposure of implicit return types to consumers.
+     * @see https://typescript-eslint.io/rules/explicit-module-boundary-types/
+     */
+    '@typescript-eslint/explicit-module-boundary-types': [
+      'error',
+      {
+        allowArgumentsExplicitlyTypedAsAny: true,
+        allowOverloadFunctions: true,
+      },
+    ],
   },
   overrides: [
     // Enable rules requiring type info only for appropriate files/circumstances
@@ -62,6 +109,18 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'react/jsx-no-bind': 'off',
         'react-compiler/react-compiler': 'off',
+        '@typescript-eslint/no-restricted-imports': [
+          'error',
+          {
+            patterns: [
+              {
+                group: ['@cypress/react'],
+                importNames: ['mount'],
+                message: "Use 'mount' from @fluentui/scripts-cypress instead.",
+              },
+            ],
+          },
+        ],
       },
     },
     {

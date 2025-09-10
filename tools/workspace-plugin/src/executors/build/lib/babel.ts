@@ -3,7 +3,7 @@
  * TODO: remove this module and its usage once we will be able to remove griffel AOT from our build output -> https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/shared/build-system/stop-styles-transforms.md
  */
 
-import { writeFile, readFile } from 'node:fs/promises';
+import { writeFile, readFile, copyFile } from 'node:fs/promises';
 import { basename, join } from 'node:path';
 
 import { type BabelFileResult, transformAsync } from '@babel/core';
@@ -50,7 +50,12 @@ export async function compileWithGriffelStylesAOT(options: NormalizedOptions) {
     return processAsyncQueue(compilationQueue);
   }
 
-  await compileSwc(esmConfig, options);
+  const transforms = [];
+  if (options.enableGriffelRawStyles) {
+    logger.log('💅 Griffel RAW styles output enabled');
+    transforms.push(createStyleRawOutput);
+  }
+  await compileSwc(esmConfig, options, transforms);
   await babel(esmConfig, options);
 
   const compilationQueue = restOfConfigs.map(outputConfig => {
@@ -119,6 +124,20 @@ async function babel(esmModuleOutput: NormalizedOptions['moduleOutput'][number],
     await writeFile(filePath, resultCode);
     await writeFile(sourceMapFile, JSON.stringify(result.map));
   }
+}
+
+/**
+ *
+ * Creates a raw styles output file if the original file is a Griffel styles file and the enableGriffelRawStyles option is true.
+ * The raw styles file is created by copying the original file and renaming it with a .raw suffix.
+ */
+async function createStyleRawOutput(filePath: string): Promise<void> {
+  if (!filePath.includes('.styles.')) {
+    return;
+  }
+  const rawFilePath = filePath.replace('.styles.', '.styles.raw.');
+  await copyFile(filePath, rawFilePath);
+  logger.verbose(`raw-style: created ${rawFilePath}`);
 }
 
 type NonNullableRecord<T> = {

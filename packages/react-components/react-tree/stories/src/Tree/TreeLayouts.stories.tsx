@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemLayout, TreeItemPersonaLayout } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 
-export const Layouts = () => {
+export const Layouts = (): JSXElement => {
   return (
     <>
       <Tree aria-label="Default Layout">

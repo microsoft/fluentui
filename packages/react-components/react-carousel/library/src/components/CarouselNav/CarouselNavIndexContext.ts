@@ -4,7 +4,7 @@ const carouselNavIndexContext = React.createContext<number | undefined>(undefine
 
 export const carouselNavIndexContextDefaultValue: number = 0;
 
-export const useCarouselNavIndexContext = () =>
+export const useCarouselNavIndexContext = (): number =>
   React.useContext(carouselNavIndexContext) ?? carouselNavIndexContextDefaultValue;
 
 export const CarouselNavIndexContextProvider = carouselNavIndexContext.Provider;

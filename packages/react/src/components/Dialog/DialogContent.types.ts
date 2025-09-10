@@ -77,6 +77,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   /**
    * The title text to display at the top of the dialog.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   title?: string | JSX.Element;
 
   /**

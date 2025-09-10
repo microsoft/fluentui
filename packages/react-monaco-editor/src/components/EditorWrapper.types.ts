@@ -12,7 +12,7 @@ export interface IEditorWrapperProps {
   editorClassName?: string;
 
   /** Custom component for the preview. It **must** render the children passed in. */
-  previewAs?: React.ComponentType<{}>;
+  previewAs?: React.ComponentType<React.PropsWithChildren<{}>>;
 
   /** Props to use on the wrapper for the rendered example. */
   previewProps?: {};

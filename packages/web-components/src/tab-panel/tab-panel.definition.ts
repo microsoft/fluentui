@@ -3,6 +3,9 @@ import { TabPanel } from './tab-panel.js';
 import { template } from './tab-panel.template.js';
 import { styles } from './tab-panel.styles.js';
 
+/**
+ * @deprecated - Use tablist instead
+ */
 export const definition = TabPanel.compose({
   name: `${FluentDesignSystem.prefix}-tab-panel`,
   template,

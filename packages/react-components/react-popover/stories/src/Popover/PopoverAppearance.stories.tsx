@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -26,7 +27,7 @@ const ExampleContent = () => {
   );
 };
 
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   const layoutStyles = useLayoutStyles();
 
   return (

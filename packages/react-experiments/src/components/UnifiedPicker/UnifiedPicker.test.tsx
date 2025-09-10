@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { UnifiedPicker } from './UnifiedPicker';
-import { mount, ReactWrapper } from 'enzyme';
 import { BaseFloatingSuggestions } from '../FloatingSuggestionsComposite';
 import { create } from 'react-test-renderer';
+import { fireEvent, render } from '@testing-library/react';
 import { SelectedItemsList } from '../SelectedItemsList';
 import type { ISelectedItemProps, ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
 import type { IBaseFloatingSuggestionsProps } from '../FloatingSuggestionsComposite';
@@ -12,7 +12,6 @@ export interface ISimple {
   key: string;
   name: string;
 }
-type InputElementWrapper = ReactWrapper<React.InputHTMLAttributes<any>, any>;
 
 const basicSuggestionRenderer = (props: ISimple) => {
   return <div key={props.key}> {props.name} </div>;
@@ -142,7 +141,7 @@ describe('UnifiedPicker', () => {
         return { item: newItem, isSelected: false } as unknown as IFloatingSuggestionItem<ISimple>;
       });
     };
-    const wrapper = mount(
+    const wrapper = render(
       <UnifiedPicker
         floatingSuggestionProps={floatingPickerProps}
         selectedItemsListProps={selectedItemsListProps}
@@ -151,10 +150,11 @@ describe('UnifiedPicker', () => {
         onInputChange={_onInputChange}
       />,
     );
-    expect(wrapper.find('.ms-BaseExtendedPicker')).toHaveLength(1);
-    expect(wrapper.find('.ms-FloatingSuggestions')).toHaveLength(1);
-    const inputElement: InputElementWrapper = wrapper.find('input');
-    inputElement.simulate('input', { target: { value: 'bl' } });
+    expect(wrapper.container.querySelectorAll('.ms-BaseExtendedPicker')).toHaveLength(1);
+    expect(wrapper.container.querySelectorAll('.ms-FloatingSuggestions')).toHaveLength(1);
+    const inputElement = wrapper.container.querySelector('input') as HTMLInputElement;
+    fireEvent.input(inputElement, { target: { value: 'bl' } });
+
     floatingPickerProps = {
       onRenderSuggestion: basicSuggestionRenderer,
       targetElement: null,
@@ -203,7 +203,7 @@ describe('UnifiedPicker', () => {
       });
     };
 
-    const wrapper = mount(
+    const wrapper = render(
       <UnifiedPicker
         floatingSuggestionProps={floatingPickerProps}
         selectedItemsListProps={selectedItemsListProps}
@@ -213,18 +213,18 @@ describe('UnifiedPicker', () => {
       />,
     );
 
-    const inputElement: InputElementWrapper = wrapper.find('input');
-    expect(inputElement).toHaveLength(1);
-    inputElement.simulate('input', { target: { value: 'bl' } });
-    expect(wrapper.find('.ms-FloatingSuggestionsList-container')).toHaveLength(1);
+    const inputElement = wrapper.container.querySelector('input') as HTMLInputElement;
+    expect(inputElement).toBeDefined();
+    fireEvent.input(inputElement, { target: { value: 'bl' } });
+    expect(wrapper.baseElement.querySelectorAll('.ms-FloatingSuggestionsList-container')).toHaveLength(1);
     expect(suggestionList).toHaveLength(2);
     // Both suggestions are shown, picker is shown
-    expect(wrapper.find('#FloatingSuggestionsItemId-0')).toHaveLength(1);
-    expect(wrapper.find('#FloatingSuggestionsItemId-1')).toHaveLength(1);
-    expect(wrapper.find('.ms-FloatingSuggestions-callout').length).toBeGreaterThan(1);
+    expect(wrapper.baseElement.querySelectorAll('#FloatingSuggestionsItemId-0')).toHaveLength(1);
+    expect(wrapper.baseElement.querySelectorAll('#FloatingSuggestionsItemId-1')).toHaveLength(1);
+    expect(wrapper.baseElement.querySelectorAll('.ms-FloatingSuggestions-callout')).toHaveLength(1);
 
     floatingPickerProps.isSuggestionsVisible = false;
-    const secondwrapper = mount(
+    const secondwrapper = render(
       <UnifiedPicker
         floatingSuggestionProps={floatingPickerProps}
         selectedItemsListProps={selectedItemsListProps}
@@ -234,7 +234,7 @@ describe('UnifiedPicker', () => {
       />,
     );
     // Hidden suggestion, no picker
-    expect(secondwrapper.find('#FloatingSuggestionsItemId-0')).toHaveLength(0);
-    expect(secondwrapper.find('.ms-FloatingSuggestions-callout')).toHaveLength(0);
+    expect(secondwrapper.container.querySelectorAll('#FloatingSuggestionsItemId-0')).toHaveLength(0);
+    expect(secondwrapper.container.querySelectorAll('.ms-FloatingSuggestions-callout')).toHaveLength(0);
   });
 });

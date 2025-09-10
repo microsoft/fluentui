@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { AccordionHeaderState, AccordionHeaderSlots, AccordionHeaderContextValues } from './AccordionHeader.types';
 import { AccordionHeaderProvider } from '../../contexts/accordionHeader';
 
@@ -11,7 +12,7 @@ import { AccordionHeaderProvider } from '../../contexts/accordionHeader';
 export const renderAccordionHeader_unstable = (
   state: AccordionHeaderState,
   contextValues: AccordionHeaderContextValues,
-) => {
+): JSXElement => {
   assertSlots<AccordionHeaderSlots>(state);
 
   return (

@@ -18,7 +18,7 @@ export const useInteractionTagSecondary_unstable = (
   props: InteractionTagSecondaryProps,
   ref: React.Ref<HTMLButtonElement>,
 ): InteractionTagSecondaryState => {
-  const { appearance, disabled, handleTagDismiss, interactionTagPrimaryId, shape, size, value } =
+  const { appearance, disabled, handleTagDismiss, interactionTagPrimaryId, selected, shape, size, value } =
     useInteractionTagContext_unstable();
 
   const id = useId('fui-InteractionTagSecondary-', props.id);
@@ -40,6 +40,7 @@ export const useInteractionTagSecondary_unstable = (
   return {
     appearance,
     disabled,
+    selected,
     shape,
     size,
     components: {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Caption1, tokens, Text } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-components';
@@ -62,7 +63,7 @@ const CardExample = (props: CardProps) => {
   );
 };
 
-export const Selectable = () => {
+export const Selectable = (): JSXElement => {
   const styles = useStyles();
 
   const [selected1, setSelected1] = React.useState(false);

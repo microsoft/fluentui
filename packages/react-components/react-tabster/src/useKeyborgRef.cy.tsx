@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useKeyborgRef } from './hooks/useKeyborgRef';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 
 describe('Keyborg', () => {
   const Example = () => {
@@ -23,12 +23,12 @@ describe('Keyborg', () => {
 
   it('should dispose keyborg instance on unmount', () => {
     mount(<Example />);
-    cy.window().then(win => {
+    cy.window().should(win => {
       // @ts-expect-error - Only way to definitively check if keyborg is disposed
       expect(win.__keyborg).not.equals(undefined);
     });
     mount(<div>Unmounted</div>);
-    cy.window().then(win => {
+    cy.window().should(win => {
       // @ts-expect-error - Only way to definitively check if keyborg is disposed
       expect(win.__keyborg).equals(undefined);
     });

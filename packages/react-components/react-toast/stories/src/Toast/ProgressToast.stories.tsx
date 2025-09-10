@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   useId,
   Link,
@@ -37,7 +38,7 @@ const DownloadProgressBar: React.FC<{ onDownloadEnd: () => void }> = ({ onDownlo
   return <ProgressBar value={value} max={100} />;
 };
 
-export const ProgressToast = () => {
+export const ProgressToast = (): JSXElement => {
   const toasterId = useId('toaster');
   const toastId = useId('toast');
   const [unmounted, setUnmounted] = React.useState(true);

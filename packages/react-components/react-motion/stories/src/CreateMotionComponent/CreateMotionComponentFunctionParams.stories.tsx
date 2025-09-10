@@ -9,6 +9,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentFunctionParams.stories.md';
 
@@ -88,11 +89,11 @@ const Scale = createMotionComponent<{ startFrom?: number }>(({ startFrom = 0.5 }
   };
 });
 
-export const CreateMotionComponentFunctionParams = () => {
+export const CreateMotionComponentFunctionParams = (): JSXElement => {
   const classes = useClasses();
 
-  const motionBRef = React.useRef<MotionImperativeRef>();
-  const motionARef = React.useRef<MotionImperativeRef>();
+  const motionBRef = React.useRef<MotionImperativeRef>(null);
+  const motionARef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(20);
 

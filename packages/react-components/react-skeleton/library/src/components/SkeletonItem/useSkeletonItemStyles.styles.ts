@@ -89,6 +89,9 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralStencil1Alpha,
     },
   },
+  blockStyling: {
+    display: 'block',
+  },
 });
 
 const useRectangleStyles = makeStyles({
@@ -155,6 +158,7 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
   state.root.className = mergeClasses(
     skeletonItemClassNames.root,
     rootStyles.root,
+    state.root.as === 'span' && rootStyles.blockStyling,
     animation === 'wave' && rootStyles.wave,
     animation === 'pulse' && rootStyles.pulse,
     appearance === 'translucent' && rootStyles.translucent,

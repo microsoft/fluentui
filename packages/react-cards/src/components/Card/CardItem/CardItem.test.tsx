@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { Card } from '../Card';
 import * as renderer from 'react-test-renderer';
 
 describe('Card Item', () => {
   it('can handle not having a class', () => {
-    const wrapper = mount(
+    const wrapper = render(
       <Card>
         <Card.Item>
           <div />
@@ -13,7 +13,7 @@ describe('Card Item', () => {
       </Card>,
     );
 
-    expect(wrapper.find('.test').length).toBe(0);
+    expect(wrapper.container.querySelectorAll('.test').length).toBe(0);
   });
 
   it('renders correctly', () => {

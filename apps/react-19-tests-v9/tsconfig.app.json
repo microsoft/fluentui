@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2019", "dom"],
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "inlineSources": true,
+    "types": [],
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "react": ["./node_modules/@types/react/index.d.ts"],
+      "react-dom": ["./node_modules/@types/react-dom/index.d.ts"]
+    }
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.cy.tsx",
+    "**/*.cy.ts",
+    "./src/issues/"
+  ],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+}

@@ -4,6 +4,6 @@ const valueIdContext = React.createContext<string | undefined>(undefined);
 
 export const valueIdContextDefaultValue = '';
 
-export const useValueIdContext = () => React.useContext(valueIdContext) ?? valueIdContextDefaultValue;
+export const useValueIdContext = (): string => React.useContext(valueIdContext) ?? valueIdContextDefaultValue;
 
 export const ValueIdContextProvider = valueIdContext.Provider;

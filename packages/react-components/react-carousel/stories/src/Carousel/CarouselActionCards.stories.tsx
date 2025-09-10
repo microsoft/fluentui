@@ -22,13 +22,13 @@ import {
   CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: '1fr',
+    gridTemplateColumns: 'minmax(0, 1fr)',
     gridTemplateRows: 'auto 1fr',
-
     boxShadow: tokens.shadow16,
   },
   card: {
@@ -65,7 +65,8 @@ const useClasses = makeStyles({
     gridTemplateColumns: 'minmax(100px, max-content) 1fr',
   },
   dropdown: {
-    maxWidth: 'max-content',
+    minWidth: '100px',
+    width: '1fr',
   },
 });
 
@@ -169,7 +170,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const AlignmentAndWhitespace = () => {
+export const AlignmentAndWhitespace = (): JSXElement => {
   const classes = useClasses();
 
   const [alignment, setAlignment] = React.useState<CarouselProps['align']>('center');

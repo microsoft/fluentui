@@ -114,12 +114,12 @@ const useRootStyles = makeStyles({
 
   focusIndicatorHorizontal: createFocusOutlineStyle({
     selector: 'focus-within',
-    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '8px', right: '8px' } },
+    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '-4px', right: '-4px' } },
   }),
 
   focusIndicatorVertical: createFocusOutlineStyle({
     selector: 'focus-within',
-    style: { outlineOffset: { top: '6px', bottom: '6px', left: '4px', right: '4px' } },
+    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '4px', right: '4px' } },
   }),
 });
 
@@ -264,7 +264,17 @@ const useInputStyles = makeStyles({
   vertical: {
     height: '100%',
     width: `var(${sliderThumbSizeVar})`,
-    '-webkit-appearance': 'slider-vertical',
+    // Workaround to check if the browser supports `writing-mode: vertical-lr` for inputs and input[type=range] specifically.
+    // We check if the `writing-mode: sideways-lr` is supported as it's newer feature and it means
+    // that vertical controls should also support `writing-mode: vertical-lr`.
+    '@supports (writing-mode: sideways-lr)': {
+      writingMode: 'vertical-lr',
+      direction: 'rtl',
+    },
+    // Fallback for browsers that don't support `writing-mode: vertical-lr` for inputs
+    '@supports not (writing-mode: sideways-lr)': {
+      WebkitAppearance: 'slider-vertical',
+    },
   },
 });
 

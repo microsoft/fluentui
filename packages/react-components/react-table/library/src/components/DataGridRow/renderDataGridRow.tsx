@@ -1,13 +1,14 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { DataGridRowState, DataGridRowSlots } from './DataGridRow.types';
 import { ColumnIdContextProvider } from '../../contexts/columnIdContext';
 
 /**
  * Render the final JSX of DataGridRow
  */
-export const renderDataGridRow_unstable = (state: DataGridRowState) => {
+export const renderDataGridRow_unstable = (state: DataGridRowState): JSXElement => {
   assertSlots<DataGridRowSlots>(state);
 
   return (

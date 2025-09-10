@@ -117,7 +117,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
-      <>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
           <Stack horizontal verticalAlign="center">
             <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
@@ -218,6 +218,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
             data={data}
             height={this.state.height}
             width={this.state.width}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             showYAxisGridLines
             showXAxisLablesTooltip
             noOfCharsToTruncate={6}
@@ -239,7 +240,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
             xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

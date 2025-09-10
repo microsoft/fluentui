@@ -1,0 +1,16 @@
+{
+  "name": "react-charts-stories",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-charts/stories/src",
+  "tags": ["vNext", "platform:web", "type:stories", "charting"],
+  "implicitDependencies": [],
+  "targets": {
+    "test-ssr": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn test-ssr \"./src/**/*.stories.ssr.tsx\""
+      }
+    }
+  }
+}

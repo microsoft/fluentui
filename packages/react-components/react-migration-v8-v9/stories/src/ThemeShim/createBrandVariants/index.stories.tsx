@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { DefaultPalette } from '@fluentui/react';
 import { Button, makeStyles, Textarea, TextareaProps, RadioGroup, Radio } from '@fluentui/react-components';
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   const defaultPaletteText = JSON.stringify(DefaultPalette, null, 4);

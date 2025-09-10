@@ -2,12 +2,14 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
+
 import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
 
 /**
  * Renders a CompoundButton component by passing the state defined props to the appropriate slots.
  */
-export const renderCompoundButton_unstable = (state: CompoundButtonState) => {
+export const renderCompoundButton_unstable = (state: CompoundButtonState): JSXElement => {
   assertSlots<CompoundButtonSlots>(state);
   const { iconOnly, iconPosition } = state;
 

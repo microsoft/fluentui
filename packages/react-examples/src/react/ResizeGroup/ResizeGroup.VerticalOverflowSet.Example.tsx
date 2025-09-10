@@ -61,6 +61,7 @@ const onRenderItem = (item: any) => (
 
 const onRenderOverflowButton = (overflowItems: any) => (
   <CommandBarButton
+    aria-label="more"
     styles={buttonStyles}
     menuIconProps={{ iconName: 'ChevronRight' }}
     menuProps={{ items: overflowItems!, directionalHint: DirectionalHint.rightCenter }}

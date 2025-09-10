@@ -5,6 +5,12 @@ trigger: none
 # Example: v9_20201022.1
 name: 'v9_$(Date:yyyyMMdd)$(Rev:.r)'
 
+parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
+
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
@@ -84,7 +90,7 @@ extends:
               - script: |
                   node -r ./scripts/ts-node/src/register ./scripts/executors/src/deprecate-react-components-preview-packages.ts --token $(npmToken)
                 displayName: 'Deprecate preview packages'
-                condition: eq(variables.dryRun, false)
+                condition: not(${{ parameters.dryRun }})
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-vNext.config.js --message 'release: applying package updates - react-components'
@@ -92,13 +98,13 @@ extends:
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
-                condition: eq(variables.dryRun, false)
+                condition: not(${{ parameters.dryRun }})
 
               - script: |
                   node -r ./scripts/ts-node/src/register scripts/executors/src/tag-react-components.ts --token $(npmToken)
                 displayName: Tag prelease packages with prerelease tag
                 continueOnError: true
-                condition: eq(variables.dryRun, false)
+                condition: not(${{ parameters.dryRun }})
 
               # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
               - script: |

@@ -32,7 +32,7 @@ export interface ActiveDescendantOptions {
   /**
    * Forward imperative refs when exposing functionality from a React component
    */
-  imperativeRef?: React.RefObject<ActiveDescendantImperativeRef>;
+  imperativeRef?: React.RefObject<ActiveDescendantImperativeRef | null>;
 }
 
 export interface FindOptions {

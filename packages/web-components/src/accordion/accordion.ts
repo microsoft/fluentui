@@ -1,11 +1,13 @@
 import { Observable } from '@microsoft/fast-element';
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { BaseAccordionItem } from '../accordion-item/accordion-item.js';
+import { BaseAccordionItem } from '../accordion-item/accordion-item.base.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
 /**
  * An Accordion Custom HTML Element
  * Implements {@link https://www.w3.org/TR/wai-aria-practices-1.1/#accordion | ARIA Accordion}.
+ *
+ * @tag fluent-accordion
  *
  * @slot - The default slot for the accordion items
  * @fires change - Fires a custom 'change' event when the active item changes
@@ -117,11 +119,9 @@ export class Accordion extends FASTElement {
     // Add event listeners to each non-disabled AccordionItem
     this.accordionItems = children.filter(child => !child.hasAttribute('disabled'));
     this.accordionItems.forEach((item: Element, index: number) => {
-      if (item instanceof BaseAccordionItem) {
-        item.addEventListener('click', this.expandedChangedHandler);
-        // Subscribe to the expanded attribute of the item
-        Observable.getNotifier(item).subscribe(this, 'expanded');
-      }
+      item.addEventListener('click', this.expandedChangedHandler);
+      // Subscribe to the expanded attribute of the item
+      Observable.getNotifier(item).subscribe(this, 'expanded');
     });
 
     if (this.isSingleExpandMode()) {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, teamsLightTheme } from '@fluentui/react-components';
 import type { FontFamilyTokens, FontSizeTokens, FontWeightTokens, LineHeightTokens } from '@fluentui/react-components';
 
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const FontFamily = () => {
+export const FontFamily = (): JSXElement => {
   const styles = useStyles();
 
   const fontFamilies = Object.keys(theme).filter(tokenName =>
@@ -36,7 +37,7 @@ export const FontFamily = () => {
   );
 };
 
-export const FontSize = () => {
+export const FontSize = (): JSXElement => {
   const styles = useStyles();
 
   const fontSizes = Object.keys(theme).filter(tokenName =>
@@ -57,7 +58,7 @@ export const FontSize = () => {
   );
 };
 
-export const LineHeight = () => {
+export const LineHeight = (): JSXElement => {
   const styles = useStyles();
 
   const lineHeightKeys = Object.keys(theme).filter(tokenName =>
@@ -76,7 +77,7 @@ export const LineHeight = () => {
   );
 };
 
-export const FontWeight = () => {
+export const FontWeight = (): JSXElement => {
   const styles = useStyles();
 
   const fontWeights = Object.keys(theme).filter(tokenName =>

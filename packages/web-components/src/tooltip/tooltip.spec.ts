@@ -5,6 +5,22 @@ import type { TooltipPositioningOption } from './tooltip.options.js';
 test.describe('Tooltip', () => {
   test.use({ tagName: 'fluent-tooltip' });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-tooltip');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   /**
    * ARIA APG Tooltip Pattern {@link https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/ }
    * ESC dismisses the tooltip.

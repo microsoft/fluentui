@@ -1,0 +1,190 @@
+name: VRT POC
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  issue_comment:
+    types: [created]
+
+# concurrency:
+#   # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+#   group: ${{ github.workflow }}-${{ github.ref }}
+#   cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+jobs:
+  approve_vrt_diff:
+    if: github.repository_owner == 'microsoft' && github.event.issue.pull_request && contains(github.event.comment.body,'/approve-visual-regression-diff')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+      actions: read
+      issues: read
+    steps:
+      - name: Get Pull Request Details
+        id: pr_details
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const response = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+            return response.data;
+
+      - name: Debug
+        run: |
+          echo $W_RUN
+          echo '===='
+          echo $PR_DETAILS
+        env:
+          W_RUN: ${{ toJSON(github.event) }}
+          PR_DETAILS: ${{steps.pr_details.outputs.result}}
+
+      - name: Checkout Forked Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.pr_details.outputs.result.head.ref }}
+          repository: ${{ steps.pr_details.outputs.result.repo.full_name }}
+          fetch-depth: 0
+
+      - name: Debug2
+        run: |
+          echo "--base ${{ steps.pr_details.outputs.result.base.sha }} --head ${{ steps.pr_details.outputs.result.head.sha }}"
+          echo "===="
+          git status
+          echo '===='
+          ls -la packages/react-components/react-text/visual-regression
+        env:
+          W_RUN: ${{ toJSON(github.event) }}
+          PR_DETAILS: ${{steps.pr_details.outputs.result}}
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn playwright install --with-deps
+      - run: yarn nx run visual-regression-assert:build
+
+      - name: Update VR tests diff
+        id: update_diff
+        run: yarn nx affected -t test-vr-cli -u --nxBail --base ${{ steps.pr_details.outputs.result.base.sha }} --head ${{ steps.pr_details.outputs.result.head.sha }}
+
+      - name: Configure Git
+        run: |
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+
+      - name: Update Baseline
+        id: update_pr_images
+        run: |
+          git add *.png
+          if [[ -n $(git status --porcelain) ]]; then
+            git commit -m "chore: update vrt baseline / triggered by PR comment"
+            git push origin ${{ github.event.pull_request.head.ref }}
+            echo "name=changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "No Visual Regression image changes to commit."
+            echo "name=changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post comment on PR / success
+        uses: marocchino/sticky-pull-request-comment@773744901bac0e8cbb5a0dc842800d45e9b2b405 # v2.9.4
+        with:
+          header: vrt-diff-update-comment
+          number: ${{ github.event.issue.number }}
+          message: |
+            VRT update complete.
+            - ${{ steps.update_pr_images.outputs.changes == 'true' && 'Visual Regression image changes were committed.' || 'No Visual Regression image changes were committed.' }}
+
+      - name: Post comment on PR / failure
+        if: always() && steps.update_pr_images.outcome != 'success'
+        uses: marocchino/sticky-pull-request-comment@773744901bac0e8cbb5a0dc842800d45e9b2b405 # v2.9.4
+        with:
+          header: vrt-diff-update-comment
+          number: ${{ github.event.issue.number }}
+          message: |
+            VRT update failed 🚨.
+            Please check pipeline logs for more information.
+
+  # this job will execute on both PR and after merge to master to validate integrity of snapshots
+  visual_regression:
+    if: github.repository_owner == 'microsoft' && (github.event_name == 'pull_request' || github.event_name=='push')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      actions: 'read'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn playwright install --with-deps
+      # NOTE: we need to build the assertion CLI - will be removed once migrated ot ESM
+      - run: yarn nx run visual-regression-assert:build
+
+      - name: Affected Projects
+        id: affected_projects_count
+        run: |
+          yarn --silent nx show projects -t test-vr-cli --affected --verbose false
+          affected_count=$(yarn --silent nx show projects -t test-vr-cli --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
+
+      - name: Run VR tests
+        run: yarn nx affected -t test-vr-cli
+
+      - name: Create Report
+        if: always() && steps.affected_projects_count.outputs.value > 0
+        id: report
+        run: |
+          yarn visual-regression-assert report --outputPath dist/vrt
+          cat dist/vrt/vrt-report.md >> $GITHUB_STEP_SUMMARY
+          echo "value=true" >> $GITHUB_OUTPUT
+
+      - name: Upload Report
+        if: always() && github.event_name == 'pull_request' && steps.report.outputs.value == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: vrt_report
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            dist/vrt/
+
+      - name: Save PR number
+        if: always() && github.event_name == 'pull_request' && steps.report.outputs.value == 'true'
+        run: echo ${{ github.event.number }} > pr.txt
+
+      - uses: actions/upload-artifact@v4
+        if: always() && github.event_name == 'pull_request' && steps.report.outputs.value == 'true'
+        with:
+          name: pr-number
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            pr.txt

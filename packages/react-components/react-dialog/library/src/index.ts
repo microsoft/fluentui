@@ -83,3 +83,9 @@ export {
 } from './contexts/index';
 
 export type { DialogContextValue, DialogSurfaceContextValue } from './contexts/index';
+
+export {
+  DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR,
+  DIALOG_MEDIA_QUERY_SHORT_SCREEN,
+  DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
+} from './contexts/constants';

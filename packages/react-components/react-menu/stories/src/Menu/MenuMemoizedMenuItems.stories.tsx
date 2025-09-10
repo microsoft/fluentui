@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover } from '@fluentui/react-components';
 import { EditFilled, EditRegular, bundleIcon } from '@fluentui/react-icons';
 import type { MenuItemCheckboxProps } from '@fluentui/react-components';
@@ -15,7 +16,7 @@ const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {
   );
 });
 
-export const MemoizedMenuItems = () => {
+export const MemoizedMenuItems = (): JSXElement => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>

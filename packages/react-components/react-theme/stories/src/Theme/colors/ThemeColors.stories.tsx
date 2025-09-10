@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   teamsDarkTheme,
   teamsHighContrastTheme,
@@ -8,8 +9,7 @@ import {
   Theme,
   Input,
   makeStyles,
-  InputProps,
-  MenuProps,
+  MenuCheckedValueChangeData,
 } from '@fluentui/react-components';
 
 import { ColorRampItem } from './ColorRamp.stories';
@@ -38,7 +38,7 @@ const tokens: Array<keyof Theme> = (Object.keys(theme.webLight) as Array<keyof T
   tokenName => tokenName.match(/^color(?!Palette).*/) || tokenName.startsWith(`colorPalette`),
 );
 
-export const Colors = () => {
+export const Colors = (): JSXElement => {
   const [tokensSearchResult, setTokensSearchResult] = React.useState<Array<keyof Theme> | undefined>(tokens);
 
   // Text typed in the input bar
@@ -51,7 +51,7 @@ export const Colors = () => {
 
   // It returns tokens matching the input value.
   const searchToken = React.useCallback(
-    newSearchValue => {
+    (newSearchValue: string) => {
       const tokensFoundBySearch = tokens.filter(token => {
         const tokensMatchSearchValue = (tokenItem?: string | number) => tokenItem?.toString().includes(newSearchValue);
 
@@ -71,8 +71,8 @@ export const Colors = () => {
 
   const updateSearchDebounced = useDebounce(searchToken, 220);
 
-  const onInputChange: InputProps['onChange'] = React.useCallback(
-    (_, { value }) => {
+  const onInputChange = React.useCallback(
+    (_: React.ChangeEvent<HTMLInputElement>, { value }: { value: string }) => {
       updateSearchDebounced(value.trim().toLocaleLowerCase());
       setInputValue(value.trim().toLocaleLowerCase());
       setCheckedValue(undefined);
@@ -80,8 +80,8 @@ export const Colors = () => {
     [updateSearchDebounced],
   );
 
-  const applyFilter: MenuProps['onCheckedValueChange'] = React.useCallback(
-    (_, { name, checkedItems }) => {
+  const applyFilter = React.useCallback(
+    (_: React.MouseEvent | React.KeyboardEvent, { name, checkedItems }: MenuCheckedValueChangeData) => {
       // Filteringchecked items remove the selection and display the full list of tokens
       if (checkedItems[0] === checkedValue?.usecase[0]) {
         setCheckedValue(undefined);
@@ -155,10 +155,10 @@ export const Colors = () => {
 
 Colors.args = {};
 
-const useDebounce = (fn: (...args: unknown[]) => void, duration: number) => {
+const useDebounce = <T extends unknown>(fn: (...args: T[]) => void, duration: number) => {
   const timeoutRef = React.useRef(0);
   return React.useCallback(
-    (...args: unknown[]) => {
+    (...args: T[]) => {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = window.setTimeout(() => {
         fn(...args);

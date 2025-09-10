@@ -1,9 +1,9 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
 import { useTheme } from './useTheme';
-import { mount } from 'enzyme';
+import { render, act } from '@testing-library/react';
+import { getBySelector } from '../../common/testUtilities';
 import { createTheme } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
 import type { Theme, PartialTheme } from '@fluentui/theme';
@@ -48,7 +48,7 @@ describe('ThemeProvider', () => {
   });
 
   it('sets correct dir', () => {
-    const wrapper = mount(
+    const { container } = render(
       <ThemeProvider className="tp-1" theme={{ rtl: true }}>
         <ThemeProvider className="tp-2" theme={{ rtl: false }}>
           Hello
@@ -56,19 +56,25 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const themeProvider1 = wrapper.find('.tp-1').first().getDOMNode();
-    const themeProvider2 = wrapper.find('.tp-2').first().getDOMNode();
+    const themeProvider1 = getBySelector(container, '.tp-1') as HTMLElement;
+    const themeProvider2 = getBySelector(container, '.tp-2') as HTMLElement;
 
     expect(themeProvider1.getAttribute('dir')).toBe('rtl');
     expect(themeProvider2.getAttribute('dir')).toBe('ltr');
 
-    wrapper.setProps({ theme: { rtl: false } });
+    act(() => {
+      render(
+        <ThemeProvider className="tp-1" theme={{ rtl: false }}>
+          <ThemeProvider className="tp-2" theme={{ rtl: false }}>
+            Hello
+          </ThemeProvider>
+        </ThemeProvider>,
+        { container },
+      );
+    });
+
     expect(themeProvider1.getAttribute('dir')).toBe('ltr');
     expect(themeProvider2.getAttribute('dir')).toBe(null);
-
-    ReactTestUtils.act(() => {
-      wrapper.unmount();
-    });
   });
 
   it('renders a div with styling', () => {
@@ -97,7 +103,7 @@ describe('ThemeProvider', () => {
       return null;
     };
 
-    mount(
+    render(
       <ThemeProvider theme={lightTheme}>
         <TestComponent />
       </ThemeProvider>,
@@ -131,12 +137,12 @@ describe('ThemeProvider', () => {
       </ThemeProvider>
     );
 
-    const wrapper = mount(TestComponent);
+    const { unmount } = render(TestComponent);
 
     expect(document.body).toMatchSnapshot();
 
-    ReactTestUtils.act(() => {
-      wrapper.unmount();
+    act(() => {
+      unmount();
     });
 
     expect(document.body.className).toBe('');

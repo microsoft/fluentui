@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { BrandVariants } from '@fluentui/react-components';
 import type { ButtonProps } from '@fluentui/react-components';
 import type { IBaseButtonProps } from '@fluentui/react';
@@ -16,6 +14,7 @@ import type { IContextualMenuProps } from '@fluentui/react';
 import type { IPalette } from '@fluentui/react';
 import type { IStackItemProps } from '@fluentui/react';
 import type { IStackProps } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { MenuProps } from '@fluentui/react-components';
 import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-components';
@@ -42,7 +41,7 @@ export const brandWeb: BrandVariants;
 export const ButtonShim: React_2.ForwardRefExoticComponent<IBaseButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
-export const CheckboxShim: React_2.ForwardRefExoticComponent<Pick<ICheckboxProps, "label" | "title" | "className" | "key" | "disabled" | "name" | "defaultChecked" | "id" | "onChange" | "componentRef" | "styles" | "theme" | "checked" | "ariaLabel" | "required" | "ariaDescribedBy" | "ariaLabelledBy" | "ariaPositionInSet" | "ariaSetSize" | "boxSide" | "checkmarkIconProps" | "defaultIndeterminate" | "indeterminate" | "inputProps" | "onRenderLabel"> & React_2.RefAttributes<HTMLInputElement>>;
+export const CheckboxShim: React_2.ForwardRefExoticComponent<ICheckboxProps & React_2.RefAttributes<HTMLInputElement>>;
 
 // @public
 export type ColorVariants = {
@@ -165,7 +164,7 @@ export const hcHyperlink = "#ffff00";
 export const MenuButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
-export const MenuItemShim: (props: IContextualMenuItem) => JSX.Element;
+export const MenuItemShim: (props: IContextualMenuItem) => JSXElement;
 
 // @public
 export const PrimaryButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
@@ -180,10 +179,10 @@ export const shimButtonProps: (props: IBaseButtonProps & React_2.RefAttributes<H
 export const shimMenuProps: (props: IContextualMenuProps) => Partial<MenuProps>;
 
 // @public (undocumented)
-export const StackItemShim: (props: IStackItemProps) => JSX.Element;
+export const StackItemShim: (props: IStackItemProps) => JSXElement;
 
 // @public (undocumented)
-export const StackShim: (props: IStackProps) => JSX.Element;
+export const StackShim: (props: IStackProps) => JSXElement;
 
 // @public (undocumented)
 export type TextAlignment = 'inherit' | 'initial' | 'revert' | 'unset' | 'center' | 'end' | 'start' | 'justify' | 'left' | 'match-parent' | 'right';

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, Input } from '@fluentui/react-components';
 
-export const Hint = () => (
+export const Hint = (): JSXElement => (
   <Field label="Example with hint" hint="Sample hint text.">
     <Input />
   </Field>

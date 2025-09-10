@@ -12,7 +12,11 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 /**
  * @internal
  */
-export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
+export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree'): {
+  navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => void;
+  treeRef: React.RefCallback<HTMLElement>;
+  forceUpdateRovingTabIndex: () => void;
+} {
   'use no memo';
 
   const { rove, initialize: initializeRovingTabIndex, forceUpdate: forceUpdateRovingTabIndex } = useRovingTabIndex();

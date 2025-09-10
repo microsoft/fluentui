@@ -11,7 +11,7 @@
       }
     },
     {
-      "files": ["src/rules/**/fixtures/**/*.{js,ts}"],
+      "files": ["src/rules/**/fixtures/**/*.{js,ts}", "src/**/*.{test,spec}.{js,ts}"],
       "rules": {
         "import/no-extraneous-dependencies": "off"
       }

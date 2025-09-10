@@ -1,11 +1,12 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Link, makeResetStyles } from '@fluentui/react-components';
 
 const useDivWithWidthClassName = makeResetStyles({
   width: '200px',
 });
 
-export const AsSpan = () => (
+export const AsSpan = (): JSXElement => (
   <div className={useDivWithWidthClassName()}>
     The following link renders as a span.{' '}
     <Link as="span" inline onClick={() => alert('Link rendered as span')}>

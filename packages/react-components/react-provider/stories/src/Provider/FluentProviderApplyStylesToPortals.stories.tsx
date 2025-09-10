@@ -7,6 +7,7 @@ import {
   RendererProvider,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import * as ReactDOM from 'react-dom';
 
 const useStyles = makeStyles({
@@ -77,7 +78,7 @@ const ApplyStylesToPortalsExample: React.FC<{ targetDocument?: Document }> = ({ 
   );
 };
 
-export const ApplyStylesToPortals = () => (
+export const ApplyStylesToPortals = (): JSXElement => (
   // FrameRenderer is redundant this example, it's used only to render portals inside an iframe
   // to make them visible in Storybook
   <FrameRenderer>

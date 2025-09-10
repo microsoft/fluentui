@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 export interface Scenario {
-  (): JSX.Element;
-  decorator?: (props: { children: React.ReactNode }) => JSX.Element;
+  (): React.ReactElement<any, any>;
+  decorator?: (props: { children: React.ReactNode }) => React.ReactElement<any, any>;
 }
 
 export type Scenarios = { [scenarioExportName: string]: Scenario };

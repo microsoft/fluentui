@@ -6,6 +6,9 @@ import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
  * A Menu component that provides a customizable menu element.
+ *
+ * @tag fluent-menu
+ *
  * @class Menu
  * @extends FASTElement
  *
@@ -230,10 +233,12 @@ export class Menu extends FASTElement {
     // @ts-expect-error - Baseline 2024
     if (e.type === 'toggle' && e.newState) {
       // @ts-expect-error - Baseline 2024
-      const newState = e.newState === 'open' ? true : false;
+      const newState = e.newState === 'open';
       this._trigger?.setAttribute('aria-expanded', `${newState}`);
       this._open = newState;
-      this.focusMenuList();
+      if (this._open) {
+        this.focusMenuList();
+      }
     }
   };
 

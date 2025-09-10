@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { makeStyles } from '@griffel/react';
 import { ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './constants';
 import { useActiveDescendant } from './useActiveDescendant';
@@ -16,8 +16,8 @@ describe('onActiveOptionChange', () => {
       const [lastActive, setLastActive] = React.useState('');
 
       const onActiveDescendantChange = React.useCallback(
-        event => {
-          setLastActive(event ? event.detail.id : 'no event');
+        (event: CustomEventInit<{ id: string }>) => {
+          setLastActive(event?.detail?.id || 'no event');
         },
         [setLastActive],
       );

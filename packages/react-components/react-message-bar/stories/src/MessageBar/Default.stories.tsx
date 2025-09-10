@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 import {
   MessageBar,
@@ -9,7 +10,7 @@ import {
   Link,
 } from '@fluentui/react-components';
 
-export const Default = () => (
+export const Default = (): JSXElement => (
   <MessageBar>
     <MessageBarBody>
       <MessageBarTitle>Descriptive title</MessageBarTitle>

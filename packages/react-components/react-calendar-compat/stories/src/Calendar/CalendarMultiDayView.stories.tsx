@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Calendar } from '@fluentui/react-calendar-compat';
 import { Dropdown, Field, makeStyles, Option } from '@fluentui/react-components';
+import type { SelectionEvents, OptionOnSelectData } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   wrapper: { height: '360px' },
@@ -9,7 +11,7 @@ const useStyles = makeStyles({
 
 const dayOptions = ['1', '2', '3', '4', '5', '6'];
 
-export const CalendarMultidayDayView = () => {
+export const CalendarMultidayDayView = (): JSXElement => {
   const styles = useStyles();
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
@@ -20,8 +22,8 @@ export const CalendarMultidayDayView = () => {
     setSelectedDateRange(selectedDateRangeArray);
   }, []);
 
-  const onOptionSelect = React.useCallback((_, data) => {
-    setDaysToSelectInDayView(data.optionText);
+  const onOptionSelect = React.useCallback((_: SelectionEvents, data: OptionOnSelectData) => {
+    setDaysToSelectInDayView(Number(data.optionText));
   }, []);
 
   let dateRangeString = 'Not set';
@@ -48,7 +50,9 @@ export const CalendarMultidayDayView = () => {
       <Field label="Choose days to select">
         <Dropdown className={styles.dropdown} onOptionSelect={onOptionSelect}>
           {dayOptions.map(option => (
-            <Option key={option} text={option} value={option} />
+            <Option key={option} text={option} value={option}>
+              {option}
+            </Option>
           ))}
         </Dropdown>
       </Field>

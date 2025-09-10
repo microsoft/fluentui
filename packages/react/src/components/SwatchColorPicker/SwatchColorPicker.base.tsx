@@ -305,6 +305,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * @param item - The item to render
    * @returns - Element representing the item
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const renderOption = (item: IColorCellProps): JSX.Element => {
     return (
       <ColorPickerGridCell
@@ -337,8 +338,10 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
     return null;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const onRenderItem = (item: IColorCellProps, index: number): JSX.Element => {
     const { onRenderColorCell = renderOption } = props;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return onRenderColorCell(item, renderOption) as JSX.Element;
   };
   return (

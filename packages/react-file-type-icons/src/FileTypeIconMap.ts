@@ -7,6 +7,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   accdb: {
     extensions: ['accdb', 'mdb'],
   },
+  aipage: {
+    extensions: ['page'],
+  },
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },
@@ -360,6 +363,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   one: {
     // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
     extensions: ['one', 'onepart'],
+  },
+  onepage: {
+    extensions: ['onepage'],
   },
   onetoc: {
     // This is an entire OneNote notebook.

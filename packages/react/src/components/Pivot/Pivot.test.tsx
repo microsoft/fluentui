@@ -1,8 +1,10 @@
+import '@testing-library/jest-dom';
+
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
 import { resetIds } from '@fluentui/utilities';
-import { safeMount, safeCreate } from '@fluentui/test-utilities';
 import { Pivot, PivotItem, IPivot } from './index';
+import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 
 describe('Pivot', () => {
@@ -12,6 +14,7 @@ describe('Pivot', () => {
   });
 
   afterEach(() => {
+    cleanup();
     delete (HTMLElement.prototype as any).isVisible;
   });
 
@@ -35,28 +38,23 @@ describe('Pivot', () => {
 
   it('can be focused', () => {
     const pivotRef = React.createRef<IPivot>();
-
-    // Instruct FocusZone to treat all elements as visible.
     (HTMLElement.prototype as any).isVisible = true;
 
-    safeMount(
+    const { unmount } = render(
       <Pivot componentRef={pivotRef}>
         <PivotItem headerText="Link 1" />
         <PivotItem headerText="Link 2" />
       </Pivot>,
-      () => {
-        try {
-          expect(pivotRef.current).toBeTruthy();
-
-          pivotRef.current!.focus();
-          expect(document.activeElement).toBeTruthy();
-          expect(document.activeElement!.textContent?.trim()).toEqual('Link 1');
-        } finally {
-          delete (HTMLElement.prototype as any).isVisible;
-        }
-      },
-      true /* attach, for focus tests */,
     );
+
+    expect(pivotRef.current).toBeTruthy();
+
+    pivotRef.current!.focus();
+    const active = document.activeElement;
+    expect(active?.textContent?.trim()).toEqual('Link 1');
+
+    delete (HTMLElement.prototype as any).isVisible;
+    unmount();
   });
 
   it('supports JSX expressions', () => {
@@ -170,15 +168,15 @@ describe('Pivot', () => {
   });
 
   it('passes aria-label and aria-labelledby to tablist', () => {
-    const wrapper = mount(
+    const { getByRole } = render(
       <Pivot aria-label="test label" aria-labelledby="testID" data-foo="not passed to tablist">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
       </Pivot>,
     );
-    const tablistElement = wrapper.find('div[role="tablist"]');
-    expect(tablistElement.prop('aria-label')).toBe('test label');
-    expect(tablistElement.prop('aria-labelledby')).toBe('testID');
-    expect(tablistElement.prop('data-foo')).toBeUndefined();
+    const tablist = getByRole('tablist');
+    expect(tablist).toHaveAttribute('aria-label', 'test label');
+    expect(tablist).toHaveAttribute('aria-labelledby', 'testID');
+    expect(tablist).not.toHaveAttribute('data-foo');
   });
 });

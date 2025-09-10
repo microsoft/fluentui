@@ -45,7 +45,7 @@ const DEFAULT_CONTAINS: UseOnClickOrScrollOutsideOptions['contains'] = (parent, 
  * @internal
  * Utility to perform checks where a click/touch event was made outside a component
  */
-export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
+export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions): void => {
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
   const { refs, callback, element, disabled, disabledFocusOnIframe, contains = DEFAULT_CONTAINS } = options;
@@ -158,7 +158,7 @@ const useIFrameFocus = (options: UseIFrameFocusOptions) => {
     element: targetDocument,
     callback,
     contains = DEFAULT_CONTAINS,
-    pollDuration = 1000,
+    pollDuration = 100,
     refs,
   } = options;
   const timeoutRef = React.useRef<number>();

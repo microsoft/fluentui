@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton } from '@fluentui/react-components';
 import type { MenuButtonProps } from '@fluentui/react-components';
 
@@ -8,7 +9,7 @@ const primaryActionButtonProps = {
   onClick,
 };
 
-export const Default = () => (
+export const Default = (): JSXElement => (
   <Menu positioning="below-end">
     <MenuTrigger disableButtonEnhancement>
       {(triggerProps: MenuButtonProps) => (

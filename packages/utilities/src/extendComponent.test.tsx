@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 import { extendComponent } from './extendComponent';
 
 describe('extendComponent', () => {
@@ -26,8 +26,8 @@ describe('extendComponent', () => {
         return <div />;
       }
     }
-    const wrapper = mount(<Foo />);
-    wrapper.unmount();
+    const component = renderer.create(<Foo />);
+    component.unmount();
 
     expect(didMount).toEqual(2);
     expect(willUnmount).toEqual(2);

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -10,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Placeholder = () => {
+export const Placeholder = (): JSXElement => {
   const inputId = useId('input-with-placeholder');
   const styles = useStyles();
 

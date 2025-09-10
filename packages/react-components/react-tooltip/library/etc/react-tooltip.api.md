@@ -6,6 +6,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
@@ -20,7 +21,7 @@ export type OnVisibleChangeData = {
 };
 
 // @public
-export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
+export const renderTooltip_unstable: (state: TooltipState) => JSXElement;
 
 // @public
 export const Tooltip: React_2.FC<TooltipProps>;
@@ -47,7 +48,7 @@ export type TooltipSlots = {
 
 // @public
 export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mountNode' | 'relationship'> & Required<Pick<TooltipProps, 'appearance' | 'hideDelay' | 'positioning' | 'showDelay' | 'visible' | 'withArrow'>> & {
-    children?: React_2.ReactElement | null;
+    children?: JSXElement | null;
     shouldRenderTooltip?: boolean;
     arrowRef?: React_2.Ref<HTMLDivElement>;
     arrowClassName?: string;

@@ -15,7 +15,7 @@ import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRig
 import { BaseType, Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
-import { IBasestate, IChart, SLink, SNode } from '../../types/IDataPoint';
+import { IBasestate, IChart, IImageExportOptions, SLink, SNode } from '../../types/IDataPoint';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
@@ -27,6 +27,7 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from './SankeyChart.types';
+import { toImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
@@ -362,18 +363,16 @@ export function preRenderLayout(
   isRtl: boolean,
 ): { sankey: SankeyLayoutGenerator; height: number; width: number } {
   const { left, right, top, bottom } = margins;
-  const width = containerWidth - right!;
-  const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
 
   const sankey = d3Sankey()
     .nodeWidth(NODE_WIDTH)
     .extent([
       [left!, top!],
-      [width - 1, height - 6],
+      [containerWidth - right!, containerHeight - bottom!],
     ])
     .nodeAlign(isRtl ? sankeyRight : sankeyJustify);
 
-  return { sankey, height, width };
+  return { sankey, height: containerHeight, width: containerWidth };
 }
 
 const elipsis = '...';
@@ -597,6 +596,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     className: string,
     containerWidth: number,
     containerHeight: number,
+    enableReflow: boolean | undefined,
   ) => ISankeyChartStyleProps;
   private readonly _computeClassNames: (
     styles: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>,
@@ -655,12 +655,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         className: string,
         containerWidth: number,
         containerHeight: number,
+        enableReflow: boolean | undefined,
       ): ISankeyChartStyleProps => ({
         theme: theme!,
         width: containerWidth,
         height: containerHeight,
         pathColor,
         className,
+        enableReflow,
       }),
     );
     // `getClassNames` is memoized underneath, so it only recomputes when the `styles` or `classNamesProps` change.
@@ -757,6 +759,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         className!,
         state.containerWidth,
         state.containerHeight,
+        this.props.enableReflow,
       );
       const classNames: IProcessedStyleSet<ISankeyChartStyles> = this._computeClassNames(styles!, classNamesProps);
 
@@ -850,7 +853,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           in a non-sequential and erratic manner within a 2D grid.
           */}
           <FocusZone direction={FocusZoneDirection.vertical} className={classNames.chartWrapper}>
-            <svg width={width} height={height} id={this._chartId}>
+            <svg width={width} height={height} id={this._chartId} className={classNames.chart}>
               {nodeLinkDomOrderArray.map(item => {
                 if (item.type === 'node') {
                   return (
@@ -896,6 +899,10 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       />
     );
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return toImage(this.chartContainer, undefined, this._isRtl, opts);
+  };
 
   private _computeNodeAttributes(
     nodes: SNode[],
@@ -996,7 +1003,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const nodeValues = valuesOfNodes(transformed.nodes);
     const linkValues = valuesOfLinks(transformed.links);
     adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
-    adjustPadding(sankey, height - 6, nodesInColumn);
+    adjustPadding(sankey, containerHeight - this._margins.top! - this._margins.bottom!, nodesInColumn);
     // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
     // NOTE: The second call to `sankey` is required to allow links to be hoverable.
     // Without the second call, the links are not hoverable.

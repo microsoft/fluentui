@@ -5,6 +5,6 @@ const columnIdContext = React.createContext<TableColumnId | undefined>(undefined
 
 export const columnIdContextDefaultValue = '';
 
-export const useColumnIdContext = () => React.useContext(columnIdContext) ?? columnIdContextDefaultValue;
+export const useColumnIdContext = (): TableColumnId => React.useContext(columnIdContext) ?? columnIdContextDefaultValue;
 
 export const ColumnIdContextProvider = columnIdContext.Provider;
