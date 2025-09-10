@@ -125,13 +125,13 @@ jobs:
             tmp/rit/**/cypress/screenshots/**/*.png
           retention-days: 1
 
-      - name: React Versions Integration Tests (17,19) - Test
+      - name: React Versions Integration Tests (17,19) - Test,Type-check
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--19--test
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--17--type-check,test-rit--19--test,test-rit--19--type-check
 
-      - name: React Versions Integration Tests (17,19) - Type-check
-        run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--19--type-check
+      # - name: React Versions Integration Tests (17,19) - Type-check
+      #   run: |
+      #     FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--19--type-check
 
   react_integration_tests:
     if: ${{ github.repository_owner == 'microsoft' }}
