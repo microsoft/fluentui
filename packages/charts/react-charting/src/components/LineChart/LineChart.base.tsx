@@ -966,15 +966,26 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             const yPoint = yScale(y);
 
             if (isPlottable(xPoint, yPoint)) {
-              const markerSize = this._points[i].data[k].markerSize || 4;
+              const markerSize = this._points[i].data[k].markerSize;
+              const perPointColor = this._points[i].data[k]?.markerColor;
               pointsForLine.push(
                 <circle
                   key={`${this._circleId}_${i}_${k}_marker`}
-                  r={markerSize}
+                  r={
+                    markerSize
+                      ? (markerSize! * extraMaxPixels) / maxMarkerSize
+                      : activePoint === this._circleId
+                      ? 5.5
+                      : 3.5
+                  }
                   cx={xPoint}
                   cy={yPoint}
-                  fill={lineColor}
-                  stroke={lineColor}
+                  fill={
+                    activePoint === this._circleId
+                      ? theme!.semanticColors.bodyBackground
+                      : perPointColor || this._points[i]?.color || lineColor
+                  }
+                  stroke={perPointColor || lineColor}
                   strokeWidth={1}
                   opacity={isLegendSelected ? 1 : 0.1}
                   onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, yScale)}
@@ -1053,8 +1064,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     onBlur={this._handleMouseOut}
                     {...this._getClickHandler(this._points[i].data[j - 1].onDataPointClick)}
                     opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
-                    fill={this._getPointFill(lineColor, circleId, j, false)}
-                    stroke={lineColor}
+                    fill={this._points[i].data[j - 1]?.markerColor || this._getPointFill(lineColor, circleId, j, false)}
+                    stroke={this._points[i].data[j - 1]?.markerColor || lineColor}
                     strokeWidth={strokeWidth}
                     role="img"
                     aria-label={this._points[i].data[j - 1].text ?? this._getAriaLabel(i, j - 1)}
@@ -1112,8 +1123,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   onBlur={this._handleMouseOut}
                   {...this._getClickHandler(this._points[i].data[j - 1].onDataPointClick)}
                   opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
-                  fill={this._getPointFill(lineColor, circleId, j, false)}
-                  stroke={lineColor}
+                  fill={this._points[i].data[j - 1]?.markerColor || this._getPointFill(lineColor, circleId, j, false)}
+                  stroke={this._points[i].data[j - 1]?.markerColor || lineColor}
                   strokeWidth={strokeWidth}
                   role="img"
                   aria-label={this._getAriaLabel(i, j - 1)}
@@ -1248,8 +1259,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       onBlur={this._handleMouseOut}
                       {...this._getClickHandler(this._points[i].data[j].onDataPointClick)}
                       opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
-                      fill={this._getPointFill(lineColor, lastCircleId, j, true)}
-                      stroke={lineColor}
+                      fill={
+                        this._points[i].data[j]?.markerColor || this._getPointFill(lineColor, lastCircleId, j, true)
+                      }
+                      stroke={this._points[i].data[j]?.markerColor || lineColor}
                       strokeWidth={strokeWidth}
                       role="img"
                       aria-label={this._getAriaLabel(i, j)}
