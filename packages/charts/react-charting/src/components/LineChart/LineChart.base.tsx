@@ -880,7 +880,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           ]);
         }
 
-        if (isLegendSelected) {
+        // Check if lines should be drawn based on mode
+        const lineMode = this._points[i].lineOptions?.mode;
+        const shouldDrawLines = lineMode !== 'markers';
+        if (shouldDrawLines && isLegendSelected) {
           const lineBorderWidth = this._points[i].lineOptions?.lineBorderWidth
             ? Number.parseFloat(this._points[i].lineOptions!.lineBorderWidth!.toString())
             : 0;
@@ -917,7 +920,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               opacity={1}
             />,
           );
-        } else {
+        } else if (shouldDrawLines) {
           linesForLine.push(
             <path
               id={lineId}
@@ -935,6 +938,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         }
 
         const isPointHighlighted = this.state.activeLine !== null && this.state.activeLine === i;
+
+        // Always add the highlight circle for large dataset hover
         pointsForLine.push(
           <circle
             id={`${this._staticHighlightCircle}_${i}`}
@@ -951,6 +956,35 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             onMouseOut={this._handleMouseOut}
           />,
         );
+
+        // Add individual markers if mode includes 'markers'
+        const showMarkers = lineMode?.includes('markers') || !lineMode; // Show markers by default if no mode specified
+        if (showMarkers) {
+          for (let k = 0; k < this._points[i].data.length; k++) {
+            const { x, y } = this._points[i].data[k];
+            const xPoint = this._xAxisScale(x instanceof Date ? x.getTime() : x);
+            const yPoint = yScale(y);
+
+            if (isPlottable(xPoint, yPoint)) {
+              const markerSize = this._points[i].data[k].markerSize || 4;
+              pointsForLine.push(
+                <circle
+                  key={`${this._circleId}_${i}_${k}_marker`}
+                  r={markerSize}
+                  cx={xPoint}
+                  cy={yPoint}
+                  fill={lineColor}
+                  stroke={lineColor}
+                  strokeWidth={1}
+                  opacity={isLegendSelected ? 1 : 0.1}
+                  onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, yScale)}
+                  onMouseOver={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, yScale)}
+                  onMouseOut={this._handleMouseOut}
+                />,
+              );
+            }
+          }
+        }
       } else if (!this.props.optimizeLargeData) {
         for (let j = 1; j < this._points[i].data.length; j++) {
           const gapResult = this._checkInGap(j, gaps, gapIndex);
