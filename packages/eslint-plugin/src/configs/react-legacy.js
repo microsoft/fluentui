@@ -1,9 +1,9 @@
 // @ts-check
 const configHelpers = require('../utils/configHelpers');
 const path = require('path');
-const { reactLegacy: restrictedGlobals } = require('./restricted-globals');
+const { reactLegacy: restrictedGlobals } = require('../shared/restricted-globals');
 
-/** @type {import("eslint").Linter.Config} */
+/** @type {import("eslint").Linter.LegacyConfig} */
 module.exports = {
   extends: [path.join(__dirname, 'base-legacy'), path.join(__dirname, 'react-config')],
 
