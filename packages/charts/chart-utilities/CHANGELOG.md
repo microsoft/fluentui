@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Fri, 15 Aug 2025 07:21:22 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Sep 2025 07:19:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.29](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.29)
+
+Wed, 10 Sep 2025 07:19:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.28..@fluentui/chart-utilities_v1.1.29)
+
+### Patches
+
+- fix(react-charting): Log empty x and y arrays for bar chart ([PR #35166](https://github.com/microsoft/fluentui/pull/35166) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.28](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.28)
 

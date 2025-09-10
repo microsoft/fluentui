@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Wed, 10 Sep 2025 07:19:33 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.29",
+      "version": "1.1.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "7f60e73e38f099ea59b00138d1cc735729612263",
+            "comment": "fix(react-charting): Log empty x and y arrays for bar chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Aug 2025 07:21:22 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.28",
       "version": "1.1.28",
