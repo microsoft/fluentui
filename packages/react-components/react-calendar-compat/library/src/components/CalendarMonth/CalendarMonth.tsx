@@ -17,6 +17,7 @@ import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles.styles
 import type { CalendarMonthProps } from './CalendarMonth.types';
 import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarYear.types';
 import { SlideDown, SlideUp } from '../../utils/motions';
+import { AnimationDirection } from '../../Calendar';
 
 const MONTHS_PER_ROW = 4;
 
@@ -71,7 +72,7 @@ function useFocusLogic({ componentRef }: { componentRef: CalendarMonthProps['com
 export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props => {
   const {
     allFocusable,
-    animationDirection,
+    animationDirection = AnimationDirection.Horizontal,
     className,
     componentRef,
     dateTimeFormatter = DEFAULT_DATE_FORMATTING,
