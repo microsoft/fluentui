@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuGroupContext_unstable } from '../../contexts/menuGroupContext';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';

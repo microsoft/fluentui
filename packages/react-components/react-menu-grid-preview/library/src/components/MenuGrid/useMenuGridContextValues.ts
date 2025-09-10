@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { MenuGridContextValues, MenuGridState } from './MenuGrid.types';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 

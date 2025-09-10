@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { TabsterDOMAttribute } from '@fluentui/react-tabster';

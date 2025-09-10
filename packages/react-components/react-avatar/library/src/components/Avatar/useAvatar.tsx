@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';

@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import type { MenuItemSelectableState } from './types';
 import type { MenuItemState } from '../components/MenuItem/MenuItem.types';

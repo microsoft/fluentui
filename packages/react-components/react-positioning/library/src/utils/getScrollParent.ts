@@ -3,6 +3,9 @@
  * @param node - DOM node.
  * @returns - parent DOM node.
  */
+
+'use client';
+
 export const getParentNode = (node: HTMLElement): HTMLElement => {
   if (node.nodeName === 'HTML') {
     return node;

@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
 import type { Context } from '@fluentui/react-context-selector';
 import { AccordionItemValue } from '../AccordionItem';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
 import { useArcStyles } from './useArcStyles.styles';

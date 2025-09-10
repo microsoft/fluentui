@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Dialog } from '@fluentui/react-dialog';
 import { slot } from '@fluentui/react-utilities';

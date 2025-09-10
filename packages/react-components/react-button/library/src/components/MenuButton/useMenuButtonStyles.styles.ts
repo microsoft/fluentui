@@ -1,3 +1,5 @@
+'use client';
+
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';

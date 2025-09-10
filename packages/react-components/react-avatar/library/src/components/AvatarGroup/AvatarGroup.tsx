@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderAvatarGroup_unstable } from './renderAvatarGroup';
 import { useAvatarGroup_unstable } from './useAvatarGroup';

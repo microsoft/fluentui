@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, useMergedRefs } from '@fluentui/react-components';
 import * as React from 'react';
 import { useVideoStyles } from './Video.styles';

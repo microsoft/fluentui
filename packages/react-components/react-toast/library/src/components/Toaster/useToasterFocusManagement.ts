@@ -1,3 +1,5 @@
+'use client';
+
 import { isHTMLElement } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';

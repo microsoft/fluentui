@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { RatingDisplayContextValues, RatingDisplayState } from './RatingDisplay.types';
 import { RatingItemContextValue } from '../RatingItem/RatingItem.types';

@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */

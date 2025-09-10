@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTableHeaderCell_unstable } from './useTableHeaderCell';
 import { renderTableHeaderCell_unstable } from './renderTableHeaderCell';

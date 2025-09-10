@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Avatar } from '../Avatar/Avatar';
 import { AvatarGroupContext, useAvatarGroupContext_unstable } from '../../contexts/AvatarGroupContext';

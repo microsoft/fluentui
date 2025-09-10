@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: improve RSC compatibility",
+  "packageName": "@fluentui/global-context",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

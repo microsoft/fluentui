@@ -1,3 +1,5 @@
+'use client';
+
 import type { AvatarContextValue } from '@fluentui/react-avatar';
 import * as React from 'react';
 import type { TreeItemPersonaLayoutState, TreeItemPersonaLayoutContextValues } from './TreeItemPersonaLayout.types';

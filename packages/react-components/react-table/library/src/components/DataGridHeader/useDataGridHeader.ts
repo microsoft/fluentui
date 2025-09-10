@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { DataGridHeaderProps, DataGridHeaderState } from './DataGridHeader.types';
 import { useTableHeader_unstable } from '../TableHeader/useTableHeader';

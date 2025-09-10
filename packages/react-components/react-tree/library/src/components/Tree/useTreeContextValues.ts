@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { TreeContextValue } from '../../contexts';
 import { TreeContextValues, TreeState } from './Tree.types';

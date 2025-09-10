@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
 import {

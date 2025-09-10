@@ -1,3 +1,5 @@
+'use client';
+
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { HeadlessTreeItem, HeadlessTreeItemProps, createHeadlessTree } from '../../utils/createHeadlessTree';

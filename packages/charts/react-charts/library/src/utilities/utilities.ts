@@ -1,3 +1,5 @@
+'use client';
+
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import {
   max as d3Max,

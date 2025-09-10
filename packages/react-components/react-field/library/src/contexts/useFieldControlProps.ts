@@ -1,3 +1,5 @@
+'use client';
+
 import type { FieldContextValue, FieldControlProps } from '../Field';
 import { useFieldContext_unstable } from './FieldContext';
 

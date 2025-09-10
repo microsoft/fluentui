@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getWindow } from '../../utilities/getWindow';
 import { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { AvatarShape, AvatarSize } from '../components/Avatar/Avatar.types';
 

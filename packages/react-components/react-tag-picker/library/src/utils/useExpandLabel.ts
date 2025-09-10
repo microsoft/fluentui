@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTagPickerContext_unstable } from '../contexts/TagPickerContext';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';

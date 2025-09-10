@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

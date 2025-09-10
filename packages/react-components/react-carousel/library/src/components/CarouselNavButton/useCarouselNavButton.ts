@@ -1,3 +1,5 @@
+'use client';
+
 import { type ARIAButtonElement, type ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import {

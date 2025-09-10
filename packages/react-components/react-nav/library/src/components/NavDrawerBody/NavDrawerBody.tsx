@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderDrawerBody_unstable } from '@fluentui/react-drawer';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

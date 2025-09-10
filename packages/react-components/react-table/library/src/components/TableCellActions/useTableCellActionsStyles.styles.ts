@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TableCellActionsSlots, TableCellActionsState } from './TableCellActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

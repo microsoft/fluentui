@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { TreeProps, TreeState } from '../Tree';
 import { SubtreeContextValue, useSubtreeContext_unstable, useTreeItemContext_unstable } from '../contexts/index';

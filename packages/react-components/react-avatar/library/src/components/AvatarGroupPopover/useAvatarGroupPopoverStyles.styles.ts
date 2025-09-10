@@ -1,3 +1,5 @@
+'use client';
+
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
