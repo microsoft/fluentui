@@ -45,7 +45,7 @@ export const SecondaryAction = (): JSXElement => {
             </Button>
           }
         >
-          <TagPickerGroup aria-label="Selected Employees">
+          <TagPickerGroup aria-roledescription="List" aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}
