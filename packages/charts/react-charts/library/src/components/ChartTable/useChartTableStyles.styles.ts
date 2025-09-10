@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     ...shorthands.padding(tokens.spacingHorizontalS),
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralStroke2),
-    color: tokens.colorNeutralForeground1,
+    color: 'black',
     textAlign: 'left',
     '@media (forced-colors: active)': {
       color: 'WindowText',
