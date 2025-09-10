@@ -655,7 +655,8 @@ function buildReactIntegrationTesterProjectConfiguration(
         } else if (isLibraryWithStorybookAdjacentProject) {
           // convenience target created on library target scope, which runs the `*-stories` type-check
           targets[targetName] = {
-            command: `nx run ${config.projectJSON.name}-stories:${targetName}`,
+            executor: 'nx:noop',
+            dependsOn: [{ target: targetName, projects: `${config.projectJSON.name}-stories` }],
             cache: true,
           };
         }

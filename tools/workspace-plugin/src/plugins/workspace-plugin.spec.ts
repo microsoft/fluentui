@@ -220,9 +220,36 @@ describe(`workspace-plugin`, () => {
 
         const targets = getTargets(results, 'proj/stories')!;
 
-        expect(targets['react-integration-testing--17--type-check'].command).toMatchInlineSnapshot(
-          `"yarn rit --project-id ci --react 17 --run type-check --verbose"`,
-        );
+        expect(targets['react-integration-testing--17--type-check']).toMatchInlineSnapshot(`
+          Object {
+            "cache": true,
+            "command": "yarn rit --project-id ci --react 17 --run type-check --verbose",
+            "dependsOn": Array [
+              "react-integration-testing--17--prepare",
+            ],
+            "inputs": Array [
+              "default",
+              "production",
+              "^production",
+              "{workspaceRoot}/jest.preset.js",
+              "{workspaceRoot}/tools/react-integration-testing/**",
+            ],
+            "metadata": Object {
+              "description": "Run react integration tests against React 17",
+              "help": Object {
+                "command": "yarn rit --help",
+                "example": Object {},
+              },
+              "technologies": Array [
+                "react-integration-tester",
+              ],
+            },
+            "options": Object {
+              "cwd": "{projectRoot}",
+            },
+            "outputs": Array [],
+          }
+        `);
         expect(targets['react-integration-testing--17--prepare']).toMatchInlineSnapshot(`
           Object {
             "cache": true,
@@ -278,9 +305,18 @@ describe(`workspace-plugin`, () => {
 
         const targets = getTargets(results, 'proj/library')!;
 
-        expect(targets['react-integration-testing--17--type-check'].command).toMatchInlineSnapshot(
-          `"nx run proj-stories:react-integration-testing--17--type-check"`,
-        );
+        expect(targets['react-integration-testing--17--type-check']).toMatchInlineSnapshot(`
+          Object {
+            "cache": true,
+            "dependsOn": Array [
+              Object {
+                "projects": "proj-stories",
+                "target": "react-integration-testing--17--type-check",
+              },
+            ],
+            "executor": "nx:noop",
+          }
+        `);
         expect(targets['react-integration-testing--17--prepare']).toBeUndefined();
       });
 
@@ -568,11 +604,23 @@ describe(`workspace-plugin`, () => {
                     },
                     "react-integration-testing--17--type-check": Object {
                       "cache": true,
-                      "command": "nx run proj-stories:react-integration-testing--17--type-check",
+                      "dependsOn": Array [
+                        Object {
+                          "projects": "proj-stories",
+                          "target": "react-integration-testing--17--type-check",
+                        },
+                      ],
+                      "executor": "nx:noop",
                     },
                     "react-integration-testing--18--type-check": Object {
                       "cache": true,
-                      "command": "nx run proj-stories:react-integration-testing--18--type-check",
+                      "dependsOn": Array [
+                        Object {
+                          "projects": "proj-stories",
+                          "target": "react-integration-testing--18--type-check",
+                        },
+                      ],
+                      "executor": "nx:noop",
                     },
                     "start": Object {
                       "cache": true,
