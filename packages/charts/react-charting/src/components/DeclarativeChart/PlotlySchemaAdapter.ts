@@ -82,7 +82,7 @@ import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { IFunnelChartDataPoint, IFunnelChartProps } from '../FunnelChart/FunnelChart.types';
 import { getOpacity, extractColor, resolveColor, createColorScale } from './PlotlyColorAdapter';
-import { ILegend, ILegendsProps } from '../Legends/index';
+import { DataPointShape, ILegend, ILegendsProps, LegendShape } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
 import { IGanttChartProps } from '../GanttChart/GanttChart.types';
@@ -2349,8 +2349,8 @@ const getLegendShape = (series: Partial<PlotData>): ILegend['shape'] => {
   const dashType = series.line?.dash || 'solid';
   if (dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot') {
     return 'dottedLine';
-  } else if (series.mode?.includes('markers')) {
-    return 'circle';
+  } else if (series.mode?.includes('markers') && series?.marker?.symbol !== undefined) {
+    return (String(series?.marker?.symbol).toLowerCase().replace(/-/g, '') as DataPointShape | LegendShape) ?? 'circle';
   }
   return 'default';
 };
