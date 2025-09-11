@@ -13,7 +13,7 @@ const useRootBaseClassName = makeResetStyles({
   gridColumnEnd: 3,
   paddingTop: '6px',
   fontSize: tokens.fontSizeBase300,
-  lineHeight: tokens.fontSizeBase300,
+  lineHeight: tokens.lineHeightBase300,
   fontWeight: tokens.fontWeightRegular,
   color: tokens.colorNeutralForeground1,
   wordBreak: 'break-word',
