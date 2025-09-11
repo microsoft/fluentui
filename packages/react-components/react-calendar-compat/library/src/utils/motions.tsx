@@ -11,6 +11,7 @@ export const DirectionalSlide: React.FC<{
   animateBackwards?: boolean;
   children: JSXElement;
 }> = ({
+  // The DURATION_3 constant is a string in seconds, but WAAPI expects a number in ms
   duration = 367,
   easing = motionTokens.curveDecelerateMax,
   animationDirection = AnimationDirection.Vertical,
