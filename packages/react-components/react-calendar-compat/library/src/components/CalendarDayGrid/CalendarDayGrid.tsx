@@ -12,7 +12,7 @@ import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles.styles';
 import { mergeClasses } from '@griffel/react';
 import type { Day } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
-import { SlideDown, SlideUp } from '../../utils/motions';
+import { DirectionalSlide } from '../../utils/motions';
 import { AnimationDirection } from '../../Calendar';
 
 export interface DayInfo extends Day {
@@ -77,7 +77,6 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
 
   const weeks = useWeeks(props, onSelectDate, getSetRefCallback);
   const animateBackwards = useAnimateBackwards(weeks);
-  const SlideMotion = animateBackwards ? SlideDown : SlideUp;
 
   const [getWeekCornerStyles, calculateRoundedStyles] = useWeekCornerStyles(props);
 
@@ -175,7 +174,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     >
       <tbody>
         <CalendarMonthHeaderRow {...props} classNames={classNames} weeks={weeks} />
-        <SlideMotion key={'firstTransitionWeek_' + firstWeek[0].key}>
+        <DirectionalSlide key={'firstTransitionWeek_' + firstWeek[0].key} {...{ animationDirection, animateBackwards }}>
           <div>
             <CalendarGridRow
               {...props}
@@ -187,9 +186,9 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
               ariaHidden={true}
             />
           </div>
-        </SlideMotion>
+        </DirectionalSlide>
         {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
-          <SlideMotion key={weekIndex + '_' + week[0].key}>
+          <DirectionalSlide key={weekIndex + '_' + week[0].key} {...{ animationDirection, animateBackwards }}>
             <div>
               <CalendarGridRow
                 {...props}
@@ -200,9 +199,9 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
                 rowClassName={classNames.weekRow}
               />
             </div>
-          </SlideMotion>
+          </DirectionalSlide>
         ))}
-        <SlideMotion key={'lastTransitionWeek_' + finalWeek[0].key}>
+        <DirectionalSlide key={'lastTransitionWeek_' + finalWeek[0].key} {...{ animationDirection, animateBackwards }}>
           <div>
             <CalendarGridRow
               {...props}
@@ -214,7 +213,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
               ariaHidden={true}
             />
           </div>
-        </SlideMotion>
+        </DirectionalSlide>
       </tbody>
     </table>
   );
