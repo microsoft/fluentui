@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: override dependsOn for test-rit targets to have v8 libs build before run",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

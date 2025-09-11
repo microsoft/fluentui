@@ -143,6 +143,16 @@
         },
         "verifyPackaging": {
           "include": ["react-text", "react-components"]
+        },
+        "reactIntegrationTesting": {
+          "targetName": "test-rit",
+          "reactVersions": ["17", "19"],
+          "exclude": [
+            "react-theme-sass",
+            "babel-preset-global-context",
+            "eslint-plugin-react-components",
+            "react-migration-v0-v9"
+          ]
         }
       },
       "include": [
