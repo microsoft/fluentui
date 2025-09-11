@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Wed, 10 Sep 2025 07:19:33 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Sep 2025 07:20:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.30](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.30)
+
+Thu, 11 Sep 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.29..@fluentui/chart-utilities_v1.1.30)
+
+### Patches
+
+- fix chart table bugs in v9 ([PR #35171](https://github.com/microsoft/fluentui/pull/35171) by anushgupta@microsoft.com)
 
 ## [1.1.29](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.29)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Thu, 11 Sep 2025 07:20:30 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.30",
+      "version": "1.1.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "a7484f93b0f8489a0e3b5655720f1c22f461995b",
+            "comment": "fix chart table bugs in v9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Sep 2025 07:19:33 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.29",
       "version": "1.1.29",

@@ -157,7 +157,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
           legend={point.legend}
           YValue={point.yAxisCalloutData || point.y}
           color={color}
-          culture={props.culture ?? 'en-us'}
+          culture={props.culture}
           clickPosition={clickPosition}
           isPopoverOpen={isPopoverOpen}
         />

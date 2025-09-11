@@ -1713,7 +1713,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       clickPosition: clickPosition,
       isPopoverOpen: isPopoverOpen,
       isCalloutForStack: props.isCalloutForStack,
-      culture: props.culture ?? 'en-us',
+      culture: props.culture,
       isCartesian: true,
       customCallout: {
         customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
