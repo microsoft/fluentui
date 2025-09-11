@@ -18,6 +18,7 @@ import {
   getRangeForScatterMarkerSize,
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfNumericForAreaLineScatterCharts,
+  findCalloutPoints,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -26,6 +27,7 @@ import {
   IMargins,
   IRefArrayData,
   IChart,
+  IYValueHover,
 } from '../../index';
 import {
   calloutData,
@@ -37,7 +39,7 @@ import {
   getColorFromToken,
   sortAxisCategories,
 } from '../../utilities/index';
-import { classNamesFunction, DirectionalHint, find, getId, getRTL } from '@fluentui/react';
+import { classNamesFunction, DirectionalHint, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
 import { ILineChartPoints } from '../../types/IDataPoint';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
@@ -67,8 +69,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _points = React.useRef<ScatterChartDataWithIndex[]>(
     _injectIndexPropertyInScatterChartData(props.data.scatterChartData),
   );
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let _calloutPoints = React.useMemo(() => calloutData(_points.current as any) || [], [_points]);
+  let _calloutPoints = React.useMemo(() => calloutData(_points.current) || {}, [_points]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const _xAxisScale: any = React.useRef<any>('');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -86,7 +87,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
-  const [YValueHover, setYValueHover] = React.useState<[]>([]);
+  const [YValueHover, setYValueHover] = React.useState<IYValueHover[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>([]);
   const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
@@ -144,8 +145,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       : YAxisType.NumericAxis;
 
   const pointsRef = React.useRef<ScatterChartDataWithIndex[] | []>([]);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const calloutPointsRef = React.useRef<any[]>([]);
   React.useEffect(() => {
     /** note that height and width are not used to resize or set as dimesions of the chart,
      * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
@@ -156,7 +155,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       props.data !== _points.current
     ) {
       pointsRef.current = _injectIndexPropertyInScatterChartData(props.data.scatterChartData);
-      calloutPointsRef.current = calloutData(pointsRef.current);
     }
   }, [props.height, props.width, props.data, _points]);
 
@@ -352,10 +350,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     ) => {
       _uniqueCallOutID.current = circleId;
       const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC) : x;
-      const xVal = x instanceof Date ? x.getTime() : x;
-      const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal) as
-        | { x: string | number; values: [] }
-        | undefined;
+      const found = findCalloutPoints(_calloutPoints, x);
       // if no points need to be called out then don't show vertical line and callout card
       if (found) {
         d3Select(`#${_verticalLine}`)
@@ -389,10 +384,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     ) => {
       mouseEvent?.persist();
       const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC) : x;
-      const xVal = x instanceof Date ? x.getTime() : x;
-      const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal) as
-        | { x: string | number; values: [] }
-        | undefined;
+      const found = findCalloutPoints(_calloutPoints, x) as ICustomizedCalloutData | undefined;
       // if no points need to be called out then don't show vertical line and callout card
       if (found) {
         d3Select(`#${_verticalLine}`)
