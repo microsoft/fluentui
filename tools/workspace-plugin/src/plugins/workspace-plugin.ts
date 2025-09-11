@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 
-import { dirname, join } from 'node:path';
+import { basename, dirname, join, resolve } from 'node:path';
 import { existsSync } from 'node:fs';
 import {
   type CreateNodesContextV2,
@@ -24,9 +24,13 @@ import { buildFormatTarget } from './format-plugin';
 import { buildTypeCheckTarget } from './type-check-plugin';
 import { measureStart, measureEnd } from '../utils';
 
-interface WorkspacePluginOptions {
+export interface WorkspacePluginOptions {
   testSSR?: TargetPluginOption;
   verifyPackaging?: TargetPluginOption;
+  reactIntegrationTesting?: ReactIntegrationTestingTargetPluginOption;
+}
+interface ReactIntegrationTestingTargetPluginOption extends TargetPluginOption {
+  reactVersions?: string[];
 }
 interface TargetPluginOption {
   targetName?: string;
@@ -81,6 +85,12 @@ function normalizeOptions(options: WorkspacePluginOptions | undefined): DeepRequ
   options.verifyPackaging.include ??= [];
   options.verifyPackaging.exclude ??= [];
 
+  options.reactIntegrationTesting ??= {};
+  options.reactIntegrationTesting.targetName ??= 'react-integration-testing';
+  options.reactIntegrationTesting.include ??= [];
+  options.reactIntegrationTesting.exclude ??= [];
+  options.reactIntegrationTesting.reactVersions ??= [];
+
   return options as DeepRequired<WorkspacePluginOptions>;
 }
 
@@ -98,13 +108,27 @@ function createNodesInternal(
 
   const normalizedOptions = normalizeOptions(options);
 
-  const config = { ...globalConfig };
+  const taskBuilderConfig = getTaskBuilderConfig(projectRoot, globalConfig.pmc);
 
-  const targetsConfig = buildWorkspaceTargets(projectRoot, normalizedOptions, context, config);
+  const workspaceConfig = buildWorkspaceProjectConfiguration(
+    projectRoot,
+    normalizedOptions,
+    context,
+    taskBuilderConfig,
+  );
+  const ritConfig = buildReactIntegrationTesterProjectConfiguration(
+    projectRoot,
+    normalizedOptions,
+    context,
+    taskBuilderConfig,
+  );
 
   return {
     projects: {
-      [projectRoot]: { targets: targetsConfig },
+      [projectRoot]: {
+        targets: { ...workspaceConfig.targets, ...ritConfig.targets },
+        metadata: { ...workspaceConfig.metadata, ...ritConfig.metadata },
+      },
     },
   };
 }
@@ -116,19 +140,24 @@ interface TaskBuilderConfig {
   tags: string[];
 }
 
-function buildWorkspaceTargets(
-  projectRoot: string,
-  options: NormalizedOptions,
-  context: CreateNodesContextV2,
-  sharedConfig: Pick<TaskBuilderConfig, 'pmc'>,
-) {
-  const targets: Record<string, TargetConfiguration> = {};
+type WorkspaceTargets = Pick<ProjectConfiguration, 'targets' | 'metadata'>;
 
+function getTaskBuilderConfig(projectRoot: string, pmc: TaskBuilderConfig['pmc']): TaskBuilderConfig {
   const projectJSON: ProjectConfiguration = readJsonFile(join(projectRoot, 'project.json'));
   const packageJSON: PackageJson = readJsonFile(join(projectRoot, 'package.json'));
 
   const tags = projectJSON.tags ?? [];
-  const config = { projectJSON, packageJSON, pmc: sharedConfig.pmc, tags };
+  const config = { projectJSON, packageJSON, pmc, tags };
+  return config;
+}
+
+function buildWorkspaceProjectConfiguration(
+  projectRoot: string,
+  options: NormalizedOptions,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): WorkspaceTargets {
+  const targets: Record<string, TargetConfiguration> = {};
 
   targets.clean = buildCleanTarget({}, context, config);
   targets.format = buildFormatTarget({}, context, config);
@@ -150,9 +179,9 @@ function buildWorkspaceTargets(
   }
 
   // react v9 lib
-  if (projectJSON.projectType === 'library' && tags.includes('vNext')) {
+  if (config.projectJSON.projectType === 'library' && config.tags.includes('vNext')) {
     // *-stories projects
-    if (tags.includes('type:stories')) {
+    if (config.tags.includes('type:stories')) {
       const testSsrTarget = buildTestSsrTarget(projectRoot, options, context, config);
       if (testSsrTarget) {
         targets[options.testSSR.targetName] = testSsrTarget;
@@ -162,7 +191,7 @@ function buildWorkspaceTargets(
         targets.start = { command: `nx run ${config.projectJSON.name}:storybook`, cache: true };
       }
 
-      return targets;
+      return { targets };
     }
 
     // library
@@ -196,7 +225,7 @@ function buildWorkspaceTargets(
         moduleOutput: [
           { module: 'es6', outputPath: 'lib' },
           { module: 'commonjs', outputPath: 'lib-commonjs' },
-          tags.includes('ships-amd') ? { module: 'amd', outputPath: 'lib-amd' } : null,
+          config.tags.includes('ships-amd') ? { module: 'amd', outputPath: 'lib-amd' } : null,
         ].filter(Boolean) as BuildExecutorSchema['moduleOutput'],
         enableGriffelRawStyles: true,
         // NOTE: assets should be set per project needs
@@ -215,7 +244,7 @@ function buildWorkspaceTargets(
       outputs: [
         `{projectRoot}/lib`,
         `{projectRoot}/lib-commonjs`,
-        tags.includes('ships-amd') ? `{projectRoot}/lib-amd` : null,
+        config.tags.includes('ships-amd') ? `{projectRoot}/lib-amd` : null,
         `{projectRoot}/dist`,
         ...targets['generate-api'].outputs!,
       ].filter(Boolean) as string[],
@@ -249,10 +278,10 @@ function buildWorkspaceTargets(
       targets[options.verifyPackaging.targetName] = verifyPackagingTarget;
     }
 
-    return targets;
+    return { targets };
   }
 
-  return targets;
+  return { targets };
 }
 
 function buildTestTarget(
@@ -505,4 +534,184 @@ function buildStorybookTarget(
       },
     },
   };
+}
+
+type ReactIntegrationTesterTargets = Pick<ProjectConfiguration, 'targets' | 'metadata'>;
+function buildReactIntegrationTesterProjectConfiguration(
+  projectRoot: string,
+  options: NormalizedOptions,
+  context: CreateNodesContextV2,
+  config: TaskBuilderConfig,
+): ReactIntegrationTesterTargets {
+  if (
+    options.reactIntegrationTesting.include.length &&
+    !options.reactIntegrationTesting.include.includes(config.projectJSON.name!)
+  ) {
+    return {};
+  }
+  if (
+    options.reactIntegrationTesting.exclude.length &&
+    options.reactIntegrationTesting.exclude.includes(config.projectJSON.name!)
+  ) {
+    return {};
+  }
+  // react v9: apply to libraries and stories projects
+  const isStoriesProject = config.tags.includes('type:stories');
+  if (!config.tags.includes('vNext') || (config.projectJSON.projectType !== 'library' && !isStoriesProject)) {
+    return {};
+  }
+
+  const storiesAdjacentLibraryPath = resolve(projectRoot, '../library/project.json');
+  const isStorybookAdjacentProject = isStoriesProject && existsSync(storiesAdjacentLibraryPath);
+  const isLibraryWithStorybookAdjacentProject =
+    basename(projectRoot) === 'library' && existsSync(resolve(projectRoot, '../stories/project.json'));
+
+  const reactVersions = options.reactIntegrationTesting.reactVersions;
+  if (reactVersions.length === 0) {
+    console.info('No React versions specified for integration testing! -> No targets created');
+    return {};
+  }
+
+  const hasTypeCheck = isStorybookAdjacentProject || isLibraryWithStorybookAdjacentProject;
+  const hasE2E = existsSync(join(projectRoot, 'cypress.config.ts')) && !isStorybookAdjacentProject;
+  const hasTest =
+    (existsSync(join(projectRoot, 'jest.config.js')) || existsSync(join(projectRoot, 'jest.config.ts'))) &&
+    !isStorybookAdjacentProject;
+  const ritRunOptions = [hasTypeCheck ? 'type-check' : null, hasE2E ? 'e2e' : null, hasTest ? 'test' : null].filter(
+    Boolean,
+  ) as string[];
+
+  const targets: Record<string, TargetConfiguration> = {};
+  const inputs = [
+    'default',
+    'production',
+    '^production',
+    '{workspaceRoot}/jest.preset.js',
+    '{workspaceRoot}/tools/react-integration-testing/**',
+  ];
+
+  const groupName = 'React Integration Tester';
+  const metadata = { targetGroups: { [groupName]: [] as string[] } };
+
+  // creates atomized targets
+  for (const reactVersion of reactVersions) {
+    if (ritRunOptions.length === 0) {
+      continue;
+    }
+
+    const projectSuffixId = 'ci';
+
+    // For library with stories sibling and only type-check, do not create --prepare target
+    const onlyTypeCheck = ritRunOptions.length === 1 && ritRunOptions[0] === 'type-check';
+    const skipPrepare = onlyTypeCheck && isLibraryWithStorybookAdjacentProject;
+    const targetNamePrepare = options.reactIntegrationTesting.targetName + '--' + reactVersion + '--prepare';
+
+    if (!skipPrepare) {
+      targets[targetNamePrepare] = {
+        command: `${config.pmc.exec} rit --prepare-only --no-install --project-id ${projectSuffixId} --react ${reactVersion} --verbose`,
+        options: {
+          cwd: '{projectRoot}',
+        },
+        cache: true,
+        inputs: inputs,
+        outputs: [
+          `{workspaceRoot}/tmp/rit/react-${reactVersion}/${config.projectJSON.name}-react-${reactVersion}-${projectSuffixId}`,
+        ],
+        // this should be set via nx.json - usually `^build` (depends on project)
+        dependsOn: [],
+        metadata: {
+          technologies: ['react-integration-tester'],
+          description: `Run react integration tests against React ${reactVersion}`,
+          help: {
+            command: `${config.pmc.exec} rit --help`,
+            example: {},
+          },
+        },
+      };
+    }
+
+    // run targets
+    for (const runOption of ritRunOptions) {
+      const targetName = options.reactIntegrationTesting.targetName + '--' + reactVersion + '--' + runOption;
+
+      if (runOption === 'type-check') {
+        if (isStorybookAdjacentProject) {
+          targets[targetName] = {
+            command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
+            options: { cwd: '{projectRoot}' },
+            cache: true,
+            inputs: inputs,
+            outputs: [],
+            dependsOn: [targetNamePrepare],
+            metadata: {
+              technologies: ['react-integration-tester'],
+              description: `Run react integration tests against React ${reactVersion}`,
+              help: {
+                command: `${config.pmc.exec} rit --help`,
+                example: {},
+              },
+            },
+          };
+        } else if (isLibraryWithStorybookAdjacentProject) {
+          // convenience target created on library target scope, which runs the `*-stories` type-check
+          targets[targetName] = {
+            executor: 'nx:noop',
+            dependsOn: [{ target: targetName, projects: `${config.projectJSON.name}-stories` }],
+            cache: true,
+          };
+        }
+      } else {
+        targets[targetName] = {
+          command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
+          options: { cwd: '{projectRoot}' },
+          cache: true,
+          inputs: inputs,
+          outputs: [],
+          parallelism: runOption === 'e2e' ? false : true,
+          // this should be set via nx.json
+          dependsOn: [targetNamePrepare],
+          metadata: {
+            technologies: ['react-integration-tester'],
+            description: `Run react integration tests against React ${reactVersion}`,
+            help: {
+              command: `${config.pmc.exec} rit --help`,
+              example: {},
+            },
+          },
+        };
+      }
+    }
+  }
+
+  // main group default target
+  targets[options.reactIntegrationTesting.targetName] = {
+    executor: 'nx:noop',
+    cache: true,
+    dependsOn: Object.keys(targets)
+      .filter(target => !target.includes('--prepare'))
+      .map(target => {
+        return {
+          target,
+          projects:
+            isLibraryWithStorybookAdjacentProject && target.includes('--type-check')
+              ? `${config.projectJSON.name}-stories`
+              : 'self',
+          params: 'forward',
+        };
+      }),
+    inputs: inputs,
+    outputs: [],
+    metadata: {
+      technologies: ['react-integration-tester'],
+      description: `Run react integration tests against React ${reactVersions.join(', ')}`,
+      help: {
+        command: `${config.pmc.exec} rit --help`,
+        example: {},
+      },
+    },
+  };
+
+  metadata.targetGroups[groupName].push(...Object.keys(targets));
+
+  return { targets, metadata };
 }
