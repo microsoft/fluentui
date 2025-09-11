@@ -151,7 +151,8 @@
             "react-theme-sass",
             "babel-preset-global-context",
             "eslint-plugin-react-components",
-            "react-migration-v0-v9"
+            "react-migration-v0-v9",
+            "react-migration-v0-v9-stories"
           ]
         }
       },
