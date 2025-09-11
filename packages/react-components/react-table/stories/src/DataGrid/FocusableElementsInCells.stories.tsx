@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
   FolderRegular,
   EditRegular,
+  MoreHorizontalRegular,
   OpenRegular,
   DocumentRegular,
   DocumentPdfRegular,
@@ -22,6 +23,11 @@ import {
   TableColumnDefinition,
   createTableColumn,
   Button,
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
   TableColumnId,
   DataGridCellFocusMode,
 } from '@fluentui/react-components';
@@ -87,11 +93,25 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'author',
-    compare: (a, b) => {
-      return a.author.label.localeCompare(b.author.label);
-    },
     renderHeaderCell: () => {
-      return 'Author';
+      return (
+        <>
+          Author
+          <Button appearance="transparent" aria-label="Edit" icon={<EditRegular />} />
+          <Menu positioning={{ autoSize: true }}>
+            <MenuTrigger disableButtonEnhancement>
+              <Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More options" />
+            </MenuTrigger>
+
+            <MenuPopover>
+              <MenuList>
+                <MenuItem>Delete column</MenuItem>
+                <MenuItem>Create new author</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </>
+      );
     },
     renderCell: item => {
       return (
@@ -154,7 +174,11 @@ export const FocusableElementsInCells = (): JSXElement => {
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
-          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+          {({ columnId, renderHeaderCell }) => (
+            <DataGridHeaderCell focusMode={columnId === 'author' ? 'group' : undefined}>
+              {renderHeaderCell()}
+            </DataGridHeaderCell>
+          )}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item>>
@@ -174,7 +198,7 @@ FocusableElementsInCells.parameters = {
   docs: {
     description: {
       story: [
-        'When cells contain focusable elements, set the `focusMode` prop on the `DataGridCell` component.',
+        'When cells contain focusable elements, set the `focusMode` prop on the `DataGridCell` or `DataGridHeaderCell` components.',
         '',
         'Use `group` when there are multiple focusable elements in cell,',
         '`group` will enable the following behaviour:',
@@ -183,7 +207,9 @@ FocusableElementsInCells.parameters = {
         '- Escape will move focus back to the cell',
         '',
         'Use `none` when there is one single focusable element in cell,',
-        '`none` will make the cell non-focusable',
+        '`none` will make the cell non-focusable.',
+        '',
+        'Do not add nested focusable elements to a sortable `DataGridHeaderCell`, since they will be rendered within the sort button.',
       ].join('\n'),
     },
   },
