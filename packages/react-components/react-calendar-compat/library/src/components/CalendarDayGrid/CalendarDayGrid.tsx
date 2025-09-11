@@ -12,7 +12,7 @@ import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles.styles';
 import { mergeClasses } from '@griffel/react';
 import type { Day } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
-import { DirectionalSlide } from '../../utils/motions';
+import { DirectionalSlide } from '../../utils/calendarMotions';
 import { AnimationDirection } from '../../Calendar';
 
 export interface DayInfo extends Day {
