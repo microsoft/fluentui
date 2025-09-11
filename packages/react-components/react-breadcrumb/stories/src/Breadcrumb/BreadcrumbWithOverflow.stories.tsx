@@ -241,9 +241,11 @@ const BreadcrumbOverflowExample = () => {
       maxDisplayedItems: 5,
     });
 
+  const hasHiddenItems = overflowItems && overflowItems.length > 0;
+
   return (
     <div className={styles.example}>
-      <Overflow>
+      <Overflow hasHiddenItems={hasHiddenItems}>
         <Breadcrumb>
           {startDisplayedItems.map((item: Item) => renderBreadcrumbItem(item, false))}
           <OverflowMenu
