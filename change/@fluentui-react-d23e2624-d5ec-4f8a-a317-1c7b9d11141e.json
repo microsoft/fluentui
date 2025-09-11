@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(DetailsList): DetailsRow correctly falls back to horizontal FocusZone",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
