@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts';
 import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
-export const VerticalBarStyled = () => {
+export const VerticalBarStyled = (): JSXElement => {
   const [isChecked, setIsChecked] = React.useState<CheckboxProps['checked']>(true);
   const [useSingleColor, setUseSingleColor] = React.useState<boolean>(true);
 

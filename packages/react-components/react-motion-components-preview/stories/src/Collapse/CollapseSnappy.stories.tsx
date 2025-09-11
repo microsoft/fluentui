@@ -1,6 +1,7 @@
 import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
 import { CollapseSnappy } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CollapseSnappy.stories.md';
 
@@ -37,7 +38,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Snappy = () => {
+export const Snappy = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
 

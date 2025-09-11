@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Checkbox } from '@fluentui/react-components';
 
-export const Circular = () => <Checkbox shape="circular" label="Circular" />;
+export const Circular = (): JSXElement => <Checkbox shape="circular" label="Circular" />;
 Circular.parameters = {
   docs: {
     description: {

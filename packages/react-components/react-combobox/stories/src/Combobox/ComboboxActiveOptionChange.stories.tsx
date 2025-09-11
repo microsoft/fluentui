@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ActiveOptionChange = (props: Partial<ComboboxProps>) => {
+export const ActiveOptionChange = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-active-option-change');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();

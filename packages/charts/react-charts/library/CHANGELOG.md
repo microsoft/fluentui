@@ -1,8 +1,80 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Thu, 07 Aug 2025 10:03:21 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 12:51:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.2.4)
+
+Mon, 08 Sep 2025 12:51:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.2.3..@fluentui/react-charts_v9.2.4)
+
+### Patches
+
+- add support for tickmode in declarative chart ([PR #35121](https://github.com/microsoft/fluentui/pull/35121) by anushgupta@microsoft.com)
+- fix svg background alignment issue ([PR #35070](https://github.com/microsoft/fluentui/pull/35070) by anushgupta@microsoft.com)
+- fix a11y bugs ([PR #35127](https://github.com/microsoft/fluentui/pull/35127) by anushgupta@microsoft.com)
+- refactor common styles to reduce bundle size ([PR #35081](https://github.com/microsoft/fluentui/pull/35081) by anushgupta@microsoft.com)
+- add support for declarative multiplot chart - non cartesian ([PR #35069](https://github.com/microsoft/fluentui/pull/35069) by anushgupta@microsoft.com)
+- reduce component size by removing duplicate code ([PR #35094](https://github.com/microsoft/fluentui/pull/35094) by anushgupta@microsoft.com)
+- change foreground color based on contrast ratio in chart table ([PR #35101](https://github.com/microsoft/fluentui/pull/35101) by anushgupta@microsoft.com)
+- handling y object values for bar chart ([PR #35115](https://github.com/microsoft/fluentui/pull/35115) by anushgupta@microsoft.com)
+- fix text mode for scatter polar ([PR #35104](https://github.com/microsoft/fluentui/pull/35104) by anushgupta@microsoft.com)
+- update segment colors of donut chart ([PR #35122](https://github.com/microsoft/fluentui/pull/35122) by anushgupta@microsoft.com)
+- fix: resolve R19 type issues on refs ([PR #35144](https://github.com/microsoft/fluentui/pull/35144) by martinhochel@microsoft.com)
+- add support for marker texts for modes containing text ([PR #35083](https://github.com/microsoft/fluentui/pull/35083) by anushgupta@microsoft.com)
+- fix v9 charts bugs ([PR #35132](https://github.com/microsoft/fluentui/pull/35132) by anushgupta@microsoft.com)
+- align labels and points according to given directions and rotation in schema for scatter polar ([PR #35098](https://github.com/microsoft/fluentui/pull/35098) by anushgupta@microsoft.com)
+- Add Gantt and Funnel chart in declarative charts ([PR #35123](https://github.com/microsoft/fluentui/pull/35123) by anushgupta@microsoft.com)
+- support string y axis in scatter chart ([PR #35120](https://github.com/microsoft/fluentui/pull/35120) by anushgupta@microsoft.com)
+- respect bargap and width properties in plotly bar traces ([PR #35097](https://github.com/microsoft/fluentui/pull/35097) by anushgupta@microsoft.com)
+- support categorical theta values for scatter polar chart ([PR #35092](https://github.com/microsoft/fluentui/pull/35092) by anushgupta@microsoft.com)
+- support single value callout in linechart ([PR #35084](https://github.com/microsoft/fluentui/pull/35084) by anushgupta@microsoft.com)
+- support additional modes ([PR #35096](https://github.com/microsoft/fluentui/pull/35096) by anushgupta@microsoft.com)
+- support tick formatting from plotly output ([PR #35060](https://github.com/microsoft/fluentui/pull/35060) by anushgupta@microsoft.com)
+- log axis support in linechart and scatter chart ([PR #35112](https://github.com/microsoft/fluentui/pull/35112) by anushgupta@microsoft.com)
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-button to v9.6.6 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.0 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-overflow to v9.5.6 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-popover to v9.12.6 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-tabster to v9.26.5 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.5 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-utilities to v9.24.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+
+## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.2.3)
+
+Thu, 21 Aug 2025 12:25:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.2.2..@fluentui/react-charts_v9.2.3)
+
+### Patches
+
+- add labels for text+markers ([PR #35025](https://github.com/microsoft/fluentui/pull/35025) by anushgupta@microsoft.com)
+- fix scatter chart bugs ([PR #35047](https://github.com/microsoft/fluentui/pull/35047) by anushgupta@microsoft.com)
+- update validation to tolerate invalid traces ([PR #34998](https://github.com/microsoft/fluentui/pull/34998) by anushgupta@microsoft.com)
+- support for ordering tick labels ([PR #35053](https://github.com/microsoft/fluentui/pull/35053) by anushgupta@microsoft.com)
+- colorscale support for bar charts ([PR #35026](https://github.com/microsoft/fluentui/pull/35026) by anushgupta@microsoft.com)
+- pie chart fix ([PR #35013](https://github.com/microsoft/fluentui/pull/35013) by anushgupta@microsoft.com)
+- use piecolorway for donut chart ([PR #34999](https://github.com/microsoft/fluentui/pull/34999) by anushgupta@microsoft.com)
+- enable scatter chart in v9 declatative ([PR #35036](https://github.com/microsoft/fluentui/pull/35036) by anushgupta@microsoft.com)
+- support for using opacity provided in plotly schema ([PR #35045](https://github.com/microsoft/fluentui/pull/35045) by anushgupta@microsoft.com)
+- add date axis support in vsbc ([PR #35018](https://github.com/microsoft/fluentui/pull/35018) by anushgupta@microsoft.com)
+- add support for multiplot declarative chart ([PR #35038](https://github.com/microsoft/fluentui/pull/35038) by anushgupta@microsoft.com)
+- add styles to tables ([PR #35012](https://github.com/microsoft/fluentui/pull/35012) by anushgupta@microsoft.com)
+- remove duplicated legends in line chart ([PR #34991](https://github.com/microsoft/fluentui/pull/34991) by anushgupta@microsoft.com)
+- fix color issue in gvbc ([PR #35050](https://github.com/microsoft/fluentui/pull/35050) by anushgupta@microsoft.com)
+- support for lines+markers ([PR #34997](https://github.com/microsoft/fluentui/pull/34997) by anushgupta@microsoft.com)
+- use schema colorscale for gvbc ([PR #35011](https://github.com/microsoft/fluentui/pull/35011) by anushgupta@microsoft.com)
+- add support for string y axis in VSBC ([PR #35016](https://github.com/microsoft/fluentui/pull/35016) by anushgupta@microsoft.com)
+- Bump @fluentui/react-button to v9.6.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.6 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-overflow to v9.5.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-popover to v9.12.5 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-tabster to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.4 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+- Bump @fluentui/react-utilities to v9.24.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
 
 ## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.2.2)
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, SwatchPicker, renderSwatchPickerGrid } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -21,7 +22,7 @@ const colors = [
   { color: '#712F9E', value: '712F9E', 'aria-label': 'purple' },
 ];
 
-export const SwatchPickerSpacing = () => {
+export const SwatchPickerSpacing = (): JSXElement => {
   const styles = useStyles();
 
   return (

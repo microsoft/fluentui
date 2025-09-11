@@ -140,7 +140,7 @@ function useAnimateAtomsInSupportedEnvironment() {
  */
 function useAnimateAtomsInTestEnvironment() {
   const [count, setCount] = React.useState(0);
-  const callbackRef = React.useRef<() => void>();
+  const callbackRef = React.useRef<() => void>(undefined);
 
   const realAnimateAtoms = useAnimateAtomsInSupportedEnvironment();
 
@@ -203,7 +203,11 @@ function useAnimateAtomsInTestEnvironment() {
 /**
  * @internal
  */
-export function useAnimateAtoms() {
+export function useAnimateAtoms(): (
+  element: HTMLElement,
+  value: AtomMotion | AtomMotion[],
+  options: { isReducedMotion: boolean },
+) => AnimationHandle {
   'use no memo';
 
   if (process.env.NODE_ENV === 'test') {

@@ -1,8 +1,9 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { LineChartProps, LineChartStyles } from './LineChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { HighContrastSelector } from '../../utilities/index';
+import { getMarkerLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 /**
  * @internal
@@ -24,36 +25,19 @@ export const linechartClassNames: SlotClassNames<LineChartStyles> = {
   chartWrapper: 'fui-line__chartWrapper',
   svgTooltip: '',
   chart: '',
+  axisAnnotation: '',
 };
 
 /**
  * Base Styles
  */
 const useStyles = makeStyles({
-  tooltip: {
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    position: 'absolute',
-    textAlign: 'center',
-    top: tokens.spacingVerticalNone,
-    fill: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusSmall,
-    pointerEvents: 'none',
-  },
+  tooltip: getTooltipStyle() as GriffelStyle,
+  markerLabel: getMarkerLabelStyle() as GriffelStyle,
   lineBorder: {
     stroke: tokens.colorNeutralBackground1,
     [HighContrastSelector]: {
       stroke: 'Canvas',
-    },
-  },
-  markerLabel: {
-    fill: tokens.colorNeutralForeground1,
-    textAnchor: 'middle',
-    selectors: {
-      [HighContrastSelector]: {
-        fill: 'CanvasText',
-      },
     },
   },
 });

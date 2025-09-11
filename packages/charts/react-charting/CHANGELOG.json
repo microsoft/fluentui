@@ -2,6 +2,126 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 11 Sep 2025 07:20:30 GMT",
+      "tag": "@fluentui/react-charting_v5.24.30",
+      "version": "5.24.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.30",
+            "commit": "883564acb9bb308dac516693d6c9ea3c98d19569"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.215",
+            "commit": "883564acb9bb308dac516693d6c9ea3c98d19569"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.123.6",
+            "commit": "883564acb9bb308dac516693d6c9ea3c98d19569"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Sep 2025 07:19:33 GMT",
+      "tag": "@fluentui/react-charting_v5.24.29",
+      "version": "5.24.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.29",
+            "commit": "7f60e73e38f099ea59b00138d1cc735729612263"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Sep 2025 07:20:21 GMT",
+      "tag": "@fluentui/react-charting_v5.24.28",
+      "version": "5.24.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "cb0e73c4485c9839ecdd19a27dc6adb91ae7ae34",
+            "comment": "fix styling in chart table"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Sep 2025 07:22:39 GMT",
+      "tag": "@fluentui/react-charting_v5.24.27",
+      "version": "5.24.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2d6aca289ee6cc4571e4e3dcdf810deb78ac18fa",
+            "comment": "fix(react-charting): Fixing donut colors and segment orders"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Aug 2025 07:21:43 GMT",
+      "tag": "@fluentui/react-charting_v5.24.26",
+      "version": "5.24.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "78ed2ed56e904c6cbe404e78965de05ab66acf08",
+            "comment": "fix(react-charting): Updating segment colors for Donut chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.26",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.214",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.123.5",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Aug 2025 12:15:04 GMT",
+      "tag": "@fluentui/react-charting_v5.24.25",
+      "version": "5.24.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0983f8e39ab375d87f5124c17821a618971881c0",
+            "comment": "feat: add support for tickmode in DeclarativeChart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Aug 2025 07:21:22 GMT",
       "tag": "@fluentui/react-charting_v5.24.24",
       "version": "5.24.24",

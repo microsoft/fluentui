@@ -44,7 +44,6 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
-  formatDate,
   areArraysEqual,
   calculateLongestLabelWidth,
   useRtl,
@@ -54,13 +53,14 @@ import {
   YAxisType,
   createNumericYAxis,
   IDomainNRange,
-  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfVSBCNumeric,
   domainRangeOfXStringAxis,
   createStringYAxis,
   calcTotalWidth,
   calcBandwidth,
   calcRequiredWidth,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
@@ -86,7 +86,16 @@ type CalloutAnchorPointData = {
   chartDataPoint: VSChartDataPoint;
 };
 
-export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBarChartProps> = props => {
+export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBarChartProps> = React.forwardRef<
+  HTMLDivElement,
+  VerticalStackedBarChartProps
+>((_props, forwardedRef) => {
+  const props: VerticalStackedBarChartProps = {
+    xAxisCategoryOrder: 'default',
+    yAxisCategoryOrder: 'default',
+    maxBarWidth: 24,
+    ..._props,
+  };
   const _isRtl: boolean = useRtl();
   const _createLegendsForLine: (data: VerticalStackedChartProps[]) => LineLegends[] = (
     data: VerticalStackedChartProps[],
@@ -295,7 +304,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         ? [...lineData!.sort((a, b) => (a.data! < b.data! ? 1 : -1)), ...stack.chartData.slice().reverse()]
         : stack.chartData.slice().reverse(),
     );
-    setHoverXValue(stack.xAxisPoint instanceof Date ? formatDate(stack.xAxisPoint, props.useUTC) : stack.xAxisPoint);
+    setHoverXValue(
+      stack.xAxisPoint instanceof Date
+        ? formatDateToLocaleString(stack.xAxisPoint, props.culture, props.useUTC as boolean)
+        : stack.xAxisPoint,
+    );
     setStackCalloutProps(stack);
     setActiveXAxisDataPoint(stack.xAxisPoint);
     setCallOutAccessibilityData(stack.stackCallOutAccessibilityData);
@@ -338,10 +351,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function _createDataSetLayer(): VerticalStackedBarDataPoint[] {
-    const tempArr: string[] = [];
     const dataset: VerticalStackedBarDataPoint[] = _points.map(singlePointData => {
-      tempArr.push(singlePointData.xAxisPoint as string);
-
       if (_yAxisType === YAxisType.StringAxis) {
         return {
           x: singlePointData.xAxisPoint,
@@ -357,7 +367,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         y: total,
       };
     });
-    _xAxisLabels = tempArr;
+    _xAxisLabels = _getOrderedXAxisLabels();
     return dataset;
   }
 
@@ -439,7 +449,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       const xValue =
         singleChartData.xAxisCalloutData ||
         (singleChartData.xAxisPoint instanceof Date
-          ? formatDate(singleChartData.xAxisPoint)
+          ? formatDateToLocaleString(singleChartData.xAxisPoint, props.culture, props.useUTC as boolean)
           : singleChartData.xAxisPoint);
       const pointValues = singleChartData.chartData
         .map(pt => {
@@ -467,7 +477,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       singleChartData.xAxisCalloutData ||
       (!isLinePoint && (point as VSChartDataPoint).xAxisCalloutData) ||
       (singleChartData.xAxisPoint instanceof Date
-        ? formatDate(singleChartData.xAxisPoint)
+        ? formatDateToLocaleString(singleChartData.xAxisPoint, props.culture, props.useUTC as boolean)
         : singleChartData.xAxisPoint);
     const legend = point.legend;
     const yValue =
@@ -520,7 +530,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
     } else if (xAxisType === XAxisTypes.DateAxis) {
-      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+      domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
         points,
         margins,
         width,
@@ -719,7 +729,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   function _renderCallout(props?: VSChartDataPoint): JSXElement | null {
     return props ? (
       <ChartPopover
-        culture={props.culture ?? 'en-us'}
+        culture={props.culture}
         XValue={props.xAxisCalloutData}
         xCalloutValue={xCalloutValue}
         yCalloutValue={yCalloutValue}
@@ -1203,6 +1213,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               aria-label={`Total: ${barLabel}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+              style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
             >
               {typeof props.yAxisTickFormat === 'function'
                 ? props.yAxisTickFormat(barLabel)
@@ -1267,33 +1278,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       });
     }
 
-    if (_yAxisType === YAxisType.StringAxis) {
-      const legendToYValues: Record<string, string[]> = {};
-      _points.forEach(xPoint => {
-        xPoint.chartData.forEach(bar => {
-          if (!legendToYValues[bar.legend]) {
-            legendToYValues[bar.legend] = [`${bar.data}`];
-          } else {
-            legendToYValues[bar.legend].push(`${bar.data}`);
-          }
-        });
-      });
-
-      const yAxisLabels = new Set<string>();
-      Object.values(legendToYValues).forEach(yValues => {
-        yValues.forEach(yVal => {
-          yAxisLabels.add(yVal);
-        });
-      });
-      Object.values(_lineObject).forEach(linePoints => {
-        linePoints.forEach(linePoint => {
-          if (!linePoint.useSecondaryYScale) {
-            yAxisLabels.add(`${linePoint.y}`);
-          }
-        });
-      });
-      _yAxisLabels = Array.from(yAxisLabels);
-    }
+    _yAxisLabels = _getOrderedYAxisLabels();
   }
 
   function _getYDomainMargins(containerHeight: number): Margins {
@@ -1326,6 +1311,52 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       ..._margins,
       top: _margins.top! + yAxisTickMarginTop,
     };
+  }
+
+  function _getOrderedXAxisLabels() {
+    if (_xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(), props.xAxisCategoryOrder);
+  }
+
+  function _getOrderedYAxisLabels() {
+    if (_yAxisType !== YAxisType.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(true), props.yAxisCategoryOrder);
+  }
+
+  function _mapCategoryToValues(isYAxis = false) {
+    const categoryToValues: Record<string, number[]> = {};
+    _points.forEach(point => {
+      point.chartData.forEach(bar => {
+        const category = (isYAxis ? bar.data : point.xAxisPoint) as string;
+        const value = isYAxis ? point.xAxisPoint : bar.data;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
+        }
+        if (typeof value === 'number') {
+          categoryToValues[category].push(value);
+        }
+      });
+      point.lineData?.forEach(linePoint => {
+        if (isYAxis && linePoint.useSecondaryYScale) {
+          return;
+        }
+        const category = (isYAxis ? linePoint.y : point.xAxisPoint) as string;
+        const value = isYAxis ? point.xAxisPoint : linePoint.y;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
+        }
+        if (typeof value === 'number') {
+          categoryToValues[category].push(value);
+        }
+      });
+    });
+    return categoryToValues;
   }
 
   if (!_isChartEmpty()) {
@@ -1414,5 +1445,5 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     );
   }
   return <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />;
-};
+});
 VerticalStackedBarChart.displayName = 'VerticalStackedBarChart';

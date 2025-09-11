@@ -52,6 +52,7 @@ export const useDataGridSelectionCell_unstable = (
       invisible: isHeader && type === 'radio',
       'aria-selected': checked === 'mixed' ? undefined : checked,
       subtle,
+      radioIndicator: isHeader ? null : undefined,
       ...props,
       onClick,
     },

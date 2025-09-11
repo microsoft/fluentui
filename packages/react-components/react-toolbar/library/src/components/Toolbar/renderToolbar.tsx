@@ -1,13 +1,14 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { ToolbarState, ToolbarSlots, ToolbarContextValues } from './Toolbar.types';
 import { ToolbarContext } from './ToolbarContext';
 
 /**
  * Render the final JSX of Toolbar
  */
-export const renderToolbar_unstable = (state: ToolbarState, contextValues: ToolbarContextValues) => {
+export const renderToolbar_unstable = (state: ToolbarState, contextValues: ToolbarContextValues): JSXElement => {
   assertSlots<ToolbarSlots>(state);
 
   return (

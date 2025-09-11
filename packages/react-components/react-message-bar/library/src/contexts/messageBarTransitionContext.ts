@@ -23,5 +23,5 @@ export const MessageBarTransitionContextProvider = messageBarTransitionContext.P
 /**
  * @internal
  */
-export const useMessageBarTransitionContext = () =>
+export const useMessageBarTransitionContext = (): MessageBarTransitionContextValue =>
   React.useContext(messageBarTransitionContext) ?? messageBarTransitionContextDefaultValue;

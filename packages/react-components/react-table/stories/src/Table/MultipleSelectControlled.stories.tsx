@@ -1,6 +1,6 @@
 import * as React from 'react';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -109,7 +109,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const MultipleSelectControlled = () => {
+export const MultipleSelectControlled = (): JSXElement => {
   const [selectedRows, setSelectedRows] = React.useState(() => new Set<TableRowId>([0, 1]));
 
   const {

@@ -1,8 +1,9 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HighContrastSelector, useRtl } from '../../utilities/utilities';
+import { getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';
 
 /**
  * @internal
@@ -20,6 +21,7 @@ export const cartesianchartClassNames: SlotClassNames<CartesianChartStyles> = {
   descriptionMessage: 'fui-cart__descriptionMessage',
   hover: 'fui-cart__hover',
   tooltip: 'fui-cart__tooltip',
+  axisAnnotation: 'fui-cart__axisAnnotation',
   chartTitle: 'fui-cart__chartTitle',
   chart: 'fui-cart__chart',
 };
@@ -39,16 +41,8 @@ const useStyles = makeStyles({
   chartWrapper: {
     overflow: 'auto',
   },
-  axisTitle: {
-    ...typographyStyles.caption2Strong,
-    fontStyle: 'normal',
-    textAlign: 'center',
-    color: tokens.colorNeutralForeground2,
-    fill: tokens.colorNeutralForeground1,
-    [HighContrastSelector]: {
-      fill: 'CanvasText',
-    },
-  },
+  axisTitle: getAxisTitleStyle() as GriffelStyle,
+  axisAnnotation: getAxisTitleStyle() as GriffelStyle,
   xAxis: {
     '& text': {
       fill: tokens.colorNeutralForeground1,
@@ -100,20 +94,10 @@ const useStyles = makeStyles({
       fill: 'Canvas',
     },
   },
-  tooltip: {
-    ...typographyStyles.body1,
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    position: 'absolute',
-    textAlign: 'center',
-    top: tokens.spacingVerticalNone,
-    backgroundColor: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusSmall,
-    pointerEvents: 'none',
-  },
+  tooltip: getTooltipStyle() as GriffelStyle,
 });
 /**
+ *
  * Apply styling to the Carousel slots based on the state
  */
 export const useCartesianChartStyles = (props: CartesianChartProps): CartesianChartStyles => {
@@ -143,6 +127,11 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
     ),
     svgTooltip: mergeClasses(cartesianchartClassNames.svgTooltip, baseStyles.svgTooltip, props.styles?.svgTooltip),
     tooltip: mergeClasses(cartesianchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
+    axisAnnotation: mergeClasses(
+      cartesianchartClassNames.axisAnnotation,
+      baseStyles.axisAnnotation,
+      /*props.styles?.axisAnnotation,*/
+    ),
     chart: mergeClasses(cartesianchartClassNames.chart, props.styles?.chart),
   };
 };

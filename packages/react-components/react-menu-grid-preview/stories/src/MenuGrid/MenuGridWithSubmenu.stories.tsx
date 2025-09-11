@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 import { MenuGrid, MenuGridItem } from '@fluentui/react-menu-grid-preview';
 
@@ -31,7 +32,7 @@ const Submenu = () => {
   );
 };
 
-export const WithSubmenu = () => {
+export const WithSubmenu = (): JSXElement => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
@@ -54,7 +55,7 @@ WithSubmenu.parameters = {
   docs: {
     description: {
       story: [
-        'If you need to provide a submenu for a `MenuGrid` item, use a menu button, e.g. "More actions", provided via `secondActionCell` or `thirdActionCell`.',
+        'If you need to provide a submenu for a `MenuGridItem`, use a menu button, e.g. "More actions", provided via `firstSubAction` or `secondSubAction` slots.',
       ].join('\n'),
     },
   },

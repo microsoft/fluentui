@@ -429,17 +429,16 @@ test.describe('Accordion', () => {
     const { element } = fastPage;
 
     await fastPage.setTemplate({
+      attributes: { 'expand-mode': 'single' },
       innerHTML: /* html */ `
-        <fluent-accordion expand-mode="single">
-          <fluent-accordion-item>
-            <div slot="heading">Accordion Item 1 Heading</div>
-            Accordion Item 1 Content
-          </fluent-accordion-item>
-          <fluent-accordion-item>
-            <div slot="heading">Accordion Item 2 Heading</div>
-            <fluent-checkbox>A checkbox as content</fluent-checkbox>
-          </fluent-accordion-item>
-        </fluent-accordion>
+        <fluent-accordion-item>
+          <div slot="heading">Accordion Item 1 Heading</div>
+          Accordion Item 1 Content
+        </fluent-accordion-item>
+        <fluent-accordion-item>
+          <div slot="heading">Accordion Item 2 Heading</div>
+          <fluent-checkbox>A checkbox as content</fluent-checkbox>
+        </fluent-accordion-item>
       `,
     });
 

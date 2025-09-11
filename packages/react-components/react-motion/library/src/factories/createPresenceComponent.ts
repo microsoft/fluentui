@@ -1,4 +1,5 @@
 import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
@@ -21,7 +22,7 @@ import { createMotionComponent, MotionComponentProps } from './createMotionCompo
 /**
  * @internal A private symbol to store the motion definition on the component for variants.
  */
-export const MOTION_DEFINITION = Symbol('MOTION_DEFINITION');
+export const PRESENCE_MOTION_DEFINITION = Symbol('PRESENCE_MOTION_DEFINITION');
 
 export type PresenceComponentProps = {
   /**
@@ -31,7 +32,7 @@ export type PresenceComponentProps = {
   appear?: boolean;
 
   /** A React element that will be cloned and will have motion effects applied to it. */
-  children: React.ReactElement;
+  children: JSXElement;
 
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
@@ -75,9 +76,11 @@ export type PresenceComponentProps = {
   unmountOnExit?: boolean;
 };
 
-export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
-  (props: PresenceComponentProps & MotionParams): React.ReactElement | null;
-  [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React.FC<
+  PresenceComponentProps & MotionParams
+> & {
+  (props: PresenceComponentProps & MotionParams): JSXElement | null;
+  [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
   In: React.FC<MotionComponentProps & MotionParams>;
   Out: React.FC<MotionComponentProps & MotionParams>;
 };
@@ -245,7 +248,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     {
       // Heads up!
       // Always normalize it to a function to simplify types
-      [MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
+      [PRESENCE_MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
     },
     {
       // Wrap `enter` in its own motion component as a static method, e.g. <Fade.In>

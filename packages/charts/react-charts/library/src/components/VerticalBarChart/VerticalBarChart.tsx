@@ -49,12 +49,13 @@ import {
   createNumericYAxis,
   IDomainNRange,
   domainRangeOfVerticalNumeric,
-  domainRangeOfDateForAreaLineVerticalBarChart,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfXStringAxis,
   createStringYAxis,
   calcTotalWidth,
   calcBandwidth,
   calcRequiredWidth,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 
@@ -73,7 +74,12 @@ const MIN_DOMAIN_MARGIN = 8;
 export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
   VerticalBarChartProps
->((props, forwardedRef) => {
+>((_props, forwardedRef) => {
+  const props: VerticalBarChartProps = {
+    xAxisCategoryOrder: 'default',
+    maxBarWidth: 24,
+    ..._props,
+  };
   let _points: VerticalBarChartDataPoint[] = [];
   let _barWidth: number = 0;
   let _colors: string[];
@@ -86,10 +92,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   let _yMin: number;
   let _isHavingLine: boolean = _checkForLine();
   const _tooltipId: string = useId('VCTooltipID_');
-  const _xAxisType: XAxisTypes =
-    props.data! && props.data!.length > 0
-      ? (getTypeOfAxis(props.data![0].x, true) as XAxisTypes)
-      : XAxisTypes.StringAxis;
+  let _xAxisType: XAxisTypes;
   let _calloutAnchorPoint: VerticalBarChartDataPoint | null;
   let _domainMargin: number;
   const _emptyChartId: string = useId('_VBC_empty');
@@ -157,7 +160,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRangeOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
     } else if (xAxisType === XAxisTypes.DateAxis) {
-      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+      domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
         points,
         margins,
         width,
@@ -317,6 +320,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _adjustProps(): void {
+    _xAxisType =
+      props.data! && props.data!.length > 0
+        ? (getTypeOfAxis(props.data![0].x, true) as XAxisTypes)
+        : XAxisTypes.StringAxis;
     _points = props.data || [];
     _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, undefined, props.mode);
     const defaultColors: string[] = [
@@ -350,7 +357,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       return (
         <>
           <ChartPopover
-            culture={props.culture ?? 'en-us'}
+            culture={props.culture}
             clickPosition={clickPosition}
             isPopoverOpen={isPopoverOpen}
             legend={item.legend!}
@@ -372,7 +379,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           XValue={_props.xAxisCalloutData || (_props.x as string)}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
-          culture={props.culture ?? 'en-us'}
+          culture={props.culture}
           clickPosition={clickPosition}
           isPopoverOpen={isPopoverOpen}
           legend={_props.legend!}
@@ -1039,6 +1046,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         textAnchor="middle"
         className={classes.barLabel}
         aria-hidden={true}
+        style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
       >
         {typeof props.yAxisTickFormat === 'function'
           ? props.yAxisTickFormat(barValue)
@@ -1141,6 +1149,29 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return _points.length === 0 || (_points.every(point => point.y === 0) && !_isHavingLine);
   }
 
+  function _getOrderedXAxisLabels() {
+    if (_xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(), props.xAxisCategoryOrder);
+  }
+
+  function _mapCategoryToValues() {
+    const categoryToValues: Record<string, number[]> = {};
+    _points.forEach(point => {
+      const xValue = point.x as string;
+      if (!categoryToValues[xValue]) {
+        categoryToValues[xValue] = [];
+      }
+      categoryToValues[xValue].push(point.y);
+      if (point.lineData) {
+        categoryToValues[xValue].push(point.lineData.y);
+      }
+    });
+    return categoryToValues;
+  }
+
   function updatePosition(newX: number, newY: number) {
     const threshold = 1; // Set a threshold for movement
     const { x, y } = clickPosition;
@@ -1154,7 +1185,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   _adjustProps();
-  _xAxisLabels = _points.map((point: VerticalBarChartDataPoint) => point.x as string);
+  _xAxisLabels = _getOrderedXAxisLabels();
   _yMax = Math.max(d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
   _yMin = Math.min(d3Min(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMinValue || 0);
   const legendBars: JSXElement = _getLegendData(_points);
@@ -1172,7 +1203,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     clickPosition: clickPosition,
     isPopoverOpen: isPopoverOpen,
     isCalloutForStack: _isHavingLine && (_noLegendHighlighted() || _getHighlightedLegend().length > 1),
-    culture: props.culture ?? 'en-us',
+    culture: props.culture,
     isCartesian: true,
     customCallout: {
       customizedCallout: _getCustomizedCallout() != null ? _getCustomizedCallout()! : undefined,
@@ -1191,7 +1222,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       {...props}
       points={_points}
       chartType={ChartTypes.VerticalBarChart}
-      xAxisType={_xAxisType}
+      xAxisType={_xAxisType!}
       createYAxis={createNumericYAxis}
       calloutProps={calloutProps}
       tickParams={tickParams}
@@ -1207,7 +1238,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       getAxisData={_getAxisData}
       onChartMouseLeave={_handleChartMouseLeave}
       getDomainMargins={_getDomainMargins}
-      {...(_xAxisType === XAxisTypes.StringAxis && {
+      {...(_xAxisType! === XAxisTypes.StringAxis && {
         xAxisInnerPadding: _xAxisInnerPadding,
         xAxisOuterPadding: _xAxisOuterPadding,
       })}

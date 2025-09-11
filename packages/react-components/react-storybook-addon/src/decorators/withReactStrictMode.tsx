@@ -5,7 +5,7 @@ import { STRICT_MODE_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
-export const withReactStrictMode = (StoryFn: () => JSXElement, context: FluentStoryContext) => {
+export const withReactStrictMode = (StoryFn: () => JSXElement, context: FluentStoryContext): JSXElement => {
   if (isDecoratorDisabled(context, 'ReactStrictMode')) {
     return StoryFn();
   }

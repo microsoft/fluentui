@@ -30,6 +30,7 @@ import {
   calcTotalWidth,
   calcBandwidth,
   calcTotalBandUnits,
+  sortAxisCategories,
 } from '../../utilities/index';
 
 import {
@@ -70,7 +71,12 @@ interface GVSingleDataPoint {
 export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
   GroupedVerticalBarChartProps
->((props = { maxBarWidth: 24 }, forwardedRef) => {
+>((_props, forwardedRef) => {
+  const props: GroupedVerticalBarChartProps = {
+    xAxisCategoryOrder: 'default',
+    maxBarWidth: 24,
+    ..._props,
+  };
   const _tooltipId: string = useId('GVBCTooltipId_');
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
@@ -167,7 +173,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   const _createDataSetOfGVBC = (points: GroupedVerticalBarChartData[]) => {
     const legends = new Set<string>();
-    const xAxisLabels: string[] = points.map(singlePoint => singlePoint.name);
+    const xAxisLabels: string[] = _getOrderedXAxisLabels(points);
     points.forEach((point: GroupedVerticalBarChartData) => {
       point.series.forEach((seriesPoint: GVBarChartSeriesPoint) => {
         legends.add(seriesPoint.legend);
@@ -255,12 +261,33 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     );
   };
 
+  const _getOrderedXAxisLabels = (points: GroupedVerticalBarChartData[]) => {
+    if (_xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(_mapCategoryToValues(points), props.xAxisCategoryOrder);
+  };
+
+  const _mapCategoryToValues = (points: GroupedVerticalBarChartData[]) => {
+    const categoryToValues: Record<string, number[]> = {};
+    points.forEach(point => {
+      if (!categoryToValues[point.name]) {
+        categoryToValues[point.name] = [];
+      }
+      point.series.forEach(seriesPoint => {
+        categoryToValues[point.name].push(seriesPoint.data);
+      });
+    });
+    return categoryToValues;
+  };
+
   const points = _addDefaultColors(props.data);
+  const _xAxisType: XAxisTypes = getTypeOfAxis(points![0].name, true) as XAxisTypes;
   const { legends, xAxisLabels, datasetForBars } = _createDataSetOfGVBC(points!);
   _legends = legends;
   _xAxisLabels = xAxisLabels;
   _datasetForBars = datasetForBars;
-  const _xAxisType: XAxisTypes = getTypeOfAxis(points![0].name, true) as XAxisTypes;
   const legendBars: JSXElement = _getLegendData(points);
   _adjustProps();
 
@@ -314,7 +341,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
     YValueHover,
     hoverXValue,
-    culture: props.culture ?? 'en-us',
+    culture: props.culture,
     isCartesian: true,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData, 'text', false),
@@ -499,7 +526,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               y={yPoint}
               opacity={barOpacity}
               fill={pointColor}
-              rx={0}
+              rx={props.roundCorners ? 3 : 0}
               onMouseOver={event => onBarHover(pointData, singleSet, event)}
               onMouseMove={event => onBarHover(pointData, singleSet, event)}
               onMouseOut={_onBarLeave}
@@ -514,7 +541,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
           barTotalValue += pointData.data;
         });
-        if (barTotalValue !== null && !props.hideLabels && _barWidth >= 16 && isLegendActive) {
+        if (barTotalValue !== null && !props.hideLabels && Math.ceil(_barWidth) >= 16 && isLegendActive) {
           barLabelsForGroup.push(
             <text
               key={`${singleSet.indexNum}-${legendIndex}`}
@@ -523,6 +550,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               textAnchor="middle"
               className={classes.barLabel}
               aria-hidden={true}
+              style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
             >
               {typeof props.yAxisTickFormat === 'function'
                 ? props.yAxisTickFormat(barTotalValue)

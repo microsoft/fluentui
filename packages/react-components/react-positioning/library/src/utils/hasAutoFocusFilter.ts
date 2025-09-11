@@ -25,6 +25,6 @@ function hasAutofocusProp(node: Node): boolean {
   return false;
 }
 
-export function hasAutofocusFilter(node: Node) {
+export function hasAutofocusFilter(node: Node): number {
   return hasAutofocusProp(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
 }

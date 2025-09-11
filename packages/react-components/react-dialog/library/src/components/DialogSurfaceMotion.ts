@@ -1,25 +1,10 @@
-import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
+import { createPresenceComponentVariant, motionTokens } from '@fluentui/react-motion';
+import { Scale } from '@fluentui/react-motion-components-preview';
 
-const keyframes = [
-  {
-    opacity: 0,
-    transform: 'scale(0.85) translateZ(0)',
-  },
-  {
-    transform: 'scale(1) translateZ(0)',
-    opacity: 1,
-  },
-];
-
-export const DialogSurfaceMotion = createPresenceComponent({
-  enter: {
-    keyframes,
-    easing: motionTokens.curveDecelerateMid,
-    duration: motionTokens.durationGentle,
-  },
-  exit: {
-    keyframes: [...keyframes].reverse(),
-    easing: motionTokens.curveAccelerateMin,
-    duration: motionTokens.durationGentle,
-  },
+export const DialogSurfaceMotion = createPresenceComponentVariant(Scale, {
+  fromScale: 0.85,
+  easing: motionTokens.curveDecelerateMid,
+  duration: motionTokens.durationGentle,
+  exitEasing: motionTokens.curveAccelerateMin,
+  exitDuration: motionTokens.durationGentle,
 });

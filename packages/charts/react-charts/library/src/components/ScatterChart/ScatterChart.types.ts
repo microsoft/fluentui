@@ -46,13 +46,23 @@ export interface ScatterChartProps extends CartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * The prop used to define the y axis labels tooltip visibility
+   */
+  showYAxisLablesTooltip?: boolean;
 }
 
 /**
  * Scatter Chart styles
  * {@docCategory ScatterChart}
  */
-export interface ScatterChartStyles extends CartesianChartStyles {}
+export interface ScatterChartStyles extends CartesianChartStyles {
+  /**
+   * Style for the marker label
+   */
+  markerLabel?: string;
+}
 
 /**
  * Scatter Chart style properties

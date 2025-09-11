@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   GroupedVerticalBarChart,
   DataVizPalette,
@@ -7,7 +8,7 @@ import {
 } from '@fluentui/react-charts';
 import { useId } from '@fluentui/react-components';
 
-export const GroupedVerticalBarSecondaryYAxis = () => {
+export const GroupedVerticalBarSecondaryYAxis = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const _widthSliderId = useId('width-slider-');

@@ -1,9 +1,7 @@
-import { AtomMotion, PresenceDirection, motionTokens } from '@fluentui/react-motion';
+import { AtomMotion, motionTokens } from '@fluentui/react-motion';
+import { BaseAtomParams } from '../types';
 
-interface BlurAtomParams {
-  direction: PresenceDirection;
-  duration: number;
-  easing?: string;
+interface BlurAtomParams extends BaseAtomParams {
   fromRadius?: string;
 }
 
@@ -19,6 +17,7 @@ export const blurAtom = ({
   direction,
   duration,
   easing = motionTokens.curveLinear,
+  delay = 0,
   fromRadius = '10px',
 }: BlurAtomParams): AtomMotion => {
   const keyframes = [{ filter: `blur(${fromRadius})` }, { filter: 'blur(0px)' }];
@@ -29,5 +28,6 @@ export const blurAtom = ({
     keyframes,
     duration,
     easing,
+    delay,
   };
 };

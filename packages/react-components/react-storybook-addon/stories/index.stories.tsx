@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Subtitle1, Text } from '@fluentui/react-components';
 import { action } from '@storybook/addon-actions';
 
-export const Demos = () => {
+export const Demos = (): JSXElement => {
   return (
     <div>
       <Subtitle1>This story is for testing purposes of this addon</Subtitle1>

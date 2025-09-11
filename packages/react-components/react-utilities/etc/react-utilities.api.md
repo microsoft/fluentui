@@ -93,6 +93,9 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
     primary: Omit<Props, ExcludedPropKeys>;
 };
 
+// @public
+export function getReactElementRef<T>(element: React_2.ReactElement | null | undefined): React_2.Ref<T> | undefined;
+
 // @internal
 export const getRTLSafeKey: (key: string, dir: "ltr" | "rtl") => string;
 
@@ -206,7 +209,7 @@ export interface RefAttributes<T> extends React_2.Attributes {
 }
 
 // @public
-export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => void);
+export type RefObjectFunction<T> = React_2.RefObject<T | null> & ((value: T | null) => void);
 
 // @public
 export function resetIdsForTests(): void;
@@ -362,7 +365,7 @@ export type UseControllableStateOptions<State> = {
 };
 
 // @internal
-export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
+export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => ((...args: Args) => Return);
 
 // @internal
 export function useFirstMount(): boolean;

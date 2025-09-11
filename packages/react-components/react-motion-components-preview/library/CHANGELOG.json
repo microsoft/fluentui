@@ -2,6 +2,70 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Mon, 08 Sep 2025 12:51:10 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "f8e7a56ba5532a89117ad9127c7c78e58cb06408",
+            "comment": "feat(motion): add delay parameter to motion components"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "2ba182fb0988c8f6ec3b998d8d3eaf1cd26e72bb",
+            "comment": "refactor(motion): normalize motion atom parameters & types"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "865e620e03932dd7043e92f6b628961300a807a3",
+            "comment": "fix(motion): apply opacity in animations using fill mode"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "33e550ca5bee19d478f809a61ec0214eff245a6f",
+            "comment": "test(motion): expand motion atom testing"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Aug 2025 12:25:13 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "86c9ea988d336855abed51d4504ccdf7cd1409a4",
+            "comment": "feat(motion): add Rotate presence motion component"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0891d8d7f2a711acf3de15569c4ce0e15701f649",
+            "comment": "chore: update api.md"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 16:55:28 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.8.1",
       "version": "0.8.1",

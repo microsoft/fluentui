@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Button, Image } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-migration-v0-v9';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-components';
 
 type Item = {
   key: string;
@@ -41,7 +40,7 @@ const items: Item[] = [
   },
 ];
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   return (
     <List truncateContent truncateHeader>
       {items.map(({ key, media, header, headerMedia, content }) => (

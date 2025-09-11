@@ -1,18 +1,29 @@
+import * as crypto from 'crypto';
 import * as path from 'path';
 
 import { defineConfig } from 'cypress';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import type { Configuration } from 'webpack';
 
-/**
- * use this as base webpack config if you need to customize devServer webpack configuration
- */
+const projectRoot = process.cwd();
+
+// Use a high port range unlikely to collide with other services: 20000-29999
+const deterministicPort = 20000 + (hashToInt(projectRoot) % 10000);
+
 export const baseWebpackConfig: Configuration = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
   },
   mode: 'development',
   devtool: 'eval',
+  // Ensure parallel Cypress component runs don't collide on a fixed port (8080 is webpack-dev-server default).
+  // Pick a deterministic port per project (can be overridden) since some CI setups ignore 'auto'.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore - devServer is provided by webpack-dev-server typings
+  devServer: {
+    port: process.env.WEBPACK_DEV_SERVER_PORT ? Number(process.env.WEBPACK_DEV_SERVER_PORT) : deterministicPort,
+    host: '127.0.0.1',
+  },
   output: {
     publicPath: '/',
     chunkFilename: '[name].bundle.js',
@@ -64,7 +75,6 @@ interface BaseConfig extends Cypress.ConfigOptions {
   };
 }
 
-const projectRoot = process.cwd();
 /**
  * Programmatically create relative support support path, because Cypress bug
  * @see https://github.com/cypress-io/cypress/issues/31819
@@ -85,7 +95,6 @@ export const baseConfig = defineConfig({
       bundler: 'webpack',
       webpackConfig: cypressWebpackConfig(),
     },
-
     supportFile: path.join(projectSupportDir, './component.js'),
     indexHtmlFile: path.join(projectSupportDir, './component-index.html'),
   },
@@ -98,3 +107,16 @@ export const baseConfig = defineConfig({
   // screenshotOnRunFailure: isLocalRun && argv.mode === 'run',
   fixturesFolder: path.join(__dirname, './fixtures'),
 }) as BaseConfig;
+
+/**
+ * use this as base webpack config if you need to customize devServer webpack configuration
+ *
+ * Generate a deterministic, project-scoped port to avoid collisions when multiple Cypress component
+ * test servers start in parallel on the same machine/agent. Allows override via WEBPACK_DEV_SERVER_PORT.
+ */
+function hashToInt(str: string) {
+  // Use Node.js crypto module for better hashing
+  const hash = crypto.createHash('sha256').update(str).digest('hex');
+  // Convert first 8 hex characters to integer
+  return parseInt(hash.slice(0, 8), 16);
+}

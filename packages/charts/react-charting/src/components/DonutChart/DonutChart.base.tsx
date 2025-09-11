@@ -127,12 +127,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       className: this.props.className!,
     });
 
-    const legendBars = this._createLegends(points);
+    const legendBars = this._createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
-    const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
+    const chartData = this._elevateToMinimums(points);
     const valueInsideDonut =
       this.props.innerRadius! > MIN_DONUT_RADIUS
         ? this._valueInsideDonut(this.props.valueInsideDonut!, chartData!)
@@ -280,6 +280,11 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
+    if (this.props.order === 'sorted') {
+      chartData.sort((a: IChartDataPoint, b: IChartDataPoint) => {
+        return b.data! - a.data!;
+      });
+    }
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
       const color: string = this.props.enableGradient
         ? point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0]

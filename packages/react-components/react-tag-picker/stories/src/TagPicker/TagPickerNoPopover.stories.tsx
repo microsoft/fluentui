@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TagPicker,
   TagPickerInput,
@@ -8,7 +9,7 @@ import {
 } from '@fluentui/react-components';
 import { Tag, Avatar, Field } from '@fluentui/react-components';
 
-export const NoPopover = () => {
+export const NoPopover = (): JSXElement => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const [inputValue, setInputValue] = React.useState('');
 

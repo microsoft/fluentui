@@ -1,6 +1,6 @@
 import { HTMLElementWalker } from './createHTMLElementWalker';
 
-export function nextTypeAheadElement(treeWalker: HTMLElementWalker, key: string) {
+export function nextTypeAheadElement(treeWalker: HTMLElementWalker, key: string): HTMLElement | null {
   const keyToLowerCase = key.toLowerCase();
   const typeAheadFilter = (element: HTMLElement) => {
     return element.textContent?.trim().charAt(0).toLowerCase() === keyToLowerCase

@@ -5,6 +5,7 @@
   "description": "Fluent UI React v9 documentation",
   "scripts": {
     "build-storybook": "cross-env NODE_OPTIONS=--max_old_space_size=3072 storybook build -o ./dist/storybook --docs",
+    "build-storybook:react": "cross-env NODE_OPTIONS=--max_old_space_size=3072 DEPLOY_PATH=/react/ storybook build -o ./dist/react --docs",
     "postbuild-storybook": "yarn rewrite-title && yarn generate-llms-docs",
     "rewrite-title": "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/storybook",
     "generate-llms-docs": "yarn storybook-llms-extractor --config storybook-llms.config.js",
@@ -46,6 +47,7 @@
     "tslib": "^2.1.0",
     "react-hook-form": "^5.7.2",
     "@fluentui/react-motion-components-preview": "*",
-    "@fluentui/react-icons-compat": "*"
+    "@fluentui/react-icons-compat": "*",
+    "@fluentui/react-menu-grid-preview": "*"
   }
 }

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Tooltip } from '@fluentui/react-components';
 import { ArrowStepOutRegular, ArrowStepOverRegular } from '@fluentui/react-icons';
 
-export const Positioning = () => {
+export const Positioning = (): JSXElement => {
   /* eslint-disable react/jsx-key */
   const positions = [
     ['above-start', <ArrowStepOverRegular transform="rotate(-90)" />],

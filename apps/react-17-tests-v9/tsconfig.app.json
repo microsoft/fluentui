@@ -16,7 +16,7 @@
     "**/*.test.tsx",
     "**/*.cy.tsx",
     "**/*.cy.ts",
-    "src/issues.tsx"
+    "src/issues/"
   ],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

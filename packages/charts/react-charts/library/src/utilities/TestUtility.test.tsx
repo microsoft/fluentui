@@ -17,7 +17,7 @@ export const testWithoutWait = (
   testFunctionAfterRender?: () => void,
   beforeAllFunction?: () => void,
   skip?: boolean,
-) => {
+): void => {
   conditionalTest(!skip)(description, () => {
     beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
@@ -35,7 +35,7 @@ export const testWithWait = (
   testFunctionAfterRender?: () => void,
   beforeAllFunction?: () => void,
   skip?: boolean,
-) => {
+): void => {
   conditionalTest(!skip)(description, async () => {
     beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
@@ -47,7 +47,7 @@ export const testWithWait = (
 };
 
 // Test Screen Resolution changes like zoom in and zoom out
-export const testScreenResolutionChanges = (testFunction: () => void) => {
+export const testScreenResolutionChanges = (testFunction: () => void): void => {
   const originalInnerWidth = global.innerWidth;
   const originalInnerHeight = global.innerHeight;
   afterEach(() => {
@@ -81,22 +81,22 @@ it('getById and getByClass should be defined', () => {
 });
 
 const TIMEZONES: [string, string][] = Object.entries(Timezone);
-export const forEachTimezone = (callback: (tzName: string, tzIdentifier: string) => void) => {
+export const forEachTimezone = (callback: (tzName: string, tzIdentifier: string) => void): void => {
   TIMEZONES.forEach(([tzName, tzIdentifier]) => {
     callback(tzName, tzIdentifier);
   });
 };
-export const isTimezoneSet = (timezone: string) => {
+export const isTimezoneSet = (timezone: string): boolean => {
   return timezone === process.env.TZ;
 };
 
-export const conditionalDescribe = (shouldExecute: boolean) => {
+export const conditionalDescribe = (shouldExecute: boolean): jest.Describe => {
   return shouldExecute ? describe : describe.skip;
 };
-export const conditionalTest = (shouldExecute: boolean) => {
+export const conditionalTest = (shouldExecute: boolean): jest.It => {
   return shouldExecute ? test : test.skip;
 };
 
-export const isTestEnv = () => {
+export const isTestEnv = (): boolean => {
   return env === 'TEST' ? true : false;
 };

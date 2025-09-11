@@ -1,6 +1,6 @@
 import * as React from 'react';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -120,7 +120,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const Sort = () => {
+export const Sort = (): JSXElement => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
