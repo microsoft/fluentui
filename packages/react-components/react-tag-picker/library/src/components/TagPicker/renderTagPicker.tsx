@@ -18,7 +18,9 @@ export const renderTagPicker_unstable = (state: TagPickerState, contexts: TagPic
       <ActiveDescendantContextProvider value={contexts.activeDescendant}>
         <ListboxProvider value={contexts.listbox}>
           {state.trigger}
-          {state.inline ? state.popover : <Portal mountNode={state.mountNode}>{state.popover}</Portal>}
+          {state.inline
+            ? state.popover
+            : state.mountNode && <Portal mountNode={state.mountNode}>{state.popover}</Portal>}
         </ListboxProvider>
       </ActiveDescendantContextProvider>
     </TagPickerContextProvider>
