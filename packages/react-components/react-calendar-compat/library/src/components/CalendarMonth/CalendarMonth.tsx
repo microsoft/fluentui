@@ -18,7 +18,7 @@ import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles.styles';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarYear.types';
-import { SlideDown, SlideUp, SlideLeft, SlideRight } from '../../utils/motions';
+import { DirectionalSlide } from '../../utils/motions';
 import { AnimationDirection } from '../../Calendar';
 
 const MONTHS_PER_ROW = 4;
@@ -98,10 +98,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
   const animateBackwards = useAnimateBackwards({ navigatedDate });
   // TODO: consider replacing SlideDown/SlideUp with a single motion component
   // that receives animateBackwards in a prop, so the component type isn't changing back and forth.
-  let SlideMotion = animateBackwards ? SlideDown : SlideUp;
-  if (animationDirection === AnimationDirection.Horizontal) {
-    SlideMotion = animateBackwards ? SlideRight : SlideLeft;
-  }
 
   const selectMonthCallback = (newMonth: number): (() => void) => {
     return () => onSelectMonth(newMonth);
@@ -260,7 +256,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
           const monthsForRow = strings!.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
           const rowKey = 'monthRow_' + rowNum + navigatedDate.getFullYear();
           return (
-            <SlideMotion key={rowKey}>
+            <DirectionalSlide key={rowKey} {...{ animationDirection, animateBackwards }}>
               <div key={rowKey} role="row" className={classNames.buttonRow}>
                 {monthsForRow.map((month: string, index: number) => {
                   const monthIndex = rowNum * MONTHS_PER_ROW + index;
@@ -298,7 +294,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
                   );
                 })}
               </div>
-            </SlideMotion>
+            </DirectionalSlide>
           );
         })}
       </div>
