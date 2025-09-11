@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: render Portal component only after client-side hydration to prevent SSR mismatch",
+  "comment": "fix: render portal only when popover is defined to prevent hydration mismatch",
   "packageName": "@fluentui/react-tag-picker",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
