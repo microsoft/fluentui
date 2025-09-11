@@ -1084,6 +1084,11 @@ const transformPlotlyJsonToScatterTraceProps = (
         const markerSizes = isArrayOrTypedArray(series.marker?.size)
           ? (series.marker!.size as number[]).slice(rangeStart, rangeEnd)
           : [];
+        const markerColors = isArrayOrTypedArray(series.marker?.color)
+          ? (series.marker!.color as string[]).slice(rangeStart, rangeEnd)
+          : Array.isArray(series.marker?.color)
+          ? (series.marker!.color as string[]).slice(rangeStart, rangeEnd)
+          : undefined;
         const textValues = Array.isArray(series.text) ? series.text.slice(rangeStart, rangeEnd) : undefined;
 
         return {
@@ -1097,6 +1102,7 @@ const transformPlotlyJsonToScatterTraceProps = (
               : typeof series.marker?.size === 'number'
               ? { markerSize: series.marker.size }
               : {}),
+            ...(markerColors ? { markerColor: markerColors[i] } : {}),
             ...(textValues ? { text: textValues[i] } : {}),
             yAxisCalloutData: getFormattedCalloutYData(rangeYValues[i] as number, yAxisTickFormat),
           })),
