@@ -973,7 +973,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   key={`${this._circleId}_${i}_${k}_marker`}
                   r={
                     markerSize
-                      ? (markerSize! * extraMaxPixels) / maxMarkerSize
+                      ? (markerSize! * extraMaxPixels * 0.3) / maxMarkerSize
                       : activePoint === this._circleId
                       ? 5.5
                       : 3.5
