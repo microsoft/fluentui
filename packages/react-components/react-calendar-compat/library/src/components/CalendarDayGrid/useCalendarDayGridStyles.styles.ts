@@ -17,7 +17,6 @@ import {
   SLIDE_UP_OUT20,
   TRANSITION_ROW_DISAPPEARANCE,
 } from '../../utils';
-import { AnimationDirection } from '../Calendar/Calendar.types';
 import { weekCornersClassNames } from './useWeekCornerStyles.styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SlotClassNames } from '@fluentui/react-utilities';
