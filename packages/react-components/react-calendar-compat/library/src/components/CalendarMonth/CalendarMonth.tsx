@@ -96,8 +96,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
   const [isYearPickerVisible, setIsYearPickerVisible] = React.useState(false);
 
   const animateBackwards = useAnimateBackwards({ navigatedDate });
-  // TODO: consider replacing SlideDown/SlideUp with a single motion component
-  // that receives animateBackwards in a prop, so the component type isn't changing back and forth.
 
   const selectMonthCallback = (newMonth: number): (() => void) => {
     return () => onSelectMonth(newMonth);
