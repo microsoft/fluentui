@@ -2,12 +2,13 @@ import * as React from 'react';
 import { registerIcons, FLUENT_CDN_BASE_URL } from '@fluentui/style-utilities';
 import { FileTypeIconMap } from './FileTypeIconMap';
 import type { IIconOptions } from '@fluentui/style-utilities';
+import type { FileTypeIconSize } from './getFileTypeIconProps';
 
 const PNG_SUFFIX = '_png';
 const SVG_SUFFIX = '_svg';
 
 export const DEFAULT_BASE_URL = `${FLUENT_CDN_BASE_URL}/assets/item-types/`;
-export const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
+export const ICON_SIZES: FileTypeIconSize[] = [16, 20, 24, 32, 40, 48, 64, 96];
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
   ICON_SIZES.forEach((size: number) => {
