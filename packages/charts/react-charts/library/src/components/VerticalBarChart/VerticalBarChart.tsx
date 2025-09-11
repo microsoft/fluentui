@@ -74,7 +74,12 @@ const MIN_DOMAIN_MARGIN = 8;
 export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
   VerticalBarChartProps
->((props = { xAxisCategoryOrder: 'default' }, forwardedRef) => {
+>((_props, forwardedRef) => {
+  const props: VerticalBarChartProps = {
+    xAxisCategoryOrder: 'default',
+    maxBarWidth: 24,
+    ..._props,
+  };
   let _points: VerticalBarChartDataPoint[] = [];
   let _barWidth: number = 0;
   let _colors: string[];

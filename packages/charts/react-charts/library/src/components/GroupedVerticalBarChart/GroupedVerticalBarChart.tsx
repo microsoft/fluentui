@@ -71,7 +71,12 @@ interface GVSingleDataPoint {
 export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
   GroupedVerticalBarChartProps
->((props = { maxBarWidth: 24, xAxisCategoryOrder: 'default' }, forwardedRef) => {
+>((_props, forwardedRef) => {
+  const props: GroupedVerticalBarChartProps = {
+    xAxisCategoryOrder: 'default',
+    maxBarWidth: 24,
+    ..._props,
+  };
   const _tooltipId: string = useId('GVBCTooltipId_');
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
