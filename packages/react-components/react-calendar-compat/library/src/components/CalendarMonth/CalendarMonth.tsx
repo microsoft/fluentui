@@ -18,7 +18,7 @@ import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles.styles';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarYear.types';
-import { DirectionalSlide } from '../../utils/motions';
+import { DirectionalSlide } from '../../utils/calendarMotions';
 import { AnimationDirection } from '../../Calendar';
 
 const MONTHS_PER_ROW = 4;
