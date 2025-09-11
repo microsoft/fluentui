@@ -1,0 +1,35 @@
+{
+  "extends": "<%= tsconfig.relativePathToProjectTsConfig %>",
+  "compilerOptions": {
+    "target": "<%= tsconfig.target %>",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": [<%- tsconfig.lib.map(p => `"${p}"`).join(',') %>],
+    "strict": true,
+    "pretty": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "types": [],
+    "typeRoots": ["<%= usedNodeModulesDirRelative %>/node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "react/jsx-runtime": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/jsx-runtime.d.ts"],
+      "react": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/index.d.ts"],
+      "react-dom": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react-dom/index.d.ts"]
+    }
+  },
+  "references": [],
+  "exclude": [
+    "<%= relativePathToProjectRoot %>/**/index.stories.tsx",
+    "<%= relativePathToProjectRoot %>/**/index.stories.ts",
+    "<%= relativePathToProjectRoot %>/**/*.spec.tsx",
+    "<%= relativePathToProjectRoot %>/**/*.test.tsx",
+    "<%= relativePathToProjectRoot %>/**/src/testing/**"
+  ],
+  "include": [
+    <%- tsconfig.relativeIncludePaths.map(p => `"${p}"`).join(',\n    ') %>
+  ],
+  "files": ["<%= relativePathToWorkspaceRoot %>/typings/static-assets/index.d.ts"]
+}

@@ -237,6 +237,7 @@
     "jest-axe": "8.0.0",
     "jest-cli": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
+    "jest-environment-node": "^29.7.0",
     "jest-environment-node-single-context": "29.1.0",
     "jest-snapshot": "29.7.0",
     "jest-watch-typeahead": "2.2.2",
