@@ -5,5 +5,12 @@
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/react-table/stories/src",
   "tags": ["vNext", "platform:web", "type:stories"],
-  "targets": {}
+  "targets": {
+    "test-ssr": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn test-ssr \"./src/**/*.stories.tsx\" --exclude \"./src/DataGrid/Virtualization.stories.tsx\""
+      }
+    }
+  }
 }
