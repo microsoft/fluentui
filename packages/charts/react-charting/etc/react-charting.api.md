@@ -599,6 +599,7 @@ export interface IDataPoint {
 // @public
 export interface IDataPointV2<X extends string | number | Date, Y extends string | number | Date> {
     callOutAccessibilityData?: IAccessibilityProps;
+    color?: string;
     markerSize?: number;
     onClick?: () => void;
     text?: string;
@@ -876,7 +877,7 @@ export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
 // @public (undocumented)
 export interface IGVBarChartSeriesPoint {
     callOutAccessibilityData?: IAccessibilityProps;
-    color: string;
+    color?: string;
     data: number;
     gradient?: [string, string];
     key: string;
