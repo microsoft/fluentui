@@ -521,7 +521,6 @@ Object {
   "chartTitle": "PHP Framework Popularity at Work - SitePoint, 2015",
   "dataV2": Array [
     Object {
-      "color": "#637cefff",
       "data": Array [
         Object {
           "color": "#637cefff",
@@ -560,7 +559,6 @@ Object {
       "useSecondaryYScale": false,
     },
     Object {
-      "color": "#f87528ff",
       "data": Array [
         Object {
           "color": "#f87528ff",

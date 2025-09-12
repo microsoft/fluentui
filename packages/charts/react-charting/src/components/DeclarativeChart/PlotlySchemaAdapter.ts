@@ -75,6 +75,7 @@ import {
   isObjectArray,
   getAxisIds,
   getAxisKey,
+  isScatterAreaChart,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
@@ -259,15 +260,11 @@ const usesSecondaryYScale = (series: Partial<PlotData>, layout: Partial<Layout> 
   return series.yaxis === 'y2' && (layout?.yaxis2?.anchor === 'x' || layout?.yaxis2?.side === 'right');
 };
 
-const getSecondaryYAxisValues = (
-  data: Data[],
-  layout: Partial<Layout> | undefined,
-  maxAllowedMinY?: number,
-  minAllowedMaxY?: number,
-): ISecondaryYAxisValues => {
+const getSecondaryYAxisValues = (data: Data[], layout: Partial<Layout> | undefined): ISecondaryYAxisValues => {
   let containsSecondaryYAxis = false;
   let yMinValue: number | undefined;
   let yMaxValue: number | undefined;
+  let allLineSeries = true;
 
   data.forEach((series: Partial<PlotData>) => {
     if (usesSecondaryYScale(series, layout)) {
@@ -278,6 +275,10 @@ const getSecondaryYAxisValues = (
         yMinValue = Math.min(...yValues);
         yMaxValue = Math.max(...yValues);
       }
+
+      if (series.type !== 'scatter' || isScatterAreaChart(series)) {
+        allLineSeries = false;
+      }
     }
   });
 
@@ -285,11 +286,13 @@ const getSecondaryYAxisValues = (
     return {};
   }
 
-  if (typeof yMinValue === 'number' && typeof maxAllowedMinY === 'number') {
-    yMinValue = Math.min(yMinValue, maxAllowedMinY);
-  }
-  if (typeof yMaxValue === 'number' && typeof minAllowedMaxY === 'number') {
-    yMaxValue = Math.max(yMaxValue, minAllowedMaxY);
+  if (!allLineSeries) {
+    if (typeof yMinValue === 'number') {
+      yMinValue = Math.min(yMinValue, 0);
+    }
+    if (typeof yMaxValue === 'number') {
+      yMaxValue = Math.max(yMaxValue, 0);
+    }
   }
   if (layout?.yaxis2?.range) {
     yMinValue = layout.yaxis2.range[0];
@@ -772,7 +775,7 @@ export const transformPlotlyJsonToGVBCProps = (
   }
 
   const gvbcDataV2: IGroupedVerticalBarChartProps['dataV2'] = [];
-  const secondaryYAxisValues = getSecondaryYAxisValues(processedInput.data, processedInput.layout, 0, 0);
+  const secondaryYAxisValues = getSecondaryYAxisValues(processedInput.data, processedInput.layout);
   const { legends, hideLegend } = getLegendProps(processedInput.data, processedInput.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(processedInput.data[0], processedInput.layout);
@@ -780,7 +783,6 @@ export const transformPlotlyJsonToGVBCProps = (
     colorScale = createColorScale(processedInput.layout, series, colorScale);
     const legend: string = legends[index1];
     const legendShape = getLegendShape(series);
-    const seriesOpacity = getOpacity(series, index1);
 
     if (series.type === 'bar') {
       // extract bar colors for each series only once
@@ -791,14 +793,6 @@ export const transformPlotlyJsonToGVBCProps = (
         colorMap,
         isDarkTheme,
       ) as string[] | string | undefined;
-      const barSeriesColor = resolveColor(
-        extractedBarColors,
-        index1,
-        legend,
-        colorMap,
-        processedInput.layout?.template?.layout?.colorway,
-        isDarkTheme,
-      );
 
       gvbcDataV2.push({
         type: 'bar',
@@ -817,7 +811,14 @@ export const transformPlotlyJsonToGVBCProps = (
                     ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
                     : 0,
                 )
-              : barSeriesColor;
+              : resolveColor(
+                  extractedBarColors,
+                  xIndex,
+                  legend,
+                  colorMap,
+                  processedInput.layout?.template?.layout?.colorway,
+                  isDarkTheme,
+                );
             const opacity = getOpacity(series, xIndex);
             const yVal = series.y![xIndex] as number;
 
@@ -829,7 +830,6 @@ export const transformPlotlyJsonToGVBCProps = (
             };
           })
           .filter(item => typeof item !== 'undefined'),
-        color: rgb(barSeriesColor).copy({ opacity: seriesOpacity }).formatHex8() ?? barSeriesColor,
         useSecondaryYScale: usesSecondaryYScale(series, processedInput.layout),
       });
     } else if (series.type === 'scatter') {
@@ -850,6 +850,7 @@ export const transformPlotlyJsonToGVBCProps = (
         isDarkTheme,
       );
       const lineOptions = getLineOptions(series.line);
+      const opacity = getOpacity(series, index1);
       const validXYRanges = getValidXYRanges(series);
 
       validXYRanges.forEach(([rangeStart, rangeEnd]) => {
@@ -868,7 +869,7 @@ export const transformPlotlyJsonToGVBCProps = (
               yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
             };
           }),
-          color: rgb(lineColor).copy({ opacity: seriesOpacity }).formatHex8() ?? lineColor,
+          color: rgb(lineColor).copy({ opacity }).formatHex8() ?? lineColor,
           lineOptions: {
             ...(lineOptions ?? {}),
             mode: series.mode,
@@ -1077,12 +1078,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   ].includes((input.data[0] as PlotData)?.mode);
   const isAreaChart = chartType === 'area';
   const isScatterChart = chartType === 'scatter';
-  const secondaryYAxisValues = getSecondaryYAxisValues(
-    input.data,
-    input.layout,
-    isAreaChart ? 0 : undefined,
-    isAreaChart ? 0 : undefined,
-  );
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);

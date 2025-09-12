@@ -630,7 +630,7 @@ export const getAxisKey = (axLetter: 'x' | 'y', axId: number) => {
   return `${axLetter}axis${axId > 1 ? axId : ''}` as keyof Layout;
 };
 
-const isScatterAreaChart = (data: Partial<PlotData>) => {
+export const isScatterAreaChart = (data: Partial<PlotData>) => {
   return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
 };
 

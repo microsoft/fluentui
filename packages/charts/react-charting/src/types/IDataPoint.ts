@@ -734,7 +734,7 @@ export interface IGVBarChartSeriesPoint {
   /**
    * Color for the legend in the chart
    */
-  color: string;
+  color?: string;
 
   /**
    * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
@@ -1152,6 +1152,11 @@ export interface IDataPointV2<X extends string | number | Date, Y extends string
    * Optional text to annotate or label the data point.
    */
   text?: string;
+
+  /**
+   * Color of the data point. If not provided, it will inherit the series color.
+   */
+  color?: string;
 }
 
 /**

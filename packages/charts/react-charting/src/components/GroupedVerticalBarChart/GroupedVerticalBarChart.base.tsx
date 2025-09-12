@@ -1165,7 +1165,7 @@ export class GroupedVerticalBarChartBase
           barPointsByX[point.x].series.push({
             key: series.key ?? series.legend,
             data: point.y,
-            color: series.color!,
+            color: point.color ?? series.color,
             gradient: series.gradient,
             legend: series.legend,
             xAxisCalloutData: point.xAxisCalloutData,
