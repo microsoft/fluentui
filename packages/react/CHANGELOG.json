@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 11 Sep 2025 07:20:30 GMT",
+      "tag": "@fluentui/react_v8.123.6",
+      "version": "8.123.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4a3743a0ec1a2c0463323133d32e0e1b32e4e637",
+            "comment": "fix(DetailsList): DetailsRow correctly falls back to horizontal FocusZone"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Aug 2025 07:21:44 GMT",
       "tag": "@fluentui/react_v8.123.5",
       "version": "8.123.5",

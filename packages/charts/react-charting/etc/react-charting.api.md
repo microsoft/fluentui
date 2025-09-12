@@ -253,6 +253,7 @@ export interface IBarSeries<X extends string | number | Date, Y extends string |
 export interface IBaseDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     hideCallout?: boolean;
+    markerColor?: string;
     markerSize?: number;
     onDataPointClick?: () => void;
     text?: string;

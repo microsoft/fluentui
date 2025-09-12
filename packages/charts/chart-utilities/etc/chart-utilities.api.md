@@ -1975,9 +1975,9 @@ export interface TableData {
             color?: Color | Color[];
         };
         values: (string | number | boolean | null)[][];
-        format: string | string[];
-        prefix: string | string[];
-        suffix: string | string[];
+        format?: string | string[];
+        prefix?: string | string[];
+        suffix?: string | string[];
     };
     // (undocumented)
     header?: {

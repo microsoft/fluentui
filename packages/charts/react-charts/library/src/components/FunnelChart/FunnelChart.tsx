@@ -485,7 +485,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           {...props.calloutProps}
           XValue={calloutProps?.hoverXValue as string}
           yCalloutValue={calloutProps?.YValue as string}
-          culture={props.culture ?? 'en-us'}
+          culture={props.culture}
           clickPosition={clickPosition}
           isPopoverOpen={isPopoverOpen}
           color={calloutProps?.color}

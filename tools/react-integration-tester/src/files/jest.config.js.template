@@ -1,0 +1,87 @@
+// @ts-check
+/* eslint-disable */
+
+const { join, sep } = require('node:path');
+const { pathsToModuleNameMapper } = require('ts-jest');
+
+const workspacePreset = require('<%= relativePathToWorkspaceRoot %>/jest.preset');
+const baseConfig = require('<%= relativePathToProjectRoot %>/jest.config');
+
+const {moduleNameMapper, transform, ...normalizedWorkspacePreset} = workspacePreset;
+const {preset, ...normalizedBaseConfig} = baseConfig;
+
+// Resolve dependencies from the shared react-version root folder (injected by CLI)
+const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>', 'node_modules');
+
+/**
+ * @type {import('@jest/types').Config.InitialOptions}
+ */
+const ritConfig = {
+  rootDir: '<%= relativePathToProjectRoot %>',
+  preset: null,
+  moduleNameMapper: {
+    ...getTsPathAliases(),
+    '^react$': join(usedNodeModulesPath, './react'),
+    '^react/jsx-runtime$': join(usedNodeModulesPath, 'react/jsx-runtime'),
+    '^react-dom$': join(usedNodeModulesPath, './react-dom'),
+    <%_ if (react === 17) { _%>
+    '^react-dom/server$': join(usedNodeModulesPath, 'react-dom/server'),
+    // React 17 doesn't have this API so we need to explicitly point it to noop module
+    // NOTE: noop.js doesn't exist
+    '^react-dom/client$': join(usedNodeModulesPath, 'noop.js'),
+    <%_ } else { _%>
+    '^react-dom/(.+)$': join(usedNodeModulesPath, 'react-dom/$1'),
+    <%_ } _%>
+    '^react-test-renderer$': join(usedNodeModulesPath, './react-test-renderer'),
+    '^@testing-library/(react|dom)$': join(usedNodeModulesPath, './@testing-library/$1'),
+    <%_ if (react > 17) { _%>
+    '^@testing-library/react-hooks$': join(usedNodeModulesPath, './@testing-library/react/'),
+    <%_ } else { _%>
+    '^@testing-library/react-hooks$': join(usedNodeModulesPath, './@testing-library/react-hooks'),
+    <%_ } _%>
+  },
+  setupFilesAfterEnv: [
+    join(__dirname, './jest.mock-snapshots.js'),
+  ],
+}
+
+const repoProjectConfig = merge(normalizedWorkspacePreset, normalizedBaseConfig)
+const config = merge(repoProjectConfig, ritConfig);
+
+module.exports = config;
+
+// helpers
+
+function merge(obj1, obj2) {
+  const merged = Object.assign({}, obj1);
+
+  for (const prop in obj2) {
+    const sourceValue = obj2[prop];
+    const targetValue = obj1[prop];
+
+    if (sourceValue && Array.isArray(sourceValue) && targetValue && Array.isArray(targetValue)) {
+      merged[prop] = targetValue.concat(sourceValue);
+    } else if (typeof targetValue === 'object' && typeof sourceValue === 'object') {
+      merged[prop] = merge(targetValue, sourceValue);
+    } else {
+      merged[prop] = sourceValue;
+    }
+  }
+
+  return merged;
+}
+
+function getTsPathAliases(){
+  // Compute absolute workspace root from this config file location
+  const workspaceRoot = join(__dirname, '<%= relativePathToWorkspaceRoot %>');
+  const tsConfigBase = require(join(workspaceRoot, 'tsconfig.base.json'));
+
+  // Ensure prefix ends with a path separator so mapped paths concatenate correctly
+  const prefix = workspaceRoot.endsWith(sep) ? workspaceRoot : workspaceRoot + sep;
+
+  const tsPathAliases = pathsToModuleNameMapper(tsConfigBase.compilerOptions.paths, {
+    prefix,
+  });
+
+  return tsPathAliases;
+}

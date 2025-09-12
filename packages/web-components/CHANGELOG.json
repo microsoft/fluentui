@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 11 Sep 2025 04:06:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.123",
+      "version": "3.0.0-beta.123",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "a3aa99f08431433c1c40e934da2f78ab10151c16",
+            "comment": "chore: setup docsite target"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Sep 2025 04:09:54 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.123",
       "version": "3.0.0-beta.123",

@@ -340,6 +340,11 @@ export interface IBaseDataPoint {
    * text labels of marker points
    */
   text?: string;
+
+  /**
+   * Per-point marker color (overrides series color when present)
+   */
+  markerColor?: string;
 }
 
 /**

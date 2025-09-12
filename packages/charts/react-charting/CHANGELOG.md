@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 08 Sep 2025 07:22:39 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Sep 2025 07:20:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.31)
+
+Fri, 12 Sep 2025 07:20:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.30..@fluentui/react-charting_v5.24.31)
+
+### Patches
+
+- fix(react-charting): Fixing markers appearing as lines ([PR #35170](https://github.com/microsoft/fluentui/pull/35170) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.24.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.30)
+
+Thu, 11 Sep 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.29..@fluentui/react-charting_v5.24.30)
+
+### Patches
+
+- Bump @fluentui/chart-utilities to v1.1.30 ([commit](https://github.com/microsoft/fluentui/commit/883564acb9bb308dac516693d6c9ea3c98d19569) by beachball)
+- Bump @fluentui/theme-samples to v8.7.215 ([commit](https://github.com/microsoft/fluentui/commit/883564acb9bb308dac516693d6c9ea3c98d19569) by beachball)
+- Bump @fluentui/react to v8.123.6 ([commit](https://github.com/microsoft/fluentui/commit/883564acb9bb308dac516693d6c9ea3c98d19569) by beachball)
+
+## [5.24.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.29)
+
+Wed, 10 Sep 2025 07:19:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.28..@fluentui/react-charting_v5.24.29)
+
+### Patches
+
+- Bump @fluentui/chart-utilities to v1.1.29 ([PR #35166](https://github.com/microsoft/fluentui/pull/35166) by beachball)
+
+## [5.24.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.28)
+
+Tue, 09 Sep 2025 07:20:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.27..@fluentui/react-charting_v5.24.28)
+
+### Patches
+
+- fix styling in chart table ([PR #35156](https://github.com/microsoft/fluentui/pull/35156) by anushgupta@microsoft.com)
 
 ## [5.24.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.27)
 
