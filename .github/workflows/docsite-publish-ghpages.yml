@@ -14,7 +14,7 @@ jobs:
       artifact_id: ${{ steps.artifact_upload.outputs.artifact_id }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
