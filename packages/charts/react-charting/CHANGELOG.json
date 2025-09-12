@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 12 Sep 2025 07:20:43 GMT",
+      "tag": "@fluentui/react-charting_v5.24.31",
+      "version": "5.24.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "261fa271ed4391727f1f7c80691e43bd241d5921",
+            "comment": "fix(react-charting): Fixing markers appearing as lines"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Sep 2025 07:20:30 GMT",
       "tag": "@fluentui/react-charting_v5.24.30",
       "version": "5.24.30",

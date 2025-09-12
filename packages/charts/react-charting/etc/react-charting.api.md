@@ -246,6 +246,7 @@ export interface IAreaChartStyles extends ICartesianChartStyles {
 export interface IBaseDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     hideCallout?: boolean;
+    markerColor?: string;
     markerSize?: number;
     onDataPointClick?: () => void;
     text?: string;

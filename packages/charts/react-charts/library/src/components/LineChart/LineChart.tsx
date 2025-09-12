@@ -722,8 +722,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 stroke={lineColor}
                 strokeWidth={strokeWidth}
                 strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
-                onMouseMove={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event, yScale)}
-                onMouseOver={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event, yScale)}
+                strokeDasharray={_points[i].lineOptions?.strokeDasharray}
+                onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
+                onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
                 onMouseOut={_handleMouseOut}
                 {..._getClickHandler(_points[i].onLineClick)}
                 opacity={1}
@@ -741,11 +742,11 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 stroke={lineColor}
                 strokeWidth={strokeWidth}
                 strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
+                strokeDasharray={_points[i].lineOptions?.strokeDasharray}
                 opacity={0.1}
               />,
             );
           }
-
           pointsForLine.push(
             <circle
               id={`${_staticHighlightCircle}_${i}`}
@@ -757,8 +758,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
               stroke={lineColor}
               visibility={'hidden'}
-              onMouseMove={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event, yScale)}
-              onMouseOver={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event, yScale)}
+              onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
+              onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
               onMouseOut={_handleMouseOut}
             />,
           );
