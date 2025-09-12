@@ -306,7 +306,7 @@
     "terser": "5.39.1",
     "terser-webpack-plugin": "5.3.10",
     "through2": "4.0.2",
-    "tmp": "0.2.1",
+    "tmp": "0.2.4",
     "ts-jest": "29.2.5",
     "ts-loader": "9.4.2",
     "ts-node": "10.9.2",
