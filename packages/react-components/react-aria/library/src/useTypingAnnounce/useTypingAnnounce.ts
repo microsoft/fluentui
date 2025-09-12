@@ -18,7 +18,7 @@ const valueMutationOptions = {
 
 interface TypingAnnounceReturn<TInputElement extends HTMLElement = HTMLElement> {
   typingAnnounce: AriaLiveAnnounceFn;
-  inputRef: React.RefObject<TInputElement | null>;
+  inputRef: React.RefObject<TInputElement>;
 }
 
 export function useTypingAnnounce<
@@ -79,5 +79,5 @@ export function useTypingAnnounce<
     };
   }, [callback, clearTypingTimeout, targetDocument]);
 
-  return { typingAnnounce, inputRef };
+  return { typingAnnounce, inputRef: inputRef as React.RefObject<TInputElement> };
 }
