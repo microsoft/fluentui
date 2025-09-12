@@ -74,6 +74,52 @@ Example:
 
 Prevent using deprecated `KeyboardEvent` props `which` and `keyCode`, and recommend using `@fluentui/keyboard-key` instead.
 
+### `enforce-use-client`
+
+Enforce proper usage of the `"use client"` directive in React components and hooks that require client-side execution. This rule helps ensure Next.js App Router compatibility by automatically detecting client-side features and enforcing the directive when needed.
+
+**What triggers the rule:**
+- React hooks (useState, useEffect, useContext, etc.)
+- React APIs (createContext, forwardRef, memo, etc.)
+- Browser APIs (window, document, localStorage, etc.)  
+- Event handlers in JSX (onClick, onChange, etc.)
+- Custom hooks (functions starting with "use")
+
+**What doesn't trigger the rule:**
+- Server-safe hooks (useId, use)
+- Server components without client features
+- Utility functions without client APIs
+
+**❌ Invalid**
+
+```ts
+// Missing "use client" directive
+import { useState } from 'react';
+
+export const Counter = () => {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+};
+```
+
+**✅ Valid**
+
+```ts
+// Correct "use client" directive  
+"use client";
+import { useState } from 'react';
+
+export const Counter = () => {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+};
+```
+
+**Auto-fix capability:**
+- Automatically adds `"use client";` directive when missing
+- Automatically removes unnecessary `"use client";` directive
+- Handles edge cases like comments and empty files
+
 ### `max-len`
 
 Enforces max line length, more performantly than [ESLint's `max-len`](https://eslint.org/docs/rules/max-len).
