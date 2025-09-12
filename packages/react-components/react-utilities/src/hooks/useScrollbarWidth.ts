@@ -14,31 +14,41 @@ interface UseScrollbarWidthOptions {
   force?: boolean;
 }
 
+function measureScrollbarWidth(targetDocument: Document, force?: boolean): number {
+  if (!force && cache.has(targetDocument)) {
+    return cache.get(targetDocument)!;
+  }
+
+  const outer = targetDocument.createElement('div');
+  outer.style.visibility = 'hidden';
+  outer.style.overflow = 'scroll';
+
+  const inner = targetDocument.createElement('div');
+  outer.appendChild(inner);
+
+  targetDocument.body.appendChild(outer);
+  const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+  outer.remove();
+  cache.set(targetDocument, scrollbarWidth);
+  return scrollbarWidth;
+}
+
 /**
  * @returns The width in pixels of the scrollbar in the user agent
  */
 export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined {
   const { targetDocument, force } = options;
-  return React.useMemo(() => {
+  const [scrollbarWidth, setScrollbarWidth] = React.useState<number | undefined>(undefined);
+
+  React.useEffect(() => {
     if (!targetDocument) {
-      return 0;
+      setScrollbarWidth(0);
+      return;
     }
 
-    if (!force && cache.has(targetDocument)) {
-      return cache.get(targetDocument);
-    }
-
-    const outer = targetDocument.createElement('div');
-    outer.style.visibility = 'hidden';
-    outer.style.overflow = 'scroll';
-
-    const inner = targetDocument.createElement('div');
-    outer.appendChild(inner);
-
-    targetDocument.body.appendChild(outer);
-    const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
-    outer.remove();
-    cache.set(targetDocument, scrollbarWidth);
-    return scrollbarWidth;
+    const width = measureScrollbarWidth(targetDocument, force);
+    setScrollbarWidth(width);
   }, [targetDocument, force]);
+
+  return scrollbarWidth;
 }
