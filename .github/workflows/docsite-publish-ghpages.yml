@@ -54,7 +54,7 @@ jobs:
       - name: Upload Pages Artifact
         if: steps.affected_storybooks_count.outputs.value > 0
         id: artifact_upload
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: _pages
 
