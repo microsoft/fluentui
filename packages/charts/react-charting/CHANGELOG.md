@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 11 Sep 2025 07:20:30 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Sep 2025 07:20:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.31)
+
+Fri, 12 Sep 2025 07:20:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.30..@fluentui/react-charting_v5.24.31)
+
+### Patches
+
+- fix(react-charting): Fixing markers appearing as lines ([PR #35170](https://github.com/microsoft/fluentui/pull/35170) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.24.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.30)
 
