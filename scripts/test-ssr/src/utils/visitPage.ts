@@ -17,8 +17,6 @@ export async function visitPage(browser: Browser, url: string) {
   let error: Error | undefined;
 
   page.on('console', message => {
-    console.log(`PAGE LOG: ${message.type()} ${message.text()}`);
-
     if (message.type() === 'error') {
       const messageContent = message.text();
 
@@ -44,8 +42,6 @@ export async function visitPage(browser: Browser, url: string) {
   });
 
   page.on('pageerror', err => {
-    console.log(`PAGE ERROR: ${err.toString()}`);
-
     error = err;
   });
 

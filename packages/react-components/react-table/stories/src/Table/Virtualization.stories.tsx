@@ -216,7 +216,7 @@ export const Virtualization = (): JSXElement => {
           <TableHeaderCell>Last updated</TableHeaderCell>
           <TableHeaderCell>Last update</TableHeaderCell>
           {/** Scrollbar alignment for the header */}
-          <div role="presentation" style={{ width: scrollbarWidth }} />
+          <div role="presentation" style={{ width: scrollbarWidth }} suppressHydrationWarning />
         </TableRow>
       </TableHeader>
       <TableBody>
