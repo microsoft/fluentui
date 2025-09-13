@@ -1,3 +1,5 @@
+'use client';
+
 import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import type { ComboboxBaseProps } from './ComboboxBase.types';
 import * as React from 'react';

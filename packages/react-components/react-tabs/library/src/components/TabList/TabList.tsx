@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTabList_unstable } from './useTabList';
 import { renderTabList_unstable } from './renderTabList';

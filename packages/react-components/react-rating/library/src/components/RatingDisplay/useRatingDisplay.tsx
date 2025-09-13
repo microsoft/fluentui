@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useId } from '@fluentui/react-utilities';
 import type { RatingDisplayProps, RatingDisplayState } from './RatingDisplay.types';

@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import type { Data, PlotData, PlotlySchema, OutputChartType, TraceInfo } from '@fluentui/chart-utilities';

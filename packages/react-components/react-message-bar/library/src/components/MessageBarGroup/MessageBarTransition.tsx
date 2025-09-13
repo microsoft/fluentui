@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Transition, TransitionStatus } from 'react-transition-group';
 import { MessageBarTransitionContextProvider } from '../../contexts/messageBarTransitionContext';

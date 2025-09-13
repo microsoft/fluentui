@@ -1,3 +1,5 @@
+'use client';
+
 import { Types, getGroupper, GroupperTabbabilities } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';

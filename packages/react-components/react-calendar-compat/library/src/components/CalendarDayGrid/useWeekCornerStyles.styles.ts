@@ -1,3 +1,5 @@
+'use client';
+
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { mergeClasses } from '@griffel/react';
 import { DateRangeType } from '../../utils/constants';

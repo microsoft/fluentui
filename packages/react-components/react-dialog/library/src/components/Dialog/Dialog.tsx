@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useDialog_unstable } from './useDialog';
 import { renderDialog_unstable } from './renderDialog';

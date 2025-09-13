@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useAvatarGroupContext_unstable } from '../../contexts/AvatarGroupContext';
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { ListboxContextValues, ListboxState } from '../components/Listbox/Listbox.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import { type Types as TabsterTypes, disposeTabster } from 'tabster';
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';

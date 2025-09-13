@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses } from '@fluentui/react-components';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import * as React from 'react';

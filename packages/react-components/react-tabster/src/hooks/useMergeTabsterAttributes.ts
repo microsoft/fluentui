@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Types, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 

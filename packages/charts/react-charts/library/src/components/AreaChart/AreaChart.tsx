@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useAreaChartStyles } from './useAreaChartStyles.styles';
 import { max as d3Max, bisector } from 'd3-array';
