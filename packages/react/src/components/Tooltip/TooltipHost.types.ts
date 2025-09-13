@@ -34,6 +34,12 @@ export enum TooltipOverflowMode {
    * Note that this does not check the children for overflow, only the TooltipHost root.
    */
   Self,
+
+  /**
+   * Only show tooltip if a custom element's content is overflowing.
+   * The custom element must be passed in via the `customOverflowTarget` prop.
+   */
+  Custom,
 }
 
 /**
@@ -65,6 +71,12 @@ export interface ITooltipHostProps extends Omit<React.HTMLAttributes<HTMLDivElem
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   content?: string | JSX.Element | JSX.Element[];
+
+  /**
+   * Define a custom element to use as the overflow target.
+   * Note: this will only be used if `overflowMode` is set to `TooltipOverflowMode.Custom`.
+   */
+  customOverflowTarget?: HTMLElement | null;
 
   /**
    * Length of delay before showing the tooltip on hover.

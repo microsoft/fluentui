@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix(TooltipHost): TooltipHost supports an accessible way to implement overflow tooltips",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
