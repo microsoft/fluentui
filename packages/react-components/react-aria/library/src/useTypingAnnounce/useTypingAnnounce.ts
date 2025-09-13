@@ -28,7 +28,7 @@ export function useTypingAnnounce<
   const { announce } = useAnnounce();
 
   const inputRef = React.useRef<TInputElement>(null);
-  const observer = React.useRef<MutationObserver>();
+  const observer = React.useRef<MutationObserver>(undefined);
   const [setTypingTimeout, clearTypingTimeout] = useTimeout();
   const messageQueue = React.useRef<Message[]>([]);
 
@@ -79,5 +79,5 @@ export function useTypingAnnounce<
     };
   }, [callback, clearTypingTimeout, targetDocument]);
 
-  return { typingAnnounce, inputRef };
+  return { typingAnnounce, inputRef: inputRef as React.RefObject<TInputElement> };
 }
