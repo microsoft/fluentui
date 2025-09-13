@@ -3066,9 +3066,9 @@ export const sortCategoriesTopologically = (data: Data[], axLetter: 'x' | 'y') =
     }
 
     visited[node] = 1;
-    const neighbors = Array.from(graph.get(node)!).reverse();
-    for (const nextNode of neighbors) {
-      dfs(nextNode);
+    const neighbors = Array.from(graph.get(node)!);
+    for (let i = neighbors.length - 1; i >= 0; i--) {
+      dfs(neighbors[i]);
       if (hasCycle) {
         return;
       }
@@ -3078,13 +3078,13 @@ export const sortCategoriesTopologically = (data: Data[], axLetter: 'x' | 'y') =
   };
 
   // Run DFS on all nodes
-  const nodes = Array.from(graph.keys()).reverse();
-  for (const node of nodes) {
-    if (visited[node]) {
+  const nodes = Array.from(graph.keys());
+  for (let i = nodes.length - 1; i >= 0; i--) {
+    if (visited[nodes[i]]) {
       continue;
     }
 
-    dfs(node);
+    dfs(nodes[i]);
     if (hasCycle) {
       // If cycle exists, return categories without sorting
       return nodes;
