@@ -3030,7 +3030,7 @@ export const sortCategoriesTopologically = (data: Data[], axLetter: 'x' | 'y') =
   };
 
   // Run DFS on all nodes
-  const nodes = Array.from(graph.keys());
+  const nodes = Array.from(graph.keys()).reverse();
   for (const node of nodes) {
     if (visited[node]) {
       continue;
