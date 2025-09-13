@@ -28,7 +28,6 @@ import {
   tooltipOfAxislabels,
   getNextColor,
   getColorFromToken,
-  formatDate,
   getSecureProps,
   areArraysEqual,
   getCurveFactory,
@@ -47,6 +46,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { Legend, LegendContainer, Legends } from '../Legends/index';
 import { ScaleLinear } from 'd3-scale';
 import { toImage } from '../../utilities/image-export-utils';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
@@ -236,7 +236,9 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
       const formattedDate =
-        pointToHighlight instanceof Date ? formatDate(pointToHighlight, props.useUTC) : pointToHighlight;
+        pointToHighlight instanceof Date
+          ? formatDateToLocaleString(pointToHighlight, props.culture, props.useUTC as boolean)
+          : pointToHighlight;
       const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const found: any = find(_calloutPoints, (element: { x: string | number }) => {
@@ -866,7 +868,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       _updatePosition(cx, cy);
 
       const { x, y, xAxisCalloutData } = props.data.lineChartData![lineIndex].data[pointIndex];
-      const formattedDate = x instanceof Date ? formatDate(x, props.useUTC) : x;
+      const formattedDate = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
       const modifiedXVal = x instanceof Date ? x.getTime() : x;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const found: any = _calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
@@ -901,7 +903,8 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     function _getAriaLabel(lineIndex: number, pointIndex: number): string {
       const line = props.data.lineChartData![lineIndex];
       const point = line.data[pointIndex];
-      const formattedDate = point.x instanceof Date ? formatDate(point.x, props.useUTC) : point.x;
+      const formattedDate =
+        point.x instanceof Date ? formatDateToLocaleString(point.x, props.culture, props.useUTC as boolean) : point.x;
       const xValue = point.xAxisCalloutData || formattedDate;
       const legend = line.legend;
       const yValue = point.yAxisCalloutData || point.y;

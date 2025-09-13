@@ -73,6 +73,12 @@ export interface AreaChartStyles extends CartesianChartStyles {
 export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
 
 // @public
+export type AxisProps = {
+    tickStep?: number | string;
+    tick0?: number | Date;
+};
+
+// @public
 export type AxisScaleType = 'default' | 'log';
 
 // @public (undocumented)
@@ -179,6 +185,7 @@ export interface CartesianChartProps {
     useUTC?: string | boolean;
     width?: number;
     wrapXAxisLables?: boolean;
+    xAxis?: AxisProps;
     xAxisAnnotation?: string;
     xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
@@ -187,10 +194,12 @@ export interface CartesianChartProps {
     xAxisTitle?: string;
     xMaxValue?: number;
     xScaleType?: AxisScaleType;
+    yAxis?: AxisProps;
     yAxisAnnotation?: string;
     yAxisCategoryOrder?: AxisCategoryOrder;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
+    yAxisTickValues?: number[] | Date[] | string[];
     yAxisTitle?: string;
     yMaxValue?: number;
     yMinValue?: number;
@@ -481,7 +490,7 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
     colorwayType?: ColorwayType;
-    componentRef?: React_2.RefObject<IDeclarativeChart>;
+    componentRef?: React_2.RefObject<IDeclarativeChart | null>;
     onSchemaChange?: (eventData: Schema) => void;
 }
 
@@ -1208,7 +1217,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     chartType: ChartTypes;
     children(props: ChildProps): React_2.ReactNode;
     createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined, chartType?: ChartTypes) => ScaleBand<string>;
-    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, chartType: ChartTypes, useSecondaryYScale?: boolean, roundedTicks?: boolean, scaleType?: AxisScaleType) => ScaleLinear<number, number, never>;
+    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, chartType: ChartTypes, useSecondaryYScale?: boolean, roundedTicks?: boolean, scaleType?: AxisScaleType, _useRtl?: boolean) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];

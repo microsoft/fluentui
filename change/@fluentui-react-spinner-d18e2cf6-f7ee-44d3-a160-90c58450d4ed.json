@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: set min-width to min-content to prevent spinner clipping",
-  "packageName": "@fluentui/react-spinner",
-  "email": "busratemizyureek@gmail.com",
-  "dependentChangeType": "patch"
-}

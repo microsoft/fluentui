@@ -34,6 +34,8 @@ import {
   getAllupLegendsProps,
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
+  transformPlotlyJsonToFunnelChartProps,
+  transformPlotlyJsonToGanttChartProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { DonutChart } from '../DonutChart/index';
@@ -48,6 +50,8 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { Chart, ImageExportOptions } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
+import { FunnelChart } from '../FunnelChart/FunnelChart';
+import { GanttChart } from '../GanttChart/index';
 
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ChartTable } from '../ChartTable/index';
@@ -66,6 +70,9 @@ const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVertica
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
 const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
+const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
+// Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
+//const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -102,7 +109,7 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
    * Optional callback to access the IDeclarativeChart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<IDeclarativeChart>;
+  componentRef?: React.RefObject<IDeclarativeChart | null>;
 
   /**
    * Optional prop to specify the colorway type of the chart.
@@ -219,6 +226,14 @@ type ChartTypeMap = {
     transformer: typeof transformPlotlyJsonToScatterChartProps;
     renderer: typeof ResponsiveScatterChart;
   } & PreTransformHooks;
+  gantt: {
+    transformer: typeof transformPlotlyJsonToGanttChartProps;
+    renderer: typeof ResponsiveGanttChart;
+  } & PreTransformHooks;
+  funnel: {
+    transformer: typeof transformPlotlyJsonToFunnelChartProps;
+    renderer: typeof FunnelChart;
+  } & PreTransformHooks;
   fallback: {
     transformer: typeof transformPlotlyJsonToVSBCProps;
     renderer: typeof ResponsiveVerticalStackedBarChart;
@@ -280,6 +295,14 @@ const chartMap: ChartTypeMap = {
     transformer: transformPlotlyJsonToScatterChartProps,
     renderer: ResponsiveScatterChart,
     preTransformOperation: LineAreaPreTransformOp,
+  },
+  gantt: {
+    transformer: transformPlotlyJsonToGanttChartProps,
+    renderer: ResponsiveGanttChart,
+  },
+  funnel: {
+    transformer: transformPlotlyJsonToFunnelChartProps,
+    renderer: FunnelChart,
   },
   fallback: {
     transformer: transformPlotlyJsonToVSBCProps,

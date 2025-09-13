@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "log axis support in linechart and scatter chart",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

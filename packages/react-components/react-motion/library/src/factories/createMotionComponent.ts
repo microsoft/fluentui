@@ -1,3 +1,4 @@
+import type { JSXElement } from '@fluentui/react-utilities';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -8,8 +9,13 @@ import { useChildElement } from '../utils/useChildElement';
 import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 
+/**
+ * @internal A private symbol to store the motion definition on the component for variants.
+ */
+export const MOTION_DEFINITION = Symbol('MOTION_DEFINITION');
+
 export type MotionComponentProps = {
-  children: React.ReactElement;
+  children: JSXElement;
 
   /** Provides imperative controls for the animation. */
   imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
@@ -43,6 +49,12 @@ export type MotionComponentProps = {
   onMotionStart?: (ev: null) => void;
 };
 
+export type MotionComponent<MotionParams extends Record<string, MotionParam> = {}> = React.FC<
+  MotionComponentProps & MotionParams
+> & {
+  [MOTION_DEFINITION]: AtomMotionFn<MotionParams>;
+};
+
 /**
  * Creates a component that will animate the children using the provided motion.
  *
@@ -50,7 +62,7 @@ export type MotionComponentProps = {
  */
 export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(
   value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>,
-): React.FC<MotionComponentProps & MotionParams> {
+): MotionComponent<MotionParams> {
   const Atom: React.FC<MotionComponentProps & MotionParams> = props => {
     'use no memo';
 
@@ -117,5 +129,9 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     return child;
   };
 
-  return Atom;
+  return Object.assign(Atom, {
+    // Heads up!
+    // Always normalize it to a function to simplify types
+    [MOTION_DEFINITION]: typeof value === 'function' ? value : () => value,
+  });
 }

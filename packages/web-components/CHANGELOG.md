@@ -1,8 +1,45 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 27 Aug 2025 04:06:43 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Sep 2025 04:09:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.123](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.123)
+
+Fri, 05 Sep 2025 04:09:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.122..@fluentui/web-components_v3.0.0-beta.123)
+
+### Changes
+
+- fix: use defined selector in waitForConnectedDescendants ([PR #35142](https://github.com/microsoft/fluentui/pull/35142) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.122](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.122)
+
+Thu, 04 Sep 2025 04:07:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.121..@fluentui/web-components_v3.0.0-beta.122)
+
+### Changes
+
+- feat: enable SSR for rating-display ([PR #35126](https://github.com/microsoft/fluentui/pull/35126) by machi@microsoft.com)
+
+## [3.0.0-beta.121](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.121)
+
+Wed, 03 Sep 2025 04:08:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.120..@fluentui/web-components_v3.0.0-beta.121)
+
+### Changes
+
+- refactor: replace slotted with slotchange for tree and tree-item ([PR #35138](https://github.com/microsoft/fluentui/pull/35138) by machi@microsoft.com)
+
+## [3.0.0-beta.120](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.120)
+
+Mon, 01 Sep 2025 04:08:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.119..@fluentui/web-components_v3.0.0-beta.120)
+
+### Changes
+
+- fix: add focus-ring to dropdown ([PR #35116](https://github.com/microsoft/fluentui/pull/35116) by rupertdavid@microsoft.com)
+- fix(dropdown): use slotchange events instead of manual slot assignment ([PR #35125](https://github.com/microsoft/fluentui/pull/35125) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.119](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.119)
 

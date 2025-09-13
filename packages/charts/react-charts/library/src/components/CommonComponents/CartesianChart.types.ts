@@ -15,6 +15,7 @@ import {
   ScatterChartPoints,
   GanttChartDataPoint,
   AxisCategoryOrder,
+  AxisProps,
   AxisScaleType,
 } from '../../types/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
@@ -479,6 +480,24 @@ export interface CartesianChartProps {
    * @default 'default'
    */
   secondaryYScaleType?: AxisScaleType;
+
+  /**
+   * Explicit set of tick values for the y-axis.
+   * If provided, these values override automatic tick generation.
+   */
+  yAxisTickValues?: number[] | Date[] | string[];
+
+  /**
+   * Configuration for the x-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  xAxis?: AxisProps;
+
+  /**
+   * Configuration for the y-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  yAxis?: AxisProps;
 }
 
 export interface YValueHover {
@@ -679,6 +698,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     useSecondaryYScale?: boolean,
     roundedTicks?: boolean,
     scaleType?: AxisScaleType,
+    _useRtl?: boolean,
   ) => ScaleLinear<number, number, never>;
 
   /**

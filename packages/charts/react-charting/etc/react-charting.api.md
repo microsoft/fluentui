@@ -246,6 +246,7 @@ export interface IAreaChartStyles extends ICartesianChartStyles {
 export interface IBaseDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     hideCallout?: boolean;
+    markerColor?: string;
     markerSize?: number;
     onDataPointClick?: () => void;
     text?: string;
@@ -608,6 +609,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
     hideLabels?: boolean;
     innerRadius?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    order?: 'default' | 'sorted';
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;

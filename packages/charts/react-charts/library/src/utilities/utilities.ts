@@ -54,7 +54,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { AxisScaleType, ScatterChartPoints } from '../types/DataPoint';
+import { AxisProps, AxisScaleType, ScatterChartPoints } from '../types/DataPoint';
 import {
   AccessibilityProps,
   EventsAnnotationProps,
@@ -76,10 +76,12 @@ import {
   formatToLocaleString,
   getMultiLevelDateTimeFormatOptions,
   isInvalidValue,
+  isNumber,
 } from '@fluentui/chart-utilities';
 
 export const MIN_DOMAIN_MARGIN = 8;
 export const MIN_DONUT_RADIUS = 1;
+export const DEFAULT_DATE_STRING = '2000-01-01';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -155,7 +157,7 @@ export interface IDomainNRange {
   rEndValue: number;
 }
 
-export interface IXAxisParams {
+export interface IXAxisParams extends AxisProps {
   domainNRangeValues: IDomainNRange;
   xAxisElement?: SVGSVGElement | null;
   xAxisCount?: number;
@@ -176,7 +178,7 @@ export interface ITickParams {
   tickFormat?: string;
 }
 
-export interface IYAxisParams {
+export interface IYAxisParams extends AxisProps {
   yMinMaxValues?: {
     startValue: number;
     endValue: number;
@@ -195,6 +197,7 @@ export interface IYAxisParams {
   eventAnnotationProps?: EventsAnnotationProps;
   eventLabelHeight?: number;
   yAxisPadding?: number;
+  tickValues?: Date[] | number[] | string[];
 }
 
 function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
@@ -238,6 +241,7 @@ export function createNumericXAxis(
   chartType: ChartTypes,
   culture?: string,
   scaleType?: AxisScaleType,
+  _useRtl?: boolean,
 ): {
   xScale: ScaleLinear<number, number>;
   tickValues: string[];
@@ -251,6 +255,8 @@ export function createNumericXAxis(
     xAxisElement,
     hideTickOverlap,
     calcMaxLabelWidth,
+    tickStep,
+    tick0,
   } = xAxisParams;
   const xAxisScale = createNumericScale(scaleType)
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -280,16 +286,25 @@ export function createNumericXAxis(
   if ([ChartTypes.HorizontalBarChartWithAxis, ChartTypes.GanttChart].includes(chartType)) {
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
+  let customTickValues: number[] | undefined;
   if (tickParams.tickValues) {
-    xAxis.tickValues(tickParams.tickValues as number[]);
+    customTickValues = tickParams.tickValues as number[];
+  } else if (tickStep) {
+    customTickValues = generateNumericTicks(scaleType, tickStep, tick0, xAxisScale.domain());
+  }
+  if (customTickValues) {
+    xAxis.tickValues(customTickValues);
   }
 
   if (xAxisElement) {
-    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisElement)
+      .call(xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true')
+      .style('direction', 'ltr')
+      .style('unicode-bidi', 'isolate');
   }
-  const tickValues = ((tickParams.tickValues as number[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
-    xAxis.tickFormat()!,
-  );
+  const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -417,6 +432,8 @@ export function createDateXAxis(
     xAxistickSize = 6,
     xAxisCount,
     calcMaxLabelWidth,
+    tickStep,
+    tick0,
   } = xAxisParams;
   const isUtcSet = useUTC === true || useUTC === 'utc';
   const xAxisScale = isUtcSet ? d3ScaleUtc() : d3ScaleTime();
@@ -484,13 +501,19 @@ export function createDateXAxis(
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
 
-  tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues as Date[]) : '';
+  let customTickValues: Date[] | undefined;
+  if (tickParams.tickValues) {
+    customTickValues = tickParams.tickValues as Date[];
+  } else if (tickStep) {
+    customTickValues = generateDateTicks(tickStep, tick0, xAxisScale.domain(), useUTC as boolean);
+  }
+  if (customTickValues) {
+    xAxis.tickValues(customTickValues);
+  }
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = ((tickParams.tickValues as Date[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
-    xAxis.tickFormat()!,
-  );
+  const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -508,6 +531,7 @@ export function createStringXAxis(
   tickParams: ITickParams,
   dataset: string[],
   culture?: string,
+  _useRtl?: boolean,
 ): {
   xScale: ScaleBand<string>;
   tickValues: string[];
@@ -568,7 +592,12 @@ export function createStringXAxis(
     .tickFormat(tickFormat);
 
   if (xAxisParams.xAxisElement) {
-    d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisParams.xAxisElement)
+      .call(xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true')
+      .style('direction', 'ltr')
+      .style('unicode-bidi', 'isolate');
   }
   return { xScale: xAxisScale, tickValues: tickValues.map(xAxis.tickFormat()!) };
 }
@@ -673,6 +702,9 @@ export function createYAxisForHorizontalBarChartWithAxis(
     maxOfYVal = 0,
     yAxisTickFormat,
     yAxisTickCount = 4,
+    tickValues,
+    tickStep,
+    tick0,
   } = yAxisParams;
 
   // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
@@ -685,6 +717,17 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
+
+  let customTickValues: number[] | undefined;
+  if (tickValues) {
+    customTickValues = tickValues as number[];
+  } else if (tickStep) {
+    customTickValues = generateNumericTicks(undefined, tickStep, tick0, yAxisScale.domain());
+  }
+  if (customTickValues) {
+    yAxis.tickValues(customTickValues);
+  }
+
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
@@ -698,6 +741,7 @@ export function createNumericYAxis(
   useSecondaryYScale: boolean = false,
   roundedTicks: boolean = false,
   scaleType?: AxisScaleType,
+  _useRtl?: boolean,
 ): ScaleLinear<number, number> {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -713,6 +757,9 @@ export function createNumericYAxis(
     yAxisTickCount = 4,
     eventAnnotationProps,
     eventLabelHeight,
+    tickValues,
+    tickStep,
+    tick0,
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
@@ -747,8 +794,22 @@ export function createNumericYAxis(
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-  if (scaleType !== 'log') {
-    yAxis.tickValues(domainValues);
+  let customTickValues: number[] | undefined;
+  if (tickValues) {
+    customTickValues = tickValues as number[];
+  } else if (tickStep) {
+    customTickValues = generateNumericTicks(scaleType, tickStep, tick0, yAxisScale.domain());
+  }
+  if (customTickValues) {
+    yAxis.tickValues(customTickValues);
+    axisData.yAxisDomainValues = customTickValues;
+  } else {
+    if (scaleType === 'log') {
+      axisData.yAxisDomainValues = yAxisScale.ticks();
+    } else {
+      yAxis.tickValues(domainValues);
+      axisData.yAxisDomainValues = domainValues;
+    }
   }
 
   const tickFormat = (domainValue: NumberValue, index: number, defaultFormat?: (val: NumberValue) => string) => {
@@ -758,8 +819,15 @@ export function createNumericYAxis(
   yAxisTickFormat
     ? yAxis.tickFormat(yAxisTickFormat)
     : yAxis.tickFormat((v, i) => tickFormat(v as NumberValue, i, yAxisScale.tickFormat(yAxisTickCount)));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
-  axisData.yAxisDomainValues = domainValues;
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(yAxis)
+        .selectAll('text')
+        .attr('aria-hidden', 'true')
+        .style('direction', 'ltr')
+        .style('unicode-bidi', 'isolate')
+        .style('text-anchor', !useSecondaryYScale && (_useRtl ? 'start' : 'end'))
+    : '';
   return yAxisScale;
 }
 
@@ -1174,7 +1242,7 @@ export function tooltipOfAxislabels(axistooltipProps: any): null | undefined {
     return null;
   }
   const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-  const aa = axis!.selectAll('#BaseSpan')._groups[0];
+  const aa = axis!.selectAll('[id^="BaseSpan-"]')._groups[0];
   const baseSpanLength = aa && Object.keys(aa)!.length;
   const originalDataArray: string[] = [];
   for (let i = 0; i < baseSpanLength; i++) {
@@ -1410,16 +1478,17 @@ export function domainRangeOfDateForAreaLineScatterVerticalBarCharts(
     // So, Finding smallest and largest dates
     sDate = d3Min([...tickValues, sDate])!;
     lDate = d3Max([...tickValues, lDate])!;
-  } else {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    sDate = d3Min(points as any[], point => point.x as Date)!;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    lDate = d3Max(points as any[], point => point.x as Date)!;
+
     if (hasMarkersMode || chartType === ChartTypes.ScatterChart) {
       const xPadding = getDomainPaddingForMarkers(sDate.getTime(), lDate.getTime());
       sDate = new Date(sDate.getTime() - xPadding.start);
       lDate = new Date(lDate.getTime() + xPadding.end);
     }
+  } else {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    sDate = d3Min(points as any[], point => point.x as Date)!;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    lDate = d3Max(points as any[], point => point.x as Date)!;
   }
 
   const rStartValue = margins.left!;
@@ -2172,3 +2241,157 @@ export const getRangeForScatterMarkerSize = ({
   const extraYPixels = Math.min(Math.abs(yScale(scaleYMin) - yScale(yMin)), Math.abs(yScale(yMax) - yScale(scaleYMax)));
   return Math.min(extraXPixels, extraYPixels);
 };
+
+export const generateLinearTicks = (tick0: number, tickStep: number, scaleDomain: number[]): number[] => {
+  const domainMin = d3Min(scaleDomain)!;
+  const domainMax = d3Max(scaleDomain)!;
+
+  const precision = Math.max(calculatePrecision(tick0), calculatePrecision(tickStep));
+
+  const start = Math.ceil(precisionRound((domainMin - tick0) / tickStep, precision));
+  const end = Math.floor(precisionRound((domainMax - tick0) / tickStep, precision));
+
+  const ticks: number[] = [];
+  for (let i = start; i <= end; i++) {
+    ticks.push(precisionRound(tick0 + i * tickStep, precision));
+  }
+
+  return ticks;
+};
+
+export const generateMonthlyTicks = (
+  tick0: Date,
+  tickStepInMonths: number,
+  scaleDomain: Date[],
+  useUTC?: boolean,
+): Date[] => {
+  const domainMin = +d3Min(scaleDomain)!;
+  const domainMax = +d3Max(scaleDomain)!;
+
+  const getMonth = (d: Date) => (useUTC ? d.getUTCMonth() : d.getMonth());
+  const setMonth = (d: Date, month: number) => (useUTC ? new Date(d.setUTCMonth(month)) : new Date(d.setMonth(month)));
+
+  // Find the earliest tick <= domainMin
+  let start = 0;
+  for (let firstTick = new Date(+tick0); +firstTick > domainMin; ) {
+    firstTick = setMonth(firstTick, getMonth(firstTick) - tickStepInMonths);
+    start -= tickStepInMonths;
+  }
+
+  const baseMonth = getMonth(tick0);
+  const ticks: Date[] = [];
+
+  // Generate ticks forward until domainMax
+  for (let i = start; ; i += tickStepInMonths) {
+    let tickDate = setMonth(new Date(+tick0), baseMonth + i);
+
+    // Handle month rollover (e.g., Jan 31 + 1 month → Mar 3 instead of Feb)
+    if (getMonth(tickDate) !== (((baseMonth + i) % 12) + 12) % 12) {
+      tickDate = useUTC ? new Date(tickDate.setUTCDate(0)) : new Date(tickDate.setDate(0));
+    }
+
+    if (+tickDate > domainMax) {
+      break;
+    }
+    if (+tickDate >= domainMin) {
+      ticks.push(tickDate);
+    }
+  }
+
+  return ticks;
+};
+
+const generateNumericTicks = (
+  scaleType: AxisScaleType | undefined,
+  tickStep: string | number | undefined,
+  tick0: number | Date | undefined,
+  scaleDomain: number[],
+) => {
+  const refTick = typeof tick0 === 'number' ? tick0 : 0;
+
+  if (scaleType === 'log') {
+    if (typeof tickStep === 'number' && tickStep > 0) {
+      return generateLinearTicks(
+        refTick,
+        tickStep,
+        scaleDomain.map(d => Math.log10(d)),
+      ).map(t => Math.pow(10, t));
+    }
+
+    if (typeof tickStep === 'string') {
+      const prefix = tickStep[0];
+      const num = isNumber(tickStep.slice(1)) ? Number(tickStep.slice(1)) : 0;
+      if (prefix === 'L' && num > 0) {
+        return generateLinearTicks(refTick, num, scaleDomain);
+      }
+    }
+
+    return;
+  }
+
+  if (typeof tickStep === 'number' && tickStep > 0) {
+    return generateLinearTicks(refTick, tickStep, scaleDomain);
+  }
+};
+
+const generateDateTicks = (
+  tickStep: string | number | undefined,
+  tick0: number | Date | undefined,
+  scaleDomain: Date[],
+  useUTC?: boolean,
+) => {
+  const refTick = tick0 instanceof Date ? tick0 : new Date(DEFAULT_DATE_STRING);
+
+  if (typeof tickStep === 'number' && tickStep > 0) {
+    return generateLinearTicks(
+      +refTick,
+      tickStep,
+      scaleDomain.map(d => +d),
+    ).map(t => new Date(t));
+  }
+
+  if (typeof tickStep === 'string') {
+    const prefix = tickStep[0];
+    const num = isNumber(tickStep.slice(1)) ? Number(tickStep.slice(1)) : 0;
+    if (prefix === 'M' && num > 0 && num === Math.round(num)) {
+      return generateMonthlyTicks(refTick, num, scaleDomain, useUTC);
+    }
+  }
+};
+
+/**
+ * Calculates a number's precision based on the number of trailing
+ * zeros if the number does not have a decimal indicated by a negative
+ * precision. Otherwise, it calculates the number of digits after
+ * the decimal point indicated by a positive precision.
+ * @param value - the value to determine the precision of
+ */
+export function calculatePrecision(value: number | string): number {
+  /**
+   * Group 1:
+   * [1-9]([0]+$) matches trailing zeros
+   * Group 2:
+   * \.([0-9]*) matches all digits after a decimal point.
+   */
+  const groups = /[1-9]([0]+$)|\.([0-9]*)/.exec(String(value));
+  if (!groups) {
+    return 0;
+  }
+  if (groups[1]) {
+    return -groups[1].length;
+  }
+  if (groups[2]) {
+    return groups[2].length;
+  }
+  return 0;
+}
+
+/**
+ * Rounds a number to a certain level of precision. Accepts negative precision.
+ * @param value - The value that is being rounded.
+ * @param precision - The number of decimal places to round the number to
+ */
+export function precisionRound(value: number, precision: number, base: number = 10): number {
+  const exp = Math.pow(base, precision);
+  return Math.round(value * exp) / exp;
+}

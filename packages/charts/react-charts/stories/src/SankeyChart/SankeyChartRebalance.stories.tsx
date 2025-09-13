@@ -392,6 +392,7 @@ export const SankeyChartRebalance: React.FunctionComponent<{}> = (): JSXElement 
             nodeAriaLabel: '{0} with {1} sign-ins',
             linkAriaLabel: '{2} sign-ins from {0} and {1}',
           }}
+          reflowProps={{ mode: 'min-width' }}
         />
       </div>
     </div>

@@ -20,6 +20,7 @@
     },
     "build-storybook": {
       "dependsOn": [],
+      "outputs": ["{projectRoot}/dist/storybook"],
       "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
       "cache": true
     },
@@ -97,6 +98,9 @@
       "dependsOn": ["build"],
       "cache": true
     },
+    "test-rit--*--prepare": {
+      "dependsOn": ["^build"]
+    },
     "@nx/jest:jest": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true,
@@ -109,6 +113,11 @@
           "codeCoverage": true
         }
       }
+    },
+    "@nx/js:swc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
@@ -137,6 +146,17 @@
         },
         "verifyPackaging": {
           "include": ["react-text", "react-components"]
+        },
+        "reactIntegrationTesting": {
+          "targetName": "test-rit",
+          "reactVersions": ["17", "19"],
+          "exclude": [
+            "react-theme-sass",
+            "babel-preset-global-context",
+            "eslint-plugin-react-components",
+            "react-migration-v0-v9",
+            "react-migration-v0-v9-stories"
+          ]
         }
       },
       "include": [

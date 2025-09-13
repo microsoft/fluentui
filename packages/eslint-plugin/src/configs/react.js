@@ -109,6 +109,18 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'react/jsx-no-bind': 'off',
         'react-compiler/react-compiler': 'off',
+        '@typescript-eslint/no-restricted-imports': [
+          'error',
+          {
+            patterns: [
+              {
+                group: ['@cypress/react'],
+                importNames: ['mount'],
+                message: "Use 'mount' from @fluentui/scripts-cypress instead.",
+              },
+            ],
+          },
+        ],
       },
     },
     {

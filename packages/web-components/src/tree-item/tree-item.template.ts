@@ -1,5 +1,4 @@
-import { elements, html, slotted } from '@microsoft/fast-element';
-import { FluentDesignSystem } from '../fluent-design-system.js';
+import { html, ref } from '@microsoft/fast-element';
 import type { TreeItem } from './tree-item.js';
 
 const chevronIcon = html`
@@ -26,13 +25,7 @@ export const template = html<TreeItem>`
       </div>
     </div>
     <div role="group" class="items" part="items">
-      <slot
-        name="item"
-        ${slotted({
-          property: 'childTreeItems',
-          filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
-        })}
-      ></slot>
+      <slot name="item" ${ref('itemSlot')} @slotchange="${x => x.handleItemSlotChange()}"></slot>
     </div>
   </template>
 `;

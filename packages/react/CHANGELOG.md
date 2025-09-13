@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 26 Aug 2025 07:21:44 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Sep 2025 07:20:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.123.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.6)
+
+Thu, 11 Sep 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.123.5..@fluentui/react_v8.123.6)
+
+### Patches
+
+- fix(DetailsList): DetailsRow correctly falls back to horizontal FocusZone ([PR #35180](https://github.com/microsoft/fluentui/pull/35180) by sarah.higley@microsoft.com)
 
 ## [8.123.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.5)
 

@@ -33,6 +33,9 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],
+  build: {
+    previewUrl: process.env.DEPLOY_PATH,
+  },
   webpackFinal: (config, options) => {
     const localConfig = /** @type config */ ({ ...rootMain.webpackFinal?.(config, options) });
 

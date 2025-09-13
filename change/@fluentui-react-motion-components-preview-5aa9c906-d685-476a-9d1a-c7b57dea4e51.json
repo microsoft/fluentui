@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor(motion): normalize motion atom parameters & types",
-  "packageName": "@fluentui/react-motion-components-preview",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}

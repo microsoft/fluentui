@@ -74,7 +74,12 @@ const MIN_DOMAIN_MARGIN = 8;
 export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
   VerticalBarChartProps
->((props = { xAxisCategoryOrder: 'default' }, forwardedRef) => {
+>((_props, forwardedRef) => {
+  const props: VerticalBarChartProps = {
+    xAxisCategoryOrder: 'default',
+    maxBarWidth: 24,
+    ..._props,
+  };
   let _points: VerticalBarChartDataPoint[] = [];
   let _barWidth: number = 0;
   let _colors: string[];
@@ -352,7 +357,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       return (
         <>
           <ChartPopover
-            culture={props.culture ?? 'en-us'}
+            culture={props.culture}
             clickPosition={clickPosition}
             isPopoverOpen={isPopoverOpen}
             legend={item.legend!}
@@ -374,7 +379,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           XValue={_props.xAxisCalloutData || (_props.x as string)}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
-          culture={props.culture ?? 'en-us'}
+          culture={props.culture}
           clickPosition={clickPosition}
           isPopoverOpen={isPopoverOpen}
           legend={_props.legend!}
@@ -1041,6 +1046,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         textAnchor="middle"
         className={classes.barLabel}
         aria-hidden={true}
+        style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
       >
         {typeof props.yAxisTickFormat === 'function'
           ? props.yAxisTickFormat(barValue)
@@ -1197,7 +1203,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     clickPosition: clickPosition,
     isPopoverOpen: isPopoverOpen,
     isCalloutForStack: _isHavingLine && (_noLegendHighlighted() || _getHighlightedLegend().length > 1),
-    culture: props.culture ?? 'en-us',
+    culture: props.culture,
     isCartesian: true,
     customCallout: {
       customizedCallout: _getCustomizedCallout() != null ? _getCustomizedCallout()! : undefined,

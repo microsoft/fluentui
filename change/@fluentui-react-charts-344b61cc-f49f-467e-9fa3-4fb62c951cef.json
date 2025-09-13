@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor common styles to reduce bundle size",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
