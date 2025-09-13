@@ -1,0 +1,269 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
+import {
+  useSemanticButtonStyles,
+  useSemanticCompoundButtonStyles,
+  useSemanticMenuButtonStyles,
+  useSemanticSplitButtonStyles,
+  useSemanticToggleButtonStyles,
+} from './Button';
+import { useSemanticAccordionHeaderStyles } from './Accordion';
+import { useSemanticAvatarStyles } from './Avatar';
+import { useSemanticCheckboxStyles } from './Checkbox';
+import { useSemanticDividerStyles } from './Divider';
+import {
+  useSemanticInlineDrawerStyles,
+  useSemanticDrawerBodyStyles,
+  useSemanticDrawerFooterStyles,
+  useSemanticDrawerHeaderStyles,
+  useSemanticOverlayDrawerSurfaceStyles,
+} from './Drawer';
+import { useSemanticFieldStyles } from './Field';
+import { useSemanticLabelStyles } from './Label';
+import { useSemanticLinkStyles } from './Link';
+import { useSemanticProgressBarStyles } from './ProgressBar/useSemanticProgressBarStyles.styles';
+import { useSemanticRatingDisplayStyles, useSemanticRatingItemStyles } from './Rating';
+import { useSemanticSpinnerStyles } from './Spinner';
+import { useSemanticSwitchStyles } from './Switch';
+import { useSemanticTextStyles } from './Text';
+import { useSemanticTextareaStyles } from './Textarea';
+import {
+  useSemanticFlatTreeStyles,
+  useSemanticTreeItemLayoutStyles,
+  useSemanticTreeItemStyles,
+  useSemanticTreeStyles,
+  useSemanticTreeItemPersonaLayoutStyles,
+} from './Tree';
+import { useSemanticImageStyles } from './Image';
+import { useSemanticListItemStyles } from './List';
+import {
+  useSemanticDialogActionsStyles,
+  useSemanticDialogBodyStyles,
+  useSemanticDialogContentStyles,
+  useSemanticDialogSurfaceStyles,
+  useSemanticDialogTitleStyles,
+} from './Dialog';
+import {
+  useSemanticMessageBarStyles,
+  useSemanticMessageBarBodyStyles,
+  useSemanticMessageBarActionsStyles,
+  useSemanticMessageBarTitleStyles,
+} from './MessageBar';
+import { useSemanticTabStyles } from './Tabs/useSemanticTabsStyles.styles';
+import { useSemanticTabListStyles } from './Tabs';
+import { useSemanticSliderStyles } from './Slider';
+import {
+  useSemanticMenuDividerStyles,
+  useSemanticMenuItemStyles,
+  useSemanticMenuItemSwitchStyles,
+  useSemanticMenuPopoverStyles,
+  useSemanticMenuSplitGroupStyles,
+} from './Menu';
+import { useSemanticMenuGroupHeaderStyles } from './Menu';
+import { useSemanticRadioStyles } from './Radio';
+import { useSemanticPersonaStyles } from './Persona';
+import { useSemanticBadgeStyles, useSemanticPresenceBadgeStyles } from './Badge';
+import {
+  useSemanticBreadcrumbStyles,
+  useSemanticBreadcrumbButtonStyles,
+  useSemanticBreadcrumbDividerStyles,
+  useSemanticBreadcrumbItemStyles,
+} from './Breadcrumb';
+import { useSemanticSpinButtonStyles } from './SpinButton';
+import { useSemanticPopoverSurfaceStyles } from './Popover';
+import { useSemanticInputStyles } from './Input/useSemanticInputStyles.styles';
+import {
+  useSemanticToolbarStyles,
+  useSemanticToolbarButtonStyles,
+  useSemanticToolbarDividerStyles,
+  useSemanticToolbarGroupStyles,
+  useSemanticToolbarRadioButtonStyles,
+  useSemanticToolbarToggleButtonStyles,
+} from './Toolbar';
+import { useSemanticTooltipStyles } from './Tooltip';
+import { useSemanticInfoButtonStyles, useSemanticInfoLabelStyles } from './InfoLabel';
+import {
+  useSemanticDataGridStyles,
+  useSemanticDataGridBodyStyles,
+  useSemanticDataGridCellStyles,
+  useSemanticDataGridHeaderStyles,
+  useSemanticDataGridHeaderCellStyles,
+  useSemanticDataGridRowStyles,
+  useSemanticDataGridSelectionCellStyles,
+  useSemanticTableStyles,
+  useSemanticTableBodyStyles,
+  useSemanticTableCellStyles,
+  useSemanticTableCellActionsStyles,
+  useSemanticTableCellLayoutStyles,
+  useSemanticTableHeaderStyles,
+  useSemanticTableHeaderCellStyles,
+  useSemanticTableResizeHandleStyles,
+  useSemanticTableRowStyles,
+  useSemanticTableSelectionCellStyles,
+} from './Table';
+import {
+  useSemanticToastContainerStyles,
+  useSemanticToastBodyStyles,
+  useSemanticToastFooterStyles,
+  useSemanticToastStyles,
+  useSemanticToastTitleStyles,
+} from './Toast';
+import { useSemanticSearchBoxStyles } from './Search';
+import {
+  useSemanticTeachingPopoverBodyStyles,
+  useSemanticTeachingPopoverCarouselCardStyles,
+  useSemanticTeachingPopoverCarouselFooterButtonStyles,
+  useSemanticTeachingPopoverCarouselFooterStyles,
+  useSemanticTeachingPopoverCarouselNavButtonStyles,
+  useSemanticTeachingPopoverCarouselNavStyles,
+  useSemanticTeachingPopoverCarouselPageCountStyles,
+  useSemanticTeachingPopoverCarouselStyles,
+  useSemanticTeachingPopoverFooterStyles,
+  useSemanticTeachingPopoverHeaderStyles,
+  useSemanticTeachingPopoverSurfaceStyles,
+  useSemanticTeachingPopoverTitleStyles,
+} from './TeachingPopover';
+
+export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
+  // Accordion styles
+  useAccordionHeaderStyles_unstable: useSemanticAccordionHeaderStyles,
+  // Avatar styles
+  useAvatarStyles_unstable: useSemanticAvatarStyles,
+  // Badge styles
+  useBadgeStyles_unstable: useSemanticBadgeStyles,
+  usePresenceBadgeStyles_unstable: useSemanticPresenceBadgeStyles,
+  // Button styles
+  useButtonStyles_unstable: useSemanticButtonStyles,
+  useToggleButtonStyles_unstable: useSemanticToggleButtonStyles,
+  useSplitButtonStyles_unstable: useSemanticSplitButtonStyles,
+  useMenuButtonStyles_unstable: useSemanticMenuButtonStyles,
+  useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,
+  // Divider styles
+  useDividerStyles_unstable: useSemanticDividerStyles,
+  // Drawer styles
+  useInlineDrawerStyles_unstable: useSemanticInlineDrawerStyles,
+  useDrawerBodyStyles_unstable: useSemanticDrawerBodyStyles,
+  useDrawerFooterStyles_unstable: useSemanticDrawerFooterStyles,
+  useDrawerHeaderStyles_unstable: useSemanticDrawerHeaderStyles,
+  useOverlayDrawerSurfaceStyles_unstable: useSemanticOverlayDrawerSurfaceStyles,
+  //Field styles
+  useFieldStyles_unstable: useSemanticFieldStyles,
+  // Label styles
+  useLabelStyles_unstable: useSemanticLabelStyles,
+  // Link styles
+  useLinkStyles_unstable: useSemanticLinkStyles,
+  // ProgressBar styles
+  useProgressBarStyles_unstable: useSemanticProgressBarStyles,
+  // Rating styles
+  useRatingDisplayStyles_unstable: useSemanticRatingDisplayStyles,
+  useRatingItemStyles_unstable: useSemanticRatingItemStyles,
+  // Spinner styles
+  useSpinnerStyles_unstable: useSemanticSpinnerStyles,
+  // Switch styles
+  useSwitchStyles_unstable: useSemanticSwitchStyles,
+  // Text styles
+  useTextStyles_unstable: useSemanticTextStyles,
+  // Textarea styles
+  useTextareaStyles_unstable: useSemanticTextareaStyles,
+  // Tree styles
+  useFlatTreeStyles_unstable: useSemanticFlatTreeStyles,
+  useTreeStyles_unstable: useSemanticTreeStyles,
+  useTreeItemLayoutStyles_unstable: useSemanticTreeItemLayoutStyles,
+  useTreeItemPersonaLayoutStyles_unstable: useSemanticTreeItemPersonaLayoutStyles,
+  useTreeItemStyles_unstable: useSemanticTreeItemStyles,
+  // Image styles
+  useImageStyles_unstable: useSemanticImageStyles,
+  // List styles
+  useListItemStyles_unstable: useSemanticListItemStyles,
+  // Dialog
+  useDialogActionsStyles_unstable: useSemanticDialogActionsStyles,
+  useDialogBodyStyles_unstable: useSemanticDialogBodyStyles,
+  useDialogContentStyles_unstable: useSemanticDialogContentStyles,
+  useDialogSurfaceStyles_unstable: useSemanticDialogSurfaceStyles,
+  useDialogTitleStyles_unstable: useSemanticDialogTitleStyles,
+  // MessageBar styles
+  useMessageBarStyles_unstable: useSemanticMessageBarStyles,
+  useMessageBarBodyStyles_unstable: useSemanticMessageBarBodyStyles,
+  useMessageBarActionsStyles_unstable: useSemanticMessageBarActionsStyles,
+  useMessageBarTitleStyles_unstable: useSemanticMessageBarTitleStyles,
+  // Slider styles
+  useSliderStyles_unstable: useSemanticSliderStyles,
+  // Menu styles
+  useMenuDividerStyles_unstable: useSemanticMenuDividerStyles,
+  useMenuGroupHeaderStyles_unstable: useSemanticMenuGroupHeaderStyles,
+  useMenuItemStyles_unstable: useSemanticMenuItemStyles,
+  useMenuItemSwitchStyles_unstable: useSemanticMenuItemSwitchStyles,
+  useMenuPopoverStyles_unstable: useSemanticMenuPopoverStyles,
+  useMenuSplitGroupStyles_unstable: useSemanticMenuSplitGroupStyles,
+  // Radio styles
+  useRadioStyles_unstable: useSemanticRadioStyles,
+  // Persona styles
+  usePersonaStyles_unstable: useSemanticPersonaStyles,
+  // Popover styles
+  usePopoverSurfaceStyles_unstable: useSemanticPopoverSurfaceStyles,
+  // Search styles
+  useSearchBoxStyles_unstable: useSemanticSearchBoxStyles,
+  // Checkbox styles
+  useCheckboxStyles_unstable: useSemanticCheckboxStyles,
+  // Breadcrumb styles
+  useBreadcrumbStyles_unstable: useSemanticBreadcrumbStyles,
+  useBreadcrumbButtonStyles_unstable: useSemanticBreadcrumbButtonStyles,
+  useBreadcrumbDividerStyles_unstable: useSemanticBreadcrumbDividerStyles,
+  useBreadcrumbItemStyles_unstable: useSemanticBreadcrumbItemStyles,
+  // SpinButton styles
+  useSpinButtonStyles_unstable: useSemanticSpinButtonStyles,
+  // Input styles
+  useInputStyles_unstable: useSemanticInputStyles,
+  // Toolbar styles
+  useToolbarStyles_unstable: useSemanticToolbarStyles,
+  useToolbarButtonStyles_unstable: useSemanticToolbarButtonStyles,
+  useToolbarDividerStyles_unstable: useSemanticToolbarDividerStyles,
+  useToolbarGroupStyles_unstable: useSemanticToolbarGroupStyles,
+  useToolbarRadioButtonStyles_unstable: useSemanticToolbarRadioButtonStyles,
+  useToolbarToggleButtonStyles_unstable: useSemanticToolbarToggleButtonStyles,
+  // Tabs styles
+  useTabStyles_unstable: useSemanticTabStyles,
+  useTabListStyles_unstable: useSemanticTabListStyles,
+  //Tooltip styles
+  useTooltipStyles_unstable: useSemanticTooltipStyles,
+  // InfoLabel styles
+  useInfoButtonStyles_unstable: useSemanticInfoButtonStyles,
+  useInfoLabelStyles_unstable: useSemanticInfoLabelStyles,
+  // Table styles
+  useDataGridStyles_unstable: useSemanticDataGridStyles,
+  useDataGridBodyStyles_unstable: useSemanticDataGridBodyStyles,
+  useDataGridCellStyles_unstable: useSemanticDataGridCellStyles,
+  useDataGridHeaderStyles_unstable: useSemanticDataGridHeaderStyles,
+  useDataGridHeaderCellStyles_unstable: useSemanticDataGridHeaderCellStyles,
+  useDataGridRowStyles_unstable: useSemanticDataGridRowStyles,
+  useDataGridSelectionCellStyles_unstable: useSemanticDataGridSelectionCellStyles,
+  useTableStyles_unstable: useSemanticTableStyles,
+  useTableBodyStyles_unstable: useSemanticTableBodyStyles,
+  useTableCellStyles_unstable: useSemanticTableCellStyles,
+  useTableCellActionsStyles_unstable: useSemanticTableCellActionsStyles,
+  useTableCellLayoutStyles_unstable: useSemanticTableCellLayoutStyles,
+  useTableHeaderStyles_unstable: useSemanticTableHeaderStyles,
+  useTableHeaderCellStyles_unstable: useSemanticTableHeaderCellStyles,
+  useTableResizeHandleStyles_unstable: useSemanticTableResizeHandleStyles,
+  useTableRowStyles_unstable: useSemanticTableRowStyles,
+  useTableSelectionCellStyles_unstable: useSemanticTableSelectionCellStyles,
+  //Toast styles
+  useToastBodyStyles_unstable: useSemanticToastBodyStyles,
+  useToastContainerStyles_unstable: useSemanticToastContainerStyles,
+  useToastFooterStyles_unstable: useSemanticToastFooterStyles,
+  useToastStyles_unstable: useSemanticToastStyles,
+  useToastTitleStyles_unstable: useSemanticToastTitleStyles,
+  // TeachingPopover styles
+  useTeachingPopoverBodyStyles_unstable: useSemanticTeachingPopoverBodyStyles,
+  useTeachingPopoverCarouselCardStyles_unstable: useSemanticTeachingPopoverCarouselCardStyles,
+  useTeachingPopoverCarouselFooterButtonStyles_unstable: useSemanticTeachingPopoverCarouselFooterButtonStyles,
+  useTeachingPopoverCarouselFooterStyles_unstable: useSemanticTeachingPopoverCarouselFooterStyles,
+  useTeachingPopoverCarouselNavButtonStyles_unstable: useSemanticTeachingPopoverCarouselNavButtonStyles,
+  useTeachingPopoverCarouselNavStyles_unstable: useSemanticTeachingPopoverCarouselNavStyles,
+  useTeachingPopoverCarouselPageCountStyles_unstable: useSemanticTeachingPopoverCarouselPageCountStyles,
+  useTeachingPopoverCarouselStyles_unstable: useSemanticTeachingPopoverCarouselStyles,
+  useTeachingPopoverFooterStyles_unstable: useSemanticTeachingPopoverFooterStyles,
+  useTeachingPopoverHeaderStyles_unstable: useSemanticTeachingPopoverHeaderStyles,
+  useTeachingPopoverSurfaceStyles_unstable: useSemanticTeachingPopoverSurfaceStyles,
+  useTeachingPopoverTitleStyles_unstable: useSemanticTeachingPopoverTitleStyles,
+};
