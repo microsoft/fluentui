@@ -2228,12 +2228,12 @@ export const findCalloutPoints = (
   x: string | number | Date | null,
 ) => {
   if (x === null) {
-    return;
+    return undefined;
   }
 
   const key = x instanceof Date ? x.getTime() : x;
   if (!calloutPointsByX[key]) {
-    return;
+    return undefined;
   }
   return {
     x,

@@ -375,7 +375,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _handleHover = React.useCallback(
     (
       x: number | Date | string,
-      y: number | Date,
+      y: number,
       lineHeight: number,
       xAxisCalloutData: string | undefined,
       circleId: string,
