@@ -375,14 +375,14 @@ describe.skip('Grouped vertical bar chart - Subcomponent bar', () => {
     );
 
     // Act
-    const bars = container.querySelectorAll('rect');
+    const bars = container.querySelectorAll('rect[role="img"]');
     const x1Iteration1 = parseFloat(bars[0].getAttribute('x') || '0');
     const x2Iteration1 = parseFloat(bars[1].getAttribute('x') || '0');
     const iteration1Diff = x2Iteration1 - x1Iteration1;
 
     // Re-render with different xAxisInnerPadding
     rerender(<GroupedVerticalBarChart data={chartPoints} xAxisInnerPadding={0.75} xAxisOuterPadding={0.5} />);
-    const barsUpdated = container.querySelectorAll('rect');
+    const barsUpdated = container.querySelectorAll('rect[role="img"]');
     const x1Iteration2 = parseFloat(barsUpdated[0].getAttribute('x') || '0');
     const x2Iteration2 = parseFloat(barsUpdated[1].getAttribute('x') || '0');
     const iteration2Diff = x2Iteration2 - x1Iteration2;
@@ -399,7 +399,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
     { data: chartPoints, barWidth: 'auto', maxBarWidth: 50 },
     container => {
       // Assert
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars).toHaveLength(6);
       expect(bars[0].getAttribute('width')).toEqual('16');
       expect(bars[1].getAttribute('width')).toEqual('16');
@@ -414,7 +414,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
     container => {
       // colors mentioned in the data points itself
       // Assert
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars[0].getAttribute('fill')).toEqual(DefaultPalette.blueLight);
       expect(bars[1].getAttribute('fill')).toEqual(DefaultPalette.blue);
       expect(bars[2].getAttribute('fill')).toEqual(DefaultPalette.blueLight);
@@ -440,7 +440,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
     { data: accessibilityDataPoints },
     container => {
       // Assert
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars[0]).toHaveAttribute(
         'aria-label',
         'Group series 1 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
@@ -469,7 +469,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
     container => {
       const legends = getByClass(container, /legend-/i);
       fireEvent.mouseOver(legends[0]);
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(bars[0]).toHaveAttribute('opacity', '');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
@@ -487,7 +487,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
     container => {
       const legends = getByClass(container, /legend-/i);
       fireEvent.mouseOver(legends[0]);
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(bars[0]).toHaveAttribute('opacity', '');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
@@ -496,7 +496,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       expect(bars[4]).toHaveAttribute('opacity', '');
       expect(bars[5]).toHaveAttribute('opacity', '0.1');
       fireEvent.mouseOver(legends[1]);
-      const updatedBars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const updatedBars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(updatedBars[0]).toHaveAttribute('opacity', '0.1');
       expect(updatedBars[1]).toHaveAttribute('opacity', '');
@@ -517,7 +517,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       const legendsAfterClickEvent = screen.getAllByText(
         (content, element) => element!.tagName.toLowerCase() === 'button',
       );
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true');
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
@@ -541,7 +541,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       const legendsAfterClickEvent = screen.getAllByText(
         (content, element) => element!.tagName.toLowerCase() === 'button',
       );
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false');
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
@@ -572,7 +572,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       expect(firstLegend).toHaveAttribute('aria-selected', 'true');
       expect(secondLegend).toHaveAttribute('aria-selected', 'true');
 
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars[0]).toHaveAttribute('opacity', '0.1');
       expect(bars[1]).toHaveAttribute('opacity', '');
       expect(bars[2]).toHaveAttribute('opacity', '');
@@ -596,7 +596,7 @@ describe('Grouped vertical bar chart - Subcomponent callout', () => {
     { data: chartPoints, calloutProps: { doNotLayer: true } },
     container => {
       // Arrange
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       fireEvent.mouseOver(bars[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
@@ -609,7 +609,7 @@ describe('Grouped vertical bar chart - Subcomponent callout', () => {
     { data: chartPoints, isCalloutForStack: true, calloutProps: { doNotLayer: true } },
     container => {
       // Arrange
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars).toHaveLength(6);
       fireEvent.mouseOver(bars[0]);
       // Assert
@@ -624,7 +624,7 @@ describe('Grouped vertical bar chart - Subcomponent callout', () => {
     { data: chartPoints, isCalloutForStack: false, calloutProps: { doNotLayer: true } },
     container => {
       // Arrange
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars).toHaveLength(6);
       fireEvent.mouseOver(bars[0]);
       // Assert
@@ -647,7 +647,7 @@ describe('Grouped vertical bar chart - Subcomponent callout', () => {
         ) : null,
     },
     container => {
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       fireEvent.mouseOver(bars[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
@@ -683,7 +683,7 @@ describe('Grouped vertical bar chart - Subcomponent Labels', () => {
     GroupedVerticalBarChart,
     { data: chartPoints, showXAxisLablesTooltip: true },
     container => {
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars).toHaveLength(6);
       fireEvent.mouseOver(bars[0]);
       // Assert
@@ -782,7 +782,7 @@ describe('Grouped Vertical Bar chart rendering', () => {
       // bar width not working as expected in the test so logged bug for same: Bug 9158
       // Assert
       // await new Promise((r) => setTimeout(r, 2000));
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       await new Promise(r => setTimeout(r, 5000));
       expect(bars[0].getAttribute('width')).toEqual('16');
       expect(bars[1].getAttribute('width')).toEqual('16');
