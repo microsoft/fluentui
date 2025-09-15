@@ -134,13 +134,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        react: [17, 18, 19]
+        react: [18, 19]
         fluentui: [8, 9]
         exclude:
-          - react: 17
-            fluentui: 8
           - react: 19
             fluentui: 8
+          - react: 18
+            fluentui: 9
       fail-fast: false
     permissions:
       contents: 'read'
