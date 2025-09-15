@@ -5,18 +5,15 @@
   "private": true,
   "scripts": {
     "type-check": "just-scripts type-check",
-    "type-check:integration": "yarn type-check:integration:stories && yarn type-check:integration:source",
-    "type-check:integration:stories": "tsc -p tsconfig.react-19.json --noEmit",
+    "type-check:integration": "yarn type-check:integration:source",
     "type-check:integration:source": "tsc -p tsconfig.react-19-source.json --noEmit",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
-    "test:integration": "jest --passWithNoTests -u -c jest-react-19.config.js",
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",
     "start": "webpack-dev-server --mode=development",
     "e2e": "npx --yes cypress@latest run --component",
-    "e2e:local": "npx --yes cypress@latest open --component",
-    "e2e:integration": "cypress run --component --config-file cypress-react-19.config.ts"
+    "e2e:local": "npx --yes cypress@latest open --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
