@@ -497,7 +497,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           };
 
           const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
-          let chartType = chart.type !== 'composite' ? chart.type : filteredTracesInfo[0].type;
+          let chartType =
+            chart.type === 'fallback' || chart.type === 'groupedverticalbar' ? chart.type : filteredTracesInfo[0].type;
 
           if (
             validTracesFilteredIndex.some(trace => trace.type === 'line') &&
