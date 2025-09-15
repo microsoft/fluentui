@@ -1,5 +1,5 @@
 import { join, resolve } from 'node:path';
-import baseConfig from '<%= relativePathToProjectRoot %>/cypress.config';
+import baseConfig from '<%= relativePathToProjectRoot %>/<%= cypress.pathToProjectConfig %>';
 
 // Resolve dependencies from the shared react-version root folder (injected by CLI)
 const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>', 'node_modules');

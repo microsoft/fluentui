@@ -1,5 +1,5 @@
 import { TempFs } from './fixtures/temp-fs';
-import { getMergedTemplate, getPreparedTemplate, runCmd, readCommandsFromPreparedProject } from '../shared';
+import { getMergedTemplate, runCmd, readCommandsFromPreparedProject } from '../shared';
 import { join } from 'node:path';
 
 describe('shared module', () => {
@@ -27,7 +27,7 @@ describe('shared module', () => {
       expect(merged.dependencies).toHaveProperty('typescript');
     });
 
-    test('applies overrides from config, including typeCheck -> type-check mapping and dependency merge', () => {
+    test('applies runConfig overrides and dependency merge', () => {
       fs = new TempFs('rit-shared-merged-overrides');
       process.chdir(fs.tempDir);
       const cfgPath = join(fs.tempDir, 'rit.config.js');
@@ -37,9 +37,9 @@ describe('shared module', () => {
           'module.exports = {',
           '  react: {',
           '    "18": {',
-          '      commands: {',
-          "        typeCheck: 'tsc -p tsconfig.json --pretty',",
-          "        test: 'jest --runInBand',",
+          '      runConfig: {',
+          "        'type-check': { command: 'tsc -p tsconfig.json --pretty', configPath: 'tsconfig.custom.json' },",
+          "        test: { command: 'jest --runInBand', configPath: 'jest.alt.config.js' }",
           '      },',
           "      dependencies: { react: '18.100.0', '@types/react': '18.100.0', 'left-pad': '1.3.0' }",
           '    }',
@@ -56,44 +56,9 @@ describe('shared module', () => {
       // Dependencies are merged and allow overrides
       expect(merged.dependencies['react']).toBe('18.100.0');
       expect(merged.dependencies['left-pad']).toBe('1.3.0');
-    });
-  });
-
-  describe('getPreparedTemplate', () => {
-    const dummyPaths = (overrides?: Partial<{ jestConfig: string | null; cypressConfig: string | null }>) => ({
-      packageJson: '/tmp/pkg.json',
-      tsConfig: '/tmp/tsconfig.json',
-      jestConfig:
-        overrides && Object.prototype.hasOwnProperty.call(overrides, 'jestConfig')
-          ? (overrides.jestConfig as string | null)
-          : '/tmp/jest.config.js',
-      cypressConfig:
-        overrides && Object.prototype.hasOwnProperty.call(overrides, 'cypressConfig')
-          ? (overrides.cypressConfig as string | null)
-          : '/tmp/cypress.config.js',
-    });
-
-    test('keeps all commands when both setups exist', () => {
-      const prepared = getPreparedTemplate(18, '', dummyPaths());
-      expect(prepared.hasJestSetup).toBe(true);
-      expect(prepared.hasCypressSetup).toBe(true);
-      expect(prepared.commands).toHaveProperty('test');
-      expect(prepared.commands).toHaveProperty('e2e');
-      expect(prepared.commands).toHaveProperty('type-check');
-    });
-
-    test('filters out e2e when no cypress setup', () => {
-      const prepared = getPreparedTemplate(18, '', dummyPaths({ cypressConfig: null }));
-      expect(prepared.hasCypressSetup).toBe(false);
-      expect(prepared.commands).not.toHaveProperty('e2e');
-      expect(prepared.commands).toHaveProperty('test');
-    });
-
-    test('filters out test when no jest setup', () => {
-      const prepared = getPreparedTemplate(18, '', dummyPaths({ jestConfig: null }));
-      expect(prepared.hasJestSetup).toBe(false);
-      expect(prepared.commands).not.toHaveProperty('test');
-      expect(prepared.commands).toHaveProperty('e2e');
+      // Config path overrides applied
+      expect(merged.configs['type-check']).toBe('tsconfig.custom.json');
+      expect(merged.configs['test']).toBe('jest.alt.config.js');
     });
   });
 

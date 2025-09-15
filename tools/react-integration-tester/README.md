@@ -103,20 +103,22 @@ Rules & guardrails:
 If you need to tweak defaults you have 2 options:
 
 - create `rit.config.js` within your project root
-- create any js module that follows RIT Config API and point `rit` to it via `--config='<path_to_your_config_module>'`
+- create any js module that follows the RIT Config API and point `rit` to it via `--config '<path_to_module>'`
 
-Override per‑major React version commands and add/override dependencies. Merge is shallow: template defaults + your overrides.
+You can override per‑major React version runner settings (command + optional config file path) and add/override dependencies. Merge is shallow: builtin template + your overrides.
 
-**Config API:**
+### New (current) Config API
+
+`runConfig` fully replaces the old `commands` field (which has been removed).
 
 ```ts
 export interface ReactOverrides {
-  commands?: {
-    test?: string; // maps to script "test"
-    typeCheck?: string; // maps to script "type-check"
-    e2e?: string; // maps to script "e2e"
+  runConfig?: {
+    test?: { command?: string; configPath?: string }; // script name => "test"
+    'type-check'?: { command?: string; configPath?: string }; // script name => "type-check"
+    e2e?: { command?: string; configPath?: string }; // script name => "e2e"
   };
-  dependencies?: Record<string, string>; // added to shared root
+  dependencies?: Record<string, string>; // merged into shared react-<major> root
 }
 
 export interface Config {
@@ -128,29 +130,100 @@ export interface Config {
 }
 ```
 
-**Minimal config example:**
+### What `runConfig` lets you change
 
-In your project root create `rit.config.js`
+- `command`: the exact script body that will be written into the scaffold project's `package.json` under the mapped script name.
+- `configPath`: the relative path (from the origin project root) to the tooling config file you want the scaffold to reference (e.g. a custom `jest.base.js`, `cypress.custom.config.js`, or `tsconfig.tests.json`).
+
+If you omit a property, the builtin default is used (both for the command and the config file name). You can override only one of them.
+
+### Builtin defaults (per runner)
+
+| Runner     | Default command (simplified)                     | Default config file written into scaffold |
+| ---------- | ------------------------------------------------ | ----------------------------------------- |
+| test       | `jest --runInBand`                               | `jest.config.js`                          |
+| type-check | `tsc -p tsconfig.lib.json --pretty`              | `tsconfig.lib.json`                       |
+| e2e        | `cypress run` (exact args may vary per template) | `cypress.config.ts` (falls back to `.js`) |
+
+### Config file resolution & fallback
+
+When deciding whether to expose a script in the prepared project, RIT checks for the existence of the associated config file in the origin project:
+
+1. If your override provides `configPath`, that exact file must exist (otherwise the script is skipped).
+2. If no override is provided for `e2e` or `test`, RIT first looks for the TypeScript form (`cypress.config.ts`, `jest.config.ts`) only where applicable; for Jest we default to `jest.config.js`. For Cypress we attempt `cypress.config.ts` and, if missing, fall back to `cypress.config.js` automatically.
+3. For TypeScript (`type-check`), the presence of the referenced tsconfig (default `tsconfig.lib.json` unless you override) controls whether the `type-check` script is added.
+
+This means you can run in projects that still use `.js` Cypress config files without adding an override.
+
+### Minimal config example (override command only)
 
 ```js
 /** @type {import('@fluentui/react-integration-tester').Config} */
 module.exports = {
   react: {
     17: {
-      commands: {
-        // maps to package.json script "test"
-        test: 'jest --passWithNoTests -u --testPathIgnorePatterns test-file-that-wont-work-in-react-17.test.tsx',
+      runConfig: {
+        test: {
+          // Change the jest invocation for React 17 runs
+          command: 'jest --passWithNoTests -u --testPathIgnorePatterns test-file-that-wont-work-in-react-17.test.tsx',
+        },
       },
-      // installed once under ./tmp/rit/react-17/node_modules
+      // Extra deps installed once under ./tmp/rit/react-17/node_modules
       dependencies: { 'some-package': '^1.2.3' },
     },
   },
 };
 ```
 
-Script key mapping (config camelCase → scaffold script name): `test` → `test`, `typeCheck` → `type-check`, `e2e` → `e2e`.
+### Example overriding config paths
 
-Only these three script names are runnable (`--run` choices). Additional scripts you add to the template are ignored by the CLI selector.
+```js
+module.exports = {
+  react: {
+    19: {
+      runConfig: {
+        test: { configPath: 'config/jest.react19.js' },
+        'type-check': { command: 'tsc -p tsconfig.react19.json --pretty', configPath: 'tsconfig.react19.json' },
+        e2e: { configPath: 'cypress.react19.config.ts' },
+      },
+    },
+  },
+};
+```
+
+The runner key must be written verbatim as `type-check` (no camelCase alias). Use `--run type-check` when executing.
+
+Only these three script names are runnable (`--run test|type-check|e2e`). Any other scripts produced by your local template are ignored by the CLI selector.
+
+### Migration from the removed `commands` field
+
+Old (removed):
+
+```js
+// BEFORE
+module.exports = {
+  react: { 18: { commands: { test: 'jest', 'type-check': 'tsc -p tsconfig.json', e2e: 'cypress run' } } },
+};
+```
+
+New:
+
+```js
+// AFTER
+module.exports = {
+  react: {
+    18: {
+      runConfig: {
+        test: { command: 'jest' },
+        'type-check': { command: 'tsc -p tsconfig.json' },
+        e2e: { command: 'cypress run' },
+      },
+    },
+  },
+};
+```
+
+To also override config file names, add `configPath` inside each runner block.
 
 ## Typical CI flow
 
