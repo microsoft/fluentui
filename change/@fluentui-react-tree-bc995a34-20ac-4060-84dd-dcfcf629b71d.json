@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "performance optimization in react-tree",
+  "packageName": "@fluentui/react-tree",
+  "email": "maachin@gmail.com",
+  "dependentChangeType": "patch"
+}
