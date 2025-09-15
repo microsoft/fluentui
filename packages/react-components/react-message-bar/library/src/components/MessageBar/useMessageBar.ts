@@ -5,7 +5,7 @@ import type { MessageBarProps, MessageBarState } from './MessageBar.types';
 import { getIntentIcon } from './getIntentIcon';
 import { useMessageBarReflow } from './useMessageBarReflow';
 import { useMessageBarTransitionContext } from '../../contexts/messageBarTransitionContext';
-import { useMotionForwardedRef } from '../MotionRefForwarder'
+import { useMotionForwardedRef } from '../MotionRefForwarder';
 
 /**
  * Create the state required to render MessageBar.
