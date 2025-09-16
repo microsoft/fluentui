@@ -27,5 +27,7 @@
   "include": [
     <%- tsconfig.relativeIncludePaths.map(p => `"${p}"`).join(',\n    ') %>
   ],
-  "files": ["<%= relativePathToWorkspaceRoot %>/typings/static-assets/index.d.ts"]
+  "files": [
+    <%- tsconfig.relativeFilesPaths.map(p => `"${p}"`).join(',\n    ') %>
+  ]
 }
