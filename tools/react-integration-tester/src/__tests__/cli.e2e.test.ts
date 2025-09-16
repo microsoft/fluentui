@@ -247,9 +247,6 @@ describe('rit CLI e2e', () => {
       const workspacePreset = require('../../../../jest.preset');
       const baseConfig = require('../../../../proj/jest.config.js');
 
-      const {moduleNameMapper, transform, ...normalizedWorkspacePreset} = workspacePreset;
-      const {preset, ...normalizedBaseConfig} = baseConfig;
-
       // Resolve dependencies from the shared react-version root folder (injected by CLI)
       const usedNodeModulesPath = join(__dirname, '..', 'node_modules');
 
@@ -260,7 +257,6 @@ describe('rit CLI e2e', () => {
         rootDir: '../../../../proj',
         preset: null,
         moduleNameMapper: {
-          ...getTsPathAliases(),
           '^react$': join(usedNodeModulesPath, './react'),
           '^react/jsx-runtime$': join(usedNodeModulesPath, 'react/jsx-runtime'),
           '^react-dom$': join(usedNodeModulesPath, './react-dom'),
@@ -274,13 +270,18 @@ describe('rit CLI e2e', () => {
         ],
       }
 
-      const repoProjectConfig = merge(normalizedWorkspacePreset, normalizedBaseConfig)
+      const repoProjectConfig = createOriginProjectConfig(baseConfig, workspacePreset);
       const config = merge(repoProjectConfig, ritConfig);
 
       module.exports = config;
 
       // helpers
 
+      /**
+       * @param {Record<string,any>} obj1
+       * @param {Record<string,any>} obj2
+       * @returns
+       */
       function merge(obj1, obj2) {
         const merged = Object.assign({}, obj1);
 
@@ -313,6 +314,31 @@ describe('rit CLI e2e', () => {
         });
 
         return tsPathAliases;
+      }
+
+      /**
+       * @param {import('@jest/types').Config.InitialOptions} config - project origin provided config
+       * @param {import('@jest/types').Config.InitialOptions} workspaceConfig - workspace preset config
+       */
+      function createOriginProjectConfig(config, workspaceConfig) {
+        // no preset property, we will use configuration as is
+        if (!config.preset) {
+          return config;
+        }
+
+        // remove preset config
+        const { preset, ...normalizedBaseConfig } = config;
+        // remove moduleNameMapper, transform
+        const { moduleNameMapper, transform, ...normalizedWorkspacePreset } = workspaceConfig;
+
+        /** @type {import('@jest/types').Config.InitialOptions} */
+        const remappedTsPathAliases = {
+          moduleNameMapper: { ...getTsPathAliases() },
+        };
+        let repoProjectConfig = merge(normalizedWorkspacePreset, normalizedBaseConfig);
+        repoProjectConfig = merge(repoProjectConfig, remappedTsPathAliases);
+
+        return repoProjectConfig;
       }
       "
     `);
