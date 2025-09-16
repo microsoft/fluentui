@@ -206,7 +206,12 @@ function createProjectPackageJson(options: {
   writeFileSync(join(options.projectPath, 'package.json'), JSON.stringify(projectPkg, null, 2));
 }
 
-function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: string; projectTsConfigPath: string }) {
+function prepareTsConfigTemplate(options: {
+  projectRoot: string;
+  projectPath: string;
+  projectTsConfigPath: string;
+  workspaceRoot: string;
+}) {
   const projectTsConfigPath = join(options.projectRoot, options.projectTsConfigPath);
 
   if (!existsSync(projectTsConfigPath)) {
@@ -219,6 +224,12 @@ function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: st
     '**/*.spec.tsx',
     '**/*.test.tsx',
     '**/src/testing/**',
+  ];
+
+  const filesDefaults = [
+    // TODO: this should be actually transformed from origin provided `compilerOptions.types`
+    // ATM this is hardcoded and coupled to fluent repo
+    join(relative(options.projectPath, options.workspaceRoot), 'typings/static-assets/index.d.ts'),
   ];
 
   const tsConfig: TsConfig = parseJson(join(options.projectRoot, options.projectTsConfigPath));
@@ -236,6 +247,12 @@ function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: st
     return relative(options.projectPath, join(options.projectRoot, includePath));
   });
 
+  const relativeFilesPaths = (tsConfig.files ?? [])
+    .map(includePath => {
+      return relative(options.projectPath, join(options.projectRoot, includePath));
+    })
+    .concat(filesDefaults);
+
   // honor strict setting or default to always true
   const strictMode = tsConfig?.compilerOptions?.strict ?? true;
 
@@ -246,6 +263,7 @@ function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: st
     pathToProjectConfig: options.projectTsConfigPath,
     relativeIncludePaths,
     relativeExcludePaths,
+    relativeFilesPaths,
     target,
     lib,
     strictMode,
@@ -414,6 +432,7 @@ export async function setup(
       tsconfig: prepareTsConfigTemplate({
         projectRoot,
         projectPath,
+        workspaceRoot,
         projectTsConfigPath: templatePrepared.configs['type-check'],
       }),
       jest: {
