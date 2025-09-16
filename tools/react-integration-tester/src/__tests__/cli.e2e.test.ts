@@ -363,7 +363,9 @@ describe('rit CLI e2e', () => {
 
       const config = { ...baseConfig };
 
-      const specs = [resolve('../../../../proj/**/src/**/*.cy.{tsx,ts}')];
+      const specs = [
+        resolve('../../../../proj/**/src/**/*.{cy,e2e}.{tsx,ts}'),
+      ];
 
       config.component.specPattern = specs;
       config.component.devServer.webpackConfig.resolve ??= {};
