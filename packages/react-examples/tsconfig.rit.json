@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "esnext",
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noEmit": true,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "isolatedModules": true
+  },
+  "exclude": ["src/react-charting/**", "src/react-experiments/**"],
+  "include": ["src/**/index.stories.tsx"]
+}
