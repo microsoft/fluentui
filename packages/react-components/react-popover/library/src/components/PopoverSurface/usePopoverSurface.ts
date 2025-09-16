@@ -3,7 +3,8 @@ import { getIntrinsicElementProps, useMergedRefs, slot, useFirstMount } from '@f
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
-import { resolvePositioningShorthand } from '../../../../../react-components/src/index';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
+import type { Alignment, Position } from '@fluentui/react-positioning';
 
 /**
  * Create the state required to render PopoverSurface.
@@ -37,7 +38,7 @@ export const usePopoverSurface_unstable = (
     alwaysFocusable: !trapFocus,
   });
 
-  const surfaceRef = React.useRef();
+  const surfaceRef = React.useRef<HTMLElement>();
   const positioning = resolvePositioningShorthand(positioningCtx);
 
   const state: PopoverSurfaceState = {
@@ -77,6 +78,7 @@ export const usePopoverSurface_unstable = (
     onMouseEnter: onMouseEnterOriginal,
     onMouseLeave: onMouseLeaveOriginal,
     // onKeyDown: onKeyDownOriginal,
+    // @ts-expect-error React types are missing this event
     onToggle: onToggleOriginal,
   } = state.root;
   state.root.onMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -122,16 +124,14 @@ export const usePopoverSurface_unstable = (
   return state;
 };
 
-const getPositionMap = (rtl?: boolean): Record<Position, PlacementPosition> => ({
+const getPositionMap = (rtl?: boolean): Record<Position, string> => ({
   above: 'top',
   below: 'bottom',
   before: rtl ? 'right' : 'left',
   after: rtl ? 'left' : 'right',
 });
 
-// Floating UI automatically flips alignment
-// https://github.com/floating-ui/floating-ui/issues/1563
-const getAlignmentMap = (): Record<Alignment, PlacementAlign | undefined> => ({
+const getAlignmentMap = (): Record<Alignment, string | undefined> => ({
   start: 'start',
   end: 'end',
   top: 'start',
@@ -153,7 +153,7 @@ const toPositionArea = (align?: Alignment, position?: Position, rtl?: boolean): 
   const computedAlignment = alignment && getAlignmentMap()[alignment];
 
   if (computedPosition && computedAlignment) {
-    return `${computedPosition} ${computedAlignment}` as Placement;
+    return `${computedPosition} ${computedAlignment}`;
   }
 
   if (!computedPosition) {
