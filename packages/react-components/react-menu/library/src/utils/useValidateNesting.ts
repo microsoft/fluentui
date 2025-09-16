@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-import { useMenuContext_unstable } from '@fluentui/react-menu';
+import type { MenuContextValue } from '../contexts/menuContext';
+import { useMenuContext_unstable } from '../contexts/menuContext';
 
 type NestingComponentName = 'MenuList' | 'MenuItem' | 'MenuItemCheckbox' | 'MenuItemRadio';
 
@@ -9,8 +10,8 @@ export const useValidateNesting = (componentName: NestingComponentName): React.R
   'use no memo';
 
   const { targetDocument } = useFluent();
-  const triggerRef = useMenuContext_unstable(context => context.triggerRef);
-  const inline = useMenuContext_unstable(context => context.inline);
+  const triggerRef = useMenuContext_unstable((context: MenuContextValue) => context.triggerRef);
+  const inline = useMenuContext_unstable((context: MenuContextValue) => context.inline);
   const ref = React.useRef<HTMLElement>(null);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -55,8 +56,8 @@ export const useValidateNesting = (componentName: NestingComponentName): React.R
   return ref;
 };
 
-const getCellOfTrigger = (trigger: HTMLElement, targetDocument?: Document): HTMLElement | null => {
-  let ancestor = trigger.parentElement;
+const getCellOfTrigger = (trigger: HTMLElement | null, targetDocument?: Document): HTMLElement | null => {
+  let ancestor = trigger?.parentElement;
   while (ancestor !== targetDocument?.body) {
     if (ancestor?.classList.contains('fui-MenuGridCell')) {
       return ancestor;
