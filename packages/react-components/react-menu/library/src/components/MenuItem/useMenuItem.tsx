@@ -27,6 +27,7 @@ import {
 } from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useIsInMenuSplitGroup, useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
+import { useValidateNesting } from '../../utils/useValidateNesting';
 
 const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);
 const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
@@ -53,6 +54,8 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
   const dismissedWithKeyboardRef = React.useRef(false);
 
+  const validateNestingRef = useValidateNesting(getValidateNestingComponentName(props.role));
+
   const state: MenuItemState = {
     hasSubmenu,
     disabled,
@@ -74,7 +77,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
           ...rest,
           disabled: false,
           disabledFocusable: disabled,
-          ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
+          ref: useMergedRefs(ref, innerRef, validateNestingRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
           onKeyDown: useEventCallback(event => {
             props.onKeyDown?.(event);
             if (!event.isDefaultPrevented() && (event.key === Space || event.key === Enter)) {
@@ -157,4 +160,14 @@ const useIconAndCheckmarkAlignment = (options: { hasSubmenu: boolean }) => {
     hasIcons: hasIcons && !isSplitItemTrigger,
     hasCheckmarks: hasCheckmarks && !isSplitItemTrigger,
   };
+};
+
+const getValidateNestingComponentName = (role?: string) => {
+  switch (role) {
+    case 'menuitemcheckbox':
+      return 'MenuItemCheckbox';
+    case 'menuitemradio':
+      return 'MenuItemRadio';
+  }
+  return 'MenuItem';
 };

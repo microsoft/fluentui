@@ -3,13 +3,13 @@ import { useMergedRefs, getIntrinsicElementProps, slot } from '@fluentui/react-u
 
 import { useMenuGridContext_unstable } from '../../contexts/menuGridContext';
 import { MenuGridRowProps, MenuGridRowState } from './MenuGridRow.types';
-import { useValidateMenuGridRowNesting } from './useValidateMenuGridRowNesting';
+import { useValidateNesting } from '../../utils/useValidateNesting';
 
 /**
  * Given user props, returns state and render function for a MenuGridRow.
  */
 export function useMenuGridRow_unstable(props: MenuGridRowProps, ref: React.Ref<HTMLDivElement>): MenuGridRowState {
-  const validateNestingRef = useValidateMenuGridRowNesting();
+  const validateNestingRef = useValidateNesting('MenuGridRow');
   const { tableRowTabsterAttribute } = useMenuGridContext_unstable();
 
   return {

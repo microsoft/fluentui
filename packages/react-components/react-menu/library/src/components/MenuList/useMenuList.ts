@@ -17,6 +17,7 @@ import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
 import type { MenuListProps, MenuListState } from './MenuList.types';
+import { useValidateNesting } from '../../utils/useValidateNesting';
 
 /**
  * Returns the props and state required to render the component
@@ -35,6 +36,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   }
 
   const innerRef = React.useRef<HTMLElement>(null);
+  const validateNestingRef = useValidateNesting('MenuList');
 
   React.useEffect(() => {
     const element = innerRef.current;
@@ -142,7 +144,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
+        ref: useMergedRefs(ref, innerRef, validateNestingRef) as React.Ref<HTMLDivElement>,
         role: 'menu',
         'aria-labelledby': menuContext.triggerId,
         ...focusAttributes,
