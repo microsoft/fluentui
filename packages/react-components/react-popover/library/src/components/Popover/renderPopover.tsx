@@ -12,7 +12,6 @@ export const renderPopover_unstable = (state: PopoverState): JSXElement => {
     appearance,
     arrowRef,
     contentRef,
-    inline,
     mountNode,
     open,
     openOnContext,
@@ -24,6 +23,8 @@ export const renderPopover_unstable = (state: PopoverState): JSXElement => {
     triggerRef,
     withArrow,
     inertTrapFocus,
+    positioning,
+    popoverId,
   } = state;
 
   return (
@@ -32,7 +33,6 @@ export const renderPopover_unstable = (state: PopoverState): JSXElement => {
         appearance,
         arrowRef,
         contentRef,
-        inline,
         mountNode,
         open,
         openOnContext,
@@ -44,10 +44,12 @@ export const renderPopover_unstable = (state: PopoverState): JSXElement => {
         trapFocus,
         inertTrapFocus,
         withArrow,
+        positioning,
+        popoverId,
       }}
     >
       {state.popoverTrigger}
-      {state.open && state.popoverSurface}
+      {state.popoverSurface}
     </PopoverContext.Provider>
   );
 };

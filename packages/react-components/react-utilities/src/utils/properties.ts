@@ -84,6 +84,8 @@ export const baseElementEvents = toObjectMap([
   'onMouseUp',
   'onMouseUpCapture',
   'onSelect',
+  'onBeforeToggle',
+  'onToggle',
   'onTouchCancel',
   'onTouchEnd',
   'onTouchMove',
@@ -118,6 +120,7 @@ export const baseElementProperties = toObjectMap([
   'htmlFor', // global
   'id', // global
   'lang', // global
+  'popover', // global
   'ref', // global
   'role', // global
   'style', // global
@@ -238,6 +241,9 @@ export const buttonProperties = toObjectMap(htmlElementProperties, [
   'formTarget', // input, button
   'type', // a, button, input, link, menu, object, script, source, style
   'value', // button, input, li, option, meter, progress, param,
+  'popovertarget', // React types complain about camel case
+  'popoverTarget',
+  'popoverTargetAction',
 ]);
 
 /**
