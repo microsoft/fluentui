@@ -53,7 +53,7 @@
     },
     "test-rit--17--prepare": {
       "options": {
-        "cwd": "app/rit-tests-v9",
+        "cwd": "{projectRoot}",
         "command": "yarn rit --prepare-only --no-install --project-id ci --react 17 --verbose"
       },
       "cache": true,
@@ -80,7 +80,7 @@
     },
     "test-rit--17--type-check": {
       "options": {
-        "cwd": "app/rit-tests-v9",
+        "cwd": "{projectRoot}",
         "command": "yarn rit --project-id ci --react 17 --run type-check --verbose"
       },
       "cache": true,
@@ -107,7 +107,7 @@
     },
     "test-rit--19--prepare": {
       "options": {
-        "cwd": "app/rit-tests-v9",
+        "cwd": "{projectRoot}",
         "command": "yarn rit --prepare-only --no-install --project-id ci --react 19 --verbose"
       },
       "cache": true,
@@ -118,7 +118,7 @@
         "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/tools/react-integration-testing/**"
       ],
-      "outputs": ["{workspaceRoot}/tmp/rit/react-19/app/rit-tests-v9-ci"],
+      "outputs": ["{workspaceRoot}/tmp/rit/react-19/rit-tests-v9-ci"],
       "dependsOn": ["^build"],
       "metadata": {
         "technologies": ["react-integration-tester"],
@@ -134,7 +134,7 @@
     },
     "test-rit--19--type-check": {
       "options": {
-        "cwd": "app/rit-tests-v9",
+        "cwd": "{projectRoot}",
         "command": "yarn rit --project-id ci --react 19 --run type-check --verbose"
       },
       "cache": true,
