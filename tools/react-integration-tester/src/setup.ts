@@ -212,21 +212,42 @@ function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: st
     return null;
   }
 
+  const excludeDefaults = [
+    '**/index.stories.tsx',
+    '**/index.stories.ts',
+    '**/*.spec.tsx',
+    '**/*.test.tsx',
+    '**/src/testing/**',
+  ];
+
   const tsConfig: TsConfig = parseJson(join(options.projectRoot, options.projectTsConfigPath));
   if (!tsConfig.include) {
     throw new Error(`No include paths found at: ${options.projectTsConfigPath}`);
   }
+
+  // if user config has exclude, always use those
+  const excludePaths = tsConfig?.exclude ?? excludeDefaults;
+  const relativeExcludePaths = excludePaths.map(excludePath => {
+    return relative(options.projectPath, join(options.projectRoot, excludePath));
+  });
+
   const relativeIncludePaths = tsConfig.include?.map(includePath => {
     return relative(options.projectPath, join(options.projectRoot, includePath));
   });
+
+  // honor strict setting or default to always true
+  const strictMode = tsConfig?.compilerOptions?.strict ?? true;
+
   const target = tsConfig.compilerOptions?.target ?? 'ES2019';
   const lib = tsConfig.compilerOptions?.lib ?? ['ES2019', 'DOM'];
 
   return {
     pathToProjectConfig: options.projectTsConfigPath,
     relativeIncludePaths,
+    relativeExcludePaths,
     target,
     lib,
+    strictMode,
   };
 }
 

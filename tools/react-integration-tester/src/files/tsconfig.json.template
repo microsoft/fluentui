@@ -5,7 +5,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "lib": [<%- tsconfig.lib.map(p => `"${p}"`).join(',') %>],
-    "strict": true,
+    "strict": <%= tsconfig.strictMode %>,
     "pretty": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -22,11 +22,7 @@
   },
   "references": [],
   "exclude": [
-    "<%= relativePathToProjectRoot %>/**/index.stories.tsx",
-    "<%= relativePathToProjectRoot %>/**/index.stories.ts",
-    "<%= relativePathToProjectRoot %>/**/*.spec.tsx",
-    "<%= relativePathToProjectRoot %>/**/*.test.tsx",
-    "<%= relativePathToProjectRoot %>/**/src/testing/**"
+    <%- tsconfig.relativeExcludePaths.map(p => `"${p}"`).join(',\n    ') %>
   ],
   "include": [
     <%- tsconfig.relativeIncludePaths.map(p => `"${p}"`).join(',\n    ') %>
