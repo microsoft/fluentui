@@ -206,6 +206,12 @@ function createProjectPackageJson(options: {
 }
 
 function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: string; projectTsConfigPath: string }) {
+  const projectTsConfigPath = join(options.projectRoot, options.projectTsConfigPath);
+
+  if (!existsSync(projectTsConfigPath)) {
+    return null;
+  }
+
   const tsConfig: TsConfig = parseJson(join(options.projectRoot, options.projectTsConfigPath));
   if (!tsConfig.include) {
     throw new Error(`No include paths found at: ${options.projectTsConfigPath}`);
