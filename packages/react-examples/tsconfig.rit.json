@@ -10,6 +10,6 @@
     "moduleResolution": "node",
     "isolatedModules": true
   },
-  "exclude": ["src/react-charting/**", "src/react-experiments/**"],
+  "exclude": ["node_modules"],
   "include": ["src/**/index.stories.tsx"]
 }
