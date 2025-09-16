@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 12 Sep 2025 07:20:43 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Sep 2025 07:20:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.32)
+
+Mon, 15 Sep 2025 07:20:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.31..@fluentui/react-charting_v5.24.32)
+
+### Patches
+
+- feat: add support for lines in GVBC ([PR #35135](https://github.com/microsoft/fluentui/pull/35135) by kumarkshitij@microsoft.com)
+- fix: callout not appearing on scatter chart ([PR #35185](https://github.com/microsoft/fluentui/pull/35185) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.31 ([PR #35135](https://github.com/microsoft/fluentui/pull/35135) by beachball)
 
 ## [5.24.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.31)
 
