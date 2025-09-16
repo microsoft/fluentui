@@ -1,7 +1,7 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
   "root": true,
-  "ignorePatterns": ["!**/*", "src/issues/"],
+  "ignorePatterns": ["!**/*"],
   "rules": {
     "@nx/workspace-no-restricted-globals": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
