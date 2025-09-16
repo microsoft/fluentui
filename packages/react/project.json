@@ -68,7 +68,7 @@
         "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/tools/react-integration-testing/**"
       ],
-      "outputs": ["{workspaceRoot}/tmp/rit/react-17/rit-tests-v9-ci"],
+      "outputs": ["{workspaceRoot}/tmp/rit/react-17/react-17-ci"],
       "dependsOn": ["^build"],
       "metadata": {
         "technologies": ["react-integration-tester"],
@@ -122,7 +122,7 @@
         "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/tools/react-integration-testing/**"
       ],
-      "outputs": ["{workspaceRoot}/tmp/rit/react-19/app/rit-tests-v9-ci"],
+      "outputs": ["{workspaceRoot}/tmp/rit/react-19/app/react-19-ci"],
       "dependsOn": ["^build"],
       "metadata": {
         "technologies": ["react-integration-tester"],
