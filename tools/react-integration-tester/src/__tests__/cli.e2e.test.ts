@@ -43,6 +43,7 @@ function createProject(
   options?: {
     packageName?: string;
     tsInclude?: string[];
+    withTs?: boolean;
     withJest?: boolean;
     withCypress?: boolean;
   },
@@ -53,7 +54,10 @@ function createProject(
     mkdirSync(rootDir, { recursive: true });
   }
   writeFileSync(join(rootDir, 'package.json'), JSON.stringify({ name: pkgName }));
-  writeFileSync(join(rootDir, 'tsconfig.lib.json'), JSON.stringify({ include }));
+
+  if (options?.withTs) {
+    writeFileSync(join(rootDir, 'tsconfig.lib.json'), JSON.stringify({ include }));
+  }
   if (options?.withJest) {
     writeFileSync(join(rootDir, 'jest.config.js'), 'module.exports = {};');
   }
@@ -160,7 +164,7 @@ describe('rit CLI e2e', () => {
   test('--prepare-only --project-id generates project and keeps project, installs dependencies by default', () => {
     fs = new TempFs('rit-e2e-prepare-only');
     const projectRoot = join(fs.tempDir, 'proj');
-    createProject(projectRoot, { withJest: true, withCypress: true });
+    createProject(projectRoot, { withJest: true, withCypress: true, withTs: true });
 
     const cmdLog = join(fs.tempDir, 'cmd-log.json');
     const res = runCLI('--react 18 --prepare-only --project-id ci', {

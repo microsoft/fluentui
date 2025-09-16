@@ -57,7 +57,7 @@ export interface TsConfig {
   include?: string[];
   exclude?: string[];
   files?: string[];
-  compilerOptions?: Partial<{ target: string; lib: string[] }>;
+  compilerOptions?: Partial<{ target: string; lib: string[]; strict: boolean }>;
 }
 
 export type ReactVersion = 17 | 18 | 19;
