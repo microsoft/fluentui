@@ -6,7 +6,9 @@ const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>',
 
 const config = { ...baseConfig };
 
-const specs = [resolve('<%= relativePathToProjectRoot %>/**/src/**/*.cy.{tsx,ts}')];
+const specs = [
+  resolve('<%= relativePathToProjectRoot %>/**/src/**/*.{cy,e2e}.{tsx,ts}'),
+];
 
 config.component.specPattern = specs;
 config.component.devServer.webpackConfig.resolve ??= {};
