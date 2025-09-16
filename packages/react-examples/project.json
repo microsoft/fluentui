@@ -10,8 +10,10 @@
       "React Integration Tester": [
         "test-rit--17--prepare",
         "test-rit--17--type-check",
+        "test-rit--17--e2e",
         "test-rit--19--prepare",
         "test-rit--19--type-check",
+        "test-rit--19--e2e",
         "test-rit"
       ]
     }
@@ -27,7 +29,17 @@
           "params": "forward"
         },
         {
+          "target": "test-rit--17--e2e",
+          "projects": "self",
+          "params": "forward"
+        },
+        {
           "target": "test-rit--19--type-check",
+          "projects": "self",
+          "params": "forward"
+        },
+        {
+          "target": "test-rit--19--e2e",
           "projects": "self",
           "params": "forward"
         }
@@ -106,6 +118,33 @@
       "configurations": {},
       "parallelism": true
     },
+    "test-rit--17--e2e": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn rit --project-id ci --react 17 --run e2e --verbose"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "production",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/tools/react-integration-testing/**"
+      ],
+      "outputs": [],
+      "dependsOn": ["test-rit--17--prepare"],
+      "metadata": {
+        "technologies": ["react-integration-tester"],
+        "description": "Run react integration tests against React 17",
+        "help": {
+          "command": "yarn rit --help",
+          "example": {}
+        }
+      },
+      "executor": "nx:run-commands",
+      "configurations": {},
+      "parallelism": true
+    },
     "test-rit--19--prepare": {
       "options": {
         "cwd": "{projectRoot}",
@@ -137,6 +176,33 @@
       "options": {
         "cwd": "{projectRoot}",
         "command": "yarn rit --project-id ci --react 19 --run type-check --verbose"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "production",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/tools/react-integration-testing/**"
+      ],
+      "outputs": [],
+      "dependsOn": ["test-rit--19--prepare"],
+      "metadata": {
+        "technologies": ["react-integration-tester"],
+        "description": "Run react integration tests against React 19",
+        "help": {
+          "command": "yarn rit --help",
+          "example": {}
+        }
+      },
+      "executor": "nx:run-commands",
+      "configurations": {},
+      "parallelism": true
+    },
+    "test-rit--19--e2e": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn rit --project-id ci --react 19 --run e2e --verbose"
       },
       "cache": true,
       "inputs": [
