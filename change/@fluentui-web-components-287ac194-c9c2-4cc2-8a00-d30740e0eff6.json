@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: bug in switch checked story in forced-colors mode",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "patch"
+}
