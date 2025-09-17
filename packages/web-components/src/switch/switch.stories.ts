@@ -12,7 +12,7 @@ const storyTemplate = html<StoryArgs<FluentSwitch>>`
     id="${story => story.id}"
     name="${story => story.name}"
     ?required="${story => story.required}"
-    slot="${story => story.slot}"
+    ?slot="${story => story.slot}"
     ${ref('switch')}
   ></fluent-switch>
 `;
@@ -56,7 +56,6 @@ export const Default: Story = {};
 
 export const Checked: Story = {
   args: {
-    slot: 'input',
     checked: true,
   },
 };
