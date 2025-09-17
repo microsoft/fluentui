@@ -1,28 +1,9 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles } from '@griffel/react';
+import { navItemTokens } from './sharedNavItemTokens';
 
 // Styles shared by several nav components.
-
-export const navItemTokens = {
-  defaultDrawerWidth: 260,
-  indicatorOffset: 16,
-  indicatorWidth: 4,
-  indicatorHeight: 20,
-  backgroundColor: tokens.colorNeutralBackground4,
-  backgroundColorHover: tokens.colorNeutralBackground4Hover,
-  backgroundColorPressed: tokens.colorNeutralBackground4Pressed,
-  animationTokens: {
-    animationDuration: tokens.durationFaster,
-    animationFillMode: 'both',
-    animationTimingFunction: tokens.curveLinear,
-  },
-  transitionTokens: {
-    transitionDuration: tokens.durationFaster,
-    transitionTimingFunction: tokens.curveLinear,
-    transitionProperty: 'background',
-  },
-};
 
 /**
  * Styles for the root slot
