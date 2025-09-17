@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
-import type { PositioningShorthand } from '@fluentui/react-positioning';
-import type { PortalProps } from '@fluentui/react-portal';
+import type {
+  PositioningShorthand,
+  PositioningVirtualElement,
+  SetVirtualMouseTarget,
+} from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState, JSXElement } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
 import type { MenuListProps } from '../MenuList/MenuList.types';
@@ -12,7 +14,6 @@ export type MenuSlots = {};
  * Extends and drills down Menulist props to simplify API
  */
 export type MenuProps = ComponentProps<MenuSlots> &
-  Pick<PortalProps, 'mountNode'> &
   Pick<
     MenuListProps,
     'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'
@@ -31,7 +32,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
     /**
      * Root menus are rendered out of DOM order on `document.body`, use this to render the menu in DOM order
      * This option is disregarded for submenus
-     *
+     * @deprecated With HTML Popover API all menus are inline
      * @default false
      */
     inline?: boolean;
@@ -89,6 +90,11 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * @default false
      */
     closeOnScroll?: boolean;
+
+    /**
+     * @deprecated Popovers are always rendered in DOM order with HTML Popover API
+     */
+    mountNode?: HTMLElement;
   };
 
 export type MenuState = ComponentState<MenuSlots> &
@@ -97,8 +103,6 @@ export type MenuState = ComponentState<MenuSlots> &
       MenuProps,
       | 'hasCheckmarks'
       | 'hasIcons'
-      | 'mountNode'
-      | 'inline'
       | 'checkedValues'
       | 'onCheckedValueChange'
       | 'open'
@@ -108,7 +112,8 @@ export type MenuState = ComponentState<MenuSlots> &
       | 'openOnContext'
       | 'persistOnItemClick'
     >
-  > & {
+  > &
+  Pick<MenuProps, 'positioning'> & {
     /**
      * Anchors the popper to the mouse click for context events
      */
@@ -172,6 +177,13 @@ export type MenuState = ComponentState<MenuSlots> &
      * An optional safe zone area to be rendered around the menu
      */
     safeZone?: React.ReactElement | null;
+
+    /**
+     * Popover ID for HTML Popover API.
+     */
+    popoverId: string;
+
+    submenuFallbackPositions?: string[];
   };
 
 export type MenuContextValues = {

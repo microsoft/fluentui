@@ -37,6 +37,8 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
   const openOnContext = useMenuContext_unstable(context => context.openOnContext);
+  // React 18 doesn't recognize "popoverTarget" so use all lowercase
+  const popovertarget = useMenuContext_unstable(context => context.popoverId);
 
   const isSubmenu = useIsSubmenu();
 
@@ -171,12 +173,25 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     triggerChildProps,
   );
 
+  const baseProps = openOnContext
+    ? contextMenuProps
+    : disableButtonEnhancement
+    ? triggerChildProps
+    : ariaButtonTriggerChildProps;
+
+  const triggerProps = {
+    // All lowercase for React 18
+    popovertarget,
+    // popovertargetaction: open ? 'hide' : 'show',
+    ...baseProps,
+    style: {
+      anchorName: `--${popovertarget}`,
+    },
+  };
+
   return {
     isSubmenu,
-    children: applyTriggerPropsToChildren(
-      children,
-      openOnContext ? contextMenuProps : disableButtonEnhancement ? triggerChildProps : ariaButtonTriggerChildProps,
-    ),
+    children: applyTriggerPropsToChildren(children, triggerProps),
   };
 };
 
