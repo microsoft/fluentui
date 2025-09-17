@@ -265,29 +265,10 @@ describe('Menu', () => {
     expect(document.body.querySelector('[role="menu"]')).not.toBeNull();
   });
 
-  it('should render menu inline when configured by prop', () => {
-    // Arrange
-    const { container } = render(
-      <Menu open inline>
-        <MenuTrigger disableButtonEnhancement>
-          <button>Menu trigger</button>
-        </MenuTrigger>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Item</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>,
-    );
-
-    // Assert
-    expect(container.querySelector('[role="menu"]')).not.toBeNull();
-  });
-
   it('should call onCheckedValueChange when item is selected', () => {
     const onCheckedValueChange = jest.fn();
     const { getAllByRole } = render(
-      <Menu open inline onCheckedValueChange={onCheckedValueChange}>
+      <Menu open onCheckedValueChange={onCheckedValueChange}>
         <MenuTrigger disableButtonEnhancement>
           <button>MenuTrigger</button>
         </MenuTrigger>
@@ -315,7 +296,7 @@ describe('Menu', () => {
 
   it('should control checked items with checkedValues prop', () => {
     const { container } = render(
-      <Menu open inline checkedValues={{ test: ['second'] }}>
+      <Menu open checkedValues={{ test: ['second'] }}>
         <MenuTrigger disableButtonEnhancement>
           <button>MenuTrigger</button>
         </MenuTrigger>
@@ -344,7 +325,7 @@ describe('Menu', () => {
   it('should call onCheckedValueChange (applied to MenuList) when item is selected', () => {
     const onCheckedValueChange = jest.fn();
     const { getAllByRole } = render(
-      <Menu open inline>
+      <Menu open>
         <MenuTrigger disableButtonEnhancement>
           <button>MenuTrigger</button>
         </MenuTrigger>
@@ -372,7 +353,7 @@ describe('Menu', () => {
 
   it('should control checked items with checkedValues prop (applied to MenuList)', () => {
     const { container } = render(
-      <Menu open inline>
+      <Menu open>
         <MenuTrigger disableButtonEnhancement>
           <button>MenuTrigger</button>
         </MenuTrigger>
