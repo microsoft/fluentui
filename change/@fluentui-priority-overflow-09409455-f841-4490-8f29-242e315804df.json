@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "fix: overflowMenuSize is included in occupiedSize",
   "packageName": "@fluentui/priority-overflow",
   "email": "vkozlova@microsoft.com",
