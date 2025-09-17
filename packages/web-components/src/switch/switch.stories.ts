@@ -12,7 +12,7 @@ const storyTemplate = html<StoryArgs<FluentSwitch>>`
     id="${story => story.id}"
     name="${story => story.name}"
     ?required="${story => story.required}"
-    ?slot="${story => story.slot}"
+    slot="${story => story.slot}"
     ${ref('switch')}
   ></fluent-switch>
 `;
