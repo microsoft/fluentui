@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: In StrictMode, Tooltip now shows correctly on elements that are focused when created.",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
