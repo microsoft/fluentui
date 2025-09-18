@@ -80,7 +80,7 @@ export const useValidateNesting = (componentName: NestingComponentName): React.R
           }
           throw new Error(message);
         }
-      } while (ancestor !== targetDocument?.body);
+      } while (ancestor && ancestor !== targetDocument?.body);
     }, [componentName, ref, triggerRef, inline, targetDocument]);
   }
   return ref;
@@ -88,7 +88,7 @@ export const useValidateNesting = (componentName: NestingComponentName): React.R
 
 const getMenuOfTrigger = (trigger: HTMLElement | null, targetDocument?: Document): HTMLElement | null => {
   let ancestor = trigger?.parentElement;
-  while (ancestor !== targetDocument?.body) {
+  while (ancestor && ancestor !== targetDocument?.body) {
     if (ancestor?.getAttribute('role') === 'menu') {
       return ancestor;
     }
