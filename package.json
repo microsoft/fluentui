@@ -317,7 +317,7 @@
     "turndown-plugin-gfm": "1.0.2",
     "typescript": "5.5.2",
     "typescript-eslint": "8.32.1",
-    "vite": "6.3.4",
+    "vite": "6.3.6",
     "webpack": "5.99.8",
     "webpack-bundle-analyzer": "4.10.1",
     "webpack-cli": "5.1.4",
