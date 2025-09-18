@@ -9,7 +9,7 @@ export { usePositioning } from './usePositioning';
 export { usePositioningMouseTarget } from './usePositioningMouseTarget';
 export { useSafeZoneArea } from './hooks/useSafeZoneArea/useSafeZoneArea';
 export type { UseSafeZoneOptions } from './hooks/useSafeZoneArea/useSafeZoneArea';
-export { resolvePositioningShorthand, mergeArrowOffset } from './utils/index';
+export { resolvePositioningShorthand, mergeArrowOffset, toAnchorInset } from './utils/index';
 
 export type {
   Alignment,
