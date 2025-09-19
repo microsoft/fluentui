@@ -15,20 +15,6 @@ import { containsAriaDescriptionWarning, hrToSeconds } from '../utils/helpers';
 import { renderToHTML } from '../utils/renderToHTML';
 import { visitPage } from '../utils/visitPage';
 
-// @ts-expect-error - Keeping this for reference, exclusion of stories is now done via CLI --exclude configuration in particular story projects
-const EXCLUDED_STORIES = [
-  // Portals currently do not support hydration
-  // https://github.com/facebook/react/issues/13097
-  '**/react-portal/**',
-  '**/react-positioning/stories/src/UseSafeZoneArea/UseSafeZoneAreaDefault.stories.tsx',
-  // https://github.com/microsoft/fluentui/issues/27338
-  '**/react-table/stories/src/DataGrid/Virtualization.stories.tsx',
-  '**/react-table/stories/src/Table/Virtualization.stories.tsx',
-  // Portals related
-  // https://github.com/microsoft/fluentui/pull/34737
-  '**/react-tag-picker/stories/**',
-];
-
 type MainParams = {
   stories: string;
   exclude: string[];

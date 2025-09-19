@@ -177,7 +177,7 @@ const columnSizingOptions = {
   },
 };
 
-export const ResizableColumns = (): JSXElement => {
+export const ResizableColumnsDisableAutoFit = (): JSXElement => {
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
 
   return (
@@ -234,8 +234,8 @@ export const ResizableColumns = (): JSXElement => {
   );
 };
 
-ResizableColumns.storyName = 'Resizable Columns - Disabled container auto-fit';
-ResizableColumns.parameters = {
+ResizableColumnsDisableAutoFit.storyName = 'Resizable Columns - Disabled container auto-fit';
+ResizableColumnsDisableAutoFit.parameters = {
   docs: {
     description: {
       story: [
