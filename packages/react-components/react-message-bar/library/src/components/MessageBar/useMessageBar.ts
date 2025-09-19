@@ -5,6 +5,7 @@ import type { MessageBarProps, MessageBarState } from './MessageBar.types';
 import { getIntentIcon } from './getIntentIcon';
 import { useMessageBarReflow } from './useMessageBarReflow';
 import { useMessageBarTransitionContext } from '../../contexts/messageBarTransitionContext';
+import { useMotionForwardedRef } from '../MotionRefForwarder';
 
 /**
  * Create the state required to render MessageBar.
@@ -23,6 +24,8 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
   const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { className: transitionClassName, nodeRef } = useMessageBarTransitionContext();
+  const motionRef = useMotionForwardedRef();
+
   const actionsRef = React.useRef<HTMLDivElement | null>(null);
   const bodyRef = React.useRef<HTMLDivElement | null>(null);
   const { announce } = useAnnounce();
@@ -44,7 +47,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, reflowRef, nodeRef),
+        ref: useMergedRefs(ref, reflowRef, nodeRef, motionRef),
         role: 'group',
         'aria-labelledby': titleId,
         ...props,
