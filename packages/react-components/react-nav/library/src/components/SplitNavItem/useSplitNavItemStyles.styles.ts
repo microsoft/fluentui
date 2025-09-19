@@ -4,7 +4,8 @@ import { tokens } from '@fluentui/react-theme';
 import { motionTokens } from '@fluentui/react-motion';
 
 import type { SplitNavItemSlots, SplitNavItemState } from './SplitNavItem.types';
-import { navItemTokens, useRootDefaultClassName } from '../sharedNavStyles.styles';
+import { useRootDefaultClassName } from '../sharedNavStyles.styles';
+import { navItemTokens } from '../sharedNavItemTokens';
 
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
