@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { TableContextValue } from '../Table/Table.types';
 
 export type TableCellSlots = {
-  root: Slot<'td', 'div'>;
+  root: Slot<'td', 'th' | 'div'>;
 };
 
 /**
