@@ -89,4 +89,18 @@ describe('getNativeProps', () => {
     expect(result.a).toBeDefined();
     expect(result.b).toBeUndefined();
   });
+
+  it('can handle null values', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let result = getNativeProps<any>(null as any, ['a', 'b'], ['b']);
+
+    expect(result).toEqual(null);
+  });
+
+  it('can handle undefined values', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let result = getNativeProps<any>(undefined as any, ['a', 'b'], ['b']);
+
+    expect(result).toBeUndefined();
+  });
 });
