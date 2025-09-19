@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Overlay NavDrawer needs to preserve dialog role",
+  "packageName": "@fluentui/react-nav",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
