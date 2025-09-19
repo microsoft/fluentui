@@ -170,7 +170,7 @@ export type OverlayDrawerSlots = {
 };
 
 // @public
-export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState> & Pick<OverlayDrawerProps, 'mountNode'> & {
+export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState> & Pick<OverlayDrawerProps, 'mountNode' | 'unmountOnClose'> & {
     hasMountNodeElement: boolean;
 };
 

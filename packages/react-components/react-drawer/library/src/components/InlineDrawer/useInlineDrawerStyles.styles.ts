@@ -31,6 +31,12 @@ const useDrawerRootStyles = makeStyles({
     width: '100%',
     height: `var(${drawerCSSVars.drawerSizeVar})`,
   },
+
+  /* Spacing */
+  drawerHidden: {
+    // Negative margin to hide the drawer while keeping it in the DOM flow
+    marginRight: `calc(-1 * var(${drawerCSSVars.drawerSizeVar}))`,
+  },
 });
 
 function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<typeof useDrawerRootStyles>) {
@@ -63,12 +69,15 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
   const baseClassNames = useDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();
 
+  const mountedAndClosed = !state.unmountOnClose && !state.open;
+
   state.root.className = mergeClasses(
     inlineDrawerClassNames.root,
     resetStyles,
     baseClassNames,
     getSeparatorClass(state, rootStyles),
     rootStyles[state.position],
+    mountedAndClosed && rootStyles.drawerHidden,
     state.root.className,
   );
 
