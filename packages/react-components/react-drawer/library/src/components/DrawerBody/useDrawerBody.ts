@@ -12,6 +12,7 @@ import { useDrawerContext_unstable } from '../../contexts/drawerContext';
 import { DrawerScrollState } from '../../shared/DrawerBase.types';
 
 import type { DrawerBodyProps, DrawerBodyState } from './DrawerBody.types';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * @internal
@@ -47,9 +48,14 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
  */
 export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HTMLElement>): DrawerBodyState => {
   const { setScrollState } = useDrawerContext_unstable();
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
 
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
-  const [setAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
+  const mergedRef = useMergedRefs(ref, scrollRef);
+
+  const [setScrollAnimationFrame, cancelScrollAnimationFrame] = useAnimationFrame();
+  const [setResizeAnimationFrame, cancelResizeAnimationFrame] = useAnimationFrame();
 
   const updateScrollState = React.useCallback(() => {
     if (!scrollRef.current) {
@@ -60,23 +66,28 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
   }, [setScrollState]);
 
   const onScroll = React.useCallback(() => {
-    cancelAnimationFrame();
-    setAnimationFrame(() => updateScrollState());
-  }, [cancelAnimationFrame, setAnimationFrame, updateScrollState]);
+    cancelScrollAnimationFrame();
+    setScrollAnimationFrame(() => updateScrollState());
+  }, [cancelScrollAnimationFrame, setScrollAnimationFrame, updateScrollState]);
 
+  // Update scroll state on children change
+  useIsomorphicLayoutEffect(() => updateScrollState(), [props.children]);
+
+  // Update scroll state on mount and when resize occurs
   useIsomorphicLayoutEffect(() => {
-    cancelAnimationFrame();
-    setAnimationFrame(() => updateScrollState());
-    /* update scroll state when children changes */
-    return () => cancelAnimationFrame();
-  }, [props.children, cancelAnimationFrame, updateScrollState, setAnimationFrame]);
+    if (!scrollRef.current || !win) {
+      return;
+    }
 
-  useIsomorphicLayoutEffect(() => {
-    cancelAnimationFrame();
-    setAnimationFrame(() => updateScrollState());
+    const observer = new win.ResizeObserver(() => setResizeAnimationFrame(() => updateScrollState()));
 
-    return () => cancelAnimationFrame();
-  }, [cancelAnimationFrame, updateScrollState, setAnimationFrame]);
+    observer.observe(scrollRef.current);
+
+    return () => {
+      observer.disconnect();
+      cancelResizeAnimationFrame();
+    };
+  }, [cancelResizeAnimationFrame, setResizeAnimationFrame, updateScrollState, win]);
 
   return {
     components: {
@@ -85,10 +96,7 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
 
     root: slot.always(
       getIntrinsicElementProps<DrawerBodyProps>('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs<HTMLDivElement>(ref as React.Ref<HTMLDivElement>, scrollRef),
+        ref: mergedRef,
         ...props,
         onScroll: mergeCallbacks(props.onScroll, onScroll),
       }),

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
 import {
   DrawerBody,
   DrawerHeader,
@@ -16,6 +15,11 @@ import {
   useRestoreFocusSource,
   useRestoreFocusTarget,
   ToggleButton,
+  Accordion,
+  AccordionItem,
+  AccordionPanel,
+  AccordionHeader,
+  DrawerFooter,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -48,12 +52,12 @@ const useStyles = makeStyles({
 
 type DrawerType = Required<DrawerProps>['type'];
 
-export const Default = (): JSXElement => {
+export const Default = () => {
   const styles = useStyles();
   const labelId = useId('type-label');
 
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [type, setType] = React.useState<DrawerType>('overlay');
+  const [isOpen, setIsOpen] = React.useState(true);
+  const [type, setType] = React.useState<DrawerType>('inline');
 
   // all Drawers need manual focus restoration attributes
   // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
@@ -85,8 +89,38 @@ export const Default = (): JSXElement => {
         </DrawerHeader>
 
         <DrawerBody>
-          <p>Drawer content</p>
+          <Accordion collapsible>
+            <AccordionItem value="1">
+              <AccordionHeader>Accordion Header 1</AccordionHeader>
+              <AccordionPanel>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+                <div>Accordion Panel 1</div>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
         </DrawerBody>
+        <DrawerFooter>A drawer footer.</DrawerFooter>
       </Drawer>
 
       <div className={styles.content}>
