@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "include": ["./src/shared", "./src/react-18/**/*.ts", "./src/react-18/**/*.tsx"]
+}

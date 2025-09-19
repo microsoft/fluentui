@@ -1,0 +1,25 @@
+{
+  "name": "rit-tests-v9",
+  "description": "React Integration Tester application for problematic v9 scenarios",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src/shared",
+    "test": "jest --passWithNoTests",
+    "format": "prettier -w . --ignore-path ../.prettierignore",
+    "format:check": "yarn format -c"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-cypress": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-calendar-compat": "*",
+    "@fluentui/react-datepicker-compat": "*",
+    "@fluentui/react-timepicker-compat": "*",
+    "@fluentui/react-migration-v8-v9": "*",
+    "@fluentui/react-menu-grid-preview": "*",
+    "tslib": "^2.1.0"
+  }
+}

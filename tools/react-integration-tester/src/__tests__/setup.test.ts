@@ -1,6 +1,6 @@
 import { TempFs } from './fixtures/temp-fs';
 import { join, resolve } from 'node:path';
-import { mkdirSync, write, writeFileSync } from 'node:fs';
+import { mkdirSync, write, writeFileSync, readFileSync } from 'node:fs';
 
 import type { Logger } from '../logger';
 import type { Args } from '../shared';
@@ -334,5 +334,66 @@ describe('setup()', () => {
       force: false,
     };
     await expect(setup(args, logger)).rejects.toThrow(/Aborting prepare-only/);
+  });
+
+  test('honors origin tsconfig setup for include,exclude,strict,lib,target when rendering template', async () => {
+    fs = new TempFs('rit-setup-resolve-tsconfig');
+
+    const originPkg = { name: '@scope/origin-proj' };
+    writeFileSync(join(fs.tempDir, 'package.json'), JSON.stringify(originPkg));
+
+    // tsconfig.lib.json extends the base tsconfig.json which contains the real include/compilerOptions
+    writeFileSync(
+      join(fs.tempDir, 'tsconfig.lib.json'),
+      JSON.stringify({
+        extends: './tsconfig.json',
+        exclude: ['src/custom-override/**'],
+        include: ['src/index.ts'],
+        compilerOptions: { target: 'ES2021', lib: ['ES2021', 'DOM'], strict: false },
+      }),
+    );
+    writeFileSync(join(fs.tempDir, 'tsconfig.json'), JSON.stringify({}));
+
+    mockGitRoot(fs.tempDir);
+
+    // Prevent actual yarn install by mocking runCmd
+    let runCmdMock: any;
+    jest.doMock('../shared', () => {
+      const actual = jest.requireActual('../shared');
+      runCmdMock = jest.fn().mockResolvedValue(undefined);
+      return { ...actual, runCmd: runCmdMock };
+    });
+
+    const { setup } = await loadModule();
+
+    const args: Required<Args> = {
+      react: 18,
+      configPath: '',
+      run: [],
+      verbose: false,
+      cleanup: true,
+      cwd: fs.tempDir,
+      prepareOnly: true,
+      noInstall: false,
+      installDeps: false,
+      projectId: '',
+      force: false,
+    };
+
+    const project = await setup(args, logger);
+
+    // Generated tsconfig should reference the resolved final tsconfig (tsconfig.json), not tsconfig.lib.json
+    const generated = JSON.parse(readFileSync(join(project.projectPath, 'tsconfig.json'), 'utf-8'));
+    expect(String(generated.extends)).toContain('../../../../tsconfig.lib.json');
+
+    // Compiler options should come from final resolved tsconfig
+    expect(generated.compilerOptions.target).toBe('ES2021');
+    expect(generated.compilerOptions.strict).toBe(false);
+    expect(generated.compilerOptions.lib).toEqual(expect.arrayContaining(['ES2021', 'DOM']));
+    expect(generated.include).toEqual(['../../../../src/index.ts']);
+    expect(generated.exclude).toEqual(['../../../../src/custom-override/**']);
+
+    // Ensure we attempted installation under react root
+    expect(runCmdMock).toHaveBeenCalled();
   });
 });
