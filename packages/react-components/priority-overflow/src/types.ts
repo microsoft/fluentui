@@ -83,6 +83,12 @@ export interface ObserveOptions {
    * Callback when item visibility is updated
    */
   onUpdateOverflow: OnUpdateOverflow;
+
+  /**
+   * When true, the overflow menu has default hidden items
+   * @default false
+   */
+  hasHiddenItems?: boolean;
 }
 
 /**
