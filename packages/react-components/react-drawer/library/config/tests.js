@@ -1,1 +1,3 @@
-/** Jest test setup file. */
+const ResizeObserver = require('resize-observer-polyfill');
+
+global.ResizeObserver = ResizeObserver;

@@ -12,7 +12,6 @@ import { useDrawerContext_unstable } from '../../contexts/drawerContext';
 import { DrawerScrollState } from '../../shared/DrawerBase.types';
 
 import type { DrawerBodyProps, DrawerBodyState } from './DrawerBody.types';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * @internal
@@ -48,8 +47,6 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
  */
 export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HTMLElement>): DrawerBodyState => {
   const { setScrollState } = useDrawerContext_unstable();
-  const { targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
 
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
   const mergedRef = useMergedRefs(ref, scrollRef);
@@ -75,11 +72,11 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
 
   // Update scroll state on mount and when resize occurs
   useIsomorphicLayoutEffect(() => {
-    if (!scrollRef.current || !win) {
+    if (!scrollRef.current) {
       return;
     }
 
-    const observer = new win.ResizeObserver(() => setResizeAnimationFrame(() => updateScrollState()));
+    const observer = new ResizeObserver(() => setResizeAnimationFrame(() => updateScrollState()));
 
     observer.observe(scrollRef.current);
 
@@ -87,7 +84,7 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
       observer.disconnect();
       cancelResizeAnimationFrame();
     };
-  }, [cancelResizeAnimationFrame, setResizeAnimationFrame, updateScrollState, win]);
+  }, [cancelResizeAnimationFrame, setResizeAnimationFrame, updateScrollState]);
 
   return {
     components: {
