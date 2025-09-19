@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { DividerSlots, DividerState } from './Divider.types';

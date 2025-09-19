@@ -1,3 +1,5 @@
+'use client';
+
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { presenceMotionSlot } from '@fluentui/react-motion';

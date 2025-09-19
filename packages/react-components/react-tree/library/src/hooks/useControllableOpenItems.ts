@@ -1,3 +1,5 @@
+'use client';
+
 import { useControllableState } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ImmutableSet } from '../utils/ImmutableSet';

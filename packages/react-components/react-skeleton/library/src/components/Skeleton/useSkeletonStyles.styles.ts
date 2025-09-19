@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SkeletonSlots, SkeletonState } from './Skeleton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

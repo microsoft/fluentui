@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses } from '@griffel/react';
 import type { DataGridCellSlots, DataGridCellState } from './DataGridCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

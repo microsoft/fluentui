@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mergeCallbacks, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { ButtonState } from '../Button';

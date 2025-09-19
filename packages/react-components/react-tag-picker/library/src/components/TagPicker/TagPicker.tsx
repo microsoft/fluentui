@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTagPicker_unstable } from './useTagPicker';
 import { renderTagPicker_unstable } from './renderTagPicker';

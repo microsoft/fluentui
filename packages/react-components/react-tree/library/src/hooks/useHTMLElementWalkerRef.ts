@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { HTMLElementWalker, createHTMLElementWalker } from '../utils/createHTMLElementWalker';

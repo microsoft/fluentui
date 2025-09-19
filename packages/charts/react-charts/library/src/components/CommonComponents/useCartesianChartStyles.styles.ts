@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';

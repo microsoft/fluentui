@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { NavCategoryItemContextValue } from './NavCategoryItemContext';
 import { NavCategoryItemContextValues, NavCategoryItemState } from './NavCategoryItem/NavCategoryItem.types';

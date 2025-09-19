@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { NavCategoryState } from '../NavCategory';
 import { NavCategoryContextValue, NavCategoryContextValues } from './NavCategoryContext';

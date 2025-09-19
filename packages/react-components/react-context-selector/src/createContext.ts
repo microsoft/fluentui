@@ -1,3 +1,5 @@
+'use client';
+
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { unstable_NormalPriority as NormalPriority, unstable_runWithPriority as runWithPriority } from 'scheduler';

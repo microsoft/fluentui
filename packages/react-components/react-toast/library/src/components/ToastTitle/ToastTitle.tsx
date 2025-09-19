@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useToastTitle_unstable } from './useToastTitle';
 import { renderToastTitle_unstable } from './renderToastTitle';

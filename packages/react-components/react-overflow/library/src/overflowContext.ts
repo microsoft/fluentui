@@ -1,3 +1,5 @@
+'use client';
+
 import type { OverflowGroupState, OverflowItemEntry, OverflowDividerEntry } from '@fluentui/priority-overflow';
 import { ContextSelector, createContext, useContextSelector, Context } from '@fluentui/react-context-selector';
 

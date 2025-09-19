@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useToastFooter_unstable } from './useToastFooter';
 import { renderToastFooter_unstable } from './renderToastFooter';

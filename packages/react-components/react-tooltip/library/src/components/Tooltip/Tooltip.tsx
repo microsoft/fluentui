@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTooltip_unstable } from './useTooltip';
 import { renderTooltip_unstable } from './renderTooltip';

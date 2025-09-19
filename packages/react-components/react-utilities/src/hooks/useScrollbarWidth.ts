@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 const cache = new WeakMap<Document, number>();

@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';

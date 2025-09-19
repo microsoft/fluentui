@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';

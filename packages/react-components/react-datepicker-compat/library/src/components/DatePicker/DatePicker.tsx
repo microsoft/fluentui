@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderDatePicker_unstable } from './renderDatePicker';
 import { useDatePicker_unstable } from './useDatePicker';

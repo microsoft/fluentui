@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useDataGridHeaderCell_unstable } from './useDataGridHeaderCell';
 import { renderDataGridHeaderCell_unstable } from './renderDataGridHeaderCell';

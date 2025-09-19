@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, slot, useId } from '@fluentui/react-utilities';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';

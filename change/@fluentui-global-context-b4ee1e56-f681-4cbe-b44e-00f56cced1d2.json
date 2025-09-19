@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: enforce usage of use client directive for files with client-only features",
+  "packageName": "@fluentui/global-context",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

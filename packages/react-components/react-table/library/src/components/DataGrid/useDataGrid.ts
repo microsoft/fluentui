@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import type { DataGridProps, DataGridState } from './DataGrid.types';

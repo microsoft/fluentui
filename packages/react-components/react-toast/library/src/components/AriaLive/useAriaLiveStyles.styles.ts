@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeResetStyles } from '@griffel/react';
 import type { AriaLiveSlots, AriaLiveState } from './AriaLive.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

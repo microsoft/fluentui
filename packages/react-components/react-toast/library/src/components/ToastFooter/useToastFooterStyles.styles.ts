@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { ToastFooterSlots, ToastFooterState } from './ToastFooter.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { TreeItemType, TreeItemValue } from '../TreeItem';
 import type { SelectionMode, DistributiveOmit } from '@fluentui/react-utilities';

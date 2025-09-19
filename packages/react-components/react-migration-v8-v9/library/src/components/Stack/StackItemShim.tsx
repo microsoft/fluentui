@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses } from '@griffel/react';
 import * as React from 'react';
 import type { IStackItemProps } from '@fluentui/react';

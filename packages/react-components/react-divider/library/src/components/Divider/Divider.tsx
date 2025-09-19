@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderDivider_unstable } from './renderDivider';
 import { useDivider_unstable } from './useDivider';

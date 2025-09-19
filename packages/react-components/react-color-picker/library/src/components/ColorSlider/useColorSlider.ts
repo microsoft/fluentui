@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
 import {

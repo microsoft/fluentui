@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTab_unstable } from './useTab';
 import { renderTab_unstable } from './renderTab';

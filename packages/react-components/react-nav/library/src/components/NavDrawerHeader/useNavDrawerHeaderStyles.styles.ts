@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
 
