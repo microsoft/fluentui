@@ -12,6 +12,7 @@ import { useDrawerContext_unstable } from '../../contexts/drawerContext';
 import { DrawerScrollState } from '../../shared/DrawerBase.types';
 
 import type { DrawerBodyProps, DrawerBodyState } from './DrawerBody.types';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * @internal
@@ -46,6 +47,9 @@ const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement):
  * @param ref - reference to root HTMLElement of DrawerBody
  */
 export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HTMLElement>): DrawerBodyState => {
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
+
   const { setScrollState } = useDrawerContext_unstable();
 
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
@@ -68,15 +72,15 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
   }, [cancelScrollAnimationFrame, setScrollAnimationFrame, updateScrollState]);
 
   // Update scroll state on children change
-  useIsomorphicLayoutEffect(() => updateScrollState(), [props.children]);
+  useIsomorphicLayoutEffect(() => updateScrollState(), [props.children, updateScrollState]);
 
   // Update scroll state on mount and when resize occurs
   useIsomorphicLayoutEffect(() => {
-    if (!scrollRef.current) {
+    if (!scrollRef.current || !win?.ResizeObserver) {
       return;
     }
 
-    const observer = new ResizeObserver(() => setResizeAnimationFrame(() => updateScrollState()));
+    const observer = new win.ResizeObserver(() => setResizeAnimationFrame(() => updateScrollState()));
 
     observer.observe(scrollRef.current);
 
@@ -84,7 +88,7 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
       observer.disconnect();
       cancelResizeAnimationFrame();
     };
-  }, [cancelResizeAnimationFrame, setResizeAnimationFrame, updateScrollState]);
+  }, [setResizeAnimationFrame, cancelResizeAnimationFrame, updateScrollState, win]);
 
   return {
     components: {
