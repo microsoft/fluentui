@@ -5,7 +5,7 @@ const { join, sep } = require('node:path');
 const { pathsToModuleNameMapper } = require('ts-jest');
 
 const workspacePreset = require('<%= relativePathToWorkspaceRoot %>/jest.preset');
-const baseConfig = require('<%= relativePathToProjectRoot %>/jest.config');
+const baseConfig = require('<%= relativePathToProjectRoot %>/<%= jest.pathToProjectConfig %>');
 
 const {moduleNameMapper, transform, ...normalizedWorkspacePreset} = workspacePreset;
 const {preset, ...normalizedBaseConfig} = baseConfig;

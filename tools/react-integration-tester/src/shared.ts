@@ -79,15 +79,21 @@ export interface Args {
   installDeps?: boolean; // install dependencies for the selected react version root only and exit
 }
 
+type SupportedCommand = 'test' | 'e2e' | 'type-check';
+
 export interface Config {
   react: {
     [version: string]: {
-      commands?: {
-        test?: string;
-        e2e?: string;
-        typeCheck?: string;
-      };
       dependencies?: Record<string, string>;
+      runConfig?: Partial<
+        Record<
+          SupportedCommand,
+          {
+            command?: string;
+            configPath?: string;
+          }
+        >
+      >;
     };
   };
 }
@@ -103,15 +109,25 @@ function getBuiltinTemplatePath(version: ReactVersion) {
 export function getMergedTemplate(
   reactVersion: ReactVersion,
   configPath: string,
-): { commands: Record<string, string>; dependencies: Record<string, string> } {
+): {
+  commands: Record<string, string>;
+  dependencies: Record<string, string>;
+  configs: Record<string, string>;
+} {
   const builtinPath = getBuiltinTemplatePath(reactVersion);
   if (!existsSync(builtinPath)) {
     throw new Error(`Builtin template not found for React ${reactVersion} at: ${builtinPath}`);
   }
-  const defaults = parseJson<{
-    commands: Record<string, string>;
-    dependencies: Record<string, string>;
-  }>(builtinPath);
+  const defaults = {
+    ...parseJson<{
+      commands: Record<SupportedCommand, string>;
+      dependencies: Record<string, string>;
+    }>(builtinPath),
+    configs: { e2e: 'cypress.config.ts', test: 'jest.config.js', 'type-check': 'tsconfig.lib.json' } as Record<
+      SupportedCommand,
+      string
+    >,
+  };
 
   // Resolve config path: explicit --config wins, else default to ./rit.config.js if exists, else no overrides
   let overrides: Config['react'][string] | undefined;
@@ -126,68 +142,29 @@ export function getMergedTemplate(
   const merged = {
     commands: { ...defaults.commands },
     dependencies: { ...defaults.dependencies },
+    configs: { ...defaults.configs },
   };
-  if (overrides?.commands) {
-    // Map camelCase keys from config to script names used in builtins
-    const map: Record<string, string> = {
-      test: 'test',
-      e2e: 'e2e',
-      typeCheck: 'type-check',
-    };
-    for (const [k, v] of Object.entries(overrides.commands)) {
-      const key = map[k] ?? k;
-      if (v) {
-        merged.commands[key] = v as string;
-      }
-    }
-  }
   if (overrides?.dependencies) {
     merged.dependencies = { ...merged.dependencies, ...overrides.dependencies };
   }
-  return merged;
-}
 
-/**
- * Prepare template by filtering commands based on the origin project's setups (Jest/Cypress) and
- * reporting which setups exist. Keeps getMergedTemplate pure while providing a convenient wrapper.
- */
-export function getPreparedTemplate(
-  reactVersion: ReactVersion,
-  configPath: string,
-  projectPaths: {
-    packageJson: string;
-    jestConfig: string | null;
-    cypressConfig: string | null;
-    tsConfig: string | null;
-  },
-): {
-  commands: Record<string, string>;
-  dependencies: Record<string, string>;
-  hasJestSetup: boolean;
-  hasCypressSetup: boolean;
-} {
-  const merged = getMergedTemplate(reactVersion, configPath);
-  const hasJestSetup = Boolean(projectPaths.jestConfig);
-  const hasCypressSetup = Boolean(projectPaths.cypressConfig);
-
-  const filteredCommands = Object.fromEntries(
-    Object.entries(merged.commands).filter(([commandKey]) => {
-      if (!hasCypressSetup && /^e2e($|:)/.test(commandKey)) {
-        return false;
+  // Apply runConfig overrides (commands + config paths) in a compact generic way
+  if (overrides?.runConfig) {
+    for (const key of Object.keys(overrides.runConfig) as SupportedCommand[]) {
+      const cfg = overrides.runConfig[key];
+      if (!cfg) {
+        continue;
       }
-      if (!hasJestSetup && /^test($|:)/.test(commandKey)) {
-        return false;
+      if (cfg.command) {
+        merged.commands[key] = cfg.command;
       }
-      return true;
-    }),
-  ) as Record<string, string>;
+      if (cfg.configPath) {
+        merged.configs[key] = cfg.configPath;
+      }
+    }
+  }
 
-  return {
-    commands: filteredCommands,
-    dependencies: merged.dependencies,
-    hasJestSetup,
-    hasCypressSetup,
-  } as const;
+  return { ...merged };
 }
 
 export function runCmd(command: string, opts: { cwd: string; env?: NodeJS.ProcessEnv }): Promise<void> {

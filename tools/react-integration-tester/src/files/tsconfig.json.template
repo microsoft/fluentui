@@ -1,5 +1,5 @@
 {
-  "extends": "<%= tsconfig.relativePathToProjectTsConfig %>",
+  "extends": "<%= relativePathToProjectRoot %>/<%= tsconfig.pathToProjectConfig %>",
   "compilerOptions": {
     "target": "<%= tsconfig.target %>",
     "module": "esnext",

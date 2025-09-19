@@ -58,7 +58,7 @@ function createProject(
     writeFileSync(join(rootDir, 'jest.config.js'), 'module.exports = {};');
   }
   if (options?.withCypress) {
-    writeFileSync(join(rootDir, 'cypress.config.js'), 'export default {};');
+    writeFileSync(join(rootDir, 'cypress.config.ts'), 'export default {};');
   }
 }
 
@@ -230,8 +230,14 @@ describe('rit CLI e2e', () => {
         "references": Array [],
       }
     `);
+
     // and jest config since origin had jest setup
-    expect(readFile(join(ritProjectPath, 'jest.config.js'))).toMatchInlineSnapshot(`
+    const jestConfigContent = readFile(join(ritProjectPath, 'jest.config.js'));
+    expect(jestConfigContent).toContain("const workspacePreset = require('../../../../jest.preset')");
+    expect(jestConfigContent).toContain("const baseConfig = require('../../../../proj/jest.config.js')");
+    expect(jestConfigContent).toContain('module.exports = config');
+    // check whole template
+    expect(jestConfigContent).toMatchInlineSnapshot(`
       "// @ts-check
       /* eslint-disable */
 
@@ -239,7 +245,7 @@ describe('rit CLI e2e', () => {
       const { pathsToModuleNameMapper } = require('ts-jest');
 
       const workspacePreset = require('../../../../jest.preset');
-      const baseConfig = require('../../../../proj/jest.config');
+      const baseConfig = require('../../../../proj/jest.config.js');
 
       const {moduleNameMapper, transform, ...normalizedWorkspacePreset} = workspacePreset;
       const {preset, ...normalizedBaseConfig} = baseConfig;
@@ -311,9 +317,16 @@ describe('rit CLI e2e', () => {
       "
     `);
 
-    expect(readFile(join(ritProjectPath, 'cypress.config.ts'))).toMatchInlineSnapshot(`
+    // and cypress config since origin had jest setup
+    const cypressConfigPath = join(ritProjectPath, 'cypress.config.ts');
+    expect(existsSync(cypressConfigPath)).toBe(true);
+
+    const cyContent = readFile(cypressConfigPath);
+    expect(cyContent).toContain("import baseConfig from '../../../../proj/cypress.config");
+    // check whole template
+    expect(cyContent).toMatchInlineSnapshot(`
       "import { join, resolve } from 'node:path';
-      import baseConfig from '../../../../proj/cypress.config';
+      import baseConfig from '../../../../proj/cypress.config.ts';
 
       // Resolve dependencies from the shared react-version root folder (injected by CLI)
       const usedNodeModulesPath = join(__dirname, '..', 'node_modules');
