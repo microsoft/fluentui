@@ -39,6 +39,7 @@ export const useDialogSurface_unstable = (
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
   const open = useDialogContext_unstable(ctx => ctx.open);
+  const unmountOnClose = useDialogContext_unstable(ctx => ctx.unmountOnClose);
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -75,6 +76,7 @@ export const useDialogSurface_unstable = (
     },
     elementType: 'div',
   });
+
   if (backdrop) {
     backdrop.onClick = handledBackdropClick;
   }
@@ -82,16 +84,19 @@ export const useDialogSurface_unstable = (
   const { disableBodyScroll, enableBodyScroll } = useDisableBodyScroll();
 
   useIsomorphicLayoutEffect(() => {
+    if (!open) {
+      enableBodyScroll();
+      return;
+    }
+
     if (isNestedDialog || modalType === 'non-modal') {
       return;
     }
 
     disableBodyScroll();
 
-    return () => {
-      enableBodyScroll();
-    };
-  }, [enableBodyScroll, isNestedDialog, disableBodyScroll, modalType]);
+    return () => enableBodyScroll();
+  }, [open, modalType, isNestedDialog, disableBodyScroll, enableBodyScroll]);
 
   return {
     components: {
@@ -102,13 +107,15 @@ export const useDialogSurface_unstable = (
     open,
     backdrop,
     isNestedDialog,
+    unmountOnClose,
     mountNode: props.mountNode,
     root: slot.always(
       getIntrinsicElementProps('div', {
         tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
-        'aria-modal': modalType !== 'non-modal',
         role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+        'aria-modal': modalType !== 'non-modal',
         'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+        'aria-hidden': !unmountOnClose && !open ? true : undefined,
         ...props,
         ...modalAttributes,
         onKeyDown: handleKeyDown,
@@ -122,7 +129,7 @@ export const useDialogSurface_unstable = (
     backdropMotion: presenceMotionSlot(props.backdropMotion, {
       elementType: DialogBackdropMotion,
       defaultProps: {
-        appear: true,
+        appear: unmountOnClose,
         visible: open,
       },
     }),

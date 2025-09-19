@@ -167,6 +167,42 @@ describe('Dialog', () => {
     cy.get(dialogTriggerCloseSelector).realClick();
     cy.get(dialogTriggerOpenSelector).should('be.focused');
   });
+
+  it('should remain mounted after close when unmountOnClose is false', () => {
+    mount(
+      <Dialog unmountOnClose={false}>
+        <DialogTrigger disableButtonEnhancement>
+          <Button id={dialogTriggerOpenId}>Open dialog</Button>
+        </DialogTrigger>
+        <DialogSurface>
+          <DialogBody>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger disableButtonEnhancement>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>,
+    );
+
+    cy.get(dialogTriggerOpenSelector).realClick();
+    cy.get(dialogSurfaceSelector).should('exist');
+
+    cy.get(dialogTriggerCloseSelector).realClick();
+    // dialog surface should remain mounted when unmountOnClose is false
+    cy.get(dialogSurfaceSelector).should('exist');
+  });
+
   it('should allow change of focus on open', () => {
     const CustomFocusedElementOnOpen = () => {
       const buttonRef = React.useRef<HTMLButtonElement>(null);
