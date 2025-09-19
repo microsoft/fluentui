@@ -56,7 +56,7 @@ export const CalendarMultidayDayView = (): JSXElement => {
           ))}
         </Dropdown>
       </Field>
-      <h3>Negative date selection</h3>
+      <h3>Selection with negative date range</h3>
       <Calendar
         highlightSelectedMonth
         showGoToToday
