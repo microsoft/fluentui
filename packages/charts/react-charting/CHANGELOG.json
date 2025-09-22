@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 15 Sep 2025 07:20:50 GMT",
+      "tag": "@fluentui/react-charting_v5.24.32",
+      "version": "5.24.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0ce8d43a27222f99d83053f6df8c0619590892b7",
+            "comment": "feat: add support for lines in GVBC"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "79b08d95a8b7c2058ab6809fc36d301489bd01e3",
+            "comment": "fix: callout not appearing on scatter chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.31",
+            "commit": "0ce8d43a27222f99d83053f6df8c0619590892b7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Sep 2025 07:20:43 GMT",
       "tag": "@fluentui/react-charting_v5.24.31",
       "version": "5.24.31",

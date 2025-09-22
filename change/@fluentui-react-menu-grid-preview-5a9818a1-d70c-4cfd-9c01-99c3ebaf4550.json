@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Feat(react-menu-grid-preview): Detect invalid MenuGrid nesting",
+  "packageName": "@fluentui/react-menu-grid-preview",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

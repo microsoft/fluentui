@@ -1478,16 +1478,17 @@ export function domainRangeOfDateForAreaLineScatterVerticalBarCharts(
     // So, Finding smallest and largest dates
     sDate = d3Min([...tickValues, sDate])!;
     lDate = d3Max([...tickValues, lDate])!;
-  } else {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    sDate = d3Min(points as any[], point => point.x as Date)!;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    lDate = d3Max(points as any[], point => point.x as Date)!;
+
     if (hasMarkersMode || chartType === ChartTypes.ScatterChart) {
       const xPadding = getDomainPaddingForMarkers(sDate.getTime(), lDate.getTime());
       sDate = new Date(sDate.getTime() - xPadding.start);
       lDate = new Date(lDate.getTime() + xPadding.end);
     }
+  } else {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    sDate = d3Min(points as any[], point => point.x as Date)!;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    lDate = d3Max(points as any[], point => point.x as Date)!;
   }
 
   const rStartValue = margins.left!;
