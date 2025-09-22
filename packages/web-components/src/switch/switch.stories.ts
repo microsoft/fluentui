@@ -56,7 +56,6 @@ export const Default: Story = {};
 
 export const Checked: Story = {
   args: {
-    slot: 'input',
     checked: true,
   },
 };
