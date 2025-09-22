@@ -40,7 +40,7 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
   const { targetDocument, force } = options;
   const [scrollbarWidth, setScrollbarWidth] = React.useState<number | undefined>(undefined);
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if (!targetDocument) {
       setScrollbarWidth(0);
       return;
