@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { ColorSlider } from './ColorSlider';
 import type { ColorSliderProps } from './ColorSlider.types';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

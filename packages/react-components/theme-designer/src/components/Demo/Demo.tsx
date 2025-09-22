@@ -27,6 +27,7 @@ import {
   CalendarLtrFilled,
   CalendarLtrRegular,
 } from '@fluentui/react-icons';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 export interface ContentProps {
   className?: string;
@@ -90,7 +91,7 @@ const useStyles = makeStyles({
 		3) Note that the spinner was removed since it was causing confusing with the loading state of the page
 */
 
-export const Column1 = () => {
+export const Column1 = (): JSXElement => {
   const styles = useStyles();
   const dropdownId = useId('dropdown-default');
   return (
@@ -122,7 +123,7 @@ export const Column1 = () => {
   );
 };
 
-export const Column2 = () => {
+export const Column2 = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.column}>
@@ -151,7 +152,7 @@ export const Column2 = () => {
 };
 
 // We may use these later.
-export const DemoIcons = () => {
+export const DemoIcons = (): JSXElement => {
   const styles = useStyles();
   const MeetNowIcon = bundleIcon(MeetNowFilled, MeetNowRegular);
   const CalendarLtrIcon = bundleIcon(CalendarLtrFilled, CalendarLtrRegular);
@@ -165,7 +166,7 @@ export const DemoIcons = () => {
   );
 };
 
-export const Column3 = () => {
+export const Column3 = (): JSXElement => {
   const styles = useStyles();
 
   return (

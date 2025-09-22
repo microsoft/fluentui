@@ -13,4 +13,5 @@ export type IHTMLSlot = ISlotProp<React.DetailedHTMLProps<React.HTMLAttributes<a
  * Useful for slots that need to allow access to specialized HTML attributes, such as for buttons and inputs.
  * Example usage: root?: IHTMLElementSlot\<'button'\>;
  */
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export type IHTMLElementSlot<TElement extends keyof JSX.IntrinsicElements> = ISlotProp<JSX.IntrinsicElements[TElement]>;

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Badge } from '@fluentui/react-components';
 
-export const Color = () => {
+export const Color = (): JSXElement => {
   return (
     <>
       <Badge appearance="filled" color="brand">

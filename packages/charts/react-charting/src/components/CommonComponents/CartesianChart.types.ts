@@ -7,15 +7,18 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
   AxisCategoryOrder,
+  AxisProps,
+  AxisScaleType,
   IAccessibilityProps,
   IChart,
   IDataPoint,
+  IGanttChartDataPoint,
   IGroupedVerticalBarChartData,
   IHeatMapChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IMargins,
-  IScatterChartDataPoint,
+  IScatterChartPoints,
   IVerticalBarChartDataPoint,
   IVerticalStackedBarDataPoint,
 } from '../../types/index';
@@ -512,6 +515,42 @@ export interface ICartesianChartProps {
    * @default 'default'
    */
   yAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Defines the scale type for the x-axis.
+   * @default 'default'
+   */
+  xScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the primary y-axis.
+   * @default 'default'
+   */
+  yScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the secondary y-axis.
+   * @default 'default'
+   */
+  secondaryYScaleType?: AxisScaleType;
+
+  /**
+   * Explicit set of tick values for the y-axis.
+   * If provided, these values override automatic tick generation.
+   */
+  yAxisTickValues?: number[] | Date[] | string[];
+
+  /**
+   * Configuration for the x-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  xAxis?: AxisProps;
+
+  /**
+   * Configuration for the y-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  yAxis?: AxisProps;
 }
 
 export interface IYValueHover {
@@ -720,7 +759,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IHorizontalBarChartWithAxisDataPoint[]
       | IVerticalBarChartDataPoint[]
       | IDataPoint[]
-      | IScatterChartDataPoint[],
+      | IScatterChartPoints[]
+      | IGanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
@@ -736,6 +776,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     useSecondaryYScale?: boolean,
     supportNegativeData?: boolean,
     roundedTicks?: boolean,
+    scaleType?: AxisScaleType,
   ) => ScaleLinear<number, number, never>;
 
   /**
@@ -748,7 +789,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
       | IVerticalStackedBarDataPoint[]
       | IHorizontalBarChartWithAxisDataPoint[]
       | IGroupedVerticalBarChartData[]
-      | IHeatMapChartDataPoint[],
+      | IHeatMapChartDataPoint[]
+      | IGanttChartDataPoint[],
     margins: IMargins,
     width: number,
     chartType: ChartTypes,

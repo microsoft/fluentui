@@ -1,9 +1,27 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { LegendsProps } from '../Legends/index';
-import { AccessibilityProps, Chart, Margins, DataPoint, HorizontalBarChartWithAxisDataPoint } from '../../types/index';
-import { ChartTypes, XAxisTypes, YAxisType, IDomainNRange } from '../../utilities/index';
+import {
+  AccessibilityProps,
+  Chart,
+  Margins,
+  DataPoint,
+  HorizontalBarChartWithAxisDataPoint,
+  GroupedVerticalBarChartData,
+  HeatMapChartDataPoint,
+  LineChartPoints,
+  VerticalBarChartDataPoint,
+  VerticalStackedBarDataPoint,
+  ScatterChartPoints,
+  GanttChartDataPoint,
+  AxisCategoryOrder,
+  AxisProps,
+  AxisScaleType,
+} from '../../types/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
+import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
+import { ScaleBand, ScaleLinear } from 'd3-scale';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
@@ -102,9 +120,14 @@ export interface CartesianChartStyles {
   tooltip?: string;
 
   /**
-   * styles for tooltip
+   * styles for axis title
    */
   axisTitle?: string;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: string;
 
   /**
    * Style for the chart Title.
@@ -413,11 +436,73 @@ export interface CartesianChartProps {
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<Chart>;
+
+  /**
+   * Prop to set the x axis annotation. Used to display additional information on the x-axis.
+   * This is shown on the top of the chart.
+   * @default undefined
+   */
+  xAxisAnnotation?: string;
+
+  /**
+   * Prop to set the y axis annotation. Used to display additional information on the y-axis.
+   * This is shown on the right side of the chart. Not shown if secondary y-axis is enabled.
+   * @default undefined
+   */
+  yAxisAnnotation?: string;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the x-axis.
+   * @default 'default'
+   */
+  xAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Specifies the ordering logic for categories (or string tick labels) on the y-axis.
+   * @default 'default'
+   */
+  yAxisCategoryOrder?: AxisCategoryOrder;
+
+  /**
+   * Defines the scale type for the x-axis.
+   * @default 'default'
+   */
+  xScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the primary y-axis.
+   * @default 'default'
+   */
+  yScaleType?: AxisScaleType;
+
+  /**
+   * Defines the scale type for the secondary y-axis.
+   * @default 'default'
+   */
+  secondaryYScaleType?: AxisScaleType;
+
+  /**
+   * Explicit set of tick values for the y-axis.
+   * If provided, these values override automatic tick generation.
+   */
+  yAxisTickValues?: number[] | Date[] | string[];
+
+  /**
+   * Configuration for the x-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  xAxis?: AxisProps;
+
+  /**
+   * Configuration for the y-axis.
+   * Use this to control `tickStep`, `tick0`, etc.
+   */
+  yAxis?: AxisProps;
 }
 
 export interface YValueHover {
   legend?: string;
-  y?: number;
+  y?: number | string;
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
@@ -471,7 +556,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Legends of the chart.
    */
-  legendBars: JSX.Element | null;
+  legendBars: JSXElement | null;
 
   /**
    * Callout props
@@ -589,17 +674,45 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   /**
    * Get the min and max values of the y-axis
    */
-  getMinMaxOfYAxis?: (
-    points: DataPoint[],
+  getMinMaxOfYAxis: (
+    points:
+      | LineChartPoints[]
+      | HorizontalBarChartWithAxisDataPoint[]
+      | VerticalBarChartDataPoint[]
+      | DataPoint[]
+      | ScatterChartPoints[]
+      | GanttChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
 
-  /**Add commentMore actions
+  /**
+   * Create the y-axis
+   */
+  createYAxis: (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean,
+    chartType: ChartTypes,
+    useSecondaryYScale?: boolean,
+    roundedTicks?: boolean,
+    scaleType?: AxisScaleType,
+    _useRtl?: boolean,
+  ) => ScaleLinear<number, number, never>;
+
+  /**
    * Get the domain and range values
    */
-  getDomainNRangeValues?: (
-    points: HorizontalBarChartWithAxisDataPoint[],
+  getDomainNRangeValues: (
+    points:
+      | LineChartPoints[]
+      | VerticalBarChartDataPoint[]
+      | VerticalStackedBarDataPoint[]
+      | HorizontalBarChartWithAxisDataPoint[]
+      | GroupedVerticalBarChartData[]
+      | HeatMapChartDataPoint[]
+      | GanttChartDataPoint[],
     margins: Margins,
     width: number,
     chartType: ChartTypes,
@@ -609,4 +722,21 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     tickValues: Date[] | number[] | string[] | undefined,
     shiftX: number,
   ) => IDomainNRange;
+
+  /**
+   * Create the string y-axis
+   */
+  createStringYAxis: (
+    yAxisParams: IYAxisParams,
+    dataPoints: string[],
+    isRtl: boolean,
+    barWidth: number | undefined,
+    chartType?: ChartTypes,
+  ) => ScaleBand<string>;
+
+  /**
+   * Controls whether the numeric x-axis domain should be extended to start and end at nice rounded values.
+   * @default true
+   */
+  showRoundOffXTickValues?: boolean;
 }

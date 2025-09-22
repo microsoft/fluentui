@@ -1,3 +1,4 @@
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TableColumnDefinition,
   TableColumnId,
@@ -96,7 +97,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
 
 type FileCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -106,7 +107,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -160,7 +161,7 @@ const items: Item[] = [
   },
 ];
 
-export const ResizableColumnsControlled = () => {
+export const ResizableColumnsControlled = (): JSXElement => {
   const [columns, setColumns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions, setColumnSizingOptions] = React.useState<TableColumnSizingOptions>({
     file: {

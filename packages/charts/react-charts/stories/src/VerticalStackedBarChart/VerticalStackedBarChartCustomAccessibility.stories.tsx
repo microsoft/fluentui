@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   VSChartDataPoint,
   VerticalStackedChartProps,
@@ -9,7 +10,7 @@ import {
 } from '@fluentui/react-charts';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
-export const VerticalStackedBarCustomAccessibility = () => {
+export const VerticalStackedBarCustomAccessibility = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [showLine, setShowLine] = React.useState<boolean>(true);

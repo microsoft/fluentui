@@ -15,14 +15,16 @@ const useBaseStyles = makeStyles({
 /**
  * Apply styling to the ToolbarButton slots based on the state
  */
-export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState) => {
+export const useToolbarButtonStyles_unstable = (state: ToolbarButtonState): void => {
   'use no memo';
 
-  useButtonStyles_unstable(state);
   const buttonStyles = useBaseStyles();
 
-  state.root.className = mergeClasses(state.root.className, state.vertical && buttonStyles.vertical);
+  state.root.className = mergeClasses(state.vertical && buttonStyles.vertical, state.root.className);
+
   if (state.icon) {
-    state.icon.className = mergeClasses(state.icon.className, state.vertical && buttonStyles.verticalIcon);
+    state.icon.className = mergeClasses(state.vertical && buttonStyles.verticalIcon, state.icon.className);
   }
+
+  useButtonStyles_unstable(state);
 };

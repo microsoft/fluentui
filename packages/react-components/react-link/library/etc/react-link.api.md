@@ -8,6 +8,7 @@ import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-context
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -48,7 +49,7 @@ export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'ap
 };
 
 // @public
-export const renderLink_unstable: (state: LinkState) => JSX.Element;
+export const renderLink_unstable: (state: LinkState) => JSXElement;
 
 // @public
 export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>) => LinkState;

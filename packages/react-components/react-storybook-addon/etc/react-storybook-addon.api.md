@@ -31,7 +31,8 @@ export interface FluentParameters extends Parameters_2 {
     mode?: 'default' | 'vr-test';
     // (undocumented)
     reactStorybookAddon?: {
-        disabledDecorators: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
+        disabledDecorators?: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
+        docs?: FluentDocsConfig;
     };
 }
 
@@ -44,14 +45,7 @@ export interface FluentStoryContext extends StoryContext {
 }
 
 // @public (undocumented)
-export function parameters(options?: FluentParameters): {
-    dir: string;
-    fluentTheme: string;
-    mode: string;
-    reactStorybookAddon?: {
-        disabledDecorators: ["AriaLive" | "FluentProvider" | "ReactStrictMode"];
-    } | undefined;
-};
+export function parameters(options?: FluentParameters): FluentParameters;
 
 // @public (undocumented)
 export const THEME_ID: "storybook_fluentui-react-addon_theme";
@@ -72,6 +66,12 @@ export const themes: readonly [{
 }, {
     readonly id: "teams-dark";
     readonly label: "Teams Dark";
+}, {
+    readonly id: "teams-light-v21";
+    readonly label: "Teams Light V2.1";
+}, {
+    readonly id: "teams-dark-v21";
+    readonly label: "Teams Dark V2.1";
 }, {
     readonly id: "teams-high-contrast";
     readonly label: "Teams High Contrast";

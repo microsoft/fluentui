@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { PlayFilled, PauseFilled } from '@fluentui/react-icons';
 import {
   useId,
@@ -10,7 +11,7 @@ import {
   Toast,
 } from '@fluentui/react-components';
 
-export const PauseAndPlay = () => {
+export const PauseAndPlay = (): JSXElement => {
   const toasterId = useId('toaster');
   const toastId = useId('example');
   const [unmounted, setUnmounted] = React.useState(true);

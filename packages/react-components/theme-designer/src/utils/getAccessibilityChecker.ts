@@ -76,7 +76,9 @@ export const calculateContrastRatio = (
     },
   };
 };
-export const getAccessibilityChecker = (theme: Partial<Theme>) => {
+export const getAccessibilityChecker = (
+  theme: Partial<Theme>,
+): { all: string[]; failedLuminosityTests: TestResult[]; failedContrastTests: TestResult[] } => {
   const currTheme = theme as unknown as Record<string, string>;
 
   const testPercentDiff = (currToken: string, compToken: string, desiredPercentDiff: number): TestResult => {

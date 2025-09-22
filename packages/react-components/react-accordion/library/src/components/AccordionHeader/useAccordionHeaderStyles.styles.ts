@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     padding: `0 ${tokens.spacingHorizontalM} 0 ${tokens.spacingHorizontalMNudge}`,
     minHeight: '44px',
     display: 'flex',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     cursor: 'pointer',
     ...typographyStyles.body1,
     boxSizing: 'border-box',
@@ -104,7 +104,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
+export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): AccordionHeaderState => {
   'use no memo';
 
   const styles = useStyles();

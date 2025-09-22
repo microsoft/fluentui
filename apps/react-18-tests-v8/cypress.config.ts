@@ -4,7 +4,7 @@ import { registerTsPaths } from '@fluentui/scripts-storybook';
 
 import { getNodeModulesPath } from './config/utils';
 
-const usedNodeModulesPath = getNodeModulesPath();
+const { usedNodeModulesPath } = getNodeModulesPath();
 
 const tsConfigPath = path.resolve(__dirname, '../../tsconfig.base.v8.json');
 

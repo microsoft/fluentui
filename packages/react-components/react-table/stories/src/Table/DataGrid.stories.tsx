@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -28,9 +29,11 @@ import {
   useArrowNavigationGroup,
 } from '@fluentui/react-components';
 
+import type { JSXElement } from '@fluentui/react-components';
+
 type FileCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -40,7 +43,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -121,7 +124,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const DataGrid = () => {
+export const DataGrid = (): JSXElement => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },

@@ -874,7 +874,7 @@ describe('domainRangeOfDateForAreaChart', () => {
   };
 
   it('should return domain and range values correctly for date x-axis', () => {
-    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+    const result = utils.domainRangeOfDateForAreaLineScatterVerticalBarCharts(
       points,
       margins,
       100,
@@ -886,7 +886,7 @@ describe('domainRangeOfDateForAreaChart', () => {
   });
 
   it('should return domain and range values correctly for date x-axis when tickValues are provided', () => {
-    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+    const result = utils.domainRangeOfDateForAreaLineScatterVerticalBarCharts(
       points,
       margins,
       100,
@@ -898,7 +898,7 @@ describe('domainRangeOfDateForAreaChart', () => {
   });
 
   it('should return domain and range values correctly for date x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+    const result = utils.domainRangeOfDateForAreaLineScatterVerticalBarCharts(
       points,
       margins,
       100,
@@ -928,12 +928,12 @@ describe('domainRangeOfNumericForAreaChart', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, false);
+    const result = utils.domainRangeOfNumericForAreaLineScatterCharts(points, margins, 100, false);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, true);
+    const result = utils.domainRangeOfNumericForAreaLineScatterCharts(points, margins, 100, true);
     matchResult(result);
   });
 });
@@ -1395,5 +1395,109 @@ describe('formatDateToLocaleString', () => {
   it('returns empty string for invalid date', () => {
     const result = formatDateToLocaleString(new Date('invalid date'));
     expect(result).toBe('Invalid Date');
+  });
+});
+
+describe('generateLinearTicks', () => {
+  it('generates ticks within the domain', () => {
+    expect(utils.generateLinearTicks(0, 1, [0, 5])).toEqual([0, 1, 2, 3, 4, 5]);
+  });
+
+  it('respects tick0 offset', () => {
+    expect(utils.generateLinearTicks(0.5, 1, [0, 5])).toEqual([0.5, 1.5, 2.5, 3.5, 4.5]);
+  });
+
+  it('handles non-integer tickStep', () => {
+    expect(utils.generateLinearTicks(0, 0.5, [0, 2])).toEqual([0, 0.5, 1, 1.5, 2]);
+  });
+
+  it('rounds to avoid floating point issues', () => {
+    expect(utils.generateLinearTicks(0, 0.1, [0, 0.3])).toEqual([0, 0.1, 0.2, 0.3]);
+  });
+
+  it('works when domainMin > tick0', () => {
+    expect(utils.generateLinearTicks(0, 2, [5, 12])).toEqual([6, 8, 10, 12]);
+  });
+
+  it('works when domainMax < tick0', () => {
+    expect(utils.generateLinearTicks(10, 2, [2, 8])).toEqual([2, 4, 6, 8]);
+  });
+
+  it('handles reversed domain', () => {
+    expect(utils.generateLinearTicks(0, 1, [5, 0])).toEqual([0, 1, 2, 3, 4, 5]);
+  });
+});
+
+describe('generateMonthlyTicks', () => {
+  const jan1 = new Date(2020, 0, 1); // Jan 1, 2020 (local time)
+
+  it('generates ticks every 1 month within domain', () => {
+    const ticks = utils.generateMonthlyTicks(jan1, 1, [new Date(2020, 0, 1), new Date(2020, 5, 30)]);
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2020-01-01',
+      '2020-02-01',
+      '2020-03-01',
+      '2020-04-01',
+      '2020-05-01',
+      '2020-06-01',
+    ]);
+  });
+
+  it('generates ticks every 3 months within domain', () => {
+    const ticks = utils.generateMonthlyTicks(jan1, 3, [new Date(2020, 0, 1), new Date(2020, 11, 31)]);
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2020-01-01',
+      '2020-04-01',
+      '2020-07-01',
+      '2020-10-01',
+    ]);
+  });
+
+  it('works when domainMin > tick0', () => {
+    const ticks = utils.generateMonthlyTicks(jan1, 2, [new Date(2020, 2, 1), new Date(2020, 8, 1)]);
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2020-03-01',
+      '2020-05-01',
+      '2020-07-01',
+      '2020-09-01',
+    ]);
+  });
+
+  it('works when domainMax < tick0', () => {
+    const ticks = utils.generateMonthlyTicks(new Date(2020, 11, 1), 2, [new Date(2020, 2, 1), new Date(2020, 8, 1)]);
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual(['2020-04-01', '2020-06-01', '2020-08-01']);
+  });
+
+  it('handles leap years correctly (Feb 29)', () => {
+    const ticks = utils.generateMonthlyTicks(new Date(2020, 0, 31), 1, [new Date(2020, 0, 1), new Date(2020, 2, 31)]);
+    // Jan 31 → Feb (adjust to Feb 29 since Feb 31 is invalid) → Mar 31
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual(['2020-01-31', '2020-02-29', '2020-03-31']);
+  });
+
+  it('handles end-of-month correctly (short months)', () => {
+    const ticks = utils.generateMonthlyTicks(new Date(2021, 0, 31), 1, [new Date(2021, 0, 1), new Date(2021, 4, 31)]);
+    // Jan 31 → Feb (28th in non-leap year) → Mar 31 → Apr 30 → May 31
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2021-01-31',
+      '2021-02-28',
+      '2021-03-31',
+      '2021-04-30',
+      '2021-05-31',
+    ]);
+  });
+
+  it('works with UTC mode', () => {
+    const ticks = utils.generateMonthlyTicks(
+      new Date(Date.UTC(2020, 0, 1)),
+      2,
+      [new Date(Date.UTC(2020, 0, 1)), new Date(Date.UTC(2020, 6, 1))],
+      true,
+    );
+    expect(ticks.map(d => d.toISOString().slice(0, 10))).toEqual([
+      '2020-01-01',
+      '2020-03-01',
+      '2020-05-01',
+      '2020-07-01',
+    ]);
   });
 });

@@ -22,8 +22,8 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       _updateChart(props);
     }, [props]);
 
-    function _onFocus(data: ChartDataPoint, id: string): void {
-      props.onFocusCallback!(data, id, currentRef.current);
+    function _onFocus(data: ChartDataPoint, id: string, event: React.FocusEvent<SVGPathElement, Element>): void {
+      props.onFocusCallback!(data, id, event, currentRef.current);
     }
 
     function _hoverOn(data: ChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
@@ -53,12 +53,12 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     }
 
     function _renderArcLabel(className: string) {
-      const { data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels, activeArc } = props;
+      const { data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels } = props;
 
       if (
         hideLabels ||
         Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
-        (activeArc !== data!.data.legend && activeArc !== '')
+        !_shouldHighlightArc(data!.data.legend!)
       ) {
         return null;
       }
@@ -92,13 +92,14 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       }
     }
 
-    const { href, focusedArcId } = props;
+    const { href, focusedArcId, activeArc } = props;
     //TO DO 'replace' is throwing error
     const id =
       props.uniqText! +
       (typeof props.data!.data.legend === 'string' ? props.data!.data.legend.replace(/\s+/g, '') : '') +
       props.data!.data.data;
-    const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
+    const opacity: number =
+      activeArc && activeArc.length > 0 ? (activeArc.includes(props.data?.data.legend!) ? 1 : 0.1) : 1;
     const cornerRadius = props.roundCorners ? 3 : 0;
     return (
       <g ref={currentRef}>
@@ -128,12 +129,11 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           }
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
-          onFocus={_onFocus.bind(this, props.data!.data, id)}
-          data-is-focusable={props.activeArc === props.data!.data.legend || props.activeArc === ''}
-          onMouseOver={_hoverOn.bind(this, props.data!.data)}
-          onMouseMove={_hoverOn.bind(this, props.data!.data)}
+          onFocus={event => _onFocus(props.data!.data, id, event)}
+          onMouseOver={event => _hoverOn(props.data!.data, event)}
+          onMouseMove={event => _hoverOn(props.data!.data, event)}
           onMouseLeave={_hoverOff}
-          tabIndex={_shouldHighlightArc(props.data!.data.legend!) ? 0 : undefined}
+          tabIndex={_shouldHighlightArc(props.data!.data.legend!) || props.activeArc?.length === 0 ? 0 : undefined}
           onBlur={_onBlur}
           opacity={opacity}
           onClick={props.data?.data.onClick}

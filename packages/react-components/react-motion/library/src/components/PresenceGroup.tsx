@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { getNextChildMapping } from '../utils/groups/getNextChildMapping';
 import { getChildMapping } from '../utils/groups/getChildMapping';
 import type { PresenceGroupChildMapping } from '../utils/groups/types';
@@ -23,7 +24,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
   static getDerivedStateFromProps(
     nextProps: PresenceGroupProps,
     { childMapping: prevChildMapping, firstRender }: PresenceGroupState,
-  ) {
+  ): PresenceGroupState {
     const nextChildMapping = getChildMapping(nextProps.children);
 
     return {
@@ -32,9 +33,10 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     };
   }
 
-  constructor(props: PresenceGroupProps, context: unknown) {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    super(props, context);
+  constructor(props: PresenceGroupProps, context?: unknown) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore - React.Component constructor has only one argument in React 19
+    super(props, context); // eslint-disable-line @typescript-eslint/no-deprecated
 
     this.state = {
       childMapping: {},
@@ -42,7 +44,7 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     };
   }
 
-  private handleExit = (childKey: string) => {
+  private handleExit = (childKey: string): void => {
     const currentChildMapping = getChildMapping(this.props.children);
 
     if (childKey in currentChildMapping) {
@@ -59,16 +61,14 @@ export class PresenceGroup extends React.Component<PresenceGroupProps, PresenceG
     }
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.mounted = true;
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     this.mounted = false;
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  render(): JSX.Element {
+  render(): JSXElement {
     return (
       <>
         {Object.entries(this.state.childMapping).map(([childKey, childProps]) => (

@@ -15,6 +15,7 @@ import {
   type UseSafeZoneOptions,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   root: {
@@ -84,7 +85,7 @@ const useClasses = makeStyles({
   },
 });
 
-export const UseSafeZoneAreaDefault = (props: UseSafeZoneOptions) => {
+export const UseSafeZoneAreaDefault = (props: UseSafeZoneOptions): JSXElement => {
   const classes = useClasses();
 
   const [debug, setDebug] = React.useState(true);

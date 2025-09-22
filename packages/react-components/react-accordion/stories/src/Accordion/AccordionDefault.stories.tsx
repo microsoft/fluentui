@@ -1,20 +1,13 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
 
-export const Default = () => (
+export const Default = (): JSXElement => (
   <Accordion>
     <AccordionItem value="1">
-      <AccordionHeader>
-        {' '}
-        This is a very very very long heading. This is a very very very long heading. This is a very very very long
-        heading. This is a very very very long heading.
-      </AccordionHeader>
+      <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
-        <div>
-          {' '}
-          This is a very very very long heading. This is a very very very long heading. This is a very very very long
-          heading. This is a very very very long heading.
-        </div>
+        <div>Accordion Panel 1</div>
       </AccordionPanel>
     </AccordionItem>
     <AccordionItem value="2">

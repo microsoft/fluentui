@@ -66,6 +66,13 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     setRefSelected(mouseEvent.currentTarget);
   }
 
+  function _handleFocus(data: IFunnelChartDataPoint, focusEvent: React.FocusEvent<SVGPathElement>) {
+    focusEvent?.persist();
+    setCalloutData(data);
+    setIsCalloutVisible(true);
+    setRefSelected(focusEvent.currentTarget);
+  }
+
   function _handleStackedHover(
     stage: string,
     subValue: { category: string; value: number; color: string },
@@ -81,6 +88,22 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     } as IFunnelChartDataPoint);
     setIsCalloutVisible(true);
     setRefSelected(mouseEvent.currentTarget);
+  }
+
+  function _handleStackedFocus(
+    stage: string,
+    subValue: { category: string; value: number; color: string },
+    focusEvent: React.FocusEvent<SVGPathElement>,
+  ) {
+    focusEvent?.persist();
+    setCalloutData({
+      stage,
+      value: subValue.value,
+      color: subValue.color,
+      category: subValue.category,
+    } as IFunnelChartDataPoint);
+    setIsCalloutVisible(true);
+    setRefSelected(focusEvent.currentTarget);
   }
 
   function _handleMouseOut() {
@@ -122,19 +145,30 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
   function _getEventHandlerProps(
     data: IFunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } },
+    opacity?: number,
   ) {
     if ('subValue' in data) {
       return {
         culture: props.culture,
-        onMouseOver: (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event),
-        onMouseMove: (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event),
+        onMouseOver:
+          opacity === 1
+            ? (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event)
+            : undefined,
+        onMouseMove:
+          opacity === 1
+            ? (event: React.MouseEvent<SVGElement>) => _handleStackedHover(data.stage, data.subValue, event)
+            : undefined,
+        onFocus: (event: React.FocusEvent<SVGPathElement>) => _handleStackedFocus(data.stage, data.subValue, event),
+        onBlur: () => _handleMouseOut(),
         onMouseOut: () => _handleMouseOut(),
       };
     } else {
       return {
         culture: props.culture,
-        onMouseOver: (event: React.MouseEvent<SVGElement>) => _handleHover(data, event),
-        onMouseMove: (event: React.MouseEvent<SVGElement>) => _handleHover(data, event),
+        onMouseOver: opacity === 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
+        onMouseMove: opacity === 1 ? (event: React.MouseEvent<SVGElement>) => _handleHover(data, event) : undefined,
+        onFocus: (event: React.FocusEvent<SVGPathElement>) => _handleFocus(data, event),
+        onBlur: () => _handleMouseOut(),
         onMouseOut: () => _handleMouseOut(),
       };
     }
@@ -176,6 +210,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     opacity,
     textProps,
     data,
+    isFocusable,
   }: {
     key: string | number;
     pathD: string;
@@ -188,13 +223,14 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       value: number;
     };
     data: IFunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } };
+    isFocusable?: boolean;
   }) {
-    const eventHandlers = _getEventHandlerProps(data);
+    const eventHandlers = _getEventHandlerProps(data, opacity);
     const textColor = getContrastTextColor(fill, props.theme!);
 
     return (
       <g key={key}>
-        <path d={pathD} fill={fill} opacity={opacity} {...eventHandlers} />
+        <path d={pathD} fill={fill} opacity={opacity} {...eventHandlers} data-is-focusable={isFocusable} />
         {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor })}</g>}
       </g>
     );
@@ -211,9 +247,9 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
     return data.map((d, i) => {
       const geometryProps =
-        props.orientation === 'horizontal'
-          ? getHorizontalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL })
-          : getVerticalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL });
+        props.orientation === 'vertical'
+          ? getVerticalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL })
+          : getHorizontalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL });
 
       const { pathD, textX, textY, availableWidth } = geometryProps;
       const minTextWidth = 16;
@@ -234,6 +270,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
         opacity: legendHighlighted(d.stage as string) || noLegendHighlighted() ? 1 : 0.1,
         textProps,
         data: d,
+        isFocusable: legendHighlighted(d.stage as string) || noLegendHighlighted() ? true : false,
       });
     });
   }
@@ -264,14 +301,14 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     }));
 
     const geom =
-      props.orientation === 'horizontal'
-        ? getStackedHorizontalFunnelSegmentGeometry({
+      props.orientation === 'vertical'
+        ? getStackedVerticalFunnelSegmentGeometry({
             ...geometryParams,
             stages: stagesWithSubValues,
             i: stageIndex,
             k: subValueIndex,
           })
-        : getStackedVerticalFunnelSegmentGeometry({
+        : getStackedHorizontalFunnelSegmentGeometry({
             ...geometryParams,
             stages: stagesWithSubValues,
             i: stageIndex,
@@ -297,6 +334,10 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
         (isStackedFunnelData(props.data) && legendHighlighted(subValue.category)) || noLegendHighlighted() ? 1 : 0.1,
       textProps,
       data: { stage: stage.stage as string, subValue },
+      isFocusable:
+        (isStackedFunnelData(props.data) && legendHighlighted(subValue.category)) || noLegendHighlighted()
+          ? true
+          : false,
     });
   }
 
@@ -453,5 +494,5 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 FunnelChartBase.displayName = 'FunnelChart';
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 FunnelChartBase.defaultProps = {
-  orientation: 'horizontal',
+  orientation: 'vertical',
 };

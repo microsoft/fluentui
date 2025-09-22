@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import type { JSXElement } from '@fluentui/react-utilities/';
 import { PortalCompatProvider } from '@fluentui/react-portal-compat';
 import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mount = (element: JSXElement) => {
   mountBase(
     <FluentProvider theme={teamsLightTheme}>
       <PortalCompatProvider>{element}</PortalCompatProvider>

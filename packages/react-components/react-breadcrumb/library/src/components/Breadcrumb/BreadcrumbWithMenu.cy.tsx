@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
-import type {} from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
@@ -14,12 +13,10 @@ import type { PartitionBreadcrumbItems } from '../../utils';
 import { Button } from '@fluentui/react-button';
 import { Menu, MenuList, MenuItemLink, MenuPopover, MenuTrigger, MenuItem } from '@fluentui/react-menu';
 import { useIsOverflowItemVisible, useOverflowMenu } from '@fluentui/react-overflow';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
-const mountFluent = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => {
+const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

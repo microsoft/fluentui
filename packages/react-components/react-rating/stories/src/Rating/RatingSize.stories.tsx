@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Rating } from '@fluentui/react-components';
 import { makeStyles } from '@fluentui/react-components';
 
@@ -10,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Size = () => {
+export const Size = (): JSXElement => {
   const classes = useStyles();
   return (
     <div className={classes.root}>

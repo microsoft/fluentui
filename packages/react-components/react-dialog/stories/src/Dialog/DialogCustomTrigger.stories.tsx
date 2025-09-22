@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Button,
   Dialog,
@@ -20,7 +21,7 @@ const CustomDialogTrigger = React.forwardRef<HTMLButtonElement, DialogTriggerChi
   );
 });
 
-export const CustomTrigger = () => {
+export const CustomTrigger = (): JSXElement => {
   return (
     <Dialog>
       <DialogTrigger disableButtonEnhancement>

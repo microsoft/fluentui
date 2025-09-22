@@ -5,6 +5,22 @@ test.describe('Tree', () => {
     tagName: 'fluent-tree',
   });
 
+  test('should create with document.createElement()', async ({ page, fastPage }) => {
+    await fastPage.setTemplate();
+
+    let hasError = false;
+
+    page.on('pageerror', () => {
+      hasError = true;
+    });
+
+    await page.evaluate(() => {
+      document.createElement('fluent-tree');
+    });
+
+    expect(hasError).toBe(false);
+  });
+
   test('should work with basic rendering', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -196,7 +212,7 @@ test.describe('Tree', () => {
     const treeItem1 = element.locator('fluent-tree-item').nth(0);
     expect(await treeItem1.getAttribute('selected')).toBeNull();
 
-    await treeItem1.focus();
+    await element.focus();
     expect(await elementHandle).toBe(false);
     await page.keyboard.press('Space');
 

@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Thu, 26 Jun 2025 14:11:54 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 12:51:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.10.0)
+
+Mon, 08 Sep 2025 12:51:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.9.0..@fluentui/react-motion-components-preview_v0.10.0)
+
+### Minor changes
+
+- feat(motion): add delay parameter to motion components ([PR #35077](https://github.com/microsoft/fluentui/pull/35077) by robertpenner@microsoft.com)
+
+### Patches
+
+- refactor(motion): normalize motion atom parameters & types ([PR #35076](https://github.com/microsoft/fluentui/pull/35076) by robertpenner@microsoft.com)
+- fix(motion): apply opacity in animations using fill mode ([PR #35078](https://github.com/microsoft/fluentui/pull/35078) by robertpenner@microsoft.com)
+- test(motion): expand motion atom testing ([PR #35079](https://github.com/microsoft/fluentui/pull/35079) by robertpenner@microsoft.com)
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.9.0)
+
+Thu, 21 Aug 2025 12:25:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.8.1..@fluentui/react-motion-components-preview_v0.9.0)
+
+### Minor changes
+
+- feat(motion): add Rotate presence motion component ([PR #34928](https://github.com/microsoft/fluentui/pull/34928) by robertpenner@microsoft.com)
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.8.0)
+
+Mon, 28 Jul 2025 18:48:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.7.0..@fluentui/react-motion-components-preview_v0.8.0)
+
+### Minor changes
+
+- feat(motion): add Fade presence motion component ([PR #34839](https://github.com/microsoft/fluentui/pull/34839) by robertpenner@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.7.0)
+
+Wed, 16 Jul 2025 13:52:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.6.2..@fluentui/react-motion-components-preview_v0.7.0)
+
+### Minor changes
+
+- refactor(Collapse): make consistent with other motion components ([PR #34831](https://github.com/microsoft/fluentui/pull/34831) by robertpenner@microsoft.com)
+- feat(motion): add Slide presence motion component ([PR #34774](https://github.com/microsoft/fluentui/pull/34774) by robertpenner@microsoft.com)
+- refactor(motion): apply consistent patterns across Fade and Scale ([PR #34830](https://github.com/microsoft/fluentui/pull/34830) by robertpenner@microsoft.com)
 
 ## [0.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.6.2)
 

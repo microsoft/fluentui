@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -49,7 +50,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Pinned = () => {
+export const Pinned = (): JSXElement => {
   const styles = useStyles();
 
   const [selected, setSelected] = React.useState<string>('6');

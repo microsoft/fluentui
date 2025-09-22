@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '@fluentui/react-components';
 import type { ShadowTokens } from '@fluentui/react-components';
 
@@ -39,7 +40,7 @@ const ShadowBox: React.FunctionComponent<
   </div>
 );
 
-export const Shadows = () => {
+export const Shadows = (): JSXElement => {
   const shadowTokens = Object.keys(theme.light).filter(tokenName =>
     tokenName.startsWith('shadow'),
   ) as (keyof ShadowTokens)[];

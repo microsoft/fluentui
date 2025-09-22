@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   VerticalStackedBarChart,
   VSChartDataPoint,
@@ -9,7 +10,7 @@ import {
 } from '@fluentui/react-charts';
 import { Field, Checkbox, CheckboxOnChangeData, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const VerticalStackedBarCallout = () => {
+export const VerticalStackedBarCallout = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [barGapMax, setBarGapMax] = React.useState<number>(2);

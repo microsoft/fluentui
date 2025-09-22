@@ -3,7 +3,7 @@ import { baseConfig } from '@fluentui/scripts-cypress';
 
 import { getNodeModulesPath } from './config/utils';
 
-const usedNodeModulesPath = getNodeModulesPath();
+const { usedNodeModulesPath } = getNodeModulesPath();
 
 const config = { ...baseConfig };
 

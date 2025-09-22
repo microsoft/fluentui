@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
@@ -19,7 +20,7 @@ const ExampleContent = () => {
   );
 };
 
-export const Default = (props: PopoverProps) => (
+export const Default = (props: PopoverProps): JSXElement => (
   <Popover {...props}>
     <PopoverTrigger disableButtonEnhancement>
       <Button>Popover trigger</Button>

@@ -13,7 +13,7 @@ import { PositioningVirtualElement, SetVirtualMouseTarget } from './types';
  */
 export const usePositioningMouseTarget = (
   initialState?: PositioningVirtualElement | (() => PositioningVirtualElement),
-) => {
+): readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget] => {
   const [virtualElement, setVirtualElement] = React.useState<PositioningVirtualElement | undefined>(initialState);
 
   const setVirtualMouseTarget: SetVirtualMouseTarget = event => {

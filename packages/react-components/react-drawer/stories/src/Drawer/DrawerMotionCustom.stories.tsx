@@ -11,6 +11,7 @@ import {
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const drawerWidth = '320px';
 const drawerMargin = tokens.spacingVerticalM;
@@ -121,7 +122,7 @@ const ContentMotion = createPresenceComponent(() => {
   };
 });
 
-export const MotionCustom = () => {
+export const MotionCustom = (): JSXElement => {
   const styles = useStyles();
   const [isOpen, setIsOpen] = React.useState(false);
 

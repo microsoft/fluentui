@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
-const IS_REACT_19 = React.version.startsWith('19.');
 const CHILD_ERROR_MESSAGE = [
   '@fluentui/react-motion: Invalid child element.',
   '\n',
@@ -10,26 +10,15 @@ const CHILD_ERROR_MESSAGE = [
 ].join('');
 
 /**
- * A backwards-compatible way to get the ref from a React element without console errors.
- */
-function getRefFromReactElement<T>(element: React.ReactElement): React.Ref<T> | undefined {
-  if (IS_REACT_19) {
-    return element.props.ref;
-  }
-
-  return (element as React.ReactElement & { ref: React.Ref<T> | undefined }).ref;
-}
-
-/**
  * Validates the child and returns a cloned child element with a ref.
  *
  * Throws an error if the child is not a valid React element, similar to "React.Children.only".
  * Logs a warning in development mode if the ref is not set as the component remains functional.
  */
 export function useChildElement(
-  children: React.ReactElement,
+  children: JSXElement,
   mounted: boolean = true,
-): [React.ReactElement, React.RefObject<HTMLElement>] {
+): [JSXElement, React.RefObject<HTMLElement | null>] {
   const childRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
@@ -47,7 +36,7 @@ export function useChildElement(
     if (React.isValidElement(child)) {
       return [
         React.cloneElement(child as React.ReactElement<{ ref: React.Ref<HTMLElement> }>, {
-          ref: useMergedRefs(childRef, getRefFromReactElement(child)),
+          ref: useMergedRefs(childRef, getReactElementRef(child)),
         }),
         childRef,
       ];

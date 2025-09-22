@@ -1,8 +1,119 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 04 Jul 2025 04:08:39 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Sep 2025 04:07:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.124](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.124)
+
+Thu, 18 Sep 2025 04:07:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.123..@fluentui/web-components_v3.0.0-beta.124)
+
+### Changes
+
+- fix: bug in switch checked story in forced-colors mode ([PR #35204](https://github.com/microsoft/fluentui/pull/35204) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.123](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.123)
+
+Fri, 05 Sep 2025 04:09:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.122..@fluentui/web-components_v3.0.0-beta.123)
+
+### Changes
+
+- fix: use defined selector in waitForConnectedDescendants ([PR #35142](https://github.com/microsoft/fluentui/pull/35142) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.122](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.122)
+
+Thu, 04 Sep 2025 04:07:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.121..@fluentui/web-components_v3.0.0-beta.122)
+
+### Changes
+
+- feat: enable SSR for rating-display ([PR #35126](https://github.com/microsoft/fluentui/pull/35126) by machi@microsoft.com)
+
+## [3.0.0-beta.121](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.121)
+
+Wed, 03 Sep 2025 04:08:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.120..@fluentui/web-components_v3.0.0-beta.121)
+
+### Changes
+
+- refactor: replace slotted with slotchange for tree and tree-item ([PR #35138](https://github.com/microsoft/fluentui/pull/35138) by machi@microsoft.com)
+
+## [3.0.0-beta.120](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.120)
+
+Mon, 01 Sep 2025 04:08:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.119..@fluentui/web-components_v3.0.0-beta.120)
+
+### Changes
+
+- fix: add focus-ring to dropdown ([PR #35116](https://github.com/microsoft/fluentui/pull/35116) by rupertdavid@microsoft.com)
+- fix(dropdown): use slotchange events instead of manual slot assignment ([PR #35125](https://github.com/microsoft/fluentui/pull/35125) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.119](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.119)
+
+Wed, 27 Aug 2025 04:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.118..@fluentui/web-components_v3.0.0-beta.119)
+
+### Changes
+
+- feat: make tree and tree-item SSR compatible ([PR #35091](https://github.com/microsoft/fluentui/pull/35091) by machi@microsoft.com)
+
+## [3.0.0-beta.118](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.118)
+
+Tue, 26 Aug 2025 04:07:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.117..@fluentui/web-components_v3.0.0-beta.118)
+
+### Changes
+
+- fix: remove unnecessary type check and avoid using instanceof in menu-list ([PR #35074](https://github.com/microsoft/fluentui/pull/35074) by machi@microsoft.com)
+- fix: make tablist more ssr compatible ([PR #35072](https://github.com/microsoft/fluentui/pull/35072) by machi@microsoft.com)
+
+## [3.0.0-beta.117](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.117)
+
+Mon, 25 Aug 2025 04:07:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.116..@fluentui/web-components_v3.0.0-beta.117)
+
+### Changes
+
+- fix: remove unnecessary type check for better ssr compatibility ([PR #35073](https://github.com/microsoft/fluentui/pull/35073) by machi@microsoft.com)
+
+## [3.0.0-beta.116](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.116)
+
+Wed, 13 Aug 2025 04:08:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.115..@fluentui/web-components_v3.0.0-beta.116)
+
+### Changes
+
+- feat: make components ready for ssr support ([PR #34996](https://github.com/microsoft/fluentui/pull/34996) by machi@microsoft.com)
+
+## [3.0.0-beta.115](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.115)
+
+Mon, 04 Aug 2025 04:07:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.114..@fluentui/web-components_v3.0.0-beta.115)
+
+### Changes
+
+- fix: avoid setting tabindex before button is connected ([PR #34960](https://github.com/microsoft/fluentui/pull/34960) by machi@microsoft.com)
+
+## [3.0.0-beta.114](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.114)
+
+Fri, 25 Jul 2025 04:07:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.113..@fluentui/web-components_v3.0.0-beta.114)
+
+### Changes
+
+- a11y: remove vertical margins on dialog to support 400% zoom ([PR #34906](https://github.com/microsoft/fluentui/pull/34906) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.113](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.113)
+
+Mon, 21 Jul 2025 04:07:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.112..@fluentui/web-components_v3.0.0-beta.113)
+
+### Changes
+
+- fix: remove unnecessary tabindex logic from switch template ([PR #34877](https://github.com/microsoft/fluentui/pull/34877) by machi@microsoft.com)
+- fix: vertical slider in rtl has the opposite value than the visual ([PR #34876](https://github.com/microsoft/fluentui/pull/34876) by machi@microsoft.com)
 
 ## [3.0.0-beta.112](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.112)
 

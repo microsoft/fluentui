@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   createPresenceComponentVariant,
   Field,
@@ -67,9 +68,9 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Customization = () => {
+export const Customization = (): JSXElement => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);

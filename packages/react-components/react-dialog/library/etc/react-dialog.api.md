@@ -4,19 +4,16 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElementConstructor } from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
-import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
@@ -24,6 +21,15 @@ import { useModalAttributes } from '@fluentui/react-tabster';
 
 // @public
 export const Dialog: React_2.FC<DialogProps>;
+
+// @public (undocumented)
+export const DIALOG_FULLSCREEN_DIALOG_SCROLLBAR_OFFSET = "4px";
+
+// @public (undocumented)
+export const DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR = "@media screen and (max-width: 480px)";
+
+// @public (undocumented)
+export const DIALOG_MEDIA_QUERY_SHORT_SCREEN = "@media screen and (max-height: 359px)";
 
 // @public
 export const DialogActions: ForwardRefComponent<DialogActionsProps>;
@@ -88,7 +94,7 @@ export type DialogContextValue = {
     inertTrapFocus: boolean;
     dialogTitleId?: string;
     isNestedDialog: boolean;
-    dialogRef: React_2.Ref<DialogSurfaceElement>;
+    dialogRef: React_2.Ref<DialogSurfaceElement | null>;
     modalType: DialogModalType;
     requestOpenChange: (data: DialogOpenChangeData) => void;
 } & Partial<ReturnType<typeof useModalAttributes>>;
@@ -129,7 +135,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     open?: boolean;
     defaultOpen?: boolean;
     onOpenChange?: DialogOpenChangeEventHandler;
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSXElement, JSXElement] | JSXElement;
     inertTrapFocus?: boolean;
 };
 
@@ -224,25 +230,25 @@ export type DialogTriggerState = {
 };
 
 // @public
-export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSX.Element;
+export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSXElement;
 
 // @public
-export const renderDialogActions_unstable: (state: DialogActionsState) => JSX.Element;
+export const renderDialogActions_unstable: (state: DialogActionsState) => JSXElement;
 
 // @public
-export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
+export const renderDialogBody_unstable: (state: DialogBodyState) => JSXElement;
 
 // @public
-export const renderDialogContent_unstable: (state: DialogContentState) => JSX.Element;
+export const renderDialogContent_unstable: (state: DialogContentState) => JSXElement;
 
 // @public
-export const renderDialogSurface_unstable: (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => JSX.Element;
+export const renderDialogSurface_unstable: (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => JSXElement;
 
 // @public
-export const renderDialogTitle_unstable: (state: DialogTitleState) => JSX.Element;
+export const renderDialogTitle_unstable: (state: DialogTitleState) => JSXElement;
 
 // @public
-export const renderDialogTrigger_unstable: (state: DialogTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
+export const renderDialogTrigger_unstable: (state: DialogTriggerState) => JSXElement | null;
 
 // @public
 export const useDialog_unstable: (props: DialogProps) => DialogState;
@@ -275,7 +281,7 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
 export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceState;
 
 // @public (undocumented)
-export const useDialogSurfaceContext_unstable: () => boolean;
+export const useDialogSurfaceContext_unstable: () => DialogSurfaceContextValue;
 
 // @public (undocumented)
 export function useDialogSurfaceContextValues_unstable(state: DialogSurfaceState): DialogSurfaceContextValues;

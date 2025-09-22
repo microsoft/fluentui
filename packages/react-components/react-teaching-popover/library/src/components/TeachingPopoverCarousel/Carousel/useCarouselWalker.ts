@@ -11,7 +11,10 @@ export type CarouselWalker = {
   active(): { el: HTMLElement; value: string } | null;
 };
 
-export const useCarouselWalker_unstable = () => {
+export const useCarouselWalker_unstable = (): {
+  ref: React.RefCallback<HTMLDivElement>;
+  walker: CarouselWalker;
+} => {
   const { targetDocument } = useFluent();
 
   const treeWalkerRef = React.useRef<TreeWalker | undefined>(targetDocument?.createTreeWalker(targetDocument.body));

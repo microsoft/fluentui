@@ -45,6 +45,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               0
@@ -63,6 +64,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               5000
@@ -81,6 +83,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               10,000
@@ -99,6 +102,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               15,000
@@ -117,6 +121,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               20,000
@@ -135,6 +140,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               25,000
@@ -153,6 +159,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               30,000
@@ -171,6 +178,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               35,000
@@ -189,6 +197,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               40,000
@@ -222,22 +231,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="0"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-16"
-              >
-                0
-              </tspan>
+              0
             </text>
           </g>
           <g
@@ -253,22 +249,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="10k"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-16"
-              >
-                10k
-              </tspan>
+              10k
             </text>
           </g>
           <g
@@ -284,22 +267,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="20k"
-                dy="0.32em"
-                id="BaseSpan-2"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-2"
-                x="-16"
-              >
-                20k
-              </tspan>
+              20k
             </text>
           </g>
           <g
@@ -315,22 +285,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="30k"
-                dy="0.32em"
-                id="BaseSpan-3"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-3"
-                x="-16"
-              >
-                30k
-              </tspan>
+              30k
             </text>
           </g>
           <g
@@ -346,22 +303,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="40k"
-                dy="0.32em"
-                id="BaseSpan-4"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-4"
-                x="-16"
-              >
-                40k
-              </tspan>
+              40k
             </text>
           </g>
           <g
@@ -377,22 +321,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan-5"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-5"
-                x="-16"
-              >
-                50k
-              </tspan>
+              50k
             </text>
           </g>
         </g>
@@ -598,6 +529,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               0
@@ -616,6 +548,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               500
@@ -634,6 +567,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               1000
@@ -652,6 +586,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               1500
@@ -670,6 +605,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               2000
@@ -688,6 +624,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               2500
@@ -706,6 +643,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               3000
@@ -724,6 +662,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               3500
@@ -742,6 +681,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               4000
@@ -760,6 +700,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               4500
@@ -778,6 +719,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="10"
             >
               5000
@@ -810,22 +752,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String Four"
-                dy="0.32em"
-                id="BaseSpan-0"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-0"
-                x="-16"
-              >
-                String Four
-              </tspan>
+              String One
             </text>
           </g>
           <g
@@ -840,22 +769,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String Three"
-                dy="0.32em"
-                id="BaseSpan-1"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-1"
-                x="-16"
-              >
-                String Three
-              </tspan>
+              String Two
             </text>
           </g>
           <g
@@ -870,22 +786,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String Two"
-                dy="0.32em"
-                id="BaseSpan-2"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-2"
-                x="-16"
-              >
-                String Two
-              </tspan>
+              String Three
             </text>
           </g>
           <g
@@ -900,22 +803,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-16"
             >
-              <tspan
-                data-="String One"
-                dy="0.32em"
-                id="BaseSpan-3"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength-3"
-                x="-16"
-              >
-                String One
-              </tspan>
+              String Four
             </text>
           </g>
         </g>
@@ -933,7 +823,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="118"
             x="40"
-            y="53.44444444444446"
+            y="206.11111111111111"
           />
           <rect
             aria-label="5000. String Two."
@@ -948,7 +838,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="590"
             x="40"
-            y="104.33333333333334"
+            y="155.22222222222223"
           />
           <rect
             aria-label="3000. String Three."
@@ -963,7 +853,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="354"
             x="40"
-            y="155.22222222222223"
+            y="104.33333333333334"
           />
           <rect
             aria-label="2000. String Four."
@@ -978,7 +868,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.634920634920636)"
             width="236"
             x="40"
-            y="206.11111111111111"
+            y="53.44444444444446"
           />
         </g>
       </svg>
@@ -1078,6 +968,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -1096,6 +987,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -1114,6 +1006,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -1132,6 +1025,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   15,000
@@ -1150,6 +1044,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -1168,6 +1063,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   25,000
@@ -1186,6 +1082,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   30,000
@@ -1204,6 +1101,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   35,000
@@ -1222,6 +1120,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   40,000
@@ -1255,22 +1154,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -1286,22 +1172,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -1317,22 +1190,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -1348,22 +1208,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -1379,22 +1226,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -1410,22 +1244,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
@@ -1629,6 +1450,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -1647,6 +1469,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -1665,6 +1488,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -1683,6 +1507,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 15,000
@@ -1701,6 +1526,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -1719,6 +1545,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 25,000
@@ -1737,6 +1564,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 30,000
@@ -1755,6 +1583,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 35,000
@@ -1773,6 +1602,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 40,000
@@ -1806,22 +1636,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -1837,22 +1654,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -1868,22 +1672,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -1899,22 +1690,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -1930,22 +1708,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -1961,22 +1726,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
@@ -2244,6 +1996,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -2262,6 +2015,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -2280,6 +2034,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -2298,6 +2053,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   15,000
@@ -2316,6 +2072,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -2334,6 +2091,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   25,000
@@ -2352,6 +2110,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   30,000
@@ -2370,6 +2129,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   35,000
@@ -2388,6 +2148,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   40,000
@@ -2421,22 +2182,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -2452,22 +2200,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -2483,22 +2218,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -2514,22 +2236,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -2545,22 +2254,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -2576,22 +2272,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
@@ -2795,6 +2478,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -2813,6 +2497,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -2831,6 +2516,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -2849,6 +2535,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 15,000
@@ -2867,6 +2554,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -2885,6 +2573,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 25,000
@@ -2903,6 +2592,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 30,000
@@ -2921,6 +2611,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 35,000
@@ -2939,6 +2630,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 40,000
@@ -2972,22 +2664,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -3003,22 +2682,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -3034,22 +2700,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -3065,22 +2718,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -3096,22 +2736,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -3127,22 +2754,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
@@ -3405,6 +3019,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -3423,6 +3038,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -3441,6 +3057,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -3459,6 +3076,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   15,000
@@ -3477,6 +3095,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -3495,6 +3114,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   25,000
@@ -3513,6 +3133,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   30,000
@@ -3531,6 +3152,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   35,000
@@ -3549,6 +3171,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   40,000
@@ -3582,22 +3205,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -3613,22 +3223,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -3644,22 +3241,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -3675,22 +3259,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -3706,22 +3277,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -3737,22 +3295,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
@@ -3956,6 +3501,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -3974,6 +3520,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -3992,6 +3539,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -4010,6 +3558,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 15,000
@@ -4028,6 +3577,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -4046,6 +3596,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 25,000
@@ -4064,6 +3615,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 30,000
@@ -4082,6 +3634,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 35,000
@@ -4100,6 +3653,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 40,000
@@ -4133,22 +3687,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -4164,22 +3705,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -4195,22 +3723,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -4226,22 +3741,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -4257,22 +3759,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -4288,22 +3777,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
@@ -4566,6 +4042,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   -8000
@@ -4584,6 +4061,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   -6000
@@ -4602,6 +4080,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   -4000
@@ -4620,6 +4099,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   -2000
@@ -4638,6 +4118,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -4656,6 +4137,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2000
@@ -4674,6 +4156,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4000
@@ -4692,6 +4175,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   6000
@@ -4710,6 +4194,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   8000
@@ -4728,6 +4213,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -4746,6 +4232,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   12,000
@@ -4764,6 +4251,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   14,000
@@ -4782,6 +4270,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   16,000
@@ -4800,6 +4289,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   18,000
@@ -4818,6 +4308,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -4850,22 +4341,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="Q3"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    Q3
-                  </tspan>
+                  Q1
                 </text>
               </g>
               <g
@@ -4880,22 +4358,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="Q2"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    Q2
-                  </tspan>
+                  Q2
                 </text>
               </g>
               <g
@@ -4910,22 +4375,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="Q1"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    Q1
-                  </tspan>
+                  Q3
                 </text>
               </g>
             </g>
@@ -4943,7 +4395,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="208.71428571428575"
                 x="208.57142857142858"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="-5K. Q1."
@@ -4958,7 +4410,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="103.35714285714286"
                 x="103.21428571428572"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="8K. Q1."
@@ -4973,7 +4425,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="168.57142857142858"
                 x="419.28571428571433"
-                y="60.71428571428571"
+                y="191.57142857142856"
               />
               <rect
                 aria-label="-7K. Q2."
@@ -5033,7 +4485,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="314.07142857142856"
                 x="208.57142857142858"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
               <rect
                 aria-label="-4K. Q3."
@@ -5048,7 +4500,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="82.28571428571429"
                 x="124.28571428571429"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
               <rect
                 aria-label="5K. Q3."
@@ -5063,7 +4515,7 @@ Object {
                 transform="translate(0,-6.542857142857141)"
                 width="105.35714285714286"
                 x="524.6428571428571"
-                y="191.57142857142856"
+                y="60.71428571428571"
               />
             </g>
           </svg>
@@ -5189,6 +4641,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 -8000
@@ -5207,6 +4660,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 -6000
@@ -5225,6 +4679,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 -4000
@@ -5243,6 +4698,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 -2000
@@ -5261,6 +4717,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -5279,6 +4736,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2000
@@ -5297,6 +4755,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4000
@@ -5315,6 +4774,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 6000
@@ -5333,6 +4793,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 8000
@@ -5351,6 +4812,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -5369,6 +4831,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 12,000
@@ -5387,6 +4850,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 14,000
@@ -5405,6 +4869,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 16,000
@@ -5423,6 +4888,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 18,000
@@ -5441,6 +4907,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -5473,22 +4940,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="Q3"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  Q3
-                </tspan>
+                Q1
               </text>
             </g>
             <g
@@ -5503,22 +4957,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="Q2"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  Q2
-                </tspan>
+                Q2
               </text>
             </g>
             <g
@@ -5533,22 +4974,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="Q1"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  Q1
-                </tspan>
+                Q3
               </text>
             </g>
           </g>
@@ -5566,7 +4994,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="208.71428571428575"
               x="208.57142857142858"
-              y="60.71428571428571"
+              y="191.57142857142856"
             />
             <rect
               aria-label="-5K. Q1."
@@ -5581,7 +5009,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="103.35714285714286"
               x="103.21428571428572"
-              y="60.71428571428571"
+              y="191.57142857142856"
             />
             <rect
               aria-label="8K. Q1."
@@ -5596,7 +5024,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="168.57142857142858"
               x="419.28571428571433"
-              y="60.71428571428571"
+              y="191.57142857142856"
             />
             <rect
               aria-label="-7K. Q2."
@@ -5656,7 +5084,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="314.07142857142856"
               x="208.57142857142858"
-              y="191.57142857142856"
+              y="60.71428571428571"
             />
             <rect
               aria-label="-4K. Q3."
@@ -5671,7 +5099,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="82.28571428571429"
               x="124.28571428571429"
-              y="191.57142857142856"
+              y="60.71428571428571"
             />
             <rect
               aria-label="5K. Q3."
@@ -5686,7 +5114,7 @@ Object {
               transform="translate(0,-6.542857142857141)"
               width="105.35714285714286"
               x="524.6428571428571"
-              y="191.57142857142856"
+              y="60.71428571428571"
             />
           </g>
         </svg>
@@ -5871,6 +5299,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -5889,6 +5318,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -5907,6 +5337,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   10,000
@@ -5925,6 +5356,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   15,000
@@ -5943,6 +5375,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   20,000
@@ -5961,6 +5394,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   25,000
@@ -5979,6 +5413,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   30,000
@@ -5997,6 +5432,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   35,000
@@ -6015,6 +5451,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   40,000
@@ -6048,22 +5485,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="0"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    0
-                  </tspan>
+                  0
                 </text>
               </g>
               <g
@@ -6079,22 +5503,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="10k"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    10k
-                  </tspan>
+                  10k
                 </text>
               </g>
               <g
@@ -6110,22 +5521,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="20k"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    20k
-                  </tspan>
+                  20k
                 </text>
               </g>
               <g
@@ -6141,22 +5539,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="30k"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    30k
-                  </tspan>
+                  30k
                 </text>
               </g>
               <g
@@ -6172,22 +5557,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="40k"
-                    dy="0.32em"
-                    id="BaseSpan-4"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-4"
-                    x="-16"
-                  >
-                    40k
-                  </tspan>
+                  40k
                 </text>
               </g>
               <g
@@ -6203,22 +5575,9 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="50k"
-                    dy="0.32em"
-                    id="BaseSpan-5"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-5"
-                    x="-16"
-                  >
-                    50k
-                  </tspan>
+                  50k
                 </text>
               </g>
             </g>
@@ -6329,6 +5688,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -6347,6 +5707,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -6365,6 +5726,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 10,000
@@ -6383,6 +5745,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 15,000
@@ -6401,6 +5764,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 20,000
@@ -6419,6 +5783,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 25,000
@@ -6437,6 +5802,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 30,000
@@ -6455,6 +5821,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 35,000
@@ -6473,6 +5840,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 40,000
@@ -6506,22 +5874,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="0"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  0
-                </tspan>
+                0
               </text>
             </g>
             <g
@@ -6537,22 +5892,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  10k
-                </tspan>
+                10k
               </text>
             </g>
             <g
@@ -6568,22 +5910,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="20k"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  20k
-                </tspan>
+                20k
               </text>
             </g>
             <g
@@ -6599,22 +5928,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  30k
-                </tspan>
+                30k
               </text>
             </g>
             <g
@@ -6630,22 +5946,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan-4"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-4"
-                  x="-16"
-                >
-                  40k
-                </tspan>
+                40k
               </text>
             </g>
             <g
@@ -6661,22 +5964,9 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan-5"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-5"
-                  x="-16"
-                >
-                  50k
-                </tspan>
+                50k
               </text>
             </g>
           </g>
@@ -6846,6 +6136,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -6864,6 +6155,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   500
@@ -6882,6 +6174,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   1000
@@ -6900,6 +6193,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   1500
@@ -6918,6 +6212,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2000
@@ -6936,6 +6231,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2500
@@ -6954,6 +6250,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   3000
@@ -6972,6 +6269,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   3500
@@ -6990,6 +6288,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4000
@@ -7008,6 +6307,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4500
@@ -7026,6 +6326,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -7058,19 +6359,19 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  x="-21"
+                  x="-16"
                 >
                   <tspan
-                    data-="String Four"
+                    data-="String One"
                     dy="0.32em"
                     id="BaseSpan-0"
-                    x="-21"
+                    x="-16"
                   />
                   <tspan
-                    dx="1.5em"
-                    dy="0.32"
+                    dx="0em"
+                    dy="0.32em"
                     id="showDots-0"
-                    x="-21"
+                    x="-16"
                   >
                     Stri...
                   </tspan>
@@ -7088,19 +6389,19 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  x="-21"
+                  x="-16"
                 >
                   <tspan
-                    data-="String Three"
+                    data-="String Two"
                     dy="0.32em"
                     id="BaseSpan-1"
-                    x="-21"
+                    x="-16"
                   />
                   <tspan
-                    dx="1.5em"
-                    dy="0.32"
+                    dx="0em"
+                    dy="0.32em"
                     id="showDots-1"
-                    x="-21"
+                    x="-16"
                   >
                     Stri...
                   </tspan>
@@ -7118,19 +6419,19 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  x="-21"
+                  x="-16"
                 >
                   <tspan
-                    data-="String Two"
+                    data-="String Three"
                     dy="0.32em"
                     id="BaseSpan-2"
-                    x="-21"
+                    x="-16"
                   />
                   <tspan
-                    dx="1.5em"
-                    dy="0.32"
+                    dx="0em"
+                    dy="0.32em"
                     id="showDots-2"
-                    x="-21"
+                    x="-16"
                   >
                     Stri...
                   </tspan>
@@ -7148,19 +6449,19 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  x="-21"
+                  x="-16"
                 >
                   <tspan
-                    data-="String One"
+                    data-="String Four"
                     dy="0.32em"
                     id="BaseSpan-3"
-                    x="-21"
+                    x="-16"
                   />
                   <tspan
-                    dx="1.5em"
-                    dy="0.32"
+                    dx="0em"
+                    dy="0.32em"
                     id="showDots-3"
-                    x="-21"
+                    x="-16"
                   >
                     Stri...
                   </tspan>
@@ -7181,7 +6482,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="53.44444444444446"
+                y="206.11111111111111"
               />
               <rect
                 aria-label="5000. String Two."
@@ -7196,7 +6497,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="104.33333333333334"
+                y="155.22222222222223"
               />
               <rect
                 aria-label="3000. String Three."
@@ -7211,7 +6512,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="155.22222222222223"
+                y="104.33333333333334"
               />
               <rect
                 aria-label="2000. String Four."
@@ -7226,7 +6527,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="206.11111111111111"
+                y="53.44444444444446"
               />
             </g>
           </svg>
@@ -7319,6 +6620,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -7337,6 +6639,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 500
@@ -7355,6 +6658,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 1000
@@ -7373,6 +6677,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 1500
@@ -7391,6 +6696,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2000
@@ -7409,6 +6715,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2500
@@ -7427,6 +6734,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 3000
@@ -7445,6 +6753,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 3500
@@ -7463,6 +6772,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4000
@@ -7481,6 +6791,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4500
@@ -7499,6 +6810,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -7531,19 +6843,19 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                x="-21"
+                x="-16"
               >
                 <tspan
-                  data-="String Four"
+                  data-="String One"
                   dy="0.32em"
                   id="BaseSpan-0"
-                  x="-21"
+                  x="-16"
                 />
                 <tspan
-                  dx="1.5em"
-                  dy="0.32"
+                  dx="0em"
+                  dy="0.32em"
                   id="showDots-0"
-                  x="-21"
+                  x="-16"
                 >
                   Stri...
                 </tspan>
@@ -7561,19 +6873,19 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                x="-21"
+                x="-16"
               >
                 <tspan
-                  data-="String Three"
+                  data-="String Two"
                   dy="0.32em"
                   id="BaseSpan-1"
-                  x="-21"
+                  x="-16"
                 />
                 <tspan
-                  dx="1.5em"
-                  dy="0.32"
+                  dx="0em"
+                  dy="0.32em"
                   id="showDots-1"
-                  x="-21"
+                  x="-16"
                 >
                   Stri...
                 </tspan>
@@ -7591,19 +6903,19 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                x="-21"
+                x="-16"
               >
                 <tspan
-                  data-="String Two"
+                  data-="String Three"
                   dy="0.32em"
                   id="BaseSpan-2"
-                  x="-21"
+                  x="-16"
                 />
                 <tspan
-                  dx="1.5em"
-                  dy="0.32"
+                  dx="0em"
+                  dy="0.32em"
                   id="showDots-2"
-                  x="-21"
+                  x="-16"
                 >
                   Stri...
                 </tspan>
@@ -7621,19 +6933,19 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                x="-21"
+                x="-16"
               >
                 <tspan
-                  data-="String One"
+                  data-="String Four"
                   dy="0.32em"
                   id="BaseSpan-3"
-                  x="-21"
+                  x="-16"
                 />
                 <tspan
-                  dx="1.5em"
-                  dy="0.32"
+                  dx="0em"
+                  dy="0.32em"
                   id="showDots-3"
-                  x="-21"
+                  x="-16"
                 >
                   Stri...
                 </tspan>
@@ -7654,7 +6966,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="118"
               x="40"
-              y="53.44444444444446"
+              y="206.11111111111111"
             />
             <rect
               aria-label="5000. String Two."
@@ -7669,7 +6981,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="590"
               x="40"
-              y="104.33333333333334"
+              y="155.22222222222223"
             />
             <rect
               aria-label="3000. String Three."
@@ -7684,7 +6996,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="354"
               x="40"
-              y="155.22222222222223"
+              y="104.33333333333334"
             />
             <rect
               aria-label="2000. String Four."
@@ -7699,7 +7011,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="236"
               x="40"
-              y="206.11111111111111"
+              y="53.44444444444446"
             />
           </g>
         </svg>
@@ -7851,6 +7163,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   0
@@ -7869,6 +7182,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   500
@@ -7887,6 +7201,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   1000
@@ -7905,6 +7220,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   1500
@@ -7923,6 +7239,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2000
@@ -7941,6 +7258,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   2500
@@ -7959,6 +7277,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   3000
@@ -7977,6 +7296,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   3500
@@ -7995,6 +7315,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4000
@@ -8013,6 +7334,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   4500
@@ -8031,6 +7353,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="10"
                 >
                   5000
@@ -8063,22 +7386,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String Four"
-                    dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-0"
-                    x="-16"
-                  >
-                    String Four
-                  </tspan>
+                  String One
                 </text>
               </g>
               <g
@@ -8093,22 +7403,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String Three"
-                    dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-1"
-                    x="-16"
-                  >
-                    String Three
-                  </tspan>
+                  String Two
                 </text>
               </g>
               <g
@@ -8123,22 +7420,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String Two"
-                    dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-2"
-                    x="-16"
-                  >
-                    String Two
-                  </tspan>
+                  String Three
                 </text>
               </g>
               <g
@@ -8153,22 +7437,9 @@ Object {
                 <text
                   dy="0.32em"
                   fill="currentColor"
-                  text-align="start"
                   x="-16"
                 >
-                  <tspan
-                    data-="String One"
-                    dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="1em"
-                    id="LessLength-3"
-                    x="-16"
-                  >
-                    String One
-                  </tspan>
+                  String Four
                 </text>
               </g>
             </g>
@@ -8186,7 +7457,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="118"
                 x="40"
-                y="53.44444444444446"
+                y="206.11111111111111"
               />
               <rect
                 aria-label="5000. String Two."
@@ -8201,7 +7472,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="590"
                 x="40"
-                y="104.33333333333334"
+                y="155.22222222222223"
               />
               <rect
                 aria-label="3000. String Three."
@@ -8216,7 +7487,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="354"
                 x="40"
-                y="155.22222222222223"
+                y="104.33333333333334"
               />
               <rect
                 aria-label="2000. String Four."
@@ -8231,7 +7502,7 @@ Object {
                 transform="translate(0,-3.634920634920636)"
                 width="236"
                 x="40"
-                y="206.11111111111111"
+                y="53.44444444444446"
               />
             </g>
           </svg>
@@ -8319,6 +7590,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 0
@@ -8337,6 +7609,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 500
@@ -8355,6 +7628,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 1000
@@ -8373,6 +7647,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 1500
@@ -8391,6 +7666,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2000
@@ -8409,6 +7685,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 2500
@@ -8427,6 +7704,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 3000
@@ -8445,6 +7723,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 3500
@@ -8463,6 +7742,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4000
@@ -8481,6 +7761,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 4500
@@ -8499,6 +7780,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="10"
               >
                 5000
@@ -8531,22 +7813,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String Four"
-                  dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-0"
-                  x="-16"
-                >
-                  String Four
-                </tspan>
+                String One
               </text>
             </g>
             <g
@@ -8561,22 +7830,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String Three"
-                  dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-1"
-                  x="-16"
-                >
-                  String Three
-                </tspan>
+                String Two
               </text>
             </g>
             <g
@@ -8591,22 +7847,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String Two"
-                  dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-2"
-                  x="-16"
-                >
-                  String Two
-                </tspan>
+                String Three
               </text>
             </g>
             <g
@@ -8621,22 +7864,9 @@ Object {
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
                 x="-16"
               >
-                <tspan
-                  data-="String One"
-                  dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength-3"
-                  x="-16"
-                >
-                  String One
-                </tspan>
+                String Four
               </text>
             </g>
           </g>
@@ -8654,7 +7884,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="118"
               x="40"
-              y="53.44444444444446"
+              y="206.11111111111111"
             />
             <rect
               aria-label="5000. String Two."
@@ -8669,7 +7899,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="590"
               x="40"
-              y="104.33333333333334"
+              y="155.22222222222223"
             />
             <rect
               aria-label="3000. String Three."
@@ -8684,7 +7914,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="354"
               x="40"
-              y="155.22222222222223"
+              y="104.33333333333334"
             />
             <rect
               aria-label="2000. String Four."
@@ -8699,7 +7929,7 @@ Object {
               transform="translate(0,-3.634920634920636)"
               width="236"
               x="40"
-              y="206.11111111111111"
+              y="53.44444444444446"
             />
           </g>
         </svg>

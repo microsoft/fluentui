@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -23,9 +24,11 @@ import {
   DataGridProps,
 } from '@fluentui/react-components';
 
+import type { JSXElement } from '@fluentui/react-components';
+
 type FileCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type LastUpdatedCell = {
@@ -35,7 +38,7 @@ type LastUpdatedCell = {
 
 type LastUpdateCell = {
   label: string;
-  icon: JSX.Element; // eslint-disable-line @typescript-eslint/no-deprecated
+  icon: JSXElement;
 };
 
 type AuthorCell = {
@@ -149,7 +152,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const SortControlled = () => {
+export const SortControlled = (): JSXElement => {
   const [sortState, setSortState] = React.useState<Parameters<NonNullable<DataGridProps['onSortChange']>>[1]>({
     sortColumn: 'file',
     sortDirection: 'ascending',

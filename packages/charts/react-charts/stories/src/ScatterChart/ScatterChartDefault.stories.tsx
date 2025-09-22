@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
 import { makeStyles, Switch, tokens } from '@fluentui/react-components';
 
@@ -8,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ScatterChartDefault = () => {
+export const ScatterChartDefault = (): JSXElement => {
   const classes = useStyles();
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
@@ -28,7 +29,7 @@ export const ScatterChartDefault = () => {
 
   const data: ChartProps = {
     chartTitle: 'Project Revenue and Transactions Over Time',
-    lineChartData: [
+    scatterChartData: [
       {
         legend: 'Phase 1',
         data: [

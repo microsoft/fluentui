@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: resolve regression with \".hoverDelay\" handling",
-  "packageName": "@fluentui/react-menu",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

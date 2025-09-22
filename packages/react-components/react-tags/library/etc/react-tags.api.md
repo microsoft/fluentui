@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { AvatarShape } from '@fluentui/react-avatar';
 import { AvatarSize } from '@fluentui/react-avatar';
 import { ComponentProps } from '@fluentui/react-utilities';
@@ -13,6 +11,7 @@ import { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -90,19 +89,19 @@ export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTa
 };
 
 // @public
-export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSX.Element;
+export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSXElement;
 
 // @public
-export const renderInteractionTagPrimary_unstable: (state: InteractionTagPrimaryState, contextValues: InteractionTagPrimaryContextValues) => JSX.Element;
+export const renderInteractionTagPrimary_unstable: (state: InteractionTagPrimaryState, contextValues: InteractionTagPrimaryContextValues) => JSXElement;
 
 // @public
-export const renderInteractionTagSecondary_unstable: (state: InteractionTagSecondaryState) => JSX.Element;
+export const renderInteractionTagSecondary_unstable: (state: InteractionTagSecondaryState) => JSXElement;
 
 // @public
-export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
+export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSXElement;
 
 // @public
-export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSX.Element;
+export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSXElement;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;

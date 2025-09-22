@@ -25,6 +25,7 @@ const useRootBaseClassName = makeResetStyles({
   lineHeight: '0',
   gap: '8px',
   overflow: 'hidden', // prevents height changes from rotating children
+  minWidth: 'min-content',
 });
 
 const useRootStyles = makeStyles({

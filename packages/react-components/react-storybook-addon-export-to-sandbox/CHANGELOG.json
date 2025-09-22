@@ -2,6 +2,36 @@
   "name": "@fluentui/react-storybook-addon-export-to-sandbox",
   "entries": [
     {
+      "date": "Thu, 07 Aug 2025 10:03:27 GMT",
+      "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "bbaeb73e492a1b5b61217b516e71731f0f2453fb",
+            "comment": "fix: migrate to R19 compatible JSX.* namespace types"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Jul 2025 15:59:24 GMT",
+      "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "4bc988d1f2659f3a010ddd19e1c85d0732478068",
+            "comment": "fix: remove useEffect storybook/preview-api and directly trigger 'Open in ...' button rendering"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Jul 2025 10:02:47 GMT",
       "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.1.0",
       "version": "0.1.0",

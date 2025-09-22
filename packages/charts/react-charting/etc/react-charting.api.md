@@ -35,6 +35,15 @@ export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
 
 // @public
+export type AxisProps = {
+    tickStep?: number | string;
+    tick0?: number | Date;
+};
+
+// @public
+export type AxisScaleType = 'default' | 'log';
+
+// @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
 // @public
@@ -146,6 +155,9 @@ export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 export const FunnelChart: React_2.FunctionComponent<IFunnelChartProps>;
 
 // @public
+export const GanttChart: React_2.FunctionComponent<IGanttChartProps>;
+
+// @public
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
 
 // @public (undocumented)
@@ -230,10 +242,18 @@ export interface IAreaChartStyleProps extends ICartesianChartStyleProps {
 export interface IAreaChartStyles extends ICartesianChartStyles {
 }
 
+// @public
+export interface IBarSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+    data: IDataPointV2<X, Y>[];
+    key?: string;
+    type: 'bar';
+}
+
 // @public (undocumented)
 export interface IBaseDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     hideCallout?: boolean;
+    markerColor?: string;
     markerSize?: number;
     onDataPointClick?: () => void;
     text?: string;
@@ -322,6 +342,7 @@ export interface ICartesianChartProps {
         yMinValue?: number;
         yMaxValue?: number;
     };
+    secondaryYScaleType?: AxisScaleType;
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
@@ -335,6 +356,7 @@ export interface ICartesianChartProps {
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
+    xAxis?: AxisProps;
     xAxisAnnotation?: string;
     xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
@@ -342,13 +364,17 @@ export interface ICartesianChartProps {
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    xScaleType?: AxisScaleType;
+    yAxis?: AxisProps;
     yAxisAnnotation?: string;
     yAxisCategoryOrder?: AxisCategoryOrder;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
+    yAxisTickValues?: number[] | Date[] | string[];
     yAxisTitle?: string;
     yMaxValue?: number;
     yMinValue?: number;
+    yScaleType?: AxisScaleType;
 }
 
 // @public
@@ -570,6 +596,30 @@ export interface IDataPoint {
     y: number;
 }
 
+// @public
+export interface IDataPointV2<X extends string | number | Date, Y extends string | number | Date> {
+    callOutAccessibilityData?: IAccessibilityProps;
+    color?: string;
+    markerSize?: number;
+    onClick?: () => void;
+    text?: string;
+    x: X;
+    xAxisCalloutData?: string;
+    y: Y;
+    yAxisCalloutData?: string;
+}
+
+// @public
+export interface IDataSeries {
+    color?: string;
+    gradient?: [string, string];
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
+}
+
 // @public (undocumented)
 export interface IDeclarativeChart {
     // (undocumented)
@@ -590,6 +640,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
     hideLabels?: boolean;
     innerRadius?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    order?: 'default' | 'sorted';
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;
@@ -661,6 +712,46 @@ export interface IFunnelChartStyles {
         calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     };
     text?: IStyle;
+}
+
+// @public (undocumented)
+export interface IGanttChartDataPoint {
+    callOutAccessibilityData?: IAccessibilityProps;
+    color?: string;
+    gradient?: [string, string];
+    legend?: string;
+    onClick?: VoidFunction;
+    x: {
+        start: Date | number;
+        end: Date | number;
+    };
+    xAxisCalloutData?: string;
+    y: number | string;
+    yAxisCalloutData?: string;
+}
+
+// @public
+export interface IGanttChartProps extends ICartesianChartProps {
+    barHeight?: number;
+    chartTitle?: string;
+    culture?: string;
+    data?: IGanttChartDataPoint[];
+    enableGradient?: boolean;
+    maxBarHeight?: number;
+    onRenderCalloutPerDataPoint?: IRenderFunction<IGanttChartDataPoint>;
+    roundCorners?: boolean;
+    showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
+    styles?: IStyleFunctionOrObject<IGanttChartStyleProps, IGanttChartStyles>;
+    yAxisPadding?: number;
+}
+
+// @public
+export interface IGanttChartStyleProps extends ICartesianChartStyleProps {
+}
+
+// @public
+export interface IGanttChartStyles extends ICartesianChartStyles {
 }
 
 // @public
@@ -749,7 +840,8 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     barwidth?: number | 'default' | 'auto';
     chartTitle?: string;
     culture?: string;
-    data: IGroupedVerticalBarChartData[];
+    data?: IGroupedVerticalBarChartData[];
+    dataV2?: (IBarSeries<string, number> | ILineSeries<string, number>)[];
     enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
@@ -785,7 +877,7 @@ export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
 // @public (undocumented)
 export interface IGVBarChartSeriesPoint {
     callOutAccessibilityData?: IAccessibilityProps;
-    color: string;
+    color?: string;
     data: number;
     gradient?: [string, string];
     key: string;
@@ -864,8 +956,8 @@ export interface IHeatMapChartStyles {
     root?: IStyle;
     // (undocumented)
     subComponentStyles: {
-        cartesianStyles: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
-        calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+        cartesianStyles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+        calloutStyles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     };
     // (undocumented)
     text?: IStyle;
@@ -1095,7 +1187,7 @@ export interface ILineChartLineOptions extends React_2.SVGProps<SVGPathElement> 
     curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
-    mode?: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text' | 'lines+text';
+    mode?: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text' | 'lines+text' | 'lines+markers+text';
     strokeDasharray?: string | number;
     strokeDashoffset?: string | number;
     strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit';
@@ -1173,6 +1265,16 @@ export interface ILineDataInVerticalStackedBarChart {
     yAxisCalloutData?: string;
 }
 
+// @public
+export interface ILineSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+    data: IDataPointV2<X, Y>[];
+    gaps?: ILineChartGap[];
+    hideInactiveDots?: boolean;
+    lineOptions?: ILineChartLineOptions;
+    onLineClick?: () => void;
+    type: 'line';
+}
+
 // @public (undocumented)
 export interface IMargins {
     bottom?: number;
@@ -1203,7 +1305,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     createStringYAxis: (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean, barWidth: number | undefined, chartType?: ChartTypes) => ScaleBand<string>;
     // Warning: (ae-forgotten-export) The symbol "IYAxisParams" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "IAxisData" needs to be exported by the entry point index.d.ts
-    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean) => ScaleLinear<number, number, never>;
+    createYAxis: (yAxisParams: IYAxisParams, isRtl: boolean, axisData: IAxisData, isIntegralDataset: boolean, useSecondaryYScale?: boolean, supportNegativeData?: boolean, roundedTicks?: boolean, scaleType?: AxisScaleType) => ScaleLinear<number, number, never>;
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
@@ -1213,10 +1315,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => IMargins;
     // Warning: (ae-forgotten-export) The symbol "IDomainNRange" needs to be exported by the entry point index.d.ts
-    getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
+    getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[] | IGanttChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[] | IScatterChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[] | IScatterChartPoints[] | IGanttChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };
@@ -1456,6 +1558,7 @@ export interface IScatterChartProps extends ICartesianChartProps {
     data: IChartProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+    showYAxisLablesTooltip?: boolean;
     styles?: IScatterChartStyles;
 }
 

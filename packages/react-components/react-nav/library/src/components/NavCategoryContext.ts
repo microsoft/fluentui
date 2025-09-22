@@ -23,6 +23,6 @@ const navCategoryContextDefaultValue: NavCategoryContextValue = {
 
 export const { Provider: NavCategoryProvider } = NavCategoryContext;
 
-export const useNavCategoryContext_unstable = () => {
+export const useNavCategoryContext_unstable = (): NavCategoryContextValue => {
   return React.useContext(NavCategoryContext) ?? navCategoryContextDefaultValue;
 };

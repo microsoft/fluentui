@@ -35,6 +35,11 @@ export interface BuildExecutorSchema {
    */
   generateApi?: boolean;
   /**
+   * Enable Griffel raw styles output.
+   * This will generate additional files with '.styles.raw.js' extension that contain Griffel raw styles
+   */
+  enableGriffelRawStyles?: boolean;
+  /**
    * List of static assets.
    */
   assets?: (

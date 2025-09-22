@@ -2,6 +2,7 @@ import { Button, makeStyles, Persona, mergeClasses, Text, tokens, SelectionItemI
 import { Mic16Regular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 type Item = {
   name: string;
@@ -50,7 +51,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ListActiveElement = () => {
+export const ListActiveElement = (): JSXElement => {
   const classes = useStyles();
 
   const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(['Melda Bevel']);

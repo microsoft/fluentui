@@ -24,7 +24,7 @@ export function getPositionTransform(
   position: DrawerBaseProps['position'],
   sizeVar: string,
   dir: FluentProviderContextValue['dir'],
-) {
+): string {
   const leftToRightTransform = `translate3d(var(${sizeVar}), 0, 0)`;
   const rightToLeftTransform = `translate3d(calc(var(${sizeVar}) * -1), 0, 0)`;
   const bottomToTopTransform = `translate3d(0, var(${sizeVar}), 0)`;

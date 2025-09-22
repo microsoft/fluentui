@@ -11,6 +11,7 @@ import {
 } from '@fluentui/react-components';
 import { PlayFilled, PauseFilled } from '@fluentui/react-icons';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreateMotionComponentImperativeRefPlayState.stories.md';
 
@@ -72,9 +73,9 @@ const FadeEnter = createMotionComponent({
   },
 });
 
-export const CreateMotionComponentImperativeRefPlayState = () => {
+export const CreateMotionComponentImperativeRefPlayState = (): JSXElement => {
   const classes = useClasses();
-  const motionRef = React.useRef<MotionImperativeRef>();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [isRunning, setIsRunning] = React.useState<boolean>(false);

@@ -1174,7 +1174,8 @@ export interface PlotData {
     | 'gauge+number+delta'
     | 'gauge+delta'
     | 'markers+text'
-    | 'lines+text';
+    | 'lines+text'
+    | 'lines+markers+text';
   histfunc: 'count' | 'sum' | 'avg' | 'min' | 'max';
   histnorm: '' | 'percent' | 'probability' | 'density' | 'probability density';
   hoveron: 'points' | 'fills';
@@ -1404,9 +1405,9 @@ export interface TableData {
       color?: Color | Color[];
     };
     values: (string | number | boolean | null)[][];
-    format: string | string[];
-    prefix: string | string[];
-    suffix: string | string[];
+    format?: string | string[];
+    prefix?: string | string[];
+    suffix?: string | string[];
   };
 }
 

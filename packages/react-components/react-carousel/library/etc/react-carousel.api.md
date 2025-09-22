@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { ARIAButtonElement } from '@fluentui/react-aria';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ButtonProps } from '@fluentui/react-button';
@@ -18,6 +16,7 @@ import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
@@ -106,8 +105,8 @@ export type CarouselContextValue = {
     subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
     enableAutoplay: (autoplay: boolean, temporary?: boolean) => void;
     resetAutoplay: () => void;
-    containerRef?: React_2.RefObject<HTMLDivElement>;
-    viewportRef?: React_2.RefObject<HTMLDivElement>;
+    containerRef?: React_2.RefObject<HTMLDivElement | null>;
+    viewportRef?: React_2.RefObject<HTMLDivElement | null>;
 };
 
 // @public
@@ -273,34 +272,34 @@ export type CarouselViewportState = ComponentState<Required<CarouselViewportSlot
 export type NavButtonRenderFunction = (index: number) => React_2.ReactNode;
 
 // @public
-export const renderCarousel_unstable: (state: CarouselState, contextValues: CarouselContextValues) => JSX.Element;
+export const renderCarousel_unstable: (state: CarouselState, contextValues: CarouselContextValues) => JSXElement;
 
 // @public
-export const renderCarouselAutoplayButton_unstable: (state: CarouselAutoplayButtonState) => JSX.Element;
+export const renderCarouselAutoplayButton_unstable: (state: CarouselAutoplayButtonState) => JSXElement;
 
 // @public
-export const renderCarouselButton_unstable: (state: CarouselButtonState) => JSX.Element;
+export const renderCarouselButton_unstable: (state: CarouselButtonState) => JSXElement;
 
 // @public
-export const renderCarouselCard_unstable: (state: CarouselCardState) => JSX.Element;
+export const renderCarouselCard_unstable: (state: CarouselCardState) => JSXElement;
 
 // @public
-export const renderCarouselNav_unstable: (state: CarouselNavState, contextValues: CarouselNavContextValues) => JSX.Element;
+export const renderCarouselNav_unstable: (state: CarouselNavState, contextValues: CarouselNavContextValues) => JSXElement;
 
 // @public
-export const renderCarouselNavButton_unstable: (state: CarouselNavButtonState) => JSX.Element;
+export const renderCarouselNavButton_unstable: (state: CarouselNavButtonState) => JSXElement;
 
 // @public
-export const renderCarouselNavContainer_unstable: (state: CarouselNavContainerState) => JSX.Element;
+export const renderCarouselNavContainer_unstable: (state: CarouselNavContainerState) => JSXElement;
 
 // @public
-export const renderCarouselNavImageButton_unstable: (state: CarouselNavImageButtonState) => JSX.Element;
+export const renderCarouselNavImageButton_unstable: (state: CarouselNavImageButtonState) => JSXElement;
 
 // @public
-export const renderCarouselSlider_unstable: (state: CarouselSliderState, contextValues: CarouselSliderContextValues) => JSX.Element;
+export const renderCarouselSlider_unstable: (state: CarouselSliderState, contextValues: CarouselSliderContextValues) => JSXElement;
 
 // @public
-export const renderCarouselViewport_unstable: (state: CarouselViewportState, contextValues: CarouselSliderContextValues) => JSX.Element;
+export const renderCarouselViewport_unstable: (state: CarouselViewportState, contextValues: CarouselSliderContextValues) => JSXElement;
 
 // @public
 export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;

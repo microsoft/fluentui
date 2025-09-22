@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 26 Jun 2025 14:11:55 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 12:50:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.24.1)
+
+Mon, 08 Sep 2025 12:50:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.24.0..@fluentui/react-utilities_v9.24.1)
+
+### Patches
+
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+
+## [9.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.24.0)
+
+Thu, 21 Aug 2025 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.23.2..@fluentui/react-utilities_v9.24.0)
+
+### Minor changes
+
+- feat: enhance hook to support React concurrent mode using setEffect for first mount tracking ([PR #34985](https://github.com/microsoft/fluentui/pull/34985) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.0 ([commit](https://github.com/microsoft/fluentui/commit/884c695de4f736774c224fa33b2e410bf42752b0) by beachball)
+
+### Patches
+
+- fix: replace deprecated element.ref usages to support react 19 ([PR #35030](https://github.com/microsoft/fluentui/pull/35030) by dmytrokirpa@microsoft.com)
+
+## [9.23.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.23.2)
+
+Thu, 07 Aug 2025 10:03:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.23.1..@fluentui/react-utilities_v9.23.2)
+
+### Patches
+
+- refactor: simplify setVirtualParent function by using Object.assign for virtual parent assignment ([PR #34968](https://github.com/microsoft/fluentui/pull/34968) by dmytrokirpa@microsoft.com)
+- fix: add mpath svg intrinsic element to compat JSXIntrinsicElementKeysCompat ([PR #34979](https://github.com/microsoft/fluentui/pull/34979) by martinhochel@microsoft.com)
+
+## [9.23.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.23.1)
+
+Wed, 30 Jul 2025 13:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.23.0..@fluentui/react-utilities_v9.23.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.24.1 ([PR #34881](https://github.com/microsoft/fluentui/pull/34881) by beachball)
+
+## [9.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.23.0)
+
+Mon, 28 Jul 2025 18:48:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.22.0..@fluentui/react-utilities_v9.23.0)
+
+### Minor changes
+
+- feat: add custom JSX.* types that are compatible with various react major versions ([PR #34733](https://github.com/microsoft/fluentui/pull/34733) by martinhochel@microsoft.com)
 
 ## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.22.0)
 

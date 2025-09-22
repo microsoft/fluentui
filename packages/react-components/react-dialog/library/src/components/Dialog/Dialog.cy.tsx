@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import {
   Dialog,
@@ -25,10 +26,7 @@ import {
   dialogTriggerOpenSelector,
 } from '../../testing/selectors';
 
-const mount = (
-  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSX.Element,
-) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+const mount = (element: JSXElement) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
 describe('Dialog', () => {
   it('should be closed by default', () => {

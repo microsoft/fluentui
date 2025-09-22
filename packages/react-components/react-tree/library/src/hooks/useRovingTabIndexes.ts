@@ -15,7 +15,11 @@ const findTreeItemRoot = (element: HTMLElement) => {
  * @internal
  * https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
  */
-export function useRovingTabIndex() {
+export function useRovingTabIndex(): {
+  rove: (nextElement: HTMLElement, focusOptions?: FocusOptions) => void;
+  initialize: (walker: HTMLElementWalker) => void;
+  forceUpdate: () => void;
+} {
   const currentElementRef = React.useRef<HTMLElement | null>(null);
   const walkerRef = React.useRef<HTMLElementWalker | null>(null);
   const { targetDocument } = useFluent();

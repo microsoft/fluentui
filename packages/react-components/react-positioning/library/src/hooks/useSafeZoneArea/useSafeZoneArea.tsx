@@ -1,5 +1,5 @@
 import { useAnimationFrame, useEventCallback, useMergedRefs, useTimeout } from '@fluentui/react-utilities';
-import type { RefObjectFunction } from '@fluentui/react-utilities';
+import type { JSXElement, RefObjectFunction } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { createSafeZoneAreaStateStore } from './createSafeZoneAreaStateStore';
@@ -50,8 +50,7 @@ export function useSafeZoneArea({
 }: UseSafeZoneOptions = {}): {
   containerRef: RefObjectFunction<HTMLElement>;
   targetRef: RefObjectFunction<HTMLElement>;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  elementToRender: JSX.Element | null;
+  elementToRender: JSXElement | null;
 } {
   const [stateStore] = React.useState(createSafeZoneAreaStateStore);
 
@@ -132,6 +131,10 @@ export function useSafeZoneArea({
   });
 
   const onSvgMouseMove = useEventCallback((e: React.MouseEvent) => {
+    setSafeZoneCloseTimeout(() => {
+      stateStore.toggleActive(false);
+      onSafeZoneTimeout?.();
+    }, timeout);
     onSafeZoneMove?.(e);
   });
 

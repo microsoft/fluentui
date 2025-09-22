@@ -28,11 +28,14 @@
     "../../packages/react-components/**/index.stories.ts",
     "../../packages/react-components/react-migration-v0-v9/**",
     "../../packages/react-components/react-migration-v8-v9/**",
-    "../../packages/react-components/react-*-compat/**"
+    "../../**/*.spec.tsx",
+    "../../**/*.test.tsx",
+    "../../**/src/testing/**"
   ],
   "include": [
     "../../packages/react-components/*/stories/**/*.stories.tsx",
-    "../../packages/react-components/*/stories/**/*.stories.ts"
+    "../../packages/react-components/*/stories/**/*.stories.ts",
+    "./src/issues/"
   ],
   "files": ["../../typings/static-assets/index.d.ts"]
 }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Accordion,
   AccordionHeader,
@@ -7,7 +8,7 @@ import {
   AccordionToggleEventHandler,
 } from '@fluentui/react-components';
 
-export const Controlled = () => {
+export const Controlled = (): JSXElement => {
   const [openItems, setOpenItems] = React.useState(['1']);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);

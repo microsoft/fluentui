@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { createLightTheme } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { brandWeb } from '../utils/brandColors';
 import { getBrandTokensFromPalette } from '../utils/getBrandTokensFromPalette';
 import { getOverridableTokenBrandColors } from '../utils/getOverridableTokenBrandColors';
@@ -179,7 +180,7 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
   }
 };
 
-export const useThemeDesigner = () => {
+export const useThemeDesigner = (): { state: ThemeDesignerState; dispatch: Dispatch } => {
   const context = React.useContext(ThemeDesignerContext);
   if (context === undefined) {
     throw new Error('useThemeDesigner must be used within a ThemeProvider Context');
@@ -187,7 +188,7 @@ export const useThemeDesigner = () => {
   return context;
 };
 
-export const ThemeDesignerContextProvider = ({ children }: ThemeDesignerContextProps) => {
+export const ThemeDesignerContextProvider = ({ children }: ThemeDesignerContextProps): JSXElement => {
   const [state, dispatch] = React.useReducer(ThemeDesignerReducer, initialThemeDesignerState);
 
   const value = { state, dispatch };

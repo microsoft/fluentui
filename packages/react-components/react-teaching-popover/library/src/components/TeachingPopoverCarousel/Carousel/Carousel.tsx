@@ -5,12 +5,23 @@ import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-sh
 import { CAROUSEL_ITEM } from './constants';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { createCarouselStore } from './createCarouselStore';
-import type { UseCarouselOptions } from './Carousel.types';
+import type { CarouselStore, UseCarouselOptions } from './Carousel.types';
 import { CarouselContextValue } from './CarouselContext';
 
 // TODO: Migrate this into an external @fluentui/carousel component
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
-export function useCarousel_unstable(options: UseCarouselOptions) {
+export function useCarousel_unstable(options: UseCarouselOptions): {
+  carouselRef: React.RefObject<HTMLDivElement | null>;
+  carousel: {
+    store: CarouselStore;
+    value: string | null;
+    selectPageByDirection: (
+      event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+      direction: 'next' | 'prev',
+    ) => void;
+    selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, newValue: string) => void;
+  };
+} {
   'use no memo';
 
   const { announcement, onValueChange, onFinish } = options;

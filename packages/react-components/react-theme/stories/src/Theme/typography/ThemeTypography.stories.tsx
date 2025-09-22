@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Subtitle2Stronger,
@@ -58,7 +59,7 @@ const tokens: TypographyTokens = tokenOrder.map(token => [
   Object.entries(typographyStyles[token]).map(([k, v]) => [k, v.replace(/var\(--(.+)\)/, '$1')]),
 ]);
 
-export const Typography = () => {
+export const Typography = (): JSXElement => {
   const styles = useStyles();
 
   return (

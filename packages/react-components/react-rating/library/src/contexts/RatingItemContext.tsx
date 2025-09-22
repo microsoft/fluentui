@@ -18,5 +18,5 @@ export const RatingItemProvider = RatingItemContext.Provider;
 /**
  * Get the value of the RatingContext.
  */
-export const useRatingItemContextValue_unstable = () =>
+export const useRatingItemContextValue_unstable = (): RatingItemContextValue =>
   React.useContext(RatingItemContext) || ratingItemContextDefaultValue;

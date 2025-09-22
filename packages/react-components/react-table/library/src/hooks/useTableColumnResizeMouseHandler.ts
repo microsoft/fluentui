@@ -10,7 +10,10 @@ import {
   useAnimationFrame,
 } from '@fluentui/react-utilities';
 
-export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
+export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState): {
+  getOnMouseDown: (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => void;
+  dragging: boolean;
+} {
   const mouseX = React.useRef(0);
   const currentWidth = React.useRef(0);
   const colId = React.useRef<TableColumnId | undefined>(undefined);

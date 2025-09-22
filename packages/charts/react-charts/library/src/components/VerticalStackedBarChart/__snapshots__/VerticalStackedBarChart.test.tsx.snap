@@ -25,7 +25,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, 265)"
+          transform="translate(0, 230)"
         >
           <path
             class="domain"
@@ -45,6 +45,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               January
@@ -63,6 +64,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               February
@@ -81,6 +83,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               March
@@ -98,13 +101,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         >
           <path
             class="domain"
-            d="M-6,265.5H0.5V20.5H-6"
+            d="M-6,230.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,265.5)"
+            transform="translate(0,230.5)"
           >
             <line
               stroke="currentColor"
@@ -114,6 +117,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -122,7 +126,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,204.25)"
+            transform="translate(0,178)"
           >
             <line
               stroke="currentColor"
@@ -132,6 +136,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               25
@@ -140,7 +145,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,143)"
+            transform="translate(0,125.5)"
           >
             <line
               stroke="currentColor"
@@ -150,6 +155,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               50
@@ -158,7 +164,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,81.75)"
+            transform="translate(0,73)"
           >
             <line
               stroke="currentColor"
@@ -168,6 +174,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               75
@@ -186,6 +193,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               100
@@ -204,35 +212,36 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#0078d4"
-                height="4.9"
+                height="4.2"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="260.1"
+                y="225.8"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="1.225"
+                height="1.05"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="258.875"
+                y="224.75"
               />
             </g>
             <text
               aria-label="Total: 2.5"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="252.875"
+              y="218.75"
             >
               2.5
             </text>
@@ -248,47 +257,48 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#0078d4"
-                height="73.49999999999999"
+                height="62.999999999999986"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="191.5"
+                y="167"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="7.35"
+                height="6.299999999999999"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="184.15"
+                y="160.7"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#00188f"
-                height="97.99999999999999"
+                height="83.99999999999999"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="86.15000000000002"
+                y="76.7"
               />
             </g>
             <text
               aria-label="Total: 73"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
               x="335"
-              y="80.15000000000002"
+              y="70.7"
             >
               73
             </text>
@@ -304,31 +314,31 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#0078d4"
-                height="24.5"
+                height="21"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="240.5"
+                y="209"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="147"
+                height="126"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="93.5"
+                y="83"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#00188f"
-                height="73.5"
+                height="63"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
@@ -341,6 +351,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-label="Total: 100"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
               x="383"
@@ -359,8 +370,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="279"
             x2="327"
-            y1="162.10000000000002"
-            y2="164.55"
+            y1="141.8"
+            y2="143.9"
           />
           <line
             opacity="1"
@@ -370,38 +381,38 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="327"
             x2="375"
-            y1="164.55"
+            y1="143.9"
             y2="20"
           />
           <circle
             cx="279"
-            cy="162.10000000000002"
+            cy="141.8"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="327"
-            cy="164.55"
+            cy="143.9"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
@@ -528,7 +539,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, 265)"
+          transform="translate(0, 230)"
         >
           <path
             class="domain"
@@ -548,6 +559,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               January
@@ -566,6 +578,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               February
@@ -584,6 +597,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               March
@@ -601,13 +615,13 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         >
           <path
             class="domain"
-            d="M-6,265.5H0.5V20.5H-6"
+            d="M-6,230.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,265.5)"
+            transform="translate(0,230.5)"
           >
             <line
               stroke="currentColor"
@@ -617,6 +631,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -625,7 +640,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,204.25)"
+            transform="translate(0,178)"
           >
             <line
               stroke="currentColor"
@@ -635,6 +650,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               25
@@ -643,7 +659,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,143)"
+            transform="translate(0,125.5)"
           >
             <line
               stroke="currentColor"
@@ -653,6 +669,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               50
@@ -661,7 +678,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,81.75)"
+            transform="translate(0,73)"
           >
             <line
               stroke="currentColor"
@@ -671,6 +688,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               75
@@ -689,6 +707,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               100
@@ -707,35 +726,36 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#0078d4"
-                height="4.9"
+                height="4.2"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="260.1"
+                y="225.8"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="1.225"
+                height="1.05"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="258.875"
+                y="224.75"
               />
             </g>
             <text
               aria-label="Total: 2.5"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="252.875"
+              y="218.75"
             >
               2.5
             </text>
@@ -751,47 +771,48 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#0078d4"
-                height="73.49999999999999"
+                height="62.999999999999986"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="191.5"
+                y="167"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="7.35"
+                height="6.299999999999999"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="184.15"
+                y="160.7"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#00188f"
-                height="97.99999999999999"
+                height="83.99999999999999"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
-                y="86.15000000000002"
+                y="76.7"
               />
             </g>
             <text
               aria-label="Total: 73"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
               x="335"
-              y="80.15000000000002"
+              y="70.7"
             >
               73
             </text>
@@ -807,31 +828,31 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#0078d4"
-                height="24.5"
+                height="21"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="240.5"
+                y="209"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#002050"
-                height="147"
+                height="126"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
-                y="93.5"
+                y="83"
               />
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
                 fill="#00188f"
-                height="73.5"
+                height="63"
                 opacity="1"
                 rx="0"
                 transform="translate(0, 0)"
@@ -844,6 +865,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               aria-label="Total: 100"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(0, 0)"
               x="383"
@@ -862,8 +884,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="279"
             x2="327"
-            y1="162.10000000000002"
-            y2="164.55"
+            y1="141.8"
+            y2="143.9"
           />
           <line
             opacity="1"
@@ -873,38 +895,38 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             transform="translate(8, 0)"
             x1="327"
             x2="375"
-            y1="164.55"
+            y1="143.9"
             y2="20"
           />
           <circle
             cx="279"
-            cy="162.10000000000002"
+            cy="141.8"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="327"
-            cy="164.55"
+            cy="143.9"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="#0078d4"
             stroke-width="3"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
@@ -1051,6 +1073,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               0
@@ -1069,6 +1092,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               2
@@ -1087,6 +1111,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               4
@@ -1105,6 +1130,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               6
@@ -1123,6 +1149,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               8
@@ -1141,6 +1168,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               10
@@ -1159,6 +1187,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               12
@@ -1177,6 +1206,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               14
@@ -1195,6 +1225,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               16
@@ -1213,6 +1244,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               18
@@ -1231,6 +1263,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -1264,6 +1297,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -1282,6 +1316,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               13
@@ -1300,6 +1335,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               26
@@ -1318,6 +1354,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               39
@@ -1336,6 +1373,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               52
@@ -1382,6 +1420,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="64"
@@ -1429,6 +1468,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="622"
@@ -1545,6 +1585,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               0
@@ -1563,6 +1604,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               2
@@ -1581,6 +1623,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               4
@@ -1599,6 +1642,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               6
@@ -1617,6 +1661,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               8
@@ -1635,6 +1680,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               10
@@ -1653,6 +1699,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               12
@@ -1671,6 +1718,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               14
@@ -1689,6 +1737,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               16
@@ -1707,6 +1756,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               18
@@ -1725,6 +1775,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -1758,6 +1809,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -1776,6 +1828,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               13
@@ -1794,6 +1847,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               26
@@ -1812,6 +1866,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               39
@@ -1830,6 +1885,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               52
@@ -1876,6 +1932,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="64"
@@ -1923,6 +1980,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="622"
@@ -1951,7 +2009,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Metadata1"
@@ -1973,7 +2031,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Metadata2"
@@ -2092,6 +2150,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               0
@@ -2110,6 +2169,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               2
@@ -2128,6 +2188,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               4
@@ -2146,6 +2207,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               6
@@ -2164,6 +2226,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               8
@@ -2182,6 +2245,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               10
@@ -2200,6 +2264,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               12
@@ -2218,6 +2283,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               14
@@ -2236,6 +2302,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               16
@@ -2254,6 +2321,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               18
@@ -2272,6 +2340,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -2305,6 +2374,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -2323,6 +2393,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               13
@@ -2341,6 +2412,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               26
@@ -2359,6 +2431,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               39
@@ -2377,6 +2450,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               52
@@ -2423,6 +2497,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="64"
@@ -2470,6 +2545,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="622"
@@ -2498,7 +2574,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Metadata1"
@@ -2520,7 +2596,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Metadata2"
@@ -2616,6 +2692,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               0
@@ -2634,6 +2711,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               2
@@ -2652,6 +2730,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               4
@@ -2670,6 +2749,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               6
@@ -2688,6 +2768,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               8
@@ -2706,6 +2787,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               10
@@ -2724,6 +2806,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               12
@@ -2742,6 +2825,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               14
@@ -2760,6 +2844,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               16
@@ -2778,6 +2863,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               18
@@ -2796,6 +2882,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -2829,6 +2916,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               0
@@ -2847,6 +2935,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               13
@@ -2865,6 +2954,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               26
@@ -2883,6 +2973,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               39
@@ -2901,6 +2992,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-10"
             >
               52
@@ -2944,6 +3036,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-label="Total: 45"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="64"
@@ -2988,6 +3081,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               aria-label="Total: 50"
               class="fui-vsbc__barLabel"
               role="img"
+              style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="622"
@@ -3013,21 +3107,21 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             cx="56"
             cy="194.3269230769231"
             fill="var(--colorNeutralBackground1)"
+            opacity="1"
             r="8"
             stroke="yellow"
             stroke-width="3"
             transform="translate(0, 0)"
-            visibility="visibility"
           />
           <circle
             cx="614"
             cy="123.65384615384616"
             fill="var(--colorNeutralBackground1)"
+            opacity="0"
             r="8"
             stroke="yellow"
             stroke-width="3"
             transform="translate(0, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
@@ -3048,7 +3142,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           style="display: flex; flex-wrap: wrap; overflow: auto;"
         >
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Line1"
@@ -3070,7 +3164,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Metadata1"
@@ -3092,7 +3186,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             </button>
           </div>
           <div
-            style="flex: 0 1 auto; margin: 4px;"
+            class="fui-legend__legendContainer"
           >
             <button
               aria-label="Metadata2"
@@ -4304,12 +4398,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         }
       >
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
         >
           <button
             aria-label="Metadata1"
@@ -4357,12 +4446,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           </button>
         </div>
         <div
-          style={
-            Object {
-              "flex": "0 1 auto",
-              "margin": "4px",
-            }
-          }
+          className="fui-legend__legendContainer"
         >
           <button
             aria-label="Metadata2"
@@ -5289,7 +5373,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
       <g
         className="fui-cart__xAxis"
         id="xAxisGElementchart_"
-        transform="translate(0, NaN)"
+        transform="translate(0, -35)"
       />
       <g
         className="fui-cart__yAxis"
@@ -5306,7 +5390,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
               fill="aqua"
-              height={NaN}
+              height={42.30769230769231}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -5320,14 +5404,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
-              y={NaN}
+              y={-77.3076923076923}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
               fill="navy"
-              height={NaN}
+              height={5.288461538461538}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -5341,7 +5425,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               transform="translate(-0.5, 0)"
               width={1}
               x={48.5}
-              y={NaN}
+              y={-82.59615384615384}
             />
           </g>
         </g>
@@ -5354,7 +5438,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
               fill="aqua"
-              height={NaN}
+              height={31.73076923076923}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -5368,14 +5452,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
-              y={NaN}
+              y={-66.73076923076923}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
               className="fui-vsbc__opacityChangeOnHover default"
               cursor="default"
               fill="navy"
-              height={NaN}
+              height={21.153846153846153}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -5389,7 +5473,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               transform="translate(-0.5, 0)"
               width={1}
               x={-28.5}
-              y={NaN}
+              y={-87.88461538461539}
             />
           </g>
         </g>

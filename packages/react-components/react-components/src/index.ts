@@ -62,8 +62,10 @@ export {
   createTeamsDarkTheme,
   themeToTokensObject,
   teamsDarkTheme,
+  teamsDarkV21Theme,
   teamsHighContrastTheme,
   teamsLightTheme,
+  teamsLightV21Theme,
   tokens,
   typographyStyles,
   webDarkTheme,
@@ -135,6 +137,9 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  JSXElement,
+  JSXIntrinsicElement,
+  JSXIntrinsicElementKeys,
   // ResolveShorthandFunction is deprecated but removing it would be a breaking change
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,
@@ -1612,6 +1617,7 @@ export {
   renderAriaLiveAnnouncer_unstable,
   useAriaLiveAnnouncer_unstable,
   useAriaLiveAnnouncerContextValues_unstable,
+  useTypingAnnounce,
 } from '@fluentui/react-aria';
 export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';
 
@@ -1898,6 +1904,7 @@ export type {
 export {
   motionTokens,
   createMotionComponent,
+  createMotionComponentVariant,
   createPresenceComponent,
   createPresenceComponentVariant,
   PresenceGroup,

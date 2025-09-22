@@ -73,6 +73,7 @@ describe('useOverflowContainer', () => {
       Array [
         <div />,
         Object {
+          "hasHiddenItems": false,
           "minimumVisible": 0,
           "onUpdateItemVisibility": [Function],
           "onUpdateOverflow": [Function],
@@ -98,25 +99,29 @@ describe('useOverflowContainer', () => {
 
   it('should not re-render on first mount', () => {
     mockOverflowManager();
-    const { result } = renderHook(() =>
-      useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined }),
-    );
+    let renderCount = 0;
+    renderHook(() => {
+      renderCount++;
+      return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined });
+    });
 
-    expect(result.all.length).toEqual(1);
+    expect(renderCount).toEqual(1);
   });
 
   it('should re-render when option changes', () => {
     let overflowAxis: OverflowAxis = 'horizontal';
     mockOverflowManager();
-    const { result, rerender } = renderHook(() =>
-      useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined, overflowAxis }),
-    );
+    let renderCount = 0;
+    const { rerender } = renderHook(() => {
+      renderCount++;
+      return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined, overflowAxis });
+    });
 
-    expect(result.all.length).toEqual(1);
+    expect(renderCount).toEqual(1);
 
     overflowAxis = 'vertical';
     rerender();
 
-    expect(result.all.length).toEqual(2);
+    expect(renderCount).toEqual(2);
   });
 });

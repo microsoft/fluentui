@@ -4,7 +4,7 @@ const { createV8Config: createConfig } = require('@fluentui/scripts-jest');
 
 const { getNodeModulesPath } = require('./config/utils');
 
-const usedNodeModulesPath = getNodeModulesPath();
+const { usedNodeModulesPath } = getNodeModulesPath();
 
 /**
  * @type {import('@jest/types').Config.InitialOptions}

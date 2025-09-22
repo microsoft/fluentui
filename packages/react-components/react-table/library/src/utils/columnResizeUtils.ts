@@ -82,11 +82,11 @@ export function columnDefinitionsToState<T>(
   return updated ? updatedState : state;
 }
 
-export function getColumnById(state: ColumnWidthState[], columnId: TableColumnId) {
+export function getColumnById(state: ColumnWidthState[], columnId: TableColumnId): ColumnWidthState | undefined {
   return state.find(c => c.columnId === columnId);
 }
 
-export function getColumnByIndex(state: ColumnWidthState[], index: number) {
+export function getColumnByIndex(state: ColumnWidthState[], index: number): ColumnWidthState | undefined {
   return state[index];
 }
 
@@ -94,7 +94,7 @@ export function getTotalWidth(state: ColumnWidthState[]): number {
   return state.reduce((sum, column) => sum + column.width + column.padding, 0);
 }
 
-export function getLength(state: ColumnWidthState[]) {
+export function getLength(state: ColumnWidthState[]): number {
   return state.length;
 }
 
@@ -120,7 +120,7 @@ export function setColumnProperty(
   columnId: TableColumnId,
   property: keyof ColumnWidthState,
   value: number,
-) {
+): ColumnWidthState[] {
   const currentColumn = getColumnById(localState, columnId);
 
   if (!currentColumn || currentColumn?.[property] === value) {
@@ -148,7 +148,10 @@ export function setColumnProperty(
  * @param containerWidth
  * @returns
  */
-export function adjustColumnWidthsToFitContainer(state: ColumnWidthState[], containerWidth: number) {
+export function adjustColumnWidthsToFitContainer(
+  state: ColumnWidthState[],
+  containerWidth: number,
+): ColumnWidthState[] {
   let newState = state;
   const totalWidth = getTotalWidth(newState);
 
@@ -159,6 +162,9 @@ export function adjustColumnWidthsToFitContainer(state: ColumnWidthState[], cont
     // We start at the beginning and assign the columns their ideal width
     while (i < newState.length && difference > 0) {
       const currentCol = getColumnByIndex(newState, i);
+      if (!currentCol) {
+        break;
+      }
       const colAdjustment = Math.min(currentCol.idealWidth - currentCol.width, difference);
       newState = setColumnProperty(newState, currentCol.columnId, 'width', currentCol.width + colAdjustment);
       difference -= colAdjustment;
@@ -166,7 +172,9 @@ export function adjustColumnWidthsToFitContainer(state: ColumnWidthState[], cont
       // if there is still empty space, after all columns are their ideal sizes, assign it to the last column
       if (i === newState.length - 1 && difference !== 0) {
         const lastCol = getColumnByIndex(newState, i);
-        newState = setColumnProperty(newState, lastCol.columnId, 'width', lastCol.width + difference);
+        if (lastCol) {
+          newState = setColumnProperty(newState, lastCol.columnId, 'width', lastCol.width + difference);
+        }
       }
 
       i++;
@@ -180,6 +188,10 @@ export function adjustColumnWidthsToFitContainer(state: ColumnWidthState[], cont
     let j = newState.length - 1;
     while (j >= 0 && difference > 0) {
       const currentCol = getColumnByIndex(newState, j);
+      if (!currentCol) {
+        j--;
+        continue;
+      }
       if (currentCol.width > currentCol.minWidth) {
         const colAdjustment = Math.min(currentCol.width - currentCol.minWidth, difference);
         difference -= colAdjustment;

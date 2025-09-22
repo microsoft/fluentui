@@ -104,6 +104,13 @@ export type {
   IScatterChartDataPoint,
   IBaseDataPoint,
   AxisCategoryOrder,
+  IGanttChartDataPoint,
+  AxisScaleType,
+  AxisProps,
+  IDataPointV2,
+  IDataSeries,
+  IBarSeries,
+  ILineSeries,
 } from './types/index';
 export type {
   IChartHoverCardProps,
@@ -151,5 +158,7 @@ export { DeclarativeChart } from './DeclarativeChart';
 export type { IResponsiveContainerProps, IResponsiveChildProps } from './ResponsiveContainer';
 export { ResponsiveContainer, withResponsiveContainer } from './ResponsiveContainer';
 export type { IScatterChartProps, IScatterChartStyleProps, IScatterChartStyles } from './ScatterChart';
+export type { IGanttChartProps, IGanttChartStyleProps, IGanttChartStyles } from './GanttChart';
+export { GanttChart } from './GanttChart';
 
 import './version';

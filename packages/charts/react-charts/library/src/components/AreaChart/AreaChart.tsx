@@ -17,6 +17,7 @@ import {
   YValueHover,
   ChartPopoverProps,
   Chart,
+  ImageExportOptions,
 } from '../../index';
 import {
   calloutData,
@@ -27,16 +28,25 @@ import {
   tooltipOfAxislabels,
   getNextColor,
   getColorFromToken,
-  formatDate,
   getSecureProps,
   areArraysEqual,
   getCurveFactory,
   find,
   findNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfNumericForAreaLineScatterCharts,
+  domainRangeOfDateForAreaLineScatterVerticalBarCharts,
+  createStringYAxis,
+  useRtl,
+  YAxisType,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
-import { Legend, Legends } from '../Legends/index';
+import type { JSXElement } from '@fluentui/react-utilities';
+import { Legend, LegendContainer, Legends } from '../Legends/index';
 import { ScaleLinear } from 'd3-scale';
+import { toImage } from '../../utilities/image-export-utils';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
@@ -91,13 +101,15 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     let _opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _data: any;
-    let _chart: JSX.Element[];
+    let _chart: JSXElement[];
     let _margins: Margins;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _xAxisRectScale: any;
     // determines if the given area chart has multiple stacked bar charts
     let _isMultiStackChart: boolean;
     const cartesianChartRef = React.useRef<Chart>(null);
+    const _legendsRef = React.useRef<LegendContainer>(null);
+    const _isRTL: boolean = useRtl();
 
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -130,11 +142,47 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       props.componentRef,
       () => ({
         chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+        toImage: (opts?: ImageExportOptions): Promise<string> => {
+          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
+        },
       }),
       [],
     );
 
     const classes = useAreaChartStyles(props);
+
+    function _getMinMaxOfYAxis(points: LineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) {
+      return findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
+    }
+
+    function _getDomainNRangeValues(
+      points: LineChartPoints[],
+      margins: Margins,
+      width: number,
+      chartType: ChartTypes,
+      isRTL: boolean,
+      xAxisType: XAxisTypes,
+      barWidth: number,
+      tickValues: Date[] | number[] | undefined,
+    ) {
+      let domainNRangeValue: IDomainNRange;
+      if (xAxisType === XAxisTypes.NumericAxis) {
+        domainNRangeValue = domainRangeOfNumericForAreaLineScatterCharts(points, margins, width, isRTL);
+      } else if (xAxisType === XAxisTypes.DateAxis) {
+        domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
+          points,
+          margins,
+          width,
+          isRTL,
+          tickValues! as Date[],
+          chartType,
+          barWidth,
+        );
+      } else {
+        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+      }
+      return domainNRangeValue;
+    }
 
     function _getMargins(margins: Margins) {
       _margins = margins;
@@ -188,7 +236,9 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
       const formattedDate =
-        pointToHighlight instanceof Date ? formatDate(pointToHighlight, props.useUTC) : pointToHighlight;
+        pointToHighlight instanceof Date
+          ? formatDateToLocaleString(pointToHighlight, props.culture, props.useUTC as boolean)
+          : pointToHighlight;
       const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const found: any = find(_calloutPoints, (element: { x: string | number }) => {
@@ -441,7 +491,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       setActiveLegend(undefined);
     }
 
-    function _getLegendData(points: LineChartPoints[]): JSX.Element {
+    function _getLegendData(points: LineChartPoints[]): JSXElement {
       const data = points;
       const actions: Legend[] = [];
 
@@ -474,6 +524,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           enabledWrapLines={props.enabledLegendsWrapLines}
           {...props.legendProps}
           onChange={_onLegendSelectionChange}
+          legendRef={_legendsRef}
         />
       );
     }
@@ -543,11 +594,11 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       yScalePrimary: ScaleLinear<number, number>,
       yScaleSecondary: ScaleLinear<number, number> | undefined,
       xElement: SVGElement,
-    ): JSX.Element[] {
+    ): JSXElement[] {
       const points = _addDefaultColors(props.data.lineChartData);
       const { pointOptions, pointLineOptions } = props.data;
 
-      const graph: JSX.Element[] = [];
+      const graph: JSXElement[] = [];
       let lineColor: string;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       _data.forEach((singleStackedData: Array<any>, index: number) => {
@@ -604,6 +655,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                 opacity={layerOpacity}
                 fillOpacity={_getOpacity(points[index]!.legend)}
                 onMouseMove={event => _onRectMouseMove(event)}
+                onFocus={event => _handleFocus(event, index, 0, `${_circleId}_${index}`)}
                 onMouseOut={_onRectMouseOut}
                 onMouseOver={event => _onRectMouseMove(event)}
               />
@@ -667,7 +719,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                     onMouseOut={_onRectMouseOut}
                     onMouseOver={event => _onRectMouseMove(event)}
                     onClick={() => _onDataPointClick(points[index]!.data[pointIndex].onDataPointClick!)}
-                    onFocus={() => _handleFocus(index, pointIndex, circleId)}
+                    onFocus={event => _handleFocus(event, index, pointIndex, circleId)}
                     onBlur={_handleBlur}
                     {...getSecureProps(pointOptions)}
                     r={_getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
@@ -697,6 +749,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                   fill={_updateCircleFillColor(xDataPoint, lineColor, circleId)}
                   onMouseOut={_onRectMouseOut}
                   onMouseOver={event => _onRectMouseMove(event)}
+                  onFocus={event => _handleFocus(event, index, pointIndex, circleId)}
                   onClick={() => _onDataPointClick(points[index]!.data[pointIndex].onDataPointClick!)}
                   {...getSecureProps(pointOptions)}
                   r={_getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
@@ -800,9 +853,22 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
         : [];
     }
 
-    function _handleFocus(lineIndex: number, pointIndex: number, circleId: string) {
+    function _handleFocus(
+      event: React.FocusEvent<SVGCircleElement, Element>,
+      lineIndex: number,
+      pointIndex: number,
+      circleId: string,
+    ) {
+      let cx = 0;
+      let cy = 0;
+
+      const targetRect = (event.target as SVGCircleElement).getBoundingClientRect();
+      cx = targetRect.left + targetRect.width / 2;
+      cy = targetRect.top + targetRect.height / 2;
+      _updatePosition(cx, cy);
+
       const { x, y, xAxisCalloutData } = props.data.lineChartData![lineIndex].data[pointIndex];
-      const formattedDate = x instanceof Date ? formatDate(x, props.useUTC) : x;
+      const formattedDate = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
       const modifiedXVal = x instanceof Date ? x.getTime() : x;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const found: any = _calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
@@ -837,7 +903,8 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     function _getAriaLabel(lineIndex: number, pointIndex: number): string {
       const line = props.data.lineChartData![lineIndex];
       const point = line.data[pointIndex];
-      const formattedDate = point.x instanceof Date ? formatDate(point.x, props.useUTC) : point.x;
+      const formattedDate =
+        point.x instanceof Date ? formatDateToLocaleString(point.x, props.culture, props.useUTC as boolean) : point.x;
       const xValue = point.xAxisCalloutData || formattedDate;
       const legend = line.legend;
       const yValue = point.yAxisCalloutData || point.y;
@@ -879,7 +946,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       _colors = colors;
       _opacity = opacity;
       _data = data.renderData;
-      const legends: JSX.Element = _getLegendData(points);
+      const legends: JSXElement = _getLegendData(points);
 
       const tickParams = {
         tickValues: props.tickValues,
@@ -910,12 +977,16 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
           legendBars={legends}
+          createYAxis={createNumericYAxis}
           xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
           tickParams={tickParams}
           maxOfYVal={data.maxOfYVal}
           getGraphData={_getGraphData}
+          getDomainNRangeValues={_getDomainNRangeValues}
+          createStringYAxis={createStringYAxis}
           getmargins={_getMargins}
           onChartMouseLeave={_handleChartMouseLeave}
+          getMinMaxOfYAxis={_getMinMaxOfYAxis}
           enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
           componentRef={cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */

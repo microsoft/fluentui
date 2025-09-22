@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { VerticalBarChart, VerticalBarChartDataPoint, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Button } from '@fluentui/react-components';
 import {
@@ -14,7 +15,7 @@ import {
   InputOnChangeData,
 } from '@fluentui/react-components';
 
-export const VerticalBarDynamic = () => {
+export const VerticalBarDynamic = (): JSXElement => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
   const screenReaderOnlyStyle: React.CSSProperties = {
     position: 'absolute',

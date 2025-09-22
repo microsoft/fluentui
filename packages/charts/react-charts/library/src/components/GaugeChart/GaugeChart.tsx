@@ -15,10 +15,12 @@ import {
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
+import { Legend, LegendShape, Legends, Shape, LegendContainer } from '../Legends/index';
 import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
+import { ImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -36,7 +38,7 @@ export const BREAKPOINTS = [
   { minRadius: 142, arcWidth: 32, fontSize: 40 },
 ];
 
-export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number) => {
+export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number): number => {
   let needleRotation = ((chartValue - minValue) / (maxValue - minValue)) * 180;
   if (needleRotation < 0) {
     needleRotation = 0;
@@ -53,7 +55,7 @@ export const getSegmentLabel = (
   maxValue: number,
   variant?: GaugeChartVariant,
   isAriaLabel: boolean = false,
-) => {
+): string => {
   if (isAriaLabel) {
     return minValue === 0 && variant === 'single-segment'
       ? `${segment.legend}, ${segment.size} out of ${maxValue} or ${((segment.size / maxValue) * 100).toFixed()}%`
@@ -101,6 +103,7 @@ export interface ExtendedSegment extends GaugeChartSegment {
 
 export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwardRef<HTMLDivElement, GaugeChartProps>(
   (props, forwardedRef) => {
+    const _legendsRef = React.useRef<LegendContainer>(null);
     const _getMargins = () => {
       const { hideMinMax, chartTitle, sublabel } = props;
       return {
@@ -159,6 +162,9 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       props.componentRef,
       () => ({
         chartContainer: _rootElem.current,
+        toImage: (opts?: ImageExportOptions): Promise<string> => {
+          return toImage(_rootElem.current, _legendsRef.current?.toSVG, _isRTL, opts);
+        },
       }),
       [],
     );
@@ -307,6 +313,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             {...props.legendProps}
             // eslint-disable-next-line react/jsx-no-bind
             onChange={_onLegendSelectionChange}
+            legendRef={_legendsRef}
           />
         </div>
       );
@@ -672,8 +679,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                       onMouseEnter={e => _handleMouseOver(e, segment.legend)}
                       onMouseLeave={e => _handleCalloutDismiss()}
                       onMouseMove={e => _handleMouseOver(e, segment.legend)}
-                      data-is-focusable={_legendHighlighted(segment.legend) || _noLegendHighlighted()}
-                      tabIndex={segment.legend !== '' ? 0 : undefined}
+                      tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
                     />
                   </React.Fragment>
                 );

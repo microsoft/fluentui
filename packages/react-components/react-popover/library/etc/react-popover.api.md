@@ -11,14 +11,13 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElementConstructor } from 'react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
-import { ReactElement } from 'react';
 import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -44,7 +43,7 @@ export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'se
 // @public
 export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     appearance?: 'brand' | 'inverted';
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSXElement, JSXElement] | JSXElement;
     closeOnScroll?: boolean;
     defaultOpen?: boolean;
     inline?: boolean;
@@ -125,13 +124,13 @@ export type PopoverTriggerState = {
 };
 
 // @public
-export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
+export const renderPopover_unstable: (state: PopoverState) => JSXElement;
 
 // @public
-export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element;
+export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSXElement;
 
 // @public
-export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
+export const renderPopoverTrigger_unstable: (state: PopoverTriggerState) => JSXElement | null;
 
 // @public
 export const usePopover_unstable: (props: PopoverProps) => PopoverState;

@@ -5,6 +5,7 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
+  getReactElementRef,
   isHTMLElement,
   mergeCallbacks,
   useEventCallback,
@@ -89,7 +90,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(event)) {
+    if (isTargetDisabled(event) || event.isDefaultPrevented()) {
       return;
     }
 
@@ -149,7 +150,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const contextMenuProps = {
     id: triggerId,
     ...child?.props,
-    ref: useMergedRefs(triggerRef, child?.ref, safeZoneHandlerRef),
+    ref: useMergedRefs(triggerRef, getReactElementRef(child), safeZoneHandlerRef),
     onMouseEnter: useEventCallback(child?.props.onMouseEnter ?? noop),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
     onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
