@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix dashed line bug in line chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

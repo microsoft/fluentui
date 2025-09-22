@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 18 Sep 2025 04:07:17 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.124",
+      "version": "3.0.0-beta.124",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fdb651c09b833a2cd9a7ae219000f33a4a906dd6",
+            "comment": "fix: bug in switch checked story in forced-colors mode"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Sep 2025 04:06:58 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.123",
       "version": "3.0.0-beta.123",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Thu, 11 Sep 2025 07:20:30 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Sep 2025 07:20:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.31](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.31)
+
+Mon, 15 Sep 2025 07:20:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.30..@fluentui/chart-utilities_v1.1.31)
+
+### Patches
+
+- feat: add support for lines in GVBC ([PR #35135](https://github.com/microsoft/fluentui/pull/35135) by kumarkshitij@microsoft.com)
 
 ## [1.1.30](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.30)
 

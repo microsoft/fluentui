@@ -17,10 +17,10 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_4"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_5"
     />
     <div
       class=
@@ -29,11 +29,11 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             outline: none;
           }
 
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -66,7 +66,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_4"
           transform="translate(0, -35)"
         />
         <g
@@ -94,8 +94,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_4"
           transform="translate(40, 0)"
+        />
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
         />
         <g>
           <g
@@ -246,7 +252,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone13"
+          data-focuszone-id="FocusZone14"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -586,10 +592,10 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           overflow: hidden;
           width: 100%;
         }
-    id="chart_3"
+    id="chart_4"
   >
     <div
-      id="defaultTabbableElement_4"
+      id="defaultTabbableElement_5"
     />
     <div
       class=
@@ -598,11 +604,11 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             outline: none;
           }
 
-      data-focuszone-id="FocusZone12"
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -635,7 +641,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_3"
+          id="xAxisGElementchart_4"
           transform="translate(0, -35)"
         />
         <g
@@ -663,8 +669,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 opacity: 0.1;
                 stroke: CanvasText;
               }
-          id="yAxisGElementchart_3"
+          id="yAxisGElementchart_4"
           transform="translate(40, 0)"
+        />
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
         />
         <g>
           <g

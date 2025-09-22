@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add correct nesting validation for Menu and MenuGridcomponents and subcomponents",
+  "packageName": "@fluentui/react-menu",
+  "email": "adam.samec@gmail.com",
+  "dependentChangeType": "patch"
+}

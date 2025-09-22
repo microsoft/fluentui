@@ -13,6 +13,24 @@
           "projects": ["react", "react-hooks", "fluent2-theme"]
         }
       ]
+    },
+    "test-rit--17--test": {
+      "dependsOn": [
+        "test-rit--17--prepare",
+        {
+          "target": "build",
+          "projects": ["react", "react-hooks", "fluent2-theme"]
+        }
+      ]
+    },
+    "test-rit--19--test": {
+      "dependsOn": [
+        "test-rit--19--prepare",
+        {
+          "target": "build",
+          "projects": ["react", "react-hooks", "fluent2-theme"]
+        }
+      ]
     }
   }
 }

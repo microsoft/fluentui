@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 05 Sep 2025 04:09:54 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Sep 2025 04:07:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.124](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.124)
+
+Thu, 18 Sep 2025 04:07:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.123..@fluentui/web-components_v3.0.0-beta.124)
+
+### Changes
+
+- fix: bug in switch checked story in forced-colors mode ([PR #35204](https://github.com/microsoft/fluentui/pull/35204) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.123](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.123)
 

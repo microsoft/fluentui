@@ -97,9 +97,10 @@ export const baseConfig = defineConfig({
     },
     supportFile: path.join(projectSupportDir, './component.js'),
     indexHtmlFile: path.join(projectSupportDir, './component-index.html'),
+    defaultCommandTimeout: 8000,
   },
   retries: {
-    runMode: 2,
+    runMode: 4,
     openMode: 0,
   },
   // Screenshots go under <pkg>/cypress/screenshots and can be useful to look at after failures in

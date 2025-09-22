@@ -54,6 +54,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
   AxisCategoryOrder,
+  IYValueHover,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { calculatePrecision, getId, ITheme, precisionRound } from '@fluentui/react';
@@ -926,11 +927,7 @@ export function calloutData(values: ((ILineChartPoints | IScatterChartPoints) & 
     }
   });
 
-  const result = Object.keys(xValToDataPoints).map(xValue => {
-    const originalXValue = isNaN(Number(xValue)) ? xValue : Number(xValue);
-    return { x: originalXValue, values: xValToDataPoints[xValue] };
-  });
-  return result;
+  return xValToDataPoints;
 }
 
 export function getUnique(
@@ -2224,4 +2221,22 @@ const generateDateTicks = (
       return generateMonthlyTicks(refTick, num, scaleDomain, useUTC);
     }
   }
+};
+
+export const findCalloutPoints = (
+  calloutPointsByX: Record<string, IYValueHover[]>,
+  x: string | number | Date | null,
+) => {
+  if (x === null) {
+    return undefined;
+  }
+
+  const key = x instanceof Date ? x.getTime() : x;
+  if (!calloutPointsByX[key]) {
+    return undefined;
+  }
+  return {
+    x,
+    values: calloutPointsByX[key],
+  };
 };

@@ -7,7 +7,6 @@ exports[`TableHeaderCell renders a default state 1`] = `
   >
     <div
       class="fui-TableHeaderCell__button"
-      role="presentation"
     >
       Default TableHeaderCell
     </div>
