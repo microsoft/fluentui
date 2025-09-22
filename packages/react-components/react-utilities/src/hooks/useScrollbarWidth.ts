@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+import { measureScrollbarWidth } from '../utils/measureScrollBarWidth';
 
 const cache = new WeakMap<Document, number>();
 
@@ -15,41 +15,25 @@ interface UseScrollbarWidthOptions {
   force?: boolean;
 }
 
-function measureScrollbarWidth(targetDocument: Document, force?: boolean): number {
-  if (!force && cache.has(targetDocument)) {
-    return cache.get(targetDocument)!;
-  }
-
-  const outer = targetDocument.createElement('div');
-  outer.style.visibility = 'hidden';
-  outer.style.overflow = 'scroll';
-
-  const inner = targetDocument.createElement('div');
-  outer.appendChild(inner);
-
-  targetDocument.body.appendChild(outer);
-  const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
-  outer.remove();
-  cache.set(targetDocument, scrollbarWidth);
-  return scrollbarWidth;
-}
-
 /**
  * @returns The width in pixels of the scrollbar in the user agent
+ * @remarks This hook is not SSR-safe. For SSR-safe scrollbar width application, use the `useApplyScrollbarWidth` from {@link file://./useApplyScrollbarWidth.ts} instead.
  */
 export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined {
   const { targetDocument, force } = options;
-  const [scrollbarWidth, setScrollbarWidth] = React.useState<number | undefined>(undefined);
 
-  useIsomorphicLayoutEffect(() => {
+  return React.useMemo(() => {
     if (!targetDocument) {
-      setScrollbarWidth(0);
-      return;
+      return 0;
     }
 
-    const width = measureScrollbarWidth(targetDocument, force);
-    setScrollbarWidth(width);
-  }, [targetDocument, force]);
+    if (!force && cache.has(targetDocument)) {
+      return cache.get(targetDocument);
+    }
 
-  return scrollbarWidth;
+    const scrollbarWidth = measureScrollbarWidth(targetDocument);
+    cache.set(targetDocument, scrollbarWidth);
+
+    return scrollbarWidth;
+  }, [targetDocument, force]);
 }
