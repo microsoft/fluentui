@@ -15,7 +15,6 @@ import {
   PresenceBadgeStatus,
   Avatar,
   useApplyScrollbarWidth,
-  useFluent,
   TableBody,
   TableCell,
   TableRow,
@@ -156,8 +155,7 @@ const RenderRow = ({ index, style, data }: ReactWindowRenderFnProps) => {
 };
 
 export const Virtualization = (): JSXElement => {
-  const { targetDocument } = useFluent();
-  const appliedScrollbarWidthRef = useApplyScrollbarWidth({ targetDocument });
+  const appliedScrollbarWidthRef = useApplyScrollbarWidth();
 
   const {
     getRows,
