@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 const cache = new WeakMap<Document, number>();
 
@@ -40,7 +41,7 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
   const { targetDocument, force } = options;
   const [scrollbarWidth, setScrollbarWidth] = React.useState<number | undefined>(undefined);
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!targetDocument) {
       setScrollbarWidth(0);
       return;
