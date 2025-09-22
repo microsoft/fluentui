@@ -9,14 +9,12 @@ import {
   type PositioningShorthandValue,
   resolvePositioningShorthand,
   tokens,
-  useIsSSR,
   useMergedRefs,
   usePositioning,
   useSafeZoneArea,
   type UseSafeZoneOptions,
 } from '@fluentui/react-components';
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   root: {
@@ -86,10 +84,9 @@ const useClasses = makeStyles({
   },
 });
 
-export const UseSafeZoneAreaDefault = (props: UseSafeZoneOptions): JSXElement => {
+export const UseSafeZoneAreaDefault = (props: UseSafeZoneOptions) => {
   const classes = useClasses();
 
-  const isSSR = useIsSSR();
   const [debug, setDebug] = React.useState(true);
   const [includeOffset, setIncludeOffset] = React.useState(false);
   const [position, setPosition] = React.useState<NonNullable<PositioningShorthandValue>>('above');
@@ -104,8 +101,6 @@ export const UseSafeZoneAreaDefault = (props: UseSafeZoneOptions): JSXElement =>
     offset: includeOffset ? { mainAxis: 20 } : undefined,
     pinned: true,
   });
-
-  const containerRef = useMergedRefs(safeZoneArea.containerRef, positioning.containerRef);
 
   return (
     <div className={classes.root}>
@@ -189,15 +184,13 @@ export const UseSafeZoneAreaDefault = (props: UseSafeZoneOptions): JSXElement =>
         </div>
       </div>
 
-      {!isSSR && (
-        <Portal>
-          <div className={classes.container} ref={containerRef}>
-            A container element
-          </div>
+      <Portal>
+        <div className={classes.container} ref={useMergedRefs(safeZoneArea.containerRef, positioning.containerRef)}>
+          A container element
+        </div>
 
-          {safeZoneArea.elementToRender}
-        </Portal>
-      )}
+        {safeZoneArea.elementToRender}
+      </Portal>
     </div>
   );
 };
