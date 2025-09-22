@@ -162,9 +162,9 @@ export const SankeyChartInbox: React.FunctionComponent<{}> = (): JSXElement => {
     <div>
       <div style={{ display: 'flex' }}>
         <label>change Width:</label>
-        <input type="range" value={width} min={400} max={1600} onChange={_onWidthChange} />
+        <input type="range" id="changeWidth_Inbox" value={width} min={400} max={1600} onChange={_onWidthChange} />
         <label>change Height:</label>
-        <input type="range" value={height} min={312} max={400} onChange={_onHeightChange} />
+        <input type="range" id="changeHeight_Inbox" value={height} min={312} max={400} onChange={_onHeightChange} />
       </div>
       <div style={rootStyle}>
         <SankeyChart

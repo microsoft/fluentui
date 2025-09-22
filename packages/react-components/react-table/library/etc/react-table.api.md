@@ -121,7 +121,7 @@ export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
 export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
 
 // @public
-export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'>;
+export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'> & Pick<DataGridCellProps, 'focusMode'>;
 
 // @public (undocumented)
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;

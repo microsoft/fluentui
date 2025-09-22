@@ -29,6 +29,7 @@ import {
   ILineChartStyles,
   ILineChartGap,
   ILineChartDataPoint,
+  IYValueHover,
 } from '../../index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
@@ -57,6 +58,7 @@ import {
   getDomainPaddingForMarkers,
   isPlottable,
   getRangeForScatterMarkerSize,
+  findCalloutPoints,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -178,8 +180,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
 
   private _points: LineChartDataWithIndex[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _calloutPoints: any[];
+  private _calloutPoints: Record<string, IYValueHover[]>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisScale: any = '';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -237,7 +238,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     this._colorFillBars = [];
-    this._calloutPoints = calloutData(this._points) || [];
+    this._calloutPoints = calloutData(this._points) || {};
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
     this._borderId = getId('borderID');
@@ -278,7 +279,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       prevProps.data !== this.props.data
     ) {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
-      this._calloutPoints = calloutData(this._points) || [];
+      this._calloutPoints = calloutData(this._points) || {};
     }
   }
 
@@ -1597,11 +1598,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       xPointToHighlight instanceof Date
         ? formatDateToLocaleString(xPointToHighlight, this.props.culture, this.props.useUTC)
         : xPointToHighlight;
-    const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
-      return element.x === modifiedXVal;
-    });
+    const found = findCalloutPoints(this._calloutPoints, xPointToHighlight) as ICustomizedCalloutData | undefined;
     const pointToHighlight: ILineChartDataPoint = lineChartData![linenumber].data[index!];
     const pointToHighlightUpdated =
       this.state.nearestCircleToHighlight === null ||
@@ -1657,8 +1654,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   ) => {
     this._uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? formatDateToLocaleString(x, this.props.culture, this.props.useUTC) : x;
-    const xVal = x instanceof Date ? x.getTime() : x;
-    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
+    const found = findCalloutPoints(this._calloutPoints, x) as ICustomizedCalloutData | undefined;
     // if no points need to be called out then don't show vertical line and callout card
 
     if (found) {
@@ -1689,7 +1685,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _handleHover = (
     x: number | Date,
-    y: number | Date,
+    y: number,
     lineHeight: number,
     xAxisCalloutData: string | undefined,
     circleId: string,
@@ -1701,17 +1697,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   ) => {
     mouseEvent.persist();
     const formattedData = x instanceof Date ? formatDateToLocaleString(x, this.props.culture, this.props.useUTC) : x;
-    const xVal = x instanceof Date ? x.getTime() : x;
-    const yVal = y instanceof Date ? y.getTime() : y;
     const _this = this;
-    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
+    const found = findCalloutPoints(this._calloutPoints, x) as ICustomizedCalloutData | undefined;
     let hoverDp: ICustomizedCalloutData | undefined = undefined;
 
     if (this.props.isCalloutForStack === false && found?.values) {
-      const dp = find(found.values, (val: ICustomizedCalloutDataPoint) => val?.y === yVal);
+      const dp = find(found.values, (val: ICustomizedCalloutDataPoint) => val?.y === y);
       if (dp) {
         hoverDp = {
-          x: xVal,
+          x,
           values: [dp],
         };
       }
@@ -1731,7 +1725,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           refSelected: `#${circleId}`,
           hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
           YValueHover: found.values,
-          YValue: yVal,
+          YValue: y,
           legendVal: legendVal!,
           lineColor,
           stackCalloutProps: found!,

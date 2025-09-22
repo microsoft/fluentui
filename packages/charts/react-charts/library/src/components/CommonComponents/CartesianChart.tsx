@@ -52,7 +52,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const _isFirstRender = React.useRef<boolean>(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
-  let isIntegralDataset: boolean = true;
+  const isIntegralDataset = React.useMemo(() => {
+    return !props.points.some((point: { y: number }) => point.y % 1 !== 0);
+  }, [props.points]);
   let _tooltipId: string = useId('tooltip_');
   /* Used for when WrapXAxisLabels props appeared.
    * To display the total word (space separated words), Need to have more space than usual.
@@ -141,8 +143,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     } else if (startFromX !== 0) {
       setStartFromX(0);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    isIntegralDataset = !props.points.some((point: { y: number }) => point.y % 1 !== 0);
     return () => {
       cancelAnimationFrame(_reqID);
     };
@@ -167,10 +167,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       }
     } else if (startFromX !== 0) {
       setStartFromX(0);
-    }
-    if (prevProps !== null && prevProps.points !== props.points) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      isIntegralDataset = !props.points.some((point: { y: number }) => point.y % 1 !== 0);
     }
   }, [props, prevProps]);
 
