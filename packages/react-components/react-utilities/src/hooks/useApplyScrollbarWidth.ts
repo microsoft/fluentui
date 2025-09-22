@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { measureScrollbarWidth } from '../utils/measureScrollBarWidth';
 
-let cache = new WeakMap<Document, number>();
+const cache = new WeakMap<Document, number>();
 
 interface UseApplyScrollbarWidthOptions {
-  /**
-   * Reference document to measure the scrollbar width
-   */
-  targetDocument: Document | null | undefined;
-
   /**
    * Does not use the cache and recalculates the scrollbar width
    */
@@ -35,19 +30,19 @@ interface UseApplyScrollbarWidthOptions {
  * ```
  */
 export function useApplyScrollbarWidth<T extends HTMLElement>(
-  options: UseApplyScrollbarWidthOptions,
+  options: UseApplyScrollbarWidthOptions = {},
 ): React.RefCallback<T> {
-  const { targetDocument, force, property = 'width' } = options;
+  const { force, property = 'width' } = options;
 
   const applyScrollbarWidth = React.useCallback(
     (element: T | null) => {
-      if (!element || !targetDocument) {
+      if (!element) {
         return;
       }
 
       // If we have a cached value, use it
-      if (!force && cache.has(targetDocument)) {
-        const cachedWidth = cache.get(targetDocument);
+      if (!force && cache.has(element.ownerDocument)) {
+        const cachedWidth = cache.get(element.ownerDocument);
         if (cachedWidth !== undefined) {
           element.style.setProperty(property, `${cachedWidth}px`);
           return;
@@ -55,11 +50,11 @@ export function useApplyScrollbarWidth<T extends HTMLElement>(
       }
 
       // Measure the scrollbar width and apply it to the element
-      const scrollbarWidth = measureScrollbarWidth(targetDocument);
-      cache.set(targetDocument, scrollbarWidth);
+      const scrollbarWidth = measureScrollbarWidth(element.ownerDocument);
+      cache.set(element.ownerDocument, scrollbarWidth);
       element.style.setProperty(property, `${scrollbarWidth}px`);
     },
-    [targetDocument, force, property],
+    [force, property],
   );
 
   return applyScrollbarWidth;

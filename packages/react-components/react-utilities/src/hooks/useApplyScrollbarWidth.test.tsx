@@ -20,13 +20,19 @@ describe('useApplyScrollbarWidth', () => {
   });
 
   it('returns a callback function', () => {
-    const { result } = renderHook(() => useApplyScrollbarWidth({ targetDocument: mockDocument }));
+    const { result } = renderHook(() => useApplyScrollbarWidth());
 
     expect(typeof result.current).toBe('function');
   });
 
   it('applies scrollbar width to element when ref callback is called', () => {
-    const { result } = renderHook(() => useApplyScrollbarWidth({ targetDocument: mockDocument }));
+    const { result } = renderHook(() => useApplyScrollbarWidth());
+
+    act(() => {
+      result.current(mockElement);
+    });
+
+    expect(mockMeasureScrollbarWidth).toHaveBeenCalledWith(mockDocument);
 
     act(() => {
       result.current(mockElement);
@@ -39,7 +45,6 @@ describe('useApplyScrollbarWidth', () => {
   it('uses custom CSS property when specified', () => {
     const { result } = renderHook(() =>
       useApplyScrollbarWidth({
-        targetDocument: mockDocument,
         property: 'padding-right',
       }),
     );
@@ -52,19 +57,8 @@ describe('useApplyScrollbarWidth', () => {
     expect(mockElement.style.getPropertyValue('width')).toBe('');
   });
 
-  it('does not apply styles when targetDocument is null', () => {
-    const { result } = renderHook(() => useApplyScrollbarWidth({ targetDocument: null }));
-
-    act(() => {
-      result.current(mockElement);
-    });
-
-    expect(mockMeasureScrollbarWidth).not.toHaveBeenCalled();
-    expect(mockElement.style.getPropertyValue('width')).toBe('');
-  });
-
   it('does not apply styles when element is null', () => {
-    const { result } = renderHook(() => useApplyScrollbarWidth({ targetDocument: mockDocument }));
+    const { result } = renderHook(() => useApplyScrollbarWidth());
 
     act(() => {
       result.current(null);
@@ -75,7 +69,7 @@ describe('useApplyScrollbarWidth', () => {
 
   it('works with real JSX components', () => {
     const TestComponent: React.FC = () => {
-      const scrollbarRef = useApplyScrollbarWidth({ targetDocument: document, force: true });
+      const scrollbarRef = useApplyScrollbarWidth({ force: true });
 
       return <div ref={scrollbarRef} data-testid="scrollbar-element" />;
     };
@@ -92,7 +86,6 @@ describe('useApplyScrollbarWidth', () => {
   it('works with custom properties in JSX', () => {
     const TestComponent: React.FC = () => {
       const scrollbarRef = useApplyScrollbarWidth({
-        targetDocument: document,
         property: 'padding-right',
         force: true,
       });
@@ -110,9 +103,8 @@ describe('useApplyScrollbarWidth', () => {
 
   it('works with different element types', () => {
     const TestComponent: React.FC = () => {
-      const divRef = useApplyScrollbarWidth({ targetDocument: document, force: true });
+      const divRef = useApplyScrollbarWidth({ force: true });
       const spanRef = useApplyScrollbarWidth({
-        targetDocument: document,
         property: 'margin-left',
         force: true,
       });
@@ -137,7 +129,7 @@ describe('useApplyScrollbarWidth', () => {
 
   it('handles conditional rendering', () => {
     const TestComponent: React.FC<{ show: boolean }> = ({ show }) => {
-      const scrollbarRef = useApplyScrollbarWidth({ targetDocument: document, force: true });
+      const scrollbarRef = useApplyScrollbarWidth({ force: true });
 
       return show ? <div ref={scrollbarRef} data-testid="conditional-element" /> : null;
     };
