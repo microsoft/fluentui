@@ -358,7 +358,9 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           yCalloutValue={yCalloutValue}
           culture={props.culture ?? 'en-us'}
           clickPosition={clickPosition}
-          isPopoverOpen={!props.hideTooltip && isPopoverOpen}
+          isPopoverOpen={
+            !props.hideTooltip && isPopoverOpen && (_noLegendsHighlighted() || _isLegendHighlighted(legend))
+          }
           legend={legend!}
           YValue={value!}
           color={color}
