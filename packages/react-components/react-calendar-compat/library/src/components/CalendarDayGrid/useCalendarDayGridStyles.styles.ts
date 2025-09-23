@@ -15,11 +15,11 @@ import {
   SLIDE_UP_OUT20,
   TRANSITION_ROW_DISAPPEARANCE,
 } from '../../utils';
-import { AnimationDirection } from '../Calendar/Calendar.types';
 import { weekCornersClassNames } from './useWeekCornerStyles.styles';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
+import { AnimationDirection } from '../../Calendar';
 
 /**
  * @internal
@@ -316,7 +316,6 @@ const useFirstTransitionWeekStyles = makeStyles({
     height: 0,
     opacity: 0,
     overflow: 'hidden',
-
     position: 'absolute',
     width: 0,
   },

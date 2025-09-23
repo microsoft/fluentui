@@ -17,7 +17,7 @@ import type {
   AnimationHandle,
 } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
-import { createMotionComponent, MotionComponentProps } from './createMotionComponent';
+import { createMotionComponent, MotionComponent } from './createMotionComponent';
 
 /**
  * @internal A private symbol to store the motion definition on the component for variants.
@@ -81,8 +81,8 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
 > & {
   (props: PresenceComponentProps & MotionParams): JSXElement | null;
   [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
-  In: React.FC<MotionComponentProps & MotionParams>;
-  Out: React.FC<MotionComponentProps & MotionParams>;
+  In: MotionComponent<MotionParams>;
+  Out: MotionComponent<MotionParams>;
 };
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
