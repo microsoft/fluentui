@@ -466,7 +466,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const focusAttributes = useFocusableGroup();
 
   return !_isChartEmpty() ? (
-    <div ref={chartContainerRef} className={classes.root} {...focusAttributes}>
+    <div ref={chartContainerRef} className={classes.root} {...focusAttributes} style={{ width, height }}>
       <svg width={width} height={height} className={classes.chart} role={'img'} aria-label={props.chartTitle}>
         <g
           transform={
