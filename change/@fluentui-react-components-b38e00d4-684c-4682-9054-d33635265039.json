@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: move react-alert, react-infobutton, and react-virtualizer to optional peerDependencies",
+  "packageName": "@fluentui/react-components",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
