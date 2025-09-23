@@ -32,6 +32,7 @@ export function createOverflowManager(): OverflowManager {
     minimumVisible: 0,
     onUpdateItemVisibility: () => undefined,
     onUpdateOverflow: () => undefined,
+    hasHiddenItems: false,
   };
 
   const overflowItems: Record<string, OverflowItemEntry> = {};
@@ -103,7 +104,8 @@ export function createOverflowManager(): OverflowManager {
       0,
     );
 
-    const overflowMenuSize = invisibleItemQueue.size() > 0 && overflowMenu ? getOffsetSize(overflowMenu) : 0;
+    const overflowMenuSize =
+      (invisibleItemQueue.size() > 0 || options.hasHiddenItems) && overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     return totalItemSize + totalDividerSize + overflowMenuSize;
   }
