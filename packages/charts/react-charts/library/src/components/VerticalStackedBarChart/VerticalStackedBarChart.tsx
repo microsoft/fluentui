@@ -933,7 +933,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
     // Update the position only if the distance moved is greater than the threshold
     if (distance > threshold) {
-      console.log('hello');
       setClickPosition({ x: newX, y: newY });
       setPopoverOpen(true);
     }
