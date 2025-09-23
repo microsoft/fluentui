@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Merge onKeyDown handlers for MenuGrid component",
+  "packageName": "@fluentui/react-menu-grid-preview",
+  "email": "adam.samec@gmail.com",
+  "dependentChangeType": "patch"
+}
