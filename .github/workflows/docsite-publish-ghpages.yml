@@ -23,6 +23,11 @@ jobs:
           node-version: 20
           cache: 'yarn'
 
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1
+        with:
+          main-branch-name: 'master'
+
       - name: Install packages
         run: yarn install --frozen-lockfile
 
@@ -34,6 +39,7 @@ jobs:
         run: |
           affected_count=$(yarn --silent nx show projects -t build-storybook:docsite --affected --verbose false | wc -l | tr -d ' ')
           echo "value=$affected_count" >> $GITHUB_OUTPUT
+          echo "Affected Storybooks: $affected_count"
 
       - name: Build affected storybooks
         if: steps.affected_storybooks_count.outputs.value > 0
