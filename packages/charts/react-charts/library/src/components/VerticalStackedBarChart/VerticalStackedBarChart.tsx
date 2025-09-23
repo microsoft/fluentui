@@ -828,7 +828,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function _handleMouseOut(): void {
-    setPopoverOpen(false);
+    /**/
   }
 
   function _getBarGapAndScale(
