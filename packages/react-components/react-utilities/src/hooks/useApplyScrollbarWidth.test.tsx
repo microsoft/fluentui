@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
-import { renderHook, act } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { useApplyScrollbarWidth } from './useApplyScrollbarWidth';
 import { measureScrollbarWidth } from '../utils/measureScrollBarWidth';
 
