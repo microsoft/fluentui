@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { AreaChart, DataVizPalette } from '@fluentui/react-charts';
 import * as d3 from 'd3-format';
 
-export const AreaChartMultiple = () => {
+export const AreaChartMultiple = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
 

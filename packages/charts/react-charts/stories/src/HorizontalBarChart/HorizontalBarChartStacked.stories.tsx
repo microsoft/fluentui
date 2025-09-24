@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { HorizontalBarChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
 
-export const HorizontalBarStacked = () => {
+export const HorizontalBarStacked = (): JSXElement => {
   const data = [
     {
       chartTitle: 'one',

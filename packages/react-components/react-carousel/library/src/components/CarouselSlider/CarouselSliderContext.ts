@@ -7,7 +7,7 @@ export const carouselSliderContextDefaultValue: CarouselSliderContextValue = {
   cardFocus: false,
 };
 
-export const useCarouselSliderContext = () =>
+export const useCarouselSliderContext = (): CarouselSliderContextValue =>
   React.useContext(carouselSliderContext) ?? carouselSliderContextDefaultValue;
 
 export const CarouselSliderContextProvider = carouselSliderContext.Provider;

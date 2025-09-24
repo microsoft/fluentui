@@ -340,6 +340,11 @@ export interface IBaseDataPoint {
    * text labels of marker points
    */
   text?: string;
+
+  /**
+   * Per-point marker color (overrides series color when present)
+   */
+  markerColor?: string;
 }
 
 /**
@@ -734,7 +739,7 @@ export interface IGVBarChartSeriesPoint {
   /**
    * Color for the legend in the chart
    */
-  color: string;
+  color?: string;
 
   /**
    * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
@@ -1108,3 +1113,148 @@ export type AxisProps = {
    */
   tick0?: number | Date;
 };
+
+/**
+ * Represents a single data point in a series.
+ */
+export interface IDataPointV2<X extends string | number | Date, Y extends string | number | Date> {
+  /**
+   * X-axis value of the data point.
+   */
+  x: X;
+
+  /**
+   * Y-axis value of the data point.
+   */
+  y: Y;
+
+  /**
+   * Optional click handler for the data point.
+   */
+  onClick?: () => void;
+
+  /**
+   * Custom text to show in the callout in place of the x-axis value.
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Custom text to show in the callout in place of the y-axis value.
+   */
+  yAxisCalloutData?: string;
+
+  /**
+   * Accessibility properties for the data point.
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Custom marker size for the data point.
+   */
+  markerSize?: number;
+
+  /**
+   * Optional text to annotate or label the data point.
+   */
+  text?: string;
+
+  /**
+   * Color of the data point. If not provided, it will inherit the series color.
+   */
+  color?: string;
+}
+
+/**
+ * Base interface for a series.
+ */
+export interface IDataSeries {
+  /**
+   * Name of the series to be displayed in the legend.
+   */
+  legend: string;
+
+  /**
+   * Shape used in the legend (e.g., circle, square).
+   */
+  legendShape?: LegendShape;
+
+  /**
+   * Color of the series.
+   */
+  color?: string;
+
+  /**
+   * Opacity of the series.
+   */
+  opacity?: number;
+
+  /**
+   * Gradient fill for the series (start and end colors).
+   */
+  gradient?: [string, string];
+
+  /**
+   * Whether this series should be plotted against a secondary Y-axis.
+   */
+  useSecondaryYScale?: boolean;
+
+  /**
+   * Callback invoked when the legend item is clicked.
+   */
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+}
+
+/**
+ * Represents a bar series.
+ */
+export interface IBarSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+  /**
+   * Type discriminator: always 'bar' for this series.
+   */
+  type: 'bar';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IDataPointV2<X, Y>[];
+
+  /**
+   * Optional group identifier for the series.
+   */
+  key?: string;
+}
+
+/**
+ * Represents a line series.
+ */
+export interface ILineSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+  /**
+   * Type discriminator: always 'line' for this series.
+   */
+  type: 'line';
+
+  /**
+   * Array of data points for the series.
+   */
+  data: IDataPointV2<X, Y>[];
+
+  /**
+   * Optional gaps to render in the line.
+   */
+  gaps?: ILineChartGap[];
+
+  /**
+   * Additional line rendering options (e.g., stroke width, curve type).
+   */
+  lineOptions?: ILineChartLineOptions;
+
+  /**
+   * If true, hides dots for inactive (unfocused/unhovered) data points.
+   */
+  hideInactiveDots?: boolean;
+
+  /**
+   * Callback invoked when the line itself is clicked.
+   */
+  onLineClick?: () => void;
+}

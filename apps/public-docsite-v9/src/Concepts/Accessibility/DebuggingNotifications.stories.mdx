@@ -1,0 +1,150 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Accessibility/Debugging notifications" />
+
+# Debugging screen reader notifications and live regions
+
+Live region notifications are one of the most temperamental accessibility features, compounded by how difficult they are to debug. A significant part of their functionality is handled within screen reader implementations, and is both undocumented and differs between screen readers. Differences between browsers also tend to be loosely spec'd and undocumented, which means every possible browser + screen reader combination may have unique bugs.
+
+This docs page helps outline a set of steps to determine whether a bug is an authoring issue, a screen reader implementation issue, or not a bug at all.
+
+This doc uses "live region" and "notification" mostly interchangeably; live regions are the DOM-based implementation of screen reader-targeted notifications.
+
+## Step 1: check for conflicting user interactions or focus changes
+
+If a live region change is not getting read by a screen reader, first check if the screen reader is instead reading other information at the same time (concurrent focus changes or typing are common causes of this). If this is happening, there is a good chance that the live region is functioning as expected but the output is being overridden.
+
+For example: VoiceOver on macOS will sometimes re-read information about the currently-focused element immediately after a user interaction, interrupting live region announcements. This can happen fractions of a second after a live region is triggered, making it difficult to debug. If this is happening, look for a flash of live region text output in the visual VoiceOver helper, test with other screen readers, and run through the other debugging steps to ensure there are no other issues present.
+
+> **Note:** even if a screen reader is reading something else while failing to read a notification, it's still possible that there is also another issue with the live region implementation. It's worth going through other debugging steps to ensure this is not the case. Alternatively: if you test with multiple screen readers and at least one other screen reader is correctly reading the live region, it is very likely that the problem is caused by speech queue overrides.
+
+If the screen reader is otherwise silent and the notification is still not being read, then move on to step 2.
+
+### Why this happens
+
+Screen readers have a speech queue of strings to read, composed of information such as user navigation changes, typing echo, and notifications. New strings can either be added to the end of the speech queue, added to the front of the queue, or clear the existing queue before being appended. The specifics of which approach is used in which situations can vary between screen readers.
+
+For example: if a focus change occurs immediately following a notification, a screen reader could either read the full notification followed by the newly focused control, read the newly focused control followed by the notification, or clear the notification from its queue and read only the newly focused control. None of this is under the control of the page author; the only thing authors can do is try to reduce the instances of having a focus change occur at the same time as a notification.
+
+### What to do
+
+This one is tricky because there is no simple solution. It can be tempting to try using a timeout to force the live region to fire later, but this is not a good approach since the exact delay needed is impossible to determine -- it depends on the screen reader being used, user verbosity settings, and speech speed and can vary by orders of magnitude from person to person.
+
+If the interaction is designed in such a way that the live region _always_ fires at the same time as a programmatic focus change, then it might be a better approach to ensure the focus change itself communicates all necessary information. Try talking to an accessibility SME for more detailed guidance.
+
+If the interaction is designed to occur while a user is typing, try using our [`useTypingAnnounce`](#linkTBA) hook for the notification.
+
+## Step 2: check edge cases and known issues
+
+This step is relatively quick, so it's better to check before moving on to debugging the live region's DOM directly.
+
+1. Is a modal open?
+   If anything with `role=dialog` or `aria-modal="true"` is currently open on the page, it may block live region updates coming from outside the modal. This is true for VoiceOver but not windows screen readers, at the time of writing.
+2. Does the same text get announced multiple times? Does it work the first time but not subsequent times? Some (but not all) screen readers will filter out repeat identical messages. If this is the case, work through Step 3 to verify the text is really getting inserted into the live region; if it is, this is likely the issue.
+3. Check our [Fluent known issues wiki](https://dev.azure.com/microsoftdesign/fluent-ui/_wiki/wikis/fluent-ui.wiki/334/Fluent-v9-known-issues) for any other browser, screen reader, or platform accessibility bugs affecting live regions.
+
+## Step 3: verify the live region's DOM is updating correctly
+
+> NOTE: the Fluent v9 `useAnnounce` hook + `AriaLiveAnnouncer` makes use of the new proposed `document.ariaNotify` feature on browsers where it is available. On those browsers, it will not insert a live region in the DOM. Currently that includes Edge Canary and Chrome Canary (not yet in stable). To check whether this is the case, look at whether `document.ariaNotify` is a function in the console of the browser you are testing in. If it is, and if you are using the Fluent `AriaLiveAnnouncer`, skip this step.
+
+### Does the live region exist in the DOM?
+
+The first thing to check is if there is actually a live region node on the page. If using the Fluent `useAnnounce` hook with our `AriaLiveAnnouncer` implementation, the live region will be inserted at the end of `document.body` and will look something like this:
+
+{/* prettier-ignore */}
+```html
+<div aria-live="assertive" data-tabster-never-hide="" style="clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; width: 1px; position: absolute; overflow: hidden; text-wrap: nowrap;"></div>
+```
+
+If there are multiple `AriaLiveAnnouncer` components in the React tree, there will be multiple live region nodes inserted into the DOM. Other non-Fluent code may also insert live region nodes in the DOM. Using ctrl+F in the Elements panel and searching for `aria-live` is another way to find live regions on the page if they are not immediately apparent.
+
+A quick way to verify whether the live region node or nodes found are being used by the notification you are debugging is to just watch them in the Elements pane to see if they mutate when the notification fires:
+
+<video controls width="600">
+  <source src={require('../../../public/live-region-mutation.webm')} type="video/webm" />
+</video>
+
+### Is the live region hidden from the accessibility tree?
+
+Even if the live region exists in the DOM, it's possible that it could be hidden from accessibility APIs with ARIA or CSS. Do a quick check of the following on the live region node itself or any of its ancestors:
+
+- Is there an `aria-hidden="true"` attribute present?
+- Are there any CSS `display: none` or `visibility: hidden` styles?
+
+If so, this will cause the live region to not fire.
+
+If the text inserted into the live region has either `aria-hidden` or either CSS style, this will also cause it to not fire, though that is best checked in the next step.
+
+### Does the live region have the correct text inserted at the right time?
+
+Live region behavior is closely tied to the nature and timing of DOM updates to live region nodes. There are slightly different requirements for announcement text timing based on the type of live region:
+
+1. Alerts (any live region with `role="alert"` regardless of whether it also has `aria-live`)
+
+   These fire both on insertion and when changed post-insertion. Check that either:
+
+   - The alert is inserted when you want it read, with the text you want read
+   - The alert already exists in the DOM, and the text you want read is inserted when you want it read
+
+2. All other live regions (anything with `aria-live`, `role="status"`, or both)
+
+   These _must_ already exist in the DOM before the text you want read is inserted. If using Fluent's `AriaLiveAnnouncer` + `useAnnounce`, this will be handled for you. If using a custom live region node, check that it is not inserted into the DOM along with the text you want announced.
+
+### Observing live region changes directly in the browser
+
+Often it's useful to be able to log the DOM mutations happening to a live region node in a live site. Since some screen-reader-only live regions quickly remove text after it's inserted to prevent invisible text from hanging around, this can be difficult to do by just looking at the Elements pane in browser dev tools. This is also true of the Fluent `AriaLiveAnnouncer` implementation.
+
+To debug this, you can use a `MutationObserver` and log child mutations to the console to check that the expected text is being correctly inserted. This is best done directly on the live site where the bug occurs, since live regions especially can differ between environments. To do so, follow these steps:
+
+1. Save the live region node as a global variable from the Elements pane
+2. Copy the function below to create a MutationObserver into the console (or write your own, if desired)
+3. Call the function on the saved live region node: `observeElement(temp1)`
+4. Trigger the live region announcement
+
+This should let you observe console logs of all mutations to the live region node.
+
+MutationObserver function:
+
+```js
+function observeElement(element) {
+  const config = { attributes: true, childList: true, subtree: true };
+  const callback = function (mutationsList, observer) {
+    for (let mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        const additions = mutation.addedNodes;
+        const removals = mutation.removedNodes;
+        if (removals.length) {
+          console.log('Child nodes were removed:', ...removals);
+        }
+        if (additions.length) {
+          console.log('Child nodes were added:', ...additions);
+        }
+      } else if (mutation.type === 'attributes') {
+        console.log('The ' + mutation.attributeName + ' attribute was modified.');
+      }
+    }
+  };
+
+  const observer = new MutationObserver(callback);
+  observer.observe(element, config);
+}
+```
+
+### Introspecting the AriaLiveAnnouncer implementation
+
+If you are working directly inside of the Fluent AI or Fluent UI repos, it may make sense to add breakpoints or console logs directly in our implementation. Navigate directly to the file where useAnnounce is implemented (`useDomAnnounce.ts` in `react-components/react-aria`) and add breakpoints or logs directly in the code.
+
+It is also possible to do this directly in the browser by finding `useDomAnnounce.ts` in the Sources tab.
+
+### What to do
+
+If you are experiencing an issue with either a live region not existing at all or not updating, the cause could be in any number of places. If using the Fluent `AriaLiveAnnouncer` + `useAnnounce`, a few things to check include:
+
+- Use React dev tools to check that the `AriaLiveAnnouncer` component exists as an ancestor of the component calling `useAnnounce` (in the React tree, not the DOM tree)
+- Check that the `announce` function is not just the default stub function (i.e. it is actually pulling the full implementation from `AriaLiveAnnouncer`; the default is a `() => undefined` stub).
+- If the expected live region does exist in the DOM but is not updating when `announce()` is called, try calling `announce('hardcoded string')` somewhere else in the same file.
+- Move on to step 4.
+
+## Step 4: reach out to the Fluent team or another accessibility SME
+
+If you've made it this far without finding any issues and are stuck, it's probably time to reach out to either the Fluent team (if using our implementation), book a slot in our [accessibility office hours](https://aka.ms/a11yFluentOfficeHours), or contact another accessibility SME (if using a custom live region).

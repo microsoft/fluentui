@@ -128,6 +128,7 @@ export {
   mergeCallbacks,
   useIsSSR,
   useMergedRefs,
+  useApplyScrollbarWidth,
   useScrollbarWidth,
   useSelection,
   useTimeout,
@@ -1617,6 +1618,7 @@ export {
   renderAriaLiveAnnouncer_unstable,
   useAriaLiveAnnouncer_unstable,
   useAriaLiveAnnouncerContextValues_unstable,
+  useTypingAnnounce,
 } from '@fluentui/react-aria';
 export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';
 
@@ -1903,6 +1905,7 @@ export type {
 export {
   motionTokens,
   createMotionComponent,
+  createMotionComponentVariant,
   createPresenceComponent,
   createPresenceComponentVariant,
   PresenceGroup,

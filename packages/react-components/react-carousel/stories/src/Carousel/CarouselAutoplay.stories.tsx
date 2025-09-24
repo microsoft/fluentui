@@ -19,6 +19,7 @@ import {
   CarouselViewport,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   bannerCard: {
@@ -128,7 +129,7 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const Autoplay = () => {
+export const Autoplay = (): JSXElement => {
   const classes = useClasses();
   const [autoplayEnabled, setAutoplayEnabled] = React.useState(false);
   const [autoplayButton, setAutoplayButton] = React.useState(true);

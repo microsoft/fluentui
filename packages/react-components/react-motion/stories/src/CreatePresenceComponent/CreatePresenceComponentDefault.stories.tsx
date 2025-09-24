@@ -8,6 +8,7 @@ import {
   PresenceComponentProps,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
@@ -63,7 +64,7 @@ const Fade = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponentDefault = (props: PresenceComponentProps) => {
+export const CreatePresenceComponentDefault = (props: PresenceComponentProps): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
 

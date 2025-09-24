@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(motion): add delay parameter to motion components",
-  "packageName": "@fluentui/react-motion-components-preview",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}

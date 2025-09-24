@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { MenuGrid, MenuGridGroup, MenuGridGroupHeader, MenuGridItem } from '@fluentui/react-menu-grid-preview';
 import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
@@ -8,7 +9,7 @@ const items = {
   agentsAndBots: ['Facilitator', 'Copilot'],
 };
 
-export const GroupingItems = () => {
+export const GroupingItems = (): JSXElement => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>

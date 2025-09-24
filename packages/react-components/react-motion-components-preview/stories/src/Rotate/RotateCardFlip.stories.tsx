@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button, CompoundButton, motionTokens } from '@fluentui/react-components';
 import { Rotate, type RotateParams } from '@fluentui/react-motion-components-preview';
 
@@ -111,7 +112,7 @@ const patterns: RotatePattern[] = [
   },
 ];
 
-export const CardFlip = () => {
+export const CardFlip = (): JSXElement => {
   const classes = useClasses();
   const [activePatterns, setActivePatterns] = React.useState<Set<string>>(new Set(patterns.map(p => p.id)));
 

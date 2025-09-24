@@ -11,7 +11,7 @@ export type TabRegisterData = {
   /**
    * The reference to the tab HTML element.
    */
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
 };
 
 export type RegisterTabEventHandler = (data: TabRegisterData) => void;

@@ -9,6 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -102,16 +103,16 @@ export type ColorSliderSlots = {
 export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'shape' | 'channel'>;
 
 // @public
-export const renderAlphaSlider_unstable: (state: AlphaSliderState) => JSX.Element;
+export const renderAlphaSlider_unstable: (state: AlphaSliderState) => JSXElement;
 
 // @public
-export const renderColorArea_unstable: (state: ColorAreaState) => JSX.Element;
+export const renderColorArea_unstable: (state: ColorAreaState) => JSXElement;
 
 // @public
-export const renderColorPicker_unstable: (state: ColorPickerState, contextValues: ColorPickerContextValues) => JSX.Element;
+export const renderColorPicker_unstable: (state: ColorPickerState, contextValues: ColorPickerContextValues) => JSXElement;
 
 // @public
-export const renderColorSlider_unstable: (state: ColorSliderState) => JSX.Element;
+export const renderColorSlider_unstable: (state: ColorSliderState) => JSXElement;
 
 // @public
 export const useAlphaSlider_unstable: (props: AlphaSliderProps, ref: React_2.Ref<HTMLInputElement>) => AlphaSliderState;

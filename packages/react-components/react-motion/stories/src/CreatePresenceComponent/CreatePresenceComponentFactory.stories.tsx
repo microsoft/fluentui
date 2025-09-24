@@ -7,6 +7,7 @@ import {
   Switch,
 } from '@fluentui/react-components';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import description from './CreatePresenceComponentFactory.stories.md';
 
@@ -67,7 +68,7 @@ const DropIn = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponentFactory = () => {
+export const CreatePresenceComponentFactory = (): JSXElement => {
   const classes = useClasses();
 
   const motionRef = React.useRef<MotionImperativeRef>(null);

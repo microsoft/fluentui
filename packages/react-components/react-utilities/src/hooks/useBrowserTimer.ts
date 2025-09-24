@@ -20,7 +20,10 @@ type BrowserTimerSetter =
  * setTimer(() => console.log('Hello world!'), 1000);
  * cancelTimer();
  */
-export function useBrowserTimer(setTimer: BrowserTimerSetter, cancelTimer: (id: number) => void) {
+export function useBrowserTimer(
+  setTimer: BrowserTimerSetter,
+  cancelTimer: (id: number) => void,
+): [(fn: () => void, delay?: number) => number, () => void] {
   const id = React.useRef<number | undefined>(undefined);
 
   const set = React.useCallback(

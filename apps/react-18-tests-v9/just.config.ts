@@ -6,7 +6,7 @@ const { getNodeModulesPath } = require('./config/utils');
 
 preset();
 
-const usedNodeModulesPath: string = getNodeModulesPath();
+const { usedNodeModulesPath } = getNodeModulesPath();
 
 task('type-check', () =>
   typeCheckWithConfigOverride(config => {
@@ -17,6 +17,7 @@ task('type-check', () =>
         typeRoots: [join(usedNodeModulesPath, './@types')],
         paths: {
           react: [join(usedNodeModulesPath, './@types/react/index.d.ts')],
+          'react/jsx-runtime': [join(usedNodeModulesPath, './@types/react/jsx-runtime.d.ts')],
           'react-dom': [join(usedNodeModulesPath, './@types/react-dom/index.d.ts')],
         },
       },

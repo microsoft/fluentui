@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 import { MenuGrid, MenuGridItem } from '@fluentui/react-menu-grid-preview';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
@@ -34,7 +35,7 @@ const Submenu = () => {
   );
 };
 
-export const WithSubmenu = () => {
+export const WithSubmenu = (): JSXElement => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>

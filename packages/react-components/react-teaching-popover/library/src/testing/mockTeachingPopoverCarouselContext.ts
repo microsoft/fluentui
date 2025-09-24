@@ -9,7 +9,7 @@ import {
  * Don't forget to call `jest.mock(**\/TeachingPopoverContext.ts)` while using this
  * @param options TeachingPopover context values to set for testing
  */
-export const mockTeachingPopoverCarouselContext = (options: Partial<CarouselContextValue> = {}) => {
+export const mockTeachingPopoverCarouselContext = (options: Partial<CarouselContextValue> = {}): void => {
   const mockContext: CarouselContextValue = {
     ...carouselContextDefaultValue,
     ...options,

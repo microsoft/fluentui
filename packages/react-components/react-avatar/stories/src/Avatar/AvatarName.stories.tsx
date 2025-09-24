@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 
-export const Name = () => <Avatar name="Ashley McCarthy" />;
+export const Name = (): JSXElement => <Avatar name="Ashley McCarthy" />;
 
 Name.storyName = 'Name';
 Name.parameters = {

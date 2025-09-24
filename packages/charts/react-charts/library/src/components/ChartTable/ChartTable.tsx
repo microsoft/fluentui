@@ -7,6 +7,8 @@ import { toImage } from '../../utilities/image-export-utils';
 import { tokens } from '@fluentui/react-theme';
 import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
+import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
+import { Theme, webLightTheme } from '@fluentui/tokens';
 
 function invertHexColor(hex: string): string {
   const color = d3.color(hex);
@@ -17,9 +19,9 @@ function invertHexColor(hex: string): string {
   return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
 }
 
-function getSafeBackgroundColor(foreground?: string, background?: string): string {
-  const fallbackFg = tokens.colorNeutralForeground1;
-  const fallbackBg = tokens.colorNeutralBackground1;
+function getSafeBackgroundColor(v9Theme: Theme, foreground?: string, background?: string): string {
+  const fallbackFg = v9Theme.colorNeutralForeground1;
+  const fallbackBg = v9Theme.colorNeutralBackground1;
 
   const fg = d3.color(foreground || fallbackFg);
   const bg = d3.color(background || fallbackBg);
@@ -38,6 +40,8 @@ function getSafeBackgroundColor(foreground?: string, background?: string): strin
 
 export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwardRef<HTMLDivElement, ChartTableProps>(
   (props, forwardedRef) => {
+    const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
+    const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
     const { headers, rows, width, height } = props;
     const _isRTL: boolean = useRtl();
     const _rootElem = React.useRef<HTMLDivElement | null>(null);
@@ -110,7 +114,6 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                 className={classes.table}
                 style={{
                   width: width ? `${width}px` : '100%',
-                  height: height ? `${height}px` : '650px',
                 }}
               >
                 <thead>
@@ -123,10 +126,10 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                       if (useSharedBackground) {
                         style.backgroundColor = sharedBackgroundColor;
                       } else if (fg || bg) {
-                        style.backgroundColor = getSafeBackgroundColor(fg, bg);
+                        style.backgroundColor = getSafeBackgroundColor(v9Theme, fg, bg);
                       }
                       return (
-                        <th key={idx} className={classes.headerCell} style={style}>
+                        <th key={idx} className={classes.headerCell} style={style} tabIndex={0}>
                           {header.value}
                         </th>
                       );
@@ -142,10 +145,10 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                           const fg = style.color;
                           const bg = style.backgroundColor;
                           if (fg || bg) {
-                            style.backgroundColor = getSafeBackgroundColor(fg, bg);
+                            style.backgroundColor = getSafeBackgroundColor(v9Theme, fg, bg);
                           }
                           return (
-                            <td key={colIdx} className={classes.bodyCell} style={style}>
+                            <td key={colIdx} className={classes.bodyCell} style={style} tabIndex={0}>
                               {cell.value}
                             </td>
                           );

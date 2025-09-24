@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DayOfWeek } from '@fluentui/react-calendar-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 import { Dropdown, Field, makeStyles, Option, useId } from '@fluentui/react-components';
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const FirstDayOfTheWeek = () => {
+export const FirstDayOfTheWeek = (): JSXElement => {
   const dropdownId = useId('dropdown-default');
   const styles = useStyles();
 

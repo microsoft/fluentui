@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Thu, 21 Aug 2025 12:25:16 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Sep 2025 12:51:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.5)
+
+Mon, 08 Sep 2025 12:51:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.20.4..@fluentui/react-positioning_v9.20.5)
+
+### Patches
+
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+- Bump @fluentui/react-utilities to v9.24.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
 
 ## [9.20.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.20.4)
 

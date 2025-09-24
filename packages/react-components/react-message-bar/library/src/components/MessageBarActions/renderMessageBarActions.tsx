@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   MessageBarActionsState,
   MessageBarActionsSlots,
@@ -15,7 +16,7 @@ import { ButtonContextProvider } from '@fluentui/react-button';
 export const renderMessageBarActions_unstable = (
   state: MessageBarActionsState,
   contexts: MessageBarActionsContextValues,
-) => {
+): JSXElement => {
   assertSlots<MessageBarActionsSlots>(state);
 
   return (

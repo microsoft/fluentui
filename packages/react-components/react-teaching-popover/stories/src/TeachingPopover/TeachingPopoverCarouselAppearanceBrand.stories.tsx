@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Image } from '@fluentui/react-components';
 
 import {
@@ -17,7 +18,7 @@ import {
 
 const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
-export const CarouselBrand = () => (
+export const CarouselBrand = (): JSXElement => (
   <TeachingPopover appearance="brand">
     <TeachingPopoverTrigger>
       <Button>TeachingPopover trigger</Button>

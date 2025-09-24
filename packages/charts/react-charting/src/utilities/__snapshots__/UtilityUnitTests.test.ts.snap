@@ -1,115 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`calloutData should return an array of data points grouped by their date-based x coordinates 1`] = `
-Array [
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 10,
-        "yAxisCalloutData": undefined,
-      },
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 30,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 1609459200000,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 1609545600000,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 1609632000000,
-  },
-]
+Object {
+  "1609459200000": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 10,
+      "yAxisCalloutData": undefined,
+    },
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 30,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "1609545600000": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "1609632000000": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+}
 `;
 
 exports[`calloutData should return an array of data points grouped by their numeric x coordinates 1`] = `
-Array [
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 10,
-        "yAxisCalloutData": undefined,
-      },
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 30,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 10,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 1",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 20,
-  },
-  Object {
-    "values": Array [
-      Object {
-        "callOutAccessibilityData": undefined,
-        "color": undefined,
-        "index": undefined,
-        "legend": "Line 2",
-        "xAxisCalloutData": undefined,
-        "y": 20,
-        "yAxisCalloutData": undefined,
-      },
-    ],
-    "x": 30,
-  },
-]
+Object {
+  "10": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 10,
+      "yAxisCalloutData": undefined,
+    },
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 30,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "20": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 1",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+  "30": Array [
+    Object {
+      "callOutAccessibilityData": undefined,
+      "color": undefined,
+      "index": undefined,
+      "legend": "Line 2",
+      "xAxisCalloutData": undefined,
+      "y": 20,
+      "yAxisCalloutData": undefined,
+    },
+  ],
+}
 `;
 
 exports[`createDateXAxis should create the x-axis labels correctly for a specific number of ticks 1`] = `

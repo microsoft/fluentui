@@ -126,6 +126,13 @@ export type CardProps = ComponentProps<CardSlots> & {
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
+
+  /**
+   * Makes the card and card selection disabled (not propagated to children).
+   *
+   * @default false
+   */
+  disabled?: boolean;
 };
 
 /**
@@ -162,5 +169,12 @@ export type CardState = ComponentState<CardSlots> &
        * @default false
        */
       selectFocused: boolean;
+
+      /**
+       * Defines whether the card is disabled.
+       *
+       * @default false
+       */
+      disabled: boolean;
     }
   >;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { measureScrollbarWidth } from '../utils/measureScrollBarWidth';
 
 const cache = new WeakMap<Document, number>();
 
@@ -16,9 +17,11 @@ interface UseScrollbarWidthOptions {
 
 /**
  * @returns The width in pixels of the scrollbar in the user agent
+ * @remarks This hook is not SSR-safe. For SSR-safe scrollbar width application, use the `useApplyScrollbarWidth` from {@link file://./useApplyScrollbarWidth.ts} instead.
  */
-export function useScrollbarWidth(options: UseScrollbarWidthOptions) {
+export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined {
   const { targetDocument, force } = options;
+
   return React.useMemo(() => {
     if (!targetDocument) {
       return 0;
@@ -28,17 +31,9 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions) {
       return cache.get(targetDocument);
     }
 
-    const outer = targetDocument.createElement('div');
-    outer.style.visibility = 'hidden';
-    outer.style.overflow = 'scroll';
-
-    const inner = targetDocument.createElement('div');
-    outer.appendChild(inner);
-
-    targetDocument.body.appendChild(outer);
-    const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
-    outer.remove();
+    const scrollbarWidth = measureScrollbarWidth(targetDocument);
     cache.set(targetDocument, scrollbarWidth);
+
     return scrollbarWidth;
   }, [targetDocument, force]);
 }

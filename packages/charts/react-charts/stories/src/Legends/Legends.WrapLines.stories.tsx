@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Legend, Legends, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
 
-export const LegendsWrapLines = () => {
+export const LegendsWrapLines = (): JSXElement => {
   const legends: Legend[] = [
     {
       title: 'Legend 1',

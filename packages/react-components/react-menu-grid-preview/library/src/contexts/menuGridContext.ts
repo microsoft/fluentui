@@ -21,4 +21,5 @@ export type MenuGridContextValue = {
 
 export const MenuGridContextProvider = MenuGridContext.Provider;
 
-export const useMenuGridContext_unstable = () => React.useContext(MenuGridContext) ?? menuGridContextDefaultValue;
+export const useMenuGridContext_unstable = (): MenuGridContextValue =>
+  React.useContext(MenuGridContext) ?? menuGridContextDefaultValue;

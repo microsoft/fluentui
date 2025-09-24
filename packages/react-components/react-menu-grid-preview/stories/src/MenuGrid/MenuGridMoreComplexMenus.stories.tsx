@@ -1,11 +1,12 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuPopover } from '@fluentui/react-components';
 import { MenuGrid, MenuGridCell, MenuGridRow } from '@fluentui/react-menu-grid-preview';
 import { CameraRegular, DeleteRegular, GlobePersonRegular, PhoneRegular } from '@fluentui/react-icons';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
-export const MoreComplexMenus = () => {
+export const MoreComplexMenus = (): JSXElement => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>

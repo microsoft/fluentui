@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import * as ReactDOM from 'react-dom';
 import {
   createDOMRenderer,
@@ -64,7 +65,7 @@ const Example: React.FC<{ children?: React.ReactNode }> = props => {
   );
 };
 
-export const Frame = () => {
+export const Frame = (): JSXElement => {
   const styles = useProviderStyles();
 
   return (

@@ -521,6 +521,9 @@ export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray | undefined)
 export const isObjectArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
+export const isScatterAreaChart: (data: Partial<PlotData>) => boolean;
+
+// @public (undocumented)
 export const isStringArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
@@ -1972,9 +1975,9 @@ export interface TableData {
             color?: Color | Color[];
         };
         values: (string | number | boolean | null)[][];
-        format: string | string[];
-        prefix: string | string[];
-        suffix: string | string[];
+        format?: string | string[];
+        prefix?: string | string[];
+        suffix?: string | string[];
     };
     // (undocumented)
     header?: {

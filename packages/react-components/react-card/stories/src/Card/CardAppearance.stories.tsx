@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, tokens, Button, Text, Caption1, Subtitle1, Body1, mergeClasses } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardProps } from '@fluentui/react-components';
@@ -86,7 +87,7 @@ const CardExample = ({ className, ...props }: CardProps) => {
   );
 };
 
-export const Appearance = () => {
+export const Appearance = (): JSXElement => {
   const styles = useStyles();
 
   return (

@@ -182,19 +182,28 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     y,
     value,
     textColor,
+    opacity,
   }: {
     show: boolean;
     x: number;
     y: number;
     value: number;
     textColor: string;
+    opacity: number;
   }) {
     if (!show) {
       return null;
     }
 
     const textElement = (
-      <text x={isRTL ? funnelWidth - x : x} y={y} textAnchor="middle" alignmentBaseline="middle" fill={textColor}>
+      <text
+        x={isRTL ? funnelWidth - x : x}
+        y={y}
+        opacity={opacity}
+        textAnchor="middle"
+        alignmentBaseline="middle"
+        fill={textColor}
+      >
         {formatToLocaleString(value.toString(), props.culture) as React.ReactNode}
       </text>
     );
@@ -233,7 +242,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     return (
       <g key={key}>
         <path d={pathD} fill={fill} opacity={opacity} {...eventHandlers} tabIndex={tabIndex} />
-        {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor })}</g>}
+        {textProps && <g {...eventHandlers}>{_renderSegmentText({ ...textProps, textColor, opacity })}</g>}
       </g>
     );
   }
@@ -457,7 +466,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const focusAttributes = useFocusableGroup();
 
   return !_isChartEmpty() ? (
-    <div ref={chartContainerRef} className={classes.root} {...focusAttributes}>
+    <div ref={chartContainerRef} className={classes.root} {...focusAttributes} style={{ width, height }}>
       <svg width={width} height={height} className={classes.chart} role={'img'} aria-label={props.chartTitle}>
         <g
           transform={
@@ -476,7 +485,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
           {...props.calloutProps}
           XValue={calloutProps?.hoverXValue as string}
           yCalloutValue={calloutProps?.YValue as string}
-          culture={props.culture ?? 'en-us'}
+          culture={props.culture}
           clickPosition={clickPosition}
           isPopoverOpen={isPopoverOpen}
           color={calloutProps?.color}

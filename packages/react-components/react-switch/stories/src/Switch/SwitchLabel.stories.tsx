@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Switch } from '@fluentui/react-components';
 
 const wrapperStyle: React.CSSProperties = {
@@ -7,7 +8,7 @@ const wrapperStyle: React.CSSProperties = {
   width: '100%',
 };
 
-export const Label = () => {
+export const Label = (): JSXElement => {
   const [checked, setChecked] = React.useState(false);
   const onChange = React.useCallback(
     (ev: React.ChangeEvent<HTMLInputElement>) => {

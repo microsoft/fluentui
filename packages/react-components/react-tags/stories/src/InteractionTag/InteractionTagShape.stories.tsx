@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   InteractionTag,
   InteractionTagPrimary,
@@ -22,7 +23,7 @@ const useContainerStyles = makeStyles({
   },
 });
 
-export const Shape = () => {
+export const Shape = (): JSXElement => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.outerWrapper}>

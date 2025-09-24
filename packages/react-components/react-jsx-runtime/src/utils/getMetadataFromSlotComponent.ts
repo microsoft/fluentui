@@ -4,12 +4,18 @@ import {
   SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from '@fluentui/react-utilities';
-import type { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilities';
+import type { SlotComponentType, SlotRenderFunction, UnknownSlotProps } from '@fluentui/react-utilities';
 
 /**
  * @internal
  */
-export function getMetadataFromSlotComponent<Props extends UnknownSlotProps>(type: SlotComponentType<Props>) {
+export function getMetadataFromSlotComponent<Props extends UnknownSlotProps>(
+  type: SlotComponentType<Props>,
+): {
+  elementType: React.ElementType<Props>;
+  props: Props;
+  renderFunction: SlotRenderFunction<Props> | undefined;
+} {
   const {
     as,
     [SLOT_CLASS_NAME_PROP_SYMBOL]: _classNameProp,

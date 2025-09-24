@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuPopover } from '@fluentui/react-components';
 import { MenuGrid, MenuGridItem } from '@fluentui/react-menu-grid-preview';
 import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
@@ -11,7 +12,7 @@ const items = [
   { name: 'Emma Robinson', cannotRemove: false },
 ];
 
-export const Asymmetric = () => {
+export const Asymmetric = (): JSXElement => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>

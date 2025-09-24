@@ -29,16 +29,14 @@ export const useTableHeaderCell_unstable = (
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'th';
 
+  // The sort button is rendered as a div when not sortable, and as an ARIA button when sortable.
   const buttonSlot = slot.always<ARIAButtonSlotProps>(props.button, {
     elementType: 'div',
     defaultProps: {
       as: 'div',
-      ...(!sortable && {
-        role: 'presentation',
-        tabIndex: undefined,
-      }),
     },
   });
+  const ariaButtonProps = useARIAButtonProps(buttonSlot.as, buttonSlot);
 
   return {
     components: {
@@ -65,7 +63,7 @@ export const useTableHeaderCell_unstable = (
       defaultProps: { children: props.sortDirection ? sortIcons[props.sortDirection] : undefined },
       elementType: 'span',
     }),
-    button: useARIAButtonProps(buttonSlot.as, buttonSlot),
+    button: sortable ? ariaButtonProps : buttonSlot,
     sortable,
     noNativeElements,
   };

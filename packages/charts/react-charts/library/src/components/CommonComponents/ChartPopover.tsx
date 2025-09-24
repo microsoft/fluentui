@@ -73,7 +73,10 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                   </div>
                   <div
                     className={classes.calloutContentY}
-                    style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
+                    style={{
+                      color: props.color ? props.color : tokens.colorNeutralForeground1,
+                      fontSize: tokens.fontSizeHero700,
+                    }}
                   >
                     {formatToLocaleString(YValue, props.culture) as React.ReactNode}
                   </div>
@@ -122,7 +125,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
           {props!.YValueHover &&
             props!.YValueHover.map((yValue: YValueHover, index: number, yValues: YValueHover[]) => {
               const isLast: boolean = index + 1 === yValues.length;
-              const { shouldDrawBorderBottom = false } = yValue;
+              const shouldDrawBorderBottom = isLast ? false : yValue.shouldDrawBorderBottom ?? false;
               return (
                 <div
                   {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
@@ -190,7 +193,6 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
             id={`${index}_${xValue.y}`}
             className={classes.calloutBlockContainer}
             style={{
-              marginTop: props.XValue ? '13px' : 'unset',
               ...(!toDrawShape
                 ? {
                     borderInlineStart: `4px solid ${xValue.color}`,
@@ -214,9 +216,10 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                   ? classes.calloutBlockContainertoDrawShapetrue
                   : classes.calloutBlockContainertoDrawShapefalse,
               )}
+              style={{ marginTop: xValue ? '13px' : 'unset' }}
             >
               <div className={classes.calloutlegendText}> {xValue.legend}</div>
-              <div className={classes.calloutContentY}>
+              <div className={classes.calloutContentY} style={{ direction: 'ltr', unicodeBidi: 'isolate' }}>
                 {
                   formatToLocaleString(
                     xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,

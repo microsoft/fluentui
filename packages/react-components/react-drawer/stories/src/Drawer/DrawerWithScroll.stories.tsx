@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   InlineDrawer,
   DrawerBody,
@@ -56,7 +57,7 @@ const Body = () => {
   );
 };
 
-export const WithScroll = () => {
+export const WithScroll = (): JSXElement => {
   const styles = useStyles();
 
   return (
