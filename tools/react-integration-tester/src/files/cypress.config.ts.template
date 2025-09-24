@@ -1,12 +1,14 @@
 import { join, resolve } from 'node:path';
-import baseConfig from '<%= relativePathToProjectRoot %>/cypress.config';
+import baseConfig from '<%= relativePathToProjectRoot %>/<%= cypress.pathToProjectConfig %>';
 
 // Resolve dependencies from the shared react-version root folder (injected by CLI)
 const usedNodeModulesPath = join(__dirname, '<%= usedNodeModulesDirRelative %>', 'node_modules');
 
 const config = { ...baseConfig };
 
-const specs = [resolve('<%= relativePathToProjectRoot %>/**/src/**/*.cy.{tsx,ts}')];
+const specs = [
+  resolve('<%= relativePathToProjectRoot %>/**/src/**/*.{cy,e2e}.{tsx,ts}'),
+];
 
 config.component.specPattern = specs;
 config.component.devServer.webpackConfig.resolve ??= {};
