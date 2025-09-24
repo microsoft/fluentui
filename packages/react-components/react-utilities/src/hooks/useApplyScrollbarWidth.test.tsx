@@ -68,7 +68,7 @@ describe('useApplyScrollbarWidth', () => {
   });
 
   it('works with real JSX components', () => {
-    const TestComponent: React.FC = () => {
+    const TestComponent = () => {
       const scrollbarRef = useApplyScrollbarWidth({ force: true });
 
       return <div ref={scrollbarRef} data-testid="scrollbar-element" />;
@@ -84,7 +84,7 @@ describe('useApplyScrollbarWidth', () => {
   });
 
   it('works with custom properties in JSX', () => {
-    const TestComponent: React.FC = () => {
+    const TestComponent = () => {
       const scrollbarRef = useApplyScrollbarWidth({
         property: 'padding-right',
         force: true,
@@ -102,7 +102,7 @@ describe('useApplyScrollbarWidth', () => {
   });
 
   it('works with different element types', () => {
-    const TestComponent: React.FC = () => {
+    const TestComponent = () => {
       const divRef = useApplyScrollbarWidth({ force: true });
       const spanRef = useApplyScrollbarWidth({
         property: 'margin-left',
