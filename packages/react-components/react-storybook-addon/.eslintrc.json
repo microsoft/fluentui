@@ -5,7 +5,8 @@
     {
       "files": ["*.ts", "*.tsx"],
       "rules": {
-        "@griffel/styles-file": "off"
+        "@griffel/styles-file": "off",
+        "@nx/workspace-enforce-use-client": "off"
       }
     }
   ]

@@ -1,3 +1,5 @@
+'use client';
+
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';

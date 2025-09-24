@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 import { classNamesFunction, ICheckboxProps, ICheckboxStyles, ICheckboxStyleProps } from '@fluentui/react';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Divider, Switch } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { curves, durations } from '@fluentui/react-motion';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { BreadcrumbContextValues, BreadcrumbState } from './Breadcrumb.types';
 

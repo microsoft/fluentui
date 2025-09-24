@@ -1,3 +1,5 @@
+'use client';
+
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import {
   getIntrinsicElementProps,

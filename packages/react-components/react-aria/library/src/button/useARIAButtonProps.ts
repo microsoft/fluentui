@@ -1,3 +1,5 @@
+'use client';
+
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';

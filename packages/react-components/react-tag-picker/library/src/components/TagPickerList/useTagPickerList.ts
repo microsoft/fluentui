@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { TagPickerListProps, TagPickerListState } from './TagPickerList.types';
 import { Listbox } from '@fluentui/react-combobox';

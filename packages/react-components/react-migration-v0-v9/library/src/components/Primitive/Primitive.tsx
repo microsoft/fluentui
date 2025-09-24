@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-components';
 import type { JSXIntrinsicElement, JSXIntrinsicElementKeys } from '@fluentui/react-utilities';

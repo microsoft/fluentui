@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
 import type { OnUpdateOverflow, OverflowGroupState, ObserveOptions } from '@fluentui/priority-overflow';

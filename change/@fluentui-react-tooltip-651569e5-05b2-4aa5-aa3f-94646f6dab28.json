@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: enforce usage of use client directive for files with client-only features",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

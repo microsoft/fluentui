@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';

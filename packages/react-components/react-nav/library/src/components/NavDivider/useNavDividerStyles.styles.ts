@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useDividerStyles_unstable, type DividerSlots } from '@fluentui/react-divider';
 import type { SlotClassNames } from '@fluentui/react-utilities';

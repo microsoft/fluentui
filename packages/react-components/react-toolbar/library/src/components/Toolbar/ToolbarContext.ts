@@ -1,3 +1,5 @@
+'use client';
+
 import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ToolbarContextValue } from './Toolbar.types';

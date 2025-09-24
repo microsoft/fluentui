@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTimeout } from '@fluentui/react-utilities';
 import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';

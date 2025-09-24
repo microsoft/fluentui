@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mergeCallbacks, slot, useControllableState } from '@fluentui/react-utilities';
 import { Enter } from '@fluentui/keyboard-keys';

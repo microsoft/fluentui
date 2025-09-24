@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useSparklineStyles } from './useSparklineStyles.styles';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';

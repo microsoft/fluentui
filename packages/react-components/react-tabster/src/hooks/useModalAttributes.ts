@@ -1,3 +1,5 @@
+'use client';
+
 import { useId } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { getModalizer, getRestorer, Types as TabsterTypes, RestorerTypes } from 'tabster';
