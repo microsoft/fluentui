@@ -277,9 +277,67 @@ describe('DateMath', () => {
   describe('Date range array', () => {
     const date = new Date(2017, 2, 16);
 
-    function getDateRange(daysToSelectInDayView: number): Date[] {
-      return DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday, undefined, daysToSelectInDayView);
-    }
+    type TestData = { name: string; testItems: Date[]; expected: Date[] }[];
+    const testData: TestData = [
+      {
+        name: 'week',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday),
+        expected: [...Array(7)].map((val: undefined, i: number) => new Date(2017, 2, 12 + i)),
+      },
+      {
+        name: 'work week',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.WorkWeek, DayOfWeek.Sunday, [
+          DayOfWeek.Monday,
+          DayOfWeek.Tuesday,
+          DayOfWeek.Thursday,
+          DayOfWeek.Friday,
+        ]),
+        expected: [new Date(2017, 2, 13), new Date(2017, 2, 14), new Date(2017, 2, 16), new Date(2017, 2, 17)],
+      },
+      {
+        name: 'work week defaults',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.WorkWeek, DayOfWeek.Sunday),
+        expected: [
+          new Date(2017, 2, 13),
+          new Date(2017, 2, 14),
+          new Date(2017, 2, 15),
+          new Date(2017, 2, 16),
+          new Date(2017, 2, 17),
+        ],
+      },
+      {
+        name: 'month',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Month, DayOfWeek.Sunday),
+        expected: [...Array(31)].map((val: undefined, i: number) => new Date(2017, 2, 1 + i)),
+      },
+      {
+        name: 'first day of week: Tuesday',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Tuesday),
+        expected: [...Array(7)].map((val: undefined, i: number) => new Date(2017, 2, 14 + i)),
+      },
+      {
+        name: 'custom date range array',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday, undefined, 5),
+        expected: [
+          new Date(2017, 2, 16),
+          new Date(2017, 2, 17),
+          new Date(2017, 2, 18),
+          new Date(2017, 2, 19),
+          new Date(2017, 2, 20),
+        ],
+      },
+      {
+        name: 'reverse date range array',
+        testItems: DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday, undefined, -5),
+        expected: [
+          new Date(2017, 2, 12),
+          new Date(2017, 2, 13),
+          new Date(2017, 2, 14),
+          new Date(2017, 2, 15),
+          new Date(2017, 2, 16),
+        ],
+      },
+    ];
 
     it('can get day', () => {
       const dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday);
@@ -287,77 +345,8 @@ describe('DateMath', () => {
       expect(DateMath.compareDates(dateRangeArray[0], date)).toBe(true);
     });
 
-    it('can get week', () => {
-      const expectedDates = Array(7).map((val: undefined, i: number) => new Date(2017, 2, 12 + i));
-      const dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
-      Array(7).forEach((val: undefined, i: number) =>
-        expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true),
-      );
-    });
-
-    it('can get work week', () => {
-      const workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Thursday, DayOfWeek.Friday];
-      let expectedDates = [new Date(2017, 2, 13), new Date(2017, 2, 14), new Date(2017, 2, 16), new Date(2017, 2, 17)];
-      let dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday, workWeekDays);
-      Array(4).forEach((val: undefined, i: number) =>
-        expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true),
-      );
-
-      // work week defaults
-      expectedDates = [
-        new Date(2017, 2, 13),
-        new Date(2017, 2, 14),
-        new Date(2017, 2, 15),
-        new Date(2017, 2, 16),
-        new Date(2017, 2, 17),
-      ];
-      dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
-      Array(4).forEach((val: undefined, i: number) =>
-        expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true),
-      );
-    });
-    it('can get month', () => {
-      const expectedDates = Array(31).map((val: undefined, i: number) => new Date(2017, 2, 1 + i));
-      const dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Month, DayOfWeek.Sunday);
-      Array(31).forEach((val: undefined, i: number) =>
-        expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true),
-      );
-    });
-
-    it('can get first day of week: Tuesday', () => {
-      const expectedDates = Array(7).map((val: undefined, i: number) => new Date(2017, 2, 14 + i));
-      const dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Tuesday);
-      Array(7).forEach((val: undefined, i: number) =>
-        expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true),
-      );
-    });
-
-    it('can get custom date range array', () => {
-      const customExpectedDates = [
-        new Date(2017, 2, 16),
-        new Date(2017, 2, 17),
-        new Date(2017, 2, 18),
-        new Date(2017, 2, 19),
-        new Date(2017, 2, 20),
-      ];
-      const dateRangeArray = getDateRange(5);
-      customExpectedDates.forEach((expected, i) => {
-        expect(dateRangeArray[i]).toStrictEqual(expected);
-      });
-    });
-
-    it('can get reverse date range array', () => {
-      const reverseExpectedDates = [
-        new Date(2017, 2, 12),
-        new Date(2017, 2, 13),
-        new Date(2017, 2, 14),
-        new Date(2017, 2, 15),
-        new Date(2017, 2, 16),
-      ];
-      const reverseDateRangeArray = getDateRange(-5);
-      reverseExpectedDates.forEach((expected, i) => {
-        expect(reverseDateRangeArray[i]).toStrictEqual(expected);
-      });
+    it.each(testData)(`can get %s`, ({ testItems, expected }) => {
+      expect(testItems).toEqual(expected);
     });
   });
 
