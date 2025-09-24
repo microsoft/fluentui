@@ -44,6 +44,7 @@ export {
   IdPrefixProvider,
   resetIdsForTests,
   useAnimationFrame,
+  useApplyScrollbarWidth,
   useControllableState,
   useEventCallback,
   useFirstMount,

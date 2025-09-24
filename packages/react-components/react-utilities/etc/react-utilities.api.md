@@ -354,6 +354,9 @@ export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'classN
 // @internal
 export function useAnimationFrame(): readonly [(fn: () => void, delay?: number) => number, () => void];
 
+// @public
+export function useApplyScrollbarWidth<T extends HTMLElement>(options?: UseApplyScrollbarWidthOptions): React_2.RefCallback<T>;
+
 // @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
 
