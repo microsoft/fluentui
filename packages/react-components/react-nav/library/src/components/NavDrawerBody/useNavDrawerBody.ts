@@ -15,5 +15,5 @@ export const useNavDrawerBody_unstable = (
   props: NavDrawerBodyProps,
   ref: React.Ref<HTMLDivElement>,
 ): NavDrawerBodyState => {
-  return useDrawerBody_unstable(props, ref);
+  return useDrawerBody_unstable({ role: 'navigation', ...props }, ref);
 };

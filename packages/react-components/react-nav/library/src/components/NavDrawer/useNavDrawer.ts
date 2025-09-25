@@ -43,7 +43,7 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
     },
 
     root: slot.always(
-      { ref, role: 'navigation', ...props, ...focusAttributes },
+      { ref, ...props, ...focusAttributes },
       {
         // TODO: remove once React v18 slot API is modified
         // this is a problem with the lack of support for union types on React v18
