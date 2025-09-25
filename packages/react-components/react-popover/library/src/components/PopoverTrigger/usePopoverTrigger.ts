@@ -25,6 +25,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
   const { children, disableButtonEnhancement = false } = props;
   const child = getTriggerChild(children);
 
+  const popoverTarget = usePopoverContext_unstable(context => context.popoverId);
   const open = usePopoverContext_unstable(context => context.open);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
@@ -88,13 +89,17 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
     triggerChildProps,
   );
 
+  const ariaButtonProps = useARIAButtonProps(
+    child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
+    openOnContext ? contextMenuProps : disableButtonEnhancement ? triggerChildProps : ariaButtonTriggerChildProps,
+  );
+
   return {
-    children: applyTriggerPropsToChildren(
-      props.children,
-      useARIAButtonProps(
-        child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
-        openOnContext ? contextMenuProps : disableButtonEnhancement ? triggerChildProps : ariaButtonTriggerChildProps,
-      ),
-    ),
+    children: applyTriggerPropsToChildren(props.children, {
+      ...ariaButtonProps,
+      popovertarget: popoverTarget,
+      popovertargetaction: open ? 'hide' : 'show',
+      style: { anchorName: `--${popoverTarget}` },
+    }),
   };
 };

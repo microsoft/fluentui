@@ -20,15 +20,17 @@ const ExampleContent = () => {
 };
 
 export const WithArrow = (): JSXElement => (
-  <Popover withArrow>
-    <PopoverTrigger disableButtonEnhancement>
-      <Button>Popover trigger</Button>
-    </PopoverTrigger>
+  <div style={{ marginTop: '100px', marginLeft: '100px' }}>
+    <Popover withArrow>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>Popover trigger</Button>
+      </PopoverTrigger>
 
-    <PopoverSurface tabIndex={-1}>
-      <ExampleContent />
-    </PopoverSurface>
-  </Popover>
+      <PopoverSurface tabIndex={-1}>
+        <ExampleContent />
+      </PopoverSurface>
+    </Popover>
+  </div>
 );
 
 WithArrow.parameters = {

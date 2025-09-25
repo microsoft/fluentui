@@ -16,7 +16,8 @@ const popoverContextDefaultValue: PopoverContextValue = {
   openOnHover: false,
   size: 'medium' as const,
   trapFocus: false,
-  inline: false,
+  positioning: undefined,
+  popoverId: undefined,
 };
 
 export const PopoverProvider = PopoverContext.Provider;
@@ -40,7 +41,8 @@ export type PopoverContextValue = Pick<
   | 'appearance'
   | 'trapFocus'
   | 'inertTrapFocus'
-  | 'inline'
+  | 'positioning'
+  | 'popoverId'
 >;
 
 export const usePopoverContext_unstable = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>
