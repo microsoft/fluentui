@@ -1103,6 +1103,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideTickOverlap: true,
     hideLegend,
     useUTC: false,
+    wrapXAxisLables: typeof input.data[0]?.name === 'string',
     optimizeLargeData: numDataPoints > 1000,
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
