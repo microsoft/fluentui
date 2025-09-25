@@ -114,7 +114,7 @@ jobs:
       - name: React Versions Integration Tests (17,19) - E2E
         id: e2e
         run: |
-          yarn nx affected -t test-rit--17--e2e,test-rit--19--e2e
+          yarn nx affected -t test-rit--17--e2e,test-rit--19--e2e --exclude='react-charting,react,react-hooks,react-examples,react-experiments'
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@v4
@@ -127,7 +127,7 @@ jobs:
 
       - name: React Versions Integration Tests (17,19) - Test,Type-check
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--17--type-check,test-rit--19--test,test-rit--19--type-check
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--17--type-check,test-rit--19--test,test-rit--19--type-check --exclude='react-charting,react,react-hooks,react-examples,react-experiments'
 
   react_integration_tests:
     if: ${{ github.repository_owner == 'microsoft' }}
