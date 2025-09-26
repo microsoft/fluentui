@@ -703,7 +703,7 @@ export const transformPlotlyJsonToVSBCProps = (
 
   (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
-    .map((shape, shapeIdx) => {
+    .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
       mapXToDataPoints[shape.x0! as string | number].lineData!.push({
         legend: `Reference_${shapeIdx}`,
