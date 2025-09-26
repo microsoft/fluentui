@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
+    "@fluentui/react-components": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/react-tooltip-v2-preview": "*",
     "@fluentui/scripts-storybook": "*",
     "@fluentui/eslint-plugin": "*"
   }

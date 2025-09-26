@@ -1,0 +1,20 @@
+import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
+
+import { Button } from '@fluentui/react-components';
+import { SlideTextRegular } from '@fluentui/react-icons';
+import { Tooltip, type TooltipProps } from '@fluentui/react-tooltip-v2-preview';
+
+export const Default = (props: Partial<TooltipProps>): JSXElement => (
+  <Tooltip content="Example tooltip" relationship="label" {...props}>
+    <Button icon={<SlideTextRegular />} size="large" />
+  </Tooltip>
+);
+
+Default.parameters = {
+  docs: {
+    description: {
+      story: `By default, Tooltip appears above its target element, when it is focused or hovered.`,
+    },
+  },
+};
