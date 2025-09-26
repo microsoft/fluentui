@@ -4,5 +4,5 @@ export {
   renderTooltipV2_unstable,
   useTooltipV2_unstable,
   useTooltipV2Styles_unstable,
-} from './TooltipV2';
-export type { TooltipV2Props, TooltipV2State } from './TooltipV2';
+} from './components/TooltipV2/index';
+export type { TooltipV2Props, TooltipV2State } from './components/TooltipV2/index';

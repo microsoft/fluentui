@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TooltipV2 renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TooltipV2"
+  >
+    Default TooltipV2
+  </div>
+</div>
+`;
