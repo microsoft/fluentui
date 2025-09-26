@@ -24,11 +24,11 @@ const STATIC_MOTION = {
  * @param ref - reference to root HTMLElement of InlineDrawer
  */
 export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Ref<HTMLElement>): InlineDrawerState => {
-  const { size, position, open } = useDrawerDefaultProps(props);
+  const { size, position, open, unmountOnClose } = useDrawerDefaultProps(props);
   const { separator = false, surfaceMotion } = props;
   const { dir } = useFluent();
 
-  const state: InlineDrawerState = {
+  return {
     components: {
       root: 'div',
       // casting from internal type that has required properties
@@ -41,6 +41,7 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
       getIntrinsicElementProps('div', {
         ...props,
         ref,
+        'aria-hidden': !unmountOnClose && !open ? true : undefined,
       }),
       { elementType: 'div' },
     ),
@@ -49,6 +50,7 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
     position,
     size,
     separator,
+    unmountOnClose,
     surfaceMotion: presenceMotionSlot<DrawerMotionParams>(surfaceMotion, {
       elementType: InlineDrawerMotion,
       defaultProps: {
@@ -56,13 +58,12 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
         size,
         dir,
         visible: open,
-        unmountOnExit: true,
+        appear: unmountOnClose,
+        unmountOnExit: unmountOnClose,
       },
     }),
 
     // Deprecated props
     motion: STATIC_MOTION,
-  };
-
-  return state;
+  } satisfies InlineDrawerState;
 };
