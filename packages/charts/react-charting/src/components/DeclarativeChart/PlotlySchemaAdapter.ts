@@ -701,6 +701,26 @@ export const transformPlotlyJsonToVSBCProps = (
     });
   });
 
+  (input.layout?.shapes ?? [])
+    .filter(shape => shape.type === 'line')
+    .map((shape, shapeIdx) => {
+      const lineColor = shape.line?.color;
+      mapXToDataPoints[shape.x0! as string | number].lineData!.push({
+        legend: `Reference_${shapeIdx}`,
+        y: shape.y0 as number | string,
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      });
+      mapXToDataPoints[shape.x1! as string | number].lineData!.push({
+        legend: `Reference_${shapeIdx}`,
+        y: shape.y1 as number | string,
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      });
+    });
+
   const vsbcData = Object.values(mapXToDataPoints);
 
   return {
@@ -1172,6 +1192,23 @@ const transformPlotlyJsonToScatterTraceProps = (
     })
     .flat();
 
+  const lineShape: ILineChartPoints[] = (input.layout?.shapes ?? [])
+    .filter(shape => shape.type === 'line')
+    .map((shape, shapeIdx) => {
+      const lineColor = shape.line?.color;
+
+      return {
+        legend: `Reference_${shapeIdx}`,
+        data: [
+          { x: shape.x0, y: shape.y0 },
+          { x: shape.x1, y: shape.y1 },
+        ],
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      } as ILineChartPoints;
+    });
+
   const yMinMax = getYMinMaxValues(input.data[0], input.layout);
   if (yMinMax.yMinValue === undefined && yMinMax.yMaxValue === undefined) {
     const yMinMaxValues = findNumericMinMaxOfY(chartData);
@@ -1182,7 +1219,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
 
   const chartProps: IChartProps = {
-    lineChartData: chartData,
+    lineChartData: [...chartData, ...lineShape],
   };
 
   const scatterChartProps: IChartProps = {
