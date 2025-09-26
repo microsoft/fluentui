@@ -15,14 +15,13 @@ const menuContextDefaultValue: MenuContextValue = {
   isSubmenu: false,
   triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
   menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
-  mountNode: null,
   triggerId: '',
   openOnContext: false,
   openOnHover: false,
   hasIcons: false,
   hasCheckmarks: false,
-  inline: false,
   persistOnItemClick: false,
+  popoverId: '',
 };
 
 /**
@@ -38,12 +37,10 @@ export type MenuContextValue = Pick<
   | 'menuPopoverRef'
   | 'setOpen'
   | 'isSubmenu'
-  | 'mountNode'
   | 'triggerId'
   | 'hasIcons'
   | 'hasCheckmarks'
   | 'persistOnItemClick'
-  | 'inline'
   | 'checkedValues'
   | 'onCheckedValueChange'
   | 'safeZone'
@@ -56,6 +53,9 @@ export type MenuContextValue = Pick<
    * the signature remains just to avoid breaking changes
    */
   defaultCheckedValues?: Record<string, string[]>;
+  popoverId: string;
+  positioning?: MenuState['positioning'];
+  submenuFallbackPositions?: MenuState['submenuFallbackPositions'];
 };
 
 export const MenuProvider = MenuContext.Provider;

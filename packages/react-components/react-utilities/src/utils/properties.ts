@@ -126,6 +126,7 @@ export const baseElementProperties = toObjectMap([
   'translate', // global
   'spellCheck', // global
   'name', // global
+  'popover', // global
 ]);
 
 /**
@@ -238,6 +239,10 @@ export const buttonProperties = toObjectMap(htmlElementProperties, [
   'formTarget', // input, button
   'type', // a, button, input, link, menu, object, script, source, style
   'value', // button, input, li, option, meter, progress, param,
+  'popovertarget', // React complains about camel case
+  'popovertargetaction',
+  'popoverTarget',
+  'popoverTargetAction',
 ]);
 
 /**
