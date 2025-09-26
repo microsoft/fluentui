@@ -55,6 +55,7 @@ describe(`workspace-plugin`, () => {
       'proj/package.json': serializeJson({}),
       'proj/.eslintrc.json': '{}',
       'proj/jest.config.js': 'module.exports = {}',
+      'proj/monosize.config.mjs': 'export default {}',
     });
     const results = await createNodesFunction(['proj/project.json'], options, context);
     const targets = getTargets(results);
@@ -133,6 +134,41 @@ describe(`workspace-plugin`, () => {
         },
         "outputs": Array [
           "{projectRoot}/coverage",
+        ],
+      }
+    `);
+
+    // bundle-size target should be added when monosize config exists
+    expect(targets?.['bundle-size']).toMatchInlineSnapshot(`
+      Object {
+        "cache": true,
+        "command": "yarn monosize measure",
+        "inputs": Array [
+          "{workspaceRoot}/monosize.config.mjs",
+          "{projectRoot}/monosize.config.mjs",
+          "{projectRoot}/bundle-size",
+          "{projectRoot}/src/**/*.tsx?",
+          Object {
+            "externalDependencies": Array [
+              "monosize",
+              "monosize-bundler-webpack",
+            ],
+          },
+        ],
+        "metadata": Object {
+          "help": Object {
+            "command": "yarn monosize measure --help",
+            "example": Object {},
+          },
+          "technologies": Array [
+            "monosize",
+          ],
+        },
+        "options": Object {
+          "cwd": "proj",
+        },
+        "outputs": Array [
+          "{projectRoot}/dist/bundle-size",
         ],
       }
     `);

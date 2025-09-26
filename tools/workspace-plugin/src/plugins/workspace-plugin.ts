@@ -178,6 +178,11 @@ function buildWorkspaceProjectConfiguration(
     targets.storybook = storybookTarget;
   }
 
+  const bundleSizeTarget = buildBundleSizeTarget(projectRoot, options, context, config);
+  if (bundleSizeTarget) {
+    targets['bundle-size'] = bundleSizeTarget;
+  }
+
   // react v9 lib
   if (config.projectJSON.projectType === 'library' && config.tags.includes('vNext')) {
     // *-stories projects
@@ -259,13 +264,9 @@ function buildWorkspaceProjectConfiguration(
 
     if (existsSync(join(projectRoot, '../stories/project.json'))) {
       const storybookTarget = { command: `nx run ${config.projectJSON.name}-stories:storybook`, cache: true };
+
       targets.storybook = storybookTarget;
       targets.start = storybookTarget;
-    }
-
-    const bundleSizeTarget = buildBundleSizeTarget(projectRoot, options, context, config);
-    if (bundleSizeTarget) {
-      targets['bundle-size'] = bundleSizeTarget;
     }
 
     const e2eTarget = buildE2eTarget(projectRoot, options, context, config);
@@ -555,14 +556,18 @@ function buildReactIntegrationTesterProjectConfiguration(
   ) {
     return {};
   }
+
   // react v9: apply to libraries and stories projects
-  const isStoriesProject = config.tags.includes('type:stories');
-  if (!config.tags.includes('vNext') || (config.projectJSON.projectType !== 'library' && !isStoriesProject)) {
+  const isv8Lib = config.tags.includes('v8');
+  const isv9Lib = config.tags.includes('vNext');
+  const isV9StoriesProject = isv9Lib && config.tags.includes('type:stories');
+
+  if (!(isv9Lib || isV9StoriesProject || isv8Lib)) {
     return {};
   }
 
   const storiesAdjacentLibraryPath = resolve(projectRoot, '../library/project.json');
-  const isStorybookAdjacentProject = isStoriesProject && existsSync(storiesAdjacentLibraryPath);
+  const isStorybookAdjacentProject = isV9StoriesProject && existsSync(storiesAdjacentLibraryPath);
   const isLibraryWithStorybookAdjacentProject =
     basename(projectRoot) === 'library' && existsSync(resolve(projectRoot, '../stories/project.json'));
 
