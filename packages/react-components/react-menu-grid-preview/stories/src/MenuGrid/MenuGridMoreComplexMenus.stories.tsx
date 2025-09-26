@@ -14,8 +14,8 @@ export const MoreComplexMenus = (): JSXElement => {
       </MenuTrigger>
       <MenuPopover>
         <MenuGrid>
-          {items.map((name, index) => (
-            <MenuGridRow key={index} aria-label={name}>
+          {items.map(name => (
+            <MenuGridRow key={name} aria-label={name}>
               <MenuGridCell>
                 <Button
                   size="small"

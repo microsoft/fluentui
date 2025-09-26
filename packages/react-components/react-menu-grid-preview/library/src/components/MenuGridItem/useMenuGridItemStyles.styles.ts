@@ -12,23 +12,20 @@ export const menuGridItemClassNames: SlotClassNames<MenuGridItemSlots> = {
 };
 
 const useStyles = makeStyles({
-  secondSubAction: {
-    marginLeft: 'auto',
+  content: {
+    flexGrow: 1,
   },
 });
 
 export const useMenuGridItemStyles_unstable = (state: MenuGridItemState): MenuGridItemState => {
   'use no memo';
 
-  const classes = useStyles();
+  const rootStyles = useStyles();
 
   state.root.className = mergeClasses(menuGridItemClassNames.root, state.root.className);
-  if (state.secondSubAction) {
-    state.secondSubAction.className = mergeClasses(
-      menuGridItemClassNames.secondSubAction,
-      classes.secondSubAction,
-      state.secondSubAction.className,
-    );
+
+  if (state.content) {
+    state.content.className = mergeClasses(menuGridItemClassNames.content, rootStyles.content, state.content.className);
   }
   return state;
 };

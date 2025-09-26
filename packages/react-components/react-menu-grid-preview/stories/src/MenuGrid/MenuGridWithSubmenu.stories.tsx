@@ -43,8 +43,8 @@ export const WithSubmenu = (): JSXElement => {
       </MenuTrigger>
       <MenuPopover>
         <MenuGrid>
-          {items.map((name, index) => (
-            <MenuGridItem key={index} secondSubAction={<Submenu />} aria-label={name}>
+          {items.map(name => (
+            <MenuGridItem key={name} secondSubAction={<Submenu />} aria-label={name}>
               {name}
             </MenuGridItem>
           ))}

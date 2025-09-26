@@ -8,10 +8,11 @@ export const menuGridCellClassNames: SlotClassNames<MenuGridCellSlots> = {
 
 const useRootStyles = makeStyles({
   root: {
-    boxSizing: 'border-box',
-    minHeight: '24px', // To match small button size
     display: 'flex',
     alignItems: 'center',
+
+    boxSizing: 'border-box',
+    minHeight: '24px', // To match small button size
   },
   visuallyHidden: {
     position: 'absolute',

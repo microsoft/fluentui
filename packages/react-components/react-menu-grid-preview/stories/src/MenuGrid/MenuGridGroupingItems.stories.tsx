@@ -19,9 +19,9 @@ export const GroupingItems = (): JSXElement => {
         <MenuGrid>
           <MenuGridGroup>
             <MenuGridGroupHeader>People</MenuGridGroupHeader>
-            {items.people.map((name, index) => (
+            {items.people.map(name => (
               <MenuGridItem
-                key={index}
+                key={name}
                 icon={
                   <Button
                     size="small"
@@ -46,9 +46,9 @@ export const GroupingItems = (): JSXElement => {
           </MenuGridGroup>
           <MenuGridGroup>
             <MenuGridGroupHeader>Agents and bots</MenuGridGroupHeader>
-            {items.agentsAndBots.map((name, index) => (
+            {items.agentsAndBots.map(name => (
               <MenuGridItem
-                key={index}
+                key={name}
                 icon={
                   <Button
                     size="small"

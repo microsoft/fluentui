@@ -16,10 +16,7 @@ const useRootBaseStyles = makeResetStyles({
   position: 'relative',
   color: tokens.colorNeutralForeground2,
   backgroundColor: tokens.colorNeutralBackground1,
-  paddingRight: tokens.spacingVerticalSNudge, // 6px
-  paddingLeft: tokens.spacingVerticalSNudge,
-  paddingTop: tokens.spacingVerticalXS,
-  paddingBottom: tokens.spacingVerticalXS,
+  padding: `${tokens.spacingVerticalXS} ${tokens.spacingVerticalSNudge}`,
   boxSizing: 'border-box',
   maxWidth: '290px',
   minHeight: '32px',
@@ -29,6 +26,8 @@ const useRootBaseStyles = makeResetStyles({
   fontSize: tokens.fontSizeBase300,
   cursor: 'pointer',
   gap: '4px',
+  userSelect: 'none',
+  ...createFocusOutlineStyle(),
 
   ':hover': {
     backgroundColor: tokens.colorNeutralBackground1Hover,
@@ -56,9 +55,6 @@ const useRootBaseStyles = makeResetStyles({
     },
     ...createFocusOutlineStyle({ style: { outlineColor: 'Highlight' } }),
   },
-
-  userSelect: 'none',
-  ...createFocusOutlineStyle(),
 });
 
 export const useMenuGridRowStyles_unstable = (state: MenuGridRowState): MenuGridRowState => {

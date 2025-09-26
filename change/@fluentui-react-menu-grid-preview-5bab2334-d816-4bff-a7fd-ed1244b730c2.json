@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Align MenuGridRow",
+  "comment": "feat: add styles for MenuGridRow",
   "packageName": "@fluentui/react-menu-grid-preview",
   "email": "jukapsia@microsoft.com",
   "dependentChangeType": "patch"

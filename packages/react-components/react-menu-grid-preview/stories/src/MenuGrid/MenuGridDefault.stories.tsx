@@ -14,9 +14,10 @@ export const Default = (): JSXElement => {
       </MenuTrigger>
       <MenuPopover>
         <MenuGrid>
-          {items.map((name, index) => (
+          {items.map(name => (
             <MenuGridItem
-              key={index}
+              key={name}
+              aria-label={name}
               icon={
                 <Button
                   size="small"
@@ -28,7 +29,6 @@ export const Default = (): JSXElement => {
               secondSubAction={
                 <Button size="small" appearance="transparent" icon={<DeleteRegular />} aria-label={`Remove ${name}`} />
               }
-              aria-label={name}
             >
               {name}
             </MenuGridItem>
