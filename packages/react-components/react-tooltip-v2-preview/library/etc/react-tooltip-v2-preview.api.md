@@ -6,32 +6,64 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { PortalProps } from '@fluentui/react-portal';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
-export const renderTooltipV2_unstable: (state: TooltipV2State) => JSXElement;
+export type OnVisibleChangeData = {
+    visible: boolean;
+    documentKeyboardEvent?: KeyboardEvent;
+};
 
 // @public
-export const TooltipV2: ForwardRefComponent<TooltipV2Props>;
+export const renderTooltip_unstable: (state: TooltipState) => JSXElement;
+
+// @public
+export const Tooltip: React_2.FC<TooltipProps>;
 
 // @public (undocumented)
-export const tooltipV2ClassNames: SlotClassNames<TooltipV2Slots>;
+export const tooltipClassNames: SlotClassNames<TooltipSlots>;
 
 // @public
-export type TooltipV2Props = ComponentProps<TooltipV2Slots> & {};
+export type TooltipProps = ComponentProps<TooltipSlots> & TriggerProps<TooltipTriggerProps> & Pick<PortalProps, 'mountNode'> & {
+    appearance?: 'normal' | 'inverted';
+    hideDelay?: number;
+    onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
+    positioning?: PositioningShorthand;
+    relationship: 'label' | 'description' | 'inaccessible';
+    showDelay?: number;
+    visible?: boolean;
+    withArrow?: boolean;
+};
 
 // @public
-export type TooltipV2State = ComponentState<TooltipV2Slots>;
+export type TooltipSlots = {
+    content: NonNullable<Slot<'div'>>;
+};
 
 // @public
-export const useTooltipV2_unstable: (props: TooltipV2Props, ref: React_2.Ref<HTMLDivElement>) => TooltipV2State;
+export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mountNode' | 'relationship'> & Required<Pick<TooltipProps, 'appearance' | 'hideDelay' | 'positioning' | 'showDelay' | 'visible' | 'withArrow'>> & {
+    children?: JSXElement | null;
+    shouldRenderTooltip?: boolean;
+    arrowRef?: React_2.Ref<HTMLDivElement>;
+    arrowClassName?: string;
+};
 
 // @public
-export const useTooltipV2Styles_unstable: (state: TooltipV2State) => TooltipV2State;
+export type TooltipTriggerProps = {
+    ref?: React_2.Ref<unknown>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'onBlur' | 'onFocus' | 'onPointerEnter' | 'onPointerLeave' | 'aria-haspopup' | 'aria-expanded'>;
+
+// @public
+export const useTooltip_unstable: (props: TooltipProps) => TooltipState;
+
+// @public
+export const useTooltipStyles_unstable: (state: TooltipState) => TooltipState;
 
 // (No @packageDocumentation comment for this package)
 
