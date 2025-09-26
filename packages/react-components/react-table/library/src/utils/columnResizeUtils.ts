@@ -62,7 +62,7 @@ export function columnDefinitionsToState<T>(
       width: Math.max(defaultWidth ?? idealWidth, minWidth),
       minWidth,
       idealWidth: Math.max(defaultWidth ?? idealWidth, minWidth),
-      padding: padding ?? 16,
+      padding,
     };
   });
 
@@ -90,8 +90,8 @@ export function getColumnByIndex(state: ColumnWidthState[], index: number): Colu
   return state[index];
 }
 
-export function getTotalWidth(state: ColumnWidthState[]): number {
-  return state.reduce((sum, column) => sum + column.width + column.padding, 0);
+export function getTotalWidth(state: ColumnWidthState[], defaultColumnPadding: number = 16): number {
+  return state.reduce((sum, column) => sum + column.width + (column.padding ?? defaultColumnPadding), 0);
 }
 
 export function getLength(state: ColumnWidthState[]): number {
@@ -151,9 +151,10 @@ export function setColumnProperty(
 export function adjustColumnWidthsToFitContainer(
   state: ColumnWidthState[],
   containerWidth: number,
+  defaultColumnPadding?: number,
 ): ColumnWidthState[] {
   let newState = state;
-  const totalWidth = getTotalWidth(newState);
+  const totalWidth = getTotalWidth(newState, defaultColumnPadding);
 
   // The total width is smaller, we are expanding columns
   if (totalWidth < containerWidth) {
