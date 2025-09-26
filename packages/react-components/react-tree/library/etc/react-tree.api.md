@@ -334,6 +334,12 @@ export type TreeNavigationData_unstable = {
     type: typeof End;
 });
 
+// @public
+export type TreeNavigationDataParam = TreeNavigationData_unstable & {
+    preventScroll(): void;
+    isScrollPrevented(): boolean;
+};
+
 // @public (undocumented)
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 

@@ -20,6 +20,7 @@ export type {
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeNavigationMode,
+  TreeNavigationDataParam,
 } from './Tree';
 
 export {
