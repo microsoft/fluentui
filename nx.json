@@ -160,6 +160,9 @@
         }
       },
       "include": [
+        "apps/rit-tests-v9/*",
+        "apps/rit-tests-v8/*",
+
         "tools/**/*",
         "scripts/**/*",
         "packages/eslint-plugin/**",

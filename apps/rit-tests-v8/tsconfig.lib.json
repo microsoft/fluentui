@@ -8,6 +8,6 @@
     "outDir": "dist",
     "types": []
   },
-  "exclude": ["node_modules", "dist"],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
   "include": ["./src/react-18/", "./src/shared/**/*.ts", "./src/shared/**/*.tsx"]
 }
