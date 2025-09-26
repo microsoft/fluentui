@@ -18,7 +18,7 @@ import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.ty
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false } = props;
+  const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false, unmountOnClose = true } = props;
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -58,15 +58,16 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     requestOpenChange,
     dialogTitleId: useId('dialog-title-'),
     isNestedDialog,
+    unmountOnClose,
     dialogRef: focusRef,
     modalAttributes,
     triggerAttributes,
     surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
       elementType: DialogSurfaceMotion,
       defaultProps: {
-        appear: true,
         visible: open,
-        unmountOnExit: true,
+        appear: unmountOnClose,
+        unmountOnExit: unmountOnClose,
       },
     }),
   };

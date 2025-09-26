@@ -68,6 +68,10 @@ const useStyles = makeStyles({
   nestedDialogBackdrop: {
     backgroundColor: tokens.colorTransparentBackground,
   },
+
+  dialogHidden: {
+    pointerEvents: 'none',
+  },
 });
 
 /**
@@ -76,20 +80,27 @@ const useStyles = makeStyles({
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   'use no memo';
 
-  const { isNestedDialog, root, backdrop } = state;
+  const { isNestedDialog, root, backdrop, open, unmountOnClose } = state;
 
   const rootBaseStyle = useRootBaseStyle();
-
   const backdropBaseStyle = useBackdropBaseStyle();
   const styles = useStyles();
 
-  root.className = mergeClasses(dialogSurfaceClassNames.root, rootBaseStyle, root.className);
+  const mountedAndClosed = !unmountOnClose && !open;
+
+  root.className = mergeClasses(
+    dialogSurfaceClassNames.root,
+    rootBaseStyle,
+    mountedAndClosed && styles.dialogHidden,
+    root.className,
+  );
 
   if (backdrop) {
     backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,
       isNestedDialog && styles.nestedDialogBackdrop,
+      mountedAndClosed && styles.dialogHidden,
       backdrop.className,
     );
   }
