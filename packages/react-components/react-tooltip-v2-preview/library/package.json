@@ -25,8 +25,12 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-jsx-runtime": "^9.2.0",
+    "@fluentui/react-portal": "^9.8.2",
+    "@fluentui/react-positioning": "^9.20.5",
     "@fluentui/react-shared-contexts": "^9.25.1",
+    "@fluentui/react-tabster": "^9.26.5",
     "@fluentui/react-theme": "^9.2.0",
     "@fluentui/react-utilities": "^9.24.1",
     "@griffel/react": "^1.5.22",
