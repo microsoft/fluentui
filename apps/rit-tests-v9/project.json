@@ -1,36 +1,32 @@
 {
-  "name": "react",
+  "name": "rit-tests-v9",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "library",
-  "sourceRoot": "packages/react/src",
-  "tags": ["v8", "ships-bundle", "ships-umd"],
+  "projectType": "application",
   "implicitDependencies": [],
+  "tags": ["vNext"],
   "metadata": {
     "targetGroups": {
       "React Integration Tester": [
         "test-rit--17--prepare",
-        "test-rit--17--test",
+        "test-rit--17--type-check",
         "test-rit--19--prepare",
-        "test-rit--19--test",
+        "test-rit--19--type-check",
         "test-rit"
       ]
     }
   },
   "targets": {
-    "test": {
-      "dependsOn": ["^build"]
-    },
     "test-rit": {
       "executor": "nx:noop",
       "cache": true,
       "dependsOn": [
         {
-          "target": "test-rit--17--test",
+          "target": "test-rit--17--type-check",
           "projects": "self",
           "params": "forward"
         },
         {
-          "target": "test-rit--19--test",
+          "target": "test-rit--19--type-check",
           "projects": "self",
           "params": "forward"
         }
@@ -68,7 +64,7 @@
         "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/tools/react-integration-testing/**"
       ],
-      "outputs": ["{workspaceRoot}/tmp/rit/react-17/react-17-ci"],
+      "outputs": ["{workspaceRoot}/tmp/rit/react-17/rit-tests-v9-ci"],
       "dependsOn": ["^build"],
       "metadata": {
         "technologies": ["react-integration-tester"],
@@ -82,10 +78,10 @@
       "configurations": {},
       "parallelism": true
     },
-    "test-rit--17--test": {
+    "test-rit--17--type-check": {
       "options": {
         "cwd": "{projectRoot}",
-        "command": "yarn rit --project-id ci --react 17 --run test --verbose"
+        "command": "yarn rit --project-id ci --react 17 --run type-check --verbose"
       },
       "cache": true,
       "inputs": [
@@ -122,7 +118,7 @@
         "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/tools/react-integration-testing/**"
       ],
-      "outputs": ["{workspaceRoot}/tmp/rit/react-19/app/react-19-ci"],
+      "outputs": ["{workspaceRoot}/tmp/rit/react-19/rit-tests-v9-ci"],
       "dependsOn": ["^build"],
       "metadata": {
         "technologies": ["react-integration-tester"],
@@ -136,10 +132,10 @@
       "configurations": {},
       "parallelism": true
     },
-    "test-rit--19--test": {
+    "test-rit--19--type-check": {
       "options": {
         "cwd": "{projectRoot}",
-        "command": "yarn rit --project-id ci --react 19 --run test --verbose"
+        "command": "yarn rit --project-id ci --react 19 --run type-check --verbose"
       },
       "cache": true,
       "inputs": [

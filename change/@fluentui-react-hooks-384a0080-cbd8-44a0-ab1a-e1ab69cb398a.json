@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add RIT targets",
+  "packageName": "@fluentui/react-hooks",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
