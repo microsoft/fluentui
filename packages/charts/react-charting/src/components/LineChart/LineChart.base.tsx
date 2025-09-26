@@ -1409,6 +1409,35 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         }
       }
 
+      // Add filled area for scatterpolar charts
+      const fillMode = this._points[i].lineOptions?.fill;
+      const isLegendSelected: boolean =
+        this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
+      if (fillMode === 'toself' && this._points[i].data.length >= 3 && isLegendSelected && this._isScatterPolar) {
+        // Create path data for filled area
+        let pathData = '';
+        for (let j = 0; j < this._points[i].data.length; j++) {
+          const xPoint = this._xAxisScale(this._points[i].data[j].x);
+          const yPoint = yScale(this._points[i].data[j].y);
+          const command = j === 0 ? 'M' : 'L';
+          pathData += `${command} ${xPoint} ${yPoint} `;
+        }
+        pathData += 'Z'; // Close the path
+
+        linesForLine.push(
+          <path
+            key={`scatterpolar_fill_${i}`}
+            d={pathData}
+            fill={lineColor}
+            fillOpacity={0.5}
+            stroke={lineColor}
+            strokeWidth={2}
+            strokeOpacity={0.8}
+            pointerEvents="none"
+          />,
+        );
+      }
+
       if (this._isScatterPolar) {
         pointsForLine.push(
           ...renderScatterPolarCategoryLabels({
