@@ -1,0 +1,5 @@
+# @fluentui/react-tooltip-v2-preview
+
+**React Tooltip V2 components for [Fluent UI React](https://react.fluentui.dev/)**
+
+These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
