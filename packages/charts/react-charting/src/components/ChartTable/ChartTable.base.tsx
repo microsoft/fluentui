@@ -17,14 +17,27 @@ function invertHexColor(hex: string, theme: ITheme): string {
   return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
 }
 
+function resolveCssVariable(value: string): string {
+  if (value?.startsWith('var(')) {
+    const cssVarName = value.replace(/^var\((--[^,)\s]+).*\)$/, '$1');
+    const resolved = getComputedStyle(document.documentElement).getPropertyValue(cssVarName)?.trim();
+    return resolved;
+  }
+  return value;
+}
+
 function getSafeBackgroundColor(theme: ITheme, foreground?: string, background?: string): string {
   const fallbackFg = theme.semanticColors.bodyText;
   const fallbackBg = theme.semanticColors.bodyBackground;
 
-  const fg = d3.color(foreground || fallbackFg);
-  const bg = d3.color(background || fallbackBg);
+  const resolvedFg = resolveCssVariable(foreground || fallbackFg);
+  const resolvedBg = resolveCssVariable(background || fallbackBg);
+
+  const fg = d3.color(resolvedFg);
+  const bg = d3.color(resolvedBg);
+
   if (!fg || !bg) {
-    return fallbackBg;
+    return resolvedBg;
   }
   const contrast = getColorContrast(fg.formatHex(), bg.formatHex());
   if (contrast >= 3) {
