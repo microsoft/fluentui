@@ -171,9 +171,13 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     const itemRef = React.useRef<HTMLElement>();
     const menuRef = React.useRef<HTMLElement>();
 
-    const { menuSlot } = useContextSelectors(ToolbarMenuContext, {
-      menuSlot: v => v.slots.menu,
-    }) as unknown as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+    const menuSelector = React.useMemo(
+      () => ({
+        menuSlot: v => v.slots.menu,
+      }),
+      [],
+    );
+    const { menuSlot } = useContextSelectors(ToolbarMenuContext, menuSelector) as unknown as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);

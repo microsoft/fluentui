@@ -143,9 +143,13 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
-    const { menuSlot } = useContextSelectors(ToolbarMenuContext, {
-      menuSlot: v => v.slots.menu,
-    }) as unknown as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+    const menuSelector = React.useMemo(
+      () => ({
+        menuSlot: v => v.slots.menu,
+      }),
+      [],
+    );
+    const { menuSlot } = useContextSelectors(ToolbarMenuContext, menuSelector) as unknown as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,

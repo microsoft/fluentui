@@ -3,7 +3,6 @@ import { getCode, keyboardKey } from '../../keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
-import { chatMessageBehavior } from './chatMessageBehavior';
 
 const CHAT_FOCUSZONE_ATTRIBUTE = 'chat-focuszone';
 
@@ -31,10 +30,6 @@ export const chatBehavior: Accessibility<ChatBehaviorProps> = () => ({
       [CHAT_FOCUSZONE_ATTRIBUTE]: '', // allows querying the default active element
       pagingSupportDisabled: true,
     },
-  },
-  childBehaviors: {
-    item: undefined,
-    message: chatMessageBehavior,
   },
 });
 
