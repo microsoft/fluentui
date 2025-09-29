@@ -7,6 +7,7 @@ import { toImage } from '../../utilities/image-export-utils';
 import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { ITheme } from '@fluentui/react';
+import { resolveCSSVariables } from '../../utilities/utilities';
 
 function invertHexColor(hex: string, theme: ITheme): string {
   const color = d3.color(hex);
@@ -17,21 +18,20 @@ function invertHexColor(hex: string, theme: ITheme): string {
   return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
 }
 
-function resolveCssVariable(value: string): string {
-  if (value?.startsWith('var(')) {
-    const cssVarName = value.replace(/^var\((--[^,)\s]+).*\)$/, '$1');
-    const resolved = getComputedStyle(document.documentElement).getPropertyValue(cssVarName)?.trim();
-    return resolved;
-  }
-  return value;
-}
-
-function getSafeBackgroundColor(theme: ITheme, foreground?: string, background?: string): string {
+function getSafeBackgroundColor(
+  theme: ITheme,
+  chartContainer: HTMLElement,
+  foreground?: string,
+  background?: string,
+): string {
   const fallbackFg = theme.semanticColors.bodyText;
   const fallbackBg = theme.semanticColors.bodyBackground;
+  if (!chartContainer) {
+    return fallbackBg;
+  }
 
-  const resolvedFg = resolveCssVariable(foreground || fallbackFg);
-  const resolvedBg = resolveCssVariable(background || fallbackBg);
+  const resolvedFg = resolveCSSVariables(chartContainer, foreground || fallbackFg);
+  const resolvedBg = resolveCSSVariables(chartContainer, background || fallbackBg);
 
   const fg = d3.color(resolvedFg);
   const bg = d3.color(resolvedBg);
@@ -139,7 +139,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
                       if (useSharedBackground) {
                         style.backgroundColor = sharedBackgroundColor;
                       } else if (fg || bg) {
-                        style.backgroundColor = getSafeBackgroundColor(theme!, fg, bg);
+                        style.backgroundColor = getSafeBackgroundColor(theme!, this._rootElem!, fg, bg);
                       }
                       return (
                         <th key={idx} className={classNames.headerCell} style={style}>
@@ -158,7 +158,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
                           const fg = style.color;
                           const bg = style.backgroundColor;
                           if (fg || bg) {
-                            style.backgroundColor = getSafeBackgroundColor(theme!, fg, bg);
+                            style.backgroundColor = getSafeBackgroundColor(theme!, this._rootElem!, fg, bg);
                           }
                           return (
                             <td key={colIdx} className={classNames.bodyCell} style={style}>
