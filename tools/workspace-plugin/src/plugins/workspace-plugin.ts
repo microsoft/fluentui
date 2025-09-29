@@ -751,7 +751,6 @@ function buildReactIntegrationTesterProjectConfiguration(
     if (existsSync(ritConfigPathLocal)) {
       try {
         type RITConfig = { react: Record<string, { runConfig?: Record<string, { configPath: string }> }> };
-        // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
         const loaded = require(resolve(projectRootPath, 'rit.config.js'));
         const rit: RITConfig = loaded?.default ?? loaded;
 
@@ -777,8 +776,9 @@ function buildReactIntegrationTesterProjectConfiguration(
             hasTest: hasFromRit('test') ?? defaults.hasTest,
           };
         }
-      } catch (e) {
+      } catch (err) {
         // fall back to defaults below
+        console.error('Error loading rit.config.js:', err);
       }
     }
 
