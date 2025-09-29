@@ -14,14 +14,7 @@
     "noUnusedLocals": true,
     "preserveConstEnums": true,
     "skipLibCheck": true,
-    "typeRoots": ["./node_modules/@types"],
-    "types": [],
-    "baseUrl": ".",
-    "paths": {
-      "react/jsx-runtime": ["./node_modules/@types/react/jsx-runtime.d.ts"],
-      "react": ["./node_modules/@types/react/index.d.ts"],
-      "react-dom": ["./node_modules/@types/react-dom/index.d.ts"]
-    }
+    "types": []
   },
   "exclude": [
     "../../packages/react-components/react-migration-v0-v9/**",
