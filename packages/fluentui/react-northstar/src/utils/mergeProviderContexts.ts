@@ -63,8 +63,6 @@ export const mergeProviderContexts = (
       },
       componentVariables: {},
       componentStyles: {},
-      fontFaces: [],
-      staticStyles: [],
       animations: {},
     },
     rtl: false,

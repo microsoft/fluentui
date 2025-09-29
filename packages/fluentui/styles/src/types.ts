@@ -73,27 +73,6 @@ export interface ThemeAnimation<KP = {}> {
 }
 
 // ========================================================
-// Fonts
-// ========================================================
-
-export interface FontFaceProps {
-  fontStretch?: string;
-  fontStyle?: string;
-  fontVariant?: string;
-  fontWeight?: number;
-  localAlias?: string | string[];
-  unicodeRange?: string;
-}
-
-export interface FontFace {
-  name: string;
-  paths: string[];
-  props: FontFaceProps;
-}
-
-export type FontFaces = FontFace[];
-
-// ========================================================
 // Site Variables
 // ========================================================
 
@@ -158,20 +137,6 @@ export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}>
   extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
 
 // ========================================================
-// Static Styles
-// ========================================================
-
-export type StaticStyleObject = Record<string, ICSSInJSStyle>;
-
-export type StaticStyleRenderable = string | StaticStyleObject;
-
-export type StaticStyleFunction = (siteVariables?: SiteVariablesPrepared) => StaticStyleObject;
-
-export type StaticStyle = StaticStyleRenderable | StaticStyleFunction;
-
-export type StaticStyles = StaticStyle[];
-
-// ========================================================
 // TODO: Theme typings that have no sense
 // ========================================================
 
@@ -199,8 +164,6 @@ export interface ThemeInput<ThemeStylesProps extends Record<string, any> = any> 
   siteVariables?: SiteVariablesInput;
   componentVariables?: ThemeComponentVariablesInput<ThemeStylesProps>;
   componentStyles?: ThemeComponentStylesInput<ThemeStylesProps>;
-  fontFaces?: FontFaces;
-  staticStyles?: StaticStyles;
   animations?: { [key: string]: ThemeAnimation };
 }
 
@@ -216,7 +179,5 @@ export interface ThemePrepared<ThemeStylesProps extends Record<string, any> = an
   siteVariables: SiteVariablesPrepared;
   componentVariables: ThemeComponentVariablesPrepared<ThemeStylesProps>;
   componentStyles: ThemeComponentStylesPrepared<ThemeStylesProps>;
-  fontFaces: FontFaces;
-  staticStyles: StaticStyles;
   animations: Record<string, ThemeAnimation>;
 }

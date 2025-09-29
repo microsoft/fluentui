@@ -8,10 +8,8 @@ import {
   ComponentVariablesInput,
   ComponentVariablesObject,
   ComponentVariablesPrepared,
-  FontFace,
   SiteVariablesInput,
   SiteVariablesPrepared,
-  StaticStyle,
   ThemeAnimation,
   ThemeComponentStylesInput,
   ThemeComponentStylesPrepared,
@@ -32,8 +30,6 @@ export const emptyTheme: ThemePrepared = {
   },
   componentVariables: {},
   componentStyles: {},
-  fontFaces: [],
-  staticStyles: [],
   animations: {},
 };
 
@@ -415,17 +411,6 @@ const mergeThemeStyles__DEV: typeof mergeThemeStyles__PROD = (componentStylesA, 
 
 export const mergeThemeStyles = process.env.NODE_ENV === 'production' ? mergeThemeStyles__PROD : mergeThemeStyles__DEV;
 
-export const mergeFontFaces = (fontFacesA: FontFace[] | undefined, fontFacesB: FontFace[] | undefined): FontFace[] => {
-  return [...(fontFacesA || []), ...(fontFacesB || [])];
-};
-
-export const mergeStaticStyles = (
-  staticStylesA: StaticStyle[] | undefined,
-  staticStylesB: StaticStyle[] | undefined,
-): StaticStyle[] => {
-  return [...(staticStylesA || []), ...(staticStylesB || [])];
-};
-
 export const mergeAnimations = (
   animationsA: { [key: string]: ThemeAnimation } | undefined,
   animationsB: { [key: string]: ThemeAnimation } | undefined,
@@ -459,12 +444,10 @@ export const mergeThemes = (
         withDebugId(themeA.componentStyles, debugIdA),
         withDebugId(themeB.componentStyles, debugIdB),
       ),
-      fontFaces: mergeFontFaces(themeA.fontFaces, themeB.fontFaces),
       siteVariables: mergeSiteVariables(
         withDebugId(themeA.siteVariables, debugIdA),
         withDebugId(themeB.siteVariables, debugIdB),
       ),
-      staticStyles: mergeStaticStyles(themeA.staticStyles, themeB.staticStyles),
     };
   }
 
@@ -473,9 +456,7 @@ export const mergeThemes = (
       animations: mergeAnimations(undefined, themeA.animations),
       componentVariables: mergeThemeVariables(undefined, withDebugId(themeA.componentVariables, debugIdA)),
       componentStyles: mergeThemeStyles(undefined, withDebugId(themeA.componentStyles, debugIdA)),
-      fontFaces: mergeFontFaces(undefined, themeA.fontFaces),
       siteVariables: mergeSiteVariables(undefined, withDebugId(themeA.siteVariables, debugIdA)),
-      staticStyles: mergeStaticStyles(undefined, themeA.staticStyles),
     };
   }
 
@@ -484,9 +465,7 @@ export const mergeThemes = (
       animations: mergeAnimations(undefined, themeB.animations),
       componentVariables: mergeThemeVariables(undefined, withDebugId(themeB.componentVariables, debugIdB)),
       componentStyles: mergeThemeStyles(undefined, withDebugId(themeB.componentStyles, debugIdB)),
-      fontFaces: mergeFontFaces(undefined, themeB.fontFaces),
       siteVariables: mergeSiteVariables(undefined, withDebugId(themeB.siteVariables, debugIdB)),
-      staticStyles: mergeStaticStyles(undefined, themeB.staticStyles),
     };
   }
 

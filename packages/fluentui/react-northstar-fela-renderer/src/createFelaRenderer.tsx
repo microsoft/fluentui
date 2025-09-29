@@ -135,10 +135,6 @@ export function createFelaRenderer(options: CreateFelaRendererOptions = {}): Cre
         }
       },
 
-      renderFont: font => {
-        felaRenderer.renderFont(font.name, font.paths, font.props);
-      },
-      renderGlobal: felaRenderer.renderStatic,
       renderRule: (styles, param) => {
         const felaParam: FelaRendererParam = {
           ...param,

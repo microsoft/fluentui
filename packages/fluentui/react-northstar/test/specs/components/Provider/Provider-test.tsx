@@ -1,6 +1,4 @@
-import { useFluentContext, RendererContext } from '@fluentui/react-bindings';
-import { CreateRenderer, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
-import { ThemeInput } from '@fluentui/styles';
+import { useFluentContext } from '@fluentui/react-bindings';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
 
@@ -114,48 +112,6 @@ describe('Provider', () => {
     });
   });
 
-  describe('staticStyles', () => {
-    test('are executed with the merged siteVariables', () => {
-      const staticStyle = jest.fn();
-
-      mount(
-        <Provider theme={{ siteVariables: { brand: 'blue', background: 'red' } }}>
-          <Provider
-            theme={{
-              siteVariables: { brand: 'yellow', gray: '#868686' },
-              staticStyles: [staticStyle],
-            }}
-          >
-            <span />
-          </Provider>
-        </Provider>,
-      );
-
-      expect(staticStyle).toHaveBeenCalledWith(
-        expect.objectContaining({
-          background: 'red',
-          brand: 'yellow',
-          gray: '#868686',
-        }),
-      );
-    });
-
-    test('are executed only once', () => {
-      const firstStaticStyle = jest.fn();
-      const secondStaticStyle = jest.fn();
-
-      const providerInstance = mount(
-        <Provider theme={{ staticStyles: [firstStaticStyle] }}>
-          <span />
-        </Provider>,
-      );
-      providerInstance.setProps({ theme: { staticStyles: [secondStaticStyle] } });
-
-      expect(firstStaticStyle).toHaveBeenCalledTimes(1);
-      expect(secondStaticStyle).not.toHaveBeenCalled();
-    });
-  });
-
   describe('RTL', () => {
     test('Sets dir="rtl" on the div for RTL theme', () => {
       const component = mount(
@@ -226,69 +182,6 @@ describe('Provider', () => {
         expect(nestedProviderDiv.prop('dir')).toEqual(expectedChildDir);
       });
     });
-  });
-
-  describe('calls provided renderer', () => {
-    //
-    // We don't support changing renderer on the fly.
-    // So mocks for `target` are required to create a new renderer.
-    //
-
-    test('calls renderFont', () => {
-      const theme: ThemeInput = {
-        fontFaces: [
-          {
-            name: 'Segoe UI',
-            paths: ['public/fonts/segoe-ui-regular.woff2'],
-            props: { fontWeight: 400 },
-          },
-        ],
-      };
-
-      const renderFont = jest.fn();
-      const createRenderer: CreateRenderer = () => ({
-        ...noopRenderer,
-        renderFont,
-      });
-
-      mount(
-        <RendererContext.Provider value={createRenderer}>
-          <Provider theme={theme} target={createDocumentMock()}>
-            <div />
-          </Provider>
-        </RendererContext.Provider>,
-      );
-
-      expect(renderFont).toHaveBeenCalled();
-    });
-  });
-
-  test('calls renderStatic', () => {
-    const theme: ThemeInput = {
-      staticStyles: [
-        {
-          a: {
-            textDecoration: 'none',
-          },
-        },
-      ],
-    };
-    const renderGlobal = jest.fn();
-
-    const createRenderer: CreateRenderer = () => ({
-      ...noopRenderer,
-      renderGlobal,
-    });
-
-    mount(
-      <RendererContext.Provider value={createRenderer}>
-        <Provider theme={theme} target={createDocumentMock()}>
-          <div />
-        </Provider>
-      </RendererContext.Provider>,
-    );
-
-    expect(renderGlobal).toHaveBeenCalled();
   });
 
   describe('target', () => {

@@ -7,8 +7,6 @@ export {
   emptyTheme,
   mergeComponentVariables,
   mergeComponentStyles,
-  mergeFontFaces,
-  mergeStaticStyles,
   mergeStyles,
   mergeThemeStyles,
   mergeThemeVariables,

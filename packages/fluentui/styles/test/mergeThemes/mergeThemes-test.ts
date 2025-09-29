@@ -277,56 +277,6 @@ describe('mergeThemes', () => {
     });
   });
 
-  describe('font faces', () => {
-    test('returns a compact array', () => {
-      expect(
-        mergeThemes(
-          { fontFaces: undefined },
-          {
-            fontFaces: [
-              {
-                name: 'Segoe UI',
-                paths: ['public/fonts/segoe-ui-regular.woff2'],
-                props: { fontWeight: 400 },
-              },
-              {
-                name: 'Segoe UI',
-                paths: ['public/fonts/segoe-ui-semibold.woff2'],
-                props: { fontWeight: 600 },
-              },
-            ],
-          },
-        ),
-      ).toMatchObject({
-        fontFaces: [
-          {
-            name: 'Segoe UI',
-            paths: ['public/fonts/segoe-ui-regular.woff2'],
-            props: { fontWeight: 400 },
-          },
-          {
-            name: 'Segoe UI',
-            paths: ['public/fonts/segoe-ui-semibold.woff2'],
-            props: { fontWeight: 600 },
-          },
-        ],
-      });
-    });
-  });
-
-  describe('static styles', () => {
-    test('returns a compact array', () => {
-      expect(
-        mergeThemes(
-          { staticStyles: undefined },
-          { staticStyles: [{ body: { color: 'red' } }, '*{box-sizing:border-box;}'] },
-        ),
-      ).toMatchObject({
-        staticStyles: [{ body: { color: 'red' } }, '*{box-sizing:border-box;}'],
-      });
-    });
-  });
-
   describe('styles', () => {
     test('merges styles object and function', () => {
       const stylesAsObject: ICSSInJSStyle = {

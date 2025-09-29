@@ -36,6 +36,9 @@
   <script src='https://cdn.jsdelivr.net/npm/core-js-bundle/minified.js'></script>
   <script src='https://cdn.jsdelivr.net/npm/whatwg-fetch/dist/fetch.umd.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.1/anchor.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <script
     crossOrigin="anonymous"
     src="https://cdn.jsdelivr.net/combine/npm/prettier@<%= htmlWebpackPlugin.options.versions.prettier %>/standalone.min.js,npm/prettier@<%= htmlWebpackPlugin.options.versions.prettier %>/parser-babel.min.js,npm/prettier@<%= htmlWebpackPlugin.options.versions.prettier %>/parser-html.min.js,npm/prettier@<%= htmlWebpackPlugin.options.versions.prettier %>/parser-typescript.min.js"
@@ -114,6 +117,44 @@
     .hidden {
       display: none;
     }
+  </style>
+
+  <style>
+      body {
+          padding: 0;
+          margin: 0;
+          font-size: 1rem;
+          line-height: 1.4286;
+          font-family: "Segoe UI", system-ui, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      *:before { box-sizing: border-box; }
+      *:after { box-sizing: border-box; }
+
+      /* Adding priority for HTML `hidden` attribute to be applied correctly */
+      [hidden] { display: none!important; }
+
+      a { text-decoration: none }
+
+      @font-face {
+          font-weight: 400;
+          src: url("https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets/fonts/segoeui-westeuropean/segoeui-regular.woff2")
+          format("woff2");
+          font-family: "Segoe UI";
+      }
+      @font-face {
+          font-weight: 600;
+          src: url("https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets/fonts/segoeui-westeuropean/segoeui-semibold.woff2")
+          format("woff2");
+          font-family: "Segoe UI";
+      }
+      @font-face {
+          font-weight: 700;
+          src: url("https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets/fonts/segoeui-westeuropean/segoeui-bold.woff2")
+          format("woff2");
+          font-family: "Segoe UI";
+      }
   </style>
 </body>
 </html>
