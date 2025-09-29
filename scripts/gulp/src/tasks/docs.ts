@@ -2,14 +2,12 @@ import { spawnSync } from 'child_process';
 import fs from 'fs';
 import { Server } from 'http';
 import path from 'path';
-import { Transform } from 'stream';
 
 import { getAllPackageInfo, workspaceRoot } from '@fluentui/scripts-monorepo';
 import { sh } from '@fluentui/scripts-utils';
 import chalk from 'chalk';
 import del from 'del';
 import { TaskFunction, dest, lastRun, parallel, series, src, task, watch } from 'gulp';
-import cache from 'gulp-cache';
 import remember from 'gulp-remember';
 import { log } from 'gulp-util';
 import through2 from 'through2';
@@ -43,8 +41,6 @@ const handleWatchUnlink = (group: any, filePath: string) => {
 // Clean
 // ----------------------------------------
 
-task('clean:cache', () => cache.clearAll());
-
 task('clean:docs', () =>
   del(
     [
@@ -68,10 +64,6 @@ const examplesSrc = `${paths.posix.docsSrc()}/examples/*/*/*/!(*index|.knobs).ts
 const markdownSrc = ['packages/fluentui/!(CHANGELOG).md', 'specifications/*.md'];
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
-/** Cache the task with gulp-cache except when running in CI */
-const cacheNonCi: (...args: Parameters<typeof cache>) => NodeJS.ReadWriteStream | Transform = (task, options) =>
-  process.env.TF_BUILD ? task : cache(task, options);
-
 task('build:docs:component-menu-behaviors', () =>
   src(behaviorSrc, { since: lastRun('build:docs:component-menu-behaviors') })
     .pipe(remember('component-menu-behaviors'))
@@ -88,11 +80,7 @@ task('build:docs:example-menu', () =>
 
 task('build:docs:example-sources', () =>
   src(examplesSrc, { since: lastRun('build:docs:example-sources'), cwd: paths.base(), cwdbase: true })
-    .pipe(
-      cacheNonCi(gulpExampleSource(), {
-        name: 'exampleSources',
-      }),
-    )
+    .pipe(gulpExampleSource())
     .pipe(dest(paths.docsSrc('exampleSources'), { cwd: paths.base() })),
 );
 
@@ -105,13 +93,7 @@ task('build:docs:html', () => src(paths.docsSrc('404.html')).pipe(dest(paths.doc
 
 task('build:docs:images', () => src(`${paths.docsSrc()}/**/*.{png,jpg,gif}`).pipe(dest(paths.docsDist())));
 
-task('build:docs:toc', () =>
-  src(markdownSrc, { since: lastRun('build:docs:toc') }).pipe(
-    cacheNonCi(gulpDoctoc(), {
-      name: 'md-docs-v2',
-    }),
-  ),
-);
+task('build:docs:toc', () => src(markdownSrc, { since: lastRun('build:docs:toc') }).pipe(gulpDoctoc()));
 
 task('build:docs:schema', () =>
   src(schemaSrc, { since: lastRun('build:docs:schema') }).pipe(
@@ -216,18 +198,15 @@ task('watch:docs:component-info', () => {
       const internalTask: TaskFunction = () =>
         src(pkg.packageJson.gulp?.componentInfo, { cwd: pkg.packagePath })
           .pipe(
-            cacheNonCi(
-              gulpReactDocgen({
-                ignoredParentInterfaces: ['DOMAttributes', 'HTMLAttributes'],
-                tsconfigPath: paths.docs('tsconfig.json'),
-              }),
-              { name: 'componentInfo-4' },
-            ),
+            gulpReactDocgen({
+              ignoredParentInterfaces: ['DOMAttributes', 'HTMLAttributes'],
+              tsconfigPath: paths.docs('tsconfig.json'),
+            }),
           )
           .pipe(dest('componentInfo', { cwd: pkg.packagePath }));
       internalTask.displayName = 'build:docs:component-info';
 
-      const watcher = watch(pkg.packageJson.gulp?.componentInfo, { cwd: pkg.packagePath }, internalTask);
+      const watcher = watch(pkg.packageJson.gulp?.componentInfo, {}, internalTask);
 
       watcher.on('add', logWatchAdd);
       watcher.on('change', logWatchChange);

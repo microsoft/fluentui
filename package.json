@@ -293,7 +293,6 @@
     "react-app-polyfill": "2.0.0",
     "react-dom": "18.3.1",
     "react-frame-component": "4.1.1",
-    "react-hot-loader": "4.13.0",
     "react-is": "18.3.1",
     "react-shadow": "20.3.0",
     "react-test-renderer": "18.3.1",
@@ -370,7 +369,6 @@
     ],
     "nohoist": [
       "@fluentui/react-bindings/@testing-library/react-hooks",
-      "@fluentui/docs/react-hot-loader",
       "@fluentui/docs/@types/react-custom-scrollbars",
       "@fluentui/react-northstar-proptypes/@types/react-custom-scrollbars",
       "**/enzyme",

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { hot } from 'react-hot-loader/root';
 import {
   Provider,
   Debug,
@@ -14,7 +13,6 @@ import {
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
 import { createFelaRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
-import { TelemetryPopover } from '@fluentui/react-telemetry';
 import { mergeThemes } from '@fluentui/styles';
 
 import { ThemeName, ThemeContext, ThemeContextData, themeContextDefaults } from './context/ThemeContext';
@@ -71,26 +69,24 @@ const App: React.FC = () => {
   return (
     <ThemeContext.Provider value={themeContext}>
       <RendererContext.Provider value={rendererFactory}>
-        <TelemetryPopover>
-          <Provider
-            as={React.Fragment}
-            theme={mergeThemes(themes[themeName], {
-              staticStyles: [
-                {
-                  a: {
-                    textDecoration: 'none',
-                  },
+        <Provider
+          as={React.Fragment}
+          theme={mergeThemes(themes[themeName], {
+            staticStyles: [
+              {
+                a: {
+                  textDecoration: 'none',
                 },
-              ],
-            })}
-          >
-            <Debug />
-            <Routes />
-          </Provider>
-        </TelemetryPopover>
+              },
+            ],
+          })}
+        >
+          <Debug />
+          <Routes />
+        </Provider>
       </RendererContext.Provider>
     </ThemeContext.Provider>
   );
 };
 
-export default hot(App);
+export default App;

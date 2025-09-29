@@ -1,4 +1,3 @@
-import path from 'node:path';
 import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
@@ -51,7 +50,6 @@ const webpackConfig: webpack.Configuration &
         options: {
           cacheCompression: false,
           cacheDirectory: __DEV__,
-          plugins: [__DEV__ && 'react-hot-loader/babel'].filter(Boolean),
         },
       },
       {
@@ -128,10 +126,11 @@ const webpackConfig: webpack.Configuration &
       ...config.webpackAliases,
       src: paths.packageSrc('react-northstar'),
       faker: 'faker/locale/en',
+
+      react: paths.docs('node_modules/react'),
+      'react-dom': paths.docs('node_modules/react-dom'),
+
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
-      ...(__DEV__ && {
-        'react-dom': path.join(paths.docs(), 'node_modules/@hot-loader/react-dom'),
-      }),
     },
     fallback: {
       path: require.resolve('path-browserify'),
