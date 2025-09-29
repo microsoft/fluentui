@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 
-import { Provider, Telemetry, teamsTheme } from '@fluentui/react-northstar';
+import { Provider, teamsTheme } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as minimatch from 'minimatch';
 import * as React from 'react';
@@ -29,31 +29,18 @@ const renderCycle = async (
   exampleIndex: number,
 ): Promise<ProfilerMeasure> => {
   let profilerMeasure: ProfilerMeasure;
-  const telemetryRef: React.Ref<Telemetry> = React.createRef();
 
   await asyncRender(
-    <Provider theme={teamsTheme} telemetryRef={telemetryRef}>
+    <Provider theme={teamsTheme}>
       <React.Profiler
         id={exampleName}
         onRender={(id: string, phase: string, actualTime: number, startTime: number, commitTime: number) => {
-          const renderComponentTelemetry = _.reduce(
-            _.values(telemetryRef.current.performance),
-            (acc, next) => {
-              return {
-                componentCount: acc.componentCount + next.instances,
-                renderComponentTime: acc.renderComponentTime + next.msTotal,
-              };
-            },
-            { componentCount: 0, renderComponentTime: 0 },
-          );
-
           profilerMeasure = {
             actualTime,
             exampleIndex,
             phase,
             commitTime,
             startTime,
-            ...renderComponentTelemetry,
           };
         }}
       >

@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
   ShorthandConfig,
   ForwardRefWithAs,
@@ -154,8 +153,7 @@ function useSlotProps<SlotProps, SlotName extends keyof SlotProps>(
  */
 export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Menu.displayName, context.telemetry);
-  setStart();
+
   const {
     iconOnly,
     items,
@@ -345,8 +343,6 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
   );
 
   const wrappedElement = ref ? <Ref innerRef={ref}>{element}</Ref> : element;
-
-  setEnd();
 
   return wrappedElement;
 }) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, MenuProps> &

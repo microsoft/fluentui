@@ -5,7 +5,6 @@ import {
   mergeVariablesOverrides,
   useFluentContext,
   useAccessibility,
-  useTelemetry,
   useStyles,
   useUnhandledProps,
   useContextSelectors,
@@ -50,8 +49,6 @@ export const menuDividerClassName = 'ui-menu__divider';
  */
 export const MenuDivider = React.forwardRef<HTMLLIElement, MenuDividerProps>((inputProps, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(MenuDivider.displayName, context.telemetry);
-  setStart();
 
   const parentProps = useContextSelectors(MenuContext, {
     variables: v => v.variables,
@@ -123,7 +120,6 @@ export const MenuDivider = React.forwardRef<HTMLLIElement, MenuDividerProps>((in
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'li', HTMLLIElement, MenuDividerProps> & FluentComponentStaticProps<MenuDividerProps>;

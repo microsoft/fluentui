@@ -6,7 +6,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
@@ -41,8 +40,6 @@ export const pillActionClassName = 'ui-pill__action';
  */
 export const PillAction = React.forwardRef<HTMLDivElement, PillActionProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(PillAction.displayName, context.telemetry);
-  setStart();
 
   const { accessibility, children, className, content, design, styles, variables, size } = props;
 
@@ -73,8 +70,6 @@ export const PillAction = React.forwardRef<HTMLDivElement, PillActionProps>((pro
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, PillActionProps> & FluentComponentStaticProps<PillActionProps>;

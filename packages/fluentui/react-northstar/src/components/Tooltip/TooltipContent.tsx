@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -59,8 +58,6 @@ export const tooltipContentClassName = 'ui-tooltip__content';
  */
 export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(TooltipContent.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -117,7 +114,6 @@ export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentPro
       </div>
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TooltipContentProps> &

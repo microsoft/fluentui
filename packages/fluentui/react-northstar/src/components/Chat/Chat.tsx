@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -55,8 +54,6 @@ export const chatSlotClassNames: ChatSlotClassNames = {
  */
 export const Chat = React.forwardRef<HTMLUListElement, ChatProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
-  setStart();
 
   const { accessibility, children, className, density, design, items, styles, variables } = props;
 
@@ -99,7 +96,6 @@ export const Chat = React.forwardRef<HTMLUListElement, ChatProps>((props, ref) =
       </ChatDensityContextProvider>
     </ElementType>,
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, ChatProps> &

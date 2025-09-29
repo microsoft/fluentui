@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useContextSelectors,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -84,9 +83,6 @@ export const listItemSlotClassNames: ListItemSlotClassNames = {
  */
 export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
-
-  setStart();
 
   const {
     accessibility,
@@ -217,8 +213,6 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, r
       {endMediaElement}
     </ElementType>,
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'li', HTMLLIElement, ListItemProps & { index: number }> &

@@ -3,7 +3,6 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import {
   focusAsync,
   mergeVariablesOverrides,
-  useTelemetry,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -182,8 +181,6 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
  */
 export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inputProps, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(MenuItem.displayName, context.telemetry);
-  setStart();
 
   const parentProps = useContextSelectors(MenuContext, {
     active: v => v.activeIndex === inputProps.index,
@@ -579,11 +576,9 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
       }),
     });
 
-    setEnd();
     return wrapperElement;
   }
 
-  setEnd();
   return menuItemInner;
 }) as unknown as ForwardRefWithAs<'a', HTMLAnchorElement, MenuItemProps> & FluentComponentStaticProps<MenuItemProps>;
 

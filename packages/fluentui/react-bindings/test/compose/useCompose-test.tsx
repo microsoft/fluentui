@@ -31,7 +31,6 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
       enableBooleanVariablesCaching: false,
     },
     rtl: false,
-    telemetry: undefined,
     target: undefined,
     theme: {
       ...emptyTheme,

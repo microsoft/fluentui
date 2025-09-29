@@ -20,7 +20,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { Box, BoxProps } from '../Box/Box';
@@ -82,8 +81,6 @@ export const AlertDismissAction = React.forwardRef<
   AlertDismissActionProps & { as: React.ReactNode }
 >((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -172,8 +169,6 @@ export const AlertDismissAction = React.forwardRef<
           })}
     </ElementType>
   );
-
-  setEnd();
 
   return result;
 }) as unknown as ForwardRefWithAs<'button', HTMLButtonElement, AlertDismissActionProps> &

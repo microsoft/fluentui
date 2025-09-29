@@ -3,7 +3,6 @@ import {
   useUnhandledProps,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
@@ -56,8 +55,6 @@ export const flexClassName = 'ui-flex';
  */
 export const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Flex.displayName, context.telemetry);
-  setStart();
 
   const {
     children,
@@ -117,7 +114,6 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => 
       {content}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, FlexProps> & {

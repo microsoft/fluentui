@@ -4,7 +4,6 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
-  useTelemetry,
   useFluentContext,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -44,8 +43,6 @@ export const statusClassName = 'ui-status';
  */
 export const Status = React.forwardRef<HTMLSpanElement, StatusProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Status.displayName, context.telemetry);
-  setStart();
 
   const { className, color, icon, size, state, design, styles, variables } = props;
   const { classes, styles: resolvedStyles } = useStyles<StatusStylesProps>(Status.displayName, {
@@ -83,7 +80,6 @@ export const Status = React.forwardRef<HTMLSpanElement, StatusProps>((props, ref
       {iconElement}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, StatusProps> & FluentComponentStaticProps;

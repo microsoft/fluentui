@@ -20,7 +20,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
   useControllableState,
   ForwardRefWithAs,
@@ -158,8 +157,7 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
  */
 export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
-  setStart();
+
   const inputRef = React.useRef<HTMLElement>();
 
   // FIXME: This object is created every render, causing a cascade of useCallback/useEffect re-runs.
@@ -446,7 +444,7 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
       })}
     </ElementType>,
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {

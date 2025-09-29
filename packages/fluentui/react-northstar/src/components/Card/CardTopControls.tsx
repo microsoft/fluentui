@@ -4,7 +4,6 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
-  useTelemetry,
   useFluentContext,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -28,8 +27,6 @@ export const cardTopControlsClassName = 'ui-card__topcontrols';
  */
 export const CardTopControls = React.forwardRef<HTMLDivElement, CardTopControlsProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(CardTopControls.displayName, context.telemetry);
-  setStart();
 
   const { className, design, styles, variables, children } = props;
   const ElementType = getElementType(props);
@@ -61,7 +58,7 @@ export const CardTopControls = React.forwardRef<HTMLDivElement, CardTopControlsP
       {children}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardTopControlsProps> &
   FluentComponentStaticProps<CardTopControlsProps>;

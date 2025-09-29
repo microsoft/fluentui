@@ -4,7 +4,6 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
-  useTelemetry,
   useFluentContext,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -126,8 +125,6 @@ export const treeItemClassName = 'ui-tree__item';
  */
 export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -330,8 +327,6 @@ export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, 
           })}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TreeItemProps> & FluentComponentStaticProps<TreeItemProps>;

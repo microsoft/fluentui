@@ -8,7 +8,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
@@ -55,8 +54,6 @@ export const pillIconClassName = 'ui-pill__icon';
  */
 export const PillIcon = React.forwardRef<HTMLSpanElement, PillIconProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(PillIcon.displayName, context.telemetry);
-  setStart();
 
   const { accessibility, children, className, content, design, styles, variables, size, selectable, image } = props;
 
@@ -86,8 +83,6 @@ export const PillIcon = React.forwardRef<HTMLSpanElement, PillIconProps>((props,
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, PillIconProps> & FluentComponentStaticProps<PillIconProps>;

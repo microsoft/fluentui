@@ -1,13 +1,10 @@
-export type MeasuredValues = 'actualTime' | 'renderComponentTime' | 'componentCount';
+export type MeasuredValues = 'actualTime';
 
 export type ProfilerMeasure = { [key in MeasuredValues]: number } & {
   exampleIndex: number;
   phase: string;
   startTime: number;
   commitTime: number;
-
-  componentCount: number;
-  renderComponentTime: number;
 };
 
 export type ProfilerMeasureCycle = Record<string, ProfilerMeasure>;

@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   mergeVariablesOverrides,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -60,8 +59,6 @@ export const avatarClassName = 'ui-avatar';
  */
 export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -144,8 +141,6 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref)
       })}
     </ElementType>
   );
-
-  setEnd();
 
   return result;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, AvatarProps> & FluentComponentStaticProps<AvatarProps>;

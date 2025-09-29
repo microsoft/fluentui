@@ -13,7 +13,6 @@ import {
   UIComponentProps,
 } from '../../utils';
 import {
-  useTelemetry,
   useStyles,
   useFluentContext,
   getElementType,
@@ -57,8 +56,7 @@ export const tableCellSlotClassNames: TableCellSlotClassNames = {
  */
 export const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(TableCell.displayName, context.telemetry);
-  setStart();
+
   const cellRef = React.useRef<HTMLElement>();
 
   const { children, content, truncateContent, className, design, styles, variables } = props;
@@ -115,7 +113,7 @@ export const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>((props
       )}
     </Ref>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TableCellProps> & FluentComponentStaticProps<TableCellProps>;
 

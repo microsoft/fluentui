@@ -16,7 +16,6 @@ import {
 import { RadioGroupItem, RadioGroupItemProps } from './RadioGroupItem';
 import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
-  useTelemetry,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -64,8 +63,6 @@ export type RadioGroupStylesProps = Required<Pick<RadioGroupProps, 'vertical'>>;
  */
 export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(RadioGroup.displayName, context.telemetry);
-  setStart();
 
   const { children, vertical, items, className, design, styles, variables } = props;
   const ElementType = getElementType(props);
@@ -203,7 +200,6 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>((pro
     </ElementType>,
   );
 
-  setEnd();
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, RadioGroupProps> &
   FluentComponentStaticProps<RadioGroupProps> & {

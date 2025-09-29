@@ -7,13 +7,7 @@ import { createShorthandFactory, commonPropTypes } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { Input } from '../Input/Input';
-import {
-  useFluentContext,
-  useTelemetry,
-  useStyles,
-  useUnhandledProps,
-  ForwardRefWithAs,
-} from '@fluentui/react-bindings';
+import { useStyles, useUnhandledProps, ForwardRefWithAs } from '@fluentui/react-bindings';
 
 export interface DropdownSearchInputSlotClassNames {
   input: string;
@@ -85,9 +79,6 @@ export type DropdownSearchInputStylesProps = Required<Pick<DropdownSearchInputPr
  * Used to display the search input field.
  */
 export const DropdownSearchInput = React.forwardRef<HTMLInputElement, DropdownSearchInputProps>((props, ref) => {
-  const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(DropdownSearchInput.displayName, context.telemetry);
-  setStart();
   const {
     accessibilityComboboxProps,
     accessibilityInputProps,
@@ -151,7 +142,7 @@ export const DropdownSearchInput = React.forwardRef<HTMLInputElement, DropdownSe
       }}
     />
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'input', HTMLInputElement, DropdownSearchInputProps> &
   FluentComponentStaticProps<DropdownSearchInputProps>;

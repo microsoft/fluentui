@@ -7,7 +7,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
 } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -62,8 +61,6 @@ export const toolbarCustomItemClassName = 'ui-toolbar__customitem';
 export const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarCustomItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const { accessibility, children, className, content, design, fitted, focusable, styles, variables } = props;
     const parentVariables = React.useContext(ToolbarVariablesContext);
@@ -115,7 +112,6 @@ export const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarC
         {childrenExist(children) ? children : content}
       </ElementType>
     );
-    setEnd();
 
     return element;
   },

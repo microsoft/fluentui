@@ -4,7 +4,6 @@ import {
   mergeVariablesOverrides,
   useAccessibility,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
   useFluentContext,
   ForwardRefWithAs,
@@ -55,8 +54,7 @@ export type TableRowStylesProps = Pick<TableRowProps, 'header' | 'compact'>;
  */
 export const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(TableRow.displayName, context.telemetry);
-  setStart();
+
   const rowRef = React.useRef<HTMLElement>();
   const { className, design, styles, items, header, compact, children, accessibility, variables, selected } = props;
 
@@ -126,7 +124,7 @@ export const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>((props, 
       )}
     </Ref>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TableRowProps> & FluentComponentStaticProps<TableRowProps>;
 

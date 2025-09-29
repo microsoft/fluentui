@@ -25,7 +25,6 @@ import {
   useUnhandledProps,
   useStyles,
   useFluentContext,
-  useTelemetry,
   getElementType,
   useAccessibility,
   ForwardRefWithAs,
@@ -97,8 +96,6 @@ export type DropdownSelectedItemStylesProps = { hasImage: boolean };
  */
 export const DropdownSelectedItem = React.forwardRef<HTMLSpanElement, DropdownSelectedItemProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
-  setStart();
 
   const { active, header, icon, image, className, design, styles, variables, disabled } = props;
 
@@ -211,7 +208,6 @@ export const DropdownSelectedItem = React.forwardRef<HTMLSpanElement, DropdownSe
     </Ref>
   );
 
-  setEnd();
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, DropdownSelectedItemProps> &
   FluentComponentStaticProps<DropdownSelectedItemProps>;

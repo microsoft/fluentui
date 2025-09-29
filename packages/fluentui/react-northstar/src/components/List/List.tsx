@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
   useControllableState,
 } from '@fluentui/react-bindings';
@@ -91,8 +90,6 @@ export const listClassName = 'ui-list';
  */
 export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.ReactNode }>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(List.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -179,7 +176,6 @@ export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.R
       </ListContextProvider>
     </ElementType>,
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, ListProps> &

@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -70,8 +69,6 @@ export const labelClassName = 'ui-label';
  */
 export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Label.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -124,7 +121,6 @@ export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) 
         {children}
       </ElementType>
     );
-    setEnd();
 
     return element;
   }
@@ -165,7 +161,6 @@ export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) 
       {endImage}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, LabelProps> & FluentComponentStaticProps;

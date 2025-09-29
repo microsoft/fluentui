@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { Box, BoxProps } from '../Box/Box';
@@ -101,8 +100,7 @@ export const treeTitleSlotClassNames = {
  */
 export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
-  setStart();
+
   const { focusItemById, toggleItemActive, toggleItemSelect } = React.useContext(TreeContext);
   const {
     accessibility,
@@ -223,7 +221,6 @@ export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((pr
       {selectionIndicatorElement}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'a', HTMLAnchorElement, TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps>;

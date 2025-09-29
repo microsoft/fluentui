@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ForwardRefWithAs,
   useFluentContext,
-  useTelemetry,
   useStyles,
   useAccessibility,
   getElementType,
@@ -82,8 +81,6 @@ export const menuItemWrapperClassName = 'ui-menu__itemwrapper';
  */
 export const MenuItemWrapper = React.forwardRef<HTMLLIElement, MenuItemWrapperProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(MenuItemWrapper.displayName, context.telemetry);
-  setStart();
 
   const {
     className,
@@ -142,7 +139,6 @@ export const MenuItemWrapper = React.forwardRef<HTMLLIElement, MenuItemWrapperPr
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'li', HTMLLIElement, MenuItemWrapperProps> &

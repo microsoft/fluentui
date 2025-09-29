@@ -13,7 +13,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -68,8 +67,6 @@ export const datepickerCalendarHeaderClassName = 'ui-datepicker__calendarheader'
 export const DatepickerCalendarHeader = React.forwardRef<HTMLDivElement, DatepickerCalendarHeaderProps>(
   (props, ref) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(DatepickerCalendarHeader.displayName, context.telemetry);
-    setStart();
 
     const { className, design, styles, variables, label, nextButton, previousButton, onPreviousClick, onNextClick } =
       props;
@@ -147,7 +144,7 @@ export const DatepickerCalendarHeader = React.forwardRef<HTMLDivElement, Datepic
         })}
       </ElementType>
     );
-    setEnd();
+
     return element;
   },
 ) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DatepickerCalendarHeaderProps> &

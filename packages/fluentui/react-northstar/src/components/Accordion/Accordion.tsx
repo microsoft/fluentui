@@ -25,7 +25,6 @@ import {
 import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 import {
   useAccessibility,
-  useTelemetry,
   useFluentContext,
   useUnhandledProps,
   getElementType,
@@ -113,8 +112,6 @@ export const accordionSlotClassNames: AccordionSlotClassNames = {
  */
 export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Accordion.displayName, context.telemetry);
-  setStart();
   const {
     expanded,
     exclusive,
@@ -309,8 +306,6 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
       {childrenExist(children) ? children : renderPanels()}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'dl', HTMLDListElement, AccordionProps> &

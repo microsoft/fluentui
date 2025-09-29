@@ -4,7 +4,6 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
-  useTelemetry,
   useUnhandledProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -103,8 +102,7 @@ export const cardClassName = 'ui-card';
  */
 export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
-  setStart();
+
   const cardRef = React.useRef<HTMLElement>();
 
   const {
@@ -196,7 +194,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
       )}
     </Ref>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardProps> &
   FluentComponentStaticProps<CardProps> & {

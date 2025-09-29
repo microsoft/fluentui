@@ -2,7 +2,6 @@ import { Accessibility, tooltipAsLabelBehavior, TooltipBehaviorProps } from '@fl
 import {
   useAccessibility,
   useControllableState,
-  useTelemetry,
   useFluentContext,
   useTriggerElement,
   useUnhandledProps,
@@ -108,8 +107,6 @@ export const Tooltip: React.FC<TooltipProps> &
     Content: typeof TooltipContent;
   } = props => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -293,7 +290,6 @@ export const Tooltip: React.FC<TooltipProps> &
       </PortalInner>
     </>
   );
-  setEnd();
 
   return element;
 };

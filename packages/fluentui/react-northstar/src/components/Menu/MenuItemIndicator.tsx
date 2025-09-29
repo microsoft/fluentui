@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ForwardRefWithAs,
   useFluentContext,
-  useTelemetry,
   useStyles,
   useAccessibility,
   getElementType,
@@ -49,8 +48,6 @@ export const menuItemIndicatorClassName = 'ui-menu__itemindicator';
  */
 export const MenuItemIndicator = React.forwardRef<HTMLSpanElement, MenuItemIndicatorProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(MenuItemIndicator.displayName, context.telemetry);
-  setStart();
 
   const {
     className,
@@ -99,7 +96,6 @@ export const MenuItemIndicator = React.forwardRef<HTMLSpanElement, MenuItemIndic
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemIndicatorProps> &

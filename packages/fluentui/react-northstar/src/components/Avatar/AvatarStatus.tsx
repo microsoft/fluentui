@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   useFluentContext,
-  useTelemetry,
   useStyles,
   useAccessibility,
   getElementType,
@@ -47,8 +46,6 @@ export const avatarStatusClassName = statusClassName;
  */
 export const AvatarStatus = React.forwardRef<HTMLSpanElement, AvatarStatusProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AvatarStatus.displayName, context.telemetry);
-  setStart();
 
   const { className, color, design, icon, image, size, state, styles, variables } = props;
   const { classes } = useStyles<AvatarStatusStylesProps>(AvatarStatus.displayName, {
@@ -92,7 +89,6 @@ export const AvatarStatus = React.forwardRef<HTMLSpanElement, AvatarStatusProps>
       {imageElement || iconElement}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusProps> & FluentComponentStaticProps;

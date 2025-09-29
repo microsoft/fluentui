@@ -11,7 +11,6 @@ import {
   useAccessibility,
   getElementType,
   useStyles,
-  useTelemetry,
   useFluentContext,
   useUnhandledProps,
   ForwardRefWithAs,
@@ -121,8 +120,6 @@ export const pillClassName = 'ui-pill';
  */
 export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Pill.displayName, context.telemetry);
-  setStart();
 
   const parentProps = usePillContext();
 
@@ -256,8 +253,6 @@ export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =>
         })}
     </ElementType>,
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, PillProps> & FluentComponentStaticProps<PillProps>;

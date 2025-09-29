@@ -2,8 +2,6 @@ import { noopRenderer, Renderer } from '@fluentui/react-northstar-styles-rendere
 import { emptyTheme, ThemeInput, ThemePrepared } from '@fluentui/styles';
 import * as React from 'react';
 
-import { Telemetry } from './telemetry/types';
-
 export interface StylesContextPerformance {
   enableSanitizeCssPlugin: boolean;
   enableStylesCaching: boolean;
@@ -20,7 +18,6 @@ export type ProviderContextInput = {
   renderer?: Renderer;
   theme?: ThemeInput;
   target?: Document;
-  telemetry?: Telemetry;
 };
 
 export type ProviderContextPrepared = {
@@ -29,7 +26,6 @@ export type ProviderContextPrepared = {
   performance: StylesContextPerformance;
   renderer: Renderer;
   theme: ThemePrepared;
-  telemetry: Telemetry | undefined;
   // `target` can be undefined for SSR
   target: Document | undefined;
 };
@@ -48,7 +44,6 @@ export const defaultContextValue: ProviderContextPrepared = {
   performance: defaultPerformanceFlags,
   renderer: noopRenderer,
   theme: emptyTheme,
-  telemetry: undefined,
   target: undefined,
 };
 

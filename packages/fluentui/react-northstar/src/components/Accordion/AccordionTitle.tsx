@@ -18,7 +18,6 @@ import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } fro
 import { Box, BoxProps } from '../Box/Box';
 import {
   getElementType,
-  useTelemetry,
   useFluentContext,
   useUnhandledProps,
   useAccessibility,
@@ -94,8 +93,7 @@ export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disa
 export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleProps & { as: React.ReactNode }>(
   (props, ref) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
-    setStart();
+
     const {
       contentRef,
       children,
@@ -216,7 +214,7 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
         {childrenExist(children) ? children : contentWrapperElement}
       </ElementType>
     );
-    setEnd();
+
     return element;
   },
 ) as unknown as ForwardRefWithAs<'div', HTMLDListElement, AccordionTitleProps> &

@@ -20,7 +20,6 @@ import {
   getElementType,
   useAccessibility,
   useUnhandledProps,
-  useTelemetry,
   useStyles,
   useFluentContext,
   ForwardRefWithAs,
@@ -48,8 +47,7 @@ export const buttonGroupClassName = 'ui-buttons';
  */
 export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(ButtonGroup.displayName, context.telemetry);
-  setStart();
+
   const { children, buttons, circular, content, className, design, styles, variables } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(ButtonGroup.handledProps, props);
@@ -113,8 +111,6 @@ export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((p
           )}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, ButtonGroupProps> &

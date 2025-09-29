@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   compose,
   useFluentContext,
-  useTelemetry,
   useAccessibility,
   useStyles,
   useUnhandledProps,
@@ -32,8 +31,7 @@ export const breadcrumbLinkClassName = 'ui-breadcrumb__link';
 export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
+
     const { accessibility, children, content, className, design, styles, variables } = props;
     const { size } = useBreadcrumbContext();
 
@@ -72,8 +70,6 @@ export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkSt
         {childrenExist(children) ? children : content}
       </ElementType>
     );
-
-    setEnd();
 
     return result;
   },

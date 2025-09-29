@@ -8,7 +8,6 @@ import { Box, BoxProps } from '../../Box/Box';
 import {
   getElementType,
   useUnhandledProps,
-  useTelemetry,
   useAccessibility,
   useFluentContext,
   compose,
@@ -49,8 +48,6 @@ export type FormFieldBaseStylesProps = never;
 export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const { message, inline, errorMessage, control, label, className, design, styles, variables } = props;
 
@@ -133,7 +130,7 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
         })}
       </ElementType>
     );
-    setEnd();
+
     return element;
   },
   {

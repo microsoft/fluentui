@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  useTelemetry,
   useAccessibility,
   getElementType,
   useFluentContext,
@@ -44,8 +43,7 @@ export const SplitButtonDividerClassName = 'ui-splitButtonDivider';
  */
 export const SplitButtonDivider = React.forwardRef<HTMLDivElement, SplitButtonDividerProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(SplitButtonDivider.displayName, context.telemetry);
-  setStart();
+
   const { className, design, styles, variables, accessibility } = props;
   const ElementType = getElementType(props);
   const { primary } = props;
@@ -77,7 +75,7 @@ export const SplitButtonDivider = React.forwardRef<HTMLDivElement, SplitButtonDi
       })}
     />
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, SplitButtonDividerProps> &
   FluentComponentStaticProps<SplitButtonDividerProps>;

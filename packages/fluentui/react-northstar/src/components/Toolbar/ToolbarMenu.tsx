@@ -12,7 +12,6 @@ import {
   useFluentContext,
   useAccessibility,
   useStyles,
-  useTelemetry,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -81,8 +80,6 @@ export const toolbarMenuClassName = 'ui-toolbar__menu';
 export const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const { accessibility, className, children, design, items, styles, variables } = props;
 
@@ -170,7 +167,6 @@ export const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProp
         </ToolbarVariablesProvider>
       </ElementType>,
     );
-    setEnd();
 
     // TODO: As ElementType is wrapped with FocusZone which doesn't ref forwarding we have to use Ref
     return ref ? <Ref innerRef={ref}>{element}</Ref> : element;

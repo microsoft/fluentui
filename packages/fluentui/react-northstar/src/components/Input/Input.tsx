@@ -22,7 +22,6 @@ import {
   useControllableState,
   getElementType,
   useUnhandledProps,
-  useTelemetry,
   useFluentContext,
   useStyles,
   useAccessibility,
@@ -140,8 +139,7 @@ export const inputSlotClassNames: InputSlotClassNames = {
 export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
+
     const {
       className,
       input,
@@ -384,7 +382,7 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
         as: (wrapper && (wrapper as any).as) || ElementType,
       },
     });
-    setEnd();
+
     return element;
   },
   {

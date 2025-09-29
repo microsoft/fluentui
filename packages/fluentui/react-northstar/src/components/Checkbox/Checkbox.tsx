@@ -6,7 +6,6 @@ import {
   useStateManager,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -81,8 +80,6 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
  */
 export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
-  setStart();
 
   const {
     checked,
@@ -188,7 +185,6 @@ export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, 
       {labelPosition === 'end' && labelElement}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CheckboxProps> & FluentComponentStaticProps<CheckboxProps>;

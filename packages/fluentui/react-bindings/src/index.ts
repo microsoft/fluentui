@@ -34,9 +34,6 @@ export { calculateAnimationTimeout as unstable_calculateAnimationTimeout } from 
 export { getStyles as unstable_getStyles } from './styles/getStyles';
 export * from './styles/types';
 
-export { getTelemetry as deprecated_getTelemetry, useTelemetry } from './telemetry/useTelemetry';
-export * from './telemetry/types';
-
 export { childrenExist } from './utils/childrenExist';
 export { getElementType } from './utils/getElementType';
 export { getUnhandledProps } from './utils/getUnhandledProps';

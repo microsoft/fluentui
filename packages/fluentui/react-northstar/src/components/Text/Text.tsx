@@ -23,7 +23,6 @@ import {
   useFluentContext,
   useAccessibility,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
@@ -94,8 +93,6 @@ export const textClassName = 'ui-text';
  */
 export const Text = React.forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Text.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -163,8 +160,6 @@ export const Text = React.forwardRef<HTMLSpanElement, TextProps>((props, ref) =>
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, TextProps> & FluentComponentStaticProps<TextProps>;

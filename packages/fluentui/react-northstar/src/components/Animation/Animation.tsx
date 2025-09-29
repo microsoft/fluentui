@@ -1,8 +1,6 @@
 import {
   useUnhandledProps,
   unstable_calculateAnimationTimeout as calculateAnimationTimeout,
-  useFluentContext,
-  useTelemetry,
   useMergedRefs,
   ForwardRefComponent,
 } from '@fluentui/react-bindings';
@@ -146,10 +144,6 @@ export interface AnimationProps extends ChildrenComponentProps<AnimationChildren
  * An Animation provides animation effects to rendered elements.
  */
 export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props, ref) => {
-  const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Animation.displayName, context.telemetry);
-  setStart();
-
   const { appear, children, className, mountOnEnter, timeout, visible, unmountOnExit } = props;
 
   const handleAnimationEvent =
@@ -170,7 +164,6 @@ export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props
   const mergedRef = useMergedRefs(ref, nodeRef);
 
   if (_.isNil(children)) {
-    setEnd();
     return null;
   }
 
@@ -210,7 +203,6 @@ export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props
       )}
     </Transition>
   );
-  setEnd();
 
   return element;
 }) as ForwardRefComponent<AnimationProps>;

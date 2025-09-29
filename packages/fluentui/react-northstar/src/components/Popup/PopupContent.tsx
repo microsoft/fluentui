@@ -8,7 +8,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -92,8 +91,6 @@ export const popupContentSlotClassNames: PopupContentSlotClassNames = {
  */
 export const PopupContent = React.forwardRef<HTMLDivElement, PopupContentProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(PopupContent.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -184,8 +181,6 @@ export const PopupContent = React.forwardRef<HTMLDivElement, PopupContentProps>(
       </ElementType>
     );
   }
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, PopupContentProps> &

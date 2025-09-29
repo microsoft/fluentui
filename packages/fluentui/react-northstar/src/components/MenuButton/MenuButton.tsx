@@ -16,7 +16,6 @@ import { focusMenuItem } from './focusUtils';
 import { ALIGNMENTS, POSITIONS, PositioningProps, AutoSize, AUTOSIZES } from '../../utils/positioner';
 import {
   useAccessibility,
-  useTelemetry,
   getElementType,
   useUnhandledProps,
   useFluentContext,
@@ -110,8 +109,6 @@ export type MenuButtonStylesProps = never;
  */
 export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
-  setStart();
 
   const {
     // MenuButton props:
@@ -286,7 +283,6 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
   const popup = Popup.create(popupProps, { overrideProps });
 
   if (contextMenu) {
-    setEnd();
     return popup;
   }
 
@@ -301,7 +297,7 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
       <Ref innerRef={triggerRef}>{popup}</Ref>
     </ElementType>,
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps>;
 

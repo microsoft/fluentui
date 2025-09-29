@@ -27,7 +27,6 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
-  useTelemetry,
   useUnhandledProps,
   useStateManager,
   mergeVariablesOverrides,
@@ -179,8 +178,7 @@ function useDirection(activeIndex: number, circular: boolean, itemsLength: numbe
  */
 export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
-  setStart();
+
   const {
     accessibility,
     items,
@@ -522,7 +520,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
       )}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CarouselProps> &
   FluentComponentStaticProps<CarouselProps> & {

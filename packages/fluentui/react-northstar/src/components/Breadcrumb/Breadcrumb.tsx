@@ -3,7 +3,6 @@ import * as PropTypes from 'prop-types';
 import {
   compose,
   useFluentContext,
-  useTelemetry,
   useAccessibility,
   useStyles,
   useUnhandledProps,
@@ -55,8 +54,7 @@ export const breadcrumbClassName = 'ui-breadcrumb';
 export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
+
     const { accessibility, children, content, className, design, styles, variables, size } = props;
 
     const contextValue = React.useMemo(() => ({ size }), [size]);
@@ -101,8 +99,6 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
       </ElementType>,
     );
     const wrappedElement = ref ? <Ref innerRef={ref}>{result}</Ref> : result;
-
-    setEnd();
 
     return wrappedElement;
   },

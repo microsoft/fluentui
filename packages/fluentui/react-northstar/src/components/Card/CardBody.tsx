@@ -3,7 +3,6 @@ import { FluentComponentStaticProps } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  useTelemetry,
   useStyles,
   getElementType,
   useUnhandledProps,
@@ -31,8 +30,6 @@ export const cardBodyClassName = 'ui-card__body';
  */
 export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(CardBody.displayName, context.telemetry);
-  setStart();
 
   const { className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
@@ -65,7 +62,7 @@ export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>((props, 
       {children}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardBodyProps> & FluentComponentStaticProps<CardBodyProps>;
 

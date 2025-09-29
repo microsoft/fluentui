@@ -3,7 +3,6 @@ import {
   useStyles,
   useUnhandledProps,
   useFluentContext,
-  useTelemetry,
   ForwardRefWithAs,
   useMergedRefs,
   useIsomorphicLayoutEffect,
@@ -389,9 +388,6 @@ const isEmpty = prop => {
  */
 export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Dropdown.displayName, context.telemetry);
-
-  setStart();
 
   const {
     'aria-labelledby': ariaLabelledby,
@@ -1807,7 +1803,6 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, 
       </Portal>
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DropdownProps> &

@@ -76,7 +76,6 @@ export const mergeProviderContexts = (
       enableVariablesCaching: true,
       enableBooleanVariablesCaching: false,
     },
-    telemetry: undefined,
     renderer: undefined,
   };
 
@@ -103,8 +102,6 @@ export const mergeProviderContexts = (
       }
 
       acc.performance = mergePerformanceOptions(acc.performance, next.performance || {});
-
-      acc.telemetry = next.telemetry || acc.telemetry;
 
       return acc;
     },

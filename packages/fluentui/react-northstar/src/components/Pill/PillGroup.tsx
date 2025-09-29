@@ -6,7 +6,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
@@ -35,8 +34,6 @@ export const pillGroupClassName = 'ui-pills';
  */
 export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(PillGroup.displayName, context.telemetry);
-  setStart();
 
   const { accessibility, children, className, design, styles, variables } = props;
 
@@ -74,8 +71,6 @@ export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props
       <PillsContextProvider value={childProps}>{children}</PillsContextProvider>
     </ElementType>,
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, PillGroupProps> & FluentComponentStaticProps<PillGroupProps>;

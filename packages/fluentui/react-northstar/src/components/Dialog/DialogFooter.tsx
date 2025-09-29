@@ -11,7 +11,6 @@ import {
 
 import { FluentComponentStaticProps } from '../../types';
 import {
-  useTelemetry,
   getElementType,
   useUnhandledProps,
   useFluentContext,
@@ -36,8 +35,7 @@ export type DialogFooterStylesProps = never;
  */
 export const DialogFooter = React.forwardRef<HTMLDivElement, DialogFooterProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(DialogFooter.displayName, context.telemetry);
-  setStart();
+
   const { children, content, className, design, styles, variables, accessibility } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DialogFooter.handledProps, props);
@@ -60,7 +58,7 @@ export const DialogFooter = React.forwardRef<HTMLDivElement, DialogFooterProps>(
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DialogFooterProps> &
   FluentComponentStaticProps<DialogFooterProps>;

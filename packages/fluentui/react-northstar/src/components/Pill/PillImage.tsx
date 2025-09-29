@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as React from 'react';
@@ -36,10 +35,6 @@ export const pillImageClassName = 'ui-pill__image';
 export const PillImage = React.forwardRef<HTMLImageElement, PillImageProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { setStart, setEnd } = useTelemetry(PillImage.displayName, context.telemetry);
-
-  setStart();
-
   const { accessibility, className, design, styles, variables, size } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -65,8 +60,6 @@ export const PillImage = React.forwardRef<HTMLImageElement, PillImageProps>((pro
   const unhandledProps = useUnhandledProps(PillImage.handledProps, props);
 
   const result = <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })} />;
-
-  setEnd();
 
   return result;
 }) as unknown as ForwardRefWithAs<'img', HTMLImageElement, PillImageProps> & FluentComponentStaticProps<PillImageProps>;

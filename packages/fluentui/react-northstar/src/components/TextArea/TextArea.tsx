@@ -6,7 +6,6 @@ import * as PropTypes from 'prop-types';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
   getElementType,
-  useTelemetry,
   useUnhandledProps,
   useFluentContext,
   useAccessibility,
@@ -68,9 +67,6 @@ export const textAreaClassName = 'ui-textarea';
  */
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(TextArea.displayName, context.telemetry);
-
-  setStart();
 
   const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables, error } = props;
 
@@ -129,7 +125,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((pr
       })}
     />
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'textarea', HTMLTextAreaElement, TextAreaProps> &
   FluentComponentStaticProps<TextAreaProps>;

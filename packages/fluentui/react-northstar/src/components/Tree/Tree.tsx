@@ -1,6 +1,5 @@
 import { Accessibility, treeBehavior, TreeBehaviorProps } from '@fluentui/accessibility';
 import {
-  useTelemetry,
   useUnhandledProps,
   getElementType,
   useAccessibility,
@@ -111,8 +110,6 @@ export type TreeStylesProps = never;
  */
 export const Tree = React.forwardRef<HTMLDivElement, TreeProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Tree.displayName, context.telemetry);
-  setStart();
 
   const { selectable, children, renderedItems, className, design, styles, variables } = props;
 
@@ -209,7 +206,7 @@ export const Tree = React.forwardRef<HTMLDivElement, TreeProps>((props, ref) => 
       )}
     </TreeContext.Provider>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TreeProps> &
   FluentComponentStaticProps<TreeProps> & {

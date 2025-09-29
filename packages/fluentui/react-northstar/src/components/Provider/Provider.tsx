@@ -8,7 +8,6 @@ import {
   RendererContext,
   ProviderContextInput,
   ProviderContextPrepared,
-  Telemetry,
   useFluentContext,
   unstable_getStyles,
   useIsomorphicLayoutEffect,
@@ -40,7 +39,6 @@ export interface ProviderProps extends ChildrenComponentProps, UIComponentProps 
   overwrite?: boolean;
   target?: Document;
   theme?: ThemeInput;
-  telemetryRef?: React.MutableRefObject<Telemetry>;
 }
 
 const renderFontFaces = (renderer: Renderer, theme: ThemeInput) => {
@@ -97,24 +95,12 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
-  const { children, className, design, overwrite, styles, variables, telemetryRef } = props;
+  const { children, className, design, overwrite, styles, variables } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Provider.handledProps, props);
 
   const rendersReactFragment = ElementType === React.Fragment;
-
-  const telemetry = React.useMemo<Telemetry | undefined>(() => {
-    if (!telemetryRef) {
-      return undefined;
-    }
-
-    if (!telemetryRef.current) {
-      telemetryRef.current = new Telemetry();
-    }
-
-    return telemetryRef.current;
-  }, [telemetryRef]);
 
   const consumedContext = useFluentContext();
   const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite
@@ -131,10 +117,9 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
       performance: props.performance,
       rtl: props.rtl,
       target: props.target,
-      telemetry,
       theme: props.theme,
     }),
-    [props.disableAnimations, props.performance, props.rtl, props.target, telemetry, props.theme],
+    [props.disableAnimations, props.performance, props.rtl, props.target, props.theme],
   );
   const outgoingContext = React.useMemo(
     () => mergeProviderContexts(createRenderer, incomingContext, inputContext),
@@ -169,7 +154,6 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
         rtl: outgoingContext.rtl,
         theme: outgoingContext.theme,
         saveDebug: _.noop,
-        telemetry: undefined,
       });
 
   const portalContextValue = React.useMemo<PortalContextValue>(() => ({ className: classes.root }), [classes.root]);
@@ -263,7 +247,6 @@ Provider.propTypes = {
   children: PropTypes.node.isRequired,
   overwrite: PropTypes.bool,
   target: PropTypes.object as PropTypes.Validator<Document>,
-  telemetryRef: PropTypes.object as PropTypes.Validator<React.MutableRefObject<Telemetry>>,
 };
 Provider.handledProps = Object.keys(Provider.propTypes) as any;
 

@@ -17,7 +17,6 @@ import {
 import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  useTelemetry,
   getElementType,
   useFluentContext,
   useUnhandledProps,
@@ -93,8 +92,6 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
  */
 export const CarouselNavigationItem = React.forwardRef<HTMLLIElement, CarouselNavigationItemProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
-  setStart();
 
   const {
     children,
@@ -191,8 +188,6 @@ export const CarouselNavigationItem = React.forwardRef<HTMLLIElement, CarouselNa
       {childrenExist(children) ? children : renderContent()}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'li', HTMLLIElement, CarouselNavigationItemProps> &

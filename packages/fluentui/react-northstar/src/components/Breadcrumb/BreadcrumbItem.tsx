@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   compose,
   useFluentContext,
-  useTelemetry,
   useAccessibility,
   useStyles,
   useUnhandledProps,
@@ -39,8 +38,7 @@ export const breadcrumbItemClassName = 'ui-breadcrumb__item';
 export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
+
     const { accessibility, children, content, className, design, styles, variables, active, disabled } = props;
     const { size } = useBreadcrumbContext();
 
@@ -81,8 +79,6 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
         {childrenExist(children) ? children : content}
       </ElementType>
     );
-
-    setEnd();
 
     return result;
   },

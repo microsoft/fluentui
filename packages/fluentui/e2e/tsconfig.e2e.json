@@ -23,7 +23,6 @@
       "@fluentui/react-northstar-fela-renderer": ["packages/fluentui/react-northstar-fela-renderer/src/index.ts"],
       "@fluentui/react-northstar-styles-renderer": ["packages/fluentui/react-northstar-styles-renderer/src/index.ts"],
       "@fluentui/react-northstar-prototypes": ["packages/fluentui/react-northstar-prototypes/src/index.ts"],
-      "@fluentui/react-telemetry": ["packages/fluentui/react-telemetry/src/index.ts"],
       "@fluentui/react-proptypes": ["packages/fluentui/react-proptypes/src/index.ts"],
       "@fluentui/state": ["packages/fluentui/state/src/index.ts"],
       "@fluentui/styles": ["packages/fluentui/styles/src/index.ts"]

@@ -18,7 +18,6 @@ import {
   getElementType,
   useUnhandledProps,
   useFluentContext,
-  useTelemetry,
   useStyles,
   useAccessibility,
   ForwardRefWithAs,
@@ -73,8 +72,6 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
  */
 export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(FormField.displayName, context.telemetry);
-  setStart();
 
   const {
     children,
@@ -182,7 +179,7 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, FormFieldProps> & FluentComponentStaticProps<FormFieldProps>;
 

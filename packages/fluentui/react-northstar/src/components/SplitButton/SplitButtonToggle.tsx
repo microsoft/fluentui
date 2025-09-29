@@ -22,7 +22,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 
@@ -66,8 +65,6 @@ export const splitButtonToggleClassName = 'ui-splitbutton__toggle';
 export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButtonToggleProps & { as: React.ReactNode }>(
   (props, ref) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(SplitButtonToggle.displayName, context.telemetry);
-    setStart();
 
     const {
       accessibility,
@@ -143,8 +140,6 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
         {hasChildren ? children : content}
       </ElementType>
     );
-
-    setEnd();
 
     return result;
   },
