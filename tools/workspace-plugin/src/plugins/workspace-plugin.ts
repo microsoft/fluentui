@@ -561,8 +561,9 @@ function buildReactIntegrationTesterProjectConfiguration(
   const isv8Lib = config.tags.includes('v8');
   const isv9Lib = config.tags.includes('vNext');
   const isV9StoriesProject = isv9Lib && config.tags.includes('type:stories');
+  const isTool = config.tags.includes('tools');
 
-  if (!(isv9Lib || isV9StoriesProject || isv8Lib)) {
+  if (isTool || !(isv9Lib || isV9StoriesProject || isv8Lib)) {
     return {};
   }
 
