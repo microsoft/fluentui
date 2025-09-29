@@ -723,7 +723,12 @@ describe(`workspace-plugin`, () => {
                       "inputs": Array [
                         "default",
                         "{projectRoot}/tsconfig.json",
-                        "{projectRoot}/tsconfig.*.json",
+                        "{projectRoot}/tsconfig*.json",
+                        Object {
+                          "externalDependencies": Array [
+                            "typescript",
+                          ],
+                        },
                       ],
                       "metadata": Object {
                         "description": "Type check code with TypeScript",
