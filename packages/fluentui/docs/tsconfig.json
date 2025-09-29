@@ -26,7 +26,6 @@
       "@fluentui/react-component-ref": ["packages/fluentui/react-component-ref/src/index.ts"],
       "@fluentui/react-icons-northstar": ["packages/fluentui/react-icons-northstar/src/index.ts"],
       "@fluentui/react-northstar": ["packages/fluentui/react-northstar/src/index.ts"],
-      "@fluentui/react-northstar-emotion-renderer": ["packages/fluentui/react-northstar-emotion-renderer/src/index.ts"],
       "@fluentui/react-northstar-fela-renderer": ["packages/fluentui/react-northstar-fela-renderer/src/index.ts"],
       "@fluentui/react-northstar-styles-renderer": ["packages/fluentui/react-northstar-styles-renderer/src/index.ts"],
       "@fluentui/react-northstar-prototypes": ["packages/fluentui/react-northstar-prototypes/src/index.ts"],
