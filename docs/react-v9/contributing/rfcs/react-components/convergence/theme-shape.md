@@ -13,7 +13,7 @@ However, 1200 CSS variables in DOM affects browser performance. This RFC propose
 
 ## <a name="performance-analysis"></a>Performance analysis
 
-The current theme consists of ~1200 tokens which are injected into DOM as CSS variables. It impacts not only Javascript performance but also browser performance in styles computation phase.
+The current theme consists of ~1200 tokens which are injected into DOM as CSS variables. It impacts not only JavaScript performance but also browser performance in styles computation phase.
 
 To see the performance impact we render 20 `FluentProvider` components side by side (**each** injecting a class with 1200 CSS variables) - mount and unmount 10 times and measure the performance in Chrome profiler with 6x CPU slowdown. After each mount, a CSS attribute is accessed to force reflow in order to be able to measure the rendering performance.
 
@@ -178,7 +178,7 @@ Current design token spec also calls out `fontWeights` and `alignment` tokens ar
 
 ### <a name="flatten-tokens"></a>Flatten the tokens object
 
-In Typescript the theme is represented by a deep object:
+In TypeScript the theme is represented by a deep object:
 
 ```js
 /* Before */
