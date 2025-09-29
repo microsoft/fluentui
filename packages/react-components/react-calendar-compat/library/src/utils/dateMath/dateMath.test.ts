@@ -277,12 +277,18 @@ describe('DateMath', () => {
   describe('Date range array', () => {
     const date = new Date(2017, 2, 16);
 
+    function createDaysRange(startDate: Date, numDays: number): Date[] {
+      return Array.from({ length: numDays }).map(
+        (_, i) => new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i),
+      );
+    }
+
     type TestData = { name: string; testItems: Date[]; expected: Date[] }[];
     const testData: TestData = [
       {
         name: 'week',
         testItems: DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday),
-        expected: [...Array(7)].map((val: undefined, i: number) => new Date(2017, 2, 12 + i)),
+        expected: createDaysRange(new Date(2017, 2, 12), 7),
       },
       {
         name: 'work week',
@@ -297,45 +303,27 @@ describe('DateMath', () => {
       {
         name: 'work week defaults',
         testItems: DateMath.getDateRangeArray(date, DateRangeType.WorkWeek, DayOfWeek.Sunday),
-        expected: [
-          new Date(2017, 2, 13),
-          new Date(2017, 2, 14),
-          new Date(2017, 2, 15),
-          new Date(2017, 2, 16),
-          new Date(2017, 2, 17),
-        ],
+        expected: createDaysRange(new Date(2017, 2, 13), 5),
       },
       {
         name: 'month',
         testItems: DateMath.getDateRangeArray(date, DateRangeType.Month, DayOfWeek.Sunday),
-        expected: [...Array(31)].map((val: undefined, i: number) => new Date(2017, 2, 1 + i)),
+        expected: createDaysRange(new Date(2017, 2, 1), 31),
       },
       {
         name: 'first day of week: Tuesday',
         testItems: DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Tuesday),
-        expected: [...Array(7)].map((val: undefined, i: number) => new Date(2017, 2, 14 + i)),
+        expected: createDaysRange(new Date(2017, 2, 14), 7),
       },
       {
         name: 'custom date range array',
         testItems: DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday, undefined, 5),
-        expected: [
-          new Date(2017, 2, 16),
-          new Date(2017, 2, 17),
-          new Date(2017, 2, 18),
-          new Date(2017, 2, 19),
-          new Date(2017, 2, 20),
-        ],
+        expected: createDaysRange(new Date(2017, 2, 16), 5),
       },
       {
         name: 'reverse date range array',
         testItems: DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday, undefined, -5),
-        expected: [
-          new Date(2017, 2, 12),
-          new Date(2017, 2, 13),
-          new Date(2017, 2, 14),
-          new Date(2017, 2, 15),
-          new Date(2017, 2, 16),
-        ],
+        expected: createDaysRange(new Date(2017, 2, 12), 5),
       },
     ];
 
