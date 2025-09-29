@@ -9,5 +9,5 @@
     "types": []
   },
   "exclude": ["node_modules", "dist", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
-  "include": ["./src/react-18/", "./src/shared/**/*.ts", "./src/shared/**/*.tsx"]
+  "include": ["./src/index.ts", "./src/react-18/", "./src/shared/**/*.ts", "./src/shared/**/*.tsx"]
 }

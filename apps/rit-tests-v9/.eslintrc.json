@@ -1,7 +1,7 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
   "root": true,
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", "src/react-19/**/*", "src/react-17/**/*"],
   "rules": {
     "@nx/workspace-no-restricted-globals": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -9,6 +9,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/no-restricted-types": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "@typescript-eslint/no-deprecated": "warn"
   }
 }
