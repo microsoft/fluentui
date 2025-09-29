@@ -6,7 +6,7 @@ import { ContextualMenuExample } from './ContextualMenuExample';
 const menuTriggerSelector = '[type="button"]';
 const menuSelector = '[role="menu"]';
 
-describe('ContextualMenu in React 18', () => {
+describe('ContextualMenu', () => {
   it('renders ContextualMenu when trigger button is clicked', () => {
     mount(
       <React.StrictMode>
