@@ -538,8 +538,12 @@ export const mapFluentChart = (input: any): OutputChartType => {
           const scatterData = traceData as Partial<PlotData>;
           const isAreaChart = isScatterAreaChart(scatterData);
           const isScatterChart = isScatterMarkers(scatterData.mode ?? '');
+          const hasLineShape =
+            Array.isArray(validSchema?.layout?.shapes) &&
+            validSchema.layout.shapes.some((shape: any) => shape.type === 'line');
+
           if (isScatterChart) {
-            return { isValid: true, traceIndex, type: 'scatter' };
+            return { isValid: true, traceIndex, type: hasLineShape ? 'line' : 'scatter' };
           }
 
           if (!doesScatterNeedFallback(scatterData)) {
