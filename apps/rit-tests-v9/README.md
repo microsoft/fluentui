@@ -1,4 +1,4 @@
-# rit-tests-v8
+# rit-tests-v9
 
 React Major versions Integration Tests against Fluent v9.
 
