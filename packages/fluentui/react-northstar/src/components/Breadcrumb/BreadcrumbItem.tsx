@@ -85,6 +85,9 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
   {
     className: breadcrumbItemClassName,
     displayName: 'BreadcrumbItem',
+    defaultProps: {
+      accessibility: breadcrumbItemBehavior,
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -98,9 +101,5 @@ export const BreadcrumbItem = compose<'div', BreadcrumbItemProps, BreadcrumbItem
     ],
   },
 );
-
-BreadcrumbItem.defaultProps = {
-  accessibility: breadcrumbItemBehavior,
-};
 
 BreadcrumbItem.propTypes = commonPropTypes.createCommon();

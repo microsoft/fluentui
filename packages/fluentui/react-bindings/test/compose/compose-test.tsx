@@ -7,6 +7,7 @@ describe('compose', () => {
     as?: string;
     defaultChecked?: boolean;
     checked?: boolean;
+    id?: string;
   }
 
   const useToggle = (props: ToggleProps) => props;
@@ -21,6 +22,10 @@ describe('compose', () => {
       slots: {},
       state: useToggle,
       handledProps: ['checked'],
+      defaultProps: {
+        id: 'default-id',
+        'aria-label': 'toggle',
+      },
       displayName: 'Toggle',
     },
   );
@@ -28,15 +33,26 @@ describe('compose', () => {
   it('can compose a component', () => {
     const wrapper = mount(<Toggle id="foo" checked />);
 
-    expect(wrapper.html()).toMatch('<div id="foo"></div>');
+    expect(wrapper.html()).toMatch('<div id="foo" aria-label="toggle"></div>');
     expect(Toggle.displayName).toEqual('Toggle');
   });
 
-  it('can recompose a component', () => {
-    const NewToggle = compose<'div', ToggleProps, {}, {}, {}>(Toggle, { displayName: 'NewToggle' });
-    const wrapper = mount(<NewToggle id="foo" />);
+  it('handles `defaultProps`', () => {
+    const wrapper = mount(<Toggle />);
 
-    expect(wrapper.html()).toMatch('<div id="foo"></div>');
+    expect(wrapper.html()).toMatch('<div id="default-id" aria-label="toggle"></div>');
+  });
+
+  it('can recompose a component', () => {
+    const NewToggle = compose<'div', ToggleProps, {}, {}, {}>(Toggle, {
+      displayName: 'NewToggle',
+      defaultProps: {
+        id: 'new-default-id',
+      },
+    });
+    const wrapper = mount(<NewToggle />);
+
+    expect(wrapper.html()).toMatch('<div id="new-default-id" aria-label="toggle"></div>');
     expect(NewToggle.displayName).toEqual('NewToggle');
   });
 
@@ -82,7 +98,7 @@ describe('compose', () => {
       state: useNewToggle,
     });
     const wrapper = mount(<NewToggle id="foo" />);
-    expect(wrapper.html()).toMatch('<div id="foo" data-new-state="NewToggle"></div>');
+    expect(wrapper.html()).toMatch('<div id="foo" aria-label="toggle" data-new-state="NewToggle"></div>');
     expect(NewToggle.displayName).toEqual('NewToggle');
   });
 });

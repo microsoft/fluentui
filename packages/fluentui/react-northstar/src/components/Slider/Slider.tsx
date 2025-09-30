@@ -115,6 +115,8 @@ export const sliderSlotClassNames: SliderSlotClassNames = {
   track: `${sliderClassName}__track`,
 };
 
+const DEFAULT_GET_A11Y_VALUE_MESSAGE_ON_CHANGE = ({ value }: SliderProps) => String(value);
+
 /**
  * A Slider represents an input that allows user to choose a value from within a specific range.
  *
@@ -128,13 +130,13 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
   const context = useFluentContext();
 
   const {
-    accessibility,
-    min,
-    max,
-    getA11yValueMessageOnChange,
+    accessibility = sliderBehavior,
+    min = 0,
+    max = 100,
+    getA11yValueMessageOnChange = DEFAULT_GET_A11Y_VALUE_MESSAGE_ON_CHANGE,
     input,
     inputRef: userInputRef,
-    step,
+    step = 1,
     className,
     styles,
     variables,
@@ -258,13 +260,6 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
 
 Slider.displayName = 'Slider';
 
-Slider.defaultProps = {
-  accessibility: sliderBehavior,
-  getA11yValueMessageOnChange: ({ value }) => String(value),
-  max: 100,
-  min: 0,
-  step: 1,
-};
 Slider.propTypes = {
   ...commonPropTypes.createCommon({ content: false }),
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

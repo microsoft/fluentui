@@ -63,7 +63,7 @@ export const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
 
   const unhandledProps = useUnhandledProps(CarouselItem.handledProps, props);
   const {
-    accessibility,
+    accessibility = carouselItemBehavior,
     navigation,
     active,
     children,
@@ -128,10 +128,6 @@ CarouselItem.propTypes = {
   active: PropTypes.bool,
   navigation: PropTypes.bool,
   itemPositionText: PropTypes.string,
-};
-
-CarouselItem.defaultProps = {
-  accessibility: carouselItemBehavior,
 };
 
 CarouselItem.handledProps = Object.keys(CarouselItem.propTypes) as any;

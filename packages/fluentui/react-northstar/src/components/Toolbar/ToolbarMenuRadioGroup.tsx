@@ -139,6 +139,11 @@ export const ToolbarMenuRadioGroup = compose<
       wrapper: ToolbarMenuRadioGroupWrapper,
     },
 
+    defaultProps: {
+      as: 'ul',
+      accessibility: toolbarMenuRadioGroupBehavior,
+      wrapper: {},
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -163,9 +168,4 @@ ToolbarMenuRadioGroup.propTypes = {
   items: customPropTypes.collectionShorthand,
   onItemClick: PropTypes.func,
   wrapper: customPropTypes.itemShorthand,
-};
-ToolbarMenuRadioGroup.defaultProps = {
-  as: 'ul',
-  accessibility: toolbarMenuRadioGroupBehavior,
-  wrapper: {},
 };

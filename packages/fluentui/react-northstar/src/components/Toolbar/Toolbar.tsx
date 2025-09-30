@@ -613,6 +613,12 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
     }),
 
     shorthandConfig: { mappedProp: 'content' },
+
+    defaultProps: {
+      accessibility: toolbarBehavior,
+      overflowItem: {},
+      overflowSentinel: {},
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -659,11 +665,6 @@ Toolbar.propTypes = {
   onOverflow: PropTypes.func,
   onOverflowOpenChange: PropTypes.func,
   getOverflowItems: PropTypes.func,
-};
-Toolbar.defaultProps = {
-  accessibility: toolbarBehavior,
-  overflowItem: {},
-  overflowSentinel: {},
 };
 
 Toolbar.CustomItem = ToolbarCustomItem;

@@ -180,7 +180,6 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       initialState: '',
     });
     const hasValue: boolean = !!value && (value as string)?.length !== 0;
-
     const isShowSuccessIndicatorUndefined = typeof showSuccessIndicator === 'undefined';
 
     const requiredAndSuccessful = isShowSuccessIndicatorUndefined
@@ -393,6 +392,15 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       icon: Box,
       label: InputLabel,
     },
+
+    defaultProps: {
+      accessibility: inputBehavior,
+      type: 'text',
+      wrapper: {},
+      iconPosition: 'end',
+      errorIndicator: <ExclamationCircleIcon />,
+      successIndicator: <CheckmarkCircleIcon outline />,
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -454,15 +462,6 @@ Input.propTypes = {
   error: PropTypes.bool,
   errorIndicator: customPropTypes.shorthandAllowingChildren,
   showSuccessIndicator: PropTypes.bool,
-};
-
-Input.defaultProps = {
-  accessibility: inputBehavior,
-  type: 'text',
-  wrapper: {},
-  iconPosition: 'end',
-  errorIndicator: <ExclamationCircleIcon />,
-  successIndicator: <CheckmarkCircleIcon outline />,
 };
 
 Input.Label = InputLabel;

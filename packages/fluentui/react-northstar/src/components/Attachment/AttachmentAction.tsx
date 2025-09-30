@@ -40,15 +40,15 @@ export const AttachmentAction = compose<
   displayName: 'AttachmentAction',
   overrideStyles: true,
 
+  defaultProps: {
+    accessibility: buttonBehavior,
+    as: 'button',
+  },
   shorthandConfig: {
     mappedProp: 'content',
   },
 });
 
-AttachmentAction.defaultProps = {
-  accessibility: buttonBehavior,
-  as: 'button',
-};
 AttachmentAction.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',

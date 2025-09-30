@@ -141,6 +141,9 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       message: FormMessage,
       control: Box,
     },
+    defaultProps: {
+      accessibility: formFieldBehavior,
+    },
     handledProps: [
       'as',
       'accessibility',
@@ -163,8 +166,4 @@ _FormFieldBase.propTypes = {
   inline: PropTypes.bool,
   message: customPropTypes.itemShorthand,
   errorMessage: customPropTypes.itemShorthand,
-};
-
-_FormFieldBase.defaultProps = {
-  accessibility: formFieldBehavior,
 };

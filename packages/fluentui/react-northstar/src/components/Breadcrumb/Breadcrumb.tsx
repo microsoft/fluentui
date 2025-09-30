@@ -106,6 +106,11 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     className: breadcrumbClassName,
     displayName: 'Breadcrumb',
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables', 'size'],
+    defaultProps: {
+      as: 'nav',
+      size: 'medium',
+      accessibility: breadcrumbBehavior,
+    },
     mapPropsToStylesProps: ({ size }) => ({
       size,
     }),
@@ -117,12 +122,6 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
   Item: typeof BreadcrumbItem;
   Divider: typeof BreadcrumbDivider;
   Link: typeof BreadcrumbLink;
-};
-
-Breadcrumb.defaultProps = {
-  as: 'nav',
-  size: 'medium',
-  accessibility: breadcrumbBehavior,
 };
 
 Breadcrumb.propTypes = {

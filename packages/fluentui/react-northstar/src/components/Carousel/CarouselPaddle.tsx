@@ -79,11 +79,11 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
     const context = useFluentContext();
 
     const {
-      accessibility,
+      accessibility = buttonBehavior,
       as,
       children,
       className,
-      content,
+      content = {},
       disabled,
       design,
       hidden,
@@ -129,7 +129,7 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
     });
 
     const unhandledProps = useUnhandledProps(CarouselPaddle.handledProps, props);
-    const ElementType = getElementType(props);
+    const ElementType = getElementType(props, 'button');
 
     const handleClick = (e: React.SyntheticEvent) => {
       if (disabled) {
@@ -168,12 +168,6 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
   },
 ) as unknown as ForwardRefWithAs<'button', HTMLButtonElement, CarouselPaddleProps> &
   FluentComponentStaticProps<CarouselPaddleProps>;
-
-CarouselPaddle.defaultProps = {
-  as: 'button',
-  accessibility: buttonBehavior,
-  content: {},
-};
 
 CarouselPaddle.displayName = 'CarouselPaddle';
 

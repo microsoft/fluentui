@@ -19,15 +19,14 @@ export const FormLabel = compose<'label', FormLabelProps, FormLabelStylesProps, 
   className: formLabelClassName,
   displayName: 'FormLabel',
   overrideStyles: true,
+  defaultProps: {
+    as: 'label',
+  },
   mapPropsToStylesProps: ({ inline, required }) => ({
     inline,
     required,
   }),
   handledProps: ['required', 'inline'],
 });
-
-FormLabel.defaultProps = {
-  as: 'label',
-};
 
 FormLabel.propTypes = commonPropTypes.createCommon();

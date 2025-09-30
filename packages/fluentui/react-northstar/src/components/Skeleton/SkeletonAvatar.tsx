@@ -26,6 +26,10 @@ export const SkeletonAvatar = compose<
   displayName: 'SkeletonAvatar',
   overrideStyles: true,
   shorthandConfig: {},
+  defaultProps: {
+    as: 'span',
+    size: 'medium',
+  },
   handledProps: ['size'],
   mapPropsToStylesProps: ({ size }) => ({
     size,
@@ -35,9 +39,4 @@ export const SkeletonAvatar = compose<
 SkeletonAvatar.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,
-};
-
-SkeletonAvatar.defaultProps = {
-  as: 'span',
-  size: 'medium',
 };

@@ -53,10 +53,10 @@ export const DatepickerCalendarCell = compose<
   (props, ref, composeOptions) => {
     const context = useFluentContext();
 
-    const { className, design, styles, variables, disabled, selected, quiet, today, content } = props;
+    const { accessibility, className, design, styles, variables, disabled, selected, quiet, today, content } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
-    const getA11yProps = useAccessibility(props.accessibility, {
+    const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       actionHandlers: {},
       mapPropsToBehavior: () => ({
@@ -104,7 +104,10 @@ export const DatepickerCalendarCell = compose<
   {
     className: datepickerCalendarCellClassName,
     displayName: 'DatepickerCalendarCell',
-
+    defaultProps: {
+      accessibility: datepickerCalendarCellBehavior,
+      as: 'td',
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -127,9 +130,4 @@ DatepickerCalendarCell.propTypes = {
   selected: PropTypes.bool,
   quiet: PropTypes.bool,
   today: PropTypes.bool,
-};
-
-DatepickerCalendarCell.defaultProps = {
-  accessibility: datepickerCalendarCellBehavior,
-  as: 'td',
 };

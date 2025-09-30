@@ -1,6 +1,7 @@
 import * as React from 'react';
+import * as _ from 'lodash';
 
-import { ComponentWithAs, ComposedComponent, ComposeOptions, Input, InputComposeComponent } from './consts';
+import { ComponentWithAs, ComposedComponent, ComposeOptions, Input } from './consts';
 import { wasComposedPreviously } from './wasComposedPreviously';
 import { mergeComposeOptions } from './mergeComposeOptions';
 
@@ -21,10 +22,12 @@ function compose<
   );
 
   const Component = React.forwardRef<HTMLElement, TInputProps & TParentProps & { as?: React.ElementType }>(
-    (props, ref) => {
-      return composeOptions.render(props, ref as React.Ref<HTMLDivElement>, {
+    (componentProps, ref) => {
+      const allProps = _.defaults({}, componentProps, composeOptions.defaultProps);
+
+      return composeOptions.render(allProps, ref as React.Ref<HTMLDivElement>, {
         ...composeOptions,
-        state: composeOptions.state(props, ref, composeOptions),
+        state: composeOptions.state(allProps, ref, composeOptions),
         slots: {
           ...composeOptions.slots,
           __self: Component,
@@ -34,10 +37,6 @@ function compose<
   ) as unknown as ComponentWithAs<TElementType, TInputProps & TParentProps>;
 
   Component.displayName = composeOptions.displayName;
-
-  if ((input as InputComposeComponent).defaultProps) {
-    Component.defaultProps = (input as InputComposeComponent).defaultProps;
-  }
 
   (Component as unknown as ComposedComponent).fluentComposeConfig = composeOptions;
 

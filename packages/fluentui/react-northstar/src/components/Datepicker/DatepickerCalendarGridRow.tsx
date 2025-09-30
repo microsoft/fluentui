@@ -25,6 +25,9 @@ export const DatepickerCalendarGridRow = compose<
   displayName: 'DatepickerCalendarGridRow',
   handledProps: ['isRowSelectionActive'],
   overrideStyles: true,
+  defaultProps: {
+    as: 'tr',
+  },
   mapPropsToStylesProps: ({ isRowSelectionActive }) => ({
     isRowSelectionActive,
   }),
@@ -32,9 +35,5 @@ export const DatepickerCalendarGridRow = compose<
     mappedProp: 'content',
   },
 });
-
-DatepickerCalendarGridRow.defaultProps = {
-  as: 'tr',
-};
 
 DatepickerCalendarGridRow.propTypes = commonPropTypes.createCommon();

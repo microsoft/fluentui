@@ -143,6 +143,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     const {
       active,
       activeIndicator,
+      accessibility,
       children,
       content,
       disabled,
@@ -183,7 +184,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     const slotProps = composeOptions.resolveSlotProps<ToolbarMenuItemProps>(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    const getA11yProps = useAccessibility(props.accessibility, {
+    const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       mapPropsToBehavior: () => ({
         hasMenu: !!menu,
@@ -479,6 +480,14 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     shorthandConfig: {
       mappedProp: 'content',
     },
+
+    defaultProps: {
+      as: 'button',
+      accessibility: toolbarMenuItemBehavior,
+      activeIndicator: {},
+      submenuIndicator: <ChevronEndIcon outline />,
+      wrapper: { as: 'li' },
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -531,11 +540,4 @@ ToolbarMenuItem.propTypes = {
     PropTypes.string,
   ]),
   wrapper: customPropTypes.itemShorthand,
-};
-ToolbarMenuItem.defaultProps = {
-  as: 'button',
-  accessibility: toolbarMenuItemBehavior,
-  activeIndicator: {},
-  submenuIndicator: <ChevronEndIcon outline />,
-  wrapper: { as: 'li' },
 };

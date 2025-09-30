@@ -184,6 +184,10 @@ export const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarR
     }),
 
     shorthandConfig: { mappedProp: 'content' },
+
+    defaultProps: {
+      accessibility: toolbarRadioGroupBehavior,
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -204,7 +208,4 @@ ToolbarRadioGroup.propTypes = {
   ...commonPropTypes.createCommon(),
   activeIndex: PropTypes.number,
   items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item']),
-};
-ToolbarRadioGroup.defaultProps = {
-  accessibility: toolbarRadioGroupBehavior,
 };

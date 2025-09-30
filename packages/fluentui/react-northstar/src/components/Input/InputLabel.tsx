@@ -28,15 +28,14 @@ export const InputLabel = compose<'label', InputLabelProps, InputLabelStylesProp
     required,
     hasValue,
   }),
+  defaultProps: {
+    as: 'label',
+  },
   handledProps: ['required', 'labelPosition', 'hasValue'],
   shorthandConfig: {
     mappedProp: 'content',
   },
 });
-
-InputLabel.defaultProps = {
-  as: 'label',
-};
 
 InputLabel.propTypes = {
   ...commonPropTypes.createCommon(),

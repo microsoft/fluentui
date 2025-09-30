@@ -71,6 +71,75 @@ export const itemLayoutSlotClassNames: ItemLayoutSlotClassNames = {
 
 export type ItemLayoutStylesProps = never;
 
+const DEFAULT_RENDER_MAIN_AREA: NonNullable<ItemLayoutProps['renderMainArea']> = (props, classes) => {
+  const { renderHeaderArea = DEFAULT_RENDER_HEADER_AREA, renderContentArea = DEFAULT_RENDER_CONTENT_AREA } = props;
+
+  const headerArea = renderHeaderArea(props, classes);
+  const contentArea = renderContentArea(props, classes);
+
+  return (
+    <div
+      className={itemLayoutSlotClassNames.main}
+      style={{
+        gridTemplateRows: '1fr 1fr',
+      }}
+    >
+      {headerArea}
+      {contentArea}
+    </div>
+  );
+};
+
+const DEFAULT_RENDER_HEADER_AREA: NonNullable<ItemLayoutProps['renderHeaderArea']> = (props, classes) => {
+  const { debug, header, headerMedia, headerCSS, headerMediaCSS } = props;
+
+  const mergedClasses = cx(itemLayoutSlotClassNames.header, classes.header);
+  const mediaClasses = cx(itemLayoutSlotClassNames.headerMedia, classes.headerMedia);
+
+  return !header && !headerMedia ? null : (
+    <Layout
+      className={mergedClasses}
+      alignItems="end"
+      gap={pxToRem(8)}
+      debug={debug}
+      main={rtlTextContainer.createFor({ element: header })}
+      rootCSS={headerCSS}
+      end={
+        headerMedia && (
+          <span style={headerMediaCSS} className={mediaClasses}>
+            {rtlTextContainer.createFor({ element: headerMedia })}
+          </span>
+        )
+      }
+    />
+  );
+};
+
+const DEFAULT_RENDER_CONTENT_AREA: NonNullable<ItemLayoutProps['renderContentArea']> = (props, classes) => {
+  const { debug, content, contentMedia, contentCSS, contentMediaCSS } = props;
+
+  const mergedClasses = cx(itemLayoutSlotClassNames.content, classes.content);
+  const mediaClasses = cx(itemLayoutSlotClassNames.contentMedia, classes.contentMedia);
+
+  return !content && !contentMedia ? null : (
+    <Layout
+      className={mergedClasses}
+      alignItems="start"
+      gap={pxToRem(8)}
+      debug={debug}
+      rootCSS={contentCSS}
+      main={rtlTextContainer.createFor({ element: content })}
+      end={
+        contentMedia && (
+          <span style={contentMediaCSS} className={mediaClasses}>
+            {rtlTextContainer.createFor({ element: contentMedia })}
+          </span>
+        )
+      }
+    />
+  );
+};
+
 /**
  * (DEPRECATED) The Item Layout handles layout styles for menu items, list items and other similar item templates.
  */
@@ -83,7 +152,7 @@ export const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> &
     debug,
     endMedia,
     media,
-    renderMainArea,
+    renderMainArea = DEFAULT_RENDER_MAIN_AREA,
     rootCSS,
     mediaCSS,
     endMediaCSS,
@@ -170,77 +239,6 @@ ItemLayout.propTypes = {
   contentCSS: PropTypes.object,
   contentMediaCSS: PropTypes.object,
   endMediaCSS: PropTypes.object,
-};
-
-ItemLayout.defaultProps = {
-  renderMainArea: (props, classes) => {
-    const { renderHeaderArea, renderContentArea } = props;
-
-    const headerArea = renderHeaderArea(props, classes);
-    const contentArea = renderContentArea(props, classes);
-
-    return (
-      <div
-        className={itemLayoutSlotClassNames.main}
-        style={{
-          gridTemplateRows: '1fr 1fr',
-        }}
-      >
-        {headerArea}
-        {contentArea}
-      </div>
-    );
-  },
-
-  renderHeaderArea: (props, classes) => {
-    const { debug, header, headerMedia, headerCSS, headerMediaCSS } = props;
-
-    const mergedClasses = cx(itemLayoutSlotClassNames.header, classes.header);
-    const mediaClasses = cx(itemLayoutSlotClassNames.headerMedia, classes.headerMedia);
-
-    return !header && !headerMedia ? null : (
-      <Layout
-        className={mergedClasses}
-        alignItems="end"
-        gap={pxToRem(8)}
-        debug={debug}
-        main={rtlTextContainer.createFor({ element: header })}
-        rootCSS={headerCSS}
-        end={
-          headerMedia && (
-            <span style={headerMediaCSS} className={mediaClasses}>
-              {rtlTextContainer.createFor({ element: headerMedia })}
-            </span>
-          )
-        }
-      />
-    );
-  },
-
-  renderContentArea: (props, classes) => {
-    const { debug, content, contentMedia, contentCSS, contentMediaCSS } = props;
-
-    const mergedClasses = cx(itemLayoutSlotClassNames.content, classes.content);
-    const mediaClasses = cx(itemLayoutSlotClassNames.contentMedia, classes.contentMedia);
-
-    return !content && !contentMedia ? null : (
-      <Layout
-        className={mergedClasses}
-        alignItems="start"
-        gap={pxToRem(8)}
-        debug={debug}
-        rootCSS={contentCSS}
-        main={rtlTextContainer.createFor({ element: content })}
-        end={
-          contentMedia && (
-            <span style={contentMediaCSS} className={mediaClasses}>
-              {rtlTextContainer.createFor({ element: contentMedia })}
-            </span>
-          )
-        }
-      />
-    );
-  },
 };
 
 ItemLayout.handledProps = Object.keys(ItemLayout.propTypes) as any;
