@@ -1,4 +1,4 @@
-import { mergeProps } from '@fluentui/react-bindings';
+import { mergeProps } from '../../src/compose/mergeProps';
 import { defaultComposeOptions } from '../../src/compose/consts';
 
 describe('mergeProps', () => {

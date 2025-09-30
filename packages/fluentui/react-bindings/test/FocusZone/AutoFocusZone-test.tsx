@@ -1,6 +1,8 @@
-import { FocusZone, AutoFocusZone } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
+
+import { AutoFocusZone } from '../../src/FocusZone/AutoFocusZone';
+import { FocusZone } from '../../src/FocusZone/FocusZone';
 
 const animationFrame = () => new Promise(resolve => window.requestAnimationFrame(resolve));
 const originalRAF = window.requestAnimationFrame;

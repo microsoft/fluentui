@@ -1,7 +1,8 @@
-import { createContext, useContextSelectors } from '@fluentui/react-bindings';
+import { act, render } from '@testing-library/react';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { act } from 'react-dom/test-utils';
+
+import { createContext } from '../../src/context-selector/createContext';
+import { useContextSelectors } from '../../src/context-selector/useContextSelectors';
 
 const TestContext = createContext<{ index: number; value: string }>({
   index: -1,
@@ -48,11 +49,10 @@ describe('useContextSelectors', () => {
   });
 
   it('propogates values via Context', () => {
-    ReactDOM.render(
+    render(
       <TestProvider value={{ index: 1, value: 'foo' }}>
         <TestComponent index={1} />
       </TestProvider>,
-      container,
     );
 
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
@@ -61,11 +61,11 @@ describe('useContextSelectors', () => {
 
   it('updates only on selector match', () => {
     const onUpdate = jest.fn();
-    ReactDOM.render(
+
+    render(
       <TestProvider value={{ index: -1, value: 'foo' }}>
         <TestComponent index={1} onUpdate={onUpdate} />
       </TestProvider>,
-      container,
     );
 
     act(() => {
@@ -124,13 +124,12 @@ describe('useContextSelectors', () => {
     // https://reactjs.org/docs/react-api.html#reactmemo
     // Will never pass updates
     const MemoComponent = React.memo(TestComponent, () => true);
-
     const onUpdate = jest.fn();
-    ReactDOM.render(
+
+    render(
       <TestProvider value={{ index: 0, value: 'foo' }}>
         <MemoComponent index={1} onUpdate={onUpdate} />
       </TestProvider>,
-      container,
     );
 
     act(() => {

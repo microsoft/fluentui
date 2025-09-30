@@ -1,7 +1,7 @@
-import { useTriggerElement } from '@fluentui/react-bindings';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
+import { useTriggerElement } from '../../src/hooks/useTriggerElement';
 import * as consoleUtil from '../consoleUtil';
 
 const TestComponent: React.FC<{ trigger?: React.ReactElement }> = props => {

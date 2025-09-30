@@ -1,7 +1,8 @@
 import * as _ from 'lodash';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { FocusZone } from '@fluentui/react-bindings';
+
+import { FocusZone } from '../../src/FocusZone/FocusZone';
 
 type EventHandler = {
   listener: EventListenerOrEventListenerObject;

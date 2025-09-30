@@ -1,4 +1,4 @@
-import { unstable_calculateAnimationTimeout as calculateAnimationTimeout } from '@fluentui/react-bindings';
+import { calculateAnimationTimeout } from '../../src/styles/calculateAnimationTimeout';
 
 describe('convertCssTimeToNumber', () => {
   test('converts "ms" values to number', () => {

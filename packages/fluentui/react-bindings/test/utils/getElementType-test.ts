@@ -1,4 +1,4 @@
-import { getElementType } from '@fluentui/react-bindings';
+import { getElementType } from '../../src/utils/getElementType';
 
 describe('getElementType', () => {
   test('takes a value from "as" prop', () => {

@@ -1,15 +1,13 @@
-import {
-  compose,
-  ProviderContextPrepared,
-  useStyles,
-  useUnhandledProps,
-  Unstable_FluentContextProvider,
-} from '@fluentui/react-bindings';
 import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme, ThemeInput } from '@fluentui/styles';
 import cx from 'classnames';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
+
+import { compose } from '../../src/compose';
+import { type ProviderContextPrepared, Unstable_FluentContextProvider } from '../../src/context';
+import { useUnhandledProps } from '../../src/hooks/useUnhandledProps';
+import { useStyles } from '../../src/hooks/useStyles';
 
 const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
   const value: ProviderContextPrepared = {

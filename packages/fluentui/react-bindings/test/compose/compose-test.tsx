@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { mount, shallow } from 'enzyme';
-import { compose, mergeProps, ComposePreparedOptions } from '@fluentui/react-bindings';
+
+import { compose, mergeProps, ComposePreparedOptions } from '../../src/compose';
 
 describe('compose', () => {
   interface ToggleProps extends React.AllHTMLAttributes<{}> {
