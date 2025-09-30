@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { execSync } from 'node:child_process';
@@ -8,7 +9,6 @@ import type { Args, ReactVersion, PackageJson, TsConfig } from './shared';
 import {
   runCmd,
   readCommandsFromPreparedProject,
-  getPreparedTemplate,
   getMergedTemplate,
   parseJson,
   writeJsonFile,
@@ -85,41 +85,20 @@ function getProjectInfo(cwd: string): {
    * The absolute path to the project directory which will be tested against react integration.
    */
   projectRoot: string;
-  projectPaths: {
-    packageJson: string;
-    tsConfig: string;
-    jestConfig: string | null;
-    cypressConfig: string | null;
-  };
 } {
   const projectRoot = cwd;
-  const jestConfig = existsSync(join(projectRoot, 'jest.config.ts'))
-    ? join(projectRoot, 'jest.config.ts')
-    : existsSync(join(projectRoot, 'jest.config.js'))
-    ? join(projectRoot, 'jest.config.js')
-    : null;
-  const cypressConfig = existsSync(join(projectRoot, 'cypress.config.ts'))
-    ? join(projectRoot, 'cypress.config.ts')
-    : existsSync(join(projectRoot, 'cypress.config.js'))
-    ? join(projectRoot, 'cypress.config.js')
-    : null;
+
   const projectPaths = {
     packageJson: join(projectRoot, 'package.json'),
-    jestConfig,
-    cypressConfig,
-    tsConfig: join(projectRoot, 'tsconfig.lib.json'),
   };
+
   if (!existsSync(projectPaths.packageJson)) {
     throw new Error(`Could not find package.json at: ${projectPaths.packageJson}`);
-  }
-  if (!existsSync(projectPaths.tsConfig)) {
-    throw new Error(`Could not find tsconfig.lib.json at: ${projectPaths.tsConfig}`);
   }
 
   return {
     projectName: getNormalizedProjectName(projectRoot),
     projectRoot,
-    projectPaths,
   };
 }
 
@@ -223,27 +202,71 @@ function createProjectPackageJson(options: {
     license: 'UNLICENSED',
     scripts: projectScripts,
   } as const;
+
   writeFileSync(join(options.projectPath, 'package.json'), JSON.stringify(projectPkg, null, 2));
 }
 
-function prepareTsConfigTemplate(options: { projectRoot: string; projectPath: string; projectTsConfigPath: string }) {
-  const relativePathToProjectTsConfig = relative(options.projectPath, options.projectTsConfigPath);
+function prepareTsConfigTemplate(options: {
+  projectRoot: string;
+  projectPath: string;
+  projectTsConfigPath: string;
+  workspaceRoot: string;
+}) {
+  const projectTsConfigPath = join(options.projectRoot, options.projectTsConfigPath);
 
-  const tsConfig: TsConfig = parseJson(options.projectTsConfigPath);
+  if (!existsSync(projectTsConfigPath)) {
+    return null;
+  }
+
+  const excludeDefaults = [
+    '**/index.stories.tsx',
+    '**/index.stories.ts',
+    '**/*.spec.tsx',
+    '**/*.test.tsx',
+    '**/src/testing/**',
+  ];
+
+  const filesDefaults = [
+    // TODO: this should be actually transformed from origin provided `compilerOptions.types`
+    // ATM this is hardcoded and coupled to fluent repo
+    join(relative(options.projectPath, options.workspaceRoot), 'typings/static-assets/index.d.ts'),
+  ];
+
+  const tsConfig: TsConfig = parseJson(join(options.projectRoot, options.projectTsConfigPath));
   if (!tsConfig.include) {
     throw new Error(`No include paths found at: ${options.projectTsConfigPath}`);
   }
+
+  // if user config has exclude, always use those
+  const excludePaths = tsConfig?.exclude ?? excludeDefaults;
+  const relativeExcludePaths = excludePaths.map(excludePath => {
+    return relative(options.projectPath, join(options.projectRoot, excludePath));
+  });
+
   const relativeIncludePaths = tsConfig.include?.map(includePath => {
     return relative(options.projectPath, join(options.projectRoot, includePath));
   });
+
+  const relativeFilesPaths = (tsConfig.files ?? [])
+    .map(includePath => {
+      return relative(options.projectPath, join(options.projectRoot, includePath));
+    })
+    .concat(filesDefaults);
+
+  // honor strict setting or default to always true
+  const strictMode = tsConfig?.compilerOptions?.strict ?? true;
+
   const target = tsConfig.compilerOptions?.target ?? 'ES2019';
   const lib = tsConfig.compilerOptions?.lib ?? ['ES2019', 'DOM'];
 
   return {
-    relativePathToProjectTsConfig,
+    pathToProjectConfig: options.projectTsConfigPath,
     relativeIncludePaths,
+    relativeExcludePaths,
+    relativeFilesPaths,
     target,
     lib,
+    strictMode,
   };
 }
 
@@ -358,8 +381,8 @@ export async function setup(
   }
 
   // Merge builtin defaults with optional user config, detect origin setups and ensure react root exists
-  const { projectName, projectRoot, projectPaths } = getProjectInfo(options.cwd);
-  const templatePrepared = getPreparedTemplate(react, options.configPath, projectPaths);
+  const { projectName, projectRoot } = getProjectInfo(options.cwd);
+  const templatePrepared = getMergedTemplate(react, options.configPath);
 
   // install mode ( always creates package.json and installs node_modules -> this is purely for local usage, wont work on CI)
   if (!options.noInstall) {
@@ -402,25 +425,42 @@ export async function setup(
     tmpl: {
       relativePathToProjectRoot: relative(projectPath, projectRoot),
       relativePathToWorkspaceRoot: relative(projectPath, workspaceRoot),
-      tsconfig: prepareTsConfigTemplate({ projectRoot, projectPath, projectTsConfigPath: projectPaths.tsConfig }),
       // path from project to its react root (where shared node_modules live)
       usedNodeModulesDirRelative: relative(projectPath, reactRootPath),
       projectName: createdProjectName,
       react,
+      tsconfig: prepareTsConfigTemplate({
+        projectRoot,
+        projectPath,
+        workspaceRoot,
+        projectTsConfigPath: templatePrepared.configs['type-check'],
+      }),
+      jest: {
+        pathToProjectConfig: templatePrepared.configs['test'],
+      },
+      cypress: {
+        pathToProjectConfig: templatePrepared.configs['e2e'],
+      },
     },
   };
 
   logger.verbose('setup metadata:', serializeJson(metadata));
 
-  // 1) Create tsconfig.json from template with EJS
-  renderTemplateToFile(
-    join(__dirname, 'files', 'tsconfig.json.template'),
-    metadata.tmpl,
-    join(projectPath, 'tsconfig.json'),
-  );
+  const useCommands: Record<string, string> = {};
 
-  // 3) Create jest.config.js from template with EJS (only if origin project has Jest setup)
-  if (templatePrepared.hasJestSetup) {
+  // 1) Create tsconfig.json from template with EJS
+  if (existsSync(join(projectRoot, templatePrepared.configs['type-check']))) {
+    useCommands['type-check'] = templatePrepared.commands['type-check'];
+    renderTemplateToFile(
+      join(__dirname, 'files', 'tsconfig.json.template'),
+      metadata.tmpl,
+      join(projectPath, 'tsconfig.json'),
+    );
+  }
+
+  // 2) Create jest.config.js from template with EJS (only if origin project has Jest setup)
+  if (existsSync(join(projectRoot, templatePrepared.configs['test']))) {
+    useCommands['test'] = templatePrepared.commands['test'];
     renderTemplateToFile(
       join(__dirname, 'files', 'jest.config.js.template'),
       metadata.tmpl,
@@ -434,8 +474,9 @@ export async function setup(
     renderTemplateToFile(join(__dirname, 'files', '.swcrc.template'), metadata.tmpl, join(projectPath, '.swcrc'));
   }
 
-  // 4) Create cypress.config.ts and tsconfig.cy.json from template with EJS (only if origin project has Cypress setup)
-  if (templatePrepared.hasCypressSetup) {
+  // 3) Create cypress.config.ts and tsconfig.cy.json from template with EJS (only if origin project has Cypress setup)
+  if (existsSync(join(projectRoot, templatePrepared.configs['e2e']))) {
+    useCommands['e2e'] = templatePrepared.commands['e2e'];
     renderTemplateToFile(
       join(__dirname, 'files', 'cypress.config.ts.template'),
       metadata.tmpl,
@@ -448,11 +489,12 @@ export async function setup(
     );
   }
 
+  // 4) Create package.json for test project including npm scripts
   createProjectPackageJson({
     projectPath,
     projectName: metadata.projectName,
     usedNodeModulesDirRelative: metadata.tmpl.usedNodeModulesDirRelative,
-    commands: templatePrepared.commands,
+    commands: useCommands,
   });
 
   return {
@@ -471,12 +513,12 @@ export async function installDepsForReactVersion(
   args: Required<Pick<Args, 'react' | 'configPath' | 'verbose' | 'cwd'>>,
   logger: Logger,
 ): Promise<void> {
-  const merged = getMergedTemplate(args.react, args.configPath);
+  const { dependencies } = getMergedTemplate(args.react, args.configPath);
   const { scaffoldRoot, reactRootPath } = computeRoots(args.cwd, args.react);
   upsertReactRootPackageJson({
     reactRootPath,
     react: args.react,
-    dependencies: merged.dependencies,
+    dependencies,
     logger,
   });
 

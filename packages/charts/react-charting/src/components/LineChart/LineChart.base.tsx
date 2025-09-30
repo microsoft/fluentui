@@ -1410,6 +1410,38 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         }
       }
 
+      // Add filled area for scatterpolar charts
+      const fillMode = this._points[i].lineOptions?.fill;
+      const isLegendSelected: boolean =
+        this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
+      if (fillMode === 'toself' && this._points[i].data.length >= 3 && isLegendSelected && this._isScatterPolar) {
+        const getScaledXValue = (dataPoint: ILineChartDataPoint) =>
+          this._xAxisScale(dataPoint.x instanceof Date ? dataPoint.x : (dataPoint.x as number));
+
+        const fillPathGenerator = d3Line<ILineChartDataPoint>()
+          .x(dataPoint => getScaledXValue(dataPoint))
+          .y(dataPoint => yScale(dataPoint.y))
+          .curve(getCurveFactory(lineCurve))
+          .defined(dataPoint => isPlottable(getScaledXValue(dataPoint), yScale(dataPoint.y)));
+
+        const fillPath = fillPathGenerator(this._points[i].data);
+
+        if (fillPath) {
+          linesForLine.push(
+            <path
+              key={`scatterpolar_fill_${i}`}
+              d={`${fillPath}Z`}
+              fill={lineColor}
+              fillOpacity={0.5}
+              stroke={lineColor}
+              strokeWidth={2}
+              strokeOpacity={0.8}
+              pointerEvents="none"
+            />,
+          );
+        }
+      }
+
       if (this._isScatterPolar) {
         pointsForLine.push(
           ...renderScatterPolarCategoryLabels({

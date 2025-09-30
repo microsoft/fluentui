@@ -14,8 +14,7 @@ import {
 import {
   PresenceBadgeStatus,
   Avatar,
-  useScrollbarWidth,
-  useFluent,
+  useApplyScrollbarWidth,
   TableBody,
   TableCell,
   TableRow,
@@ -156,8 +155,7 @@ const RenderRow = ({ index, style, data }: ReactWindowRenderFnProps) => {
 };
 
 export const Virtualization = (): JSXElement => {
-  const { targetDocument } = useFluent();
-  const scrollbarWidth = useScrollbarWidth({ targetDocument });
+  const appliedScrollbarWidthRef = useApplyScrollbarWidth();
 
   const {
     getRows,
@@ -216,7 +214,7 @@ export const Virtualization = (): JSXElement => {
           <TableHeaderCell>Last updated</TableHeaderCell>
           <TableHeaderCell>Last update</TableHeaderCell>
           {/** Scrollbar alignment for the header */}
-          <div role="presentation" style={{ width: scrollbarWidth }} />
+          <div role="presentation" ref={appliedScrollbarWidthRef} />
         </TableRow>
       </TableHeader>
       <TableBody>
