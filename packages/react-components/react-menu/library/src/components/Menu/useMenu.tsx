@@ -1,21 +1,17 @@
 import * as React from 'react';
 import {
-  resolvePositioningShorthand,
   usePositioningMouseTarget,
-  usePositioning,
   useSafeZoneArea,
   type PositioningShorthandValue,
 } from '@fluentui/react-positioning';
 import {
   useControllableState,
   useId,
-  useOnClickOutside,
   useEventCallback,
   useOnScrollOutside,
   elementContains,
   useTimeout,
   useFirstMount,
-  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -48,7 +44,6 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
   const isSubmenu = useIsSubmenu();
   const {
     hoverDelay = 500,
-    inline = false,
     hasCheckmarks = false,
     hasIcons = false,
     closeOnScroll = false,
@@ -56,21 +51,21 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     persistOnItemClick = false,
     openOnHover = isSubmenu,
     defaultCheckedValues,
-    mountNode = null,
     safeZone,
   } = props;
 
   const { targetDocument } = useFluent();
+  const popoverId = useId('popover');
   const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
-  const positioningOptions = {
-    position: isSubmenu ? 'after' : 'below',
-    align: isSubmenu ? 'top' : 'start',
-    target: props.openOnContext ? contextTarget : undefined,
-    fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
-    ...resolvePositioningShorthand(props.positioning),
-  } as const;
+  // const positioningOptions = {
+  //   position: isSubmenu ? 'after' : 'below',
+  //   align: isSubmenu ? 'top' : 'start',
+  //   target: props.openOnContext ? contextTarget : undefined,
+  //   fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
+  //   ...resolvePositioningShorthand(props.positioning),
+  // } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -95,7 +90,7 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     menuPopover = children[0];
   }
 
-  const { targetRef, containerRef } = usePositioning(positioningOptions);
+  // const { targetRef, containerRef } = usePositioning(positioningOptions);
 
   const enableSafeZone = safeZone && openOnHover;
   const safeZoneDescriptorRef = React.useRef({
@@ -139,8 +134,8 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     },
   });
 
-  const triggerRef = useMergedRefs(targetRef, safeZoneHandle.targetRef);
-  const menuPopoverRef = useMergedRefs(containerRef, safeZoneHandle.containerRef);
+  const triggerRef = safeZoneHandle.targetRef; //useMergedRefs(targetRef, safeZoneHandle.targetRef);
+  const menuPopoverRef = safeZoneHandle.containerRef; //useMergedRefs(containerRef, safeZoneHandle.containerRef);
 
   // TODO Better way to narrow types ?
   const [open, setOpen] = useMenuOpenState({
@@ -163,7 +158,6 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
   });
 
   return {
-    inline,
     hoverDelay,
     triggerId,
     isSubmenu,
@@ -175,7 +169,6 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     closeOnScroll,
     menuTrigger,
     menuPopover,
-    mountNode,
     triggerRef,
     menuPopoverRef,
     components: {},
@@ -186,6 +179,9 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
     onCheckedValueChange,
     persistOnItemClick,
     safeZone: safeZoneHandle.elementToRender,
+    popoverId,
+    positioning: props.positioning,
+    submenuFallbackPositions,
   };
 };
 
@@ -282,15 +278,15 @@ const useMenuOpenState = (
     }
   });
 
-  useOnClickOutside({
-    contains: elementContains,
-    disabled: !open,
-    element: targetDocument,
-    refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
-      Boolean,
-    ) as React.MutableRefObject<HTMLElement | null>[],
-    callback: event => setOpen(event, { open: false, type: 'clickOutside', event }),
-  });
+  // useOnClickOutside({
+  //   contains: elementContains,
+  //   disabled: !open,
+  //   element: targetDocument,
+  //   refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
+  //     Boolean,
+  //   ) as React.MutableRefObject<HTMLElement | null>[],
+  //   callback: event => setOpen(event, { open: false, type: 'clickOutside', event }),
+  // });
 
   // only close on scroll for context, or when closeOnScroll is specified
   const closeOnScroll = state.openOnContext || state.closeOnScroll;
