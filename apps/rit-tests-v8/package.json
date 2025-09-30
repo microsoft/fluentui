@@ -1,0 +1,27 @@
+{
+  "name": "rit-tests-v8",
+  "description": "React Integration Tester application for problematic v8 scenarios",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src/shared",
+    "format": "prettier -w . --ignore-path ../.prettierignore",
+    "format:check": "yarn format -c"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*",
+    "@fluentui/scripts-storybook": "*"
+  },
+  "dependencies": {
+    "@fluentui/react": "*",
+    "@fluentui/react-cards": "*",
+    "@fluentui/react-hooks": "*",
+    "@fluentui/react-examples": "*",
+    "@fluentui/font-icons-mdl2": "*",
+    "tslib": "^2.1.0"
+  }
+}
