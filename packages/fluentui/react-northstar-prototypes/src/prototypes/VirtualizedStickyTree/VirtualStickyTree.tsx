@@ -60,12 +60,23 @@ export const VirtualStickyTreeClassName = 'ui-virtualstickytree';
 export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> = props => {
   const context = useFluentContext();
 
-  const { children, className, design, styles, variables, items, height, itemSize, stickyItemSize } = props;
+  const {
+    accessibility = treeBehavior,
+    children,
+    className,
+    design,
+    styles,
+    variables,
+    items,
+    height,
+    itemSize = 50,
+    stickyItemSize,
+  } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps([...Tree.handledProps, 'stickyItemSize', 'itemSize', 'itemToString'], props);
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: VirtualStickyTree.displayName,
     rtl: context.rtl,
   });
@@ -397,8 +408,3 @@ const ItemWrapper = React.memo<ListChildComponentProps & { data: VirtualItemData
 });
 
 VirtualStickyTree.displayName = 'VirtualStickyTree';
-
-VirtualStickyTree.defaultProps = {
-  accessibility: treeBehavior,
-  itemSize: 50,
-};

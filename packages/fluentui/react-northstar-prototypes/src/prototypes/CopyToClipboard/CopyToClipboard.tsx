@@ -16,7 +16,15 @@ export type CopyToClipboardProps = {
 };
 
 const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
-  const { value, trigger, tooltip, attached, notification, timeout, target } = props;
+  const {
+    value,
+    trigger,
+    tooltip = 'Click to copy',
+    attached,
+    notification = 'Copied to clipboard',
+    timeout = 4000,
+    target,
+  } = props;
 
   const setNotification = React.useContext(NotificationContext);
   const [copied, setCopied] = React.useState<boolean>(false);
@@ -61,12 +69,6 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
       children: undefined, // force-reset `children` defined for `Tooltip` as it collides with the `trigger
     },
   });
-};
-
-CopyToClipboard.defaultProps = {
-  notification: 'Copied to clipboard',
-  tooltip: 'Click to copy',
-  timeout: 4000,
 };
 
 export default CopyToClipboard;

@@ -17,10 +17,12 @@ const mountPortalInner = (props: PortalInnerProps) =>
 describe('PortalInner', () => {
   describe('render', () => {
     it('calls react createPortal', () => {
-      const mountNode = document.createElement('div');
-      const comp = mountPortalInner({ mountNode });
+      const mountNodeEl = document.createElement('div');
+      const componentElements = mountPortalInner({ mountNode: mountNodeEl })
+        // A fragment is being used in PortalInner, there are multiple elements returned
+        .getDOMNode() as unknown as HTMLElement[];
 
-      expect(mountNode.contains(comp.getDOMNode())).toBeTruthy();
+      expect(mountNodeEl.contains(componentElements.pop())).toBeTruthy();
     });
   });
 
