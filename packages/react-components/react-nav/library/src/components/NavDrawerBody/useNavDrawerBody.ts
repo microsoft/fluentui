@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 
+import { useNavContext_unstable } from '../NavContext';
 import type { NavDrawerBodyProps, NavDrawerBodyState } from './NavDrawerBody.types';
 /**
  * Create the state required to render NavDrawerBody.
@@ -15,5 +17,12 @@ export const useNavDrawerBody_unstable = (
   props: NavDrawerBodyProps,
   ref: React.Ref<HTMLDivElement>,
 ): NavDrawerBodyState => {
-  return useDrawerBody_unstable(props, ref);
+  const { tabbable } = useNavContext_unstable();
+  const focusAttributes = useArrowNavigationGroup({
+    axis: 'vertical',
+    circular: true,
+    tabbable,
+  });
+
+  return useDrawerBody_unstable({ ...props, ...focusAttributes }, ref);
 };

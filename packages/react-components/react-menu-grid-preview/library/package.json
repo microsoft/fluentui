@@ -24,6 +24,7 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-menu": "^9.19.6",
     "@fluentui/react-table": "^9.18.6",
     "@fluentui/react-tabster": "^9.26.5",

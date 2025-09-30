@@ -163,6 +163,7 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
     onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData>;
     openCategories: NavItemValue[];
     multiple: boolean;
+    tabbable: boolean;
 };
 
 // @public

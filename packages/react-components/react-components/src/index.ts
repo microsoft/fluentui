@@ -128,6 +128,7 @@ export {
   mergeCallbacks,
   useIsSSR,
   useMergedRefs,
+  useApplyScrollbarWidth,
   useScrollbarWidth,
   useSelection,
   useTimeout,

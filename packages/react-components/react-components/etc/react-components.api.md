@@ -1543,6 +1543,7 @@ import { useAppItem_unstable } from '@fluentui/react-nav';
 import { useAppItemStatic_unstable } from '@fluentui/react-nav';
 import { useAppItemStaticStyles_unstable } from '@fluentui/react-nav';
 import { useAppItemStyles_unstable } from '@fluentui/react-nav';
+import { useApplyScrollbarWidth } from '@fluentui/react-utilities';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -5098,6 +5099,8 @@ export { useAppItemStatic_unstable }
 export { useAppItemStaticStyles_unstable }
 
 export { useAppItemStyles_unstable }
+
+export { useApplyScrollbarWidth }
 
 export { useAriaLiveAnnouncer_unstable }
 
