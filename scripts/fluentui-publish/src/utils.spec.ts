@@ -62,7 +62,6 @@ describe(`utils`, () => {
           "digest",
           "scripts-fluentui-publish",
           "styles",
-          "state",
           "scripts-dangerjs",
           "scripts-jest-v0",
           "scripts-gulp",

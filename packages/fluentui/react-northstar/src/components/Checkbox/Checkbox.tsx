@@ -3,13 +3,12 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
-  useStateManager,
+  useControllableState,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { createCheckboxManager } from '@fluentui/state';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -81,29 +80,18 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
 export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, ref) => {
   const context = useFluentContext();
 
-  const {
-    checked,
-    className,
-    defaultChecked,
-    design,
-    disabled,
-    label,
-    labelPosition,
-    indicator,
-    styles,
-    toggle,
-    variables,
-  } = props;
+  const { className, design, disabled, label, labelPosition, indicator, styles, toggle, variables } = props;
 
-  const { state, actions } = useStateManager(createCheckboxManager, {
-    mapPropsToInitialState: () => ({ checked: defaultChecked }),
-    mapPropsToState: () => ({ checked: checked === 'mixed' ? false : checked }),
+  const [checked, setChecked] = useControllableState({
+    defaultState: props.defaultChecked,
+    state: props.checked === 'mixed' ? false : props.checked,
+    initialState: false,
   });
 
   const getA11Props = useAccessibility(props.accessibility, {
     debugName: Checkbox.displayName,
     mapPropsToBehavior: () => ({
-      checked: state.checked,
+      checked,
       disabled,
     }),
     actionHandlers: {
@@ -118,7 +106,7 @@ export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, 
   const { classes, styles: resolvedStyles } = useStyles<CheckboxStylesProps>(Checkbox.displayName, {
     className: checkboxClassName,
     mapPropsToStyles: () => ({
-      checked: checked === 'mixed' ? 'mixed' : state.checked,
+      checked: props.checked === 'mixed' ? 'mixed' : checked,
       disabled,
       labelPosition,
       toggle,
@@ -139,20 +127,20 @@ export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, 
     if (!disabled) {
       // Checkbox component doesn't present any `input` component in markup, however all of our
       // components should handle events transparently.
-      const checked = !state.checked;
+      const newChecked = !checked;
 
-      actions.toggle(checked);
-      _.invoke(props, 'onChange', e, { ...props, checked });
+      setChecked(newChecked);
+      _.invoke(props, 'onChange', e, { ...props, checked: newChecked });
     }
   };
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (!disabled) {
-      const checked = !state.checked;
-      actions.toggle(checked);
+      const newChecked = !checked;
 
-      _.invoke(props, 'onClick', e, { ...props, checked });
-      _.invoke(props, 'onChange', e, { ...props, checked });
+      setChecked(newChecked);
+      _.invoke(props, 'onClick', e, { ...props, checked: newChecked });
+      _.invoke(props, 'onChange', e, { ...props, checked: newChecked });
     }
   };
 

@@ -28,11 +28,10 @@ import {
   useStyles,
   useFluentContext,
   useUnhandledProps,
-  useStateManager,
+  useControllableState,
   mergeVariablesOverrides,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
-import { createCarouselManager, CarouselState, CarouselActions } from '@fluentui/state';
 import { CarouselPaddlesContainer } from './CarouselPaddlesContainer';
 import { getAnimationName } from './utils';
 
@@ -204,15 +203,14 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
 
   const ElementType = getElementType(props);
 
-  const { state, actions } = useStateManager<CarouselState, CarouselActions>(createCarouselManager, {
-    mapPropsToInitialState: () => ({
-      activeIndex: props.defaultActiveIndex,
-    }),
-    mapPropsToState: () => ({
-      activeIndex: props.activeIndex,
-    }),
+  const [activeIndex, setActiveIndex] = useControllableState({
+    defaultState: props.defaultActiveIndex,
+    state: props.activeIndex,
+    initialState: 0,
   });
-  const { ariaLiveOn, shouldFocusContainer, isFromKeyboard, activeIndex } = state;
+  const [ariaLiveOn, setAriaLiveOn] = React.useState(false);
+  const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
+  const [shouldFocusContainer, setShouldFocusContainer] = React.useState(false);
 
   const dir = useDirection(activeIndex, circular, items?.length);
 
@@ -291,7 +289,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
     };
   }, [focusItemAtIndex, items]);
 
-  const setActiveIndex = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
+  const setActiveIndexToState = (e: React.SyntheticEvent, index: number, focusItem: boolean): void => {
     const lastItemIndex = items.length - 1;
     let nextActiveIndex = index;
     if (index < 0) {
@@ -308,7 +306,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
       nextActiveIndex = 0;
     }
 
-    actions.setIndexes(nextActiveIndex);
+    setActiveIndex(nextActiveIndex);
 
     _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex: index });
 
@@ -319,13 +317,13 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
 
   const overrideItemProps = predefinedProps => ({
     onFocus: (e, itemProps) => {
-      actions.setShouldFocusContainer(e.currentTarget === e.target);
-      actions.setIsFromKeyboard(isEventFromKeyboard());
+      setShouldFocusContainer(e.currentTarget === e.target);
+      setIsFromKeyboard(isEventFromKeyboard());
       _.invoke(predefinedProps, 'onFocus', e, itemProps);
     },
     onBlur: (e, itemProps) => {
-      actions.setShouldFocusContainer(e.currentTarget.contains(e.relatedTarget));
-      actions.setIsFromKeyboard(false);
+      setShouldFocusContainer(e.currentTarget.contains(e.relatedTarget));
+      setIsFromKeyboard(false);
       _.invoke(predefinedProps, 'onBlur', e, itemProps);
     },
   });
@@ -392,11 +390,11 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
   };
 
   const showPreviousSlide = (e: React.SyntheticEvent, focusItem: boolean) => {
-    setActiveIndex(e, +activeIndex - 1, focusItem);
+    setActiveIndexToState(e, +activeIndex - 1, focusItem);
   };
 
   const showNextSlide = (e: React.SyntheticEvent, focusItem: boolean) => {
-    setActiveIndex(e, +activeIndex + 1, focusItem);
+    setActiveIndexToState(e, +activeIndex + 1, focusItem);
   };
 
   const handlePaddleOverrides = (predefinedProps: CarouselPaddleProps, paddleName: string) => ({
@@ -415,12 +413,12 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
     },
     onBlur: (e: React.FocusEvent, paddleProps: CarouselPaddleProps) => {
       if (e.relatedTarget !== paddleNextRef.current) {
-        actions.setAriaLiveOn(false);
+        setAriaLiveOn(false);
       }
     },
     onFocus: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
       _.invoke(predefinedProps, 'onFocus', e, paddleProps);
-      actions.setAriaLiveOn(true);
+      setAriaLiveOn(true);
     },
   });
   const paddles = (
@@ -484,7 +482,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
 
             const { index } = itemProps;
 
-            setActiveIndex(e, index, true);
+            setActiveIndexToState(e, index, true);
 
             _.invoke(predefinedProps, 'onClick', e, itemProps);
           },
