@@ -165,5 +165,6 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     onRequestNavCategoryItemToggle,
     multiple,
     density,
+    tabbable: false,
   };
 };
