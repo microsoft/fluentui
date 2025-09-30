@@ -1163,6 +1163,7 @@ const transformPlotlyJsonToScatterTraceProps = (
                   axisLabel: (series as { __axisLabel: string[] }).__axisLabel
                     ? (series as { __axisLabel: string[] }).__axisLabel
                     : {},
+                  fill: series.fill,
                 }
               : {}),
           },
