@@ -17,7 +17,7 @@ export const getStyles = (props: IChartTableStyleProps): IChartTableStyles => {
       ...fonts.small,
       fontWeight: FontWeights.semibold,
       backgroundColor: theme!.palette.neutralQuaternary,
-      color: 'black',
+      color: theme!.semanticColors.bodyText,
       padding: '8px',
       textAlign: 'left',
       border: `2px solid ${theme!.palette.neutralLighter}`,
@@ -32,7 +32,7 @@ export const getStyles = (props: IChartTableStyleProps): IChartTableStyles => {
       ...fonts.small,
       padding: '8px',
       border: `2px solid ${theme!.palette.neutralLighter}`,
-      color: 'black',
+      color: theme!.semanticColors.bodyText,
       textAlign: 'left',
       selectors: {
         [HighContrastSelector]: {
