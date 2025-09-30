@@ -253,7 +253,7 @@ export * from './components/Datepicker/DatepickerCalendarGridRow';
 //
 // Utilities
 //
-export * from './utils/createComponent';
+
 export * from './utils/date-time-utilities';
 export * from './utils';
 export * from './types';

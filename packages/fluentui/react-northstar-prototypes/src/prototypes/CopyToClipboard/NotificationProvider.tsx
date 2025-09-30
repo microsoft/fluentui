@@ -1,4 +1,4 @@
-import { Portal, Tooltip, createComponent, TooltipProps } from '@fluentui/react-northstar';
+import { Box, Portal, Tooltip, TooltipProps } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 type NotificationProps = {
@@ -40,32 +40,56 @@ export const NotificationProvider: React.FC = props => {
   );
 };
 
-export const Notification = createComponent<NotificationProps>({
-  displayName: 'Notification',
-  render: ({ target, trigger, content, config: { classes } }) => {
-    const tooltipProps: TooltipProps = {
-      content,
-      open: true,
-      pointing: false,
-      target,
-      trigger,
-    };
+export const Notification: React.FC<NotificationProps> = ({ target, trigger, content }) => {
+  const tooltipProps: TooltipProps = {
+    content,
+    open: true,
+    pointing: false,
+    target,
+    trigger,
+  };
 
-    if (target || trigger) {
-      return Tooltip.create({ ...tooltipProps, offset: [0, 10] });
-    }
+  if (target || trigger) {
+    return Tooltip.create({ ...tooltipProps, offset: [0, 10] });
+  }
 
-    return (
-      <Portal open>
-        <div className={classes.root}>
-          <div className={classes.overlay}>
-            {Tooltip.create({
-              ...tooltipProps,
-              trigger: <div className={classes.content} />,
-            })}
-          </div>
-        </div>
-      </Portal>
-    );
-  },
-});
+  return (
+    <Portal open>
+      <Box
+        styles={{
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+
+          height: 'unset',
+          width: 'unset',
+
+          position: 'static',
+          visibility: 'hidden',
+          zIndex: 1000,
+        }}
+      >
+        <Box
+          styles={{
+            alignItems: 'center',
+            bottom: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            left: 0,
+            overflow: 'auto',
+            position: 'fixed',
+            right: 0,
+            top: 0,
+          }}
+        >
+          {Tooltip.create({
+            ...tooltipProps,
+            trigger: <Box />,
+          })}
+        </Box>
+      </Box>
+    </Portal>
+  );
+};

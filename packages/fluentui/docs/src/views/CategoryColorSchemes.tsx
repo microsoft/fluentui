@@ -11,9 +11,6 @@ import {
   teamsDarkTheme,
   teamsTheme,
 } from '@fluentui/react-northstar';
-import { faderStyles } from '../components/Fader';
-import { colorVariantsStyles } from '../components/ColorVariants';
-import { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
 
 export default () => {
   const [color, setColor] = React.useState('red');
@@ -26,17 +23,11 @@ export default () => {
     <Provider
       theme={{
         componentStyles: {
-          ColorBox: colorBoxStyles,
-          ColorVariants: colorVariantsStyles,
-          Fader: faderStyles,
           Header: {
             root: {
               fontWeight: 700,
             },
           },
-        },
-        componentVariables: {
-          ColorBox: colorBoxVariables,
         },
       }}
     >

@@ -190,9 +190,6 @@ export default () => (
       Consider to review set of examples on the {links.flex} page - as there might be an example that suits your needs.{' '}
       <strong>Each of these examples is optimized in terms of DOM elements rendered</strong>.
     </blockquote>
-    <GuidesNavigationFooter
-      previous={{ name: 'Colors', url: 'colors' }}
-      next={{ name: 'Integrate Custom Components', url: 'integrate-custom-components' }}
-    />
+    <GuidesNavigationFooter previous={{ name: 'Colors', url: 'colors' }} />
   </DocPage>
 );

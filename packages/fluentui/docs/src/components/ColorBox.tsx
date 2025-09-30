@@ -1,10 +1,5 @@
 import { CopyToClipboard } from '@fluentui/docs-components';
-import {
-  ComponentSlotStylesInput,
-  ComponentSlotStyle,
-  createComponent,
-  ICSSInJSStyle,
-} from '@fluentui/react-northstar';
+import { ComponentSlotStyle, Box } from '@fluentui/react-northstar';
 import { AcceptIcon, ClipboardCopiedToIcon } from '@fluentui/react-icons-northstar';
 import * as Color from 'color';
 import * as _ from 'lodash';
@@ -22,39 +17,9 @@ type ColorBoxProps = {
   styles?: ComponentSlotStyle;
 };
 
-type ColorBoxVariables = {
-  colorBlack: string;
-  colorWhite: string;
-  fontSize: {
-    big: string;
-    normal: string;
-    small: string;
-  };
-  padding: {
-    big: string;
-    normal: string;
-    small: string;
-  };
-};
-
-export const colorBoxVariables = (siteVariables): ColorBoxVariables => ({
-  colorBlack: siteVariables.colors.black,
-  colorWhite: siteVariables.colors.white,
-  fontSize: {
-    big: '1.25em',
-    small: '.85em',
-    normal: '1.25em',
-  },
-  padding: {
-    big: '4rem .75rem .75rem .75rem',
-    small: '.75rem',
-    normal: '2.5rem .75rem .75rem .75rem',
-  },
-});
-
-const getColorBoxTextColor = (color: string | undefined, variables: ColorBoxVariables): string => {
+const getColorBoxTextColor = (color: string | undefined, colorWhite: string, colorBlack: string): string => {
   if (color === undefined) {
-    return variables.colorWhite;
+    return colorWhite;
   }
 
   if (isSystemColor(color)) {
@@ -62,80 +27,110 @@ const getColorBoxTextColor = (color: string | undefined, variables: ColorBoxVari
       case 'ButtonFace':
       case 'Canvas':
       case 'HighlightText':
-        return variables.colorBlack;
+        return colorBlack;
       case 'CanvasText':
       case 'GrayText':
       case 'Highlight':
       case 'LinkText':
       case 'ButtonText':
-        return variables.colorWhite;
+        return colorWhite;
     }
   }
 
-  return Color(color).isDark() ? variables.colorWhite : variables.colorBlack;
+  return Color(color).isDark() ? colorWhite : colorBlack;
 };
 
-export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    ...(p.showColorValue &&
-      !_.isNil(p.value) && {
-        backgroundImage:
-          'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
-        backgroundRepeat: 'repeat',
-      }),
-    ...(p.showColorValue &&
-      _.isNil(p.value) && {
-        backgroundColor: 'transparent',
-      }),
-    borderRadius: p.rounded && '.25rem',
-    color: getColorBoxTextColor(p.value, v),
-  }),
-  inner: ({ props: p, variables: v }) => ({
-    backgroundColor: p.value,
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    fontSize: v.padding[p.size],
-    padding: v.padding[p.size],
-  }),
-  name: ({ variables: v }) => ({
-    color: v.colorBlack,
-    fontWeight: 700,
-  }),
-  value: {
-    fontFamily: 'Monospace',
-    textAlign: 'right',
-    userSelect: 'all',
-
-    '> span': {
-      cursor: 'pointer',
-    },
-  },
+const PADDING = {
+  big: '4rem .75rem .75rem .75rem',
+  small: '.75rem',
+  normal: '2.5rem .75rem .75rem .75rem',
+};
+const FONT_SIZE = {
+  big: '1.25em',
+  small: '.85em',
+  normal: '1.25em',
 };
 
-const ColorBox = createComponent<ColorBoxProps>({
-  displayName: 'ColorBox',
-  render: ({ children, name, value, showColorValue, copyToClipboardIcon, config: { classes } }) => (
-    <div className={classes.root}>
-      <div className={classes.inner}>
-        <div className={classes.name}>{children || _.startCase(name)}</div>
+const ColorBox: React.FC<ColorBoxProps> = ({
+  children,
+  name,
+  rounded,
+  value,
+  showColorValue,
+  copyToClipboardIcon,
+  size,
+}) => (
+  <Box
+    styles={({ theme: { siteVariables } }) => ({
+      ...(showColorValue &&
+        !_.isNil(value) && {
+          backgroundImage:
+            'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
+          backgroundRepeat: 'repeat',
+        }),
+      ...(showColorValue &&
+        _.isNil(value) && {
+          backgroundColor: 'transparent',
+        }),
+      borderRadius: rounded && '.25rem',
+      color: getColorBoxTextColor(value, siteVariables.colors.white, siteVariables.colors.black),
+    })}
+  >
+    <Box
+      styles={{
+        backgroundColor: value,
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        fontSize: FONT_SIZE[size],
+        padding: PADDING[size],
+      }}
+    >
+      <Box
+        styles={({ theme: { siteVariables } }) => ({
+          color: siteVariables.colors.black,
+          fontWeight: 700,
+        })}
+      >
+        {children || _.startCase(name)}
+      </Box>
 
-        {copyToClipboardIcon && (
-          <CopyToClipboard value={value}>
-            {(active, onClick) => (
-              <div className={classes.value}>
-                <span onClick={onClick}>
-                  {value && active ? <AcceptIcon size="small" /> : <ClipboardCopiedToIcon size="small" />}
-                  {value || 'Not defined'}
-                </span>
-              </div>
-            )}
-          </CopyToClipboard>
-        )}
-        {!copyToClipboardIcon && showColorValue && <span className={classes.value}>{value || 'Not defined'}</span>}
-      </div>
-    </div>
-  ),
-});
+      {copyToClipboardIcon && (
+        <CopyToClipboard value={value}>
+          {(active, onClick) => (
+            <Box
+              styles={{
+                fontFamily: 'Monospace',
+                textAlign: 'right',
+                userSelect: 'all',
+
+                '> span': {
+                  cursor: 'pointer',
+                },
+              }}
+            >
+              <span onClick={onClick}>
+                {value && active ? <AcceptIcon size="small" /> : <ClipboardCopiedToIcon size="small" />}
+                {value || 'Not defined'}
+              </span>
+            </Box>
+          )}
+        </CopyToClipboard>
+      )}
+      {!copyToClipboardIcon && showColorValue && (
+        <Box
+          as="span"
+          styles={{
+            fontFamily: 'Monospace',
+            textAlign: 'right',
+            userSelect: 'all',
+          }}
+        >
+          {value || 'Not defined'}
+        </Box>
+      )}
+    </Box>
+  </Box>
+);
 
 ColorBox.defaultProps = {
   size: 'normal',

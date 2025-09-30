@@ -135,13 +135,6 @@ export default () => (
             By default, it renders styled {code('div')} element.
           </p>
           <p>
-            The cases when client might want to use it are very exceptional, and all are about applying custom styles to
-            rendered {code('div')} element. However, more robust approach that won't break theming consistency is to
-            instead create a custom component and define related styles as part of a theme. Visit{' '}
-            {link('Integrate Custom Components', '/integrate-custom-components')}
-            page to see how this can be done.
-          </p>
-          <p>
             {link('Segment', '/components/segment')} groups related content together. It shouldn't be used to handle
             layout aspects.
           </p>
