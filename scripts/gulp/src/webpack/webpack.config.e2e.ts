@@ -57,7 +57,13 @@ const webpackConfig: webpack.Configuration = {
       path: require.resolve('path-browserify'),
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    alias: config.webpackAliases,
+    alias: {
+      ...config.webpackAliases,
+      react: paths.base('node_modules/react'),
+      'react-dom': paths.base('node_modules/react-dom'),
+      'react-dom/client': paths.base('node_modules/react-dom/client'),
+      'react-dom/server': paths.base('node_modules/react-dom/server'),
+    },
     modules: [paths.e2e('node_modules'), 'node_modules'],
   },
   performance: {

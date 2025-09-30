@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { act } from '@testing-library/react';
+import { createRoot } from 'react-dom/client';
 
 import { Box } from 'src/components/Box/Box';
 import { Popup, PopupEvents } from 'src/components/Popup/Popup';
@@ -203,11 +203,13 @@ describe('Popup', () => {
       const attachTo = document.createElement('div');
       document.body.appendChild(attachTo);
 
+      const root = createRoot(attachTo);
+
       const triggerId2 = 'triggerElement2';
       const contentId2 = 'contentId2';
 
-      ReactTestUtils.act(() => {
-        ReactDOM.render(
+      act(() => {
+        root.render(
           <EmptyThemeProvider>
             <>
               <Popup
@@ -222,29 +224,28 @@ describe('Popup', () => {
               />
             </>
           </EmptyThemeProvider>,
-          attachTo,
         );
       });
 
       expect(document.querySelector(`#${contentId}`)).toBe(null);
       expect(document.querySelector(`#${contentId2}`)).toBe(null);
 
-      ReactTestUtils.act(() => {
+      act(() => {
         domEvent.keyDown(`span#${triggerId}`, { keyCode: keyboardKey.Enter });
       });
 
       expect(document.querySelector(`#${contentId}`)).toBeDefined();
       expect(document.querySelector(`#${contentId2}`)).toBe(null);
 
-      ReactTestUtils.act(() => {
+      act(() => {
         domEvent.keyDown(`span#${triggerId2}`, { keyCode: keyboardKey.Enter });
       });
 
       expect(document.querySelector(`#${contentId}`)).toBe(null);
       expect(document.querySelector(`#${contentId2}`)).toBeDefined();
 
-      ReactTestUtils.act(() => {
-        ReactDOM.unmountComponentAtNode(attachTo);
+      act(() => {
+        root.unmount();
       });
 
       document.body.removeChild(attachTo);

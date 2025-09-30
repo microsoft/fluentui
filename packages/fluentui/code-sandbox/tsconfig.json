@@ -2,7 +2,12 @@
   "extends": "../../../tsconfig.base.v0.json",
   "compilerOptions": {
     "composite": true,
-    "outDir": "dist/dts"
+    "outDir": "dist/dts",
+    "paths": {
+      "react/jsx-runtime": ["packages/fluentui/code-sandbox/node_modules/@types/react/jsx-runtime.d.ts"],
+      "react": ["packages/fluentui/code-sandbox/node_modules/@types/react/index.d.ts"],
+      "react-dom": ["packages/fluentui/code-sandbox/node_modules/@types/react-dom/index.d.ts"]
+    }
   },
   "include": ["src"],
   "references": [
