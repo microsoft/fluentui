@@ -19,7 +19,7 @@ import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { ShorthandValue, ComponentEventHandler } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  useAutoControlled,
+  useControllableState,
   getElementType,
   useUnhandledProps,
   useTelemetry,
@@ -176,10 +176,10 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const [htmlInputProps, restProps] = partitionHTMLProps(unhandledProps);
-    const [value, setValue] = useAutoControlled({
-      defaultValue: props.defaultValue,
-      value: props.value as string,
-      initialValue: '',
+    const [value, setValue] = useControllableState({
+      defaultState: props.defaultValue,
+      state: props.value as string,
+      initialState: '',
     });
     const hasValue: boolean = !!value && (value as string)?.length !== 0;
 

@@ -27,13 +27,13 @@ import { PositioningProps, AutoSize } from '../../utils/positioner/types';
 
 import {
   useTelemetry,
-  useAutoControlled,
   useAccessibility,
   getElementType,
   useFluentContext,
   useUnhandledProps,
   useStyles,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 
 export interface SplitButtonProps
@@ -144,10 +144,10 @@ export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((p
   const targetRef = React.useRef<HTMLDivElement>();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(SplitButton.handledProps, props);
-  const [open, setOpen] = useAutoControlled({
-    defaultValue: props.defaultOpen,
-    value: props.open,
-    initialValue: false,
+  const [open, setOpen] = useControllableState({
+    defaultState: props.defaultOpen,
+    state: props.open,
+    initialState: false,
   });
 
   const [isFromKeyboard, setIsFromKeyboard] = React.useState<boolean>(false);

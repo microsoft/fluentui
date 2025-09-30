@@ -14,7 +14,6 @@ import {
 import { Box, BoxProps } from '../Box/Box';
 import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
-  useAutoControlled,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -22,6 +21,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 import { RadioButtonIcon } from '@fluentui/react-icons-northstar';
 
@@ -103,10 +103,10 @@ export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemPro
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(RadioGroupItem.handledProps, props);
 
-  const [checked, setChecked] = useAutoControlled({
-    defaultValue: props.defaultChecked,
-    value: props.checked,
-    initialValue: false,
+  const [checked, setChecked] = useControllableState({
+    defaultState: props.defaultChecked,
+    state: props.checked,
+    initialState: false,
   });
 
   const prevChecked = React.useRef<boolean>(checked);

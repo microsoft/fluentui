@@ -5,7 +5,6 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  useAutoControlled,
   getElementType,
   useTelemetry,
   useUnhandledProps,
@@ -13,6 +12,7 @@ import {
   useAccessibility,
   useStyles,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 
 export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps {
@@ -74,10 +74,10 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((pr
 
   const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables, error } = props;
 
-  const [value, setValue] = useAutoControlled({
-    defaultValue: props.defaultValue,
-    value: props.value,
-    initialValue: '',
+  const [value, setValue] = useControllableState({
+    defaultState: props.defaultValue,
+    state: props.value,
+    initialState: '',
   });
 
   const unhandledProps = useUnhandledProps(TextArea.handledProps, props);

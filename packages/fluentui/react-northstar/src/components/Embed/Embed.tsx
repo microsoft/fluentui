@@ -14,11 +14,11 @@ import {
   getElementType,
   useUnhandledProps,
   useFluentContext,
-  useAutoControlled,
   useAccessibility,
   useTelemetry,
   useStyles,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 
 export interface EmbedSlotClassNames {
@@ -103,10 +103,10 @@ export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) 
     rtl: context.rtl,
   });
 
-  const [active, setACtive] = useAutoControlled({
-    defaultValue: props.defaultActive,
-    value: props.active,
-    initialValue: false,
+  const [active, setActive] = useControllableState({
+    defaultState: props.defaultActive,
+    state: props.active,
+    initialState: false,
   });
 
   const [iframeLoaded, setIframeLoaded] = React.useState(false);
@@ -120,7 +120,7 @@ export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) 
     const newActive = !active;
 
     if (iframeNil || (!iframeNil && newActive)) {
-      setACtive(newActive);
+      setActive(newActive);
       _.invoke(props, 'onActiveChange', e, { ...props, active: newActive });
     }
 

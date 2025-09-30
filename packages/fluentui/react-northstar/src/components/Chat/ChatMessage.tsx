@@ -9,7 +9,7 @@ import {
 import {
   getElementType,
   useAccessibility,
-  useAutoControlled,
+  useControllableState,
   useContextSelector,
   useFluentContext,
   useStyles,
@@ -293,9 +293,10 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
   const [actionMenuOptions, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
   const [actionMenu, inlineActionMenu, controlledShowActionMenu] =
     partitionActionMenuPropsFromShorthand(actionMenuOptions);
-  const [showActionMenu, setShowActionMenu] = useAutoControlled<boolean>({
-    defaultValue: false,
-    value: controlledShowActionMenu,
+  const [showActionMenu, setShowActionMenu] = useControllableState<boolean>({
+    defaultState: false,
+    state: controlledShowActionMenu,
+    initialState: false,
   });
   const hasActionMenu = !_.isNil(actionMenu);
   const hasHeaderReactionGroup = !!reactionGroup && reactionGroupPosition === 'start';
