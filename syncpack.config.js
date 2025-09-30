@@ -62,7 +62,6 @@ const config = {
         'prettier',
         'schema-utils',
         'react-is',
-        'react-hot-loader',
         'react-test-renderer',
         'react-vis',
         'tslib',
