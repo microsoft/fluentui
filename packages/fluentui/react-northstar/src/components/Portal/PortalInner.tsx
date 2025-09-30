@@ -56,7 +56,20 @@ export const PortalInner: React.FC<PortalInnerProps> = props => {
     return () => _.invoke(props, 'onUnmount', props);
   }, []);
 
-  return container && ReactDOM.createPortal(children, container);
+  return (
+    container &&
+    ReactDOM.createPortal(
+      <>
+        {children}
+        {/* Heads up!
+         *  This node exists only to ensure that the portal is not empty as we rely on that in `usePortalBox`
+         *  hook for React 18+.
+         */}
+        <span hidden />
+      </>,
+      container,
+    )
+  );
 };
 
 PortalInner.propTypes = {
