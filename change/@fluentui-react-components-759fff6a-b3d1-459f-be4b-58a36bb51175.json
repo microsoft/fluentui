@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application",
+  "packageName": "@fluentui/react-components",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
