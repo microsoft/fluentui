@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useSkeleton_unstable } from './useSkeleton';
 import { renderSkeleton_unstable } from './renderSkeleton';

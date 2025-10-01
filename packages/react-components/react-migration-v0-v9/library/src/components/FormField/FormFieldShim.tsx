@@ -1,3 +1,5 @@
+'use client';
+
 import {
   FieldProps,
   renderField_unstable,

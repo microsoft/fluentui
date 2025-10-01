@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';

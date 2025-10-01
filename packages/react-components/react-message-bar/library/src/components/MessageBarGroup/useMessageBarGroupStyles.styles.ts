@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarGroupSlots, MessageBarGroupState } from './MessageBarGroup.types';

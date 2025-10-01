@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { usePopoverTrigger_unstable } from './usePopoverTrigger';
 import { renderPopoverTrigger_unstable } from './renderPopoverTrigger';

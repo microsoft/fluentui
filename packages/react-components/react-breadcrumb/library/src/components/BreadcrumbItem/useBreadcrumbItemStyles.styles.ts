@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

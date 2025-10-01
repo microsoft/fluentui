@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Backspace, Enter, Escape, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import { useControllableState } from '@fluentui/react-utilities';

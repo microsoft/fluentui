@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { usePresenceBadge_unstable } from './usePresenceBadge';
 import { usePresenceBadgeStyles_unstable } from './usePresenceBadgeStyles.styles';

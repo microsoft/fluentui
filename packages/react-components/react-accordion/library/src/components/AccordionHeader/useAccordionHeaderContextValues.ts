@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { AccordionHeaderState, AccordionHeaderContextValues } from './AccordionHeader.types';
 import type { AccordionHeaderContextValue } from '../../contexts/accordionHeader';

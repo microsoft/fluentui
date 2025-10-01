@@ -1,3 +1,5 @@
+'use client';
+
 import { TreeNavigationData_unstable, TreeNavigationMode } from '../components/Tree/Tree.types';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
