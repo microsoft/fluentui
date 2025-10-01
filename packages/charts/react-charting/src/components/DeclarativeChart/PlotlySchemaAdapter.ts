@@ -706,6 +706,7 @@ export const transformPlotlyJsonToVSBCProps = (
     .filter(shape => shape.type === 'line')
     .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const resolveX = (val: any) => {
         if (typeof val === 'number' && Array.isArray(xCategories) && xCategories[val] !== undefined) {
           return xCategories[val];
@@ -715,10 +716,15 @@ export const transformPlotlyJsonToVSBCProps = (
 
       const x0Key = resolveX(shape.x0);
       const x1Key = resolveX(shape.x1);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const resolveY = (val: any) => {
         if (shape.yref === 'paper') {
-          if (val === 0) return yMinValue;
-          if (val === 1) return yMaxValue;
+          if (val === 0) {
+            return yMinValue;
+          }
+          if (val === 1) {
+            return yMaxValue;
+          }
           return yMinValue + val * (yMaxValue - yMinValue);
         }
         return val;
