@@ -81,7 +81,7 @@ jobs:
           git status --porcelain
           git diff-index --quiet HEAD -- || exit 1
 
-  react_integration_tests_collocated:
+  react-major-versions-integration:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     steps:
@@ -129,13 +129,13 @@ jobs:
         run: |
           FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--17--type-check,test-rit--19--test,test-rit--19--type-check --exclude='react-19-tests-v9,react-charting,react,react-hooks,react-examples,react-experiments'
 
-  react_integration_tests:
+  react_19_v9_source_code_typecheck:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       actions: 'read'
-    name: v9 source files type-check against React 19
+    name: v9 source code type-check against React 19
     steps:
       - uses: actions/checkout@v4
         with:
