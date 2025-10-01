@@ -10,7 +10,6 @@
     "@fluentui/code-sandbox": "*",
     "@fluentui/docs-components": "*",
     "@fluentui/react-bindings": "*",
-    "@fluentui/react-builder": "*",
     "@fluentui/react-component-event-listener": "*",
     "@fluentui/react-component-ref": "*",
     "@fluentui/react-icons-northstar": "*",

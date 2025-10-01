@@ -59,7 +59,6 @@ describe(`utils`, () => {
           "react-telemetry",
           "react-bindings",
           "accessibility",
-          "react-builder",
           "code-sandbox",
           "digest",
           "scripts-fluentui-publish",
