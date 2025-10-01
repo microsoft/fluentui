@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noUnusedLocals": false,
+    "noEmit": true,
+    "module": "esnext",
+    "lib": ["ES2019", "dom"],
+    "outDir": "dist",
+    "types": []
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["./src/react-18/", "./src/shared/**/*.ts", "./src/shared/**/*.tsx"]
+}
