@@ -20,10 +20,6 @@ variables:
   - template: .devops/templates/variables.yml@self
     parameters:
       deployBasePath: 0.0.0-nightly
-  - name: docsiteVersion # used by docsite
-    value: 0.0.0-nightly
-  - name: officialRelease # used by docsite
-    value: true
   - name: tags
     value: production,externalfacing
 
@@ -52,7 +48,7 @@ extends:
               clean: all
             displayName: Build and Release Fluent Packages
             # skip this job if publishDocsiteOnly is true
-            condition: and(succeeded(), eq(variables.publishDocsiteOnly, false))
+            condition: succeeded()
 
             steps:
               - template: .devops/templates/tools.yml@self
@@ -65,7 +61,7 @@ extends:
 
               - task: CmdLine@2
                 displayName: Checkout branch for version pushes
-                condition: and(succeeded(), eq(variables.publishOfficial, true))
+                condition: succeeded()
                 inputs:
                   script: |
                     BRANCH_NAME=`echo $(Build.SourceBranch) | sed "s/refs\/heads\///"`
@@ -85,7 +81,7 @@ extends:
 
               - task: CmdLine@2
                 displayName: '[NPM] Publish to NPM'
-                condition: and(succeeded(), eq(variables.publishOfficial, true))
+                condition: succeeded()
                 timeoutInMinutes: 2
                 inputs:
                   script: |
@@ -97,86 +93,5 @@ extends:
                     npx northstar-release publish --dry-run $(dryRun)
 
                     git checkout -- .npmrc
-
-              - template: .devops/templates/cleanup.yml@self
-
-          - job: Release_docsite
-            workspace:
-              clean: all
-            displayName: Build and Publish Docsite
-            dependsOn: Release
-            pool:
-              name: '1ES-Host-Ubuntu'
-              image: '1ES-PT-Ubuntu-20.04'
-              os: linux
-            # run this job when the previous job is succeeded or when publishDocsiteOnly is true
-            condition: and(eq(variables.dryRun, false), or(succeeded(), eq(variables.publishDocsiteOnly, true)))
-
-            steps:
-              - template: .devops/templates/tools.yml@self
-
-              - task: CmdLine@2
-                displayName: Checkout branch for pull
-                condition: and(succeeded(), eq(variables.publishOfficial, true))
-                inputs:
-                  script: |
-                    BRANCH_NAME=`echo $(Build.SourceBranch) | sed "s/refs\/heads\///"`
-                    git checkout $BRANCH_NAME
-                    git pull
-
-              - task: Bash@3
-                displayName: Yarn
-                inputs:
-                  filePath: yarn-ci.sh
-
-              - task: CmdLine@2
-                displayName: 'Set base path and version'
-                condition: and(succeeded(), eq(variables.publishOfficial, true))
-                inputs:
-                  script: |
-                    ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
-                    echo "Docsite base path published for version $ver"
-                    echo "##vso[task.setvariable variable=deployBasePath]$ver"
-                    echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-
-              - task: CmdLine@2
-                displayName: Build
-                inputs:
-                  script: |
-                    echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion)
-                    NODE_ENV=production yarn nx run docs:bundle
-
-              - task: AzureCLI@2
-                displayName: Upload to Azure
-                inputs:
-                  azureSubscription: 'Azure - fluentsite storage - NEW'
-                  scriptType: 'bash'
-                  scriptLocation: 'inlineScript'
-                  inlineScript: |
-                    az storage blob upload-batch \
-                      --destination '$web' \
-                      --source packages/fluentui/docs/dist \
-                      --account-name fluentsite \
-                      --destination-path $(deployBasePath) \
-                      --auth-mode login \
-                      --overwrite
-
-              - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-                displayName: 📒 Generate Manifest Docsite
-                inputs:
-                  BuildDropPath: $(System.DefaultWorkingDirectory)
-
-              # Publish the manifest to a separate artifact to avoid hosting the _manifest files on the website
-              - task: 1ES.PublishPipelineArtifact@1
-                displayName: 📒 Publish Manifest DocSite
-                inputs:
-                  artifactName: SBom-DocSite-$(System.JobAttempt)
-                  targetPath: $(System.DefaultWorkingDirectory)/_manifest
-
-              - task: 1ES.PublishPipelineArtifact@1
-                displayName: Publish Docsite as Pipeline Artifact
-                inputs:
-                  path: packages/fluentui/docs/dist
-                  artifactName: docsite_v$(docsiteVersion)
 
               - template: .devops/templates/cleanup.yml@self
