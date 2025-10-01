@@ -15,5 +15,5 @@ export const useDataGridHeader_unstable = (
   props: DataGridHeaderProps,
   ref: React.Ref<HTMLElement>,
 ): DataGridHeaderState => {
-  return useTableHeader_unstable({ ...props, as: 'div' }, ref);
+  return useTableHeader_unstable({ as: 'div', ...props }, ref);
 };
