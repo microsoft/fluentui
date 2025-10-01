@@ -1,4 +1,4 @@
-import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
+import { RendererParam } from '@fluentui/react-northstar-fela-renderer';
 import {
   ComponentSlotStylesInput,
   ComponentSlotStylesPrepared,
@@ -20,6 +20,7 @@ export type ResolveStylesResult = {
   resolvedStyles: ComponentSlotStylesResolved;
   resolvedStylesDebug: Record<string, { styles: Object }[]>;
   classes: ComponentSlotClasses;
+  changes: any[];
 };
 
 // this weak map is used as cache for the classes
@@ -56,6 +57,7 @@ export const resolveStyles = (
     performance: performanceFlags,
   } = options;
 
+  const changes = [];
   const { className, design, styles, variables } = inlineStylesProps;
   const noInlineStylesOverrides = !(design || styles);
 
@@ -152,137 +154,6 @@ export const resolveStyles = (
       }`
     : '';
 
-  if (typeof Proxy === 'undefined') {
-    //
-    //
-    // IE11 branch of code, feel free to remove later.
-    // Keep it sync with another branch below!
-    //
-    //
-
-    const resolvedStyles: Record<string, ICSSInJSStyle> = {};
-    const classes: Record<string, string> = {};
-
-    Object.keys(mergedStyles).forEach(slotName => {
-      // resolve/render slot styles once and cache
-      const lazyEvaluationKey = `${slotName}__return`;
-      const slotCacheKey = componentCacheKey + slotName;
-
-      Object.defineProperty(resolvedStyles, slotName, {
-        enumerable: false,
-        configurable: false,
-        set(val: ICSSInJSStyle) {
-          // Add to the cache if it's enabled
-          if (cacheEnabled && theme) {
-            stylesCache.set(theme, {
-              ...stylesCache.get(theme),
-              [slotCacheKey]: val,
-            });
-          }
-
-          resolvedStyles[lazyEvaluationKey] = val;
-        },
-        get(): ICSSInJSStyle {
-          // If caching enabled and entry exists, get from cache, avoid lazy evaluation
-          if (cacheEnabled && theme) {
-            const stylesThemeCache = stylesCache.get(theme) || {};
-            if (stylesThemeCache[slotCacheKey]) {
-              return stylesThemeCache[slotCacheKey];
-            }
-          }
-
-          if (resolvedStyles[lazyEvaluationKey]) {
-            return resolvedStyles[lazyEvaluationKey];
-          }
-
-          // resolve/render slot styles once and cache
-          resolvedStyles[lazyEvaluationKey] = mergedStyles[slotName](styleParam);
-
-          if (cacheEnabled && theme) {
-            stylesCache.set(theme, {
-              ...stylesCache.get(theme),
-              [slotCacheKey]: resolvedStyles[lazyEvaluationKey],
-            });
-          }
-
-          if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
-            resolvedStylesDebug[slotName] = (resolvedStyles[slotName] as any)?.['_debug'];
-            delete (resolvedStyles[slotName] as any)?.['_debug'];
-          }
-
-          return resolvedStyles[lazyEvaluationKey];
-        },
-      });
-
-      Object.defineProperty(classes, slotName, {
-        enumerable: false,
-        configurable: false,
-        set(val: string) {
-          if (cacheEnabled && theme) {
-            classesCache.set(theme, {
-              ...classesCache.get(theme),
-              [slotCacheKey]: val,
-            });
-          }
-
-          classes[lazyEvaluationKey] = val;
-        },
-        get(): string {
-          if (cacheEnabled && theme) {
-            const classesThemeCache = classesCache.get(theme) || {};
-
-            //
-            // Cached styles
-            //
-
-            if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
-              return slotName === 'root'
-                ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
-                : classesThemeCache[slotCacheKey];
-            }
-          }
-
-          //
-          // Lazy eval
-          //
-
-          if (classes[lazyEvaluationKey]) {
-            return slotName === 'root'
-              ? cx(componentClassName, classes[lazyEvaluationKey], className)
-              : classes[lazyEvaluationKey];
-          }
-
-          // this resolves the getter magic
-          const styleObj = resolvedStyles[slotName];
-
-          if (styleObj) {
-            classes[lazyEvaluationKey] = renderer.renderRule(styleObj, rendererParam);
-
-            if (cacheEnabled && theme) {
-              classesCache.set(theme, {
-                ...classesCache.get(theme),
-                [slotCacheKey]: classes[lazyEvaluationKey],
-              });
-            }
-          }
-
-          const resultClassName =
-            slotName === 'root'
-              ? cx(componentClassName, classes[lazyEvaluationKey], className)
-              : classes[lazyEvaluationKey];
-
-          return resultClassName;
-        },
-      });
-    });
-
-    return {
-      resolvedStyles,
-      resolvedStylesDebug,
-      classes,
-    };
-  }
-
   const resolvedStyles = new Proxy<Record<string, ICSSInJSStyle>>(
     {},
     {
@@ -352,7 +223,7 @@ export const resolveStyles = (
         const styleObj = resolvedStyles[slotName];
 
         if (styleObj) {
-          target[slotName] = renderer.renderRule(styleObj, rendererParam);
+          target[slotName] = renderer.renderRule(styleObj, rendererParam, changes);
 
           if (cacheEnabled && theme) {
             classesCache.set(theme, {
@@ -374,5 +245,6 @@ export const resolveStyles = (
     resolvedStyles,
     resolvedStylesDebug,
     classes,
+    changes,
   };
 };

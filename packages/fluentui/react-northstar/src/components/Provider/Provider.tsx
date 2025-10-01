@@ -103,21 +103,16 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
       });
 
   const portalContextValue = React.useMemo<PortalContextValue>(() => ({ className: classes.root }), [classes.root]);
-  const RenderProvider = outgoingContext.renderer.Provider;
 
   useIsomorphicLayoutEffect(() => {
     if (props.target) {
       setUpWhatInput(props.target);
     }
 
-    outgoingContext.renderer.registerUsage();
-
     return () => {
       if (props.target) {
         tryCleanupWhatInput(props.target);
       }
-
-      outgoingContext.renderer.unregisterUsage();
     };
   }, []);
 
@@ -126,24 +121,20 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
   // - as we don't apply styles "PortalContext.Provider" should not be rendered
   if (rendersReactFragment) {
     return (
-      <RenderProvider target={outgoingContext.target}>
-        <Unstable_FluentContextProvider value={outgoingContext}>
-          <>{children}</>
-        </Unstable_FluentContextProvider>
-      </RenderProvider>
+      <Unstable_FluentContextProvider value={outgoingContext}>
+        <>{children}</>
+      </Unstable_FluentContextProvider>
     );
   }
 
   return (
-    <RenderProvider target={outgoingContext.target}>
-      <Unstable_FluentContextProvider value={outgoingContext}>
-        <PortalContext.Provider value={portalContextValue}>
-          <ElementType className={classes.root} {...rtlProps} {...unhandledProps}>
-            {children}
-          </ElementType>
-        </PortalContext.Provider>
-      </Unstable_FluentContextProvider>
-    </RenderProvider>
+    <Unstable_FluentContextProvider value={outgoingContext}>
+      <PortalContext.Provider value={portalContextValue}>
+        <ElementType className={classes.root} {...rtlProps} {...unhandledProps}>
+          {children}
+        </ElementType>
+      </PortalContext.Provider>
+    </Unstable_FluentContextProvider>
   );
 };
 

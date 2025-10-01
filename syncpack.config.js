@@ -132,7 +132,6 @@ const config = {
         '@fluentui/react-northstar-fela-renderer',
         '@fluentui/react-northstar-prototypes',
         '@fluentui/react-northstar-prototypes',
-        '@fluentui/react-northstar-styles-renderer',
         '@fluentui/react-proptypes',
         '@fluentui/styles',
       ],

@@ -2,7 +2,7 @@ import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/acces
 import { compose, ComposedComponent, FocusZone } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import { isConformant as isConformantBase, IsConformantOptions } from '@fluentui/react-conformance';
-import { Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { Renderer } from '@fluentui/react-northstar-fela-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';
 import * as faker from 'faker';
 import * as _ from 'lodash';
