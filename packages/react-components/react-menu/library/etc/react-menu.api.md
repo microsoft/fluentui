@@ -12,11 +12,10 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import { PositioningVirtualElement } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
+import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
@@ -41,10 +40,13 @@ export type MenuCheckedValueChangeData = {
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'safeZone'> & {
+export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'checkedValues' | 'onCheckedValueChange' | 'safeZone'> & {
     open: boolean;
     triggerId: string;
     defaultCheckedValues?: Record<string, string[]>;
+    popoverId: string;
+    positioning?: MenuState['positioning'];
+    submenuFallbackPositions?: MenuState['submenuFallbackPositions'];
 };
 
 // @public (undocumented)
@@ -331,13 +333,13 @@ export type MenuPopoverSlots = {
 };
 
 // @public
-export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalProps, 'mountNode'> & {
-    inline: boolean;
+export type MenuPopoverState = ComponentState<MenuPopoverSlots> & {
     safeZone?: React_2.ReactElement | null;
+    mountNode?: HTMLElement | null | undefined;
 };
 
 // @public
-export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
+export type MenuProps = ComponentProps<MenuSlots> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
     children: [JSXElement, JSXElement] | JSXElement;
     hoverDelay?: number;
     inline?: boolean;
@@ -349,6 +351,7 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode
     persistOnItemClick?: boolean;
     positioning?: PositioningShorthand;
     closeOnScroll?: boolean;
+    mountNode?: HTMLElement;
 };
 
 // @public (undocumented)
@@ -375,7 +378,7 @@ export type MenuSplitGroupSlots = {
 export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & Pick<MenuSplitGroupContextValue, 'setMultiline'>;
 
 // @public (undocumented)
-export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
+export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & Pick<MenuProps, 'positioning'> & {
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
@@ -390,6 +393,8 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     defaultCheckedValues?: Record<string, string[]>;
     safeZone?: React_2.ReactElement | null;
+    popoverId: string;
+    submenuFallbackPositions?: string[];
 };
 
 // @public
