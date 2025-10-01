@@ -25,6 +25,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
   const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { className: transitionClassName, nodeRef } = useMessageBarTransitionContext();
   const motionRef = useMotionForwardedRef();
 
