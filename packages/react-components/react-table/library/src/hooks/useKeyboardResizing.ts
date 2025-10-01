@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ArrowLeft, ArrowRight, Enter, Escape, Shift, Space } from '@fluentui/keyboard-keys';
 import { useEventCallback } from '@fluentui/react-utilities';

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/core';
 import { useRenderer_unstable } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';

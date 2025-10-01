@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles, makeResetStyles } from '@griffel/react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';

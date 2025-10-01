@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getModalizer } from 'tabster';
 import { useTimeout } from '@fluentui/react-utilities';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';

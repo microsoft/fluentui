@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import { slot } from '@fluentui/react-utilities';

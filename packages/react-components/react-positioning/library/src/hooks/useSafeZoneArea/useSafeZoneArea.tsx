@@ -1,3 +1,5 @@
+'use client';
+
 import { useAnimationFrame, useEventCallback, useMergedRefs, useTimeout } from '@fluentui/react-utilities';
 import type { JSXElement, RefObjectFunction } from '@fluentui/react-utilities';
 import * as React from 'react';

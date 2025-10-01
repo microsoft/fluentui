@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useSlider_unstable } from './useSlider';
 import { renderSlider_unstable } from './renderSlider';

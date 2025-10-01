@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createVirtualElementFromClick } from './createVirtualElementFromClick';
 import { PositioningVirtualElement, SetVirtualMouseTarget } from './types';
