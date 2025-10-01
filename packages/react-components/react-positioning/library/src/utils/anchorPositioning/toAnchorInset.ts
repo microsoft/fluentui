@@ -86,6 +86,7 @@ export const toPositionArea = (
 
   const fallbacks = ['flip-block', 'flip-inline'];
 
+  // If the alignment is center for either axis, the built in flip- strategies can't do anything
   if (align === 'center') {
     for (const val of Object.values(positionAreaLookup)) {
       fallbacks.push(val);
@@ -93,16 +94,6 @@ export const toPositionArea = (
   }
 
   const resolvedOffset = offset ? resolveOffset(offset, position, align) : { mainAxis: 0 };
-
-  //if (position === 'above' || position === 'below') {
-  //  fallbacks.push(positionAreaLookup[`${position}-start`]);
-  //  fallbacks.push(positionAreaLookup[`${position}-center`]);
-  //  fallbacks.push(positionAreaLookup[`${position}-end`]);
-  //} else {
-  //  fallbacks.push(positionAreaLookup[`${position}-top`]);
-  //  fallbacks.push(positionAreaLookup[`${position}-center`]);
-  //  fallbacks.push(positionAreaLookup[`${position}-bottom`]);
-  //}
 
   return {
     positionArea: positionAreaLookup[positionArea as keyof typeof positionAreaLookup],

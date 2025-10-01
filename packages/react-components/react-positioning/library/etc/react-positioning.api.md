@@ -133,6 +133,9 @@ export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | un
 // @public (undocumented)
 export const toAnchorInset: (align?: Alignment, position?: Position) => Record<string, string>;
 
+// @public (undocumented)
+export const toPositionArea: (align?: Alignment, position?: Position, offset?: Offset) => Record<string, string>;
+
 // @internal (undocumented)
 export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn;
 
