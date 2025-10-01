@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Add toggle properties.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "owcampbe@microsoft.com",
+  "dependentChangeType": "patch"
+}
