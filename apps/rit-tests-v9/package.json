@@ -3,15 +3,8 @@
   "description": "React Integration Tester application for problematic v9 scenarios",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src/shared",
-    "test": "jest --passWithNoTests",
-    "format": "prettier -w . --ignore-path ../.prettierignore",
-    "format:check": "yarn format -c"
-  },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-cypress": "*"
+    "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
     "@fluentui/react-components": "*",
