@@ -541,11 +541,13 @@ export const mapFluentChart = (input: any): OutputChartType => {
           const hasLineShape =
             Array.isArray(validSchema?.layout?.shapes) &&
             validSchema.layout.shapes.some((shape: any) => shape.type === 'line');
-          const isStringY = isStringArray(scatterData.y);
-          const isStringX = isStringArray(scatterData.x);
 
           if (isScatterChart) {
-            return { isValid: true, traceIndex, type: hasLineShape && !isStringY && isStringX ? 'line' : 'scatter' };
+            return {
+              isValid: true,
+              traceIndex,
+              type: hasLineShape && doesScatterNeedFallback(scatterData) ? 'line' : 'scatter',
+            };
           }
 
           if (!doesScatterNeedFallback(scatterData)) {
@@ -656,10 +658,6 @@ export const isScatterAreaChart = (data: Partial<PlotData>) => {
 };
 
 const doesScatterNeedFallback = (data: Partial<PlotData>) => {
-  if (isScatterMarkers(data.mode ?? '')) {
-    return false;
-  }
-
   const isXDate = isDateArray(data.x);
   const isXNumber = isNumberArray(data.x);
 
@@ -670,7 +668,12 @@ const doesScatterNeedFallback = (data: Partial<PlotData>) => {
   const isXYear = isYearArray(data.x);
   const isXMonth = isMonthArray(data.x);
   const isYString = isStringArray(data.y);
-  if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
+  const isXString = isStringArray(data.x);
+  if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString && !isXString) {
+    return false;
+  }
+
+  if (isScatterMarkers(data.mode ?? '')) {
     return false;
   }
 
