@@ -290,8 +290,41 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       }),
     });
 
+    /*
+     * A workaround for a memory leak that causes the entire React fiber tree to leak
+     * when having an input element.
+     * Chrome bug: https://bugs.chromium.org/p/chromium/issues/detail?id=961494
+     * Teams bug: https://domoreexp.visualstudio.com/MSTeams/_workitems/edit/1201257
+     *
+     * The workaround here is to detach the input element from its parent on unmount,
+     * allowing the GC to collect the rest of the tree while this input element will
+     * remain in memory.
+     */
+    React.useEffect(() => {
+      const input = inputRef.current;
+
+      return () => {
+        if (input) {
+          /*
+           * Remove the reference to the parent to prevent leaking the DOM tree.
+           */
+          if (input.parentElement) {
+            input.parentElement.removeChild(input);
+          }
+          /*
+           * Remove the reference to the fiber node to prevent leaking the fiber tree.
+           */
+          Object.keys(input)
+            .filter(key => key.indexOf('__react') === 0)
+            .forEach(k => {
+              delete input[k];
+            });
+        }
+      };
+    }, []);
+
     const inputElement = Box.create(
-      {},
+      { 'data-tid': input ? input['data-tid'] : undefined },
       {
         defaultProps: () => ({
           children: (

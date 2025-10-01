@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
-import { ChatDensity } from './chatDensity';
+import { ChatDensity } from './chatDensityContext';
 
 export interface ChatMessageDetailsOwnProps {
   /** Controls messages's relation to other chat messages. */

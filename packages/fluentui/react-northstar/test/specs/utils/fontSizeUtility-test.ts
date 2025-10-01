@@ -12,7 +12,7 @@ describe('fontSizeUtility', () => {
 
   describe('pxToRem', () => {
     it('returns 1rem for 16px with a default HTML font size of 16px', () => {
-      expect(pxToRem(16)).toEqual('1rem');
+      expect(pxToRem(10)).toEqual('1rem');
     });
 
     it('returns 1rem with base font size of 10px', () => {
@@ -46,7 +46,7 @@ describe('fontSizeUtility', () => {
       });
 
       expect(document.documentElement).toBe(null);
-      expect(getDocumentRemSize()).toEqual(16);
+      expect(getDocumentRemSize()).toEqual(10);
     });
   });
 });

@@ -1,6 +1,9 @@
 import { isBrowser } from './isBrowser';
 
-const DEFAULT_REM_SIZE_IN_PX = 16;
+// Workaround for Firefox being unable to detect font size on a hidden iframe
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1471231
+// Default to 10px as it is the HTML font size in all TMP experiences
+const DEFAULT_REM_SIZE_IN_PX = 10;
 
 let _documentRemSize: number | null = null;
 

@@ -544,6 +544,9 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       };
     });
 
+    const menuSlot = composeOptions.slots.menu;
+    const menuToolbarContextValue = React.useMemo(() => ({ slots: { menu: menuSlot } }), [menuSlot]);
+
     const element = overflow ? (
       <>
         <Ref
@@ -555,7 +558,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
           {getA11Props.unstable_wrapWithFocusZone(
             <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
               <div className={classes.overflowContainer} ref={overflowContainerRef}>
-                <ToolbarMenuContextProvider value={{ slots: { menu: composeOptions.slots.menu } }}>
+                <ToolbarMenuContextProvider value={menuToolbarContextValue}>
                   <ToolbarVariablesProvider value={variables}>
                     {childrenExist(children) ? children : renderItems(getVisibleItems())}
                     {overflowSentinel && renderOverflowSentinel()}
@@ -578,7 +581,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       >
         {getA11Props.unstable_wrapWithFocusZone(
           <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
-            <ToolbarMenuContextProvider value={{ slots: { menu: composeOptions.slots.menu } }}>
+            <ToolbarMenuContextProvider value={menuToolbarContextValue}>
               <ToolbarVariablesProvider value={variables}>
                 {childrenExist(children) ? children : renderItems(items)}
               </ToolbarVariablesProvider>

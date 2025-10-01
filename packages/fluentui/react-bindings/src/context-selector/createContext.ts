@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import { Context, ContextValue } from './types';
-import { runWithNormalPriority, useIsomorphicLayoutEffect } from './utils';
+import { useIsomorphicLayoutEffect } from '../hooks/useIsomorphicLayoutEffect';
+import { runWithNormalPriority } from './utils';
 
 const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) => {
   const Provider: React.FC<React.ProviderProps<Value>> = props => {

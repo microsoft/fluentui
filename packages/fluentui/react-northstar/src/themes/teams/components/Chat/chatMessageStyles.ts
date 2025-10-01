@@ -1,7 +1,7 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { isNil } from 'lodash';
 
-import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensity';
+import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensityContext';
 import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';

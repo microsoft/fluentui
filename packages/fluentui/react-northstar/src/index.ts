@@ -65,7 +65,6 @@ export * from './components/Chat/ChatMessageContent';
 export * from './components/Chat/ChatMessageDetails';
 export * from './components/Chat/ChatMessageHeader';
 export * from './components/Chat/ChatMessageReadStatus';
-export * from './components/Chat/chatDensity';
 
 export * from './components/Checkbox/Checkbox';
 

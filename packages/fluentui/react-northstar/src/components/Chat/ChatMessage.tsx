@@ -62,8 +62,7 @@ import { PortalInner } from '../Portal/PortalInner';
 import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
-import { useChatContextSelectors } from './chatContext';
-import { ChatDensity } from './chatDensity';
+import { ChatDensity, useChatDensityContext } from './chatDensityContext';
 import { ChatItemContext } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
@@ -249,25 +248,14 @@ function partitionActionMenuPropsFromShorthand<P>(
 /**
  * A ChatMessage represents a single message in chat.
  */
-export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((inputProps, ref) => {
+export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
-  const chatProps = useChatContextSelectors({
-    density: v => v.density,
-    accessibility: v => v.behaviors.message,
-  });
+  const chatDensity = useChatDensityContext();
 
-  const props = {
-    ...inputProps,
-    density: inputProps.density === undefined ? chatProps.density : inputProps.density,
-    accessibility:
-      inputProps.accessibility === undefined
-        ? chatProps.accessibility || chatMessageBehavior
-        : inputProps.accessibility,
-  };
   const {
     accessibility,
     attached = parentAttached,
@@ -278,7 +266,7 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((i
     className,
     compactBody,
     content,
-    density,
+    density = chatDensity,
     design,
     details,
     header,
@@ -731,6 +719,7 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((i
 ChatMessage.displayName = 'ChatMessage';
 
 ChatMessage.defaultProps = {
+  accessibility: chatMessageBehavior,
   badgePosition: 'end',
   positionActionMenu: true,
   reactionGroupPosition: 'start',
