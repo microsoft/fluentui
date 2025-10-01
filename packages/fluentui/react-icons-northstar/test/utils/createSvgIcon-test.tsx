@@ -1,5 +1,6 @@
 import { createSvgIcon, svgIconClassName } from '@fluentui/react-icons-northstar';
 import { Unstable_FluentContextProvider } from '@fluentui/react-bindings';
+import { noopRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
 import * as React from 'react';
@@ -29,7 +30,7 @@ describe('createSvgIcon', () => {
 
     const wrapper = mount(<TestIcon id="test-id" />, {
       wrappingComponent: Unstable_FluentContextProvider,
-      wrappingComponentProps: { value: { performance: {}, theme: createTheme() } },
+      wrappingComponentProps: { value: { performance: {}, theme: createTheme(), renderer: noopRenderer } },
     });
     expect(wrapper.find(`.${svgIconClassName}`).props().id).toEqual('test-id');
   });
@@ -47,7 +48,7 @@ describe('createSvgIcon', () => {
 
     const wrapper = mount(<BookIcon foo outline />, {
       wrappingComponent: Unstable_FluentContextProvider,
-      wrappingComponentProps: { value: { performance: {}, theme: createTheme() } },
+      wrappingComponentProps: { value: { performance: {}, theme: createTheme(), renderer: noopRenderer } },
     });
 
     expect(wrapper.find('svg').prop('data-foo')).toEqual('true');
