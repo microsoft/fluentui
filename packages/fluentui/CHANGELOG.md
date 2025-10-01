@@ -18,6 +18,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.67.0 ]------------------------------- -->
+## [v0.67.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.67.0) (01-10-2025)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.5..@fluentui/react-northstar_v0.67.0)
+
+### BREAKING CHANGES
+- Remove `@fluentui/react-northstar-emotion-renderer` https://github.com/microsoft/fluentui/pull/35243
+- Backport patches that exist in Teams (_check PR description for complete list_) https://github.com/microsoft/fluentui/pull/35244
+
 <!--------------------------------[ v0.66.5 ]------------------------------- -->
 ## [v0.66.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.5) (2023-06-12)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.4..@fluentui/react-northstar_v0.66.5)
