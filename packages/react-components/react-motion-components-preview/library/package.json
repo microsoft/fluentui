@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@fluentui/react-motion": "*",
+    "@fluentui/react-utilities": "*",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
