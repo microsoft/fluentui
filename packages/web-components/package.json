@@ -101,5 +101,5 @@
     ],
     "tag": "beta"
   },
-  "customElements": "custom-elements.json"
+  "customElements": "./custom-elements.json"
 }
