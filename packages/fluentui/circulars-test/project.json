@@ -2,6 +2,21 @@
   "name": "circulars-test",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "implicitDependencies": [],
-  "tags": ["react-northstar"]
+  "tags": ["react-northstar"],
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/fluentui/circulars-test",
+        "commands": [{ "command": "gulp test" }],
+        "outputPath": []
+      },
+      "dependsOn": [
+        {
+          "projects": "dependencies",
+          "target": "build"
+        }
+      ]
+    }
+  }
 }
