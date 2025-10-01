@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import type { IContextualMenuProps } from '@fluentui/react';

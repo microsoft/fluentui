@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import { ContextualMenuExample } from './ContextualMenuExample';
 
-describe('ContextualMenu in React 18', () => {
+describe('ContextualMenu', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
 
