@@ -98,10 +98,6 @@ const config = {
       dependencies: ['@fluentui/dom-utilities'],
     },
     {
-      packages: ['@fluentui/react-northstar-emotion-renderer'],
-      dependencies: ['stylis'],
-    },
-    {
       packages: ['@fluentui/react-conformance', '@fluentui/react-conformance-griffel'],
       dependencies: [
         'chalk',
@@ -134,7 +130,6 @@ const config = {
         '@fluentui/react-component-ref',
         '@fluentui/react-icons-northstar',
         '@fluentui/react-northstar',
-        '@fluentui/react-northstar-emotion-renderer',
         '@fluentui/react-northstar-fela-renderer',
         '@fluentui/react-northstar-prototypes',
         '@fluentui/react-northstar-prototypes',

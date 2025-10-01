@@ -46,7 +46,6 @@ describe(`utils`, () => {
       expect(Object.keys(actual.lib)).toMatchInlineSnapshot(`
         Array [
           "react-component-nesting-registry",
-          "react-northstar-emotion-renderer",
           "react-northstar-styles-renderer",
           "react-component-event-listener",
           "react-northstar-fela-renderer",
