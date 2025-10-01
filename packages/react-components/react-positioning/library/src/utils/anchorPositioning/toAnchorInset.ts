@@ -1,4 +1,4 @@
-import type { Alignment, Position } from '../../types';
+import type { Alignment, Offset, OffsetObject, Position } from '../../types';
 
 const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
   const positionedVertically = p === 'above' || p === 'below';
@@ -21,6 +21,97 @@ const ALIGNMENT_MAP: Record<Alignment, string | undefined> = {
   bottom: 'anchor(end)',
   center: undefined,
 };
+
+const positionAreaLookup = {
+  'above-center': 'block-start span-all',
+  'above-start': 'block-start span-inline-end',
+  'above-end': 'block-start span-inline-start',
+  'below-center': 'block-end span-all',
+  'below-start': 'block-end span-inline-end',
+  'below-end': 'block-end span-inline-start',
+  'before-center': 'center inline-start',
+  'before-top': 'span-block-end inline-start',
+  'before-bottom': 'span-block-start inline-start',
+  'after-center': 'center inline-end',
+  'after-top': 'span-block-end inline-end',
+  'after-bottom': 'span-block-start inline-end',
+};
+
+const marginLookup = {
+  above: 'marginBlockEnd',
+  below: 'marginBlockStart',
+  before: 'marginInlineEnd',
+  after: 'marginInlineStart',
+};
+
+const crossMarginLookup = {
+  above: 'marginInlineStart',
+  below: 'marginInlineStart',
+  before: 'marginBlockStart',
+  after: 'marginBlockStart',
+};
+
+function resolveOffset(offset: Offset, position: Position, alignment?: Alignment): OffsetObject {
+  let res = offset;
+  if (typeof res === 'function') {
+    res = res({
+      positionedRect: {
+        width: 0,
+        height: 0,
+        x: 0,
+        y: 0,
+      },
+      targetRect: {
+        width: 0,
+        height: 0,
+        x: 0,
+        y: 0,
+      },
+      position,
+      alignment,
+    });
+  }
+  if (typeof res === 'number') {
+    return { mainAxis: res };
+  }
+  return res;
+}
+
+export const toPositionArea = (
+  align: Alignment = 'center',
+  position: Position = 'above',
+  offset?: Offset,
+): Record<string, string> => {
+  const positionArea = `${position}-${align}`;
+
+  const fallbacks = ['flip-block', 'flip-inline'];
+
+  if (align === 'center') {
+    for (const val of Object.values(positionAreaLookup)) {
+      fallbacks.push(val);
+    }
+  }
+
+  const resolvedOffset = offset ? resolveOffset(offset, position, align) : { mainAxis: 0 };
+
+  //if (position === 'above' || position === 'below') {
+  //  fallbacks.push(positionAreaLookup[`${position}-start`]);
+  //  fallbacks.push(positionAreaLookup[`${position}-center`]);
+  //  fallbacks.push(positionAreaLookup[`${position}-end`]);
+  //} else {
+  //  fallbacks.push(positionAreaLookup[`${position}-top`]);
+  //  fallbacks.push(positionAreaLookup[`${position}-center`]);
+  //  fallbacks.push(positionAreaLookup[`${position}-bottom`]);
+  //}
+
+  return {
+    positionArea: positionAreaLookup[positionArea as keyof typeof positionAreaLookup],
+    [marginLookup[position]]: `${resolvedOffset.mainAxis}px`,
+    [crossMarginLookup[position]]: `${resolvedOffset.crossAxis ?? 0}px`,
+    positionTry: fallbacks.join(','),
+  };
+};
+
 export const toAnchorInset = (align?: Alignment, position?: Position): Record<string, string> => {
   const alignment = shouldAlignToCenter(position, align) ? 'center' : align;
 

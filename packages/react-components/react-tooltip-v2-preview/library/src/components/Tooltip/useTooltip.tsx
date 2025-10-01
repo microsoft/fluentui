@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
+import { mergeArrowOffset, resolvePositioningShorthand, toPositionArea } from '@fluentui/react-positioning';
 import {
   useTooltipVisibility_unstable as useTooltipVisibility,
   useFluent_unstable as useFluent,
@@ -84,38 +84,46 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     content: slot.always(content, {
       defaultProps: {
         role: 'tooltip',
+        // @ts-expect-error
+        popover: 'manual',
+        onToggle: () => {
+          console.log('toggle');
+        },
       },
       elementType: 'div',
     }),
   };
 
-  state.content.id = useId('tooltip-', state.content.id);
+  const containerRef = React.useCallback((elem: HTMLDivElement) => {
+    return;
+  }, []);
+  const popoverRef = React.useRef<HTMLDivElement>(null);
+  state.content.ref = useMergedRefs(state.content.ref, containerRef, popoverRef);
+
+  const tooltipId = useId('tooltip-', state.content.id);
+
+  state.content.id = tooltipId;
 
   const positioningOptions = {
-    enabled: state.visible,
     arrowPadding: 2 * tooltipBorderRadius,
     position: 'above' as const,
     align: 'center' as const,
     offset: 4,
-    ...resolvePositioningShorthand(state.positioning),
+    ...resolvePositioningShorthand(positioning),
   };
 
   if (state.withArrow) {
     positioningOptions.offset = mergeArrowOffset(positioningOptions.offset, arrowHeight);
   }
 
-  const {
-    targetRef,
-    containerRef,
-    arrowRef,
-  }: {
-    targetRef: React.MutableRefObject<unknown>;
-    containerRef: React.MutableRefObject<HTMLDivElement>;
-    arrowRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePositioning(positioningOptions);
+  const anchorProps = toPositionArea(positioningOptions.align, positioningOptions.position, positioningOptions.offset);
 
-  state.content.ref = useMergedRefs(state.content.ref, containerRef);
-  state.arrowRef = arrowRef;
+  state.content.style = {
+    // @ts-expect-error
+    positionAnchor: `--${tooltipId}`,
+    ...anchorProps,
+    ...state.content.style,
+  };
 
   // When this tooltip is visible, hide any other tooltips, and register it
   // as the visibleTooltip with the TooltipContext.
@@ -262,12 +270,31 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     state.shouldRenderTooltip = false;
   }
 
+  const childRef = getReactElementRef<HTMLButtonElement>(child);
+  const targetRef = React.useCallback((element: HTMLElement | null) => {
+    if (element) {
+      // @ts-expect-error
+      element.style.anchorName = `--${tooltipId}`;
+    }
+  }, []);
+  React.useEffect(() => {
+    if (positioningOptions.target) {
+      // @ts-expect-error
+      (positioningOptions.target as HTMLElement).style.anchorName = `--${tooltipId}`;
+    }
+  }, [positioningOptions]);
+
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
   state.children = applyTriggerPropsToChildren(children, {
     ...triggerAriaProps,
     ...child?.props,
+    //style: {
+    //  ...child?.props.style,
+    //  // @ts-expect-error
+    //  anchorName: `--${tooltipId}`,
+    //},
     ref: useMergedRefs(
-      getReactElementRef<HTMLButtonElement>(child),
+      childRef,
       keyborgListenerCallbackRef,
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,
@@ -277,6 +304,14 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),
     onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
   });
+
+  React.useEffect(() => {
+    if (visible) {
+      popoverRef.current?.showPopover();
+    } else {
+      popoverRef.current?.hidePopover();
+    }
+  }, [visible]);
 
   return state;
 };

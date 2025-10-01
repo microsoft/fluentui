@@ -29,6 +29,7 @@ export type TooltipChildProps = {
   | 'onPointerLeave'
   | 'aria-haspopup'
   | 'aria-expanded'
+  | 'style'
 >;
 
 /**

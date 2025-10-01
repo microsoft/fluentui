@@ -5,7 +5,7 @@ import { Tooltip } from '@fluentui/react-tooltip-v2-preview';
 import { ArrowStepInRegular } from '@fluentui/react-icons';
 
 export const WithArrow = (): JSXElement => (
-  <Tooltip withArrow content="Example tooltip with an arrow" relationship="label">
+  <Tooltip positioning="above-end" withArrow content="Example tooltip with an arrow" relationship="label">
     <Button icon={<ArrowStepInRegular />} size="large" />
   </Tooltip>
 );

@@ -14,7 +14,6 @@ export const tooltipClassNames: SlotClassNames<TooltipSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    display: 'none',
     boxSizing: 'border-box',
     maxWidth: '240px',
     cursor: 'default',
@@ -32,10 +31,10 @@ const useStyles = makeStyles({
     filter:
       `drop-shadow(0 0 2px ${tokens.colorNeutralShadowAmbient}) ` +
       `drop-shadow(0 4px 8px ${tokens.colorNeutralShadowKey})`,
-  },
 
-  visible: {
-    display: 'block',
+    margin: 0,
+    inset: 'auto',
+    width: 'max-content',
   },
 
   inverted: {
@@ -58,7 +57,6 @@ export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => 
     tooltipClassNames.content,
     styles.root,
     state.appearance === 'inverted' && styles.inverted,
-    state.visible && styles.visible,
     state.content.className,
   );
 

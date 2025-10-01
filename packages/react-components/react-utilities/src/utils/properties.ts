@@ -100,6 +100,8 @@ export const baseElementEvents = toObjectMap([
   'onPointerUp',
   'onGotPointerCapture',
   'onLostPointerCapture',
+  'onToggle',
+  'onBeforeToggle',
 ]);
 
 /**
