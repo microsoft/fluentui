@@ -542,9 +542,10 @@ export const mapFluentChart = (input: any): OutputChartType => {
             Array.isArray(validSchema?.layout?.shapes) &&
             validSchema.layout.shapes.some((shape: any) => shape.type === 'line');
           const isStringY = isStringArray(scatterData.y);
+          const isStringX = isStringArray(scatterData.x);
 
           if (isScatterChart) {
-            return { isValid: true, traceIndex, type: hasLineShape && !isStringY ? 'line' : 'scatter' };
+            return { isValid: true, traceIndex, type: hasLineShape && !isStringY && isStringX ? 'line' : 'scatter' };
           }
 
           if (!doesScatterNeedFallback(scatterData)) {
