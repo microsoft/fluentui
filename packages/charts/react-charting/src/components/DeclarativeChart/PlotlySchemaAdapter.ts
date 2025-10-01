@@ -700,21 +700,42 @@ export const transformPlotlyJsonToVSBCProps = (
       });
     });
   });
+  const xCategories = (input.data[0] as Partial<PlotData>)?.x ?? [];
 
   (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
     .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
-      mapXToDataPoints[shape.x0! as string | number].lineData!.push({
+      const resolveX = (val: any) => {
+        if (typeof val === 'number' && Array.isArray(xCategories) && xCategories[val] !== undefined) {
+          return xCategories[val];
+        }
+        return val;
+      };
+
+      const x0Key = resolveX(shape.x0);
+      const x1Key = resolveX(shape.x1);
+      const resolveY = (val: any) => {
+        if (shape.yref === 'paper') {
+          if (val === 0) return yMinValue;
+          if (val === 1) return yMaxValue;
+          return yMinValue + val * (yMaxValue - yMinValue);
+        }
+        return val;
+      };
+
+      const y0Val = resolveY(shape.y0);
+      const y1Val = resolveY(shape.y1);
+      mapXToDataPoints[x0Key].lineData!.push({
         legend: `Reference_${shapeIdx}`,
-        y: shape.y0 as number | string,
+        y: y0Val,
         color: rgb(lineColor!).formatHex8() ?? lineColor,
         lineOptions: getLineOptions(shape.line),
         useSecondaryYScale: false,
       });
-      mapXToDataPoints[shape.x1! as string | number].lineData!.push({
+      mapXToDataPoints[x1Key].lineData!.push({
         legend: `Reference_${shapeIdx}`,
-        y: shape.y1 as number | string,
+        y: y1Val,
         color: rgb(lineColor!).formatHex8() ?? lineColor,
         lineOptions: getLineOptions(shape.line),
         useSecondaryYScale: false,
