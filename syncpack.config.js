@@ -124,7 +124,6 @@ const config = {
         '@fluentui/code-sandbox',
         '@fluentui/digest',
         '@fluentui/react-bindings',
-        '@fluentui/react-builder',
         '@fluentui/react-component-event-listener',
         '@fluentui/react-component-nesting-registry',
         '@fluentui/react-component-ref',

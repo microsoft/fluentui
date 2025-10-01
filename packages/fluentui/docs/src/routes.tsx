@@ -33,7 +33,7 @@ import FocusTrapZone from './views/FocusTrapZoneDoc';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
 import PerformanceTests from './views/PerformanceTests';
 import ButtonNameComputation from './views/ButtonNameComputation';
-import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
+
 import {
   AlertsPrototype,
   AsyncShorthandPrototype,
@@ -68,27 +68,12 @@ const ExternalExampleLayout = React.lazy(
   () => import(/* webpackChunkName: "examples" */ './components/ExternalExampleLayout'),
 );
 
-const _Builder = React.lazy(async () => ({
-  default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).Builder,
-}));
-
-const Builder: React.FunctionComponent = () => (
-  <LazyWithBabel>
-    <_Builder />
-  </LazyWithBabel>
-);
-const FullScreenPreview = React.lazy(async () => ({
-  default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).FullScreenPreview,
-}));
-
 const Routes = () => (
   <React.Suspense fallback="Loading...">
     {/* Remove trailing slash */}
     <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>
       <Switch>
         <Route exact path="/maximize/:exampleName/:rtl?" component={ExternalExampleLayout} />
-        <Route exact path="/builder" component={Builder} />
-        <Route exact path="/builder/maximize" component={FullScreenPreview} />
 
         <DocsLayout>
           <PerfDataProvider>
