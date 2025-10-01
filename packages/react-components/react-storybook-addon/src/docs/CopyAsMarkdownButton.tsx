@@ -1,21 +1,12 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  Menu,
-  MenuButtonProps,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  Spinner,
-  SplitButton,
-  Toast,
-  Toaster,
-  ToastTitle,
-  useId,
-  useToastController,
-} from '@fluentui/react-components';
+import { SplitButton, type MenuButtonProps } from '@fluentui/react-button';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+import { Spinner } from '@fluentui/react-spinner';
+import { Toast, Toaster, ToastTitle, useToastController } from '@fluentui/react-toast';
+import { useId } from '@fluentui/react-utilities';
+import { makeStyles } from '@griffel/react';
 import { bundleIcon, MarkdownFilled, MarkdownRegular } from '@fluentui/react-icons';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 const MarkdownIcon = bundleIcon(MarkdownFilled, MarkdownRegular);
 
@@ -35,6 +26,8 @@ export interface CopyAsMarkdownProps {
  * The markdown content is fetched from the Storybook API and cached for subsequent requests.
  */
 export const CopyAsMarkdownButton: React.FC<CopyAsMarkdownProps> = ({ storyId = '' }) => {
+  const { targetDocument } = useFluent();
+  const targetWindow = targetDocument?.defaultView;
   const styles = useStyles();
   const toastId = useId('copy-toast');
   const toasterId = useId('toaster');
@@ -48,8 +41,8 @@ export const CopyAsMarkdownButton: React.FC<CopyAsMarkdownProps> = ({ storyId = 
 
   // Full URL to the markdown endpoint for this story
   const markdownUrl = React.useMemo(() => {
-    return convertStoryIdToMarkdownUrl(storyId);
-  }, [storyId]);
+    return targetWindow ? convertStoryIdToMarkdownUrl(targetWindow, storyId) : '';
+  }, [storyId, targetWindow]);
 
   // Cleanup: abort pending requests on unmount
   React.useEffect(() => {
@@ -66,6 +59,11 @@ export const CopyAsMarkdownButton: React.FC<CopyAsMarkdownProps> = ({ storyId = 
   const copyPageContentToClipboard = React.useCallback(async () => {
     // Skip if a request is already in progress (abort controller exists and not aborted)
     if (abortControllerRef.current && !abortControllerRef.current.signal.aborted) {
+      return;
+    }
+
+    // Ensure we have a window context to use for clipboard and fetch
+    if (!targetWindow) {
       return;
     }
 
@@ -88,11 +86,11 @@ export const CopyAsMarkdownButton: React.FC<CopyAsMarkdownProps> = ({ storyId = 
     try {
       // Use cached content if available, otherwise fetch from API
       if (!markdownContentCache.current) {
-        markdownContentCache.current = await fetchMarkdownContent(markdownUrl, abortController.signal);
+        markdownContentCache.current = await fetchMarkdownContent(targetWindow, markdownUrl, abortController.signal);
       }
 
       // Copy to clipboard
-      await navigator.clipboard.writeText(markdownContentCache.current);
+      await targetWindow?.navigator.clipboard.writeText(markdownContentCache.current);
 
       // Update toast to success
       updateToast({
@@ -128,12 +126,12 @@ export const CopyAsMarkdownButton: React.FC<CopyAsMarkdownProps> = ({ storyId = 
       // Clear the abort controller ref to allow new requests
       abortControllerRef.current = null;
     }
-  }, [dispatchToast, updateToast, toastId, markdownUrl]);
+  }, [dispatchToast, updateToast, toastId, markdownUrl, targetWindow]);
 
   /** Opens the markdown content in a new browser tab */
   const openInNewTab = React.useCallback(() => {
-    window.open(markdownUrl, '_blank');
-  }, [markdownUrl]);
+    targetWindow?.open(markdownUrl, '_blank');
+  }, [markdownUrl, targetWindow]);
 
   if (!storyId) {
     return null;
@@ -182,33 +180,40 @@ const STORYBOOK_VARIANT_SUFFIX_PATTERN = /--\w+$/g;
 /**
  * Gets the base URL for fetching markdown content from the Storybook LLM endpoint.
  * Each story's markdown is available at: {BASE_URL}/{storyId}.txt
+ * @param targetWindow - The window object to use for location access
  * @returns The base URL constructed from current location origin and pathname
  */
-function getStorybookMarkdownApiBaseUrl(): string {
+function getStorybookMarkdownApiBaseUrl(targetWindow: Window): string {
   // Remove the [page].html file from pathname and append /llms/
-  const basePath = window.location.pathname.replace(/\/[^/]*\.html$/, '');
-  return `${window.location.origin}${basePath}/llms/`;
+  const basePath = targetWindow.location.pathname.replace(/\/[^/]*\.html$/, '');
+  return `${targetWindow.location.origin}${basePath}/llms/`;
 }
 
 /**
  * Converts a Storybook story ID to a markdown URL.
+ * @param targetWindow - The window object to use for location access
  * @param storyId - The Storybook story ID
  * @returns The full URL to the markdown endpoint for the story
  * @example "button--primary" -> "https://storybooks.fluentui.dev/llms/button.txt"
  */
-function convertStoryIdToMarkdownUrl(storyId: string): string {
-  return `${getStorybookMarkdownApiBaseUrl()}${storyId.replace(STORYBOOK_VARIANT_SUFFIX_PATTERN, '.txt')}`;
+function convertStoryIdToMarkdownUrl(targetWindow: Window, storyId: string): string {
+  return `${getStorybookMarkdownApiBaseUrl(targetWindow)}${storyId.replace(STORYBOOK_VARIANT_SUFFIX_PATTERN, '.txt')}`;
 }
 
 /**
  * Fetches markdown content from the Storybook API.
+ * @param targetWindow - The window object to use for fetch access
  * @param url - The URL to fetch markdown content from
  * @param signal - Optional AbortSignal to cancel the request
  * @returns Promise resolving to the markdown text content
  * @throws Error if the fetch request fails or is aborted
  */
-async function fetchMarkdownContent(url: string, signal?: AbortSignal): Promise<string> {
-  const response = await fetch(url, {
+async function fetchMarkdownContent(
+  targetWindow: Window,
+  url: string,
+  signal: AbortSignal | undefined,
+): Promise<string> {
+  const response = await targetWindow.fetch(url, {
     headers: {
       'Content-Type': 'text/plain',
     },
