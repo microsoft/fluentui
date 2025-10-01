@@ -11,7 +11,6 @@
     "@fluentui/react-component-event-listener": "^0.68.2",
     "@fluentui/react-component-ref": "^0.68.2",
     "@fluentui/react-northstar-fela-renderer": "^0.68.2",
-    "@fluentui/react-northstar-styles-renderer": "^0.68.2",
     "@fluentui/styles": "^0.68.2",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",

@@ -25,7 +25,7 @@ import {
   RULE_TYPE,
 } from 'fela-utils';
 
-import { FelaRenderer, FelaRendererChange } from './types';
+import type { FelaRenderer, FelaRendererRuleChange } from './types';
 
 function isPlainObject(val: any) {
   return val != null && typeof val === 'object' && Array.isArray(val) === false;
@@ -114,7 +114,7 @@ Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information
           if (isUndefinedValue(value)) {
             renderer.cache[declarationReference] = {
               className: '',
-            } as FelaRendererChange;
+            } as FelaRendererRuleChange;
             /* eslint-disable no-continue */
             continue;
             /* eslint-enable */
@@ -140,7 +140,7 @@ Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information
           renderer._emitChange(change);
         }
 
-        const cachedClassName = renderer.cache[declarationReference].className;
+        const cachedClassName = (renderer.cache[declarationReference] as FelaRendererRuleChange).className;
 
         // only append if we got a class cached
         if (cachedClassName) {

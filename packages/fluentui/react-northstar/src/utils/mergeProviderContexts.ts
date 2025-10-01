@@ -4,7 +4,7 @@ import {
   StylesContextPerformance,
   StylesContextPerformanceInput,
 } from '@fluentui/react-bindings';
-import { CreateRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { CreateRenderer, Renderer } from '@fluentui/react-northstar-fela-renderer';
 import { mergeThemes } from '@fluentui/styles';
 
 import { isBrowser } from './isBrowser';

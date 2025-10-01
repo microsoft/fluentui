@@ -1,4 +1,4 @@
-import { noopRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { noopRenderer, Renderer } from '@fluentui/react-northstar-fela-renderer';
 import { emptyTheme, ThemeInput, ThemePrepared } from '@fluentui/styles';
 import * as React from 'react';
 
