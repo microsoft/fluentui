@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { TagPickerSize } from '../components/TagPicker/TagPicker.types';
@@ -18,12 +20,12 @@ export interface TagPickerContextValue
     | 'appearance'
     | 'disabled'
   > {
-  triggerRef: React.RefObject<HTMLInputElement | HTMLButtonElement>;
-  popoverRef: React.RefObject<HTMLDivElement>;
+  triggerRef: React.RefObject<HTMLInputElement | HTMLButtonElement | null>;
+  popoverRef: React.RefObject<HTMLDivElement | null>;
   popoverId: string;
-  targetRef: React.RefObject<HTMLDivElement>;
-  secondaryActionRef: React.RefObject<HTMLSpanElement>;
-  tagPickerGroupRef: React.RefObject<HTMLDivElement>;
+  targetRef: React.RefObject<HTMLDivElement | null>;
+  secondaryActionRef: React.RefObject<HTMLSpanElement | null>;
+  tagPickerGroupRef: React.RefObject<HTMLDivElement | null>;
   size: TagPickerSize;
   noPopover?: boolean;
 }
@@ -55,5 +57,5 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
 const TagPickerContext = createContext<TagPickerContextValue | undefined>(undefined);
 
 export const TagPickerContextProvider = TagPickerContext.Provider;
-export const useTagPickerContext_unstable = <T>(selector: ContextSelector<TagPickerContextValue, T>) =>
+export const useTagPickerContext_unstable = <T>(selector: ContextSelector<TagPickerContextValue, T>): T =>
   useContextSelector(TagPickerContext, (ctx = tagPickerContextDefaultValue) => selector(ctx));

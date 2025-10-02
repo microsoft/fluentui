@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -26,8 +27,8 @@ import {
   MenuTrigger,
   MenuItem,
 } from '@fluentui/react-components';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -176,7 +177,7 @@ const columnSizingOptions = {
   },
 };
 
-export const ResizableColumns = () => {
+export const ResizableColumns = (): JSXElement => {
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
 
   return (

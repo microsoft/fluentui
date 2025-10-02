@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { NavItemValue } from './NavContext.types';
 
@@ -18,5 +20,5 @@ const NavCategoryItemContextDefaultValues = {
 
 export const { Provider: NavCategoryItemProvider } = NavCategoryItemContext;
 
-export const useNavCategoryItemContext_unstable = () =>
+export const useNavCategoryItemContext_unstable = (): NavCategoryItemContextValue =>
   React.useContext(NavCategoryItemContext) ?? NavCategoryItemContextDefaultValues;

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { type FieldControlProps, useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
@@ -18,9 +20,9 @@ export type UseListboxSlotState = Pick<ComboboxBaseState, 'multiselect'>;
 type UseListboxSlotOptions = {
   state: UseListboxSlotState;
   triggerRef:
-    | React.RefObject<HTMLInputElement>
-    | React.RefObject<HTMLButtonElement>
-    | React.RefObject<HTMLButtonElement | HTMLInputElement>;
+    | React.RefObject<HTMLInputElement | null>
+    | React.RefObject<HTMLButtonElement | null>
+    | React.RefObject<HTMLButtonElement | HTMLInputElement | null>;
   defaultProps?: Partial<ListboxProps>;
 };
 

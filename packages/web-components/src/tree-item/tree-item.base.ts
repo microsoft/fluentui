@@ -10,6 +10,10 @@ export class BaseTreeItem extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
+  /** @internal */
+  @observable
+  public itemSlot!: HTMLSlotElement;
+
   constructor() {
     super();
     this.elementInternals.role = 'treeitem';
@@ -96,6 +100,7 @@ export class BaseTreeItem extends FASTElement {
     this.$fastController.addStyles(this.styles);
   }
 
+  /** @internal */
   @observable
   public childTreeItems: BaseTreeItem[] | undefined = [];
 
@@ -165,5 +170,10 @@ export class BaseTreeItem extends FASTElement {
     if (this.$fastController.isConnected) {
       this.tabIndex = this.selected ? 0 : -1;
     }
+  }
+
+  /** @internal */
+  public handleItemSlotChange() {
+    this.childTreeItems = this.itemSlot.assignedElements().filter(el => isTreeItem(el));
   }
 }

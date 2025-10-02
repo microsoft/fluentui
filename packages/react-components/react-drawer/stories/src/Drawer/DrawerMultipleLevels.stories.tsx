@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   createPresenceComponent,
   motionTokens,
@@ -92,7 +93,7 @@ const IconPresenceMotion = createPresenceComponent(() => {
   };
 });
 
-export const MultipleLevels = () => {
+export const MultipleLevels = (): JSXElement => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);

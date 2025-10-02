@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
   makeStyles,
@@ -70,7 +71,7 @@ const defaultItems = [
 
 const DEFAULT_COLOR_HSV = tinycolor('#2be700').toHsv();
 
-export const EmptySwatchExample = () => {
+export const EmptySwatchExample = (): JSXElement => {
   const styles = useStyles();
 
   const [selectedValue, setSelectedValue] = React.useState('00B053');

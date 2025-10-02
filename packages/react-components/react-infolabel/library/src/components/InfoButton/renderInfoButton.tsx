@@ -2,13 +2,14 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { PopoverTrigger } from '@fluentui/react-popover';
 import type { InfoButtonState, InfoButtonSlots } from './InfoButton.types';
 
 /**
  * Render the final JSX of InfoButton
  */
-export const renderInfoButton_unstable = (state: InfoButtonState) => {
+export const renderInfoButton_unstable = (state: InfoButtonState): JSXElement => {
   assertSlots<InfoButtonSlots>(state);
 
   return (

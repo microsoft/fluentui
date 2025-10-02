@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-infolabel",
-  "version": "9.4.5",
+  "version": "9.4.6",
   "description": "InfoLabel component for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,21 +21,21 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-shared-contexts": "^9.25.0",
-    "@fluentui/react-label": "^9.3.4",
-    "@fluentui/react-popover": "^9.12.5",
-    "@fluentui/react-tabster": "^9.26.4",
-    "@fluentui/react-jsx-runtime": "^9.1.6",
+    "@fluentui/react-shared-contexts": "^9.25.1",
+    "@fluentui/react-label": "^9.3.5",
+    "@fluentui/react-popover": "^9.12.6",
+    "@fluentui/react-tabster": "^9.26.5",
+    "@fluentui/react-jsx-runtime": "^9.2.0",
     "@fluentui/react-theme": "^9.2.0",
-    "@fluentui/react-utilities": "^9.24.0",
+    "@fluentui/react-utilities": "^9.24.1",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.14.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.8.0 <20.0.0",
+    "@types/react-dom": ">=16.8.0 <20.0.0",
+    "react": ">=16.14.0 <20.0.0",
+    "react-dom": ">=16.8.0 <20.0.0"
   },
   "exports": {
     ".": {

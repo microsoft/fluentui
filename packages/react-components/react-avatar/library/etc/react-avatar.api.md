@@ -183,16 +183,16 @@ export type PartitionAvatarGroupItemsOptions<T> = {
 };
 
 // @public (undocumented)
-export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
+export const renderAvatar_unstable: (state: AvatarState) => JSXElement;
 
 // @public
-export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSX.Element;
+export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSXElement;
 
 // @public
-export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
+export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSXElement;
 
 // @public
-export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState, contextValues: AvatarGroupContextValues) => JSX.Element;
+export const renderAvatarGroupPopover_unstable: (state: AvatarGroupPopoverState, contextValues: AvatarGroupContextValues) => JSXElement;
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;

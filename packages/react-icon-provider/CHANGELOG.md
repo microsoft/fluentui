@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icon-provider
 
-This log was last generated on Tue, 26 Aug 2025 07:21:44 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Oct 2025 07:20:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.85)
+
+Thu, 02 Oct 2025 07:20:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.84..@fluentui/react-icon-provider_v1.3.85)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
 
 ## [1.3.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.84)
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement } from '@fluentui/react-components';
 import {
   FolderRegular,
   EditRegular,
@@ -14,8 +14,7 @@ import {
 import {
   PresenceBadgeStatus,
   Avatar,
-  useScrollbarWidth,
-  useFluent,
+  useApplyScrollbarWidth,
   TableBody,
   TableCell,
   TableRow,
@@ -155,9 +154,8 @@ const RenderRow = ({ index, style, data }: ReactWindowRenderFnProps) => {
   );
 };
 
-export const Virtualization = () => {
-  const { targetDocument } = useFluent();
-  const scrollbarWidth = useScrollbarWidth({ targetDocument });
+export const Virtualization = (): JSXElement => {
+  const appliedScrollbarWidthRef = useApplyScrollbarWidth();
 
   const {
     getRows,
@@ -216,7 +214,7 @@ export const Virtualization = () => {
           <TableHeaderCell>Last updated</TableHeaderCell>
           <TableHeaderCell>Last update</TableHeaderCell>
           {/** Scrollbar alignment for the header */}
-          <div role="presentation" style={{ width: scrollbarWidth }} />
+          <div role="presentation" ref={appliedScrollbarWidthRef} />
         </TableRow>
       </TableHeader>
       <TableBody>

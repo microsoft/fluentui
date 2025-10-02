@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 export type MenuSplitGroupContextValue = {
@@ -12,14 +14,14 @@ const MenuSplitGroupContext = React.createContext<MenuSplitGroupContextValue | u
 ) as React.Context<MenuSplitGroupContextValue>;
 
 export const menuSplitGroupContextDefaultValue = {
-  setMultiline: () => null,
+  setMultiline: (): null => null,
 };
 
 export const MenuSplitGroupContextProvider = MenuSplitGroupContext.Provider;
-export const useMenuSplitGroupContext_unstable = () =>
+export const useMenuSplitGroupContext_unstable = (): MenuSplitGroupContextValue =>
   React.useContext(MenuSplitGroupContext) ?? menuSplitGroupContextDefaultValue;
 
-export const useIsInMenuSplitGroup = () => {
+export const useIsInMenuSplitGroup = (): boolean => {
   const context = useMenuSplitGroupContext_unstable();
   return context !== menuSplitGroupContextDefaultValue;
 };

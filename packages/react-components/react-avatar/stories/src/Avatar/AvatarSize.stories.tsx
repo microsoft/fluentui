@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 
-export const Size = () => (
+export const Size = (): JSXElement => (
   <>
     <Avatar initials="16" size={16} />
     <Avatar initials="20" size={20} />

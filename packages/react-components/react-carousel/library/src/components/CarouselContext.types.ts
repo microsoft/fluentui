@@ -32,9 +32,9 @@ export type CarouselContextValue = {
   enableAutoplay: (autoplay: boolean, temporary?: boolean) => void;
   resetAutoplay: () => void;
   // Container with controls passed to carousel engine
-  containerRef?: React.RefObject<HTMLDivElement>;
+  containerRef?: React.RefObject<HTMLDivElement | null>;
   // Viewport without controls used for interactive functionality (draggable, pause autoplay etc.)
-  viewportRef?: React.RefObject<HTMLDivElement>;
+  viewportRef?: React.RefObject<HTMLDivElement | null>;
 };
 
 /**

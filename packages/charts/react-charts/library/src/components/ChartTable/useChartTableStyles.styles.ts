@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ChartTableProps, ChartTableStyles } from './ChartTable.types';
@@ -26,7 +28,7 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     fontWeight: tokens.fontWeightSemibold,
     backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground1,
+    color: 'black',
     ...shorthands.padding(tokens.spacingHorizontalS),
     textAlign: 'left',
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralStroke2),
@@ -39,7 +41,7 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     ...shorthands.padding(tokens.spacingHorizontalS),
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralStroke2),
-    color: tokens.colorNeutralForeground1,
+    color: 'black',
     textAlign: 'left',
     '@media (forced-colors: active)': {
       color: 'WindowText',

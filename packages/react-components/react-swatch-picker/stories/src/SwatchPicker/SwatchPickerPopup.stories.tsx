@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Button,
@@ -90,7 +91,7 @@ const colorSet2 = [
   },
 ];
 
-export const SwatchPickerPopup = () => {
+export const SwatchPickerPopup = (): JSXElement => {
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
 

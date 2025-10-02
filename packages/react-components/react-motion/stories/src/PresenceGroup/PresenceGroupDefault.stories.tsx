@@ -12,6 +12,7 @@ import {
 } from '@fluentui/react-components';
 import { AddRegular, DeleteRegular } from '@fluentui/react-icons';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {
@@ -179,7 +180,7 @@ const ItemMotion = createPresenceComponent({
   },
 });
 
-export const PresenceGroupDefault = () => {
+export const PresenceGroupDefault = (): JSXElement => {
   const classes = useClasses();
   const [limit, setLimit] = React.useState(3);
 

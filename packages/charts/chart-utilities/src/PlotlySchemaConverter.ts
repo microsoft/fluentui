@@ -232,6 +232,19 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
 };
 
 const validateBarData = (data: Partial<PlotData>) => {
+  const isXEmpty = data.x && isArrayOrTypedArray(data.x) && data.x.length === 0;
+  const isYEmpty = data.y && isArrayOrTypedArray(data.y) && data.y.length === 0;
+  if (isXEmpty || isYEmpty) {
+    let emptyMsg = 'Bar chart: ';
+    if (isXEmpty && isYEmpty) {
+      emptyMsg += 'both x and y arrays are empty.';
+    } else if (isXEmpty) {
+      emptyMsg += 'x array is empty.';
+    } else if (isYEmpty) {
+      emptyMsg += 'y array is empty.';
+    }
+    throw new Error(emptyMsg);
+  }
   if (data.orientation === 'h') {
     if (!isNumberArray(data.x) && !isDateArray(data.x)) {
       throw new Error(
@@ -245,8 +258,10 @@ const validateBarData = (data: Partial<PlotData>) => {
       );
     }
     validateSeriesData(data, false);
-  } else if (!isNumberArray(data.y) && !isStringArray(data.y) && !isObjectArray(data.y)) {
-    throw new Error(`Non numeric, string, or object Y values encountered, type: ${typeof data.y}`);
+  } else {
+    if (!isNumberArray(data.y) && !isStringArray(data.y) && !isObjectArray(data.y)) {
+      throw new Error(`Non numeric, string, or object Y values encountered, type: ${typeof data.y}`);
+    }
   }
 };
 const isScatterMarkers = (mode: string): boolean => {
@@ -287,7 +302,7 @@ const validateScatterData = (data: Partial<PlotData>, layout: Partial<Layout> | 
   }
 
   const isAreaChart = isScatterAreaChart(data);
-  const isFallbackNeeded = doesScatterNeedVSBCFallback(data);
+  const isFallbackNeeded = doesScatterNeedFallback(data);
   if (isAreaChart && isFallbackNeeded) {
     throw new Error(
       `${UNSUPPORTED_MSG_PREFIX} ${data.type}, Fallback to VerticalStackedBarChart is not allowed for Area Charts.`,
@@ -527,11 +542,11 @@ export const mapFluentChart = (input: any): OutputChartType => {
             return { isValid: true, traceIndex, type: 'scatter' };
           }
 
-          if (!doesScatterNeedVSBCFallback(scatterData)) {
+          if (!doesScatterNeedFallback(scatterData)) {
             return { isValid: true, traceIndex, type: isAreaChart ? 'area' : 'line' };
           }
 
-          // isScatterAreaChart and doesScatterNeedVSBCFallback cannot both return true for the
+          // isScatterAreaChart and doesScatterNeedFallback cannot both return true for the
           // same trace due to the validation logic in validateScatterData.
           return { isValid: true, traceIndex, type: 'fallback' };
         default:
@@ -566,12 +581,23 @@ export const mapFluentChart = (input: any): OutputChartType => {
       trace => trace.type === 'groupedverticalbar' || trace.type === 'verticalstackedbar',
     );
     const containsLines = mappedTraces.some(trace => trace.type === 'line' || trace.type === 'fallback');
-    if (containsBars && containsLines) {
-      return {
-        isValid: true,
-        type: 'fallback',
-        validTracesInfo: tracesInfo,
-      };
+    if (containsLines) {
+      if (containsBars) {
+        const shouldUseGVBC = !mappedTraces.some(trace => trace.type === 'verticalstackedbar');
+        return {
+          isValid: true,
+          type: shouldUseGVBC ? 'groupedverticalbar' : 'fallback',
+          validTracesInfo: tracesInfo,
+        };
+      }
+
+      if (mappedTraces.some(trace => trace.type === 'fallback')) {
+        return {
+          isValid: true,
+          type: 'fallback',
+          validTracesInfo: tracesInfo,
+        };
+      }
     }
 
     const uniqueTypes = new Set(mappedTraces.map(trace => trace.type));
@@ -619,11 +645,11 @@ export const getAxisKey = (axLetter: 'x' | 'y', axId: number) => {
   return `${axLetter}axis${axId > 1 ? axId : ''}` as keyof Layout;
 };
 
-const isScatterAreaChart = (data: Partial<PlotData>) => {
+export const isScatterAreaChart = (data: Partial<PlotData>) => {
   return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
 };
 
-const doesScatterNeedVSBCFallback = (data: Partial<PlotData>) => {
+const doesScatterNeedFallback = (data: Partial<PlotData>) => {
   if (isScatterMarkers(data.mode ?? '')) {
     return false;
   }

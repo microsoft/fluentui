@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TagGroup,
   Tag,
@@ -132,7 +133,7 @@ const DismissWithInteractionTags = () => {
   );
 };
 
-export const Dismiss = () => {
+export const Dismiss = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.container}>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Dialog,
   DialogSurface,
@@ -12,7 +13,7 @@ import {
 } from '@fluentui/react-components';
 import story from './DialogTriggerOutsideDialog.md';
 
-export const TriggerOutsideDialog = () => {
+export const TriggerOutsideDialog = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
   const restoreFocusTargetAttribute = useRestoreFocusTarget();
 

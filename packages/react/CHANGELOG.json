@@ -2,6 +2,51 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 02 Oct 2025 07:20:40 GMT",
+      "tag": "@fluentui/react_v8.123.6",
+      "version": "8.123.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "826ca93c0180061b9214af6057f76a8683090e4c",
+            "comment": "chore: enable workspace-plugin for v8 project for RIT and generic targets"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Oct 2025 07:20:00 GMT",
+      "tag": "@fluentui/react_v8.123.6",
+      "version": "8.123.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "572f92d4d85ea6619124ca8174a955a039c951d0",
+            "comment": "chore: add RIT targets"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Sep 2025 07:20:30 GMT",
+      "tag": "@fluentui/react_v8.123.6",
+      "version": "8.123.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4a3743a0ec1a2c0463323133d32e0e1b32e4e637",
+            "comment": "fix(DetailsList): DetailsRow correctly falls back to horizontal FocusZone"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Aug 2025 07:21:44 GMT",
       "tag": "@fluentui/react_v8.123.5",
       "version": "8.123.5",

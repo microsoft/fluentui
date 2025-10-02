@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { DonutChart, ChartProps, ChartDataPoint, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
-export const DonutChartCustomAccessibility = () => {
+export const DonutChartCustomAccessibility = (): JSXElement => {
   const points: ChartDataPoint[] = [
     {
       legend: 'first',

@@ -1,10 +1,12 @@
+'use client';
+
 import * as React from 'react';
 
 /**
  * A Ref function which can be treated like a ref object in that it has an attached
  * current property, which will be updated as the ref is evaluated.
  */
-export type RefObjectFunction<T> = React.RefObject<T> & ((value: T | null) => void);
+export type RefObjectFunction<T> = React.RefObject<T | null> & ((value: T | null) => void);
 
 /** @internal */
 type MutableRefObjectFunction<T> = React.MutableRefObject<T | null> & ((value: T | null) => void);

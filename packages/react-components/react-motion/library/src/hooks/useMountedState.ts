@@ -1,3 +1,5 @@
+'use client';
+
 import { useForceUpdate } from '@fluentui/react-utilities';
 import * as React from 'react';
 

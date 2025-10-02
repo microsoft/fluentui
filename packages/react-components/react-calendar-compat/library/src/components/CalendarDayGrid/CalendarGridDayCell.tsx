@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
 import { getRTLSafeKey } from '@fluentui/react-utilities';

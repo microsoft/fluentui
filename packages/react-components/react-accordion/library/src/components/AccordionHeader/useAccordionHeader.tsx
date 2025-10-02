@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, slot, isResolvedShorthand } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from '@fluentui/react-aria';

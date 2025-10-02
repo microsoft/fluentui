@@ -284,6 +284,7 @@ import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createMotionComponent } from '@fluentui/react-motion';
+import { createMotionComponentVariant } from '@fluentui/react-motion';
 import { createPresenceComponent } from '@fluentui/react-motion';
 import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
@@ -1542,6 +1543,7 @@ import { useAppItem_unstable } from '@fluentui/react-nav';
 import { useAppItemStatic_unstable } from '@fluentui/react-nav';
 import { useAppItemStaticStyles_unstable } from '@fluentui/react-nav';
 import { useAppItemStyles_unstable } from '@fluentui/react-nav';
+import { useApplyScrollbarWidth } from '@fluentui/react-utilities';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -2014,6 +2016,7 @@ import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
+import { useTypingAnnounce } from '@fluentui/react-aria';
 import { useUncontrolledFocus } from '@fluentui/react-tabster';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
@@ -2578,6 +2581,8 @@ export { createHighContrastTheme }
 export { createLightTheme }
 
 export { createMotionComponent }
+
+export { createMotionComponentVariant }
 
 export { createPresenceComponent }
 
@@ -5095,6 +5100,8 @@ export { useAppItemStaticStyles_unstable }
 
 export { useAppItemStyles_unstable }
 
+export { useApplyScrollbarWidth }
+
 export { useAriaLiveAnnouncer_unstable }
 
 export { useAriaLiveAnnouncerContextValues_unstable }
@@ -6038,6 +6045,8 @@ export { useTreeItemPersonaLayoutStyles_unstable }
 export { useTreeItemStyles_unstable }
 
 export { useTreeStyles_unstable }
+
+export { useTypingAnnounce }
 
 export { useUncontrolledFocus }
 

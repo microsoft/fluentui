@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { RegisterPortalFn } from './types';
 
@@ -9,6 +11,6 @@ const portalCompatContextDefaultValue = () => () => undefined;
 
 export const PortalCompatContextProvider = PortalCompatContext.Provider;
 
-export function usePortalCompat() {
+export function usePortalCompat(): RegisterPortalFn {
   return React.useContext(PortalCompatContext) ?? portalCompatContextDefaultValue;
 }

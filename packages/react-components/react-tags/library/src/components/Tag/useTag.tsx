@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { DismissRegular } from '@fluentui/react-icons';
@@ -94,7 +96,12 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
-      { elementType },
+      {
+        defaultProps: {
+          type: elementType === 'button' ? 'button' : undefined,
+        },
+        elementType,
+      },
     ),
 
     media: slot.optional(props.media, { elementType: 'span' }),

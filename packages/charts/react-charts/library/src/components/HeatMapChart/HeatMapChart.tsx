@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { HeatMapChartProps } from './HeatMapChart.types';
 import {
@@ -120,7 +122,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
       } else {
-        domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+        domainNRangeValue = domainRangeOfXStringAxis(_margins.current, width, isRTL);
       }
       return domainNRangeValue;
     }

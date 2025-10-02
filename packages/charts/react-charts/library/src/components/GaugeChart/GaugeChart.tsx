@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useGaugeChartStyles } from './useGaugeChartStyles.styles';
 import { select as d3Select } from 'd3-selection';
@@ -38,7 +40,7 @@ export const BREAKPOINTS = [
   { minRadius: 142, arcWidth: 32, fontSize: 40 },
 ];
 
-export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number) => {
+export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number): number => {
   let needleRotation = ((chartValue - minValue) / (maxValue - minValue)) * 180;
   if (needleRotation < 0) {
     needleRotation = 0;
@@ -55,7 +57,7 @@ export const getSegmentLabel = (
   maxValue: number,
   variant?: GaugeChartVariant,
   isAriaLabel: boolean = false,
-) => {
+): string => {
   if (isAriaLabel) {
     return minValue === 0 && variant === 'single-segment'
       ? `${segment.legend}, ${segment.size} out of ${maxValue} or ${((segment.size / maxValue) * 100).toFixed()}%`
@@ -679,8 +681,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                       onMouseEnter={e => _handleMouseOver(e, segment.legend)}
                       onMouseLeave={e => _handleCalloutDismiss()}
                       onMouseMove={e => _handleMouseOver(e, segment.legend)}
-                      data-is-focusable={_legendHighlighted(segment.legend) || _noLegendHighlighted()}
-                      tabIndex={segment.legend !== '' ? 0 : undefined}
+                      tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
                     />
                   </React.Fragment>
                 );

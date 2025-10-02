@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   DonutChart,
   ChartProps,
@@ -8,10 +9,9 @@ import {
   ChartPopoverProps,
 } from '@fluentui/react-charts';
 import { Switch, tokens } from '@fluentui/react-components';
-// eslint-disable-next-line  @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-components';
 
-export const DonutChartCustomCallout = () => {
+export const DonutChartCustomCallout = (): JSXElement => {
   const [useCustomPopover, setUseCustomPopover] = React.useState(false);
 
   const points: ChartDataPoint[] = [

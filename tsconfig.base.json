@@ -85,6 +85,7 @@
       "@fluentui/react-infolabel-stories": ["packages/react-components/react-infolabel/stories/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/library/src/index.ts"],
       "@fluentui/react-input-stories": ["packages/react-components/react-input/stories/src/index.ts"],
+      "@fluentui/react-integration-tester": ["tools/react-integration-tester/src/index.ts"],
       "@fluentui/react-jsx-runtime": ["packages/react-components/react-jsx-runtime/src/index.ts"],
       "@fluentui/react-jsx-runtime/jsx-dev-runtime": [
         "packages/react-components/react-jsx-runtime/src/jsx-dev-runtime.ts"

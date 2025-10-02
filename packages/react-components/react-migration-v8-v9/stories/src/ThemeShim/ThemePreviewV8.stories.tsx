@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { CommandBar } from '@fluentui/react/lib/CommandBar';
@@ -180,7 +181,7 @@ export class ThemePreviewV8 extends React.Component<ISamplesProps, ISamplesState
     };
     this._onToggleChange = this._onToggleChange.bind(this);
   }
-  public render() {
+  public render(): JSXElement {
     return (
       <div style={{ backgroundColor: this.props.backgroundColor, color: this.props.textColor }}>
         <div className={layoutStyles.root}>
@@ -289,7 +290,7 @@ export class ThemePreviewV8 extends React.Component<ISamplesProps, ISamplesState
     );
   }
 
-  private _onToggleChange() {
+  private _onToggleChange(): void {
     this.setState({
       learnMoreLinkDisabled: !this.state.learnMoreLinkDisabled,
       selectOneDropdownDisabled: !this.state.selectOneDropdownDisabled,

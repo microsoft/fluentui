@@ -1,3 +1,5 @@
+'use client';
+
 import { TreeNavigationData_unstable, TreeNavigationMode } from '../components/Tree/Tree.types';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
@@ -14,7 +16,11 @@ import { useFocusFinders } from '@fluentui/react-tabster';
  *
  * @param navigationMode - the navigation mode of the tree, 'tree' (default) or 'treegrid'
  */
-export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
+export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree'): {
+  navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => void;
+  treeRef: React.RefCallback<HTMLElement>;
+  forceUpdateRovingTabIndex: () => void;
+} {
   'use no memo';
 
   const { rove, initialize: initializeRovingTabIndex, forceUpdate: forceUpdateRovingTabIndex } = useRovingTabIndex();

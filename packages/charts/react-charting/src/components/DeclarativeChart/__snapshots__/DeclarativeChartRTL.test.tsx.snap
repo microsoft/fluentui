@@ -1544,7 +1544,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #9a3d0c;
+                          fill: #3487c7;
                           opacity: 0.1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -1555,446 +1555,6 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                     d="M0.58,-38.835A3,3,0,0,1,3.855,-41.823A42,42,0,0,1,39.24,-14.973A3,3,0,0,1,37.245,-11.014L-38.675,10.21Z"
                     data-is-focusable="false"
                     id="_Pie_1Merc7"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Fiat, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #b146c2;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M37.557,-9.897A3,3,0,0,1,41.316,-7.547A42,42,0,0,1,41.991,0.868A3,3,0,0,1,38.655,3.787L-39.677,-5.07Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Fiat2"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Hornet, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #ad006a;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M38.524,4.94A3,3,0,0,1,41.125,8.53A42,42,0,0,1,38.588,16.583A3,3,0,0,1,34.399,18.034L-34.865,-19.607Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Hornet2"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Mazda, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #2c72a8;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M33.845,19.053A3,3,0,0,1,34.906,23.357A42,42,0,0,1,29.529,29.867A3,3,0,0,1,25.102,29.638L-24.943,-31.271Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Mazda2"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Toyota, 2."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #6d5700;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M24.206,30.374A3,3,0,0,1,23.572,34.762A42,42,0,0,1,16.143,38.774A3,3,0,0,1,12.127,36.898L-11.365,-38.351Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Toyota2"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="AMC, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #637cef;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M11.019,37.244A3,3,0,0,1,8.783,41.071A42,42,0,0,1,8.011,41.229A3,3,0,0,1,4.454,38.583L-3.416,-39.854Z"
-                    data-is-focusable="false"
-                    id="_Pie_1AMC1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Cadillac, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #f7630c;
-                          opacity: 1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M3.3,38.699A3,3,0,0,1,0.339,41.999A42,42,0,0,1,-0.448,41.998A3,3,0,0,1,-3.401,38.691L4.673,-39.726Z"
-                    data-is-focusable="true"
-                    id="_Pie_1Cadillac1"
-                    role="img"
-                    tabindex="0"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Camaro, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #57811b;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-4.554,38.572A3,3,0,0,1,-8.119,41.208A42,42,0,0,1,-8.89,41.048A3,3,0,0,1,-11.116,37.215L12.571,-37.973Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Camaro1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Chrysler, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #9373c0;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-12.223,36.866A3,3,0,0,1,-16.244,38.731A42,42,0,0,1,-16.968,38.42A3,3,0,0,1,-18.377,34.217L19.955,-34.667Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Chrysler1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Datsun, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #ca5010;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-19.391,33.653A3,3,0,0,1,-23.705,34.671A42,42,0,0,1,-24.351,34.22A3,3,0,0,1,-24.886,29.819L26.522,-29.943Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Datsun1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Dodge, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #3a96dd;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-25.766,29.063A3,3,0,0,1,-30.197,29.192A42,42,0,0,1,-30.739,28.62A3,3,0,0,1,-30.377,24.202L32.005,-23.994Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Dodge1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Duster, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #e3008c;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-31.087,23.284A3,3,0,0,1,-35.453,22.518A42,42,0,0,1,-35.869,21.85A3,3,0,0,1,-34.626,17.595L36.178,-17.063Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Duster1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Ferrari, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #13a10e;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-35.136,16.553A3,3,0,0,1,-39.259,14.924A42,42,0,0,1,-39.532,14.185A3,3,0,0,1,-37.458,10.267L38.872,-9.434Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Ferrari1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Ford, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #ae8c00;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-37.748,9.144A3,3,0,0,1,-41.459,6.719A42,42,0,0,1,-41.578,5.941A3,3,0,0,1,-38.758,2.52L39.975,-1.42Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Ford1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Honda, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #3c51b4;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-38.816,1.362A3,3,0,0,1,-41.963,-1.76A42,42,0,0,1,-41.923,-2.547A3,3,0,0,1,-38.472,-5.33L39.443,6.653Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Honda1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Lincoln, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #026467;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-38.296,-6.477A3,3,0,0,1,-40.751,-10.168A42,42,0,0,1,-40.553,-10.93A3,3,0,0,1,-36.613,-12.962L37.297,14.453Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Lincoln1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Lotus, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #674c8c;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-36.209,-14.05A3,3,0,0,1,-37.871,-18.16A42,42,0,0,1,-37.524,-18.867A3,3,0,0,1,-33.256,-20.064L33.626,21.663Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Lotus1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Maserati, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #0e7a0b;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-32.642,-21.048A3,3,0,0,1,-33.443,-25.409A42,42,0,0,1,-32.96,-26.031A3,3,0,0,1,-28.538,-26.345L28.58,27.986Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Maserati1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Pontiac, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #405f14;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-27.739,-27.186A3,3,0,0,1,-27.646,-31.618A42,42,0,0,1,-27.048,-32.131A3,3,0,0,1,-22.653,-31.549L22.364,33.164Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Pontiac1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Porsche, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #863593;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-21.701,-32.211A3,3,0,0,1,-20.718,-36.534A42,42,0,0,1,-20.03,-36.916A3,3,0,0,1,-15.842,-35.462L15.233,36.986Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Porsche1"
-                    role="img"
-                    tabindex="-1"
-                  />
-                </g>
-                <g>
-                  <path
-                    aria-label="Valiant, 1."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #4f6bed;
-                          opacity: 0.1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-14.776,-35.919A3,3,0,0,1,-12.943,-39.956A42,42,0,0,1,-12.192,-40.192A3,3,0,0,1,-8.382,-37.924L7.48,39.294Z"
-                    data-is-focusable="false"
-                    id="_Pie_1Valiant1"
                     role="img"
                     tabindex="-1"
                   />
@@ -2014,9 +1574,449 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M-7.246,-38.158A3,3,0,0,1,-4.639,-41.743A42,42,0,0,1,-3.855,-41.823A3,3,0,0,1,-0.58,-38.835L-0.58,39.996Z"
+                    d="M37.557,-9.897A3,3,0,0,1,41.316,-7.547A42,42,0,0,1,41.451,-6.771A3,3,0,0,1,38.7,-3.295L-39.938,2.219Z"
                     data-is-focusable="false"
                     id="_Pie_1Volvo1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Valiant, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #4f6bed;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M38.781,-2.138A3,3,0,0,1,41.99,0.921A42,42,0,0,1,41.965,1.708A3,3,0,0,1,38.571,4.56L-39.568,-5.863Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Valiant1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Porsche, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #6d5700;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M38.418,5.709A3,3,0,0,1,40.946,9.351A42,42,0,0,1,40.763,10.117A3,3,0,0,1,36.865,12.227L-37.579,-13.705Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Porsche1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Pontiac, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #863593;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M36.483,13.323A3,3,0,0,1,38.227,17.399A42,42,0,0,1,37.894,18.112A3,3,0,0,1,33.65,19.395L-34.053,-20.986Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Pontiac1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Maserati, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #405f14;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M33.056,20.391A3,3,0,0,1,33.944,24.735A42,42,0,0,1,33.474,25.367A3,3,0,0,1,29.06,25.769L-29.134,-27.409Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Maserati1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Lotus, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #9a3d0c;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M28.277,26.626A3,3,0,0,1,28.273,31.059A42,42,0,0,1,27.685,31.584A3,3,0,0,1,23.28,31.09L-23.023,-32.71Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Lotus1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Lincoln, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #2c72a8;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M22.341,31.771A3,3,0,0,1,21.445,36.113A42,42,0,0,1,20.764,36.508A3,3,0,0,1,16.548,35.138L-15.97,-36.674Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Lincoln1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Honda, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #0e7a0b;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M15.491,35.617A3,3,0,0,1,13.74,39.689A42,42,0,0,1,12.993,39.94A3,3,0,0,1,9.139,37.749L-8.264,-39.137Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Honda1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Ford, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #674c8c;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M8.008,38.005A3,3,0,0,1,5.473,41.642A42,42,0,0,1,4.691,41.737A3,3,0,0,1,1.357,38.816L-0.22,-39.999Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Ford1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Ferrari, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #026467;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M0.197,38.839A3,3,0,0,1,-3.018,41.891A42,42,0,0,1,-3.803,41.827A3,3,0,0,1,-6.482,38.295L7.833,-39.226Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Ferrari1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Duster, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #ad006a;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-7.622,38.084A3,3,0,0,1,-11.386,40.427A42,42,0,0,1,-12.142,40.207A3,3,0,0,1,-14.055,36.208L15.566,-36.847Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Duster1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Dodge, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #3c51b4;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-15.13,35.772A3,3,0,0,1,-19.287,37.309A42,42,0,0,1,-19.984,36.941A3,3,0,0,1,-21.053,32.639L22.662,-32.961Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Dodge1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Datsun, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #2aa0a4;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-22.018,31.996A3,3,0,0,1,-26.4,32.665A42,42,0,0,1,-27.008,32.165A3,3,0,0,1,-27.19,27.735L28.83,-27.727Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Datsun1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Chrysler, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #ae8c00;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-28.006,26.911A3,3,0,0,1,-32.433,26.685A42,42,0,0,1,-32.928,26.072A3,3,0,0,1,-32.214,21.697L33.82,-21.359Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Chrysler1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Camaro, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #dbdbdb;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-32.848,20.725A3,3,0,0,1,-37.139,19.613A42,42,0,0,1,-37.5,18.913A3,3,0,0,1,-35.921,14.771L37.426,-14.117Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Camaro1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Cadillac, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #ea38a6;
+                          opacity: 1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-36.346,13.692A3,3,0,0,1,-40.326,11.739A42,42,0,0,1,-40.539,10.981A3,3,0,0,1,-38.159,7.241L39.501,-6.298Z"
+                    data-is-focusable="true"
+                    id="_Pie_1Cadillac1"
+                    role="img"
+                    tabindex="0"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="AMC, 1."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #9a3d0c;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-38.358,6.098A3,3,0,0,1,-41.863,3.385A42,42,0,0,1,-41.919,2.599A3,3,0,0,1,-38.835,-0.585L39.96,1.779Z"
+                    data-is-focusable="false"
+                    id="_Pie_1AMC1"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Toyota, 2."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #9373c0;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-38.8,-1.745A3,3,0,0,1,-41.688,-5.108A42,42,0,0,1,-39.824,-13.342A3,3,0,0,1,-35.77,-15.134L36.364,16.664Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Toyota2"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Mazda, 2."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #c50f1f;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-35.302,-16.196A3,3,0,0,1,-36.714,-20.398A42,42,0,0,1,-31.893,-27.328A3,3,0,0,1,-27.462,-27.466L27.438,29.106Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Mazda2"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Hornet, 2."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #13a10e;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-26.63,-28.273A3,3,0,0,1,-26.359,-32.698A42,42,0,0,1,-19.287,-37.309A3,3,0,0,1,-15.13,-35.772L14.491,37.283Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Hornet2"
+                    role="img"
+                    tabindex="-1"
+                  />
+                </g>
+                <g>
+                  <path
+                    aria-label="Fiat, 2."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #f7630c;
+                          opacity: 0.1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-14.055,-36.208A3,3,0,0,1,-12.142,-40.207A42,42,0,0,1,-3.855,-41.823A3,3,0,0,1,-0.58,-38.835L-0.58,39.996Z"
+                    data-is-focusable="false"
+                    id="_Pie_1Fiat2"
                     role="img"
                     tabindex="-1"
                   />
@@ -2173,7 +2173,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                                   {
                                     background-color: #ffffff;
-                                    border-color: #9a3d0c;
+                                    border-color: #3487c7;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -2213,708 +2213,8 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Fiat"
-                            aria-posinset="2"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #b146c2;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Fiat
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Hornet"
-                            aria-posinset="3"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #ad006a;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Hornet
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Mazda"
-                            aria-posinset="4"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #2c72a8;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Mazda
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
                             aria-label="Toyota"
-                            aria-posinset="5"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #6d5700;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Toyota
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="AMC"
-                            aria-posinset="6"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #637cef;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              AMC
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Cadillac"
-                            aria-posinset="7"
-                            aria-selected="true"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #f7630c;
-                                    border-color: #f7630c;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #f7630c, #f7630c);
-                                    opacity: ;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: ;
-                                  }
-                            >
-                              Cadillac
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Camaro"
-                            aria-posinset="8"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #57811b;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Camaro
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Chrysler"
-                            aria-posinset="9"
+                            aria-posinset="2"
                             aria-selected="false"
                             aria-setsize="22"
                             class=
@@ -2999,7 +2299,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Chrysler
+                              Toyota
                             </div>
                           </button>
                         </div>
@@ -3013,8 +2313,8 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Datsun"
-                            aria-posinset="10"
+                            aria-label="Mazda"
+                            aria-posinset="3"
                             aria-selected="false"
                             aria-setsize="22"
                             class=
@@ -3073,7 +2373,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                                   {
                                     background-color: #ffffff;
-                                    border-color: #ca5010;
+                                    border-color: #c50f1f;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -3099,7 +2399,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Datsun
+                              Mazda
                             </div>
                           </button>
                         </div>
@@ -3113,208 +2413,8 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Dodge"
-                            aria-posinset="11"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #3a96dd;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Dodge
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Duster"
-                            aria-posinset="12"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #e3008c;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Duster
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Ferrari"
-                            aria-posinset="13"
+                            aria-label="Hornet"
+                            aria-posinset="4"
                             aria-selected="false"
                             aria-setsize="22"
                             class=
@@ -3399,7 +2499,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Ferrari
+                              Hornet
                             </div>
                           </button>
                         </div>
@@ -3413,8 +2513,8 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Ford"
-                            aria-posinset="14"
+                            aria-label="Fiat"
+                            aria-posinset="5"
                             aria-selected="false"
                             aria-setsize="22"
                             class=
@@ -3473,7 +2573,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                                   {
                                     background-color: #ffffff;
-                                    border-color: #ae8c00;
+                                    border-color: #f7630c;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -3499,7 +2599,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Ford
+                              Fiat
                             </div>
                           </button>
                         </div>
@@ -3513,8 +2613,8 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Honda"
-                            aria-posinset="15"
+                            aria-label="Volvo"
+                            aria-posinset="6"
                             aria-selected="false"
                             aria-setsize="22"
                             class=
@@ -3573,7 +2673,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                                   {
                                     background-color: #ffffff;
-                                    border-color: #3c51b4;
+                                    border-color: #ea38a6;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -3599,507 +2699,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Honda
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Lincoln"
-                            aria-posinset="16"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #026467;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Lincoln
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Lotus"
-                            aria-posinset="17"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #674c8c;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Lotus
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Maserati"
-                            aria-posinset="18"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #0e7a0b;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Maserati
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Pontiac"
-                            aria-posinset="19"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #405f14;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Pontiac
-                            </div>
-                          </button>
-                        </div>
-                        <div
-                          class=
-                              ms-OverflowSet-item
-                              {
-                                display: inherit;
-                                flex-shrink: 0;
-                              }
-                          role="none"
-                        >
-                          <button
-                            aria-label="Porsche"
-                            aria-posinset="20"
-                            aria-selected="false"
-                            aria-setsize="22"
-                            class=
-
-                                {
-                                  align-items: center;
-                                  background: none;
-                                  border: none;
-                                  cursor: pointer;
-                                  display: flex;
-                                  outline: transparent;
-                                  padding-bottom: 8px;
-                                  padding-left: 8px;
-                                  padding-right: 8px;
-                                  padding-top: 8px;
-                                  position: relative;
-                                  text-transform: capitalize;
-                                }
-                                &::-moz-focus-inner {
-                                  border: 0;
-                                }
-                                .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  border: 1px solid transparent;
-                                  bottom: 1px;
-                                  content: "";
-                                  left: 1px;
-                                  outline: 1px solid #605e5c;
-                                  position: absolute;
-                                  right: 1px;
-                                  top: 1px;
-                                  z-index: 1;
-                                }
-                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                                  outline-color: #605e5c;
-                                }
-                            data-is-focusable="true"
-                            role="option"
-                            tabindex="-1"
-                          >
-                            <div
-                              class=
-
-                                  {
-                                    background-color: #ffffff;
-                                    border-color: #863593;
-                                    border: 1px solid;
-                                    content: ;
-                                    height: 12px;
-                                    margin-right: 8px;
-                                    width: 12px;
-                                  }
-                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #ffffff, #ffffff);
-                                    opacity: 0.6;
-                                  }
-                            />
-                            <div
-                              class=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    color: #323130;
-                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                    font-size: 12px;
-                                    font-weight: 400;
-                                    line-height: 16px;
-                                    opacity: 0.67;
-                                  }
-                            >
-                              Porsche
+                              Volvo
                             </div>
                           </button>
                         </div>
@@ -4114,7 +2714,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                         >
                           <button
                             aria-label="Valiant"
-                            aria-posinset="21"
+                            aria-posinset="7"
                             aria-selected="false"
                             aria-setsize="22"
                             class=
@@ -4213,7 +2813,1407 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                           role="none"
                         >
                           <button
-                            aria-label="Volvo"
+                            aria-label="Porsche"
+                            aria-posinset="8"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #6d5700;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Porsche
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Pontiac"
+                            aria-posinset="9"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #863593;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Pontiac
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Maserati"
+                            aria-posinset="10"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #405f14;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Maserati
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Lotus"
+                            aria-posinset="11"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #9a3d0c;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Lotus
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Lincoln"
+                            aria-posinset="12"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #2c72a8;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Lincoln
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Honda"
+                            aria-posinset="13"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #0e7a0b;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Honda
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Ford"
+                            aria-posinset="14"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #674c8c;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Ford
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Ferrari"
+                            aria-posinset="15"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #026467;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Ferrari
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Duster"
+                            aria-posinset="16"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #ad006a;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Duster
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Dodge"
+                            aria-posinset="17"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #3c51b4;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Dodge
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Datsun"
+                            aria-posinset="18"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #2aa0a4;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Datsun
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Chrysler"
+                            aria-posinset="19"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #ae8c00;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Chrysler
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Camaro"
+                            aria-posinset="20"
+                            aria-selected="false"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ffffff;
+                                    border-color: #dbdbdb;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ffffff, #ffffff);
+                                    opacity: 0.6;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: 0.67;
+                                  }
+                            >
+                              Camaro
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="Cadillac"
+                            aria-posinset="21"
+                            aria-selected="true"
+                            aria-setsize="22"
+                            class=
+
+                                {
+                                  align-items: center;
+                                  background: none;
+                                  border: none;
+                                  cursor: pointer;
+                                  display: flex;
+                                  outline: transparent;
+                                  padding-bottom: 8px;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 8px;
+                                  position: relative;
+                                  text-transform: capitalize;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  border: 1px solid transparent;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                  outline-color: #605e5c;
+                                }
+                            data-is-focusable="true"
+                            role="option"
+                            tabindex="-1"
+                          >
+                            <div
+                              class=
+
+                                  {
+                                    background-color: #ea38a6;
+                                    border-color: #ea38a6;
+                                    border: 1px solid;
+                                    content: ;
+                                    height: 12px;
+                                    margin-right: 8px;
+                                    width: 12px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                    content: linear-gradient(to right, #ea38a6, #ea38a6);
+                                    opacity: ;
+                                  }
+                            />
+                            <div
+                              class=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    color: #323130;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                    opacity: ;
+                                  }
+                            >
+                              Cadillac
+                            </div>
+                          </button>
+                        </div>
+                        <div
+                          class=
+                              ms-OverflowSet-item
+                              {
+                                display: inherit;
+                                flex-shrink: 0;
+                              }
+                          role="none"
+                        >
+                          <button
+                            aria-label="AMC"
                             aria-posinset="22"
                             aria-selected="false"
                             aria-setsize="22"
@@ -4273,7 +4273,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
 
                                   {
                                     background-color: #ffffff;
-                                    border-color: #ea38a6;
+                                    border-color: #9a3d0c;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -4299,7 +4299,7 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                                     opacity: 0.67;
                                   }
                             >
-                              Volvo
+                              AMC
                             </div>
                           </button>
                         </div>
@@ -19731,7 +19731,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
 
                         {
                           cursor: default;
-                          fill: #febfb3;
+                          fill: #FEBFB3;
                           opacity: 1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -19767,94 +19767,12 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                 </g>
                 <g>
                   <path
-                    aria-label="Hydrogen, 2500."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #e1396c;
-                          opacity: 1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-0.329,-0.527A0.219,0.219,0,1,1,-0.46,-0.76L36.613,16.108Z"
-                    data-is-focusable="true"
-                    id="_Pie_1Hydrogen2500"
-                    role="img"
-                    tabindex="-1"
-                  />
-                  <text
-                    aria-hidden="true"
-                    class=
-
-                        {
-                          fill: #323130;
-                          font-size: 12px;
-                          font-weight: 600;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          fill: CanvasText;
-                        }
-                    dominant-baseline="hanging"
-                    text-anchor="end"
-                    x="2.615123681135871"
-                    y="-1.4700775939937216"
-                  >
-                    2.5k
-                  </text>
-                </g>
-                <g>
-                  <path
-                    aria-label="Carbon_Dioxide, 1053."
-                    class=
-
-                        {
-                          cursor: default;
-                          fill: #96d38c;
-                          opacity: 1;
-                          outline: transparent;
-                          stroke: #ffffff;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                    d="M-0.699,-0.715L14.563,37.255Z"
-                    data-is-focusable="true"
-                    id="_Pie_1Carbon_Dioxide1053"
-                    role="img"
-                    tabindex="-1"
-                  />
-                  <text
-                    aria-hidden="true"
-                    class=
-
-                        {
-                          fill: #323130;
-                          font-size: 12px;
-                          font-weight: 600;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          fill: CanvasText;
-                        }
-                    dominant-baseline="auto"
-                    text-anchor="end"
-                    x="2.0980415379491326"
-                    y="2.1443464517283672"
-                  >
-                    1.1k
-                  </text>
-                </g>
-                <g>
-                  <path
                     aria-label="Nitrogen, 500."
                     class=
 
                         {
                           cursor: default;
-                          fill: #d0f9b1;
+                          fill: #D0F9B1;
                           opacity: 1;
                           outline: transparent;
                           stroke: #ffffff;
@@ -19862,7 +19780,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                         &::-moz-focus-inner {
                           border: 0;
                         }
-                    d="M-0.19,-0.982L-0.4,39.998Z"
+                    d="M-0.327,0.945L20.384,-34.416Z"
                     data-is-focusable="true"
                     id="_Pie_1Nitrogen500"
                     role="img"
@@ -19880,12 +19798,94 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           fill: CanvasText;
                         }
-                    dominant-baseline="auto"
+                    dominant-baseline="hanging"
                     text-anchor="end"
-                    x="0.5704533452268108"
-                    y="2.9452645010116734"
+                    x="0.9818088892614404"
+                    y="-2.8347929915546244"
                   >
                     500
+                  </text>
+                </g>
+                <g>
+                  <path
+                    aria-label="Carbon_Dioxide, 1053."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #96D38C;
+                          opacity: 1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M-0.794,0.609L38.733,-9.988Z"
+                    data-is-focusable="true"
+                    id="_Pie_1Carbon_Dioxide1053"
+                    role="img"
+                    tabindex="-1"
+                  />
+                  <text
+                    aria-hidden="true"
+                    class=
+
+                        {
+                          fill: #323130;
+                          font-size: 12px;
+                          font-weight: 600;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          fill: CanvasText;
+                        }
+                    dominant-baseline="hanging"
+                    text-anchor="end"
+                    x="2.380575816630471"
+                    y="-1.8256118922909557"
+                  >
+                    1.1k
+                  </text>
+                </g>
+                <g>
+                  <path
+                    aria-label="Hydrogen, 2500."
+                    class=
+
+                        {
+                          cursor: default;
+                          fill: #E1396C;
+                          opacity: 1;
+                          outline: transparent;
+                          stroke: #ffffff;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                    d="M0.355,-0.51A0.219,0.219,0,1,1,0.517,-0.721L-0.4,39.998Z"
+                    data-is-focusable="true"
+                    id="_Pie_1Hydrogen2500"
+                    role="img"
+                    tabindex="-1"
+                  />
+                  <text
+                    aria-hidden="true"
+                    class=
+
+                        {
+                          fill: #323130;
+                          font-size: 12px;
+                          font-weight: 600;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          fill: CanvasText;
+                        }
+                    dominant-baseline="auto"
+                    text-anchor="end"
+                    x="2.380575816630475"
+                    y="1.8256118922909508"
+                  >
+                    2.5k
                   </text>
                 </g>
               </g>
@@ -20015,8 +20015,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                               class=
 
                                   {
-                                    background-color: #febfb3;
-                                    border-color: #febfb3;
+                                    background-color: #FEBFB3;
+                                    border-color: #FEBFB3;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -20024,7 +20024,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                     width: 12px;
                                   }
                                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #febfb3, #febfb3);
+                                    content: linear-gradient(to right, #FEBFB3, #FEBFB3);
                                     opacity: ;
                                   }
                             />
@@ -20115,8 +20115,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                               class=
 
                                   {
-                                    background-color: #e1396c;
-                                    border-color: #e1396c;
+                                    background-color: #E1396C;
+                                    border-color: #E1396C;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -20124,7 +20124,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                     width: 12px;
                                   }
                                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #e1396c, #e1396c);
+                                    content: linear-gradient(to right, #E1396C, #E1396C);
                                     opacity: ;
                                   }
                             />
@@ -20215,8 +20215,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                               class=
 
                                   {
-                                    background-color: #96d38c;
-                                    border-color: #96d38c;
+                                    background-color: #96D38C;
+                                    border-color: #96D38C;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -20224,7 +20224,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                     width: 12px;
                                   }
                                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #96d38c, #96d38c);
+                                    content: linear-gradient(to right, #96D38C, #96D38C);
                                     opacity: ;
                                   }
                             />
@@ -20315,8 +20315,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                               class=
 
                                   {
-                                    background-color: #d0f9b1;
-                                    border-color: #d0f9b1;
+                                    background-color: #D0F9B1;
+                                    border-color: #D0F9B1;
                                     border: 1px solid;
                                     content: ;
                                     height: 12px;
@@ -20324,7 +20324,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                                     width: 12px;
                                   }
                                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                    content: linear-gradient(to right, #d0f9b1, #d0f9b1);
+                                    content: linear-gradient(to right, #D0F9B1, #D0F9B1);
                                     opacity: ;
                                   }
                             />

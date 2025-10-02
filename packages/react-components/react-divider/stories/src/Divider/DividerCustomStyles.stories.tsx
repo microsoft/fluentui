@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, shorthands, tokens, Divider } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -52,7 +53,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const CustomStyles = () => {
+export const CustomStyles = (): JSXElement => {
   const styles = useStyles();
   return (
     <div className={styles.root}>

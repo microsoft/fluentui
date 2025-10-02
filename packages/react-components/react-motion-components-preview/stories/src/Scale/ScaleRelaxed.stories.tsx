@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
 import { ScaleRelaxed } from '@fluentui/react-motion-components-preview';
 
@@ -37,7 +38,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Relaxed = () => {
+export const Relaxed = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
 

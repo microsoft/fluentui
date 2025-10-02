@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { TagPickerOption } from '../TagPickerOption';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -32,7 +34,7 @@ export function useTagPickerFilter({
   renderOption = defaultRenderOption,
   query,
   options,
-}: UseTagPickerFilterConfig) {
+}: UseTagPickerFilterConfig): JSXElement[] {
   const defaultFilter = React.useCallback(
     (option: string) => {
       const trimmedQuery = query.trim();

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuItemSwitch } from '@fluentui/react-components';
 
-export const SwitchItem = () => (
+export const SwitchItem = (): JSXElement => (
   <Menu>
     <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>

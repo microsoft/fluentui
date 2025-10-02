@@ -2,6 +2,102 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 18 Sep 2025 04:07:17 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.124",
+      "version": "3.0.0-beta.124",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fdb651c09b833a2cd9a7ae219000f33a4a906dd6",
+            "comment": "fix: bug in switch checked story in forced-colors mode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Sep 2025 04:06:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.123",
+      "version": "3.0.0-beta.123",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "a3aa99f08431433c1c40e934da2f78ab10151c16",
+            "comment": "chore: setup docsite target"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Sep 2025 04:09:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.123",
+      "version": "3.0.0-beta.123",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "6ec387a4446cb72c54fd534c40af031abec4d24c",
+            "comment": "fix: use defined selector in waitForConnectedDescendants"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Sep 2025 04:07:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.122",
+      "version": "3.0.0-beta.122",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "3ed039a93f54418671e90b9b4a0f9ee32632f86d",
+            "comment": "feat: enable SSR for rating-display"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Sep 2025 04:08:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.121",
+      "version": "3.0.0-beta.121",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ea6531fc847c7c6e6659dafc8b500772cdb2c416",
+            "comment": "refactor: replace slotted with slotchange for tree and tree-item"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Sep 2025 04:08:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.120",
+      "version": "3.0.0-beta.120",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e1d04d5527a011d04f57afc902012082d2060f7f",
+            "comment": "fix: add focus-ring to dropdown"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "bf7278ce6d686944acf345a7e121c0bc7375a9d7",
+            "comment": "fix(dropdown): use slotchange events instead of manual slot assignment"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Aug 2025 04:06:43 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.119",
       "version": "3.0.0-beta.119",

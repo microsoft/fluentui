@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuDivider, MenuPopover } from '@fluentui/react-components';
 
@@ -16,7 +17,7 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
-export const VisualDividerOnly = () => (
+export const VisualDividerOnly = (): JSXElement => (
   <Menu>
     <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>

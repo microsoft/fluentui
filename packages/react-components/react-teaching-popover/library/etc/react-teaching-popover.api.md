@@ -14,7 +14,6 @@ import { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElement } from '@fluentui/react-utilities';
-import { JSXElementConstructor } from 'react';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
 import { PopoverState } from '@fluentui/react-popover';
@@ -24,7 +23,6 @@ import { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
 import * as React_2 from 'react';
-import { ReactElement } from 'react';
 import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -32,43 +30,43 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const renderTeachingPopover_unstable: (state: PopoverState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverBody_unstable: (state: TeachingPopoverBodyState) => JSX.Element;
+export const renderTeachingPopoverBody_unstable: (state: TeachingPopoverBodyState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarousel_unstable: (state: TeachingPopoverCarouselState, contextValues: TeachingPopoverCarouselContextValues) => JSX.Element;
+export const renderTeachingPopoverCarousel_unstable: (state: TeachingPopoverCarouselState, contextValues: TeachingPopoverCarouselContextValues) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselCard_unstable: (state: TeachingPopoverCarouselCardState) => JSX.Element;
+export const renderTeachingPopoverCarouselCard_unstable: (state: TeachingPopoverCarouselCardState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselFooter_unstable: (state: TeachingPopoverCarouselFooterState) => JSX.Element;
+export const renderTeachingPopoverCarouselFooter_unstable: (state: TeachingPopoverCarouselFooterState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselFooterButton_unstable: (state: TeachingPopoverCarouselFooterButtonState) => JSX.Element;
+export const renderTeachingPopoverCarouselFooterButton_unstable: (state: TeachingPopoverCarouselFooterButtonState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselNav_unstable: (state: TeachingPopoverCarouselNavState) => JSX.Element;
+export const renderTeachingPopoverCarouselNav_unstable: (state: TeachingPopoverCarouselNavState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselNavButton_unstable: (state: TeachingPopoverCarouselNavButtonState) => JSX.Element;
+export const renderTeachingPopoverCarouselNavButton_unstable: (state: TeachingPopoverCarouselNavButtonState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselPageCount_unstable: (state: TeachingPopoverCarouselPageCountState) => JSX.Element;
+export const renderTeachingPopoverCarouselPageCount_unstable: (state: TeachingPopoverCarouselPageCountState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverFooter_unstable: (state: TeachingPopoverFooterState) => JSX.Element;
+export const renderTeachingPopoverFooter_unstable: (state: TeachingPopoverFooterState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverHeader_unstable: (state: TeachingPopoverHeaderState) => JSX.Element;
+export const renderTeachingPopoverHeader_unstable: (state: TeachingPopoverHeaderState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverSurface_unstable: (state: TeachingPopoverSurfaceState) => JSX.Element;
+export const renderTeachingPopoverSurface_unstable: (state: TeachingPopoverSurfaceState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverTitle_unstable: (state: TeachingPopoverTitleState) => JSX.Element;
+export const renderTeachingPopoverTitle_unstable: (state: TeachingPopoverTitleState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverTrigger_unstable: (state: TeachingPopoverTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
+export const renderTeachingPopoverTrigger_unstable: (state: TeachingPopoverTriggerState) => JSXElement | null;
 
 // @public
 export const TeachingPopover: React_2.FC<TeachingPopoverProps>;

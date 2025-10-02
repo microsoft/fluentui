@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 const MenuGridGroupContext = React.createContext<MenuGridGroupContextValue | undefined>(
@@ -19,5 +21,5 @@ export type MenuGridGroupContextValue = {
 };
 
 export const MenuGridGroupContextProvider = MenuGridGroupContext.Provider;
-export const useMenuGridGroupContext_unstable = () =>
+export const useMenuGridGroupContext_unstable = (): MenuGridGroupContextValue =>
   React.useContext(MenuGridGroupContext) ?? MenuGridGroupContextDefaultValue;

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   GroupperMoveFocusEvent,
@@ -227,6 +229,7 @@ export const useListItem_unstable = (
     },
     root,
     checkmark,
+    disabled: disabledSelection && !onAction,
     selectable: isSelectionModeEnabled,
     navigable: focusableItems,
   };

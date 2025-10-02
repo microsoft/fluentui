@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import type { Meta } from '@storybook/react';
 
 import { createTheme, Theme as ThemeV8, ThemeProvider, initializeIcons } from '@fluentui/react';
@@ -65,7 +66,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Playground = () => {
+export const Playground = (): JSXElement => {
   const styles = useStyles();
 
   const defaultBrandVariantText = JSON.stringify(brandWeb, null, 4);

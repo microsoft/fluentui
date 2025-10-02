@@ -1,0 +1,33 @@
+{
+  "extends": "<%= relativePathToProjectRoot %>/<%= tsconfig.pathToProjectConfig %>",
+  "compilerOptions": {
+    "target": "<%= tsconfig.target %>",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": [<%- tsconfig.lib.map(p => `"${p}"`).join(',') %>],
+    "strict": <%= tsconfig.strictMode %>,
+    "pretty": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "types": [],
+    "typeRoots": ["<%= usedNodeModulesDirRelative %>/node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "react/jsx-runtime": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/jsx-runtime.d.ts"],
+      "react": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/index.d.ts"],
+      "react-dom": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react-dom/index.d.ts"]
+    }
+  },
+  "references": [],
+  "exclude": [
+    <%- tsconfig.relativeExcludePaths.map(p => `"${p}"`).join(',\n    ') %>
+  ],
+  "include": [
+    <%- tsconfig.relativeIncludePaths.map(p => `"${p}"`).join(',\n    ') %>
+  ],
+  "files": [
+    <%- tsconfig.relativeFilesPaths.map(p => `"${p}"`).join(',\n    ') %>
+  ]
+}

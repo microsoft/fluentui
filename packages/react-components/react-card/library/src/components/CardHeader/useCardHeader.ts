@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
@@ -10,8 +12,8 @@ import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
  * @param header - the header prop of CardHeader
  */
 function getChildWithId(header: React.ReactNode) {
-  function isReactElementWithIdProp(element: React.ReactNode): element is React.ReactElement {
-    return React.isValidElement(element) && Boolean(element.props.id);
+  function isReactElementWithIdProp(element: React.ReactNode): element is React.ReactElement<{ id: string }> {
+    return React.isValidElement<{ id?: string }>(element) && Boolean(element.props.id);
   }
 
   return React.Children.toArray(header).find(isReactElementWithIdProp);
@@ -28,7 +30,7 @@ function getChildWithId(header: React.ReactNode) {
  */
 function getReferenceId(
   headerId: string | undefined,
-  childWithId: React.ReactElement | undefined,
+  childWithId: React.ReactElement<{ id?: string }> | undefined,
   generatedId: string,
 ): string {
   if (headerId) {

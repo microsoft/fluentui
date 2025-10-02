@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModifiedCartesianChartProps } from '../../index';
@@ -52,7 +54,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const _isFirstRender = React.useRef<boolean>(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
-  let isIntegralDataset: boolean = true;
+  const isIntegralDataset = React.useMemo(() => {
+    return !props.points.some((point: { y: number }) => point.y % 1 !== 0);
+  }, [props.points]);
   let _tooltipId: string = useId('tooltip_');
   /* Used for when WrapXAxisLabels props appeared.
    * To display the total word (space separated words), Need to have more space than usual.
@@ -72,6 +76,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     ChartTypes.HeatMapChart,
     ChartTypes.VerticalStackedBarChart,
     ChartTypes.GanttChart,
+    ChartTypes.ScatterChart,
   ];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
@@ -140,8 +145,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     } else if (startFromX !== 0) {
       setStartFromX(0);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    isIntegralDataset = !props.points.some((point: { y: number }) => point.y % 1 !== 0);
     return () => {
       cancelAnimationFrame(_reqID);
     };
@@ -166,10 +169,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       }
     } else if (startFromX !== 0) {
       setStartFromX(0);
-    }
-    if (prevProps !== null && prevProps.points !== props.points) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      isIntegralDataset = !props.points.some((point: { y: number }) => point.y % 1 !== 0);
     }
   }, [props, prevProps]);
 
@@ -269,6 +268,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       containerWidth: containerWidth,
       hideTickOverlap: props.rotateXAxisLables ? false : props.hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
+      tickStep: props.xAxis?.tickStep,
+      tick0: props.xAxis?.tick0,
     };
 
     /**
@@ -282,7 +283,14 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     let tickValues: (string | number)[];
     switch (props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(
+          XAxisParams,
+          props.tickParams!,
+          props.chartType,
+          culture,
+          props.xScaleType,
+          _useRtl,
+        ));
         break;
       case XAxisTypes.DateAxis:
         ({ xScale, tickValues } = createDateXAxis(
@@ -302,10 +310,18 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           props.tickParams!,
           props.datasetForXAxisDomain!,
           culture,
+          _useRtl,
         ));
         break;
       default:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
+        ({ xScale, tickValues } = createNumericXAxis(
+          XAxisParams,
+          props.tickParams!,
+          props.chartType,
+          culture,
+          props.xScaleType,
+          _useRtl,
+        ));
     }
     _xScale = xScale;
     _tickValues = tickValues;
@@ -328,6 +344,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       // and the parent chart(HBWA/Vertical etc..) for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
       yAxisPadding: props.yAxisPadding || 0,
+      tickValues: props.yAxisTickValues,
+      tickStep: props.yAxis?.tickStep,
+      tick0: props.yAxis?.tick0,
     };
     /**
      * These scales used for 2 purposes.
@@ -377,6 +396,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           chartType,
           true,
           props.roundedTicks!,
+          props.secondaryYScaleType,
+          _useRtl,
         );
       }
       yScalePrimary = props.createYAxis(
@@ -387,6 +408,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         chartType,
         false,
         props.roundedTicks!,
+        props.yScaleType,
+        _useRtl,
       );
     }
 

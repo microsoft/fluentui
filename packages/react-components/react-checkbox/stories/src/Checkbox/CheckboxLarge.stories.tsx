@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Checkbox } from '@fluentui/react-components';
 
-export const Large = () => <Checkbox size="large" label="Large" />;
+export const Large = (): JSXElement => <Checkbox size="large" label="Large" />;
 Large.parameters = {
   docs: {
     description: {

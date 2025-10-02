@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -7,7 +9,9 @@ type UseFocusVisibleOptions = {
   targetDocument?: Document;
 };
 
-export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options: UseFocusVisibleOptions = {}) {
+export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(
+  options: UseFocusVisibleOptions = {},
+): React.RefObject<TElement> {
   const contextValue = useFluent();
   const scopeRef = React.useRef<TElement>(null);
 

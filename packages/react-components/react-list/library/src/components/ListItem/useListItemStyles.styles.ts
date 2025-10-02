@@ -1,3 +1,5 @@
+'use client';
+
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -38,6 +40,10 @@ const useStyles = makeStyles({
     display: 'flex',
     cursor: 'pointer',
   },
+
+  disabled: {
+    cursor: 'default',
+  },
 });
 
 /**
@@ -54,6 +60,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
     listItemClassNames.root,
     rootBaseStyles,
     (state.selectable || state.navigable) && styles.rootClickableOrSelectable,
+    state.disabled && styles.disabled,
     state.root.className,
   );
 

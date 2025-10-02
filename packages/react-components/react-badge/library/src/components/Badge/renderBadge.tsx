@@ -2,9 +2,11 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
+
 import type { BadgeState, BadgeSlots } from './Badge.types';
 
-export const renderBadge_unstable = (state: BadgeState) => {
+export const renderBadge_unstable = (state: BadgeState): JSXElement => {
   assertSlots<BadgeSlots>(state);
 
   return (

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useOption_unstable } from './useOption';
 import { renderOption_unstable } from './renderOption';

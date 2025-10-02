@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { ListSynchronousContextValue, ListContextValue } from './List.types';
@@ -26,7 +28,7 @@ export const useListContext_unstable = <T>(selector: ContextSelector<ListContext
 const ListSynchronousContext = React.createContext<ListSynchronousContextValue | undefined>(undefined);
 
 export const ListSynchronousContextProvider = ListSynchronousContext.Provider;
-export const useListSynchronousContext = () =>
+export const useListSynchronousContext = (): ListSynchronousContextValue =>
   React.useContext(ListSynchronousContext) || {
     navigationMode: undefined,
     listItemRole: 'listitem',
