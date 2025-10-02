@@ -4,7 +4,6 @@ import Rtl from './Rtl';
 import Types from './Types';
 import Variations from './Variations';
 import Usage from './Usage';
-import Performance from './Performance';
 import Visual from './Visual';
 
 const AvatarExamples = () => (
@@ -14,7 +13,6 @@ const AvatarExamples = () => (
     <Rtl />
     <Usage />
     <Visual />
-    <Performance />
   </>
 );
 

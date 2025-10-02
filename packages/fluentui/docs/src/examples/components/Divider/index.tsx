@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Performance from './Performance';
+
 import Types from './Types';
 import Variations from './Variations';
 import Visuals from './Visuals';
@@ -11,7 +11,6 @@ const DividerExamples = () => (
     <Variations />
     <Rtl />
     <Visuals />
-    <Performance />
   </div>
 );
 

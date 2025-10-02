@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import Performance from './Performance';
 import Rtl from './Rtl';
 import Slots from './Slots';
 import State from './State';
@@ -15,7 +14,6 @@ const DropdownExamples = () => (
     <Variations />
     <State />
     <Rtl />
-    <Performance />
     <Usage />
     <UsageVisual />
     <Slots />

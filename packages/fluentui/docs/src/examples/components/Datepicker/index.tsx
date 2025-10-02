@@ -5,7 +5,6 @@ import States from './States';
 import Slots from './Slots';
 import Usage from './Usage';
 import Variations from './Variations';
-import Performance from './Performance';
 
 const DatepickerExamples = () => (
   <>
@@ -14,7 +13,6 @@ const DatepickerExamples = () => (
     <Slots />
     <Variations />
     <Usage />
-    <Performance />
   </>
 );
 
