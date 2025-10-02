@@ -58,7 +58,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
       <!--------------------------------[ v0.70.2 ]------------------------------- -->
       ## [v0.70.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.70.2) (07-02-2024)
-      [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.67.0..@fluentui/react-northstar_v0.70.2)
+      [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.68.0..@fluentui/react-northstar_v0.70.2)
 
       ### Fixes
       - Do not use defaultProps  @user ([#28725](https://github.com/microsoft/fluentui/pull/28725))
