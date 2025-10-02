@@ -5,7 +5,7 @@ import {
   createPresenceComponentVariant,
   AtomMotion,
 } from '@fluentui/react-motion';
-import type { CollapseParams, CollapseOrientation } from './collapse-types';
+import type { CollapseParams, CollapseAtomsParams } from './collapse-types';
 import { sizeEnterAtom, sizeExitAtom, whitespaceAtom } from './collapse-atoms';
 import { fadeAtom } from '../../atoms/fade-atom';
 
@@ -29,22 +29,7 @@ function createCollapseAtoms({
   exitEasing,
   exitDelay = 0,
   exitOpacityDelay = 0,
-}: {
-  element: HTMLElement;
-  orientation: CollapseOrientation;
-  animateOpacity: boolean;
-  fromSize: string;
-  sizeDuration: number;
-  opacityDuration?: number;
-  easing: string;
-  delay?: number;
-  opacityDelay?: number;
-  exitSizeDuration: number;
-  exitOpacityDuration?: number;
-  exitEasing: string;
-  exitDelay?: number;
-  exitOpacityDelay?: number;
-}) {
+}: CollapseAtomsParams) {
   // ----- ENTER -----
   // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
   // For enter: size expands first, then opacity fades in after opacityDelay
