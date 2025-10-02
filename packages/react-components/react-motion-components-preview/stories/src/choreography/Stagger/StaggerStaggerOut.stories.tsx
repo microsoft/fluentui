@@ -1,5 +1,4 @@
 import * as React from 'react';
-import StaggerOneWayInDescription from './StaggerOneWayIn.stories.md';
 import {
   Avatar,
   Button,
@@ -14,6 +13,7 @@ import {
 } from '@fluentui/react-components';
 import { Stagger, CollapseRelaxed } from '@fluentui/react-motion-components-preview';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import StaggerStaggerOutDescription from './StaggerStaggerOut.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -48,7 +48,7 @@ const useClasses = makeStyles({
   },
 });
 
-// Sample user data
+// Reuse sample users from the In story file by duplicating data here to keep stories self-contained.
 const users = [
   {
     name: 'Sarah Chen',
@@ -80,8 +80,10 @@ const users = [
   },
 ];
 
-export const OneWayIn = (): JSXElement => {
+// Basic Out: items animate out when removed from the list
+export const StaggerOut = (): JSXElement => {
   const classes = useClasses();
+  const [items] = React.useState(users);
   const [animationKey, setAnimationKey] = React.useState<number>(0);
 
   const replayAnimation = () => {
@@ -96,9 +98,9 @@ export const OneWayIn = (): JSXElement => {
         </Button>
       </div>
 
-      <Stagger.In itemDelay={motionTokens.durationFast} key={animationKey}>
-        {users.map((user, index) => (
-          <CollapseRelaxed.In easing={motionTokens.curveDecelerateMin} key={index}>
+      <Stagger.Out itemDelay={motionTokens.durationFast} key={animationKey}>
+        {items.map((user, index) => (
+          <CollapseRelaxed.Out easing={motionTokens.curveDecelerateMin} key={index}>
             <Card className={classes.userCard}>
               <CardHeader
                 className={classes.cardHeader}
@@ -127,17 +129,17 @@ export const OneWayIn = (): JSXElement => {
                 <Text>{user.post}</Text>
               </div>
             </Card>
-          </CollapseRelaxed.In>
+          </CollapseRelaxed.Out>
         ))}
-      </Stagger.In>
+      </Stagger.Out>
     </div>
   );
 };
 
-OneWayIn.parameters = {
+StaggerOut.parameters = {
   docs: {
     description: {
-      story: StaggerOneWayInDescription,
+      story: StaggerStaggerOutDescription,
     },
   },
 };

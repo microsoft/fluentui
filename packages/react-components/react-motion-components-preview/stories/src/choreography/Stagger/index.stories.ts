@@ -6,7 +6,8 @@ export { Presence } from './StaggerPresence.stories';
 export { PlainElements } from './StaggerPlainElements.stories';
 export { Reversed } from './StaggerReversed.stories';
 export { ItemDelay } from './StaggerItemDelay.stories';
-export { OneWayIn } from './StaggerOneWayIn.stories';
+export { StaggerIn } from './StaggerStaggerIn.stories';
+export { StaggerOut } from './StaggerStaggerOut.stories';
 export { Text } from './StaggerText.stories';
 
 // Real-world examples
