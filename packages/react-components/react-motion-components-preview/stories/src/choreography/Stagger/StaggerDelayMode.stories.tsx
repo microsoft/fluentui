@@ -29,7 +29,9 @@ const renderAvatarsWithTransition = () => {
 
 const renderPlainAvatars = () => {
   return avatarData.map(avatar => (
-    <Avatar key={avatar.name} initials={avatar.initials} color={avatar.color} name={avatar.name} />
+    <div key={avatar.name} style={{ display: 'flex', alignItems: 'center' }}>
+      <Avatar initials={avatar.initials} color={avatar.color} name={avatar.name} />
+    </div>
   ));
 };
 
@@ -64,6 +66,12 @@ const useClasses = makeStyles({
     color: tokens.colorNeutralForeground1,
     marginBottom: tokens.spacingVerticalXS,
   },
+  modeHeader: {
+    display: 'flex',
+    gap: tokens.spacingHorizontalS,
+    alignItems: 'center',
+    marginBottom: tokens.spacingVerticalS,
+  },
   items: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -91,17 +99,7 @@ const useClasses = makeStyles({
     top: tokens.spacingVerticalXS,
     right: tokens.spacingHorizontalXS,
   },
-  performanceBadge: {
-    fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightMedium,
-    color: tokens.colorPaletteGreenForeground1,
-    backgroundColor: tokens.colorPaletteGreenBackground2,
-    padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalXS}`,
-    borderRadius: tokens.borderRadiusSmall,
-    position: 'absolute',
-    top: tokens.spacingVerticalXS,
-    left: tokens.spacingHorizontalXS,
-  },
+  // performanceBadge removed — keep layout simple and avoid collisions
 });
 
 // Overshoots the end point, then settles back to it.
@@ -127,13 +125,13 @@ export const DelayMode = (): JSXElement => {
         <div className={classes.section}>
           <div className={classes.sectionTitle}>delayProp (Motion Components)</div>
           <div className={classes.items}>
-            <div className={classes.performanceBadge}>Best Performance</div>
-            <div className={classes.badge}>Auto-detected</div>
             <Stagger visible={visible} delayMode="delayProp" itemDelay={itemDelay} reversed={reversed}>
               {renderAvatarsWithTransition()}
             </Stagger>
           </div>
-          <div className={classes.description}>Native Web Animations API delays. Smooth, browser-optimized timing.</div>
+          <div className={classes.description}>
+            Native component delay props — browser-driven timing (best performance).
+          </div>
         </div>
 
         <div className={classes.section}>
@@ -144,18 +142,7 @@ export const DelayMode = (): JSXElement => {
               {renderPlainAvatars()}
             </Stagger>
           </div>
-          <div className={classes.description}>JavaScript timing with visibility control. Universal compatibility.</div>
-        </div>
-
-        <div className={classes.section}>
-          <div className={classes.sectionTitle}>timing (Override on Motion Components)</div>
-          <div className={classes.items}>
-            <div className={classes.badge}>Override</div>
-            <Stagger visible={visible} delayMode="timing" itemDelay={itemDelay} reversed={reversed}>
-              {renderAvatarsWithTransition()}
-            </Stagger>
-          </div>
-          <div className={classes.description}>Force timing mode on motion components. Useful for mixed content.</div>
+          <div className={classes.description}>JavaScript-managed timing (works for plain DOM or mixed content).</div>
         </div>
       </div>
     </div>

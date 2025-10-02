@@ -1,27 +1,12 @@
-This comprehensive comparison shows how `hideMode` and `delayMode` work together to create different stagger behaviors.
+How hideMode and delayMode combine — short guide.
 
-Now that you understand both configuration dimensions, you can see how they combine to optimize performance and behavior for different scenarios.
+Common recommendations
 
-## Mode Combinations Matrix
+- visibleProp + delayProp — Best for motion components (preserves layout, uses component animations & native timing).
+- visibilityStyle + timing — Good for plain DOM elements where you need stable layout and universal compatibility.
+- unmount + delayProp — Good for one-way motion lists where mount/unmount is desired and children support delay props.
+- unmount + timing — Use when lists should reflow and children don't support native delay props.
 
-The most common and optimal combinations are:
+Pick the combination that matches your content (motion components vs plain DOM) and whether you need layout reflow.
 
-| hideMode          | delayMode   | Best For                           | Performance | Example                        |
-| ----------------- | ----------- | ---------------------------------- | ----------- | ------------------------------ |
-| `visibleProp`     | `delayProp` | Presence motion components         | ⭐⭐⭐ Best | `<Fade>`, `<Scale>`, `<Slide>` |
-| `visibilityStyle` | `timing`    | Plain DOM elements (bidirectional) | ⭐⭐ Good   | `<div>`, stable layouts        |
-| `unmount`         | `delayProp` | One-way motion components          | ⭐⭐⭐ Best | `<Fade.In>`, `<Scale.Out>`     |
-| `unmount`         | `timing`    | One-way DOM elements               | ⭐⭐ Good   | Dynamic lists, cards           |
-
-## Advanced Combinations
-
-Less common but useful for specific scenarios:
-
-| hideMode          | delayMode   | When to Use                                  | Trade-offs                                       |
-| ----------------- | ----------- | -------------------------------------------- | ------------------------------------------------ |
-| `visibilityStyle` | `delayProp` | Motion components with layout preservation   | Layout stable, but bypasses component animations |
-| `visibleProp`     | `timing`    | Presence components with custom timing logic | Flexible timing, but less performant             |
-
-## Interactive Comparison
-
-Toggle between different combinations to see how they affect the same content:
+Example: prefer `visibleProp + delayProp` for a Fade-in list of components; prefer `visibilityStyle + timing` for simple div-based lists where layout must remain stable.
