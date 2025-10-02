@@ -105,20 +105,35 @@ function createCollapseAtoms({
  * @param exitDelay - Time (ms) to delay the entire exit transition. Defaults to the `delay` param for symmetry
  * @param opacityDelay - Time (ms) to delay the opacity fade-in relative to the size expand start. Defaults to 0
  * @param exitOpacityDelay - Time (ms) to delay the opacity fade-out relative to the size collapse start. Defaults to the `opacityDelay` param for symmetry
+ * @param sizeDuration - Time (ms) for the size animation during enter. Defaults to `duration` for unified timing
+ * @param opacityDuration - Time (ms) for the opacity animation during enter. Defaults to `sizeDuration` for synchronized timing
+ * @param exitSizeDuration - Time (ms) for the size animation during exit. Defaults to `exitDuration` for unified timing
+ * @param exitOpacityDuration - Time (ms) for the opacity animation during exit. Defaults to `exitSizeDuration` for synchronized timing
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`
  * @param orientation - The orientation of the size animation. Defaults to `'vertical'` to expand/collapse the height
  * @param fromSize - The starting size for the expand animation. Defaults to `'0px'`
  */
 const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   element,
+  // Primary duration controls (simple API)
   duration = motionTokens.durationNormal,
+  exitDuration = duration,
+
+  // Granular duration controls with smart defaults (advanced API)
+  sizeDuration = duration,
+  opacityDuration = sizeDuration,
+  exitSizeDuration = exitDuration,
+  exitOpacityDuration = exitSizeDuration,
+
+  // Other timing controls
   easing = motionTokens.curveEasyEaseMax,
   delay = 0,
-  exitDuration = duration,
   exitEasing = easing,
   exitDelay = delay,
   opacityDelay = 0,
   exitOpacityDelay = opacityDelay,
+
+  // Animation controls
   animateOpacity = true,
   orientation = 'vertical',
   fromSize = '0px',
@@ -127,13 +142,13 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
     element,
     orientation,
     animateOpacity,
-    sizeDuration: duration,
-    opacityDuration: duration,
+    sizeDuration,
+    opacityDuration,
     easing,
     delay,
     opacityDelay,
-    exitSizeDuration: exitDuration,
-    exitOpacityDuration: exitDuration,
+    exitSizeDuration,
+    exitOpacityDuration,
     exitEasing,
     exitDelay,
     exitOpacityDelay,
@@ -154,6 +169,17 @@ export const CollapseRelaxed = createPresenceComponentVariant(Collapse, {
 
 /** A React component that applies collapse/expand transitions with delayed fade to its children. */
 export const CollapseDelayed = createPresenceComponentVariant(Collapse, {
-  opacityDelay: motionTokens.durationNormal,
-  exitOpacityDelay: motionTokens.durationNormal,
+  // Enter timing per motion design spec
+  sizeDuration: motionTokens.durationNormal, // 200ms
+  opacityDuration: motionTokens.durationSlower, // 400ms
+  opacityDelay: motionTokens.durationNormal, // 200ms
+
+  // Exit timing per motion design spec
+  exitSizeDuration: motionTokens.durationNormal, // 200ms
+  exitOpacityDuration: motionTokens.durationSlower, // 400ms
+  exitOpacityDelay: motionTokens.durationSlower, // 400ms
+
+  // Easing per motion design spec
+  easing: motionTokens.curveEasyEase,
+  exitEasing: motionTokens.curveEasyEase,
 });

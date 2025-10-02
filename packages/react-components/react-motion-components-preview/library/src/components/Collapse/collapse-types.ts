@@ -15,24 +15,17 @@ export type CollapseParams = BasePresenceParams &
 
     /** Time (ms) to delay the opacity fade-out relative to the size collapse start. Defaults to the `opacityDelay` param for symmetry. */
     exitOpacityDelay?: number;
+
+    // Granular duration controls (advanced API)
+    /** Time (ms) for the size animation during enter. Defaults to `duration` for unified timing. */
+    sizeDuration?: number;
+
+    /** Time (ms) for the opacity animation during enter. Defaults to `sizeDuration` for synchronized timing. */
+    opacityDuration?: number;
+
+    /** Time (ms) for the size animation during exit. Defaults to `exitDuration` for unified timing. */
+    exitSizeDuration?: number;
+
+    /** Time (ms) for the opacity animation during exit. Defaults to `exitSizeDuration` for synchronized timing. */
+    exitOpacityDuration?: number;
   };
-
-/**
- * Collapse parameters with granular duration control.
- *
- * Omits `duration` and `exitDuration` from CollapseParams to allow independent
- * control of size and opacity animation timing for staggered effects.
- */
-export type CollapseDelayedParams = Omit<CollapseParams, 'duration' | 'exitDuration'> & {
-  /** Time (ms) for the size expand. Defaults to the `durationNormal` value (200 ms). */
-  sizeDuration?: number;
-
-  /** Time (ms) for the fade-in. Defaults to the `durationSlower` value (400 ms). */
-  opacityDuration?: number;
-
-  /** Time (ms) for the size collapse. Defaults to the `sizeDuration` param, for temporal symmetry. */
-  exitSizeDuration?: number;
-
-  /** Time (ms) for the fade-out. Defaults to the `opacityDuration` param, for temporal symmetry. */
-  exitOpacityDuration?: number;
-};
