@@ -6,7 +6,6 @@ import { FluentComponentStaticProps } from '../../types';
 import {
   getElementType,
   useUnhandledProps,
-  useTelemetry,
   useFluentContext,
   useStyles,
   useAccessibility,
@@ -43,8 +42,6 @@ export type FormFieldCustomStylesProps = Required<Pick<FormFieldCustomProps, 'ty
  */
 export const FormFieldCustom = React.forwardRef<HTMLDivElement, FormFieldCustomProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(FormFieldCustom.displayName, context.telemetry);
-  setStart();
 
   const { children, required, type, className, design, styles, variables, inline } = props;
 
@@ -83,7 +80,7 @@ export const FormFieldCustom = React.forwardRef<HTMLDivElement, FormFieldCustomP
       {children}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as React.FC<FormFieldCustomProps> & FluentComponentStaticProps<FormFieldCustomProps>;
 

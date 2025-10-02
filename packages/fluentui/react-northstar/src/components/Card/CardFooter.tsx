@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
@@ -31,8 +30,6 @@ export const cardFooterClassName = 'ui-card__footer';
  */
 export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(CardFooter.displayName, context.telemetry);
-  setStart();
 
   const { className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
@@ -65,7 +62,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>((pro
       {children}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardFooterProps> & FluentComponentStaticProps<CardFooterProps>;
 

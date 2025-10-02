@@ -1,6 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  useTelemetry,
   useAccessibility,
   getElementType,
   useFluentContext,
@@ -62,8 +61,7 @@ export const dividerClassName = 'ui-divider';
  */
 export const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
-  setStart();
+
   const { children, color, fitted, size, important, vertical, className, design, styles, variables, accessibility } =
     props;
   const ElementType = getElementType(props);
@@ -105,7 +103,7 @@ export const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, re
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DividerProps> &
   FluentComponentStaticProps<DividerProps> & {

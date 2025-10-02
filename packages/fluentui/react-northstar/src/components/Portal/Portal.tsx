@@ -4,7 +4,6 @@ import {
   FocusTrapZone,
   FocusTrapZoneProps,
   useFluentContext,
-  useTelemetry,
   useControllableState,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -85,8 +84,7 @@ export interface PortalProps extends ChildrenComponentProps, ContentComponentPro
  */
 export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalProps> = props => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Portal.displayName, context.telemetry);
-  setStart();
+
   const { children, content, trapFocus, trigger, triggerAccessibility } = props;
   const portalRef = React.useRef<HTMLElement>();
   const triggerRef = React.useRef<HTMLElement>();
@@ -167,7 +165,7 @@ export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalPr
       {renderTrigger()}
     </>
   );
-  setEnd();
+
   return element;
 };
 

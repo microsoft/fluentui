@@ -13,7 +13,6 @@ import {
   useFluentContext,
   useAccessibility,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -147,8 +146,6 @@ export const toolbarClassName = 'ui-toolbar';
 export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const {
       accessibility,
@@ -590,7 +587,6 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
         )}
       </Ref>
     );
-    setEnd();
 
     return element;
   },

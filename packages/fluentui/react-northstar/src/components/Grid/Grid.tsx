@@ -4,7 +4,6 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
-  useTelemetry,
   useUnhandledProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -45,8 +44,6 @@ export type GridStylesProps = Pick<GridProps, 'columns' | 'rows'>;
  */
 export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Grid.displayName, context.telemetry);
-  setStart();
 
   const { accessibility, children, className, columns, content, design, rows, styles, variables } = props;
 
@@ -82,7 +79,6 @@ export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => 
       {childrenExist(children) ? children : content}
     </ElementType>,
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, GridProps> & FluentComponentStaticProps<GridProps>;

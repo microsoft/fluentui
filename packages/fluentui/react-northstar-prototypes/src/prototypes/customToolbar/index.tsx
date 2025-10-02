@@ -1,7 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import { KnobsSnippet } from '@fluentui/code-sandbox';
-import { Telemetry } from '@fluentui/react-bindings';
 import { KnobProvider, useBooleanKnob, useSelectKnob, KnobInspector } from '@fluentui/docs-components';
 import { Provider, Flex, mergeThemes, teamsDarkTheme, teamsHighContrastTheme } from '@fluentui/react-northstar';
 
@@ -50,46 +49,12 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
   const [currentSlide, setCurrentSlide] = React.useState(23);
   const totalSlides = 34;
 
-  const [telemetryEnabled] = useBooleanKnob({ name: 'telemetryEnabled', initialValue: true });
-  const telemetryRef = React.useRef<Telemetry>();
-
   let theme = {};
   if (themeName === 'teamsDark') {
     theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
   } else if (themeName === 'teamsHighContrast') {
     theme = mergeThemes(mergeThemes(teamsHighContrastTheme, darkThemeOverrides), highContrastThemeOverrides);
   }
-
-  React.useEffect(() => {
-    performance.measure('render-custom-toolbar', 'render-custom-toolbar');
-    const telemetry = telemetryRef.current;
-    if (!telemetryEnabled || !telemetry) {
-      return;
-    }
-
-    telemetry.enabled = false;
-
-    const totals = _.reduce(
-      telemetry.performance,
-      (acc, next) => {
-        acc.instances += next.instances;
-        acc.msTotal += next.msTotal;
-        return acc;
-      },
-      { instances: 0, msTotal: 0 },
-    );
-
-    /* eslint-disable no-console */
-    console.log(`Rendered ${totals.instances} Fluent UI components in ${totals.msTotal} ms`);
-    console.log(telemetry.performance);
-    /* eslint-enable no-console */
-  });
-
-  if (telemetryRef.current) {
-    telemetryRef.current.enabled = telemetryEnabled;
-    telemetryRef.current.reset();
-  }
-  performance.mark('render-custom-toolbar');
 
   return (
     <div style={{ height: '100vh' }}>
@@ -98,7 +63,7 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
           <KnobInspector />
         </KnobsSnippet>
 
-        <Provider theme={theme} rtl={rtl} {...(telemetryEnabled ? { telemetryRef } : undefined)}>
+        <Provider theme={theme} rtl={rtl}>
           <Flex
             hAlign="center"
             styles={{

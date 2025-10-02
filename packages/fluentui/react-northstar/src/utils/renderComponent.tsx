@@ -3,7 +3,6 @@ import {
   ComponentSlotClasses,
   FocusZone,
   getElementType,
-  deprecated_getTelemetry as getTelemetry,
   getUnhandledProps,
   ReactAccessibilityBehavior,
   unstable_getAccessibility as getAccessibility,
@@ -60,10 +59,7 @@ export const renderComponent = <P extends {}>(
     logProviderMissingWarning();
   }
 
-  const { setStart, setEnd } = getTelemetry(displayName, context.telemetry, config.isFirstRenderRef);
   const rtl = context.rtl || false;
-
-  setStart();
 
   const ElementType = getElementType(props) as React.ReactType<P>;
   const unhandledProps = getUnhandledProps(handledProps, props);
@@ -93,7 +89,6 @@ export const renderComponent = <P extends {}>(
       enableStylesCaching: false,
       enableBooleanVariablesCaching: false,
     },
-    telemetry: context.telemetry,
   });
 
   const resolvedConfig: RenderResultConfig<P> = {
@@ -120,7 +115,6 @@ export const renderComponent = <P extends {}>(
   }
 
   const element = render(resolvedConfig);
-  setEnd();
 
   return element;
 };

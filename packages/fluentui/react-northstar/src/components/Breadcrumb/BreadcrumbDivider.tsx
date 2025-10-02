@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   compose,
   useFluentContext,
-  useTelemetry,
   useAccessibility,
   useStyles,
   useUnhandledProps,
@@ -30,8 +29,7 @@ export const breadcrumbDividerClassName = 'ui-breadcrumb__divider';
 export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, BreadcrumbDividerStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
+
     const { accessibility, children, content, className, design, styles, variables } = props;
 
     const getA11yProps = useAccessibility(accessibility, {
@@ -66,8 +64,6 @@ export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, Breadcr
         {childrenExist(children) ? children : content}
       </ElementType>
     );
-
-    setEnd();
 
     return result;
   },

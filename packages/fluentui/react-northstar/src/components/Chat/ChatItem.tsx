@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -69,8 +68,6 @@ export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosit
  */
 export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
-  setStart();
 
   const chatDensity = useChatDensityContext();
   const {
@@ -149,7 +146,6 @@ export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((props, r
       {childrenExist(children) ? children : renderContent()}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'li', HTMLLIElement, ChatItemProps> & FluentComponentStaticProps<ChatItemProps>;

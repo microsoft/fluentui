@@ -20,7 +20,6 @@ import {
   useFluentContext,
   useAccessibility,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -78,8 +77,6 @@ export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
 export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddleProps & { as: React.ReactNode }>(
   (props, ref) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(CarouselPaddle.displayName, context.telemetry);
-    setStart();
 
     const {
       accessibility,
@@ -166,8 +163,6 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
             })}
       </ElementType>
     );
-
-    setEnd();
 
     return result;
   },

@@ -8,7 +8,6 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
-  useTelemetry,
   useUnhandledProps,
   compose,
 } from '@fluentui/react-bindings';
@@ -53,8 +52,6 @@ export const DatepickerCalendarCell = compose<
 >(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const { className, design, styles, variables, disabled, selected, quiet, today, content } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
@@ -101,7 +98,7 @@ export const DatepickerCalendarCell = compose<
         {content}
       </ElementType>
     );
-    setEnd();
+
     return element;
   },
   {

@@ -16,7 +16,6 @@ import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { ReactionGroup } from './ReactionGroup';
 import {
-  useTelemetry,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -59,8 +58,7 @@ export const reactionSlotClassNames: ReactionSlotClassNames = {
  */
 export const Reaction = React.forwardRef<HTMLSpanElement, ReactionProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Reaction.displayName, context.telemetry);
-  setStart();
+
   const { children, icon, content, className, design, styles, variables } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Reaction.handledProps, props);
@@ -116,7 +114,6 @@ export const Reaction = React.forwardRef<HTMLSpanElement, ReactionProps>((props,
     </ElementType>
   );
 
-  setEnd();
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, ReactionProps> &
   FluentComponentStaticProps<ReactionProps> & {

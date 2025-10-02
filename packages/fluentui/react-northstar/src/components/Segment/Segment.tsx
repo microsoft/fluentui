@@ -15,7 +15,6 @@ import { Accessibility } from '@fluentui/accessibility';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  useTelemetry,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -50,8 +49,7 @@ export const segmentClassName = 'ui-segment';
  */
 export const Segment = React.forwardRef<HTMLDivElement, SegmentProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Segment.displayName, context.telemetry);
-  setStart();
+
   const { children, content, color, inverted, disabled, className, design, styles, variables } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Segment.handledProps, props);
@@ -90,7 +88,6 @@ export const Segment = React.forwardRef<HTMLDivElement, SegmentProps>((props, re
     </ElementType>,
   );
 
-  setEnd();
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, SegmentProps> & FluentComponentStaticProps<SegmentProps>;
 

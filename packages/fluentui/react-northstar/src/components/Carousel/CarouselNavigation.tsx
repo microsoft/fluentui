@@ -1,6 +1,5 @@
 import { tabListBehavior, Accessibility } from '@fluentui/accessibility';
 import {
-  useTelemetry,
   mergeVariablesOverrides,
   getElementType,
   useFluentContext,
@@ -75,8 +74,7 @@ export const carouselNavigationClassName = 'ui-carousel__navigation';
  */
 export const CarouselNavigation = React.forwardRef<HTMLUListElement, CarouselNavigationProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
-  setStart();
+
   const {
     accessibility,
     variables,
@@ -158,8 +156,6 @@ export const CarouselNavigation = React.forwardRef<HTMLUListElement, CarouselNav
       {childrenExist(children) ? children : renderItems()}
     </ElementType>,
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, CarouselNavigationProps> &

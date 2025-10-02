@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ForwardRefWithAs,
   useFluentContext,
-  useTelemetry,
   useStyles,
   useAccessibility,
   getElementType,
@@ -36,8 +35,6 @@ export const menuItemIconClassName = 'ui-menu__itemicon';
  */
 export const MenuItemIcon = React.forwardRef<HTMLSpanElement, MenuItemIconProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(MenuItemIcon.displayName, context.telemetry);
-  setStart();
 
   const { className, children, design, styles, variables, content, hasContent, iconOnly } = props;
 
@@ -69,7 +66,6 @@ export const MenuItemIcon = React.forwardRef<HTMLSpanElement, MenuItemIconProps>
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemIconProps> &

@@ -7,7 +7,6 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -77,8 +76,6 @@ export const attachmentProgressBarClassName = `${attachmentClassName}__progress`
 export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const {
       accessibility,
@@ -188,7 +185,6 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
         )}
       </ElementType>,
     );
-    setEnd();
 
     return element;
   },

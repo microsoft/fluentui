@@ -9,7 +9,6 @@ import {
   useUnhandledProps,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import cx from 'classnames';
@@ -83,9 +82,6 @@ export const dropdownItemSlotClassNames: DropdownItemSlotClassNames = {
  */
 export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(DropdownItem.displayName, context.telemetry);
-
-  setStart();
 
   const {
     active,
@@ -179,8 +175,6 @@ export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((
       {endMediaElement}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'li', HTMLLIElement, DropdownItemProps> &

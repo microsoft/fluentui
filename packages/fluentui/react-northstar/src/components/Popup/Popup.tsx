@@ -11,7 +11,6 @@ import {
   FocusTrapZoneProps,
   useAccessibility,
   useControllableState,
-  useTelemetry,
   useFluentContext,
   useTriggerElement,
   useOnIFrameFocus,
@@ -146,8 +145,6 @@ export const Popup: React.FC<PopupProps> &
     Content: typeof PopupContent;
   } = props => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Popup.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -638,7 +635,6 @@ export const Popup: React.FC<PopupProps> &
       {contentElement}
     </>
   );
-  setEnd();
 
   return element;
 };

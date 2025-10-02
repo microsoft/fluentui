@@ -8,9 +8,7 @@ import { FluentComponentStaticProps } from '../../types';
 import {
   getElementType,
   useStyles,
-  useFluentContext,
   useUnhandledProps,
-  useTelemetry,
   useAccessibility,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -48,10 +46,6 @@ export type VideoStylesProps = Required<Pick<VideoProps, 'variables'>>;
  * A Video provides ability to embed video content.
  */
 export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
-  const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Video.displayName, context.telemetry);
-  setStart();
-
   const { controls, autoPlay, loop, poster, src, muted, variables, className, design, styles } = props;
   const videoRef = React.useRef<HTMLVideoElement>();
 
@@ -103,7 +97,7 @@ export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref)
       />
     </Ref>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'video', HTMLVideoElement, VideoProps> & FluentComponentStaticProps<VideoProps>;
 

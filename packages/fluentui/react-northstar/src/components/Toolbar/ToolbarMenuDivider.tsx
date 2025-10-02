@@ -6,7 +6,6 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
-  useTelemetry,
   compose,
   ComponentWithAs,
 } from '@fluentui/react-bindings';
@@ -31,8 +30,6 @@ export const toolbarMenuDividerClassName = 'ui-toolbar__menudivider';
 export const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, ToolbarMenuDividerStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const { accessibility, className, design, styles, variables } = props;
     const parentVariables = React.useContext(ToolbarVariablesContext);
@@ -58,7 +55,6 @@ export const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, Toolbar
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const element = <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root, ref })} />;
-    setEnd();
 
     return element;
   },

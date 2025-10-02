@@ -6,7 +6,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
   ShorthandConfig,
 } from '@fluentui/react-bindings';
@@ -131,8 +130,6 @@ export const buttonClassName = 'ui-button';
 export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const {
       accessibility,
@@ -276,8 +273,6 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         )}
       </ElementType>
     );
-
-    setEnd();
 
     return result;
   },

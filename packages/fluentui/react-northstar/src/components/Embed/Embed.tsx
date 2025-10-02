@@ -15,7 +15,6 @@ import {
   useUnhandledProps,
   useFluentContext,
   useAccessibility,
-  useTelemetry,
   useStyles,
   ForwardRefWithAs,
   useControllableState,
@@ -85,8 +84,7 @@ export type EmbedStylesProps = Required<Pick<EmbedProps, 'active'>> & { iframeLo
  */
 export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Embed.displayName, context.telemetry);
-  setStart();
+
   const { alt, title, control, iframe, placeholder, video, variables, styles, className, design } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Embed.handledProps, props);
@@ -215,8 +213,6 @@ export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) 
         })}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, EmbedProps> & FluentComponentStaticProps<EmbedProps>;

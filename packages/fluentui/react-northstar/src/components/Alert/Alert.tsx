@@ -22,7 +22,6 @@ import {
   useAccessibility,
   getElementType,
   useStyles,
-  useTelemetry,
   useFluentContext,
   useUnhandledProps,
   ForwardRefWithAs,
@@ -125,8 +124,7 @@ export const alertSlotClassNames: AlertSlotClassNames = {
  */
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Alert.displayName, context.telemetry);
-  setStart();
+
   const {
     warning,
     danger,
@@ -278,8 +276,6 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
       {childrenExist(children) ? children : renderContent()}
     </ElementType>,
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, AlertProps> &

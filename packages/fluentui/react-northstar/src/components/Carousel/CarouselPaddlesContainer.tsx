@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   useFluentContext,
-  useTelemetry,
   useStyles,
   useAccessibility,
   getElementType,
@@ -32,8 +31,6 @@ export const carouselPaddlesContainerClassName = 'ui-carrouselpaddles_container'
 export const CarouselPaddlesContainer = React.forwardRef<HTMLDivElement, CarouselPaddlesContainerProps>(
   (props, ref) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(CarouselPaddlesContainer.displayName, context.telemetry);
-    setStart();
 
     const { className, children, design, styles, variables, content } = props;
 
@@ -61,7 +58,6 @@ export const CarouselPaddlesContainer = React.forwardRef<HTMLDivElement, Carouse
         {childrenExist(children) ? children : content}
       </ElementType>
     );
-    setEnd();
 
     return element;
   },

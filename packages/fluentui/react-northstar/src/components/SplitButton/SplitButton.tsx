@@ -26,7 +26,6 @@ import { Ref } from '@fluentui/react-component-ref';
 import { PositioningProps, AutoSize } from '../../utils/positioner/types';
 
 import {
-  useTelemetry,
   useAccessibility,
   getElementType,
   useFluentContext,
@@ -112,8 +111,6 @@ export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & 
  */
 export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(SplitButton.displayName, context.telemetry);
-  setStart();
 
   const {
     button,
@@ -279,7 +276,6 @@ export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((p
     </Ref>
   );
 
-  setEnd();
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, SplitButtonProps> &
   FluentComponentStaticProps<SplitButtonProps> & {

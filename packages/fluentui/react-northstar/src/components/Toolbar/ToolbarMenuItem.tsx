@@ -16,7 +16,6 @@ import {
   compose,
   focusAsync,
   mergeVariablesOverrides,
-  useTelemetry,
   useStyles,
   useControllableState,
   useFluentContext,
@@ -140,8 +139,6 @@ export const toolbarMenuItemSlotClassNames: ToolbarMenuItemSlotClassNames = {
 export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMenuItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const {
       active,
@@ -381,7 +378,6 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
           children: undefined, // force-reset `children` defined for `Popup` as it collides with the `trigger`
         },
       });
-      setEnd();
 
       return popupElement;
     }
@@ -433,7 +429,6 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       ) : null;
 
     if (!wrapper) {
-      setEnd();
       return menuItemInner;
     }
 
@@ -451,7 +446,6 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
         ),
       }),
     });
-    setEnd();
 
     return wrapperElement;
   },

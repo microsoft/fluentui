@@ -12,7 +12,6 @@ import {
   useFluentContext,
   useUnhandledProps,
   useAccessibility,
-  useTelemetry,
 } from '@fluentui/react-bindings';
 
 export interface LayoutSlotClassNames {
@@ -75,8 +74,7 @@ export type LayoutStylesProps = Required<
  */
 export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStaticProps<LayoutProps> = props => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Layout.displayName, context.telemetry);
-  setStart();
+
   const {
     reducing,
     disappearing,
@@ -138,7 +136,6 @@ export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStatic
   const endArea = renderEndArea({ ...props, classes });
 
   if (!startArea && !mainArea && !endArea) {
-    setEnd();
     return (
       <ElementType
         {...getA11yProps('root', {
@@ -154,7 +151,6 @@ export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStatic
 
   // disappear: render the content directly without wrapping layout or area elements
   if (disappearing && isSingleArea) {
-    setEnd();
     return start || main || end;
   }
 
@@ -165,7 +161,7 @@ export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStatic
       mainArea && layoutSlotClassNames.reducedMain,
       endArea && layoutSlotClassNames.reducedEnd,
     );
-    setEnd();
+
     return (
       <ElementType
         {...getA11yProps('root', {
@@ -177,7 +173,7 @@ export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStatic
       </ElementType>
     );
   }
-  setEnd();
+
   return (
     <ElementType
       {...getA11yProps('root', {

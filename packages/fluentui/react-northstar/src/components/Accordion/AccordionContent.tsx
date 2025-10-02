@@ -15,7 +15,6 @@ import {
 import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 
 import {
-  useTelemetry,
   useFluentContext,
   getElementType,
   useAccessibility,
@@ -54,9 +53,7 @@ export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, '
  */
 export const AccordionContent = React.forwardRef<HTMLDListElement, AccordionContentProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AccordionContent.displayName, context.telemetry);
 
-  setStart();
   const { children, content, accordionTitleId, active, className, design, styles, variables } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(AccordionContent.handledProps, props);
@@ -99,8 +96,6 @@ export const AccordionContent = React.forwardRef<HTMLDListElement, AccordionCont
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDListElement, AccordionContentProps> &

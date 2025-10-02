@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
@@ -49,8 +48,6 @@ export const avatarImageClassName = imageClassName;
  */
 export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AvatarImage.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -95,8 +92,6 @@ export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>(
   const unhandledProps = useUnhandledProps(AvatarImage.handledProps, props);
 
   const result = <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })} />;
-
-  setEnd();
 
   return result;
 }) as unknown as ForwardRefWithAs<'img', HTMLImageElement, AvatarImageProps> &

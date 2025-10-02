@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ForwardRefWithAs,
   useFluentContext,
-  useTelemetry,
   useStyles,
   useAccessibility,
   useUnhandledProps,
@@ -50,8 +49,6 @@ export const menuItemContentClassName = 'ui-menu__itemcontent';
  */
 export const MenuItemContent = React.forwardRef<HTMLSpanElement, MenuItemContentProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(MenuItemContent.displayName, context.telemetry);
-  setStart();
 
   const parentProps = useContextSelectors(MenuContext, {
     vertical: v => v.vertical,
@@ -96,7 +93,6 @@ export const MenuItemContent = React.forwardRef<HTMLSpanElement, MenuItemContent
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemContentProps> &

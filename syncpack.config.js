@@ -134,7 +134,6 @@ const config = {
         '@fluentui/react-northstar-prototypes',
         '@fluentui/react-northstar-styles-renderer',
         '@fluentui/react-proptypes',
-        '@fluentui/react-telemetry',
         '@fluentui/state',
         '@fluentui/styles',
       ],

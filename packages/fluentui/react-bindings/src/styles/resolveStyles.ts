@@ -48,14 +48,12 @@ export const resolveStyles = (
     allDisplayNames,
     className: componentClassName,
     theme,
-    primaryDisplayName,
     componentProps,
     inlineStylesProps,
     rtl,
     disableAnimations,
     renderer,
     performance: performanceFlags,
-    telemetry,
   } = options;
 
   const { className, design, styles, variables } = inlineStylesProps;
@@ -197,8 +195,6 @@ export const resolveStyles = (
             return resolvedStyles[lazyEvaluationKey];
           }
 
-          const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
-
           // resolve/render slot styles once and cache
           resolvedStyles[lazyEvaluationKey] = mergedStyles[slotName](styleParam);
 
@@ -212,10 +208,6 @@ export const resolveStyles = (
           if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
             resolvedStylesDebug[slotName] = (resolvedStyles[slotName] as any)?.['_debug'];
             delete (resolvedStyles[slotName] as any)?.['_debug'];
-          }
-
-          if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
-            telemetry.performance[primaryDisplayName].msResolveStylesTotal += performance.now() - telemetryPartStart;
           }
 
           return resolvedStyles[lazyEvaluationKey];
@@ -244,14 +236,6 @@ export const resolveStyles = (
             //
 
             if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
-              if (telemetry?.performance[primaryDisplayName]) {
-                if (slotName === 'root') {
-                  telemetry.performance[primaryDisplayName].stylesRootCacheHits++;
-                } else {
-                  telemetry.performance[primaryDisplayName].stylesSlotsCacheHits++;
-                }
-              }
-
               return slotName === 'root'
                 ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
                 : classesThemeCache[slotCacheKey];
@@ -270,7 +254,6 @@ export const resolveStyles = (
 
           // this resolves the getter magic
           const styleObj = resolvedStyles[slotName];
-          const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
 
           if (styleObj) {
             classes[lazyEvaluationKey] = renderer.renderRule(styleObj, rendererParam);
@@ -287,10 +270,6 @@ export const resolveStyles = (
             slotName === 'root'
               ? cx(componentClassName, classes[lazyEvaluationKey], className)
               : classes[lazyEvaluationKey];
-
-          if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
-            telemetry.performance[primaryDisplayName].msRenderStylesTotal += performance.now() - telemetryPartStart;
-          }
 
           return resultClassName;
         },
@@ -322,8 +301,6 @@ export const resolveStyles = (
           return target[slotName];
         }
 
-        const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
-
         // resolve/render slot styles once and cache
         target[slotName] = mergedStyles[slotName]?.(styleParam);
 
@@ -337,10 +314,6 @@ export const resolveStyles = (
         if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
           resolvedStylesDebug[slotName] = (target[slotName] as any)?.['_debug'];
           delete (target[slotName] as any)?.['_debug'];
-        }
-
-        if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
-          telemetry.performance[primaryDisplayName].msResolveStylesTotal += performance.now() - telemetryPartStart;
         }
 
         return target[slotName];
@@ -361,14 +334,6 @@ export const resolveStyles = (
           //
 
           if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
-            if (telemetry?.performance[primaryDisplayName]) {
-              if (slotName === 'root') {
-                telemetry.performance[primaryDisplayName].stylesRootCacheHits++;
-              } else {
-                telemetry.performance[primaryDisplayName].stylesSlotsCacheHits++;
-              }
-            }
-
             return slotName === 'root'
               ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
               : classesThemeCache[slotCacheKey];
@@ -385,7 +350,6 @@ export const resolveStyles = (
 
         // this resolves the getter magic
         const styleObj = resolvedStyles[slotName];
-        const telemetryPartStart = telemetry?.enabled ? performance.now() : 0;
 
         if (styleObj) {
           target[slotName] = renderer.renderRule(styleObj, rendererParam);
@@ -400,10 +364,6 @@ export const resolveStyles = (
 
         const resultClassName =
           slotName === 'root' ? cx(componentClassName, target[slotName], className) : target[slotName];
-
-        if (telemetry?.enabled && telemetry.performance[primaryDisplayName]) {
-          telemetry.performance[primaryDisplayName].msRenderStylesTotal += performance.now() - telemetryPartStart;
-        }
 
         return resultClassName;
       },

@@ -1,5 +1,5 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import { compose, ComposedComponent, FocusZone, Telemetry } from '@fluentui/react-bindings';
+import { compose, ComposedComponent, FocusZone } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import { isConformant as isConformantBase, IsConformantOptions } from '@fluentui/react-conformance';
 import { Renderer } from '@fluentui/react-northstar-styles-renderer';
@@ -467,21 +467,6 @@ export function isConformant(
   });
 
   // ---------------------------------------
-  // Telemetry
-  // ---------------------------------------
-  describe('telemetry', () => {
-    test('reports telemetry to its Provider', () => {
-      const telemetry = new Telemetry();
-      const wrapper = mount(<Component {...requiredProps} />, {
-        wrappingComponentProps: { telemetry },
-      });
-
-      wrapper.unmount();
-      expect(telemetry.performance).toHaveProperty(Component.displayName);
-    });
-  });
-
-  // ---------------------------------------
   // compose()
   // ---------------------------------------
   if (isComposedComponent) {
@@ -510,16 +495,6 @@ export function isConformant(
           const element = getComponent(wrapper);
 
           expect(element.prop('data-aa-class')).toBe(displayName);
-        });
-
-        it('overrides default name for telemetry', () => {
-          const telemetry = new Telemetry();
-          const wrapper = mount(<ComposedComponent {...requiredProps} />, {
-            wrappingComponentProps: { telemetry },
-          });
-
-          wrapper.unmount();
-          expect(telemetry.performance).toHaveProperty(displayName);
         });
       });
 

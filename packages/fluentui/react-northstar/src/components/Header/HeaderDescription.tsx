@@ -14,7 +14,6 @@ import {
 
 import { FluentComponentStaticProps } from '../../types';
 import {
-  useTelemetry,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -42,8 +41,7 @@ export type HeaderDescriptionStylesProps = Pick<HeaderDescriptionProps, 'color'>
  */
 export const HeaderDescription = React.forwardRef<HTMLParagraphElement, HeaderDescriptionProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(HeaderDescription.displayName, context.telemetry);
-  setStart();
+
   const { children, content, color, className, design, styles, variables } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(HeaderDescription.handledProps, props);
@@ -79,7 +77,7 @@ export const HeaderDescription = React.forwardRef<HTMLParagraphElement, HeaderDe
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'p', HTMLParagraphElement, HeaderDescriptionProps> &
   FluentComponentStaticProps<HeaderDescriptionProps>;

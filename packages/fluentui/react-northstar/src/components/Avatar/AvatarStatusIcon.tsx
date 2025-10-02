@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   useFluentContext,
-  useTelemetry,
   useStyles,
   useAccessibility,
   getElementType,
@@ -34,8 +33,6 @@ export const avatarStatusIconClassName = 'ui-avatar__statusicon';
  */
 export const AvatarStatusIcon = React.forwardRef<HTMLSpanElement, AvatarStatusIconProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AvatarStatusIcon.displayName, context.telemetry);
-  setStart();
 
   const { children, className, design, size, state, styles, variables } = props;
 
@@ -65,7 +62,6 @@ export const AvatarStatusIcon = React.forwardRef<HTMLSpanElement, AvatarStatusIc
   const element = (
     <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>{children}</ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusIconProps> & FluentComponentStaticProps;

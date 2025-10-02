@@ -18,7 +18,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
   ForwardRefWithAs,
   useControllableState,
@@ -95,8 +94,7 @@ export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disa
  */
 export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
-  setStart();
+
   const { label, checkedIndicator, indicator, disabled, vertical, className, design, styles, variables, shouldFocus } =
     props;
   const elementRef = React.useRef<HTMLElement>();
@@ -197,7 +195,7 @@ export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemPro
       </ElementType>
     </Ref>,
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, RadioGroupItemProps> &
   FluentComponentStaticProps<RadioGroupItemProps>;

@@ -7,7 +7,6 @@ import {
   useFluentContext,
   useAccessibility,
   useStyles,
-  useTelemetry,
   useContextSelectors,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
@@ -117,8 +116,6 @@ export const toolbarItemClassName = 'ui-toolbar__item';
 export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const {
       accessibility,
@@ -324,7 +321,6 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
           children: undefined, // force-reset `children` defined for `Popup` as it collides with the `trigger`
         },
       });
-      setEnd();
 
       return popupElement;
     }
@@ -349,16 +345,12 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
             },
           }),
         });
-        setEnd();
 
         return wrapperElement;
       }
 
-      setEnd();
       return contentElement;
     }
-
-    setEnd();
 
     return itemElement;
   },

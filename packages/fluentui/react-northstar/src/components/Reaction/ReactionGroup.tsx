@@ -19,7 +19,6 @@ import {
   useUnhandledProps,
   useFluentContext,
   useAccessibility,
-  useTelemetry,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -43,8 +42,7 @@ export type ReactionGroupStylesProps = never;
  */
 export const ReactionGroup = React.forwardRef<HTMLDivElement, ReactionGroupProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(ReactionGroup.displayName, context.telemetry);
-  setStart();
+
   const { children, items, content, className, design, styles, variables } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(ReactionGroup.handledProps, props);
@@ -87,8 +85,6 @@ export const ReactionGroup = React.forwardRef<HTMLDivElement, ReactionGroupProps
       )}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, ReactionGroupProps> &

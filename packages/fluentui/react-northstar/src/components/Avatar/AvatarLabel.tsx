@@ -5,7 +5,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -49,8 +48,6 @@ export const avatarlabelClassName = labelClassName;
  */
 export const AvatarLabel = React.forwardRef<HTMLSpanElement, AvatarLabelProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AvatarLabel.displayName, context.telemetry);
-  setStart();
 
   const { accessibility, children, className, content, design, styles, variables, square, size, circular } = props;
 
@@ -85,8 +82,6 @@ export const AvatarLabel = React.forwardRef<HTMLSpanElement, AvatarLabelProps>((
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarLabelProps> &

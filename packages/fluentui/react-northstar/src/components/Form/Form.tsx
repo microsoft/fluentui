@@ -15,7 +15,6 @@ import {
 import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import { FormField, FormFieldProps } from './FormField';
 import {
-  useTelemetry,
   getElementType,
   useUnhandledProps,
   useStyles,
@@ -56,8 +55,7 @@ export type FormStylesProps = never;
  */
 export const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
-  setStart();
+
   const { className, design, styles, variables, action, children, accessibility } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Form.handledProps, props);
@@ -106,7 +104,7 @@ export const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) =>
       {childrenExist(children) ? children : renderFields()}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'form', HTMLFormElement, FormProps> & FluentComponentStaticProps<FormProps>;
 

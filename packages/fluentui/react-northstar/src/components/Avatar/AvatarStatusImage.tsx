@@ -7,7 +7,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -35,8 +34,6 @@ export const avatarStatusImageClassName = 'ui-avatar__statusimage';
  */
 export const AvatarStatusImage = React.forwardRef<HTMLImageElement, AvatarStatusImageProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AvatarStatusImage.displayName, context.telemetry);
-  setStart();
 
   const { children, className, design, size, styles, variables } = props;
 
@@ -65,7 +62,6 @@ export const AvatarStatusImage = React.forwardRef<HTMLImageElement, AvatarStatus
   const element = (
     <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>{children}</ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'img', HTMLImageElement, AvatarStatusImageProps> &

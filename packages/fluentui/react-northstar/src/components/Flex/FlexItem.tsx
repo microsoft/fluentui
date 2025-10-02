@@ -1,4 +1,4 @@
-import { ComponentSlotClasses, useStyles, useTelemetry, useFluentContext } from '@fluentui/react-bindings';
+import { ComponentSlotClasses, useStyles, useFluentContext } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, ComponentSlotStylesResolved, mergeStyles } from '@fluentui/styles';
 import cx from 'classnames';
 import * as _ from 'lodash';
@@ -72,8 +72,6 @@ export const flexItemClassName = 'ui-flex__item';
  */
 export const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = props => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(FlexItem.displayName, context.telemetry);
-  setStart();
 
   const { align, children, className, design, grow, flexDirection, push, shrink, size, styles, variables } = props;
 
@@ -109,8 +107,6 @@ export const FlexItem: React.FC<FlexItemProps> & { __isFlexItem: boolean } = pro
   } else {
     element = applyStyles(React.Children.only(children) as React.ReactElement, resolvedStyles, classes);
   }
-
-  setEnd();
 
   return element;
 };

@@ -1,7 +1,6 @@
 import { Accessibility, dialogBehavior, DialogBehaviorProps, getCode, keyboardKey } from '@fluentui/accessibility';
 import {
   FocusTrapZoneProps,
-  useTelemetry,
   useAccessibility,
   useStyles,
   useFluentContext,
@@ -142,8 +141,6 @@ export type DialogStylesProps = Required<Pick<DialogProps, 'backdrop'>>;
  */
 export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Dialog.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -412,7 +409,7 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
       </Unstable_NestingAuto>
     </Portal>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DialogProps> &
   FluentComponentStaticProps<DialogProps> & {

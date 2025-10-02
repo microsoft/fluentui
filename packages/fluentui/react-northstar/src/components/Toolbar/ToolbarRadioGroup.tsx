@@ -12,7 +12,6 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
-  useTelemetry,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -64,8 +63,6 @@ export const toolbarRadioGroupClassName = 'ui-toolbars'; // FIXME: required by g
 export const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarRadioGroupStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const { accessibility, activeIndex, children, className, design, items, variables, styles } = props;
     const itemRefs: React.RefObject<HTMLElement>[] = [];
@@ -169,7 +166,6 @@ export const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarR
         </ToolbarVariablesProvider>
       </ElementType>
     );
-    setEnd();
 
     return element;
   },

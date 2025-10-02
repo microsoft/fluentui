@@ -13,7 +13,6 @@ import {
   useContextSelector,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
   useMergedRefs,
   ForwardRefWithAs,
@@ -250,8 +249,6 @@ function partitionActionMenuPropsFromShorthand<P>(
  */
 export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
-  setStart();
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
   const chatDensity = useChatDensityContext();
@@ -711,7 +708,6 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
       )}
     </Ref>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, ChatMessageProps> &

@@ -5,7 +5,6 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
-  useTelemetry,
   useFluentContext,
 } from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
@@ -37,8 +36,6 @@ export const boxClassName = 'ui-box';
 export const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const { accessibility, className, design, styles, variables, children, content } = props;
 
@@ -74,8 +71,6 @@ export const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
         {childrenExist(children) ? children : content}
       </ElementType>,
     );
-
-    setEnd();
 
     return result;
   },

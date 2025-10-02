@@ -6,7 +6,6 @@ import {
   useStateManager,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
@@ -128,8 +127,6 @@ export const sliderSlotClassNames: SliderSlotClassNames = {
  */
 export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Slider.displayName, context.telemetry);
-  setStart();
 
   const {
     accessibility,
@@ -261,7 +258,6 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
       </div>
     </ElementType>
   );
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'input', HTMLInputElement, SliderProps> & FluentComponentStaticProps;

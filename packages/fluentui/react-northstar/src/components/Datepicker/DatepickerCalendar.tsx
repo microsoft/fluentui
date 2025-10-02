@@ -24,7 +24,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -101,8 +100,6 @@ const normalizeDateInGrid = (date: Date): Date => {
  */
 export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCalendarProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(DatepickerCalendar.displayName, context.telemetry);
-  setStart();
 
   const {
     className,
@@ -429,7 +426,7 @@ export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCal
       })}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DatepickerCalendarProps> &
   FluentComponentStaticProps<DatepickerCalendarProps>;

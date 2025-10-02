@@ -15,7 +15,6 @@ import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/ac
 import { FluentComponentStaticProps } from '../../types';
 import {
   useAccessibility,
-  useTelemetry,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -61,8 +60,7 @@ export const carouselItemSlotClassNames: CarouselItemSlotClassNames = {
  */
 export const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(CarouselItem.displayName, context.telemetry);
-  setStart();
+
   const unhandledProps = useUnhandledProps(CarouselItem.handledProps, props);
   const {
     accessibility,
@@ -118,8 +116,6 @@ export const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
       </div>
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CarouselItemProps> &

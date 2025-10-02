@@ -56,7 +56,6 @@ describe(`utils`, () => {
           "docs-components",
           "react-northstar",
           "react-proptypes",
-          "react-telemetry",
           "react-bindings",
           "accessibility",
           "code-sandbox",

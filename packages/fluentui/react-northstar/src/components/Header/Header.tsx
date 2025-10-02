@@ -18,7 +18,6 @@ import { HeaderDescription, HeaderDescriptionProps } from './HeaderDescription';
 
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
-  useTelemetry,
   useAccessibility,
   useFluentContext,
   getElementType,
@@ -59,8 +58,7 @@ export type HeaderStylesProps = Required<Pick<HeaderProps, 'align' | 'color'>> &
  */
 export const Header = React.forwardRef<HTMLHeadingElement, HeaderProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Header.displayName, context.telemetry);
-  setStart();
+
   const { children, content, variables, align, className, design, styles, description, color } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Header.handledProps, props);
@@ -107,8 +105,6 @@ export const Header = React.forwardRef<HTMLHeadingElement, HeaderProps>((props, 
         })}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'h1', HTMLHeadingElement, HeaderProps> &

@@ -5,7 +5,6 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
-  useTelemetry,
   useFluentContext,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
@@ -35,8 +34,6 @@ export const cardPreviewClassName = 'ui-card__preview';
  */
 export const CardPreview = React.forwardRef<HTMLDivElement, CardPreviewProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(CardPreview.displayName, context.telemetry);
-  setStart();
 
   const { className, design, styles, variables, children, horizontal, fitted } = props;
   const ElementType = getElementType(props);
@@ -69,7 +66,7 @@ export const CardPreview = React.forwardRef<HTMLDivElement, CardPreviewProps>((p
       {children}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardPreviewProps> &
   FluentComponentStaticProps<CardPreviewProps>;

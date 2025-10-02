@@ -3,7 +3,6 @@ import { FluentComponentStaticProps } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  useTelemetry,
   useStyles,
   getElementType,
   useUnhandledProps,
@@ -27,8 +26,6 @@ export const cardColumnClassName = 'ui-card__column';
  */
 export const CardColumn = React.forwardRef<HTMLDivElement, CardColumnProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(CardColumn.displayName, context.telemetry);
-  setStart();
 
   const { className, design, styles, variables, children } = props;
   const ElementType = getElementType(props);
@@ -60,7 +57,7 @@ export const CardColumn = React.forwardRef<HTMLDivElement, CardColumnProps>((pro
       {children}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardColumnProps> & FluentComponentStaticProps<CardColumnProps>;
 

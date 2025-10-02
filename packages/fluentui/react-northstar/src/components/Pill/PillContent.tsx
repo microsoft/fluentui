@@ -7,7 +7,6 @@ import {
   useAccessibility,
   useFluentContext,
   useStyles,
-  useTelemetry,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
@@ -47,8 +46,6 @@ export const pillContentClassName = 'ui-pillcontent';
  */
 export const PillContent = React.forwardRef<HTMLSpanElement, PillContentProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(PillContent.displayName, context.telemetry);
-  setStart();
 
   const { accessibility, children, className, content, design, styles, variables, size, actionable } = props;
 
@@ -79,8 +76,6 @@ export const PillContent = React.forwardRef<HTMLSpanElement, PillContentProps>((
       {childrenExist(children) ? children : content}
     </ElementType>
   );
-
-  setEnd();
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, PillContentProps> &

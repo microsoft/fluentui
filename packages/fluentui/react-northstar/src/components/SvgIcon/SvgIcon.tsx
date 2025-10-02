@@ -4,7 +4,6 @@ import {
   getUnhandledProps,
   useStyles,
   useFluentContext,
-  useTelemetry,
 } from '@fluentui/react-bindings';
 import {
   SvgIconProps,
@@ -27,9 +26,6 @@ export const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIcon
   handledProps: (keyof (SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }))[];
 } = props => {
   const context = useFluentContext();
-
-  const { setStart, setEnd } = useTelemetry(SvgIcon.displayName, context.telemetry);
-  setStart();
 
   const {
     alt,
@@ -77,7 +73,6 @@ export const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIcon
       {callable(children)({ classes, rtl: context.rtl, props })}
     </ElementType>
   );
-  setEnd();
 
   return element;
 };

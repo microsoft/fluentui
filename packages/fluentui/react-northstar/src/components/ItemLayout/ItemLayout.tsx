@@ -3,7 +3,6 @@ import {
   ComponentSlotClasses,
   useStyles,
   useFluentContext,
-  useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import { ICSSInJSStyle } from '@fluentui/styles';
@@ -78,8 +77,7 @@ export type ItemLayoutStylesProps = never;
 export const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> &
   FluentComponentStaticProps<ItemLayoutProps> = props => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(ItemLayout.displayName, context.telemetry);
-  setStart();
+
   const {
     as,
     debug,
@@ -143,7 +141,7 @@ export const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> &
       {...unhandledProps}
     />
   );
-  setEnd();
+
   return element;
 };
 

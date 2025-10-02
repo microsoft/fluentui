@@ -2,7 +2,6 @@ import { Accessibility, loaderBehavior, LoaderBehaviorProps } from '@fluentui/ac
 import * as customPropTypes from '@fluentui/react-proptypes';
 import {
   ShorthandConfig,
-  useTelemetry,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -78,8 +77,7 @@ export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | '
  */
 export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(Loader.displayName, context.telemetry);
-  setStart();
+
   const { delay, secondary, label, indicator, inline, labelPosition, className, design, styles, variables, size } =
     props;
 
@@ -161,7 +159,7 @@ export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref)
       })}
     </ElementType>
   );
-  setEnd();
+
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, LoaderProps> &
   FluentComponentStaticProps<LoaderProps> & {

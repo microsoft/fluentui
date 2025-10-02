@@ -12,7 +12,6 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
-  useTelemetry,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -71,8 +70,6 @@ export const ToolbarMenuRadioGroup = compose<
 >(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
-    const { setStart, setEnd } = useTelemetry(composeOptions.displayName, context.telemetry);
-    setStart();
 
     const { accessibility, activeIndex, className, design, items, styles, variables, wrapper } = props;
 
@@ -131,7 +128,6 @@ export const ToolbarMenuRadioGroup = compose<
         children: content,
       },
     });
-    setEnd();
 
     return element;
   },
