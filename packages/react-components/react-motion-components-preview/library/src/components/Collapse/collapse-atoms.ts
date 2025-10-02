@@ -39,6 +39,7 @@ export const sizeEnterAtom = ({
     duration,
     easing,
     delay,
+    fill: 'both',
   };
 };
 
@@ -63,8 +64,8 @@ export const sizeExitAtom = ({
     ],
     duration,
     easing,
-    fill: 'both',
     delay,
+    fill: 'both',
   };
 };
 
@@ -115,14 +116,11 @@ export const whitespaceAtom = ({
   const offset = direction === 'enter' ? 0 : 1;
   const keyframes = [{ [paddingStart]: '0', [paddingEnd]: '0', [marginStart]: '0', [marginEnd]: '0', offset }];
 
-  const atom: AtomMotion = {
+  return {
     keyframes,
     duration,
     easing,
     delay,
+    fill: 'both',
   };
-  if (direction === 'exit') {
-    atom.fill = 'forwards';
-  }
-  return atom;
 };
