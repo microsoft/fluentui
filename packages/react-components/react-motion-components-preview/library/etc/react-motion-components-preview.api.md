@@ -20,16 +20,20 @@ export const Collapse: PresenceComponent<CollapseParams>;
 // @public
 export const CollapseDelayed: PresenceComponent<CollapseParams>;
 
-// @public (undocumented)
-export type CollapseParams = BasePresenceParams & AnimateOpacity & {
-    orientation?: CollapseOrientation;
-    fromSize?: string;
-    opacityDelay?: number;
-    exitOpacityDelay?: number;
+// @public
+export type CollapseDurations = {
     sizeDuration?: number;
     opacityDuration?: number;
     exitSizeDuration?: number;
     exitOpacityDuration?: number;
+};
+
+// @public (undocumented)
+export type CollapseParams = BasePresenceParams & AnimateOpacity & CollapseDurations & {
+    orientation?: CollapseOrientation;
+    fromSize?: string;
+    opacityDelay?: number;
+    exitOpacityDelay?: number;
 };
 
 // @public (undocumented)
