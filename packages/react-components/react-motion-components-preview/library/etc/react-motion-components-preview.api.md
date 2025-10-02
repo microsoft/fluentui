@@ -32,8 +32,8 @@ export type CollapseDurations = {
 export type CollapseParams = BasePresenceParams & AnimateOpacity & CollapseDurations & {
     orientation?: CollapseOrientation;
     fromSize?: string;
-    opacityDelay?: number;
-    exitOpacityDelay?: number;
+    staggerDelay?: number;
+    exitStaggerDelay?: number;
 };
 
 // @public (undocumented)
