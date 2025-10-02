@@ -16,11 +16,18 @@ export const plugin: {
     configs: {
         recommended: {
             plugins: string[];
-            rules: {};
+            rules: {
+                [x: string]: (string | {
+                    runtime: string;
+                })[];
+            };
         };
     };
     rules: {
         "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
+        "no-missing-jsx-pragma": RuleModule<"missingJsxImportSource" | "missingJsxPragma" | "missingCreateElementFactoryImport" | "invalidJSXPragmaForAutomatic" | "invalidJSXPragmaForClassic" | "redundantPragma", {
+        runtime: "automatic" | "classic";
+        }[], unknown, RuleListener>;
     };
 };
 
