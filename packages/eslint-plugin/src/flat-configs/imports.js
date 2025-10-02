@@ -1,7 +1,13 @@
 // @ts-check
+const importPlugin = require('eslint-plugin-import');
+const tseslint = require('typescript-eslint');
 
-/** @type {import("eslint").Linter.LegacyConfig} */
-module.exports = {
+/** @type {import('typescript-eslint').ConfigArray} */
+module.exports = tseslint.config({
+  files: ['**/*.{ts,tsx,js,jsx,cjs,mjs}'],
+  plugins: {
+    import: importPlugin,
+  },
   rules: {
     /**
      * core eslint rules
@@ -27,4 +33,4 @@ module.exports = {
       },
     ],
   },
-};
+});
