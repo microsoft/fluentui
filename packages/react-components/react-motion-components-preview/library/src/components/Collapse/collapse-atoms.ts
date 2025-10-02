@@ -17,6 +17,7 @@ interface SizeEnterAtomParams {
   easing: string;
   element: HTMLElement;
   fromSize?: string;
+  delay?: number;
 }
 
 export const sizeEnterAtom = ({
@@ -25,6 +26,7 @@ export const sizeEnterAtom = ({
   easing,
   element,
   fromSize = '0',
+  delay = 0,
 }: SizeEnterAtomParams): AtomMotion => {
   const { sizeName, overflowName, toSize } = sizeValuesForOrientation(orientation, element);
 
@@ -36,6 +38,7 @@ export const sizeEnterAtom = ({
     ],
     duration,
     easing,
+    delay,
   };
 };
 
