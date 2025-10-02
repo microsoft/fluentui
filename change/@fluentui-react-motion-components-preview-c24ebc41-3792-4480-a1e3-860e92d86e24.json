@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Collapse): make size animation work with delay",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
