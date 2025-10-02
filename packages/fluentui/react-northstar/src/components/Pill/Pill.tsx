@@ -14,8 +14,8 @@ import {
   useTelemetry,
   useFluentContext,
   useUnhandledProps,
-  useAutoControlled,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 import { PillContent, PillContentProps } from './PillContent';
 import { PillActionProps, PillAction } from './PillAction';
@@ -147,10 +147,10 @@ export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =>
     onDismiss,
   } = props;
 
-  const [selected, setSelected] = useAutoControlled({
-    defaultValue: props.defaultSelected,
-    value: props.selected,
-    initialValue: false,
+  const [selected, setSelected] = useControllableState({
+    defaultState: props.defaultSelected,
+    state: props.selected,
+    initialState: false,
   });
 
   const ElementType = getElementType(props);

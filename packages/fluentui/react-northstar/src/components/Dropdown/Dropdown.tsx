@@ -1,6 +1,5 @@
 import {
   getElementType,
-  useAutoControlled,
   useStyles,
   useUnhandledProps,
   useFluentContext,
@@ -8,6 +7,7 @@ import {
   ForwardRefWithAs,
   useMergedRefs,
   useIsomorphicLayoutEffect,
+  useControllableState,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -458,30 +458,30 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Dropdown.handledProps, props);
 
-  const [activeSelectedIndex, setActiveSelectedIndex] = useAutoControlled<number | null | undefined>({
-    defaultValue: props.defaultActiveSelectedIndex,
-    initialValue: multiple ? null : undefined,
-    value: props.activeSelectedIndex,
+  const [activeSelectedIndex, setActiveSelectedIndex] = useControllableState<number | null | undefined>({
+    defaultState: props.defaultActiveSelectedIndex,
+    initialState: multiple ? null : undefined,
+    state: props.activeSelectedIndex,
   });
-  const [highlightedIndex, setHighlightedIndex] = useAutoControlled<number | null>({
-    defaultValue: props.defaultHighlightedIndex,
-    initialValue: highlightFirstItemOnOpen ? 0 : null,
-    value: props.highlightedIndex,
+  const [highlightedIndex, setHighlightedIndex] = useControllableState<number | null>({
+    defaultState: props.defaultHighlightedIndex,
+    initialState: highlightFirstItemOnOpen ? 0 : null,
+    state: props.highlightedIndex,
   });
-  const [open, setOpen] = useAutoControlled({
-    defaultValue: props.defaultOpen,
-    initialValue: false,
-    value: props.open,
+  const [open, setOpen] = useControllableState({
+    defaultState: props.defaultOpen,
+    initialState: false,
+    state: props.open,
   });
-  const [searchQuery, setSearchQuery] = useAutoControlled<string | undefined>({
-    defaultValue: props.defaultSearchQuery,
-    initialValue: search ? '' : undefined,
-    value: props.searchQuery,
+  const [searchQuery, setSearchQuery] = useControllableState<string | undefined>({
+    defaultState: props.defaultSearchQuery,
+    initialState: search ? '' : undefined,
+    state: props.searchQuery,
   });
-  const [rawValue, setValue] = useAutoControlled({
-    defaultValue: props.defaultValue,
-    initialValue: [],
-    value: props.value,
+  const [rawValue, setValue] = useControllableState({
+    defaultState: props.defaultValue,
+    initialState: [],
+    state: props.value,
   });
   const value = normalizeValue(multiple, rawValue);
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAutoControlled } from '@fluentui/react-bindings';
+import { useControllableState } from '@fluentui/react-bindings';
 import { ObjectShorthandCollection } from '../../../types';
 import { TreeItemProps } from '../TreeItem';
 import { FlatTreeItem, flattenTree, FlatTree } from './flattenTree';
@@ -101,18 +101,18 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
     [], // initialValue only needs to be computed on mount
   );
 
-  const [activeItemIds, setActiveItemIdsState] = useAutoControlled<string[]>({
-    defaultValue: options.defaultActiveItemIds,
-    value: options.activeItemIds,
-    initialValue: deprecated_initialActiveItemIds, // will become []
+  const [activeItemIds, setActiveItemIdsState] = useControllableState<string[]>({
+    defaultState: options.defaultActiveItemIds,
+    state: options.activeItemIds,
+    initialState: deprecated_initialActiveItemIds, // will become []
   });
 
   // selectedItemIds is only valid for leaf nodes.
   // For non-leaf nodes, their 'selected' states are defered from all their descendents
-  const [selectedItemIds, setSelectedItemIdsState] = useAutoControlled<string[]>({
-    defaultValue: options.defaultSelectedItemIds,
-    value: options.selectedItemIds,
-    initialValue: [],
+  const [selectedItemIds, setSelectedItemIdsState] = useControllableState<string[]>({
+    defaultState: options.defaultSelectedItemIds,
+    state: options.selectedItemIds,
+    initialState: [],
   });
 
   // We want to set `visibleItemIds` to simplify rendering later

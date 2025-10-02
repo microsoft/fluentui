@@ -73,7 +73,7 @@ describe('Portal', () => {
   describe('onMount', () => {
     it('called when portal opens', () => {
       const onMount = jest.fn();
-      const wrapper = mountWithProvider(<Portal content={<p />} onMount={onMount} />);
+      const wrapper = mountWithProvider(<Portal content={<p />} onMount={onMount} open={false} />);
       wrapper.setProps({ open: true } as any);
 
       expect(onMount).toHaveBeenCalledTimes(1);

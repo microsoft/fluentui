@@ -5,7 +5,7 @@ import {
   FocusTrapZoneProps,
   useFluentContext,
   useTelemetry,
-  useAutoControlled,
+  useControllableState,
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
@@ -91,10 +91,10 @@ export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalPr
   const portalRef = React.useRef<HTMLElement>();
   const triggerRef = React.useRef<HTMLElement>();
 
-  const [open, setOpen] = useAutoControlled({
-    defaultValue: props.defaultOpen,
-    value: props.open,
-    initialValue: false,
+  const [open, setOpen] = useControllableState({
+    defaultState: props.defaultOpen,
+    state: props.open,
+    initialState: false,
   });
 
   const renderPortal = (): JSX.Element | undefined => {

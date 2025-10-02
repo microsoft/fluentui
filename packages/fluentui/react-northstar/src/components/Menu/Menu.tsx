@@ -4,12 +4,12 @@ import {
   mergeVariablesOverrides,
   useAccessibility,
   useFluentContext,
-  useAutoControlled,
   useStyles,
   useTelemetry,
   useUnhandledProps,
   ShorthandConfig,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -237,10 +237,10 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
     unstable_props: props,
   });
 
-  const [activeIndex, setIndex] = useAutoControlled({
-    defaultValue: props.defaultActiveIndex,
-    value: props.activeIndex,
-    initialValue: undefined,
+  const [activeIndex, setIndex] = useControllableState({
+    defaultState: props.defaultActiveIndex,
+    state: props.activeIndex,
+    initialState: undefined,
   });
 
   const setActiveIndex = React.useCallback(

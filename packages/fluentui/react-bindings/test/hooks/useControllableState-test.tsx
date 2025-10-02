@@ -1,4 +1,4 @@
-import { useAutoControlled } from '@fluentui/react-bindings';
+import { useControllableState } from '@fluentui/react-bindings';
 import { shallow } from 'enzyme';
 import { renderHook, act } from '@testing-library/react-hooks';
 import * as React from 'react';
@@ -13,11 +13,11 @@ type TestComponentProps = {
 };
 
 const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
-  const [value, setValue] = useAutoControlled({
-    defaultValue: props.defaultValue,
-    value: props.value,
+  const [value, setValue] = useControllableState({
+    defaultState: props.defaultValue,
+    state: props.value,
 
-    initialValue: props.initialValue,
+    initialState: props.initialValue,
   });
 
   return (
@@ -38,7 +38,7 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
   );
 };
 
-describe('useAutoControlled', () => {
+describe('useControllableState', () => {
   it('defaults to "undefined"', () => {
     const wrapper = shallow(<TestComponent />);
 
@@ -133,9 +133,12 @@ describe('useAutoControlled', () => {
   });
 
   it('should update function passing updated value', () => {
-    const { result, rerender } = renderHook(({ value }) => useAutoControlled<string>({ defaultValue: '', value }), {
-      initialProps: { value: 'a' },
-    });
+    const { result, rerender } = renderHook(
+      ({ value }) => useControllableState<string>({ defaultState: '', state: value, initialState: '' }),
+      {
+        initialProps: { value: 'a' },
+      },
+    );
     rerender({ value: 'b' });
 
     const dispatchSpy = jest.fn();

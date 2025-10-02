@@ -84,7 +84,7 @@ describe('Tooltip', () => {
 
 describe('open', () => {
   it('is passed to "Popper" as "enabled"', () => {
-    const wrapper = mountWithProvider(<Tooltip trigger={<button />} content="Foo" />);
+    const wrapper = mountWithProvider(<Tooltip trigger={<button />} content="Foo" open={false} />);
     expect(wrapper.find('Popper').prop('enabled')).toBe(false);
 
     wrapper.setProps({ open: true });

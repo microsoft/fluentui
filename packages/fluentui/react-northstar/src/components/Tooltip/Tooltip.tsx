@@ -1,7 +1,7 @@
 import { Accessibility, tooltipAsLabelBehavior, TooltipBehaviorProps } from '@fluentui/accessibility';
 import {
   useAccessibility,
-  useAutoControlled,
+  useControllableState,
   useTelemetry,
   useFluentContext,
   useTriggerElement,
@@ -134,10 +134,10 @@ export const Tooltip: React.FC<TooltipProps> &
     mouseEnterDelay,
   } = props;
 
-  const [open, setOpen] = useAutoControlled({
-    defaultValue: props.defaultOpen,
-    value: props.open,
-    initialValue: false,
+  const [open, setOpen] = useControllableState({
+    defaultState: props.defaultOpen,
+    state: props.open,
+    initialState: false,
   });
 
   const triggerElement = useTriggerElement(props);

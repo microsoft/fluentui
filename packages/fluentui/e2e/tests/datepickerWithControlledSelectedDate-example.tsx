@@ -8,14 +8,11 @@ const getNextDay = (date: Date) => {
 };
 
 const DatepickerExample = () => {
-  const [selectedDate, setSelectedDate] = React.useState(undefined);
+  const [selectedDate, setSelectedDate] = React.useState(defaultSelectedDate);
+
   return (
     <>
-      <Datepicker
-        today={new Date(2020, 6, 23, 0, 0, 0, 0)}
-        defaultSelectedDate={defaultSelectedDate}
-        selectedDate={selectedDate}
-      />
+      <Datepicker today={new Date(2020, 6, 23, 0, 0, 0, 0)} selectedDate={selectedDate} />
       <Button
         className="select-next-day"
         content="Select the next day"

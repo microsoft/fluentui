@@ -22,7 +22,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
-  useAutoControlled,
+  useControllableState,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
@@ -231,16 +231,16 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
     ],
   );
 
-  const [openState, setOpenState] = useAutoControlled<boolean>({
-    defaultValue: props.defaultCalendarOpenState,
-    value: props.calendarOpenState,
-    initialValue: false,
+  const [openState, setOpenState] = useControllableState<boolean>({
+    defaultState: props.defaultCalendarOpenState,
+    state: props.calendarOpenState,
+    initialState: false,
   });
 
-  const [selectedDate, setSelectedDate] = useAutoControlled<Date | undefined>({
-    defaultValue: props.defaultSelectedDate,
-    value: props.selectedDate,
-    initialValue: undefined,
+  const [selectedDate, setSelectedDate] = useControllableState<Date | undefined>({
+    defaultState: props.defaultSelectedDate,
+    state: props.selectedDate,
+    initialState: undefined,
   });
 
   const [formattedDate, setFormattedDate] = React.useState<string>(valueFormatter(selectedDate));

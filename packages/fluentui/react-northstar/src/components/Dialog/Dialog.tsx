@@ -1,7 +1,6 @@
 import { Accessibility, dialogBehavior, DialogBehaviorProps, getCode, keyboardKey } from '@fluentui/accessibility';
 import {
   FocusTrapZoneProps,
-  useAutoControlled,
   useTelemetry,
   useAccessibility,
   useStyles,
@@ -9,6 +8,7 @@ import {
   useUnhandledProps,
   getElementType,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 import { Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -211,10 +211,10 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
     rtl: context.rtl,
   });
 
-  const [open, setOpen] = useAutoControlled({
-    defaultValue: props.defaultOpen,
-    value: props.open,
-    initialValue: false,
+  const [open, setOpen] = useControllableState({
+    defaultState: props.defaultOpen,
+    state: props.open,
+    initialState: false,
   });
 
   React.useEffect(() => {

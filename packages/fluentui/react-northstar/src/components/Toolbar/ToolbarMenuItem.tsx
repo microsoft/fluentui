@@ -18,7 +18,7 @@ import {
   mergeVariablesOverrides,
   useTelemetry,
   useStyles,
-  useAutoControlled,
+  useControllableState,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -162,10 +162,10 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     } = props;
     const [menu, menuPositioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
-    const [menuOpen, setMenuOpen] = useAutoControlled({
-      defaultValue: props.defaultMenuOpen,
-      value: props.menuOpen,
-      initialValue: false,
+    const [menuOpen, setMenuOpen] = useControllableState({
+      defaultState: props.defaultMenuOpen,
+      state: props.menuOpen,
+      initialState: false,
     });
 
     const itemRef = React.useRef<HTMLElement>();

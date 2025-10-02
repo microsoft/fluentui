@@ -3,11 +3,11 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
-  useAutoControlled,
   useFluentContext,
   useStyles,
   useTelemetry,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -112,10 +112,10 @@ export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.R
     wrap,
   } = props;
 
-  const [selectedIndex, setSelectedIndex] = useAutoControlled({
-    defaultValue: props.defaultSelectedIndex,
-    value: props.selectedIndex,
-    initialValue: -1,
+  const [selectedIndex, setSelectedIndex] = useControllableState({
+    defaultState: props.defaultSelectedIndex,
+    state: props.selectedIndex,
+    initialState: -1,
   });
   const getA11Props = useAccessibility(accessibility, {
     debugName: List.displayName,

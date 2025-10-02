@@ -25,8 +25,8 @@ import {
   useTelemetry,
   useFluentContext,
   useUnhandledProps,
-  useAutoControlled,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 
 export interface AlertSlotClassNames {
@@ -148,10 +148,10 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
     body,
   } = props;
 
-  const [visible, setVisible] = useAutoControlled({
-    defaultValue: props.defaultVisible,
-    value: props.visible,
-    initialValue: true,
+  const [visible, setVisible] = useControllableState({
+    defaultState: props.defaultVisible,
+    state: props.visible,
+    initialState: true,
   });
 
   const [bodyId] = React.useState(_.uniqueId('alert-body-'));
