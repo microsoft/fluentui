@@ -6,7 +6,7 @@ import * as React from 'react';
  * @internal - Exported for testing purposes
  */
 export function hasExplicitProps(element: React.ReactElement, props: string[]): boolean {
-  if (!element.props) {
+  if (!element.props || typeof element.props !== 'object') {
     return false;
   }
 

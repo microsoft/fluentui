@@ -17,8 +17,8 @@ export const isFragment = (child: React.ReactNode): child is React.ReactElement 
  * Convert React children that might be a Fragment or other JSX into a clean array of React elements.
  */
 export const childrenOrFragmentToArray = (children: React.ReactNode): React.ReactElement[] => {
-  if (isFragment(children)) {
-    return toElementArray(children.props.children);
+  if (isFragment(children) && typeof children.props === 'object' && children.props && 'children' in children.props) {
+    return toElementArray((children.props as { children: React.ReactNode }).children);
   }
   return toElementArray(children);
 };
