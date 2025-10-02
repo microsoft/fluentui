@@ -11,7 +11,7 @@ import {
   tokens,
   JSXElement,
 } from '@fluentui/react-components';
-import { Stagger, CollapseRelaxed } from '@fluentui/react-motion-components-preview';
+import { Stagger, Collapse } from '@fluentui/react-motion-components-preview';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import StaggerStaggerOutDescription from './StaggerStaggerOut.stories.md';
 
@@ -98,9 +98,9 @@ export const StaggerOut = (): JSXElement => {
         </Button>
       </div>
 
-      <Stagger.Out itemDelay={motionTokens.durationFast} key={animationKey}>
+      <Stagger.Out key={animationKey} itemDelay={motionTokens.durationFast} reversed>
         {items.map((user, index) => (
-          <CollapseRelaxed.Out easing={motionTokens.curveDecelerateMin} key={index}>
+          <Collapse.Out key={index} duration={motionTokens.durationUltraSlow} easing={motionTokens.curveDecelerateMin}>
             <Card className={classes.userCard}>
               <CardHeader
                 className={classes.cardHeader}
@@ -129,7 +129,7 @@ export const StaggerOut = (): JSXElement => {
                 <Text>{user.post}</Text>
               </div>
             </Card>
-          </CollapseRelaxed.Out>
+          </Collapse.Out>
         ))}
       </Stagger.Out>
     </div>
