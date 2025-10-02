@@ -27,6 +27,14 @@ const renderAvatarsWithTransition = () => {
   ));
 };
 
+const renderPlainAvatars = () => {
+  return avatarData.map(avatar => (
+    <div key={avatar.name} style={{ display: 'flex', alignItems: 'center' }}>
+      <Avatar initials={avatar.initials} color={avatar.color} name={avatar.name} />
+    </div>
+  ));
+};
+
 const useClasses = makeStyles({
   container: {
     display: 'flex',
@@ -115,9 +123,7 @@ export const HideMode = (): JSXElement => {
               {renderAvatarsWithTransition()}
             </Stagger>
           </div>
-          <div className={classes.description}>
-            Components with `visible` prop. Items stay mounted, use component animations.
-          </div>
+          <div className={classes.description}>Preserves mount & layout; uses component-level animations.</div>
         </div>
 
         <div className={classes.section}>
@@ -125,10 +131,12 @@ export const HideMode = (): JSXElement => {
           <div className={classes.items}>
             <div className={classes.badge}>Override</div>
             <Stagger visible={visible} hideMode="visibilityStyle" itemDelay={itemDelay} reversed={reversed}>
-              {renderAvatarsWithTransition()}
+              {renderPlainAvatars()}
             </Stagger>
           </div>
-          <div className={classes.description}>CSS visibility control. Items stay mounted, preserve layout space.</div>
+          <div className={classes.description}>
+            Keeps elements mounted and toggles CSS visibility to preserve layout.
+          </div>
         </div>
 
         <div className={classes.section}>
@@ -136,10 +144,10 @@ export const HideMode = (): JSXElement => {
           <div className={classes.items}>
             <div className={classes.badge}>Override</div>
             <Stagger visible={visible} hideMode="unmount" itemDelay={itemDelay} reversed={reversed}>
-              {renderAvatarsWithTransition()}
+              {renderPlainAvatars()}
             </Stagger>
           </div>
-          <div className={classes.description}>Mount/unmount from DOM. Layout reflows as items appear/disappear.</div>
+          <div className={classes.description}>Mounts/unmounts children so items affect layout on enter/exit.</div>
         </div>
       </div>
     </div>
