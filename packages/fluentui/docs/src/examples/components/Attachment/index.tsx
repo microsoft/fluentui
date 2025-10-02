@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import Performance from './Performance';
 import Rtl from './Rtl';
 import Types from './Types';
 import Slots from './Slots';
@@ -12,7 +11,6 @@ const AttachmentExamples = () => (
     <Slots />
     <Variations />
     <Rtl />
-    <Performance />
   </>
 );
 

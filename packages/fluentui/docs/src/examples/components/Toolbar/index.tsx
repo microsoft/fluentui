@@ -3,7 +3,6 @@ import * as React from 'react';
 import Types from './Types';
 import Content from './Content';
 import Usage from './Usage';
-import Performance from './Performance';
 import Visual from './Visual';
 
 const ToolbarExamples = () => (
@@ -12,7 +11,6 @@ const ToolbarExamples = () => (
     <Content />
     <Usage />
     <Visual />
-    <Performance />
   </>
 );
 

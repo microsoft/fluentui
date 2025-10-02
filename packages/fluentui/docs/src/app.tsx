@@ -12,13 +12,6 @@ import {
 import { ThemeName, ThemeContext, ThemeContextData, themeContextDefaults } from './context/ThemeContext';
 import Routes from './routes';
 
-// Experimental dev-time accessibility attributes integrity validation.
-import { setup } from '@fluentui/ability-attributes';
-
-if (process.env.NODE_ENV !== 'production') {
-  setup();
-}
-
 const themes = {
   teamsTheme,
   teamsDarkTheme,
