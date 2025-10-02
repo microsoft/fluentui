@@ -1,12 +1,17 @@
 import { motionTokens } from '@fluentui/react-motion';
+import type { AtomMotion } from '@fluentui/react-motion';
 import { Collapse } from './Collapse';
 
 // Helper to extract the presence function from the component
-function getPresenceMotionFunction(component: any) {
-  const symbols = Object.getOwnPropertySymbols(component);
+function getPresenceMotionFunction(
+  component: unknown,
+): ((opts: Record<string, unknown>) => { enter: AtomMotion[]; exit: AtomMotion[] }) | null {
+  const obj = component as Record<PropertyKey, unknown>;
+  const symbols = Object.getOwnPropertySymbols(obj as object);
   for (const symbol of symbols) {
     if (symbol.toString() === 'Symbol(PRESENCE_MOTION_DEFINITION)') {
-      return component[symbol];
+      const val = obj[symbol];
+      return val as (opts: Record<string, unknown>) => { enter: AtomMotion[]; exit: AtomMotion[] };
     }
   }
   return null;
@@ -21,11 +26,14 @@ const createMockElement = (scrollWidth = 200, scrollHeight = 100): HTMLElement =
 };
 
 describe('collapsePresenceFn', () => {
-  let collapsePresenceFn: any;
+  let collapsePresenceFn: (opts: Record<string, unknown>) => { enter: AtomMotion[]; exit: AtomMotion[] };
   let mockElement: HTMLElement;
 
   beforeEach(() => {
-    collapsePresenceFn = getPresenceMotionFunction(Collapse);
+    collapsePresenceFn = getPresenceMotionFunction(Collapse) as (opts: Record<string, unknown>) => {
+      enter: AtomMotion[];
+      exit: AtomMotion[];
+    };
     mockElement = createMockElement();
   });
 

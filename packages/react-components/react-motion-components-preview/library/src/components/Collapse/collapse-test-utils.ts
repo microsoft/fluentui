@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import type { AtomMotion } from '@fluentui/react-motion';
 
 /**
