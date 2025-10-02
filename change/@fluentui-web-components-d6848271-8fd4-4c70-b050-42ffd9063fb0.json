@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "bump cem analyzer tool to fix name field bug",
   "packageName": "@fluentui/web-components",
   "email": "jes@microsoft.com",
