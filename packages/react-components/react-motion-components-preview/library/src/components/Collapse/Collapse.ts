@@ -49,10 +49,8 @@ function createCollapseAtoms({
   // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
   // For enter: size expands first, then opacity fades in after opacityDelay
   const enterAtoms: AtomMotion[] = [
-    {
-      ...sizeEnterAtom({ orientation, duration: sizeDuration, easing, element, fromSize }),
-      delay, // Apply global delay to size atom - size expansion starts first
-    },
+    // Apply global delay to size atom - size expansion starts first
+    sizeEnterAtom({ orientation, duration: sizeDuration, easing, element, fromSize, delay }),
     whitespaceAtom({ direction: 'enter', orientation, duration: sizeDuration, easing, delay }),
   ];
   // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
