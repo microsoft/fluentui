@@ -1,16 +1,15 @@
 import { Accessibility, sliderBehavior, SliderBehaviorProps } from '@fluentui/accessibility';
 import {
   getElementType,
+  useControllableState,
   useUnhandledProps,
   useAccessibility,
-  useStateManager,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { createSliderManager } from '@fluentui/state';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -132,9 +131,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
     accessibility,
     min,
     max,
-    value,
     getA11yValueMessageOnChange,
-    defaultValue,
     input,
     inputRef: userInputRef,
     step,
@@ -148,13 +145,10 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
   } = props;
   const inputRef = React.useRef<HTMLElement>();
 
-  const { state, actions } = useStateManager(createSliderManager, {
-    mapPropsToInitialState: () => ({
-      value: defaultValue as string,
-    }),
-    mapPropsToState: () => ({
-      value: value as string,
-    }),
+  const [value, setValue] = useControllableState<string>({
+    defaultState: String(props.defaultValue),
+    state: String(props.value),
+    initialState: '',
   });
   const {
     min: numericMin,
@@ -164,7 +158,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
   } = processInputValues({
     min,
     max,
-    value: state.value || '',
+    value,
   });
 
   const getA11Props = useAccessibility(accessibility, {
@@ -199,7 +193,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = _.get(e, 'target.value');
       _.invoke(props, 'onChange', e, { ...props, value });
-      actions.change(value);
+      setValue(value);
     },
     onMouseDown: (e: React.MouseEvent<HTMLInputElement>) => {
       setWhatInputSource(context.target, 'mouse');
