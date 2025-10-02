@@ -10,7 +10,7 @@ import {
   AutoFocusZoneProps,
   FocusTrapZoneProps,
   useAccessibility,
-  useAutoControlled,
+  useControllableState,
   useTelemetry,
   useFluentContext,
   useTriggerElement,
@@ -176,10 +176,10 @@ export const Popup: React.FC<PopupProps> &
     closeOnScroll,
   } = props;
 
-  const [open, setOpen] = useAutoControlled({
-    initialValue: false,
-    defaultValue: props.defaultOpen,
-    value: props.open,
+  const [open, setOpen] = useControllableState({
+    initialState: false,
+    defaultState: props.defaultOpen,
+    state: props.open,
   });
   const [isOpenedByRightClick, setIsOpenedByRightClick] = React.useState(false);
 

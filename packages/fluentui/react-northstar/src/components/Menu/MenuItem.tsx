@@ -4,7 +4,6 @@ import {
   focusAsync,
   mergeVariablesOverrides,
   useTelemetry,
-  useAutoControlled,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -13,6 +12,7 @@ import {
   ForwardRefWithAs,
   useContextSelectors,
   useOnIFrameFocus,
+  useControllableState,
 } from '@fluentui/react-bindings';
 
 import { Ref, handleRef } from '@fluentui/react-component-ref';
@@ -229,10 +229,10 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
 
   const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
 
-  const [menuOpen, setMenuOpen] = useAutoControlled({
-    defaultValue: props.defaultMenuOpen,
-    value: props.menuOpen,
-    initialValue: false,
+  const [menuOpen, setMenuOpen] = useControllableState({
+    defaultState: props.defaultMenuOpen,
+    state: props.menuOpen,
+    initialState: false,
   });
 
   useOnIFrameFocus(menuOpen, context.target, (e: Event) => {

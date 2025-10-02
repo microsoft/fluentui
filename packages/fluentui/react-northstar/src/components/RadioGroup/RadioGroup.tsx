@@ -16,7 +16,6 @@ import {
 import { RadioGroupItem, RadioGroupItemProps } from './RadioGroupItem';
 import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
-  useAutoControlled,
   useTelemetry,
   useFluentContext,
   getElementType,
@@ -24,6 +23,7 @@ import {
   useAccessibility,
   useStyles,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 
 export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProps {
@@ -94,10 +94,10 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>((pro
     rtl: context.rtl,
   });
 
-  const [checkedValue, setCheckedValue] = useAutoControlled({
-    defaultValue: props.defaultCheckedValue,
-    value: props.checkedValue,
-    initialValue: undefined,
+  const [checkedValue, setCheckedValue] = useControllableState({
+    defaultState: props.defaultCheckedValue,
+    state: props.checkedValue,
+    initialState: undefined,
   });
 
   const [shouldFocus, setShouldFocus] = React.useState(false);

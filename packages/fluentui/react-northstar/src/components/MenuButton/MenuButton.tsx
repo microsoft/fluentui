@@ -20,10 +20,10 @@ import {
   getElementType,
   useUnhandledProps,
   useFluentContext,
-  useAutoControlled,
   useStyles,
   useOnIFrameFocus,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 
 export interface MenuButtonSlotClassNames {
@@ -142,10 +142,10 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
     variables,
   } = props;
 
-  const [open, setOpen] = useAutoControlled({
-    defaultValue: props.defaultOpen,
-    value: props.open,
-    initialValue: false,
+  const [open, setOpen] = useControllableState({
+    defaultState: props.defaultOpen,
+    state: props.open,
+    initialState: false,
   });
 
   useOnIFrameFocus(open, context.target, (e: Event) => {

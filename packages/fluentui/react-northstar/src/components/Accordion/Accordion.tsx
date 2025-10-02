@@ -24,7 +24,6 @@ import {
 } from '../../types';
 import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 import {
-  useAutoControlled,
   useAccessibility,
   useTelemetry,
   useFluentContext,
@@ -32,6 +31,7 @@ import {
   getElementType,
   useStyles,
   ForwardRefWithAs,
+  useControllableState,
 } from '@fluentui/react-bindings';
 
 export interface AccordionSlotClassNames {
@@ -131,10 +131,10 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
   } = props;
   const alwaysActiveIndex = expanded ? 0 : -1;
 
-  const [activeIndex, setActiveIndex] = useAutoControlled({
-    defaultValue: props.defaultActiveIndex,
-    value: props.activeIndex,
-    initialValue: exclusive ? alwaysActiveIndex : [alwaysActiveIndex],
+  const [activeIndex, setActiveIndex] = useControllableState({
+    defaultState: props.defaultActiveIndex,
+    state: props.activeIndex,
+    initialState: exclusive ? alwaysActiveIndex : [alwaysActiveIndex],
   });
 
   const actionHandlers = {

@@ -94,39 +94,6 @@ const Image: React.FC<ImageProps> = props => {
 };
 ```
 
-## `useAutoControlled()`
-
-A React hook that allows to manage state like in `React.useState()`, but implements the [autocontrolled pattern](https://reactjs.org/docs/uncontrolled-components.html).
-
-### Usage
-
-The example below assumes a component called `<Input>` will be used this way:
-
-```tsx
-type InputProps = {
-  defaultValue?: string;
-  value?: string;
-  onChange?: (value: string) => void;
-};
-
-const Input: React.FC<InputProps> = props => {
-  const [value, setValue] = useAutoControlled({
-    defaultValue: props.defaultValue,
-    value: props.value,
-  });
-
-  return (
-    <input
-      onChange={e => {
-        setValue(e.target.value);
-        if (props.onChange) props.onChange(e.target.value);
-      }}
-      value={value}
-    />
-  );
-};
-```
-
 ## `useStateManager()`
 
 A React hook that provides bindings for state managers.
