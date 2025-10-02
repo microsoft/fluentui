@@ -466,9 +466,9 @@ export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState
 
 // @public
 export function useTreeNavigation(navigationMode?: TreeNavigationMode): {
-    readonly navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => HTMLElement | null;
-    readonly treeRef: React_2.RefCallback<HTMLElement>;
-    readonly forceUpdateRovingTabIndex: () => void;
+    navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => void;
+    treeRef: React_2.RefCallback<HTMLElement>;
+    forceUpdateRovingTabIndex: () => void;
 };
 
 // @public (undocumented)
