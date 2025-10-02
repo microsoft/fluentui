@@ -2,6 +2,77 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 02 Oct 2025 07:20:40 GMT",
+      "tag": "@fluentui/react-charting_v5.24.33",
+      "version": "5.24.33",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "826ca93c0180061b9214af6057f76a8683090e4c",
+            "comment": "chore: enable workspace-plugin for v8 project for RIT and generic targets"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Oct 2025 07:20:00 GMT",
+      "tag": "@fluentui/react-charting_v5.24.33",
+      "version": "5.24.33",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "572f92d4d85ea6619124ca8174a955a039c951d0",
+            "comment": "chore: add RIT targets"
+          }
+        ],
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "cf210d73c3618ad3b07666bfdb40f353c26cbea7",
+            "comment": "fix chart table styles "
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5427d0bceb3c08a88bc811ab767781031abfc392",
+            "comment": "feat(react-charting): Add fill for scatter polar charts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Sep 2025 07:20:50 GMT",
+      "tag": "@fluentui/react-charting_v5.24.32",
+      "version": "5.24.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0ce8d43a27222f99d83053f6df8c0619590892b7",
+            "comment": "feat: add support for lines in GVBC"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "79b08d95a8b7c2058ab6809fc36d301489bd01e3",
+            "comment": "fix: callout not appearing on scatter chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.31",
+            "commit": "0ce8d43a27222f99d83053f6df8c0619590892b7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Sep 2025 07:20:43 GMT",
       "tag": "@fluentui/react-charting_v5.24.31",
       "version": "5.24.31",

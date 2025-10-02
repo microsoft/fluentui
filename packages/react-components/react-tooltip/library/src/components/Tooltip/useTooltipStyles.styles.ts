@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createArrowStyles } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';

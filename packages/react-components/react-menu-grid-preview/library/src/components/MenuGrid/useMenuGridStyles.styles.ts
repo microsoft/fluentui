@@ -1,3 +1,5 @@
+'use client';
+
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses, makeStyles } from '@griffel/react';
 import type { MenuGridSlots, MenuGridState } from './MenuGrid.types';

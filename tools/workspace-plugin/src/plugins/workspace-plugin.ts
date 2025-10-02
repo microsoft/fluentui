@@ -178,6 +178,11 @@ function buildWorkspaceProjectConfiguration(
     targets.storybook = storybookTarget;
   }
 
+  const bundleSizeTarget = buildBundleSizeTarget(projectRoot, options, context, config);
+  if (bundleSizeTarget) {
+    targets['bundle-size'] = bundleSizeTarget;
+  }
+
   // react v9 lib
   if (config.projectJSON.projectType === 'library' && config.tags.includes('vNext')) {
     // *-stories projects
@@ -259,13 +264,9 @@ function buildWorkspaceProjectConfiguration(
 
     if (existsSync(join(projectRoot, '../stories/project.json'))) {
       const storybookTarget = { command: `nx run ${config.projectJSON.name}-stories:storybook`, cache: true };
+
       targets.storybook = storybookTarget;
       targets.start = storybookTarget;
-    }
-
-    const bundleSizeTarget = buildBundleSizeTarget(projectRoot, options, context, config);
-    if (bundleSizeTarget) {
-      targets['bundle-size'] = bundleSizeTarget;
     }
 
     const e2eTarget = buildE2eTarget(projectRoot, options, context, config);
@@ -555,14 +556,19 @@ function buildReactIntegrationTesterProjectConfiguration(
   ) {
     return {};
   }
+
   // react v9: apply to libraries and stories projects
-  const isStoriesProject = config.tags.includes('type:stories');
-  if (!config.tags.includes('vNext') || (config.projectJSON.projectType !== 'library' && !isStoriesProject)) {
+  const isv8Lib = config.tags.includes('v8');
+  const isv9Lib = config.tags.includes('vNext');
+  const isV9StoriesProject = isv9Lib && config.tags.includes('type:stories');
+  const isTool = config.tags.includes('tools');
+
+  if (isTool || !(isv9Lib || isV9StoriesProject || isv8Lib)) {
     return {};
   }
 
   const storiesAdjacentLibraryPath = resolve(projectRoot, '../library/project.json');
-  const isStorybookAdjacentProject = isStoriesProject && existsSync(storiesAdjacentLibraryPath);
+  const isStorybookAdjacentProject = isV9StoriesProject && existsSync(storiesAdjacentLibraryPath);
   const isLibraryWithStorybookAdjacentProject =
     basename(projectRoot) === 'library' && existsSync(resolve(projectRoot, '../stories/project.json'));
 
@@ -571,15 +577,6 @@ function buildReactIntegrationTesterProjectConfiguration(
     console.info('No React versions specified for integration testing! -> No targets created');
     return {};
   }
-
-  const hasTypeCheck = isStorybookAdjacentProject || isLibraryWithStorybookAdjacentProject;
-  const hasE2E = existsSync(join(projectRoot, 'cypress.config.ts')) && !isStorybookAdjacentProject;
-  const hasTest =
-    (existsSync(join(projectRoot, 'jest.config.js')) || existsSync(join(projectRoot, 'jest.config.ts'))) &&
-    !isStorybookAdjacentProject;
-  const ritRunOptions = [hasTypeCheck ? 'type-check' : null, hasE2E ? 'e2e' : null, hasTest ? 'test' : null].filter(
-    Boolean,
-  ) as string[];
 
   const targets: Record<string, TargetConfiguration> = {};
   const inputs = [
@@ -593,16 +590,29 @@ function buildReactIntegrationTesterProjectConfiguration(
   const groupName = 'React Integration Tester';
   const metadata = { targetGroups: { [groupName]: [] as string[] } };
 
-  // creates atomized targets
+  // creates atomized targets (per react version)
   for (const reactVersion of reactVersions) {
-    if (ritRunOptions.length === 0) {
+    const { hasTypeCheck, hasE2E, hasTest } = detectRitTargetsForVersion(
+      projectRoot,
+      reactVersion,
+      isStorybookAdjacentProject,
+      isLibraryWithStorybookAdjacentProject,
+    );
+
+    const ritRunOptionsForVersion = [
+      hasTypeCheck ? 'type-check' : null,
+      hasE2E ? 'e2e' : null,
+      hasTest ? 'test' : null,
+    ].filter(Boolean) as string[];
+
+    if (ritRunOptionsForVersion.length === 0) {
       continue;
     }
 
     const projectSuffixId = 'ci';
 
     // For library with stories sibling and only type-check, do not create --prepare target
-    const onlyTypeCheck = ritRunOptions.length === 1 && ritRunOptions[0] === 'type-check';
+    const onlyTypeCheck = ritRunOptionsForVersion.length === 1 && ritRunOptionsForVersion[0] === 'type-check';
     const skipPrepare = onlyTypeCheck && isLibraryWithStorybookAdjacentProject;
     const targetNamePrepare = options.reactIntegrationTesting.targetName + '--' + reactVersion + '--prepare';
 
@@ -631,27 +641,28 @@ function buildReactIntegrationTesterProjectConfiguration(
     }
 
     // run targets
-    for (const runOption of ritRunOptions) {
+    for (const runOption of ritRunOptionsForVersion) {
       const targetName = options.reactIntegrationTesting.targetName + '--' + reactVersion + '--' + runOption;
 
       if (runOption === 'type-check') {
-        if (isStorybookAdjacentProject) {
-          targets[targetName] = {
-            command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
-            options: { cwd: '{projectRoot}' },
-            cache: true,
-            inputs: inputs,
-            outputs: [],
-            dependsOn: [targetNamePrepare],
-            metadata: {
-              technologies: ['react-integration-tester'],
-              description: `Run react integration tests against React ${reactVersion}`,
-              help: {
-                command: `${config.pmc.exec} rit --help`,
-                example: {},
-              },
+        const defaultTargetDefinition = {
+          command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
+          options: { cwd: '{projectRoot}' },
+          cache: true,
+          inputs: inputs,
+          outputs: [],
+          dependsOn: [targetNamePrepare],
+          metadata: {
+            technologies: ['react-integration-tester'],
+            description: `Run react integration tests against React ${reactVersion}`,
+            help: {
+              command: `${config.pmc.exec} rit --help`,
+              example: {},
             },
-          };
+          },
+        };
+        if (isStorybookAdjacentProject) {
+          targets[targetName] = defaultTargetDefinition;
         } else if (isLibraryWithStorybookAdjacentProject) {
           // convenience target created on library target scope, which runs the `*-stories` type-check
           targets[targetName] = {
@@ -659,6 +670,9 @@ function buildReactIntegrationTesterProjectConfiguration(
             dependsOn: [{ target: targetName, projects: `${config.projectJSON.name}-stories` }],
             cache: true,
           };
+        } else {
+          // General case: create a rit run target for type-check when detected
+          targets[targetName] = defaultTargetDefinition;
         }
       } else {
         targets[targetName] = {
@@ -714,4 +728,62 @@ function buildReactIntegrationTesterProjectConfiguration(
   metadata.targetGroups[groupName].push(...Object.keys(targets));
 
   return { targets, metadata };
+
+  // Helper to detect rit targets for a specific react version. If a
+  // `rit.config.js` entry exists for the version, prefer it; otherwise fall
+  // back to file-existence checks.
+  function detectRitTargetsForVersion(
+    projectRootPath: string,
+    reactVersion: string,
+    storybookAdjacent: boolean,
+    libraryWithStoriesAdj: boolean,
+  ): { hasTypeCheck: boolean; hasE2E: boolean; hasTest: boolean } {
+    const defaults = {
+      hasTypeCheck: storybookAdjacent || libraryWithStoriesAdj,
+      hasE2E: existsSync(join(projectRootPath, 'cypress.config.ts')) && !storybookAdjacent,
+      hasTest:
+        (existsSync(join(projectRootPath, 'jest.config.js')) || existsSync(join(projectRootPath, 'jest.config.ts'))) &&
+        !storybookAdjacent,
+    };
+
+    const ritConfigPathLocal = join(projectRootPath, 'rit.config.js');
+
+    if (existsSync(ritConfigPathLocal)) {
+      try {
+        type RITConfig = { react: Record<string, { runConfig?: Record<string, { configPath: string }> }> };
+        const loaded = require(resolve(projectRootPath, 'rit.config.js'));
+        const rit: RITConfig = loaded?.default ?? loaded;
+
+        if (rit && typeof rit === 'object' && rit.react && rit.react[reactVersion]) {
+          const entry = rit.react[reactVersion];
+          const runConfig = entry?.runConfig;
+
+          const hasFromRit = (targetName: string): boolean | null => {
+            const cfg = runConfig?.[targetName];
+            // indicate 'not declared' so caller can fall back
+            if (!cfg) {
+              return null;
+            }
+            const configPath = cfg.configPath;
+            return typeof configPath === 'string' && existsSync(join(projectRootPath, configPath));
+          };
+
+          // For targets declared in rit config, use that result. For targets not
+          // declared, fall back to default presence-based checks.
+          return {
+            hasTypeCheck: hasFromRit('type-check') ?? defaults.hasTypeCheck,
+            hasE2E: hasFromRit('e2e') ?? defaults.hasE2E,
+            hasTest: hasFromRit('test') ?? defaults.hasTest,
+          };
+        }
+      } catch (err) {
+        // fall back to defaults below
+        console.error('Error loading rit.config.js:', err);
+      }
+    }
+
+    return {
+      ...defaults,
+    };
+  }
 }

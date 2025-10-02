@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { ActiveDescendantChangeEvent } from '@fluentui/react-aria';

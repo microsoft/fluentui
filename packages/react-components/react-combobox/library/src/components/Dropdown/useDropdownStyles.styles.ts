@@ -1,3 +1,5 @@
+'use client';
+
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';

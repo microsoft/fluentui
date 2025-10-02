@@ -1,3 +1,5 @@
+'use client';
+
 import { useRenderer_unstable } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import {

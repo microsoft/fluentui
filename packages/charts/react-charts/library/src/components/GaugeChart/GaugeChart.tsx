@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useGaugeChartStyles } from './useGaugeChartStyles.styles';
 import { select as d3Select } from 'd3-selection';

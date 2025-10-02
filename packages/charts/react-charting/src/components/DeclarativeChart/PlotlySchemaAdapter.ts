@@ -22,7 +22,6 @@ import {
   IVerticalStackedChartProps,
   IHeatMapChartData,
   IHeatMapChartDataPoint,
-  IGroupedVerticalBarChartData,
   IVerticalBarChartDataPoint,
   ISankeyChartData,
   ILineChartLineOptions,
@@ -76,6 +75,7 @@ import {
   isObjectArray,
   getAxisIds,
   getAxisKey,
+  isScatterAreaChart,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
@@ -260,15 +260,11 @@ const usesSecondaryYScale = (series: Partial<PlotData>, layout: Partial<Layout> 
   return series.yaxis === 'y2' && (layout?.yaxis2?.anchor === 'x' || layout?.yaxis2?.side === 'right');
 };
 
-const getSecondaryYAxisValues = (
-  data: Data[],
-  layout: Partial<Layout> | undefined,
-  maxAllowedMinY?: number,
-  minAllowedMaxY?: number,
-): ISecondaryYAxisValues => {
+const getSecondaryYAxisValues = (data: Data[], layout: Partial<Layout> | undefined): ISecondaryYAxisValues => {
   let containsSecondaryYAxis = false;
   let yMinValue: number | undefined;
   let yMaxValue: number | undefined;
+  let allLineSeries = true;
 
   data.forEach((series: Partial<PlotData>) => {
     if (usesSecondaryYScale(series, layout)) {
@@ -279,6 +275,10 @@ const getSecondaryYAxisValues = (
         yMinValue = Math.min(...yValues);
         yMaxValue = Math.max(...yValues);
       }
+
+      if (series.type !== 'scatter' || isScatterAreaChart(series)) {
+        allLineSeries = false;
+      }
     }
   });
 
@@ -286,11 +286,13 @@ const getSecondaryYAxisValues = (
     return {};
   }
 
-  if (typeof yMinValue === 'number' && typeof maxAllowedMinY === 'number') {
-    yMinValue = Math.min(yMinValue, maxAllowedMinY);
-  }
-  if (typeof yMaxValue === 'number' && typeof minAllowedMaxY === 'number') {
-    yMaxValue = Math.max(yMaxValue, minAllowedMaxY);
+  if (!allLineSeries) {
+    if (typeof yMinValue === 'number') {
+      yMinValue = Math.min(yMinValue, 0);
+    }
+    if (typeof yMaxValue === 'number') {
+      yMaxValue = Math.max(yMaxValue, 0);
+    }
   }
   if (layout?.yaxis2?.range) {
     yMinValue = layout.yaxis2.range[0];
@@ -772,69 +774,114 @@ export const transformPlotlyJsonToGVBCProps = (
     };
   }
 
-  const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
-  const secondaryYAxisValues = getSecondaryYAxisValues(processedInput.data, processedInput.layout, 0, 0);
+  const gvbcDataV2: IGroupedVerticalBarChartProps['dataV2'] = [];
+  const secondaryYAxisValues = getSecondaryYAxisValues(processedInput.data, processedInput.layout);
   const { legends, hideLegend } = getLegendProps(processedInput.data, processedInput.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(processedInput.data[0], processedInput.layout);
   processedInput.data.forEach((series: Partial<PlotData>, index1: number) => {
     colorScale = createColorScale(processedInput.layout, series, colorScale);
+    const legend: string = legends[index1];
+    const legendShape = getLegendShape(series);
 
-    // extract colors for each series only once
-    const extractedColors = extractColor(
-      processedInput.layout?.template?.layout?.colorway,
-      colorwayType,
-      series.marker?.color,
-      colorMap,
-      isDarkTheme,
-    ) as string[] | string | undefined;
-    (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
-      if (isInvalidValue(x) || isInvalidValue(series.y?.[xIndex])) {
-        return;
-      }
+    if (series.type === 'bar') {
+      // extract bar colors for each series only once
+      const extractedBarColors = extractColor(
+        processedInput.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.marker?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
 
-      if (!mapXToDataPoints[x]) {
-        mapXToDataPoints[x] = { name: x.toString(), series: [] };
-      }
+      gvbcDataV2.push({
+        type: 'bar',
+        legend,
+        key: legend,
+        data: (series.x as Datum[])
+          .map((x, xIndex) => {
+            if (isInvalidValue(x) || isInvalidValue(series.y?.[xIndex])) {
+              return;
+            }
 
-      if (series.type === 'bar') {
-        const legend: string = legends[index1];
-        // resolve color for each legend's bars from the colorscale or extracted colors
-        const color = colorScale
-          ? colorScale(
-              isArrayOrTypedArray(series.marker?.color)
-                ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
-                : 0,
-            )
-          : resolveColor(
-              extractedColors,
-              xIndex,
-              legend,
-              colorMap,
-              processedInput.layout?.template?.layout?.colorway,
-              isDarkTheme,
-            );
-        const opacity = getOpacity(series, xIndex);
+            // resolve color for each legend's bars from the colorscale or extracted colors
+            const color = colorScale
+              ? colorScale(
+                  isArrayOrTypedArray(series.marker?.color)
+                    ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
+                    : 0,
+                )
+              : resolveColor(
+                  extractedBarColors,
+                  xIndex,
+                  legend,
+                  colorMap,
+                  processedInput.layout?.template?.layout?.colorway,
+                  isDarkTheme,
+                );
+            const opacity = getOpacity(series, xIndex);
+            const yVal = series.y![xIndex] as number;
 
-        const yVal: number = series.y![xIndex] as number;
+            return {
+              x: x!.toString(),
+              y: yVal,
+              yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
+              color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+            };
+          })
+          .filter(item => typeof item !== 'undefined'),
+        useSecondaryYScale: usesSecondaryYScale(series, processedInput.layout),
+      });
+    } else if (series.type === 'scatter') {
+      // extract line colors for each series only once
+      const extractedLineColors = extractColor(
+        processedInput.layout?.template?.layout?.colorway,
+        colorwayType,
+        series.line?.color,
+        colorMap,
+        isDarkTheme,
+      ) as string[] | string | undefined;
+      const lineColor = resolveColor(
+        extractedLineColors,
+        index1,
+        legend,
+        colorMap,
+        processedInput.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
+      const lineOptions = getLineOptions(series.line);
+      const opacity = getOpacity(series, index1);
+      const validXYRanges = getValidXYRanges(series);
 
-        mapXToDataPoints[x].series.push({
-          key: legend,
-          data: yVal,
-          xAxisCalloutData: x as string,
-          color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+      validXYRanges.forEach(([rangeStart, rangeEnd]) => {
+        const rangeXValues = series.x!.slice(rangeStart, rangeEnd) as Datum[];
+        const rangeYValues = series.y!.slice(rangeStart, rangeEnd) as Datum[];
+
+        gvbcDataV2.push({
+          type: 'line',
           legend,
+          legendShape,
+          data: rangeXValues.map((x, i: number) => {
+            const yVal = rangeYValues[i] as number;
+            return {
+              x: x!.toString(),
+              y: yVal,
+              yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
+            };
+          }),
+          color: rgb(lineColor).copy({ opacity }).formatHex8() ?? lineColor,
+          lineOptions: {
+            ...(lineOptions ?? {}),
+            mode: series.mode,
+          },
           useSecondaryYScale: usesSecondaryYScale(series, processedInput.layout),
-          yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
         });
-      }
-    });
+      });
+    }
   });
 
-  const gvbcData = Object.values(mapXToDataPoints);
-
   return {
-    data: gvbcData,
+    dataV2: gvbcDataV2,
     width: processedInput.layout?.width,
     height: processedInput.layout?.height ?? 350,
     barwidth: 'auto',
@@ -843,7 +890,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
-    wrapXAxisLables: typeof gvbcData[0]?.name === 'string',
+    wrapXAxisLables: true,
     ...getTitles(processedInput.layout),
     ...getAxisCategoryOrderProps(processedInput.data, processedInput.layout),
     ...getYMinMaxValues(processedInput.data[0], processedInput.layout),
@@ -1031,12 +1078,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   ].includes((input.data[0] as PlotData)?.mode);
   const isAreaChart = chartType === 'area';
   const isScatterChart = chartType === 'scatter';
-  const secondaryYAxisValues = getSecondaryYAxisValues(
-    input.data,
-    input.layout,
-    isAreaChart ? 0 : undefined,
-    isAreaChart ? 0 : undefined,
-  );
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
@@ -1121,6 +1163,7 @@ const transformPlotlyJsonToScatterTraceProps = (
                   axisLabel: (series as { __axisLabel: string[] }).__axisLabel
                     ? (series as { __axisLabel: string[] }).__axisLabel
                     : {},
+                  fill: series.fill,
                 }
               : {}),
           },
@@ -1745,6 +1788,27 @@ function resolveCellStyle<T>(raw: T | T[] | T[][] | undefined, rowIndex: number,
   return raw;
 }
 
+function mergeCells(tableCells?: TableData['cells'], templateCells?: TableData['cells']): TableData['cells'] {
+  return {
+    values: tableCells?.values ?? templateCells?.values ?? [],
+    align: tableCells?.align ?? templateCells?.align,
+
+    fill: {
+      ...(templateCells?.fill ?? {}),
+      ...(tableCells?.fill ?? {}),
+    },
+
+    font: {
+      ...(templateCells?.font ?? {}),
+      ...(tableCells?.font ?? {}),
+    },
+
+    format: tableCells?.format ?? templateCells?.format,
+    prefix: tableCells?.prefix ?? templateCells?.prefix,
+    suffix: tableCells?.suffix ?? templateCells?.suffix,
+  };
+}
+
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -1788,10 +1852,7 @@ export const transformPlotlyJsonToChartTableProps = (
     });
   };
   const columns = tableData.cells?.values ?? [];
-  const cells =
-    tableData.cells && Object.keys(tableData.cells).length > 0
-      ? tableData.cells
-      : input.layout?.template?.data?.table?.[0]?.cells;
+  const cells = mergeCells(tableData.cells, input.layout?.template?.data?.table?.[0]?.cells);
   const rows = columns[0].map((_, rowIndex: number) =>
     columns.map((col, colIndex) => {
       const cellValue = col[rowIndex];
@@ -1829,13 +1890,24 @@ export const transformPlotlyJsonToChartTableProps = (
     },
   };
 
+  const templateHeader = input.layout?.template?.data?.table?.[0]?.header;
+  const tableHeader = tableData.header;
+
+  const header = {
+    align: tableHeader?.align ?? templateHeader?.align,
+    fill: {
+      ...(templateHeader?.fill ?? {}),
+      ...(tableHeader?.fill ?? {}),
+    },
+    font: {
+      ...(templateHeader?.font ?? {}),
+      ...(tableHeader?.font ?? {}),
+    },
+    values: tableHeader?.values ?? templateHeader?.values ?? [],
+  };
+
   return {
-    headers: normalizeHeaders(
-      tableData.header?.values ?? [],
-      tableData.header && Object.keys(tableData.header).length > 0
-        ? tableData.header
-        : input.layout?.template?.data?.table![0].header,
-    ),
+    headers: normalizeHeaders(tableData.header?.values ?? [], header),
     rows,
     width: input.layout?.width,
     height: input.layout?.height,

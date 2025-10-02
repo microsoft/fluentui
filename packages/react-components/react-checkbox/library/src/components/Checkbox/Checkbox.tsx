@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useCheckbox_unstable } from './useCheckbox';
 import { renderCheckbox_unstable } from './renderCheckbox';

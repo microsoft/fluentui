@@ -41,6 +41,12 @@ export type NavContextValue = Pick<
    * @default true, indicating that multiple categories can be open at the same time.
    */
   multiple: boolean;
+
+  /**
+   * Setting this to true enables tab AND arrow navigation.
+   * @default false
+   */
+  tabbable: boolean;
 };
 
 /**

@@ -1,6 +1,8 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+'use client';
+
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-components';
 import {

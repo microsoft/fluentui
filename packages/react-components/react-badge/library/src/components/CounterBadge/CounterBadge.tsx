@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useCounterBadge_unstable } from './useCounterBadge';
 import { useCounterBadgeStyles_unstable } from './useCounterBadgeStyles.styles';

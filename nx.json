@@ -98,6 +98,9 @@
       "dependsOn": ["build"],
       "cache": true
     },
+    "test-rit--*--prepare": {
+      "dependsOn": ["^build"]
+    },
     "@nx/jest:jest": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true,
@@ -151,18 +154,29 @@
             "react-theme-sass",
             "babel-preset-global-context",
             "eslint-plugin-react-components",
-            "react-migration-v0-v9"
+            "react-migration-v0-v9",
+            "react-migration-v0-v9-stories"
           ]
         }
       },
       "include": [
+        "apps/rit-tests-v9/*",
+        "apps/rit-tests-v8/*",
+
         "tools/**/*",
         "scripts/**/*",
         "packages/eslint-plugin/**",
+
         "packages/tokens/**",
         "packages/react-conformance/**",
         "packages/react-components/**/*",
-        "packages/charts/react-charts/**/*"
+        "packages/charts/react-charts/**/*",
+
+        "packages/react/**",
+        "packages/react-hooks/**",
+        "packages/react-examples/**",
+        "packages/react-experiments/**",
+        "packages/charts/react-charting/**"
       ]
     }
   ],

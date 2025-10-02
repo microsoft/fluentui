@@ -1,3 +1,5 @@
+'use client';
+
 import type { PresenceComponent, PresenceMotionFn } from '@fluentui/react-motion';
 
 function getPresenceMotionFunction(component: PresenceComponent): PresenceMotionFn | null {

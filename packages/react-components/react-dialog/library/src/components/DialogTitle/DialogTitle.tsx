@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useDialogTitle_unstable } from './useDialogTitle';
 import { renderDialogTitle_unstable } from './renderDialogTitle';

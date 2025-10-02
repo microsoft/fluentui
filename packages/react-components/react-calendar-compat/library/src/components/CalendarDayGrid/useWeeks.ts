@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { compareDates, DAYS_IN_WEEK, getDayGrid } from '../../utils/index';
 import { DayInfo } from './CalendarDayGrid';

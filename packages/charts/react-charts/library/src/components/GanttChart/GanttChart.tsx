@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';

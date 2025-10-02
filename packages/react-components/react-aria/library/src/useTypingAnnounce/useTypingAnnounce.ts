@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTimeout } from '@fluentui/react-utilities';
 import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -18,7 +20,7 @@ const valueMutationOptions = {
 
 interface TypingAnnounceReturn<TInputElement extends HTMLElement = HTMLElement> {
   typingAnnounce: AriaLiveAnnounceFn;
-  inputRef: React.RefObject<TInputElement>;
+  inputRef: React.MutableRefObject<TInputElement | null>;
 }
 
 export function useTypingAnnounce<
@@ -27,8 +29,8 @@ export function useTypingAnnounce<
   const { targetDocument } = useFluent();
   const { announce } = useAnnounce();
 
-  const inputRef = React.useRef<TInputElement>(null);
-  const observer = React.useRef<MutationObserver>();
+  const inputRef = React.useRef<TInputElement | null>(null);
+  const observer = React.useRef<MutationObserver>(undefined);
   const [setTypingTimeout, clearTypingTimeout] = useTimeout();
   const messageQueue = React.useRef<Message[]>([]);
 

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useToggleState } from '../../utils/useToggleState';
 import { useButton_unstable } from '../Button/useButton';

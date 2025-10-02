@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { mergeClasses } from '@griffel/react';
@@ -125,7 +127,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
           {props!.YValueHover &&
             props!.YValueHover.map((yValue: YValueHover, index: number, yValues: YValueHover[]) => {
               const isLast: boolean = index + 1 === yValues.length;
-              const { shouldDrawBorderBottom = false } = yValue;
+              const shouldDrawBorderBottom = isLast ? false : yValue.shouldDrawBorderBottom ?? false;
               return (
                 <div
                   {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
