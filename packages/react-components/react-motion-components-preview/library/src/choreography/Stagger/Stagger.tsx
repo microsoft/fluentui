@@ -92,13 +92,14 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
         const key = child.key ?? idx;
 
         if (hideMode === 'visibleProp') {
-          return React.cloneElement(child, { key, visible: itemsVisibility[idx] });
+          return React.cloneElement(child, { key, visible: itemsVisibility[idx] } as any);
         } else if (hideMode === 'visibilityStyle') {
+          const childProps = child.props as any;
           const style = {
-            ...child.props.style,
+            ...childProps?.style,
             visibility: itemsVisibility[idx] ? 'visible' : 'hidden',
           };
-          return React.cloneElement(child, { key, style });
+          return React.cloneElement(child, { key, style } as any);
         } else {
           // unmount mode
           return itemsVisibility[idx] ? React.cloneElement(child, { key }) : null;
