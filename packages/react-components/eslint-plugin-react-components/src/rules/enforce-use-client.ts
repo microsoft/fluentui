@@ -1,32 +1,42 @@
-// @ts-check
-const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
-const createRule = require('../../utils/createRule');
+import { AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
+
+import { createRule } from './utils/create-rule';
+
+export const RULE_NAME = 'enforce-use-client';
+
+type MessageIds = 'missingUseClient' | 'unnecessaryUseClient';
+
+type Options = Array<{}>;
 
 /**
- * @import { TSESTree } from '@typescript-eslint/utils'
+ * Represents the different types of client-side features that require the 'use client' directive
  */
+type FeatureKind = 'react_api' | 'custom_hook' | 'event_handler' | 'browser_api';
 
 /**
- * @typedef {'react_api' | 'custom_hook' | 'event_handler' | 'browser_api'} FeatureKind
+ * Combined client feature detection result
  */
+interface ClientFeatureDetection {
+  /** The detected feature information */
+  feature: {
+    kind: FeatureKind;
+    name: string;
+  };
+  /** The AST node where the feature was detected */
+  node: TSESTree.Node;
+}
 
 /**
- * @typedef {{
- *   feature: {
- *     kind: FeatureKind;
- *     name: string;
- *   };
- *   node: TSESTree.Node;
- * }} ClientFeatureDetection
+ * State tracking interface for rule analysis
  */
-
-/**
- * @typedef {{
- *   topDirectivePresent: boolean;
- *   misplacedDirective: TSESTree.ExpressionStatement | null;
- *   firstClientFeature: ClientFeatureDetection | null;
- * }} RuleState
- */
+interface RuleState {
+  /** True if first statement already is the directive */
+  topDirectivePresent: boolean;
+  /** A later directive to relocate */
+  misplacedDirective: TSESTree.ExpressionStatement | null;
+  /** First detected client-side feature with its node (for early exit and error reporting) */
+  firstClientFeature: ClientFeatureDetection | null;
+}
 
 /**
  * React APIs (hooks and other APIs) that require client-side execution
@@ -77,21 +87,21 @@ const BROWSER_GLOBALS = new Set([
 
 /**
  * Determines if a property name represents an event handler
- * @param {string} name - The property name to check
- * @returns {boolean} True if the name follows the onXxx pattern
+ * @param name - The property name to check
+ * @returns True if the name follows the onXxx pattern
  */
-const isEventHandler = name => /^on[A-Z]/.test(name);
+const isEventHandler = (name: string): boolean => /^on[A-Z]/.test(name);
 
 /**
  * Determines if a function name represents a potential custom hook
- * @param {string} name - The function name to check
- * @returns {boolean} True if it follows the useXxx pattern and isn't server-safe
+ * @param name - The function name to check
+ * @returns True if it follows the useXxx pattern and isn't server-safe
  */
-const isPotentialCustomHook = name => name.startsWith('use') && name.length > 3 && !SERVER_SAFE_HOOKS.has(name);
+const isPotentialCustomHook = (name: string): boolean =>
+  name.startsWith('use') && name.length > 3 && !SERVER_SAFE_HOOKS.has(name);
 
-module.exports = createRule({
-  name: 'enforce-use-client',
-  defaultOptions: [],
+export const rule = createRule<Options, MessageIds>({
+  name: RULE_NAME,
   meta: {
     type: 'problem',
     docs: {
@@ -106,12 +116,12 @@ module.exports = createRule({
     schema: [],
     fixable: 'code',
   },
+  defaultOptions: [],
   create(context) {
     const sourceCode = context.sourceCode;
 
     // State tracking for rule analysis
-    /** @type {RuleState} */
-    const ruleState = {
+    const ruleState: RuleState = {
       topDirectivePresent: false,
       misplacedDirective: null,
       firstClientFeature: null,
@@ -119,10 +129,8 @@ module.exports = createRule({
 
     /**
      * Checks if a statement is a 'use client' directive
-     * @param {TSESTree.Statement} stmt
-     * @returns {boolean}
      */
-    function isUseClientDirective(stmt) {
+    function isUseClientDirective(stmt: TSESTree.Statement): boolean {
       return (
         stmt.type === AST_NODE_TYPES.ExpressionStatement &&
         stmt.expression.type === AST_NODE_TYPES.Literal &&
@@ -132,11 +140,11 @@ module.exports = createRule({
 
     /**
      * Records the first client-side feature detected (for early exit and better error reporting)
-     * @param {FeatureKind} kind - The type of feature
-     * @param {string} name - The name of the feature
-     * @param {TSESTree.Node} node - The AST node where the feature was detected
+     * @param kind - The type of feature
+     * @param name - The name of the feature
+     * @param node - The AST node where the feature was detected
      */
-    function recordFirstClientFeature(kind, name, node) {
+    function recordFirstClientFeature(kind: FeatureKind, name: string, node: TSESTree.Node): void {
       if (!ruleState.firstClientFeature) {
         ruleState.firstClientFeature = {
           feature: { kind, name },
@@ -147,9 +155,8 @@ module.exports = createRule({
 
     /**
      * Helper to check if we should skip further analysis (early exit optimization)
-     * @returns {boolean}
      */
-    function shouldSkipAnalysis() {
+    function shouldSkipAnalysis(): boolean {
       // Skip only if we found a client feature and have the directive (everything is correct)
       return ruleState.firstClientFeature !== null && ruleState.topDirectivePresent;
     }
@@ -157,9 +164,8 @@ module.exports = createRule({
     return {
       /**
        * Check for 'use client' directive at program start
-       * @param {TSESTree.Program} node
        */
-      Program(node) {
+      Program() {
         const { body } = sourceCode.ast;
 
         // Check if 'use client' is the first statement
@@ -174,16 +180,15 @@ module.exports = createRule({
         if (!ruleState.topDirectivePresent) {
           const misplaced = body.find(stmt => isUseClientDirective(stmt));
           if (misplaced) {
-            ruleState.misplacedDirective = /** @type {TSESTree.ExpressionStatement} */ (misplaced);
+            ruleState.misplacedDirective = misplaced as TSESTree.ExpressionStatement;
           }
         }
       },
 
       /**
        * Check function calls for React APIs and custom hooks
-       * @param {TSESTree.CallExpression} node
        */
-      CallExpression(node) {
+      CallExpression(node: TSESTree.CallExpression) {
         if (shouldSkipAnalysis()) return;
 
         if (node.callee.type === AST_NODE_TYPES.Identifier) {
@@ -208,9 +213,8 @@ module.exports = createRule({
 
       /**
        * Check JSX attributes for event handlers
-       * @param {TSESTree.JSXAttribute} node
        */
-      JSXAttribute(node) {
+      JSXAttribute(node: TSESTree.JSXAttribute) {
         if (shouldSkipAnalysis()) return;
 
         if (node.name.type === AST_NODE_TYPES.JSXIdentifier && isEventHandler(node.name.name)) {
@@ -220,49 +224,18 @@ module.exports = createRule({
 
       /**
        * Check member expressions for browser APIs
-       * @param {TSESTree.MemberExpression} node
        */
-      MemberExpression(node) {
+      MemberExpression(node: TSESTree.MemberExpression) {
         if (shouldSkipAnalysis()) return;
 
         if (node.object.type === AST_NODE_TYPES.Identifier && BROWSER_GLOBALS.has(node.object.name)) {
           recordFirstClientFeature('browser_api', node.object.name, node);
         }
       },
-
-      /**
-       * Check function declarations for custom hooks
-       * @param {TSESTree.FunctionDeclaration} node
-       */
-      FunctionDeclaration(node) {
-        if (shouldSkipAnalysis()) return;
-
-        if (node.id && isPotentialCustomHook(node.id.name)) {
-          recordFirstClientFeature('custom_hook', node.id.name, node);
-        }
-      },
-
-      /**
-       * Check variable declarations for custom hooks (const useHook = () => {...})
-       * @param {TSESTree.VariableDeclarator} node
-       */
-      VariableDeclarator(node) {
-        if (shouldSkipAnalysis()) return;
-
-        if (
-          node.id.type === AST_NODE_TYPES.Identifier &&
-          isPotentialCustomHook(node.id.name) &&
-          (node.init?.type === AST_NODE_TYPES.FunctionExpression || node.init?.type === AST_NODE_TYPES.ArrowFunctionExpression)
-        ) {
-          recordFirstClientFeature('custom_hook', node.id.name, node);
-        }
-      },
-
       /**
        * Handles program exit to generate final rule violations
-       * @param {TSESTree.Program} program
        */
-      'Program:exit'(program) {
+      'Program:exit'(program: TSESTree.Program) {
         const hasClientFeatures = ruleState.firstClientFeature !== null;
 
         // Handle unnecessary 'use client' directive
@@ -305,7 +278,7 @@ module.exports = createRule({
         if (ruleState.topDirectivePresent) return;
 
         // Report error on the specific problematic API call for better DX
-        const clientFeatureDetection = ruleState.firstClientFeature;
+        const clientFeatureDetection = ruleState.firstClientFeature!;
         const clientFeatureString = `${clientFeatureDetection.feature.kind}: ${clientFeatureDetection.feature.name}`;
 
         context.report({

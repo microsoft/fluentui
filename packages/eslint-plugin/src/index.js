@@ -12,7 +12,6 @@ module.exports = {
     'ban-context-export': require('./rules/ban-context-export'),
     'ban-instanceof-html-element': require('./rules/ban-instanceof-html-element'),
     'deprecated-keyboard-event-props': require('./rules/deprecated-keyboard-event-props'),
-    'enforce-use-client': require('./rules/enforce-use-client'),
     'max-len': require('./rules/max-len'),
     'no-global-react': require('./rules/no-global-react'),
     'no-tslint-comments': require('./rules/no-tslint-comments'),
