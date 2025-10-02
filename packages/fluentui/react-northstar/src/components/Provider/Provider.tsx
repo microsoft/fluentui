@@ -13,16 +13,7 @@ import {
   useIsomorphicLayoutEffect,
   Unstable_FluentContextProvider,
 } from '@fluentui/react-bindings';
-import { Renderer } from '@fluentui/react-northstar-styles-renderer';
-import {
-  mergeSiteVariables,
-  StaticStyleObject,
-  StaticStyle,
-  StaticStyleFunction,
-  FontFace,
-  ThemeInput,
-  SiteVariablesPrepared,
-} from '@fluentui/styles';
+import { ThemeInput } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
@@ -40,51 +31,6 @@ export interface ProviderProps extends ChildrenComponentProps, UIComponentProps 
   target?: Document;
   theme?: ThemeInput;
 }
-
-const renderFontFaces = (renderer: Renderer, theme: ThemeInput) => {
-  if (!theme.fontFaces) {
-    return;
-  }
-
-  const renderFontObject = (font: FontFace) => {
-    if (!_.isPlainObject(font)) {
-      throw new Error(`fontFaces must be objects, got: ${typeof font}`);
-    }
-
-    renderer.renderFont(font);
-  };
-
-  theme.fontFaces.forEach((font: FontFace) => {
-    renderFontObject(font);
-  });
-};
-
-const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables: SiteVariablesPrepared) => {
-  if (!theme.staticStyles) {
-    return;
-  }
-
-  const renderObject = (object: StaticStyleObject) => {
-    _.forEach(object, (style, selector) => {
-      renderer.renderGlobal(style, selector);
-    });
-  };
-
-  theme.staticStyles.forEach((staticStyle: StaticStyle) => {
-    if (typeof staticStyle === 'string') {
-      renderer.renderGlobal(staticStyle);
-    } else if (_.isPlainObject(staticStyle)) {
-      renderObject(staticStyle as StaticStyleObject);
-    } else if (_.isFunction(staticStyle)) {
-      const preparedSiteVariables = mergeSiteVariables(undefined, siteVariables);
-      renderObject((staticStyle as StaticStyleFunction)(preparedSiteVariables));
-    } else {
-      throw new Error(
-        `staticStyles array must contain CSS strings, style objects, or style functions, got: ${typeof staticStyle}`,
-      );
-    }
-  });
-};
 
 export const providerClassName = 'ui-provider';
 
@@ -160,9 +106,6 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
   const RenderProvider = outgoingContext.renderer.Provider;
 
   useIsomorphicLayoutEffect(() => {
-    renderFontFaces(outgoingContext.renderer, props.theme);
-    renderStaticStyles(outgoingContext.renderer, props.theme, outgoingContext.theme.siteVariables);
-
     if (props.target) {
       setUpWhatInput(props.target);
     }
@@ -218,21 +161,6 @@ Provider.propTypes = {
     siteVariables: PropTypes.object,
     componentVariables: PropTypes.object,
     componentStyles: PropTypes.objectOf(PropTypes.any),
-    fontFaces: PropTypes.arrayOf(
-      PropTypes.exact({
-        name: PropTypes.string.isRequired,
-        paths: PropTypes.arrayOf(PropTypes.string),
-        props: PropTypes.shape({
-          fontStretch: PropTypes.string,
-          fontStyle: PropTypes.string,
-          fontVariant: PropTypes.string,
-          fontWeight: PropTypes.number,
-          localAlias: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-          unicodeRange: PropTypes.string,
-        }),
-      }),
-    ),
-    staticStyles: PropTypes.array,
     animations: PropTypes.objectOf(PropTypes.any),
   }),
   rtl: PropTypes.bool,

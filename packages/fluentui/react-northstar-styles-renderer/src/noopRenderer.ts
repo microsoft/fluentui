@@ -9,8 +9,6 @@ export const noopRenderer: Renderer = {
   registerUsage: () => {},
   unregisterUsage: () => {},
 
-  renderFont: () => {},
-  renderGlobal: () => {},
   renderRule: () => '',
 
   Provider: NoopProvider,

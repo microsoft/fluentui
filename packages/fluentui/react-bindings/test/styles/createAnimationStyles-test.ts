@@ -5,8 +5,6 @@ const theme = {
   componentVariables: {},
   componentStyles: {},
   icons: {},
-  fontFaces: [],
-  staticStyles: [],
   animations: {
     spinner: {
       keyframe: {

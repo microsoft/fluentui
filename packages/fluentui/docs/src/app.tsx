@@ -8,7 +8,6 @@ import {
   teamsDarkV2Theme,
   teamsForcedColorsTheme,
 } from '@fluentui/react-northstar';
-import { mergeThemes } from '@fluentui/styles';
 
 import { ThemeName, ThemeContext, ThemeContextData, themeContextDefaults } from './context/ThemeContext';
 import Routes from './routes';
@@ -44,18 +43,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeContext.Provider value={themeContext}>
-      <Provider
-        as={React.Fragment}
-        theme={mergeThemes(themes[themeName], {
-          staticStyles: [
-            {
-              a: {
-                textDecoration: 'none',
-              },
-            },
-          ],
-        })}
-      >
+      <Provider as={React.Fragment} theme={themes[themeName]}>
         <Routes />
       </Provider>
     </ThemeContext.Provider>

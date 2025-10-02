@@ -24,14 +24,12 @@ describe('ProviderConsumer', () => {
 
   describe('render', () => {
     test('is a callback that receives the prepared theme', () => {
-      expect.assertions(11);
+      expect.assertions(7);
 
       const inputTheme: ThemeInput = {
         siteVariables: { a: 'b' },
         componentVariables: { Button: { color: 'red' } },
         componentStyles: { Button: { root: { color: 'red' } } },
-        fontFaces: [{ name: 'name', paths: ['path.woff2'], props: { fontWeight: 400 } }],
-        staticStyles: ['body{margin:0;}', { body: { margin: 0 } }],
       };
 
       mount(
@@ -52,14 +50,6 @@ describe('ProviderConsumer', () => {
               expect(preparedTheme.componentStyles.Button.root(styleParam)).toMatchObject(
                 inputTheme.componentStyles.Button.root,
               );
-
-              // fontFaces
-              expect(preparedTheme).toHaveProperty('fontFaces');
-              expect(preparedTheme.fontFaces).toMatchObject(inputTheme.fontFaces);
-
-              // staticStyles
-              expect(preparedTheme).toHaveProperty('staticStyles');
-              expect(preparedTheme.staticStyles).toMatchObject(inputTheme.staticStyles);
 
               return null;
             }}
