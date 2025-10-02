@@ -73,7 +73,7 @@ describe('collapsePresenceFn', () => {
         duration: 300,
         easing: 'ease-in',
         delay: 100,
-        opacityDelay: 50,
+        staggerDelay: 50,
       });
 
       // Exit should default to enter values
@@ -86,7 +86,7 @@ describe('collapsePresenceFn', () => {
       expect(motion.exit[1]).toMatchObject({
         duration: 300, // exitSizeDuration defaults to exitDuration
         easing: 'ease-in',
-        delay: 150, // exitDelay + exitOpacityDelay (defaults to opacityDelay)
+        delay: 150, // exitDelay + exitStaggerDelay (defaults to staggerDelay)
       });
     });
   });
@@ -154,17 +154,17 @@ describe('collapsePresenceFn', () => {
       const motion = collapsePresenceFn({
         element: mockElement,
         delay: 100,
-        opacityDelay: 50,
+        staggerDelay: 50,
         exitDelay: 200,
-        exitOpacityDelay: 75,
+        exitStaggerDelay: 75,
       });
 
-      // Enter: size/whitespace start with base delay, opacity starts after opacityDelay
+      // Enter: size/whitespace start with base delay, opacity starts after staggerDelay
       expect(motion.enter[0].delay).toBe(100); // size
       expect(motion.enter[1].delay).toBe(100); // whitespace
       expect(motion.enter[2].delay).toBe(150); // opacity (100 + 50)
 
-      // Exit: opacity starts with exitDelay, size/whitespace start after exitOpacityDelay
+      // Exit: opacity starts with exitDelay, size/whitespace start after exitStaggerDelay
       expect(motion.exit[0].delay).toBe(200); // opacity
       expect(motion.exit[1].delay).toBe(275); // size (200 + 75)
       expect(motion.exit[2].delay).toBe(275); // whitespace (200 + 75)
@@ -180,9 +180,9 @@ describe('collapsePresenceFn', () => {
         exitSizeDuration: 100,
         exitOpacityDuration: 400,
         delay: 50,
-        opacityDelay: 25,
+        staggerDelay: 25,
         exitDelay: 75,
-        exitOpacityDelay: 125,
+        exitStaggerDelay: 125,
       });
 
       // Verify each atom gets correct duration and delay
@@ -224,8 +224,8 @@ describe('collapsePresenceFn', () => {
       const motion = collapsePresenceFn({
         element: mockElement,
         animateOpacity: false,
-        opacityDelay: 100, // Should be ignored for enter
-        exitOpacityDelay: 50, // Still affects exit timing even without opacity
+        staggerDelay: 100, // Should be ignored for enter
+        exitStaggerDelay: 50, // Still affects exit timing even without opacity
       });
 
       // Should only have size and whitespace atoms
@@ -235,13 +235,13 @@ describe('collapsePresenceFn', () => {
       const enterAtoms = motion.enter as import('@fluentui/react-motion').AtomMotion[];
       const exitAtoms = motion.exit as import('@fluentui/react-motion').AtomMotion[];
 
-      // Enter: opacityDelay should be ignored since no opacity atom
+      // Enter: staggerDelay should be ignored since no opacity atom
       expect(enterAtoms[0].delay).toBe(0); // Base delay
       expect(enterAtoms[1].delay).toBe(0); // Base delay
 
-      // Exit: exitOpacityDelay still affects size/whitespace timing (exitDelay + exitOpacityDelay)
-      expect(exitAtoms[0].delay).toBe(50); // exitDelay (0) + exitOpacityDelay (50)
-      expect(exitAtoms[1].delay).toBe(50); // exitDelay (0) + exitOpacityDelay (50)
+      // Exit: exitStaggerDelay still affects size/whitespace timing (exitDelay + exitStaggerDelay)
+      expect(exitAtoms[0].delay).toBe(50); // exitDelay (0) + exitStaggerDelay (50)
+      expect(exitAtoms[1].delay).toBe(50); // exitDelay (0) + exitStaggerDelay (50)
     });
 
     it('works with zero durations and delays', () => {
@@ -249,7 +249,7 @@ describe('collapsePresenceFn', () => {
         element: mockElement,
         duration: 0,
         delay: 0,
-        opacityDelay: 0,
+        staggerDelay: 0,
       });
 
       expect(motion.enter[0]).toMatchObject({ duration: 0, delay: 0 });

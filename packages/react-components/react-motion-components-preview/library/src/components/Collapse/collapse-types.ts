@@ -28,9 +28,15 @@ export type CollapseParams = BasePresenceParams &
     /** The starting size for the expand animation. Defaults to `'0px'`. */
     fromSize?: string;
 
-    /** Time (ms) to delay the opacity fade-in relative to the size expand start. Defaults to 0. */
-    opacityDelay?: number;
+    /**
+     * Time (ms) to delay the inner stagger between size and opacity animations.
+     * On enter this delays the opacity after size; on exit this delays the size after opacity.
+     * Defaults to 0.
+     */
+    staggerDelay?: number;
 
-    /** Time (ms) to delay the opacity fade-out relative to the size collapse start. Defaults to the `opacityDelay` param for symmetry. */
-    exitOpacityDelay?: number;
+    /**
+     * Time (ms) to delay the inner stagger during exit. Defaults to the `staggerDelay` param for symmetry.
+     */
+    exitStaggerDelay?: number;
   };

@@ -19,8 +19,8 @@ import { fadeAtom } from '../../atoms/fade-atom';
  * @param exitDuration - Time (ms) for the exit transition (collapse). Defaults to the `duration` param for symmetry
  * @param exitEasing - Easing curve for the exit transition. Defaults to the `easing` param for symmetry
  * @param exitDelay - Time (ms) to delay the entire exit transition. Defaults to the `delay` param for symmetry
- * @param opacityDelay - Time (ms) to delay the opacity fade-in relative to the size expand start. Defaults to 0
- * @param exitOpacityDelay - Time (ms) to delay the opacity fade-out relative to the size collapse start. Defaults to the `opacityDelay` param for symmetry
+ * @param staggerDelay - Time (ms) offset between the size and opacity animations. Defaults to 0
+ * @param exitStaggerDelay - Time (ms) offset between the size and opacity animations on exit. Defaults to the `staggerDelay` param for symmetry
  * @param sizeDuration - Time (ms) for the size animation during enter. Defaults to `duration` for unified timing
  * @param opacityDuration - Time (ms) for the opacity animation during enter. Defaults to `sizeDuration` for synchronized timing
  * @param exitSizeDuration - Time (ms) for the size animation during exit. Defaults to `exitDuration` for unified timing
@@ -46,8 +46,8 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   delay = 0,
   exitEasing = easing,
   exitDelay = delay,
-  opacityDelay = 0,
-  exitOpacityDelay = opacityDelay,
+  staggerDelay = 0,
+  exitStaggerDelay = staggerDelay,
 
   // Animation controls
   animateOpacity = true,
@@ -56,7 +56,7 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
 }) => {
   // ----- ENTER -----
   // The enter transition is an array of up to 3 motion atoms: size, whitespace and opacity.
-  // For enter: size expands first, then opacity fades in after opacityDelay
+  // For enter: size expands first, then opacity fades in after staggerDelay
   const enterAtoms: AtomMotion[] = [
     // Apply global delay to size atom - size expansion starts first
     sizeEnterAtom({ orientation, duration: sizeDuration, easing, element, fromSize, delay }),
@@ -64,12 +64,12 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
   ];
   // Fade in only if animateOpacity is true. Otherwise, leave opacity unaffected.
   if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration: opacityDuration, easing, delay: delay + opacityDelay }));
+    enterAtoms.push(fadeAtom({ direction: 'enter', duration: opacityDuration, easing, delay: delay + staggerDelay }));
   }
 
   // ----- EXIT -----
   // The exit transition is an array of up to 3 motion atoms: opacity, size and whitespace.
-  // For exit: opacity fades out first, then size collapses after exitOpacityDelay
+  // For exit: opacity fades out first, then size collapses after exitStaggerDelay
   const exitAtoms: AtomMotion[] = [];
   // Fade out only if animateOpacity is true. Otherwise, leave opacity unaffected.
   if (animateOpacity) {
@@ -84,7 +84,7 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
       duration: exitSizeDuration,
       easing: exitEasing,
       element,
-      delay: exitDelay + exitOpacityDelay,
+      delay: exitDelay + exitStaggerDelay,
       fromSize,
     }),
     whitespaceAtom({
@@ -92,7 +92,7 @@ const collapsePresenceFn: PresenceMotionFn<CollapseParams> = ({
       orientation,
       duration: exitSizeDuration,
       easing: exitEasing,
-      delay: exitDelay + exitOpacityDelay, // Size/whitespace collapse after opacity finishes fading out
+      delay: exitDelay + exitStaggerDelay, // Size/whitespace collapse after opacity finishes fading out
     }),
   );
 
@@ -118,12 +118,12 @@ export const CollapseDelayed = createPresenceComponentVariant(Collapse, {
   // Enter timing per motion design spec
   sizeDuration: motionTokens.durationNormal, // 200ms
   opacityDuration: motionTokens.durationSlower, // 400ms
-  opacityDelay: motionTokens.durationNormal, // 200ms
+  staggerDelay: motionTokens.durationNormal, // 200ms
 
   // Exit timing per motion design spec
   exitSizeDuration: motionTokens.durationNormal, // 200ms
   exitOpacityDuration: motionTokens.durationSlower, // 400ms
-  exitOpacityDelay: motionTokens.durationSlower, // 400ms
+  exitStaggerDelay: motionTokens.durationSlower, // 400ms
 
   // Easing per motion design spec
   easing: motionTokens.curveEasyEase,
