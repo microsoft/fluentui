@@ -92,14 +92,15 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
         const key = child.key ?? idx;
 
         if (hideMode === 'visibleProp') {
-          return React.cloneElement(child, { key, visible: itemsVisibility[idx] } as any);
+          // Use a generic record type for props to avoid `any` while still allowing unknown prop shapes.
+          return React.cloneElement(child, { key, visible: itemsVisibility[idx] } as Partial<Record<string, unknown>>);
         } else if (hideMode === 'visibilityStyle') {
-          const childProps = child.props as any;
+          const childProps = child.props as Record<string, unknown> | undefined;
           const style = {
-            ...childProps?.style,
+            ...(childProps?.style as Record<string, unknown> | undefined),
             visibility: itemsVisibility[idx] ? 'visible' : 'hidden',
           };
-          return React.cloneElement(child, { key, style } as any);
+          return React.cloneElement(child, { key, style } as Partial<Record<string, unknown>>);
         } else {
           // unmount mode
           return itemsVisibility[idx] ? React.cloneElement(child, { key }) : null;
