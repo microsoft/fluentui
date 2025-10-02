@@ -68,9 +68,6 @@ export * from './components/Chat/ChatMessageReadStatus';
 
 export * from './components/Checkbox/Checkbox';
 
-export * from './components/Debug/Debug';
-export * from './components/Debug/DebugSelector';
-
 export * from './components/Design/Design';
 
 export * from './components/MenuButton/MenuButton';
@@ -95,8 +92,6 @@ export * from './components/Dropdown/DropdownSelectedItem';
 export * from './components/Dropdown/DropdownSearchInput';
 
 export * from './components/Embed/Embed';
-
-export * from './components/Debug/FiberNavigator';
 
 export * from './components/Flex/Flex';
 export * from './components/Flex/FlexItem';
