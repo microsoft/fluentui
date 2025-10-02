@@ -2,6 +2,35 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Thu, 02 Oct 2025 15:12:26 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.9.8",
+      "version": "9.9.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "6a2064f68ba27adea8b7842bb910cb8d4bc76343",
+            "comment": "chore: override dependsOn for test-rit targets to have v8 libs build before run"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.71.0",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Sep 2025 12:51:08 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.9.7",
       "version": "9.9.7",
