@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Provider,
-  Debug,
   teamsTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
@@ -57,7 +56,6 @@ const App: React.FC = () => {
           ],
         })}
       >
-        <Debug />
         <Routes />
       </Provider>
     </ThemeContext.Provider>
