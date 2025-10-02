@@ -2,24 +2,18 @@ import { Provider, ProviderConsumer, Grid } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import ColorBox, { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
-import { colorVariantsStyles } from '../components/ColorVariants';
 import DocPage from '../components/DocPage/DocPage';
+import ColorBox from '../components/ColorBox';
 
 const ColorPalette = () => (
   <Provider
     theme={{
       componentStyles: {
-        ColorBox: colorBoxStyles,
-        ColorVariants: colorVariantsStyles,
         Header: {
           root: {
             fontWeight: 700,
           },
         },
-      },
-      componentVariables: {
-        ColorBox: colorBoxVariables,
       },
     }}
   >

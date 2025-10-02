@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Flex, Provider, Text, Button, Menu, Ref } from '@fluentui/react-northstar';
+import { Flex, Text, Button, Menu, Ref } from '@fluentui/react-northstar';
 import CopyToClipboard from './CopyToClipboard';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
-import themeOverrides from './themeOverrides';
 import { NotificationProvider } from './NotificationProvider';
 import { ClipboardCopiedToIcon } from '@fluentui/react-icons-northstar';
 
@@ -83,25 +82,24 @@ const CopyToClipboardPrototypes: React.FC = () => {
         Note: For screen reader users, make sure to use <code>react-aria-live</code> or similar library to announce the
         notification.
       </Text>
-      <Provider theme={themeOverrides}>
-        <NotificationProvider>
-          <ComponentPrototype title="Attached" description="Attached version of Copy to Clipboard prototype">
-            <CopyToClipboardPrototype attached={true} value={commitID} />
-          </ComponentPrototype>
-          <ComponentPrototype title="Not Attached" description="Not attached version of Copy to Clipboard prototype">
-            <CopyToClipboardPrototype value={commitID} />
-          </ComponentPrototype>
-          <ComponentPrototype title="In menu" description="Copy to Clipboard can reside within a menu">
-            <CopyToClipboardInMenu />
-          </ComponentPrototype>
-          <ComponentPrototype
-            title="In Menu Attached"
-            description="Copy to Clipboard can be attached to a different element"
-          >
-            <CopyToClipboardAttached />
-          </ComponentPrototype>
-        </NotificationProvider>
-      </Provider>
+
+      <NotificationProvider>
+        <ComponentPrototype title="Attached" description="Attached version of Copy to Clipboard prototype">
+          <CopyToClipboardPrototype attached={true} value={commitID} />
+        </ComponentPrototype>
+        <ComponentPrototype title="Not Attached" description="Not attached version of Copy to Clipboard prototype">
+          <CopyToClipboardPrototype value={commitID} />
+        </ComponentPrototype>
+        <ComponentPrototype title="In menu" description="Copy to Clipboard can reside within a menu">
+          <CopyToClipboardInMenu />
+        </ComponentPrototype>
+        <ComponentPrototype
+          title="In Menu Attached"
+          description="Copy to Clipboard can be attached to a different element"
+        >
+          <CopyToClipboardAttached />
+        </ComponentPrototype>
+      </NotificationProvider>
     </PrototypeSection>
   );
 };

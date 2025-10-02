@@ -1,6 +1,5 @@
 import * as React from 'react';
 import DocPage from '../components/DocPage/DocPage';
-import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
 import { link, code } from '../utils/helpers';
 import ExampleSnippet from '../components/ExampleSnippet';
 
@@ -53,10 +52,5 @@ export default () => (
       To improve the performance you need to understand where the time is spent in your application.{' '}
       {link('Debugging', '/debugging')} section documents the tools you can use to understand FluentUI performance.
     </p>
-
-    <GuidesNavigationFooter
-      previous={{ name: 'Integrate custom components', url: 'integrate-custom-components' }}
-      next={{ name: 'Debugging', url: 'debugging' }}
-    />
   </DocPage>
 );

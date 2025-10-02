@@ -10,8 +10,8 @@ import {
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import ColorBox, { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
-import ColorVariants, { colorVariantsStyles } from '../components/ColorVariants';
+import ColorBox from '../components/ColorBox';
+import ColorVariants from '../components/ColorVariants';
 import DocPage from '../components/DocPage/DocPage';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
 import ThemeDropdown from '../components/ThemeDropdown';
@@ -39,16 +39,11 @@ const ColorPalette = () => {
     <Provider
       theme={mergeThemes(themes[theme.value], {
         componentStyles: {
-          ColorBox: colorBoxStyles,
-          ColorVariants: colorVariantsStyles,
           Header: {
             root: {
               fontWeight: 700,
             },
           },
-        },
-        componentVariables: {
-          ColorBox: colorBoxVariables,
         },
       })}
     >

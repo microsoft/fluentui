@@ -16,10 +16,10 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import ColorBox, { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
-import Fader, { faderStyles } from '../components/Fader';
+import ColorBox from '../components/ColorBox';
+import Fader from '../components/Fader';
 import SystemColors from '../components/SystemColors';
-import ColorVariants, { colorVariantsStyles } from '../components/ColorVariants';
+import ColorVariants from '../components/ColorVariants';
 import DocPage from '../components/DocPage/DocPage';
 import ExampleSnippet from '../components/ExampleSnippet';
 import ColorSchemes from '../components/ColorSchemes';
@@ -47,9 +47,6 @@ const Colors = () => (
   <Provider
     theme={{
       componentStyles: {
-        ColorBox: colorBoxStyles,
-        ColorVariants: colorVariantsStyles,
-        Fader: faderStyles,
         Header: {
           root: {
             fontWeight: 700,
@@ -62,9 +59,6 @@ const Colors = () => (
             },
           }),
         },
-      },
-      componentVariables: {
-        ColorBox: colorBoxVariables,
       },
     }}
   >

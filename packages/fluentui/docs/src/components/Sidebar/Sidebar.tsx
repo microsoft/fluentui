@@ -305,15 +305,6 @@ const baseTreeItems: TreeProps['items'] = [
         title: { content: 'Layout', as: NavLink, activeClassName: 'active', to: '/layout' },
       },
       {
-        id: 'integrate-custom',
-        title: {
-          content: 'Integrate Custom Components',
-          as: NavLink,
-          activeClassName: 'active',
-          to: '/integrate-custom-components',
-        },
-      },
-      {
         id: 'performance',
         title: {
           content: 'Performance',

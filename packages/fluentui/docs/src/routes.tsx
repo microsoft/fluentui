@@ -26,7 +26,6 @@ import QuickStart from './views/QuickStart';
 import Theming from './views/Theming';
 import ThemingExamples from './views/ThemingExamples';
 import IconViewer from './views/IconViewer';
-import IntegrateCustomComponents from './views/IntegrateCustomComponents';
 import AccessibilityBehaviors from './views/AccessibilityBehaviors';
 import FocusZone from './views/FocusZoneDoc';
 import FocusTrapZone from './views/FocusTrapZoneDoc';
@@ -136,7 +135,6 @@ const Routes = () => (
                   <MarkdownPage page={ShorthandProps} />
                 </Route>
                 <Route exact path="/icon-viewer" component={IconViewer} />
-                <Route exact path="/integrate-custom-components" component={IntegrateCustomComponents} />
                 <Route exact path="/performance" component={Performance} />
                 <Route exact path="/composition">
                   <MarkdownPage page={Composition} />
