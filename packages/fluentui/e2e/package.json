@@ -9,9 +9,8 @@
     "@fluentui/react-icons-northstar": "*",
     "@fluentui/react-northstar": "*",
     "@fluentui/react-northstar-prototypes": "*",
-    "@types/react-router-dom": "^5.1.5",
     "lodash": "^4.17.15",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^6.30.1"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

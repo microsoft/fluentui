@@ -3,31 +3,27 @@ import { Provider, createTheme, teamsDarkTheme } from '@fluentui/react-northstar
 // @ts-ignore
 // eslint-disable-next-line import/no-extraneous-dependencies
 import AnchorJS from 'anchor-js';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
 
 import Sidebar from './Sidebar/Sidebar';
 import { scrollToAnchor } from '../utils';
 import { mergeThemes } from '@fluentui/styles';
+import { useLocation, Outlet } from 'react-router-dom';
 
 const anchors = new AnchorJS({
   class: 'anchor-link',
   icon: '#',
 });
 
-class DocsLayout extends React.Component<any, any> {
+type DocsLayoutProps = {
+  location: {
+    pathname: string;
+  };
+};
+
+class DocsLayout extends React.Component<DocsLayoutProps> {
   scrollStartTimeout: any;
   pathname: any;
-
-  static propTypes = {
-    component: PropTypes.func,
-    history: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-    render: PropTypes.func,
-    sidebar: PropTypes.bool,
-  };
 
   static handledProps = ['component', 'history', 'location', 'match', 'render', 'sidebar'];
 
@@ -68,7 +64,6 @@ class DocsLayout extends React.Component<any, any> {
   };
 
   renderChildren() {
-    const { children, render } = this.props;
     const sidebarWidth = 270;
 
     const treeSectionStyle = {
@@ -120,7 +115,7 @@ class DocsLayout extends React.Component<any, any> {
           <Sidebar width={sidebarWidth} treeItemStyle={treeItemStyle} />
         </Provider>
         <div role="main" style={{ marginLeft: `${sidebarWidth}px` }}>
-          {render ? render() : children}
+          <Outlet />
         </div>
       </>
     );
@@ -131,4 +126,8 @@ class DocsLayout extends React.Component<any, any> {
   }
 }
 
-export default withRouter(DocsLayout);
+export default function DocsLayoutWrapper(props: Omit<DocsLayoutProps, 'location'>) {
+  const location = useLocation();
+
+  return <DocsLayout {...props} location={location} />;
+}

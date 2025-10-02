@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import { tabListBehavior, Header, Text, Flex, Menu } from '@fluentui/react-northstar';
 import { ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
-import { getFormattedHash } from '../../utils';
+// import { getFormattedHash } from '../../utils';
 // import ComponentDocLinks from './ComponentDocLinks'
 // import ComponentDocSee from './ComponentDocSee'
 import ComponentProps from './ComponentProps';
@@ -12,7 +12,6 @@ import { ComponentDocAccessibility } from './ComponentDocAccessibility';
 import { ThemeContext } from '../../context/ThemeContext';
 import ExampleContext from '../../context/ExampleContext';
 import { ComponentInfo } from '../../types';
-import * as _ from 'lodash';
 import ThemeDropdown from '../ThemeDropdown';
 
 const ComponentExamples = React.lazy(async () => ({
@@ -34,7 +33,10 @@ const exampleEndStyle: React.CSSProperties = {
 type ComponentDocProps = {
   info: ComponentInfo;
   tabs: string[];
-} & RouteComponentProps<{}>;
+
+  location: ReturnType<typeof useLocation>;
+  navigate: ReturnType<typeof useNavigate>;
+};
 
 type ComponentDocState = {
   activePath: string;
@@ -50,45 +52,45 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
 
   tabRegex = new RegExp(/[^\/]*$/);
 
-  getTabIndexOrRedirectToDefault(tab: string, tabs) {
-    const lowercaseTabs = _.map(tabs, tab => tab.toLowerCase());
-    const index = lowercaseTabs.indexOf(tab);
-    if (index === -1) {
-      const { history, location } = this.props;
-      const at = location.pathname;
-      const newLocation = at.replace(this.tabRegex, 'definition');
-      history.push(newLocation);
-      return 0;
-    }
-    return index;
-  }
+  // getTabIndexOrRedirectToDefault(tab: string, tabs) {
+  //   const lowercaseTabs = _.map(tabs, tab => tab.toLowerCase());
+  //   const index = lowercaseTabs.indexOf(tab);
+  //   if (index === -1) {
+  //     const { history, location } = this.props;
+  //     const at = location.pathname;
+  //     const newLocation = at.replace(this.tabRegex, 'definition');
+  //     history.push(newLocation);
+  //     return 0;
+  //   }
+  //   return index;
+  // }
 
   getCurrentTabTitle() {
     return this.props.tabs[this.state.currentTabIndex];
   }
 
-  UNSAFE_componentWillMount() {
-    const { history, location, tabs } = this.props;
-    const tab = location.pathname.match(this.tabRegex)[0];
-    const tabIndex = this.getTabIndexOrRedirectToDefault(tab, tabs);
-    this.setState({ currentTabIndex: tabIndex });
-
-    if (location.hash) {
-      const activePath = getFormattedHash(location.hash);
-      history.replace({ ...history.location, hash: activePath });
-      this.setState({ activePath });
-    }
-  }
-
-  UNSAFE_componentWillReceiveProps({ info, location, tabs }) {
-    const tab = location.pathname.match(this.tabRegex)[0];
-    const tabIndex = this.getTabIndexOrRedirectToDefault(tab, tabs);
-    this.setState({ currentTabIndex: tabIndex });
-
-    if (info.displayName !== this.props.info.displayName) {
-      this.setState({ activePath: undefined });
-    }
-  }
+  // UNSAFE_componentWillMount() {
+  //   const { history, location, tabs } = this.props;
+  //   const tab = location.pathname.match(this.tabRegex)[0];
+  //   const tabIndex = this.getTabIndexOrRedirectToDefault(tab, tabs);
+  //   this.setState({ currentTabIndex: tabIndex });
+  //
+  //   if (location.hash) {
+  //     const activePath = getFormattedHash(location.hash);
+  //     history.replace({ ...history.location, hash: activePath });
+  //     this.setState({ activePath });
+  //   }
+  // }
+  //
+  // UNSAFE_componentWillReceiveProps({ info, location, tabs }) {
+  //   const tab = location.pathname.match(this.tabRegex)[0];
+  //   const tabIndex = this.getTabIndexOrRedirectToDefault(tab, tabs);
+  //   this.setState({ currentTabIndex: tabIndex });
+  //
+  //   if (info.displayName !== this.props.info.displayName) {
+  //     this.setState({ activePath: undefined });
+  //   }
+  // }
 
   handleExamplePassed = (passedAnchorName: string) => {
     this.setState({ activePath: passedAnchorName });
@@ -107,11 +109,13 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
 
   handleTabClick = (e, props) => {
     const newIndex = props.index;
-    const { history, location } = this.props;
+    const { navigate, location } = this.props;
+
     const at = location.pathname;
     const newLocation = at.replace(this.tabRegex, this.props.tabs[newIndex].toLowerCase());
 
-    history.push(newLocation);
+    navigate(newLocation);
+
     this.setState({ currentTabIndex: newIndex });
   };
 
@@ -219,4 +223,9 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
   }
 }
 
-export default withRouter(ComponentDoc);
+export default function ComponentDocWrapper(props: Omit<ComponentDocProps, 'navigate' | 'location'>) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  return <ComponentDoc {...props} navigate={navigate} location={location} />;
+}

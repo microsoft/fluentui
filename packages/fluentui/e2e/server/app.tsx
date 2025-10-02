@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import _ from 'lodash';
 import E2EExample from './E2EExample';
 import routes from './routes';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import { Provider, Flex, Header, List, teamsTheme } from '@fluentui/react-northstar';
 
 const ContentList = () => (
@@ -24,10 +24,10 @@ const App = () => (
   <BrowserRouter>
     {/* The disabledAnimation is added in order for avoiding delays when things are shown/hidden by the Animation component */}
     <Provider theme={teamsTheme} disableAnimations>
-      <Switch>
-        <Route exact path="/:exampleName" component={E2EExample} />
-        <Route component={ContentList} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<ContentList />} />
+        <Route path="/:exampleName" element={<E2EExample />} />
+      </Routes>
     </Provider>
   </BrowserRouter>
 );

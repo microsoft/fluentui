@@ -30,7 +30,7 @@ const Fader: React.FC<FaderProps> = ({ children, url }) => {
       >
         {children}
       </Box>
-      <Button as={Link} content="See more" text href={''} to={url} />
+      <Button as={Link} content="See more" text to={url} />
     </Flex>
   );
 };

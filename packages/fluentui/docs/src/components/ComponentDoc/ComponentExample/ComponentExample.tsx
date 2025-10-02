@@ -2,7 +2,7 @@ import * as copyToClipboard from 'copy-to-clipboard';
 import * as _ from 'lodash';
 import * as qs from 'qs';
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { knobComponents, KnobsSnippet } from '@fluentui/code-sandbox';
 import {
@@ -66,17 +66,16 @@ const editorTheme = mergeThemes(
   ),
 );
 
-export interface ComponentExampleProps
-  extends RouteComponentProps<any, any>,
-    ComponentSourceManagerRenderProps,
-    ExampleContextValue {
+export interface ComponentExampleProps extends ComponentSourceManagerRenderProps, ExampleContextValue {
   error: Error | null;
   onError: (error: Error | null) => void;
-  title: string;
+  title?: React.ReactElement | string;
   titleForAriaLabel?: string;
   description?: React.ReactNode;
   examplePath: string;
   resetTheme?: boolean;
+  location: ReturnType<typeof useLocation>;
+  navigate: ReturnType<typeof useNavigate>;
 }
 
 interface ComponentExampleState {
@@ -98,7 +97,7 @@ const childrenStyle: ICSSInJSStyle = {
 
 /**
  * Renders a `component` and the raw `code` that produced it.
- * Allows toggling the the raw `code` code block.
+ * Allows toggling the raw `code` code block.
  */
 class ComponentExample extends React.Component<ComponentExampleProps, ComponentExampleState> {
   kebabExamplePath: string;
@@ -205,9 +204,9 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
   setHashAndScroll = () => {
     const { anchorName } = this.state;
-    const { history } = this.props;
+    const { navigate } = this.props;
 
-    history.replace({ ...history.location, hash: anchorName });
+    navigate({ ...this.props.location, hash: anchorName }, { replace: true });
     scrollToAnchor();
   };
 
@@ -457,7 +456,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
                 />
 
                 <ComponentControls
-                  titleForAriaLabel={title || titleForAriaLabel}
+                  titleForAriaLabel={typeof title === 'string' ? title : titleForAriaLabel}
                   anchorName={anchorName}
                   exampleCode={currentCode}
                   exampleLanguage={currentCodeLanguage}
@@ -544,8 +543,12 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
   }
 }
 
-const ComponentExampleWithTheme = props => {
+const ComponentExampleWithTheme = (
+  props: Pick<ComponentExampleProps, 'examplePath' | 'title' | 'description'> & { children?: React.ReactNode },
+) => {
   const exampleProps = React.useContext(ExampleContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // This must be under ComponentExample:
   // React handles setState() in hooks and classes differently: it performs strict equal check in hooks
@@ -565,10 +568,18 @@ const ComponentExampleWithTheme = props => {
   return (
     <ComponentSourceManager examplePath={props.examplePath}>
       {codeProps => (
-        <ComponentExample {...props} {...exampleProps} {...codeProps} onError={handleError} error={error} />
+        <ComponentExample
+          {...props}
+          {...exampleProps}
+          {...codeProps}
+          onError={handleError}
+          error={error}
+          navigate={navigate}
+          location={location}
+        />
       )}
     </ComponentSourceManager>
   );
 };
 
-export default withRouter(ComponentExampleWithTheme);
+export default ComponentExampleWithTheme;

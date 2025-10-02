@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { getCode } from '@fluentui/accessibility';
 import { CopyToClipboard } from '@fluentui/docs-components';
@@ -223,8 +223,7 @@ const baseTreeItems: TreeProps['items'] = [
         title: {
           as: NavLink,
           content: 'Introduction',
-          exact: true,
-          activeClassName: 'active',
+          end: true,
           to: '/',
         },
       },
@@ -233,7 +232,6 @@ const baseTreeItems: TreeProps['items'] = [
         title: {
           as: NavLink,
           content: 'Shorthand Props',
-          activeClassName: 'active',
           to: '/shorthand-props',
         },
       },
@@ -242,7 +240,6 @@ const baseTreeItems: TreeProps['items'] = [
         title: {
           as: NavLink,
           content: 'Composition',
-          activeClassName: 'active',
           to: '/composition',
         },
       },
@@ -251,7 +248,6 @@ const baseTreeItems: TreeProps['items'] = [
         title: {
           as: NavLink,
           content: 'Icons',
-          activeClassName: 'active',
           to: '/icon-viewer',
         },
       },
@@ -266,56 +262,52 @@ const baseTreeItems: TreeProps['items'] = [
         title: {
           content: 'QuickStart',
           as: NavLink,
-          activeClassName: 'active',
           to: '/quick-start',
         },
       },
       {
         id: 'faq',
-        title: { content: 'FAQ', as: NavLink, activeClassName: 'active', to: '/faq' },
+        title: { content: 'FAQ', as: NavLink, to: '/faq' },
       },
       {
         id: 'accessiblity',
         title: {
           content: 'Accessibility',
           as: NavLink,
-          activeClassName: 'active',
           to: '/accessibility',
         },
       },
       {
         id: 'theming',
-        title: { content: 'Theming', as: NavLink, activeClassName: 'active', to: '/theming' },
+        title: { content: 'Theming', as: NavLink, to: '/theming' },
       },
       {
         id: 'theming-examples',
         title: {
           content: 'Theming Examples',
           as: NavLink,
-          activeClassName: 'active',
           to: '/theming-examples',
         },
       },
       {
         id: 'colorpalette',
-        title: { content: 'Colors', as: NavLink, activeClassName: 'active', to: '/colors' },
+        title: { content: 'Colors', as: NavLink, to: '/colors' },
       },
       {
         id: 'layout',
-        title: { content: 'Layout', as: NavLink, activeClassName: 'active', to: '/layout' },
+        title: { content: 'Layout', as: NavLink, to: '/layout' },
       },
       {
         id: 'performance',
         title: {
           content: 'Performance',
           as: NavLink,
-          activeClassName: 'active',
           to: '/performance',
         },
       },
       {
         id: 'debugging',
-        title: { content: 'Debugging', as: NavLink, activeClassName: 'active', to: '/debugging' },
+        title: { content: 'Debugging', as: NavLink, to: '/debugging' },
       },
     ],
   },
@@ -350,7 +342,9 @@ const getSectionsWithPrototypeSectionIfApplicable = (currentSections, allPrototy
   return currentSections.concat(prototypeTreeSection);
 };
 
-const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
+const Sidebar: React.FC<SidebarProps> = props => {
+  const location = useLocation();
+
   const [query, setQuery] = React.useState('');
   const [activeItemIds, setActiveItemIds] = React.useState<string[]>([]);
   const searchInputRef = React.useRef<HTMLInputElement>();
@@ -388,10 +382,10 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
   );
 
   React.useEffect(() => {
-    const at = props.location.pathname;
+    const at = location.pathname;
     const id = findActiveCategoryId(at, treeItems);
     setActiveItemIds(prev => (prev.includes(id) ? prev : [...prev, id]));
-  }, [props.location.pathname, treeItems]);
+  }, [location.pathname, treeItems]);
 
   React.useEffect(() => {
     document.addEventListener('keydown', handleDocumentKeyDown);
@@ -537,4 +531,4 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
   );
 };
 
-export default withRouter(Sidebar);
+export default Sidebar;

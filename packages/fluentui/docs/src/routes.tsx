@@ -1,6 +1,5 @@
-import { Loader } from '@fluentui/react-northstar';
 import * as React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import DocsLayout from './components/DocsLayout';
 import DocsRoot from './components/DocsRoot';
@@ -69,82 +68,67 @@ const AppRoutes = () => (
   <React.Suspense fallback="Loading...">
     {/* Remove trailing slash */}
     <BrowserRouter basename={__BASENAME__ === '/' ? __BASENAME__ : __BASENAME__.slice(0, -1)}>
-      <Switch>
-        <Route exact path="/maximize/:exampleName/:rtl?" component={ExternalExampleLayout} />
+      <Routes>
+        <Route path="/maximize/:exampleName/:rtl?" element={<ExternalExampleLayout />} />
 
-        <DocsLayout>
-          <React.Suspense fallback={<Loader />}>
-            <Switch>
-              <Route exact path="/" component={Introduction} />
-              <Route exact path="/components/:name/:tab" component={DocsRoot} sidebar />
-              <Route
-                exact
-                path="/components/:name"
-                render={routeProps => <Redirect to={`${routeProps.location.pathname}/definition`} />}
-              />
-              <Route exact path="/behaviors/:name" component={DocsBehaviorRoot} sidebar />
-              <Route exact path="/debugging">
-                <MarkdownPage page={Debugging} />
-              </Route>
-              <Route exact path="/quick-start" component={QuickStart} />
-              <Route exact path="/prototype-roster" component={RosterPrototype} />
-              <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
-              <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
-              <Route exact path="/prototype-compact-chat" component={CompactChatPrototype} />
-              <Route exact path="/prototype-chat-refresh" component={ChatRefreshPrototype} />
-              <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
-              <Route exact path="/prototype-custom-toolbar" component={CustomToolbarPrototype} />
-              <Route exact path="/prototype-async-shorthand" component={AsyncShorthandPrototype} />
-              <Route exact path="/prototype-employee-card" component={EmployeeCardPrototype} />
-              <Route exact path="/prototype-meeting-options" component={MeetingOptionsPrototype} />
-              <Route exact path="/prototype-participants-list" component={ParticipantsListPrototype} />
-              <Route exact path="/prototype-search-page" component={SearchPagePrototype} />
-              <Route exact path="/prototype-mentions" component={MentionsPrototype} />
-              <Route exact path="/prototype-dropdowns" component={DropdownsPrototype} />
-              <Route exact path="/prototype-popups" component={PopupsPrototype} />
-              <Route exact path="/prototype-alerts" component={AlertsPrototype} />
-              <Route exact path="/prototype-editor-toolbar" component={EditorToolbarPrototype} />
-              <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
-              <Route exact path="/prototype-text-area-autosize" component={TextAreaAutoSize} />
-              <Route exact path="/prototype-table" component={TablePrototype} />
-              <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
-              <Route exact path="/prototype-form-validation" component={FormValidationPrototype} />
-              <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
-              <Route exact path="/virtualized-sticky-tree" component={VirtualizedStickyTreePrototype} />
-              <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
-              <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
-              <Route exact path="/prototype-menu-list" component={MenuList} />
+        <Route element={<DocsLayout />}>
+          <Route path="/" element={<Introduction />} />
+          <Route path="/components/:name" element={<DocsRoot />} />
+          <Route path="/components/:name/:tab" element={<DocsRoot />} />
+          <Route path="/behaviors/:name" element={<DocsBehaviorRoot sidebar />} />
 
-              <Route exact path="/faq" component={FAQ} />
-              <Route exact path="/accessibility" component={Accessibility} />
-              <Route exact path="/accessibility-behaviors" component={AccessibilityBehaviors} />
-              <Route exact path="/button-name-computation" component={ButtonNameComputation} />
-              <Route exact path="/focus-zone" component={FocusZone} />
-              <Route exact path="/focus-trap-zone" component={FocusTrapZone} />
-              <Route exact path="/auto-focus-zone" component={AutoFocusZone} />
-              <Route exact path="/theming" component={Theming} />
-              <Route exact path="/theming-examples" component={ThemingExamples} />
-              <Route exact path="/layout">
-                <MarkdownPage page={Layout} />
-              </Route>
-              <Route exact path="/shorthand-props">
-                <MarkdownPage page={ShorthandProps} />
-              </Route>
-              <Route exact path="/icon-viewer" component={IconViewer} />
-              <Route exact path="/performance" component={Performance} />
-              <Route exact path="/composition">
-                <MarkdownPage page={Composition} />
-              </Route>
-              <Route exact path="/colors" component={Colors} />
-              <Route exact path="/color-palette" component={ColorPalette} />
-              <Route exact path="/color-palette-category" component={CategoryColorPalette} />
-              <Route exact path="/color-schemes" component={ColorSchemes} />
-              <Route exact path="/color-schemes-category" component={CategoryColorSchemes} />
-              <Route exact path="/*" component={PageNotFound} />
-            </Switch>
-          </React.Suspense>
-        </DocsLayout>
-      </Switch>
+          <Route path="/debugging" element={<MarkdownPage page={Debugging} />} />
+          <Route path="/quick-start" element={<QuickStart />} />
+          <Route path="/prototype-roster" element={<RosterPrototype />} />
+          <Route path="/prototype-chat-pane" element={<ChatPanePrototype />} />
+          <Route path="/prototype-chat-messages" element={<ChatMessagesPrototype />} />
+          <Route path="/prototype-compact-chat" element={<CompactChatPrototype />} />
+          <Route path="/prototype-chat-refresh" element={<ChatRefreshPrototype />} />
+          <Route path="/prototype-custom-scrollbar" element={<CustomScrollbarPrototype />} />
+          <Route path="/prototype-custom-toolbar" element={<CustomToolbarPrototype />} />
+          <Route path="/prototype-async-shorthand" element={<AsyncShorthandPrototype />} />
+          <Route path="/prototype-employee-card" element={<EmployeeCardPrototype />} />
+          <Route path="/prototype-meeting-options" element={<MeetingOptionsPrototype />} />
+          <Route path="/prototype-participants-list" element={<ParticipantsListPrototype />} />
+          <Route path="/prototype-search-page" element={<SearchPagePrototype />} />
+          <Route path="/prototype-mentions" element={<MentionsPrototype />} />
+          <Route path="/prototype-dropdowns" element={<DropdownsPrototype />} />
+          <Route path="/prototype-popups" element={<PopupsPrototype />} />
+          <Route path="/prototype-alerts" element={<AlertsPrototype />} />
+          <Route path="/prototype-editor-toolbar" element={<EditorToolbarPrototype />} />
+          <Route path="/prototype-hexagonal-avatar" element={<HexagonalAvatarPrototype />} />
+          <Route path="/prototype-text-area-autosize" element={<TextAreaAutoSize />} />
+          <Route path="/prototype-table" element={<TablePrototype />} />
+          <Route path="/prototype-nested-popups-and-dialogs" element={<NestedPopupsAndDialogsPrototype />} />
+          <Route path="/prototype-form-validation" element={<FormValidationPrototype />} />
+          <Route path="/virtualized-tree" element={<VirtualizedTreePrototype />} />
+          <Route path="/virtualized-sticky-tree" element={<VirtualizedStickyTreePrototype />} />
+          <Route path="/virtualized-table" element={<VirtualizedTablePrototype />} />
+          <Route path="/prototype-copy-to-clipboard" element={<CopyToClipboardPrototype />} />
+          <Route path="/prototype-menu-list" element={<MenuList />} />
+
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/accessibility" element={<Accessibility />} />
+          <Route path="/accessibility-behaviors" element={<AccessibilityBehaviors />} />
+          <Route path="/button-name-computation" element={<ButtonNameComputation />} />
+          <Route path="/focus-zone" element={<FocusZone />} />
+          <Route path="/focus-trap-zone" element={<FocusTrapZone />} />
+          <Route path="/auto-focus-zone" element={<AutoFocusZone />} />
+          <Route path="/theming" element={<Theming />} />
+          <Route path="/theming-examples" element={<ThemingExamples />} />
+          <Route path="/layout" element={<MarkdownPage page={Layout} />} />
+          <Route path="/shorthand-props" element={<MarkdownPage page={ShorthandProps} />} />
+          <Route path="/icon-viewer" element={<IconViewer />} />
+          <Route path="/performance" element={<Performance />} />
+          <Route path="/composition" element={<MarkdownPage page={Composition} />} />
+          <Route path="/colors" element={<Colors />} />
+          <Route path="/color-palette" element={<ColorPalette />} />
+          <Route path="/color-palette-category" element={<CategoryColorPalette />} />
+          <Route path="/color-schemes" element={<ColorSchemes />} />
+          <Route path="/color-schemes-category" element={<CategoryColorSchemes />} />
+          <Route path="/*" element={<PageNotFound />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   </React.Suspense>
 );
