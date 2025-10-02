@@ -546,7 +546,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
             return {
               isValid: true,
               traceIndex,
-              type: !doesScatterNeedFallback(scatterData, hasLineShape) ? 'line' : 'scatter',
+              type: doesScatterNeedFallback(scatterData, hasLineShape) ? 'line' : 'scatter',
             };
           }
 
@@ -658,9 +658,6 @@ export const isScatterAreaChart = (data: Partial<PlotData>) => {
 };
 
 const doesScatterNeedFallback = (data: Partial<PlotData>, hasLineShape?: boolean) => {
-  if (isScatterMarkers(data.mode ?? '') && !hasLineShape) {
-    return false;
-  }
   const isXDate = isDateArray(data.x);
   const isXNumber = isNumberArray(data.x);
 
@@ -672,6 +669,13 @@ const doesScatterNeedFallback = (data: Partial<PlotData>, hasLineShape?: boolean
   const isXMonth = isMonthArray(data.x);
   const isYString = isStringArray(data.y);
   if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
+    if (hasLineShape) {
+      return true;
+    }
+    return false;
+  }
+
+  if (isScatterMarkers(data.mode ?? '')) {
     return false;
   }
 
