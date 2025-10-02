@@ -18,7 +18,8 @@ export { StaggerSpinners } from './StaggerSpinners.stories';
 // Advanced configuration - power user features at the end
 export { HideMode } from './StaggerHideMode.stories';
 export { DelayMode } from './StaggerDelayMode.stories';
-export { ModeComparison } from './StaggerModeComparison.stories';
+// TODO: decide whether to include this; needs clarification tweaks
+// export { ModeComparison } from './StaggerModeComparison.stories';
 
 export default {
   title: 'Motion/Choreography (preview)/Stagger',
