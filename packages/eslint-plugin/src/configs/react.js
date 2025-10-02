@@ -15,7 +15,7 @@ const v9PackageDeps = Object.keys(configHelpers.getPackageJson({ root, name: 're
   pkg => !unstableV9Packages.has(pkg),
 );
 
-/** @type {import("eslint").Linter.Config} */
+/** @type {import("eslint").Linter.LegacyConfig} */
 module.exports = {
   extends: [path.join(__dirname, 'base'), path.join(__dirname, 'react-config')],
   plugins: ['react-compiler'],

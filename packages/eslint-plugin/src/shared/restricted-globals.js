@@ -25,6 +25,7 @@ const restrictedGlobals = [
   'ResizeObserver',
 ];
 
+/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RuleEntry} */
 const reactLegacy = [
   'error',
   {
@@ -37,6 +38,7 @@ const reactLegacy = [
   },
 ];
 
+/** @type {import('@typescript-eslint/utils').TSESLint.Linter.RuleEntry} */
 const react = [
   'error',
   {
@@ -56,6 +58,7 @@ const react = [
 ];
 
 module.exports = {
+  restrictedGlobals,
   reactLegacy,
   react,
 };
