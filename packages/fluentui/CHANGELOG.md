@@ -18,6 +18,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.68.0 ]------------------------------- -->
+## [v0.68.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.68.0) (02-10-2025)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.67.0..@fluentui/react-northstar_v0.68.0)
+
+### BREAKING CHANGES
+- Remove `Debug` component https://github.com/microsoft/fluentui/pull/35264
+- Remove `useTelemetry()` hook and `@fluentui/react-telemetry` https://github.com/microsoft/fluentui/pull/35246
+- Remove static styles & font faces support in CSS-in-JS https://github.com/microsoft/fluentui/pull/35245
+- Remove `createComponent()` https://github.com/microsoft/fluentui/pull/35248
+
+### Fixes
+- Replace `useAutoControlled()` with `useControllableState()` https://github.com/microsoft/fluentui/pull/35250
+
+
 <!--------------------------------[ v0.67.0 ]------------------------------- -->
 ## [v0.67.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.67.0) (01-10-2025)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.5..@fluentui/react-northstar_v0.67.0)

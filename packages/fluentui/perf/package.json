@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/perf",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
