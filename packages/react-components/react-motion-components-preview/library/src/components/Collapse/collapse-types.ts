@@ -34,24 +34,3 @@ export type CollapseParams = BasePresenceParams &
     /** Time (ms) to delay the opacity fade-out relative to the size collapse start. Defaults to the `opacityDelay` param for symmetry. */
     exitOpacityDelay?: number;
   };
-
-/**
- * Internal parameters for the createCollapseAtoms function.
- * Contains all the resolved duration and timing parameters.
- */
-export type CollapseAtomsParams = {
-  element: HTMLElement;
-  orientation: CollapseOrientation;
-  fromSize: string;
-
-  // Required resolved durations (no longer optional)
-  sizeDuration: number;
-  exitSizeDuration: number;
-
-  // Timing and easing (from BasePresenceParams)
-  easing: string;
-  exitEasing: string;
-} & Pick<BasePresenceParams, 'delay' | 'exitDelay'> &
-  Pick<AnimateOpacity, 'animateOpacity'> &
-  Pick<CollapseDurations, 'opacityDuration' | 'exitOpacityDuration'> &
-  Pick<CollapseParams, 'opacityDelay' | 'exitOpacityDelay'>;
