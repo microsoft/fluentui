@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: enable workspace-plugin for v8 project for RIT and generic targets",
-  "packageName": "@fluentui/react-experiments",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
