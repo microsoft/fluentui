@@ -133,7 +133,7 @@ CellNavigation.parameters = {
         'Cell navigation can be achieved simply using the `useArrowNavigationGroup` utility provided by the Library.',
         '',
         '>⚠️ Once there is any kind of keyboard navigation on the component it must follow the',
-        '>[aria role="grid" pattern](https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids).',
+        '>[aria role="grid" pattern](https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/data-grids/).',
       ].join('\n'),
     },
   },
