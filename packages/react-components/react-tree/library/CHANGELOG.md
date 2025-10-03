@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Thu, 02 Oct 2025 15:12:09 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Oct 2025 14:19:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.14.1)
+
+Fri, 03 Oct 2025 14:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.14.0..@fluentui/react-tree_v9.14.1)
+
+### Patches
+
+- Bump @fluentui/react-motion-components-preview to v0.11.0 ([PR #35275](https://github.com/microsoft/fluentui/pull/35275) by beachball)
 
 ## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.14.0)
 

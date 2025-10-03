@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "exports useTreeNavigation hook",
-  "packageName": "@fluentui/react-components",
-  "email": "patrycja.fogelman@microsoft.com",
-  "dependentChangeType": "patch"
-}
