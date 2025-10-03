@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { match } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import { KnobProvider } from '@fluentui/docs-components';
 
@@ -18,13 +18,6 @@ import { exampleKebabNameToFilename, exampleKebabNameToDisplayName, parseExample
 
 const examplePaths = examplesContext.keys();
 
-type ExternalExampleLayoutProps = {
-  match: match<{
-    exampleName: string;
-    rtl: string;
-  }>;
-};
-
 const themes = {
   teams: teamsTheme,
   teamsV2: teamsV2Theme,
@@ -33,8 +26,8 @@ const themes = {
   teamsDarkV2: teamsDarkV2Theme,
 };
 
-const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
-  const { exampleName, rtl } = props.match.params;
+const ExternalExampleLayout: React.FC = () => {
+  const { exampleName, rtl } = useParams<{ exampleName: string; rtl: string }>();
 
   const [renderId, setRenderId] = React.useState<number>(0);
   const [themeName, setThemeName] = React.useState<string>();
