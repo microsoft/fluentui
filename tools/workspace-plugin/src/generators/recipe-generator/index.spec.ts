@@ -42,11 +42,9 @@ describe('recipe-generator generator', () => {
   it('should generate boilerplate', async () => {
     await generator(tree, options);
 
-    ['HelloWorld.stories.mdx', 'code-snippets/HelloWorld.tsx', 'code-snippets/index.ts', 'code-snippets', ''].forEach(
-      file => {
-        expect(tree.exists(path.join(recipesRoot, recipePackageName, file))).toBeTruthy();
-      },
-    );
+    ['HelloWorld.mdx', 'code-snippets/HelloWorld.tsx', 'code-snippets/index.ts', 'code-snippets', ''].forEach(file => {
+      expect(tree.exists(path.join(recipesRoot, recipePackageName, file))).toBeTruthy();
+    });
   });
 
   it('should generate implementation boilerplate', async () => {
