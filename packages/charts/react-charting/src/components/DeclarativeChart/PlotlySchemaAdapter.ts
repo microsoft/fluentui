@@ -1058,6 +1058,25 @@ export const transformPlotlyJsonToScatterChartProps = (
   ) as IScatterChartProps;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mapColorFillBars = (layout: any) => {
+  if (!Array.isArray(layout?.shapes)) return [];
+
+  return layout.shapes
+    .filter((shape: { type: string }) => shape.type === 'rect')
+    .map((shape: { x0?: Datum; x1?: Datum; fillcolor?: string }) => {
+      //colorFillbars doesn't support string dates or categories
+      if (typeof shape.x0 === 'string' || typeof shape.x1 === 'string') {
+        return null;
+      }
+      return {
+        color: shape.fillcolor!,
+        data: [{ startX: shape.x0, endX: shape.x1 }],
+        applyPattern: false,
+      };
+    });
+};
+
 const transformPlotlyJsonToScatterTraceProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -1225,6 +1244,7 @@ const transformPlotlyJsonToScatterTraceProps = (
             ...getAxisCategoryOrderProps(input.data, input.layout),
           }
         : {}),
+      colorFillBars: mapColorFillBars(input.layout),
     } as ILineChartProps | IScatterChartProps;
   }
 };
