@@ -546,7 +546,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
             return {
               isValid: true,
               traceIndex,
-              type: doesScatterNeedFallback(scatterData, hasLineShape) ? 'line' : 'scatter',
+              type: hasLineShape && checkDataType(scatterData) ? 'line' : 'scatter',
             };
           }
 
@@ -657,10 +657,9 @@ export const isScatterAreaChart = (data: Partial<PlotData>) => {
   return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
 };
 
-const doesScatterNeedFallback = (data: Partial<PlotData>, hasLineShape?: boolean) => {
+const checkDataType = (data: Partial<PlotData>) => {
   const isXDate = isDateArray(data.x);
   const isXNumber = isNumberArray(data.x);
-
   // Consider year as categorical variable not numeric continuous variable
   // Also year is not considered a date variable as it is represented as a point
   // in time and brings additional complexity of handling timezone and locale
@@ -669,13 +668,16 @@ const doesScatterNeedFallback = (data: Partial<PlotData>, hasLineShape?: boolean
   const isXMonth = isMonthArray(data.x);
   const isYString = isStringArray(data.y);
   if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
-    if (hasLineShape) {
-      return true;
-    }
+    return true;
+  }
+  return false;
+};
+const doesScatterNeedFallback = (data: Partial<PlotData>) => {
+  if (isScatterMarkers(data.mode ?? '')) {
     return false;
   }
 
-  if (isScatterMarkers(data.mode ?? '')) {
+  if (checkDataType(data)) {
     return false;
   }
 
