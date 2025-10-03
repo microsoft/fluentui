@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/perf-test-northstar",
   "description": "Perf tests for fluentui.",
-  "version": "0.68.0",
+  "version": "0.68.2",
   "private": true,
   "scripts": {
     "type-check": "tsc -p . --noEmit",
