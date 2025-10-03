@@ -239,10 +239,8 @@ describe('collapse atoms', () => {
         duration: 300,
         easing: 'ease-out',
         delay: 0,
+        fill: 'both',
       });
-
-      // Enter direction should not have fill property
-      expect(atom.fill).toBeUndefined();
     });
 
     it('creates proper keyframes for vertical exit direction', () => {
@@ -268,7 +266,7 @@ describe('collapse atoms', () => {
         duration: 250,
         easing: 'ease-in',
         delay: 0,
-        fill: 'forwards',
+        fill: 'both',
       });
     });
 
@@ -311,7 +309,7 @@ describe('collapse atoms', () => {
         },
       ]);
 
-      expect(atom.fill).toBe('forwards');
+      expect(atom.fill).toBe('both');
     });
 
     it('applies custom delay', () => {
