@@ -13,6 +13,7 @@ export type DialogContextValue = {
   dialogTitleId?: string;
   isNestedDialog: boolean;
   dialogRef: React.Ref<DialogSurfaceElement | null>;
+  unmountOnClose?: boolean;
   modalType: DialogModalType;
   /**
    * Requests dialog main component to update it's internal open state
@@ -25,6 +26,7 @@ const defaultContextValue: DialogContextValue = {
   inertTrapFocus: false,
   modalType: 'modal',
   isNestedDialog: false,
+  unmountOnClose: true,
   dialogRef: { current: null },
   requestOpenChange() {
     /* noop */
