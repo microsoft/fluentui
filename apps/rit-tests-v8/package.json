@@ -12,6 +12,7 @@
     "@fluentui/scripts-storybook": "*"
   },
   "dependencies": {
+    "@fluentui/jest-serializer-merge-styles": "8.0.47",
     "@fluentui/react": "*",
     "@fluentui/react-cards": "*",
     "@fluentui/react-hooks": "*",
