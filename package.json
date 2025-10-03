@@ -332,6 +332,7 @@
     "yargs-unparser": "2.0.0"
   },
   "dependencies": {
+    "@fluentui/jest-serializer-merge-styles": "8.0.47",
     "@fluentui/react-icons-northstar": "0.66.5",
     "@fluentui/react-northstar": "0.66.5",
     "copy-to-clipboard": "3.3.1"
