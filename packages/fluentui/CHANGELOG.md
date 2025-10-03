@@ -18,6 +18,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.68.1 ]------------------------------- -->
+## [v0.68.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.68.1) (03-10-2025)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.68.0..@fluentui/react-northstar_v0.68.1)
+
+- Fix `data-tabster` attr in `Dropdown` https://github.com/microsoft/fluentui/pull/35271
+- Fix state handling in `Slider` https://github.com/microsoft/fluentui/pull/35273
+- Fix switch `Dropdown` back to `useAutoControlled()` https://github.com/microsoft/fluentui/pull/35274
+
 <!--------------------------------[ v0.68.0 ]------------------------------- -->
 ## [v0.68.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.68.0) (02-10-2025)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.67.0..@fluentui/react-northstar_v0.68.0)
