@@ -1659,7 +1659,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, 
       ref={ref}
       // Dropdown will use Tab to select items for multi-select
       // Tabster should ot control Tab for dropdown
-      data-tabster='{\"uncontrolled\": {}}'
+      data-tabster='{"uncontrolled": {}}'
       {...unhandledProps}
       {...(process.env.NODE_ENV === 'test' && { 'data-test-focused': focused })}
     >
