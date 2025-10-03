@@ -1,5 +1,5 @@
 import { ComponentDesignProp, useFluentContext } from '@fluentui/react-bindings';
-import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
+import { RendererParam } from '@fluentui/react-northstar-fela-renderer';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { ICSSInJSStyle } from '@fluentui/styles';
 import * as React from 'react';

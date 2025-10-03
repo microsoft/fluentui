@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { ResolveStylesOptions, StylesContextPerformance } from '@fluentui/react-bindings';
-import { RendererRenderRule, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { RendererRenderRule, noopRenderer } from '@fluentui/react-northstar-fela-renderer';
 import {
   ComponentSlotStylesPrepared,
   ComponentVariablesObject,

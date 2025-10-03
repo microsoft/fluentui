@@ -88,7 +88,11 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
     {},
   );
 
-  const { classes, styles: resolvedStyles } = getStyles({
+  const {
+    classes,
+    styles: resolvedStyles,
+    changes,
+  } = getStyles({
     // Input values
     allDisplayNames: composeOptions?.displayNames || [displayName],
     className: composeOptions?.className || className,
@@ -107,6 +111,11 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
     theme: context.theme,
     performance: context.performance,
   });
+
+  React.useLayoutEffect(() => {
+    console.log('changes', changes);
+    context.renderer.insertChanges(changes);
+  }, [changes]);
 
   return { classes, styles: resolvedStyles };
 };
