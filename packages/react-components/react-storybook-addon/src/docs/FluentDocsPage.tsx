@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
@@ -281,7 +281,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgsTable of={component} />
+      <ArgTypes of={component} />
     </>
   );
 };

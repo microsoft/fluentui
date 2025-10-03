@@ -90,7 +90,42 @@ const griffelRule = {
   ],
 };
 
+/**
+ * @type {import("webpack").RuleSetRule}
+ */
+const swcRule = {
+  test: /\.(([cm])?([jt])sx?)$/,
+  exclude: ['/node_modules/'],
+  use: [
+    {
+      loader: require.resolve('swc-loader'),
+      options: {
+        jsc: {
+          target: 'es2019',
+          parser: {
+            syntax: 'typescript',
+            tsx: true,
+            decorators: true,
+            dynamicImport: true,
+          },
+          transform: {
+            decoratorMetadata: true,
+            legacyDecorator: true,
+          },
+          keepClassNames: true,
+          externalHelpers: true,
+          loose: true,
+          minify: {
+            mangle: false,
+          },
+        },
+      },
+    },
+  ],
+};
+
 exports.tsRule = tsRule;
 exports.scssRule = scssRule;
 exports.cssRule = cssRule;
 exports.griffelRule = griffelRule;
+exports.swcRule = swcRule;
