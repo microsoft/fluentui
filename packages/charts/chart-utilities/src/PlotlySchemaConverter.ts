@@ -546,7 +546,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
             return {
               isValid: true,
               traceIndex,
-              type: hasLineShape && checkDataType(scatterData) ? 'line' : 'scatter',
+              type: hasLineShape && supportedScatterInLineChart(scatterData) ? 'line' : 'scatter',
             };
           }
 
@@ -657,7 +657,7 @@ export const isScatterAreaChart = (data: Partial<PlotData>) => {
   return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
 };
 
-const checkDataType = (data: Partial<PlotData>) => {
+const supportedScatterInLineChart = (data: Partial<PlotData>) => {
   const isXDate = isDateArray(data.x);
   const isXNumber = isNumberArray(data.x);
   // Consider year as categorical variable not numeric continuous variable
@@ -676,10 +676,5 @@ const doesScatterNeedFallback = (data: Partial<PlotData>) => {
   if (isScatterMarkers(data.mode ?? '')) {
     return false;
   }
-
-  if (checkDataType(data)) {
-    return false;
-  }
-
-  return true;
+  return !supportedScatterInLineChart(data);
 };
