@@ -1,6 +1,6 @@
 ## Favor composition over inheritance
 
-Even as the ES6 Javascript standard is giving us the "class" keyword, we should stay away from inheritance as a model for extending functionality. Inheritance forces a single linear path within which to extend functionality. Functionality from different aspects or domains are added in arbitrary nodes along this path. Eventually, the functionality of the subclasses is muddied with multiple responsibilities. Rather, given a composition model, each composed type can focus on its own purpose without compromising on flexibility. Further, it is easier to test each of these composed units rather than subclasses that are mixed in purpose.
+Even as the ES6 JavaScript standard is giving us the "class" keyword, we should stay away from inheritance as a model for extending functionality. Inheritance forces a single linear path within which to extend functionality. Functionality from different aspects or domains are added in arbitrary nodes along this path. Eventually, the functionality of the subclasses is muddied with multiple responsibilities. Rather, given a composition model, each composed type can focus on its own purpose without compromising on flexibility. Further, it is easier to test each of these composed units rather than subclasses that are mixed in purpose.
 
 Inheritance also doesn't work with the new hooks-based function components.
 

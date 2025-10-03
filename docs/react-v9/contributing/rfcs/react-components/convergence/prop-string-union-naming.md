@@ -10,7 +10,7 @@
 
 Standardize the naming conventions for string union prop values across the library so users and contributors get a consistent experience.
 
-A "string union prop value" is a React component prop where the value is a Typescript string union:
+A "string union prop value" is a React component prop where the value is a TypeScript string union:
 
 ```ts
 myProp: 'a' | 'b';

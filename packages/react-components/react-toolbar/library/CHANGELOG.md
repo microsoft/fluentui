@@ -1975,7 +1975,7 @@ Thu, 26 Jan 2023 13:31:02 GMT
 
 ### Patches
 
-- fix: export toolbar hooks as functions, not Typescript types ([PR #26462](https://github.com/microsoft/fluentui/pull/26462) by seanmonahan@microsoft.com)
+- fix: export toolbar hooks as functions, not TypeScript types ([PR #26462](https://github.com/microsoft/fluentui/pull/26462) by seanmonahan@microsoft.com)
 - Bump @fluentui/react-button to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
 - Bump @fluentui/react-divider to v9.1.12 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
 - Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)

@@ -1924,7 +1924,7 @@ Thu, 15 Nov 2018 13:36:22 GMT
 
 ### Minor changes
 
-- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- DevExp: get rid of const enum so the library is compatible with TypeScript's isolatedModule compilation mode
 - Styled: now reacts to loadTheme changes even when not wrapped in a Customizer.
 
 ## 6.26.0

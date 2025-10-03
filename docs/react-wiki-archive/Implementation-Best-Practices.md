@@ -16,7 +16,7 @@ If a property applies to the component or to the logical element of the componen
 
 If a property applies to a part or slot of a component, prefix/suffix with the part name (e.g. prefer `iconPosition` over `position`). Prefer to prefix the part name except where the property is acting as a verb (e.g. `alignContent` over `contentAlign`).
 
-Avoid any hungarian notation of properties. While they can appear helpful when writing the props in Typescript, they are not idiomatic when calling from TSX.
+Avoid any hungarian notation of properties. While they can appear helpful when writing the props in TypeScript, they are not idiomatic when calling from TSX.
 
 ### List properties in alphabetical order
 
@@ -34,9 +34,9 @@ Part of the design specification process for a component is to identify and name
 
 ### Prefer types over interfaces
 
-v9+ components are built using React Hooks and Typescript. Hooks is a functional programming approach that replaces the the object-oriented approach of React component classes. While Typescript supports object-oriented programming through interfaces and classes, it also fully supports functional programming through type declarations, type intersections, and discriminated unions. Because Typescript transpiles to JavaScript, a prototype-based language, it provide type inference and [duck typing](https://en.wikipedia.org/wiki/Duck_typing).
+v9+ components are built using React Hooks and TypeScript. Hooks is a functional programming approach that replaces the the object-oriented approach of React component classes. While TypeScript supports object-oriented programming through interfaces and classes, it also fully supports functional programming through type declarations, type intersections, and discriminated unions. Because TypeScript transpiles to JavaScript, a prototype-based language, it provide type inference and [duck typing](https://en.wikipedia.org/wiki/Duck_typing).
 
-Types and interfaces can often be used [interchangeably](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces) in Typescript. There are a few differences that make types the preferred choice:
+Types and interfaces can often be used [interchangeably](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces) in TypeScript. There are a few differences that make types the preferred choice:
 
 - Interfaces can be re-opened to add new properties through declaration merging.
 

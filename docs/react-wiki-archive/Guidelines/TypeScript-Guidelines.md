@@ -249,4 +249,4 @@ export default function foo() {}
 
 ## Acknowledgements
 
-Many of these rules were inspired by the guidelines of Outlook Web, [Typescript](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines), [Pillar Studio](https://github.com/pillarstudio/standards/blob/master/reactjs-guidelines.md) and [AirBnb](https://github.com/airbnb/javascript)
+Many of these rules were inspired by the guidelines of Outlook Web, [TypeScript](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines), [Pillar Studio](https://github.com/pillarstudio/standards/blob/master/reactjs-guidelines.md) and [AirBnb](https://github.com/airbnb/javascript)
