@@ -700,6 +700,53 @@ export const transformPlotlyJsonToVSBCProps = (
       });
     });
   });
+  const xCategories = (input.data[0] as Partial<PlotData>)?.x ?? [];
+
+  (input.layout?.shapes ?? [])
+    .filter(shape => shape.type === 'line')
+    .forEach((shape, shapeIdx) => {
+      const lineColor = shape.line?.color;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const resolveX = (val: any) => {
+        if (typeof val === 'number' && Array.isArray(xCategories) && xCategories[val] !== undefined) {
+          return xCategories[val];
+        }
+        return val;
+      };
+
+      const x0Key = resolveX(shape.x0);
+      const x1Key = resolveX(shape.x1);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const resolveY = (val: any) => {
+        if (shape.yref === 'paper') {
+          if (val === 0) {
+            return yMinValue;
+          }
+          if (val === 1) {
+            return yMaxValue;
+          }
+          return yMinValue + val * (yMaxValue - yMinValue);
+        }
+        return val;
+      };
+
+      const y0Val = resolveY(shape.y0);
+      const y1Val = resolveY(shape.y1);
+      mapXToDataPoints[x0Key].lineData!.push({
+        legend: `Reference_${shapeIdx}`,
+        y: y0Val,
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      });
+      mapXToDataPoints[x1Key].lineData!.push({
+        legend: `Reference_${shapeIdx}`,
+        y: y1Val,
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      });
+    });
 
   const vsbcData = Object.values(mapXToDataPoints);
 
@@ -1192,6 +1239,23 @@ const transformPlotlyJsonToScatterTraceProps = (
     })
     .flat();
 
+  const lineShape: ILineChartPoints[] = (input.layout?.shapes ?? [])
+    .filter(shape => shape.type === 'line')
+    .map((shape, shapeIdx) => {
+      const lineColor = shape.line?.color;
+
+      return {
+        legend: `Reference_${shapeIdx}`,
+        data: [
+          { x: shape.x0, y: shape.y0 },
+          { x: shape.x1, y: shape.y1 },
+        ],
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      } as ILineChartPoints;
+    });
+
   const yMinMax = getYMinMaxValues(input.data[0], input.layout);
   if (yMinMax.yMinValue === undefined && yMinMax.yMaxValue === undefined) {
     const yMinMaxValues = findNumericMinMaxOfY(chartData);
@@ -1202,7 +1266,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
 
   const chartProps: IChartProps = {
-    lineChartData: chartData,
+    lineChartData: [...chartData, ...lineShape],
   };
 
   const scatterChartProps: IChartProps = {
