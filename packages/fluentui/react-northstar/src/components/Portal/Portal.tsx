@@ -85,7 +85,7 @@ export interface PortalProps extends ChildrenComponentProps, ContentComponentPro
 export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalProps> = props => {
   const context = useFluentContext();
 
-  const { children, content, trapFocus, trigger, triggerAccessibility } = props;
+  const { children, content, trapFocus, trigger, triggerAccessibility = {} } = props;
   const portalRef = React.useRef<HTMLElement>();
   const triggerRef = React.useRef<HTMLElement>();
 
@@ -193,7 +193,3 @@ Portal.handledProps = Object.keys(Portal.propTypes) as any;
 Portal.create = createShorthandFactory({
   Component: Portal,
 });
-
-Portal.defaultProps = {
-  triggerAccessibility: {},
-};

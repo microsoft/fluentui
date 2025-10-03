@@ -97,7 +97,7 @@ describe('PortalInner', () => {
       );
 
       expect(register).toHaveBeenCalledTimes(1);
-      expect(register).toHaveBeenCalledWith(expect.any(HTMLElement));
+      expect(register).toHaveBeenCalledWith(expect.any(Object));
 
       wrapper.unmount();
       expect(unregister).toHaveBeenCalledTimes(1);
