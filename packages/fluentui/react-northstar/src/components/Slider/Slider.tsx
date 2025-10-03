@@ -145,9 +145,9 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
   } = props;
   const inputRef = React.useRef<HTMLElement>();
 
-  const [value, setValue] = useControllableState<string>({
-    defaultState: String(props.defaultValue),
-    state: String(props.value),
+  const [value, setValue] = useControllableState<string | number>({
+    defaultState: props.defaultValue,
+    state: props.value,
     initialState: '',
   });
   const {
@@ -158,7 +158,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
   } = processInputValues({
     min,
     max,
-    value,
+    value: String(value),
   });
 
   const getA11Props = useAccessibility(accessibility, {
