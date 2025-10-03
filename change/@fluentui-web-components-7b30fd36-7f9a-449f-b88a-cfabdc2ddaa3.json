@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "[fix]: bump analyzer inheritatance version",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
