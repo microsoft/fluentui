@@ -6,6 +6,9 @@
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
   },
+  "engines": {
+    "node": ">=20.10.0"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
