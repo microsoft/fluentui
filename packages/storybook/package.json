@@ -24,7 +24,7 @@
   "dependencies": {
     "@fluentui/react": "^8.123.6",
     "@fluentui/theme": "^2.6.67",
-    "@storybook/addon-essentials": "7.6.20",
+    "@storybook/addon-essentials": "8.6.14",
     "@fluentui/azure-themes": "^8.6.139",
     "@fluentui/theme-samples": "^8.7.215",
     "tslib": "^2.1.0"

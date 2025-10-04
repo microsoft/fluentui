@@ -1,4 +1,5 @@
-import { Meta, Canvas, Title, Story } from '@storybook/addon-docs';
+import { Meta, Title, Story } from '@storybook/addon-docs';
+import { Canvas } from '../../components/Canvas';
 import { Text } from '@fluentui/react-components';
 import { Typography } from './ThemeTypography.stories';
 import { Example } from './Example.stories';
@@ -14,7 +15,7 @@ Typography style is represented by a set of tokens instead of an individual toke
 > **ℹ️ &nbsp;This page guides you on how to fully leverage the tokens to create a consistent typography system.<br />
 > To take full advantage of the typography system, you should also read the [Text component documentation](./?path=/docs/components-text--docs).**
 
-<Canvas withSource="none">
+<Canvas>
   <Typography />
 </Canvas>
 
@@ -37,7 +38,7 @@ export const Example = () => {
 };
 ```
 
-<Canvas withSource="none">
+<Canvas>
   <Example />
 </Canvas>
 
@@ -65,7 +66,7 @@ export const Composing = () => {
 };
 ```
 
-<Canvas withSource="none">
+<Canvas>
   <Composing />
 </Canvas>
 
@@ -104,6 +105,6 @@ export const MixedStyles = () => {
 };
 ```
 
-<Canvas withSource="none">
+<Canvas>
   <MixedStyles />
 </Canvas>

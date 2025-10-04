@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
@@ -237,7 +237,9 @@ const RenderArgsTable = ({
   showSlotsApi?: boolean;
   showNativePropsApi?: boolean;
 }) => {
-  const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
+  // TODO: re-enable slots enhancer
+  const { hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
+    // const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
     slotsApi: showSlotsApi,
     nativePropsApi: showNativePropsApi,
   });
@@ -281,7 +283,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgsTable of={component} />
+      <ArgTypes of={story.moduleExport} />
     </>
   );
 };
@@ -334,8 +336,11 @@ export const FluentDocsPage = (): JSXElement => {
         <Title />
         <Subtitle />
         <Description />
-        <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-        <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
+        <RenderPrimaryStory
+          primaryStory={primaryStory as unknown as PrimaryStory}
+          skipPrimaryStory={skipPrimaryStory}
+        />
+        <RenderArgsTable story={primaryStory as unknown as PrimaryStory} hideArgsTable={hideArgsTable} />
         <Stories />
       </div>
     );
@@ -377,9 +382,12 @@ export const FluentDocsPage = (): JSXElement => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+          <RenderPrimaryStory
+            primaryStory={primaryStory as unknown as PrimaryStory}
+            skipPrimaryStory={skipPrimaryStory}
+          />
           <RenderArgsTable
-            story={primaryStory}
+            story={primaryStory as unknown as PrimaryStory}
             hideArgsTable={hideArgsTable}
             showSlotsApi={argTable.slotsApi}
             showNativePropsApi={argTable.nativePropsApi}

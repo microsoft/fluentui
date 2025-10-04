@@ -90,7 +90,22 @@ const griffelRule = {
   ],
 };
 
+/**
+ * @type {import("webpack").RuleSetRule}
+ */
+const swcRule = {
+  test: /\.(([cm])?([jt])sx?)$/,
+  exclude: ['/node_modules/'],
+  use: [
+    {
+      loader: 'swc-loader',
+      options: {},
+    },
+  ],
+};
+
 exports.tsRule = tsRule;
 exports.scssRule = scssRule;
 exports.cssRule = cssRule;
 exports.griffelRule = griffelRule;
+exports.swcRule = swcRule;
