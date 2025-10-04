@@ -2,6 +2,35 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 03 Oct 2025 14:19:03 GMT",
+      "tag": "@fluentui/react-components_v9.72.0",
+      "version": "9.72.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "cb0b930b884b233f36b73f32255c575da6f72bbf",
+            "comment": "exports useTreeNavigation hook"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "d159ec44c1da054228531e0916b61c487e3ca508",
+            "comment": "refactor(Collapse): simplify parameter types"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "668467e9f41cf97977776495bf56fa63f0dfb5cd",
+            "comment": "fix(Collapse): make size animation work with delay"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Oct 2025 15:12:05 GMT",
       "tag": "@fluentui/react-components_v9.71.0",
       "version": "9.71.0",

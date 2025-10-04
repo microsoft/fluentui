@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Mon, 08 Sep 2025 12:51:10 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Oct 2025 14:19:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.11.0)
+
+Fri, 03 Oct 2025 14:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.10.0..@fluentui/react-motion-components-preview_v0.11.0)
+
+### Minor changes
+
+- refactor(Collapse): simplify parameter types ([PR #35262](https://github.com/microsoft/fluentui/pull/35262) by robertpenner@microsoft.com)
+
+### Patches
+
+- fix(Collapse): make size animation work with delay ([PR #35269](https://github.com/microsoft/fluentui/pull/35269) by robertpenner@microsoft.com)
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.10.0)
 

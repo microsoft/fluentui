@@ -22,6 +22,7 @@ const createRotateValue = (axis: Axis3D, angle: number): string => {
  * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'y'.
  * @param angle - The starting rotation angle in degrees. Defaults to -90.
  * @param exitAngle - The ending rotation angle in degrees. Defaults to the negation of `angle`.
+ * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with rotate keyframes and the supplied duration and easing.
  */
 export const rotateAtom = ({

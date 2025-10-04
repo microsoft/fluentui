@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix Node version to be compaditible with CEM analyzer so parsedTypes get properly written.",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}

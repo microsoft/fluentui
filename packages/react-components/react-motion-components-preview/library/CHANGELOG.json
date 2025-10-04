@@ -2,6 +2,29 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Fri, 03 Oct 2025 14:19:04 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "d159ec44c1da054228531e0916b61c487e3ca508",
+            "comment": "refactor(Collapse): simplify parameter types"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "668467e9f41cf97977776495bf56fa63f0dfb5cd",
+            "comment": "fix(Collapse): make size animation work with delay"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Sep 2025 12:51:10 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.10.0",
       "version": "0.10.0",

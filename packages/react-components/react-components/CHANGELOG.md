@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 02 Oct 2025 15:12:05 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Oct 2025 14:19:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.0)
+
+Fri, 03 Oct 2025 14:19:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.71.0..@fluentui/react-components_v9.72.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - exports useTreeNavigation hook ([PR #35275](https://github.com/microsoft/fluentui/pull/35275) by patrycja.fogelman@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - refactor(Collapse): simplify parameter types ([PR #35262](https://github.com/microsoft/fluentui/pull/35262) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-motion-components-preview`
+  - fix(Collapse): make size animation work with delay ([PR #35269](https://github.com/microsoft/fluentui/pull/35269) by robertpenner@microsoft.com)
 
 ## [9.71.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.71.0)
 
