@@ -237,7 +237,9 @@ const RenderArgsTable = ({
   showSlotsApi?: boolean;
   showNativePropsApi?: boolean;
 }) => {
-  const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
+  // TODO: re-enable slots enhancer
+  const { hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
+    // const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
     slotsApi: showSlotsApi,
     nativePropsApi: showNativePropsApi,
   });
