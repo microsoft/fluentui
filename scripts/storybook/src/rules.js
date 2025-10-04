@@ -98,28 +98,8 @@ const swcRule = {
   exclude: ['/node_modules/'],
   use: [
     {
-      loader: require.resolve('swc-loader'),
-      options: {
-        jsc: {
-          target: 'es2019',
-          parser: {
-            syntax: 'typescript',
-            tsx: true,
-            decorators: true,
-            dynamicImport: true,
-          },
-          transform: {
-            decoratorMetadata: true,
-            legacyDecorator: true,
-          },
-          keepClassNames: true,
-          externalHelpers: true,
-          loose: true,
-          minify: {
-            mangle: false,
-          },
-        },
-      },
+      loader: 'swc-loader',
+      options: {},
     },
   ],
 };
