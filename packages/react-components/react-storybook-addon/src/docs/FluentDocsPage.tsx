@@ -281,7 +281,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgTypes of={component} />
+      <ArgTypes of={story.moduleExport} />
     </>
   );
 };
@@ -334,8 +334,11 @@ export const FluentDocsPage = (): JSXElement => {
         <Title />
         <Subtitle />
         <Description />
-        <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-        <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
+        <RenderPrimaryStory
+          primaryStory={primaryStory as unknown as PrimaryStory}
+          skipPrimaryStory={skipPrimaryStory}
+        />
+        <RenderArgsTable story={primaryStory as unknown as PrimaryStory} hideArgsTable={hideArgsTable} />
         <Stories />
       </div>
     );
@@ -377,9 +380,12 @@ export const FluentDocsPage = (): JSXElement => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+          <RenderPrimaryStory
+            primaryStory={primaryStory as unknown as PrimaryStory}
+            skipPrimaryStory={skipPrimaryStory}
+          />
           <RenderArgsTable
-            story={primaryStory}
+            story={primaryStory as unknown as PrimaryStory}
             hideArgsTable={hideArgsTable}
             showSlotsApi={argTable.slotsApi}
             showNativePropsApi={argTable.nativePropsApi}
