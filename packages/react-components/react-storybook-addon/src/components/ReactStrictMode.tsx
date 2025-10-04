@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IconButton } from '@storybook/components';
 import { LockIcon } from '@storybook/icons';
 
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { STRICT_MODE_ID } from '../constants';
 import { useGlobals } from '../hooks';
 
