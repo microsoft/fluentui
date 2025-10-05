@@ -324,6 +324,32 @@ export const _getGaugeAxisColor = (
   return resolveColor(extractedColors, 0, '', colorMap, colorway, isDarkTheme);
 };
 
+export const resolveXAxisPoint = (
+  x: Datum,
+  isXYearCategory: boolean,
+  isXString: boolean,
+  isXDate: boolean,
+  isXNumber: boolean,
+): string | Date | number => {
+  if (x === null || x === undefined) {
+    return '';
+  }
+  if (isXYearCategory) {
+    return x.toString();
+  }
+  if (isXString) {
+    if (isXDate) {
+      const date = new Date(x as string);
+      return date;
+    }
+    if (isXNumber) {
+      return parseFloat(x as string);
+    }
+    return x;
+  }
+  return x;
+};
+
 /**
  * Checks if a key should be ignored during normalization
  * @param key The key to check
@@ -575,7 +601,7 @@ export const transformPlotlyJsonToVSBCProps = (
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
-  const resolveXAxisPoint = getAxisValueResolver(input.data, input.layout, 'x');
+  const resolveXAxisValue = getAxisValueResolver(input.data, input.layout, 'x');
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     colorScale = createColorScale(input.layout, series, colorScale);
 
@@ -596,7 +622,7 @@ export const transformPlotlyJsonToVSBCProps = (
       isDarkTheme,
     ) as string[] | string | undefined;
 
-    const validXYRanges = getValidXYRanges(series, resolveXAxisPoint);
+    const validXYRanges = getValidXYRanges(series, resolveXAxisValue);
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
       const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
@@ -604,7 +630,7 @@ export const transformPlotlyJsonToVSBCProps = (
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
           mapXToDataPoints[x] = {
-            xAxisPoint: resolveXAxisPoint(x)!,
+            xAxisPoint: resolveXAxisValue(x)!,
             chartData: [],
             lineData: [],
           };
@@ -1052,7 +1078,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
-  const resolveXAxisPoint = getAxisValueResolver(input.data, input.layout, 'x');
+  const resolveXAxisValue = getAxisValueResolver(input.data, input.layout, 'x');
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -1086,7 +1112,7 @@ const transformPlotlyJsonToScatterTraceProps = (
         !series.mode?.includes('text') && series.type !== 'scatterpolar' ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
-      const validXYRanges = getValidXYRanges(series, resolveXAxisPoint);
+      const validXYRanges = getValidXYRanges(series, resolveXAxisValue);
       return validXYRanges.map(([rangeStart, rangeEnd], rangeIdx) => {
         const rangeXValues = xValues.slice(rangeStart, rangeEnd);
         const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
@@ -1104,7 +1130,7 @@ const transformPlotlyJsonToScatterTraceProps = (
           legend,
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
-            x: resolveXAxisPoint(x),
+            x: resolveXAxisValue(x),
             y: rangeYValues[i],
             ...(Array.isArray(series.marker?.size)
               ? { markerSize: markerSizes[i] }
@@ -3070,28 +3096,30 @@ function getAxisType(data: Data[], arg2: IAxisObject | Partial<Layout> | undefin
 const getAxisValueResolver = (data: Data[], layout: Partial<Layout> | undefined, axisId: string) => {
   const axType = getAxisType(data, layout, axisId);
 
-  return (value: Datum) => {
-    if (axType === 'linear' || axType === 'log') {
-      if (isNumber(value)) {
-        return +value!;
-      }
+  return (value: Datum): Datum => {
+    if (isInvalidValue(value)) {
       return null;
     }
-    if (axType === 'date') {
-      if (isNumber(value)) {
-        return new Date(+value!);
-      }
-      if (typeof value === 'string') {
-        return new Date(value);
-      }
-      return null;
-    }
-    if (axType === 'category') {
-      if (!isInvalidValue(value)) {
+
+    switch (axType) {
+      case 'linear':
+      case 'log':
+        return isNumber(value) ? +value! : null;
+
+      case 'date':
+        if (isNumber(value)) {
+          return new Date(+value!);
+        }
+        if (typeof value === 'string') {
+          return new Date(value);
+        }
+        return null;
+
+      case 'category':
         return `${value}`;
-      }
-      return null;
+
+      default:
+        return null;
     }
-    return null;
   };
 };
