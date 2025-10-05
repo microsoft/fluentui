@@ -601,10 +601,10 @@ export const transformPlotlyJsonToVSBCProps = (
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
+  const resolveC = abc(input.data, input.layout, 'x');
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     colorScale = createColorScale(input.layout, series, colorScale);
 
-    const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     // extract bar colors for each series only once
     const extractedBarColors = extractColor(
       input.layout?.template?.layout?.colorway,
@@ -622,11 +622,7 @@ export const transformPlotlyJsonToVSBCProps = (
       isDarkTheme,
     ) as string[] | string | undefined;
 
-    const xValues = series.x as Datum[];
-    const isXDate = isDateArray(xValues);
-    const isXString = isStringArray(xValues);
-    const isXNumber = isNumberArray(xValues);
-    const validXYRanges = getValidXYRanges(series);
+    const validXYRanges = getValidXYRanges(series, resolveC);
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
       const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
@@ -634,7 +630,7 @@ export const transformPlotlyJsonToVSBCProps = (
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
           mapXToDataPoints[x] = {
-            xAxisPoint: resolveXAxisPoint(x, isXYearCategory, isXString, isXDate, isXNumber),
+            xAxisPoint: resolveC(x)!,
             chartData: [],
             lineData: [],
           };
@@ -1082,6 +1078,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
+  const resolveC = abc(input.data, input.layout, 'x');
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -1098,10 +1095,6 @@ const transformPlotlyJsonToScatterTraceProps = (
         isDarkTheme,
       ) as string[] | string | undefined;
       const xValues = series.x as Datum[];
-      const isXString = isStringArray(xValues);
-      const isXDate = isDateArray(xValues);
-      const isXNumber = isNumberArray(xValues);
-      const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(
@@ -1119,7 +1112,7 @@ const transformPlotlyJsonToScatterTraceProps = (
         !series.mode?.includes('text') && series.type !== 'scatterpolar' ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
-      const validXYRanges = getValidXYRanges(series);
+      const validXYRanges = getValidXYRanges(series, resolveC);
       return validXYRanges.map(([rangeStart, rangeEnd], rangeIdx) => {
         const rangeXValues = xValues.slice(rangeStart, rangeEnd);
         const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
@@ -1137,7 +1130,7 @@ const transformPlotlyJsonToScatterTraceProps = (
           legend,
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
-            x: resolveXAxisPoint(x, isXYearCategory, isXString, isXDate, isXNumber),
+            x: resolveC(x),
             y: rangeYValues[i],
             ...(Array.isArray(series.marker?.size)
               ? { markerSize: markerSizes[i] }
@@ -2512,7 +2505,11 @@ export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index
   return 1;
 };
 
-export const getValidXYRanges = (series: Partial<PlotData>) => {
+export const getValidXYRanges = (
+  series: Partial<PlotData>,
+  resolveX?: (v: Datum) => Datum,
+  resolveY?: (v: Datum) => Datum,
+) => {
   if (!isArrayOrTypedArray(series.x) || !isArrayOrTypedArray(series.y)) {
     return [];
   }
@@ -2521,7 +2518,12 @@ export const getValidXYRanges = (series: Partial<PlotData>) => {
   let start = 0;
   let end = 0;
   for (; end < series.x!.length; end++) {
-    if (isInvalidValue(series.x![end]) || isInvalidValue(series.y![end])) {
+    if (
+      isInvalidValue(series.x![end]) ||
+      (typeof resolveX === 'function' && isInvalidValue(resolveX(series.x![end] as Datum))) ||
+      isInvalidValue(series.y![end]) ||
+      (typeof resolveY === 'function' && isInvalidValue(resolveY(series.y![end] as Datum)))
+    ) {
       if (end - start > 0) {
         ranges.push([start, end]);
       }
@@ -2898,7 +2900,7 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
       return;
     }
 
-    const axType = getAxisType(data, axId[0] as 'x' | 'y', ax);
+    const axType = getAxisType(data, ax);
 
     if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
       const tickValues = axType === 'date' ? ax.tickvals!.map(v => new Date(v)) : ax.tickvals;
@@ -3024,40 +3026,53 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
   });
 
   const axisObjects: Record<string, Partial<LayoutAxis> | undefined> = {};
+  const getAxisId = (axLetter: 'x' | 'y', axId: number) => {
+    return `${axLetter}${axId > 1 ? axId : ''}` as keyof Layout;
+  };
 
   if (typeof xAxisId === 'number') {
-    axisObjects.x = layout?.[getAxisKey('x', xAxisId)];
+    axisObjects.x = {
+      ...layout?.[getAxisKey('x', xAxisId)],
+      _id: getAxisId('x', xAxisId),
+    };
   }
 
   const sortedYAxisIds = Array.from(yAxisIds).sort();
   if (sortedYAxisIds.length > 0) {
-    axisObjects.y = layout?.[getAxisKey('y', sortedYAxisIds[0])];
+    axisObjects.y = {
+      ...layout?.[getAxisKey('y', sortedYAxisIds[0])],
+      _id: getAxisId('y', sortedYAxisIds[0]),
+    };
   }
   if (sortedYAxisIds.length > 1) {
-    axisObjects.y2 = layout?.[getAxisKey('y', sortedYAxisIds[1])];
+    axisObjects.y2 = {
+      ...layout?.[getAxisKey('y', sortedYAxisIds[1])],
+      _id: getAxisId('y', sortedYAxisIds[1]),
+    };
   }
 
   return axisObjects;
 };
 
-const getAxisType = (data: Data[], axLetter: 'x' | 'y', ax: Partial<LayoutAxis> | undefined): AxisType | undefined => {
+const getAxisType = (data: Data[], ax: Partial<LayoutAxis> | undefined): AxisType | undefined => {
+  if (ax?.type === 'linear' || ax?.type === 'log' || ax?.type === 'date' || ax?.type === 'category') {
+    return ax.type;
+  }
+
   const values: Datum[] = [];
+  const axLetter = ax?._id[0] as 'x' | 'y';
   data.forEach((series: Partial<PlotData>) => {
-    series[axLetter]?.forEach(val => {
-      if (!isInvalidValue(val)) {
-        values.push(val as Datum);
-      }
-    });
+    const axId = series[`${axLetter}axis`];
+    if (axId === ax?._id || (!axId && ax?._id === axLetter)) {
+      series[axLetter]?.forEach(val => {
+        if (!isInvalidValue(val)) {
+          values.push(val as Datum);
+        }
+      });
+    }
   });
 
-  // Note: When ax.type is explicitly specified, Plotly casts the values to match that type.
-  // Therefore, simply checking the type of the values may not be sufficient. At the moment,
-  // we don’t always perform this casting ourselves and instead use the values as provided.
-
-  if (isNumberArray(values)) {
-    if (ax?.type === 'log') {
-      return 'log';
-    }
+  if (isNumberArray(values) && !isYearArray(values)) {
     return 'linear';
   }
 
@@ -3065,7 +3080,35 @@ const getAxisType = (data: Data[], axLetter: 'x' | 'y', ax: Partial<LayoutAxis> 
     return 'date';
   }
 
-  if (isStringArray(values)) {
-    return 'category';
-  }
+  return 'category';
+};
+
+const abc = (data: Data[], layout: Partial<Layout> | undefined, key: string) => {
+  const axisObjects = getAxisObjects(data, layout);
+  const axType = getAxisType(data, axisObjects[key]);
+
+  return (value: Datum) => {
+    if (axType === 'linear' || axType === 'log') {
+      if (isNumber(value)) {
+        return +value!;
+      }
+      return null;
+    }
+    if (axType === 'date') {
+      if (isNumber(value)) {
+        return new Date(+value!);
+      }
+      if (typeof value === 'string') {
+        return new Date(value);
+      }
+      return null;
+    }
+    if (axType === 'category') {
+      if (!isInvalidValue(value)) {
+        return `${value}`;
+      }
+      return null;
+    }
+    return null;
+  };
 };
