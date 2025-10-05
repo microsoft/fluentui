@@ -35,8 +35,8 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   build: {
     previewUrl: process.env.DEPLOY_PATH,
   },
-  webpackFinal: (config, options) => {
-    const localConfig = { ...rootMain.webpackFinal?.(config, options) };
+  webpackFinal: async (config, options) => {
+    const localConfig = /** @type config */ ({ ...(await rootMain.webpackFinal?.(config, options)) });
 
     // add your own webpack tweaks if needed
     registerTsPaths({ configFile: tsConfigAllPath, config: localConfig });
