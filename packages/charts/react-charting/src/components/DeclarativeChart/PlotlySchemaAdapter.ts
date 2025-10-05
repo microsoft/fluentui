@@ -2987,7 +2987,7 @@ const plotlyTick0 = (tick0: number | string | undefined, axType: AxisType | unde
   return isNumber(tick0) ? Number(tick0) : 0;
 };
 
-interface AxisObject extends Partial<LayoutAxis> {
+interface IAxisObject extends Partial<LayoutAxis> {
   _id: string;
 }
 
@@ -3003,12 +3003,12 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
     yAxisIds.add(axisIds.y);
   });
 
-  const makeAxisObject = (axLetter: 'x' | 'y', axId: number): AxisObject => ({
+  const makeAxisObject = (axLetter: 'x' | 'y', axId: number): IAxisObject => ({
     ...layout?.[getAxisKey(axLetter, axId)],
     _id: `${axLetter}${axId > 1 ? axId : ''}`,
   });
 
-  const axisObjects: Record<string, AxisObject> = {};
+  const axisObjects: Record<string, IAxisObject> = {};
 
   if (typeof xAxisId === 'number') {
     axisObjects.x = makeAxisObject('x', xAxisId);
@@ -3025,10 +3025,10 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
   return axisObjects;
 };
 
-function getAxisType(data: Data[], ax: AxisObject): AxisType;
+function getAxisType(data: Data[], ax: IAxisObject): AxisType;
 function getAxisType(data: Data[], layout: Partial<Layout> | undefined, axisId: string): AxisType;
-function getAxisType(data: Data[], arg2: AxisObject | Partial<Layout> | undefined, arg3?: string): AxisType {
-  let ax: AxisObject | undefined;
+function getAxisType(data: Data[], arg2: IAxisObject | Partial<Layout> | undefined, arg3?: string): AxisType {
+  let ax: IAxisObject | undefined;
 
   if (arg2 && typeof arg2 === 'object' && '_id' in arg2) {
     ax = arg2;
