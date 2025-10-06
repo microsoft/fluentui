@@ -2,7 +2,7 @@
   "compilerOptions": {
     "noEmit": true,
     "lib": ["ES2019"],
-    "target": "ES2019",
+    "target": "ES2022",
     "module": "CommonJS",
     "moduleResolution": "Node",
     "strict": true,

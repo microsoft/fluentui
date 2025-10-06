@@ -1,7 +1,7 @@
 {
-  "extends": "@tsconfig/node18/tsconfig.json",
+  "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ES2022",
     "pretty": true,
     "noEmit": true,
     "allowJs": true,

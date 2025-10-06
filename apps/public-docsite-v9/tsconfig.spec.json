@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "nodenext",
     "jsx": "react",
     "types": ["node", "jest"]
   },

@@ -1,9 +1,13 @@
 {
-  "extends": "@tsconfig/node18/tsconfig.json",
+  "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
+    "downlevelIteration": true,
     "noEmit": true,
     "allowJs": true,
-    "lib": ["ES2020", "DOM"]
+    "lib": ["ES2022", "DOM"]
   },
   "types": [],
   "include": ["pr-deploy-site.js", "just.config.ts"],

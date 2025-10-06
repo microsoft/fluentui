@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ES2022",
     "module": "esnext",
     "moduleResolution": "node",
     "lib": ["ES2019", "ES2020.Intl", "dom"],

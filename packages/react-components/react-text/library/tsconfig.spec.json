@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "nodenext",
     "outDir": "dist",
     "types": ["jest", "node", "@testing-library/jest-dom"]
   },

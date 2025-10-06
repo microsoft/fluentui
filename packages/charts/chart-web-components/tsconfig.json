@@ -1,7 +1,7 @@
 {
   "extends": "../../../tsconfig.base.wc.json",
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "experimentalDecorators": true,

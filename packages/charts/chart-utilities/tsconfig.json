@@ -2,7 +2,7 @@
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
-    "target": "ES2019",
+    "target": "ES2022",
     "jsx": "react",
     "experimentalDecorators": true,
     "importHelpers": true,

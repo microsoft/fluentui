@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "target": "ES2019",
+    "target": "ES2022",
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,

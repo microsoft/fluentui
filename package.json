@@ -318,6 +318,7 @@
     "turndown-plugin-gfm": "1.0.2",
     "typescript": "5.5.2",
     "typescript-eslint": "8.38.0",
+    "undici-types": "7.16.0",
     "vite": "6.3.4",
     "webpack": "5.99.8",
     "webpack-bundle-analyzer": "4.10.1",
