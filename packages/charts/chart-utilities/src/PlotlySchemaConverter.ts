@@ -546,7 +546,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
             return {
               isValid: true,
               traceIndex,
-              type: hasLineShape && supportedScatterInLineChart(scatterData) ? 'line' : 'scatter',
+              type: hasLineShape && supportedScatterInLineChart(scatterData, validSchema.layout) ? 'line' : 'scatter',
             };
           }
 
