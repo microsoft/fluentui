@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderTextarea_unstable } from './renderTextarea';
 import { useTextarea_unstable } from './useTextarea';

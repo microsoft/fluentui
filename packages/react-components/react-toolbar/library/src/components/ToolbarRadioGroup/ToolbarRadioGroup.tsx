@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ToolbarRadioGroupProps } from './ToolbarRadioGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useControllableState } from '@fluentui/react-utilities';
 import { OptionValue } from './OptionCollection.types';

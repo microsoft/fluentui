@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.types';

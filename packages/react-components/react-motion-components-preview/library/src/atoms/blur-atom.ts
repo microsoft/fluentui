@@ -11,6 +11,7 @@ interface BlurAtomParams extends BaseAtomParams {
  * @param duration - The duration of the motion in milliseconds.
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
  * @param fromRadius - The blur radius value with units (e.g., '20px', '1rem'). Defaults to '20px'.
+ * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with filter blur keyframes and the supplied duration and easing.
  */
 export const blurAtom = ({

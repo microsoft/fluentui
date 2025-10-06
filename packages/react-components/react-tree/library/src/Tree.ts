@@ -11,6 +11,7 @@ export type {
   TreeSlots,
   TreeState,
   TreeNavigationMode,
+  TreeNavigationDataParam,
 } from './components/Tree/index';
 export {
   Tree,

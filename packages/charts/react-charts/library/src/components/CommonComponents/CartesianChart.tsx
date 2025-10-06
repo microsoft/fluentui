@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModifiedCartesianChartProps } from '../../index';

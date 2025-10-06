@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: useValidateNesting ref type React 19 issue",
-  "packageName": "@fluentui/react-menu-grid-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

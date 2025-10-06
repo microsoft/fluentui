@@ -1,3 +1,6 @@
+// @ts-check
+
+/** @type {import("eslint").Linter.LegacyConfig} */
 module.exports = {
   rules: {
     /**

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { shorthands, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';

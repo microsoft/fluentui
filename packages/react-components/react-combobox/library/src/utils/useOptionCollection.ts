@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { OptionCollectionState, OptionValue } from './OptionCollection.types';
 

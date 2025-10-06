@@ -538,8 +538,16 @@ export const mapFluentChart = (input: any): OutputChartType => {
           const scatterData = traceData as Partial<PlotData>;
           const isAreaChart = isScatterAreaChart(scatterData);
           const isScatterChart = isScatterMarkers(scatterData.mode ?? '');
+          const hasLineShape =
+            Array.isArray(validSchema?.layout?.shapes) &&
+            validSchema.layout.shapes.some((shape: any) => shape.type === 'line');
+
           if (isScatterChart) {
-            return { isValid: true, traceIndex, type: 'scatter' };
+            return {
+              isValid: true,
+              traceIndex,
+              type: hasLineShape && supportedScatterInLineChart(scatterData) ? 'line' : 'scatter',
+            };
           }
 
           if (!doesScatterNeedFallback(scatterData, validSchema.layout)) {
@@ -649,14 +657,9 @@ export const isScatterAreaChart = (data: Partial<PlotData>) => {
   return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
 };
 
-const doesScatterNeedFallback = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
-  if (isScatterMarkers(data.mode ?? '')) {
-    return false;
-  }
-
+const supportedScatterInLineChart = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
   const isXDate = isDateArray(data.x);
   const isXNumber = isNumberArray(data.x);
-
   // Consider year as categorical variable not numeric continuous variable
   // Also year is not considered a date variable as it is represented as a point
   // in time and brings additional complexity of handling timezone and locale
@@ -670,8 +673,14 @@ const doesScatterNeedFallback = (data: Partial<PlotData>, layout: Partial<Layout
   const isCatXAxis = layout?.[xAxisKey]?.type === 'category';
 
   if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString && !isCatXAxis) {
+    return true;
+  }
+  return false;
+};
+
+const doesScatterNeedFallback = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
+  if (isScatterMarkers(data.mode ?? '')) {
     return false;
   }
-
-  return true;
+  return !supportedScatterInLineChart(data, layout);
 };

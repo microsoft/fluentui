@@ -13,16 +13,17 @@ export type StoryImport = {
 function getImportPrefix(filename: string): string {
   const importPrefix = path.basename(path.dirname(filename));
 
-  if (importPrefix === 'stories' || importPrefix[0].toLowerCase() === importPrefix[0]) {
+  if (importPrefix === 'stories') {
     throw new Error(
       [
         `The file "${filename}" has an incorrect location a directory name.`,
-        `All stories should be placed in "/src/stories/ComponentName" directory.`,
+        `All stories should be placed in "[ComponentName]" directory.`,
       ].join(' '),
     );
   }
 
-  return importPrefix;
+  // Capitalize the first letter to follow the PascalCase convention for component names
+  return importPrefix.charAt(0).toUpperCase() + importPrefix.slice(1);
 }
 
 export async function getExportFromFile(distDir: string, filename: string): Promise<StoryImport | null> {

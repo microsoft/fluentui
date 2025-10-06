@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import type { MenuItemState } from '../../components/index';

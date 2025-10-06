@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable no-restricted-globals */
 import * as React from 'react';
 import { useCallback, useState, useEffect, useRef } from 'react';

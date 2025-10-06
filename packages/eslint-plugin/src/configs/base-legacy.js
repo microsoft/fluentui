@@ -4,7 +4,7 @@ const path = require('path');
 
 const { getNamingConventionRule } = require('../utils/configHelpers');
 
-/** @type {import("eslint").Linter.Config} */
+/** @type {import("eslint").Linter.LegacyConfig} */
 module.exports = {
   extends: [path.join(__dirname, 'core')],
   rules: {
