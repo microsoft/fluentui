@@ -2,6 +2,36 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Thu, 02 Oct 2025 07:20:39 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.212",
+      "version": "8.14.212",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "826ca93c0180061b9214af6057f76a8683090e4c",
+            "comment": "chore: enable workspace-plugin for v8 project for RIT and generic targets"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Oct 2025 07:20:01 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.212",
+      "version": "8.14.212",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "572f92d4d85ea6619124ca8174a955a039c951d0",
+            "comment": "chore: add RIT targets"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Sep 2025 07:20:30 GMT",
       "tag": "@fluentui/react-experiments_v8.14.212",
       "version": "8.14.212",

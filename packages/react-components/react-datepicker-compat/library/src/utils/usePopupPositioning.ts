@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import type { DatePickerProps } from '../DatePicker';

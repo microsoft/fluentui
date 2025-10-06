@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createKeyborg } from 'keyborg';
 import { KEYBOARD_NAV_ATTRIBUTE } from '../focus/constants';

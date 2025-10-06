@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { isInteractiveHTMLElement, useEventCallback, slot } from '@fluentui/react-utilities';
 import { Space } from '@fluentui/keyboard-keys';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ChartTableProps } from './ChartTable.types';
 import { useChartTableStyles } from './useChartTableStyles.styles';

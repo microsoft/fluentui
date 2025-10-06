@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import {

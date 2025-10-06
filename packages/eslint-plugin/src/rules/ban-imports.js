@@ -19,7 +19,6 @@ const createRule = require('../utils/createRule');
  * }} Options
  */
 
-/** */
 module.exports = createRule({
   name: 'ban-imports', // inspired by TSLint import-blacklist
   meta: {

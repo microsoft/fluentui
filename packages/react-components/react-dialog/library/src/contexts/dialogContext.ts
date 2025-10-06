@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
 import { DialogSurfaceElement } from '../DialogSurface';
