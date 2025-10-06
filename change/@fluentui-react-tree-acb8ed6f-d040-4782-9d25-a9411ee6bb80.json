@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "added return type to useTreeNavigation hook",
-  "packageName": "@fluentui/react-tree",
-  "email": "patrycja.fogelman@microsoft.com",
-  "dependentChangeType": "patch"
-}

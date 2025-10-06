@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 03 Oct 2025 14:19:03 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Oct 2025 15:01:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.1)
+
+Mon, 06 Oct 2025 15:01:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.0..@fluentui/react-components_v9.72.1)
+
+### Minor changes
+
+- `@fluentui/react-tree`
+  - added return type to useTreeNavigation hook ([PR #35283](https://github.com/microsoft/fluentui/pull/35283) by patrycja.fogelman@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - feat: enable wrapping of string x-axis labels in scatterchart ([PR #35231](https://github.com/microsoft/fluentui/pull/35231) by 132879294+v-baambati@users.noreply.github.com)
 
 ## [9.72.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.0)
 
