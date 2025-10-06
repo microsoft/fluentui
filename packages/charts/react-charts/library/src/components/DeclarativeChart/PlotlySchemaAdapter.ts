@@ -1022,7 +1022,6 @@ const transformPlotlyJsonToScatterTraceProps = (
         isDarkTheme,
       ) as string[] | string | undefined;
       const xValues = series.x as Datum[];
-      // Move these outside the return callback scope for reuse
       const isXString = isStringArray(xValues);
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
