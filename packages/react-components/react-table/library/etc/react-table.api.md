@@ -549,6 +549,7 @@ export interface TableSelectionState {
     selectRow: (e: React_2.SyntheticEvent, rowId: TableRowId) => void;
     someRowsSelected: boolean;
     toggleAllRows: (e: React_2.SyntheticEvent) => void;
+    toggleSomeRows: (e: React_2.SyntheticEvent, rowIds: Set<TableRowId>) => void;
     toggleRow: (e: React_2.SyntheticEvent, rowId: TableRowId) => void;
 }
 

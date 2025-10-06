@@ -15,6 +15,7 @@ export const defaultTableSelectionState: TableSelectionState = {
   selectedRows: new Set(),
   someRowsSelected: false,
   toggleAllRows: noop,
+  toggleSomeRows: noop,
   toggleRow: noop,
   selectionMode: 'multiselect',
 };
@@ -100,6 +101,13 @@ export function useTableSelectionState<TItem>(
     );
   });
 
+  const toggleSomeRows: TableSelectionState['toggleSomeRows'] = useEventCallback((e, rowIds: Set<TableRowId>) => {
+    selectionMethods.toggleAllItems(
+      e,
+      Array.from(rowIds).map((rowId, i) => Number(rowId) ?? i),
+    );
+  });
+
   const toggleRow: TableSelectionState['toggleRow'] = useEventCallback((e, rowId: TableRowId) =>
     selectionMethods.toggleItem(e, rowId),
   );
@@ -125,6 +133,7 @@ export function useTableSelectionState<TItem>(
       selectedRows: selected,
       toggleRow,
       toggleAllRows,
+      toggleSomeRows,
       clearRows,
       deselectRow,
       selectRow,
