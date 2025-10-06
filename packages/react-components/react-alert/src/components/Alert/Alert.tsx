@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 
 import { renderAlert_unstable } from './renderAlert';
@@ -12,17 +14,17 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * An Alert component displays a brief, important message to attract a user's attention
  *  without interrupting their current task.
  */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const Alert: ForwardRefComponent<AlertProps> = React.forwardRef((props, ref) => {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const state = useAlert_unstable(props, ref);
 
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   useAlertStyles_unstable(state);
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return renderAlert_unstable(state);
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 }) as ForwardRefComponent<AlertProps>;
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 Alert.displayName = 'Alert';

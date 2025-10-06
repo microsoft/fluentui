@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
@@ -39,7 +37,7 @@ export type AlertSlots = {
 export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'> & Required<Pick<AlertProps, 'appearance'>>;
 
 // @public @deprecated (undocumented)
-export const renderAlert_unstable: (state: AlertState) => JSX.Element;
+export const renderAlert_unstable: (state: AlertState) => React_2.ReactElement;
 
 // @public @deprecated (undocumented)
 export const useAlert_unstable: (props: AlertProps, ref: React_2.Ref<HTMLElement>) => AlertState;
