@@ -47,6 +47,7 @@ module.exports = {
   plugins: ['@fluentui/react-components'],
   rules: {
     '@fluentui/react-components/prefer-fluentui-v9': 'warn',
+    '@fluentui/react-components/no-missing-jsx-pragma': ['error', { runtime: 'automatic' }],
   },
 };
 ```
@@ -75,6 +76,66 @@ const Component = () => <Button>...</Button>;
 import { DefaultButton } from '@fluentui/react';
 
 const Component = () => <DefaultButton>...</DefaultButton>;
+```
+
+### no-missing-jsx-pragma
+
+This rule enforces properly configured `@jsx` or `@jsxImportSource` pragma for files using Fluent UI slot API.
+
+#### Options
+
+- `runtime`: `'automatic'` (default) or `'classic'` - Specifies the JSX runtime to use
+
+#### Examples
+
+**✅ Do (automatic runtime)**
+
+```js
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
+import { assertSlots } from '@fluentui/react-utilities';
+
+export const renderFoo = (state, contextValues) => {
+  assertSlots(state);
+  return (
+    <state.root>
+      <state.button>Hello</state.button>
+    </state.root>
+  );
+};
+```
+
+**✅ Do (classic runtime)**
+
+```js
+/** @jsx createElement */
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { assertSlots } from '@fluentui/react-utilities';
+
+export const renderFoo = (state, contextValues) => {
+  assertSlots(state);
+  return (
+    <state.root>
+      <state.button>Hello</state.button>
+    </state.root>
+  );
+};
+```
+
+**❌ Don't**
+
+```js
+// Missing pragma when using slot API
+import { assertSlots } from '@fluentui/react-utilities';
+
+export const renderFoo = (state, contextValues) => {
+  assertSlots(state);
+  return (
+    <state.root>
+      <state.button>Hello</state.button>
+    </state.root>
+  );
+};
 ```
 
 ## License
