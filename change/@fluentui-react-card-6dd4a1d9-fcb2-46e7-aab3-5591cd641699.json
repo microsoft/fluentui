@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "packageName": "@fluentui/react-card",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}

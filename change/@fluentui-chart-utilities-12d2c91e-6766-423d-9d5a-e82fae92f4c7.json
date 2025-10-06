@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "node 20 to 22",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
