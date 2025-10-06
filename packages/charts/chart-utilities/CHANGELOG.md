@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 15 Sep 2025 07:20:50 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Oct 2025 07:20:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.32](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.32)
+
+Mon, 06 Oct 2025 07:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.31..@fluentui/chart-utilities_v1.1.32)
+
+### Patches
+
+- support reference line in line, VBC and scatter chart ([PR #35227](https://github.com/microsoft/fluentui/pull/35227) by anushgupta@microsoft.com)
 
 ## [1.1.31](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.31)
 
