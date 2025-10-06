@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 18 Sep 2025 04:07:17 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Oct 2025 04:08:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.125](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.125)
+
+Mon, 06 Oct 2025 04:08:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.124..@fluentui/web-components_v3.0.0-beta.125)
+
+### Changes
+
+- Fix Node version to be compaditible with CEM analyzer so parsedTypes get properly written. ([PR #35277](https://github.com/microsoft/fluentui/pull/35277) by jes@microsoft.com)
 
 ## [3.0.0-beta.124](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.124)
 

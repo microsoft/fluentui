@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 06 Oct 2025 04:08:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.125",
+      "version": "3.0.0-beta.125",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "75362a5de1634738b43f1b3c475fba554125107b",
+            "comment": "Fix Node version to be compaditible with CEM analyzer so parsedTypes get properly written."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Oct 2025 04:08:22 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.124",
       "version": "3.0.0-beta.124",
