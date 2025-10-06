@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Bump min version of node from 20 to 22",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
