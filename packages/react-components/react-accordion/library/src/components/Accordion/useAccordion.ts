@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { AccordionProps, AccordionState } from './Accordion.types';

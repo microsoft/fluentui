@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable one-var */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */

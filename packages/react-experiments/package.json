@@ -15,15 +15,10 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
     "start": "just-scripts dev:storybook",
     "start:legacy": "just-scripts dev",
-    "start-test": "just-scripts jest-watch",
-    "update-snapshots": "just-scripts jest -u"
+    "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
     "@fluentui/common-styles": "*",

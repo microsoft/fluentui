@@ -2,6 +2,57 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Thu, 02 Oct 2025 15:12:37 GMT",
+      "tag": "@fluentui/react-tags_v9.7.7",
+      "version": "9.7.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-aria to v9.17.1",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-avatar to v9.9.7",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.1",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.2",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-tabster to v9.26.6",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-utilities to v9.25.0",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Sep 2025 12:50:44 GMT",
       "tag": "@fluentui/react-tags_v9.7.6",
       "version": "9.7.6",

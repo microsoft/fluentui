@@ -1,3 +1,5 @@
+'use client';
+
 import { useControllableState } from '@fluentui/react-utilities';
 import { TreeItemValue } from '../../TreeItem';
 import { ImmutableMap } from '../../utils/ImmutableMap';

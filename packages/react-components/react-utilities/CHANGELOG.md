@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 08 Sep 2025 12:50:53 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Oct 2025 15:12:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.0)
+
+Thu, 02 Oct 2025 15:12:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.24.1..@fluentui/react-utilities_v9.25.0)
+
+### Minor changes
+
+- feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application ([PR #35191](https://github.com/microsoft/fluentui/pull/35191) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.2 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
 
 ## [9.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.24.1)
 

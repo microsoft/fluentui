@@ -1,3 +1,5 @@
+'use client';
+
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';

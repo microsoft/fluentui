@@ -2,6 +2,47 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Thu, 02 Oct 2025 15:12:28 GMT",
+      "tag": "@fluentui/react-overflow_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "c7c1715f7db1a3960854219ceea2ed595674d875",
+            "comment": "feat: add hasHiddenItems option"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.2.0",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.8",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.25.0",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Sep 2025 12:51:12 GMT",
       "tag": "@fluentui/react-overflow_v9.5.6",
       "version": "9.5.6",

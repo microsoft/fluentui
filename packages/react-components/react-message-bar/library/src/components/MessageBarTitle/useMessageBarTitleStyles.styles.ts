@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import { typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';

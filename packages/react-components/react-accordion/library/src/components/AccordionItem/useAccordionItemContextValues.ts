@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { AccordionItemContextValues, AccordionItemState } from './AccordionItem.types';
 import { AccordionItemContextValue } from '../../contexts/accordionItem';

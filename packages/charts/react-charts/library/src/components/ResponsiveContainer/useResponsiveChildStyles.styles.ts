@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { ResponsiveChildStyles } from './ResponsiveContainer.types';
 import { SlotClassNames } from '@fluentui/react-utilities';

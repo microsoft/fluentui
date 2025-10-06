@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';

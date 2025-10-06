@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { AppItemStaticProps, AppItemStaticState } from './AppItemStatic.types';

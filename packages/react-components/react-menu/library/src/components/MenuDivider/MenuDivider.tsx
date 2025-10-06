@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuDivider_unstable } from './useMenuDivider';
 import { useMenuDividerStyles_unstable } from './useMenuDividerStyles.styles';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useText_unstable } from './useText';
 import { renderText_unstable } from './renderText';

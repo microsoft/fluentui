@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { AccordionItemValue } from '../AccordionItem';
 import { AccordionToggleEvent } from '../Accordion';

@@ -1,3 +1,5 @@
+'use client';
+
 import { devtools } from '@floating-ui/devtools';
 import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';

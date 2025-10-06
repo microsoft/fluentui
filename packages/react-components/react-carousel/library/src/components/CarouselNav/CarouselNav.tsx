@@ -1,3 +1,5 @@
+'use client';
+
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React from 'react';
 

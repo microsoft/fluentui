@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';

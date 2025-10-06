@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Mon, 06 Oct 2025 07:20:14 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.32",
+      "version": "1.1.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "ccaa0fc7e6af4c0606bc1c2661add5161452a41e",
+            "comment": "support reference line in line, VBC and scatter chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Sep 2025 07:20:50 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.31",
       "version": "1.1.31",
