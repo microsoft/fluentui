@@ -796,7 +796,7 @@ export const transformPlotlyJsonToGVBCProps = (
         key: legend,
         data: (series.x as Datum[])
           .map((x, xIndex) => {
-            if (isInvalidValue(x)) {
+            if (isInvalidValue(x) || isInvalidValue(series.y?.[xIndex])) {
               return;
             }
 
@@ -816,7 +816,7 @@ export const transformPlotlyJsonToGVBCProps = (
                   isDarkTheme,
                 );
             const opacity = getOpacity(series, xIndex);
-            const yVal = isInvalidValue(series.y?.[xIndex]) ? 0 : (series.y![xIndex] as number);
+            const yVal = series.y![xIndex] as number;
 
             return {
               x: x!.toString(),

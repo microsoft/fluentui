@@ -302,7 +302,7 @@ const validateScatterData = (data: Partial<PlotData>, layout: Partial<Layout> | 
   }
 
   const isAreaChart = isScatterAreaChart(data);
-  const isFallbackNeeded = doesScatterNeedFallback(data);
+  const isFallbackNeeded = doesScatterNeedFallback(data, layout);
   if (isAreaChart && isFallbackNeeded) {
     throw new Error(
       `${UNSUPPORTED_MSG_PREFIX} ${data.type}, Fallback to VerticalStackedBarChart is not allowed for Area Charts.`,
@@ -542,7 +542,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
             return { isValid: true, traceIndex, type: 'scatter' };
           }
 
-          if (!doesScatterNeedFallback(scatterData)) {
+          if (!doesScatterNeedFallback(scatterData, validSchema.layout)) {
             return { isValid: true, traceIndex, type: isAreaChart ? 'area' : 'line' };
           }
 
@@ -649,7 +649,7 @@ export const isScatterAreaChart = (data: Partial<PlotData>) => {
   return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
 };
 
-const doesScatterNeedFallback = (data: Partial<PlotData>) => {
+const doesScatterNeedFallback = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
   if (isScatterMarkers(data.mode ?? '')) {
     return false;
   }
@@ -664,7 +664,12 @@ const doesScatterNeedFallback = (data: Partial<PlotData>) => {
   const isXYear = isYearArray(data.x);
   const isXMonth = isMonthArray(data.x);
   const isYString = isStringArray(data.y);
-  if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
+
+  const axisIds = getAxisIds(data);
+  const xAxisKey = getAxisKey('x', axisIds.x);
+  const isCatXAxis = layout?.[xAxisKey]?.type === 'category';
+
+  if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString && !isCatXAxis) {
     return false;
   }
 
