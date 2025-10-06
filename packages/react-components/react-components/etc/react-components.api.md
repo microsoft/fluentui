@@ -1921,6 +1921,7 @@ import { useTabList_unstable } from '@fluentui/react-tabs';
 import { useTabListContext_unstable } from '@fluentui/react-tabs';
 import { useTabListContextValues_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useTag_unstable } from '@fluentui/react-tags';
 import { useTagAvatarContextValues_unstable } from '@fluentui/react-tags';
@@ -5857,6 +5858,8 @@ export { useTabListContext_unstable }
 export { useTabListContextValues_unstable }
 
 export { useTabListStyles_unstable }
+
+export { useTabsterAttributes }
 
 export { useTabStyles_unstable }
 
