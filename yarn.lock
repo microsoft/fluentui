@@ -5526,12 +5526,12 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*":
-  version "20.12.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.12.tgz#7cbecdf902085cec634fdb362172dfe12b8f2050"
-  integrity sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==
+"@types/node@*", "@types/node@^22.0.0":
+  version "22.18.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.18.8.tgz#738d9dafa38f6e0c467687c158f8e1ca2d7d8eaa"
+  integrity sha512-pAZSHMiagDR7cARo/cch1f3rXy0AEXwsVsVH09FcyeJVAzCnGgmYis7P3JidtTUjyadhTeSo8TgRPswstghDaw==
   dependencies:
-    undici-types "~5.26.4"
+    undici-types "~6.21.0"
 
 "@types/node@12.20.24":
   version "12.20.24"
@@ -5554,13 +5554,6 @@
   integrity sha512-d2ZFc/3lnK2YCYhos8iaNIYu9Vfhr92nHiyJHRltXWjXUBjEE+A4I58Tdbnw4VhggSW+2j5y5gTrLs4biNnubg==
   dependencies:
     undici-types "~5.26.4"
-
-"@types/node@^22.0.0":
-  version "22.18.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.18.8.tgz#738d9dafa38f6e0c467687c158f8e1ca2d7d8eaa"
-  integrity sha512-pAZSHMiagDR7cARo/cch1f3rXy0AEXwsVsVH09FcyeJVAzCnGgmYis7P3JidtTUjyadhTeSo8TgRPswstghDaw==
-  dependencies:
-    undici-types "~6.21.0"
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
