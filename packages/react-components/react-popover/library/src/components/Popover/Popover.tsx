@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { usePopover_unstable } from './usePopover';
 import { renderPopover_unstable } from './renderPopover';

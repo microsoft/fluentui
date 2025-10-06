@@ -1,3 +1,5 @@
+'use client';
+
 import { useCalendarPickerStyles_unstable } from '../CalendarPicker/useCalendarPickerStyles.styles';
 import type { CalendarMonthStyleProps, CalendarMonthStyles } from './CalendarMonth.types';
 

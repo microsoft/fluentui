@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "support reference line in line, VBC and scatter chart",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

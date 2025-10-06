@@ -700,6 +700,53 @@ export const transformPlotlyJsonToVSBCProps = (
       });
     });
   });
+  const xCategories = (input.data[0] as Partial<PlotData>)?.x ?? [];
+
+  (input.layout?.shapes ?? [])
+    .filter(shape => shape.type === 'line')
+    .forEach((shape, shapeIdx) => {
+      const lineColor = shape.line?.color;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const resolveX = (val: any) => {
+        if (typeof val === 'number' && Array.isArray(xCategories) && xCategories[val] !== undefined) {
+          return xCategories[val];
+        }
+        return val;
+      };
+
+      const x0Key = resolveX(shape.x0);
+      const x1Key = resolveX(shape.x1);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const resolveY = (val: any) => {
+        if (shape.yref === 'paper') {
+          if (val === 0) {
+            return yMinValue;
+          }
+          if (val === 1) {
+            return yMaxValue;
+          }
+          return yMinValue + val * (yMaxValue - yMinValue);
+        }
+        return val;
+      };
+
+      const y0Val = resolveY(shape.y0);
+      const y1Val = resolveY(shape.y1);
+      mapXToDataPoints[x0Key].lineData!.push({
+        legend: `Reference_${shapeIdx}`,
+        y: y0Val,
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      });
+      mapXToDataPoints[x1Key].lineData!.push({
+        legend: `Reference_${shapeIdx}`,
+        y: y1Val,
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      });
+    });
 
   const vsbcData = Object.values(mapXToDataPoints);
 
@@ -1165,6 +1212,7 @@ const transformPlotlyJsonToScatterTraceProps = (
                   axisLabel: (series as { __axisLabel: string[] }).__axisLabel
                     ? (series as { __axisLabel: string[] }).__axisLabel
                     : {},
+                  fill: series.fill,
                 }
               : {}),
           },
@@ -1173,6 +1221,23 @@ const transformPlotlyJsonToScatterTraceProps = (
       });
     })
     .flat();
+
+  const lineShape: ILineChartPoints[] = (input.layout?.shapes ?? [])
+    .filter(shape => shape.type === 'line')
+    .map((shape, shapeIdx) => {
+      const lineColor = shape.line?.color;
+
+      return {
+        legend: `Reference_${shapeIdx}`,
+        data: [
+          { x: shape.x0, y: shape.y0 },
+          { x: shape.x1, y: shape.y1 },
+        ],
+        color: rgb(lineColor!).formatHex8() ?? lineColor,
+        lineOptions: getLineOptions(shape.line),
+        useSecondaryYScale: false,
+      } as ILineChartPoints;
+    });
 
   const yMinMax = getYMinMaxValues(input.data[0], input.layout);
   if (yMinMax.yMinValue === undefined && yMinMax.yMaxValue === undefined) {
@@ -1184,7 +1249,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
 
   const chartProps: IChartProps = {
-    lineChartData: chartData,
+    lineChartData: [...chartData, ...lineShape],
   };
 
   const scatterChartProps: IChartProps = {
@@ -1790,6 +1855,27 @@ function resolveCellStyle<T>(raw: T | T[] | T[][] | undefined, rowIndex: number,
   return raw;
 }
 
+function mergeCells(tableCells?: TableData['cells'], templateCells?: TableData['cells']): TableData['cells'] {
+  return {
+    values: tableCells?.values ?? templateCells?.values ?? [],
+    align: tableCells?.align ?? templateCells?.align,
+
+    fill: {
+      ...(templateCells?.fill ?? {}),
+      ...(tableCells?.fill ?? {}),
+    },
+
+    font: {
+      ...(templateCells?.font ?? {}),
+      ...(tableCells?.font ?? {}),
+    },
+
+    format: tableCells?.format ?? templateCells?.format,
+    prefix: tableCells?.prefix ?? templateCells?.prefix,
+    suffix: tableCells?.suffix ?? templateCells?.suffix,
+  };
+}
+
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -1833,10 +1919,7 @@ export const transformPlotlyJsonToChartTableProps = (
     });
   };
   const columns = tableData.cells?.values ?? [];
-  const cells =
-    tableData.cells && Object.keys(tableData.cells).length > 0
-      ? tableData.cells
-      : input.layout?.template?.data?.table?.[0]?.cells;
+  const cells = mergeCells(tableData.cells, input.layout?.template?.data?.table?.[0]?.cells);
   const rows = columns[0].map((_, rowIndex: number) =>
     columns.map((col, colIndex) => {
       const cellValue = col[rowIndex];
@@ -1874,13 +1957,24 @@ export const transformPlotlyJsonToChartTableProps = (
     },
   };
 
+  const templateHeader = input.layout?.template?.data?.table?.[0]?.header;
+  const tableHeader = tableData.header;
+
+  const header = {
+    align: tableHeader?.align ?? templateHeader?.align,
+    fill: {
+      ...(templateHeader?.fill ?? {}),
+      ...(tableHeader?.fill ?? {}),
+    },
+    font: {
+      ...(templateHeader?.font ?? {}),
+      ...(tableHeader?.font ?? {}),
+    },
+    values: tableHeader?.values ?? templateHeader?.values ?? [],
+  };
+
   return {
-    headers: normalizeHeaders(
-      tableData.header?.values ?? [],
-      tableData.header && Object.keys(tableData.header).length > 0
-        ? tableData.header
-        : input.layout?.template?.data?.table![0].header,
-    ),
+    headers: normalizeHeaders(tableData.header?.values ?? [], header),
     rows,
     width: input.layout?.width,
     height: input.layout?.height,

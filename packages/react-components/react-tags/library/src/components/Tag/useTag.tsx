@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { DismissRegular } from '@fluentui/react-icons';

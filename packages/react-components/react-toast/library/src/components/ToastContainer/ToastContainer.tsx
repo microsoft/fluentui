@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useToastContainer_unstable } from './useToastContainer';
 import { renderToastContainer_unstable } from './renderToastContainer';

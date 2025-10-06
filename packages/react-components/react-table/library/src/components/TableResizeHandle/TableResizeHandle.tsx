@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTableResizeHandle_unstable } from './useTableResizeHandle';
 import { renderTableResizeHandle_unstable } from './renderTableResizeHandle';

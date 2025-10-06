@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { AreaChartProps, AreaChartStyles } from './index';
 import { SlotClassNames } from '@fluentui/react-utilities';

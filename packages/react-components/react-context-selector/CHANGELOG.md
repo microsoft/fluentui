@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Mon, 08 Sep 2025 12:51:40 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Oct 2025 15:12:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.8)
+
+Thu, 02 Oct 2025 15:12:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.2.7..@fluentui/react-context-selector_v9.2.8)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
 
 ## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.7)
 

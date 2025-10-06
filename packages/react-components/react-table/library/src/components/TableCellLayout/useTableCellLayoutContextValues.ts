@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { TableCellLayoutState, TableCellLayoutContextValues } from './TableCellLayout.types';
 
