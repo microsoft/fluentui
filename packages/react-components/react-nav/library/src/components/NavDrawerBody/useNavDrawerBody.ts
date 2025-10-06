@@ -26,5 +26,5 @@ export const useNavDrawerBody_unstable = (
     tabbable,
   });
 
-  return useDrawerBody_unstable({ ...props, ...focusAttributes }, ref);
+  return useDrawerBody_unstable({ ...focusAttributes, ...props }, ref);
 };
