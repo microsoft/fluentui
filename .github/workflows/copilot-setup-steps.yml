@@ -1,5 +1,6 @@
-name: 'Copilot Setup Steps'
 # Refer: https://docs.github.com/en/enterprise-cloud@latest/copilot/customizing-copilot/customizing-the-development-environment-for-copilot-coding-agent#preinstalling-tools-or-dependencies-in-copilots-environment
+
+name: 'Copilot Setup Steps'
 
 # Allow testing of the setup steps from your repository's "Actions" tab.
 on: workflow_dispatch
@@ -27,6 +28,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: yarn install --frozen-lockfile

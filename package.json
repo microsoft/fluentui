@@ -8,7 +8,7 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "engines": {
-    "node": "^20.0.0 || ^22.0.0"
+    "node": "^22.0.0"
   },
   "scripts": {
     "dedupe": "npx yarn-deduplicate@latest --strategy fewer",
@@ -111,7 +111,7 @@
     "@testing-library/react": "16.3.0",
     "@testing-library/react-hooks": "8.0.1",
     "@testing-library/user-event": "13.5.0",
-    "@tsconfig/node18": "1.0.3",
+    "@tsconfig/node20": "^20.1.4",
     "@types/babel__core": "7.20.5",
     "@types/babel__helper-plugin-utils": "7.10.3",
     "@types/babel__register": "7.17.3",
@@ -142,7 +142,7 @@
     "@types/lodash": "4.14.182",
     "@types/markdown-table": "2.0.0",
     "@types/micromatch": "4.0.2",
-    "@types/node": "20.12.12",
+    "@types/node": "^22.0.0",
     "@types/prettier": "2.7.2",
     "@types/progress": "2.0.5",
     "@types/react": "18.3.20",

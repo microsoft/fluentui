@@ -16,7 +16,7 @@ This document describes how to set up your development environment and contribut
 
 - If you don't have a **GitHub account**, [create one](https://github.com/join)
   - Microsoft employees: please [link your GitHub account](https://repos.opensource.microsoft.com) (new or existing) to your MS account
-- Install **[Node.js LTS](https://nodejs.org/en/)** (14 or 16 as of writing)
+- Install **[Node.js LTS](https://nodejs.org/en/)** (22 as of writing)
   - Optional: If you're developing across multiple repos with varying Node version requirements, you may want to use `nvm` to install and manage Node versions. [More details here.](nvm-setup)
 - Install **[Yarn 1](https://classic.yarnpkg.com/) (we do not support Yarn 2)**
   - easiest way: run `npm install -g yarn@1`
@@ -28,7 +28,7 @@ This document describes how to set up your development environment and contribut
 
 Open a command line and run:
 
-- `node -v`: Should be `14.x.x` or `16.x.x` (where "x" is some number). Newer versions may not work.
+- `node -v`: Should be `22.x.x` (where "x" is some number).
 - `npm -v`: Should be >= 6. If not, run `npm install -g npm`.
 - `yarn -v`: Should be >= 1.15.0 but **less than 2**. If not, run `npm install -g yarn@1`.
 - `git --version` to ensure you have Git installed.
