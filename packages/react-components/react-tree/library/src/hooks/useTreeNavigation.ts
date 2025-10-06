@@ -17,7 +17,7 @@ import { useFocusFinders } from '@fluentui/react-tabster';
  * @param navigationMode - the navigation mode of the tree, 'tree' (default) or 'treegrid'
  */
 export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree'): {
-  navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => void;
+  navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => HTMLElement | null;
   treeRef: React.RefCallback<HTMLElement>;
   forceUpdateRovingTabIndex: () => void;
 } {
