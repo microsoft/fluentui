@@ -1,4 +1,7 @@
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
+
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
@@ -43,6 +46,7 @@ const useInfoButtonStyles = makeStyles({
  * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const useInfoLabelStyles_unstable = (state: InfoLabelState): InfoLabelState => {
+  // eslint-disable-next-line react-compiler/react-compiler
   state.root.className = mergeClasses(infoLabelClassNames.root, state.root.className);
 
   const labelStyles = useLabelStyles();

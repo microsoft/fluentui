@@ -1,4 +1,4 @@
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 import { InfoButton } from './InfoButton';
 import { isConformant } from '../../testing/isConformant';
 import { infoButtonClassNames } from './useInfoButtonStyles.styles';

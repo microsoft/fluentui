@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -60,10 +58,10 @@ export type InfoLabelSlots = {
 export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;
 
 // @public @deprecated
-export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
+export const renderInfoButton_unstable: (state: InfoButtonState) => React_2.ReactElement;
 
 // @public @deprecated
-export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
+export const renderInfoLabel_unstable: (state: InfoLabelState) => React_2.ReactElement;
 
 // @public @deprecated
 export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<HTMLElement>) => InfoButtonState;

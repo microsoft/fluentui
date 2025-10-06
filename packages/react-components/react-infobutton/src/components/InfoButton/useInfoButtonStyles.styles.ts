@@ -1,4 +1,7 @@
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
+
+'use client';
+
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
@@ -114,6 +117,7 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
   const buttonStyles = useButtonStyles();
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
+  // eslint-disable-next-line react-compiler/react-compiler
   state.info.className = mergeClasses(
     infoButtonClassNames.info,
     size === 'large' ? popoverSurfaceStyles.large : popoverSurfaceStyles.smallMedium,

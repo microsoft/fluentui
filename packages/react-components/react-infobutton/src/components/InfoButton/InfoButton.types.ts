@@ -1,4 +1,4 @@
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { PopoverProps, PopoverSurface } from '@fluentui/react-popover';
 

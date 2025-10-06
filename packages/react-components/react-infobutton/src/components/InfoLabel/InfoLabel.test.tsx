@@ -1,4 +1,4 @@
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';

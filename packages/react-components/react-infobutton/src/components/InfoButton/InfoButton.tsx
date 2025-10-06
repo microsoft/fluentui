@@ -1,4 +1,7 @@
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
+
+"use client";
+
 import * as React from 'react';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderInfoButton_unstable } from './renderInfoButton';

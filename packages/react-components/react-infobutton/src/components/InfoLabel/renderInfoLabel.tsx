@@ -1,7 +1,8 @@
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
+import type * as React from 'react';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { InfoLabelSlots, InfoLabelState } from './InfoLabel.types';
 
@@ -10,7 +11,7 @@ import type { InfoLabelSlots, InfoLabelState } from './InfoLabel.types';
  *
  * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
-export const renderInfoLabel_unstable = (state: InfoLabelState) => {
+export const renderInfoLabel_unstable = (state: InfoLabelState): React.ReactElement => {
   assertSlots<InfoLabelSlots>(state);
 
   return (
