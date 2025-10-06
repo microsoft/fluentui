@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useVirtualizer_unstable } from '../Virtualizer/useVirtualizer';
@@ -71,7 +73,7 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
   return {
     ...virtualizerState,
     components: {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+       
       ...virtualizerState.components,
       container: 'div',
     },

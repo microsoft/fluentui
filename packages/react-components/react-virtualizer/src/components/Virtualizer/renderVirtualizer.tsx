@@ -9,7 +9,7 @@ import { assertSlots } from '@fluentui/react-utilities';
 /**
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
-export const renderVirtualizer_unstable = (state: VirtualizerState) => {
+export const renderVirtualizer_unstable = (state: VirtualizerState): React.ReactElement => {
   assertSlots<VirtualizerSlots>(state);
   return (
     <React.Fragment>
@@ -29,7 +29,7 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
 /**
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
-export const renderVirtualizerChildPlaceholder = (child: React.ReactNode, index: number) => {
+export const renderVirtualizerChildPlaceholder = (child: React.ReactNode, index: number): React.ReactElement => {
   return (
     <React.Suspense key={`fui-virtualizer-placeholder-${index}`} fallback={null}>
       {child}

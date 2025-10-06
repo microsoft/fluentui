@@ -20,13 +20,13 @@ export interface IndexedResizeCallbackElement {
 }
 
 // @public @deprecated (undocumented)
-export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
+export const renderVirtualizer_unstable: (state: VirtualizerState) => React_2.ReactElement;
 
 // @public @deprecated (undocumented)
-export const renderVirtualizerScrollView_unstable: (state: VirtualizerScrollViewState) => JSX.Element;
+export const renderVirtualizerScrollView_unstable: (state: VirtualizerScrollViewState) => React_2.ReactElement;
 
 // @public @deprecated (undocumented)
-export const renderVirtualizerScrollViewDynamic_unstable: (state: VirtualizerScrollViewDynamicState) => JSX.Element;
+export const renderVirtualizerScrollViewDynamic_unstable: (state: VirtualizerScrollViewDynamicState) => React_2.ReactElement;
 
 // @public @deprecated
 export interface ResizeCallbackWithRef {
@@ -88,15 +88,15 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
 
 // @public @deprecated
 export function useMeasureList<TElement extends HTMLElement & IndexedResizeCallbackElement = HTMLElement & IndexedResizeCallbackElement>(currentIndex: number, refLength: number, totalLength: number, defaultItemSize: number): {
-    widthArray: React_2.MutableRefObject<any[]>;
-    heightArray: React_2.MutableRefObject<any[]>;
-    createIndexedRef: (index: number) => (el: TElement) => void;
-    refArray: React_2.MutableRefObject<(TElement | null | undefined)[]>;
+    widthArray: React_2.MutableRefObject<number[]>;
+    heightArray: React_2.MutableRefObject<number[]>;
+    createIndexedRef: (index: number) => (el: TElement | null) => void;
+    refArray: React_2.MutableRefObject<Array<TElement | undefined | null>>;
     sizeUpdateCount: number;
 };
 
 // @public @deprecated
-export const useResizeObserverRef_unstable: (resizeCallback: ResizeCallbackWithRef) => (instance: HTMLElement | HTMLDivElement | null) => void;
+export const useResizeObserverRef_unstable: (resizeCallback: ResizeCallbackWithRef) => ((instance: HTMLElement | HTMLDivElement | null) => void);
 
 // @public @deprecated
 export const useStaticVirtualizerMeasure: <TElement extends HTMLElement>(virtualizerProps: VirtualizerMeasureProps) => {

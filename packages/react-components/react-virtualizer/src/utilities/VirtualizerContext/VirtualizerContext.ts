@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { DynamicVirtualizerContextProps, VirtualizerContextProps } from './types';
 
@@ -13,7 +15,7 @@ export const VirtualizerContextProvider = VirtualizerContext.Provider;
 /**
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
-export const useVirtualizerContext_unstable = () => {
+export const useVirtualizerContext_unstable = (): VirtualizerContextProps => {
   return React.useContext(VirtualizerContext);
 };
 

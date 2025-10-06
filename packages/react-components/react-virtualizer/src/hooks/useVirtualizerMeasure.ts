@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 import { VirtualizerMeasureProps } from './hooks.types';
 import { useResizeObserverRef_unstable } from './useResizeObserverRef';
@@ -33,7 +35,7 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
     (
       _entries: ResizeObserverEntry[],
       // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-      // eslint-disable-next-line no-restricted-globals
+       
       _observer: ResizeObserver,
       scrollRef?: React.MutableRefObject<HTMLElement | null>,
     ) => {

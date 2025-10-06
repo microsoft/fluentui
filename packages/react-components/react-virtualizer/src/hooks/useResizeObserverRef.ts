@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { debounce } from '../utilities/debounce';
@@ -8,7 +10,9 @@ import { ResizeCallbackWithRef } from './hooks.types';
  * useResizeObserverRef_unstable simplifies resize observer connection and ensures debounce/cleanup
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
-export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWithRef) => {
+export const useResizeObserverRef_unstable = (
+  resizeCallback: ResizeCallbackWithRef,
+): ((instance: HTMLElement | HTMLDivElement | null) => void) => {
   'use no memo';
 
   const { targetDocument } = useFluent();
@@ -17,7 +21,7 @@ export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWith
   const containerWidthRef = React.useRef<number>(0);
   // the handler for resize observer
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-  // eslint-disable-next-line no-restricted-globals
+
   const handleResize = debounce((entries: ResizeObserverEntry[], observer: ResizeObserver) => {
     const containerHeight = container.current?.clientHeight;
     const containerWidth = container.current?.clientWidth;

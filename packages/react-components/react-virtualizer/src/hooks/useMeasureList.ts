@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -17,7 +19,18 @@ export interface IndexedResizeCallbackElement {
  */
 export function useMeasureList<
   TElement extends HTMLElement & IndexedResizeCallbackElement = HTMLElement & IndexedResizeCallbackElement,
->(currentIndex: number, refLength: number, totalLength: number, defaultItemSize: number) {
+>(
+  currentIndex: number,
+  refLength: number,
+  totalLength: number,
+  defaultItemSize: number,
+): {
+  widthArray: React.MutableRefObject<number[]>;
+  heightArray: React.MutableRefObject<number[]>;
+  createIndexedRef: (index: number) => (el: TElement | null) => void;
+  refArray: React.MutableRefObject<Array<TElement | undefined | null>>;
+  sizeUpdateCount: number;
+} {
   const widthArray = React.useRef(new Array(totalLength).fill(defaultItemSize));
   const heightArray = React.useRef(new Array(totalLength).fill(defaultItemSize));
 
@@ -88,7 +101,7 @@ export function useMeasureList<
    */
   const createIndexedRef = React.useCallback(
     (index: number) => {
-      const measureElementRef = (el: TElement) => {
+      const measureElementRef = (el: TElement | null) => {
         if (!targetDocument || !resizeObserver.current) {
           return;
         }
@@ -136,7 +149,7 @@ export function useMeasureList<
 export function createResizeObserverFromDocument(
   targetDocument: Document | null | undefined,
   callback: ResizeObserverCallback,
-) {
+): ResizeObserver | null {
   if (!targetDocument?.defaultView?.ResizeObserver) {
     return null;
   }

@@ -1,3 +1,5 @@
+"use client";
+
 import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { VirtualizerMeasureDynamicProps } from './hooks.types';
@@ -133,7 +135,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
     (
       _entries: ResizeObserverEntry[],
       // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-      // eslint-disable-next-line no-restricted-globals
+       
       _observer: ResizeObserver,
       scrollRef?: React.MutableRefObject<HTMLElement | null>,
     ) => {

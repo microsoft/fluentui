@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -57,13 +59,13 @@ export const useIntersectionObserver = (
   setObserverList: React.Dispatch<React.SetStateAction<Element[] | undefined>>;
   setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-  // eslint-disable-next-line no-restricted-globals
+   
   observer: React.MutableRefObject<IntersectionObserver | undefined>;
 } => {
   'use no memo';
 
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-  // eslint-disable-next-line no-restricted-globals
+   
   const observer = useRef<IntersectionObserver>();
   const [observerList, setObserverList] = useState<Element[]>();
   const { targetDocument } = useFluent();

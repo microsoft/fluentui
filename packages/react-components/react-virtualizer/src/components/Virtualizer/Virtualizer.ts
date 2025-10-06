@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 import type { VirtualizerProps } from './Virtualizer.types';
 import { useVirtualizerStyles_unstable } from './useVirtualizerStyles.styles';

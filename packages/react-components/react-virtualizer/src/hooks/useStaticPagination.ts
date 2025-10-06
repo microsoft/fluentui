@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 import { VirtualizerStaticPaginationProps } from './hooks.types';
 import { useTimeout } from '@fluentui/react-utilities';
@@ -12,7 +14,7 @@ import { useTimeout } from '@fluentui/react-utilities';
 export const useStaticVirtualizerPagination = (
   virtualizerProps: VirtualizerStaticPaginationProps,
   paginationEnabled: Boolean = true,
-) => {
+): ((instance: HTMLElement | HTMLDivElement | null) => void) => {
   'use no memo';
 
   const { itemSize, axis = 'vertical' } = virtualizerProps;

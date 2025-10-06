@@ -1,3 +1,5 @@
+"use client";
+
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type {
   VirtualizerScrollViewDynamicSlots,

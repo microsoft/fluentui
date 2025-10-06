@@ -7,7 +7,7 @@
  */
 export function debounce(fn: Function) {
   let pending: boolean;
-  return () => {
+  return (): void => {
     if (!pending) {
       pending = true;
       queueMicrotask(() => {
