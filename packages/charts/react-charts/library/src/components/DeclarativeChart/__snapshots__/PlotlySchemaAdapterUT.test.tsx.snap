@@ -4658,6 +4658,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "wrapXAxisLables": false,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 16.562957844203055,
@@ -5059,6 +5060,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "wrapXAxisLables": false,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -5206,6 +5208,7 @@ Object {
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
+  "wrapXAxisLables": false,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 1.0620659379275244,

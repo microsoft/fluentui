@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: enable wrapping of string x-axis labels in scatterchart",
+  "packageName": "@fluentui/react-charts",
+  "email": "132879294+v-baambati@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

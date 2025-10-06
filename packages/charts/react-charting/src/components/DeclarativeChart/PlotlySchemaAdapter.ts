@@ -1129,6 +1129,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
+  var shouldWrapLabels = false;
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -1149,6 +1150,7 @@ const transformPlotlyJsonToScatterTraceProps = (
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
       const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
+      shouldWrapLabels = shouldWrapLabels || (isXString && !isXDate);
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(
@@ -1263,6 +1265,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideLegend,
     useUTC: false,
     optimizeLargeData: numDataPoints > 1000,
+    shouldWrapLabels: shouldWrapLabels,
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
