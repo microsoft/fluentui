@@ -683,7 +683,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             ]);
           }
 
-          if (isLegendSelected) {
+          // Check if lines should be drawn based on mode
+          const lineMode = _points[i].lineOptions?.mode;
+          const shouldDrawLines = lineMode !== 'markers';
+          if (shouldDrawLines && isLegendSelected) {
             const lineBorderWidth = _points[i].lineOptions?.lineBorderWidth
               ? Number.parseFloat(_points[i].lineOptions!.lineBorderWidth!.toString())
               : 0;
@@ -721,7 +724,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 tabIndex={isLegendSelected ? 0 : undefined}
               />,
             );
-          } else {
+          } else if (shouldDrawLines) {
             linesForLine.push(
               <path
                 id={lineId}
@@ -737,6 +740,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               />,
             );
           }
+
+          // Always add the highlight circle for large dataset hover
           pointsForLine.push(
             <circle
               id={`${_staticHighlightCircle}_${i}`}
@@ -753,6 +758,46 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               onMouseOut={_handleMouseOut}
             />,
           );
+
+          // Add individual markers if mode includes 'markers'
+          const showMarkers = lineMode?.includes('markers');
+          if (showMarkers) {
+            for (let k = 0; k < _points[i].data.length; k++) {
+              const { x, y } = _points[i].data[k];
+              const xPoint = _xAxisScale(x instanceof Date ? x.getTime() : x);
+              const yPoint = yScale(y);
+
+              if (isPlottable(xPoint, yPoint)) {
+                const markerSize = _points[i].data[k].markerSize;
+                const perPointColor = _points[i].data[k]?.markerColor;
+                pointsForLine.push(
+                  <circle
+                    key={`${_circleId}_${i}_${k}_marker`}
+                    r={
+                      markerSize
+                        ? (markerSize! * extraMaxPixels * 0.3) / maxMarkerSize
+                        : activePoint === _circleId
+                        ? 5.5
+                        : 3.5
+                    }
+                    cx={xPoint}
+                    cy={yPoint}
+                    fill={
+                      activePoint === _circleId
+                        ? tokens.colorNeutralBackground1
+                        : perPointColor || _points[i]?.color || lineColor
+                    }
+                    stroke={perPointColor || lineColor}
+                    strokeWidth={1}
+                    opacity={isLegendSelected ? 1 : 0.1}
+                    onMouseMove={_onMouseOverLargeDataset.bind(i, verticaLineHeight, yScale)}
+                    onMouseOver={_onMouseOverLargeDataset.bind(i, verticaLineHeight, yScale)}
+                    onMouseOut={_handleMouseOut}
+                  />,
+                );
+              }
+            }
+          }
         } else if (!props.optimizeLargeData) {
           for (let j = 1; j < _points[i].data.length; j++) {
             const gapResult = _checkInGap(j, gaps, gapIndex);
@@ -829,8 +874,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       onBlur={_handleMouseOut}
                       {..._getClickHandler(_points[i].data[j - 1].onDataPointClick)}
                       opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
-                      fill={_getPointFill(lineColor, circleId, j, false)}
-                      stroke={lineColor}
+                      fill={_points[i].data[j - 1]?.markerColor || _getPointFill(lineColor, circleId, j, false)}
+                      stroke={_points[i].data[j - 1]?.markerColor || lineColor}
                       strokeWidth={strokeWidth}
                       role="img"
                       aria-label={_points[i].data[j - 1].text ?? _getAriaLabel(i, j - 1)}
@@ -892,8 +937,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     onBlur={_handleMouseOut}
                     {..._getClickHandler(_points[i].data[j - 1].onDataPointClick)}
                     opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
-                    fill={_getPointFill(lineColor, circleId, j, false)}
-                    stroke={lineColor}
+                    fill={_points[i].data[j - 1]?.markerColor || _getPointFill(lineColor, circleId, j, false)}
+                    stroke={_points[i].data[j - 1]?.markerColor || lineColor}
                     strokeWidth={strokeWidth}
                     role="img"
                     aria-label={_getAriaLabel(i, j - 1)}
@@ -1041,8 +1086,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         onBlur={_handleMouseOut}
                         {..._getClickHandler(_points[i].data[j].onDataPointClick)}
                         opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
-                        fill={_getPointFill(lineColor, lastCircleId, j, true)}
-                        stroke={lineColor}
+                        fill={_points[i].data[j]?.markerColor || _getPointFill(lineColor, lastCircleId, j, true)}
+                        stroke={_points[i].data[j]?.markerColor || lineColor}
                         strokeWidth={strokeWidth}
                         role="img"
                         aria-label={_getAriaLabel(i, j)}

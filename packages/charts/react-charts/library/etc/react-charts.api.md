@@ -1104,6 +1104,7 @@ export const LineChart: React_2.FunctionComponent<LineChartProps>;
 
 // @public (undocumented)
 export interface LineChartDataPoint extends BaseDataPoint {
+    markerColor?: string;
     text?: string;
     x: number | Date;
     y: number;
@@ -1407,6 +1408,7 @@ export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
 
 // @public
 export interface ScatterChartDataPoint extends BaseDataPoint {
+    markerColor?: string;
     markerSize?: number;
     text?: string;
     x: number | Date | string;
