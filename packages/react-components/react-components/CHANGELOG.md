@@ -8673,7 +8673,7 @@ Thu, 26 Jan 2023 13:30:51 GMT
 - `@fluentui/react-textarea`
   - Deprecate TextareaField_unstable in favor of Field with Textarea as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
 - `@fluentui/react-toolbar`
-  - fix: export toolbar hooks as functions, not Typescript types ([PR #26462](https://github.com/microsoft/fluentui/pull/26462) by seanmonahan@microsoft.com)
+  - fix: export toolbar hooks as functions, not TypeScript types ([PR #26462](https://github.com/microsoft/fluentui/pull/26462) by seanmonahan@microsoft.com)
 - `@fluentui/react-utilities`
   - fix: Leverage React.useId when available for our useId hook. ([PR #26465](https://github.com/microsoft/fluentui/pull/26465) by esteban.230@hotmail.com)
 

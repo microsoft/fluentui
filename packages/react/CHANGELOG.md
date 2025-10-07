@@ -10915,7 +10915,7 @@ Thu, 15 Nov 2018 13:36:22 GMT
 
 ### Minor changes
 
-- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- DevExp: get rid of const enum so the library is compatible with TypeScript's isolatedModule compilation mode
 - ScrollablePane and Sticky: Fix placeholder height, Sticky sorting, and stickyClassName
 - Slider: replace button with div so vertical Sliders render on Safari
 
@@ -11283,7 +11283,7 @@ Mon, 08 Oct 2018 12:24:16 GMT
 
 ### Minor changes
 
-- Typescript 3.1 type fixes.
+- TypeScript 3.1 type fixes.
 
 ### Patches
 

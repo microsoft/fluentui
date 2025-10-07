@@ -1831,7 +1831,7 @@ Thu, 15 Nov 2018 13:36:22 GMT
 
 ### Minor changes
 
-- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- DevExp: get rid of const enum so the library is compatible with TypeScript's isolatedModule compilation mode
 
 ## 6.34.1
 Fri, 09 Nov 2018 13:32:57 GMT

@@ -33,4 +33,4 @@ ReactDOM.render(
 }
 ```
 
-> ⚠ Note: This package does not export any Javascript code.️
+> ⚠ Note: This package does not export any JavaScript code.️
