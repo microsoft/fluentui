@@ -223,6 +223,8 @@ describe('rit CLI e2e', () => {
           "../../../../proj/**/*.spec.tsx",
           "../../../../proj/**/*.test.tsx",
           "../../../../proj/**/src/testing/**",
+          "../../../../proj/**/*.cy.tsx",
+          "../../../../proj/**/*.cy.tsx",
         ],
         "extends": "../../../../proj/tsconfig.lib.json",
         "files": Array [
