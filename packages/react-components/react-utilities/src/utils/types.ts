@@ -1,5 +1,4 @@
 import * as React from 'react';
-import type { JSXIntrinsicElementKeysCompat, JSXIntrinsicElementKeysLatest } from './generated-types';
 
 /**
  * Helper type that works similar to Omit,
@@ -164,13 +163,26 @@ export type JSXElement = React.ReactElement<
 >;
 
 /**
- * Union of all intrinsic element keys in React.
- * Based on the React version, it will either be the latest set of intrinsic elements or the legacy set.
+ * Type representing all valid JSX intrinsic element names (e.g., 'div', 'button', 'input').
+ * It's derived from `React.ElementType` by excluding all custom component types (`React.ComponentType`), ensuring it only includes standard HTML and SVG elements.
+ *
+ * Use this type when you need to restrict a type to only valid intrinsic element names.
+ *
+ * @example
+ * ```tsx
+ * import * as React from 'react';
+ * import type { JSXIntrinsicElementKeys } from '@fluentui/react-utilities';
+ *
+ * const createElement = (tag: JSXIntrinsicElementKeys) => React.createElement(tag, {});
+ *
+ * createElement('div'); // Valid
+ * createElement('span'); // Valid
+ * createElement('unknown'); // Error: Argument of type '"unknown"' is not assignable to parameter of type 'JSXIntrinsicElementKeys'.
+ * ```
+ *
+ * This type helps ensure that only valid intrinsic elements are used in scenarios where custom components are not allowed.
  */
-export type JSXIntrinsicElementKeys = ReactVersionDependent<
-  JSXIntrinsicElementKeysLatest,
-  JSXIntrinsicElementKeysCompat
->;
+export type JSXIntrinsicElementKeys = Exclude<React.ElementType, React.ComponentType>;
 
 /**
  * Our own alias for `JSX.IntrinsicElements` type that is compatible with both React 17 and React 18+.
