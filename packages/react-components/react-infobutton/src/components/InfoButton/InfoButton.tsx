@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-deprecated */
 
-"use client";
+'use client';
 
 import * as React from 'react';
 import { ForwardRefComponent } from '@fluentui/react-utilities';

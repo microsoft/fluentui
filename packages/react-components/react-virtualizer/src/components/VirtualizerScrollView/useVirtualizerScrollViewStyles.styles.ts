@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import type { VirtualizerScrollViewState } from './VirtualizerScrollView.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

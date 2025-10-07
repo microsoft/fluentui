@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import type { VirtualizerScrollViewProps } from './VirtualizerScrollView.types';
 import { useVirtualizerScrollView_unstable } from './useVirtualizerScrollView';

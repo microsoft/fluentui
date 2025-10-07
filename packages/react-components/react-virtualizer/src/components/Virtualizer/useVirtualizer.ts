@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
@@ -308,7 +308,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const { setObserverList } = useIntersectionObserver(
     React.useCallback(
       // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-       
+
       (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
         /* Sanity check - do we even need virtualization? */
         if (virtualizerLength > numItems) {

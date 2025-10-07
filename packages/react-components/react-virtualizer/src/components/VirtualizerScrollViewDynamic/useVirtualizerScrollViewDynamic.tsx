@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import { slot, useMergedRefs } from '@fluentui/react-utilities';
@@ -188,7 +188,6 @@ export function useVirtualizerScrollViewDynamic_unstable(
   return {
     ...virtualizerState,
     components: {
-       
       ...virtualizerState.components,
       container: 'div',
     },

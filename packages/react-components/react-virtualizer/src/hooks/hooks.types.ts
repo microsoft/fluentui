@@ -81,7 +81,7 @@ export interface ResizeCallbackWithRef {
   (
     entries: ResizeObserverEntry[],
     // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-     
+
     observer: ResizeObserver,
     scrollRef?: React.MutableRefObject<HTMLElement | null>,
   ): void;

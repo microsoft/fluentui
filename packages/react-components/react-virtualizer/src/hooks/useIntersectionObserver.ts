@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
@@ -59,13 +59,13 @@ export const useIntersectionObserver = (
   setObserverList: React.Dispatch<React.SetStateAction<Element[] | undefined>>;
   setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-   
+
   observer: React.MutableRefObject<IntersectionObserver | undefined>;
 } => {
   'use no memo';
 
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-   
+
   const observer = useRef<IntersectionObserver>();
   const [observerList, setObserverList] = useState<Element[]>();
   const { targetDocument } = useFluent();

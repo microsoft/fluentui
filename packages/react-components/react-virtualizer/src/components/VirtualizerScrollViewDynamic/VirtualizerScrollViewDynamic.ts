@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import type { VirtualizerScrollViewDynamicProps } from './VirtualizerScrollViewDynamic.types';
 import { useVirtualizerScrollViewDynamic_unstable } from './useVirtualizerScrollViewDynamic';

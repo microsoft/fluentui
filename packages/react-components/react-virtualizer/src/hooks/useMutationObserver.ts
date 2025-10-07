@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -13,12 +13,12 @@ export const useMutationObserver = (
   callback: MutationCallback,
   options?: MutationObserverInit,
 ): {
-  observer: React.MutableRefObject<MutationObserver | undefined>;  
+  observer: React.MutableRefObject<MutationObserver | undefined>;
 } => {
   'use no memo';
 
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
-   
+
   const observer = useRef<MutationObserver>();
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
