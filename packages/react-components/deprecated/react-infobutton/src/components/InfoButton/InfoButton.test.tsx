@@ -3,6 +3,7 @@ import { InfoButton } from './InfoButton';
 import { isConformant } from '../../testing/isConformant';
 import { infoButtonClassNames } from './useInfoButtonStyles.styles';
 import type { RenderResult } from '@testing-library/react';
+import { act } from '@testing-library/react';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleNote(result: RenderResult) {
@@ -17,7 +18,9 @@ function queryByRoleNote(result: RenderResult) {
 
 const getPopoverSurfaceElement = (result: RenderResult) => {
   // button needs to be clicked otherwise content won't be rendered.
-  result.getByRole('button').click();
+  act(() => {
+    result.getByRole('button').click();
+  });
   const dialog = queryByRoleNote(result);
   expect(dialog).not.toBeNull();
   return dialog!;
