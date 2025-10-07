@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: derive JSXIntrinsicElementKeys type for React instead of using generated type",
+  "comment": "refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type",
   "packageName": "@fluentui/react-utilities",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
