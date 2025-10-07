@@ -68,7 +68,7 @@ const onRenderExpandedCard = (item: IExampleItem): JSXElement => {
  */
 const KeyCellWithHoverCard: React.FunctionComponent<{ item: IExampleItem }> = ({ item }) => {
   const [contentRendered, { toggle: toggleContentRendered }] = useBoolean(false);
-  const targetElementRef: React.RefObject<HTMLDivElement | null> = React.useRef<HTMLDivElement | null>(null);
+  const targetElementRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef<HTMLDivElement | null>(null);
   const expandingCardProps: IExpandingCardProps = useConst({
     onRenderCompactCard,
     onRenderExpandedCard,
