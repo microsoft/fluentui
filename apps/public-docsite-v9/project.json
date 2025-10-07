@@ -8,7 +8,14 @@
     "build-storybook": {
       "dependsOn": [
         {
-          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
+          "projects": [
+            "react-storybook-addon",
+            "react-storybook-addon-export-to-sandbox",
+            "storybook-llms-extractor",
+            "react-alert",
+            "react-infobutton",
+            "react-virtualizer"
+          ],
           "target": "build"
         }
       ]
