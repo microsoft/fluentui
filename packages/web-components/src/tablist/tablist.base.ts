@@ -138,6 +138,7 @@ export class BaseTablist extends FASTElement {
         const ariaControls = tab.getAttribute('aria-controls') ?? '';
         const rootNode = this.getRootNode() as Document | ShadowRoot;
         const panel = rootNode.getElementById(ariaControls);
+        this.disabled ? tab.setAttribute('aria-disabled', 'true') : tab.removeAttribute('aria-disabled');
         if (ariaControls && panel) {
           panel.role ??= 'tabpanel';
           panel.hidden = this.activeid !== tab.id;
