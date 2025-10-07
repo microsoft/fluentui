@@ -724,8 +724,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected _getDescribedBy: (items: T[], hasError: boolean) => string;
     // @deprecated (undocumented)
-    protected getSuggestionsAlert(suggestionAlertClassName?: string): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSXElement | undefined;
+    protected getSuggestionsAlert(suggestionAlertClassName?: string): JSXElement | undefined;
     // (undocumented)
     protected input: React_2.RefObject<IAutofill>;
     // (undocumented)
