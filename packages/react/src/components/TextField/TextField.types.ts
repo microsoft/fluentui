@@ -188,7 +188,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * change the error message displayed (if any) based on the current value. `errorMessage` and
    * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   errorMessage?: string | JSXElement;
 
   /**
@@ -201,7 +201,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   /**
    * Function called after validation completes.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onNotifyValidationResult?: (errorMessage: string | JSXElement, value: string | undefined) => void;
 
   /**
@@ -217,7 +217,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * - The resolved value is displayed as the error message.
    * - If rejected, the value is thrown away.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onGetErrorMessage?: (value: string) => string | JSXElement | PromiseLike<string | JSXElement> | undefined;
 
   /**

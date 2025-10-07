@@ -15,7 +15,7 @@ const getClassNames = classNamesFunction<ITagItemSuggestionStyleProps, ITagItemS
 /**
  * {@docCategory TagPicker}
  */
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+
 export const TagItemSuggestionBase = (props: ITagItemSuggestionProps): JSXElement => {
   const { styles, theme, children, ...rest } = props;
 

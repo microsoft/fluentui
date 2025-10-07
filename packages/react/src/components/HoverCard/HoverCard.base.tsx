@@ -122,7 +122,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
   };
 
   // Render
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   public render(): JSXElement {
     const {
       expandingCardProps,

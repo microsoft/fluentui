@@ -214,7 +214,6 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     this._events.on(this.props.selection, 'change', this._onSelectionChange);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { isModal } = this.state;
 

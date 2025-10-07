@@ -185,7 +185,6 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       getGroupItemLimit,
@@ -306,17 +305,14 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderGroupHeader = (props: IGroupHeaderProps): JSXElement => {
     return <GroupHeader {...props} />;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderGroupShowAll = (props: IGroupShowAllProps): JSXElement => {
     return <GroupShowAll {...props} />;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderGroupFooter = (props: IGroupFooterProps): JSXElement => {
     return <GroupFooter {...props} />;
   };
@@ -342,7 +338,6 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderGroup(renderCount: number): JSXElement {
     const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize, groupProps } = this.props;
     const count = group && !group.isShowingAll ? group.count : items.length;
@@ -364,7 +359,6 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSubGroup = (subGroup: IGroup, subGroupIndex: number): JSXElement | null => {
     const {
       dragDropEvents,

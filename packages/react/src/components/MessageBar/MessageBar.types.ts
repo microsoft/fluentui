@@ -30,7 +30,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
   /**
    * The actions you want to show on the other side.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   actions?: JSXElement;
 
   /**

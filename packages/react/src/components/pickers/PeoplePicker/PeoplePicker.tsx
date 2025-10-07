@@ -40,15 +40,11 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 export class NormalPeoplePickerBase extends BasePeoplePicker {
   /** Default props for NormalPeoplePicker. */
   public static defaultProps = {
-    onRenderItem: (
-      props: IPeoplePickerItemSelectedProps,
-    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSXElement => <PeoplePickerItem {...props} />,
+    onRenderItem: (props: IPeoplePickerItemSelectedProps): JSXElement => <PeoplePickerItem {...props} />,
     onRenderSuggestionsItem: (
       personaProps: IPersonaProps,
       suggestionsProps?: IBasePickerSuggestionsProps,
-    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSXElement => <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />,
+    ): JSXElement => <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />,
     createGenericItem,
   };
 }
@@ -60,14 +56,10 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
 export class CompactPeoplePickerBase extends BasePeoplePicker {
   /** Default props for CompactPeoplePicker. */
   public static defaultProps = {
-    onRenderItem: (
-      props: IPeoplePickerItemSelectedProps,
-    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSXElement => <PeoplePickerItem {...props} />,
+    onRenderItem: (props: IPeoplePickerItemSelectedProps): JSXElement => <PeoplePickerItem {...props} />,
     onRenderSuggestionsItem: (
       personaProps: IPersonaProps,
       suggestionsProps?: IBasePickerSuggestionsProps,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSXElement => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} compact={true} />
     ),
@@ -82,12 +74,10 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
   /** Default props for ListPeoplePicker. */
   public static defaultProps = {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     onRenderItem: (props: IPeoplePickerItemSelectedProps): JSXElement => <PeoplePickerItem {...props} />,
     onRenderSuggestionsItem: (
       personaProps: IPersonaProps,
       suggestionsProps?: IBasePickerSuggestionsProps,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSXElement => <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />,
     createGenericItem,
   };

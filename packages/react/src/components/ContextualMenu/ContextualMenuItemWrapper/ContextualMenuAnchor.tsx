@@ -88,10 +88,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
     return (
       <div>
         <KeytipData keytipProps={item.keytipProps} ariaDescribedBy={ariaDescribedByIds} disabled={disabled}>
-          {(
-            keytipAttributes: IKeytipDataProps,
-          ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-          JSXElement => (
+          {(keytipAttributes: IKeytipDataProps): JSXElement => (
             <a
               {...additionalItemProperties}
               {...nativeProps}

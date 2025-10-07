@@ -18,7 +18,6 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     super(props);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       onRenderIcon = this._onRenderIcon,
@@ -49,7 +48,6 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderIcon = (props: IActivityItemProps): JSXElement | React.ReactNode | null => {
     if (props.activityPersonas) {
       return this._onRenderPersonaArray(props);
@@ -58,7 +56,6 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderActivityDescription = (props: IActivityItemProps): JSXElement | null => {
     const classNames = this._getClassNames(props);
 
@@ -72,7 +69,6 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     return null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderComments = (props: IActivityItemProps): JSXElement | null => {
     const classNames = this._getClassNames(props);
 
@@ -86,7 +82,6 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     return null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderTimeStamp = (props: IActivityItemProps): JSXElement | null => {
     const classNames = this._getClassNames(props);
 
@@ -98,15 +93,13 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
   };
 
   // If activityPersonas is an array of persona props, build the persona cluster element.
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _onRenderPersonaArray = (props: IActivityItemProps): JSXElement | null => {
     const classNames = this._getClassNames(props);
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let personaElement: JSXElement | null = null;
     const activityPersonas = props.activityPersonas as Array<IPersonaSharedProps & OptionalReactKey>;
     if (activityPersonas[0].imageUrl || activityPersonas[0].imageInitials) {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const personaList: Array<JSXElement> = [];
       const showSize16Personas = activityPersonas.length > 1 || props.isCompact;
       const personaLimit = props.isCompact ? 3 : 4;

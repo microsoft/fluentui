@@ -22,7 +22,6 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       suggestionModel,

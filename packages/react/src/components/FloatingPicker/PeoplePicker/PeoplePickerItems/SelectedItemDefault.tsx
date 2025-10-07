@@ -9,7 +9,6 @@ import type { JSXElement } from '@fluentui/utilities';
 
 const styles: any = stylesImport;
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSXElement = (
   peoplePickerItemProps: IPeoplePickerItemProps,
 ) => {

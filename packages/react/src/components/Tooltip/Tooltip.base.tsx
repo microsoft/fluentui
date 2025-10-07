@@ -25,7 +25,6 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
 
   private _classNames: IProcessedStyleSet<ITooltipStyles>;
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       className,
@@ -70,7 +69,6 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderContent = (props: ITooltipProps): JSXElement => {
     if (typeof props.content === 'string') {
       return <p className={this._classNames.subText}>{props.content}</p>;

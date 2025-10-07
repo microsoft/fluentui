@@ -22,7 +22,6 @@ import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>();
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps): JSXElement => {
   const {
     item,

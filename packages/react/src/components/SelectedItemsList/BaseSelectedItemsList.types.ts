@@ -33,7 +33,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<an
   /**
    * Function that specifies how the selected item will appear.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onRenderItem?: (props: ISelectedItemProps<T>) => JSXElement;
   /**
    * Initial items that have already been selected and should appear in the people picker.

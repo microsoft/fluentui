@@ -66,7 +66,6 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
     );
 
     const defaultLabelRenderer = React.useCallback(
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
       (checkboxProps?: ICheckboxProps): JSXElement | null => {
         if (!checkboxProps) {
           return null;

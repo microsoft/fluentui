@@ -58,7 +58,7 @@ export interface IListState<T = any> {
 
 interface IPageCacheItem<T> {
   page: IPage<T>;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   pageElement?: JSXElement;
 }
 
@@ -107,12 +107,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   public static defaultProps = {
     startIndex: 0,
 
-    onRenderCell: (
-      item: any,
-      index: number,
-      containsFocus: boolean,
-    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSXElement => <>{(item && item.name) || ''}</>,
+    onRenderCell: (item: any, index: number, containsFocus: boolean): JSXElement => <>{(item && item.name) || ''}</>,
     onRenderCellConditional: undefined,
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND,
@@ -499,11 +494,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     return this._surfaceRect!.height;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement | null {
     const { className, role = 'list', onRenderSurface, onRenderRoot } = this.props;
     const { pages = [] } = this.state;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     const pageElements: JSXElement[] = [];
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
@@ -574,7 +568,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._pageCache = {};
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderPage(page: IPage<T>): JSXElement {
     const { usePageCache } = this.props;
     let cachedPage;
@@ -617,7 +610,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     return pageElement;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderRoot = (props: IListOnRenderRootProps<T>): JSXElement => {
     const { rootRef, surfaceElement, divProps } = props;
 
@@ -628,7 +620,6 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderSurface = (props: IListOnRenderSurfaceProps<T>): JSXElement => {
     const { surfaceRef, pageElements, divProps } = props;
 

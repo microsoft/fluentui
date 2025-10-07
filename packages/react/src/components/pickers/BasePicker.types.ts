@@ -55,13 +55,13 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
   /**
    * Function that specifies how the selected item will appear.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onRenderItem?: (props: IPickerItemProps<T>) => JSXElement;
 
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSXElement;
 
   /**
@@ -150,7 +150,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
    * change the error message displayed (if any) based on the current value. `errorMessage` and
    * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   errorMessage?: string | JSXElement;
 
   /**
@@ -166,7 +166,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
    * - The resolved value is displayed as the error message.
    * - If rejected, the value is thrown away.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onGetErrorMessage?: (items: T[]) => string | JSXElement | PromiseLike<string | JSXElement> | undefined;
 
   /**

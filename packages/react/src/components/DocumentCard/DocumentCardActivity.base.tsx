@@ -26,7 +26,6 @@ export class DocumentCardActivityBase extends React.Component<IDocumentCardActiv
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement | null {
     const { activity, people, styles, theme, className } = this.props;
 
@@ -60,7 +59,6 @@ export class DocumentCardActivityBase extends React.Component<IDocumentCardActiv
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderAvatar(person: IDocumentCardActivityPerson): JSXElement {
     return (
       <div className={this._classNames.avatar}>

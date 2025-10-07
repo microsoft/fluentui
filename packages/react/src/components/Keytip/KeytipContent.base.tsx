@@ -9,7 +9,6 @@ import type { JSXElement } from '@fluentui/utilities';
  * {@docCategory Keytips}
  */
 export class KeytipContentBase extends React.Component<IKeytipProps, {}> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { content, styles, theme, disabled, visible } = this.props;
 

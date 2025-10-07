@@ -8,7 +8,6 @@ import type { JSXElement } from '@fluentui/utilities';
 
 @customizable('FacepileButton', ['theme', 'styles'], true)
 export class FacepileButton extends React.Component<IButtonProps, {}> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { className, styles, ...rest } = this.props;
 

@@ -102,7 +102,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
   });
 
   // Render the core of a color cell
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   const renderColorOption = (colorOption: IColorCellProps): JSXElement => {
     const svgClassName = classNames.svg;
 
@@ -122,10 +122,9 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const onRenderItem = (option: IColorCellProps): JSXElement => {
     const { onRenderColorCellContent = renderColorOption } = props;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     return onRenderColorCellContent(option, renderColorOption) as JSXElement;
   };
 

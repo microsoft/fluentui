@@ -156,7 +156,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     this._resizeObserver?.disconnect();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement | null {
     const {
       className = '',
@@ -352,7 +351,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     return !!props.isBlocking && !!props.isOpen;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderNavigation = (props: IPanelProps): JSXElement | null => {
     if (!this.props.onRenderNavigationContent && !this.props.onRenderNavigation && !this.props.hasCloseButton) {
       return null;
@@ -365,7 +363,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderNavigationContent = (props: IPanelProps): JSXElement | null => {
     const { closeButtonAriaLabel, hasCloseButton, onRenderHeader = this._onRenderHeader } = props;
     if (hasCloseButton) {
@@ -391,10 +388,9 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
 
   private _onRenderHeader = (
     props: IPanelProps,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     defaultRender?: (props?: IPanelProps) => JSXElement | null,
     headerTextId?: string | undefined,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement | null => {
     const { headerText, headerTextProps = {} } = props;
 
@@ -416,12 +412,10 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     return null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderBody = (props: IPanelProps): JSXElement => {
     return <div className={this._classNames.content}>{props.children}</div>;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderFooter = (props: IPanelProps): JSXElement | null => {
     const { onRenderFooterContent = null } = this.props;
     if (onRenderFooterContent) {

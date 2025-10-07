@@ -54,7 +54,7 @@ export interface IListOnRenderRootProps<T> {
    * The content to be rendered as the list surface element.
    * This will have been rendered using `onRenderSurface`.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   surfaceElement: JSXElement | null;
 }
 
@@ -80,7 +80,7 @@ export interface IListOnRenderSurfaceProps<T> {
   /**
    * The content to be rendered representing all active pages.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   pageElements: JSXElement[];
 }
 

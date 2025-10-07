@@ -103,7 +103,6 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
     this._async.dispose();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { rootProps, children, theme, className, styles } = this.props;
     const { dragRect } = this.state;

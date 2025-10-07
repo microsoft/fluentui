@@ -173,7 +173,6 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const props = this.props;
     const strings = this._strings;

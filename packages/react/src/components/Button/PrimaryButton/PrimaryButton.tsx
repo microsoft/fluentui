@@ -10,7 +10,6 @@ import type { JSXElement } from '@fluentui/utilities';
  */
 @customizable('PrimaryButton', ['theme', 'styles'], true)
 export class PrimaryButton extends React.Component<IButtonProps, {}> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     return <DefaultButton {...this.props} primary={true} onRenderDescription={nullRender} />;
   }

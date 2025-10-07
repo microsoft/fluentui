@@ -65,7 +65,7 @@ export interface ITooltipHostProps extends Omit<React.HTMLAttributes<HTMLDivElem
   /**
    * Content to display in the Tooltip.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   content?: string | JSXElement | JSXElement[];
 
   /**

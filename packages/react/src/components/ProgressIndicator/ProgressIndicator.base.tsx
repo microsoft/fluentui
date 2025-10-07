@@ -36,7 +36,6 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
     this._descriptionId = id + '-description';
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       barHeight,
@@ -87,7 +86,6 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderProgress = (props: IProgressIndicatorProps): JSXElement => {
     const {
       ariaLabel,

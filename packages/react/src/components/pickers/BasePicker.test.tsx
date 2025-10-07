@@ -69,7 +69,7 @@ describe('BasePicker', () => {
     ISimple,
     IBasePickerProps<ISimple>
   >;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   const onRenderItem = (props: IPickerItemProps<ISimple>): JSXElement => (
     <div key={props.item.name}>{basicRenderer(props)}</div>
   );
@@ -637,7 +637,6 @@ describe('BasePicker', () => {
   it('focuses the last selected item after removing input', () => {
     jest.useFakeTimers();
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSXElement => (
       <div key={props.item.name} data-selection-index={props.index}>
         <button>{basicRenderer(props)}</button>
@@ -676,7 +675,6 @@ describe('BasePicker', () => {
   it('focuses the next selected item after removing a selection', () => {
     jest.useFakeTimers();
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSXElement => {
       return (
         <div key={props.item.name} data-selection-index={props.index}>

@@ -225,17 +225,14 @@ const getKey: IListProps['getKey'] = (item, _index) => {
   return null;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 const renderGroupHeader = (props: IGroupHeaderProps): JSXElement => {
   return <GroupHeader {...props} />;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 const renderGroupShowAll = (props: IGroupShowAllProps): JSXElement => {
   return <GroupShowAll {...props} />;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 const renderGroupFooter = (props: IGroupFooterProps): JSXElement | null => {
   if (props.group && props.footerText) {
     return <GroupFooter {...props} />;
@@ -531,7 +528,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
 interface IGroupItemProps<T> {
   props: T;
   render: IRenderFunction<T>;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   defaultRender: (props?: T) => JSXElement | null;
   item: any;
   selection?: ISelection;
@@ -609,7 +606,6 @@ export class GroupedListV2Wrapper
     return this._groupedList.current?.getStartItemIndexInView() || 0;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     return <GroupedListV2FC {...this.props} {...this.state} groupedListRef={this._groupedList} />;
   }

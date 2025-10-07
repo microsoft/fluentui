@@ -30,7 +30,6 @@ export interface IButtonGridCellProps<T> {
   /**
    * The render callback to handle rendering the item
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderItem: (item: T) => JSXElement;
 
   onHover?: (item?: T, event?: React.MouseEvent<HTMLButtonElement>) => void;

@@ -60,7 +60,6 @@ export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionPr
 
   const { className, ...nativeProps } = getNativeProps<{ className: string }>(rest, inputProperties);
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const defaultOnRenderLabel = (): JSXElement => {
     return (
       <span id={props.labelId} className="ms-ChoiceFieldLabel">
@@ -69,7 +68,6 @@ export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionPr
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const defaultOnRenderField = (): JSXElement => {
     const { imageAlt = '', selectedImageSrc } = props;
 

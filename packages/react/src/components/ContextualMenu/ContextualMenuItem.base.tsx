@@ -79,7 +79,6 @@ export class ContextualMenuItemBase extends React.Component<IContextualMenuItemP
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { item, classNames } = this.props;
     const renderContent = item.onRenderContent || this._renderLayout;

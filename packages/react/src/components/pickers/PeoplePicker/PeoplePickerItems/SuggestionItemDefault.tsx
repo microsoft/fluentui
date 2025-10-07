@@ -16,7 +16,6 @@ const styles: any = stylesImport;
 export const SuggestionItemNormal: (
   persona: IPersonaProps,
   suggestionProps?: IBasePickerSuggestionsProps,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ) => JSXElement = (personaProps: IPersonaProps, suggestionItemProps?: ISuggestionItemProps<any>) => {
   return (
     <div className={css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent)}>
@@ -37,7 +36,6 @@ export const SuggestionItemNormal: (
 export const SuggestionItemSmall: (
   persona: IPersonaProps,
   suggestionProps?: IBasePickerSuggestionsProps,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ) => JSXElement = (personaProps: IPersonaProps, suggestionItemProps?: ISuggestionItemProps<any>) => {
   return (
     <div className={css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent)}>

@@ -176,7 +176,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       className,
@@ -418,7 +417,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     return !!this._focusZone.current?.focus(forceIntoFirstElement);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   protected _onRenderCheck(props: IDetailsRowCheckProps): JSXElement {
     return <DetailsRowCheck {...props} />;
   }

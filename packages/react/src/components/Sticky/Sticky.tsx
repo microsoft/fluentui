@@ -155,7 +155,6 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
       _isOffsetHeightDifferent(this._nonStickyContent, this._placeHolder)) as boolean;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyClassName, children } = this.props;

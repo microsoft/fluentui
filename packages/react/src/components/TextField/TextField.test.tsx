@@ -299,7 +299,6 @@ describe('TextField with error message', () => {
     </span>
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | JSXElement | boolean): void {
     const errorMessageDOM = renderedDOM.querySelector('[data-automation-id=error-message]');
 

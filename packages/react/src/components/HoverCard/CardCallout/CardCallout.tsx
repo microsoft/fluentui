@@ -10,7 +10,7 @@ import type { JSXElement } from '@fluentui/utilities';
 
 export interface ICardCalloutProps extends Omit<IBaseCardProps<{}, {}, {}>, 'content'> {
   finalHeight?: number;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   content?: JSXElement;
 }
 

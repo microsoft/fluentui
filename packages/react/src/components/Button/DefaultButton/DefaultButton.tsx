@@ -11,7 +11,6 @@ import type { JSXElement } from '@fluentui/utilities';
  */
 @customizable('DefaultButton', ['theme', 'styles'], true)
 export class DefaultButton extends React.Component<IButtonProps, {}> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { primary = false, styles, theme } = this.props;
 

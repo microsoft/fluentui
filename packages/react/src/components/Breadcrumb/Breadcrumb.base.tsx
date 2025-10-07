@@ -79,7 +79,6 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     this._validateProps(this.props);
 
@@ -188,7 +187,6 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     const lastItemIndex = renderedItems.length - 1;
     const hasOverflowItems = renderedOverflowItems && renderedOverflowItems.length !== 0;
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const itemElements: JSXElement[] = renderedItems.map((item, index) => {
       let finalOnRenderItem = this._onRenderItem;
 
@@ -330,7 +328,6 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 function defaultOnRenderCrumbContent(item?: IBreadcrumbItem): JSXElement | null {
   return item ? <>{item.text}</> : null;
 }

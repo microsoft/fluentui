@@ -50,7 +50,7 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   onRenderSuggestion: (props: T, suggestionItemProps: ISuggestionItemProps<T>) => JSXElement;
 
   /**
@@ -193,14 +193,14 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
    * A renderer that adds an element at the end of the suggestions list it has more items than resultsMaximumNumber.
    * This should not include interactive elements as the footer is not focusable.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   resultsFooterFull?: (props: ISuggestionsProps<T>) => JSXElement;
 
   /**
    * A renderer that adds an element at the end of the suggestions list it has fewer items than resultsMaximumNumber.
    * This should not include interactive elements as the footer is not focusable.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   resultsFooter?: (props: ISuggestionsProps<T>) => JSXElement;
 
   /**

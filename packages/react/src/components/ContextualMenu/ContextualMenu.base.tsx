@@ -372,7 +372,6 @@ function useKeyHandlers(
   const shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     return (
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ev.which === KeyCodes.escape || shouldCloseSubMenu(ev) || (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey))
     );
   };
@@ -783,7 +782,6 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
       defaultRender?: IRenderFunction<IContextualMenuListProps>,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSXElement => {
       let indexCorrection = 0;
       const { items, totalItemCount, hasCheckmarks, hasIcons } = menuListProps;
@@ -810,7 +808,6 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       );
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const renderFocusZone = (children: JSXElement | null, adjustedFocusZoneProps: IFocusZoneProps): JSXElement => {
       const { focusZoneAs: ChildrenRenderer = FocusZone } = props;
       return <ChildrenRenderer {...adjustedFocusZoneProps}>{children}</ChildrenRenderer>;
@@ -829,7 +826,6 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       hasIcons: boolean,
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSXElement => {
       const renderedItems: React.ReactNode[] = [];
       const iconProps = item.iconProps || { iconName: 'None' };
@@ -912,7 +908,6 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
               totalItemCount,
               hasCheckmarks,
               hasIcons,
-              // eslint-disable-next-line @typescript-eslint/no-deprecated
             ) as JSXElement;
 
           const menuItem = props.onRenderContextualMenuItem
@@ -1389,7 +1384,6 @@ function onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLEle
 function onDefaultRenderSubMenu(
   subMenuProps: IContextualMenuProps,
   defaultRender?: IRenderFunction<IContextualMenuProps>,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSXElement {
   throw Error(
     'ContextualMenuBase: onRenderSubMenu callback is null or undefined. ' +

@@ -17,7 +17,6 @@ import type { JSXElement } from '@fluentui/utilities';
  * Helper function to render a cell for GroupedList tests
  */
 function createOnRenderCell(selection: Selection) {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSXElement {
     return (
       <DetailsRow
@@ -258,7 +257,6 @@ describe('GroupedList', () => {
       },
     ];
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     function _onRenderCell(nestingDepth: number, item: { key: string }, itemIndex: number): JSXElement {
       const id = `rendered-item-${item.key}`;
       return <div id={id} data-testid={id} />;

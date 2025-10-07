@@ -120,7 +120,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       ariaDescription,
@@ -314,7 +313,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSXElement {
     const props = this.props;
     const Tag = tag;
@@ -334,7 +332,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const Button = (keytipAttributes?: any): JSXElement => (
       <Tag {...buttonProps} {...keytipAttributes}>
         <span className={this._classNames.flexContainer} data-automationid="splitbuttonprimary">
@@ -360,10 +357,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         ariaDescribedBy={(buttonProps as any)['aria-describedby']}
         disabled={disabled}
       >
-        {(
-          keytipAttributes: any,
-        ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-        JSXElement => Button(keytipAttributes)}
+        {(keytipAttributes: any): JSXElement => Button(keytipAttributes)}
       </KeytipData>
     ) : (
       Button()
@@ -411,7 +405,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   private _onRenderIcon = (
     buttonProps?: IButtonProps,
     defaultRender?: IRenderFunction<IButtonProps>,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement | null => {
     const { iconProps } = this.props;
 
@@ -433,7 +426,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderTextContents = (): JSXElement | (JSXElement | null)[] => {
     const {
       text,
@@ -455,7 +447,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return [onRenderText(this.props, this._onRenderText), onRenderDescription(this.props, this._onRenderDescription)];
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderText = (): JSXElement | null => {
     let { text } = this.props;
     const { children } = this.props;
@@ -484,7 +475,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return this.props.text !== null && (this.props.text !== undefined || typeof this.props.children === 'string');
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderChildren = (): JSXElement | null => {
     const { children } = this.props;
 
@@ -522,7 +512,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     ) : null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderMenuIcon = (props: IButtonProps): JSXElement | null => {
     const { menuIconProps } = this.props;
 
@@ -553,7 +542,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSXElement => {
     const MenuType = this.props.menuAs ? composeComponentAs(this.props.menuAs, ContextualMenu) : ContextualMenu;
 
@@ -595,7 +583,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     this.state.menuHidden ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount) : this._dismissMenu();
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSXElement {
     const {
       styles = {},
@@ -635,7 +622,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       assign(buttonProps, primaryActionButtonProps);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const SplitButton = (keytipAttributes?: any): JSXElement => (
       <div
         {...containerProps}
@@ -669,10 +655,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
     return keytipProps ? (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {(
-          keytipAttributes: any,
-        ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-        JSXElement => SplitButton(keytipAttributes)}
+        {(keytipAttributes: any): JSXElement => SplitButton(keytipAttributes)}
       </KeytipData>
     ) : (
       SplitButton()
@@ -707,7 +690,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSXElement | null {
     if (classNames && classNames.divider) {
       const onClick = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -721,7 +703,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   private _onRenderSplitButtonMenuButton(
     classNames: ISplitButtonClassNames | undefined,
     keytipAttributes: any,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement {
     const { allowDisabledFocus, checked, disabled, splitButtonMenuProps, splitButtonAriaLabel, primaryDisabled } =
       this.props;

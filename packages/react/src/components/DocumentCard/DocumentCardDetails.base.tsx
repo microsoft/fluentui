@@ -23,7 +23,6 @@ export class DocumentCardDetailsBase extends React.Component<IDocumentCardDetail
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { children, styles, theme, className } = this.props;
 

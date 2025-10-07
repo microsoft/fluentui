@@ -28,7 +28,6 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { previewImages, styles, theme, className } = this.props;
     let style: React.CSSProperties | undefined;

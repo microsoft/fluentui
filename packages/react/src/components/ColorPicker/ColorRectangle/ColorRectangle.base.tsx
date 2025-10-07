@@ -83,7 +83,6 @@ export class ColorRectangleBase
     this._disposeListeners();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { minSize, theme, className, styles, ariaValueFormat, ariaLabel, ariaDescription } = this.props;
     const { color } = this.state;

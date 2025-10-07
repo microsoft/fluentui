@@ -12,7 +12,6 @@ import type { JSXElement } from '@fluentui/utilities';
  */
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps> = (
   props: IFocusTrapCalloutProps,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSXElement => {
   return (
     <Callout {...props}>

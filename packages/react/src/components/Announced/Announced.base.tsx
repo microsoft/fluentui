@@ -14,7 +14,6 @@ export class AnnouncedBase extends React.Component<IAnnouncedProps> {
     'aria-live': 'polite',
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { message, styles, as: Root = 'div', className } = this.props;
 

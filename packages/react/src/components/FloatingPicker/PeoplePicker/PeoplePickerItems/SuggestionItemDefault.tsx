@@ -10,7 +10,6 @@ import type { JSXElement } from '@fluentui/utilities';
 export const SuggestionItemNormal: (
   persona: IPersonaProps,
   suggestionProps?: IBasePickerSuggestionsProps,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ) => JSXElement = (personaProps: IPersonaProps, suggestionItemProps?: ISuggestionItemProps<IPersonaProps>) => {
   return (
     <div className={css('ms-PeoplePicker-personaContent', stylesImport.peoplePickerPersonaContent)}>

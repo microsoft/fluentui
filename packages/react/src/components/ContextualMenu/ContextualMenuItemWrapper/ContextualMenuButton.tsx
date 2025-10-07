@@ -116,10 +116,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
 
     return (
       <KeytipData keytipProps={keytipProps} ariaDescribedBy={ariaDescribedByIds} disabled={isItemDisabled(item)}>
-        {(
-          keytipAttributes: IKeytipDataProps,
-        ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-        JSXElement => (
+        {(keytipAttributes: IKeytipDataProps): JSXElement => (
           <button ref={this._btn} {...buttonNativeProperties} {...itemButtonProperties} {...keytipAttributes}>
             <ChildrenRenderer
               componentRef={item.componentRef}

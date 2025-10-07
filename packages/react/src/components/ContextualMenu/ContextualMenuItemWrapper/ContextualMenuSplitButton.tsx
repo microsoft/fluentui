@@ -18,7 +18,7 @@ import { getIsChecked, getMenuItemAriaRole, hasSubmenu, isItemDisabled } from '.
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import type { IKeytipProps } from '../../../Keytip';
 import type { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
@@ -66,7 +66,6 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     this._events.dispose();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement | null {
     const {
       item,
@@ -98,10 +97,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
     return (
       <KeytipData keytipProps={keytipProps} disabled={isItemDisabled(item)}>
-        {(
-          keytipAttributes: any,
-        ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-        JSXElement => (
+        {(keytipAttributes: any): JSXElement => (
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
             ref={(splitButton: HTMLDivElement) => {

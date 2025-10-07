@@ -8,7 +8,6 @@ import type { IIconRecord, IIconSubsetRecord } from '../../Styling';
 import type { JSXElement } from '@fluentui/utilities';
 
 export interface IIconContent {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   children?: string | JSXElement;
   iconClassName?: string;
   fontFamily?: string;

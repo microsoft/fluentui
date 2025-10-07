@@ -12,7 +12,6 @@ export interface IPeoplePickerItemState {
 }
 
 export interface ISelectedItemWithContextMenuProps extends IBaseProps {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   renderedItem: JSXElement;
   beginEditing?: (item: IExtendedPersonaProps) => void;
   menuItems: IContextualMenuItem[];
@@ -32,7 +31,6 @@ export class SelectedItemWithContextMenu extends React.Component<
     this.state = { contextualMenuVisible: false };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     return (
       <div ref={this.itemElement} onContextMenu={this._onClick}>

@@ -38,7 +38,7 @@ export interface ITextFieldState {
    * Dynamic error message returned by `onGetErrorMessage`.
    * Use `this._errorMessage` to get the actual current error message.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   errorMessage: string | JSXElement;
 
   /**
@@ -198,7 +198,6 @@ export class TextFieldBase
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       borderless,
@@ -425,7 +424,6 @@ export class TextFieldBase
     });
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderLabel = (props: ITextFieldProps): JSXElement | null => {
     const { label, required } = props;
     // IProcessedStyleSet definition requires casting for what Label expects as its styles prop
@@ -443,7 +441,6 @@ export class TextFieldBase
     return null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderDescription = (props: ITextFieldProps): JSXElement | null => {
     if (props.description) {
       return <span className={this._classNames.description}>{props.description}</span>;
@@ -451,13 +448,11 @@ export class TextFieldBase
     return null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderPrefix(props: ITextFieldProps): JSXElement {
     const { prefix } = props;
     return <span style={{ paddingBottom: '1px' }}>{prefix}</span>;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderSuffix(props: ITextFieldProps): JSXElement {
     const { suffix } = props;
     return <span style={{ paddingBottom: '1px' }}>{suffix}</span>;
@@ -469,7 +464,7 @@ export class TextFieldBase
    * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private get _errorMessage(): string | JSXElement {
     const { errorMessage = this.state.errorMessage } = this.props;
     return errorMessage || '';
@@ -481,7 +476,7 @@ export class TextFieldBase
    * - If error message is string, it will render using the built in styles.
    * - If error message is an element, user has full control over how it's rendered.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _renderErrorMessage(): JSXElement | null {
     const errorMessage = this._errorMessage;
 
@@ -535,7 +530,6 @@ export class TextFieldBase
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderInput(): JSXElement | null {
     const {
       ariaLabel,
@@ -630,7 +624,6 @@ export class TextFieldBase
       } else {
         const currentValidation: number = ++this._lastValidation;
 
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
         result.then((errorMessage: string | JSXElement) => {
           if (currentValidation === this._lastValidation) {
             this.setState({ errorMessage });
@@ -643,7 +636,6 @@ export class TextFieldBase
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _notifyAfterValidate(value: string | undefined, errorMessage: string | JSXElement): void {
     if (value === this.value && this.props.onNotifyValidationResult) {
       this.props.onNotifyValidationResult(errorMessage, value);

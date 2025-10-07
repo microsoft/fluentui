@@ -69,7 +69,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       items,
@@ -124,7 +123,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     this._resizeGroup.current && this._resizeGroup.current.remeasure();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderData = (data: ICommandBarData): JSXElement => {
     const { ariaLabel, primaryGroupAriaLabel, farItemsGroupAriaLabel } = this.props;
     const hasSecondSet = data.farItems && data.farItems.length > 0;
@@ -163,7 +161,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderItem = (item: ICommandBarItemProps): JSXElement | React.ReactNode => {
     if (item.onRender) {
       // These are the top level items, there is no relevant menu dismissing function to
@@ -201,7 +198,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     return this._commandButton(item, commandButtonProps);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _commandButton = (item: ICommandBarItemProps, props: ICommandBarItemProps): JSXElement => {
     const ButtonAs = this.props.buttonAs as IComponentAs<ICommandBarItemProps> | undefined;
     const CommandBarButtonAs = item.commandBarButtonAs as IComponentAs<ICommandBarItemProps> | undefined;
@@ -235,7 +231,6 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSXElement => {
     const {
       overflowButtonProps = {}, // assure that props is not empty

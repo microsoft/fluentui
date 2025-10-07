@@ -16,7 +16,6 @@ export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { className, styles, theme } = this.props;
 
@@ -32,7 +31,6 @@ export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderChildrenAsActions(): (JSXElement | null)[] | null | undefined {
     return React.Children.map(this.props.children, child =>
       child ? <span className={this._classNames.action}>{child}</span> : null,

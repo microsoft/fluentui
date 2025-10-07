@@ -33,7 +33,6 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
       this._async.dispose();
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     public render(): JSXElement {
       const { containsFocus } = this.state;
 

@@ -145,7 +145,6 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { className } = this.props;
     return (
@@ -155,7 +154,6 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   protected renderSuggestions(): JSXElement | null {
     const TypedSuggestionsControl = this.SuggestionsControlOfProperType;
 

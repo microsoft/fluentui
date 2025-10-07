@@ -11,7 +11,6 @@ import type { JSXElement } from '@fluentui/utilities';
  */
 @customizable('MessageBarButton', ['theme', 'styles'], true)
 export class MessageBarButton extends React.Component<IButtonProps, {}> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { styles, theme } = this.props;
 

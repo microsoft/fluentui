@@ -102,7 +102,6 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._events.dispose();
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     public render(): JSXElement | null {
       const { responsiveMode } = this.state;
 

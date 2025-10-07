@@ -49,7 +49,6 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
   const cellValueKeys = cellValueKeysRef.current || (cellValueKeysRef.current = {});
 
   const defaultOnRenderField = React.useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (fieldProps: IDetailsColumnFieldProps): JSXElement | null => {
       const { column, cellValueKey, className, onRender, item: fieldItem, itemIndex: fieldItemIndex } = fieldProps;
 

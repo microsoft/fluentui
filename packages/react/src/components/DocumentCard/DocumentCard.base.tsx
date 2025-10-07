@@ -50,7 +50,6 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;

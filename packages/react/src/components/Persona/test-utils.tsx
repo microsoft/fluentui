@@ -10,9 +10,7 @@ import type { JSXElement } from '@fluentui/utilities';
 export const wrapPersona = (
   example: IPersonaSharedProps,
   shouldWrapPersonaCoin: boolean = false,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSXElement | null) => {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return (coinProps, defaultCoinRenderer): JSXElement | null => {
     return shouldWrapPersonaCoin ? (
       <span id="persona-coin-container">{defaultCoinRenderer(coinProps)}</span>

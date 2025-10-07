@@ -31,7 +31,7 @@ export interface ITooltipProps extends Omit<React.HTMLAttributes<HTMLDivElement 
   /**
    * Content to be passed to the tooltip
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   content?: string | JSXElement | JSXElement[];
 
   /**

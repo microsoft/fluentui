@@ -34,7 +34,6 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const {
       showCloseButton,

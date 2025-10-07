@@ -304,7 +304,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const id = this._id;
 
@@ -591,13 +590,13 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render text in dropdown input */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _onRenderTitle = (items: IDropdownOption[]): JSXElement => {
     return <>{this._getTitle(items)}</>;
   };
 
   /** Render placeholder text in dropdown input */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _onRenderPlaceholder = (props: IDropdownProps): JSXElement | null => {
     if (!this._getPlaceholder()) {
       return null;
@@ -606,7 +605,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render Callout or Panel container and pass in list */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _onRenderContainer = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSXElement => {
     const { calloutProps, panelProps } = props;
     const { responsiveMode, dropdownWidth } = this.props;
@@ -661,13 +660,13 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render Caret Down Icon */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _onRenderCaretDown = (props: IDropdownProps): JSXElement => {
     return <Icon className={this._classNames.caretDown} iconName="ChevronDown" aria-hidden={true} />;
   };
 
   /** Wrap item list in a FocusZone */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _renderFocusableList(props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSXElement {
     const { onRenderList = this._onRenderList, label, ariaLabel, multiSelect } = props;
 
@@ -696,13 +695,12 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   }
 
   /** Render List of items */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSXElement => {
     const { onRenderItem = this._onRenderItem } = props;
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let queue: { id?: string; items: JSXElement[] } = { items: [] };
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     let renderedList: JSXElement[] = [];
 
     const emptyQueue = (): void => {
@@ -760,7 +758,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return <>{renderedList}</>;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderItem = (item: IDropdownOption): JSXElement | null => {
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
@@ -772,7 +769,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSeparator(item: IDropdownOption): JSXElement | null {
     const { index, key } = item;
     const separatorClassName = item.hidden ? this._classNames.dropdownDividerHidden : this._classNames.dropdownDivider;
@@ -782,7 +778,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return null;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderHeader(item: IDropdownOption): JSXElement {
     const { onRenderOption = this._onRenderOption } = this.props;
     const { key, id } = item;
@@ -797,7 +792,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderOption = (item: IDropdownOption): JSXElement => {
     const {
       onRenderOption = this._onRenderOption,
@@ -887,7 +881,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render content of item (i.e. text/icon inside of button) */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _onRenderOption = (item: IDropdownOption): JSXElement => {
     return <span className={this._classNames.dropdownOptionText}>{item.text}</span>;
   };
@@ -896,7 +890,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * Render content of a multiselect item label.
    * Text within the label is aria-hidden, to prevent duplicate input/label exposure
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _onRenderMultiselectOption = (item: IDropdownOption): JSXElement => {
     return (
       <span id={item.id} aria-hidden="true" className={this._classNames.dropdownOptionText}>
@@ -906,7 +900,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render custom label for multiselect checkbox items */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _onRenderItemLabel = (item: IDropdownOption): JSXElement | null => {
     const { onRenderOption = this._onRenderMultiselectOption } = this.props;
     return onRenderOption(item, this._onRenderMultiselectOption);
@@ -1331,7 +1325,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return disabled;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderLabel = (props: IDropdownProps): JSXElement | null => {
     const { label, required, disabled } = props;
 

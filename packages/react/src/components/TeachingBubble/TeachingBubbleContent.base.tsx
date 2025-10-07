@@ -87,15 +87,14 @@ export const TeachingBubbleContentBase: React.FunctionComponent<ITeachingBubbleP
 
   useOnEvent(documentRef, 'keydown', onKeyDown as (ev: Event) => void);
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   let imageContent: JSXElement | undefined;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   let headerContent: JSXElement | undefined;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   let bodyContent: JSXElement | undefined;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   let footerContent: JSXElement | undefined;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   let closeButton: JSXElement | undefined;
 
   if (illustrationImage && illustrationImage.src) {

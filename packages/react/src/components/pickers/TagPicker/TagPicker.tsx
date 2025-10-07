@@ -14,15 +14,9 @@ import type { JSXElement } from '@fluentui/utilities';
  */
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
   public static defaultProps = {
-    onRenderItem: (
-      props: ITagItemProps,
-    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSXElement => <TagItem {...props}>{props.item.name}</TagItem>,
+    onRenderItem: (props: ITagItemProps): JSXElement => <TagItem {...props}>{props.item.name}</TagItem>,
 
-    onRenderSuggestionsItem: (
-      props: ITag,
-    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSXElement => <TagItemSuggestion>{props.name}</TagItemSuggestion>,
+    onRenderSuggestionsItem: (props: ITag): JSXElement => <TagItemSuggestion>{props.name}</TagItemSuggestion>,
   };
 }
 

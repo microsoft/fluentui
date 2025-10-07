@@ -94,7 +94,6 @@ describe('OverflowSet', () => {
     let overflowItems: IOverflowSetItemProps[];
     const layerRef = React.createRef<KeytipLayerBase>();
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderItem = (item: IOverflowSetItemProps): JSXElement => {
       return (
         <CommandBarButton {...item} menuProps={item.subMenuProps}>
@@ -103,7 +102,6 @@ describe('OverflowSet', () => {
       );
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderOverflowButton = (overflowElements: any[] | undefined): JSXElement => {
       return (
         <CommandBarButton
@@ -578,7 +576,6 @@ describe('OverflowSet', () => {
             },
           ];
 
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
           const delayedOverflowButton = (overflowElements: any[] | undefined): JSXElement => {
             // Overflow button which delays 2s before opening the menu
             // This simulates latency when opening the menu

@@ -17,7 +17,6 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { styles, theme, className } = this.props;
 
@@ -26,7 +25,6 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
       className,
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const content: JSXElement = (
       <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this._onKeyDown}>
         {this.props.onRenderPlainCard!(this.props.renderData)}

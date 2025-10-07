@@ -28,7 +28,6 @@ export interface IButtonGridProps
    * Custom renderer for the individual items
    */
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderItem: (item: any, index: number) => JSXElement;
 
   /**
