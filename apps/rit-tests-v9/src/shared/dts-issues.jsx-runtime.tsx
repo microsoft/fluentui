@@ -44,7 +44,7 @@ export const RecompositionDemo = () => (
         Click me
       </Button>
     </div>
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+    <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 8 }}>
       <div>
         <strong>Recomposed (icon after)</strong>
       </div>
