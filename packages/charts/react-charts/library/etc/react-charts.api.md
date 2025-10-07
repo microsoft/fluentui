@@ -6,6 +6,7 @@
 
 import { CurveFactory } from 'd3-shape';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { RefObject } from 'react';
 import { SankeyGraph } from 'd3-sankey';
@@ -295,6 +296,8 @@ export interface ChartPopoverProps {
     isPopoverOpen?: boolean;
     // (undocumented)
     legend?: string | number | Date;
+    // (undocumented)
+    positioning?: PositioningShorthand;
     // (undocumented)
     ratio?: [number, number];
     // (undocumented)

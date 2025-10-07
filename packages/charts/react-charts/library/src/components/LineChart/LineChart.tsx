@@ -197,11 +197,11 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<LineChartDataPoint | null>(null);
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
     const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
-    const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const [YValue, setYValue] = React.useState<number | string>('');
     const [legendVal, setLegendVal] = React.useState<string>('');
     const [lineColor, setLineColor] = React.useState<string>('');
+    const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<any[]>([]);
@@ -297,18 +297,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             };
           })
         : [];
-    }
-
-    function updatePosition(newX: number, newY: number) {
-      const threshold = 1; // Set a threshold for movement
-      const { x, y } = clickPosition;
-      // Calculate the distance moved
-      const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
-      // Update the position only if the distance moved is greater than the threshold
-      if (distance > threshold) {
-        setClickPosition({ x: newX, y: newY });
-        setPopoverOpen(true);
-      }
     }
 
     function _getCustomizedCallout() {
@@ -1400,6 +1388,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         (nearestCircleToHighlight !== null &&
           pointToHighlight !== null &&
           (nearestCircleToHighlight.x !== pointToHighlight.x || nearestCircleToHighlight.y !== pointToHighlight.y));
+      const targetElement = document.getElementById(`${_staticHighlightCircle}_${linenumber}`);
       // if no points need to be called out then don't show vertical line and callout card
       if (found && pointToHighlightUpdated) {
         _uniqueCallOutID = `#${_staticHighlightCircle}_${linenumber}`;
@@ -1415,7 +1404,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           .attr('y2', `${lineHeight - 5 - yScale(pointToHighlight.y)}`);
 
         setNearestCircleToHighlight(pointToHighlight);
-        updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+        setRefSelected(targetElement);
+        setPopoverOpen(true);
         setStackCalloutProps(found!);
         setYValueHover(found.values);
         setDataPointCalloutProps(found!);
@@ -1434,24 +1424,17 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       event: React.FocusEvent<SVGCircleElement | SVGPathElement, Element>,
       lineId: string,
       x: number | Date,
-
       xAxisCalloutData: string | undefined,
       circleId: string,
       xAxisCalloutAccessibilityData?: AccessibilityProps,
     ) {
-      let cx = 0;
-      let cy = 0;
-
-      const targetRect = (event.target as SVGCircleElement | SVGPathElement).getBoundingClientRect();
-      cx = targetRect.left + targetRect.width / 2;
-      cy = targetRect.top + targetRect.height / 2;
-      updatePosition(cx, cy);
       _uniqueCallOutID = circleId;
       const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
       // if no points need to be called out then don't show vertical line and callout card
 
+      const targetElement = document.getElementById(circleId);
       if (found) {
         d3Select(`#${_verticalLine}`)
           .attr('transform', () => `translate(${_xAxisScale(x)}, 0)`)
@@ -1461,6 +1444,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             setPopoverOpen(true);
             xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
             setYValueHover(found.values);
+            setRefSelected(targetElement);
             setStackCalloutProps(found!);
             setDataPointCalloutProps(found!);
             setActivePoint(circleId);
@@ -1500,7 +1484,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         }
       }
       // if no points need to be called out then don't show vertical line and callout card
-
+      const targetElement = document.getElementById(circleId);
       if (found) {
         d3Select(`#${_verticalLine}`)
           .attr('transform', () => `translate(${_xAxisScale(x)}, ${yScale(y)})`)
@@ -1509,7 +1493,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
         if (_uniqueCallOutID !== circleId) {
           _uniqueCallOutID = circleId;
-          updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+          setRefSelected(targetElement);
+          setPopoverOpen(true);
           xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
           setYValueHover(found.values);
           setYValue(yVal);
@@ -1713,8 +1698,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       'data-is-focusable': true,
       xAxisCalloutAccessibilityData: xAxisCalloutAccessibilityData,
       ...props.calloutProps,
-      clickPosition: clickPosition,
       isPopoverOpen: isPopoverOpen,
+      positioning: {
+        target: refSelected,
+      },
       isCalloutForStack: props.isCalloutForStack,
       culture: props.culture,
       isCartesian: true,
