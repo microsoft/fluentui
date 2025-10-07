@@ -27,7 +27,7 @@ const CollapsibleSectionRecursiveExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example.tsx') as string;
 
 import { CollapsibleSectionStyledExample } from './CollapsibleSection.Styled.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const CollapsibleSectionStyledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/CollapsibleSection/CollapsibleSection.Styled.Example.tsx') as string;
 

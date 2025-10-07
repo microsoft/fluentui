@@ -6,7 +6,7 @@ import {
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru } from '@fluentui/example-data';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const _suggestions = [
   {

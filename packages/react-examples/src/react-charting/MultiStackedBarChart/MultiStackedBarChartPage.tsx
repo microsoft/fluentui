@@ -10,7 +10,7 @@ import {
 import { MultiStackedBarChartBasicExample } from './MultiStackedBarChart.Example';
 import { MultiStackedBarChartWithPlaceholderExample } from './MultiStackedBarChartWithPlaceHolder.Example';
 import { MultiStackedBarChartVariantExample } from './MultiStackedBarChart.Variant.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const MultiStackedBarChartExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/MultiStackedBarChart.Example.tsx') as string;

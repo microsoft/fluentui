@@ -247,9 +247,12 @@ describe('FocusZone', () => {
         <button key="0" id="outer" data-is-visible="true">
           outer
         </button>
-        <FocusZone key="fz" ref={focus => {
-          (focusZone = focus);
-        }}>
+        <FocusZone
+          key="fz"
+          ref={focus => {
+            focusZone = focus;
+          }}
+        >
           <button key="a" id="a" data-is-visible="true">
             button a
           </button>
@@ -274,9 +277,12 @@ describe('FocusZone', () => {
         <button key="0" id="outer" data-is-visible="true">
           outer
         </button>
-        <FocusZone key="fz" ref={focus => {
-          (focusZone = focus);
-        }}>
+        <FocusZone
+          key="fz"
+          ref={focus => {
+            focusZone = focus;
+          }}
+        >
           <button key="b" id="b" data-is-visible="true">
             button b
           </button>
@@ -299,9 +305,12 @@ describe('FocusZone', () => {
     let focusZone: FocusZone | null = null;
     // Render component.
     render(
-      <FocusZone key="fz" ref={focus => {
-        (focusZone = focus);
-      }}>
+      <FocusZone
+        key="fz"
+        ref={focus => {
+          focusZone = focus;
+        }}
+      >
         <button key="a" id="a" data-is-visible="true">
           button a
         </button>
@@ -320,9 +329,12 @@ describe('FocusZone', () => {
 
     // Render component without button A.
     render(
-      <FocusZone key="fz" ref={focus => {
-        (focusZone = focus);
-      }}>
+      <FocusZone
+        key="fz"
+        ref={focus => {
+          focusZone = focus;
+        }}
+      >
         <button key="b" id="b" data-is-visible="true">
           button b
         </button>

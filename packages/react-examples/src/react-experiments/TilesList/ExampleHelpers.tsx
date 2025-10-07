@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-experiments/lib/TilesList';
 import { lorem } from '@fluentui/example-data';
 import { IRenderFunction } from '@fluentui/utilities';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 type IAspectRatioByProbability = { [probability: string]: number };
 

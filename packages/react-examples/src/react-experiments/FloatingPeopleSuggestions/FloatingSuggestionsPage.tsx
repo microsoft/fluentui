@@ -12,7 +12,7 @@ import { FloatingPeopleSuggestionsCustomRenderExample } from './FloatingPeopleSu
 const FloatingPeoplePickerSuggestionsCustomRenderCode =
   require('!raw-loader?esModule=false!./FloatingPeopleSuggestions.CustomRender.Example') as string;
 import { FloatingPeopleSuggestionsHeaderFooterExample } from './FloatingPeopleSuggestions.HeaderFooter.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const FloatingPeoplePickerSuggestionsHeaderFooterCode =
   require('!raw-loader?esModule=false!./FloatingPeopleSuggestions.HeaderFooter.Example') as string;
 

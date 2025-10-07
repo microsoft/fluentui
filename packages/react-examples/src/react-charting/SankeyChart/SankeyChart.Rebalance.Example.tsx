@@ -7,7 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import * as React from 'react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const enum DataSouce {
   Simple,

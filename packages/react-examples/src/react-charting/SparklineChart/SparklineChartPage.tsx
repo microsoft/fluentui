@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { SparklineChartBasicExample } from './SparklineChart.Basic.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const SparklineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/SparklineChart.Basic.Example.tsx') as string;

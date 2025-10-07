@@ -8,7 +8,7 @@ import {
   initializeFolderCovers,
 } from '@fluentui/react-experiments';
 import { ISize, fitContentToBounds } from '@fluentui/react-experiments/lib/Utilities';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 initializeFolderCovers();
 interface IFolderCoverWithImageProps extends IFolderCoverProps {

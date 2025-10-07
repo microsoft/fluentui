@@ -3,7 +3,7 @@ import { VirtualizedList } from '@fluentui/react-experiments/lib/VirtualizedList
 import { ScrollContainer } from '@fluentui/react-experiments/lib/utilities/scrolling/ScrollContainer';
 
 import * as VirtualizedListExampleStylesModule from './VirtualizedList.Example.scss';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IItem {
   key: string;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PieChart, IPieChartProps } from '@fluentui/react-charting';
 import { Stack, StackItem } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export class PieChartBasicExample extends React.Component<IPieChartProps, { width: number; height: number }> {
   constructor(props: IPieChartProps) {

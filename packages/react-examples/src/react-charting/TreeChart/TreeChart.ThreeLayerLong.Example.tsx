@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TreeChart, ITreeProps, TreeTraverse, NodesComposition, ITreeState } from '@fluentui/react-charting';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const threeLayerChart = {
   name: 'Root Node',
   subname: 'subtext',

@@ -3,7 +3,7 @@ import { Separator } from '@fluentui/react/lib/Separator';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 import { Text } from '@fluentui/react/lib/Text';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const stackTokens: IStackTokens = { childrenGap: 12 };
 

@@ -12,7 +12,7 @@ import { ScatterChartBasicExample } from './ScatterChart.Basic.Example';
 import { ScatterChartDateExample } from './ScatterChart.DateAxis.Example';
 import { ScatterChartStringExample } from './ScatterChart.StringAxis.Example';
 import { ScatterChartLogAxisExample } from './ScatterChart.LogAxis.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const ScatterChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/ScatterChart/ScatterChart.Basic.Example.tsx') as string;

@@ -10,7 +10,7 @@ import {
 
 import { PieChartBasicExample } from './PieChart.Basic.Example';
 import { PieChartDynamicExample } from './PieChart.Dynamic.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const PieChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/PieChart/PieChart.Basic.Example.tsx') as string;

@@ -364,7 +364,10 @@ function useAutoFocus({ preventFocusOnMount }: ICoachmarkProps) {
   return entityHost;
 }
 
-function useEntityHostMeasurements(props: ICoachmarkProps, entityInnerHostElementRef: React.RefObject<HTMLDivElement | null>) {
+function useEntityHostMeasurements(
+  props: ICoachmarkProps,
+  entityInnerHostElementRef: React.RefObject<HTMLDivElement | null>,
+) {
   /** Is the teaching bubble currently retrieving the original dimensions of the hosted entity. */
   const [isMeasuring, setIsMeasuring] = React.useState<boolean>(!!props.isCollapsed);
   /** Cached width and height of _entityInnerHostElement */

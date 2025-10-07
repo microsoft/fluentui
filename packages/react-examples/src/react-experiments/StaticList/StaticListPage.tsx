@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@fluentui/react-docsite-components';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export class StaticListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSXElement {

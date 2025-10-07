@@ -7,7 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IStackedBarState {
   hideTooltip: boolean;

@@ -14,7 +14,7 @@ import { StackedBarChartMultipleExample } from './StackedBarChart.Multiple.Examp
 import { StackedBarChartDynamicExample } from './StackedBarChart.Dynamic.Example';
 import { StackedBarChartBaseBarExample } from './StackedBarChart.BaseBar.Example';
 import { StackedBarChartCustomAccessibilityExample } from './StackedBarChart.CustomAccessibility.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const StackedBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Basic.Example.tsx') as string;

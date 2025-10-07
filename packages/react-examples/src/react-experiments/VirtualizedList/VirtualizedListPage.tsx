@@ -7,7 +7,7 @@ import {
 } from '@fluentui/react-docsite-components';
 import { VirtualizedListBasicExample } from './VirtualizedList.Basic.Example';
 import { VirtualizedListBasicExample2 } from './VirtualizedList.Basic2.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const VirtualizedListBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/VirtualizedList/VirtualizedList.Basic.Example.tsx') as string;

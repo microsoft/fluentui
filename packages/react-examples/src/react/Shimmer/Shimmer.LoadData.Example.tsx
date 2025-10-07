@@ -4,7 +4,7 @@ import { Persona, PersonaSize, PersonaPresence } from '@fluentui/react/lib/Perso
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { useBoolean } from '@fluentui/react-hooks';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const wrapperClass = mergeStyles({
   padding: 2,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart, DataVizPalette, AxisScaleType } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption, Stack, getId } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const data: IChartProps = {
   chartTitle: 'Line Chart',

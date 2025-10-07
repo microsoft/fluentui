@@ -10,7 +10,7 @@ import {
 
 import { GanttChartBasicExample } from './GanttChart.Basic.Example';
 import { GanttChartGroupedExample } from './GanttChart.Grouped.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const GanttChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GanttChart/GanttChart.Basic.Example.tsx') as string;

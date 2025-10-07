@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IStackedBarState {
   hideTooltip: boolean;

@@ -7,7 +7,7 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { LayoutGroupBasicExample } from './LayoutGroup.Basic.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const LayoutGroupBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/LayoutGroup/LayoutGroup.Basic.Example.tsx') as string;
 

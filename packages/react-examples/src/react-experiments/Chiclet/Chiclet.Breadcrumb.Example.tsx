@@ -5,7 +5,7 @@ import { Icon } from '@fluentui/react/lib/Icon';
 import { TooltipHost, TooltipOverflowMode } from '@fluentui/react/lib/Tooltip';
 import { getRTL } from '@fluentui/react/lib/Utilities';
 import { mergeStyles, FontWeights } from '@fluentui/react/lib/Styling';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 

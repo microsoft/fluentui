@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IDataPoint, PieChart, IPieChartProps, DataVizPalette } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Stack, StackItem } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IExampleState {
   dynamicData: IDataPoint[];

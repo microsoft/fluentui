@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@fluentui/react-docsite-components';
 
 import { FileTypeIconBasicExample } from './FileTypeIcon.Basic.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const FileTypeIconBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/FileTypeIcon/FileTypeIcon.Basic.Example.tsx') as string;
 

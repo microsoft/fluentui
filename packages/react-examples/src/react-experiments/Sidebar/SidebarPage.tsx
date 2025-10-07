@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-docsite-components';
 import { SidebarBasicExample } from './Sidebar.Basic.Example';
 import { SidebarCollapsibleExample } from './Sidebar.Collapsed.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const SidebarBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Sidebar/Sidebar.Basic.Example.tsx') as string;

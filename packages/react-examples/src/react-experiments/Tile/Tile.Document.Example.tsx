@@ -12,7 +12,7 @@ import {
 } from '@fluentui/react-experiments';
 import { lorem } from '@fluentui/example-data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const TileExampleStyles = TileExampleStylesModule as any;
 

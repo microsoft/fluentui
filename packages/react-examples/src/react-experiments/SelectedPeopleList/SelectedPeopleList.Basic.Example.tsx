@@ -4,7 +4,7 @@ import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { IPersona } from '@fluentui/react/lib/Persona';
 import { people } from '@fluentui/example-data';
 import { SelectedPeopleList } from '@fluentui/react-experiments/lib/SelectedItemsList';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersona[];

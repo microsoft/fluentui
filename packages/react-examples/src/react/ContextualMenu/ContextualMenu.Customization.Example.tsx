@@ -10,7 +10,7 @@ import { FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { css } from '@fluentui/react/lib/Utilities';
 import { useConst } from '@fluentui/react-hooks';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export const ContextualMenuCustomizationExample: React.FunctionComponent = () => {
   const menuProps = useConst<IContextualMenuProps>(() => ({

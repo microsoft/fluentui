@@ -13,7 +13,7 @@ import {
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IExampleState {
   dynamicData: IChartProps;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SignalField, SignalFieldMode, YouCheckedOutSignal, AwaitingApprovalSignal } from '@fluentui/react-experiments';
 import { lorem } from '@fluentui/example-data';
 import { Checkbox } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface ISignalFieldBasicExampleState {
   mode: SignalFieldMode;

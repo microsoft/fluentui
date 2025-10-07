@@ -3,7 +3,7 @@ import { IComponentDemoPageProps, ComponentPage, ExampleCard } from '@fluentui/r
 
 import { ThemingSchemesVariantExample } from './Theming.Schemes.Variant.Example';
 import { ThemingSchemesCustomExample } from './Theming.Schemes.Custom.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const ThemingSchemesVariantExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Theming/Theming.Schemes.Variant.Example.tsx') as string;

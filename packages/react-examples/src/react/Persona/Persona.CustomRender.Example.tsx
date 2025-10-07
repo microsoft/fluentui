@@ -10,7 +10,7 @@ import {
 import { Icon, IIconStyles } from '@fluentui/react/lib/Icon';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { TestImages } from '@fluentui/example-data';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const personaStyles: Partial<IPersonaStyles> = { root: { margin: '0 0 10px 0' } };
 const iconStyles: Partial<IIconStyles> = { root: { marginRight: 5 } };

@@ -10,7 +10,7 @@ import { PaginationButtonsBasicExample } from './Pagination.Buttons.Basic.Exampl
 import { PaginationButtonsCustomizationExample } from './Pagination.Buttons.Customization.Example';
 import { PaginationButtonsCustomizationRoundExample } from './Pagination.Buttons.Customization.Round.Example';
 import { PaginationComboBoxExample } from './Pagination.ComboBox.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const PaginationButtonsBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Pagination/Pagination.Buttons.Basic.Example.tsx') as string;
 const PaginationButtonsCustomizationExampleCode =

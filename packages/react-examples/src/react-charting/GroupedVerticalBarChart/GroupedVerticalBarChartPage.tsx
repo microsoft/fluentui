@@ -15,7 +15,7 @@ import { GroupedVerticalBarChartCustomAccessibilityExample } from './GroupedVert
 import { GroupedVerticalBarChartSecondaryYAxisExample } from './GroupedVerticalBarChart.SecondaryYAxis.Example';
 import { GroupedVerticalBarChartNegativeExample } from './GroupedVerticalBarChart.Negative.Example';
 import { GroupedVerticalBarChartLineExample } from './GroupedVerticalBarChart.Line.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const GroupedVerticalBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;

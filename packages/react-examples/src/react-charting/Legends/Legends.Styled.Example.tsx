@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ILegend, Legends, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { FontWeights } from '@fluentui/react/lib/Styling';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export class LegendStyledExample extends React.Component<{}, {}> {
   public render(): JSXElement {

@@ -22,7 +22,7 @@ import {
 import * as TilesListExampleStylesModule from './TilesList.Example.scss';
 import { lorem } from '@fluentui/example-data';
 import { SignalField, SharedSignal, CommentsSignal } from '@fluentui/react-experiments/lib/Signals';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const TilesListExampleStyles = TilesListExampleStylesModule as any;
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
 // TODO: move this file to Accordion
 import { Accordion } from '@fluentui/react-experiments/lib/Accordion';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export class CollapsibleSectionAccordionExample extends React.Component<{}, {}> {
   public render(): JSXElement {

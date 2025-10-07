@@ -8,7 +8,7 @@ import {
 import { UnifiedPeoplePickerExample } from './UnifiedPeoplePicker.Example';
 import { UnifiedPeoplePickerWithEditExample } from './UnifiedPeoplePicker.WithEdit.Example';
 import { DoubleUnifiedPeoplePickerExample } from './DoubleUnifiedPeoplePicker.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const UnifiedPeoplePickerExampleCode = require('!raw-loader?esModule=false!./UnifiedPeoplePicker.Example') as string;
 const UnifiedPeoplePickerWithEditExampleCode =

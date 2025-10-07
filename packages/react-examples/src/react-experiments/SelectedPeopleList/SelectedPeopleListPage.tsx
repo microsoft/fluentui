@@ -31,7 +31,7 @@ const SelectedPeopleListWithEditExampleCode =
   require('!raw-loader?esModule=false!./SelectedPeopleList.WithEdit.Example') as string;
 
 import { SelectedPeopleListWithContextMenuExample } from './SelectedPeopleList.WithContextMenu.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const SelectedPeopleListWithContextMenuExampleCode =
   require('!raw-loader?esModule=false!./SelectedPeopleList.WithContextMenu.Example') as string;
 

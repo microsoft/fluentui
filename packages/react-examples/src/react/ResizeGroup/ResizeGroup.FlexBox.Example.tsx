@@ -2,7 +2,7 @@ import * as React from 'react';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { ResizeGroup } from '@fluentui/react/lib/ResizeGroup';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const leftRightBoxClassName = mergeStyles({
   display: 'flex',

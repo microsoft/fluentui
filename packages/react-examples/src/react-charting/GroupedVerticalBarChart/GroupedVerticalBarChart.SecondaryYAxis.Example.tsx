@@ -7,7 +7,7 @@ import {
   IGroupedVerticalBarChartData,
 } from '@fluentui/react-charting';
 import { getId } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const data: IGroupedVerticalBarChartData[] = [
   {

@@ -13,7 +13,7 @@ import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Sel
 import { Icon } from '@fluentui/react/lib/Icon';
 import { useConst } from '@fluentui/react-hooks';
 import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const groupCount = 3;
 const groupDepth = 1;

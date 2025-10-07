@@ -19,7 +19,7 @@ import { VerticalBarChartNegativeExample } from './VerticalBarChart.Negative.Exa
 import { VerticalBarChartAllNegativeExample } from './VerticalBarChart.AllNegative.Example';
 import { VerticalBarChartResponsiveExample } from './VerticalBarChart.Responsive.Example';
 import { VerticalBarChartSecondaryYAxisExample } from './VerticalBarChart.SecondaryYAxis.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Basic.Example.tsx') as string;

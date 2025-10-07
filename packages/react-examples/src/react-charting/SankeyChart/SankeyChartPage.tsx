@@ -13,7 +13,7 @@ import { SankeyChartInboxExample } from './SankeyChart.Inbox.Example';
 import { SankeyChartRebalanceExample } from './SankeyChart.Rebalance.Example';
 import { SankeyChartReflowExample } from './SankeyChart.Reflow.Example';
 import { SankeyChartResponsiveExample } from './SankeyChart.Responsive.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const SankeyChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Basic.Example.tsx') as string;

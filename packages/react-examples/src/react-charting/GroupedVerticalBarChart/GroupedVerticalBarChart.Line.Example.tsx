@@ -6,7 +6,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption, Toggle, getId, Label, Stack } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const data: IGroupedVerticalBarChartProps['dataV2'] = [
   {

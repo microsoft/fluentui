@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, Markdown } from '@fluentui/react-docsite-components';
 
 import { DeclarativeChartBasicExample } from './DeclarativeChart.Basic.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const DeclarativeChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DeclarativeChart/DeclarativeChart.Basic.Example.tsx') as string;

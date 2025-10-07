@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DetailsList, DetailsListLayoutMode, IColumn, IDetailsColumnProps } from '@fluentui/react/lib/DetailsList';
 import { ActionButton } from '@fluentui/react/lib/Button';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IDetailsListProportionalColumnsExampleItem {
   key: number;

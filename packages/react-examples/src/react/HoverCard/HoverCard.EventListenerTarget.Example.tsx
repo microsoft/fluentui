@@ -8,7 +8,7 @@ import {
   mergeStyleSets,
 } from '@fluentui/react';
 import { IconButton } from '@fluentui/react/lib/Button';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const classNames = mergeStyleSets({
   plainCard: {

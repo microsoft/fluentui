@@ -11,7 +11,7 @@ const SliderExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slider/Slider.Example.tsx') as string;
 
 import { SliderVerticalExample } from './Slider.Vertical.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const SliderVerticalExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slider/Slider.Vertical.Example.tsx') as string;
 

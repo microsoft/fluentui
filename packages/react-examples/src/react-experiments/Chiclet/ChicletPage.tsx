@@ -22,7 +22,7 @@ import { ChicletXsmallExample } from './Chiclet.Xsmall.Example';
 const ChicletXsmallExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Chiclet/Chiclet.Xsmall.Example.tsx') as string;
 import { ChicletXsmallFooterExample } from './Chiclet.Xsmall.Footer.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const ChicletXsmallFooterExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Chiclet/Chiclet.Xsmall.Footer.Example.tsx') as string;
 

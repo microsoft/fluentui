@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AreaChart, DataVizPalette } from '@fluentui/react-charting';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IACLargeDataExampleState {
   width: number;

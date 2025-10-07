@@ -3,7 +3,7 @@ import * as React from 'react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
 import { people } from '@fluentui/example-data';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 import {
   SelectedPeopleList,
   SelectedPersona,

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone, IStackTokens, Stack } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { CollapsibleSection } from '@fluentui/react-experiments/lib/CollapsibleSection';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface ICollapsibleSectionControlledExampleState {
   collapsed: boolean;

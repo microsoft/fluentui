@@ -17,7 +17,7 @@ const TilesListDocumentExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/TilesList/TilesList.Document.Example.tsx') as string;
 
 import { TilesListMediaExample } from './TilesList.Media.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const TilesListMediaExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/TilesList/TilesList.Media.Example.tsx') as string;

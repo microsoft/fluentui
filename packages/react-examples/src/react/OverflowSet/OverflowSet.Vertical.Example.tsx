@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CommandBarButton } from '@fluentui/react/lib/Button';
 import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react/lib/OverflowSet';
 import { DirectionalHint, TooltipHost } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const noOp = () => undefined;
 

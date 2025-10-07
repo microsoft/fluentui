@@ -11,7 +11,7 @@ const SignalFieldBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Signals/SignalField.Basic.Example.tsx') as string;
 
 import { SignalsBasicExample } from './Signals.Basic.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 const SignalsBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Signals/Signals.Basic.Example.tsx') as string;
 

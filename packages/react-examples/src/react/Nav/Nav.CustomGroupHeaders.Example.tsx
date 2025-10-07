@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Nav, INavLinkGroup } from '@fluentui/react/lib/Nav';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const navLinkGroups: INavLinkGroup[] = [
   {

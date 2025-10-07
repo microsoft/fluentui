@@ -3,7 +3,7 @@ import { AreaChart, IChartProps } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IAreaChartBasicState {
   width: number;

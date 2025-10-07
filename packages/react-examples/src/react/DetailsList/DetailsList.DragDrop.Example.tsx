@@ -14,7 +14,7 @@ import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { getTheme, mergeStyles } from '@fluentui/react/lib/Styling';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const theme = getTheme();
 const margin = '0 30px 20px 0';

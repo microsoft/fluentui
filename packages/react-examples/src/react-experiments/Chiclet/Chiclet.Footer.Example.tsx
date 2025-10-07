@@ -3,7 +3,7 @@ import { Chiclet, ChicletSize } from '@fluentui/react-experiments';
 import { IButtonProps, IconButton } from '@fluentui/react/lib/Button';
 import { Text } from '@fluentui/react/lib/Text';
 import { mergeStyles, FontWeights } from '@fluentui/react/lib/Styling';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 

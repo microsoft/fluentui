@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Shimmer, ShimmerElementType, ShimmerElementsGroup, ThemeProvider, mergeStyles } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const wrapperClass = mergeStyles({
   padding: 2,

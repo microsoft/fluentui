@@ -8,7 +8,7 @@ import { Text } from '@fluentui/react/lib/Text';
 import { IRenderFunction, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { getTheme, FontWeights, ITheme } from '@fluentui/react/lib/Styling';
 import { useBoolean, useId } from '@fluentui/react-hooks';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;

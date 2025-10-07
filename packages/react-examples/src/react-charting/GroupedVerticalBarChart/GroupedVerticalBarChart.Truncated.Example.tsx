@@ -8,7 +8,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Checkbox, Label, Stack, TextField } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IGroupedBarChartState {
   width: number;

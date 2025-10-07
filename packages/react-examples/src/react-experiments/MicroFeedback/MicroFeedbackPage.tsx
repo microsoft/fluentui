@@ -9,7 +9,7 @@ import {
 import { MicroFeedbackExample } from './MicroFeedback.Example';
 import { MicroFeedbackCalloutExample } from './MicroFeedbackCallout.Example';
 import { MicroFeedbackStackExample } from './MicroFeedbackStack.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const MicroFeedbackExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/MicroFeedback/MicroFeedback.Example.tsx') as string;

@@ -29,7 +29,7 @@ import { Checkbox, ChoiceGroup, IChoiceGroupOption, css } from '@fluentui/react'
 import { lorem } from '@fluentui/example-data';
 import * as SignalStylesModule from '@fluentui/react-experiments/lib/components/signals/Signal.scss';
 import * as SignalsExampleStylesModule from './Signals.Example.scss';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const SignalStyles: any = SignalStylesModule;
 const SignalsExampleStyles: any = SignalsExampleStylesModule;

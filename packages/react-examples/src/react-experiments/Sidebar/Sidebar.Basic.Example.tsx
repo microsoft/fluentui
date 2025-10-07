@@ -5,7 +5,7 @@
 import { getTheme } from '@fluentui/react';
 import * as React from 'react';
 import { Sidebar, SidebarButton } from '@fluentui/react-experiments/lib/Sidebar';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export class SidebarBasicExample extends React.Component {
   public render(): JSXElement {

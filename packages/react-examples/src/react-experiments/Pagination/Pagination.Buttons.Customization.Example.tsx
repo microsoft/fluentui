@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Pagination } from '@fluentui/react-experiments/lib/Pagination';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IPaginationBasicExampleState {
   selectedPageIndex: number;

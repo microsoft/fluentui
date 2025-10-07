@@ -3,7 +3,7 @@ import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresen
 import { Stack } from '@fluentui/react/lib/Stack';
 import { TestImages } from '@fluentui/example-data';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const customCoinClass = mergeStyles({
   borderRadius: 20,

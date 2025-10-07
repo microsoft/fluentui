@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Sparkline, ISparklineProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { IChartProps } from '@fluentui/react-charting';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ISparklineState {}
 

@@ -53,7 +53,7 @@ const _suggestions = [
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
 import { getGlobalClassNames, getTheme, IStyle } from '@fluentui/style-utilities';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ISuggestionItemExampleStylesProps {}
 interface ISuggestionItemExampleStyles {

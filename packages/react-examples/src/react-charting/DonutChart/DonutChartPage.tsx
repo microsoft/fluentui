@@ -13,7 +13,7 @@ import { DonutChartDynamicExample } from './DonutChart.Dynamic.Example';
 import { DonutChartCustomCalloutExample } from './DonutChart.CustomCallout.Example';
 import { DonutChartCustomAccessibilityExample } from './DonutChart.CustomAccessibility.Example';
 import { DonutChartResponsiveExample } from './DonutChart.Responsive.Example';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const DonutChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Basic.Example.tsx') as string;

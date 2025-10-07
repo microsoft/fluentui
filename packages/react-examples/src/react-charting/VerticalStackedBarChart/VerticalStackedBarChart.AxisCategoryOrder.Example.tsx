@@ -7,7 +7,7 @@ import {
   getNextColor,
 } from '@fluentui/react-charting';
 import { DefaultButton, Dropdown, IDropdownOption, Label, Stack, getId } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {

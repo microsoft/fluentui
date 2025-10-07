@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DetailsList, DetailsListLayoutMode, IColumn } from '@fluentui/react/lib/DetailsList';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IDetailsListAnimationExampleItem {
   key: number;

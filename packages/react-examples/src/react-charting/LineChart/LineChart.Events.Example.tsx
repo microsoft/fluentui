@@ -5,7 +5,7 @@ import * as d3 from 'd3-format';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { ColorPicker, IColor } from '@fluentui/react';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',

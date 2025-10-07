@@ -26,7 +26,7 @@ import {
 import { createListItems, isGroupable, IExampleItem } from '@fluentui/example-data';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const theme = getTheme();
 const headerDividerClass = 'DetailsListAdvancedExample-divider';

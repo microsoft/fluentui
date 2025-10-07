@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Link } from '@fluentui/react/lib/Link';
 import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react/lib/OverflowSet';
-import type { JSXElement } from "@fluentui/utilities";
+import type { JSXElement } from '@fluentui/utilities';
 
 const noOp = () => undefined;
 
