@@ -36,7 +36,7 @@ const StarIcon = () => <span>★</span>;
 // Public demo: compare default render vs recomposed render ordering
 export const RecompositionDemo = () => (
   <div style={{ display: 'flex', gap: 12 }}>
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+    <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 8 }}>
       <div>
         <strong>Default Button (icon before)</strong>
       </div>
@@ -44,7 +44,7 @@ export const RecompositionDemo = () => (
         Click me
       </Button>
     </div>
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+    <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 8 }}>
       <div>
         <strong>Recomposed (icon after)</strong>
       </div>
