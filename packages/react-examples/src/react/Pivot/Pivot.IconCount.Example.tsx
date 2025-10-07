@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Icon, IStyleSet, Label, ILabelStyles, Pivot, IPivotItemProps, PivotItem } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
   root: { marginTop: 10 },
@@ -31,8 +32,8 @@ export const PivotIconCountExample: React.FunctionComponent = () => {
 
 function _customRenderer(
   link?: IPivotItemProps,
-  defaultRenderer?: (link?: IPivotItemProps) => JSX.Element | null,
-): JSX.Element | null {
+  defaultRenderer?: (link?: IPivotItemProps) => JSXElement | null,
+): JSXElement | null {
   if (!link || !defaultRenderer) {
     return null;
   }

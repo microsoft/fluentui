@@ -10,6 +10,7 @@ import {
 import { lorem } from '@fluentui/example-data';
 import { css, ISize, fitContentToBounds } from '@fluentui/react-experiments/lib/Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
+import type { JSXElement } from "@fluentui/utilities";
 
 const TileExampleStyles = TileExampleStylesModule as any;
 
@@ -50,7 +51,7 @@ interface IFolderTileWithThumbnailProps {
 
 const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailProps> = (
   props: IFolderTileWithThumbnailProps,
-): JSX.Element => {
+): JSXElement => {
   const folderCover = (
     <FolderCover
       folderCoverSize={props.size}
@@ -113,7 +114,7 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { size } = this.state;
 
     return (

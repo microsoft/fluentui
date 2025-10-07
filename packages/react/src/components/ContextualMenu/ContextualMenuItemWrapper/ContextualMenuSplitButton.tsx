@@ -24,6 +24,8 @@ import type { IKeytipProps } from '../../../Keytip';
 import type { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
 import { IContextualMenuItemProps } from '../ContextualMenuItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IContextualMenuSplitButtonState {}
 
 const TouchIdleDelay = 500; /* ms */
@@ -65,7 +67,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const {
       item,
       classNames,
@@ -99,10 +101,12 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
         {(
           keytipAttributes: any,
         ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-        JSX.Element => (
+        JSXElement => (
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
-            ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
+            ref={(splitButton: HTMLDivElement) => {
+              this._splitButton = splitButton;
+            }}
             role={getMenuItemAriaRole(item)}
             aria-label={item.ariaLabel}
             className={classNames.splitContainer}

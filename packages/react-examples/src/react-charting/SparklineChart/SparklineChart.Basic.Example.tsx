@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Sparkline, ISparklineProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { IChartProps } from '@fluentui/react-charting';
+import type { JSXElement } from "@fluentui/utilities";
 
 interface ISparklineState {}
 
@@ -8,11 +9,11 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
   constructor(props: ISparklineProps) {
     super(props);
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._createSparklineTable()}</div>;
   }
 
-  private _createSparklineTable(): JSX.Element {
+  private _createSparklineTable(): JSXElement {
     const sl1: IChartProps = {
       chartTitle: '10.21',
       lineChartData: [

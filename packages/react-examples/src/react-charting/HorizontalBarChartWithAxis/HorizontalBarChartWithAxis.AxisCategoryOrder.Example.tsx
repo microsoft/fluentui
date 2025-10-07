@@ -7,6 +7,7 @@ import {
   getNextColor,
 } from '@fluentui/react-charting';
 import { DefaultButton, Dropdown, IDropdownOption, Label, Stack, getId } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 export interface IExampleState {
   dynamicData: IHorizontalBarChartWithAxisDataPoint[];
@@ -70,7 +71,7 @@ export class HBWAAxisCategoryOrderExample extends React.Component<IHorizontalBar
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: '15 30' }}>

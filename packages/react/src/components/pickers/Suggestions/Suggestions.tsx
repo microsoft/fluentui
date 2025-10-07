@@ -15,6 +15,8 @@ import type { ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
 import type { ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 import type { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const legacyStyles: any = stylesImport;
 
 const getClassNames = classNamesFunction<ISuggestionsStyleProps, ISuggestionsStyles>();
@@ -69,7 +71,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       forceResolveText,
       mostRecentlyUsedHeaderText,
@@ -167,7 +169,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     }
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    let footerTitle: ((props: ISuggestionsProps<T>) => JSX.Element) | undefined = undefined;
+    let footerTitle: ((props: ISuggestionsProps<T>) => JSXElement) | undefined = undefined;
     if (isResultsFooterVisible) {
       footerTitle = suggestions.length >= (resultsMaximumNumber as number) ? resultsFooterFull : resultsFooter;
     }
@@ -379,7 +381,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderSuggestions(): JSX.Element | null {
+  private _renderSuggestions(): JSXElement | null {
     const {
       onRenderSuggestion,
       removeSuggestionAriaLabel,

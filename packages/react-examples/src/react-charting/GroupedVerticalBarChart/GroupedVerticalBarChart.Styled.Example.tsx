@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from "@fluentui/utilities";
 import {
   GroupedVerticalBarChart,
   IGroupedVerticalBarChartProps,
@@ -20,7 +21,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -31,7 +32,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data = [
       {
         name: '2000',

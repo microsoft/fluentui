@@ -12,6 +12,7 @@ import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Label } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 interface IVerticalChartState {
   width: number;
@@ -44,7 +45,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._negativeExample()}</div>;
   }
 
@@ -81,7 +82,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
     this.setState({ roundCorners: checked });
   };
 
-  private _negativeExample(): JSX.Element {
+  private _negativeExample(): JSXElement {
     const negativePoints: IVerticalBarChartDataPoint[] = [
       {
         x: 0,

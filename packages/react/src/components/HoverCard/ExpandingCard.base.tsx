@@ -4,6 +4,8 @@ import { ExpandingCardMode } from './ExpandingCard.types';
 import { CardCallout } from './CardCallout/CardCallout';
 import type { IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IExpandingCardStyleProps, IExpandingCardStyles>();
 
 export interface IExpandingCardState {
@@ -43,7 +45,7 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { styles, compactCardHeight, expandedCardHeight, theme, mode, className } = this.props;
     const { needsScroll, firstFrameRendered } = this.state;
 
@@ -59,7 +61,7 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
     });
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const content: JSX.Element = (
+    const content: JSXElement = (
       <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this._onKeyDown}>
         {this._onRenderCompactCard()}
         {this._onRenderExpandedCard()}
@@ -79,12 +81,12 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderCompactCard = (): JSX.Element => {
+  private _onRenderCompactCard = (): JSXElement => {
     return <div className={this._classNames.compactCard}>{this.props.onRenderCompactCard!(this.props.renderData)}</div>;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderExpandedCard = (): JSX.Element => {
+  private _onRenderExpandedCard = (): JSXElement => {
     // firstFrameRendered helps in initially setting height of expanded card to 1px, even if mode prop is set to
     // ExpandingCardMode.expanded on first render. This is to make sure transition animation takes place.
     !this.state.firstFrameRendered &&

@@ -4,6 +4,8 @@ import { Callout } from './Callout';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import type { IFocusTrapCalloutProps } from './FocusTrapCallout.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * A special Callout that uses FocusTrapZone to trap focus
  * @param props - Props for the component
@@ -11,7 +13,7 @@ import type { IFocusTrapCalloutProps } from './FocusTrapCallout.types';
 export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps> = (
   props: IFocusTrapCalloutProps,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-): JSX.Element => {
+): JSXElement => {
   return (
     <Callout {...props}>
       <FocusTrapZone disabled={props.hidden} {...props.focusTrapProps}>

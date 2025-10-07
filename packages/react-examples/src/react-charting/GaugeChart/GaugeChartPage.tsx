@@ -11,6 +11,7 @@ import {
 import { GaugeChartBasicExample } from './GaugeChart.Basic.Example';
 import { GaugeChartSingleSegmentExample } from './GaugeChart.SingleSegment.Example';
 import { GaugeChartResponsiveExample } from './GaugeChart.Responsive.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const GaugeChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GaugeChart/GaugeChart.Basic.Example.tsx') as string;
@@ -20,7 +21,7 @@ const GaugeChartResponsiveExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GaugeChart/GaugeChart.Responsive.Example.tsx') as string;
 
 export class GaugeChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Gauge Chart"

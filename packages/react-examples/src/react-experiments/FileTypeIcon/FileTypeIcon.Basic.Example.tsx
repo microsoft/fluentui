@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { getFileTypeIconProps, FileIconType, initializeFileTypeIcons } from '@fluentui/react-file-type-icons';
+import type { JSXElement } from "@fluentui/utilities";
 
 initializeFileTypeIcons(undefined);
 
 export class FileTypeIconBasicExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <h3>Size 16 accdb icon as .png</h3>

@@ -9,6 +9,8 @@ import type { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsIte
 import { IIconProps } from '../Icon/Icon.types';
 import { ILabelStyleProps, ILabelStyles } from '../Label/Label.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * BasePicker component.
  * {@docCategory Pickers}
@@ -54,13 +56,13 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
    * Function that specifies how the selected item will appear.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
+  onRenderItem?: (props: IPickerItemProps<T>) => JSXElement;
 
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
+  onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSXElement;
 
   /**
    * A callback for what should happen when a person types text into the input.
@@ -149,23 +151,23 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
    * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  errorMessage?: string | JSX.Element;
+  errorMessage?: string | JSXElement;
 
   /**
    * Function used to determine whether the selected items are valid and get an error message if not.
    * Mutually exclusive with the static string `errorMessage` (it will take precedence over this).
    *
-   * When it returns `string | JSX.Element`:
+   * When it returns `string | JSXElement`:
    * - If valid, it returns empty string.
    * - If invalid, it returns the error message and the text field will
    *   show a red border and show an error message below the text field.
    *
-   * When it returns `Promise<string | JSX.Element>`:
+   * When it returns `Promise<string | JSXElement>`:
    * - The resolved value is displayed as the error message.
    * - If rejected, the value is thrown away.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onGetErrorMessage?: (items: T[]) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
+  onGetErrorMessage?: (items: T[]) => string | JSXElement | PromiseLike<string | JSXElement> | undefined;
 
   /**
    * A callback for when an item is removed from the suggestion list

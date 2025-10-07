@@ -12,6 +12,7 @@ import {
 } from '@fluentui/react-experiments';
 import { lorem } from '@fluentui/example-data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
+import type { JSXElement } from "@fluentui/utilities";
 
 const TileExampleStyles = TileExampleStylesModule as any;
 
@@ -46,7 +47,7 @@ interface IDocumentTileWithThumbnailProps {
 
 const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbnailProps> = (
   props: IDocumentTileWithThumbnailProps,
-): JSX.Element => {
+): JSXElement => {
   const tile = (
     <Tile
       contentSize={{
@@ -98,7 +99,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { imagesLoaded } = this.state;
 
     return (

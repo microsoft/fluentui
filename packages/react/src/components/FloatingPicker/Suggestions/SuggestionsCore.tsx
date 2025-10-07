@@ -5,6 +5,8 @@ import * as stylesImport from './SuggestionsCore.scss';
 import type { ISuggestionItemProps, ISuggestionModel } from '../../../Pickers';
 import type { ISuggestionsCoreProps } from './Suggestions.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const styles: any = stylesImport;
 
 /**
@@ -120,7 +122,7 @@ export class SuggestionsCore<T extends {}> extends React.Component<ISuggestionsC
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       onRenderSuggestion,
       suggestionsItemClassName,

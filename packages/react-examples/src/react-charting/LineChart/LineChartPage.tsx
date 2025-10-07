@@ -20,6 +20,7 @@ import { LineChartNegativeExample } from './LineChart.Negative.Example';
 import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
 import { LineChartSecondaryYAxisExample } from './LineChart.SecondaryYAxis.Example';
 import { LineChartLogAxisExample } from './LineChart.LogAxis.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
@@ -49,7 +50,7 @@ const LineChartLogAxisExampleCode =
 // All line charts locale is impacted.
 
 export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Line Chart"

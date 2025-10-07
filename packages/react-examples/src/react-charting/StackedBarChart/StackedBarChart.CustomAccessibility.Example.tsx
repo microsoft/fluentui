@@ -7,6 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from "@fluentui/utilities";
 
 interface IStackedBarState {
   hideTooltip: boolean;
@@ -20,7 +21,7 @@ export class StackedBarChartCustomAccessibilityExample extends React.Component<{
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const points: IChartDataPoint[] = [
       {
         legend: 'first',

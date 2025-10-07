@@ -6,6 +6,7 @@ import {
 } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { mru } from '@fluentui/example-data';
+import type { JSXElement } from "@fluentui/utilities";
 
 const _suggestions = [
   {
@@ -50,7 +51,7 @@ const _suggestions = [
   },
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
-export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
+export const FloatingPeopleSuggestionsExample = (): JSXElement => {
   const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
     ..._suggestions,
   ]);

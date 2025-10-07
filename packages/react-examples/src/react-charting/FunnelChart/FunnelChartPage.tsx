@@ -10,6 +10,7 @@ import {
 
 import { FunnelChartBasicExample } from './FunnelChart.Basic.Example';
 import { FunnelChartStackedExample } from './FunnelChart.Stacked.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const FunnelChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/FunnelChart/FunnelChart.Basic.Example.tsx') as string;
@@ -18,7 +19,7 @@ const FunnelChartStackedExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/FunnelChart/FunnelChart.Stacked.Example.tsx') as string;
 
 export class FunnelChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Funnel Chart"

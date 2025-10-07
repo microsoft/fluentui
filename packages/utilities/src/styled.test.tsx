@@ -9,6 +9,8 @@ import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@fluentui/test-utilities';
 import type { IStyle, IStyleFunction, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 
+import type { JSXElement } from './jsx';
+
 const { act } = renderer;
 
 interface ITestStyles {
@@ -33,7 +35,7 @@ class TestBase extends React.Component<ITestProps> {
     super(props);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     _renderCount++;
 
     _lastProps = this.props;
@@ -46,7 +48,7 @@ class TestBase extends React.Component<ITestProps> {
 }
 
 class ShortCircuit extends React.PureComponent<{ children?: React.ReactNode }> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this.props.children}</div>;
   }
 }

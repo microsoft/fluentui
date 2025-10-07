@@ -2,6 +2,8 @@ import * as React from 'react';
 import { getNativeProps, divProperties, initializeComponentRef, warnDeprecations } from '@fluentui/utilities';
 import type { IPivotItemProps } from './PivotItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const COMPONENT_NAME = 'PivotItem';
 
 export class PivotItem extends React.Component<IPivotItemProps, {}> {
@@ -15,7 +17,7 @@ export class PivotItem extends React.Component<IPivotItemProps, {}> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div {...getNativeProps(this.props, divProperties)}>{this.props.children}</div>;
   }
 }

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
 import { people, groupOne, groupTwo } from '@fluentui/example-data';
+import type { JSXElement } from "@fluentui/utilities";
 import {
   SelectedPeopleList,
   SelectedPersona,
@@ -25,7 +26,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div className={'ms-BasePicker-text'}>
         Click the '+' icon to the left of the group to expand it into a number of personas
@@ -45,7 +46,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<
     <SelectedPersona canExpand={this._canExpandItem} getExpandedItems={this._getExpandedGroupItems} {...props} />
   );
 
-  private _renderExtendedPicker(): JSX.Element {
+  private _renderExtendedPicker(): JSXElement {
     return (
       <div>
         <SelectedPeopleList

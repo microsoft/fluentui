@@ -25,6 +25,8 @@ import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import type { IProcessedStyleSet } from '../../Styling';
 import { getId } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
 export interface IDetailsRowSelectionState {
@@ -175,7 +177,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       className,
       columns = NO_COLUMNS,
@@ -417,7 +419,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element {
+  protected _onRenderCheck(props: IDetailsRowCheckProps): JSXElement {
     return <DetailsRowCheck {...props} />;
   }
 

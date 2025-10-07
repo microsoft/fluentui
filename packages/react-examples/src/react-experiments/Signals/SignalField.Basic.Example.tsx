@@ -2,6 +2,7 @@ import * as React from 'react';
 import { SignalField, SignalFieldMode, YouCheckedOutSignal, AwaitingApprovalSignal } from '@fluentui/react-experiments';
 import { lorem } from '@fluentui/example-data';
 import { Checkbox } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 export interface ISignalFieldBasicExampleState {
   mode: SignalFieldMode;
@@ -18,7 +19,7 @@ export class SignalFieldBasicExample extends React.Component<{}, ISignalFieldBas
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <Checkbox label="Wide?" onChange={this._onModeChange} checked={this.state.mode === 'wide'} />

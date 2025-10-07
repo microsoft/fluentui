@@ -6,16 +6,18 @@ import { customizable } from './customizable';
 import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
 
+import type { JSXElement } from '../jsx';
+
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this.props.field}</div>;
   }
 }
 
 @customizable('Bar', ['field', 'field2', 'field3'])
 class Bar extends React.Component<{ field?: string; field2?: string; field3?: string }, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         {this.props.field}

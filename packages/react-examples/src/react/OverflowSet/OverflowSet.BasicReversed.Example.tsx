@@ -2,10 +2,11 @@ import * as React from 'react';
 import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Link } from '@fluentui/react/lib/Link';
 import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react/lib/OverflowSet';
+import type { JSXElement } from "@fluentui/utilities";
 
 const noOp = () => undefined;
 
-const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
+const onRenderItem = (item: IOverflowSetItemProps): JSXElement => {
   return (
     <Link styles={{ root: { marginRight: 10 } }} onClick={item.onClick}>
       {item.name}
@@ -13,7 +14,7 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   );
 };
 
-const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
+const onRenderOverflowButton = (overflowItems: any[] | undefined): JSXElement => {
   const buttonStyles: Partial<IButtonStyles> = {
     root: {
       minWidth: 0,

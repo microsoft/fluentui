@@ -481,7 +481,7 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Imperatively focusing the FTZ', () => {
-    function imperativeFocus(componentRef: React.RefObject<IFocusTrapZone>) {
+    function imperativeFocus(componentRef: React.RefObject<IFocusTrapZone | null>) {
       // Ensure the component has rendered before calling focus()
       cy.contains('first').then(() => {
         componentRef.current!.focus();

@@ -3,6 +3,8 @@ import { SpinnerType, SpinnerSize } from './Spinner.types';
 import { classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
 import type { ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles } from './Spinner.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
 
 export class SpinnerBase extends React.Component<ISpinnerProps, any> {
@@ -13,7 +15,7 @@ export class SpinnerBase extends React.Component<ISpinnerProps, any> {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { type, size, ariaLabel, ariaLive, styles, label, theme, className, labelPosition } = this.props;
     const statusMessage = ariaLabel;

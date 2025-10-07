@@ -3,6 +3,8 @@ import { divProperties, getNativeProps } from '../../Utilities';
 import { classNamesFunction } from '../../Utilities';
 import type { ILabelProps, ILabelStyleProps, ILabelStyles } from './Label.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>({
   // Label is used a lot by other components.
   // It's likely to see expected cases which pass different className to the Label.
@@ -12,7 +14,7 @@ const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>({
 
 export class LabelBase extends React.Component<ILabelProps, {}> {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { as: RootType = 'label', children, className, disabled, styles, required, theme } = this.props;
     const classNames = getClassNames(styles, {
       className,

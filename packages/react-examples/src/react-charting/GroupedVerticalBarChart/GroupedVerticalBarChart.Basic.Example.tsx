@@ -8,6 +8,7 @@ import {
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from "@fluentui/utilities";
 
 interface IGroupedBarChartState {
   width: number;
@@ -52,7 +53,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -84,7 +85,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     this.setState({ selectMultipleLegends: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data = [
       {
         name: 'Jan - Mar',

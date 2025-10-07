@@ -7,6 +7,8 @@ import type {
 } from './DocumentCardDetails.types';
 import type { IProcessedStyleSet } from '../../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>();
 
 /**
@@ -22,7 +24,7 @@ export class DocumentCardDetailsBase extends React.Component<IDocumentCardDetail
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { children, styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {

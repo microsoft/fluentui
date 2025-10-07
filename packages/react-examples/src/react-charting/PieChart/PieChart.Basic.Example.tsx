@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PieChart, IPieChartProps } from '@fluentui/react-charting';
 import { Stack, StackItem } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 export class PieChartBasicExample extends React.Component<IPieChartProps, { width: number; height: number }> {
   constructor(props: IPieChartProps) {
@@ -29,7 +30,7 @@ export class PieChartBasicExample extends React.Component<IPieChartProps, { widt
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const points = [
       { y: 50, x: 'ABCD' },
       { y: 25, x: 'EFGH' },

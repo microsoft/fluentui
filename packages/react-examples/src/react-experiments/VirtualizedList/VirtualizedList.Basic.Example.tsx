@@ -3,6 +3,7 @@ import { VirtualizedList } from '@fluentui/react-experiments/lib/VirtualizedList
 import { ScrollContainer } from '@fluentui/react-experiments/lib/utilities/scrolling/ScrollContainer';
 
 import * as VirtualizedListExampleStylesModule from './VirtualizedList.Example.scss';
+import type { JSXElement } from "@fluentui/utilities";
 
 interface IItem {
   key: string;
@@ -27,7 +28,7 @@ export class VirtualizedListBasicExample extends React.Component {
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <ScrollContainer className={VirtualizedListExampleStylesModule.fixedHeight}>
@@ -37,7 +38,7 @@ export class VirtualizedListBasicExample extends React.Component {
     );
   }
 
-  private _renderItem = (item: IItem, itemIndex: number): JSX.Element => {
+  private _renderItem = (item: IItem, itemIndex: number): JSXElement => {
     return (
       <div key={item.key} style={{ height: 30 }}>
         {item.key}

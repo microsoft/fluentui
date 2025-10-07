@@ -13,6 +13,7 @@ import { DonutChartDynamicExample } from './DonutChart.Dynamic.Example';
 import { DonutChartCustomCalloutExample } from './DonutChart.CustomCallout.Example';
 import { DonutChartCustomAccessibilityExample } from './DonutChart.CustomAccessibility.Example';
 import { DonutChartResponsiveExample } from './DonutChart.Responsive.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const DonutChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Basic.Example.tsx') as string;
@@ -26,7 +27,7 @@ const DonutChartResponsiveExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.Responsive.Example.tsx') as string;
 
 export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Donut Chart"

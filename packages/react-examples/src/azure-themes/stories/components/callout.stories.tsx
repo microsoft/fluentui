@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from "@fluentui/utilities";
 import {
   DefaultButton,
   PrimaryButton,
@@ -80,7 +81,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
   private _labelId: string = getId('callout-label');
   private _descriptionId: string = getId('callout-description');
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { isCalloutVisible } = this.state;
 
     return (

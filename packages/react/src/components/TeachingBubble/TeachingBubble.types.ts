@@ -8,6 +8,8 @@ import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { IFocusTrapZoneProps } from '../FocusTrapZone/index';
 import type { Target } from '@fluentui/react-hooks';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory TeachingBubble}
  */
@@ -89,7 +91,7 @@ export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement
    * May be rendered alongside primary and secondary buttons.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  footerContent?: string | JSX.Element;
+  footerContent?: string | JSXElement;
 
   /**
    * Element to anchor the TeachingBubble to.

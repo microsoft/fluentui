@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from "@fluentui/utilities";
 import {
   IVSChartDataPoint,
   IVerticalStackedChartProps,
@@ -8,7 +9,7 @@ import {
 } from '@fluentui/react-charting';
 
 export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div className="containerDiv" key={'id_VBC'}>
         {this._reflowExample()}
@@ -16,7 +17,7 @@ export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}
     );
   }
 
-  private _reflowExample(): JSX.Element {
+  private _reflowExample(): JSXElement {
     const firstChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',

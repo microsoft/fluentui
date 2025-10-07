@@ -5,6 +5,7 @@ import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentu
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { ThemeProvider } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 export default {
   title: 'Components/DetailsList',
@@ -60,7 +61,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { items, selectionDetails } = this.state;
 
     return (

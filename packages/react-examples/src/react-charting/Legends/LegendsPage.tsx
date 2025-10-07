@@ -14,6 +14,7 @@ import { LegendWrapLinesExample } from './Legends.WrapLines.Example';
 import { LegendStyledExample } from './Legends.Styled.Example';
 import { LegendsOnChangeExample } from './Legends.OnChange.Example';
 import { LegendsControlledExample } from './Legends.Controlled.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const LegendsOverflowExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Overflow.Example.tsx') as string;
@@ -29,7 +30,7 @@ const LegendsControlledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Controlled.Example.tsx') as string;
 
 export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Legends"

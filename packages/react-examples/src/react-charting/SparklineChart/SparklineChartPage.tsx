@@ -9,12 +9,13 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { SparklineChartBasicExample } from './SparklineChart.Basic.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const SparklineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/SparklineChart.Basic.Example.tsx') as string;
 
 export class SparklineChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Sparkline Chart"

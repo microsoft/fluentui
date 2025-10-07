@@ -13,6 +13,8 @@ import { isConformant } from '../../common/isConformant';
 import type { IKeytipProps, IUniqueKeytip } from '../../Keytips';
 import type { IOverflowSetItemProps } from './OverflowSet.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(
     Object.keys(keytipManager.keytips).map(key => keytipManager.keytips[key]),
@@ -93,7 +95,7 @@ describe('OverflowSet', () => {
     const layerRef = React.createRef<KeytipLayerBase>();
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
+    const onRenderItem = (item: IOverflowSetItemProps): JSXElement => {
       return (
         <CommandBarButton {...item} menuProps={item.subMenuProps}>
           {item.name}
@@ -102,7 +104,7 @@ describe('OverflowSet', () => {
     };
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const onRenderOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
+    const onRenderOverflowButton = (overflowElements: any[] | undefined): JSXElement => {
       return (
         <CommandBarButton
           menuIconProps={{ iconName: 'More' }}
@@ -577,7 +579,7 @@ describe('OverflowSet', () => {
           ];
 
           // eslint-disable-next-line @typescript-eslint/no-deprecated
-          const delayedOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
+          const delayedOverflowButton = (overflowElements: any[] | undefined): JSXElement => {
             // Overflow button which delays 2s before opening the menu
             // This simulates latency when opening the menu
             // (note that we'll actually skip through this latency with jest.runAllTimers())

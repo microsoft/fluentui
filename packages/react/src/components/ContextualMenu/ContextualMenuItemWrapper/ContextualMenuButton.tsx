@@ -16,6 +16,8 @@ import type { IKeytipDataProps } from '../../../KeytipData';
 import type { IKeytipProps } from '../../../Keytip';
 import { IContextualMenuItemProps } from '../ContextualMenuItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = React.createRef<HTMLButtonElement>();
   private _ariaDescriptionId: string;
@@ -117,7 +119,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
         {(
           keytipAttributes: IKeytipDataProps,
         ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-        JSX.Element => (
+        JSXElement => (
           <button ref={this._btn} {...buttonNativeProperties} {...itemButtonProperties} {...keytipAttributes}>
             <ChildrenRenderer
               componentRef={item.componentRef}

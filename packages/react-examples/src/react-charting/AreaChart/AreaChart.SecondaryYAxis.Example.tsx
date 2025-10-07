@@ -7,6 +7,7 @@ import {
   ILineChartPoints,
 } from '@fluentui/react-charting';
 import { getId } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 const chart1Points: ILineChartDataPoint[] = [
   {
@@ -113,7 +114,7 @@ export class AreaChartSecondaryYAxisExample extends React.Component<{}, IAreaCha
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (

@@ -19,6 +19,8 @@ import type { IColumn, IDetailsGroupDividerProps, IDetailsList } from './Details
 import type { IDetailsRowProps } from './DetailsRow';
 import { GroupedListV2_unstable as GroupedListV2 } from '../GroupedList/GroupedListV2';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
   const data = [];
@@ -48,7 +50,7 @@ function mockData(count: number, isColumn: boolean = false, customDivider: boole
 function columnDividerWrapper(
   iDetailsColumnProps: IDetailsColumnProps,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null,
+  defaultRenderer: (props?: IDetailsColumnProps) => JSXElement | null,
 ): any {
   return defaultRenderer(iDetailsColumnProps);
 }
@@ -57,7 +59,7 @@ function columnDividerWrapper(
 function customColumnDivider(
   iDetailsColumnProps: IDetailsColumnProps,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null,
+  defaultRenderer: (props?: IDetailsColumnProps) => JSXElement | null,
 ): any {
   return (
     <React.Fragment key={`divider_${iDetailsColumnProps.columnIndex}`}>

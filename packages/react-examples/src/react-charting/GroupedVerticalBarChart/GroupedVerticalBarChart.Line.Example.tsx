@@ -6,6 +6,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption, Toggle, getId, Label, Stack } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 const data: IGroupedVerticalBarChartProps['dataV2'] = [
   {
@@ -189,7 +190,7 @@ export class GroupedVerticalBarChartLineExample extends React.Component<{}, IGVB
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (

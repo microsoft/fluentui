@@ -5,6 +5,8 @@ import type { IButtonProps } from '../../Button';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory Dialog}
  */
@@ -78,7 +80,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
    * The title text to display at the top of the dialog.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  title?: string | JSX.Element;
+  title?: string | JSXElement;
 
   /**
    * The props for title container.

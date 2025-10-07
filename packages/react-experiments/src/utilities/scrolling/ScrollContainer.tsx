@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { css, Async, initializeComponentRef } from '@fluentui/react/lib/Utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 import * as ScrollContainerStyles from './ScrollContainer.scss';
 import type { IScrollContainerProps } from './ScrollContainer.types';
@@ -72,7 +73,7 @@ export class ScrollContainer
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { children, className } = this.props;
 
     return (

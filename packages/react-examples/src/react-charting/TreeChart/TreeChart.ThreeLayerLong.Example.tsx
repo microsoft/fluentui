@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TreeChart, ITreeProps, TreeTraverse, NodesComposition, ITreeState } from '@fluentui/react-charting';
+import type { JSXElement } from "@fluentui/utilities";
 const threeLayerChart = {
   name: 'Root Node',
   subname: 'subtext',
@@ -90,13 +91,13 @@ export class TreeChartThreeLayerLongExample extends React.Component<{}, ITreeSta
   constructor(props: ITreeProps) {
     super(props);
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._createTreeChart()}</div>;
   }
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ _layoutWidth: parseInt(e.target.value, 10) });
   };
-  private _createTreeChart(): JSX.Element {
+  private _createTreeChart(): JSXElement {
     return (
       <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>

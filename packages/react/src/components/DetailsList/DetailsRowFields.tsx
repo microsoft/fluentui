@@ -5,6 +5,8 @@ import type { IColumn } from './DetailsList.types';
 import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import type { IDetailsColumnFieldProps } from './DetailsColumn.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getCellText = (item: any, column: IColumn): string => {
   let value = item && column && column.fieldName ? item[column.fieldName] : '';
 
@@ -42,13 +44,13 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
 
   const cellValueKeysRef = React.useRef<{
     [columnKey: string]: string | undefined;
-  }>();
+  }>(undefined);
 
   const cellValueKeys = cellValueKeysRef.current || (cellValueKeysRef.current = {});
 
   const defaultOnRenderField = React.useCallback(
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    (fieldProps: IDetailsColumnFieldProps): JSX.Element | null => {
+    (fieldProps: IDetailsColumnFieldProps): JSXElement | null => {
       const { column, cellValueKey, className, onRender, item: fieldItem, itemIndex: fieldItemIndex } = fieldProps;
 
       const width: string | number =

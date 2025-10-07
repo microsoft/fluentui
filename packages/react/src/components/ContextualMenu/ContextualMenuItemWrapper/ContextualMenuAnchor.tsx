@@ -16,6 +16,8 @@ import type { IKeytipDataProps } from '../../../KeytipData';
 import type { IKeytipProps } from '../../../Keytip';
 import { IContextualMenuItemProps } from '../ContextualMenuItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = React.createRef<HTMLAnchorElement>();
   private _ariaDescriptionId: string;
@@ -89,7 +91,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
           {(
             keytipAttributes: IKeytipDataProps,
           ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-          JSX.Element => (
+          JSXElement => (
             <a
               {...additionalItemProperties}
               {...nativeProps}

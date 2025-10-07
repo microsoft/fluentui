@@ -3,6 +3,7 @@ import * as React from 'react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
 import { people } from '@fluentui/example-data';
+import type { JSXElement } from "@fluentui/utilities";
 import {
   SelectedPeopleList,
   SelectedPersona,
@@ -50,7 +51,7 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div className={'ms-BasePicker-text'}>
         Right click any persona to open the context menu
@@ -60,7 +61,7 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<
       </div>
     );
   }
-  private _renderExtendedPicker(): JSX.Element {
+  private _renderExtendedPicker(): JSXElement {
     return (
       <div>
         <SelectedPeopleList

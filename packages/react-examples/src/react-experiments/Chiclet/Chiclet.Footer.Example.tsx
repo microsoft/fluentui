@@ -3,11 +3,12 @@ import { Chiclet, ChicletSize } from '@fluentui/react-experiments';
 import { IButtonProps, IconButton } from '@fluentui/react/lib/Button';
 import { Text } from '@fluentui/react/lib/Text';
 import { mergeStyles, FontWeights } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from "@fluentui/utilities";
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
 class FooterComponent extends React.Component<IFooterComponent, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { buttonProps, activities } = this.props;
 
     return _renderFooter(buttonProps, activities);
@@ -65,7 +66,7 @@ export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
 
 type ReactProps<T> = {
   children?: React.ReactNode;
-  ref?: React.LegacyRef<T>;
+  ref?: React.Ref<T>;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated

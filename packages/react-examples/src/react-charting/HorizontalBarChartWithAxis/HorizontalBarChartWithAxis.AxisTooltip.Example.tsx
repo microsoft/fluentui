@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from "@fluentui/utilities";
 import {
   HorizontalBarChartWithAxis,
   IHorizontalBarChartWithAxisProps,
@@ -18,11 +19,11 @@ export class HorizontalBarChartWithAxisTooltipExample extends React.Component<{}
       selectedOption: 'showTooltip',
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
       {
         x: 1000,

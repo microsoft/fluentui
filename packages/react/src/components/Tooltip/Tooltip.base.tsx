@@ -5,6 +5,8 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import type { IProcessedStyleSet } from '../../Styling';
 import type { ITooltipProps, ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 
 export class TooltipBase extends React.Component<ITooltipProps, any> {
@@ -24,7 +26,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
   private _classNames: IProcessedStyleSet<ITooltipStyles>;
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       className,
       calloutProps,
@@ -69,7 +71,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderContent = (props: ITooltipProps): JSX.Element => {
+  private _onRenderContent = (props: ITooltipProps): JSXElement => {
     if (typeof props.content === 'string') {
       return <p className={this._classNames.subText}>{props.content}</p>;
     } else {

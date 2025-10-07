@@ -8,6 +8,8 @@ import { isConformant } from '../../common/isConformant';
 import { act, render } from '@testing-library/react';
 import { getBySelector } from '../../common/testUtilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 describe('Shimmer', () => {
   beforeEach(() => {
     resetIds();
@@ -36,7 +38,7 @@ describe('Shimmer', () => {
 
   it('renders Shimmer with custom elements correctly', () => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const customElements: JSX.Element = (
+    const customElements: JSXElement = (
       <div style={{ display: 'flex' }}>
         <ShimmerElementsGroup
           shimmerElements={[

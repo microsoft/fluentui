@@ -14,6 +14,8 @@ import { RatingSize } from './Rating.types';
 import { useId, useWarnings, useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
 import type { IRatingProps, IRatingStyleProps, IRatingStyles, IRating, IRatingStarProps } from './Rating.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
 
 const RatingStar = (props: IRatingStarProps) => {
@@ -34,7 +36,7 @@ const RatingStar = (props: IRatingStarProps) => {
   );
 };
 
-const useComponentRef = (componentRef: React.Ref<IRating> | undefined, rating: number) => {
+const useComponentRef = (componentRef: React.Ref<IRating | null> | undefined, rating: number) => {
   React.useImperativeHandle(
     componentRef,
     () => ({
@@ -130,7 +132,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
     const normalModeAriaLabel = ariaLabel ? ariaLabel : readOnlyAriaLabel;
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const stars: JSX.Element[] = [];
+    const stars: JSXElement[] = [];
 
     const renderStar = (starProps: IRatingStarProps, renderer?: IRatingProps['onRenderStar']) =>
       renderer ? renderer(starProps) : <RatingStar {...starProps} />;

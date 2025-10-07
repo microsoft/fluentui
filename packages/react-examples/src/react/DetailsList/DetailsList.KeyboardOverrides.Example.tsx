@@ -5,6 +5,7 @@ import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentu
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Text } from '@fluentui/react/lib/Text';
+import type { JSXElement } from "@fluentui/utilities";
 
 const exampleChildClass = mergeStyles({
   display: 'block',
@@ -57,7 +58,7 @@ export class DetailsListKeyboardOverridesExample extends React.Component<{}, IDe
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { items, selectionDetails } = this.state;
 
     return (

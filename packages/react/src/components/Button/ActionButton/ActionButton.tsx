@@ -4,13 +4,15 @@ import { customizable, nullRender } from '../../../Utilities';
 import { getStyles } from './ActionButton.styles';
 import type { IButtonProps } from '../Button.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory Button}
  */
 @customizable('ActionButton', ['theme', 'styles'], true)
 export class ActionButton extends React.Component<IButtonProps, {}> {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { styles, theme } = this.props;
 
     return (

@@ -3,17 +3,19 @@ import * as renderer from 'react-test-renderer';
 import { composeComponentAs } from './composeComponentAs';
 import type { IComponentAsProps } from '../IComponentAs';
 
+import type { JSXElement } from '../jsx';
+
 interface IExampleProps {
   value: string;
 }
 
-const Base: React.ComponentType<IExampleProps> = (props: IExampleProps): JSX.Element | null => {
+const Base: React.ComponentType<IExampleProps> = (props: IExampleProps): JSXElement | null => {
   return <div data-value={props.value} />;
 };
 
 const DecoratorA: React.ComponentType<IComponentAsProps<IExampleProps>> = (
   props: IComponentAsProps<IExampleProps>,
-): JSX.Element | null => {
+): JSXElement | null => {
   const { defaultRender: DefaultRender, ...exampleProps } = props;
 
   return <div data-a="a">{DefaultRender ? <DefaultRender {...exampleProps} /> : null}</div>;
@@ -21,7 +23,7 @@ const DecoratorA: React.ComponentType<IComponentAsProps<IExampleProps>> = (
 
 const DecoratorB: React.ComponentType<IComponentAsProps<IExampleProps>> = (
   props: IComponentAsProps<IExampleProps>,
-): JSX.Element | null => {
+): JSXElement | null => {
   const { defaultRender: DefaultRender, ...exampleProps } = props;
 
   return <div data-b="b">{DefaultRender ? <DefaultRender {...exampleProps} /> : null}</div>;

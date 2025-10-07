@@ -18,6 +18,8 @@ import type {
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 // The number pixels per indentation level for Nav links.
 const _indentationSize = 14;
 
@@ -60,7 +62,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const { styles, groups, className, isOnTop, role = 'navigation', theme } = this.props;
 
     if (!groups) {
@@ -98,14 +100,14 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderLink = (link: INavLink): JSX.Element => {
+  private _onRenderLink = (link: INavLink): JSXElement => {
     const { styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, { theme: theme!, groups });
     return <div className={classNames.linkText}>{link.name}</div>;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
+  private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSXElement {
     const { styles, groups, theme } = this.props;
     const isLinkWithIcon = link.icon || link.iconProps;
     const isSelectedLink = this._isLinkSelected(link);

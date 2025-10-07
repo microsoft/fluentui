@@ -14,6 +14,7 @@ import { HorizontalBarChartWithAxisStringAxisTooltipExample } from './Horizontal
 import { HorizontalBarChartWithAxisDynamicExample } from './HorizontalBarChartWithAxis.Dynamic.Example';
 import { HorizontalBarChartWithAxisNegativeExample } from './HorizontalBarChartWithAxis.Negative.Example';
 import { HBWAAxisCategoryOrderExample } from './HorizontalBarChartWithAxis.AxisCategoryOrder.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const HorizontalBarChartWithAxisBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Basic.Example.tsx') as string;
@@ -29,7 +30,7 @@ const HBWAAxisCategoryOrderExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.AxisCategoryOrder.Example.tsx') as string;
 
 export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Horizontal Bar Chart With Axis"

@@ -2,6 +2,8 @@ import * as React from 'react';
 import type { IButtonClassNames } from '../../components/Button/BaseButton.classNames';
 import type { ITheme } from '../../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IButtonGridCellProps<T> {
   /**
    * The option that will be made available to the user
@@ -29,7 +31,7 @@ export interface IButtonGridCellProps<T> {
    * The render callback to handle rendering the item
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderItem: (item: T) => JSX.Element;
+  onRenderItem: (item: T) => JSXElement;
 
   onHover?: (item?: T, event?: React.MouseEvent<HTMLButtonElement>) => void;
 

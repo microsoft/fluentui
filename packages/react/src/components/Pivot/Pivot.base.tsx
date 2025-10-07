@@ -13,6 +13,8 @@ import type { IContextualMenuProps } from '../ContextualMenu/ContextualMenu.type
 import type { IPivot, IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import type { IPivotItemProps } from './PivotItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
 const COMPONENT_NAME = 'Pivot';
@@ -100,7 +102,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     }));
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const renderLinkContent = (link?: IPivotItemProps): JSX.Element | null => {
+    const renderLinkContent = (link?: IPivotItemProps): JSXElement | null => {
       if (!link) {
         return null;
       }
@@ -125,11 +127,11 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       renderPivotLinkSelectedKey: string | null | undefined,
       className: string,
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-    ): JSX.Element => {
+    ): JSXElement => {
       const { itemKey, headerButtonProps, onRenderItemLink } = link;
       const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      let linkContent: JSX.Element | null;
+      let linkContent: JSXElement | null;
       const isSelected: boolean = renderPivotLinkSelectedKey === itemKey;
 
       if (onRenderItemLink) {
@@ -205,7 +207,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     };
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const renderPivotItem = (itemKey: string | undefined, isActive: boolean): JSX.Element | null => {
+    const renderPivotItem = (itemKey: string | undefined, isActive: boolean): JSXElement | null => {
       if (props.headersOnly || !itemKey) {
         return null;
       }

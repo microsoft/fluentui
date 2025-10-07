@@ -8,6 +8,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Checkbox, Label, Stack, TextField } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 interface IGroupedBarChartState {
   width: number;
@@ -37,7 +38,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -69,7 +70,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
     this.setState({ xAxisOuterPadding: Number(e.target.value) });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data = [
       {
         name: 'Data (Text that exceeds the maximum number of characters is truncated)',

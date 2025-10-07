@@ -23,6 +23,8 @@ import type {
   IPersonaPresenceProps,
 } from '../Persona.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.
   // Therefore setting a larger cache size.
@@ -204,7 +206,7 @@ const getCoinRenderer =
     showUnknownPersonaCoin,
     size = DEFAULT_PROPS.size,
   }: // eslint-disable-next-line @typescript-eslint/no-deprecated
-  IPersonaCoinProps): JSX.Element | null => {
+  IPersonaCoinProps): JSXElement | null => {
     // Render the Image component only if an image URL is provided
     if (!imageUrl) {
       return null;
@@ -239,7 +241,7 @@ const renderPersonaCoinInitials = ({
   primaryText,
   theme,
 }: // eslint-disable-next-line @typescript-eslint/no-deprecated
-IPersonaCoinProps): JSX.Element => {
+IPersonaCoinProps): JSXElement => {
   if (showUnknownPersonaCoin) {
     return <Icon iconName="Help" />;
   }

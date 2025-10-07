@@ -7,6 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from "@fluentui/utilities";
 
 interface IVerticalBarChartState {
   isChecked: boolean;
@@ -24,7 +25,7 @@ export class VerticalBarChartCustomAccessibilityExample extends React.Component<
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { isChecked } = this.state;
     const points: IVerticalBarChartDataPoint[] = [
       {

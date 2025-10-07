@@ -7,6 +7,7 @@ import {
   getNextColor,
 } from '@fluentui/react-charting';
 import { DefaultButton, Dropdown, IDropdownOption, Label, Stack, getId } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {
@@ -75,7 +76,7 @@ export class VSBCAxisCategoryOrderExample extends React.Component<{}, IExampleSt
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px`, marginTop: '20px' };
     const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
 

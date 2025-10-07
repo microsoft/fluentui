@@ -13,6 +13,7 @@ import { HorizontalBarChartCustomCalloutExample } from './HorizontalBarChart.Cus
 import { HorizontalBarChartBenchmarkExample } from './HorizontalBarChart.Benchmark.Example';
 import { HorizontalBarChartCustomAccessibilityExample } from './HorizontalBarChart.CustomAccessibility.Example';
 import { HorizontalBarChartVariantExample } from './HorizontalBarChart.Variant.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const HorizontalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
@@ -26,7 +27,7 @@ const HorizontalBarChartVariantExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Variant.Example.tsx') as string;
 
 export class HorizontalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Horizontal Bar Chart"

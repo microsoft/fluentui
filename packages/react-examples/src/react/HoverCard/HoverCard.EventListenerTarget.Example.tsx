@@ -8,6 +8,7 @@ import {
   mergeStyleSets,
 } from '@fluentui/react';
 import { IconButton } from '@fluentui/react/lib/Button';
+import type { JSXElement } from "@fluentui/utilities";
 
 const classNames = mergeStyleSets({
   plainCard: {
@@ -22,7 +23,7 @@ const classNames = mergeStyleSets({
   },
 });
 
-const onRenderPlainCard = (): JSX.Element => {
+const onRenderPlainCard = (): JSXElement => {
   return <div className={classNames.plainCard}>plain card</div>;
 };
 

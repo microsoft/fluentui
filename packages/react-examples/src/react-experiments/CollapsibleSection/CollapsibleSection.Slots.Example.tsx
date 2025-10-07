@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Icon, Stack, TooltipHost } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 import {
   CollapsibleSection,
   CollapsibleSectionTitle,
@@ -32,7 +33,7 @@ const CustomizedCollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSec
 };
 
 export class CollapsibleSectionSlotsExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <p>

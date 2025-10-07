@@ -5,13 +5,15 @@ import type { IBaseProps } from '../../../../Utilities';
 import type { IExtendedPersonaProps } from '../SelectedPeopleList';
 import type { IContextualMenuItem } from '../../../../ContextualMenu';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
 export interface ISelectedItemWithContextMenuProps extends IBaseProps {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  renderedItem: JSX.Element;
+  renderedItem: JSXElement;
   beginEditing?: (item: IExtendedPersonaProps) => void;
   menuItems: IContextualMenuItem[];
   item: IExtendedPersonaProps;
@@ -31,7 +33,7 @@ export class SelectedItemWithContextMenu extends React.Component<
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div ref={this.itemElement} onContextMenu={this._onClick}>
         {this.props.renderedItem}

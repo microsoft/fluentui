@@ -3,6 +3,7 @@ import { AreaChart, IChartProps } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
+import type { JSXElement } from "@fluentui/utilities";
 
 interface IAreaChartBasicState {
   width: number;
@@ -50,7 +51,7 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
     this._changeXData = this._changeXData.bind(this);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
@@ -61,7 +62,7 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (

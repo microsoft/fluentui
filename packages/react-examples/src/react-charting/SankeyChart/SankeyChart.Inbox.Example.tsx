@@ -6,6 +6,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import * as React from 'react';
+import type { JSXElement } from "@fluentui/utilities";
 //import { IPalette } from '@fluentui/react/lib/Styling';
 
 interface ISankeyChartBasicState {
@@ -22,7 +23,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._inboxExample()}</div>;
   }
 
@@ -33,7 +34,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
-  private _inboxExample(): JSX.Element {
+  private _inboxExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Sankey Chart',
       SankeyChartData: {

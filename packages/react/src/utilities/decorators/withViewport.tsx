@@ -2,6 +2,8 @@ import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
 import { findScrollableParent, getRect, getWindow, Async, EventGroup } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * Viewport rectangle dimensions.
  *
@@ -153,7 +155,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    public render(): JSX.Element {
+    public render(): JSXElement {
       const { viewport } = this.state;
       const newViewport = viewport!.width > 0 && viewport!.height > 0 ? viewport : undefined;
 

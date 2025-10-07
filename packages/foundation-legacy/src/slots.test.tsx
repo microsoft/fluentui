@@ -13,6 +13,7 @@ import {
   ISlottableProps,
   ISlotRender,
 } from './ISlots';
+import type { JSXElement } from '@fluentui/utilities';
 
 describe('typings', () => {
   type ITestProps = { testProp?: number };
@@ -213,7 +214,7 @@ describe('createFactory', () => {
 
   it(`passes componentProps without userProps`, () => {
     const component = renderer.create(
-      createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined, undefined) as JSX.Element,
+      createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined, undefined) as JSXElement,
     );
     expect(component.root.props).toEqual({ ...componentProps, ...emptyClassName });
   });
@@ -225,14 +226,14 @@ describe('createFactory', () => {
         userPropString,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
     expect(component.root.props).toEqual({ ...componentProps, children: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as child`, () => {
     const component = renderer.create(
-      createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSX.Element,
+      createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSXElement,
     );
     expect(component.root.props).toEqual({ ...componentProps, children: 42, ...emptyClassName });
   });
@@ -244,7 +245,7 @@ describe('createFactory', () => {
         userPropString,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
     expect(component.root.props).toEqual({ ...componentProps, [defaultProp]: userPropString, ...emptyClassName });
   });
@@ -256,7 +257,7 @@ describe('createFactory', () => {
         42,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
     expect(component.root.props).toEqual({ ...componentProps, [defaultProp]: 42, ...emptyClassName });
   });
@@ -268,14 +269,14 @@ describe('createFactory', () => {
         userProps,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
     expect(component.root.props).toEqual({ ...componentProps, ...userProps, ...emptyClassName });
   });
 
   it('renders div and userProp integer as children', () => {
     const component = renderer.create(
-      createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSX.Element,
+      createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSXElement,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -288,7 +289,7 @@ describe('createFactory', () => {
         userPropString,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -301,7 +302,7 @@ describe('createFactory', () => {
         <span id="I should be the only prop in the output" />,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -316,7 +317,7 @@ describe('createFactory', () => {
           render: () => <span id="I should be the only prop in the output" />,
         },
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -331,7 +332,7 @@ describe('createFactory', () => {
           render: props => <span {...props} id="I should be present alongside componentProps" />,
         },
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -344,7 +345,7 @@ describe('createFactory', () => {
         { id: 'I should be present alongside componentProps' },
         { component: 'span' },
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -428,7 +429,7 @@ describe('getSlots', () => {
     expect(createdSlots.testSlot2.isSlot).toBeTruthy();
 
     // Mount to trigger slot component render functions
-    renderer.create(createdSlots.testSlot1(testSlot1Props) as JSX.Element);
-    renderer.create(createdSlots.testSlot2(testSlot2Props) as JSX.Element);
+    renderer.create(createdSlots.testSlot1(testSlot1Props) as JSXElement);
+    renderer.create(createdSlots.testSlot2(testSlot2Props) as JSXElement);
   });
 });

@@ -9,6 +9,7 @@ import {
   ThemeProvider,
 } from '@fluentui/react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
+import type { JSXElement } from '@fluentui/utilities';
 
 export default {
   title: 'Components/ComboBox',
@@ -51,7 +52,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ThemeProvider className={wrapperClassName}>
         <div>

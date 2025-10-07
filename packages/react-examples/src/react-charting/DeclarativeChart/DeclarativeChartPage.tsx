@@ -3,12 +3,13 @@ import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, Markdown } from '@fluentui/react-docsite-components';
 
 import { DeclarativeChartBasicExample } from './DeclarativeChart.Basic.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const DeclarativeChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DeclarativeChart/DeclarativeChart.Basic.Example.tsx') as string;
 
 export class DeclarativeChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Declarative Chart"

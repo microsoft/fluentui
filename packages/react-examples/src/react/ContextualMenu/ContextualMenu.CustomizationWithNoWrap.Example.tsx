@@ -5,6 +5,7 @@ import { FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { css } from '@fluentui/react/lib/Utilities';
 import { useConst } from '@fluentui/react-hooks';
+import type { JSXElement } from "@fluentui/utilities";
 
 export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionComponent = () => {
   const menuProps = useConst<IContextualMenuProps>(() => ({
@@ -74,7 +75,7 @@ export const ContextualMenuCustomizationWithNoWrapExample: React.FunctionCompone
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
-function renderCharmMenuItem(item: any, dismissMenu: () => void): JSX.Element {
+function renderCharmMenuItem(item: any, dismissMenu: () => void): JSXElement {
   return (
     <IconButton
       {...item}
@@ -87,7 +88,7 @@ function renderCharmMenuItem(item: any, dismissMenu: () => void): JSX.Element {
   );
 }
 
-function renderCategoriesList(item: any): JSX.Element {
+function renderCategoriesList(item: any): JSXElement {
   return (
     <ul className={classNames.categoriesList}>
       <li className="ms-ContextualMenu-item">

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { getId } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 const data: IChartProps = {
   chartTitle: 'Line Chart',
@@ -103,7 +104,7 @@ export class LineChartSecondaryYAxisExample extends React.Component<{}, ILineCha
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (

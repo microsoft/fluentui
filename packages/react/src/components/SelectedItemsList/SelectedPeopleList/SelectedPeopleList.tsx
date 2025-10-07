@@ -9,6 +9,8 @@ import type { IRenderFunction } from '../../../Utilities';
 import type { IContextualMenuItem } from '../../../ContextualMenu';
 import type { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory SelectedPeopleList}
  */
@@ -57,13 +59,13 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected renderItems = (): JSX.Element[] => {
+  protected renderItems = (): JSXElement[] => {
     const { items } = this.state;
     return items.map((item: IExtendedPersonaProps, index: number) => this._renderItem(item, index));
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderItem(item: IExtendedPersonaProps, index: number): JSX.Element {
+  private _renderItem(item: IExtendedPersonaProps, index: number): JSXElement {
     const { removeButtonAriaLabel } = this.props;
     const expandGroup = this.props.onExpandGroup;
     const props = {
@@ -98,7 +100,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       // TODO: Move this component to composition with required onRenderItem to remove
       // this cast.
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
+      const onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSXElement;
       const renderedItem = onRenderItem(props);
       return hasContextMenu ? (
         <SelectedItemWithContextMenu

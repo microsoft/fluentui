@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from "@fluentui/utilities";
 import {
   IColumn,
   SpinButton,
@@ -24,7 +25,7 @@ function createTableData(rows: number, columns: number) {
   return data;
 }
 
-export const DetailsListColumnResizeExample: React.FC<{}> = (props: {}): JSX.Element => {
+export const DetailsListColumnResizeExample: React.FC<{}> = (props: {}): JSXElement => {
   const [rows, setRowCount] = React.useState<number>(1);
   const [columns, setColumns] = React.useState<number>(4);
 

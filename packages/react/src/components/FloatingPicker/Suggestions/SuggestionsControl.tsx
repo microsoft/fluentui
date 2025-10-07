@@ -12,6 +12,8 @@ import type {
   ISuggestionsHeaderFooterProps,
 } from './Suggestions.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const styles: any = stylesImport;
 
 export enum SuggestionItemType {
@@ -34,7 +36,7 @@ export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHea
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { renderItem, onExecute, isSelected, id, className } = this.props;
     return onExecute ? (
       <div
@@ -97,7 +99,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className, headerItemsProps, footerItemsProps, suggestionsAvailableAlertText } = this.props;
 
     const screenReaderTextStyles = mergeStyles(hiddenContentStyle);
@@ -221,7 +223,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected renderHeaderItems(): JSX.Element | null {
+  protected renderHeaderItems(): JSXElement | null {
     const { headerItemsProps, suggestionsHeaderContainerAriaLabel } = this.props;
     const { selectedHeaderIndex } = this.state;
 
@@ -257,7 +259,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected renderFooterItems(): JSX.Element | null {
+  protected renderFooterItems(): JSXElement | null {
     const { footerItemsProps, suggestionsFooterContainerAriaLabel } = this.props;
     const { selectedFooterIndex } = this.state;
     return footerItemsProps ? (
@@ -292,7 +294,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected _renderSuggestions(): JSX.Element {
+  protected _renderSuggestions(): JSXElement {
     const TypedSuggestions = this.SuggestionsOfProperType;
 
     return <TypedSuggestions ref={this._suggestions} {...this.props} suggestions={this.state.suggestions} />;

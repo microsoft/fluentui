@@ -8,6 +8,7 @@ import {
   initializeFolderCovers,
 } from '@fluentui/react-experiments';
 import { ISize, fitContentToBounds } from '@fluentui/react-experiments/lib/Utilities';
+import type { JSXElement } from "@fluentui/utilities";
 
 initializeFolderCovers();
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
@@ -16,7 +17,7 @@ interface IFolderCoverWithImageProps extends IFolderCoverProps {
 
 const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> = (
   props: IFolderCoverWithImageProps,
-): JSX.Element => {
+): JSXElement => {
   const { originalImageSize, ...folderCoverProps } = props;
 
   const folderCover = <FolderCover {...folderCoverProps} />;
@@ -41,7 +42,7 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
 };
 
 export class FolderCoverBasicExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <h3>Large Default Cover</h3>

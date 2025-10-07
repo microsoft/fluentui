@@ -1,6 +1,8 @@
 import type { IStyleFunctionOrObject } from '../Utilities';
 import type { ITheme, IStyle } from '../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IExample {
   /** Title of the example */
   title: string;
@@ -10,7 +12,7 @@ export interface IExample {
 
   /** Working example of the example */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  view: JSX.Element;
+  view: JSXElement;
 
   isScrollable?: boolean;
 
@@ -33,7 +35,7 @@ export interface IDocPageProps {
 
   /** Knobs that applies to all the examples */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  exampleKnobs?: JSX.Element;
+  exampleKnobs?: JSXElement;
 
   /** Array of examples, displayed in the order defined */
   examples?: IExample[];
@@ -79,13 +81,13 @@ export interface IDocPageProps {
    * @deprecated No longer shown on ComponentPage
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  related?: JSX.Element;
+  related?: JSXElement;
 
   /** Pass through other sections for ComponentPage */
   otherSections?: {
     title: string;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    section: JSX.Element;
+    section: JSXElement;
   }[];
 
   /**

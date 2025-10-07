@@ -11,6 +11,8 @@ import {
 import { WindowContext } from '@fluentui/react-window-provider';
 import type { IAutofill, IAutofillProps } from './Autofill.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IAutofillState {
   inputValue: string;
   isComposing: boolean;
@@ -152,7 +154,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     const style = { ...this.props.style, fontFamily: 'inherit' };
     return (

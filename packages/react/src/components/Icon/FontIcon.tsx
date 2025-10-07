@@ -5,9 +5,11 @@ import { getIcon } from '../../Styling';
 import type { IFontIconProps } from './Icon.types';
 import type { IIconRecord, IIconSubsetRecord } from '../../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IIconContent {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  children?: string | JSX.Element;
+  children?: string | JSXElement;
   iconClassName?: string;
   fontFamily?: string;
   mergeImageProps?: boolean;

@@ -12,6 +12,7 @@ import { TreeChartTwoLayerExample } from './TreeChart.TwoLayer.Example';
 import { TreeChartThreeLayerLongExample } from './TreeChart.ThreeLayerLong.Example';
 import { TreeChartThreeLayerCompactExample } from './TreeChart.ThreeLayerCompact.Example';
 import { TreeChartThreeLayerExample } from './TreeChart.ThreeLayer.Example';
+import type { JSXElement } from "@fluentui/utilities";
 
 const TreeChartTwoLayerExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.TwoLayer.Example.tsx') as string;
@@ -23,7 +24,7 @@ const TreeChartThreeLayerExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayer.Example.tsx') as string;
 
 export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="Tree Chart"

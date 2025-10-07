@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-experiments/lib/TilesList';
 import { lorem } from '@fluentui/example-data';
 import { IRenderFunction } from '@fluentui/utilities';
+import type { JSXElement } from "@fluentui/utilities";
 
 type IAspectRatioByProbability = { [probability: string]: number };
 
@@ -87,7 +88,7 @@ export function createGroup(items: IExampleItem[], type: 'document' | 'media', i
 export function onRenderTilesListExampleRoot(
   rootProps?: ITilesListRootProps<IExampleItem>,
   defaultRender?: IRenderFunction<ITilesListRootProps<IExampleItem>>,
-): JSX.Element | null {
+): JSXElement | null {
   if (!rootProps || !defaultRender) {
     return null;
   }
@@ -105,7 +106,7 @@ export function onRenderTilesListExampleRoot(
 export function onRenderTilesListExampleRow(
   rowProps?: ITilesListRowProps<IExampleItem>,
   defaultRender?: IRenderFunction<ITilesListRowProps<IExampleItem>>,
-): JSX.Element | null {
+): JSXElement | null {
   if (!rowProps || !defaultRender) {
     return null;
   }
@@ -127,8 +128,8 @@ export function getExampleTilesListCells(
     size = 'large',
     shimmerMode = false,
   }: {
-    onRenderHeader: (props: ITilesGridItemCellProps<IExampleItem>) => JSX.Element | null;
-    onRenderCell: (props: ITilesGridItemCellProps<IExampleItem>) => JSX.Element | null;
+    onRenderHeader: (props: ITilesGridItemCellProps<IExampleItem>) => JSXElement | null;
+    onRenderCell: (props: ITilesGridItemCellProps<IExampleItem>) => JSXElement | null;
     size?: 'large' | 'small';
     shimmerMode?: boolean;
   },

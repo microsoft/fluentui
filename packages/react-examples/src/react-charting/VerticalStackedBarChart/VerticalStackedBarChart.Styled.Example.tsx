@@ -11,6 +11,7 @@ import {
 import { DefaultPalette, IStyle, DefaultFontStyles } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, DirectionalHint, IChoiceGroupOption } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from "@fluentui/utilities";
 
 const options: IChoiceGroupOption[] = [
   { key: 'singleCallout', text: 'Single callout' },
@@ -42,7 +43,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       roundCorners: false,
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -54,7 +55,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     this.setState({ roundCorners: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'meta data 1', data: 2, color: getColorFromToken(DataVizPalette.color8) },
       { legend: 'Meta data 2', data: 0.5, color: getColorFromToken(DataVizPalette.color9) },

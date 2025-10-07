@@ -4,6 +4,8 @@ import { getRTL, initializeComponentRef } from '../../Utilities';
 import { Icon } from '../../Icon';
 import type { IContextualMenuItemProps, IContextualMenuItemRenderFunctions } from './ContextualMenuItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const defaultIconRenderer = (props: IContextualMenuItemProps) => {
   const { item, classNames } = props;
   const { iconProps } = item;
@@ -78,7 +80,7 @@ export class ContextualMenuItemBase extends React.Component<IContextualMenuItemP
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { item, classNames } = this.props;
     const renderContent = item.onRenderContent || this._renderLayout;
 

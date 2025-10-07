@@ -15,6 +15,8 @@ import type {
 import type { IPersonaProps } from '../../../Persona';
 import type { IPeoplePickerItemSelectedProps } from './PeoplePickerItems/PeoplePickerItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * PeoplePicker props interface which renders Personas as items.
  * {@docCategory PeoplePicker}
@@ -41,12 +43,12 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
     onRenderItem: (
       props: IPeoplePickerItemSelectedProps,
     ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSX.Element => <PeoplePickerItem {...props} />,
+    JSXElement => <PeoplePickerItem {...props} />,
     onRenderSuggestionsItem: (
       personaProps: IPersonaProps,
       suggestionsProps?: IBasePickerSuggestionsProps,
     ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSX.Element => <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />,
+    JSXElement => <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />,
     createGenericItem,
   };
 }
@@ -61,12 +63,12 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
     onRenderItem: (
       props: IPeoplePickerItemSelectedProps,
     ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSX.Element => <PeoplePickerItem {...props} />,
+    JSXElement => <PeoplePickerItem {...props} />,
     onRenderSuggestionsItem: (
       personaProps: IPersonaProps,
       suggestionsProps?: IBasePickerSuggestionsProps,
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-    ): JSX.Element => (
+    ): JSXElement => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} compact={true} />
     ),
     createGenericItem,
@@ -81,12 +83,12 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
   /** Default props for ListPeoplePicker. */
   public static defaultProps = {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    onRenderItem: (props: IPeoplePickerItemSelectedProps): JSX.Element => <PeoplePickerItem {...props} />,
+    onRenderItem: (props: IPeoplePickerItemSelectedProps): JSXElement => <PeoplePickerItem {...props} />,
     onRenderSuggestionsItem: (
       personaProps: IPersonaProps,
       suggestionsProps?: IBasePickerSuggestionsProps,
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-    ): JSX.Element => <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />,
+    ): JSXElement => <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />,
     createGenericItem,
   };
 }

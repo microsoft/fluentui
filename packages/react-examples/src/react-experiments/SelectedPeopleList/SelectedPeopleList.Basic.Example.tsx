@@ -4,6 +4,7 @@ import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { IPersona } from '@fluentui/react/lib/Persona';
 import { people } from '@fluentui/example-data';
 import { SelectedPeopleList } from '@fluentui/react-experiments/lib/SelectedItemsList';
+import type { JSXElement } from "@fluentui/utilities";
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersona[];
@@ -21,7 +22,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div className={'ms-BasePicker-text'}>
         <PrimaryButton text="Add another item" onClick={this._onAddItemButtonClicked} />
@@ -31,7 +32,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
     );
   }
 
-  private _renderExtendedPicker(): JSX.Element {
+  private _renderExtendedPicker(): JSXElement {
     return (
       <div>
         <SelectedPeopleList

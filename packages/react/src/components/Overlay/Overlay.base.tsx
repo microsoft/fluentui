@@ -9,6 +9,8 @@ import {
 } from '../../Utilities';
 import type { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 
 export class OverlayBase extends React.Component<IOverlayProps, {}> {
@@ -31,7 +33,7 @@ export class OverlayBase extends React.Component<IOverlayProps, {}> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { isDarkThemed: isDark, className, theme, styles } = this.props;
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);

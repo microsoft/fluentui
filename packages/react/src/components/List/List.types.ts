@@ -2,6 +2,8 @@ import * as React from 'react';
 import { List } from './List';
 import type { IRefObject, IRectangle, IRenderFunction } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory List}
  */
@@ -53,7 +55,7 @@ export interface IListOnRenderRootProps<T> {
    * This will have been rendered using `onRenderSurface`.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  surfaceElement: JSX.Element | null;
+  surfaceElement: JSXElement | null;
 }
 
 /**
@@ -79,7 +81,7 @@ export interface IListOnRenderSurfaceProps<T> {
    * The content to be rendered representing all active pages.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  pageElements: JSX.Element[];
+  pageElements: JSXElement[];
 }
 
 /**

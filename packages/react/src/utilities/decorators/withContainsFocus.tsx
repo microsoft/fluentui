@@ -2,6 +2,8 @@ import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
 import { Async } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, S>,
 ): any {
@@ -32,7 +34,7 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
     }
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    public render(): JSX.Element {
+    public render(): JSXElement {
       const { containsFocus } = this.state;
 
       return (

@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from "@fluentui/utilities";
 
 interface IGroupedBarChartState {
   width: number;
@@ -29,7 +30,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -52,7 +53,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
     this.setState({ roundCorners: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data: IGroupedVerticalBarChartData[] = [
       {
         name: 'Metadata info multi lines text Completed',

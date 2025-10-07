@@ -6,6 +6,8 @@ import type { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 import type { IRefObject } from '../../Utilities';
 import type { IFocusZoneProps } from '../../FocusZone';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IBaseExtendedPicker<T> {
   /** Forces the picker to resolve */
   forceResolve?: () => void;
@@ -28,7 +30,7 @@ export interface IBaseExtendedPickerProps<T> {
    * Header/title element for the picker
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  headerComponent?: JSX.Element;
+  headerComponent?: JSXElement;
 
   /**
    * Initial items that have already been selected and should appear in the people picker.

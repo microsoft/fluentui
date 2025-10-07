@@ -8,6 +8,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { getId } from '@fluentui/react';
+import type { JSXElement } from "@fluentui/utilities";
 
 const firstChartPoints: IVSChartDataPoint[] = [
   {
@@ -192,7 +193,7 @@ export class VerticalStackedBarChartSecondaryYAxisExample extends React.Componen
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
 

@@ -14,6 +14,7 @@ import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { getTheme, mergeStyles } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from "@fluentui/utilities";
 
 const theme = getTheme();
 const margin = '0 30px 20px 0';
@@ -61,7 +62,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { items, columns, isColumnReorderEnabled, frozenColumnCountFromStart, frozenColumnCountFromEnd } = this.state;
 
     return (
@@ -180,7 +181,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
     };
   }
 
-  private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
+  private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSXElement | string => {
     const key = column.key as keyof IExampleItem;
     if (key === 'name') {
       return (

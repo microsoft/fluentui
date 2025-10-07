@@ -19,6 +19,8 @@ import type {
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>();
 
 export interface IMarqueeSelectionState {
@@ -102,7 +104,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { rootProps, children, theme, className, styles } = this.props;
     const { dragRect } = this.state;
 

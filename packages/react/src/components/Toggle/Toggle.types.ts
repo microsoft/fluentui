@@ -2,6 +2,8 @@ import * as React from 'react';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
 import type { IRefObject, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory Toggle}
  */
@@ -29,7 +31,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
    * A label for the toggle.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  label?: string | JSX.Element;
+  label?: string | JSXElement;
 
   /**
    * Text to display when toggle is ON.

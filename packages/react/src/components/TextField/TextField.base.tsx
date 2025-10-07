@@ -22,6 +22,8 @@ import type { ILabelStyleProps, ILabelStyles } from '../../Label';
 import type { IStyleFunctionOrObject } from '../../Utilities';
 import type { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
 /** @internal */
@@ -37,7 +39,7 @@ export interface ITextFieldState {
    * Use `this._errorMessage` to get the actual current error message.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  errorMessage: string | JSX.Element;
+  errorMessage: string | JSXElement;
 
   /**
    * Whether this field has `type='password'` and `canRevealPassword=true`, and the password is
@@ -197,7 +199,7 @@ export class TextFieldBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       borderless,
       className,
@@ -424,7 +426,7 @@ export class TextFieldBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
+  private _onRenderLabel = (props: ITextFieldProps): JSXElement | null => {
     const { label, required } = props;
     // IProcessedStyleSet definition requires casting for what Label expects as its styles prop
     const labelStyles = this._classNames.subComponentStyles
@@ -442,7 +444,7 @@ export class TextFieldBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderDescription = (props: ITextFieldProps): JSX.Element | null => {
+  private _onRenderDescription = (props: ITextFieldProps): JSXElement | null => {
     if (props.description) {
       return <span className={this._classNames.description}>{props.description}</span>;
     }
@@ -450,13 +452,13 @@ export class TextFieldBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderPrefix(props: ITextFieldProps): JSX.Element {
+  private _onRenderPrefix(props: ITextFieldProps): JSXElement {
     const { prefix } = props;
     return <span style={{ paddingBottom: '1px' }}>{prefix}</span>;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderSuffix(props: ITextFieldProps): JSX.Element {
+  private _onRenderSuffix(props: ITextFieldProps): JSXElement {
     const { suffix } = props;
     return <span style={{ paddingBottom: '1px' }}>{suffix}</span>;
   }
@@ -468,7 +470,7 @@ export class TextFieldBase
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private get _errorMessage(): string | JSX.Element {
+  private get _errorMessage(): string | JSXElement {
     const { errorMessage = this.state.errorMessage } = this.props;
     return errorMessage || '';
   }
@@ -480,7 +482,7 @@ export class TextFieldBase
    * - If error message is an element, user has full control over how it's rendered.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderErrorMessage(): JSX.Element | null {
+  private _renderErrorMessage(): JSXElement | null {
     const errorMessage = this._errorMessage;
 
     return errorMessage ? (
@@ -534,7 +536,7 @@ export class TextFieldBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderInput(): JSX.Element | null {
+  private _renderInput(): JSXElement | null {
     const {
       ariaLabel,
       invalid = !!this._errorMessage,
@@ -629,7 +631,7 @@ export class TextFieldBase
         const currentValidation: number = ++this._lastValidation;
 
         // eslint-disable-next-line @typescript-eslint/no-deprecated
-        result.then((errorMessage: string | JSX.Element) => {
+        result.then((errorMessage: string | JSXElement) => {
           if (currentValidation === this._lastValidation) {
             this.setState({ errorMessage });
           }
@@ -642,7 +644,7 @@ export class TextFieldBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _notifyAfterValidate(value: string | undefined, errorMessage: string | JSX.Element): void {
+  private _notifyAfterValidate(value: string | undefined, errorMessage: string | JSXElement): void {
     if (value === this.value && this.props.onNotifyValidationResult) {
       this.props.onNotifyValidationResult(errorMessage, value);
     }

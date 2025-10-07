@@ -8,6 +8,8 @@ import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../
 import type { IButtonStyles } from '../../Button';
 import type { IPopupProps } from '../../Popup';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory Panel}
  */
@@ -257,7 +259,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
    * panel's title, because the panel popup uses this ID as its aria-labelledby.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
+  (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSXElement | null;
 }
 
 /**

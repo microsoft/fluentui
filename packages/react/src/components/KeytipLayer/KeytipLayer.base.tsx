@@ -31,6 +31,8 @@ import type { KeytipTransitionModifier, IKeytipTransitionKey } from '../../utili
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
   keytips: IKeytipProps[];
@@ -113,7 +115,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { content, styles } = this.props;
 
     const { keytips, visibleKeytips } = this.state;

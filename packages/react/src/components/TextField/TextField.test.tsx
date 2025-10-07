@@ -12,6 +12,8 @@ import { isConformant } from '../../common/isConformant';
 import type { IRefObject } from '../../Utilities';
 import type { ITextFieldStyles, ITextField } from './TextField.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * The currently rendered ITextField.
  * ONLY set if `componentRef={textFieldRef}` is included in the TextField's props.
@@ -298,7 +300,7 @@ describe('TextField with error message', () => {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | JSX.Element | boolean): void {
+  function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | JSXElement | boolean): void {
     const errorMessageDOM = renderedDOM.querySelector('[data-automation-id=error-message]');
 
     if (expectedErrorMessage === false) {
@@ -365,7 +367,7 @@ describe('TextField with error message', () => {
     unmount();
   });
 
-  it('should render error message when onGetErrorMessage returns a JSX.Element', () => {
+  it('should render error message when onGetErrorMessage returns a JSXElement', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessageJSX : ''));
 
     const { unmount, container, getByRole } = render(
@@ -413,7 +415,7 @@ describe('TextField with error message', () => {
     unmount();
   });
 
-  it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', async () => {
+  it('should render error message when onGetErrorMessage returns a Promise<JSXElement>', async () => {
     const validator = jest.fn((value: string) => Promise.resolve(value.length > 3 ? errorMessageJSX : ''));
 
     const { container, getByRole, unmount } = render(

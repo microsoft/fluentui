@@ -1,12 +1,13 @@
 import { IChartProps, SankeyChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import * as React from 'react';
+import type { JSXElement } from "@fluentui/utilities";
 
 export class SankeyChartReflowExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._reflowExample()}</div>;
   }
 
-  private _reflowExample(): JSX.Element {
+  private _reflowExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Sankey Chart',
       SankeyChartData: {

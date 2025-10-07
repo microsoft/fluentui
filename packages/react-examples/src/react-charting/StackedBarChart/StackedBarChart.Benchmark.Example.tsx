@@ -7,9 +7,10 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from "@fluentui/utilities";
 
 export class StackedBarChartBenchmarkExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const points: IChartDataPoint[] = [
       { legend: 'first', data: 10, color: getColorFromToken(DataVizPalette.color7) },
       { legend: '', data: 90, color: DefaultPalette.neutralTertiaryAlt, placeHolder: true },

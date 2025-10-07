@@ -12,7 +12,7 @@ import { useBoolean } from '@fluentui/react-hooks';
 export const CalendarButtonExample: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
   const [showCalendar, { toggle: toggleShowCalendar, setFalse: hideCalendar }] = useBoolean(false);
-  const buttonContainerRef = React.useRef<HTMLDivElement>(null);
+  const buttonContainerRef = React.useRef<HTMLDivElement | null>(null);
 
   const onSelectDate = React.useCallback(
     (date: Date, dateRangeArray: Date[]): void => {

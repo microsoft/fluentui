@@ -6,6 +6,8 @@ import * as stylesImport from './Suggestions.scss';
 import type { IProcessedStyleSet } from '../../../Styling';
 import type { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const legacyStyles: any = stylesImport;
 
 const getClassNames = classNamesFunction<ISuggestionsItemStyleProps, ISuggestionsItemStyles>();
@@ -21,7 +23,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       suggestionModel,
       RenderSuggestion,

@@ -4,6 +4,7 @@ import { Icon } from '@fluentui/react/lib/Icon';
 import { Label } from '@fluentui/react/lib/Label';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 import { IconButton } from '@fluentui/react/lib/Button';
+import type { JSXElement } from "@fluentui/utilities";
 
 const exampleOptions: IDropdownOption[] = [
   { key: 'Header', text: 'Options', itemType: DropdownMenuItemType.Header },
@@ -24,7 +25,7 @@ const exampleOptions: IDropdownOption[] = [
 const stackTokens: IStackTokens = { childrenGap: 20 };
 const iconStyles = { marginRight: '8px' };
 
-const onRenderLabel = (props: IDropdownProps): JSX.Element => {
+const onRenderLabel = (props: IDropdownProps): JSXElement => {
   return (
     <Stack horizontal verticalAlign="center">
       <Label>{props.label}</Label>
@@ -38,7 +39,7 @@ const onRenderLabel = (props: IDropdownProps): JSX.Element => {
   );
 };
 
-const onRenderOption = (option: IDropdownOption): JSX.Element => {
+const onRenderOption = (option: IDropdownOption): JSXElement => {
   return (
     <div>
       {option.data && option.data.icon && (
@@ -49,7 +50,7 @@ const onRenderOption = (option: IDropdownOption): JSX.Element => {
   );
 };
 
-const onRenderTitle = (options: IDropdownOption[]): JSX.Element => {
+const onRenderTitle = (options: IDropdownOption[]): JSXElement => {
   const option = options[0];
 
   return (
@@ -62,11 +63,11 @@ const onRenderTitle = (options: IDropdownOption[]): JSX.Element => {
   );
 };
 
-const onRenderCaretDown = (): JSX.Element => {
+const onRenderCaretDown = (): JSXElement => {
   return <Icon iconName="CirclePlus" />;
 };
 
-const onRenderPlaceholder = (props: IDropdownProps): JSX.Element => {
+const onRenderPlaceholder = (props: IDropdownProps): JSXElement => {
   return (
     <div className="dropdownExample-placeholder">
       <Icon style={iconStyles} iconName={'MessageFill'} aria-hidden="true" />

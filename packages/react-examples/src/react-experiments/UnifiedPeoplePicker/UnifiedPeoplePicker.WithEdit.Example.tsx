@@ -22,6 +22,7 @@ import { IInputProps } from '@fluentui/react';
 import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { KeyCodes } from '@fluentui/react-experiments/lib/Utilities';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 const classNames = mergeStyleSets({
   to: {
@@ -82,7 +83,7 @@ const _suggestions = [
   },
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
-export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
+export const UnifiedPeoplePickerWithEditExample = (): JSXElement => {
   const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
     ..._suggestions,
   ]);
@@ -91,7 +92,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
   const [inputText, setInputText] = React.useState<string>('');
   const [editingIndex, setEditingIndex] = React.useState(-1);
 
-  const ref = React.useRef<any>();
+  const ref = React.useRef<any>(undefined);
 
   const suggestionProps = useConst(() => {
     return {

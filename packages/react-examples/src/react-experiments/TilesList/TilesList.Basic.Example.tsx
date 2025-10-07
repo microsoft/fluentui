@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from "@fluentui/utilities";
 import {
   TilesList,
   ITilesGridSegment,
@@ -41,7 +42,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const gridSegment: ITilesGridSegment<IBasicItem> = {
       items: this.state.items,
       key: 'grid',
@@ -54,7 +55,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
   }
 }
 
-function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
+function renderItem(item: IBasicItem, finalSize?: ITileSize): JSXElement {
   return (
     <div
       style={{

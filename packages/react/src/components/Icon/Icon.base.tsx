@@ -8,6 +8,8 @@ import { getIconContent } from './FontIcon';
 import type { IIconProps, IIconStyleProps, IIconStyles } from './Icon.types';
 import type { IImageProps } from '../Image/Image.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IIconState {
   imageLoadError: boolean;
 }
@@ -28,7 +30,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { children, className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage =

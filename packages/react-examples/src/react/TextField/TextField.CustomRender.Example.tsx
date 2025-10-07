@@ -8,6 +8,7 @@ import { Text } from '@fluentui/react/lib/Text';
 import { IRenderFunction, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { getTheme, FontWeights, ITheme } from '@fluentui/react/lib/Styling';
 import { useBoolean, useId } from '@fluentui/react-hooks';
+import type { JSXElement } from "@fluentui/utilities";
 
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;
@@ -27,7 +28,7 @@ const getDescriptionStyles = memoizeFunction((theme: ITheme) => ({
   root: { color: theme.palette.green, fontWeight: FontWeights.bold },
 }));
 
-const onRenderDescription = (props: ITextFieldProps): JSX.Element => {
+const onRenderDescription = (props: ITextFieldProps): JSXElement => {
   const theme = getTheme();
   return (
     <Text variant="small" styles={getDescriptionStyles(theme)}>
@@ -39,7 +40,7 @@ const onRenderDescription = (props: ITextFieldProps): JSX.Element => {
 const onWrapDefaultLabelRenderer = (
   props: ITextFieldProps,
   defaultRender: IRenderFunction<ITextFieldProps>,
-): JSX.Element => {
+): JSXElement => {
   return (
     <>
       <Stack horizontal verticalAlign="center" tokens={stackTokens}>
@@ -56,7 +57,7 @@ const onWrapDefaultLabelRenderer = (
   );
 };
 
-const CustomLabel = (props: ITextFieldProps): JSX.Element => {
+const CustomLabel = (props: ITextFieldProps): JSXElement => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   const descriptionId: string = useId('description');
   const iconButtonId: string = useId('iconButton');

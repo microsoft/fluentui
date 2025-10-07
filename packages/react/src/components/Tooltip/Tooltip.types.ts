@@ -5,6 +5,8 @@ import type { ICalloutProps } from '../../Callout';
 import type { IRenderFunction, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { IStyle, ITheme } from '../../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory Tooltip}
  */
@@ -30,7 +32,7 @@ export interface ITooltipProps extends Omit<React.HTMLAttributes<HTMLDivElement 
    * Content to be passed to the tooltip
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  content?: string | JSX.Element | JSX.Element[];
+  content?: string | JSXElement | JSXElement[];
 
   /**
    * Render function to populate tooltip content.
