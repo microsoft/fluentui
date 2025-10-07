@@ -2092,7 +2092,7 @@
     "@griffel/core" "^1.16.0"
     tslib "^2.1.0"
 
-"@griffel/react@^1.0.0", "@griffel/react@^1.5.14", "@griffel/react@^1.5.22":
+"@griffel/react@^1.0.0", "@griffel/react@^1.5.22":
   version "1.5.22"
   resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.5.22.tgz#90b589f7d6015405d38ebe624d08e793813c2164"
   integrity sha512-QZWo73e+7oh+aTxCJzCe9SNUszM0+lHG9p1LoEQ5MZdvtT8sur1M4cz+TVTTgUXqUBnHBf1TIYXvVoRxiZhy8Q==
