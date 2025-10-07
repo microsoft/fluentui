@@ -18,6 +18,10 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
       excludeStoriesInsertionFromPackages: [
         '@fluentui/react-storybook-addon',
         '@fluentui/theme-designer',
+        // Exclude Deprecated v9 projects
+        '@fluentui/react-alert',
+        '@fluentui/react-infobutton',
+        '@fluentui/react-virtualizer',
         // Exclude non v9 stories
         '@fluentui/react',
         // Exclude the package as we are including only the `Nav` component stories from the package below.
