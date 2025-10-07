@@ -4,8 +4,8 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-alert',
-  preset: '../../../jest.preset.js',
+  displayName: 'react-infobutton',
+  preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [
       'ts-jest',

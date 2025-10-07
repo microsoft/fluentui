@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-deprecated */
-
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { InfoLabel } from '@fluentui/react-infobutton';
+import { InfoLabel } from './InfoLabel';
 
 const mount = (element: React.ReactElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);

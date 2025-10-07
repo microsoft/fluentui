@@ -4,8 +4,8 @@
     "noEmit": false,
     "lib": ["ES2019", "dom"],
     "declaration": true,
-    "declarationDir": "../../../dist/out-tsc/types",
-    "outDir": "../../../dist/out-tsc",
+    "declarationDir": "../../../../dist/out-tsc/types",
+    "outDir": "../../../../dist/out-tsc",
     "inlineSources": true,
     "types": ["static-assets", "environment"]
   },
