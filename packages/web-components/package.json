@@ -7,7 +7,7 @@
     "url": "https://discord.gg/FcSNfg4"
   },
   "engines": {
-    "node": ">=20.10.0"
+    "node": "^22.0.0 || ^24.0.0"
   },
   "license": "MIT",
   "repository": {
@@ -75,14 +75,14 @@
     "e2e:local": "node ./scripts/e2e.js --ui"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "0.10.8",
+    "@custom-elements-manifest/analyzer": "0.10.10",
     "@fluentui/scripts-api-extractor": "*",
     "@microsoft/fast-element": "2.0.0",
     "@tensile-perf/web-components": "~0.2.2",
     "@storybook/html": "7.6.20",
     "@storybook/html-webpack5": "7.6.20",
     "@wc-toolkit/cem-validator": "1.0.3",
-    "@wc-toolkit/cem-inheritance": "1.0.4",
+    "@wc-toolkit/cem-inheritance": "1.2.2",
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
     "chromedriver": "^125.0.0"
