@@ -1,3 +1,5 @@
+import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Button, Image, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
@@ -9,8 +11,6 @@ import {
   CarouselAnnouncerFunction,
   CarouselSlider,
 } from '@fluentui/react-components';
-import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   bannerCard: {
@@ -71,13 +71,12 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index:
     </CarouselCard>
   );
 };
-
-const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
-  return `Carousel slide ${index + 1} of ${totalSlides}`;
+const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number) => {
+  return `Elevated carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-export const Default = (): JSXElement => (
-  <Carousel groupSize={1} circular announcement={getAnnouncement}>
+export const Appearance = (): JSXElement => (
+  <Carousel appearance="elevated" groupSize={1} circular announcement={getAnnouncement}>
     <CarouselViewport>
       <CarouselSlider>
         {IMAGES.map((imageSrc, index) => (
