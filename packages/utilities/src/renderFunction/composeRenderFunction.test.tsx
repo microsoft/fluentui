@@ -3,18 +3,17 @@ import * as renderer from 'react-test-renderer';
 import { composeRenderFunction } from './composeRenderFunction';
 import type { IRenderFunction } from '../IRenderFunction';
 
+import type { JSXElement } from '../jsx';
+
 interface IExampleProps {
   value: string;
 }
 
-const renderBase = (props: IExampleProps): JSX.Element | null => {
+const renderBase = (props: IExampleProps): JSXElement | null => {
   return <div data-value={props.value} />;
 };
 
-const renderDecoratorA = (
-  props?: IExampleProps,
-  defaultRender?: IRenderFunction<IExampleProps>,
-): JSX.Element | null => {
+const renderDecoratorA = (props?: IExampleProps, defaultRender?: IRenderFunction<IExampleProps>): JSXElement | null => {
   if (!props) {
     return null;
   }
@@ -22,10 +21,7 @@ const renderDecoratorA = (
   return <div data-a="a">{defaultRender ? defaultRender(props) : null}</div>;
 };
 
-const renderDecoratorB = (
-  props?: IExampleProps,
-  defaultRender?: IRenderFunction<IExampleProps>,
-): JSX.Element | null => {
+const renderDecoratorB = (props?: IExampleProps, defaultRender?: IRenderFunction<IExampleProps>): JSXElement | null => {
   if (!props) {
     return null;
   }

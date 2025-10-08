@@ -3,6 +3,8 @@ import { initializeComponentRef } from './initializeComponentRef';
 import * as renderer from 'react-test-renderer';
 import type { IBaseProps } from './BaseComponent.types';
 
+import type { JSXElement } from './jsx';
+
 describe('initializeComponentRef', () => {
   class Foo extends React.Component<IBaseProps, {}> {
     constructor(props: IBaseProps) {
@@ -10,7 +12,7 @@ describe('initializeComponentRef', () => {
       initializeComponentRef(this);
     }
 
-    public render(): JSX.Element {
+    public render(): JSXElement {
       return <div />;
     }
   }

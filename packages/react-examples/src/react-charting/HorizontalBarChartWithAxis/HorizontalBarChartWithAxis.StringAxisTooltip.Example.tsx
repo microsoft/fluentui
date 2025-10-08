@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 const options: IChoiceGroupOption[] = [
   { key: 'expandYAxisLabels', text: 'Expand Y Axis Ticks' },
@@ -33,7 +34,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicStringAxisExample()}</div>;
   }
 
@@ -45,7 +46,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
     this.setState({ roundCorners: checked });
   };
 
-  private _basicStringAxisExample(): JSX.Element {
+  private _basicStringAxisExample(): JSXElement {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
       {
         y: 'String One',

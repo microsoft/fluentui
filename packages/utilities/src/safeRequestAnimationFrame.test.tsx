@@ -2,6 +2,8 @@ import * as React from 'react';
 import { safeRequestAnimationFrame } from './safeRequestAnimationFrame';
 import * as renderer from 'react-test-renderer';
 
+import type { JSXElement } from './jsx';
+
 describe('safeRequestAnimationFrame', () => {
   let rafCalled = false;
 
@@ -12,7 +14,7 @@ describe('safeRequestAnimationFrame', () => {
       super(props);
     }
 
-    public render(): JSX.Element {
+    public render(): JSXElement {
       return <div>Hello</div>;
     }
 

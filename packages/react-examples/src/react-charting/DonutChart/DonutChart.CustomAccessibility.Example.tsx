@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   DonutChart,
   IDonutChartProps,
@@ -13,7 +14,7 @@ export class DonutChartCustomAccessibilityExample extends React.Component<IDonut
     super(props);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const points: IChartDataPoint[] = [
       {
         legend: 'first',

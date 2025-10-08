@@ -2,6 +2,8 @@ import * as React from 'react';
 import { safeSetTimeout } from './safeSetTimeout';
 import * as renderer from 'react-test-renderer';
 
+import type { JSXElement } from './jsx';
+
 describe('safeSetTimeout', () => {
   let setTimeoutCalled = false;
 
@@ -12,7 +14,7 @@ describe('safeSetTimeout', () => {
       super(props);
     }
 
-    public render(): JSX.Element {
+    public render(): JSXElement {
       return <div>Hello</div>;
     }
 

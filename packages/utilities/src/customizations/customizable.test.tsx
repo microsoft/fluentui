@@ -8,9 +8,11 @@ import { Customizations } from './Customizations';
 import { Customizer } from './Customizer';
 import type { IStyle, IStyleFunction, ShadowConfig } from '@fluentui/merge-styles';
 
+import type { JSXElement } from '../jsx';
+
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this.props.field}</div>;
   }
 }
@@ -30,7 +32,7 @@ interface IComponentStyleFunctionProps {
 
 @customizable('ConcatStyles', ['styles'], true)
 class ConcatStyles extends React.Component<IComponentProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div
         data-testid="concat-styles"
@@ -44,7 +46,7 @@ class ConcatStyles extends React.Component<IComponentProps, {}> {
 
 @customizable('OverrideStyles', ['styles'])
 class OverrideStyles extends React.Component<IComponentProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div
         data-testid="override-styles"
@@ -58,7 +60,7 @@ class OverrideStyles extends React.Component<IComponentProps, {}> {
 
 @customizable('StyleFunction', ['styles'])
 class StyleFunction extends React.Component<IComponentStyleFunctionProps> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div data-testid="style-function" />;
   }
 }

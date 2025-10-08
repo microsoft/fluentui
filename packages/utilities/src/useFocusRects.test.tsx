@@ -383,8 +383,8 @@ describe('useFocusRects', () => {
     });
 
     const FocusRectsWithProvider: React.FunctionComponent<{
-      providerRef: React.RefObject<HTMLDivElement>;
-      rootRef?: React.RefObject<HTMLElement>;
+      providerRef: React.RefObject<HTMLDivElement | null>;
+      rootRef?: React.RefObject<HTMLElement | null>;
     }> = ({ providerRef, rootRef }) => {
       return (
         <FocusRectsProvider providerRef={providerRef}>

@@ -8,7 +8,7 @@ const styles = mergeStyleSets({
 
 export const DatePickerInputExample: React.FunctionComponent = () => {
   const [value, setValue] = React.useState<Date | undefined>();
-  const datePickerRef = React.useRef<IDatePicker>(null);
+  const datePickerRef = React.useRef<IDatePicker | null>(null);
 
   const onClick = React.useCallback((): void => {
     setValue(undefined);
