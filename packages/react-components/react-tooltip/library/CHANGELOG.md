@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Thu, 02 Oct 2025 15:12:08 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Oct 2025 12:04:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.8.7)
+
+Wed, 08 Oct 2025 12:04:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.8.6..@fluentui/react-tooltip_v9.8.7)
+
+### Patches
+
+- fix: In StrictMode, Tooltip now shows correctly on elements that are focused when created ([PR #35282](https://github.com/microsoft/fluentui/pull/35282) by vgenaev@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.2.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-portal to v9.8.4 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-positioning to v9.20.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-tabster to v9.26.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
 
 ## [9.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.8.6)
 
