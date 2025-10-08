@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { extendComponent } from './extendComponent';
 
 import type { JSXElement } from './jsx';
@@ -28,7 +28,7 @@ describe('extendComponent', () => {
         return <div />;
       }
     }
-    const component = renderer.create(<Foo />);
+    const component = render(<Foo />);
     component.unmount();
 
     expect(didMount).toEqual(2);

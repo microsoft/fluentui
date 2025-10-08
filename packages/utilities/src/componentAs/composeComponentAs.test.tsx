@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { composeComponentAs } from './composeComponentAs';
 import type { IComponentAsProps } from '../IComponentAs';
 
@@ -32,34 +32,32 @@ const DecoratorB: React.ComponentType<IComponentAsProps<IExampleProps>> = (
 describe('composeComponentAs', () => {
   it('passes Base to DecoratorA', () => {
     const DecoratorAWithBase = composeComponentAs(DecoratorA, Base);
+    const component = render(<DecoratorAWithBase value="test" />);
 
-    const component = renderer.create(<DecoratorAWithBase value="test" />);
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('passes Base to DecoratorB through DecoratorA', () => {
     const DecoratorAAndBWithBase = composeComponentAs(DecoratorA, composeComponentAs(DecoratorB, Base));
+    const component = render(<DecoratorAAndBWithBase value="test" />);
 
-    const component = renderer.create(<DecoratorAAndBWithBase value="test" />);
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('passes Base as defaultRender to DecoratorB through DecoratorA', () => {
     const DecoratorAAroundB = composeComponentAs(DecoratorA, DecoratorB);
 
-    const component = renderer.create(<DecoratorAAroundB value="test" defaultRender={Base} />);
+    const component = render(<DecoratorAAroundB value="test" defaultRender={Base} />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders without defaultRender', () => {
     const DecoratorAAroundB = composeComponentAs(DecoratorA, DecoratorB);
 
-    const component = renderer.create(<DecoratorAAroundB value="test" />);
+    const component = render(<DecoratorAAroundB value="test" />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('avoids recomposing already-composed components', () => {

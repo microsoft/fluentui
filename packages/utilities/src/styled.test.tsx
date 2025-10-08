@@ -1,17 +1,15 @@
 /*  eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { act, render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { styled } from './styled';
 import { Customizer } from './customizations/Customizer';
 import { Stylesheet, InjectionMode, mergeStyles } from '@fluentui/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
-import { safeCreate } from '@fluentui/test-utilities';
 import type { IStyle, IStyleFunction, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 
 import type { JSXElement } from './jsx';
-
-const { act } = renderer;
 
 interface ITestStyles {
   root: IStyle;
@@ -25,7 +23,7 @@ interface ITestProps {
 let _lastProps: ITestProps | undefined;
 let _renderCount: number;
 let _styleEval: number;
-let component: renderer.ReactTestRenderer | undefined;
+let component: ReturnType<typeof render> | undefined;
 let lastStylesInBaseComponent: IStyleFunctionOrObject<{}, ITestStyles> | undefined;
 
 const getClassNames = classNamesFunction<{}, ITestStyles>();
@@ -87,13 +85,13 @@ describe('styled', () => {
 
   it('can create pure components', () => {
     let renderCount = 0;
-    const render = () => {
+    const Component = () => {
       renderCount++;
       return <div />;
     };
     const styles = () => ({});
-    const Comp = styled(render, styles);
-    const PureComp = styled(render, styles, undefined, undefined, true);
+    const Comp = styled(Component, styles);
+    const PureComp = styled(Component, styles, undefined, undefined, true);
     const App = () => {
       return (
         <div>
@@ -104,43 +102,42 @@ describe('styled', () => {
     };
 
     act(() => {
-      component = renderer.create(<App />);
+      component = render(<App />);
     });
 
     expect(renderCount).toEqual(2);
 
     act(() => {
-      component!.update(<App data-foo="1" />);
+      component!.rerender(<App data-foo="1" />);
     });
 
     expect(renderCount).toEqual(3);
   });
 
   it('renders base styles (background red)', () => {
-    safeCreate(<Test />, (wrapper: renderer.ReactTestRenderer) => {
-      // Test that defaults are the base styles (red).
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    const wrapper = render(<Test />);
+    // Test that defaults are the base styles (red)
+    expect(wrapper.container.firstChild).toMatchSnapshot();
   });
 
   it('allows user overrides (background green)', () => {
-    safeCreate(<Test styles={{ root: { background: 'green' } }} />, (wrapper: renderer.ReactTestRenderer) => {
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    const wrapper = render(<Test styles={{ root: { background: 'green' } }} />);
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('does not create any new closured functions', () => {
     let _firstProps: ITestProps | undefined;
 
     act(() => {
-      component = renderer.create(<Test />);
+      component = render(<Test />);
     });
 
     _firstProps = _lastProps;
     expect(_renderCount).toEqual(1);
 
     act(() => {
-      component!.update(<Test cool={true} />);
+      component!.rerender(<Test cool={true} />);
     });
 
     expect(_renderCount).toEqual(2);
@@ -163,7 +160,7 @@ describe('styled', () => {
   });
 
   it('allows for contextual overrides (background yellow)', () => {
-    safeCreate(
+    const wrapper = render(
       <Customizer
         scopedSettings={{
           Test: {
@@ -177,14 +174,13 @@ describe('styled', () => {
       >
         <Test />
       </Customizer>,
-      (wrapper: renderer.ReactTestRenderer) => {
-        expect(wrapper.toJSON()).toMatchSnapshot();
-      },
     );
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('allows for contextual overrides mixed under user overrides (background yellow, color red)', () => {
-    safeCreate(
+    const wrapper = render(
       <Customizer
         scopedSettings={{
           Test: {
@@ -198,24 +194,23 @@ describe('styled', () => {
       >
         <Test styles={{ root: { color: 'red' } }} />
       </Customizer>,
-      (wrapper: renderer.ReactTestRenderer) => {
-        expect(wrapper.toJSON()).toMatchSnapshot();
-      },
     );
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('can process style props (background blue)', () => {
-    safeCreate(<Test cool />, (wrapper: renderer.ReactTestRenderer) => {
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    const wrapper = render(<Test cool />);
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('can wrap components and merge styling objects for all', () => {
     const TestInner = styled<ITestProps, {}, ITestStyles>(Test, { root: { color: 'green' } }, undefined);
     const TestOuter = styled<ITestProps, {}, ITestStyles>(TestInner, { root: { lineHeight: '19px' } }, undefined);
-    safeCreate(<TestOuter cool />, (wrapper: renderer.ReactTestRenderer) => {
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    const wrapper = render(<TestOuter cool />);
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('can wrap components and merge styling functions for all', () => {
@@ -225,43 +220,37 @@ describe('styled', () => {
       () => ({ root: { lineHeight: '29px' } }),
       undefined,
     );
-    safeCreate(<TestOuter cool />, (wrapper: renderer.ReactTestRenderer) => {
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    const wrapper = render(<TestOuter cool />);
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('gives wrapped styles object priority', () => {
     const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, { root: { background: 'grey' } }, undefined);
-    safeCreate(<TestWrapped cool />, (wrapper: renderer.ReactTestRenderer) => {
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    const wrapper = render(<TestWrapped cool />);
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('gives wrapped styles function priority', () => {
     const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { background: 'grey' } }), undefined);
-    safeCreate(<TestWrapped cool />, (wrapper: renderer.ReactTestRenderer) => {
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    const wrapper = render(<TestWrapped cool />);
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('gives styles object user prop priority', () => {
     const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, { root: { background: 'grey' } }, undefined);
-    safeCreate(
-      <TestWrapped cool styles={{ root: { background: 'purple' } }} />,
-      (wrapper: renderer.ReactTestRenderer) => {
-        expect(wrapper.toJSON()).toMatchSnapshot();
-      },
-    );
+    const wrapper = render(<TestWrapped cool styles={{ root: { background: 'purple' } }} />);
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('gives styles function user prop priority', () => {
     const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { background: 'grey' } }), undefined);
-    safeCreate(
-      <TestWrapped cool styles={{ root: { background: 'purple' } }} />,
-      (wrapper: renderer.ReactTestRenderer) => {
-        expect(wrapper.toJSON()).toMatchSnapshot();
-      },
-    );
+    const wrapper = render(<TestWrapped cool styles={{ root: { background: 'purple' } }} />);
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('respects styles arg', () => {
@@ -283,15 +272,14 @@ describe('styled', () => {
 
     const StyledPanel = styled<{}, {}, {}>(DefaultPanel, greenStyles);
 
-    safeCreate(
+    const wrapper = render(
       <div>
         <DefaultPanel>Panel1</DefaultPanel>
         <StyledPanel>Panel2</StyledPanel>
       </div>,
-      (wrapper: renderer.ReactTestRenderer) => {
-        expect(wrapper.toJSON()).toMatchSnapshot();
-      },
     );
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('respects styles type', (done: () => undefined) => {
@@ -305,68 +293,67 @@ describe('styled', () => {
 
     const StyledComponent = styled(Component, defaultStyles);
 
-    safeCreate(<StyledComponent />, (wrapper: renderer.ReactTestRenderer) => {
-      expect(wrapper.toJSON()).toMatchSnapshot();
-    });
+    const wrapper = render(<StyledComponent />);
+    expect(wrapper.container.firstChild).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('can re-render on customization mutations', () => {
-    safeCreate(<Test />, () => {
-      expect(_renderCount).toEqual(1);
-      act(() => {
-        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
-      });
-      expect(_renderCount).toEqual(2);
+    const wrapper = render(<Test />);
+    expect(_renderCount).toEqual(1);
+    act(() => {
+      Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
     });
+    expect(_renderCount).toEqual(2);
+    wrapper.unmount();
   });
 
   it('can re-render the minimal times when nesting', () => {
-    safeCreate(
+    const wrapper = render(
       <Test>
         <Test />
         <Test />
       </Test>,
-      () => {
-        expect(_renderCount).toEqual(3);
-        act(() => {
-          Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
-        });
-        expect(_renderCount).toEqual(6);
-      },
     );
+    expect(_renderCount).toEqual(3);
+    act(() => {
+      Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+    });
+    expect(_renderCount).toEqual(6);
+    wrapper.unmount();
   });
 
   it('can re-render the minimal times when nesting and in a Customizer', () => {
-    safeCreate(
+    const wrapper = render(
       <Customizer>
         <Test />
       </Customizer>,
-      () => {
-        expect(_renderCount).toEqual(1);
-        act(() => {
-          Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
-        });
-        expect(_renderCount).toEqual(2);
-      },
     );
+    expect(_renderCount).toEqual(1);
+    act(() => {
+      Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+    });
+    expect(_renderCount).toEqual(2);
+    wrapper.unmount();
   });
 
   it('can re-render when customized styles change', () => {
     act(() => {
-      component = renderer.create(<Test />);
+      component = render(<Test />);
     });
 
     expect(_styleEval).toEqual(1);
 
     act(() => {
-      component!.update(<Test data-foo={1} />);
+      component!.rerender(<Test data-foo={1} />);
     });
 
     expect(_styleEval).toEqual(1);
+    component!.unmount();
   });
 
   it('can re-render the minimal times when inside of a pure component', () => {
-    safeCreate(
+    const wrapper = render(
       <Customizer>
         <Test>
           <ShortCircuit>
@@ -374,28 +361,27 @@ describe('styled', () => {
           </ShortCircuit>
         </Test>
       </Customizer>,
-      () => {
-        expect(_renderCount).toEqual(2);
-        act(() => {
-          Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
-        });
-        expect(_renderCount).toEqual(4);
-      },
     );
+    expect(_renderCount).toEqual(2);
+    act(() => {
+      Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+    });
+    expect(_renderCount).toEqual(4);
+    wrapper.unmount();
   });
 
   it('will not re-render if styles have not changed', () => {
     let firstStylesProp;
 
     act(() => {
-      component = renderer.create(<Test styles={{ root: { background: 'red' } }} />);
+      component = render(<Test styles={{ root: { background: 'red' } }} />);
       firstStylesProp = lastStylesInBaseComponent;
     });
 
     expect(_renderCount).toEqual(1);
 
     act(() => {
-      component!.update(<Test cool={true} styles={{ root: { background: 'red' } }} />);
+      component!.rerender(<Test cool={true} styles={{ root: { background: 'red' } }} />);
     });
 
     expect(_renderCount).toEqual(2);

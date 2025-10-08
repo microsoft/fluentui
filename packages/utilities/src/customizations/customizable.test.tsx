@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
-import * as renderer from 'react-test-renderer';
+import '@testing-library/jest-dom';
 import { customizable } from './customizable';
 import { Customizations } from './Customizations';
 import { Customizer } from './Customizer';
@@ -61,7 +61,15 @@ class OverrideStyles extends React.Component<IComponentProps, {}> {
 @customizable('StyleFunction', ['styles'])
 class StyleFunction extends React.Component<IComponentStyleFunctionProps> {
   public render(): JSXElement {
-    return <div data-testid="style-function" />;
+    const styles = this.props.styles({ styles: { root: {} } });
+
+    return (
+      <div
+        data-testid="style-function"
+        style={styles.root as React.CSSProperties}
+        data-style={JSON.stringify(styles.root)}
+      />
+    );
   }
 }
 
@@ -133,19 +141,22 @@ describe('customizable', () => {
   });
 
   it('will apply component style function when no global styles are present', () => {
-    const componentStyles: IStyleFunction<IComponentProps, IComponentStyles> = _props => {
-      return { root: { color: 'red', background: 'green' } };
+    const componentStyles = { root: { color: 'red', background: 'green' } };
+    const componentStylesFn: IStyleFunction<IComponentProps, IComponentStyles> = _props => {
+      return componentStyles;
     };
 
-    const wrapper = renderer.create(
+    const wrapper = render(
       <Customizer>
-        <StyleFunction styles={componentStyles} />
+        <StyleFunction styles={componentStylesFn} />
       </Customizer>,
     );
-    const component = wrapper.root.findByType(StyleFunction);
-    const props = component.props as IComponentProps;
-    expect(typeof props.styles).toBe('function');
-    expect(props.styles.__shadowConfig__).toBeTruthy();
+
+    const component = wrapper.getByTestId('style-function');
+    const rootStyles = JSON.parse(component.getAttribute('data-style')!);
+
+    expect(component).toHaveStyle(componentStyles.root);
+    expect(rootStyles).toEqual(componentStyles.root);
   });
 
   it('can concatenate scoped styles and component styles', () => {
