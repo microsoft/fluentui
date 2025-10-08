@@ -452,12 +452,18 @@ function buildE2eTarget(
   }
 
   if (hasPlaywright) {
+    const [major, minor, _patch] = process.versions.node.split('.').map(n => parseInt(n, 10));
+    let env = {};
+    if (major > 22 || (major === 22 && minor >= 18)) {
+      env = { NODE_OPTIONS: '--no-experimental-strip-types' };
+    }
     return {
       command: `${config.pmc.exec} playwright test`,
-      options: { cwd: projectRoot },
+      options: { cwd: projectRoot, env },
       configurations: {
         local: {
           command: `${config.pmc.exec} playwright test --ui`,
+          options: { env },
         },
       },
       inputs: [
