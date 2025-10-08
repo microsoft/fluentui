@@ -1,7 +1,9 @@
 // @ts-check
-const configHelpers = require('../utils/configHelpers');
 const path = require('path');
+
+const configHelpers = require('../utils/configHelpers');
 const { reactLegacy: restrictedGlobals } = require('../shared/restricted-globals');
+const { createReactCrossVersionRules } = require('../shared/react-cross-version-rules');
 
 /** @type {import("eslint").Linter.LegacyConfig} */
 module.exports = {
@@ -11,6 +13,9 @@ module.exports = {
     'jsdoc/check-tag-names': 'off',
     '@griffel/no-shorthands': 'off',
     'no-restricted-globals': restrictedGlobals,
+    ...createReactCrossVersionRules({
+      crossCompatTypePackage: '@fluentui/utilities',
+    }),
   },
   overrides: [
     {
