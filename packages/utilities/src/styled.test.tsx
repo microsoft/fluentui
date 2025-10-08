@@ -1,4 +1,3 @@
-/*  eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { styled } from './styled';
