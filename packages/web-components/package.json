@@ -1,10 +1,13 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.124",
+  "version": "3.0.0-beta.125",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
+  },
+  "engines": {
+    "node": ">=20.10.0"
   },
   "license": "MIT",
   "repository": {

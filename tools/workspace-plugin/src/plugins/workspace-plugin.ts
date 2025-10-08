@@ -584,7 +584,7 @@ function buildReactIntegrationTesterProjectConfiguration(
     'production',
     '^production',
     '{workspaceRoot}/jest.preset.js',
-    '{workspaceRoot}/tools/react-integration-testing/**',
+    '{workspaceRoot}/tools/react-integration-tester/**',
   ];
 
   const groupName = 'React Integration Tester';

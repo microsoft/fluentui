@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add react 19 support",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

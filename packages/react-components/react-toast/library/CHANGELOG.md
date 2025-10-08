@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Thu, 02 Oct 2025 15:12:07 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Oct 2025 14:19:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.7.3)
+
+Fri, 03 Oct 2025 14:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.7.2..@fluentui/react-toast_v9.7.3)
+
+### Patches
+
+- Bump @fluentui/react-motion-components-preview to v0.11.0 ([PR #35275](https://github.com/microsoft/fluentui/pull/35275) by beachball)
 
 ## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.7.2)
 

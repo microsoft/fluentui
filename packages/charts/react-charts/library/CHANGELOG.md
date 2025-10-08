@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Thu, 02 Oct 2025 15:12:14 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Oct 2025 15:01:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.1)
+
+Mon, 06 Oct 2025 15:01:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.0..@fluentui/react-charts_v9.3.1)
+
+### Patches
+
+- feat: enable wrapping of string x-axis labels in scatterchart ([PR #35231](https://github.com/microsoft/fluentui/pull/35231) by 132879294+v-baambati@users.noreply.github.com)
 
 ## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.0)
 

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 01 Oct 2025 07:20:00 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Oct 2025 07:20:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.35)
+
+Tue, 07 Oct 2025 07:20:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.34..@fluentui/react-charting_v5.24.35)
+
+### Patches
+
+- undefined ([PR #35231](https://github.com/microsoft/fluentui/pull/35231) by 132879294+v-baambati@users.noreply.github.com)
+
+## [5.24.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.34)
+
+Mon, 06 Oct 2025 07:20:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.33..@fluentui/react-charting_v5.24.34)
+
+### Patches
+
+- fix table styles ([PR #35227](https://github.com/microsoft/fluentui/pull/35227) by anushgupta@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.32 ([commit](https://github.com/microsoft/fluentui/commit/5817f807ae266cd90111ba66d4032835766b9431) by beachball)
 
 ## [5.24.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.33)
 

@@ -2,6 +2,58 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 06 Oct 2025 15:01:58 GMT",
+      "tag": "@fluentui/react-components_v9.72.1",
+      "version": "9.72.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "7a5cadd878c193a1e5f7f98eabff6eede8175af3",
+            "comment": "feat: enable wrapping of string x-axis labels in scatterchart"
+          }
+        ],
+        "minor": [
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f211d64cdb6ec016188351a3f4d55ab5b7515c6f",
+            "comment": "added return type to useTreeNavigation hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Oct 2025 14:19:03 GMT",
+      "tag": "@fluentui/react-components_v9.72.0",
+      "version": "9.72.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "cb0b930b884b233f36b73f32255c575da6f72bbf",
+            "comment": "exports useTreeNavigation hook"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "d159ec44c1da054228531e0916b61c487e3ca508",
+            "comment": "refactor(Collapse): simplify parameter types"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "668467e9f41cf97977776495bf56fa63f0dfb5cd",
+            "comment": "fix(Collapse): make size animation work with delay"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Oct 2025 15:12:05 GMT",
       "tag": "@fluentui/react-components_v9.71.0",
       "version": "9.71.0",
