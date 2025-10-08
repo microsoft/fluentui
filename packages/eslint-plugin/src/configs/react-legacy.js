@@ -22,5 +22,22 @@ module.exports = {
         '@typescript-eslint/no-deprecated': 'off',
       },
     },
+    {
+      files: ['**/*.e2e.{ts,tsx,js}', '**/*.cy.{ts,tsx,js}', 'isConformant.{ts,tsx,js}'],
+      rules: {
+        '@typescript-eslint/no-restricted-imports': [
+          'error',
+          {
+            patterns: [
+              {
+                group: ['@cypress/react'],
+                importNames: ['mount'],
+                message: "Use 'mount' from @fluentui/scripts-cypress instead.",
+              },
+            ],
+          },
+        ],
+      },
+    },
   ],
 };
