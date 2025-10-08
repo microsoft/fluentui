@@ -33,7 +33,11 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
     }),
   };
   const target =
-    typeof props.positioning === 'object' && 'target' in props.positioning ? props.positioning.target : virtualElement;
+    typeof props.positioning === 'object' && 'target' in props.positioning
+      ? props.positioning.target !== null
+        ? props.positioning.target
+        : virtualElement
+      : virtualElement;
   props = { ...props, ...props.customCallout?.customCalloutProps };
   const classes = usePopoverStyles_unstable(props);
   const legend = props.xCalloutValue ? props.xCalloutValue : props.legend;

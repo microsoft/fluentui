@@ -197,6 +197,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<LineChartDataPoint | null>(null);
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
     const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
+    const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const [YValue, setYValue] = React.useState<number | string>('');
     const [legendVal, setLegendVal] = React.useState<string>('');
@@ -297,6 +298,18 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             };
           })
         : [];
+    }
+
+    function updatePosition(newX: number, newY: number) {
+      const threshold = 1; // Set a threshold for movement
+      const { x, y } = clickPosition;
+      // Calculate the distance moved
+      const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+      // Update the position only if the distance moved is greater than the threshold
+      if (distance > threshold) {
+        setClickPosition({ x: newX, y: newY });
+        setPopoverOpen(true);
+      }
     }
 
     function _getCustomizedCallout() {
@@ -716,7 +729,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               );
             }
 
-            const targetElement = document.getElementById(`${_staticHighlightCircle}_${i}`);
             linesForLine.push(
               <path
                 id={lineId}
@@ -728,8 +740,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 strokeWidth={strokeWidth}
                 strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                 strokeDasharray={_points[i].lineOptions?.strokeDasharray}
-                onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale, targetElement)}
-                onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale, targetElement)}
+                onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
+                onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
                 onMouseOut={_handleMouseOut}
                 {..._getClickHandler(_points[i].onLineClick)}
                 opacity={1}
@@ -753,7 +765,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             );
           }
 
-          const targetElement = document.getElementById(`${_staticHighlightCircle}_${i}`);
           // Always add the highlight circle for large dataset hover
           pointsForLine.push(
             <circle
@@ -766,8 +777,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
               stroke={lineColor}
               visibility={'hidden'}
-              onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale, targetElement)}
-              onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale, targetElement)}
+              onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
+              onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
               onMouseOut={_handleMouseOut}
             />,
           );
@@ -1419,7 +1430,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       lineHeight: number,
       mouseEvent: React.MouseEvent<SVGRectElement | SVGPathElement | SVGCircleElement>,
       yScale: ScaleLinear<number, number>,
-      targetElement: HTMLElement | null,
     ) => {
       mouseEvent.persist();
       const { data } = props;
@@ -1494,9 +1504,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           .attr('visibility', 'visibility')
           .attr('y2', `${lineHeight - 5 - yScale(pointToHighlight.y)}`);
 
+        const targetElement = document.getElementById(`${_staticHighlightCircle}_${linenumber}`);
+        const rect = targetElement!.getBoundingClientRect();
         setNearestCircleToHighlight(pointToHighlight);
-        setRefSelected(targetElement);
-        setPopoverOpen(true);
+        updatePosition(rect.x, rect.y);
         setStackCalloutProps(found!);
         setYValueHover(found.values);
         setDataPointCalloutProps(found!);
@@ -1790,6 +1801,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       xAxisCalloutAccessibilityData: xAxisCalloutAccessibilityData,
       ...props.calloutProps,
       isPopoverOpen: isPopoverOpen,
+      clickPosition: clickPosition,
       positioning: {
         target: refSelected,
       },
