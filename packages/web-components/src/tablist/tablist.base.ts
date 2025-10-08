@@ -189,8 +189,8 @@ export class BaseTablist extends FASTElement {
       if (tab.slot === 'tab') {
         const isActiveTab = this.activeTabIndex === index && isFocusableElement(tab);
         const tabId: string = this.tabIds[index];
-        console.log("disabled", this.disabled)
-        if(!tab.disabled) {
+        console.log('disabled', this.disabled);
+        if (!tab.disabled) {
           this.disabled ? tab.setAttribute('aria-disabled', 'true') : tab.removeAttribute('aria-disabled');
         }
         tab.setAttribute('id', tabId);
