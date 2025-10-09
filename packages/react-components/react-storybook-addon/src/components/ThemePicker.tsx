@@ -70,7 +70,7 @@ export const ThemePicker = (): JSXElement => {
 
   return (
     <>
-      <WithTooltip placement="top" trigger="click" closeOnClick tooltip={renderTooltip}>
+      <WithTooltip placement="top" trigger="click" closeOnOutsideClick tooltip={renderTooltip}>
         <IconButton key={THEME_ID} title="Change Fluent theme" active={isActive}>
           <ArrowDownIcon />
           <span style={{ marginLeft: 5 }}>Theme: {selectedTheme?.label}</span>

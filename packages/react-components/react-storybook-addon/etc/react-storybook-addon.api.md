@@ -5,11 +5,16 @@
 ```ts
 
 import { Args } from '@storybook/react';
+import { JSXElement } from '@fluentui/react-components';
 import { Parameters as Parameters_2 } from '@storybook/react';
+import * as React_2 from 'react';
 import { StoryContext } from '@storybook/react';
 
 // @public (undocumented)
 export const DIR_ID: "storybook_fluentui-react-addon_dir";
+
+// @public
+export const FluentCanvas: (props: React_2.ComponentProps<"div">) => JSXElement;
 
 // @public
 export interface FluentGlobals extends Args {
@@ -35,6 +40,12 @@ export interface FluentParameters extends Parameters_2 {
         docs?: FluentDocsConfig;
     };
 }
+
+// @public
+export const FluentStory: ({ id, height }: {
+    id: string;
+    height?: string | number;
+}) => React_2.JSX.Element;
 
 // @public (undocumented)
 export interface FluentStoryContext extends StoryContext {
