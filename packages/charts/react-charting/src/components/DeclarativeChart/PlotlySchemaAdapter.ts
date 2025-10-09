@@ -1108,7 +1108,9 @@ export const transformPlotlyJsonToScatterChartProps = (
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mapColorFillBars = (layout: Partial<Layout> | undefined) => {
-  if (!Array.isArray(layout?.shapes)) return [];
+  if (!Array.isArray(layout?.shapes)) {
+    return [];
+  }
 
   return layout.shapes
     .filter((shape: Partial<Shape>) => shape.type === 'rect')
