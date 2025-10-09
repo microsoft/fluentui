@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChartWithAxis } from '../../index';
 import { HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.base';
@@ -43,53 +42,51 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
   beforeEach(sharedBeforeEach);
 
   it('renders HorizontalBarChartWithAxis correctly', () => {
-    let component: any;
+    let container: any;
     act(() => {
-      component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
+      const result = render(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
+      container = result.container;
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
   it('renders hideLegend correctly', () => {
-    let component: any;
+    let container: any;
     act(() => {
-      component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} hideLegend={true} />);
+      const result = render(<HorizontalBarChartWithAxis data={pointsHBCWA} hideLegend={true} />);
+      container = result.container;
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders showToolTipForYAxisLabels correctly', () => {
-    let component: any;
+    let container: any;
     act(() => {
-      component = renderer.create(
+      const result = render(
         <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />,
       );
+      container = result.container;
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders showYAxisLables correctly', () => {
-    let component: any;
+    let container: any;
     act(() => {
-      component = renderer.create(
+      const result = render(
         <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLables={true} showYAxisLablesTooltip={false} />,
       );
+      container = result.container;
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('Should render gradients on bars', () => {
-    const component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} enableGradient={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<HorizontalBarChartWithAxis data={pointsHBCWA} enableGradient={true} />);
+    expect(container).toMatchSnapshot();
   });
   it('Should render rounded corners on bars', () => {
-    const component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} roundCorners={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<HorizontalBarChartWithAxis data={pointsHBCWA} roundCorners={true} />);
+    expect(container).toMatchSnapshot();
   });
 });
 
