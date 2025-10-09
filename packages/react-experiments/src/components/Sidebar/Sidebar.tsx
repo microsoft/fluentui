@@ -114,7 +114,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     );
   }
 
-  public toggleCollapsed = () => {
+  public toggleCollapsed = (): void => {
     this.setState((prevState: ISidebarState) => {
       return { isCollapsed: !this.state.isCollapsed };
     });

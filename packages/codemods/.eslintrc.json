@@ -3,9 +3,10 @@
   "root": true,
   "overrides": [
     {
-      "files": ["./src/**/*.ts"],
+      "files": ["./src/**/*.{ts,tsx,js}"],
       "rules": {
-        "@typescript-eslint/naming-convention": "off"
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off"
       }
     },
     {

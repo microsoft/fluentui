@@ -17,7 +17,9 @@ import { useIsomorphicLayoutEffect } from '@fluentui/utilities';
  * @param fn - The callback function that will be used
  * @returns A function which is referentially stable but internally calls the most recently passed callback
  */
-export function useEventCallback<Args extends unknown[], Return>(fn: (...args: Args) => Return) {
+export function useEventCallback<Args extends unknown[], Return>(
+  fn: (...args: Args) => Return,
+): (...args: Args) => Return {
   const callbackRef = React.useRef<typeof fn>(() => {
     throw new Error('Cannot call an event handler while rendering');
   });
