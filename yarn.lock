@@ -200,7 +200,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.28.4.tgz#96fdf1af1b8859c8474ab39c295312bfb7c24b04"
   integrity sha512-YsmSKC29MJwf0gF8Rjjrg5LQCmyh+j/nD8/eP7f+BeoQTKYqs9RoWbjGOdy0+1Ekr68RJZMUOPVQaQisnIo4Rw==
 
-"@babel/core@7.24.6":
+"@babel/core@7.24.6", "@babel/core@^7.10.4", "@babel/core@^7.11.6", "@babel/core@^7.12.3", "@babel/core@^7.13.16", "@babel/core@^7.18.2", "@babel/core@^7.18.9", "@babel/core@^7.20.0", "@babel/core@^7.23.2", "@babel/core@^7.24.4":
   version "7.24.6"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.24.6.tgz#8650e0e4b03589ebe886c4e4a60398db0a7ec787"
   integrity sha512-qAHSfAdVyFmIvl0VHELib8xar7ONuSHrE2hLnsaWkYNTI68dmi1x8GYDhJjMI/e7XWal9QBlZkwbOnkcw7Z8gQ==
@@ -215,27 +215,6 @@
     "@babel/template" "^7.24.6"
     "@babel/traverse" "^7.24.6"
     "@babel/types" "^7.24.6"
-    convert-source-map "^2.0.0"
-    debug "^4.1.0"
-    gensync "^1.0.0-beta.2"
-    json5 "^2.2.3"
-    semver "^6.3.1"
-
-"@babel/core@^7.10.4", "@babel/core@^7.11.6", "@babel/core@^7.12.3", "@babel/core@^7.13.16", "@babel/core@^7.18.2", "@babel/core@^7.18.9", "@babel/core@^7.20.0", "@babel/core@^7.23.2", "@babel/core@^7.24.4":
-  version "7.28.4"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.28.4.tgz#12a550b8794452df4c8b084f95003bce1742d496"
-  integrity sha512-2BCOP7TN8M+gVDj7/ht3hsaO/B/n5oDbiAyyvnRlNOs+u1o+JWNYTQrmpuNp1/Wq2gcFrI01JAW+paEKDMx/CA==
-  dependencies:
-    "@babel/code-frame" "^7.27.1"
-    "@babel/generator" "^7.28.3"
-    "@babel/helper-compilation-targets" "^7.27.2"
-    "@babel/helper-module-transforms" "^7.28.3"
-    "@babel/helpers" "^7.28.4"
-    "@babel/parser" "^7.28.4"
-    "@babel/template" "^7.27.2"
-    "@babel/traverse" "^7.28.4"
-    "@babel/types" "^7.28.4"
-    "@jridgewell/remapping" "^2.3.5"
     convert-source-map "^2.0.0"
     debug "^4.1.0"
     gensync "^1.0.0-beta.2"
@@ -277,7 +256,7 @@
   dependencies:
     "@babel/types" "^7.24.6"
 
-"@babel/helper-compilation-targets@^7.20.7", "@babel/helper-compilation-targets@^7.22.6", "@babel/helper-compilation-targets@^7.24.6", "@babel/helper-compilation-targets@^7.27.2":
+"@babel/helper-compilation-targets@^7.20.7", "@babel/helper-compilation-targets@^7.22.6", "@babel/helper-compilation-targets@^7.24.6":
   version "7.27.2"
   resolved "https://registry.yarnpkg.com/@babel/helper-compilation-targets/-/helper-compilation-targets-7.27.2.tgz#46a0f6efab808d51d29ce96858dd10ce8732733d"
   integrity sha512-2+1thGUUWWjLTYTHZWK1n8Yga0ijBz1XAhUXcKy81rd5g6yh7hGqMp45v7cadSbEHc9G3OTv45SyneRN3ps4DQ==
@@ -362,7 +341,7 @@
     "@babel/traverse" "^7.27.1"
     "@babel/types" "^7.27.1"
 
-"@babel/helper-module-transforms@^7.24.6", "@babel/helper-module-transforms@^7.24.8", "@babel/helper-module-transforms@^7.28.3":
+"@babel/helper-module-transforms@^7.24.6", "@babel/helper-module-transforms@^7.24.8":
   version "7.28.3"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-transforms/-/helper-module-transforms-7.28.3.tgz#a2b37d3da3b2344fe085dab234426f2b9a2fa5f6"
   integrity sha512-gytXUbs8k2sXS9PnQptz5o0QnpLL51SwASIORY6XaBKF88nsOT0Zw9szLqlSGQDP/4TljBAD5y98p2U1fqkdsw==
@@ -448,7 +427,7 @@
     "@babel/template" "^7.24.6"
     "@babel/types" "^7.24.6"
 
-"@babel/helpers@^7.24.6", "@babel/helpers@^7.28.4":
+"@babel/helpers@^7.24.6":
   version "7.28.4"
   resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.28.4.tgz#fe07274742e95bdf7cf1443593eeb8926ab63827"
   integrity sha512-HFN59MmQXGHVyYadKLVumYsA9dBFun/ldYxipEjzA4196jpLZd8UjEEBLkbEkvfYreDqJhZxYAWFPtrfhNpj4w==
@@ -1415,7 +1394,7 @@
     debug "^4.3.1"
     globals "^11.1.0"
 
-"@babel/traverse@>=7", "@babel/traverse@^7.10.3", "@babel/traverse@^7.12.13", "@babel/traverse@^7.16.0", "@babel/traverse@^7.18.9", "@babel/traverse@^7.23.2", "@babel/traverse@^7.24.6", "@babel/traverse@^7.24.7", "@babel/traverse@^7.24.8", "@babel/traverse@^7.25.0", "@babel/traverse@^7.27.1", "@babel/traverse@^7.28.3", "@babel/traverse@^7.28.4", "@babel/traverse@^7.4.5":
+"@babel/traverse@>=7", "@babel/traverse@^7.10.3", "@babel/traverse@^7.12.13", "@babel/traverse@^7.16.0", "@babel/traverse@^7.18.9", "@babel/traverse@^7.23.2", "@babel/traverse@^7.24.6", "@babel/traverse@^7.24.7", "@babel/traverse@^7.24.8", "@babel/traverse@^7.25.0", "@babel/traverse@^7.27.1", "@babel/traverse@^7.28.3", "@babel/traverse@^7.4.5":
   version "7.28.4"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.28.4.tgz#8d456101b96ab175d487249f60680221692b958b"
   integrity sha512-YEzuboP2qvQavAcjgQNVgsvHIDv6ZpwXvcvjmyySP2DIMuByS/6ioU5G9pYrWHM6T2YDfc7xga9iNzYOs12CFQ==
@@ -2386,14 +2365,6 @@
   integrity sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.5.0"
-    "@jridgewell/trace-mapping" "^0.3.24"
-
-"@jridgewell/remapping@^2.3.5":
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/@jridgewell/remapping/-/remapping-2.3.5.tgz#375c476d1972947851ba1e15ae8f123047445aa1"
-  integrity sha512-LI9u/+laYG4Ds1TDKSJW2YPrIlcVYOwi2fUC6xB43lueCjgxV4lffOCZCtYFiH6TNOX+tQKXx97T4IKHbhyHEQ==
-  dependencies:
-    "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
 "@jridgewell/resolve-uri@^3.0.3", "@jridgewell/resolve-uri@^3.1.0":
@@ -6414,18 +6385,10 @@ babel-jest@29.7.0, babel-jest@^29.7.0:
     graceful-fs "^4.2.9"
     slash "^3.0.0"
 
-babel-loader@9.1.3:
+babel-loader@9.1.3, babel-loader@^9.1.3:
   version "9.1.3"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-9.1.3.tgz#3d0e01b4e69760cc694ee306fe16d358aa1c6f9a"
   integrity sha512-xG3ST4DglodGf8qSwv0MdeWLhrDsw/32QMdTO5T1ZIp9gQur0HkCyFs7Awskr10JKXFXwpAhiCuYX5oGXnRGbw==
-  dependencies:
-    find-cache-dir "^4.0.0"
-    schema-utils "^4.0.0"
-
-babel-loader@^9.1.3:
-  version "9.2.1"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-9.2.1.tgz#04c7835db16c246dd19ba0914418f3937797587b"
-  integrity sha512-fqe8naHt46e0yIdkjUZYqddSXfej3AHajX+CSO5X7oy0EmPc6o5Xh+RClNoHjnieWz9AW4kZxW9yyFMhVB1QLA==
   dependencies:
     find-cache-dir "^4.0.0"
     schema-utils "^4.0.0"
