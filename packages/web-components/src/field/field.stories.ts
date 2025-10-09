@@ -31,11 +31,11 @@ export default {
   render: renderComponent(storyTemplate),
   excludeStories: ['storyTemplate'],
   parameters: {
-        docs: {
-            description: {
-                component: storyDescription,
-            },
-        },
+    docs: {
+      description: {
+        component: storyDescription,
+      },
+    },
   },
   args: {
     label: {
