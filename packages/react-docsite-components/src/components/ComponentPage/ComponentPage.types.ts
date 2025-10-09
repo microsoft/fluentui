@@ -1,10 +1,11 @@
+import type * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 
 export interface IComponentPageSection {
   title: string;
-  section: JSX.Element;
+  section: React.ReactElement;
 }
 
 export interface IComponentDemoPageProps {
@@ -15,18 +16,18 @@ export interface IComponentPageProps {
   title: string;
   componentName: string;
   /** Component examples **/
-  exampleCards?: JSX.Element;
+  exampleCards?: React.ReactElement;
   /** Component properties table(s) **/
-  propertiesTables?: JSX.Element;
-  bestPractices?: JSX.Element;
-  dos?: JSX.Element;
-  donts?: JSX.Element;
-  overview?: JSX.Element;
-  accessibility?: JSX.Element;
+  propertiesTables?: React.ReactElement;
+  bestPractices?: React.ReactElement;
+  dos?: React.ReactElement;
+  donts?: React.ReactElement;
+  overview?: React.ReactElement;
+  accessibility?: React.ReactElement;
   /**
    * Related link
    */
-  related?: JSX.Element;
+  related?: React.ReactElement;
   isHeaderVisible?: boolean;
   areBadgesVisible?: boolean;
   /** className of the component being documented */
@@ -36,7 +37,7 @@ export interface IComponentPageProps {
   /** Includes the feedback section **/
   isFeedbackVisible?: boolean;
   /** Feedback section with GitHub issues **/
-  feedback?: JSX.Element;
+  feedback?: React.ReactElement;
 
   /** If true, the component accepts all native props from elements specified in `nativePropsElement` */
   allowNativeProps?: boolean;
