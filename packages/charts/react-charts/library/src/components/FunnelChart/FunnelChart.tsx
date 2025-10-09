@@ -243,7 +243,7 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
     data: FunnelChartDataPoint | { stage: string; subValue: { category: string; value: number; color: string } };
     tabIndex?: number;
   }) {
-    const segmentId = useId(`funnel-segment-${key}`);
+    const segmentId = `funnel-segment-${key}`;
     const eventHandlers = _getEventHandlerProps(data, opacity, segmentId);
     const textColor = getContrastTextColor(fill);
     return (
