@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "[fix]: voice over in navigation mode was not announcing tabs belonging to a disabled tablist as disabled",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}

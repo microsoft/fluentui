@@ -45,6 +45,9 @@ export class BaseTablist extends FASTElement {
    */
   protected disabledChanged(prev: boolean, next: boolean): void {
     toggleState(this.elementInternals, 'disabled', next);
+    if (this.$fastController.isConnected) {
+      this.setTabs();
+    }
   }
 
   /**
@@ -186,6 +189,10 @@ export class BaseTablist extends FASTElement {
       if (tab.slot === 'tab') {
         const isActiveTab = this.activeTabIndex === index && isFocusableElement(tab);
         const tabId: string = this.tabIds[index];
+        console.log('disabled', this.disabled);
+        if (!tab.disabled) {
+          this.disabled ? tab.setAttribute('aria-disabled', 'true') : tab.removeAttribute('aria-disabled');
+        }
         tab.setAttribute('id', tabId);
         tab.setAttribute('aria-selected', isActiveTab ? 'true' : 'false');
         tab.addEventListener('click', this.handleTabClick);
