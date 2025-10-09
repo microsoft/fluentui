@@ -50,7 +50,7 @@ describe('recipe-generator generator', () => {
   it('should generate implementation boilerplate', async () => {
     await generator(tree, options);
 
-    const storyContent = tree.read(path.join(recipesRoot, recipePackageName, 'HelloWorld.stories.mdx'), 'utf-8');
+    const storyContent = tree.read(path.join(recipesRoot, recipePackageName, 'HelloWorld.mdx'), 'utf-8');
     const codeSnippetContent = tree.read(
       path.join(recipesRoot, recipePackageName, 'code-snippets/HelloWorld.tsx'),
       'utf-8',

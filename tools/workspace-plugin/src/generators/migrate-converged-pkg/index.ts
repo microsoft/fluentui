@@ -337,7 +337,7 @@ const templates = {
       });
     `,
       preview: stripIndents`
-      import rootPreview from '${rootOffsetPath}.storybook/preview';
+      import * as rootPreview from '${rootOffsetPath}.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];

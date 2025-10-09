@@ -605,7 +605,7 @@ describe('migrate-converged-pkg generator', () => {
       `);
 
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import rootPreview from '../../../.storybook/preview';
+        "import * as rootPreview from '../../../.storybook/preview';
 
         /** @type {typeof rootPreview.decorators} */
         export const decorators = [...rootPreview.decorators];

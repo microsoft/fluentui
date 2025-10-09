@@ -313,13 +313,15 @@ describe('split-library-in-two generator', () => {
       "
     `);
     expect(tree.read(`${storiesConfig.root}/.storybook/preview.js`, 'utf-8')).toMatchInlineSnapshot(`
-      "import rootPreview from '../../../../../.storybook/preview';
+      "import * as rootPreview from '../../../../../.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
 
       /** @type {typeof rootPreview.parameters} */
       export const parameters = { ...rootPreview.parameters };
+
+      export const tags = ['autodocs'];
       "
     `);
   });
@@ -445,13 +447,15 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
 
       `,
       preview: stripIndents`
-      import rootPreview from '../../../../.storybook/preview';
+      import * as rootPreview from '../../../../.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
 
       /** @type {typeof rootPreview.parameters} */
       export const parameters = { ...rootPreview.parameters };
+
+      export const tags = ['autodocs'];
       `,
       tsConfig: {
         extends: '../tsconfig.json',
