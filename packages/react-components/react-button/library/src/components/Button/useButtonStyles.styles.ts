@@ -4,6 +4,7 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
+import { useIsVisualRefreshEnabled, VISUAL_REFRESH_TOKENS } from '@fluentui/visual-refresh-preview';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
 
@@ -550,8 +551,17 @@ const useIconStyles = makeStyles({
   },
 });
 
+const useVisualRefreshStyles = makeStyles({
+  root: {
+    borderRadius: VISUAL_REFRESH_TOKENS.buttonBorderRadius,
+  },
+});
+
 export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   'use no memo';
+
+  const isVisualRefreshEnabled = useIsVisualRefreshEnabled();
+  const visualRefreshStyles = useVisualRefreshStyles();
 
   const rootBaseClassName = useRootBaseClassName();
   const iconBaseClassName = useIconBaseClassName();
@@ -590,6 +600,8 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
 
     // User provided class name
     state.root.className,
+
+    isVisualRefreshEnabled && visualRefreshStyles.root,
   );
 
   if (state.icon) {
@@ -601,6 +613,5 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
       state.icon.className,
     );
   }
-
   return state;
 };
