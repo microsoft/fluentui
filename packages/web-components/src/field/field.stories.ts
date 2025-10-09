@@ -1,5 +1,4 @@
 import { html, repeat } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorStatusSuccessBackground3 } from '../theme/design-tokens.js';
 import type { Field as FluentField } from './field.js';
@@ -20,10 +19,24 @@ export const storyTemplate = html<StoryArgs<FluentField>>`
   </fluent-field>
 `;
 
+const textInputLink = '<a href="/docs/components-textinput--docs">Text Input</a>';
+const textAreaLink = '<a href="/docs/components-textarea--docs">Text Area</a>';
+
+const storyDescription = `
+To maintain accessibility the ${textInputLink} component and the ${textAreaLink} should not be used with the '<fluent-field>' component since they already include a label slot.
+`;
+
 export default {
   title: 'Components/Field',
   render: renderComponent(storyTemplate),
   excludeStories: ['storyTemplate'],
+  parameters: {
+        docs: {
+            description: {
+                component: storyDescription,
+            },
+        },
+  },
   args: {
     label: {
       text: 'Example field',
@@ -33,7 +46,7 @@ export default {
       icon: () => html`${SuccessIcon}`,
     },
     labelSlottedContent: () => html`<label slot="label">${story => story.label.text}</label>`,
-    inputSlottedContent: () => html`<fluent-text-input slot="input"></fluent-text-input>`,
+    inputSlottedContent: () => html`<fluent-checkbox slot="input"></fluent-checkbox>`,
     labelPosition: LabelPosition.above,
   },
   argTypes: {
@@ -81,7 +94,7 @@ export const LabelPositions: Story = {
         <div>
           <fluent-field label-position="${story => story.labelPosition}">
             <label slot="label">${story => story.label}</label>
-            <fluent-text-input slot="input"></fluent-text-input>
+            <fluent-checkbox slot="input"></fluent-checkbox>
           </fluent-field>
         </div>
         <br />
@@ -101,7 +114,7 @@ export const Required: Story = {
     label: {
       text: 'Required field',
     },
-    inputSlottedContent: () => html`<fluent-text-input required slot="input"></fluent-text-input>`,
+    inputSlottedContent: () => html`<fluent-checkbox required slot="input"></fluent-checkbox>`,
     messageSlottedContent: undefined,
   },
 };
@@ -111,41 +124,22 @@ export const DisabledControl: Story = {
     label: {
       text: 'Disabled field',
     },
-    inputSlottedContent: () => html`<fluent-text-input disabled slot="input"></fluent-text-input>`,
+    inputSlottedContent: () => html`<fluent-checkbox disabled slot="input"></fluent-checkbox>`,
     messageSlottedContent: undefined,
   },
 };
 
 export const Size: Story = {
   render: renderComponent(html`
-    <fluent-field size="small">
-      <label slot="label" for="field-small-size">Small field</label>
-      <fluent-text-input control-size="small" slot="input" id="field-small-size"></fluent-text-input>
-    </fluent-field>
     <fluent-field size="medium">
       <label slot="label" for="field-medium-size">Medium field</label>
-      <fluent-text-input control-size="medium" slot="input" id="field-medium-size"></fluent-text-input>
+      <fluent-checkbox size="medium" slot="input" id="field-medium-size"></fluent-checkbox>
     </fluent-field>
     <fluent-field size="large">
       <label slot="label" for="field-large-size">Large field</label>
-      <fluent-text-input control-size="large" slot="input" id="field-large-size"></fluent-text-input>
+      <fluent-checkbox size="large" slot="input" id="field-large-size"></fluent-checkbox>
     </fluent-field>
   `),
-};
-
-export const Hint: Story = {
-  args: {
-    label: {
-      text: 'Example with hint',
-    },
-    message: {
-      message: 'Sample hint text.',
-    },
-    inputSlottedContent: () =>
-      html`<fluent-text-input slot="input" aria-describedby="hint-message"></fluent-text-input>`,
-    messageSlottedContent: () =>
-      html`<fluent-text slot="message" size="200" id="hint-message">${story => story.message?.message}</fluent-text>`,
-  },
 };
 
 export const ComponentExamples: Story = {
@@ -184,11 +178,6 @@ export const ComponentExamples: Story = {
           </fluent-field>
         </fluent-radio-group>
       </fluent-field>
-      <fluent-field>
-        <label slot="label" for="field-textarea">Text Area</label>
-        <fluent-textarea slot="input" id="field-textarea" placeholder="Placeholder text" resize="both">
-        </fluent-textarea>
-      </fluent-field>
     </div>
   `),
 };
@@ -197,8 +186,8 @@ export const ThirdPartyControls: Story = {
   render: renderComponent(html`
     <form action="#" style="display:flex;flex-flow:column;align-items:start;gap:10px">
       <fluent-field label-position="above" style="max-width: 400px">
-        <label slot="label" for="native-text-input">Text Input</label>
-        <input slot="input" id="native-text-input" required />
+        <label slot="label" for="native-text-input">Color picker</label>
+        <input slot="input" type="color" id="native-color" required />
       </fluent-field>
       <fluent-field label-position="after">
         <label slot="label" for="native-checkbox">Checkbox</label>
