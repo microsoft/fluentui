@@ -1,7 +1,6 @@
 /*  eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import { act, render } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import { styled } from './styled';
 import { Customizer } from './customizations/Customizer';
 import { Stylesheet, InjectionMode, mergeStyles } from '@fluentui/merge-styles';

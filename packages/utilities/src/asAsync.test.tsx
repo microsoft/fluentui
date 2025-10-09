@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { asAsync } from './asAsync';
 import { act, render, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom';
 
 describe('asAsync', () => {
   it('can async load exports', async () => {
