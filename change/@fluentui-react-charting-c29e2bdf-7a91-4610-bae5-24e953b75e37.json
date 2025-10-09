@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "support shading in declarative line chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
