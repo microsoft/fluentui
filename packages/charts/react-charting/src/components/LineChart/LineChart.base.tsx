@@ -959,7 +959,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         );
 
         // Add individual markers if mode includes 'markers'
-        const showMarkers = lineMode?.includes('markers');
+        const showMarkers = lineMode?.includes('markers') || !lineMode; // Show markers by default if no mode specified
         if (showMarkers) {
           for (let k = 0; k < this._points[i].data.length; k++) {
             const { x, y } = this._points[i].data[k];
