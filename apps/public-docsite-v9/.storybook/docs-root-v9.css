@@ -22,12 +22,3 @@
 .sidebar-container .search-field + div {
   display: none !important;
 }
-
-.fui-story-canvas {
-  display: block;
-  overflow: auto;
-  border: 1px solid #e5e5e5;
-  border-radius: 20px;
-  background: white;
-  padding: 30px;
-}

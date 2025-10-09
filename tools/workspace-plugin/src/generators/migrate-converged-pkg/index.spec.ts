@@ -589,7 +589,7 @@ describe('migrate-converged-pkg generator', () => {
             ...rootMain,
             stories: [
               ...rootMain.stories,
-              '../stories/**/*.stories.mdx',
+              '../stories/**/*.mdx',
               '../stories/**/index.stories.@(ts|tsx)',
             ],
             addons: [...rootMain.addons],
@@ -605,7 +605,7 @@ describe('migrate-converged-pkg generator', () => {
       `);
 
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import * as rootPreview from '../../../.storybook/preview';
+        "import rootPreview from '../../../.storybook/preview';
 
         /** @type {typeof rootPreview.decorators} */
         export const decorators = [...rootPreview.decorators];

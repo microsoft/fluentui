@@ -325,7 +325,7 @@ const templates = {
 
       module.exports = /** @type {Omit<import('${rootOffsetPath}.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
-        stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
+        stories: [...rootMain.stories, '../stories/**/*.mdx', '../stories/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
           const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -337,7 +337,7 @@ const templates = {
       });
     `,
       preview: stripIndents`
-      import * as rootPreview from '${rootOffsetPath}.storybook/preview';
+      import rootPreview from '${rootOffsetPath}.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
