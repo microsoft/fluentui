@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 09 Oct 2025 07:21:59 GMT",
+      "tag": "@fluentui/utilities_v8.16.0",
+      "version": "8.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "2898be4be6f8c01fcdd2ade8951bfd547ba156fa",
+            "comment": "fix: resolve react 19 type issues"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Aug 2025 07:19:46 GMT",
       "tag": "@fluentui/utilities_v8.15.23",
       "version": "8.15.23",

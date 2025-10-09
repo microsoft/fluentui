@@ -1,8 +1,19 @@
 # Change Log - @fluentui/foundation-legacy
 
-This log was last generated on Tue, 26 Aug 2025 07:21:44 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Oct 2025 07:21:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.5.0)
+
+Thu, 09 Oct 2025 07:21:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.4.30..@fluentui/foundation-legacy_v8.5.0)
+
+### Minor changes
+
+- fix: resolve react 19 type issues ([PR #35288](https://github.com/microsoft/fluentui/pull/35288) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/style-utilities to v8.13.0 ([PR #35301](https://github.com/microsoft/fluentui/pull/35301) by beachball)
+- Bump @fluentui/utilities to v8.16.0 ([PR #35301](https://github.com/microsoft/fluentui/pull/35301) by beachball)
 
 ## [8.4.30](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.4.30)
 
