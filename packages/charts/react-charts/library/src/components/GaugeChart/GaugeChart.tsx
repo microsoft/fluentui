@@ -124,11 +124,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [hoveredLegend, setHoveredLegend] = React.useState<string>('');
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [focusedElement, setFocusedElement] = React.useState<string | undefined>('');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [hoverYValues, setHoverYValues] = React.useState<YValue[]>([]);
+    const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
     const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
     const _width = props.width || width;
     const _height = props.height || height;
@@ -259,7 +258,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const strokeWidth = 2;
       const halfStrokeWidth = strokeWidth / 2;
       const needleLength = _outerRadius - _innerRadius + EXTRA_NEEDLE_LENGTH;
-
+      const needleId = `gauge-chart-needle`;
       return (
         <g transform={`rotate(${rtlSafeNeedleRotation}, 0, 0)`}>
           <path
@@ -270,14 +269,15 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             L 0,${halfStrokeWidth + 3}
             A ${halfStrokeWidth + 3},${halfStrokeWidth + 3},0,0,0,0,${-halfStrokeWidth - 3}
           `}
+            id={needleId}
             strokeWidth={strokeWidth}
             className={classes.needle}
             transform={`translate(${-_innerRadius + EXTRA_NEEDLE_LENGTH / 2})`}
             data-is-focusable={true}
-            onFocus={e => _handleFocus(e, 'Needle')}
+            onFocus={e => _handleFocus(e, 'Needle', needleId)}
             onBlur={_handleBlur}
-            onMouseEnter={e => _handleMouseOver(e, 'Needle')}
-            onMouseMove={e => _handleMouseOver(e, 'Needle')}
+            onMouseEnter={e => _handleMouseOver(e, 'Needle', needleId)}
+            onMouseMove={e => _handleMouseOver(e, 'Needle', needleId)}
             role="img"
             aria-label={
               'Current value: ' + getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat)
@@ -359,16 +359,16 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     }
 
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    function _handleFocus(focusEvent: React.FocusEvent<SVGElement>, focusedElement: string) {
-      _showCallout(focusEvent, focusedElement, true);
+    function _handleFocus(focusEvent: React.FocusEvent<SVGElement>, focusedElement: string, elementId?: string) {
+      _showCallout(focusEvent, focusedElement, true, elementId);
     }
 
     function _handleBlur() {
       _hideCallout(true);
     }
 
-    function _handleMouseOver(mouseEvent: React.MouseEvent<SVGElement>, hoveredElement: string) {
-      _showCallout(mouseEvent, hoveredElement, false);
+    function _handleMouseOver(mouseEvent: React.MouseEvent<SVGElement>, hoveredElement: string, elementId?: string) {
+      _showCallout(mouseEvent, hoveredElement, false, elementId);
     }
 
     function _handleMouseOut() {
@@ -384,24 +384,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       event: React.MouseEvent<SVGElement, MouseEvent> | React.FocusEvent<SVGElement, Element>,
       legend: string,
       isFocusEvent: boolean,
+      elementId?: string,
     ) {
       if (_calloutAnchor === legend) {
         return;
       }
-      let clientX = 0;
-      let clientY = 0;
-      if ('clientX' in event) {
-        clientX = event.clientX;
-        clientY = event.clientY;
-      } else {
-        // eslint-disable-next-line @typescript-eslint/no-shadow
-        const target = event.currentTarget as HTMLElement | SVGElement;
-        if (target && 'getBoundingClientRect' in target) {
-          const boundingRect = target.getBoundingClientRect();
-          clientX = boundingRect.left + boundingRect.width / 2;
-          clientY = boundingRect.top + boundingRect.height / 2;
-        }
-      }
+      const targetElement = document.getElementById(elementId!);
       _calloutAnchor = legend;
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const hoverXValue: string =
@@ -415,10 +403,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         };
         return yValue;
       });
-      _updatePosition(clientX, clientY);
       setPopoverOpen(
         ['Needle', 'Chart value'].includes(legend) || _noLegendHighlighted() || _legendHighlighted(legend),
       );
+      setRefSelected(targetElement);
       setHoverXValue(hoverXValue);
       setHoverYValues(hoverYValues);
       if (isFocusEvent) {
@@ -593,18 +581,6 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       }
     }
 
-    function _updatePosition(newX: number, newY: number) {
-      const threshold = 1; // Set a threshold for movement
-      const { x, y } = clickPosition;
-      // Calculate the distance moved
-      const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
-      // Update the position only if the distance moved is greater than the threshold
-      if (distance > threshold) {
-        setClickPosition({ x: newX, y: newY });
-        setPopoverOpen(true);
-      }
-    }
-
     function _getChartTitle(): string {
       const { chartTitle } = props;
       return (chartTitle ? `${chartTitle}. ` : '') + `Gauge chart with ${_segments.length} segments. `;
@@ -660,10 +636,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               )}
               {arcs.map((arc, index) => {
                 const segment = _segments[arc.segmentIndex];
+                const arcId = `gauge-chart-arc-${index}`;
                 return (
                   <React.Fragment key={index}>
                     <path
                       d={arc.d}
+                      id={arcId}
                       strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
                       className={classes.segment}
                       fill={segment.color}
@@ -676,11 +654,11 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                         'img',
                         true,
                       )}
-                      onFocus={e => _handleFocus(e, segment.legend)}
+                      onFocus={e => _handleFocus(e, segment.legend, arcId)}
                       onBlur={_handleBlur}
-                      onMouseEnter={e => _handleMouseOver(e, segment.legend)}
+                      onMouseEnter={e => _handleMouseOver(e, segment.legend, arcId)}
                       onMouseLeave={e => _handleCalloutDismiss()}
-                      onMouseMove={e => _handleMouseOver(e, segment.legend)}
+                      onMouseMove={e => _handleMouseOver(e, segment.legend, arcId)}
                       tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
                     />
                   </React.Fragment>
@@ -726,7 +704,9 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         {!props.hideTooltip && isPopoverOpen && (
           <ChartPopover
             {...props.calloutProps}
-            clickPosition={clickPosition}
+            positioning={{
+              target: refSelected,
+            }}
             isPopoverOpen={isPopoverOpen}
             customCallout={{
               customizedCallout: _multiValueCallout({ hoverXValue: hoverXValue, YValueHover: hoverYValues }),
