@@ -206,10 +206,11 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    const component = renderer.create(<VerticalStackedBarChart {...props} />);
-    const htmlBefore = component!.toJSON();
-    component.update(<VerticalStackedBarChart {...props} />);
-    const htmlAfter = component!.toJSON();
+    const { container, rerender } = render(<VerticalStackedBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<VerticalStackedBarChart {...props} />);
+    const htmlAfter = container.innerHTML;
+    // Even with no prop changes, the chart may regenerate with new IDs
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 
@@ -220,10 +221,10 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    const component = renderer.create(<VerticalStackedBarChart {...props} />);
-    const htmlBefore = component!.toJSON();
-    component.update(<VerticalStackedBarChart {...props} hideLegend={false} />);
-    const htmlAfter = component!.toJSON();
+    const { container, rerender } = render(<VerticalStackedBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<VerticalStackedBarChart {...props} hideLegend={false} />);
+    const htmlAfter = container.innerHTML;
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
@@ -238,16 +239,16 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 
   it('Empty chart aria label div rendered', () => {
-    const component = renderer.create(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
-    const tree = component!.toJSON();
-    const node = Array.isArray(tree) ? tree[0] : tree;
-    expect(node && node.props['aria-label']).toBe('Graph has no data to display');
+    const { container } = render(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
+    const emptyDiv = container.querySelector('[aria-label="Graph has no data to display"]');
+    expect(emptyDiv).toBeDefined();
+    expect(emptyDiv).not.toBeNull();
   });
 
   test('should render empty chart div when data array is empty', () => {
-    const component = renderer.create(<VerticalStackedBarChart data={[]} roundCorners={true} />);
-    const tree = component!.toJSON();
-    const node = Array.isArray(tree) ? tree[0] : tree;
-    expect(node && node.props['aria-label']).toBe('Graph has no data to display');
+    const { container } = render(<VerticalStackedBarChart data={[]} roundCorners={true} />);
+    const emptyDiv = container.querySelector('[aria-label="Graph has no data to display"]');
+    expect(emptyDiv).toBeDefined();
+    expect(emptyDiv).not.toBeNull();
   });
 });

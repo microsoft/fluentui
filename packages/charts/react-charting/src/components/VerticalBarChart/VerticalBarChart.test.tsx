@@ -180,13 +180,11 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart {...props} />);
-    });
-    const htmlBefore = component!.toJSON();
-    component.update(<VerticalBarChart {...props} />);
-    const htmlAfter = component!.toJSON();
+    const { container, rerender } = render(<VerticalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<VerticalBarChart {...props} />);
+    const htmlAfter = container.innerHTML;
+    // Even with no prop changes, the chart may regenerate with new IDs
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 
@@ -197,13 +195,10 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart {...props} />);
-    });
-    const htmlBefore = component!.toJSON();
-    component.update(<VerticalBarChart {...props} hideLegend={false} />);
-    const htmlAfter = component!.toJSON();
+    const { container, rerender } = render(<VerticalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<VerticalBarChart {...props} hideLegend={false} />);
+    const htmlAfter = container.innerHTML;
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
@@ -216,11 +211,9 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 
   it('Empty chart aria label div rendered', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={[]} roundCorners={true} />);
-    });
-    const tree = component!.toJSON();
-    expect(tree.props['aria-label']).toBe('Graph has no data to display');
+    const { container } = render(<VerticalBarChart data={[]} roundCorners={true} />);
+    const emptyDiv = container.querySelector('[aria-label="Graph has no data to display"]');
+    expect(emptyDiv).toBeDefined();
+    expect(emptyDiv).not.toBeNull();
   });
 });
