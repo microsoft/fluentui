@@ -337,6 +337,11 @@ export interface LineChartDataPoint extends BaseDataPoint {
    * text labels of marker points
    */
   text?: string;
+
+  /**
+   * Per-point marker color (overrides series color when present)
+   */
+  markerColor?: string;
 }
 
 /**
@@ -363,6 +368,11 @@ export interface ScatterChartDataPoint extends BaseDataPoint {
    * text labels of marker points
    */
   text?: string;
+
+  /**
+   * Per-point marker color (overrides series color when present)
+   */
+  markerColor?: string;
 }
 
 /**
