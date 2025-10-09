@@ -2,7 +2,7 @@
 // - exposes JSX namespace in React <19
 // - this bare import wont enhance global scope with JSX namespace as it doesn't exists in React >=19.
 //   - In React 19 it causes no harm so can live as is
-import 'react/jsx-runtime';
+// import 'react/jsx-runtime';
 
 // NOTE (React 19):
 // - exposes JSX namespace in React >=19
@@ -10,4 +10,32 @@ import 'react/jsx-runtime';
 //   - In React 17 it causes tsc to fail, thus we need to turn checker off
 
 // @ts-ignore
-export type { JSX } from 'react/jsx-runtime'
+// export type { JSX } from 'react/jsx-runtime'
+
+
+import type * as React from 'react';
+
+// Inline JSX namespace that works across React 17, 18, and 19
+type JSXIntrinsicElementKeys = Exclude<React.ElementType, React.ComponentType>
+type JSXIntrinsicElements = { [K in JSXIntrinsicElementKeys]: React.ComponentProps<K> };
+
+export namespace JSX {
+    type ElementType = string | React.JSXElementConstructor<any>;
+    interface Element extends React.ReactElement<any, any> {}
+      interface ElementClass extends React.Component<any> {
+      render(): React.ReactNode;
+      }
+
+      interface ElementAttributesProperty { props : {}}
+      interface ElementChildrenAttribute  { children: {}}
+      type LibraryManagedAttributes<C, P> = C extends
+              React.MemoExoticComponent<infer T> | React.LazyExoticComponent<infer T>
+              ? T extends React.MemoExoticComponent<infer U> | React.LazyExoticComponent<infer U>
+                  ? ReactManagedAttributes<U, P>
+              : ReactManagedAttributes<T, P>
+              : ReactManagedAttributes<C, P>;
+
+      interface IntrinsicAttributes extends React.Attributes {}
+      interface IntrinsicClassAttributes<T> extends React.ClassAttributes<T> {}
+      interface IntrinsicElements extends JSXIntrinsicElements {}
+}
