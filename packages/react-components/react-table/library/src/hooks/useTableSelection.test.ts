@@ -80,6 +80,45 @@ describe('useTableSelectionState', () => {
         expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set() });
       });
     });
+
+    describe('toggleSomeRows', () => {
+      const someRows = new Set([0, 2, 4]);
+
+      it('should select some rows', () => {
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+            useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+        );
+
+        act(() => {
+          result.current.selection.toggleSomeRows(mockSyntheticEvent(), someRows);
+        });
+        expect(result.current.selection.selectedRows.size).toBe(Array.from(someRows).length);
+        expect(Array.from(result.current.selection.selectedRows)).toEqual(Array.from(someRows));
+        expect(onSelectionChange).toHaveBeenCalledTimes(1);
+        expect(onSelectionChange).toHaveBeenCalledWith(mockSyntheticEvent(), { selectedItems: someRows });
+      });
+
+      it('should deselect some rows', () => {
+        const onSelectionChange = jest.fn();
+        const { result } = renderHook(() =>
+            useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect', onSelectionChange }),
+        );
+
+        act(() => {
+          result.current.selection.toggleSomeRows(mockSyntheticEvent(), someRows);
+        });
+
+        act(() => {
+          result.current.selection.toggleSomeRows(mockSyntheticEvent(), someRows);
+        });
+
+        expect(result.current.selection.selectedRows.size).toBe(0);
+        expect(onSelectionChange).toHaveBeenCalledTimes(2);
+        expect(onSelectionChange).toHaveBeenNthCalledWith(2, mockSyntheticEvent(), { selectedItems: new Set() });
+      });
+    });
+
     describe('clearRows', () => {
       it('should clear selection', () => {
         const onSelectionChange = jest.fn();
