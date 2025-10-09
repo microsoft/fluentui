@@ -274,7 +274,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             className={classes.needle}
             transform={`translate(${-_innerRadius + EXTRA_NEEDLE_LENGTH / 2})`}
             data-is-focusable={true}
-            onFocus={e => _handleFocus(e, 'Needle')}
+            onFocus={e => _handleFocus(e, 'Needle', needleId)}
             onBlur={_handleBlur}
             onMouseEnter={e => _handleMouseOver(e, 'Needle', needleId)}
             onMouseMove={e => _handleMouseOver(e, 'Needle', needleId)}
@@ -359,8 +359,8 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     }
 
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    function _handleFocus(focusEvent: React.FocusEvent<SVGElement>, focusedElement: string) {
-      _showCallout(focusEvent, focusedElement, true);
+    function _handleFocus(focusEvent: React.FocusEvent<SVGElement>, focusedElement: string, elementId?: string) {
+      _showCallout(focusEvent, focusedElement, true, elementId);
     }
 
     function _handleBlur() {
@@ -654,7 +654,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                         'img',
                         true,
                       )}
-                      onFocus={e => _handleFocus(e, segment.legend)}
+                      onFocus={e => _handleFocus(e, segment.legend, arcId)}
                       onBlur={_handleBlur}
                       onMouseEnter={e => _handleMouseOver(e, segment.legend, arcId)}
                       onMouseLeave={e => _handleCalloutDismiss()}
