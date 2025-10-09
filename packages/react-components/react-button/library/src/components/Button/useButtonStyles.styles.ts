@@ -552,8 +552,20 @@ const useIconStyles = makeStyles({
 });
 
 const useVisualRefreshStyles = makeStyles({
+  root: {
+    fontWeight: VISUAL_REFRESH_TOKENS.buttonRootFontWeight,
+    padding: VISUAL_REFRESH_TOKENS.buttonRootPadding,
+    ...shorthands.borderWidth(VISUAL_REFRESH_TOKENS.buttonRootBorderWidth),
+  },
   rounded: {
     borderRadius: VISUAL_REFRESH_TOKENS.buttonBorderRadius,
+    fontFamily: VISUAL_REFRESH_TOKENS.buttonRoundedFontFamily,
+  },
+  square: {
+    fontWeight: VISUAL_REFRESH_TOKENS.buttonSquareFontWeight,
+  },
+  primary: {
+    backgroundColor: VISUAL_REFRESH_TOKENS.buttonPrimaryBackgroundColor,
   },
 });
 
