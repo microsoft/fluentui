@@ -212,13 +212,20 @@ describe('createFactory', () => {
     return <div {...props} />;
   });
 
+  // Helper to extract the first argument passed to the last call of a jest mock function.
+  const getLastMockCallArg = (mockFn: jest.Mock): any => {
+    const calls = mockFn.mock.calls;
+    return calls[calls.length - 1][0];
+  };
+
   afterEach(() => {
     TestDiv.mockClear();
   });
 
   it(`passes componentProps without userProps`, () => {
     render(createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined, undefined) as JSXElement);
-    expect(TestDiv).toHaveBeenLastCalledWith({ ...componentProps, ...emptyClassName }, {});
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({ ...componentProps, ...emptyClassName });
   });
 
   it(`passes userProp string as child`, () => {
@@ -230,12 +237,22 @@ describe('createFactory', () => {
         undefined,
       ) as JSXElement,
     );
-    expect(TestDiv).toHaveBeenCalledWith({ ...componentProps, children: userPropString, ...emptyClassName }, {});
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      children: userPropString,
+      ...emptyClassName,
+    });
   });
 
   it(`passes userProp integer as child`, () => {
     render(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSXElement);
-    expect(TestDiv).toHaveBeenCalledWith({ ...componentProps, children: 42, ...emptyClassName }, {});
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      children: 42,
+      ...emptyClassName,
+    });
   });
 
   it(`passes userProp string as defaultProp`, () => {
@@ -247,7 +264,12 @@ describe('createFactory', () => {
         undefined,
       ) as JSXElement,
     );
-    expect(TestDiv).toHaveBeenCalledWith({ ...componentProps, [defaultProp]: userPropString, ...emptyClassName }, {});
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      [defaultProp]: userPropString,
+      ...emptyClassName,
+    });
   });
 
   it(`passes userProp integer as defaultProp`, () => {
@@ -259,7 +281,12 @@ describe('createFactory', () => {
         undefined,
       ) as JSXElement,
     );
-    expect(TestDiv).toHaveBeenCalledWith({ ...componentProps, [defaultProp]: 42, ...emptyClassName }, {});
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      [defaultProp]: 42,
+      ...emptyClassName,
+    });
   });
 
   it('merges userProps over componentProps', () => {
@@ -271,7 +298,12 @@ describe('createFactory', () => {
         undefined,
       ) as JSXElement,
     );
-    expect(TestDiv).toHaveBeenCalledWith({ ...componentProps, ...userProps, ...emptyClassName }, {});
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      ...userProps,
+      ...emptyClassName,
+    });
   });
 
   it('renders div and userProp integer as children', () => {

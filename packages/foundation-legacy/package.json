@@ -19,7 +19,6 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/jest-serializer-merge-styles": "*",
-    "react-hooks-testing-library": "^0.5.0",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
