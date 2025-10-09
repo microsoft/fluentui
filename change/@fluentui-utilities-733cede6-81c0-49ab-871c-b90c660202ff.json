@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: resolve react 19 type issues",
-  "packageName": "@fluentui/utilities",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
