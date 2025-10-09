@@ -5,7 +5,6 @@
 ```ts
 
 import { Args } from '@storybook/react';
-import { JSXElement } from '@fluentui/react-components';
 import { Parameters as Parameters_2 } from '@storybook/react';
 import * as React_2 from 'react';
 import { StoryContext } from '@storybook/react';
@@ -14,7 +13,7 @@ import { StoryContext } from '@storybook/react';
 export const DIR_ID: "storybook_fluentui-react-addon_dir";
 
 // @public
-export const FluentCanvas: (props: React_2.ComponentProps<"div">) => JSXElement;
+export const FluentCanvas: (props: React_2.ComponentProps<"div">) => React_2.JSX.Element;
 
 // @public
 export interface FluentGlobals extends Args {
