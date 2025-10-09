@@ -7,13 +7,13 @@ export interface IUseFloatingSuggestionItems<T> {
   suggestionItems: T[];
   setSuggestionItems: React.Dispatch<React.SetStateAction<T[]>>;
   footerItemIndex: number;
-  setfooterItemIndex: React.Dispatch<React.SetStateAction<number>>;
-  footerItems: IFloatingSuggestionsHeaderFooterProps[];
-  setFooterItems: React.Dispatch<React.SetStateAction<IFloatingSuggestionsHeaderFooterProps[]>>;
+  setFooterItemIndex: React.Dispatch<React.SetStateAction<number>>;
+  footerItems: IFloatingSuggestionsHeaderFooterProps[] | undefined;
+  setFooterItems: React.Dispatch<React.SetStateAction<IFloatingSuggestionsHeaderFooterProps[] | undefined>>;
   headerItemIndex: number;
   setHeaderItemIndex: React.Dispatch<React.SetStateAction<number>>;
-  headerItems: IFloatingSuggestionsHeaderFooterProps[];
-  setHeaderItems: React.Dispatch<React.SetStateAction<IFloatingSuggestionsHeaderFooterProps[]>>;
+  headerItems: IFloatingSuggestionsHeaderFooterProps[] | undefined;
+  setHeaderItems: React.Dispatch<React.SetStateAction<IFloatingSuggestionsHeaderFooterProps[] | undefined>>;
   isSuggestionsShown: boolean;
   showPicker: (show: boolean) => void;
   selectNextSuggestion: () => void;
@@ -35,7 +35,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
   focusHeaderIndex?: number,
   isSuggestionsVisible?: boolean,
   initialQueryString?: string,
-) => {
+): IUseFloatingSuggestionItems<T> => {
   const [focusItemIndex, setFocusItemIndex] = React.useState(focusSuggestionIndex || -1);
   const [suggestionItems, setSuggestionItems] = React.useState(floatingSuggestionItems);
 

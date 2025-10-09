@@ -66,7 +66,7 @@ export class Accordion extends React.Component<IAccordionProps, IAccordionState>
     );
   }
 
-  public toggleState = () => {
+  public toggleState = (): void => {
     this.setState((prevState: IAccordionState) => {
       return { isContentVisible: !prevState.isContentVisible };
     });
