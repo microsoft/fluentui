@@ -5,6 +5,7 @@
 ```ts
 
 import { Args } from '@storybook/react';
+import type { JSXElement } from '@fluentui/react-utilities';
 import { Parameters as Parameters_2 } from '@storybook/react';
 import * as React_2 from 'react';
 import { StoryContext } from '@storybook/react';
@@ -13,7 +14,7 @@ import { StoryContext } from '@storybook/react';
 export const DIR_ID: "storybook_fluentui-react-addon_dir";
 
 // @public
-export const FluentCanvas: (props: React_2.ComponentProps<"div">) => React_2.JSX.Element;
+export const FluentCanvas: (props: React_2.ComponentProps<"div">) => JSXElement;
 
 // @public
 export interface FluentGlobals extends Args {
@@ -41,10 +42,7 @@ export interface FluentParameters extends Parameters_2 {
 }
 
 // @public
-export const FluentStory: ({ id, height }: {
-    id: string;
-    height?: string | number;
-}) => React_2.JSX.Element;
+export const FluentStory: ({ id, height }: FluentStoryProps) => JSXElement;
 
 // @public (undocumented)
 export interface FluentStoryContext extends StoryContext {
