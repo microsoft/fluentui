@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { useControlledState, getControlledDerivedProps } from './controlled';
 
 interface ITestProps {
