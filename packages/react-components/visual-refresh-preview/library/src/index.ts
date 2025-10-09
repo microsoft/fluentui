@@ -17,10 +17,8 @@ export const VISUAL_REFRESH_TOKENS = {
 type VisualRefreshToken = keyof typeof VISUAL_REFRESH_TOKENS;
 type VisualRefreshTheme = Record<VisualRefreshToken, any>;
 
-const GLOBAL_TOKENS = {
-  cornerRadiusMedium: 8,
-};
+export const GLOBAL_TOKENS = {};
 
 export const TEAMS_VISUAL_REFRESH_TOKENS = {
-  buttonBorderRadius: '100px',
+  buttonBorderRadius: '14px',
 } satisfies VisualRefreshTheme;

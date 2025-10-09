@@ -11,20 +11,20 @@ const useStyles = makeStyles({
   },
 });
 
-const VisualRefreshProvider = ({ children }) => {
+const VisualRefreshProvider = ({ children }: { children: React.ReactNode }) => {
   const theme = TEAMS_VISUAL_REFRESH_TOKENS;
-  const style: React.CSSProperties = {};
-  for (const key of Object.keys(theme)) {
-    style[`--visual-refresh-${key}`] = theme[key];
+  const customProperties: Record<string, string> = {};
+  for (const key of Object.keys(theme) as Array<keyof typeof theme>) {
+    customProperties[`--visual-refresh-${key}`] = theme[key];
   }
   return (
     <VisualRefreshContext.Provider value={true}>
-      <div style={style}>{children}</div>
+      <div style={customProperties as React.CSSProperties}>{children}</div>
     </VisualRefreshContext.Provider>
   );
 };
 
-const VisualRefreshPreview = ({ children }) => {
+const VisualRefreshPreview = ({ children }: { children: React.ReactNode }) => {
   return (
     <div style={{ display: 'flex' }}>
       <div>{children}</div>

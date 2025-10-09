@@ -552,7 +552,7 @@ const useIconStyles = makeStyles({
 });
 
 const useVisualRefreshStyles = makeStyles({
-  root: {
+  rounded: {
     borderRadius: VISUAL_REFRESH_TOKENS.buttonBorderRadius,
   },
 });
@@ -573,6 +573,12 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const iconStyles = useIconStyles();
 
   const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
+
+  const visualRefreshStylesRecord = visualRefreshStyles as unknown as Record<string, string>;
+  const visualRefreshSlots: Array<string | undefined> = ['root', appearance, shape, size];
+  const visualRefreshOverrides = isVisualRefreshEnabled
+    ? mergeClasses(...visualRefreshSlots.map(slot => (slot ? visualRefreshStylesRecord[slot] : undefined)))
+    : undefined;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
@@ -601,7 +607,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     // User provided class name
     state.root.className,
 
-    isVisualRefreshEnabled && visualRefreshStyles.root,
+    visualRefreshOverrides,
   );
 
   if (state.icon) {
