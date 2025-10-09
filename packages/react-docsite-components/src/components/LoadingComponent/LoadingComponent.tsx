@@ -32,10 +32,10 @@ const DELAY_SHIMMER = 200;
 const randomInt = (max: number, min: number = 0): number => Math.floor(Math.random() * (max - min) + min);
 
 /** Generate single "paragraph" with 2-5 shimmer lines of 80-100% width with the last line being half that range. */
-const generateParagraph = (): JSX.Element => {
+const generateParagraph = (): React.ReactElement => {
   const lineWidths = [80, 85, 90, 95, 100];
 
-  const lines: JSX.Element[] = [];
+  const lines: React.ReactElement[] = [];
 
   // Make first longer lines.
   for (let i = 0; i <= randomInt(4); i++) {
@@ -65,8 +65,8 @@ const generateParagraph = (): JSX.Element => {
 };
 
 /** Generates 2-4 shimmer "paragraphs". */
-const generateParagraphs = (): JSX.Element => {
-  const paragraphs: JSX.Element[] = [];
+const generateParagraphs = (): React.ReactElement => {
+  const paragraphs: React.ReactElement[] = [];
 
   for (let i = 0; i <= 2; i++) {
     paragraphs.push(<div key={'p' + i}>{generateParagraph()}</div>);
@@ -131,7 +131,7 @@ export class LoadingComponent extends React.PureComponent<ILoadingComponentProps
     this._async.dispose();
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { pastDelay, pastOffset } = this.state;
     const { title, versionSwitcherDefinition } = this.props;
 

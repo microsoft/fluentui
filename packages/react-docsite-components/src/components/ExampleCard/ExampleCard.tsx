@@ -74,7 +74,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const {
       title,
       titleAs: TitleAs = 'h3',
@@ -185,7 +185,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     );
   }
 
-  private _getDosAndDonts(): JSX.Element | void {
+  private _getDosAndDonts(): React.ReactElement | void {
     const classNames = this._classNames;
     if (this.props.dos && this.props.donts) {
       return (
