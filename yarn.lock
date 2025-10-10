@@ -1468,10 +1468,10 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.3.4.tgz#59691edd031eedc431bda1bdf601257c06289a40"
   integrity sha512-8vmPV/nIULFDWsnJalQJDqFLC2uTPx6A/ASA2t27QGp+7oXnbWWXCe0uV8xasIH2rGbI/XoB2vmkdP/94WvMrw==
 
-"@custom-elements-manifest/analyzer@0.10.8":
-  version "0.10.8"
-  resolved "https://registry.yarnpkg.com/@custom-elements-manifest/analyzer/-/analyzer-0.10.8.tgz#420fa354289713245f2577235883d0d47a2002cd"
-  integrity sha512-SyZMf0lE6PzZzS2pYy9ONReNZ3duQj9/Cd2n6j79hxVgLS333l+0SAeXadsn9/RYmDQ+oXm+VuNAJujeR7SMoA==
+"@custom-elements-manifest/analyzer@0.10.10":
+  version "0.10.10"
+  resolved "https://registry.yarnpkg.com/@custom-elements-manifest/analyzer/-/analyzer-0.10.10.tgz#219946c4f1c5ce0e65c1de9b11ab49b7ad51b0e6"
+  integrity sha512-R1pbKssP3Psb2OiGfheiUbXtBgTGQ0Vu5cn2CHSdZoJV66oZPSSw/TdCf8WlnQ6dfKSy5L8hNneClnmD80GEwA==
   dependencies:
     "@custom-elements-manifest/find-dependencies" "^0.0.6"
     "@github/catalyst" "^1.6.0"
@@ -4906,10 +4906,10 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.3.tgz#472eaab5f15c1ffdd7f8628bd4c4f753995ec79e"
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
-"@tsconfig/node18@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@tsconfig/node18/-/node18-1.0.3.tgz#b14aed11bda116950a57fb5d223dd050e47f4fe1"
-  integrity sha512-RbwvSJQsuN9TB04AQbGULYfOGE/RnSFk/FLQ5b0NmDf5Kx2q/lABZbHQPKCO1vZ6Fiwkplu+yb9pGdLy1iGseQ==
+"@tsconfig/node20@20.1.6":
+  version "20.1.6"
+  resolved "https://registry.yarnpkg.com/@tsconfig/node20/-/node20-20.1.6.tgz#cdf11db8322e1c245d5a4bb2e398239c82ae78b2"
+  integrity sha512-sz+Hqx9zwZDpZIV871WSbUzSqNIsXzghZydypnfgzPKLltVJfkINfUeTct31n/tTSa9ZE1ZOfKdRre1uHHquYQ==
 
 "@tybys/wasm-util@^0.9.0":
   version "0.9.0"
@@ -5485,12 +5485,12 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@20.12.12":
-  version "20.12.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.12.tgz#7cbecdf902085cec634fdb362172dfe12b8f2050"
-  integrity sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==
+"@types/node@*", "@types/node@^22.0.0":
+  version "22.18.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.18.8.tgz#738d9dafa38f6e0c467687c158f8e1ca2d7d8eaa"
+  integrity sha512-pAZSHMiagDR7cARo/cch1f3rXy0AEXwsVsVH09FcyeJVAzCnGgmYis7P3JidtTUjyadhTeSo8TgRPswstghDaw==
   dependencies:
-    undici-types "~5.26.4"
+    undici-types "~6.21.0"
 
 "@types/node@12.20.24":
   version "12.20.24"
@@ -5799,10 +5799,10 @@
   dependencies:
     webpack-dev-middleware "*"
 
-"@types/webpack-env@1.18.4":
-  version "1.18.4"
-  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.18.4.tgz#62879b0a9c653f9b1172d403b882f2045ecce032"
-  integrity sha512-I6e+9+HtWADAWeeJWDFQtdk4EVSAbj6Rtz4q8fJ7mSr1M0jzlFcs8/HZ+Xb5SHzVm1dxH7aUiI+A8kA8Gcrm0A==
+"@types/webpack-env@1.18.8":
+  version "1.18.8"
+  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.18.8.tgz#71f083718c094204d7b64443701d32f1db3989e3"
+  integrity sha512-G9eAoJRMLjcvN4I08wB5I7YofOb/kaJNd5uoCMX+LbKXTPCF+ZIHuqTnFaK9Jz1rgs035f9JUPUhNFtqgucy/A==
 
 "@types/webpack-hot-middleware@2.25.9":
   version "2.25.9"
@@ -6040,10 +6040,10 @@
   dependencies:
     tslib "^1.10.0"
 
-"@wc-toolkit/cem-inheritance@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@wc-toolkit/cem-inheritance/-/cem-inheritance-1.0.4.tgz#eb50611bc07706e38d6db293bda7ebabb1cedcbe"
-  integrity sha512-jhw9MiGdbEIdwDUYbLHAZ7FadIbNXXtgNIkFFTfp6DHWe/XE9/ro1KEW6w/GYy86VOQLXYTU6pbMFRnXb9zXAQ==
+"@wc-toolkit/cem-inheritance@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@wc-toolkit/cem-inheritance/-/cem-inheritance-1.2.2.tgz#9d75e7b3682f3b2e919db7d4fb154031262db7dd"
+  integrity sha512-Da7U9Zew9X8DhoITRemKhKOP8AFoZwuQTj164TCFUB50YJ/0LbukOhFunTzo19MHw22ohpnzAahbjofSmrKjBg==
   dependencies:
     "@wc-toolkit/jsdoc-tags" "^1.1.0"
 
@@ -20996,6 +20996,11 @@ undici-types@~5.26.4:
   version "5.26.5"
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
   integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
+
+undici-types@~6.21.0:
+  version "6.21.0"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.21.0.tgz#691d00af3909be93a7faa13be61b3a5b50ef12cb"
+  integrity sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==
 
 unherit@^1.0.4:
   version "1.1.3"
