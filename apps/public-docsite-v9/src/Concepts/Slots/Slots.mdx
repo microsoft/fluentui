@@ -103,7 +103,7 @@ For example, the `Button` component can be passed an `img` or an `CalendarRegula
 
 ```tsx
 <>
-  <Button icon={<img src='site-icon.png' alt='branded site icon' /> }
+  <Button icon={<img className="sbdocs-img" src='site-icon.png' alt='branded site icon' /> }
   <Button icon={<CalendarRegular24 />} />
 </>
 ```
@@ -116,7 +116,7 @@ Any shorthand value provided to a slot is converted to that slot's children cont
   <!-- icon slot -->
   <span class="fui-Button__icon">
     <!-- icon slot children -->
-    <img src="site-icon.png" alt="branded site icon" />
+    <img className="sbdocs-img" src="site-icon.png" alt="branded site icon" />
   </span>
 </button>
 ```
