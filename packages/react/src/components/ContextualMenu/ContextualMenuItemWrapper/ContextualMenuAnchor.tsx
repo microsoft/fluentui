@@ -22,12 +22,14 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = React.createRef<HTMLAnchorElement>();
   private _ariaDescriptionId: string;
 
-  private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
-    return {
-      ...keytipProps,
-      hasMenu: true,
-    };
-  });
+  private _getMemoizedMenuButtonKeytipProps = memoizeFunction(
+    (keytipProps: IKeytipProps): IKeytipProps & { hasMenu: boolean } => {
+      return {
+        ...keytipProps,
+        hasMenu: true,
+      };
+    },
+  );
 
   public render() {
     const {
@@ -144,7 +146,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
     }
   };
 
-  protected _renderAriaDescription = (ariaDescription?: string, className?: string) => {
+  protected _renderAriaDescription = (ariaDescription?: string, className?: string): JSXElement | null => {
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan
     return ariaDescription ? (
       <span id={this._ariaDescriptionId} className={className}>

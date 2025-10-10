@@ -171,7 +171,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean,
-  ) {
+  ): JSXElement {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem, onItemClick } = this.props;
 
     const itemProps: IContextualMenuItem = {
@@ -210,7 +210,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     );
   }
 
-  private _renderSplitDivider(item: IContextualMenuItem) {
+  private _renderSplitDivider(item: IContextualMenuItem): JSXElement {
     const getDividerClassNames =
       item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
     return (

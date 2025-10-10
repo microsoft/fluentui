@@ -36,7 +36,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
     }
   }
 
-  public focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean) {
+  public focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean {
     if (this._comboBox.current) {
       this._comboBox.current.focus(shouldOpenOnFocus, useFocusAsync);
       return true;

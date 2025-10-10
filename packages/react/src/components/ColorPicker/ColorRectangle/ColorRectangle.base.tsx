@@ -75,7 +75,7 @@ export class ColorRectangleBase
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._root.current) {
       this._root.current.removeEventListener('touchstart', this._onTouchStart);
       this._root.current.removeEventListener('touchmove', this._onTouchMove);

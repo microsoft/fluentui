@@ -269,7 +269,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return this._onRenderContent(tag, buttonProps);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the
     // primary action. This gives more hit target space for touch environments. We're setting the onpointerdown here,
     // because React does not support Pointer events yet.
@@ -283,7 +283,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     }
   }
 
-  public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
+  public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState): void {
     // If Button's menu was closed, run onAfterMenuDismiss.
     if (this.props.onAfterMenuDismiss && !prevState.menuHidden && this.state.menuHidden) {
       this.props.onAfterMenuDismiss();
