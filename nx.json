@@ -172,8 +172,12 @@
         "packages/react-components/**/*",
         "packages/charts/react-charts/**/*",
 
+        "packages/foundation-legacy/**",
+        "packages/jest-serializer-merge-styles/**",
         "packages/react/**",
+        "packages/react-cards/**",
         "packages/react-hooks/**",
+        "packages/react-focus/**",
         "packages/react-examples/**",
         "packages/react-experiments/**",
         "packages/charts/react-charting/**",
