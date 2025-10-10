@@ -7,7 +7,13 @@ import type { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.typ
  * Returns the ThemeProvider render function and calculated state, given user input, ref, and
  * a set of default prop values.
  */
-export const useThemeProvider = (props: ThemeProviderProps, defaultProps: ThemeProviderProps) => {
+export const useThemeProvider = (
+  props: ThemeProviderProps,
+  defaultProps: ThemeProviderProps,
+): {
+  state: ThemeProviderState;
+  render: (state: ThemeProviderState) => JSX.Element;
+} => {
   const state = getPropsWithDefaults(defaultProps, props) as ThemeProviderState;
 
   // Apply changes to state.

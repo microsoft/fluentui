@@ -101,7 +101,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     return this._inputElement.current;
   }
 
-  public componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null) {
+  public componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null): void {
     const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
 
@@ -178,11 +178,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     );
   }
 
-  public focus() {
+  public focus(): void {
     this._inputElement.current && this._inputElement.current.focus();
   }
 
-  public clear() {
+  public clear(): void {
     this._autoFillEnabled = true;
     this._updateValue('', false);
     this._inputElement.current && this._inputElement.current.setSelectionRange(0, 0);
