@@ -8,6 +8,7 @@ export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { Alert } from './DialogAlert.stories';
 export { ScrollingLongContent } from './DialogScrollingLongContent.stories';
+export { KeepRenderedInTheDOM } from './DialogKeepRenderedInTheDOM.stories';
 export { Actions } from './DialogActions.stories';
 export { FluidActions } from './DialogFluidDialogActions.stories';
 export { NoFocusableElement } from './DialogNoFocusableElement.stories';
