@@ -207,7 +207,6 @@ export class BaseField extends FASTElement {
         if (label instanceof HTMLLabelElement) {
           label.htmlFor = label.htmlFor || this.input.id;
           label.id = label.id || `${this.input.id}--label`;
-          label.setAttribute('aria-hidden', 'true');
           this.input.setAttribute('aria-labelledby', label.id);
         }
       });
