@@ -44,7 +44,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [focusedArcId, setFocusedArcId] = React.useState<string>('');
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ChartDataPoint | undefined>();
-    const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
+    const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const prevPropsRef = React.useRef<DonutChartProps | null>(null);
     const _legendsRef = React.useRef<LegendContainer>(null);
@@ -149,14 +149,12 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       }
     }
 
-    function _focusCallback(data: ChartDataPoint, id: string, e: React.FocusEvent<SVGPathElement>): void {
-      let cx = 0;
-      let cy = 0;
-
-      const targetRect = (e.target as SVGPathElement).getBoundingClientRect();
-      cx = targetRect.left + targetRect.width / 2;
-      cy = targetRect.top + targetRect.height / 2;
-      updatePosition(cx, cy);
+    function _focusCallback(
+      data: ChartDataPoint,
+      id: string,
+      e: React.FocusEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
       setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
       setValue(data.data!.toString());
       setLegend(data.legend);
@@ -165,9 +163,14 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       setYCalloutValue(data.yAxisCalloutData!);
       setFocusedArcId(id);
       setDataPointCalloutProps(data);
+      setRefSelected(targetElement!);
     }
 
-    function _hoverCallback(data: ChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
+    function _hoverCallback(
+      data: ChartDataPoint,
+      e: React.MouseEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
       if (_calloutAnchorPoint !== data) {
         _calloutAnchorPoint = data;
         setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
@@ -177,7 +180,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         setXCalloutValue(data.xAxisCalloutData!);
         setYCalloutValue(data.yAxisCalloutData!);
         setDataPointCalloutProps(data);
-        updatePosition(e.clientX, e.clientY);
+        setRefSelected(targetElement!);
       }
     }
     function _onBlur(): void {
@@ -260,18 +263,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
             return { ...item, defaultColor };
           })
         : [];
-    }
-
-    function updatePosition(newX: number, newY: number) {
-      const threshold = 1; // Set a threshold for movement
-      const { x, y } = clickPosition;
-      // Calculate the distance moved
-      const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
-      // Update the position only if the distance moved is greater than the threshold
-      if (distance > threshold) {
-        setClickPosition({ x: newX, y: newY });
-        setPopoverOpen(true);
-      }
     }
 
     /**
@@ -359,7 +350,9 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
           culture={props.culture ?? 'en-us'}
-          clickPosition={clickPosition}
+          positioning={{
+            target: refSelected,
+          }}
           isPopoverOpen={
             !props.hideTooltip && isPopoverOpen && (_noLegendsHighlighted() || _isLegendHighlighted(legend))
           }

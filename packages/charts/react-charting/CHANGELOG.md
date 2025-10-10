@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 09 Oct 2025 07:21:59 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Oct 2025 07:20:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.37)
+
+Fri, 10 Oct 2025 07:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.36..@fluentui/react-charting_v5.24.37)
+
+### Patches
+
+- fix large data example  ([PR #35289](https://github.com/microsoft/fluentui/pull/35289) by anushgupta@microsoft.com)
+- fix: resolve data points based on axis type + replace invalid values with 0 for valid coordinates ([PR #35281](https://github.com/microsoft/fluentui/pull/35281) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.33 ([commit](https://github.com/microsoft/fluentui/commit/7dfabce5ac517a86b4f8ac78a10611f0c6ab8ef2) by beachball)
 
 ## [5.24.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.36)
 
