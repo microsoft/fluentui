@@ -1,7 +1,7 @@
-import { html, repeat } from '@microsoft/fast-element';
+import { html, ref, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorStatusSuccessBackground3 } from '../theme/design-tokens.js';
-import type { Field as FluentField } from './field.js';
+import type { Field, Field as FluentField } from './field.js';
 import { LabelPosition } from './field.options.js';
 
 type Story = StoryObj<FluentField>;
@@ -23,7 +23,18 @@ const textInputLink = '<a href="/docs/components-textinput--docs">Text Input</a>
 const textAreaLink = '<a href="/docs/components-textarea--docs">Text Area</a>';
 
 const storyDescription = `
-To maintain accessibility the ${textInputLink} component and the ${textAreaLink} should not be used with the '<fluent-field>' component since they already include a label slot.
+The ${textInputLink} and ${textAreaLink} components have a specific implementation with \`<fluent-field>\` that differs from other form controls to ensure proper accessibility support.
+
+**For Text Input and Text Area:**
+- The label must be passed as a child element (not using the field's label slot)
+- This implementation is required for accessibility features like zoom text and voice over to work correctly
+- A previous issue where the aria-hidden attribute prevented zoom text functionality on the field label has been resolved
+
+**For Other Form Controls (checkbox, radio, etc.):**
+- The label should be placed in the field's label slot using \`slot="label"\`
+- This is the standard implementation pattern for most form controls
+
+This distinction ensures that text-based inputs maintain proper accessibility while other controls follow the standard slotting pattern.
 `;
 
 export default {
@@ -109,6 +120,41 @@ export const LabelPositions: Story = {
   },
 };
 
+export const TextInput: Story = {
+  args: {
+    label: {
+      text: 'Text Input',
+    },
+    labelPosition: undefined,
+    inputSlottedContent: () => html`<fluent-text-input slot="input">${story => story.label.text}</fluent-text-input>`,
+    labelSlottedContent: () => html``,
+    messageSlottedContent: undefined,
+  },
+}
+
+export const TextInputFormSubmission: Story = {
+    render: renderComponent(html<StoryArgs<Field>>`
+        <form
+            style="display: inline-flex; align-items: start; flex-direction: column; gap: 20px"
+            @reset="${x => x.successMessage.toggleAttribute("hidden", true)}"
+            @submit="${x =>
+                x.input?.checkValidity() &&
+                x.successMessage.toggleAttribute("hidden", false)}"
+        >
+            <fluent-field>
+              <fluent-text-input ${ref("input")} required slot="input" id="form-input">${story => story.label}</fluent-text-input>
+            </fluent-field>
+            <fluent-button type="submit">Submit</fluent-button>
+            <span id="success-message" hidden ${ref("successMessage")}>
+                Form submitted successfully!
+            </span>
+        </form>
+    `),
+    args: {
+        label: "Form",
+    },
+};
+
 export const Required: Story = {
   args: {
     label: {
@@ -140,6 +186,21 @@ export const Size: Story = {
       <fluent-checkbox size="large" slot="input" id="field-large-size"></fluent-checkbox>
     </fluent-field>
   `),
+};
+
+export const Hint: Story = {
+  args: {
+    label: {
+      text: 'Example with hint',
+    },
+    message: {
+      message: 'Sample hint text.',
+    },
+    inputSlottedContent: () => html`<fluent-text-input slot="input" aria-describedby="hint-message">${story => story.label.text}</fluent-text-input>`,
+    labelSlottedContent: () => html``,
+    messageSlottedContent: () =>
+      html`<fluent-text slot="message" size="200" id="hint-message">${story => story.message?.message}</fluent-text>`,
+  },
 };
 
 export const ComponentExamples: Story = {
