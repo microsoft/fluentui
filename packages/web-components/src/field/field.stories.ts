@@ -1,7 +1,7 @@
 import { html, ref, repeat } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorStatusSuccessBackground3 } from '../theme/design-tokens.js';
-import type { Field, Field as FluentField } from './field.js';
+import type { Field as FluentField } from './field.js';
 import { LabelPosition } from './field.options.js';
 
 type Story = StoryObj<FluentField>;
@@ -130,29 +130,27 @@ export const TextInput: Story = {
     labelSlottedContent: () => html``,
     messageSlottedContent: undefined,
   },
-}
+};
 
 export const TextInputFormSubmission: Story = {
-    render: renderComponent(html<StoryArgs<Field>>`
-        <form
-            style="display: inline-flex; align-items: start; flex-direction: column; gap: 20px"
-            @reset="${x => x.successMessage.toggleAttribute("hidden", true)}"
-            @submit="${x =>
-                x.input?.checkValidity() &&
-                x.successMessage.toggleAttribute("hidden", false)}"
+  render: renderComponent(html<StoryArgs<FluentField>>`
+    <form
+      style="display: inline-flex; align-items: start; flex-direction: column; gap: 20px"
+      @reset="${x => x.successMessage.toggleAttribute('hidden', true)}"
+      @submit="${x => x.input?.checkValidity() && x.successMessage.toggleAttribute('hidden', false)}"
+    >
+      <fluent-field>
+        <fluent-text-input ${ref('input')} required slot="input" id="form-input"
+          >${story => story.label}</fluent-text-input
         >
-            <fluent-field>
-              <fluent-text-input ${ref("input")} required slot="input" id="form-input">${story => story.label}</fluent-text-input>
-            </fluent-field>
-            <fluent-button type="submit">Submit</fluent-button>
-            <span id="success-message" hidden ${ref("successMessage")}>
-                Form submitted successfully!
-            </span>
-        </form>
-    `),
-    args: {
-        label: "Form",
-    },
+      </fluent-field>
+      <fluent-button type="submit">Submit</fluent-button>
+      <span id="success-message" hidden ${ref('successMessage')}> Form submitted successfully! </span>
+    </form>
+  `),
+  args: {
+    label: 'Form',
+  },
 };
 
 export const Required: Story = {
@@ -196,7 +194,10 @@ export const Hint: Story = {
     message: {
       message: 'Sample hint text.',
     },
-    inputSlottedContent: () => html`<fluent-text-input slot="input" aria-describedby="hint-message">${story => story.label.text}</fluent-text-input>`,
+    inputSlottedContent: () =>
+      html`<fluent-text-input slot="input" aria-describedby="hint-message"
+        >${story => story.label.text}</fluent-text-input
+      >`,
     labelSlottedContent: () => html``,
     messageSlottedContent: () =>
       html`<fluent-text slot="message" size="200" id="hint-message">${story => story.message?.message}</fluent-text>`,
