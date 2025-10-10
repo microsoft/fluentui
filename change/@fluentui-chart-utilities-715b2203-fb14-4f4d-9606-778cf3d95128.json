@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use fallback for scatter trace when axis type is category",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

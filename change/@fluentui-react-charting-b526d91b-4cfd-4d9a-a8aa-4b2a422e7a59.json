@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: resolve data points based on axis type + replace invalid values with 0 for valid coordinates",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
