@@ -176,7 +176,8 @@
         "packages/react-hooks/**",
         "packages/react-examples/**",
         "packages/react-experiments/**",
-        "packages/charts/react-charting/**"
+        "packages/charts/react-charting/**",
+        "packages/utilities/**"
       ]
     }
   ],
