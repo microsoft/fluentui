@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Thu, 21 Aug 2025 12:25:39 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Oct 2025 12:04:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.2.2)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.2.1..@fluentui/react-jsx-runtime_v9.2.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.2.1)
+
+Thu, 02 Oct 2025 15:12:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.2.0..@fluentui/react-jsx-runtime_v9.2.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.2.0)
+
+Mon, 08 Sep 2025 12:51:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.1.6..@fluentui/react-jsx-runtime_v9.2.0)
+
+### Minor changes
+
+- feat: expose JSX namespace in backwards compatible way for react 19 typescript support ([PR #35137](https://github.com/microsoft/fluentui/pull/35137) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.24.1 ([commit](https://github.com/microsoft/fluentui/commit/17af11b3c9f4cac2beeaf4342a81c1f08e95fd29) by beachball)
+
+### Patches
+
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
 
 ## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.1.6)
 

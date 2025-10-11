@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -19,6 +20,7 @@ import {
   TableHeaderCell,
   TableCellLayout,
 } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
 
 const items = [
   {
@@ -66,7 +68,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const NonNativeElements = () => {
+export const NonNativeElements = (): JSXElement => {
   return (
     <Table noNativeElements aria-label="Table without semantic HTML elements" style={{ minWidth: '500px' }}>
       <TableHeader>

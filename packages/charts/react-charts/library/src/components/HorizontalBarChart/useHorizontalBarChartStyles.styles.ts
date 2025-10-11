@@ -1,7 +1,10 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { HighContrastSelector } from '../../utilities/index';
 
 /**
  * @internal
@@ -89,7 +92,9 @@ const useStyles = makeStyles({
   barLabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
-    forcedColorAdjust: 'none',
+    [HighContrastSelector]: {
+      stroke: 'CanvasText',
+    },
   },
   chartWrapper40ppadding: {
     paddingRight: '40p',

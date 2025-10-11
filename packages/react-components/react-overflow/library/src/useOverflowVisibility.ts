@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useOverflowContext } from './overflowContext';
 
@@ -10,7 +12,10 @@ import { useOverflowContext } from './overflowContext';
  * visible - use with caution
  * @returns visibility status of all items and groups
  */
-export function useOverflowVisibility() {
+export function useOverflowVisibility(): {
+  itemVisibility: Record<string, boolean>;
+  groupVisibility: Record<string, import('@fluentui/priority-overflow').OverflowGroupState>;
+} {
   const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
   const groupVisibility = useOverflowContext(ctx => ctx.groupVisibility);
 

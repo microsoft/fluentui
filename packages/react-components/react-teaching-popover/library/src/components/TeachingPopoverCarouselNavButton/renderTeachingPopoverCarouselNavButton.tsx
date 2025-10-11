@@ -2,6 +2,7 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselNavButtonState,
   TeachingPopoverCarouselNavButtonSlots,
@@ -10,7 +11,9 @@ import type {
 /**
  * Render the final JSX of TeachingPopoverCarouselNavButton
  */
-export const renderTeachingPopoverCarouselNavButton_unstable = (state: TeachingPopoverCarouselNavButtonState) => {
+export const renderTeachingPopoverCarouselNavButton_unstable = (
+  state: TeachingPopoverCarouselNavButtonState,
+): JSXElement => {
   assertSlots<TeachingPopoverCarouselNavButtonSlots>(state);
 
   return <state.root />;

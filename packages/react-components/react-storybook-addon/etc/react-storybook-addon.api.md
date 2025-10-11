@@ -45,15 +45,7 @@ export interface FluentStoryContext extends StoryContext {
 }
 
 // @public (undocumented)
-export function parameters(options?: FluentParameters): {
-    dir: string;
-    fluentTheme: string;
-    mode: string;
-    reactStorybookAddon?: {
-        disabledDecorators?: ["AriaLive" | "FluentProvider" | "ReactStrictMode"];
-        docs?: FluentDocsConfig;
-    };
-};
+export function parameters(options?: FluentParameters): FluentParameters;
 
 // @public (undocumented)
 export const THEME_ID: "storybook_fluentui-react-addon_theme";

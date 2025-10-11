@@ -1,3 +1,5 @@
+'use client';
+
 import { type GriffelResetStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
@@ -82,7 +84,7 @@ export const useDrawerBottomBaseStyles = makeStyles({
   },
 });
 
-export const useDrawerBaseClassNames = ({ position, size }: DrawerBaseState) => {
+export const useDrawerBaseClassNames = ({ position, size }: DrawerBaseState): string => {
   const baseStyles = useDrawerStyles();
   const bottomBaseStyles = useDrawerBottomBaseStyles();
 

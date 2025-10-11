@@ -7,6 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -108,6 +109,7 @@ export type CardProps = ComponentProps<CardSlots> & {
     selected?: boolean;
     defaultSelected?: boolean;
     onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
+    disabled?: boolean;
 };
 
 // @internal (undocumented)
@@ -126,19 +128,20 @@ export type CardState = ComponentState<CardSlots> & CardContextValue & Required<
     selectable: boolean;
     selected: boolean;
     selectFocused: boolean;
+    disabled: boolean;
 }>;
 
 // @public
-export const renderCard_unstable: (state: CardState, cardContextValue: CardContextValue) => JSX.Element;
+export const renderCard_unstable: (state: CardState, cardContextValue: CardContextValue) => JSXElement;
 
 // @public
-export const renderCardFooter_unstable: (state: CardFooterState) => JSX.Element;
+export const renderCardFooter_unstable: (state: CardFooterState) => JSXElement;
 
 // @public
-export const renderCardHeader_unstable: (state: CardHeaderState) => JSX.Element;
+export const renderCardHeader_unstable: (state: CardHeaderState) => JSXElement;
 
 // @public
-export const renderCardPreview_unstable: (state: CardPreviewState) => JSX.Element;
+export const renderCardPreview_unstable: (state: CardPreviewState) => JSXElement;
 
 // @public
 export const useCard_unstable: (props: CardProps, ref: React_2.Ref<HTMLDivElement>) => CardState;

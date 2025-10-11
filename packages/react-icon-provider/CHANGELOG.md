@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-icon-provider
 
-This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Oct 2025 07:21:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.86)
+
+Thu, 09 Oct 2025 07:21:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.85..@fluentui/react-icon-provider_v1.3.86)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.13.0 ([PR #35301](https://github.com/microsoft/fluentui/pull/35301) by beachball)
+
+## [1.3.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.85)
+
+Thu, 02 Oct 2025 07:20:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.84..@fluentui/react-icon-provider_v1.3.85)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+
+## [1.3.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.84)
+
+Tue, 26 Aug 2025 07:21:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.83..@fluentui/react-icon-provider_v1.3.84)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.12.4 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
 
 ## [1.3.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.83)
 

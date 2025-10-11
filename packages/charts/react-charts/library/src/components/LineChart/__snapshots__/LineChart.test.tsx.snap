@@ -45,6 +45,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -63,6 +64,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -81,6 +83,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -114,6 +117,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -132,6 +136,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               23
@@ -150,6 +155,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               46
@@ -168,6 +174,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               69
@@ -186,6 +193,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               92
@@ -505,6 +513,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -523,6 +532,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -541,6 +551,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -574,6 +585,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -592,6 +604,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               23
@@ -610,6 +623,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               46
@@ -628,6 +642,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               69
@@ -646,6 +661,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               92
@@ -994,6 +1010,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -1012,6 +1029,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -1030,6 +1048,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -1063,6 +1082,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -1081,6 +1101,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               23
@@ -1099,6 +1120,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               46
@@ -1117,6 +1139,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               69
@@ -1135,6 +1158,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               92
@@ -1143,7 +1167,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         </g>
         <g>
           <line
-            id="verticalLinercb"
+            id="verticalLinercd"
             stroke="#323130"
             stroke-dasharray="5,5"
             transform="translate(-20, 191.84782608695653)"
@@ -1159,7 +1183,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="region"
             >
               <line
-                id="lineIDrc9_2_1"
+                id="lineIDrcb_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -1178,7 +1202,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
-                id="circlerc8_2_1"
+                id="circlerca_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1194,7 +1218,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circlerc8_2_11L"
+                id="circlerca_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1205,7 +1229,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circlerc8_2_11D"
+                id="circlerca_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1217,7 +1241,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="region"
             >
               <line
-                id="lineIDrc9_1_1"
+                id="lineIDrcb_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -1236,7 +1260,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circlerc8_1_1"
+                id="circlerca_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1252,7 +1276,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circlerc8_1_11L"
+                id="circlerca_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1263,7 +1287,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circlerc8_1_11D"
+                id="circlerca_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1275,7 +1299,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="region"
             >
               <line
-                id="lineIDrc9_0_1"
+                id="lineIDrcb_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -1294,7 +1318,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circlerc8_0_1"
+                id="circlerca_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1310,7 +1334,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circlerc8_0_11L"
+                id="circlerca_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1321,7 +1345,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circlerc8_0_11D"
+                id="circlerca_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1403,6 +1427,65 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               metaData3
             </div>
           </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutrcm"
+    >
+      <div
+        class="fui-PopoverSurface"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
+        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+      >
+        <div
+          class="fui-cart__calloutContentRoot"
+        >
+          <div
+            class="fui-cart__calloutDateTimeContainer"
+          >
+            <div
+              class="fui-cart__calloutContentX"
+              data-is-focusable="false"
+              role="text"
+            >
+              70
+            </div>
+          </div>
+          <div>
+            <div
+              data-is-focusable="false"
+              role="text"
+            >
+              <div>
+                <div
+                  class="fui-cart__calloutBlockContainer"
+                  id="0_30"
+                  style="border-inline-start: 4px solid yellow;"
+                >
+                  <div
+                    class="fui-cart__calloutBlockContainer fui-cart__calloutBlockContainertoDrawShapefalse"
+                    style="margin-top: 13px;"
+                  >
+                    <div
+                      class="fui-cart__calloutlegendText"
+                    >
+                       
+                      metaData3
+                    </div>
+                    <div
+                      class="fui-cart__calloutContentY"
+                      style="direction: ltr; unicode-bidi: isolate;"
+                    >
+                      30
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1455,6 +1538,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -1473,6 +1557,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -1491,6 +1576,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -1524,6 +1610,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -1542,6 +1629,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               23
@@ -1560,6 +1648,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               46
@@ -1578,6 +1667,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               69
@@ -1596,6 +1686,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               92
@@ -1604,7 +1695,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         </g>
         <g>
           <line
-            id="verticalLinerdf"
+            id="verticalLinerdn"
             stroke="#323130"
             stroke-dasharray="5,5"
             transform="translate(-20, 191.84782608695653)"
@@ -1620,7 +1711,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="region"
             >
               <line
-                id="lineIDrdd_2_1"
+                id="lineIDrdl_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -1639,7 +1730,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
-                id="circlerdc_2_1"
+                id="circlerdk_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1655,7 +1746,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circlerdc_2_11L"
+                id="circlerdk_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -1666,7 +1757,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circlerdc_2_11D"
+                id="circlerdk_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1678,7 +1769,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="region"
             >
               <line
-                id="lineIDrdd_1_1"
+                id="lineIDrdl_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -1697,7 +1788,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circlerdc_1_1"
+                id="circlerdk_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1713,7 +1804,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circlerdc_1_11L"
+                id="circlerdk_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -1724,7 +1815,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circlerdc_1_11D"
+                id="circlerdk_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1736,7 +1827,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="region"
             >
               <line
-                id="lineIDrdd_0_1"
+                id="lineIDrdl_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -1755,7 +1846,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circlerdc_0_1"
+                id="circlerdk_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1771,7 +1862,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circlerdc_0_11L"
+                id="circlerdk_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -1782,7 +1873,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circlerdc_0_11D"
+                id="circlerdk_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1867,6 +1958,33 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         </div>
       </div>
     </div>
+    <div
+      class="fui-cart__calloutContainer"
+      id="calloutre0"
+    >
+      <div
+        class="fui-PopoverSurface"
+        data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+        role="group"
+        style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+      >
+        <div>
+          <pre>
+            {
+  "x": 70,
+  "values": [
+    {
+      "legend": "metaData3",
+      "y": 30,
+      "color": "yellow",
+      "index": -1
+    }
+  ]
+}
+          </pre>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -1879,7 +1997,7 @@ Object {
   >
     <div
       class="fui-line__tooltip"
-      id="LineChartTooltipId_r8c"
+      id="LineChartTooltipId_r8e"
       style="opacity: 0;"
     />
     <div>
@@ -1926,6 +2044,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -1944,6 +2063,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -1962,6 +2082,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -1995,6 +2116,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   0
@@ -2013,6 +2135,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   23
@@ -2031,6 +2154,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   46
@@ -2049,6 +2173,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   69
@@ -2067,6 +2192,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   92
@@ -2075,7 +2201,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLiner92"
+                id="verticalLiner94"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -2090,7 +2216,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr90_2_1"
+                    id="lineIDr92_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -2109,7 +2235,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler8v_2_1"
+                    id="circler91_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -2125,7 +2251,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler8v_2_11L"
+                    id="circler91_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -2136,7 +2262,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler8v_2_11D"
+                    id="circler91_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -2148,7 +2274,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr90_1_1"
+                    id="lineIDr92_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -2167,7 +2293,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler8v_1_1"
+                    id="circler91_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -2183,7 +2309,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler8v_1_11L"
+                    id="circler91_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -2194,7 +2320,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circler8v_1_11D"
+                    id="circler91_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -2206,7 +2332,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr90_0_1"
+                    id="lineIDr92_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -2225,7 +2351,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler8v_0_1"
+                    id="circler91_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -2241,7 +2367,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler8v_0_11L"
+                    id="circler91_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -2252,7 +2378,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler8v_0_11D"
+                    id="circler91_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -2384,6 +2510,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -2402,6 +2529,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -2420,6 +2548,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -2453,6 +2582,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 0
@@ -2471,6 +2601,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 23
@@ -2489,6 +2620,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 46
@@ -2507,6 +2639,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 69
@@ -2525,6 +2658,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 92
@@ -2533,7 +2667,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLiner92"
+              id="verticalLiner94"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -2548,7 +2682,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr90_2_1"
+                  id="lineIDr92_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -2567,7 +2701,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler8v_2_1"
+                  id="circler91_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -2583,7 +2717,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler8v_2_11L"
+                  id="circler91_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -2594,7 +2728,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler8v_2_11D"
+                  id="circler91_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -2606,7 +2740,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr90_1_1"
+                  id="lineIDr92_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -2625,7 +2759,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler8v_1_1"
+                  id="circler91_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -2641,7 +2775,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler8v_1_11L"
+                  id="circler91_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -2652,7 +2786,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circler8v_1_11D"
+                  id="circler91_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -2664,7 +2798,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr90_0_1"
+                  id="lineIDr92_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -2683,7 +2817,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler8v_0_1"
+                  id="circler91_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -2699,7 +2833,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler8v_0_11L"
+                  id="circler91_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -2710,7 +2844,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler8v_0_11D"
+                  id="circler91_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -2901,6 +3035,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -2919,6 +3054,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -2937,6 +3073,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -2970,6 +3107,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   0
@@ -2988,6 +3126,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   23
@@ -3006,6 +3145,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   46
@@ -3024,6 +3164,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   69
@@ -3042,6 +3183,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   92
@@ -3050,7 +3192,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLiner6s"
+                id="verticalLiner6u"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -3065,7 +3207,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr6q_2_1"
+                    id="lineIDr6s_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -3084,7 +3226,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler6p_2_1"
+                    id="circler6r_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -3100,7 +3242,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler6p_2_11L"
+                    id="circler6r_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -3111,7 +3253,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler6p_2_11D"
+                    id="circler6r_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3123,7 +3265,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr6q_1_1"
+                    id="lineIDr6s_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -3142,7 +3284,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler6p_1_1"
+                    id="circler6r_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -3158,7 +3300,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler6p_1_11L"
+                    id="circler6r_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -3169,7 +3311,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circler6p_1_11D"
+                    id="circler6r_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3181,7 +3323,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr6q_0_1"
+                    id="lineIDr6s_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -3200,7 +3342,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler6p_0_1"
+                    id="circler6r_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -3216,7 +3358,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler6p_0_11L"
+                    id="circler6r_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -3227,7 +3369,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler6p_0_11D"
+                    id="circler6r_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3359,6 +3501,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -3377,6 +3520,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -3395,6 +3539,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -3428,6 +3573,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 0
@@ -3446,6 +3592,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 23
@@ -3464,6 +3611,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 46
@@ -3482,6 +3630,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 69
@@ -3500,6 +3649,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 92
@@ -3508,7 +3658,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLiner6s"
+              id="verticalLiner6u"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -3523,7 +3673,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr6q_2_1"
+                  id="lineIDr6s_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -3542,7 +3692,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler6p_2_1"
+                  id="circler6r_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -3558,7 +3708,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler6p_2_11L"
+                  id="circler6r_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -3569,7 +3719,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler6p_2_11D"
+                  id="circler6r_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3581,7 +3731,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr6q_1_1"
+                  id="lineIDr6s_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -3600,7 +3750,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler6p_1_1"
+                  id="circler6r_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -3616,7 +3766,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler6p_1_11L"
+                  id="circler6r_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -3627,7 +3777,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circler6p_1_11D"
+                  id="circler6r_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3639,7 +3789,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr6q_0_1"
+                  id="lineIDr6s_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -3658,7 +3808,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler6p_0_1"
+                  id="circler6r_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -3674,7 +3824,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler6p_0_11L"
+                  id="circler6r_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -3685,7 +3835,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler6p_0_11D"
+                  id="circler6r_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3876,6 +4026,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -3894,6 +4045,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -3912,6 +4064,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -3945,6 +4098,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   0
@@ -3963,6 +4117,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   23
@@ -3981,6 +4136,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   46
@@ -3999,6 +4155,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   69
@@ -4017,6 +4174,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   92
@@ -4025,7 +4183,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLiner7v"
+                id="verticalLiner81"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -4040,7 +4198,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr7t_2_1"
+                    id="lineIDr7v_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -4059,7 +4217,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler7s_2_1"
+                    id="circler7u_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -4075,7 +4233,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler7s_2_11L"
+                    id="circler7u_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -4086,7 +4244,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler7s_2_11D"
+                    id="circler7u_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4098,7 +4256,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr7t_1_1"
+                    id="lineIDr7v_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -4117,7 +4275,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler7s_1_1"
+                    id="circler7u_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -4133,7 +4291,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler7s_1_11L"
+                    id="circler7u_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -4144,7 +4302,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circler7s_1_11D"
+                    id="circler7u_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4156,7 +4314,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr7t_0_1"
+                    id="lineIDr7v_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -4175,7 +4333,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler7s_0_1"
+                    id="circler7u_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -4191,7 +4349,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler7s_0_11L"
+                    id="circler7u_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -4202,7 +4360,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler7s_0_11D"
+                    id="circler7u_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4344,6 +4502,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -4362,6 +4521,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -4380,6 +4540,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -4413,6 +4574,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 0
@@ -4431,6 +4593,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 23
@@ -4449,6 +4612,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 46
@@ -4467,6 +4631,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 69
@@ -4485,6 +4650,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 92
@@ -4493,7 +4659,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLiner7v"
+              id="verticalLiner81"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -4508,7 +4674,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr7t_2_1"
+                  id="lineIDr7v_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -4527,7 +4693,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler7s_2_1"
+                  id="circler7u_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -4543,7 +4709,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler7s_2_11L"
+                  id="circler7u_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -4554,7 +4720,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler7s_2_11D"
+                  id="circler7u_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -4566,7 +4732,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr7t_1_1"
+                  id="lineIDr7v_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -4585,7 +4751,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler7s_1_1"
+                  id="circler7u_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -4601,7 +4767,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler7s_1_11L"
+                  id="circler7u_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -4612,7 +4778,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circler7s_1_11D"
+                  id="circler7u_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -4624,7 +4790,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr7t_0_1"
+                  id="lineIDr7v_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -4643,7 +4809,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler7s_0_1"
+                  id="circler7u_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -4659,7 +4825,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler7s_0_11L"
+                  id="circler7u_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -4670,7 +4836,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler7s_0_11D"
+                  id="circler7u_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -4871,6 +5037,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -4889,6 +5056,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -4907,6 +5075,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -4940,6 +5109,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   0
@@ -4958,6 +5128,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   23
@@ -4976,6 +5147,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   46
@@ -4994,6 +5166,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   69
@@ -5012,6 +5185,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   92
@@ -5020,7 +5194,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLiner78"
+                id="verticalLiner7a"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5035,7 +5209,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr76_2_1"
+                    id="lineIDr78_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -5054,7 +5228,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler75_2_1"
+                    id="circler77_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5070,7 +5244,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler75_2_11L"
+                    id="circler77_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5081,7 +5255,7 @@ Object {
                     cx="16"
                     cy="58.478260869565226"
                     focusable="false"
-                    id="circler75_2_11D"
+                    id="circler77_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5093,7 +5267,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr76_1_1"
+                    id="lineIDr78_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -5112,7 +5286,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler75_1_1"
+                    id="circler77_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5128,7 +5302,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler75_1_11L"
+                    id="circler77_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5139,7 +5313,7 @@ Object {
                     cx="4"
                     cy="26.413043478260864"
                     focusable="false"
-                    id="circler75_1_11D"
+                    id="circler77_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5151,7 +5325,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr76_0_1"
+                    id="lineIDr78_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -5170,7 +5344,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler75_0_1"
+                    id="circler77_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -5186,7 +5360,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler75_0_11L"
+                    id="circler77_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -5197,7 +5371,7 @@ Object {
                     cx="16"
                     cy="58.478260869565226"
                     focusable="false"
-                    id="circler75_0_11D"
+                    id="circler77_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5255,6 +5429,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -5273,6 +5448,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -5291,6 +5467,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -5324,6 +5501,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 0
@@ -5342,6 +5520,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 23
@@ -5360,6 +5539,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 46
@@ -5378,6 +5558,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 69
@@ -5396,6 +5577,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 92
@@ -5404,7 +5586,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLiner78"
+              id="verticalLiner7a"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -5419,7 +5601,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr76_2_1"
+                  id="lineIDr78_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -5438,7 +5620,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler75_2_1"
+                  id="circler77_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -5454,7 +5636,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler75_2_11L"
+                  id="circler77_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -5465,7 +5647,7 @@ Object {
                   cx="16"
                   cy="58.478260869565226"
                   focusable="false"
-                  id="circler75_2_11D"
+                  id="circler77_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5477,7 +5659,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr76_1_1"
+                  id="lineIDr78_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -5496,7 +5678,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler75_1_1"
+                  id="circler77_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -5512,7 +5694,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler75_1_11L"
+                  id="circler77_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -5523,7 +5705,7 @@ Object {
                   cx="4"
                   cy="26.413043478260864"
                   focusable="false"
-                  id="circler75_1_11D"
+                  id="circler77_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5535,7 +5717,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr76_0_1"
+                  id="lineIDr78_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -5554,7 +5736,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler75_0_1"
+                  id="circler77_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -5570,7 +5752,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler75_0_11L"
+                  id="circler77_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -5581,7 +5763,7 @@ Object {
                   cx="16"
                   cy="58.478260869565226"
                   focusable="false"
-                  id="circler75_0_11D"
+                  id="circler77_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5698,6 +5880,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -5716,6 +5899,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -5734,6 +5918,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -5767,6 +5952,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   0
@@ -5785,6 +5971,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   23
@@ -5803,6 +5990,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   46
@@ -5821,6 +6009,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   69
@@ -5839,6 +6028,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   92
@@ -5847,7 +6037,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLiner7j"
+                id="verticalLiner7l"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5862,7 +6052,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr7h_2_1"
+                    id="lineIDr7j_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -5881,7 +6071,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler7g_2_1"
+                    id="circler7i_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5897,7 +6087,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler7g_2_11L"
+                    id="circler7i_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5908,7 +6098,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler7g_2_11D"
+                    id="circler7i_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5920,7 +6110,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr7h_1_1"
+                    id="lineIDr7j_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -5939,7 +6129,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler7g_1_1"
+                    id="circler7i_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5955,7 +6145,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler7g_1_11L"
+                    id="circler7i_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5966,7 +6156,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circler7g_1_11D"
+                    id="circler7i_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5978,7 +6168,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr7h_0_1"
+                    id="lineIDr7j_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -5997,7 +6187,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler7g_0_1"
+                    id="circler7i_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -6013,7 +6203,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler7g_0_11L"
+                    id="circler7i_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -6024,7 +6214,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler7g_0_11D"
+                    id="circler7i_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6156,6 +6346,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -6174,6 +6365,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -6192,6 +6384,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -6225,6 +6418,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 0
@@ -6243,6 +6437,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 23
@@ -6261,6 +6456,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 46
@@ -6279,6 +6475,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 69
@@ -6297,6 +6494,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 92
@@ -6305,7 +6503,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLiner7j"
+              id="verticalLiner7l"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -6320,7 +6518,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr7h_2_1"
+                  id="lineIDr7j_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -6339,7 +6537,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler7g_2_1"
+                  id="circler7i_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -6355,7 +6553,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler7g_2_11L"
+                  id="circler7i_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -6366,7 +6564,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler7g_2_11D"
+                  id="circler7i_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6378,7 +6576,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr7h_1_1"
+                  id="lineIDr7j_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -6397,7 +6595,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler7g_1_1"
+                  id="circler7i_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -6413,7 +6611,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler7g_1_11L"
+                  id="circler7i_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -6424,7 +6622,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circler7g_1_11D"
+                  id="circler7i_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6436,7 +6634,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr7h_0_1"
+                  id="lineIDr7j_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -6455,7 +6653,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler7g_0_1"
+                  id="circler7i_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -6471,7 +6669,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler7g_0_11L"
+                  id="circler7i_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -6482,7 +6680,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler7g_0_11D"
+                  id="circler7i_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6673,6 +6871,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -6705,6 +6904,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -6737,6 +6937,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
@@ -6784,6 +6985,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   0
@@ -6802,6 +7004,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   23
@@ -6820,6 +7023,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   46
@@ -6838,6 +7042,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   69
@@ -6856,6 +7061,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   92
@@ -6864,7 +7070,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLiner8a"
+                id="verticalLiner8c"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -6879,7 +7085,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr88_2_1"
+                    id="lineIDr8a_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -6898,7 +7104,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler87_2_1"
+                    id="circler89_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -6914,7 +7120,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler87_2_11L"
+                    id="circler89_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -6925,7 +7131,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler87_2_11D"
+                    id="circler89_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6937,7 +7143,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr88_1_1"
+                    id="lineIDr8a_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -6956,7 +7162,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler87_1_1"
+                    id="circler89_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -6972,7 +7178,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler87_1_11L"
+                    id="circler89_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -6983,7 +7189,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circler87_1_11D"
+                    id="circler89_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6995,7 +7201,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr88_0_1"
+                    id="lineIDr8a_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -7014,7 +7220,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler87_0_1"
+                    id="circler89_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -7030,7 +7236,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler87_0_11L"
+                    id="circler89_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -7041,7 +7247,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler87_0_11D"
+                    id="circler89_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -7130,7 +7336,7 @@ Object {
     </div>
     <div
       class="fui-line__tooltip"
-      id="LineChartTooltipId_r8c"
+      id="LineChartTooltipId_r8e"
       style="opacity: 0;"
     />
   </body>,
@@ -7178,6 +7384,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -7210,6 +7417,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -7242,6 +7450,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
@@ -7289,6 +7498,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 0
@@ -7307,6 +7517,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 23
@@ -7325,6 +7536,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 46
@@ -7343,6 +7555,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 69
@@ -7361,6 +7574,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 92
@@ -7369,7 +7583,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLiner8a"
+              id="verticalLiner8c"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -7384,7 +7598,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr88_2_1"
+                  id="lineIDr8a_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -7403,7 +7617,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler87_2_1"
+                  id="circler89_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -7419,7 +7633,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler87_2_11L"
+                  id="circler89_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -7430,7 +7644,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler87_2_11D"
+                  id="circler89_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7442,7 +7656,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr88_1_1"
+                  id="lineIDr8a_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -7461,7 +7675,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler87_1_1"
+                  id="circler89_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -7477,7 +7691,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler87_1_11L"
+                  id="circler89_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -7488,7 +7702,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circler87_1_11D"
+                  id="circler89_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7500,7 +7714,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr88_0_1"
+                  id="lineIDr8a_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -7519,7 +7733,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler87_0_1"
+                  id="circler89_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -7535,7 +7749,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler87_0_11L"
+                  id="circler89_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -7546,7 +7760,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler87_0_11D"
+                  id="circler89_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7695,7 +7909,7 @@ Object {
   >
     <div
       class="fui-line__tooltip"
-      id="LineChartTooltipId_r8c"
+      id="LineChartTooltipId_r8e"
       style="opacity: 0;"
     />
     <div>
@@ -7742,6 +7956,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   20
@@ -7760,6 +7975,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   40
@@ -7778,6 +7994,7 @@ Object {
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   60
@@ -7811,6 +8028,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   /%d
@@ -7829,6 +8047,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   /%d
@@ -7847,6 +8066,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   /%d
@@ -7865,6 +8085,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   /%d
@@ -7883,6 +8104,7 @@ Object {
                   aria-hidden="true"
                   dy="0.32em"
                   fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-70"
                 >
                   /%d
@@ -7891,7 +8113,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLiner8m"
+                id="verticalLiner8o"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -7906,7 +8128,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr8k_2_1"
+                    id="lineIDr8m_2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -7925,7 +8147,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler8j_2_1"
+                    id="circler8l_2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -7941,7 +8163,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circler8j_2_11L"
+                    id="circler8l_2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -7952,7 +8174,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler8j_2_11D"
+                    id="circler8l_2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -7964,7 +8186,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr8k_1_1"
+                    id="lineIDr8m_1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -7983,7 +8205,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler8j_1_1"
+                    id="circler8l_1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -7999,7 +8221,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circler8j_1_11L"
+                    id="circler8l_1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -8010,7 +8232,7 @@ Object {
                     cx="4"
                     cy="25.543478260869563"
                     focusable="false"
-                    id="circler8j_1_11D"
+                    id="circler8l_1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -8022,7 +8244,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineIDr8k_0_1"
+                    id="lineIDr8m_0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -8041,7 +8263,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler8j_0_1"
+                    id="circler8l_0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -8057,7 +8279,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circler8j_0_11L"
+                    id="circler8l_0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -8068,7 +8290,7 @@ Object {
                     cx="16"
                     cy="53.2608695652174"
                     focusable="false"
-                    id="circler8j_0_11D"
+                    id="circler8l_0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -8200,6 +8422,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -8218,6 +8441,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -8236,6 +8460,7 @@ Object {
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -8269,6 +8494,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 /%d
@@ -8287,6 +8513,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 /%d
@@ -8305,6 +8532,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 /%d
@@ -8323,6 +8551,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 /%d
@@ -8341,6 +8570,7 @@ Object {
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 /%d
@@ -8349,7 +8579,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLiner8m"
+              id="verticalLiner8o"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -8364,7 +8594,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr8k_2_1"
+                  id="lineIDr8m_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -8383,7 +8613,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler8j_2_1"
+                  id="circler8l_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -8399,7 +8629,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler8j_2_11L"
+                  id="circler8l_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -8410,7 +8640,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler8j_2_11D"
+                  id="circler8l_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8422,7 +8652,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr8k_1_1"
+                  id="lineIDr8m_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -8441,7 +8671,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler8j_1_1"
+                  id="circler8l_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -8457,7 +8687,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler8j_1_11L"
+                  id="circler8l_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -8468,7 +8698,7 @@ Object {
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circler8j_1_11D"
+                  id="circler8l_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8480,7 +8710,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineIDr8k_0_1"
+                  id="lineIDr8m_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -8499,7 +8729,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler8j_0_1"
+                  id="circler8l_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -8515,7 +8745,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler8j_0_11L"
+                  id="circler8l_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -8526,7 +8756,7 @@ Object {
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler8j_0_11D"
+                  id="circler8l_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8712,6 +8942,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -8730,6 +8961,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -8748,6 +8980,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -8766,6 +8999,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -8784,6 +9018,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -8802,6 +9037,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               70
@@ -8835,6 +9071,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -8853,6 +9090,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               23
@@ -8871,6 +9109,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               46
@@ -8889,6 +9128,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               69
@@ -8907,6 +9147,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               92
@@ -8915,7 +9156,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         </g>
         <g>
           <line
-            id="verticalLiner5b"
+            id="verticalLiner5d"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -8930,7 +9171,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineIDr59_2_1"
+                id="lineIDr5b_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -8949,7 +9190,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circler58_2_1"
+                id="circler5a_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -8965,7 +9206,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circler58_2_11L"
+                id="circler5a_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -8976,7 +9217,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circler58_2_11D"
+                id="circler5a_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -8988,7 +9229,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineIDr59_1_1"
+                id="lineIDr5b_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -9007,7 +9248,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circler58_1_1"
+                id="circler5a_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -9023,7 +9264,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circler58_1_11L"
+                id="circler5a_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -9034,7 +9275,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circler58_1_11D"
+                id="circler5a_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -9046,7 +9287,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineIDr59_0_1"
+                id="lineIDr5b_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -9065,7 +9306,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circler58_0_1"
+                id="circler5a_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -9081,7 +9322,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circler58_0_11L"
+                id="circler5a_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -9092,7 +9333,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circler58_0_11D"
+                id="circler5a_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -9226,6 +9467,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               20
@@ -9244,6 +9486,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               30
@@ -9262,6 +9505,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               40
@@ -9280,6 +9524,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               50
@@ -9298,6 +9543,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               60
@@ -9316,6 +9562,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
               y="16"
             >
               70
@@ -9349,6 +9596,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               0
@@ -9367,6 +9615,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               23
@@ -9385,6 +9634,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               46
@@ -9403,6 +9653,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               69
@@ -9421,6 +9672,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
               x="-70"
             >
               92
@@ -9429,7 +9681,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         </g>
         <g>
           <line
-            id="verticalLiner5n"
+            id="verticalLiner5p"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -9444,7 +9696,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineIDr5l_2_1"
+                id="lineIDr5n_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -9463,7 +9715,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circler5k_2_1"
+                id="circler5m_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -9479,7 +9731,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circler5k_2_11L"
+                id="circler5m_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -9490,7 +9742,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circler5k_2_11D"
+                id="circler5m_2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -9502,7 +9754,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineIDr5l_1_1"
+                id="lineIDr5n_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -9521,7 +9773,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circler5k_1_1"
+                id="circler5m_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -9537,7 +9789,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circler5k_1_11L"
+                id="circler5m_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -9548,7 +9800,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="4"
                 cy="25.543478260869563"
                 focusable="false"
-                id="circler5k_1_11D"
+                id="circler5m_1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -9560,7 +9812,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineIDr5l_0_1"
+                id="lineIDr5n_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -9579,7 +9831,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circler5k_0_1"
+                id="circler5m_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -9595,7 +9847,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circler5k_0_11L"
+                id="circler5m_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -9606,7 +9858,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="16"
                 cy="53.2608695652174"
                 focusable="false"
-                id="circler5k_0_11D"
+                id="circler5m_0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -9698,7 +9950,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme and accessibility Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProviderr60"
+    class="fui-FluentProvider fui-FluentProviderr62"
     dir="ltr"
   >
     <div
@@ -9744,6 +9996,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 20
@@ -9762,6 +10015,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 40
@@ -9780,6 +10034,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 60
@@ -9813,6 +10068,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 0
@@ -9831,6 +10087,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 23
@@ -9849,6 +10106,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 46
@@ -9867,6 +10125,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 69
@@ -9885,6 +10144,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
+                style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-70"
               >
                 92
@@ -9893,7 +10153,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
           </g>
           <g>
             <line
-              id="verticalLiner64"
+              id="verticalLiner66"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -9908,7 +10168,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineIDr62_2_1"
+                  id="lineIDr64_2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -9927,7 +10187,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler61_2_1"
+                  id="circler63_2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -9943,7 +10203,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circler61_2_11L"
+                  id="circler63_2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -9954,7 +10214,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler61_2_11D"
+                  id="circler63_2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -9966,7 +10226,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineIDr62_1_1"
+                  id="lineIDr64_1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -9985,7 +10245,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler61_1_1"
+                  id="circler63_1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -10001,7 +10261,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circler61_1_11L"
+                  id="circler63_1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -10012,7 +10272,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="4"
                   cy="25.543478260869563"
                   focusable="false"
-                  id="circler61_1_11D"
+                  id="circler63_1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -10024,7 +10284,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineIDr62_0_1"
+                  id="lineIDr64_0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -10043,7 +10303,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler61_0_1"
+                  id="circler63_0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -10059,7 +10319,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circler61_0_11L"
+                  id="circler63_0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -10070,7 +10330,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="16"
                   cy="53.2608695652174"
                   focusable="false"
-                  id="circler61_0_11D"
+                  id="circler63_0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"

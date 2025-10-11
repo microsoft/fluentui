@@ -232,6 +232,19 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
 };
 
 const validateBarData = (data: Partial<PlotData>) => {
+  const isXEmpty = data.x && isArrayOrTypedArray(data.x) && data.x.length === 0;
+  const isYEmpty = data.y && isArrayOrTypedArray(data.y) && data.y.length === 0;
+  if (isXEmpty || isYEmpty) {
+    let emptyMsg = 'Bar chart: ';
+    if (isXEmpty && isYEmpty) {
+      emptyMsg += 'both x and y arrays are empty.';
+    } else if (isXEmpty) {
+      emptyMsg += 'x array is empty.';
+    } else if (isYEmpty) {
+      emptyMsg += 'y array is empty.';
+    }
+    throw new Error(emptyMsg);
+  }
   if (data.orientation === 'h') {
     if (!isNumberArray(data.x) && !isDateArray(data.x)) {
       throw new Error(
@@ -245,8 +258,10 @@ const validateBarData = (data: Partial<PlotData>) => {
       );
     }
     validateSeriesData(data, false);
-  } else if (!isNumberArray(data.y) && !isStringArray(data.y) && !isObjectArray(data.y)) {
-    throw new Error(`Non numeric, string, or object Y values encountered, type: ${typeof data.y}`);
+  } else {
+    if (!isNumberArray(data.y) && !isStringArray(data.y) && !isObjectArray(data.y)) {
+      throw new Error(`Non numeric, string, or object Y values encountered, type: ${typeof data.y}`);
+    }
   }
 };
 const isScatterMarkers = (mode: string): boolean => {
@@ -287,7 +302,7 @@ const validateScatterData = (data: Partial<PlotData>, layout: Partial<Layout> | 
   }
 
   const isAreaChart = isScatterAreaChart(data);
-  const isFallbackNeeded = doesScatterNeedVSBCFallback(data);
+  const isFallbackNeeded = doesScatterNeedFallback(data, layout);
   if (isAreaChart && isFallbackNeeded) {
     throw new Error(
       `${UNSUPPORTED_MSG_PREFIX} ${data.type}, Fallback to VerticalStackedBarChart is not allowed for Area Charts.`,
@@ -523,15 +538,23 @@ export const mapFluentChart = (input: any): OutputChartType => {
           const scatterData = traceData as Partial<PlotData>;
           const isAreaChart = isScatterAreaChart(scatterData);
           const isScatterChart = isScatterMarkers(scatterData.mode ?? '');
+          const hasLineShape =
+            Array.isArray(validSchema?.layout?.shapes) &&
+            validSchema.layout.shapes.some((shape: any) => shape.type === 'line');
+
           if (isScatterChart) {
-            return { isValid: true, traceIndex, type: 'scatter' };
+            return {
+              isValid: true,
+              traceIndex,
+              type: hasLineShape && supportedScatterInLineChart(scatterData, validSchema.layout) ? 'line' : 'scatter',
+            };
           }
 
-          if (!doesScatterNeedVSBCFallback(scatterData)) {
+          if (!doesScatterNeedFallback(scatterData, validSchema.layout)) {
             return { isValid: true, traceIndex, type: isAreaChart ? 'area' : 'line' };
           }
 
-          // isScatterAreaChart and doesScatterNeedVSBCFallback cannot both return true for the
+          // isScatterAreaChart and doesScatterNeedFallback cannot both return true for the
           // same trace due to the validation logic in validateScatterData.
           return { isValid: true, traceIndex, type: 'fallback' };
         default:
@@ -566,12 +589,23 @@ export const mapFluentChart = (input: any): OutputChartType => {
       trace => trace.type === 'groupedverticalbar' || trace.type === 'verticalstackedbar',
     );
     const containsLines = mappedTraces.some(trace => trace.type === 'line' || trace.type === 'fallback');
-    if (containsBars && containsLines) {
-      return {
-        isValid: true,
-        type: 'fallback',
-        validTracesInfo: tracesInfo,
-      };
+    if (containsLines) {
+      if (containsBars) {
+        const shouldUseGVBC = !mappedTraces.some(trace => trace.type === 'verticalstackedbar');
+        return {
+          isValid: true,
+          type: shouldUseGVBC ? 'groupedverticalbar' : 'fallback',
+          validTracesInfo: tracesInfo,
+        };
+      }
+
+      if (mappedTraces.some(trace => trace.type === 'fallback')) {
+        return {
+          isValid: true,
+          type: 'fallback',
+          validTracesInfo: tracesInfo,
+        };
+      }
     }
 
     const uniqueTypes = new Set(mappedTraces.map(trace => trace.type));
@@ -619,18 +653,13 @@ export const getAxisKey = (axLetter: 'x' | 'y', axId: number) => {
   return `${axLetter}axis${axId > 1 ? axId : ''}` as keyof Layout;
 };
 
-const isScatterAreaChart = (data: Partial<PlotData>) => {
+export const isScatterAreaChart = (data: Partial<PlotData>) => {
   return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
 };
 
-const doesScatterNeedVSBCFallback = (data: Partial<PlotData>) => {
-  if (isScatterMarkers(data.mode ?? '')) {
-    return false;
-  }
-
+const supportedScatterInLineChart = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
   const isXDate = isDateArray(data.x);
   const isXNumber = isNumberArray(data.x);
-
   // Consider year as categorical variable not numeric continuous variable
   // Also year is not considered a date variable as it is represented as a point
   // in time and brings additional complexity of handling timezone and locale
@@ -638,9 +667,20 @@ const doesScatterNeedVSBCFallback = (data: Partial<PlotData>) => {
   const isXYear = isYearArray(data.x);
   const isXMonth = isMonthArray(data.x);
   const isYString = isStringArray(data.y);
-  if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
+
+  const axisIds = getAxisIds(data);
+  const xAxisKey = getAxisKey('x', axisIds.x);
+  const isCatXAxis = layout?.[xAxisKey]?.type === 'category';
+
+  if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString && !isCatXAxis) {
+    return true;
+  }
+  return false;
+};
+
+const doesScatterNeedFallback = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
+  if (isScatterMarkers(data.mode ?? '')) {
     return false;
   }
-
-  return true;
+  return !supportedScatterInLineChart(data, layout);
 };

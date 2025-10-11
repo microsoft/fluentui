@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "refactor: migrate tests to use @testing-library/react",
+  "packageName": "@fluentui/utilities",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}

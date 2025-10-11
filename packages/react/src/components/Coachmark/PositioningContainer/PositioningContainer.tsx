@@ -156,7 +156,7 @@ function useMaxHeight(
    * The maximum height the PositioningContainer can grow to
    * without going beyond the window or target bounds
    */
-  const maxHeight = React.useRef<number | undefined>();
+  const maxHeight = React.useRef<number | undefined>(undefined);
   const win = useWindowEx();
 
   // If the target element changed, reset the max height. If we are tracking

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 import { useFieldControlProps_unstable } from '@fluentui/react-field';

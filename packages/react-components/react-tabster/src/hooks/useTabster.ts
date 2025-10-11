@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -28,8 +30,11 @@ export function createTabsterWithConfig(targetDocument: Document | undefined): T
       autoRoot: {},
       controlTab: false,
       getParent,
-      checkUncontrolledTrappingFocus: element =>
-        !!element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper'),
+      // The non-undefined return value of checkUncontrolledCompletely() dominates the value that the element might
+      // have in its `uncontrolled: { completely: true }` part of the tabster attribute. We must make sure to return
+      // undefined if we want the value from tabster attribute to be respected.
+      checkUncontrolledCompletely: element =>
+        element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper') === true || undefined,
       DOMAPI: shadowDOMAPI,
     });
   }
@@ -47,7 +52,7 @@ export function useTabster<FactoryResult>(
   factory: UseTabsterFactory<FactoryResult>,
 ): React.RefObject<FactoryResult | null>;
 
-export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY) {
+export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY): React.RefObject<FactoryResult | null> {
   const { targetDocument } = useFluent();
   const factoryResultRef = React.useRef<FactoryResult | null>(null);
 

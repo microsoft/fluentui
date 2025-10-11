@@ -4,6 +4,7 @@ import { getParent, css, initializeComponentRef, EventGroup } from '@fluentui/re
 import type { IVirtualizedListProps } from './VirtualizedList.types';
 import type { IScrollContainerContext } from '../../utilities/scrolling/ScrollContainer';
 import type { IObjectWithKey } from '@fluentui/react/lib/Selection';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IRange {
   /** Start of range */
@@ -86,7 +87,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className } = this.props;
     const { items } = this.state;
 
@@ -106,7 +107,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     }
   }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderItems(scrollTop: number, viewportHeight: number): (JSX.Element | null)[] {
+  private _renderItems(scrollTop: number, viewportHeight: number): (JSXElement | null)[] {
     const { itemHeight, items, itemOverdraw = 2 } = this.props;
 
     const ranges: IRange[] = [];
@@ -139,10 +140,10 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     return this._renderRanges(ranges);
   }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderRanges(ranges: IRange[]): (JSX.Element | null)[] {
+  private _renderRanges(ranges: IRange[]): (JSXElement | null)[] {
     const { items, onRenderItem } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const result: (JSX.Element | null)[] = [];
+    const result: (JSXElement | null)[] = [];
 
     // Assume ranges are sorted.
 
@@ -178,7 +179,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderSpacerItem(numberOfItems: number, index: number): JSX.Element {
+  private _renderSpacerItem(numberOfItems: number, index: number): JSXElement {
     const { itemHeight, items = [], spacerItemTagName: ItemTag = 'div' } = this.props;
 
     const spacerHeight = numberOfItems * itemHeight;

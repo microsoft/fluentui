@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type {
   TeachingPopoverCarouselCardSlots,
@@ -14,7 +16,9 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverCarouselCardStyles_unstable = (state: TeachingPopoverCarouselCardState) => {
+export const useTeachingPopoverCarouselCardStyles_unstable = (
+  state: TeachingPopoverCarouselCardState,
+): TeachingPopoverCarouselCardState => {
   'use no memo';
 
   const styles = useStyles();

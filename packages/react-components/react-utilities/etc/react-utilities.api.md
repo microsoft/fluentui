@@ -155,7 +155,7 @@ export type JSXElement = React_2.ReactElement<any, any>;
 export type JSXIntrinsicElement<Element extends JSXIntrinsicElementKeys> = React_2.ComponentProps<Element>;
 
 // @public
-export type JSXIntrinsicElementKeys = ReactVersionDependent<JSXIntrinsicElementKeysLatest, JSXIntrinsicElementKeysCompat>;
+export type JSXIntrinsicElementKeys = Exclude<React_2.ElementType, React_2.ComponentType>;
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
@@ -209,7 +209,7 @@ export interface RefAttributes<T> extends React_2.Attributes {
 }
 
 // @public
-export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => void);
+export type RefObjectFunction<T> = React_2.RefObject<T | null> & ((value: T | null) => void);
 
 // @public
 export function resetIdsForTests(): void;
@@ -354,6 +354,9 @@ export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'classN
 // @internal
 export function useAnimationFrame(): readonly [(fn: () => void, delay?: number) => number, () => void];
 
+// @public
+export function useApplyScrollbarWidth<T extends HTMLElement>(options?: UseApplyScrollbarWidthOptions): React_2.RefCallback<T>;
+
 // @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
 
@@ -365,7 +368,7 @@ export type UseControllableStateOptions<State> = {
 };
 
 // @internal
-export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
+export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => ((...args: Args) => Return);
 
 // @internal
 export function useFirstMount(): boolean;

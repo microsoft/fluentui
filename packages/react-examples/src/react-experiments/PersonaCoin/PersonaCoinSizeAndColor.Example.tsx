@@ -2,6 +2,7 @@ import * as React from 'react';
 import { PersonaCoin } from '@fluentui/react-experiments';
 import { Stack, Text } from '@fluentui/react';
 import { PersonaTestImages } from '@fluentui/react-experiments/lib/common/TestImages';
+import type { JSXElement } from '@fluentui/utilities';
 
 const tokens = {
   sectionStack: {
@@ -16,7 +17,7 @@ const tokens = {
 };
 
 export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <Stack tokens={tokens.sectionStack}>
         <Stack

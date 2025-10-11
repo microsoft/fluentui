@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTimeout, mergeCallbacks } from '@fluentui/react-utilities';
 import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-utilities';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useOverflowContext } from './overflowContext';
@@ -8,8 +10,8 @@ import { useOverflowContext } from './overflowContext';
  * @param groupId - assigns the item to a group, group visibility can be watched
  * @returns ref to assign to an intrinsic HTML element
  */
-export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string) {
-  const ref = React.useRef<TElement>(null);
+export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string): React.RefObject<TElement | null> {
+  const ref = React.useRef<TElement | null>(null);
   const registerDivider = useOverflowContext(v => v.registerDivider);
 
   useIsomorphicLayoutEffect(() => {

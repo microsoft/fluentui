@@ -2,6 +2,2145 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 08 Oct 2025 12:04:51 GMT",
+      "tag": "@fluentui/react-components_v9.72.2",
+      "version": "9.72.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          }
+        ],
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "38ef2e7719b277bb3331c32097adf4d4a2e689e0",
+            "comment": "fix(react-nav): Make NavDrawerBody focus attributes overridable by props"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "de104fff5f19e87dc00c19e41ec1dda0d80140bf",
+            "comment": "fix: In StrictMode, Tooltip now shows correctly on elements that are focused when created"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "85e89e8402deff8f1a24141b6838034f3d52cda0",
+            "comment": "refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Oct 2025 15:01:58 GMT",
+      "tag": "@fluentui/react-components_v9.72.1",
+      "version": "9.72.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "7a5cadd878c193a1e5f7f98eabff6eede8175af3",
+            "comment": "feat: enable wrapping of string x-axis labels in scatterchart"
+          }
+        ],
+        "minor": [
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f211d64cdb6ec016188351a3f4d55ab5b7515c6f",
+            "comment": "added return type to useTreeNavigation hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Oct 2025 14:19:03 GMT",
+      "tag": "@fluentui/react-components_v9.72.0",
+      "version": "9.72.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "cb0b930b884b233f36b73f32255c575da6f72bbf",
+            "comment": "exports useTreeNavigation hook"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "d159ec44c1da054228531e0916b61c487e3ca508",
+            "comment": "refactor(Collapse): simplify parameter types"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "668467e9f41cf97977776495bf56fa63f0dfb5cd",
+            "comment": "fix(Collapse): make size animation work with delay"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Oct 2025 15:12:05 GMT",
+      "tag": "@fluentui/react-components_v9.71.0",
+      "version": "9.71.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "11701a6d6a9d4b089ca04bae962a6f46db0ce2b9",
+            "comment": "fix: Update ToastBody lineheight"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "cfdc7e1f6c2ca016843fd8464ff8f96af6e4adaf",
+            "comment": "fix: fix useTypingAnnounce React 19 type-check issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "3399d8e61f66ae4131910b588711b4e241084a95",
+            "comment": "feat: added reverse Date selection"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "4d8f87ae607d8501804f2383dd624703a02cae18",
+            "comment": "fix v9 chart bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "40df94fd35c9f7f2bce78a39539b227739c9979b",
+            "comment": "fix v9 bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "19d880d95e84b3498fe5f43496e121c449d9a02b",
+            "comment": "fix chart bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6cc506eb2e76abc19f462df46b31c98a6c6d5e0a",
+            "comment": "fix date format and multi selection of legends in donut chart"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e07b2b9254f0434c16258080a5302cd81946d3c3",
+            "comment": "simple bug fixes"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "cb0e73c4485c9839ecdd19a27dc6adb91ae7ae34",
+            "comment": "fix styling in chart table"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "551b944b846fec389ad237ca889f06056144ef2f",
+            "comment": "remove default culture in v9 charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a7484f93b0f8489a0e3b5655720f1c22f461995b",
+            "comment": "fix chart table bugs in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c8b4bddcd00cf9225d4abcf78477145cec3ccf2e",
+            "comment": "handled negative sign in RTL mode"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9be0f1dccd847ad555038bea3a1df08faef94993",
+            "comment": "fix dashed line bug in line chart"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "4a918f6595f1d0c7f265b730f7cab872ff7380fb",
+            "comment": "fix: apply fit fill styles only if height and width are not provided"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "98ed0fcba30feb2412ff2d0226322a359cadf1a0",
+            "comment": "fix: useValidateNesting ref type React 19 issue"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "2d517e0aefb8ec4fb37a43fedbd69225c3b8efca",
+            "comment": "Allow navigation in MenuGrid submenu of MenuList"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "e5a32c9eef6015e6485b4e33d9fe9b267cd90d50",
+            "comment": "Merge onKeyDown handlers for MenuGrid component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "98ed0fcba30feb2412ff2d0226322a359cadf1a0",
+            "comment": "fix: useValidateNesting ref type React 19 issue"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "6247036a0aad33acd25798ba5bfa2cbfcd9101e1",
+            "comment": "refactor(react-message-bar): migrate slide & fade to motion components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "549c71a0bc3087fcddd2e1f0fceef7560dd82928",
+            "comment": "fix: NavHeader is not included in the arrow nav region"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "ae71d5d3b142874cf9e66566073f215f0e39358b",
+            "comment": "fix: render portal only when popover is defined to prevent hydration mismatch"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          }
+        ],
+        "minor": [
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376",
+            "comment": "exported 'useTreeNavigation' hook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b28a229858076a9371a476701662dff99aa0493f",
+            "comment": "feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "c7c1715f7db1a3960854219ceea2ed595674d875",
+            "comment": "fix: overflowMenuSize is included in occupiedSize"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "2cdbbe9092edb3b28d9fffecf9c068fcd1e85391",
+            "comment": "feat(motion): add createMotionComponentVariant factory"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "b28a229858076a9371a476701662dff99aa0493f",
+            "comment": "feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "01ec25b3210efaa4e06bb47832e7ac7b216beaf5",
+            "comment": "Add correct nesting validation for Menu and MenuGridcomponents and subcomponents"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "01ec25b3210efaa4e06bb47832e7ac7b216beaf5",
+            "comment": "Feat(react-menu-grid-preview): Detect invalid MenuGrid nesting"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "2cdbbe9092edb3b28d9fffecf9c068fcd1e85391",
+            "comment": "feat(motion): add createMotionComponentVariant factory"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "c7c1715f7db1a3960854219ceea2ed595674d875",
+            "comment": "feat: add hasHiddenItems option"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "4dffdf2597decff63f06f9499f8091068764f38f",
+            "comment": "feat: DataGrid header cells can contain interactive controls"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "9663adfe708113931936939ef692c6f65ed1ce30",
+            "comment": "chore: bump typescript-eslint/utils "
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "6a2064f68ba27adea8b7842bb910cb8d4bc76343",
+            "comment": "chore: override dependsOn for test-rit targets to have v8 libs build before run"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Sep 2025 12:50:28 GMT",
+      "tag": "@fluentui/react-components_v9.70.0",
+      "version": "9.70.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "busratemizyureek@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "51eb72ada34ef7323304cded83be7950d09d07df",
+            "comment": "fix: set min-width to min-content to prevent spinner clipping"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "a434200144325bc500dbb59f44d9458f0620ba25",
+            "comment": "fix: single-select radio input should be fully hidden, not disabled"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "76edb93ef4ca547d4c9b9c8b74e9540dbaaa7ade",
+            "comment": "fix(react-tabster): Fixing the uncontrolled completely callback return value and switching it away from the deprecated method."
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "4c6c9974e3434934eb69781f8458e8ad84a21a16",
+            "comment": "fix: set default button type for dismissible"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "bd68c381b0158cea3995898a34d8182c29b9b0cd",
+            "comment": "refactor(react-dialog): migrate to standard Scale motion component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "2ba182fb0988c8f6ec3b998d8d3eaf1cd26e72bb",
+            "comment": "refactor(motion): normalize motion atom parameters & types"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "865e620e03932dd7043e92f6b628961300a807a3",
+            "comment": "fix(motion): apply opacity in animations using fill mode"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "33e550ca5bee19d478f809a61ec0214eff245a6f",
+            "comment": "test(motion): expand motion atom testing"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "f17fd39c958e3227e7b51b0f88370e8c699baed0",
+            "comment": "fix: badge icon margin styling for falsy content"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3aaa8a9cb73f66b0be97ac9f62e23623d86af0d9",
+            "comment": "add support for tickmode in declarative chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e0e8c8f7daba61ab28c07572f957fa8b9d0dfaff",
+            "comment": "fix svg background alignment issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "11432bd3f19132e4606d4a60971320388be2739f",
+            "comment": "fix a11y bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "dd836650b922b5190ce6021f0d385d08db0cb72e",
+            "comment": "refactor common styles to reduce bundle size"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "68bff6a431d42f2de9d2651031e30d32075f70f8",
+            "comment": "add support for declarative multiplot chart - non cartesian"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "1f15860c17383cbae8f2395b849c05b12244a965",
+            "comment": "reduce component size by removing duplicate code"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b53299ad068a9ea5d70feaa721781c3f4c085c54",
+            "comment": "change foreground color based on contrast ratio in chart table"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "ec2c01b998d393c81a26ec4373dab08bb5ad1a4e",
+            "comment": "handling y object values for bar chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a8a05e7264fd946e3cf83f53f5f1a41e826bfe6e",
+            "comment": "fix text mode for scatter polar"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d40ec3d9c412bbd49a87ea63532f6c3676bf6f9f",
+            "comment": "update segment colors of donut chart"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "be8e8dd34ada4806ee6d1286ccdeb5282fac39bb",
+            "comment": "fix: resolve R19 type issues on refs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d149df3e889ff212ec9293720d6a4cbd4389d39c",
+            "comment": "add support for marker texts for modes containing text"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "423e4c554c14064484d7378a88beb5f4bdae855e",
+            "comment": "fix v9 charts bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "09fd914b583d5ead90b153cac76810371777ef78",
+            "comment": "align labels and points according to given directions and rotation in schema for scatter polar"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "8db966ce1f70ffb6f45186d891328495e63ff0d4",
+            "comment": "Add Gantt and Funnel chart in declarative charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d6d90ba5582d889e99ccd7d40c9d697d092f0faa",
+            "comment": "support string y axis in scatter chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "dc1a14f2f524351c39fc94e2291bc36082048d21",
+            "comment": "respect bargap and width properties in plotly bar traces"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "8db4244a204007d0f2588406ac55fa18a0d51239",
+            "comment": "support categorical theta values for scatter polar chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "59b99f828f5919fb27a38203b8a0f49410be1f9e",
+            "comment": "support single value callout in linechart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "088b8d6429790a0f497ba402b2e52c4659277dd8",
+            "comment": "support additional modes"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f65b7375da1e151645dfb0f275eaed21b057a9cb",
+            "comment": "support tick formatting from plotly output"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a8ee6267f66500401165a9b9dd475f6f77b477c9",
+            "comment": "log axis support in linechart and scatter chart"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "3283ede9bd989bccdfee301344a4941a3107f88d",
+            "comment": "fix: onIconClick triggering useOnClickOutside"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          }
+        ],
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "none"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "06d989b5cd88b8261eda36277f4e2034667e3514",
+            "comment": "chore: properly configure prebuild target nx cache"
+          }
+        ],
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "458c66f071c0c04d32cbd9f932e2146e18529eae",
+            "comment": "feat: expose JSX namespace in backwards compatible way for react 19 typescript support"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "80318c96f50b7f70d84806fba767304dd1db978d",
+            "comment": "Use default cursor when selection is disabled"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "f8e7a56ba5532a89117ad9127c7c78e58cb06408",
+            "comment": "feat(motion): add delay parameter to motion components"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "dd72a5e17c59eead887a1d40e6fc9db25de2b9d4",
+            "comment": "feat: add useTypingAnnounce hook for managing live regions triggered by user input"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "4c8013979d4586e3c6d4a3055fdacefeb3dbe57b",
+            "comment": "feat: add support for disabled cards"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "3dd15c3893f3a423adfa2b9c15b32199236d1ba9",
+            "comment": "feat: re-export custom JSX types from react-utilities"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "dd72a5e17c59eead887a1d40e6fc9db25de2b9d4",
+            "comment": "feat: add useTypingAnnounce hook"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Aug 2025 17:40:36 GMT",
       "tag": "@fluentui/react-components_v9.69.0",
       "version": "9.69.0",

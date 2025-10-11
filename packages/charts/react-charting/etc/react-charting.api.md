@@ -242,10 +242,18 @@ export interface IAreaChartStyleProps extends ICartesianChartStyleProps {
 export interface IAreaChartStyles extends ICartesianChartStyles {
 }
 
+// @public
+export interface IBarSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+    data: IDataPointV2<X, Y>[];
+    key?: string;
+    type: 'bar';
+}
+
 // @public (undocumented)
 export interface IBaseDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     hideCallout?: boolean;
+    markerColor?: string;
     markerSize?: number;
     onDataPointClick?: () => void;
     text?: string;
@@ -588,6 +596,30 @@ export interface IDataPoint {
     y: number;
 }
 
+// @public
+export interface IDataPointV2<X extends string | number | Date, Y extends string | number | Date> {
+    callOutAccessibilityData?: IAccessibilityProps;
+    color?: string;
+    markerSize?: number;
+    onClick?: () => void;
+    text?: string;
+    x: X;
+    xAxisCalloutData?: string;
+    y: Y;
+    yAxisCalloutData?: string;
+}
+
+// @public
+export interface IDataSeries {
+    color?: string;
+    gradient?: [string, string];
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
+}
+
 // @public (undocumented)
 export interface IDeclarativeChart {
     // (undocumented)
@@ -608,6 +640,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
     hideLabels?: boolean;
     innerRadius?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    order?: 'default' | 'sorted';
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;
@@ -807,7 +840,8 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     barwidth?: number | 'default' | 'auto';
     chartTitle?: string;
     culture?: string;
-    data: IGroupedVerticalBarChartData[];
+    data?: IGroupedVerticalBarChartData[];
+    dataV2?: (IBarSeries<string, number> | ILineSeries<string, number>)[];
     enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
@@ -843,7 +877,7 @@ export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
 // @public (undocumented)
 export interface IGVBarChartSeriesPoint {
     callOutAccessibilityData?: IAccessibilityProps;
-    color: string;
+    color?: string;
     data: number;
     gradient?: [string, string];
     key: string;
@@ -1229,6 +1263,16 @@ export interface ILineDataInVerticalStackedBarChart {
     y: number | string;
     // (undocumented)
     yAxisCalloutData?: string;
+}
+
+// @public
+export interface ILineSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+    data: IDataPointV2<X, Y>[];
+    gaps?: ILineChartGap[];
+    hideInactiveDots?: boolean;
+    lineOptions?: ILineChartLineOptions;
+    onLineClick?: () => void;
+    type: 'line';
 }
 
 // @public (undocumented)

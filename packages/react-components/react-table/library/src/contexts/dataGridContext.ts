@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { TabsterDOMAttribute } from '@fluentui/react-tabster';
@@ -17,5 +19,5 @@ export const dataGridContextDefaultValue: DataGridContextValue = {
 
 export const DataGridContextProvider = dataGridContext.Provider;
 
-export const useDataGridContext_unstable = <T>(selector: ContextSelector<DataGridContextValue, T>) =>
+export const useDataGridContext_unstable = <T>(selector: ContextSelector<DataGridContextValue, T>): T =>
   useContextSelector(dataGridContext, (ctx = dataGridContextDefaultValue) => selector(ctx));

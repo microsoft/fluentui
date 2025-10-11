@@ -1,6 +1,8 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
-import type { PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
+import type { Data, PlotData, PlotlySchema, OutputChartType, TraceInfo } from '@fluentui/chart-utilities';
 import {
   decodeBase64Fields,
   isArrayOrTypedArray,
@@ -17,6 +19,7 @@ import * as d3Color from 'd3-color';
 import {
   correctYearMonth,
   getGridProperties,
+  isNonPlotType,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToAreaChartProps,
@@ -31,6 +34,10 @@ import {
   transformPlotlyJsonToScatterChartProps,
   projectPolarToCartesian,
   getAllupLegendsProps,
+  NON_PLOT_KEY_PREFIX,
+  SINGLE_REPEAT,
+  transformPlotlyJsonToFunnelChartProps,
+  transformPlotlyJsonToGanttChartProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { DonutChart } from '../DonutChart/index';
@@ -45,6 +52,8 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { Chart, ImageExportOptions } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
+import { FunnelChart } from '../FunnelChart/FunnelChart';
+import { GanttChart } from '../GanttChart/index';
 
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ChartTable } from '../ChartTable/index';
@@ -63,6 +72,9 @@ const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVertica
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
 const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
+const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
+// Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
+//const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -99,7 +111,7 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
    * Optional callback to access the IDeclarativeChart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<IDeclarativeChart>;
+  componentRef?: React.RefObject<IDeclarativeChart | null>;
 
   /**
    * Optional prop to specify the colorway type of the chart.
@@ -216,6 +228,14 @@ type ChartTypeMap = {
     transformer: typeof transformPlotlyJsonToScatterChartProps;
     renderer: typeof ResponsiveScatterChart;
   } & PreTransformHooks;
+  gantt: {
+    transformer: typeof transformPlotlyJsonToGanttChartProps;
+    renderer: typeof ResponsiveGanttChart;
+  } & PreTransformHooks;
+  funnel: {
+    transformer: typeof transformPlotlyJsonToFunnelChartProps;
+    renderer: typeof FunnelChart;
+  } & PreTransformHooks;
   fallback: {
     transformer: typeof transformPlotlyJsonToVSBCProps;
     renderer: typeof ResponsiveVerticalStackedBarChart;
@@ -278,6 +298,14 @@ const chartMap: ChartTypeMap = {
     renderer: ResponsiveScatterChart,
     preTransformOperation: LineAreaPreTransformOp,
   },
+  gantt: {
+    transformer: transformPlotlyJsonToGanttChartProps,
+    renderer: ResponsiveGanttChart,
+  },
+  funnel: {
+    transformer: transformPlotlyJsonToFunnelChartProps,
+    renderer: FunnelChart,
+  },
   fallback: {
     transformer: transformPlotlyJsonToVSBCProps,
     renderer: ResponsiveVerticalStackedBarChart,
@@ -321,10 +349,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace.index]),
   };
 
-  const validTracesFilteredIndex: [number, string][] = chart.validTracesInfo!.map((trace, index) => [
+  const validTracesFilteredIndex: TraceInfo[] = chart.validTracesInfo!.map((trace, index) => ({
     index,
-    trace.type,
-  ]);
+    type: trace.type,
+  }));
 
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
@@ -400,25 +428,64 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   if (chart.type === 'scatterpolar') {
     const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
     plotlyInputWithValidData.data = cartesianProjection.data;
+    plotlyInputWithValidData.layout = cartesianProjection.layout;
     validTracesFilteredIndex.forEach((trace, index) => {
-      if (trace[1] === 'scatterpolar') {
-        validTracesFilteredIndex[index][1] = 'line'; // Change type to line for rendering
+      if (trace.type === 'scatterpolar') {
+        const mode = (plotlyInputWithValidData.data[index] as PlotData)?.mode ?? '';
+        if (mode.includes('line')) {
+          validTracesFilteredIndex[index].type = 'line';
+        } else if (mode.includes('markers') || mode === 'text') {
+          validTracesFilteredIndex[index].type = 'scatter';
+        } else {
+          validTracesFilteredIndex[index].type = 'line';
+        }
       }
     });
   }
   const groupedTraces: Record<string, number[]> = {};
-  plotlyInputWithValidData.data.forEach((trace: Partial<PlotData>, index) => {
-    const xAxisKey = trace.xaxis ?? DEFAULT_XAXIS;
-    if (!groupedTraces[xAxisKey]) {
-      groupedTraces[xAxisKey] = [];
+  let nonCartesianTraceCount = 0;
+  plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
+    let traceKey = '';
+    if (isNonPlotType(chart.validTracesInfo![index].type)) {
+      traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
+      nonCartesianTraceCount++;
+    } else {
+      traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
     }
-    groupedTraces[xAxisKey].push(index);
+    if (!groupedTraces[traceKey]) {
+      groupedTraces[traceKey] = [];
+    }
+    groupedTraces[traceKey].push(index);
   });
 
   isMultiPlot.current = Object.keys(groupedTraces).length > 1;
-  const gridProperties: GridProperties = getGridProperties(plotlyInputWithValidData.layout, isMultiPlot.current);
+  const gridProperties: GridProperties = getGridProperties(
+    plotlyInputWithValidData,
+    isMultiPlot.current,
+    chart.validTracesInfo!,
+  );
 
-  const allupLegendsProps = getAllupLegendsProps(plotlyInputWithValidData, colorMap, props.colorwayType, isDarkTheme);
+  // Render only one plot if the grid properties cannot determine positioning of multiple plots.
+  if (
+    isMultiPlot.current &&
+    gridProperties.templateRows === SINGLE_REPEAT &&
+    gridProperties.templateColumns === SINGLE_REPEAT
+  ) {
+    Object.keys(groupedTraces).forEach((key, index) => {
+      if (index > 0) {
+        delete groupedTraces[key];
+      }
+    });
+    isMultiPlot.current = false;
+  }
+
+  const allupLegendsProps = getAllupLegendsProps(
+    plotlyInputWithValidData,
+    colorMap,
+    props.colorwayType,
+    chart.validTracesInfo!,
+    isDarkTheme,
+  );
 
   type ChartType = keyof ChartTypeMap;
   // map through the grouped traces and render the appropriate chart
@@ -437,15 +504,15 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             data: index.map(idx => plotlyInputWithValidData.data[idx]),
           };
 
-          const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace[0]));
+          const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
           let chartType =
-            validTracesFilteredIndex.some(trace => trace[1] === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
+            validTracesFilteredIndex.some(trace => trace.type === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
               ? FALLBACK_TYPE
-              : filteredTracesInfo[0][1];
+              : filteredTracesInfo[0].type;
 
           if (
-            validTracesFilteredIndex.some(trace => trace[1] === 'line') &&
-            validTracesFilteredIndex.some(trace => trace[1] === 'scatter')
+            validTracesFilteredIndex.some(trace => trace.type === 'line') &&
+            validTracesFilteredIndex.some(trace => trace.type === 'scatter')
           ) {
             chartType = 'line';
           }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -23,6 +24,7 @@ import {
   useArrowNavigationGroup,
   useFocusableGroup,
 } from '@fluentui/react-components';
+import type { JSXElement } from '@fluentui/react-components';
 
 const items = [
   {
@@ -71,7 +73,7 @@ const columns = [
   { columnKey: 'actions', label: 'Actions' },
 ];
 
-export const FocusableElementsInCells = () => {
+export const FocusableElementsInCells = (): JSXElement => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
   const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 

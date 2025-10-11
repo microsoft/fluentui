@@ -1,7 +1,7 @@
 import { CreateNodesContext, CreateNodesResultV2, ProjectConfiguration, serializeJson } from '@nx/devkit';
 
 import { TempFs } from './testing-utils/index';
-import { createNodesV2 } from './workspace-plugin';
+import { WorkspacePluginOptions, createNodesV2 } from './workspace-plugin';
 import { PackageJson } from '../types';
 
 describe(`workspace-plugin`, () => {
@@ -9,6 +9,11 @@ describe(`workspace-plugin`, () => {
   let context: CreateNodesContext;
   let tempFs: TempFs;
   let cwd: string;
+  const options: WorkspacePluginOptions = {
+    reactIntegrationTesting: {
+      reactVersions: ['17', '18'],
+    },
+  };
 
   beforeEach(async () => {
     tempFs = new TempFs('test');
@@ -39,7 +44,7 @@ describe(`workspace-plugin`, () => {
       'proj/project.json': serializeJson({}),
       'proj/package.json': serializeJson({}),
     });
-    const results = await createNodesFunction(['proj/project.json'], {}, context);
+    const results = await createNodesFunction(['proj/project.json'], options, context);
 
     expect(getTargetsNames(results)).toEqual(['clean', 'format', 'type-check']);
   });
@@ -50,8 +55,9 @@ describe(`workspace-plugin`, () => {
       'proj/package.json': serializeJson({}),
       'proj/.eslintrc.json': '{}',
       'proj/jest.config.js': 'module.exports = {}',
+      'proj/monosize.config.mjs': 'export default {}',
     });
-    const results = await createNodesFunction(['proj/project.json'], {}, context);
+    const results = await createNodesFunction(['proj/project.json'], options, context);
     const targets = getTargets(results);
 
     expect(targets?.lint).toMatchInlineSnapshot(`
@@ -131,10 +137,358 @@ describe(`workspace-plugin`, () => {
         ],
       }
     `);
+
+    // bundle-size target should be added when monosize config exists
+    expect(targets?.['bundle-size']).toMatchInlineSnapshot(`
+      Object {
+        "cache": true,
+        "command": "yarn monosize measure",
+        "inputs": Array [
+          "{workspaceRoot}/monosize.config.mjs",
+          "{projectRoot}/monosize.config.mjs",
+          "{projectRoot}/bundle-size",
+          "{projectRoot}/src/**/*.tsx?",
+          Object {
+            "externalDependencies": Array [
+              "monosize",
+              "monosize-bundler-webpack",
+            ],
+          },
+        ],
+        "metadata": Object {
+          "help": Object {
+            "command": "yarn monosize measure --help",
+            "example": Object {},
+          },
+          "technologies": Array [
+            "monosize",
+          ],
+        },
+        "options": Object {
+          "cwd": "proj",
+        },
+        "outputs": Array [
+          "{projectRoot}/dist/bundle-size",
+        ],
+      }
+    `);
   });
 
   describe(`v9 project nodes`, () => {
-    it('should create default nodes for v9 library project', async () => {
+    describe(`React Integration Tester config`, () => {
+      it(`should not create atomized targets if project doesnt have required configurations`, async () => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/library/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+          } satisfies Partial<PackageJson>),
+        });
+        const results = await createNodesFunction(['proj/library/project.json'], options, context);
+
+        const targets = getTargets(results, 'proj/library')!;
+
+        expect(targets['react-integration-testing'].dependsOn).toEqual([]);
+        expect(targets['react-integration-testing--17']).toBeUndefined();
+        expect(targets['react-integration-testing--18']).toBeUndefined();
+      });
+
+      it(`should not create atomized targets if project is explicitly excluded via plugin config#exclude`, async () => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/library/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+          } satisfies Partial<PackageJson>),
+          'proj/stories/project.json': serializeJson({
+            root: 'proj/stories',
+            name: 'proj-stories',
+            tags: ['type:stories', 'vNext'],
+          } satisfies ProjectConfiguration),
+        });
+        const results = await createNodesFunction(
+          ['proj/library/project.json'],
+          { reactIntegrationTesting: { exclude: ['proj'], reactVersions: ['17', '18'] } },
+          context,
+        );
+
+        const targets = getTargets(results, 'proj/library')!;
+
+        expect(targets['react-integration-testing']).toEqual(undefined);
+        expect(targets['react-integration-testing--17']).toBeUndefined();
+        expect(targets['react-integration-testing--18']).toBeUndefined();
+      });
+
+      it(`should create "--type-check" including "--prepare" atomized targets for "stories" projects`, async () => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/library/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+          } satisfies Partial<PackageJson>),
+          'proj/stories/project.json': serializeJson({
+            root: 'proj/stories',
+            name: 'proj-stories',
+            tags: ['type:stories', 'vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/stories/package.json': serializeJson({
+            name: '@proj/proj-stories',
+            private: true,
+          } satisfies Partial<PackageJson>),
+        });
+
+        const results = await createNodesFunction(['proj/stories/project.json'], options, context);
+
+        const targets = getTargets(results, 'proj/stories')!;
+
+        expect(targets['react-integration-testing--17--type-check']).toMatchInlineSnapshot(`
+          Object {
+            "cache": true,
+            "command": "yarn rit --project-id ci --react 17 --run type-check --verbose",
+            "dependsOn": Array [
+              "react-integration-testing--17--prepare",
+            ],
+            "inputs": Array [
+              "default",
+              "production",
+              "^production",
+              "{workspaceRoot}/jest.preset.js",
+              "{workspaceRoot}/tools/react-integration-tester/**",
+            ],
+            "metadata": Object {
+              "description": "Run react integration tests against React 17",
+              "help": Object {
+                "command": "yarn rit --help",
+                "example": Object {},
+              },
+              "technologies": Array [
+                "react-integration-tester",
+              ],
+            },
+            "options": Object {
+              "cwd": "{projectRoot}",
+            },
+            "outputs": Array [],
+          }
+        `);
+        expect(targets['react-integration-testing--17--prepare']).toMatchInlineSnapshot(`
+          Object {
+            "cache": true,
+            "command": "yarn rit --prepare-only --no-install --project-id ci --react 17 --verbose",
+            "dependsOn": Array [],
+            "inputs": Array [
+              "default",
+              "production",
+              "^production",
+              "{workspaceRoot}/jest.preset.js",
+              "{workspaceRoot}/tools/react-integration-tester/**",
+            ],
+            "metadata": Object {
+              "description": "Run react integration tests against React 17",
+              "help": Object {
+                "command": "yarn rit --help",
+                "example": Object {},
+              },
+              "technologies": Array [
+                "react-integration-tester",
+              ],
+            },
+            "options": Object {
+              "cwd": "{projectRoot}",
+            },
+            "outputs": Array [
+              "{workspaceRoot}/tmp/rit/react-17/proj-stories-react-17-ci",
+            ],
+          }
+        `);
+      });
+
+      it(`should --run type-check within targets for projects with "stories" sibling projects`, async () => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/library/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+          } satisfies Partial<PackageJson>),
+          'proj/stories/project.json': serializeJson({
+            root: 'proj/stories',
+            name: 'proj-stories',
+            tags: ['type:stories', 'vNext'],
+          } satisfies ProjectConfiguration),
+        });
+
+        const results = await createNodesFunction(['proj/library/project.json'], options, context);
+
+        const targets = getTargets(results, 'proj/library')!;
+
+        expect(targets['react-integration-testing--17--type-check']).toMatchInlineSnapshot(`
+          Object {
+            "cache": true,
+            "dependsOn": Array [
+              Object {
+                "projects": "proj-stories",
+                "target": "react-integration-testing--17--type-check",
+              },
+            ],
+            "executor": "nx:noop",
+          }
+        `);
+        expect(targets['react-integration-testing--17--prepare']).toBeUndefined();
+      });
+
+      it(`should --run e2e within targets for projects which have cypress config`, async () => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/library/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+          } satisfies Partial<PackageJson>),
+          'proj/library/cypress.config.ts': `
+           import { baseConfig } from '@proj/cypress';
+
+           export default baseConfig;
+          `,
+        });
+
+        const results = await createNodesFunction(['proj/library/project.json'], options, context);
+
+        const targets = getTargets(results, 'proj/library')!;
+
+        expect(targets['react-integration-testing--17--e2e'].command).toMatchInlineSnapshot(
+          `"yarn rit --project-id ci --react 17 --run e2e --verbose"`,
+        );
+        expect(targets['react-integration-testing--17--prepare']).toBeDefined();
+      });
+      it(`should --run test within targets for projects which have jest config`, async () => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/library/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+          } satisfies Partial<PackageJson>),
+          'proj/library/jest.config.js': `
+            module.exports = {};
+          `,
+        });
+
+        const results = await createNodesFunction(['proj/library/project.json'], options, context);
+
+        const targets = getTargets(results, 'proj/library')!;
+
+        expect(targets['react-integration-testing--17--test'].command).toMatchInlineSnapshot(
+          `"yarn rit --project-id ci --react 17 --run test --verbose"`,
+        );
+        expect(targets['react-integration-testing--17--prepare']).toBeDefined();
+      });
+      it(`should create the targets name based on user provided options `, async () => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+          } satisfies ProjectConfiguration),
+          'proj/library/package.json': serializeJson({
+            name: '@proj/proj',
+            private: true,
+          } satisfies Partial<PackageJson>),
+          'proj/library/jest.config.js': `
+            module.exports = {};
+          `,
+        });
+
+        const results = await createNodesFunction(
+          ['proj/library/project.json'],
+          { reactIntegrationTesting: { reactVersions: ['17'], targetName: 'rit' } },
+          context,
+        );
+
+        expect(getTargetsNames(results, 'proj/library')).toEqual(expect.arrayContaining(['rit', 'rit--17--test']));
+      });
+    });
+
+    it('should prefer rit.config.js when determining available rit run options', async () => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({
+          root: 'proj',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/library/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+        } satisfies Partial<PackageJson>),
+        // provide a rit.config.js that points type-check to tsconfig.baz.json
+        'proj/library/rit.config.js': `module.exports = {
+            react: {
+              17: {
+                runConfig: {
+                  'type-check': { configPath: 'tsconfig.baz.json' }
+                }
+              },
+              18: {
+                runConfig: {
+                  test: { configPath: 'jest-custom.config.js' }
+                }
+              }
+            }
+        }`,
+        // create the referenced tsconfig so the logic sees it as present
+        'proj/library/cypress.config.ts': 'export default {}',
+        'proj/library/tsconfig.baz.json': '{}',
+        // also create a jest.config.js to show that rit.config.js takes precedence
+        'proj/library/jest-custom.config.js': 'module.exports = {}',
+      });
+
+      const results = await createNodesFunction(['proj/library/project.json'], options, context);
+      const targets = getTargets(results, 'proj/library')!;
+
+      expect(targets['react-integration-testing--17--e2e']).toBeDefined();
+      // Because rit.config.js explicitly references tsconfig.baz.json for type-check
+      // the react-integration-testing--17--type-check target should be created.
+      expect(targets['react-integration-testing--17--type-check']).toBeDefined();
+      // Ensure 'test' is not added because jest.config.js does not exists
+      expect(targets['react-integration-testing--17--test']).toBeUndefined();
+
+      expect(targets['react-integration-testing--18--e2e']).toBeDefined();
+      // Ensure 'test' is  added because rit.config.js is present and defines  'jest-custom.config.js' which exists
+      expect(targets['react-integration-testing--18--test']).toBeDefined();
+      // Ensure 'test' is not added because tsconfig.lib.json does not exists
+      expect(targets['react-integration-testing--18--type-check']).toBeUndefined();
+    });
+
+    it('should create default nodes for v9 library project having stories project sibling', async () => {
       await tempFs.createFiles({
         'proj/library/project.json': serializeJson({
           root: 'proj',
@@ -149,9 +503,10 @@ describe(`workspace-plugin`, () => {
         'proj/stories/project.json': serializeJson({
           root: 'proj/stories',
           name: 'proj-stories',
+          tags: ['type:stories', 'vNext'],
         } satisfies ProjectConfiguration),
       });
-      const results = await createNodesFunction(['proj/library/project.json'], {}, context);
+      const results = await createNodesFunction(['proj/library/project.json'], options, context);
 
       expect(getTargetsNames(results, 'proj/library')).toEqual([
         'clean',
@@ -161,6 +516,9 @@ describe(`workspace-plugin`, () => {
         'build',
         'storybook',
         'start',
+        'react-integration-testing--17--type-check',
+        'react-integration-testing--18--type-check',
+        'react-integration-testing',
       ]);
 
       expect(results).toMatchInlineSnapshot(`
@@ -170,6 +528,15 @@ describe(`workspace-plugin`, () => {
             Object {
               "projects": Object {
                 "proj/library": Object {
+                  "metadata": Object {
+                    "targetGroups": Object {
+                      "React Integration Tester": Array [
+                        "react-integration-testing--17--type-check",
+                        "react-integration-testing--18--type-check",
+                        "react-integration-testing",
+                      ],
+                    },
+                  },
                   "targets": Object {
                     "build": Object {
                       "cache": true,
@@ -288,6 +655,60 @@ describe(`workspace-plugin`, () => {
                         "{projectRoot}/etc/proj.api.md",
                       ],
                     },
+                    "react-integration-testing": Object {
+                      "cache": true,
+                      "dependsOn": Array [
+                        Object {
+                          "params": "forward",
+                          "projects": "proj-stories",
+                          "target": "react-integration-testing--17--type-check",
+                        },
+                        Object {
+                          "params": "forward",
+                          "projects": "proj-stories",
+                          "target": "react-integration-testing--18--type-check",
+                        },
+                      ],
+                      "executor": "nx:noop",
+                      "inputs": Array [
+                        "default",
+                        "production",
+                        "^production",
+                        "{workspaceRoot}/jest.preset.js",
+                        "{workspaceRoot}/tools/react-integration-tester/**",
+                      ],
+                      "metadata": Object {
+                        "description": "Run react integration tests against React 17, 18",
+                        "help": Object {
+                          "command": "yarn rit --help",
+                          "example": Object {},
+                        },
+                        "technologies": Array [
+                          "react-integration-tester",
+                        ],
+                      },
+                      "outputs": Array [],
+                    },
+                    "react-integration-testing--17--type-check": Object {
+                      "cache": true,
+                      "dependsOn": Array [
+                        Object {
+                          "projects": "proj-stories",
+                          "target": "react-integration-testing--17--type-check",
+                        },
+                      ],
+                      "executor": "nx:noop",
+                    },
+                    "react-integration-testing--18--type-check": Object {
+                      "cache": true,
+                      "dependsOn": Array [
+                        Object {
+                          "projects": "proj-stories",
+                          "target": "react-integration-testing--18--type-check",
+                        },
+                      ],
+                      "executor": "nx:noop",
+                    },
                     "start": Object {
                       "cache": true,
                       "command": "nx run proj-stories:storybook",
@@ -302,7 +723,12 @@ describe(`workspace-plugin`, () => {
                       "inputs": Array [
                         "default",
                         "{projectRoot}/tsconfig.json",
-                        "{projectRoot}/tsconfig.*.json",
+                        "{projectRoot}/tsconfig*.json",
+                        Object {
+                          "externalDependencies": Array [
+                            "typescript",
+                          ],
+                        },
                       ],
                       "metadata": Object {
                         "description": "Type check code with TypeScript",
@@ -333,7 +759,7 @@ describe(`workspace-plugin`, () => {
           private: true,
         } satisfies Partial<PackageJson>),
       });
-      const results = await createNodesFunction(['proj/stories/project.json'], {}, context);
+      const results = await createNodesFunction(['proj/stories/project.json'], options, context);
 
       expect(getTargetsNames(results, 'proj/stories')).toEqual([
         'clean',
@@ -342,6 +768,7 @@ describe(`workspace-plugin`, () => {
         'storybook',
         'test-ssr',
         'start',
+        'react-integration-testing',
       ]);
 
       const targets = getTargets(results, 'proj/stories');
@@ -403,7 +830,7 @@ describe(`workspace-plugin`, () => {
         } satisfies ProjectConfiguration),
         'proj/package.json': serializeJson({ name: '@proj/proj' } satisfies Partial<PackageJson>),
       });
-      const results = await createNodesFunction(['proj/project.json'], {}, context);
+      const results = await createNodesFunction(['proj/project.json'], options, context);
       const targets = getTargets(results);
 
       expect(targets?.['verify-packaging']).toMatchInlineSnapshot(`

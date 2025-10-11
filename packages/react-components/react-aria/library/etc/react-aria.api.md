@@ -61,7 +61,7 @@ export interface ActiveDescendantImperativeRef {
 
 // @public (undocumented)
 export interface ActiveDescendantOptions {
-    imperativeRef?: React_2.RefObject<ActiveDescendantImperativeRef>;
+    imperativeRef?: React_2.RefObject<ActiveDescendantImperativeRef | null>;
     // (undocumented)
     matchOption: (el: HTMLElement) => boolean;
 }
@@ -127,6 +127,9 @@ export function useAriaLiveAnnouncerContextValues_unstable(state: AriaLiveAnnoun
 
 // @public (undocumented)
 export const useHasParentActiveDescendantContext: () => boolean;
+
+// @public (undocumented)
+export function useTypingAnnounce<TInputElement extends HTMLElement = HTMLElement>(): TypingAnnounceReturn<TInputElement>;
 
 // (No @packageDocumentation comment for this package)
 

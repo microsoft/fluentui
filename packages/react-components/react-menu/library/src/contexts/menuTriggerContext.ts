@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 /**
@@ -8,5 +10,5 @@ const MenuTriggerContext = React.createContext<boolean | undefined>(undefined) a
 const menuTriggerContextDefaultValue = false;
 
 export const MenuTriggerContextProvider = MenuTriggerContext.Provider;
-export const useMenuTriggerContext_unstable = () =>
+export const useMenuTriggerContext_unstable = (): boolean =>
   React.useContext(MenuTriggerContext) ?? menuTriggerContextDefaultValue;

@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { create } from 'react-test-renderer';
-
 import { SelectedItemsList } from './SelectedItemsList';
 import { render } from '@testing-library/react';
 import type { ISelectedItemProps } from './SelectedItemsList.types';
@@ -20,15 +18,13 @@ describe('SelectedItemsList', () => {
     const renderNothing = () => <></>;
 
     it('renders SelectedItemsList correctly when no specific render component is provided', () => {
-      const component = create(<SelectedItemsList onRenderItem={renderNothing} />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<SelectedItemsList onRenderItem={renderNothing} />);
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('renders SelectedItemsList correctly', () => {
-      const component = create(<SelectedItemsList onRenderItem={basicItemRenderer} />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<SelectedItemsList onRenderItem={basicItemRenderer} />);
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('render all items in selectedItemsList', () => {

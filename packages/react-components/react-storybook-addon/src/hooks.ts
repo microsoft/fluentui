@@ -52,9 +52,9 @@ export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => voi
   return useStorybookGlobals();
 }
 
-export function parameters(options?: FluentParameters) {
+export function parameters(options?: FluentParameters): FluentParameters {
   return { dir: 'ltr', fluentTheme: 'web-light', mode: 'default', ...options };
 }
-export function getParametersConfig(context: FluentStoryContext) {
+export function getParametersConfig(context: FluentStoryContext): FluentParameters['reactStorybookAddon'] {
   return context?.parameters?.reactStorybookAddon;
 }

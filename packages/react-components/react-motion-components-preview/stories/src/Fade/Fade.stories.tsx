@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { PresenceComponentProps } from '@fluentui/react-components';
 import { Fade } from '@fluentui/react-motion-components-preview';
 
@@ -10,7 +11,7 @@ const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivEleme
   </div>
 ));
 
-export const DefaultFade = (props: PresenceComponentProps) => {
+export const DefaultFade = (props: PresenceComponentProps): JSXElement => {
   return (
     <Fade {...props}>
       <LoremIpsum />

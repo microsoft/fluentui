@@ -3,6 +3,7 @@ import { FocusZone, Text } from '@fluentui/react';
 import { CollapsibleSection } from '@fluentui/react-experiments/lib/CollapsibleSection';
 
 import { lorem } from '@fluentui/example-data';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IFileItem {
   name: string;
@@ -64,8 +65,8 @@ const ExampleFile = (props: IExampleFileProps) => {
  * Example recursive folder structure with a random number of subfolders and items.
  */
 class CollapsibleSectionFolder extends React.Component<{ indent?: number }, {}> {
-  private _folders: JSX.Element[] = [];
-  private _files: JSX.Element[] = [];
+  private _folders: JSXElement[] = [];
+  private _files: JSXElement[] = [];
 
   constructor(props: { indent?: number }) {
     super(props);
@@ -103,7 +104,7 @@ class CollapsibleSectionFolder extends React.Component<{ indent?: number }, {}> 
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._folders}</div>;
   }
 }
@@ -128,7 +129,7 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
     }
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <FocusZone>

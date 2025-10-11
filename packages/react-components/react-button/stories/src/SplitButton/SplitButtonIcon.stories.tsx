@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   Menu,
@@ -20,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Icon = () => {
+export const Icon = (): JSXElement => {
   const [primaryActionButtonRef, setPrimaryActionButtonRef] = React.useState<
     HTMLButtonElement | HTMLAnchorElement | null
   >(null);

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
@@ -14,7 +16,9 @@ import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
  *
  * @param fn - The callback function that will be used
  */
-export const useEventCallback = <Args extends unknown[], Return>(fn: (...args: Args) => Return) => {
+export const useEventCallback = <Args extends unknown[], Return>(
+  fn: (...args: Args) => Return,
+): ((...args: Args) => Return) => {
   const callbackRef = React.useRef<typeof fn>(() => {
     throw new Error('Cannot call an event handler while rendering');
   });

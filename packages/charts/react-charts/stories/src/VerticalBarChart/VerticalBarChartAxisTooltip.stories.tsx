@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts';
 import {
   Checkbox,
@@ -12,7 +13,7 @@ import {
   InputOnChangeData,
 } from '@fluentui/react-components';
 
-export const VerticalBarAxisTooltip = () => {
+export const VerticalBarAxisTooltip = (): JSXElement => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
   const [barWidthEnabled, setBarWidthEnabled] = React.useState<CheckboxProps['checked']>(true);
   const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);

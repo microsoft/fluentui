@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { Pie } from './Pie/index';
@@ -5,7 +7,7 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
+import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
 import { Legend, Legends, LegendContainer } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -35,21 +37,32 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [legend, setLegend] = React.useState<string | undefined>('');
     const [_width, setWidth] = React.useState<number | undefined>(props.width || 200);
     const [_height, setHeight] = React.useState<number | undefined>(props.height || 200);
-    const [activeLegend, setActiveLegend] = React.useState<string>('');
+    const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
     const [color, setColor] = React.useState<string | undefined>('');
     const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
     const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
-    const [selectedLegend, setSelectedLegend] = React.useState<string>('');
+    const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [focusedArcId, setFocusedArcId] = React.useState<string>('');
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ChartDataPoint | undefined>();
-    const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
+    const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+    const prevPropsRef = React.useRef<DonutChartProps | null>(null);
     const _legendsRef = React.useRef<LegendContainer>(null);
     const _isRTL: boolean = useRtl();
 
     React.useEffect(() => {
       _fitParentContainer();
     }, []);
+
+    React.useEffect(() => {
+      if (prevPropsRef.current) {
+        const prevProps = prevPropsRef.current;
+        if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
+          setSelectedLegends(props.legendProps?.selectedLegends || []);
+        }
+      }
+      prevPropsRef.current = props;
+    }, [props]);
 
     React.useEffect(() => {
       if (prevSize.current.height !== props.height || prevSize.current.width !== props.width) {
@@ -98,19 +111,12 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         const legend: Legend = {
           title: point.legend!,
           color,
-          action: () => {
-            if (selectedLegend === point.legend) {
-              setSelectedLegend('');
-            } else {
-              setSelectedLegend(point.legend!);
-            }
-          },
           hoverAction: () => {
             _handleChartMouseLeave();
             setActiveLegend(point.legend!);
           },
           onMouseOutAction: () => {
-            setActiveLegend('');
+            setActiveLegend(undefined);
           },
         };
         return legend;
@@ -121,21 +127,35 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           centerLegends
           overflowText={props.legendsOverflowText}
           {...props.legendProps}
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={_onLegendSelectionChange}
           legendRef={_legendsRef}
         />
       );
       return legends;
     }
+    function _onLegendSelectionChange(
+      selectedLegends: string[],
+      event: React.MouseEvent<HTMLButtonElement>,
+      currentLegend?: Legend,
+    ): void {
+      if (props.legendProps && props.legendProps?.canSelectMultipleLegends) {
+        setSelectedLegends(selectedLegends);
+      } else {
+        setSelectedLegends(selectedLegends.slice(-1));
+      }
+      if (props.legendProps?.onChange) {
+        props.legendProps.onChange(selectedLegends, event, currentLegend);
+      }
+    }
 
-    function _focusCallback(data: ChartDataPoint, id: string, e: React.FocusEvent<SVGPathElement>): void {
-      let cx = 0;
-      let cy = 0;
-
-      const targetRect = (e.target as SVGPathElement).getBoundingClientRect();
-      cx = targetRect.left + targetRect.width / 2;
-      cy = targetRect.top + targetRect.height / 2;
-      updatePosition(cx, cy);
-      setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
+    function _focusCallback(
+      data: ChartDataPoint,
+      id: string,
+      e: React.FocusEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
+      setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
       setValue(data.data!.toString());
       setLegend(data.legend);
       setColor(data.color!);
@@ -143,19 +163,24 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       setYCalloutValue(data.yAxisCalloutData!);
       setFocusedArcId(id);
       setDataPointCalloutProps(data);
+      setRefSelected(targetElement!);
     }
 
-    function _hoverCallback(data: ChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
+    function _hoverCallback(
+      data: ChartDataPoint,
+      e: React.MouseEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
       if (_calloutAnchorPoint !== data) {
         _calloutAnchorPoint = data;
-        setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
+        setPopoverOpen(_noLegendsHighlighted() || _isLegendHighlighted(data.legend));
         setValue(data.data!.toString());
         setLegend(data.legend);
         setColor(data.color!);
         setXCalloutValue(data.xAxisCalloutData!);
         setYCalloutValue(data.yAxisCalloutData!);
         setDataPointCalloutProps(data);
-        updatePosition(e.clientX, e.clientY);
+        setRefSelected(targetElement!);
       }
     }
     function _onBlur(): void {
@@ -172,16 +197,22 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     }
 
     function _valueInsideDonut(valueInsideDonut: string | number | undefined, data: ChartDataPoint[]) {
-      const highlightedLegend = _getHighlightedLegend();
-      if (valueInsideDonut !== undefined && (highlightedLegend !== '' || isPopoverOpen)) {
-        let legendValue = valueInsideDonut;
-        data!.map((point: ChartDataPoint, index: number) => {
-          if (point.legend === highlightedLegend || (isPopoverOpen && point.legend === legend)) {
-            legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
+      const highlightedLegends = _getHighlightedLegend();
+      if (valueInsideDonut !== undefined && (highlightedLegends.length === 1 || isPopoverOpen)) {
+        const pointValue = data.find(point => _isLegendHighlighted(point.legend));
+        return pointValue
+          ? pointValue.yAxisCalloutData
+            ? pointValue.yAxisCalloutData
+            : pointValue.data!
+          : valueInsideDonut;
+      } else if (highlightedLegends.length > 0) {
+        let totalValue = 0;
+        data.forEach(point => {
+          if (highlightedLegends.includes(point.legend!)) {
+            totalValue += point.data!;
           }
-          return;
         });
-        return legendValue;
+        return totalValue;
       } else {
         return valueInsideDonut;
       }
@@ -199,10 +230,17 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
      * This function returns
      * the selected legend if there is one
      * or the hovered legend if none of the legends is selected.
-     * Note: This won't work in case of multiple legends selection.
      */
     function _getHighlightedLegend() {
-      return selectedLegend || activeLegend;
+      return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
+    }
+
+    function _isLegendHighlighted(legend: string | undefined): boolean {
+      return _getHighlightedLegend().includes(legend!);
+    }
+
+    function _noLegendsHighlighted(): boolean {
+      return _getHighlightedLegend().length === 0;
     }
 
     function _isChartEmpty(): boolean {
@@ -225,18 +263,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
             return { ...item, defaultColor };
           })
         : [];
-    }
-
-    function updatePosition(newX: number, newY: number) {
-      const threshold = 1; // Set a threshold for movement
-      const { x, y } = clickPosition;
-      // Calculate the distance moved
-      const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
-      // Update the position only if the distance moved is greater than the threshold
-      if (distance > threshold) {
-        setClickPosition({ x: newX, y: newY });
-        setPopoverOpen(true);
-      }
     }
 
     /**
@@ -293,6 +319,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         ref={(rootElem: HTMLDivElement | null) => (_rootElem.current = rootElem)}
         onMouseLeave={_handleChartMouseLeave}
       >
+        {props.xAxisAnnotation && (
+          <text className={classes.axisAnnotation} x={_width! / 2} y={_height! - 10} textAnchor="middle">
+            {props.xAxisAnnotation}
+          </text>
+        )}
         <div className={classes.chartWrapper} {...focusAttributes}>
           <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
             <Pie
@@ -319,8 +350,12 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
           culture={props.culture ?? 'en-us'}
-          clickPosition={clickPosition}
-          isPopoverOpen={!props.hideTooltip && isPopoverOpen}
+          positioning={{
+            target: refSelected,
+          }}
+          isPopoverOpen={
+            !props.hideTooltip && isPopoverOpen && (_noLegendsHighlighted() || _isLegendHighlighted(legend))
+          }
           legend={legend!}
           YValue={value!}
           color={color}

@@ -1,7 +1,8 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { useId, Input, Label } from '@fluentui/react-components';
 
-export const Inline = () => {
+export const Inline = (): JSXElement => {
   const inputId = useId('input');
 
   return (

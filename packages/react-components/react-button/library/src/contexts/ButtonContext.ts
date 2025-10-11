@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ButtonSize } from '../components/Button/Button.types';
 
@@ -23,4 +25,6 @@ export const ButtonContextProvider = buttonContext.Provider;
  * @internal
  * Internal context hook used to update default values between internal components
  */
-export const useButtonContext = () => React.useContext(buttonContext) ?? buttonContextDefaultValue;
+export const useButtonContext = (): ButtonContextValue => {
+  return React.useContext(buttonContext) ?? buttonContextDefaultValue;
+};

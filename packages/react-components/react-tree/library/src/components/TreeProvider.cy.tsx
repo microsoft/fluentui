@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount as mountBase } from '@cypress/react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { Tree } from '../Tree';
 import { TreeItem, TreeItemProps } from '../TreeItem';
 import { TreeItemLayout } from '../TreeItemLayout';

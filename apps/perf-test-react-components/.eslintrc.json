@@ -3,7 +3,9 @@
   "root": true,
   "rules": {
     "@griffel/styles-file": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-console": "off",
-    "@nx/workspace-no-restricted-globals": "off"
+    "@nx/workspace-no-restricted-globals": "off",
+    "@nx/workspace-enforce-use-client": "off"
   }
 }

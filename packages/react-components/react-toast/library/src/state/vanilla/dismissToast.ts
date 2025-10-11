@@ -1,7 +1,11 @@
 import { EVENTS } from '../constants';
 import { DismissToastEventDetail, ToastId, ToasterId } from '../types';
 
-export function dismissToast(toastId: ToastId, toasterId: ToasterId | undefined = undefined, targetDocument: Document) {
+export function dismissToast(
+  toastId: ToastId,
+  toasterId: ToasterId | undefined = undefined,
+  targetDocument: Document,
+): void {
   const event = new CustomEvent<DismissToastEventDetail>(EVENTS.dismiss, {
     bubbles: false,
     cancelable: false,

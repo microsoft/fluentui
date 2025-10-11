@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Oct 2025 07:21:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.14.0)
+
+Thu, 09 Oct 2025 07:21:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.13.3..@fluentui/react-file-type-icons_v8.14.0)
+
+### Minor changes
+
+- fix: resolve react 19 type issues ([PR #35288](https://github.com/microsoft/fluentui/pull/35288) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/style-utilities to v8.13.0 ([PR #35301](https://github.com/microsoft/fluentui/pull/35301) by beachball)
+
+## [8.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.13.3)
+
+Tue, 26 Aug 2025 07:21:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.13.2..@fluentui/react-file-type-icons_v8.13.3)
+
+### Patches
+
+- Adding mapping for `onepage` filetype icon and updating CDN url. ([PR #34954](https://github.com/microsoft/fluentui/pull/34954) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.12.4 ([commit](https://github.com/microsoft/fluentui/commit/54d698502c976954b7246ada9cc866e7c6a881a2) by beachball)
 
 ## [8.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.13.2)
 

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { isHTMLElement } from '@fluentui/react-utilities';
@@ -6,7 +8,19 @@ interface UseOptionWalkerOptions {
   matchOption: (el: HTMLElement) => boolean;
 }
 
-export function useOptionWalker<TListboxElement extends HTMLElement>(options: UseOptionWalkerOptions) {
+export function useOptionWalker<TListboxElement extends HTMLElement>(
+  options: UseOptionWalkerOptions,
+): {
+  optionWalker: {
+    first: () => HTMLElement | null;
+    last: () => HTMLElement | null;
+    next: () => HTMLElement | null;
+    prev: () => HTMLElement | null;
+    find: (predicate: (id: string) => boolean, startFrom?: string) => HTMLElement | null;
+    setCurrent: (el: HTMLElement) => void;
+  };
+  listboxCallbackRef: (el: TListboxElement) => void;
+} {
   const { matchOption } = options;
   const { targetDocument } = useFluent();
   const treeWalkerRef = React.useRef<TreeWalker | null>(null);

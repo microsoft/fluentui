@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { Tag, TagGroup, TagGroupProps, Button, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -42,7 +43,7 @@ const useResetExample = (visibleTagsLength: number) => {
   return { firstTagRef, resetButtonRef };
 };
 
-export const Dismiss = () => {
+export const Dismiss = (): JSXElement => {
   const [visibleTags, setVisibleTags] = React.useState(initialTags);
   const removeItem: TagGroupProps['onDismiss'] = (_e, { value }) => {
     setVisibleTags([...visibleTags].filter(tag => tag.value !== value));

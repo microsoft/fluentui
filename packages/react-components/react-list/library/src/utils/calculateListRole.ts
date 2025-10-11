@@ -7,7 +7,10 @@ import { ListNavigationMode } from '../List';
  * @returns 'grid' if navigationMode is 'composite', otherwise 'listbox' if selectable or 'list' if not
  */
 
-export const calculateListRole = (navigationMode: ListNavigationMode | undefined, selectable: boolean) => {
+export const calculateListRole = (
+  navigationMode: ListNavigationMode | undefined,
+  selectable: boolean,
+): 'grid' | 'listbox' | 'list' => {
   if (navigationMode === 'composite') {
     return 'grid';
   } else if (selectable) {

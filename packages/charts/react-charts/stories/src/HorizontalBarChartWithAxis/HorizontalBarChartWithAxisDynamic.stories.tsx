@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   DataVizPalette,
   getColorFromToken,
@@ -34,7 +35,7 @@ const _colors = [
   getColorFromToken(DataVizPalette.color3),
 ];
 
-export const HorizontalBarWithAxisDynamic = () => {
+export const HorizontalBarWithAxisDynamic = (): JSXElement => {
   const _randomX = () => {
     return Math.floor(Math.random() * 90) + 1;
   };

@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin-react-components",
   "entries": [
     {
+      "date": "Thu, 02 Oct 2025 15:12:10 GMT",
+      "tag": "@fluentui/eslint-plugin-react-components_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "9663adfe708113931936939ef692c6f65ed1ce30",
+            "comment": "chore: bump typescript-eslint/utils "
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:07 GMT",
       "tag": "@fluentui/eslint-plugin-react-components_v0.1.2",
       "version": "0.1.2",

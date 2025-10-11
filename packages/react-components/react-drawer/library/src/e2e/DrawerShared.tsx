@@ -1,5 +1,7 @@
+'use client';
+
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -12,7 +14,7 @@ const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
-export function testDrawerBaseScenarios(Component: typeof Drawer | typeof OverlayDrawer | typeof InlineDrawer) {
+export function testDrawerBaseScenarios(Component: typeof Drawer | typeof OverlayDrawer | typeof InlineDrawer): void {
   describe('basic functionality', () => {
     it('should not render any element when closed', () => {
       mountFluent(<Component id="drawer" />);

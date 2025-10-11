@@ -2,6 +2,392 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Wed, 08 Oct 2025 12:04:53 GMT",
+      "tag": "@fluentui/react-charts_v9.3.2",
+      "version": "9.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.6.8",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.2",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.6.1",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.12.8",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tabster to v9.26.7",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.8.7",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-utilities to v9.25.1",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Oct 2025 15:01:58 GMT",
+      "tag": "@fluentui/react-charts_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "7a5cadd878c193a1e5f7f98eabff6eede8175af3",
+            "comment": "feat: enable wrapping of string x-axis labels in scatterchart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Oct 2025 15:12:14 GMT",
+      "tag": "@fluentui/react-charts_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "4d8f87ae607d8501804f2383dd624703a02cae18",
+            "comment": "fix v9 chart bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "40df94fd35c9f7f2bce78a39539b227739c9979b",
+            "comment": "fix v9 bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "19d880d95e84b3498fe5f43496e121c449d9a02b",
+            "comment": "fix chart bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6cc506eb2e76abc19f462df46b31c98a6c6d5e0a",
+            "comment": "fix date format and multi selection of legends in donut chart"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e07b2b9254f0434c16258080a5302cd81946d3c3",
+            "comment": "simple bug fixes"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "cb0e73c4485c9839ecdd19a27dc6adb91ae7ae34",
+            "comment": "fix styling in chart table"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "551b944b846fec389ad237ca889f06056144ef2f",
+            "comment": "remove default culture in v9 charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a7484f93b0f8489a0e3b5655720f1c22f461995b",
+            "comment": "fix chart table bugs in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c8b4bddcd00cf9225d4abcf78477145cec3ccf2e",
+            "comment": "handled negative sign in RTL mode"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9be0f1dccd847ad555038bea3a1df08faef94993",
+            "comment": "fix dashed line bug in line chart"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.6.7",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.1",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.6.0",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.12.7",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.2",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tabster to v9.26.6",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.8.6",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-utilities to v9.25.0",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Sep 2025 12:51:29 GMT",
+      "tag": "@fluentui/react-charts_v9.2.4",
+      "version": "9.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3aaa8a9cb73f66b0be97ac9f62e23623d86af0d9",
+            "comment": "add support for tickmode in declarative chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e0e8c8f7daba61ab28c07572f957fa8b9d0dfaff",
+            "comment": "fix svg background alignment issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "11432bd3f19132e4606d4a60971320388be2739f",
+            "comment": "fix a11y bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "dd836650b922b5190ce6021f0d385d08db0cb72e",
+            "comment": "refactor common styles to reduce bundle size"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "68bff6a431d42f2de9d2651031e30d32075f70f8",
+            "comment": "add support for declarative multiplot chart - non cartesian"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "1f15860c17383cbae8f2395b849c05b12244a965",
+            "comment": "reduce component size by removing duplicate code"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b53299ad068a9ea5d70feaa721781c3f4c085c54",
+            "comment": "change foreground color based on contrast ratio in chart table"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "ec2c01b998d393c81a26ec4373dab08bb5ad1a4e",
+            "comment": "handling y object values for bar chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a8a05e7264fd946e3cf83f53f5f1a41e826bfe6e",
+            "comment": "fix text mode for scatter polar"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d40ec3d9c412bbd49a87ea63532f6c3676bf6f9f",
+            "comment": "update segment colors of donut chart"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "be8e8dd34ada4806ee6d1286ccdeb5282fac39bb",
+            "comment": "fix: resolve R19 type issues on refs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d149df3e889ff212ec9293720d6a4cbd4389d39c",
+            "comment": "add support for marker texts for modes containing text"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "423e4c554c14064484d7378a88beb5f4bdae855e",
+            "comment": "fix v9 charts bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "09fd914b583d5ead90b153cac76810371777ef78",
+            "comment": "align labels and points according to given directions and rotation in schema for scatter polar"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "8db966ce1f70ffb6f45186d891328495e63ff0d4",
+            "comment": "Add Gantt and Funnel chart in declarative charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d6d90ba5582d889e99ccd7d40c9d697d092f0faa",
+            "comment": "support string y axis in scatter chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "dc1a14f2f524351c39fc94e2291bc36082048d21",
+            "comment": "respect bargap and width properties in plotly bar traces"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "8db4244a204007d0f2588406ac55fa18a0d51239",
+            "comment": "support categorical theta values for scatter polar chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "59b99f828f5919fb27a38203b8a0f49410be1f9e",
+            "comment": "support single value callout in linechart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "088b8d6429790a0f497ba402b2e52c4659277dd8",
+            "comment": "support additional modes"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f65b7375da1e151645dfb0f275eaed21b057a9cb",
+            "comment": "support tick formatting from plotly output"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a8ee6267f66500401165a9b9dd475f6f77b477c9",
+            "comment": "log axis support in linechart and scatter chart"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.6.6",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.0",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.5.6",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.12.6",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.1",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tabster to v9.26.5",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.8.5",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-utilities to v9.24.1",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Aug 2025 12:25:29 GMT",
       "tag": "@fluentui/react-charts_v9.2.3",
       "version": "9.2.3",

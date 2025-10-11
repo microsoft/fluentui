@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import type { IPageNumberProps } from './PageNumber.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class PageNumber extends React.Component<IPageNumberProps, {}> {
   constructor(props: IPageNumberProps) {
@@ -8,7 +9,7 @@ export class PageNumber extends React.Component<IPageNumberProps, {}> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { ariaLabel, page, selected, className } = this.props;
 
     return (

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useGroupedVerticalBarChartStyles_unstable } from './useGroupedVerticalBarChartStyles.styles';
 import { select as d3Select } from 'd3-selection';
@@ -71,7 +73,12 @@ interface GVSingleDataPoint {
 export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
   GroupedVerticalBarChartProps
->((props = { maxBarWidth: 24, xAxisCategoryOrder: 'default' }, forwardedRef) => {
+>((_props, forwardedRef) => {
+  const props: GroupedVerticalBarChartProps = {
+    xAxisCategoryOrder: 'default',
+    maxBarWidth: 24,
+    ..._props,
+  };
   const _tooltipId: string = useId('GVBCTooltipId_');
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
@@ -336,7 +343,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
     YValueHover,
     hoverXValue,
-    culture: props.culture ?? 'en-us',
+    culture: props.culture,
     isCartesian: true,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData, 'text', false),
@@ -521,7 +528,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               y={yPoint}
               opacity={barOpacity}
               fill={pointColor}
-              rx={0}
+              rx={props.roundCorners ? 3 : 0}
               onMouseOver={event => onBarHover(pointData, singleSet, event)}
               onMouseMove={event => onBarHover(pointData, singleSet, event)}
               onMouseOut={_onBarLeave}
@@ -536,7 +543,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
           barTotalValue += pointData.data;
         });
-        if (barTotalValue !== null && !props.hideLabels && _barWidth >= 16 && isLegendActive) {
+        if (barTotalValue !== null && !props.hideLabels && Math.ceil(_barWidth) >= 16 && isLegendActive) {
           barLabelsForGroup.push(
             <text
               key={`${singleSet.indexNum}-${legendIndex}`}
@@ -545,6 +552,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               textAnchor="middle"
               className={classes.barLabel}
               aria-hidden={true}
+              style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
             >
               {typeof props.yAxisTickFormat === 'function'
                 ? props.yAxisTickFormat(barTotalValue)

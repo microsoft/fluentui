@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   DonutChart,
   IChartProps,
@@ -89,7 +90,7 @@ const data: IChartProps = {
 };
 
 export class DonutChartResponsiveExample extends React.Component {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ResponsiveContainer>
         <DonutChart data={data} innerRadius={55} valueInsideDonut={39000} />

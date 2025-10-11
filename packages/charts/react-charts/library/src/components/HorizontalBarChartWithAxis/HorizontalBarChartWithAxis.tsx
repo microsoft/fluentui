@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
@@ -157,7 +159,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
           legend={point.legend}
           YValue={point.yAxisCalloutData || point.y}
           color={color}
-          culture={props.culture ?? 'en-us'}
+          culture={props.culture}
           clickPosition={clickPosition}
           isPopoverOpen={isPopoverOpen}
         />

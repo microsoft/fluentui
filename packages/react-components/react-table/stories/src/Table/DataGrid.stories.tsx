@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   FolderRegular,
   EditRegular,
@@ -27,8 +28,8 @@ import {
   Avatar,
   useArrowNavigationGroup,
 } from '@fluentui/react-components';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import type { JSXElement } from '@fluentui/react-utilities';
+
+import type { JSXElement } from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -123,7 +124,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const DataGrid = () => {
+export const DataGrid = (): JSXElement => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },

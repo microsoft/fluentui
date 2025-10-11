@@ -1,3 +1,5 @@
+'use client';
+
 import { type ARIAButtonElement, type ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import {
   getIntrinsicElementProps,
@@ -46,7 +48,7 @@ export const useCarouselNavImageButton_unstable = (
     focusable: { isDefault: selected },
   });
 
-  const buttonRef = React.useRef<HTMLElement>();
+  const buttonRef = React.useRef<HTMLElement>(undefined);
   const _carouselButton = slot.always<ARIAButtonSlotProps>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
     {

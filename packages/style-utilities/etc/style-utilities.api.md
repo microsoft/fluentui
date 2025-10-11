@@ -40,6 +40,7 @@ import { IStyleSet } from '@fluentui/merge-styles';
 import { IStyleSetBase } from '@fluentui/merge-styles';
 import { IStyleSheetConfig } from '@fluentui/merge-styles';
 import { ITheme } from '@fluentui/theme';
+import type { JSXElement } from '@fluentui/utilities';
 import { keyframes } from '@fluentui/merge-styles';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { mergeStyleSets } from '@fluentui/merge-styles';
@@ -211,7 +212,7 @@ export interface IIconSubset {
     fontFace?: IFontFace;
     // (undocumented)
     icons: {
-        [key: string]: string | JSX.Element;
+        [key: string]: string | JSXElement;
     };
     mergeImageProps?: boolean;
     // (undocumented)

@@ -107,16 +107,16 @@ export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNa
 export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSXElement;
 
 // @public (undocumented)
-export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
+export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSXElement;
 
 // @public
-export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSX.Element;
+export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSXElement;
 
 // @public
-export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSX.Element;
+export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSXElement;
 
 // @public
-export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSX.Element;
+export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSXElement;
 
 // @public (undocumented)
 export type SubtreeContextValue = {
@@ -183,7 +183,7 @@ export type TreeItemContextValue = {
     expandIconRef: React_2.Ref<HTMLDivElement>;
     layoutRef: React_2.Ref<HTMLDivElement>;
     subtreeRef: React_2.Ref<HTMLDivElement>;
-    treeItemRef?: React_2.RefObject<HTMLDivElement>;
+    treeItemRef?: React_2.RefObject<HTMLDivElement | null>;
     itemType: TreeItemType;
     value: TreeItemValue;
     open: boolean;
@@ -334,6 +334,12 @@ export type TreeNavigationData_unstable = {
     type: typeof End;
 });
 
+// @public
+export type TreeNavigationDataParam = TreeNavigationData_unstable & {
+    preventScroll(): void;
+    isScrollPrevented(): boolean;
+};
+
 // @public (undocumented)
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
@@ -457,6 +463,13 @@ export const useTreeItemPersonaLayoutStyles_unstable: (state: TreeItemPersonaLay
 
 // @public
 export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState;
+
+// @public
+export function useTreeNavigation(navigationMode?: TreeNavigationMode): {
+    navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => HTMLElement | null;
+    treeRef: React_2.RefCallback<HTMLElement>;
+    forceUpdateRovingTabIndex: () => void;
+};
 
 // @public (undocumented)
 export const useTreeStyles_unstable: (state: TreeState) => TreeState;

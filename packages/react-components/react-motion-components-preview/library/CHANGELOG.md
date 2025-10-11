@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Thu, 21 Aug 2025 12:25:13 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Oct 2025 14:19:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.11.0)
+
+Fri, 03 Oct 2025 14:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.10.0..@fluentui/react-motion-components-preview_v0.11.0)
+
+### Minor changes
+
+- refactor(Collapse): simplify parameter types ([PR #35262](https://github.com/microsoft/fluentui/pull/35262) by robertpenner@microsoft.com)
+
+### Patches
+
+- fix(Collapse): make size animation work with delay ([PR #35269](https://github.com/microsoft/fluentui/pull/35269) by robertpenner@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.10.0)
+
+Mon, 08 Sep 2025 12:51:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.9.0..@fluentui/react-motion-components-preview_v0.10.0)
+
+### Minor changes
+
+- feat(motion): add delay parameter to motion components ([PR #35077](https://github.com/microsoft/fluentui/pull/35077) by robertpenner@microsoft.com)
+
+### Patches
+
+- refactor(motion): normalize motion atom parameters & types ([PR #35076](https://github.com/microsoft/fluentui/pull/35076) by robertpenner@microsoft.com)
+- fix(motion): apply opacity in animations using fill mode ([PR #35078](https://github.com/microsoft/fluentui/pull/35078) by robertpenner@microsoft.com)
+- test(motion): expand motion atom testing ([PR #35079](https://github.com/microsoft/fluentui/pull/35079) by robertpenner@microsoft.com)
+- chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.9.0)
 

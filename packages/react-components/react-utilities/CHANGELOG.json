@@ -2,6 +2,91 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 08 Oct 2025 12:04:53 GMT",
+      "tag": "@fluentui/react-utilities_v9.25.1",
+      "version": "9.25.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "85e89e8402deff8f1a24141b6838034f3d52cda0",
+            "comment": "refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Oct 2025 15:12:09 GMT",
+      "tag": "@fluentui/react-utilities_v9.25.0",
+      "version": "9.25.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b28a229858076a9371a476701662dff99aa0493f",
+            "comment": "feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.2",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Sep 2025 12:50:53 GMT",
+      "tag": "@fluentui/react-utilities_v9.24.1",
+      "version": "9.24.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.1",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "06d989b5cd88b8261eda36277f4e2034667e3514",
+            "comment": "chore: properly configure prebuild target nx cache"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Aug 2025 12:25:26 GMT",
       "tag": "@fluentui/react-utilities_v9.24.0",
       "version": "9.24.0",

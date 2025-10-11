@@ -25,6 +25,8 @@ import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import type { IProcessedStyleSet } from '../../Styling';
 import { getId } from '../../Utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
 export interface IDetailsRowSelectionState {
@@ -174,8 +176,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       className,
       columns = NO_COLUMNS,
@@ -226,7 +227,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
     const ariaPositionInSet = group ? itemIndex - group.startIndex + 1 : undefined;
     const ariaSetSize = group ? group.count : undefined;
-    const focusZoneDirection = focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.horizontal;
+    const focusZoneDirection = focusZoneProps?.direction ?? FocusZoneDirection.horizontal;
 
     this._classNames = {
       ...this._classNames,
@@ -416,8 +417,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     return !!this._focusZone.current?.focus(forceIntoFirstElement);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element {
+  protected _onRenderCheck(props: IDetailsRowCheckProps): JSXElement {
     return <DetailsRowCheck {...props} />;
   }
 

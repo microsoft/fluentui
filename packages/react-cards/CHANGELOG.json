@@ -2,6 +2,69 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Thu, 09 Oct 2025 07:21:57 GMT",
+      "tag": "@fluentui/react-cards_v0.206.0",
+      "version": "0.206.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-cards",
+            "commit": "2898be4be6f8c01fcdd2ade8951bfd547ba156fa",
+            "comment": "fix: resolve react 19 type issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.124.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/foundation-legacy to v8.5.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Sep 2025 07:20:30 GMT",
+      "tag": "@fluentui/react-cards_v0.205.215",
+      "version": "0.205.215",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.123.6",
+            "commit": "883564acb9bb308dac516693d6c9ea3c98d19569"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Aug 2025 07:21:44 GMT",
+      "tag": "@fluentui/react-cards_v0.205.214",
+      "version": "0.205.214",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.123.5",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.30",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Aug 2025 07:21:21 GMT",
       "tag": "@fluentui/react-cards_v0.205.213",
       "version": "0.205.213",

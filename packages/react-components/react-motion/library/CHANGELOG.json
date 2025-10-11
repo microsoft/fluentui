@@ -2,6 +2,95 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Wed, 08 Oct 2025 12:04:53 GMT",
+      "tag": "@fluentui/react-motion_v9.11.1",
+      "version": "9.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.25.1",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Oct 2025 15:12:27 GMT",
+      "tag": "@fluentui/react-motion_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "2cdbbe9092edb3b28d9fffecf9c068fcd1e85391",
+            "comment": "feat(motion): add createMotionComponentVariant factory"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.2",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.25.0",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Sep 2025 12:51:09 GMT",
+      "tag": "@fluentui/react-motion_v9.10.4",
+      "version": "9.10.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "40fab9b34b94db20847fcb5967a82343700c84f9",
+            "comment": "chore: enforce explicit module boundary types"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "eb7f6d51c2517f201920cf648249c03e0ece5e25",
+            "comment": "chore: extend peer dependencies versions to support React 19"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "cf1eb5f954b1c36bad707a8f42272966834167d8",
+            "comment": "fix: react 19 type issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.1",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.24.1",
+            "commit": "17af11b3c9f4cac2beeaf4342a81c1f08e95fd29"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Aug 2025 12:25:14 GMT",
       "tag": "@fluentui/react-motion_v9.10.3",
       "version": "9.10.3",

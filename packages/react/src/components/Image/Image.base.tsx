@@ -15,7 +15,7 @@ const KEY_PREFIX = 'fabricImage';
 
 function useLoadState(
   props: IImageProps,
-  imageElement: React.RefObject<HTMLImageElement>,
+  imageElement: React.RefObject<HTMLImageElement | null>,
 ): readonly [
   ImageLoadState,
   /* onImageLoad */ (ev: React.SyntheticEvent<HTMLImageElement>) => void,
@@ -77,8 +77,8 @@ function useLoadState(
 
 export const ImageBase: React.FunctionComponent<IImageProps> = React.forwardRef<HTMLImageElement, IImageProps>(
   (props, forwardedRef) => {
-    const frameElement = React.useRef<HTMLDivElement>() as React.RefObject<HTMLDivElement>;
-    const imageElement = React.useRef<HTMLImageElement>() as React.RefObject<HTMLImageElement>;
+    const frameElement = React.useRef<HTMLDivElement>(undefined) as React.RefObject<HTMLDivElement>;
+    const imageElement = React.useRef<HTMLImageElement>(undefined) as React.RefObject<HTMLImageElement>;
     const [loadState, onImageLoaded, onImageError] = useLoadState(props, imageElement);
 
     const imageProps = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(props, imgProperties, [
@@ -146,11 +146,11 @@ ImageBase.displayName = 'ImageBase';
 function useCoverStyle(
   props: IImageProps,
   loadState: ImageLoadState,
-  imageElement: React.RefObject<HTMLImageElement>,
-  frameElement: React.RefObject<HTMLDivElement>,
+  imageElement: React.RefObject<HTMLImageElement | null>,
+  frameElement: React.RefObject<HTMLDivElement | null>,
 ) {
   const previousLoadState = React.useRef(loadState);
-  const coverStyle = React.useRef<ImageCoverStyle | undefined>();
+  const coverStyle = React.useRef<ImageCoverStyle | undefined>(undefined);
 
   if (
     coverStyle === undefined ||
@@ -167,8 +167,8 @@ function useCoverStyle(
 function computeCoverStyle(
   props: IImageProps,
   loadState: ImageLoadState,
-  imageElement: React.RefObject<HTMLImageElement>,
-  frameElement: React.RefObject<HTMLDivElement>,
+  imageElement: React.RefObject<HTMLImageElement | null>,
+  frameElement: React.RefObject<HTMLDivElement | null>,
 ): ImageCoverStyle {
   const { imageFit, width, height } = props;
 

@@ -2,6 +2,48 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Thu, 09 Oct 2025 07:21:57 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/foundation-legacy",
+            "commit": "2898be4be6f8c01fcdd2ade8951bfd547ba156fa",
+            "comment": "fix: resolve react 19 type issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/style-utilities to v8.13.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/utilities to v8.16.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Aug 2025 07:21:44 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.4.30",
+      "version": "8.4.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/style-utilities to v8.12.4",
+            "commit": "54d698502c976954b7246ada9cc866e7c6a881a2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Aug 2025 07:19:48 GMT",
       "tag": "@fluentui/foundation-legacy_v8.4.29",
       "version": "8.4.29",

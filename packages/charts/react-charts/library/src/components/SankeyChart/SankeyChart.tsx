@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tokens } from '@fluentui/react-theme';
@@ -155,7 +157,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  * This is used to group nodes by column index.
  */
 // This is exported for unit tests.
-export function groupNodesByColumn(graph: SankeyChartData) {
+export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns {
   const nodesInColumn: NodesInColumns = {};
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;

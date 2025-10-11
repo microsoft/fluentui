@@ -1,3 +1,5 @@
+'use client';
+
 import { useTableContextValues_unstable } from '../Table/useTableContextValues';
 import { DataGridContextValues, DataGridState } from './DataGrid.types';
 

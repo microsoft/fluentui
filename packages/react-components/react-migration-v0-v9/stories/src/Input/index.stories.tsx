@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Input, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { Input as V9Input, Label } from '@fluentui/react-components';
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Fluid = () => {
+export const Fluid = (): JSXElement => {
   const styles = useStyles();
 
   return (
@@ -47,7 +48,7 @@ export const Fluid = () => {
   );
 };
 
-export const Error = () => {
+export const Error = (): JSXElement => {
   const styles = useStyles();
 
   return (

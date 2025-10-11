@@ -1,8 +1,10 @@
+'use client';
+
 import * as React from 'react';
 import { SelectionHookParams, useEventCallback, useSelection } from '@fluentui/react-utilities';
 import type { TableRowId, TableSelectionState, TableFeaturesState } from './types';
 
-const noop = () => undefined;
+const noop = (): void => undefined;
 
 export const defaultTableSelectionState: TableSelectionState = {
   allRowsSelected: false,
@@ -17,7 +19,9 @@ export const defaultTableSelectionState: TableSelectionState = {
   selectionMode: 'multiselect',
 };
 
-export function useTableSelection<TItem>(options: SelectionHookParams) {
+export function useTableSelection<TItem>(
+  options: SelectionHookParams,
+): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem> {
   'use no memo';
 
   // False positive, these plugin hooks are intended to be run on every render

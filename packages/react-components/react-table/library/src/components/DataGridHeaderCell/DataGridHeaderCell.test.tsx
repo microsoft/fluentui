@@ -170,4 +170,44 @@ describe('DataGridHeaderCell', () => {
       expect(columnHeader.hasAttribute('tabindex')).toBe(false);
     });
   });
+
+  it('should not set tabindex when focusMode is none', () => {
+    const dataGridCtx = mockSortableDataGridContext();
+    const { getAllByRole } = render(
+      <TableContextProvider value={{ noNativeElements: true, size: 'medium', sortable: false }}>
+        <DataGridContextProvider value={dataGridCtx}>
+          <ColumnIdContextProvider value={dataGridCtx.columns[0].columnId}>
+            <DataGridHeaderCell focusMode="none">Header cell</DataGridHeaderCell>
+          </ColumnIdContextProvider>
+        </DataGridContextProvider>
+      </TableContextProvider>,
+    );
+
+    const columnHeaders = getAllByRole('columnheader');
+
+    columnHeaders.forEach(columnHeader => {
+      expect(columnHeader.tabIndex).toBe(-1);
+      expect(columnHeader.hasAttribute('tabindex')).toBe(false);
+    });
+  });
+
+  it('should override sortable and set tabindex when focusMode is group', () => {
+    const dataGridCtx = mockSortableDataGridContext();
+    const { getAllByRole } = render(
+      <TableContextProvider value={{ noNativeElements: true, size: 'medium', sortable: true }}>
+        <DataGridContextProvider value={dataGridCtx}>
+          <ColumnIdContextProvider value={dataGridCtx.columns[0].columnId}>
+            <DataGridHeaderCell focusMode="group">Header cell</DataGridHeaderCell>
+          </ColumnIdContextProvider>
+        </DataGridContextProvider>
+      </TableContextProvider>,
+    );
+
+    const columnHeaders = getAllByRole('columnheader');
+
+    columnHeaders.forEach(columnHeader => {
+      expect(columnHeader.tabIndex).toBe(0);
+      expect(columnHeader.getAttribute('tabindex')).toBe('0');
+    });
+  });
 });

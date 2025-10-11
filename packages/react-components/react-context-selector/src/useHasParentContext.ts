@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Context, ContextValue } from './types';
 
@@ -9,7 +11,7 @@ import { Context, ContextValue } from './types';
  * @param context - context created by react-context-selector
  * @returns whether the hook is wrapped by a parent context
  */
-export function useHasParentContext<Value>(context: Context<Value>) {
+export function useHasParentContext<Value>(context: Context<Value>): boolean {
   const contextValue = React.useContext(context as unknown as Context<ContextValue<Value>>);
 
   if (contextValue.version) {

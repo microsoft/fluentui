@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -50,7 +52,6 @@ const useStyles = makeStyles({
   },
   calloutBlockContainerCartesian: {
     ...typographyStyles.caption1,
-    marginTop: '13px',
     forcedColorAdjust: 'none',
   },
   calloutBlockContainerNonCartesian: {
@@ -70,6 +71,7 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
     forcedColorAdjust: 'auto',
+    marginBottom: tokens.spacingVerticalXS,
   },
   calloutContentY: {
     forcedColorAdjust: 'auto',

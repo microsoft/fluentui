@@ -14,7 +14,7 @@ export interface CalendarMonthProps {
    * Optional callback to access the ICalendarMonth interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<ICalendarMonth>;
+  componentRef?: React.RefObject<ICalendarMonth | null>;
 
   /**
    * Localized strings to use in the Calendar

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';

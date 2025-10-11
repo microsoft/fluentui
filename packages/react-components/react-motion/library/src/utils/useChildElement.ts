@@ -1,5 +1,8 @@
+'use client';
+
 import * as React from 'react';
 import { getReactElementRef, useMergedRefs } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 const CHILD_ERROR_MESSAGE = [
   '@fluentui/react-motion: Invalid child element.',
@@ -15,9 +18,9 @@ const CHILD_ERROR_MESSAGE = [
  * Logs a warning in development mode if the ref is not set as the component remains functional.
  */
 export function useChildElement(
-  children: React.ReactElement,
+  children: JSXElement,
   mounted: boolean = true,
-): [React.ReactElement, React.RefObject<HTMLElement>] {
+): [JSXElement, React.RefObject<HTMLElement | null>] {
   const childRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {

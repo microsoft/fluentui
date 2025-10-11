@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { usePortalMountNode } from '@fluentui/react-shared-contexts';
@@ -6,7 +8,7 @@ import { Async } from './async-utils';
 import { KeyCodes } from './KeyCodes';
 import { useId } from '@fluentui/react-utilities';
 
-interface SVGTooltipTextProps {
+export interface SVGTooltipTextProps {
   closeDelay?: number;
   content: string;
   delay?: number;

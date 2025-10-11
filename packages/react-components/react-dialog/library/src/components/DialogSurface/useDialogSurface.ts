@@ -1,3 +1,5 @@
+'use client';
+
 import { Escape } from '@fluentui/keyboard-keys';
 import { presenceMotionSlot } from '@fluentui/react-motion';
 import {

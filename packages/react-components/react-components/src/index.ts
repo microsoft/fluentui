@@ -128,6 +128,7 @@ export {
   mergeCallbacks,
   useIsSSR,
   useMergedRefs,
+  useApplyScrollbarWidth,
   useScrollbarWidth,
   useSelection,
   useTimeout,
@@ -1313,6 +1314,7 @@ export {
   useHeadlessFlatTree_unstable,
   useTreeContextValues_unstable,
   useTreeContext_unstable,
+  useTreeNavigation,
   useSubtreeContext_unstable,
   useTreeItemContextValues_unstable,
   useTreeItemContext_unstable,
@@ -1355,6 +1357,7 @@ export type {
   TreeItemValue,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
+  TreeNavigationDataParam,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
   TreeItemOpenChangeData,
@@ -1617,6 +1620,7 @@ export {
   renderAriaLiveAnnouncer_unstable,
   useAriaLiveAnnouncer_unstable,
   useAriaLiveAnnouncerContextValues_unstable,
+  useTypingAnnounce,
 } from '@fluentui/react-aria';
 export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';
 
@@ -1903,6 +1907,7 @@ export type {
 export {
   motionTokens,
   createMotionComponent,
+  createMotionComponentVariant,
   createPresenceComponent,
   createPresenceComponentVariant,
   PresenceGroup,

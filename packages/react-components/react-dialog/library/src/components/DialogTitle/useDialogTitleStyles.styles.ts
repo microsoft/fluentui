@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

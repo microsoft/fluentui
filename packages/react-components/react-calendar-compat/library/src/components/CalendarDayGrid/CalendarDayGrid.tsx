@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
@@ -31,7 +33,7 @@ function useDayRefs() {
 }
 
 function useAnimateBackwards(weeks: DayInfo[][]): boolean | undefined {
-  const previousNavigatedDateRef = React.useRef<Date | undefined>();
+  const previousNavigatedDateRef = React.useRef<Date | undefined>(undefined);
   React.useEffect(() => {
     previousNavigatedDateRef.current = weeks[0][0].originalDate;
   });
@@ -47,7 +49,9 @@ function useAnimateBackwards(weeks: DayInfo[][]): boolean | undefined {
 }
 
 export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = props => {
-  const navigatedDayRef = React.useRef<HTMLTableCellElement>(null) as React.MutableRefObject<HTMLTableCellElement>;
+  const navigatedDayRef = React.useRef<HTMLTableCellElement>(
+    null,
+  ) as React.MutableRefObject<HTMLTableCellElement | null>;
 
   const activeDescendantId = useId();
 

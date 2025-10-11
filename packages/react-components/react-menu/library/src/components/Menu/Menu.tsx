@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenu_unstable } from './useMenu';
 import { useMenuContextValues_unstable } from './useMenuContextValues';

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/core';
 import { useRenderer_unstable } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -18,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useFluentProviderStyles_unstable = (state: FluentProviderState) => {
+export const useFluentProviderStyles_unstable = (state: FluentProviderState): FluentProviderState => {
   'use no memo';
 
   const renderer = useRenderer_unstable();

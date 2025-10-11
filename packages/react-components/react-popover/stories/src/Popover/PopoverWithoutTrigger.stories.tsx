@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Popover, PopoverSurface, useId, useRestoreFocusTarget } from '@fluentui/react-components';
 import type { PositioningImperativeRef } from '@fluentui/react-components';
 const useStyles = makeStyles({
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const WithoutTrigger = () => {
+export const WithoutTrigger = (): JSXElement => {
   const [open, setOpen] = React.useState(false);
   const headerId = useId();
   const buttonRef = React.useRef<HTMLButtonElement>(null);

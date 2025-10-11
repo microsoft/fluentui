@@ -1,8 +1,53 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Fri, 15 Aug 2025 07:21:22 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Oct 2025 07:20:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.33)
+
+Fri, 10 Oct 2025 07:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.32..@fluentui/chart-utilities_v1.1.33)
+
+### Patches
+
+- fix: use fallback for scatter trace when axis type is category ([PR #35281](https://github.com/microsoft/fluentui/pull/35281) by kumarkshitij@microsoft.com)
+
+## [1.1.32](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.32)
+
+Mon, 06 Oct 2025 07:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.31..@fluentui/chart-utilities_v1.1.32)
+
+### Patches
+
+- support reference line in line, VBC and scatter chart ([PR #35227](https://github.com/microsoft/fluentui/pull/35227) by anushgupta@microsoft.com)
+
+## [1.1.31](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.31)
+
+Mon, 15 Sep 2025 07:20:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.30..@fluentui/chart-utilities_v1.1.31)
+
+### Patches
+
+- feat: add support for lines in GVBC ([PR #35135](https://github.com/microsoft/fluentui/pull/35135) by kumarkshitij@microsoft.com)
+
+## [1.1.30](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.30)
+
+Thu, 11 Sep 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.29..@fluentui/chart-utilities_v1.1.30)
+
+### Patches
+
+- fix chart table bugs in v9 ([PR #35171](https://github.com/microsoft/fluentui/pull/35171) by anushgupta@microsoft.com)
+
+## [1.1.29](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.29)
+
+Wed, 10 Sep 2025 07:19:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.28..@fluentui/chart-utilities_v1.1.29)
+
+### Patches
+
+- fix(react-charting): Log empty x and y arrays for bar chart ([PR #35166](https://github.com/microsoft/fluentui/pull/35166) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.28](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.28)
 

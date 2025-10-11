@@ -10,7 +10,7 @@ import { PresenceComponent } from '@fluentui/react-motion';
 export const Blur: PresenceComponent<BlurParams>;
 
 // @public (undocumented)
-export type BlurParams = PresenceDuration & PresenceEasing & AnimateOpacity & {
+export type BlurParams = BasePresenceParams & AnimateOpacity & {
     fromRadius?: string;
 };
 
@@ -18,7 +18,23 @@ export type BlurParams = PresenceDuration & PresenceEasing & AnimateOpacity & {
 export const Collapse: PresenceComponent<CollapseParams>;
 
 // @public
-export const CollapseDelayed: PresenceComponent<CollapseDelayedParams>;
+export const CollapseDelayed: PresenceComponent<CollapseParams>;
+
+// @public
+export type CollapseDurations = {
+    sizeDuration?: number;
+    opacityDuration?: number;
+    exitSizeDuration?: number;
+    exitOpacityDuration?: number;
+};
+
+// @public (undocumented)
+export type CollapseParams = BasePresenceParams & AnimateOpacity & CollapseDurations & {
+    orientation?: CollapseOrientation;
+    fromSize?: string;
+    staggerDelay?: number;
+    exitStaggerDelay?: number;
+};
 
 // @public (undocumented)
 export const CollapseRelaxed: PresenceComponent<CollapseParams>;
@@ -27,19 +43,22 @@ export const CollapseRelaxed: PresenceComponent<CollapseParams>;
 export const CollapseSnappy: PresenceComponent<CollapseParams>;
 
 // @public
-export const Fade: PresenceComponent<FadeParams>;
+export const Fade: PresenceComponent<BasePresenceParams>;
 
 // @public (undocumented)
-export const FadeRelaxed: PresenceComponent<FadeParams>;
+export type FadeParams = BasePresenceParams;
 
 // @public (undocumented)
-export const FadeSnappy: PresenceComponent<FadeParams>;
+export const FadeRelaxed: PresenceComponent<BasePresenceParams>;
+
+// @public (undocumented)
+export const FadeSnappy: PresenceComponent<BasePresenceParams>;
 
 // @public (undocumented)
 export const Rotate: PresenceComponent<RotateParams>;
 
 // @public (undocumented)
-export type RotateParams = PresenceDuration & PresenceEasing & AnimateOpacity & {
+export type RotateParams = BasePresenceParams & AnimateOpacity & {
     axis?: Axis3D;
     angle?: number;
     exitAngle?: number;
@@ -49,6 +68,11 @@ export type RotateParams = PresenceDuration & PresenceEasing & AnimateOpacity & 
 export const Scale: PresenceComponent<ScaleParams>;
 
 // @public (undocumented)
+export type ScaleParams = BasePresenceParams & AnimateOpacity & {
+    fromScale?: number;
+};
+
+// @public (undocumented)
 export const ScaleRelaxed: PresenceComponent<ScaleParams>;
 
 // @public (undocumented)
@@ -56,6 +80,12 @@ export const ScaleSnappy: PresenceComponent<ScaleParams>;
 
 // @public
 export const Slide: PresenceComponent<SlideParams>;
+
+// @public (undocumented)
+export type SlideParams = BasePresenceParams & AnimateOpacity & {
+    fromX?: string;
+    fromY?: string;
+};
 
 // @public (undocumented)
 export const SlideRelaxed: PresenceComponent<SlideParams>;

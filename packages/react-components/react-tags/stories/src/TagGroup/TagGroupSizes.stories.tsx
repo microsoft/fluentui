@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   TagGroup,
   InteractionTag,
@@ -21,7 +22,7 @@ const useContainerStyles = makeStyles({
   },
 });
 
-export const Sizes = () => {
+export const Sizes = (): JSXElement => {
   const containerStyles = useContainerStyles();
   const sizes: TagSize[] = ['medium', 'small', 'extra-small'];
   return (

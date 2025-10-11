@@ -1,3 +1,5 @@
+'use client';
+
 import type { OverflowGroupState, OverflowItemEntry, OverflowDividerEntry } from '@fluentui/priority-overflow';
 import { ContextSelector, createContext, useContextSelector, Context } from '@fluentui/react-context-selector';
 
@@ -31,5 +33,6 @@ const overflowContextDefaultValue: OverflowContextValue = {
 /**
  * @internal
  */
-export const useOverflowContext = <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) =>
-  useContextSelector(OverflowContext, (ctx = overflowContextDefaultValue) => selector(ctx));
+export const useOverflowContext = <SelectedValue>(
+  selector: ContextSelector<OverflowContextValue, SelectedValue>,
+): SelectedValue => useContextSelector(OverflowContext, (ctx = overflowContextDefaultValue) => selector(ctx));

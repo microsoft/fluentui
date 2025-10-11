@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 
 import { Badge, makeStyles, tokens, BadgeProps } from '@fluentui/react-components';
 import { ClipboardPasteRegular as PasteIcon } from '@fluentui/react-icons';
@@ -55,7 +56,7 @@ const Badges = (props: BadgeProps) => {
   );
 };
 
-export const ColorAndAppearance = () => {
+export const ColorAndAppearance = (): JSXElement => {
   const styles = useStyles();
 
   return (

@@ -1,8 +1,28 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Thu, 14 Aug 2025 07:19:46 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Oct 2025 07:21:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.13.0)
+
+Thu, 09 Oct 2025 07:21:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.12.4..@fluentui/style-utilities_v8.13.0)
+
+### Minor changes
+
+- fix: resolve react 19 type issues ([PR #35288](https://github.com/microsoft/fluentui/pull/35288) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/theme to v2.6.68 ([PR #35301](https://github.com/microsoft/fluentui/pull/35301) by beachball)
+- Bump @fluentui/utilities to v8.16.0 ([PR #35301](https://github.com/microsoft/fluentui/pull/35301) by beachball)
+
+## [8.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.4)
+
+Tue, 26 Aug 2025 07:21:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.12.3..@fluentui/style-utilities_v8.12.4)
+
+### Patches
+
+- Adding mapping for `onepage` filetype icon and updating CDN url. ([PR #34954](https://github.com/microsoft/fluentui/pull/34954) by caperez@microsoft.com)
 
 ## [8.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.3)
 

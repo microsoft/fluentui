@@ -1,8 +1,579 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 21 Aug 2025 17:40:36 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Oct 2025 12:04:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.2)
+
+Wed, 08 Oct 2025 12:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.1..@fluentui/react-components_v9.72.2)
+
+### Patches
+
+- `@fluentui/react-nav`
+  - fix(react-nav): Make NavDrawerBody focus attributes overridable by props ([PR #35280](https://github.com/microsoft/fluentui/pull/35280) by jiangemma@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: In StrictMode, Tooltip now shows correctly on elements that are focused when created ([PR #35282](https://github.com/microsoft/fluentui/pull/35282) by vgenaev@gmail.com)
+- `@fluentui/react-utilities`
+  - refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type ([PR #35290](https://github.com/microsoft/fluentui/pull/35290) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - feat: add react 19 support ([PR #35285](https://github.com/microsoft/fluentui/pull/35285) by martinhochel@microsoft.com)
+- `@fluentui/react-infobutton`
+  - feat: add react 19 support ([PR #35285](https://github.com/microsoft/fluentui/pull/35285) by martinhochel@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - feat: add react 19 support ([PR #35285](https://github.com/microsoft/fluentui/pull/35285) by martinhochel@microsoft.com)
+
+## [9.72.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.1)
+
+Mon, 06 Oct 2025 15:01:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.0..@fluentui/react-components_v9.72.1)
+
+### Minor changes
+
+- `@fluentui/react-tree`
+  - added return type to useTreeNavigation hook ([PR #35283](https://github.com/microsoft/fluentui/pull/35283) by patrycja.fogelman@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - feat: enable wrapping of string x-axis labels in scatterchart ([PR #35231](https://github.com/microsoft/fluentui/pull/35231) by 132879294+v-baambati@users.noreply.github.com)
+
+## [9.72.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.0)
+
+Fri, 03 Oct 2025 14:19:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.71.0..@fluentui/react-components_v9.72.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - exports useTreeNavigation hook ([PR #35275](https://github.com/microsoft/fluentui/pull/35275) by patrycja.fogelman@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - refactor(Collapse): simplify parameter types ([PR #35262](https://github.com/microsoft/fluentui/pull/35262) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-motion-components-preview`
+  - fix(Collapse): make size animation work with delay ([PR #35269](https://github.com/microsoft/fluentui/pull/35269) by robertpenner@microsoft.com)
+
+## [9.71.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.71.0)
+
+Thu, 02 Oct 2025 15:12:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.70.0..@fluentui/react-components_v9.71.0)
+
+### Minor changes
+
+- `@fluentui/react-tree`
+  - exported 'useTreeNavigation' hook ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by patrycja.fogelman@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application ([PR #35191](https://github.com/microsoft/fluentui/pull/35191) by dmytrokirpa@microsoft.com)
+- `@fluentui/priority-overflow`
+  - fix: overflowMenuSize is included in occupiedSize ([PR #35090](https://github.com/microsoft/fluentui/pull/35090) by vkozlova@microsoft.com)
+- `@fluentui/react-charts`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - feat(motion): add createMotionComponentVariant factory ([PR #35149](https://github.com/microsoft/fluentui/pull/35149) by robertpenner@microsoft.com)
+  - feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application ([PR #35191](https://github.com/microsoft/fluentui/pull/35191) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - Add correct nesting validation for Menu and MenuGridcomponents and subcomponents ([PR #35128](https://github.com/microsoft/fluentui/pull/35128) by adam.samec@gmail.com)
+- `@fluentui/react-menu-grid-preview`
+  - Feat(react-menu-grid-preview): Detect invalid MenuGrid nesting ([PR #35128](https://github.com/microsoft/fluentui/pull/35128) by lingfangao@hotmail.com)
+- `@fluentui/react-motion`
+  - feat(motion): add createMotionComponentVariant factory ([PR #35149](https://github.com/microsoft/fluentui/pull/35149) by robertpenner@microsoft.com)
+- `@fluentui/react-overflow`
+  - feat: add hasHiddenItems option ([PR #35090](https://github.com/microsoft/fluentui/pull/35090) by vkozlova@microsoft.com)
+- `@fluentui/react-table`
+  - feat: DataGrid header cells can contain interactive controls ([PR #35187](https://github.com/microsoft/fluentui/pull/35187) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-textarea`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+  - fix: Update ToastBody lineheight ([PR #35042](https://github.com/microsoft/fluentui/pull/35042) by lingfangao@hotmail.com)
+- `@fluentui/react-toolbar`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-accordion`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: fix useTypingAnnounce React 19 type-check issues ([PR #35192](https://github.com/microsoft/fluentui/pull/35192) by dmytrokirpa@microsoft.com)
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-badge`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - feat: added reverse Date selection ([PR #34541](https://github.com/microsoft/fluentui/pull/34541) by vkozlova@microsoft.com)
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-card`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-carousel`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - fix v9 chart bugs ([PR #35181](https://github.com/microsoft/fluentui/pull/35181) by anushgupta@microsoft.com)
+  - fix v9 bugs ([PR #35188](https://github.com/microsoft/fluentui/pull/35188) by anushgupta@microsoft.com)
+  - fix chart bugs ([PR #35219](https://github.com/microsoft/fluentui/pull/35219) by anushgupta@microsoft.com)
+  - fix date format and multi selection of legends in donut chart ([PR #35163](https://github.com/microsoft/fluentui/pull/35163) by anushgupta@microsoft.com)
+  - simple bug fixes ([PR #35201](https://github.com/microsoft/fluentui/pull/35201) by 132879294+v-baambati@users.noreply.github.com)
+  - fix styling in chart table ([PR #35156](https://github.com/microsoft/fluentui/pull/35156) by anushgupta@microsoft.com)
+  - remove default culture in v9 charts ([PR #35175](https://github.com/microsoft/fluentui/pull/35175) by anushgupta@microsoft.com)
+  - fix chart table bugs in v9 ([PR #35171](https://github.com/microsoft/fluentui/pull/35171) by anushgupta@microsoft.com)
+  - handled negative sign in RTL mode ([PR #35143](https://github.com/microsoft/fluentui/pull/35143) by anushgupta@microsoft.com)
+  - fix dashed line bug in line chart ([PR #35183](https://github.com/microsoft/fluentui/pull/35183) by anushgupta@microsoft.com)
+- `@fluentui/react-checkbox`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-context-selector`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-dialog`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-divider`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-drawer`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-field`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-image`
+  - fix: apply fit fill styles only if height and width are not provided ([PR #35161](https://github.com/microsoft/fluentui/pull/35161) by vgenaev@gmail.com)
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-infolabel`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-input`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-label`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-link`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-list`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+  - fix: useValidateNesting ref type React 19 issue ([PR #35221](https://github.com/microsoft/fluentui/pull/35221) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - Allow navigation in MenuGrid submenu of MenuList ([PR #35223](https://github.com/microsoft/fluentui/pull/35223) by adam.samec@gmail.com)
+  - Merge onKeyDown handlers for MenuGrid component ([PR #35216](https://github.com/microsoft/fluentui/pull/35216) by adam.samec@gmail.com)
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+  - fix: useValidateNesting ref type React 19 issue ([PR #35221](https://github.com/microsoft/fluentui/pull/35221) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+  - refactor(react-message-bar): migrate slide & fade to motion components ([PR #35168](https://github.com/microsoft/fluentui/pull/35168) by robertpenner@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-nav`
+  - fix: NavHeader is not included in the arrow nav region ([PR #35111](https://github.com/microsoft/fluentui/pull/35111) by sarah.higley@microsoft.com)
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-overflow`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-persona`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-popover`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-progress`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-radio`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-search`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-select`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-skeleton`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-slider`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinner`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-switch`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-table`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabs`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+  - fix: render portal only when popover is defined to prevent hydration mismatch ([PR #35182](https://github.com/microsoft/fluentui/pull/35182) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tags`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-text`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/global-context`
+  - feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+
+## [9.70.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.70.0)
+
+Mon, 08 Sep 2025 12:50:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.69.0..@fluentui/react-components_v9.70.0)
+
+### Minor changes
+
+- `@fluentui/react-jsx-runtime`
+  - feat: expose JSX namespace in backwards compatible way for react 19 typescript support ([PR #35137](https://github.com/microsoft/fluentui/pull/35137) by martinhochel@microsoft.com)
+- `@fluentui/react-list`
+  - Use default cursor when selection is disabled ([PR #35153](https://github.com/microsoft/fluentui/pull/35153) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat(motion): add delay parameter to motion components ([PR #35077](https://github.com/microsoft/fluentui/pull/35077) by robertpenner@microsoft.com)
+- `@fluentui/react-aria`
+  - feat: add useTypingAnnounce hook for managing live regions triggered by user input ([PR #34354](https://github.com/microsoft/fluentui/pull/34354) by sarah.higley@microsoft.com)
+- `@fluentui/react-card`
+  - feat: add support for disabled cards ([PR #35028](https://github.com/microsoft/fluentui/pull/35028) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - feat: re-export custom JSX types from react-utilities ([PR #35057](https://github.com/microsoft/fluentui/pull/35057) by dmytrokirpa@microsoft.com)
+  - feat: add useTypingAnnounce hook ([PR #34354](https://github.com/microsoft/fluentui/pull/34354) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-search`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-select`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-skeleton`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - fix: set min-width to min-content to prevent spinner clipping ([PR #35068](https://github.com/microsoft/fluentui/pull/35068) by busratemizyureek@gmail.com)
+- `@fluentui/react-storybook-addon`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-table`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: single-select radio input should be fully hidden, not disabled ([PR #35103](https://github.com/microsoft/fluentui/pull/35103) by sarah.higley@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix(react-tabster): Fixing the uncontrolled completely callback return value and switching it away from the deprecated method. ([PR #35136](https://github.com/microsoft/fluentui/pull/35136) by marata@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: set default button type for dismissible ([PR #35088](https://github.com/microsoft/fluentui/pull/35088) by vgenaev@gmail.com)
+- `@fluentui/react-teaching-popover`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-text`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - refactor(react-dialog): migrate to standard Scale motion component ([PR #35141](https://github.com/microsoft/fluentui/pull/35141) by robertpenner@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-field`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-image`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-infolabel`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-input`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-label`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-link`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-list`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - refactor(motion): normalize motion atom parameters & types ([PR #35076](https://github.com/microsoft/fluentui/pull/35076) by robertpenner@microsoft.com)
+  - fix(motion): apply opacity in animations using fill mode ([PR #35078](https://github.com/microsoft/fluentui/pull/35078) by robertpenner@microsoft.com)
+  - test(motion): expand motion atom testing ([PR #35079](https://github.com/microsoft/fluentui/pull/35079) by robertpenner@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-nav`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-radio`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - fix: badge icon margin styling for falsy content ([PR #35110](https://github.com/microsoft/fluentui/pull/35110) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-button`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-card`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-carousel`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - add support for tickmode in declarative chart ([PR #35121](https://github.com/microsoft/fluentui/pull/35121) by anushgupta@microsoft.com)
+  - fix svg background alignment issue ([PR #35070](https://github.com/microsoft/fluentui/pull/35070) by anushgupta@microsoft.com)
+  - fix a11y bugs ([PR #35127](https://github.com/microsoft/fluentui/pull/35127) by anushgupta@microsoft.com)
+  - refactor common styles to reduce bundle size ([PR #35081](https://github.com/microsoft/fluentui/pull/35081) by anushgupta@microsoft.com)
+  - add support for declarative multiplot chart - non cartesian ([PR #35069](https://github.com/microsoft/fluentui/pull/35069) by anushgupta@microsoft.com)
+  - reduce component size by removing duplicate code ([PR #35094](https://github.com/microsoft/fluentui/pull/35094) by anushgupta@microsoft.com)
+  - change foreground color based on contrast ratio in chart table ([PR #35101](https://github.com/microsoft/fluentui/pull/35101) by anushgupta@microsoft.com)
+  - handling y object values for bar chart ([PR #35115](https://github.com/microsoft/fluentui/pull/35115) by anushgupta@microsoft.com)
+  - fix text mode for scatter polar ([PR #35104](https://github.com/microsoft/fluentui/pull/35104) by anushgupta@microsoft.com)
+  - update segment colors of donut chart ([PR #35122](https://github.com/microsoft/fluentui/pull/35122) by anushgupta@microsoft.com)
+  - fix: resolve R19 type issues on refs ([PR #35144](https://github.com/microsoft/fluentui/pull/35144) by martinhochel@microsoft.com)
+  - add support for marker texts for modes containing text ([PR #35083](https://github.com/microsoft/fluentui/pull/35083) by anushgupta@microsoft.com)
+  - fix v9 charts bugs ([PR #35132](https://github.com/microsoft/fluentui/pull/35132) by anushgupta@microsoft.com)
+  - align labels and points according to given directions and rotation in schema for scatter polar ([PR #35098](https://github.com/microsoft/fluentui/pull/35098) by anushgupta@microsoft.com)
+  - Add Gantt and Funnel chart in declarative charts ([PR #35123](https://github.com/microsoft/fluentui/pull/35123) by anushgupta@microsoft.com)
+  - support string y axis in scatter chart ([PR #35120](https://github.com/microsoft/fluentui/pull/35120) by anushgupta@microsoft.com)
+  - respect bargap and width properties in plotly bar traces ([PR #35097](https://github.com/microsoft/fluentui/pull/35097) by anushgupta@microsoft.com)
+  - support categorical theta values for scatter polar chart ([PR #35092](https://github.com/microsoft/fluentui/pull/35092) by anushgupta@microsoft.com)
+  - support single value callout in linechart ([PR #35084](https://github.com/microsoft/fluentui/pull/35084) by anushgupta@microsoft.com)
+  - support additional modes ([PR #35096](https://github.com/microsoft/fluentui/pull/35096) by anushgupta@microsoft.com)
+  - support tick formatting from plotly output ([PR #35060](https://github.com/microsoft/fluentui/pull/35060) by anushgupta@microsoft.com)
+  - log axis support in linechart and scatter chart ([PR #35112](https://github.com/microsoft/fluentui/pull/35112) by anushgupta@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-components`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-context-selector`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - fix: onIconClick triggering useOnClickOutside ([PR #35114](https://github.com/microsoft/fluentui/pull/35114) by vkozlova@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+- `@fluentui/priority-overflow`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - fix: react 19 type issues ([PR #34864](https://github.com/microsoft/fluentui/pull/34864) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/global-context`
+  - chore: extend peer dependencies versions to support React 19 ([PR #35145](https://github.com/microsoft/fluentui/pull/35145) by dmytrokirpa@microsoft.com)
+  - chore: enforce explicit module boundary types ([PR #35080](https://github.com/microsoft/fluentui/pull/35080) by dmytrokirpa@microsoft.com)
 
 ## [9.69.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.69.0)
 

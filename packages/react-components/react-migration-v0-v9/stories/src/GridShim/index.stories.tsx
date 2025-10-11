@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import descriptionMd from './Description.md';
 import { Grid, Image } from '@fluentui/react-northstar';
 import { makeStyles } from '@fluentui/react-components';
@@ -73,7 +74,7 @@ const images = [
   />,
 ];
 
-export const Default = () => {
+export const Default = (): JSXElement => {
   const styles = useStyles();
 
   return (

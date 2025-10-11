@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "refactor: migrate v8 packages tests to use RTL instead of react-test-renderer",
+  "packageName": "@fluentui/react-cards",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}

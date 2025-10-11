@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   makeStyles,
   tokens,
@@ -70,7 +71,7 @@ const excelLogo = resolveAsset('xlsx.png');
 const wordLogo = resolveAsset('docx.png');
 const powerpointLogoURL = resolveAsset('pptx.png');
 
-export const Templates = () => {
+export const Templates = (): JSXElement => {
   const styles = useStyles();
 
   return (
@@ -150,7 +151,7 @@ export const Templates = () => {
             image={{ as: 'img', src: powerpointLogoURL, alt: 'PowerPoint app logo' }}
             header={<Text weight="semibold">Team Offsite 2020</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Presentations</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} />}
+            action={<Button appearance="transparent" aria-label="More actions" icon={<MoreHorizontal20Regular />} />}
           />
         </Card>
 
@@ -159,7 +160,7 @@ export const Templates = () => {
             image={{ as: 'img', src: excelLogo, alt: 'Excel app logo' }}
             header={<Text weight="semibold">Team Budget</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} />}
+            action={<Button appearance="transparent" aria-label="More actions" icon={<MoreHorizontal20Regular />} />}
           />
         </Card>
 
@@ -168,7 +169,7 @@ export const Templates = () => {
             image={{ as: 'img', src: wordLogo, alt: 'Word app logo' }}
             header={<Text weight="semibold">Secret Project Briefing</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} />}
+            action={<Button appearance="transparent" aria-label="More actions" icon={<MoreHorizontal20Regular />} />}
           />
         </Card>
       </div>

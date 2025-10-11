@@ -1,7 +1,10 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+'use client';
+
+import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { DonutChartProps, DonutChartStyles } from './index';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { getAxisTitleStyle } from '../../utilities/index';
 
 /**
  * @internal
@@ -11,6 +14,7 @@ export const donutClassNames: SlotClassNames<DonutChartStyles> = {
   chart: 'fui-donut__chart',
   legendContainer: 'fui-donut__legendContainer',
   chartWrapper: 'fui-donut__chartWrapper',
+  axisAnnotation: 'fui-donut__axisAnnotation',
 };
 
 /**
@@ -35,6 +39,7 @@ const useStyles = makeStyles({
     paddingTop: tokens.spacingVerticalL,
     width: '100%',
   },
+  axisAnnotation: getAxisTitleStyle() as GriffelStyle,
 });
 
 /**
@@ -53,5 +58,10 @@ export const useDonutChartStyles = (props: DonutChartProps): DonutChartStyles =>
       props.styles?.legendContainer,
     ),
     chartWrapper: mergeClasses(donutClassNames.chartWrapper, props.styles?.chartWrapper),
+    axisAnnotation: mergeClasses(
+      donutClassNames.axisAnnotation,
+      baseStyles.axisAnnotation,
+      props.styles?.axisAnnotation,
+    ),
   };
 };

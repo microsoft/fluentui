@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { mergeClasses } from '@griffel/react';
@@ -30,6 +32,12 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
       height: 0,
     }),
   };
+  const target =
+    typeof props.positioning === 'object' && 'target' in props.positioning
+      ? props.positioning.target !== null
+        ? props.positioning.target
+        : virtualElement
+      : virtualElement;
   props = { ...props, ...props.customCallout?.customCalloutProps };
   const classes = usePopoverStyles_unstable(props);
   const legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
@@ -37,7 +45,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
   return (
     <div id={useId('callout')} ref={forwardedRef} className={classes.calloutContainer}>
       <Popover
-        positioning={{ target: virtualElement, autoSize: 'always', offset: 20, coverTarget: false }}
+        positioning={{ target: target, autoSize: 'always', offset: 20, coverTarget: false }}
         open={props.isPopoverOpen}
         inline
       >
@@ -73,7 +81,10 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                   </div>
                   <div
                     className={classes.calloutContentY}
-                    style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
+                    style={{
+                      color: props.color ? props.color : tokens.colorNeutralForeground1,
+                      fontSize: tokens.fontSizeHero700,
+                    }}
                   >
                     {formatToLocaleString(YValue, props.culture) as React.ReactNode}
                   </div>
@@ -122,7 +133,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
           {props!.YValueHover &&
             props!.YValueHover.map((yValue: YValueHover, index: number, yValues: YValueHover[]) => {
               const isLast: boolean = index + 1 === yValues.length;
-              const { shouldDrawBorderBottom = false } = yValue;
+              const shouldDrawBorderBottom = isLast ? false : yValue.shouldDrawBorderBottom ?? false;
               return (
                 <div
                   {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
@@ -190,7 +201,6 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
             id={`${index}_${xValue.y}`}
             className={classes.calloutBlockContainer}
             style={{
-              marginTop: props.XValue ? '13px' : 'unset',
               ...(!toDrawShape
                 ? {
                     borderInlineStart: `4px solid ${xValue.color}`,
@@ -214,9 +224,10 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                   ? classes.calloutBlockContainertoDrawShapetrue
                   : classes.calloutBlockContainertoDrawShapefalse,
               )}
+              style={{ marginTop: xValue ? '13px' : 'unset' }}
             >
               <div className={classes.calloutlegendText}> {xValue.legend}</div>
-              <div className={classes.calloutContentY}>
+              <div className={classes.calloutContentY} style={{ direction: 'ltr', unicodeBidi: 'isolate' }}>
                 {
                   formatToLocaleString(
                     xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TeachingPopoverCarouselSlots, TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -12,7 +14,9 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useTeachingPopoverCarouselStyles_unstable = (state: TeachingPopoverCarouselState) => {
+export const useTeachingPopoverCarouselStyles_unstable = (
+  state: TeachingPopoverCarouselState,
+): TeachingPopoverCarouselState => {
   'use no memo';
 
   const styles = useStyles();

@@ -1,3 +1,5 @@
+'use client';
+
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -25,6 +27,7 @@ const useRootBaseClassName = makeResetStyles({
   lineHeight: '0',
   gap: '8px',
   overflow: 'hidden', // prevents height changes from rotating children
+  minWidth: 'min-content',
 });
 
 const useRootStyles = makeStyles({

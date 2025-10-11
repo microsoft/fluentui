@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
 import {
   Field,
   makeStyles,
@@ -97,12 +98,12 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = (props: React.ComponentProps<typeof Rotate>) => {
+export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(motionTokens.durationUltraSlow); // 500ms
-  const [axis, setAxis] = React.useState<Axis3D>('y');
+  const [axis, setAxis] = React.useState<Axis3D>('z');
   const [angle, setEnterAngle] = React.useState<number>(-90);
 
   const perspectiveSliderId = useId();
