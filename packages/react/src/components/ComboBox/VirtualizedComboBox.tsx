@@ -6,6 +6,8 @@ import type { IComboBoxProps, IComboBox, IComboBoxOption } from './ComboBox.type
 import type { IList } from '../../List';
 import type { ISelectableOption } from '../../SelectableOption';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
   /** The combo box element */
   private _comboBox = React.createRef<IComboBox>();
@@ -43,8 +45,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
     return false;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComboBox
         {...this.props}
@@ -55,8 +56,7 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected _onRenderList = (props: IComboBoxProps): JSX.Element => {
+  protected _onRenderList = (props: IComboBoxProps): JSXElement => {
     const { id, onRenderItem } = props;
 
     // Render virtualized list

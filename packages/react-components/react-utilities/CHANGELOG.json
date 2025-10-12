@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 08 Oct 2025 12:04:53 GMT",
+      "tag": "@fluentui/react-utilities_v9.25.1",
+      "version": "9.25.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "85e89e8402deff8f1a24141b6838034f3d52cda0",
+            "comment": "refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Oct 2025 15:12:09 GMT",
       "tag": "@fluentui/react-utilities_v9.25.0",
       "version": "9.25.0",

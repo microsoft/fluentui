@@ -18,11 +18,13 @@ import { getIsChecked, getMenuItemAriaRole, hasSubmenu, isItemDisabled } from '.
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import type { IKeytipProps } from '../../../Keytip';
 import type { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
 import { IContextualMenuItemProps } from '../ContextualMenuItem.types';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IContextualMenuSplitButtonState {}
 
@@ -64,8 +66,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     this._events.dispose();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const {
       item,
       classNames,
@@ -96,13 +97,12 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
     return (
       <KeytipData keytipProps={keytipProps} disabled={isItemDisabled(item)}>
-        {(
-          keytipAttributes: any,
-        ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-        JSX.Element => (
+        {(keytipAttributes: any): JSXElement => (
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
-            ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
+            ref={(splitButton: HTMLDivElement) => {
+              this._splitButton = splitButton;
+            }}
             role={getMenuItemAriaRole(item)}
             aria-label={item.ariaLabel}
             className={classNames.splitContainer}

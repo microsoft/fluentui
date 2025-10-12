@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -39,7 +40,7 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
     ];
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <DetailsList
         items={this._items}
@@ -55,7 +56,7 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
     );
   }
 
-  private _onRenderDetailsFooter(detailsFooterProps: IDetailsFooterProps): JSX.Element {
+  private _onRenderDetailsFooter(detailsFooterProps: IDetailsFooterProps): JSXElement {
     return (
       <DetailsRow
         {...detailsFooterProps}
@@ -85,6 +86,6 @@ const _renderDetailsFooterItemColumn: IDetailsRowBaseProps['onRenderItemColumn']
 
 const detailsRowCheckStyles: Partial<IDetailsRowCheckStyles> = { root: { visibility: 'hidden' } };
 
-const _onRenderCheckForFooterRow: IDetailsRowBaseProps['onRenderCheck'] = (props): JSX.Element => {
+const _onRenderCheckForFooterRow: IDetailsRowBaseProps['onRenderCheck'] = (props): JSXElement => {
   return <DetailsRowCheck {...props} styles={detailsRowCheckStyles} selected={true} />;
 };

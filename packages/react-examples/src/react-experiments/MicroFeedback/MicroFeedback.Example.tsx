@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { IMicroFeedbackStyles, VoteType, MicroFeedback } from '@fluentui/react-experiments';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class MicroFeedbackExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const sendFeedbackCallback = (vote: VoteType) => {
       // can be sent to a backend that collects user feedback
       console.log('Logged vote type:', vote);

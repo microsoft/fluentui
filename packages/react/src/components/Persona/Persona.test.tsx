@@ -12,6 +12,8 @@ import { isConformant } from '../../common/isConformant';
 import type { IPersonaSharedProps, IPersonaCoinProps } from './index';
 import { wrapPersona } from './test-utils';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 // NOTES: The following styles have been used with enzyme previously, keeping here for reference.
@@ -23,8 +25,7 @@ const testImage1x1 =
 //   red: '.ms-Persona-initials--red',
 // };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-const customOnRenderPersonaFunction = (props: IPersonaCoinProps): JSX.Element | null => {
+const customOnRenderPersonaFunction = (props: IPersonaCoinProps): JSXElement | null => {
   return <Icon iconName="Dictionary" />;
 };
 

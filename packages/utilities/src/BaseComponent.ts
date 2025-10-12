@@ -9,6 +9,8 @@ import type { ISettingsMap } from './warn/warn';
 import type { IRefObject } from './createRef';
 import type { IBaseProps } from './BaseComponent.types';
 
+import type { JSXElement } from './jsx';
+
 /**
  * BaseComponent class, which provides basic helpers for all components.
  *
@@ -272,6 +274,6 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
  * @public
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export function nullRender(): JSX.Element | null {
+export function nullRender(): JSXElement | null {
   return null;
 }

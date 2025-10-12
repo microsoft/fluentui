@@ -2,6 +2,53 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 08 Oct 2025 12:04:51 GMT",
+      "tag": "@fluentui/react-components_v9.72.2",
+      "version": "9.72.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          }
+        ],
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "38ef2e7719b277bb3331c32097adf4d4a2e689e0",
+            "comment": "fix(react-nav): Make NavDrawerBody focus attributes overridable by props"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "de104fff5f19e87dc00c19e41ec1dda0d80140bf",
+            "comment": "fix: In StrictMode, Tooltip now shows correctly on elements that are focused when created"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "85e89e8402deff8f1a24141b6838034f3d52cda0",
+            "comment": "refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Oct 2025 15:01:58 GMT",
       "tag": "@fluentui/react-components_v9.72.1",
       "version": "9.72.1",

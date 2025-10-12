@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { IStyleableComponentProps } from './IComponent';
 import { createComponent } from './createComponent';
 
@@ -15,6 +15,6 @@ describe('createComponent', () => {
   });
 
   it(`resolves tokens without a runtime error`, () => {
-    renderer.create(<TestComponent tokens={{ testPropToken: 42 }} />);
+    render(<TestComponent tokens={{ testPropToken: 42 }} />);
   });
 });

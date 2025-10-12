@@ -13,6 +13,7 @@ import { ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from 
 import { IFocusZoneProps, FocusZoneTabbableElements } from '@fluentui/react/lib/FocusZone';
 import { mergeStyleSets, getTheme, IStyle, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { people, mru, groupOne, groupTwo } from '@fluentui/example-data';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
@@ -145,7 +146,7 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const theme = getTheme();
     this._classNames = mergeStyleSets({
       picker: { maxWidth: 400, marginBottom: 15 },
@@ -169,7 +170,7 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
     );
   }
 
-  private _renderExtendedPicker(): JSX.Element {
+  private _renderExtendedPicker(): JSXElement {
     return (
       <ExtendedPeoplePicker
         selectedItems={this.state.currentlySelectedItems}
@@ -194,7 +195,7 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
     );
   }
 
-  private _renderHeader(): JSX.Element {
+  private _renderHeader(): JSXElement {
     return (
       <div className={this._classNames.to} data-is-focusable={true}>
         To:

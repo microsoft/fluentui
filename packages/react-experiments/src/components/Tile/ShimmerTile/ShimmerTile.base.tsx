@@ -4,6 +4,7 @@ import { TileLayoutSizes } from '../Tile';
 import { ShimmerGap, ShimmerElementsGroup, ShimmerElementType } from '@fluentui/react/lib/Shimmer';
 import type { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
 import type { TileSize } from '../Tile.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 const ShimmerTileLayoutValues = {
   largeSquareWidth: 96,
@@ -60,7 +61,7 @@ export class ShimmerTileBase extends React.Component<IShimmerTileProps, {}> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       styles,
       contentSize = { width: 176, height: 171 },

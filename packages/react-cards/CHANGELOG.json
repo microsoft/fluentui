@@ -2,6 +2,33 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Thu, 09 Oct 2025 07:21:57 GMT",
+      "tag": "@fluentui/react-cards_v0.206.0",
+      "version": "0.206.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-cards",
+            "commit": "2898be4be6f8c01fcdd2ade8951bfd547ba156fa",
+            "comment": "fix: resolve react 19 type issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.124.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/foundation-legacy to v8.5.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Sep 2025 07:20:30 GMT",
       "tag": "@fluentui/react-cards_v0.205.215",
       "version": "0.205.215",

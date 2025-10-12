@@ -2,6 +2,60 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 10 Oct 2025 07:20:53 GMT",
+      "tag": "@fluentui/react-charting_v5.24.37",
+      "version": "5.24.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "99c58da79ec6c96af26295319ec5329997dd4e6e",
+            "comment": "fix large data example "
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "7c9406120303f4feea69f9879fd305f2f8b0cc33",
+            "comment": "fix: resolve data points based on axis type + replace invalid values with 0 for valid coordinates"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.33",
+            "commit": "7dfabce5ac517a86b4f8ac78a10611f0c6ab8ef2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Oct 2025 07:21:59 GMT",
+      "tag": "@fluentui/react-charting_v5.24.36",
+      "version": "5.24.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.27",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.216",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.124.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Oct 2025 07:20:02 GMT",
       "tag": "@fluentui/react-charting_v5.24.35",
       "version": "5.24.35",

@@ -4,6 +4,7 @@ import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 const exampleChildClass = mergeStyles({
   display: 'block',
@@ -56,7 +57,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { items, selectionDetails } = this.state;
 
     return (

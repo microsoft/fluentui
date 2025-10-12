@@ -2,6 +2,33 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Wed, 08 Oct 2025 12:04:53 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.103",
+      "version": "9.0.0-alpha.103",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.2",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.25.1",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Jul 2025 16:55:40 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.102",
       "version": "9.0.0-alpha.102",

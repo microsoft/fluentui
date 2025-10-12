@@ -14,6 +14,7 @@ import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { Async, EventGroup, FocusRects } from '@fluentui/utilities';
 import type { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarks } from './Slider.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 /* eslint-disable @typescript-eslint/no-deprecated */
 
@@ -238,7 +239,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       return Math.max(this.props.min, Math.min(this.props.max, value));
     }
   }
-  private _getValueLabel(className: string): JSX.Element | null {
+  private _getValueLabel(className: string): JSXElement | null {
     const { showValue, disabled, valueFormat, label } = this.props;
     if (showValue) {
       const value = valueFormat ? valueFormat(this.value!) : this.value;
@@ -343,9 +344,9 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   }
 
   // returns an array of spans each span pertains to a custom label the user passes in
-  private _addLabels(cssRegularLabelClassNames: string | undefined, marks: ISliderMarks[]): JSX.Element[] {
+  private _addLabels(cssRegularLabelClassNames: string | undefined, marks: ISliderMarks[]): JSXElement[] {
     const { vertical, min, max } = this.props;
-    const labels: JSX.Element[] = [];
+    const labels: JSXElement[] = [];
     if (min === undefined || max === undefined || marks === undefined) {
       return labels;
     }
@@ -372,7 +373,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     return labels;
   }
 
-  private _addTickmarks(cssRegularTickClassNames: string | undefined): JSX.Element[] {
+  private _addTickmarks(cssRegularTickClassNames: string | undefined): JSXElement[] {
     const { min, max, step, vertical } = this.props;
     // if any of the values is undefined then we dont not render ticks
     if (min === undefined || max === undefined || step === undefined) {
