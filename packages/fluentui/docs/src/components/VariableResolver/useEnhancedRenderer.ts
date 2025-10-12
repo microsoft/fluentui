@@ -1,5 +1,5 @@
 import { ProviderContextPrepared } from '@fluentui/react-northstar';
-import { Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { Renderer } from '@fluentui/react-northstar-fela-renderer';
 import { callable } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -12,7 +12,7 @@ const useEnhancedRenderer = (
 ): [ProviderContextPrepared, React.RefObject<UsedVariables>] => {
   const resolvedVariables = React.useRef<UsedVariables>({});
   const renderRule: Renderer['renderRule'] = React.useCallback(
-    (styles, rendererParam) => {
+    (styles, rendererParam, changes) => {
       const componentName: string = rendererParam.displayName;
       const componentVariables = callable(context.theme.componentVariables[rendererParam.displayName])(
         context.theme.siteVariables,
@@ -26,7 +26,7 @@ const useEnhancedRenderer = (
         }
       });
 
-      return context.renderer.renderRule(styles, rendererParam);
+      return context.renderer.renderRule(styles, rendererParam, changes);
     },
     [context],
   );

@@ -5,7 +5,7 @@ import {
   useUnhandledProps,
   Unstable_FluentContextProvider,
 } from '@fluentui/react-bindings';
-import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { noopRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme, ThemeInput } from '@fluentui/styles';
 import cx from 'classnames';
 import { mount, shallow } from 'enzyme';

@@ -2,7 +2,7 @@ import { RULE_TYPE } from 'fela-utils';
 // @ts-ignore
 import _Stylis from 'stylis';
 
-import { FelaRenderer, FelaRendererChange } from './types';
+import { FelaRenderer, RendererChange } from './types';
 
 // `stylis@3` is a CJS library, there are known issues with them:
 // https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
@@ -21,7 +21,7 @@ const stylis = new Stylis({
 export const felaStylisEnhancer = (renderer: FelaRenderer) => {
   const existingEmitChange = renderer._emitChange.bind(renderer);
 
-  renderer._emitChange = (change: FelaRendererChange) => {
+  renderer._emitChange = (change: RendererChange) => {
     if (change.type === RULE_TYPE) {
       const prefixed: string = stylis('', change.declaration);
 
