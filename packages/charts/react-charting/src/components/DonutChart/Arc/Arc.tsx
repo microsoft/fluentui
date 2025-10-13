@@ -6,6 +6,8 @@ import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyleProps, IArcStyles } from './index';
 import { format as d3Format } from 'd3-format';
 import { formatScientificLimitWidth } from '../../../utilities/index';
+import type { JSXElement } from '@fluentui/utilities';
+
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -31,7 +33,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { arc, href, focusedArcId, activeArc } = this.props;
     const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();
     const id =

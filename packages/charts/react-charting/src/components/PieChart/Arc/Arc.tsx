@@ -6,6 +6,8 @@ import { getStyles } from './Arc.styles';
 import { wrapContent } from '../../../utilities/utilities';
 import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
+import type { JSXElement } from '@fluentui/utilities';
+
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
@@ -28,12 +30,12 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     this._arcId = getId('piechart_arc');
   }
 
-  public updateChart = (newProps: IArcProps) => {
+  public updateChart = (newProps: IArcProps): void => {
     _updateChart(newProps);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { arc } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
     const classNames = getClassNames(props => getStyles(props, this.props.theme), { ...this.props });
@@ -47,11 +49,11 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     );
   }
 
-  protected _onFocus = () => {
+  protected _onFocus = (): void => {
     this.setState({ isArcFocused: true });
   };
 
-  protected _onBlur = () => {
+  protected _onBlur = (): void => {
     this.setState({ isArcFocused: false });
   };
 }
@@ -65,7 +67,7 @@ export class LabeledArc extends Arc {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { data, culture } = this.props;
     const gap = 4;
     // placing the labels on the outside arc

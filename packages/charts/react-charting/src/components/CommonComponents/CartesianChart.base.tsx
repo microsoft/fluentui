@@ -36,6 +36,8 @@ import {
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText, ISVGTooltipTextProps } from '../../utilities/SVGTooltipText';
 import { IChart } from '../../types/index';
+import type { JSXElement } from '@fluentui/utilities';
+
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
@@ -233,7 +235,7 @@ export class CartesianChartBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       calloutProps,
       points,
@@ -272,7 +274,7 @@ export class CartesianChartBase
     });
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    let callout: JSX.Element | null = null;
+    let callout: JSXElement | null = null;
 
     let children = null;
     if (
@@ -735,7 +737,7 @@ export class CartesianChartBase
    * @returns
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
-  private _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
+  private _generateCallout(calloutProps: any, chartHoverProps: any): JSXElement {
     return (
       <Callout
         hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}

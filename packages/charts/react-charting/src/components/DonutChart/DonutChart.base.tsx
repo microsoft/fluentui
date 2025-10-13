@@ -19,6 +19,8 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
+import type { JSXElement } from '@fluentui/utilities';
+
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
@@ -117,7 +119,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { data, hideLegend = false } = this.props;
     const points = this._addDefaultColors(data?.chartData);
 
@@ -279,7 +281,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
+  private _createLegends(chartData: IChartDataPoint[]): JSXElement {
     if (this.props.order === 'sorted') {
       chartData.sort((a: IChartDataPoint, b: IChartDataPoint) => {
         return b.data! - a.data!;

@@ -3,6 +3,8 @@ import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart.types';
 import { Pie } from './Pie/Pie';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
+
 
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
 
@@ -21,7 +23,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { data, width, height, colors, chartTitle } = this.props;
 
     const { theme, className, styles, culture } = this.props;

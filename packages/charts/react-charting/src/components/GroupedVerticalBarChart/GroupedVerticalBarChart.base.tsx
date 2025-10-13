@@ -59,6 +59,8 @@ import { IChart, IImageExportOptions, IBarSeries, ILineSeries } from '../../type
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
+import type { JSXElement } from '@fluentui/utilities';
+
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -111,7 +113,7 @@ export class GroupedVerticalBarChartBase
   private _datasetForBars: any;
   private margins: IMargins;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _groupedVerticalBarGraph: JSX.Element[];
+  private _groupedVerticalBarGraph: JSXElement[];
   private _classNames: IProcessedStyleSet<IGroupedVerticalBarChartStyles>;
   private _yMax: number;
   private _calloutId: string;
@@ -187,7 +189,7 @@ export class GroupedVerticalBarChartBase
     this._xAxisLabels = xAxisLabels;
     this._datasetForBars = datasetForBars;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const legendBars: JSX.Element = this._getLegendData();
+    const legendBars: JSXElement = this._getLegendData();
     this._adjustProps();
 
     // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
@@ -347,7 +349,7 @@ export class GroupedVerticalBarChartBase
 
     const xScale1 = this._createX1Scale();
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const allGroupsBars: JSX.Element[] = [];
+    const allGroupsBars: JSXElement[] = [];
     this._datasetForBars.forEach((singleSet: IGVSingleDataPoint) => {
       allGroupsBars.push(
         this._buildGraph(singleSet, xScale0, xScale1, yScalePrimary, yScaleSecondary, containerHeight, xElement!),
@@ -429,11 +431,11 @@ export class GroupedVerticalBarChartBase
     containerHeight: number,
     xElement: SVGElement,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element => {
+  ): JSXElement => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const singleGroup: JSX.Element[] = [];
+    const singleGroup: JSXElement[] = [];
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const barLabelsForGroup: JSX.Element[] = [];
+    const barLabelsForGroup: JSXElement[] = [];
 
     // Get the actual legends present at this x-axis point
     const presentLegends = this._barLegends.filter(key => key in singleSet);
@@ -666,7 +668,7 @@ export class GroupedVerticalBarChartBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getLegendData = (): JSX.Element => {
+  private _getLegendData = (): JSXElement => {
     const actions: ILegend[] = [];
 
     const addLegendButton = (legendTitle: string, isLineLegendInBarChart?: boolean) => {
