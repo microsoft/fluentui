@@ -1300,6 +1300,37 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           }
         }
 
+        // Add filled area for scatterpolar charts
+        const fillMode = _points[i].lineOptions?.fill;
+        const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
+        if (fillMode === 'toself' && _points[i].data.length >= 3 && isLegendSelected && _isScatterPolar) {
+          const getScaledXValue = (dataPoint: LineChartDataPoint) =>
+            _xAxisScale(dataPoint.x instanceof Date ? dataPoint.x : (dataPoint.x as number));
+
+          const fillPathGenerator = d3Line<LineChartDataPoint>()
+            .x(dataPoint => getScaledXValue(dataPoint))
+            .y(dataPoint => yScale(dataPoint.y))
+            .curve(getCurveFactory(lineCurve))
+            .defined(dataPoint => isPlottable(getScaledXValue(dataPoint), yScale(dataPoint.y)));
+
+          const fillPath = fillPathGenerator(_points[i].data as LineChartDataPoint[]);
+
+          if (fillPath) {
+            linesForLine.push(
+              <path
+                key={`scatterpolar_fill_${i}`}
+                d={`${fillPath}Z`}
+                fill={lineColor}
+                fillOpacity={0.5}
+                stroke={lineColor}
+                strokeWidth={2}
+                strokeOpacity={0.8}
+                pointerEvents="none"
+              />,
+            );
+          }
+        }
+
         if (_isScatterPolar) {
           pointsForLine.push(
             ...renderScatterPolarCategoryLabels({
