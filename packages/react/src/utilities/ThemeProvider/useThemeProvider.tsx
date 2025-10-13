@@ -3,6 +3,8 @@ import { useThemeProviderState } from './useThemeProviderState';
 import { getPropsWithDefaults } from '@fluentui/utilities';
 import type { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * Returns the ThemeProvider render function and calculated state, given user input, ref, and
  * a set of default prop values.
@@ -12,7 +14,7 @@ export const useThemeProvider = (
   defaultProps: ThemeProviderProps,
 ): {
   state: ThemeProviderState;
-  render: (state: ThemeProviderState) => JSX.Element;
+  render: (state: ThemeProviderState) => JSXElement;
 } => {
   const state = getPropsWithDefaults(defaultProps, props) as ThemeProviderState;
 

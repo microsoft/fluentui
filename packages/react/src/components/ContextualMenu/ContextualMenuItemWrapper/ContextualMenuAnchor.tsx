@@ -31,7 +31,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
     },
   );
 
-  public render() {
+  public render(): JSXElement {
     const {
       item,
       classNames,

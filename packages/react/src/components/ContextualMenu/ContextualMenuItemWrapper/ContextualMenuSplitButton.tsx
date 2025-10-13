@@ -55,7 +55,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     this._dismissLabelId = getId();
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (this._splitButton && 'onpointerdown' in this._splitButton) {
       this._events.on(this._splitButton, 'pointerdown', this._onPointerDown, true);
     }
@@ -155,7 +155,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     return this._splitButton;
   };
 
-  protected _renderAriaDescription = (ariaDescription?: string, className?: string) => {
+  protected _renderAriaDescription = (ariaDescription?: string, className?: string): JSXElement | null => {
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan
     return ariaDescription ? (
       <span id={this._ariaDescriptionId} className={className}>

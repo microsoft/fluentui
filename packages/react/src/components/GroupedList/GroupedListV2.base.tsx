@@ -554,10 +554,7 @@ const GroupItem = <T,>({
   return render(mergedProps, defaultRender);
 };
 
-export class GroupedListV2Wrapper
-  extends React.Component<IGroupedListV2Props, IGroupedListV2State>
-  implements IGroupedList
-{
+export class GroupedListV2Wrapper extends React.Component<IGroupedListV2Props, IGroupedListV2State> implements IGroupedList {
   public static displayName: string = 'GroupedListV2';
   private _groupedList = React.createRef<IGroupedListV2>();
 
@@ -610,7 +607,7 @@ export class GroupedListV2Wrapper
     return <GroupedListV2FC {...this.props} {...this.state} groupedListRef={this._groupedList} />;
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this._forceListUpdate();
   }
