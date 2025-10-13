@@ -5,7 +5,9 @@ import { INavPage } from '../Nav/index';
 import { IPlatformPickerProps, IPlatform } from './PlatformPicker.types';
 import * as styles from './PlatformPicker.module.scss';
 
-export class PlatformPicker<TPlatforms extends string = string> extends React.PureComponent<IPlatformPickerProps<TPlatforms>> {
+export class PlatformPicker<TPlatforms extends string = string> extends React.PureComponent<
+  IPlatformPickerProps<TPlatforms>
+> {
   public render(): React.ReactElement {
     const { activePlatform, platforms, pagePlatforms } = this.props;
 
