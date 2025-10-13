@@ -784,7 +784,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           );
 
           // Add individual markers if mode includes 'markers'
-          const showMarkers = lineMode?.includes('markers') || !lineMode; // Show markers by default if no mode specified
+          const showMarkers = !!lineMode?.includes('markers');
           if (showMarkers) {
             for (let k = 0; k < _points[i].data.length; k++) {
               const { x, y } = _points[i].data[k];
