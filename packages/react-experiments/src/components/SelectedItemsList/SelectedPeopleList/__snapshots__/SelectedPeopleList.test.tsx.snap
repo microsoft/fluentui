@@ -3,2211 +3,1031 @@
 exports[`SelectedPeopleList renders nothing if nothing is provided 1`] = `null`;
 
 exports[`SelectedPeopleList renders personas that are passed in 1`] = `
-Array [
+<div
+  aria-labelledby="selectedItemPersona-id__0"
+  class=
+      ms-PickerPersona-container
+      {
+        align-items: center;
+        background: #eff6fc;
+        border-radius: 15px;
+        cursor: default;
+        display: inline-flex;
+        margin-bottom: 4px;
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-top: 4px;
+        position: relative;
+        user-select: none;
+        vertical-align: middle;
+      }
+      &:hover {
+        background: #deecf9;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+        background: Highlight;
+        border: 1px solid ButtonText;
+        color: HighlightText;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
+        color: HighlightText;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
+        color: HighlightText;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+        -ms-high-contrast-adjust: none;
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
+        color: ButtonText;
+      }
+  data-is-focusable="true"
+  data-is-sub-focuszone="true"
+  data-selection-index="0"
+  role="option"
+>
   <div
-    aria-labelledby="selectedItemPersona-id__0"
-    className=
-        ms-PickerPersona-container
+    hidden=""
+  >
+    <button
+      class=
+          ms-Button
+          ms-Button--icon
+          ms-PickerItem-removeButton
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            background-color: transparent;
+            border-radius: 15px 0px 0px 15px;
+            border: none;
+            box-sizing: border-box;
+            color: #005a9e;
+            cursor: pointer;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            justify-content: center;
+            margin-right: -17px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 4px;
+            padding-right: 16px;
+            padding-top: 0;
+            position: inherit;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            width: 44px;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > span {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            background-color: inherit;
+            color: inherit;
+          }
+          &:hover {
+            background-color: #c7e0f4;
+            color: #005a9e;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+            background: inherit;
+            border-color: Highlight;
+            color: inherit;
+          }
+          &:active {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
+            background: inherit;
+            color: inherit;
+          }
+      data-is-focusable="true"
+      type="button"
+    >
+      <span
+        class=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+        data-automationid="splitbuttonprimary"
+      >
+        <i
+          aria-hidden="true"
+          class=
+              ms-Icon
+              ms-Button-icon
+              {
+                display: inline-block;
+                text-decoration: inherit;
+              }
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 16px;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                text-align: center;
+              }
+          data-icon-name="Add"
+          style="font-family: \\"FabricMDL2Icons\\"; font-size: 14px;"
+        >
+          
+        </i>
+      </span>
+    </button>
+  </div>
+  <div
+    class=
+
         {
-          align-items: center;
-          background: #eff6fc;
-          border-radius: 15px;
-          cursor: default;
-          display: inline-flex;
-          margin-bottom: 4px;
-          margin-left: 4px;
-          margin-right: 4px;
-          margin-top: 4px;
+          display: inherit;
           position: relative;
-          user-select: none;
-          vertical-align: middle;
         }
-        &:hover {
-          background: #deecf9;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-          background: Highlight;
-          border: 1px solid ButtonText;
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-          -ms-high-contrast-adjust: none;
-          background: ButtonFace;
-          border: 1px solid ButtonText;
-          color: ButtonText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
-          color: ButtonText;
-        }
-    data-is-focusable={true}
-    data-is-sub-focuszone={true}
-    data-selection-index={0}
-    role="option"
   >
     <div
-      hidden={true}
+      class=
+          ms-PickerItem-content
+          {
+            flex: 0 1 auto;
+            max-width: 100%;
+            min-width: 0px;
+          }
+      id="selectedItemPersona-id__0"
     >
-      <button
-        className=
-            ms-Button
-            ms-Button--icon
-            ms-PickerItem-removeButton
+      <div
+        class=
+            ms-Persona
+            ms-Persona--size32
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               align-items: center;
-              background-color: transparent;
-              border-radius: 15px 0px 0px 15px;
-              border: none;
+              box-shadow: none;
               box-sizing: border-box;
-              color: #005a9e;
-              cursor: pointer;
+              color: inherit;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
-              justify-content: center;
-              margin-right: -17px;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 4px;
-              padding-right: 16px;
-              padding-top: 0;
-              position: inherit;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              width: 44px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > span {
-              left: 0px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-width: 32px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               position: relative;
-              top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              background-color: inherit;
-              color: inherit;
+            & .contextualHost {
+              display: none;
             }
-            &:hover {
-              background-color: #c7e0f4;
-              color: #005a9e;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-              background: inherit;
-              border-color: Highlight;
-              color: inherit;
-            }
-            &:active {
-              background-color: #106ebe;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-              background: inherit;
-              color: inherit;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
-      >
-        <span
-          className=
-              ms-Button-flexContainer
-              {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
-              }
-          data-automationid="splitbuttonprimary"
-        >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  text-decoration: inherit;
-                }
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-                {
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  text-align: center;
-                }
-            data-icon-name="Add"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-                "fontSize": "14px",
-              }
-            }
-          >
-            
-          </i>
-        </span>
-      </button>
-    </div>
-    <div
-      className=
-
-          {
-            display: inherit;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-PickerItem-content
-            {
-              flex: 0 1 auto;
-              max-width: 100%;
-              min-width: 0px;
-            }
-        id="selectedItemPersona-id__0"
       >
         <div
-          className=
-              ms-Persona
+          class=
+              ms-Persona-coin
               ms-Persona--size32
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                align-items: center;
-                box-shadow: none;
-                box-sizing: border-box;
-                color: inherit;
-                display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
-                min-width: 32px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-                position: relative;
               }
-              & .contextualHost {
-                display: none;
-              }
+          role="presentation"
         >
           <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
+            class=
+                ms-Persona-imageArea
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  flex: 0 0 auto;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  width: 32px;
                 }
             role="presentation"
           >
             <div
-              className=
-                  ms-Persona-imageArea
+              aria-hidden="true"
+              class=
+                  ms-Persona-initials
                   {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-              role="presentation"
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #69797E;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 600;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                      forced-color-adjust: none;
-                    }
-                    & i {
-                      font-weight: 600;
-                    }
-              >
-                <span>
-                  PA
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            className=
-                ms-Persona-details
-                {
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-around;
-                  min-width: 0px;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
-                  text-align: left;
-                  width: 100%;
-                }
-          >
-            <div
-              className=
-                  ms-Persona-primaryText
-                  {
-                    color: #005a9e;
+                    background-color: #69797E;
+                    border-radius: 50%;
+                    color: #ffffff;
                     font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-                  &:hover {
-                    color: #005a9e;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-                    color: inherit;
+                    font-weight: 600;
+                    height: 32px;
+                    line-height: 32px;
                   }
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    color: inherit;
+                    -ms-high-contrast-adjust: none;
+                    background-color: Window !important;
+                    border: 1px solid WindowText;
+                    box-sizing: border-box;
+                    color: WindowText;
+                    forced-color-adjust: none;
                   }
-              dir="auto"
+                  & i {
+                    font-weight: 600;
+                  }
             >
+              <span>
+                PA
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-Persona-details
+              {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                min-width: 0px;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                text-align: left;
+                width: 100%;
+              }
+        >
+          <div
+            class=
+                ms-Persona-primaryText
+                {
+                  color: #005a9e;
+                  font-size: 14px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+                &:hover {
+                  color: #005a9e;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+                  color: inherit;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  color: inherit;
+                }
+            dir="auto"
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    display: inline;
+                  }
+              role="none"
+            >
+              Person A
               <div
-                className=
-                    ms-TooltipHost
-                    {
-                      display: inline;
-                    }
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onKeyDown={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                role="none"
+                hidden=""
+                id="tooltip4"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Person A
-                <div
-                  hidden={true}
-                  id="tooltip4"
-                  style={
-                    Object {
-                      "border": 0,
-                      "height": 1,
-                      "margin": -1,
-                      "overflow": "hidden",
-                      "padding": 0,
-                      "position": "absolute",
-                      "whiteSpace": "nowrap",
-                      "width": 1,
-                    }
-                  }
-                >
-                  Person A
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <button
-        className=
-            ms-Button
-            ms-Button--icon
-            ms-PickerItem-removeButton
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              border-radius: 15px;
-              border: none;
-              box-sizing: border-box;
-              color: #005a9e;
-              cursor: pointer;
-              display: inline-flex;
-              flex: 0 0 auto;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
-              justify-content: center;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 4px;
-              padding-right: 4px;
-              padding-top: 0;
-              position: relative;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              width: 32px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > span {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              background-color: inherit;
-              color: inherit;
-            }
-            &:hover {
-              background-color: #c7e0f4;
-              color: #005a9e;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-              background: inherit;
-              border-color: Highlight;
-              color: inherit;
-            }
-            &:active {
-              background-color: #106ebe;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-              background: inherit;
-              color: inherit;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
-      >
-        <span
-          className=
-              ms-Button-flexContainer
-              {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
-              }
-          data-automationid="splitbuttonprimary"
-        >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  text-decoration: inherit;
-                }
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-                {
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  text-align: center;
-                }
-            data-icon-name="Cancel"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-                "fontSize": "14px",
-              }
-            }
-          >
-            
-          </i>
-        </span>
-      </button>
     </div>
-  </div>,
-  <div
-    aria-labelledby="selectedItemPersona-id__8"
-    className=
-        ms-PickerPersona-container
-        {
-          align-items: center;
-          background: #eff6fc;
-          border-radius: 15px;
-          cursor: default;
-          display: inline-flex;
-          margin-bottom: 4px;
-          margin-left: 4px;
-          margin-right: 4px;
-          margin-top: 4px;
-          position: relative;
-          user-select: none;
-          vertical-align: middle;
-        }
-        &:hover {
-          background: #deecf9;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-          background: Highlight;
-          border: 1px solid ButtonText;
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-          -ms-high-contrast-adjust: none;
-          background: ButtonFace;
-          border: 1px solid ButtonText;
-          color: ButtonText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
-          color: ButtonText;
-        }
-    data-is-focusable={true}
-    data-is-sub-focuszone={true}
-    data-selection-index={1}
-    role="option"
-  >
-    <div
-      hidden={true}
-    >
-      <button
-        className=
-            ms-Button
-            ms-Button--icon
-            ms-PickerItem-removeButton
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              border-radius: 15px 0px 0px 15px;
-              border: none;
-              box-sizing: border-box;
-              color: #005a9e;
-              cursor: pointer;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
-              justify-content: center;
-              margin-right: -17px;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 4px;
-              padding-right: 16px;
-              padding-top: 0;
-              position: inherit;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              width: 44px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > span {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              background-color: inherit;
-              color: inherit;
-            }
-            &:hover {
-              background-color: #c7e0f4;
-              color: #005a9e;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-              background: inherit;
-              border-color: Highlight;
-              color: inherit;
-            }
-            &:active {
-              background-color: #106ebe;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-              background: inherit;
-              color: inherit;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
-      >
-        <span
-          className=
-              ms-Button-flexContainer
-              {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
-              }
-          data-automationid="splitbuttonprimary"
-        >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  text-decoration: inherit;
-                }
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-                {
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  text-align: center;
-                }
-            data-icon-name="Add"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-                "fontSize": "14px",
-              }
-            }
-          >
-            
-          </i>
-        </span>
-      </button>
-    </div>
-    <div
-      className=
-
+    <button
+      class=
+          ms-Button
+          ms-Button--icon
+          ms-PickerItem-removeButton
           {
-            display: inherit;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            background-color: transparent;
+            border-radius: 15px;
+            border: none;
+            box-sizing: border-box;
+            color: #005a9e;
+            cursor: pointer;
+            display: inline-flex;
+            flex: 0 0 auto;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            justify-content: center;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 0;
             position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            width: 32px;
           }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > span {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            background-color: inherit;
+            color: inherit;
+          }
+          &:hover {
+            background-color: #c7e0f4;
+            color: #005a9e;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+            background: inherit;
+            border-color: Highlight;
+            color: inherit;
+          }
+          &:active {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
+            background: inherit;
+            color: inherit;
+          }
+      data-is-focusable="true"
+      type="button"
     >
-      <div
-        className=
-            ms-PickerItem-content
+      <span
+        class=
+            ms-Button-flexContainer
             {
-              flex: 0 1 auto;
-              max-width: 100%;
-              min-width: 0px;
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
             }
-        id="selectedItemPersona-id__8"
+        data-automationid="splitbuttonprimary"
       >
-        <div
-          className=
-              ms-Persona
-              ms-Persona--size32
+        <i
+          aria-hidden="true"
+          class=
+              ms-Icon
+              ms-Button-icon
+              {
+                display: inline-block;
+                text-decoration: inherit;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                align-items: center;
-                box-shadow: none;
-                box-sizing: border-box;
-                color: inherit;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
-                min-width: 32px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-                position: relative;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
               }
-              & .contextualHost {
-                display: none;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-              role="presentation"
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #CA5010;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 600;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                      forced-color-adjust: none;
-                    }
-                    & i {
-                      font-weight: 600;
-                    }
-              >
-                <span>
-                  PB
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            className=
-                ms-Persona-details
-                {
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-around;
-                  min-width: 0px;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
-                  text-align: left;
-                  width: 100%;
-                }
-          >
-            <div
-              className=
-                  ms-Persona-primaryText
-                  {
-                    color: #005a9e;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-                  &:hover {
-                    color: #005a9e;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-                    color: inherit;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    color: inherit;
-                  }
-              dir="auto"
-            >
-              <div
-                className=
-                    ms-TooltipHost
-                    {
-                      display: inline;
-                    }
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onKeyDown={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                role="none"
-              >
-                Person B
-                <div
-                  hidden={true}
-                  id="tooltip12"
-                  style={
-                    Object {
-                      "border": 0,
-                      "height": 1,
-                      "margin": -1,
-                      "overflow": "hidden",
-                      "padding": 0,
-                      "position": "absolute",
-                      "whiteSpace": "nowrap",
-                      "width": 1,
-                    }
-                  }
-                >
-                  Person B
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button
-        className=
-            ms-Button
-            ms-Button--icon
-            ms-PickerItem-removeButton
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              border-radius: 15px;
-              border: none;
-              box-sizing: border-box;
-              color: #005a9e;
-              cursor: pointer;
-              display: inline-flex;
-              flex: 0 0 auto;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
-              justify-content: center;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 4px;
-              padding-right: 4px;
-              padding-top: 0;
-              position: relative;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              width: 32px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > span {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              background-color: inherit;
-              color: inherit;
-            }
-            &:hover {
-              background-color: #c7e0f4;
-              color: #005a9e;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-              background: inherit;
-              border-color: Highlight;
-              color: inherit;
-            }
-            &:active {
-              background-color: #106ebe;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-              background: inherit;
-              color: inherit;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
-      >
-        <span
-          className=
-              ms-Button-flexContainer
               {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
+                flex-shrink: 0;
+                font-size: 16px;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                text-align: center;
               }
-          data-automationid="splitbuttonprimary"
+          data-icon-name="Cancel"
+          style="font-family: \\"FabricMDL2Icons\\"; font-size: 14px;"
         >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  text-decoration: inherit;
-                }
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-                {
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  text-align: center;
-                }
-            data-icon-name="Cancel"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-                "fontSize": "14px",
-              }
-            }
-          >
-            
-          </i>
-        </span>
-      </button>
-    </div>
-  </div>,
-]
+          
+        </i>
+      </span>
+    </button>
+  </div>
+</div>
 `;
 
 exports[`SelectedPeopleList renders personas that are passed in as default 1`] = `
-Array [
+<div
+  aria-labelledby="selectedItemPersona-id__16"
+  class=
+      ms-PickerPersona-container
+      {
+        align-items: center;
+        background: #eff6fc;
+        border-radius: 15px;
+        cursor: default;
+        display: inline-flex;
+        margin-bottom: 4px;
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-top: 4px;
+        position: relative;
+        user-select: none;
+        vertical-align: middle;
+      }
+      &:hover {
+        background: #deecf9;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+        background: Highlight;
+        border: 1px solid ButtonText;
+        color: HighlightText;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
+        color: HighlightText;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
+        color: HighlightText;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+        -ms-high-contrast-adjust: none;
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
+        color: ButtonText;
+      }
+  data-is-focusable="true"
+  data-is-sub-focuszone="true"
+  data-selection-index="0"
+  role="option"
+>
   <div
-    aria-labelledby="selectedItemPersona-id__16"
-    className=
-        ms-PickerPersona-container
+    hidden=""
+  >
+    <button
+      class=
+          ms-Button
+          ms-Button--icon
+          ms-PickerItem-removeButton
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            background-color: transparent;
+            border-radius: 15px 0px 0px 15px;
+            border: none;
+            box-sizing: border-box;
+            color: #005a9e;
+            cursor: pointer;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            justify-content: center;
+            margin-right: -17px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 4px;
+            padding-right: 16px;
+            padding-top: 0;
+            position: inherit;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            width: 44px;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > span {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            background-color: inherit;
+            color: inherit;
+          }
+          &:hover {
+            background-color: #c7e0f4;
+            color: #005a9e;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+            background: inherit;
+            border-color: Highlight;
+            color: inherit;
+          }
+          &:active {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
+            background: inherit;
+            color: inherit;
+          }
+      data-is-focusable="true"
+      type="button"
+    >
+      <span
+        class=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+        data-automationid="splitbuttonprimary"
+      >
+        <i
+          aria-hidden="true"
+          class=
+              ms-Icon
+              ms-Button-icon
+              {
+                display: inline-block;
+                text-decoration: inherit;
+              }
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 16px;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                text-align: center;
+              }
+          data-icon-name="Add"
+          style="font-family: \\"FabricMDL2Icons\\"; font-size: 14px;"
+        >
+          
+        </i>
+      </span>
+    </button>
+  </div>
+  <div
+    class=
+
         {
-          align-items: center;
-          background: #eff6fc;
-          border-radius: 15px;
-          cursor: default;
-          display: inline-flex;
-          margin-bottom: 4px;
-          margin-left: 4px;
-          margin-right: 4px;
-          margin-top: 4px;
+          display: inherit;
           position: relative;
-          user-select: none;
-          vertical-align: middle;
         }
-        &:hover {
-          background: #deecf9;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-          background: Highlight;
-          border: 1px solid ButtonText;
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-          -ms-high-contrast-adjust: none;
-          background: ButtonFace;
-          border: 1px solid ButtonText;
-          color: ButtonText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
-          color: ButtonText;
-        }
-    data-is-focusable={true}
-    data-is-sub-focuszone={true}
-    data-selection-index={0}
-    role="option"
   >
     <div
-      hidden={true}
+      class=
+          ms-PickerItem-content
+          {
+            flex: 0 1 auto;
+            max-width: 100%;
+            min-width: 0px;
+          }
+      id="selectedItemPersona-id__16"
     >
-      <button
-        className=
-            ms-Button
-            ms-Button--icon
-            ms-PickerItem-removeButton
+      <div
+        class=
+            ms-Persona
+            ms-Persona--size32
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               align-items: center;
-              background-color: transparent;
-              border-radius: 15px 0px 0px 15px;
-              border: none;
+              box-shadow: none;
               box-sizing: border-box;
-              color: #005a9e;
-              cursor: pointer;
+              color: inherit;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
-              justify-content: center;
-              margin-right: -17px;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 4px;
-              padding-right: 16px;
-              padding-top: 0;
-              position: inherit;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              width: 44px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > span {
-              left: 0px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-width: 32px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               position: relative;
-              top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              background-color: inherit;
-              color: inherit;
+            & .contextualHost {
+              display: none;
             }
-            &:hover {
-              background-color: #c7e0f4;
-              color: #005a9e;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-              background: inherit;
-              border-color: Highlight;
-              color: inherit;
-            }
-            &:active {
-              background-color: #106ebe;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-              background: inherit;
-              color: inherit;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
-      >
-        <span
-          className=
-              ms-Button-flexContainer
-              {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
-              }
-          data-automationid="splitbuttonprimary"
-        >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  text-decoration: inherit;
-                }
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-                {
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  text-align: center;
-                }
-            data-icon-name="Add"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-                "fontSize": "14px",
-              }
-            }
-          >
-            
-          </i>
-        </span>
-      </button>
-    </div>
-    <div
-      className=
-
-          {
-            display: inherit;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-PickerItem-content
-            {
-              flex: 0 1 auto;
-              max-width: 100%;
-              min-width: 0px;
-            }
-        id="selectedItemPersona-id__16"
       >
         <div
-          className=
-              ms-Persona
+          class=
+              ms-Persona-coin
               ms-Persona--size32
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                align-items: center;
-                box-shadow: none;
-                box-sizing: border-box;
-                color: inherit;
-                display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
-                min-width: 32px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-                position: relative;
               }
-              & .contextualHost {
-                display: none;
-              }
+          role="presentation"
         >
           <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
+            class=
+                ms-Persona-imageArea
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  flex: 0 0 auto;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  width: 32px;
                 }
             role="presentation"
           >
             <div
-              className=
-                  ms-Persona-imageArea
+              aria-hidden="true"
+              class=
+                  ms-Persona-initials
                   {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-              role="presentation"
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #69797E;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 600;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                      forced-color-adjust: none;
-                    }
-                    & i {
-                      font-weight: 600;
-                    }
-              >
-                <span>
-                  PA
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            className=
-                ms-Persona-details
-                {
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-around;
-                  min-width: 0px;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
-                  text-align: left;
-                  width: 100%;
-                }
-          >
-            <div
-              className=
-                  ms-Persona-primaryText
-                  {
-                    color: #005a9e;
+                    background-color: #69797E;
+                    border-radius: 50%;
+                    color: #ffffff;
                     font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-                  &:hover {
-                    color: #005a9e;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-                    color: inherit;
+                    font-weight: 600;
+                    height: 32px;
+                    line-height: 32px;
                   }
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    color: inherit;
+                    -ms-high-contrast-adjust: none;
+                    background-color: Window !important;
+                    border: 1px solid WindowText;
+                    box-sizing: border-box;
+                    color: WindowText;
+                    forced-color-adjust: none;
                   }
-              dir="auto"
+                  & i {
+                    font-weight: 600;
+                  }
             >
+              <span>
+                PA
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class=
+              ms-Persona-details
+              {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                min-width: 0px;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                text-align: left;
+                width: 100%;
+              }
+        >
+          <div
+            class=
+                ms-Persona-primaryText
+                {
+                  color: #005a9e;
+                  font-size: 14px;
+                  font-weight: 400;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+                &:hover {
+                  color: #005a9e;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+                  color: inherit;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  color: inherit;
+                }
+            dir="auto"
+          >
+            <div
+              class=
+                  ms-TooltipHost
+                  {
+                    display: inline;
+                  }
+              role="none"
+            >
+              Person A
               <div
-                className=
-                    ms-TooltipHost
-                    {
-                      display: inline;
-                    }
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onKeyDown={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                role="none"
+                hidden=""
+                id="tooltip20"
+                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Person A
-                <div
-                  hidden={true}
-                  id="tooltip20"
-                  style={
-                    Object {
-                      "border": 0,
-                      "height": 1,
-                      "margin": -1,
-                      "overflow": "hidden",
-                      "padding": 0,
-                      "position": "absolute",
-                      "whiteSpace": "nowrap",
-                      "width": 1,
-                    }
-                  }
-                >
-                  Person A
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <button
-        className=
-            ms-Button
-            ms-Button--icon
-            ms-PickerItem-removeButton
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              border-radius: 15px;
-              border: none;
-              box-sizing: border-box;
-              color: #005a9e;
-              cursor: pointer;
-              display: inline-flex;
-              flex: 0 0 auto;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
-              justify-content: center;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 4px;
-              padding-right: 4px;
-              padding-top: 0;
-              position: relative;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              width: 32px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > span {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              background-color: inherit;
-              color: inherit;
-            }
-            &:hover {
-              background-color: #c7e0f4;
-              color: #005a9e;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-              background: inherit;
-              border-color: Highlight;
-              color: inherit;
-            }
-            &:active {
-              background-color: #106ebe;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-              background: inherit;
-              color: inherit;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
-      >
-        <span
-          className=
-              ms-Button-flexContainer
-              {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
-              }
-          data-automationid="splitbuttonprimary"
-        >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  text-decoration: inherit;
-                }
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-                {
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  text-align: center;
-                }
-            data-icon-name="Cancel"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-                "fontSize": "14px",
-              }
-            }
-          >
-            
-          </i>
-        </span>
-      </button>
     </div>
-  </div>,
-  <div
-    aria-labelledby="selectedItemPersona-id__24"
-    className=
-        ms-PickerPersona-container
-        {
-          align-items: center;
-          background: #eff6fc;
-          border-radius: 15px;
-          cursor: default;
-          display: inline-flex;
-          margin-bottom: 4px;
-          margin-left: 4px;
-          margin-right: 4px;
-          margin-top: 4px;
-          position: relative;
-          user-select: none;
-          vertical-align: middle;
-        }
-        &:hover {
-          background: #deecf9;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-          background: Highlight;
-          border: 1px solid ButtonText;
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
-          color: HighlightText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-          -ms-high-contrast-adjust: none;
-          background: ButtonFace;
-          border: 1px solid ButtonText;
-          color: ButtonText;
-        }
-        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
-          color: ButtonText;
-        }
-    data-is-focusable={true}
-    data-is-sub-focuszone={true}
-    data-selection-index={1}
-    role="option"
-  >
-    <div
-      hidden={true}
-    >
-      <button
-        className=
-            ms-Button
-            ms-Button--icon
-            ms-PickerItem-removeButton
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              border-radius: 15px 0px 0px 15px;
-              border: none;
-              box-sizing: border-box;
-              color: #005a9e;
-              cursor: pointer;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
-              justify-content: center;
-              margin-right: -17px;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 4px;
-              padding-right: 16px;
-              padding-top: 0;
-              position: inherit;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              width: 44px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > span {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              background-color: inherit;
-              color: inherit;
-            }
-            &:hover {
-              background-color: #c7e0f4;
-              color: #005a9e;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-              background: inherit;
-              border-color: Highlight;
-              color: inherit;
-            }
-            &:active {
-              background-color: #106ebe;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-              background: inherit;
-              color: inherit;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
-      >
-        <span
-          className=
-              ms-Button-flexContainer
-              {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
-              }
-          data-automationid="splitbuttonprimary"
-        >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  text-decoration: inherit;
-                }
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-                {
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  text-align: center;
-                }
-            data-icon-name="Add"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-                "fontSize": "14px",
-              }
-            }
-          >
-            
-          </i>
-        </span>
-      </button>
-    </div>
-    <div
-      className=
-
+    <button
+      class=
+          ms-Button
+          ms-Button--icon
+          ms-PickerItem-removeButton
           {
-            display: inherit;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            background-color: transparent;
+            border-radius: 15px;
+            border: none;
+            box-sizing: border-box;
+            color: #005a9e;
+            cursor: pointer;
+            display: inline-flex;
+            flex: 0 0 auto;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            justify-content: center;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 0;
             position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            width: 32px;
           }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > span {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            background-color: inherit;
+            color: inherit;
+          }
+          &:hover {
+            background-color: #c7e0f4;
+            color: #005a9e;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+            background: inherit;
+            border-color: Highlight;
+            color: inherit;
+          }
+          &:active {
+            background-color: #106ebe;
+            color: #ffffff;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
+            background: inherit;
+            color: inherit;
+          }
+      data-is-focusable="true"
+      type="button"
     >
-      <div
-        className=
-            ms-PickerItem-content
+      <span
+        class=
+            ms-Button-flexContainer
             {
-              flex: 0 1 auto;
-              max-width: 100%;
-              min-width: 0px;
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
             }
-        id="selectedItemPersona-id__24"
+        data-automationid="splitbuttonprimary"
       >
-        <div
-          className=
-              ms-Persona
-              ms-Persona--size32
+        <i
+          aria-hidden="true"
+          class=
+              ms-Icon
+              ms-Button-icon
+              {
+                display: inline-block;
+                text-decoration: inherit;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                align-items: center;
-                box-shadow: none;
-                box-sizing: border-box;
-                color: inherit;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
-                min-width: 32px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-                position: relative;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
               }
-              & .contextualHost {
-                display: none;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-              role="presentation"
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #CA5010;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 600;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                      forced-color-adjust: none;
-                    }
-                    & i {
-                      font-weight: 600;
-                    }
-              >
-                <span>
-                  PB
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            className=
-                ms-Persona-details
-                {
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: space-around;
-                  min-width: 0px;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
-                  text-align: left;
-                  width: 100%;
-                }
-          >
-            <div
-              className=
-                  ms-Persona-primaryText
-                  {
-                    color: #005a9e;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-                  &:hover {
-                    color: #005a9e;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-                    color: inherit;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    color: inherit;
-                  }
-              dir="auto"
-            >
-              <div
-                className=
-                    ms-TooltipHost
-                    {
-                      display: inline;
-                    }
-                onBlurCapture={[Function]}
-                onFocusCapture={[Function]}
-                onKeyDown={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-                role="none"
-              >
-                Person B
-                <div
-                  hidden={true}
-                  id="tooltip28"
-                  style={
-                    Object {
-                      "border": 0,
-                      "height": 1,
-                      "margin": -1,
-                      "overflow": "hidden",
-                      "padding": 0,
-                      "position": "absolute",
-                      "whiteSpace": "nowrap",
-                      "width": 1,
-                    }
-                  }
-                >
-                  Person B
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button
-        className=
-            ms-Button
-            ms-Button--icon
-            ms-PickerItem-removeButton
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              border-radius: 15px;
-              border: none;
-              box-sizing: border-box;
-              color: #005a9e;
-              cursor: pointer;
-              display: inline-flex;
-              flex: 0 0 auto;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
-              justify-content: center;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: 4px;
-              padding-right: 4px;
-              padding-top: 0;
-              position: relative;
-              text-align: center;
-              text-decoration: none;
-              user-select: none;
-              width: 32px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-              border: 1px solid transparent;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-              bottom: -2px;
-              left: -2px;
-              outline-color: ButtonText;
-              right: -2px;
-              top: -2px;
-            }
-            &:active > span {
-              left: 0px;
-              position: relative;
-              top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              background-color: inherit;
-              color: inherit;
-            }
-            &:hover {
-              background-color: #c7e0f4;
-              color: #005a9e;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-              background: inherit;
-              border-color: Highlight;
-              color: inherit;
-            }
-            &:active {
-              background-color: #106ebe;
-              color: #ffffff;
-            }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
-              background: inherit;
-              color: inherit;
-            }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        type="button"
-      >
-        <span
-          className=
-              ms-Button-flexContainer
               {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
-                height: 100%;
-                justify-content: center;
+                flex-shrink: 0;
+                font-size: 16px;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                text-align: center;
               }
-          data-automationid="splitbuttonprimary"
+          data-icon-name="Cancel"
+          style="font-family: \\"FabricMDL2Icons\\"; font-size: 14px;"
         >
-          <i
-            aria-hidden={true}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  text-decoration: inherit;
-                }
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-                {
-                  flex-shrink: 0;
-                  font-size: 16px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0;
-                  text-align: center;
-                }
-            data-icon-name="Cancel"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-                "fontSize": "14px",
-              }
-            }
-          >
-            
-          </i>
-        </span>
-      </button>
-    </div>
-  </div>,
-]
+          
+        </i>
+      </span>
+    </button>
+  </div>
+</div>
 `;

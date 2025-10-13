@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { composeRenderFunction } from './composeRenderFunction';
 import type { IRenderFunction } from '../IRenderFunction';
 
@@ -33,9 +33,8 @@ describe('composeComponentAs', () => {
   it('passes Base to DecoratorA', () => {
     const renderDecoratorAWithBase = composeRenderFunction(renderDecoratorA, renderBase);
 
-    const component = renderer.create(<>{renderDecoratorAWithBase({ value: 'test' })}</>);
-
-    expect(component.toJSON()).toMatchSnapshot();
+    const { container } = render(<>{renderDecoratorAWithBase({ value: 'test' })}</>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('passes Base to DecoratorB through DecoratorA', () => {
@@ -44,25 +43,22 @@ describe('composeComponentAs', () => {
       composeRenderFunction(renderDecoratorB, renderBase),
     );
 
-    const component = renderer.create(<>{renderDecoratorAAndBWithBase({ value: 'test' })}</>);
-
-    expect(component.toJSON()).toMatchSnapshot();
+    const { container } = render(<>{renderDecoratorAAndBWithBase({ value: 'test' })}</>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('passes Base as defaultRender to DecoratorB through DecoratorA', () => {
     const renderDecoratorAAroundB = composeRenderFunction(renderDecoratorA, renderDecoratorB);
 
-    const component = renderer.create(<>{renderDecoratorAAroundB({ value: 'test' }, renderBase)}</>);
-
-    expect(component.toJSON()).toMatchSnapshot();
+    const { container } = render(<>{renderDecoratorAAroundB({ value: 'test' }, renderBase)}</>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders without defaultRender', () => {
     const renderDecoratorAAroundB = composeRenderFunction(renderDecoratorA, renderDecoratorB);
 
-    const component = renderer.create(<>{renderDecoratorAAroundB({ value: 'test' })}</>);
-
-    expect(component.toJSON()).toMatchSnapshot();
+    const { container } = render(<>{renderDecoratorAAroundB({ value: 'test' })}</>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('avoids recomposing already-composed components', () => {
