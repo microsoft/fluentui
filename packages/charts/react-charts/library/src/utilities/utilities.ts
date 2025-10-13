@@ -912,7 +912,9 @@ export const createStringYAxis = (
 
 // changing the type to any as it is used by multiple charts with different data types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function calloutData(values: ((LineChartPoints | ScatterChartPoints) & { index?: number })[]) {
+export function calloutData(
+  values: ((LineChartPoints | ScatterChartPoints) & { index?: number })[],
+): Record<string, YValueHover[]> {
   let combinedResult: ((LineChartDataPoint | ScatterChartDataPoint) & {
     legend: string;
     color?: string;
@@ -2383,7 +2385,7 @@ export function precisionRound(value: number, precision: number, base: number = 
 export const findCalloutPoints = (
   calloutPointsByX: Record<string, YValueHover[]>,
   x: string | number | Date | null,
-) => {
+): { x: string | number | Date; values: YValueHover[] } | undefined => {
   if (x === null) {
     return undefined;
   }
