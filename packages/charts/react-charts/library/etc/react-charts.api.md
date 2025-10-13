@@ -769,6 +769,7 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: GroupedVerticalBarChartData[];
+    dataV2?: (IBarSeries<string, number> | ILineSeries<string, number>)[];
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
@@ -795,7 +796,7 @@ export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns;
 // @public (undocumented)
 export interface GVBarChartSeriesPoint {
     callOutAccessibilityData?: AccessibilityProps;
-    color: string;
+    color?: string;
     data: number;
     key: string;
     legend: string;
@@ -983,10 +984,51 @@ export interface HorizontalDataPoint {
     x: number;
 }
 
+// @public
+export interface IBarSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+    data: IDataPointV2<X, Y>[];
+    key?: string;
+    type: 'bar';
+}
+
+// @public
+export interface IDataPointV2<X extends string | number | Date, Y extends string | number | Date> {
+    callOutAccessibilityData?: AccessibilityProps;
+    color?: string;
+    markerSize?: number;
+    onClick?: () => void;
+    text?: string;
+    x: X;
+    xAxisCalloutData?: string;
+    y: Y;
+    yAxisCalloutData?: string;
+}
+
+// @public
+export interface IDataSeries {
+    color?: string;
+    gradient?: [string, string];
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
+}
+
 // @public (undocumented)
 export interface IDeclarativeChart {
     // (undocumented)
     exportAsImage: (opts?: ImageExportOptions) => Promise<string>;
+}
+
+// @public
+export interface ILineSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+    data: IDataPointV2<X, Y>[];
+    gaps?: LineChartGap[];
+    hideInactiveDots?: boolean;
+    lineOptions?: LineChartLineOptions;
+    onLineClick?: () => void;
+    type: 'line';
 }
 
 // @public (undocumented)

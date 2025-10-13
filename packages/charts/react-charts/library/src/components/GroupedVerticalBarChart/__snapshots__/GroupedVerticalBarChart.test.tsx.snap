@@ -12,7 +12,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+        aria-label="Vertical bar chart with 2 grouped bar series. "
         class="fui-cart__chart"
         height="300"
         style="display: block;"
@@ -200,6 +200,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -425,7 +431,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
       data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+        aria-label="Vertical bar chart with 2 grouped bar series. "
         class="fui-cart__chart"
         height="300"
         style="display: block;"
@@ -613,6 +619,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -845,7 +857,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         tabindex="0"
       />
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+        aria-label="Vertical bar chart with 2 grouped bar series. "
         class="fui-cart__chart"
         height="300"
         style="display: block;"
@@ -1033,6 +1045,12 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             </text>
           </g>
         </g>
+        <rect
+          fill="transparent"
+          height="100%"
+          style="pointer-events: none;"
+          width="100%"
+        />
         <g>
           <g
             transform="translate(252.33333333333331, 0)"
@@ -1265,7 +1283,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr39"
+      id="calloutr44"
     >
       <div
         class="fui-PopoverSurface"
@@ -1333,7 +1351,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            aria-label="Vertical bar chart with 2 grouped bar series. "
             class="fui-cart__chart"
             height="300"
             style="display: block;"
@@ -1521,6 +1539,12 @@ Object {
                 </text>
               </g>
             </g>
+            <rect
+              fill="transparent"
+              height="100%"
+              style="pointer-events: none;"
+              width="100%"
+            />
             <g>
               <g
                 transform="translate(252.33333333333331, 0)"
@@ -1744,7 +1768,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          aria-label="Vertical bar chart with 2 grouped bar series. "
           class="fui-cart__chart"
           height="300"
           style="display: block;"
@@ -1932,6 +1956,12 @@ Object {
               </text>
             </g>
           </g>
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
           <g>
             <g
               transform="translate(252.33333333333331, 0)"
@@ -2214,7 +2244,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            aria-label="Vertical bar chart with 2 grouped bar series. "
             class="fui-cart__chart"
             height="300"
             style="display: block;"
@@ -2402,6 +2432,12 @@ Object {
                 </text>
               </g>
             </g>
+            <rect
+              fill="transparent"
+              height="100%"
+              style="pointer-events: none;"
+              width="100%"
+            />
             <g>
               <g
                 transform="translate(252.33333333333331, 0)"
@@ -2632,7 +2668,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          aria-label="Vertical bar chart with 2 grouped bar series. "
           class="fui-cart__chart"
           height="300"
           style="display: block;"
@@ -2820,6 +2856,12 @@ Object {
               </text>
             </g>
           </g>
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
           <g>
             <g
               transform="translate(252.33333333333331, 0)"
@@ -3109,7 +3151,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            aria-label="Vertical bar chart with 2 grouped bar series. "
             class="fui-cart__chart"
             height="50"
             style="display: block;"
@@ -3297,6 +3339,12 @@ Object {
                 </text>
               </g>
             </g>
+            <rect
+              fill="transparent"
+              height="100%"
+              style="pointer-events: none;"
+              width="100%"
+            />
             <g>
               <g
                 transform="translate(252.33333333333331, 0)"
@@ -3465,7 +3513,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          aria-label="Vertical bar chart with 2 grouped bar series. "
           class="fui-cart__chart"
           height="50"
           style="display: block;"
@@ -3653,6 +3701,12 @@ Object {
               </text>
             </g>
           </g>
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
           <g>
             <g
               transform="translate(252.33333333333331, 0)"
@@ -3880,7 +3934,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            aria-label="Vertical bar chart with 2 grouped bar series. "
             class="fui-cart__chart"
             height="300"
             style="display: block;"
@@ -4068,6 +4122,12 @@ Object {
                 </text>
               </g>
             </g>
+            <rect
+              fill="transparent"
+              height="100%"
+              style="pointer-events: none;"
+              width="100%"
+            />
             <g>
               <g
                 transform="translate(252.33333333333331, 0)"
@@ -4291,7 +4351,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          aria-label="Vertical bar chart with 2 grouped bar series. "
           class="fui-cart__chart"
           height="300"
           style="display: block;"
@@ -4479,6 +4539,12 @@ Object {
               </text>
             </g>
           </g>
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
           <g>
             <g
               transform="translate(252.33333333333331, 0)"
@@ -4761,7 +4827,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            aria-label="Vertical bar chart with 2 grouped bar series. "
             class="fui-cart__chart"
             height="300"
             style="display: block;"
@@ -4991,6 +5057,12 @@ Object {
                 </text>
               </g>
             </g>
+            <rect
+              fill="transparent"
+              height="100%"
+              style="pointer-events: none;"
+              width="100%"
+            />
             <g>
               <g
                 transform="translate(252.33333333333331, 0)"
@@ -5204,7 +5276,7 @@ Object {
     </div>
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_r1t"
+      id="GVBCTooltipId_r2d"
       style="opacity: 0;"
     />
   </body>,
@@ -5219,7 +5291,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          aria-label="Vertical bar chart with 2 grouped bar series. "
           class="fui-cart__chart"
           height="300"
           style="display: block;"
@@ -5449,6 +5521,12 @@ Object {
               </text>
             </g>
           </g>
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
           <g>
             <g
               transform="translate(252.33333333333331, 0)"
@@ -5722,7 +5800,7 @@ Object {
   >
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_r1t"
+      id="GVBCTooltipId_r2d"
       style="opacity: 0;"
     />
     <div>
@@ -5736,7 +5814,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            aria-label="Vertical bar chart with 2 grouped bar series. "
             class="fui-cart__chart"
             height="300"
             style="display: block;"
@@ -6012,6 +6090,12 @@ Object {
                 </text>
               </g>
             </g>
+            <rect
+              fill="transparent"
+              height="100%"
+              style="pointer-events: none;"
+              width="100%"
+            />
             <g>
               <g
                 transform="translate(252.33333333333331, 0)"
@@ -6235,7 +6319,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          aria-label="Vertical bar chart with 2 grouped bar series. "
           class="fui-cart__chart"
           height="300"
           style="display: block;"
@@ -6511,6 +6595,12 @@ Object {
               </text>
             </g>
           </g>
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
           <g>
             <g
               transform="translate(252.33333333333331, 0)"
@@ -6784,7 +6874,7 @@ Object {
   >
     <div
       class="fui-gvbc**tooltip"
-      id="GVBCTooltipId_r1t"
+      id="GVBCTooltipId_r2d"
       style="opacity: 0;"
     />
     <div>
@@ -6798,7 +6888,7 @@ Object {
           data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+            aria-label="Vertical bar chart with 2 grouped bar series. "
             class="fui-cart__chart"
             height="300"
             style="display: block;"
@@ -6986,6 +7076,12 @@ Object {
                 </text>
               </g>
             </g>
+            <rect
+              fill="transparent"
+              height="100%"
+              style="pointer-events: none;"
+              width="100%"
+            />
             <g>
               <g
                 transform="translate(252.33333333333331, 0)"
@@ -7209,7 +7305,7 @@ Object {
         data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. "
+          aria-label="Vertical bar chart with 2 grouped bar series. "
           class="fui-cart__chart"
           height="300"
           style="display: block;"
@@ -7397,6 +7493,12 @@ Object {
               </text>
             </g>
           </g>
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
           <g>
             <g
               transform="translate(252.33333333333331, 0)"
