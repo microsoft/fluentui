@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
@@ -175,12 +175,12 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
       const value: string = argType?.type?.name;
 
       // If DocGen was already transformed, skip the transformation but set hasArgAsSlot to true so that we can show the info message
-      if (value.includes('Slot')) {
+      if (value.includes('Slot<')) {
         hasArgAsSlot = true;
         return;
       }
       // Initial Render Transformation for shorthand slot values (mutates DocGen Object reference)
-      if (value.includes('WithSlotShorthandValue')) {
+      if (value.includes('WithSlotShorthandValue') || value.startsWith('({ as?: "')) {
         hasArgAsSlot = true;
         const match = value.match(slotRegex);
         if (match) {
@@ -199,7 +199,7 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
     }
   };
 
-  const component = story.component as InternalComponentApi;
+  const component = story.moduleExport as InternalComponentApi;
   const subcomponents = story.subcomponents as Record<string, InternalComponentApi>;
 
   if (options.slotsApi) {
@@ -237,7 +237,7 @@ const RenderArgsTable = ({
   showSlotsApi?: boolean;
   showNativePropsApi?: boolean;
 }) => {
-  const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
+  const { hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
     slotsApi: showSlotsApi,
     nativePropsApi: showNativePropsApi,
   });
@@ -281,7 +281,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgsTable of={component} />
+      <ArgTypes />
     </>
   );
 };
@@ -334,8 +334,11 @@ export const FluentDocsPage = (): JSXElement => {
         <Title />
         <Subtitle />
         <Description />
-        <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-        <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
+        <RenderPrimaryStory
+          primaryStory={primaryStory as unknown as PrimaryStory}
+          skipPrimaryStory={skipPrimaryStory}
+        />
+        <RenderArgsTable story={primaryStory as unknown as PrimaryStory} hideArgsTable={hideArgsTable} />
         <Stories />
       </div>
     );
@@ -377,9 +380,12 @@ export const FluentDocsPage = (): JSXElement => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+          <RenderPrimaryStory
+            primaryStory={primaryStory as unknown as PrimaryStory}
+            skipPrimaryStory={skipPrimaryStory}
+          />
           <RenderArgsTable
-            story={primaryStory}
+            story={primaryStory as unknown as PrimaryStory}
             hideArgsTable={hideArgsTable}
             showSlotsApi={argTable.slotsApi}
             showNativePropsApi={argTable.nativePropsApi}

@@ -263,7 +263,7 @@ describe('split-library-in-two generator', () => {
 
       \\\\\`\\\\\`\\\\\`js
       module.exports = {
-      stories: ['../packages/react-components/react-hello/stories/src/**/*.stories.mdx', '../packages/react-components/react-hello/stories/src/**/index.stories.@(ts|tsx)'],
+      stories: ['../packages/react-components/react-hello/stories/src/**/*.mdx', '../packages/react-components/react-hello/stories/src/**/index.stories.@(ts|tsx)'],
       }
       \\\\\`\\\\\`\\\\\`
 
@@ -298,7 +298,7 @@ describe('split-library-in-two generator', () => {
           ...rootMain,
           stories: [
             ...rootMain.stories,
-            '../src/**/*.stories.mdx',
+            '../src/**/*.mdx',
             '../src/**/index.stories.@(ts|tsx)',
           ],
           addons: [...rootMain.addons],
@@ -320,6 +320,8 @@ describe('split-library-in-two generator', () => {
 
       /** @type {typeof rootPreview.parameters} */
       export const parameters = { ...rootPreview.parameters };
+
+      export const tags = ['autodocs'];
       "
     `);
   });
@@ -432,7 +434,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
 
   module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
     ...rootMain,
-    stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
+    stories: [...rootMain.stories, '../stories/**/*.mdx', '../stories/**/index.stories.@(ts|tsx)'],
     addons: [...rootMain.addons],
     webpackFinal: (config, options) => {
       const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -452,6 +454,8 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
 
       /** @type {typeof rootPreview.parameters} */
       export const parameters = { ...rootPreview.parameters };
+
+      export const tags = ['autodocs'];
       `,
       tsConfig: {
         extends: '../tsconfig.json',

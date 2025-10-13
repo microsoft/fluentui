@@ -26,7 +26,7 @@ const argTypes: ArgTypes = {
   name: {
     control: {
       control: 'text',
-      type: 'string',
+      type: 'text',
     },
   },
 };
