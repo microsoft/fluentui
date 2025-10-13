@@ -28,7 +28,7 @@ Note that the core team does not support native Windows as a development platfor
 
 Open a command line and run:
 
-- `node -v`: Should be `^20.x.x`.
+- `node -v`: Should be `^22.x.x`.
 - `yarn -v`: Should be >= 1.15.0 but **less than 2**. If not, run `npm install -g yarn@1`.
 - `git --version` to ensure you have Git installed.
 - If using VS Code, go to a folder and run `code .` to open the folder in VS Code. If it doesn't work, open VS Code and press `F1` or `ctrl+shift+P` (`cmd+shift+P`), type `path`, and select the `Install 'code' command in PATH` option.
