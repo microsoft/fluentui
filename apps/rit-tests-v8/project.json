@@ -4,5 +4,9 @@
   "projectType": "application",
   "implicitDependencies": [],
   "tags": ["v8"],
-  "targets": {}
+  "targets": {
+    "test": {
+      "dependsOn": ["^build"]
+    }
+  }
 }
