@@ -102,7 +102,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     };
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     return (
       <Stack horizontal verticalAlign="center" grow={0} styles={headerStackStyles}>
         <Stack horizontal grow={1} verticalAlign="center">

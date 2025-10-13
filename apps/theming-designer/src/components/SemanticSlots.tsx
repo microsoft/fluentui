@@ -38,12 +38,12 @@ type ISlotNames = string[];
 
 export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (props: ISemanticSlotsProps) => {
   let slotNames: ISlotNames = [];
-  let noneSlots: JSX.Element[] = [];
-  let neutralSlots: JSX.Element[] = [];
-  let softSlots: JSX.Element[] = [];
-  let strongSlots: JSX.Element[] = [];
+  let noneSlots: React.ReactElement[] = [];
+  let neutralSlots: React.ReactElement[] = [];
+  let softSlots: React.ReactElement[] = [];
+  let strongSlots: React.ReactElement[] = [];
 
-  const semanticSlotWidget = (color: string, name: string): JSX.Element => {
+  const semanticSlotWidget = (color: string, name: string): React.ReactElement => {
     return (
       <div key={name} className={slotClassName}>
         <Stack horizontal gap={5}>
@@ -125,7 +125,7 @@ export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (prop
     }
   }
 
-  const fillVariantSlotsList = (variantType: VariantThemeType): JSX.Element[] => {
+  const fillVariantSlotsList = (variantType: VariantThemeType): React.ReactElement[] => {
     if (props.theme) {
       let currThemeVariant: ITheme;
       let noneVariant = getVariant(props.theme, VariantThemeType.None);
@@ -154,7 +154,7 @@ export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (prop
           }
         }
       }
-      const tempJSXList: JSX.Element[] = [];
+      const tempJSXList: React.ReactElement[] = [];
       for (let i = 0; i < slotNames.length; i++) {
         let slot = slotNames[i];
         let currSlotJSX = semanticSlotWidget(currVariantSemanticSlots[slot as keyof ISemanticColors], mapping[slot]);

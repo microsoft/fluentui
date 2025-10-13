@@ -63,7 +63,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
 
     this.state = {
-      themeRules: themeRules,
+      themeRules,
       colorPickerSlotRule: null,
       colorPickerElement: null,
       colorPickerVisible: false,
@@ -86,7 +86,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
     this._async.dispose();
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
 
     const fabricThemeSlots = [
@@ -270,7 +270,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
         true,
         true,
       );
-      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+      this.setState({ themeRules }, this._makeNewTheme);
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
     // but high enough that quick changes don't get bogged down by a million changes inbetween
@@ -298,7 +298,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
     }
   };
 
-  private _slotWidget = (slotRule: IThemeSlotRule): JSX.Element => {
+  private _slotWidget = (slotRule: IThemeSlotRule): React.ReactElement => {
     return (
       <div key={slotRule.name} className="ms-themer-slot">
         {this._colorSquareSwatchWidget(slotRule)}
@@ -310,11 +310,11 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
     );
   };
 
-  private _fabricSlotWidget = (fabricSlot: FabricSlots): JSX.Element => {
+  private _fabricSlotWidget = (fabricSlot: FabricSlots): React.ReactElement => {
     return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
   };
 
-  private _colorSquareSwatchWidget(slotRule: IThemeSlotRule): JSX.Element {
+  private _colorSquareSwatchWidget(slotRule: IThemeSlotRule): React.ReactElement {
     return (
       <div
         key={slotRule.name}
@@ -325,7 +325,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
     );
   }
 
-  private _accessibilityRow = (foreground: FabricSlots, background: FabricSlots): JSX.Element => {
+  private _accessibilityRow = (foreground: FabricSlots, background: FabricSlots): React.ReactElement => {
     const themeRules = this.state.themeRules;
     const bgc: IColor = themeRules[FabricSlots[background]].color!;
     const fgc: IColor = themeRules[FabricSlots[foreground]].color!;
@@ -346,8 +346,8 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
     );
   };
 
-  private _accessibilityTableBody = (): JSX.Element => {
-    const accessibilityRows: JSX.Element[] = [
+  private _accessibilityTableBody = (): React.ReactElement => {
+    const accessibilityRows: React.ReactElement[] = [
       this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white), // default
       // primary color also needs to be accessible, this is also strong variant default
       this._accessibilityRow(FabricSlots.white, FabricSlots.themePrimary),
@@ -375,7 +375,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
     return <tbody>{accessibilityRows}</tbody>;
   };
 
-  private _outputSection = (): JSX.Element => {
+  private _outputSection = (): React.ReactElement => {
     const themeRules = this.state.themeRules;
 
     // strip out the unnecessary shade slots from the final output theme
@@ -453,7 +453,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
     console.log('New theme:', finalTheme);
   };
 
-  private _baseColorSlotPicker = (baseSlot: BaseSlots, title: string): JSX.Element => {
+  private _baseColorSlotPicker = (baseSlot: BaseSlots, title: string): React.ReactElement => {
     let colorChangeTimeout: number;
 
     const onChange = (ev: React.MouseEvent<HTMLElement>, newColor: IColor): void => {
@@ -468,7 +468,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
           // isInverted got swapped, so need to refresh slots with new shading rules
           ThemeGenerator.insureSlots(themeRules, !currentIsDark);
         }
-        this.setState({ themeRules: themeRules }, this._makeNewTheme);
+        this.setState({ themeRules }, this._makeNewTheme);
       }, 20);
       // 20ms is low enough that you can slowly drag to change color and see that theme,
       // but high enough that quick changes don't get bogged down by a million changes inbetween
