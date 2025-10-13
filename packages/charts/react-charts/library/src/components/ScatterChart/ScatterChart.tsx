@@ -15,7 +15,6 @@ import {
   createStringYAxis,
   getDomainPaddingForMarkers,
   domainRangeOfXStringAxis,
-  find,
   findNumericMinMaxOfY,
   IDomainNRange,
   YAxisType,
@@ -27,6 +26,7 @@ import {
   domainRangeOfDateForAreaLineScatterVerticalBarCharts,
   domainRangeOfNumericForAreaLineScatterCharts,
   sortAxisCategories,
+  findCalloutPoints,
 } from '../../utilities/index';
 import {
   AccessibilityProps,
@@ -40,6 +40,7 @@ import {
   ImageExportOptions,
   LegendContainer,
   ScatterChartPoints,
+  YValueHover,
 } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import {
@@ -77,8 +78,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const _emptyChartId: string = useId('_ScatterChart_empty');
   let _points: ScatterChartDataWithIndex[] = _injectIndexPropertyInScatterChartData(props.data.scatterChartData);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let _calloutPoints: any[] = calloutData(_points) || [];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xAxisScale: any = '';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _yAxisScale: any = '';
@@ -96,7 +95,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
-  const [YValueHover, setYValueHover] = React.useState<[]>([]);
+  const [yValueHover, setYValueHover] = React.useState<YValueHover[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>([]);
   const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
@@ -151,7 +150,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
 
   const pointsRef = React.useRef<ScatterChartDataWithIndex[] | []>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const calloutPointsRef = React.useRef<any[]>([]);
+  const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
   React.useEffect(() => {
     /** note that height and width are not used to resize or set as dimesions of the chart,
      * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
@@ -567,8 +566,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     updatePosition(cx, cy);
     _uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
-    const xVal = x instanceof Date ? x.getTime() : x;
-    const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
+    const found = findCalloutPoints(calloutPointsRef.current, x) as CustomizedCalloutData | undefined;
     // if no points need to be called out then don't show vertical line and callout card
 
     if (found) {
@@ -591,7 +589,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
 
   function _handleHover(
     x: number | Date | string,
-    y: number | Date,
+    y: number,
     lineHeight: number,
     xAxisCalloutData: string | undefined,
     circleId: string,
@@ -600,8 +598,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   ) {
     mouseEvent?.persist();
     const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
-    const xVal = x instanceof Date ? x.getTime() : x;
-    const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
+    const found = findCalloutPoints(calloutPointsRef.current, x) as CustomizedCalloutData | undefined;
     // if no points need to be called out then don't show vertical line and callout card
 
     if (found) {
@@ -696,7 +693,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let points = _points as ScatterChartPoints[];
   if (legendProps && !!legendProps.canSelectMultipleLegends) {
     points = selectedLegendPoints.length >= 1 ? selectedLegendPoints : _points;
-    _calloutPoints = calloutData(points);
+    calloutPointsRef.current = calloutData(points);
   }
 
   let legendBars = null;
@@ -707,7 +704,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
   }
   const calloutProps = {
-    YValueHover,
+    YValueHover: yValueHover,
     hoverXValue,
     descriptionMessage:
       props.getCalloutDescriptionMessage && stackCalloutProps

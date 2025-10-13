@@ -11,7 +11,7 @@ import { line as d3Line } from 'd3-shape';
 import { max as d3Max } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { find, YAxisType } from '../../utilities/index';
+import { find, findCalloutPoints, YAxisType } from '../../utilities/index';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -26,6 +26,7 @@ import {
   LineChartDataPoint,
   Chart,
   ImageExportOptions,
+  YValueHover,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
@@ -149,8 +150,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let _isScatterPolar: boolean = false;
     let _points: LineChartDataWithIndex[] = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let _calloutPoints: any[] = calloutData(_points) || [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _xAxisScale: any = '';
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _yScalePrimary: any = '';
@@ -184,7 +183,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [activeLegend, setActiveLegend] = React.useState<string>('');
-    const [YValueHover, setYValueHover] = React.useState<[]>([]);
+    const [yValueHover, setYValueHover] = React.useState<YValueHover[]>([]);
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
     const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>(
       _injectIndexPropertyInLineChartData(props.data.lineChartData, true),
@@ -205,7 +204,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
-    const calloutPointsRef = React.useRef<any[]>([]);
+    const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
     const classes = useLineChartStyles(props);
     React.useEffect(() => {
       /** note that height and width are not used to resize or set as dimesions of the chart,
@@ -784,7 +783,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           );
 
           // Add individual markers if mode includes 'markers'
-          const showMarkers = lineMode?.includes('markers') || !lineMode; // Show markers by default if no mode specified
+          const showMarkers = !!lineMode?.includes('markers');
           if (showMarkers) {
             for (let k = 0; k < _points[i].data.length; k++) {
               const { x, y } = _points[i].data[k];
@@ -1300,6 +1299,37 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           }
         }
 
+        // Add filled area for scatterpolar charts
+        const fillMode = _points[i].lineOptions?.fill;
+        const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
+        if (fillMode === 'toself' && _points[i].data.length >= 3 && isLegendSelected && _isScatterPolar) {
+          const getScaledXValue = (dataPoint: LineChartDataPoint) =>
+            _xAxisScale(dataPoint.x instanceof Date ? dataPoint.x : (dataPoint.x as number));
+
+          const fillPathGenerator = d3Line<LineChartDataPoint>()
+            .x(dataPoint => getScaledXValue(dataPoint))
+            .y(dataPoint => yScale(dataPoint.y))
+            .curve(getCurveFactory(lineCurve))
+            .defined(dataPoint => isPlottable(getScaledXValue(dataPoint), yScale(dataPoint.y)));
+
+          const fillPath = fillPathGenerator(_points[i].data as LineChartDataPoint[]);
+
+          if (fillPath) {
+            linesForLine.push(
+              <path
+                key={`scatterpolar_fill_${i}`}
+                d={`${fillPath}Z`}
+                fill={lineColor}
+                fillOpacity={0.5}
+                stroke={lineColor}
+                strokeWidth={2}
+                strokeOpacity={0.8}
+                pointerEvents="none"
+              />,
+            );
+          }
+        }
+
         if (_isScatterPolar) {
           pointsForLine.push(
             ...renderScatterPolarCategoryLabels({
@@ -1479,11 +1509,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         xPointToHighlight instanceof Date
           ? formatDateToLocaleString(xPointToHighlight, props.culture, props.useUTC as boolean)
           : xPointToHighlight;
-      const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const found: any = find(_calloutPoints, (element: { x: string | number }) => {
-        return element.x === modifiedXVal;
-      });
+      const found = findCalloutPoints(calloutPointsRef.current, xPointToHighlight) as CustomizedCalloutData | undefined;
       const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[index!] as LineChartDataPoint;
       const pointToHighlightUpdated =
         nearestCircleToHighlight === null ||
@@ -1533,8 +1559,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     ) {
       _uniqueCallOutID = circleId;
       const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
-      const xVal = x instanceof Date ? x.getTime() : x;
-      const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
+      const found = findCalloutPoints(calloutPointsRef.current, x) as CustomizedCalloutData | undefined;
       // if no points need to be called out then don't show vertical line and callout card
 
       if (found) {
@@ -1559,7 +1584,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     function _handleHover(
       x: number | Date,
-      y: number | Date,
+      y: number,
       lineHeight: number,
       xAxisCalloutData: string | undefined,
       circleId: string,
@@ -1572,16 +1597,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     ) {
       mouseEvent?.persist();
       const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
-      const xVal = x instanceof Date ? x.getTime() : x;
-      const yVal = y instanceof Date ? y.getTime() : y;
-      const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
+      const found = findCalloutPoints(calloutPointsRef.current, x) as CustomizedCalloutData | undefined;
       let hoverDp: CustomizedCalloutData | undefined = undefined;
 
       if (props.isCalloutForStack === false && found?.values) {
-        const dp = find(found.values, (val: CustomizedCalloutDataPoint) => val?.y === yVal);
+        const dp = find(found.values, (val: CustomizedCalloutDataPoint) => val?.y === y);
         if (dp) {
           hoverDp = {
-            x: xVal,
+            x,
             values: [dp],
           };
         }
@@ -1599,7 +1622,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           setPopoverOpen(true);
           xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
           setYValueHover(found.values);
-          setYValue(yVal);
+          setYValue(y);
           setLegendVal(legendVal);
           setLineColor(lineColor);
           setStackCalloutProps(found!);
@@ -1776,7 +1799,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let points = _points;
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
       points = selectedLegendPoints.length >= 1 ? selectedLegendPoints : _points;
-      _calloutPoints = calloutData(points);
+      calloutPointsRef.current = calloutData(points);
     }
 
     let legendBars = null;
@@ -1787,7 +1810,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
     }
     const calloutProps = {
-      YValueHover: YValueHover,
+      YValueHover: yValueHover,
       hoverXValue: hoverXValue,
       YValue: YValue,
       legend: legendVal,

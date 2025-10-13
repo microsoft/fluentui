@@ -33,7 +33,6 @@ import {
   getSecureProps,
   areArraysEqual,
   getCurveFactory,
-  find,
   findNumericMinMaxOfY,
   createNumericYAxis,
   IDomainNRange,
@@ -42,6 +41,7 @@ import {
   createStringYAxis,
   useRtl,
   YAxisType,
+  findCalloutPoints,
 } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -241,11 +241,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
         pointToHighlight instanceof Date
           ? formatDateToLocaleString(pointToHighlight, props.culture, props.useUTC as boolean)
           : pointToHighlight;
-      const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const found: any = find(_calloutPoints, (element: { x: string | number }) => {
-        return element.x === modifiedXVal;
-      });
+      const found = findCalloutPoints(_calloutPoints, pointToHighlight);
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const _nearestCircleToHighlight =
         axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
@@ -871,19 +867,19 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
 
       const { x, y, xAxisCalloutData } = props.data.lineChartData![lineIndex].data[pointIndex];
       const formattedDate = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
-      const modifiedXVal = x instanceof Date ? x.getTime() : x;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const found: any = _calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
-      // Show details in the callout for the focused point only
-      found.values = found.values.filter((e: { y: number }) => e.y === y);
-      const filteredValues = _getFilteredLegendValues(found.values);
+      const found = findCalloutPoints(_calloutPoints, x);
+      if (found) {
+        // Show details in the callout for the focused point only
+        found.values = found.values.filter((e: { y: number }) => e.y === y);
+        const filteredValues = _getFilteredLegendValues(found.values);
 
-      setPopoverOpen(true);
-      setHoverXValue(xAxisCalloutData ? xAxisCalloutData : formattedDate);
-      setYValueHover(filteredValues!);
-      setStackCalloutProps({ ...found, values: filteredValues });
-      setDataPointCalloutProps({ ...found, values: filteredValues });
-      setActivePoint(circleId);
+        setPopoverOpen(true);
+        setHoverXValue(xAxisCalloutData ? xAxisCalloutData : formattedDate);
+        setYValueHover(filteredValues!);
+        setStackCalloutProps({ ...found, values: filteredValues });
+        setDataPointCalloutProps({ ...found, values: filteredValues });
+        setActivePoint(circleId);
+      }
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
