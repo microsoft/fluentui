@@ -248,7 +248,7 @@ export const ThirdPartyControls: Story = {
   render: renderComponent(html`
     <form action="#" style="display:flex;flex-flow:column;align-items:start;gap:10px">
       <fluent-field label-position="above" style="max-width: 400px">
-        <label slot="label" for="native-text-input">Color picker</label>
+        <label slot="label" for="native-color">Color picker</label>
         <input slot="input" type="color" id="native-color" required />
       </fluent-field>
       <fluent-field label-position="after">
