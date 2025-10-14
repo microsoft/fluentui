@@ -1,0 +1,13 @@
+{
+  "codeConnect": {
+    "include": [
+      "packages/react-components/*/stories/**/*.figma.{ts,tsx}",
+      "packages/react-components/*/stories/**/*.stories.{ts,tsx}"
+    ],
+    "exclude": ["node_modules/**", "dist/**", "build/**"],
+    "parser": "react",
+    "docs": {
+      "storybookUrl": "http://localhost:3000"
+    }
+  }
+}
