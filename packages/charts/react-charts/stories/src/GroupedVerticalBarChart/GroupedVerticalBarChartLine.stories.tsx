@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-charts';
 import { Field, Label, Radio, RadioGroup, Slider, Switch, useId } from '@fluentui/react-components';
 
-const data: GroupedVerticalBarChartProps['dataV2'] = [
+const chartData: GroupedVerticalBarChartProps['dataV2'] = [
   {
     type: 'bar',
     legend: '2022',
@@ -206,7 +206,7 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
       <div style={{ width, height }}>
         <GroupedVerticalBarChart
           chartTitle="Grouped Vertical Bar chart line example"
-          dataV2={data}
+          dataV2={chartData}
           height={height}
           width={width}
           isCalloutForStack={calloutVariant === 'StackCallout'}
