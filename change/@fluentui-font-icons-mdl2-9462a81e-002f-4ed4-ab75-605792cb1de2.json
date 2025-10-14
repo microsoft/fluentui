@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: resolve explicit-return tyle lint errors",
+  "packageName": "@fluentui/font-icons-mdl2",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: resolve explicit-return tyle lint errors",
+  "packageName": "@fluentui/react-hooks",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "style: resolve explicit-return tyle lint errors",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
