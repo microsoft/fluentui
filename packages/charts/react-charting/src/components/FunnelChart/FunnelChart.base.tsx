@@ -23,7 +23,6 @@ import {
 } from './funnelGeometry';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const getClassNames = classNamesFunction<IFunnelChartStyleProps, IFunnelChartStyles>();
 
 export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React.forwardRef<

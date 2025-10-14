@@ -8,7 +8,6 @@ import { getStyles } from './Pie.styles';
 import { getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const getClassNames = classNamesFunction<IPieStyleProps, IPieStyles>();
 const TEXT_PADDING: number = 5;
 

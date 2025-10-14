@@ -28,7 +28,6 @@ import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisTy
 import { ScaleBand, ScaleLinear } from 'd3-scale';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}

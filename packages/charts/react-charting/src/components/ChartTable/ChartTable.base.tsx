@@ -10,7 +10,6 @@ import { ITheme } from '@fluentui/react';
 import { resolveCSSVariables } from '../../utilities/utilities';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 function invertHexColor(hex: string, theme: ITheme): string {
   const color = d3.color(hex);
   if (!color) {

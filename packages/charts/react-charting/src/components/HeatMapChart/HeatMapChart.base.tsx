@@ -41,7 +41,6 @@ import { timeFormat as d3TimeFormat } from 'd3-time-format';
 import { toImage } from '../../utilities/image-export-utils';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 type DataSet = {
   dataSet: RectanglesGraphData;
   yAxisPoints: string[];

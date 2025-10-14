@@ -53,7 +53,6 @@ import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

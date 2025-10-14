@@ -8,7 +8,6 @@ import { format as d3Format } from 'd3-format';
 import { formatScientificLimitWidth } from '../../../utilities/index';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 export interface IArcState {
   isCalloutVisible?: boolean;
 }

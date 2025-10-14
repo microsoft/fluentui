@@ -23,7 +23,6 @@ import {
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
 export interface IRefArrayData {

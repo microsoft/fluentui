@@ -5,7 +5,6 @@ import { Pie } from './Pie/Pie';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
 
 export class PieChartBase extends React.Component<IPieChartProps, {}> {

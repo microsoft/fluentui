@@ -8,7 +8,6 @@ import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
     arc: d3Arc(),

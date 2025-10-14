@@ -8,7 +8,6 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { getColorFromToken, getNextColor } from '../../../utilities/colors';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 export class Pie extends React.Component<IPieProps, {}> {
   public static defaultProps: Partial<IPieProps> = {
     pie: d3Pie()

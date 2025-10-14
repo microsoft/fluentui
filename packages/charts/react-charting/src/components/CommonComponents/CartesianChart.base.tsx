@@ -38,7 +38,6 @@ import { SVGTooltipText, ISVGTooltipTextProps } from '../../utilities/SVGTooltip
 import { IChart } from '../../types/index';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
   import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),

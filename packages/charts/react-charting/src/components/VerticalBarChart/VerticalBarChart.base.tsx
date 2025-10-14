@@ -64,7 +64,6 @@ import { ILegendContainer } from '../Legends/index';
 import { toImage } from '../../utilities/image-export-utils';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 enum CircleVisbility {
   show = 'visibility',
   hide = 'hidden',

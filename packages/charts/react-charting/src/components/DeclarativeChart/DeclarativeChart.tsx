@@ -50,7 +50,6 @@ import { GanttChart } from '../GanttChart/index';
 import { ILegendsProps, Legends } from '../Legends/index';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
 const ResponsiveLineChart = withResponsiveContainer(LineChart);

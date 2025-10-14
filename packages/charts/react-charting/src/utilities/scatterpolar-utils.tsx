@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ScaleLinear } from 'd3-scale';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 /**
  * Helper to render categorical labels for scatterpolar charts with improved overlap logic across all series
  * Now places labels at equal angles for all unique texts, regardless of data positions.

@@ -11,7 +11,6 @@ import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
   isCalloutVisible: boolean;

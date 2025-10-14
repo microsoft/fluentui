@@ -20,7 +20,6 @@ import { Shape } from './shape';
 import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
 // This is an internal interface used for rendering the legends with unique key

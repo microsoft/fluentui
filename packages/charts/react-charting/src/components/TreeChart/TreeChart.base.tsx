@@ -17,7 +17,6 @@ import {
 import { IMargins } from '../../utilities/utilities';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 const getClassNames = classNamesFunction<ITreeStyleProps, ITreeStyles>();
 
 // Create a parent class for common tree components

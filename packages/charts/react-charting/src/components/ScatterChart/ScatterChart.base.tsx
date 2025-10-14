@@ -47,7 +47,6 @@ import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 import type { JSXElement } from '@fluentui/utilities';
 
-
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
 type ScatterChartDataWithIndex = IScatterChartPoints & { index: number };
