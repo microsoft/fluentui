@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
 import { useId, slot, useMergedRefs, mergeCallbacks, getIntrinsicElementProps } from '@fluentui/react-utilities';
@@ -66,7 +68,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     setColor(newColor);
     onChange?.(event, {
       type: 'change',
-      event: event,
+      event,
       color: newColor,
     });
   });

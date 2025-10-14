@@ -42,7 +42,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
@@ -81,7 +81,7 @@ jobs:
           git status --porcelain
           git diff-index --quiet HEAD -- || exit 1
 
-  react_integration_tests_collocated:
+  react-major-versions-integration:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     steps:
@@ -97,7 +97,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
@@ -114,7 +114,7 @@ jobs:
       - name: React Versions Integration Tests (17,19) - E2E
         id: e2e
         run: |
-          yarn nx affected -t test-rit--17--e2e,test-rit--19--e2e
+          yarn nx affected -t test-rit--17--e2e,test-rit--19--e2e --exclude='react-19-tests-v9,react-charting,react,react-hooks,react-examples,react-experiments'
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@v4
@@ -125,27 +125,21 @@ jobs:
             tmp/rit/**/cypress/screenshots/**/*.png
           retention-days: 1
 
-      - name: React Versions Integration Tests (17,19) - Test,Type-check
+      - name: React Versions Integration Tests (17,19) - Test
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--17--type-check,test-rit--19--test,test-rit--19--type-check
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--19--test --exclude='react-19-tests-v9,react-charting,react,react-hooks,react-examples,react-experiments'
 
-  react_integration_tests:
+      - name: React Versions Integration Tests (17,19) - Type-check
+        run: |
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--19--type-check --exclude='react-19-tests-v9,react-charting'
+
+  react_19_v9_source_code_typecheck:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        react: [17, 18, 19]
-        fluentui: [8, 9]
-        exclude:
-          - react: 17
-            fluentui: 8
-          - react: 19
-            fluentui: 8
-      fail-fast: false
     permissions:
       contents: 'read'
       actions: 'read'
-    name: React ${{ matrix.react }} / v${{ matrix.fluentui }} Integration
+    name: v9 source code type-check against React 19
     steps:
       - uses: actions/checkout@v4
         with:
@@ -159,105 +153,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
-      - run: yarn install --frozen-lockfile
+      - run: |
+          yarn install --frozen-lockfile
+          yarn rit --react 19 --install-deps
 
-      - name: Verify Cypress install
-        run: yarn cypress verify
-
-      - name: Affected e2e:integration Projects
-        id: affected_projects_e2e_count
-        run: |
-          affected_count=$(yarn --silent nx show projects -t e2e:integration --affected --verbose false | wc -l | tr -d ' ')
-          echo "value=$affected_count" >> $GITHUB_OUTPUT
-
-      - name: Affected type-check:integration Projects
-        id: affected_projects_type_check_count
-        run: |
-          affected_count=$(yarn --silent nx show projects -t type-check:integration --affected --verbose false | wc -l | tr -d ' ')
-          echo "value=$affected_count" >> $GITHUB_OUTPUT
-
-      - name: Affected test:integration Projects
-        id: affected_projects_test_count
-        run: |
-          affected_count=$(yarn --silent nx show projects -t test:integration --affected --verbose false | wc -l | tr -d ' ')
-          echo "value=$affected_count" >> $GITHUB_OUTPUT
-
-      - name: type-check (affected)
-        id: type-check
-        if: steps.affected_projects_type_check_count.outputs.value > 0
-        run: yarn nx run-many -p react-${{ matrix.react }}-tests-v${{ matrix.fluentui }} -t type-check:integration --nxBail
-        continue-on-error: true
-
-      - name: Prepare TSC logs
-        if: always() && steps.type-check.outcome == 'failure'
-        run: |
-          mkdir -p tsc-logs
-          yarn tsc -p apps/react-${{ matrix.react }}-tests-v${{ matrix.fluentui }}/tsconfig.react-${{ matrix.react }}.json --listFilesOnly > tsc-logs/tsc-debug-files-map.md
-
-      - name: Upload TSC logs
-        if: always() && steps.type-check.outcome == 'failure'
-        uses: actions/upload-artifact@v4
-        with:
-          name: typescript-react-${{ matrix.react }}-v${{ matrix.fluentui }}
-          path: tsc-logs
-          retention-days: 1
-
-      # run targets only on affected changes - need to run this outside nx runner context to avoid https://github.com/nrwl/nx/issues/30562
-      - name: test (affected)
-        id: test
-        if: steps.affected_projects_test_count.outputs.value > 0
-        run: |
-          yarn nx run-many -p react-${{ matrix.react }}-tests-v${{ matrix.fluentui }} -t build:integration --nxBail
-          yarn workspace @fluentui/react-${{ matrix.react }}-tests-v${{ matrix.fluentui }} test:integration
-        continue-on-error: true
-
-      # run targets only on affected changes - need to run this outside nx runner context to avoid https://github.com/nrwl/nx/issues/30562
-      - name: e2e (affected)
-        id: e2e
-        if: steps.affected_projects_e2e_count.outputs.value > 0
-        run: |
-          yarn workspace @fluentui/react-${{ matrix.react }}-tests-v${{ matrix.fluentui }} e2e:integration
-          echo $?
-        continue-on-error: true
-
-      - name: Upload Cypress screenshots if exist
-        uses: actions/upload-artifact@v4
-        if: always() && steps.e2e.outcome == 'failure'
-        with:
-          name: cypress-screenshots-react-${{ matrix.react }}-v${{ matrix.fluentui }}
-          path: |
-            apps/*/cypress/screenshots/**/*.png
-            packages/**/cypress/screenshots/**/*.png
-          retention-days: 1
-
-      - name: Integration tests summary
-        if: always()
-        run: |
-          echo "### React ${{ matrix.react }} / v${{ matrix.fluentui }} Integration Tests Results" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- Type-check: ${{ steps.type-check.outcome }}" >> $GITHUB_STEP_SUMMARY
-          echo "- E2E: ${{ steps.e2e.outcome }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Test: ${{ steps.test.outcome }}" >> $GITHUB_STEP_SUMMARY
-
-          # Treat skipped steps as successful since they indicate no affected projects
-          type_check_success=$([[ "${{ steps.type-check.outcome }}" == "success" || "${{ steps.type-check.outcome }}" == "skipped" ]] && echo "true" || echo "false")
-          e2e_success=$([[ "${{ steps.e2e.outcome }}" == "success" || "${{ steps.e2e.outcome }}" == "skipped" ]] && echo "true" || echo "false")
-          test_success=$([[ "${{ steps.test.outcome }}" == "success" || "${{ steps.test.outcome }}" == "skipped" ]] && echo "true" || echo "false")
-
-          if [[ "$type_check_success" == "true" && "$e2e_success" == "true" && "$test_success" == "true" ]]; then
-            echo "✅ React ${{ matrix.react }} / v${{ matrix.fluentui }} integration tests passed"
-            exit 0
-          else
-            echo "❌ React ${{ matrix.react }} / v${{ matrix.fluentui }} integration tests failed"
-            echo "Type-check: ${{ steps.type-check.outcome }}"
-            echo "E2E: ${{ steps.e2e.outcome }}"
-            echo "Test: ${{ steps.test.outcome }}"
-            exit 1
-          fi
+      - run: |
+          yarn nx affected -t test-rit--19--type-check --exclude='*,!react-19-tests-v9'
 
   e2e:
     if: ${{ github.repository_owner == 'microsoft' }}
@@ -282,7 +187,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 

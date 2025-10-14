@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses } from '@griffel/react';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles.styles';

@@ -12,6 +12,7 @@ import {
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IExampleState {
   dynamicData: IChartDataPoint[];
@@ -80,7 +81,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     this._changeColors = this._changeColors.bind(this);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Donut chart dynamic example',
       chartData: this.state.dynamicData,

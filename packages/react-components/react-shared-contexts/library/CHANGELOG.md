@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 08 Sep 2025 12:50:33 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Oct 2025 15:12:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.2)
+
+Thu, 02 Oct 2025 15:12:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.25.1..@fluentui/react-shared-contexts_v9.25.2)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
 
 ## [9.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.25.1)
 

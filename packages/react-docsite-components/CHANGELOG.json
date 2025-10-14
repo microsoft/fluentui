@@ -2,6 +2,120 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Tue, 14 Oct 2025 07:21:45 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.256",
+      "version": "8.13.256",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.124.1",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.374",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Oct 2025 07:20:54 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.255",
+      "version": "8.13.255",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.373",
+            "commit": "7dfabce5ac517a86b4f8ac78a10611f0c6ab8ef2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Oct 2025 07:21:59 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.254",
+      "version": "8.13.254",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.124.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/theme to v2.6.68",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-hooks to v8.9.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.372",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Oct 2025 07:20:02 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.253",
+      "version": "8.13.253",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.371",
+            "commit": "38ef2e7719b277bb3331c32097adf4d4a2e689e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Oct 2025 07:20:15 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.252",
+      "version": "8.13.252",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.370",
+            "commit": "5817f807ae266cd90111ba66d4032835766b9431"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Oct 2025 07:20:01 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.251",
+      "version": "8.13.251",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.369",
+            "commit": "572f92d4d85ea6619124ca8174a955a039c951d0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Sep 2025 07:20:50 GMT",
       "tag": "@fluentui/react-docsite-components_v8.13.250",
       "version": "8.13.250",

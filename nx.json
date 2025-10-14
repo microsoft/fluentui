@@ -160,13 +160,28 @@
         }
       },
       "include": [
+        "apps/rit-tests-v9/*",
+        "apps/rit-tests-v8/*",
+
         "tools/**/*",
         "scripts/**/*",
         "packages/eslint-plugin/**",
+
         "packages/tokens/**",
         "packages/react-conformance/**",
         "packages/react-components/**/*",
-        "packages/charts/react-charts/**/*"
+        "packages/charts/react-charts/**/*",
+
+        "packages/foundation-legacy/**",
+        "packages/jest-serializer-merge-styles/**",
+        "packages/react/**",
+        "packages/react-cards/**",
+        "packages/react-hooks/**",
+        "packages/react-focus/**",
+        "packages/react-examples/**",
+        "packages/react-experiments/**",
+        "packages/charts/react-charting/**",
+        "packages/utilities/**"
       ]
     }
   ],

@@ -1,3 +1,5 @@
+'use client';
+
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ImageSlots, ImageState } from './Image.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTeachingPopoverCarouselCard_unstable } from './useTeachingPopoverCarouselCard';
 import { renderTeachingPopoverCarouselCard_unstable } from './renderTeachingPopoverCarouselCard';

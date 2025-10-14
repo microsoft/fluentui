@@ -55,7 +55,7 @@ const getPercent = (value: number, sliderMin: number, sliderMax: number) => {
 
 const useComponentRef = (
   props: ISliderProps,
-  sliderBoxRef: React.RefObject<HTMLDivElement>,
+  sliderBoxRef: React.RefObject<HTMLDivElement | null>,
   value: number | undefined,
   range: [number, number] | undefined,
 ) => {

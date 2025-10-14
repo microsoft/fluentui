@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { SparklineProps, SparklineStyles } from './Sparkline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

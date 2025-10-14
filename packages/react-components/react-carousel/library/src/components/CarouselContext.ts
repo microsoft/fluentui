@@ -1,3 +1,5 @@
+'use client';
+
 import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { CarouselContextValue } from './CarouselContext.types';
 

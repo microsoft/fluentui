@@ -9,6 +9,8 @@ import { isConformant } from '../../common/isConformant';
 import type { IBasePickerProps, IBasePicker } from './BasePicker.types';
 import type { IPickerItemProps } from './PickerItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 function onResolveSuggestions(text: string): ISimple[] {
   return [
     'black',
@@ -67,8 +69,8 @@ describe('BasePicker', () => {
     ISimple,
     IBasePickerProps<ISimple>
   >;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const onRenderItem = (props: IPickerItemProps<ISimple>): JSX.Element => (
+
+  const onRenderItem = (props: IPickerItemProps<ISimple>): JSXElement => (
     <div key={props.item.name}>{basicRenderer(props)}</div>
   );
 
@@ -635,8 +637,7 @@ describe('BasePicker', () => {
   it('focuses the last selected item after removing input', () => {
     jest.useFakeTimers();
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSX.Element => (
+    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSXElement => (
       <div key={props.item.name} data-selection-index={props.index}>
         <button>{basicRenderer(props)}</button>
       </div>
@@ -674,8 +675,7 @@ describe('BasePicker', () => {
   it('focuses the next selected item after removing a selection', () => {
     jest.useFakeTimers();
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSX.Element => {
+    const onRenderFocusableItem = (props: IPickerItemProps<ISimple>): JSXElement => {
       return (
         <div key={props.item.name} data-selection-index={props.index}>
           <button onClick={props.onRemoveItem}>{basicRenderer(props)}</button>

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { PersonaCoin } from './index';
@@ -18,47 +17,45 @@ const testPersonaCoinStyles: IPersonaCoinComponent['styles'] = {
 //    with snapshot tests exercising permutations of the props.
 describe('PersonaCoin', () => {
   it('renders a correct persona', () => {
-    const tree = renderer.create(<PersonaCoin text="James Bond" styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="James Bond" styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a coin with the initials JB', () => {
-    const tree = renderer.create(<PersonaCoin initials="JB" styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin initials="JB" styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a red coin', () => {
-    const tree = renderer.create(<PersonaCoin initials="JB" styles={testPersonaCoinStyles} coinColor="red" />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin initials="JB" styles={testPersonaCoinStyles} coinColor="red" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a coin with a contact icon', () => {
-    const tree = renderer.create(<PersonaCoin styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a coin with a contact icon for a Chinese name', () => {
-    const tree = renderer.create(<PersonaCoin text="五号" styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="五号" styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders presence when it is passed', () => {
-    const tree = renderer.create(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders presence correctly when a very large coin is rendered', () => {
-    const tree = renderer
-      .create(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} size={100} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="五号" presence={4} styles={testPersonaCoinStyles} size={100} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders the coin with the provided image', () => {
-    const tree = renderer
-      .create(<PersonaCoin text="Ellen Grace" imageUrl={PersonaTestImages.personMale} styles={testPersonaCoinStyles} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(
+      <PersonaCoin text="Ellen Grace" imageUrl={PersonaTestImages.personMale} styles={testPersonaCoinStyles} />,
+    );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('calculates an expected initials in LTR if one was not specified', () => {

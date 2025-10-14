@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTeachingPopoverCarouselPageCount_unstable } from './useTeachingPopoverCarouselPageCount';

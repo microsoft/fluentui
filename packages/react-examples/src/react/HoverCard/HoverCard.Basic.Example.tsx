@@ -9,6 +9,7 @@ import {
   ThemeProvider,
 } from '@fluentui/react';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
+import type { JSXElement } from '@fluentui/utilities';
 
 const classNames = mergeStyleSets({
   compactCard: {
@@ -36,7 +37,7 @@ const buildColumn = (): IColumn[] => {
   return buildColumns(items).filter(column => column.name === 'location' || column.name === 'key');
 };
 
-const onRenderCompactCard = (item: IExampleItem): JSX.Element => {
+const onRenderCompactCard = (item: IExampleItem): JSXElement => {
   return (
     <div className={classNames.compactCard}>
       <a target="_blank" href={`http://wikipedia.org/wiki/${item.location}`}>
@@ -48,7 +49,7 @@ const onRenderCompactCard = (item: IExampleItem): JSX.Element => {
 
 const columns: IColumn[] = buildColumn();
 
-const onRenderExpandedCard = (item: IExampleItem): JSX.Element => {
+const onRenderExpandedCard = (item: IExampleItem): JSXElement => {
   return (
     <div className={classNames.expandedCard}>
       {item.description}
@@ -57,7 +58,7 @@ const onRenderExpandedCard = (item: IExampleItem): JSX.Element => {
   );
 };
 
-const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
+const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSXElement | string | number => {
   const expandingCardProps: IExpandingCardProps = {
     onRenderCompactCard: onRenderCompactCard,
     onRenderExpandedCard: onRenderExpandedCard,

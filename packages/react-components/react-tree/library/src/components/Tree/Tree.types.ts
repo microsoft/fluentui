@@ -55,13 +55,11 @@ export type TreeOpenChangeData = {
 );
 
 /**
- * @internal
- *
  * To avoid breaking changes on TreeNavigationData
  * we are creating a new type that extends the old one
- * and adds the new methods, and this type will not be exported
+ * and adds the new methods
  */
-type TreeNavigationDataParam = TreeNavigationData_unstable & {
+export type TreeNavigationDataParam = TreeNavigationData_unstable & {
   preventScroll(): void;
   isScrollPrevented(): boolean;
 };

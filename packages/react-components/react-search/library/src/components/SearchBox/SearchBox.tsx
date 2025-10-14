@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useSearchBox_unstable } from './useSearchBox';
 import { renderSearchBox_unstable } from './renderSearchBox';

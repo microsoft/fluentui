@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { InteractionTagProps, InteractionTagState } from './InteractionTag.types';

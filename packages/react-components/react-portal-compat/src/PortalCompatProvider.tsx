@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { fluentProviderClassNames, useThemeClassName } from '@fluentui/react-components';
 import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
