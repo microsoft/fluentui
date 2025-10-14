@@ -2,6 +2,42 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 14 Oct 2025 04:06:46 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.127",
+      "version": "3.0.0-beta.127",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e4dc9d0a2583ec18066c680daab1d1924225791d",
+            "comment": "remove aria-hidden from field labels to zoom text accessibility works, remove field text-input and text-area examples from storybook"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "45374db8331035d988a5b6e6a7781bafb854043a",
+            "comment": "[chore]: bump min version of node from 20 to 22"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Oct 2025 04:08:57 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.126",
+      "version": "3.0.0-beta.126",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c398142b3519b46bc7932df10129835caa0f96ef",
+            "comment": "[fix]: voice over in navigation mode was not announcing tabs belonging to a disabled tablist as disabled"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Oct 2025 04:08:36 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.125",
       "version": "3.0.0-beta.125",

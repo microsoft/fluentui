@@ -4,5 +4,5 @@ import * as React from 'react';
 export interface IReactProps<T> {
   children?: React.ReactNode | undefined;
   key?: React.Key | undefined;
-  ref?: React.LegacyRef<T> | undefined;
+  ref?: React.Ref<T> | undefined;
 }

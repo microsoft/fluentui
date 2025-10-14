@@ -5,7 +5,7 @@ import * as React from 'react';
  * Hook to provide an Async instance that is automatically cleaned up on dismount.
  */
 export function useAsync() {
-  const asyncRef = React.useRef<Async>();
+  const asyncRef = React.useRef<Async>(undefined);
   if (!asyncRef.current) {
     asyncRef.current = new Async();
   }

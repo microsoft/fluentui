@@ -15,6 +15,8 @@
 
 import * as React from 'react';
 
+import type { JSXElement } from './jsx';
+
 export interface IAsAsyncOptions<TProps> {
   /**
    * Callback which returns a promise resolving an object which exports the component.
@@ -71,7 +73,7 @@ export function asAsync<TProps extends {}>(
     };
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    public render(): JSX.Element | null {
+    public render(): JSXElement | null {
       // Typescript issue: the rest can't be pulled without the any cast, as TypeScript fails with rest on generics.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { forwardedRef, asyncPlaceholder: Placeholder, ...rest } = this.props as any;

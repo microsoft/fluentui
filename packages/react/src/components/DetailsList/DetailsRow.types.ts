@@ -14,6 +14,8 @@ import type { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowC
 import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import type { IFocusZoneProps } from '../../FocusZone';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * {@docCategory DetailsList}
  */
@@ -134,8 +136,8 @@ export interface IDetailsRowBaseProps
   /**
    * Callback for rendering a checkbox
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
+
+  onRenderCheck?: (props: IDetailsRowCheckProps) => JSXElement;
 
   /**
    * If provided, can be used to render a custom checkbox

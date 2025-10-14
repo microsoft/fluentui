@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { withSlots, createFactory, getSlots } from './slots';
 import { IHTMLElementSlot, IHTMLSlot } from './IHTMLSlots';
 import {
@@ -13,6 +13,7 @@ import {
   ISlottableProps,
   ISlotRender,
 } from './ISlots';
+import type { JSXElement } from '@fluentui/utilities';
 
 describe('typings', () => {
   type ITestProps = { testProp?: number };
@@ -207,108 +208,137 @@ describe('createFactory', () => {
   const defaultProp: keyof TComponentProps = 'id';
   const factoryOptions = { defaultProp };
 
-  const TestDiv = (props: any) => {
+  const TestDiv = jest.fn((props: any): JSXElement => {
     return <div {...props} />;
+  });
+
+  // Helper to extract the first argument passed to the last call of a jest mock function.
+  const getLastMockCallArg = (mockFn: jest.Mock): any => {
+    const calls = mockFn.mock.calls;
+    return calls[calls.length - 1][0];
   };
 
+  afterEach(() => {
+    TestDiv.mockClear();
+  });
+
   it(`passes componentProps without userProps`, () => {
-    const component = renderer.create(
-      createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined, undefined) as JSX.Element,
-    );
-    expect(component.root.props).toEqual({ ...componentProps, ...emptyClassName });
+    render(createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined, undefined) as JSXElement);
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({ ...componentProps, ...emptyClassName });
   });
 
   it(`passes userProp string as child`, () => {
-    const component = renderer.create(
+    render(
       createFactory<TComponentProps, string>(TestDiv)(
         componentProps,
         userPropString,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
-    expect(component.root.props).toEqual({ ...componentProps, children: userPropString, ...emptyClassName });
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      children: userPropString,
+      ...emptyClassName,
+    });
   });
 
   it(`passes userProp integer as child`, () => {
-    const component = renderer.create(
-      createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSX.Element,
-    );
-    expect(component.root.props).toEqual({ ...componentProps, children: 42, ...emptyClassName });
+    render(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSXElement);
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      children: 42,
+      ...emptyClassName,
+    });
   });
 
   it(`passes userProp string as defaultProp`, () => {
-    const component = renderer.create(
+    render(
       createFactory<TComponentProps, string>(TestDiv, factoryOptions)(
         componentProps,
         userPropString,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
-    expect(component.root.props).toEqual({ ...componentProps, [defaultProp]: userPropString, ...emptyClassName });
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      [defaultProp]: userPropString,
+      ...emptyClassName,
+    });
   });
 
   it(`passes userProp integer as defaultProp`, () => {
-    const component = renderer.create(
+    render(
       createFactory<TComponentProps, number>(TestDiv, factoryOptions)(
         componentProps,
         42,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
-    expect(component.root.props).toEqual({ ...componentProps, [defaultProp]: 42, ...emptyClassName });
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      [defaultProp]: 42,
+      ...emptyClassName,
+    });
   });
 
   it('merges userProps over componentProps', () => {
-    const component = renderer.create(
+    render(
       createFactory<TComponentProps>(TestDiv, factoryOptions)(
         componentProps,
         userProps,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
-    expect(component.root.props).toEqual({ ...componentProps, ...userProps, ...emptyClassName });
+    expect(TestDiv).toHaveBeenCalled();
+    expect(getLastMockCallArg(TestDiv)).toEqual({
+      ...componentProps,
+      ...userProps,
+      ...emptyClassName,
+    });
   });
 
   it('renders div and userProp integer as children', () => {
-    const component = renderer.create(
-      createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSX.Element,
+    const component = render(
+      createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSXElement,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders div and userProp string as children', () => {
-    const component = renderer.create(
+    const component = render(
       createFactory<TComponentProps, string>(TestDiv)(
         componentProps,
         userPropString,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders userProp span JSX with one prop', () => {
-    const component = renderer.create(
+    const component = render(
       createFactory(TestDiv)(
         componentProps,
         <span id="I should be the only prop in the output" />,
         undefined,
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders userProp span function without component props', () => {
-    const component = renderer.create(
+    const component = render(
       createFactory(TestDiv)(
         componentProps,
         undefined,
@@ -316,14 +346,13 @@ describe('createFactory', () => {
           render: () => <span id="I should be the only prop in the output" />,
         },
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders userProp span function with component props', () => {
-    const component = renderer.create(
+    const component = render(
       createFactory(TestDiv)(
         componentProps,
         undefined,
@@ -331,23 +360,21 @@ describe('createFactory', () => {
           render: props => <span {...props} id="I should be present alongside componentProps" />,
         },
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders userProp span component with component props', () => {
-    const component = renderer.create(
+    const component = render(
       createFactory(TestDiv)(
         componentProps,
         { id: 'I should be present alongside componentProps' },
         { component: 'span' },
         undefined,
-      ) as JSX.Element,
+      ) as JSXElement,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it(`passes props and type arguments to userProp function`, done => {
@@ -428,7 +455,7 @@ describe('getSlots', () => {
     expect(createdSlots.testSlot2.isSlot).toBeTruthy();
 
     // Mount to trigger slot component render functions
-    renderer.create(createdSlots.testSlot1(testSlot1Props) as JSX.Element);
-    renderer.create(createdSlots.testSlot2(testSlot2Props) as JSX.Element);
+    render(createdSlots.testSlot1(testSlot1Props) as JSXElement);
+    render(createdSlots.testSlot2(testSlot2Props) as JSXElement);
   });
 });

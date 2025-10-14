@@ -50,7 +50,7 @@ export const useLink = (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>)
   return { state, slots, slotProps };
 };
 
-const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
+const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink | null>) => {
   React.useImperativeHandle(
     props.componentRef,
     () => ({

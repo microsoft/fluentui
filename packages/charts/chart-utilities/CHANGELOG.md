@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 06 Oct 2025 07:20:14 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Oct 2025 07:20:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.33)
+
+Fri, 10 Oct 2025 07:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.32..@fluentui/chart-utilities_v1.1.33)
+
+### Patches
+
+- fix: use fallback for scatter trace when axis type is category ([PR #35281](https://github.com/microsoft/fluentui/pull/35281) by kumarkshitij@microsoft.com)
 
 ## [1.1.32](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.32)
 

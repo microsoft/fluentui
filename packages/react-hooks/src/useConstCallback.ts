@@ -12,7 +12,7 @@ import * as React from 'react';
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T {
-  const ref = React.useRef<T>();
+  const ref = React.useRef<T>(undefined);
   if (!ref.current) {
     ref.current = callback;
   }

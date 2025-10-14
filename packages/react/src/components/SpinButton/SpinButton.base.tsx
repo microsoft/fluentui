@@ -51,7 +51,7 @@ const STEP_DELAY = 75;
 
 const useComponentRef = (
   props: ISpinButtonProps,
-  input: React.RefObject<HTMLDivElement>,
+  input: React.RefObject<HTMLDivElement | null>,
   value: string | undefined,
 ) => {
   React.useImperativeHandle(

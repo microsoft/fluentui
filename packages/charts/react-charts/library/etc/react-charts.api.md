@@ -6,6 +6,7 @@
 
 import { CurveFactory } from 'd3-shape';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { RefObject } from 'react';
 import { SankeyGraph } from 'd3-sankey';
@@ -296,6 +297,8 @@ export interface ChartPopoverProps {
     // (undocumented)
     legend?: string | number | Date;
     // (undocumented)
+    positioning?: PositioningShorthand;
+    // (undocumented)
     ratio?: [number, number];
     // (undocumented)
     styles?: Partial<PopoverComponentStyles>;
@@ -516,6 +519,7 @@ export interface DonutChartProps extends CartesianChartProps {
     // (undocumented)
     legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
+    order?: 'default' | 'sorted';
     parentRef?: HTMLElement | null;
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
@@ -1101,6 +1105,7 @@ export const LineChart: React_2.FunctionComponent<LineChartProps>;
 
 // @public (undocumented)
 export interface LineChartDataPoint extends BaseDataPoint {
+    markerColor?: string;
     text?: string;
     x: number | Date;
     y: number;
@@ -1404,6 +1409,7 @@ export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
 
 // @public
 export interface ScatterChartDataPoint extends BaseDataPoint {
+    markerColor?: string;
     markerSize?: number;
     text?: string;
     x: number | Date | string;
