@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import type { Data, PlotData, PlotlySchema, OutputChartType, TraceInfo } from '@fluentui/chart-utilities';
@@ -469,11 +471,21 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     gridProperties.templateRows === SINGLE_REPEAT &&
     gridProperties.templateColumns === SINGLE_REPEAT
   ) {
-    Object.keys(groupedTraces).forEach((key, index) => {
-      if (index > 0) {
-        delete groupedTraces[key];
-      }
-    });
+    if (chart.type === 'donut') {
+      // If there are multiple data traces for donut/pie, picking the last one similar to plotly
+      const keys = Object.keys(groupedTraces);
+      keys.forEach((key, index) => {
+        if (index < keys.length - 1) {
+          delete groupedTraces[key];
+        }
+      });
+    } else {
+      Object.keys(groupedTraces).forEach((key, index) => {
+        if (index > 0) {
+          delete groupedTraces[key];
+        }
+      });
+    }
     isMultiPlot.current = false;
   }
 

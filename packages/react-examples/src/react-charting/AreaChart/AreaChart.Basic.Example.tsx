@@ -3,6 +3,7 @@ import { AreaChart, ICustomizedCalloutData } from '@fluentui/react-charting';
 import { IAreaChartProps, ChartHoverCard, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IAreaChartBasicState {
   width: number;
@@ -48,7 +49,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
@@ -82,7 +83,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
     this.setState({ changeChartMode: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const chart1Points = [
       {
         x: 20,

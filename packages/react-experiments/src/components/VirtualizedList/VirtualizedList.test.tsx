@@ -1,18 +1,9 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { VirtualizedList } from './VirtualizedList';
 import { ScrollContainer } from '../../utilities/scrolling/ScrollContainer';
 
 describe('VirtualizedList', () => {
-  let component: renderer.ReactTestRenderer | undefined;
-
-  afterEach(() => {
-    if (component) {
-      component.unmount();
-      component = undefined;
-    }
-  });
-
   it('renders', () => {
     const items: { key: string }[] = [];
     for (let i = 0; i < 2000; i++) {
@@ -24,12 +15,12 @@ describe('VirtualizedList', () => {
       </div>
     );
 
-    component = renderer.create(
+    const { container } = render(
       <ScrollContainer>
         <VirtualizedList items={items} itemHeight={30} onRenderItem={renderItem} />
       </ScrollContainer>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

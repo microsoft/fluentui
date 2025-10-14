@@ -11,6 +11,8 @@ import type { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtend
 import type { IBaseFloatingPickerProps } from '../../FloatingPicker';
 import type { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
@@ -67,8 +69,7 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
     return this.selectedItemsList.current ? this.selectedItemsList.current.highlightedItems() : [];
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className, inputProps, disabled, focusZoneProps } = this.props;
     const activeDescendant =
       this.floatingPicker.current && this.floatingPicker.current.currentSelectedSuggestionIndex !== -1
@@ -129,8 +130,7 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
     return itemLimit === undefined || this.items.length < itemLimit;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected renderFloatingPicker(): JSX.Element {
+  protected renderFloatingPicker(): JSXElement {
     const FloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>> = this.props.onRenderFloatingPicker;
     return (
       <FloatingPicker
@@ -146,8 +146,7 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected renderSelectedItemsList(): JSX.Element {
+  protected renderSelectedItemsList(): JSXElement {
     const SelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>> = this.props.onRenderSelectedItems;
     return (
       <SelectedItems

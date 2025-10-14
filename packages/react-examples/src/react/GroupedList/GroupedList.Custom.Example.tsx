@@ -3,6 +3,7 @@ import { GroupedList, IGroup, IGroupHeaderProps, IGroupFooterProps } from '@flue
 import { Link } from '@fluentui/react/lib/Link';
 import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
 import { getTheme, mergeStyleSets, IRawStyle } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 const theme = getTheme();
 const headerAndFooterStyles: IRawStyle = {
@@ -29,7 +30,7 @@ const classNames = mergeStyleSets({
   },
 });
 
-const onRenderHeader = (props?: IGroupHeaderProps): JSX.Element | null => {
+const onRenderHeader = (props?: IGroupHeaderProps): JSXElement | null => {
   if (props) {
     const toggleCollapse = (): void => {
       props.onToggleCollapse!(props.group!);
@@ -62,7 +63,7 @@ const onRenderCell = (nestingDepth?: number, item?: IExampleItem, itemIndex?: nu
   ) : null;
 };
 
-const onRenderFooter = (props?: IGroupFooterProps): JSX.Element | null => {
+const onRenderFooter = (props?: IGroupFooterProps): JSXElement | null => {
   return props ? <div className={classNames.footer}>This is a custom footer for {props.group!.name}</div> : null;
 };
 

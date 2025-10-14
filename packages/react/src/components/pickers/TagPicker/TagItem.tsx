@@ -6,13 +6,15 @@ import { getStyles } from './TagItem.styles';
 import { useId } from '@fluentui/react-hooks';
 import type { ITagItemProps, ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ITagItemStyleProps, ITagItemStyles>();
 
 /**
  * {@docCategory TagPicker}
  */
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const TagItemBase = (props: ITagItemProps): JSX.Element => {
+
+export const TagItemBase = (props: ITagItemProps): JSXElement => {
   const {
     theme,
     styles,

@@ -1,3 +1,5 @@
+'use client';
+
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';

@@ -15,6 +15,8 @@ import type {
 } from './ColorRectangle.types';
 import type { IColor } from '../../../utilities/color/interfaces';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();
 
 export interface IColorRectangleState {
@@ -81,8 +83,7 @@ export class ColorRectangleBase
     this._disposeListeners();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { minSize, theme, className, styles, ariaValueFormat, ariaLabel, ariaDescription } = this.props;
     const { color } = this.state;
 

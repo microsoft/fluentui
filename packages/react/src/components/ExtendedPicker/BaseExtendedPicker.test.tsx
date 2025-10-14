@@ -84,7 +84,7 @@ describe('Pickers', () => {
     //
     // see https://github.com/facebook/react/pull/12895
     let hostNode: HTMLDivElement | null = null;
-    const create = (elem: React.ReactElement) => {
+    const create = (elem: React.ReactElement<any>) => {
       hostNode = document.createElement('div');
       document.body.appendChild(hostNode);
       render(elem, { container: hostNode });

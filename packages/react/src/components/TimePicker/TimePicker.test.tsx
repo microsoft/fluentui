@@ -259,7 +259,7 @@ describe('TimePicker', () => {
   });
 
   describe('validates entered text when', () => {
-    const renderAndValidate = async (component: React.ReactElement) => {
+    const renderAndValidate = async (component: React.ReactElement<any>) => {
       render(component);
       const input = screen.getByRole('combobox');
       return input;

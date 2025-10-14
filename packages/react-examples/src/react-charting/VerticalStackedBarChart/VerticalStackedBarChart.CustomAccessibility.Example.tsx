@@ -8,6 +8,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IVerticalStackedBarState {
   width: number;
@@ -26,7 +27,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       barGapMax: 2,
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -41,7 +42,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
     this.setState({ showLine: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const { showLine } = this.state;
     const firstChartPoints: IVSChartDataPoint[] = [
       {

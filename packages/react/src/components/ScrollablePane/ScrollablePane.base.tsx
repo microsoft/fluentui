@@ -20,6 +20,8 @@ import type {
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getWindowEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IScrollablePaneState {
   stickyTopHeight: number;
   stickyBottomHeight: number;
@@ -192,8 +194,7 @@ export class ScrollablePaneBase
     this._async.setTimeout(this._onWindowResize, 0);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className, scrollContainerFocus, scrollContainerAriaLabel, theme, styles, onScroll } = this.props;
     const { stickyTopHeight, stickyBottomHeight } = this.state;
     const classNames = getClassNames(styles!, {

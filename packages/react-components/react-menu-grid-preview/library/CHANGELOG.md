@@ -1,8 +1,43 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Mon, 08 Sep 2025 12:51:06 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Oct 2025 12:04:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.1)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.0..@fluentui/react-menu-grid-preview_v0.2.1)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.20.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-table to v9.19.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-tabster to v9.26.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.0)
+
+Thu, 02 Oct 2025 15:12:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.1.1..@fluentui/react-menu-grid-preview_v0.2.0)
+
+### Minor changes
+
+- Feat(react-menu-grid-preview): Detect invalid MenuGrid nesting ([PR #35128](https://github.com/microsoft/fluentui/pull/35128) by lingfangao@hotmail.com)
+- Bump @fluentui/react-menu to v9.20.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-table to v9.19.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-tabster to v9.26.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.1 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.2 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+
+### Patches
+
+- Allow navigation in MenuGrid submenu of MenuList ([PR #35223](https://github.com/microsoft/fluentui/pull/35223) by adam.samec@gmail.com)
+- Merge onKeyDown handlers for MenuGrid component ([PR #35216](https://github.com/microsoft/fluentui/pull/35216) by adam.samec@gmail.com)
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- fix: useValidateNesting ref type React 19 issue ([PR #35221](https://github.com/microsoft/fluentui/pull/35221) by dmytrokirpa@microsoft.com)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.1.1)
 

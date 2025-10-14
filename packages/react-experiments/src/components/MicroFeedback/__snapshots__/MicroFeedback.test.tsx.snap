@@ -2,7 +2,7 @@
 
 exports[`MicroFeedback renders correctly with inline prop set 1`] = `
 <div
-  className=
+  class=
       ms-Stack
       {
         box-sizing: border-box;
@@ -21,7 +21,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Stack
         {
           box-sizing: border-box;
@@ -38,7 +38,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
   >
     <div>
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             {
@@ -124,17 +124,11 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               background-color: #edebe9;
               color: #005a9e;
             }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+        data-is-focusable="true"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -146,8 +140,8 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-menuIcon
                 {
@@ -174,11 +168,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                   text-align: center;
                 }
             data-icon-name="Like"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-2\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-2\\";"
           >
             
           </i>
@@ -187,7 +177,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
     </div>
     <div>
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             {
@@ -273,17 +263,11 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               background-color: #edebe9;
               color: #005a9e;
             }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+        data-is-focusable="true"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -295,8 +279,8 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-menuIcon
                 {
@@ -323,11 +307,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                   text-align: center;
                 }
             data-icon-name="Dislike"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-2\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-2\\";"
           >
             
           </i>
@@ -340,7 +320,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
 
 exports[`MicroFeedback renders correctly with no props 1`] = `
 <div
-  className=
+  class=
       ms-Stack
       {
         box-sizing: border-box;
@@ -359,7 +339,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Stack
         {
           box-sizing: border-box;
@@ -376,7 +356,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
   >
     <div>
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             {
@@ -462,17 +442,11 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               background-color: #edebe9;
               color: #005a9e;
             }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+        data-is-focusable="true"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -484,8 +458,8 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-menuIcon
                 {
@@ -512,11 +486,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                   text-align: center;
                 }
             data-icon-name="Like"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-2\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-2\\";"
           >
             
           </i>
@@ -525,7 +495,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
     </div>
     <div>
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             {
@@ -611,17 +581,11 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               background-color: #edebe9;
               color: #005a9e;
             }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+        data-is-focusable="true"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -633,8 +597,8 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-menuIcon
                 {
@@ -661,11 +625,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                   text-align: center;
                 }
             data-icon-name="Dislike"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-2\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-2\\";"
           >
             
           </i>

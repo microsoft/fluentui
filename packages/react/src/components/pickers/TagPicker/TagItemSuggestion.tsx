@@ -8,13 +8,15 @@ import type {
   ITagItemSuggestionStyles,
 } from './TagPicker.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<ITagItemSuggestionStyleProps, ITagItemSuggestionStyles>();
 
 /**
  * {@docCategory TagPicker}
  */
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const TagItemSuggestionBase = (props: ITagItemSuggestionProps): JSX.Element => {
+
+export const TagItemSuggestionBase = (props: ITagItemSuggestionProps): JSXElement => {
   const { styles, theme, children, ...rest } = props;
 
   const classNames = getClassNames(styles, {

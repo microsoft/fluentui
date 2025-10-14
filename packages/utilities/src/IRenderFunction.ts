@@ -1,3 +1,4 @@
+import type { JSXElement } from './jsx';
 /**
  * Render function interface for providing overrideable render callbacks.
  *
@@ -5,5 +6,5 @@
  */
 export interface IRenderFunction<P> {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
+  (props?: P, defaultRender?: (props?: P) => JSXElement | null): JSXElement | null;
 }

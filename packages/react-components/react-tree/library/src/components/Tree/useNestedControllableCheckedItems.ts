@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { TreeCheckedChangeData, TreeProps } from './Tree.types';
 import { ImmutableMap } from '../../utils/ImmutableMap';

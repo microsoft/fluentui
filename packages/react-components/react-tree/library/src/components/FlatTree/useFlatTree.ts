@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useRootTree } from '../../hooks/useRootTree';
 import { FlatTreeProps, FlatTreeState } from './FlatTree.types';

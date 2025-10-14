@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useVerticalBarChartStyles } from './useVerticalBarChartStyles.styles';
 import { max as d3Max, min as d3Min } from 'd3-array';

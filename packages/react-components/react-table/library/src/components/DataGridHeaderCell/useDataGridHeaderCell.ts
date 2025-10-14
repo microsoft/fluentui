@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { useEventCallback } from '@fluentui/react-utilities';

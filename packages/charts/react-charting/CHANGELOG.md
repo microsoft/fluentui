@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 15 Sep 2025 07:20:50 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Oct 2025 07:21:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.38)
+
+Tue, 14 Oct 2025 07:21:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.37..@fluentui/react-charting_v5.24.38)
+
+### Patches
+
+- fix(react-charting): Show markers only when mode has markers for large data ([PR #35311](https://github.com/microsoft/fluentui/pull/35311) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/react-focus to v8.9.28 ([PR #35316](https://github.com/microsoft/fluentui/pull/35316) by beachball)
+- Bump @fluentui/theme-samples to v8.7.217 ([PR #35316](https://github.com/microsoft/fluentui/pull/35316) by beachball)
+- Bump @fluentui/react to v8.124.1 ([PR #35316](https://github.com/microsoft/fluentui/pull/35316) by beachball)
+
+## [5.24.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.37)
+
+Fri, 10 Oct 2025 07:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.36..@fluentui/react-charting_v5.24.37)
+
+### Patches
+
+- fix large data example  ([PR #35289](https://github.com/microsoft/fluentui/pull/35289) by anushgupta@microsoft.com)
+- fix: resolve data points based on axis type + replace invalid values with 0 for valid coordinates ([PR #35281](https://github.com/microsoft/fluentui/pull/35281) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.33 ([commit](https://github.com/microsoft/fluentui/commit/7dfabce5ac517a86b4f8ac78a10611f0c6ab8ef2) by beachball)
+
+## [5.24.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.36)
+
+Thu, 09 Oct 2025 07:21:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.35..@fluentui/react-charting_v5.24.36)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.9.27 ([PR #35301](https://github.com/microsoft/fluentui/pull/35301) by beachball)
+- Bump @fluentui/theme-samples to v8.7.216 ([PR #35301](https://github.com/microsoft/fluentui/pull/35301) by beachball)
+- Bump @fluentui/react to v8.124.0 ([PR #35301](https://github.com/microsoft/fluentui/pull/35301) by beachball)
+
+## [5.24.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.35)
+
+Tue, 07 Oct 2025 07:20:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.34..@fluentui/react-charting_v5.24.35)
+
+### Patches
+
+- undefined ([PR #35231](https://github.com/microsoft/fluentui/pull/35231) by 132879294+v-baambati@users.noreply.github.com)
+
+## [5.24.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.34)
+
+Mon, 06 Oct 2025 07:20:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.33..@fluentui/react-charting_v5.24.34)
+
+### Patches
+
+- fix table styles ([PR #35227](https://github.com/microsoft/fluentui/pull/35227) by anushgupta@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.32 ([commit](https://github.com/microsoft/fluentui/commit/5817f807ae266cd90111ba66d4032835766b9431) by beachball)
+
+## [5.24.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.33)
+
+Wed, 01 Oct 2025 07:20:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.32..@fluentui/react-charting_v5.24.33)
+
+### Patches
+
+- fix chart table styles  ([PR #35238](https://github.com/microsoft/fluentui/pull/35238) by anushgupta@microsoft.com)
+- feat(react-charting): Add fill for scatter polar charts ([PR #35236](https://github.com/microsoft/fluentui/pull/35236) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.24.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.32)
 

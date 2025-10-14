@@ -1,9 +1,9 @@
 // @ts-check
 const configHelpers = require('../utils/configHelpers');
 const path = require('path');
-const { reactLegacy: restrictedGlobals } = require('./restricted-globals');
+const { reactLegacy: restrictedGlobals } = require('../shared/restricted-globals');
 
-/** @type {import("eslint").Linter.Config} */
+/** @type {import("eslint").Linter.LegacyConfig} */
 module.exports = {
   extends: [path.join(__dirname, 'base-legacy'), path.join(__dirname, 'react-config')],
 
@@ -20,6 +20,23 @@ module.exports = {
         'no-restricted-globals': 'off',
         'react/jsx-no-bind': 'off',
         '@typescript-eslint/no-deprecated': 'off',
+      },
+    },
+    {
+      files: ['**/*.e2e.{ts,tsx,js}', '**/*.cy.{ts,tsx,js}', 'isConformant.{ts,tsx,js}'],
+      rules: {
+        '@typescript-eslint/no-restricted-imports': [
+          'error',
+          {
+            patterns: [
+              {
+                group: ['@cypress/react'],
+                importNames: ['mount'],
+                message: "Use 'mount' from @fluentui/scripts-cypress instead.",
+              },
+            ],
+          },
+        ],
       },
     },
   ],

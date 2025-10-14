@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 const MotionRefForwarderContext = React.createContext<React.Ref<HTMLElement> | undefined>(undefined);

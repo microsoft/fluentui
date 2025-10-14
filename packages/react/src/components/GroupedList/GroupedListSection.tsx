@@ -19,6 +19,8 @@ import type { ISelection } from '../../Selection';
 import type { IListProps } from '../../List';
 import type { IViewport } from '../../utilities/decorators/withViewport';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */
   groupedListClassNames?: IProcessedStyleSet<IGroupedListStyles>;
@@ -183,8 +185,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       getGroupItemLimit,
       group,
@@ -304,18 +305,15 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderGroupHeader = (props: IGroupHeaderProps): JSX.Element => {
+  private _onRenderGroupHeader = (props: IGroupHeaderProps): JSXElement => {
     return <GroupHeader {...props} />;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderGroupShowAll = (props: IGroupShowAllProps): JSX.Element => {
+  private _onRenderGroupShowAll = (props: IGroupShowAllProps): JSXElement => {
     return <GroupShowAll {...props} />;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderGroupFooter = (props: IGroupFooterProps): JSX.Element => {
+  private _onRenderGroupFooter = (props: IGroupFooterProps): JSXElement => {
     return <GroupFooter {...props} />;
   };
 
@@ -340,8 +338,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderGroup(renderCount: number): JSX.Element {
+  private _onRenderGroup(renderCount: number): JSXElement {
     const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize, groupProps } = this.props;
     const count = group && !group.isShowingAll ? group.count : items.length;
     const startIndex = group ? group.startIndex : 0;
@@ -362,8 +359,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderSubGroup = (subGroup: IGroup, subGroupIndex: number): JSX.Element | null => {
+  private _renderSubGroup = (subGroup: IGroup, subGroupIndex: number): JSXElement | null => {
     const {
       dragDropEvents,
       dragDropHelper,
@@ -392,7 +388,9 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
 
     return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
       <GroupedListSection
-        ref={ref => (this._subGroupRefs['subGroup_' + subGroupIndex] = ref)}
+        ref={ref => {
+          this._subGroupRefs['subGroup_' + subGroupIndex] = ref;
+        }}
         key={this._getGroupKey(subGroup, subGroupIndex)}
         dragDropEvents={dragDropEvents}
         dragDropHelper={dragDropHelper}

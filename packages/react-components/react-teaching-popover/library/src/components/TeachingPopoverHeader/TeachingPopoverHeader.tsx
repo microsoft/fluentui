@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTeachingPopoverHeader_unstable } from './useTeachingPopoverHeader';
 import { renderTeachingPopoverHeader_unstable } from './renderTeachingPopoverHeader';

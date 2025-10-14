@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useBreadcrumbDivider_unstable } from './useBreadcrumbDivider';
 import { renderBreadcrumbDivider_unstable } from './renderBreadcrumbDivider';

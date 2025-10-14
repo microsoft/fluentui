@@ -6,6 +6,7 @@ import type {
   IFloatingSuggestionHeaderFooterItemStylesProps,
   IFloatingSuggestionHeaderFooterItemStyles,
 } from './FloatingSuggestionsHeaderFooterItem.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<
   IFloatingSuggestionHeaderFooterItemStylesProps,
@@ -13,7 +14,7 @@ const getClassNames = classNamesFunction<
 >();
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export const FloatingSuggestionsHeaderFooterItem = (props: IFloatingSuggestionsHeaderFooterItemProps): JSX.Element => {
+export const FloatingSuggestionsHeaderFooterItem = (props: IFloatingSuggestionsHeaderFooterItemProps): JSXElement => {
   const { renderItem, onExecute, isSelected, id, className } = props;
   const classNames = getClassNames(getStyles);
 

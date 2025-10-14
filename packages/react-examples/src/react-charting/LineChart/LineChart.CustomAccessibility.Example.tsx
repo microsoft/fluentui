@@ -8,6 +8,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ILineChartCustomAccessibilityExampleState {
   width: number;
@@ -28,7 +29,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div className="containerDiv">
         <label htmlFor="changeWidth_Custom">Change Width:</label>
@@ -73,7 +74,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
     }
   };
 
-  private _styledExample(): JSX.Element {
+  private _styledExample(): JSXElement {
     const points: ILineChartPoints[] = [
       {
         data: [
