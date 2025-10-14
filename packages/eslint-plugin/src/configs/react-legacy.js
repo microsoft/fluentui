@@ -25,6 +25,7 @@ module.exports = {
         'no-restricted-globals': 'off',
         'react/jsx-no-bind': 'off',
         '@typescript-eslint/no-deprecated': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
       },
     },
     {
