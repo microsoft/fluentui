@@ -105,6 +105,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       return elevatedData;
     }
     function _createLegends(chartData: ChartDataPoint[]): JSXElement {
+      if (props.order === 'sorted') {
+        chartData.sort((a: ChartDataPoint, b: ChartDataPoint) => {
+          return b.data! - a.data!;
+        });
+      }
       const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
         const color: string = point.color!;
         // mapping data to the format Legends component needs
@@ -305,11 +310,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
 
     const classes = useDonutChartStyles(props);
 
-    const legendBars = _createLegends(points);
+    const legendBars = _createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = props.hideLabels ? 0 : 80;
     const donutMarginVertical = props.hideLabels ? 0 : 40;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
-    const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
+    const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const focusAttributes = useFocusableGroup();
