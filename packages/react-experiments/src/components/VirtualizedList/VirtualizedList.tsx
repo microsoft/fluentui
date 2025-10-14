@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
+import { ScrollContainerContext } from '../../utilities/scrolling/ScrollContainer';
 import { getParent, css, initializeComponentRef, EventGroup } from '@fluentui/react/lib/Utilities';
 import type { IVirtualizedListProps } from './VirtualizedList.types';
 import type { IScrollContainerContext } from '../../utilities/scrolling/ScrollContainer';
@@ -28,8 +28,8 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   IVirtualizedListProps<TItem>,
   IVirtualizedListState
 > {
-  public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
-  public context: IScrollContainerContext;
+  public static contextType = ScrollContainerContext;
+  public context: IScrollContainerContext | null;
 
   private _root = React.createRef<HTMLDivElement>();
 
@@ -64,7 +64,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
       this._events.on(this._root.current, 'focus', this._onFocus, true);
     }
 
-    this.context.scrollContainer.registerVisibleCallback((scrollTop: number) => {
+    this.context?.scrollContainer.registerVisibleCallback((scrollTop: number) => {
       this._render(scrollTop);
     });
 
@@ -82,7 +82,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   public UNSAFE_componentWillUpdate(): void {
     for (const key of Object.keys(this._spacerElements)) {
       const ref = this._spacerElements[key];
-      this.context.scrollContainer.unobserve(ref);
+      this.context?.scrollContainer.unobserve(ref);
     }
   }
 
@@ -103,7 +103,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     // the spacer elements is visible right now.
     for (const key of Object.keys(this._spacerElements)) {
       const ref = this._spacerElements[key];
-      this.context.scrollContainer.observe(ref);
+      this.context?.scrollContainer.observe(ref);
     }
   }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
