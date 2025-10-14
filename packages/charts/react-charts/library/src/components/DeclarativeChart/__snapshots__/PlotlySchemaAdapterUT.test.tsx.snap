@@ -3077,6 +3077,7 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": 850,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
   "yAxisCategoryOrder": Array [
     "Laravel",
@@ -5209,7 +5210,9 @@ Object {
   "useUTC": false,
   "width": undefined,
   "wrapXAxisLables": false,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
   "yMaxValue": 1.0620659379275244,
   "yMinValue": -2.58404773330316,
@@ -5495,7 +5498,9 @@ Object {
   "roundCorners": true,
   "width": undefined,
   "wrapXAxisLables": false,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
 }
 `;
@@ -5618,6 +5623,7 @@ Object {
   "xAxisInnerPadding": 0.2,
   "xAxisOuterPadding": 0.1,
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
   "yMaxValue": 3400,
   "yMinValue": 0,
