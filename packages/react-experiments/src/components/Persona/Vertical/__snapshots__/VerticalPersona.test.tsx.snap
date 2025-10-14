@@ -2,7 +2,7 @@
 
 exports[`VerticalPersona renders correctly with a text and secondary text 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -18,7 +18,7 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
       }
 >
   <div
-    className=
+    class=
 
         {
           align-items: center;
@@ -33,7 +33,7 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
         }
   >
     <span
-      className=
+      class=
 
           {
             -moz-osx-font-smoothing: grayscale;
@@ -51,7 +51,7 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
     </span>
   </div>
   <span
-    className=
+    class=
         test-cn-text
         {
           -moz-osx-font-smoothing: grayscale;
@@ -74,7 +74,7 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
     James Bond
   </span>
   <span
-    className=
+    class=
         test-cn-secondaryText
         {
           -moz-osx-font-smoothing: grayscale;
@@ -102,7 +102,7 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
 
 exports[`VerticalPersona renders correctly with only a text 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -118,7 +118,7 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
       }
 >
   <div
-    className=
+    class=
 
         {
           align-items: center;
@@ -133,7 +133,7 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
         }
   >
     <span
-      className=
+      class=
 
           {
             -moz-osx-font-smoothing: grayscale;
@@ -151,7 +151,7 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
     </span>
   </div>
   <span
-    className=
+    class=
         test-cn-text
         {
           -moz-osx-font-smoothing: grayscale;
@@ -178,7 +178,7 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
 
 exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -194,7 +194,7 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
       }
 >
   <div
-    className=
+    class=
 
         {
           align-items: center;
@@ -209,7 +209,7 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
         }
   >
     <span
-      className=
+      class=
 
           {
             -moz-osx-font-smoothing: grayscale;
@@ -227,7 +227,7 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
     </span>
   </div>
   <span
-    className=
+    class=
         test-cn-text
         {
           -moz-osx-font-smoothing: grayscale;
@@ -250,7 +250,7 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
     James Bond
   </span>
   <span
-    className=
+    class=
         test-cn-secondaryText
         {
           -moz-osx-font-smoothing: grayscale;

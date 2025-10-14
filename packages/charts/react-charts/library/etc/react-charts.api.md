@@ -519,6 +519,7 @@ export interface DonutChartProps extends CartesianChartProps {
     // (undocumented)
     legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
+    order?: 'default' | 'sorted';
     parentRef?: HTMLElement | null;
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;

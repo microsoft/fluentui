@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Mon, 13 Oct 2025 07:21:28 GMT",
+      "tag": "@fluentui/react-cards_v0.206.0",
+      "version": "0.206.0",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-cards",
+            "commit": "a54f625e56ce21753a58e9fd2144f66e9ddd1526",
+            "comment": "refactor: migrate v8 packages tests to use RTL instead of react-test-renderer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Oct 2025 07:21:57 GMT",
       "tag": "@fluentui/react-cards_v0.206.0",
       "version": "0.206.0",

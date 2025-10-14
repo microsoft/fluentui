@@ -2,24 +2,19 @@
 
 exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
 <div
-  className="ms-BasePicker ms-BaseExtendedPicker"
-  onCopy={[Function]}
-  onKeyDown={[Function]}
+  class="ms-BasePicker ms-BaseExtendedPicker"
 >
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
     data-focuszone-id="FocusZone0"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <div
-      className=
+      class=
           ms-SelectionZone
           ms-UnifiedPicker-selectionZone
           ms-UnifiedPicker-selectionZone
@@ -27,18 +22,10 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
             display: flex;
             flex: 1 1 auto;
           }
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onDoubleClick={[Function]}
-      onFocusCapture={[Function]}
-      onKeyDown={[Function]}
-      onKeyDownCapture={[Function]}
-      onMouseDown={[Function]}
-      onMouseDownCapture={[Function]}
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-BasePicker-text
             ms-UnifiedPicker-text
             {
@@ -59,13 +46,13 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
       >
         <div
           aria-live="polite"
-          className=""
+          class=""
           role="status"
         />
         <div
           aria-multiselectable="true"
           aria-orientation="horizontal"
-          className=
+          class=
               ms-UnifiedPicker-listDiv
               ms-UnifiedPicker-listDiv
               {
@@ -76,24 +63,22 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
           role=""
         >
           <div
-            aria-expanded={false}
+            aria-expanded="false"
             aria-haspopup="listbox"
-            className=
+            class=
                 ms-BasePicker-div
                 ms-UnifiedPicker-div
                 {
                   display: flex;
                   flex: 1 1 auto;
                 }
-            onDragOver={[Function]}
-            onDrop={[Function]}
             role="combobox"
           >
             <input
               aria-autocomplete="list"
-              autoCapitalize="off"
-              autoComplete="off"
-              className=
+              autocapitalize="off"
+              autocomplete="off"
+              class=
                   ms-BasePicker-input
                   ms-UnifiedPicker-input
                   {
@@ -120,22 +105,9 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
                   &::-ms-clear {
                     display: none;
                   }
-              data-lpignore={true}
-              disabled={false}
-              onChange={[Function]}
-              onClick={[Function]}
-              onCompositionEnd={[Function]}
-              onCompositionStart={[Function]}
-              onCompositionUpdate={[Function]}
-              onFocus={[Function]}
-              onInput={[Function]}
-              onKeyDown={[Function]}
-              onPaste={[Function]}
-              style={
-                Object {
-                  "fontFamily": "inherit",
-                }
-              }
+              data-lpignore="true"
+              style="font-family: inherit;"
+              tabindex="0"
               value=""
             />
           </div>
@@ -144,7 +116,7 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-BasePicker
         ms-BaseFloatingPicker
         ms-FloatingSuggestions
@@ -155,24 +127,19 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
 
 exports[`UnifiedPeoplePicker renders correctly with selected and suggested items 1`] = `
 <div
-  className="ms-BasePicker ms-BaseExtendedPicker"
-  onCopy={[Function]}
-  onKeyDown={[Function]}
+  class="ms-BasePicker ms-BaseExtendedPicker"
 >
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
         }
     data-focuszone-id="FocusZone1"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <div
-      className=
+      class=
           ms-SelectionZone
           ms-UnifiedPicker-selectionZone
           ms-UnifiedPicker-selectionZone
@@ -180,18 +147,10 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             display: flex;
             flex: 1 1 auto;
           }
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onDoubleClick={[Function]}
-      onFocusCapture={[Function]}
-      onKeyDown={[Function]}
-      onKeyDownCapture={[Function]}
-      onMouseDown={[Function]}
-      onMouseDownCapture={[Function]}
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-BasePicker-text
             ms-UnifiedPicker-text
             {
@@ -212,13 +171,13 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
       >
         <div
           aria-live="polite"
-          className=""
+          class=""
           role="status"
         />
         <div
           aria-multiselectable="true"
           aria-orientation="horizontal"
-          className=
+          class=
               ms-UnifiedPicker-listDiv
               ms-UnifiedPicker-listDiv
               {
@@ -230,8 +189,8 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
         >
           <div
             aria-labelledby="selectedItemPersona-id__2"
-            aria-selected={false}
-            className=
+            aria-selected="false"
+            class=
                 ms-PickerPersona-container
                 {
                   align-items: center;
@@ -270,19 +229,20 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
                   color: ButtonText;
                 }
-            data-is-draggable={true}
-            data-is-focusable={true}
-            data-is-sub-focuszone={true}
-            data-selection-index={0}
-            draggable={true}
+            data-is-draggable="true"
+            data-is-focusable="true"
+            data-is-sub-focuszone="true"
+            data-selection-index="0"
+            draggable="true"
             role="option"
+            tabindex="0"
           >
             <div
-              hidden={true}
+              hidden=""
             >
               <button
                 aria-label="Remove"
-                className=
+                class=
                     ms-Button
                     ms-Button--icon
                     ms-PickerItem-removeButton
@@ -379,17 +339,12 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background: inherit;
                       color: inherit;
                     }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
+                data-is-focusable="true"
+                tabindex="-1"
                 type="button"
               >
                 <span
-                  className=
+                  class=
                       ms-Button-flexContainer
                       {
                         align-items: center;
@@ -401,8 +356,8 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                   data-automationid="splitbuttonprimary"
                 >
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Button-icon
                         {
@@ -429,12 +384,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                           text-align: center;
                         }
                     data-icon-name="Add"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                        "fontSize": "14px",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\"; font-size: 14px;"
                   >
                     
                   </i>
@@ -442,7 +392,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
               </button>
             </div>
             <div
-              className=
+              class=
 
                   {
                     display: inherit;
@@ -450,7 +400,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                   }
             >
               <div
-                className=
+                class=
                     ms-PickerItem-content
                     {
                       flex: 0 1 auto;
@@ -460,7 +410,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                 id="selectedItemPersona-id__2"
               >
                 <div
-                  className=
+                  class=
                       ms-Persona
                       ms-Persona--size32
                       ms-Persona--online
@@ -492,7 +442,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       }
                 >
                   <div
-                    className=
+                    class=
                         ms-Persona-coin
                         ms-Persona--size32
                         {
@@ -505,7 +455,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Persona-imageArea
                           {
                             flex: 0 0 auto;
@@ -517,7 +467,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       role="presentation"
                     >
                       <div
-                        className=
+                        class=
                             ms-Image
                             ms-Persona-image
                             {
@@ -537,16 +487,11 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                               top: 0px;
                               width: 32px;
                             }
-                        style={
-                          Object {
-                            "height": 32,
-                            "width": 32,
-                          }
-                        }
+                        style="width: 32px; height: 32px;"
                       >
                         <img
                           alt=""
-                          className=
+                          class=
                               ms-Image-image
                               ms-Image-image--cover
                               ms-Image-image--portrait
@@ -559,13 +504,11 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                                 opacity: 0;
                                 width: 100%;
                               }
-                          onError={[Function]}
-                          onLoad={[Function]}
                           src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-female.png"
                         />
                       </div>
                       <div
-                        className=
+                        class=
                             ms-Persona-presence
                             {
                               -ms-high-contrast-adjust: none;
@@ -592,7 +535,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                     </div>
                   </div>
                   <div
-                    className=
+                    class=
                         ms-Persona-details
                         {
                           display: flex;
@@ -608,7 +551,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         }
                   >
                     <div
-                      className=
+                      class=
                           ms-Persona-primaryText
                           {
                             color: #005a9e;
@@ -630,41 +573,25 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       dir="auto"
                     >
                       <div
-                        className=
+                        class=
                             ms-TooltipHost
                             {
                               display: inline;
                             }
-                        onBlurCapture={[Function]}
-                        onFocusCapture={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
                         role="none"
                       >
                         Annie Lindqvist
                         <div
-                          hidden={true}
+                          hidden=""
                           id="tooltip6"
-                          style={
-                            Object {
-                              "border": 0,
-                              "height": 1,
-                              "margin": -1,
-                              "overflow": "hidden",
-                              "padding": 0,
-                              "position": "absolute",
-                              "whiteSpace": "nowrap",
-                              "width": 1,
-                            }
-                          }
+                          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                         >
                           Annie Lindqvist
                         </div>
                       </div>
                     </div>
                     <div
-                      className=
+                      class=
                           ms-Persona-secondaryText
                           {
                             color: #605e5c;
@@ -678,41 +605,25 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       dir="auto"
                     >
                       <div
-                        className=
+                        class=
                             ms-TooltipHost
                             {
                               display: inline;
                             }
-                        onBlurCapture={[Function]}
-                        onFocusCapture={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
                         role="none"
                       >
                         Designer
                         <div
-                          hidden={true}
+                          hidden=""
                           id="tooltip7"
-                          style={
-                            Object {
-                              "border": 0,
-                              "height": 1,
-                              "margin": -1,
-                              "overflow": "hidden",
-                              "padding": 0,
-                              "position": "absolute",
-                              "whiteSpace": "nowrap",
-                              "width": 1,
-                            }
-                          }
+                          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                         >
                           Designer
                         </div>
                       </div>
                     </div>
                     <div
-                      className=
+                      class=
                           ms-Persona-tertiaryText
                           {
                             color: #605e5c;
@@ -726,41 +637,25 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       dir="auto"
                     >
                       <div
-                        className=
+                        class=
                             ms-TooltipHost
                             {
                               display: inline;
                             }
-                        onBlurCapture={[Function]}
-                        onFocusCapture={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
                         role="none"
                       >
                         In a meeting
                         <div
-                          hidden={true}
+                          hidden=""
                           id="tooltip8"
-                          style={
-                            Object {
-                              "border": 0,
-                              "height": 1,
-                              "margin": -1,
-                              "overflow": "hidden",
-                              "padding": 0,
-                              "position": "absolute",
-                              "whiteSpace": "nowrap",
-                              "width": 1,
-                            }
-                          }
+                          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                         >
                           In a meeting
                         </div>
                       </div>
                     </div>
                     <div
-                      className=
+                      class=
                           ms-Persona-optionalText
                           {
                             color: #605e5c;
@@ -774,34 +669,18 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       dir="auto"
                     >
                       <div
-                        className=
+                        class=
                             ms-TooltipHost
                             {
                               display: inline;
                             }
-                        onBlurCapture={[Function]}
-                        onFocusCapture={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
                         role="none"
                       >
                         Available at 4:00pm
                         <div
-                          hidden={true}
+                          hidden=""
                           id="tooltip9"
-                          style={
-                            Object {
-                              "border": 0,
-                              "height": 1,
-                              "margin": -1,
-                              "overflow": "hidden",
-                              "padding": 0,
-                              "position": "absolute",
-                              "whiteSpace": "nowrap",
-                              "width": 1,
-                            }
-                          }
+                          style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                         >
                           Available at 4:00pm
                         </div>
@@ -812,7 +691,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
               </div>
               <button
                 aria-label="Remove"
-                className=
+                class=
                     ms-Button
                     ms-Button--icon
                     ms-PickerItem-removeButton
@@ -909,17 +788,12 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background: inherit;
                       color: inherit;
                     }
-                data-is-focusable={true}
-                onClick={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseUp={[Function]}
+                data-is-focusable="true"
+                tabindex="-1"
                 type="button"
               >
                 <span
-                  className=
+                  class=
                       ms-Button-flexContainer
                       {
                         align-items: center;
@@ -931,8 +805,8 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                   data-automationid="splitbuttonprimary"
                 >
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Button-icon
                         {
@@ -959,12 +833,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                           text-align: center;
                         }
                     data-icon-name="Cancel"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                        "fontSize": "14px",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\"; font-size: 14px;"
                   >
                     
                   </i>
@@ -973,24 +842,22 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             </div>
           </div>
           <div
-            aria-expanded={false}
+            aria-expanded="false"
             aria-haspopup="listbox"
-            className=
+            class=
                 ms-BasePicker-div
                 ms-UnifiedPicker-div
                 {
                   display: flex;
                   flex: 1 1 auto;
                 }
-            onDragOver={[Function]}
-            onDrop={[Function]}
             role="combobox"
           >
             <input
               aria-autocomplete="list"
-              autoCapitalize="off"
-              autoComplete="off"
-              className=
+              autocapitalize="off"
+              autocomplete="off"
+              class=
                   ms-BasePicker-input
                   ms-UnifiedPicker-input
                   {
@@ -1017,22 +884,9 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                   &::-ms-clear {
                     display: none;
                   }
-              data-lpignore={true}
-              disabled={false}
-              onChange={[Function]}
-              onClick={[Function]}
-              onCompositionEnd={[Function]}
-              onCompositionStart={[Function]}
-              onCompositionUpdate={[Function]}
-              onFocus={[Function]}
-              onInput={[Function]}
-              onKeyDown={[Function]}
-              onPaste={[Function]}
-              style={
-                Object {
-                  "fontFamily": "inherit",
-                }
-              }
+              data-lpignore="true"
+              style="font-family: inherit;"
+              tabindex="-1"
               value=""
             />
           </div>
@@ -1041,7 +895,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
     </div>
   </div>
   <div
-    className=
+    class=
         ms-BasePicker
         ms-BaseFloatingPicker
         ms-FloatingSuggestions

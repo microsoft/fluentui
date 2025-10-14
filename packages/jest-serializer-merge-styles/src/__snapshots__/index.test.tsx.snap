@@ -2,7 +2,7 @@
 
 exports[`print can be used in snapshots 1`] = `
 <div
-  className=
+  class=
 
       {
         animation-delay: 500ms;

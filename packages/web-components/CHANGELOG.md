@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 06 Oct 2025 04:08:36 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Oct 2025 04:06:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.127](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.127)
+
+Tue, 14 Oct 2025 04:06:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.126..@fluentui/web-components_v3.0.0-beta.127)
+
+### Changes
+
+- remove aria-hidden from field labels to zoom text accessibility works, remove field text-input and text-area examples from storybook ([PR #35308](https://github.com/microsoft/fluentui/pull/35308) by jes@microsoft.com)
+- [chore]: bump min version of node from 20 to 22 ([PR #35286](https://github.com/microsoft/fluentui/pull/35286) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.126](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.126)
+
+Fri, 10 Oct 2025 04:08:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.125..@fluentui/web-components_v3.0.0-beta.126)
+
+### Changes
+
+- [fix]: voice over in navigation mode was not announcing tabs belonging to a disabled tablist as disabled ([PR #35299](https://github.com/microsoft/fluentui/pull/35299) by jes@microsoft.com)
 
 ## [3.0.0-beta.125](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.125)
 
