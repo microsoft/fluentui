@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "eclude node_modules and dist so CEM type parser maps types properly",
+  "comment": "exclude node_modules and dist so CEM type parser maps types properly",
   "packageName": "@fluentui/web-components",
   "email": "jes@microsoft.com",
   "dependentChangeType": "patch"
