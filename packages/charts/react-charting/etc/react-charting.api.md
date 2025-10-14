@@ -46,6 +46,75 @@ export type AxisScaleType = 'default' | 'log';
 // @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
+// @public (undocumented)
+export interface ChartAnnotation {
+    accessibility?: ChartAnnotationAccessibilityProps;
+    connector?: ChartAnnotationConnectorProps;
+    coordinates: ChartAnnotationCoordinate;
+    data?: Record<string, unknown>;
+    id?: string;
+    layout?: ChartAnnotationLayoutProps;
+    style?: ChartAnnotationStyleProps;
+    text: string;
+}
+
+// @public (undocumented)
+export interface ChartAnnotationAccessibilityProps {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    role?: string;
+}
+
+// @public (undocumented)
+export type ChartAnnotationArrowHead = 'none' | 'start' | 'end' | 'both';
+
+// @public (undocumented)
+export interface ChartAnnotationConnectorProps {
+    arrow?: ChartAnnotationArrowHead;
+    dashArray?: string;
+    endPadding?: number;
+    startPadding?: number;
+    strokeColor?: string;
+    strokeWidth?: number;
+}
+
+// @public (undocumented)
+export type ChartAnnotationCoordinate = {
+    type: 'data' | 'relative' | 'pixel';
+    x: number | string | Date;
+    y: number | string | Date;
+    yAxis?: 'primary' | 'secondary';
+};
+
+// @public (undocumented)
+export interface ChartAnnotationLayoutProps {
+    // Warning: (ae-forgotten-export) The symbol "ChartAnnotationHorizontalAlign" needs to be exported by the entry point index.d.ts
+    align?: ChartAnnotationHorizontalAlign;
+    className?: string;
+    clipToBounds?: boolean;
+    maxWidth?: number;
+    offsetX?: number;
+    offsetY?: number;
+    // Warning: (ae-forgotten-export) The symbol "ChartAnnotationVerticalAlign" needs to be exported by the entry point index.d.ts
+    verticalAlign?: ChartAnnotationVerticalAlign;
+}
+
+// @public (undocumented)
+export interface ChartAnnotationStyleProps {
+    backgroundColor?: string;
+    borderColor?: string;
+    borderRadius?: number;
+    borderStyle?: React_2.CSSProperties['borderStyle'];
+    borderWidth?: number;
+    boxShadow?: string;
+    className?: string;
+    fontSize?: string;
+    fontWeight?: React_2.CSSProperties['fontWeight'];
+    opacity?: number;
+    padding?: string;
+    textColor?: string;
+}
+
 // @public
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 
@@ -312,6 +381,7 @@ export interface IBasestate {
 
 // @public
 export interface ICartesianChartProps {
+    annotations?: ChartAnnotation[];
     calloutProps?: Partial<ICalloutProps>;
     // @deprecated
     chartLabel?: string;
@@ -394,6 +464,7 @@ export interface ICartesianChartStyleProps {
 
 // @public
 export interface ICartesianChartStyles {
+    annotationLayer?: IStyle;
     axisAnnotation?: IStyle;
     axisTitle?: IStyle;
     calloutBlockContainer?: IStyle;
@@ -410,6 +481,7 @@ export interface ICartesianChartStyles {
     hover?: IStyle;
     legendContainer?: IStyle;
     opacityChangeOnHover?: IStyle;
+    plotContainer?: IStyle;
     root?: IStyle;
     shapeStyles?: IStyle;
     svgTooltip?: IStyle;
@@ -1285,6 +1357,7 @@ export interface IMargins {
 
 // @public (undocumented)
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+    annotations?: ChartAnnotation[];
     barwidth?: number;
     calloutProps: Partial<ICalloutProps> & {
         isCalloutVisible: boolean;

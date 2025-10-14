@@ -28,200 +28,212 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <svg
-        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
-        focusable="false"
-        height="0"
-        role="region"
-        style="display: block;"
-        width="0"
+      <div
+        class=
+
+            {
+              height: 100%;
+              position: relative;
+              width: 100%;
+            }
       >
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                fill: CanvasText;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                opacity: 0.1;
-                stroke: CanvasText;
-              }
-              & path {
-                display: none;
-              }
-          id="xAxisGElementchart_4"
-          transform="translate(0, -35)"
-        />
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                fill: CanvasText;
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                opacity: 0.1;
-                stroke: CanvasText;
-              }
-          id="yAxisGElementchart_4"
-          transform="translate(40, 0)"
-        />
-        <rect
-          fill="transparent"
-          height="100%"
-          style="pointer-events: none;"
-          width="100%"
-        />
-        <g>
+        <svg
+          aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
+          focusable="false"
+          height="0"
+          role="region"
+          style="display: block;"
+          width="0"
+        >
           <g
-            transform="translate(19, 0)"
-          >
-            <rect
-              aria-label="2000. MetaData1, 66."
-              class=
+            class=
 
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="9"
-              x="0"
-              y="-36"
-            />
-            <rect
-              aria-label="2000. MetaData2, 13."
-              class=
-
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="10"
-              y="-36"
-            />
-            <rect
-              aria-label="2000. MetaData3, 34."
-              class=
-
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="20"
-              y="-36"
-            />
-          </g>
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #323130;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #323130;
+                  width: 1px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                  opacity: 0.1;
+                  stroke: CanvasText;
+                }
+                & path {
+                  display: none;
+                }
+            id="xAxisGElementchart_4"
+            transform="translate(0, -35)"
+          />
           <g
-            transform="translate(-28, 0)"
-          >
-            <rect
-              aria-label="2010. MetaData1, 14."
-              class=
+            class=
 
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="0"
-              y="-36"
-            />
-            <rect
-              aria-label="2010. MetaData2, 90."
-              class=
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #323130;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
+                }
+                & path {
+                  display: none;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #323130;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                  opacity: 0.1;
+                  stroke: CanvasText;
+                }
+            id="yAxisGElementchart_4"
+            transform="translate(40, 0)"
+          />
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
+          <g>
+            <g
+              transform="translate(19, 0)"
+            >
+              <rect
+                aria-label="2000. MetaData1, 66."
+                class=
 
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="10"
-              y="-36"
-            />
-            <rect
-              aria-label="2010. MetaData3, 33."
-              class=
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="9"
+                x="0"
+                y="-36"
+              />
+              <rect
+                aria-label="2000. MetaData2, 13."
+                class=
 
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="20"
-              y="-36"
-            />
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00188f"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="10"
+                y="-36"
+              />
+              <rect
+                aria-label="2000. MetaData3, 34."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="20"
+                y="-36"
+              />
+            </g>
+            <g
+              transform="translate(-28, 0)"
+            >
+              <rect
+                aria-label="2010. MetaData1, 14."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="0"
+                y="-36"
+              />
+              <rect
+                aria-label="2010. MetaData2, 90."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00188f"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="10"
+                y="-36"
+              />
+              <rect
+                aria-label="2010. MetaData3, 33."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="20"
+                y="-36"
+              />
+            </g>
           </g>
-        </g>
-      </svg>
+        </svg>
+      </div>
     </div>
     <div
       class=
@@ -603,200 +615,212 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <svg
-        aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
-        focusable="false"
-        height="0"
-        role="region"
-        style="display: block;"
-        width="0"
+      <div
+        class=
+
+            {
+              height: 100%;
+              position: relative;
+              width: 100%;
+            }
       >
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                fill: CanvasText;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                opacity: 0.1;
-                stroke: CanvasText;
-              }
-              & path {
-                display: none;
-              }
-          id="xAxisGElementchart_4"
-          transform="translate(0, -35)"
-        />
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                fill: CanvasText;
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                opacity: 0.1;
-                stroke: CanvasText;
-              }
-          id="yAxisGElementchart_4"
-          transform="translate(40, 0)"
-        />
-        <rect
-          fill="transparent"
-          height="100%"
-          style="pointer-events: none;"
-          width="100%"
-        />
-        <g>
+        <svg
+          aria-label="Vertical bar chart with 3 grouped bar series. The X axis displays categories. The Y axis displays values. "
+          focusable="false"
+          height="0"
+          role="region"
+          style="display: block;"
+          width="0"
+        >
           <g
-            transform="translate(19, 0)"
-          >
-            <rect
-              aria-label="2000. MetaData1, 66."
-              class=
+            class=
 
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="9"
-              x="0"
-              y="-36"
-            />
-            <rect
-              aria-label="2000. MetaData2, 13."
-              class=
-
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="10"
-              y="-36"
-            />
-            <rect
-              aria-label="2000. MetaData3, 34."
-              class=
-
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="20"
-              y="-36"
-            />
-          </g>
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #323130;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #323130;
+                  width: 1px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                  opacity: 0.1;
+                  stroke: CanvasText;
+                }
+                & path {
+                  display: none;
+                }
+            id="xAxisGElementchart_4"
+            transform="translate(0, -35)"
+          />
           <g
-            transform="translate(-28, 0)"
-          >
-            <rect
-              aria-label="2010. MetaData1, 14."
-              class=
+            class=
 
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="0"
-              y="-36"
-            />
-            <rect
-              aria-label="2010. MetaData2, 90."
-              class=
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #323130;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
+                }
+                & path {
+                  display: none;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #323130;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                  opacity: 0.1;
+                  stroke: CanvasText;
+                }
+            id="yAxisGElementchart_4"
+            transform="translate(40, 0)"
+          />
+          <rect
+            fill="transparent"
+            height="100%"
+            style="pointer-events: none;"
+            width="100%"
+          />
+          <g>
+            <g
+              transform="translate(19, 0)"
+            >
+              <rect
+                aria-label="2000. MetaData1, 66."
+                class=
 
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="10"
-              y="-36"
-            />
-            <rect
-              aria-label="2010. MetaData3, 33."
-              class=
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="0"
+                width="9"
+                x="0"
+                y="-36"
+              />
+              <rect
+                aria-label="2000. MetaData2, 13."
+                class=
 
-                  {
-                    cursor: default;
-                  }
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="1"
-              opacity=""
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="9"
-              x="20"
-              y="-36"
-            />
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00188f"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="10"
+                y="-36"
+              />
+              <rect
+                aria-label="2000. MetaData3, 34."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="20"
+                y="-36"
+              />
+            </g>
+            <g
+              transform="translate(-28, 0)"
+            >
+              <rect
+                aria-label="2010. MetaData1, 14."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="0"
+                y="-36"
+              />
+              <rect
+                aria-label="2010. MetaData2, 90."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00188f"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="10"
+                y="-36"
+              />
+              <rect
+                aria-label="2010. MetaData3, 33."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="1"
+                opacity=""
+                role="img"
+                rx="0"
+                tabindex="-1"
+                width="9"
+                x="20"
+                y="-36"
+              />
+            </g>
           </g>
-        </g>
-      </svg>
+        </svg>
+      </div>
     </div>
   </div>
 </div>

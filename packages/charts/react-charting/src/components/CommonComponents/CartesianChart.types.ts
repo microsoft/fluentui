@@ -11,6 +11,7 @@ import {
   AxisScaleType,
   IAccessibilityProps,
   IChart,
+  IChartAnnotation,
   IDataPoint,
   IGanttChartDataPoint,
   IGroupedVerticalBarChartData,
@@ -194,9 +195,19 @@ export interface ICartesianChartStyles {
   chartWrapper?: IStyle;
 
   /**
+   * Styles for the element wrapping the svg and overlays for annotation
+   */
+  plotContainer?: IStyle;
+
+  /**
    * Styles for the svg tooltip
    */
   svgTooltip?: IStyle;
+
+  /**
+   * Styles applied to the annotation layer root element
+   */
+  annotationLayer?: IStyle;
 
   /**
    * Styles for the chart svg element
@@ -334,6 +345,11 @@ export interface ICartesianChartProps {
    * @default 10
    */
   xAxistickSize?: number;
+
+  /**
+   * Text annotations rendered on top of the chart area
+   */
+  annotations?: IChartAnnotation[];
 
   /**
    * defines the space between the tick line and the data label
@@ -707,6 +723,11 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * props to send to the focuszone
    */
   svgFocusZoneProps?: IFocusZoneProps;
+
+  /**
+   * Annotations to render on top of the chart area.
+   */
+  annotations?: IChartAnnotation[];
 
   /**
    * The prop used to define the culture to localize the numbers and date
