@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Tue, 14 Oct 2025 07:21:45 GMT",
+      "tag": "@fluentui/style-utilities_v8.13.1",
+      "version": "8.13.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "0f1c945d87c6157e0d2f584a731257cd7da039a1",
+            "comment": "Updating to new filetype icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Oct 2025 07:21:59 GMT",
       "tag": "@fluentui/style-utilities_v8.13.0",
       "version": "8.13.0",

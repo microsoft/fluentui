@@ -2,6 +2,21 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Tue, 14 Oct 2025 07:21:45 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.65",
+      "version": "8.5.65",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.13.1",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Oct 2025 07:21:59 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.5.64",
       "version": "8.5.64",

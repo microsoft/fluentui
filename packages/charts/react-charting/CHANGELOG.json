@@ -2,6 +2,39 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 14 Oct 2025 07:21:45 GMT",
+      "tag": "@fluentui/react-charting_v5.24.38",
+      "version": "5.24.38",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "64cf912b18554bbd759c01b48bf664c92916b644",
+            "comment": "fix(react-charting): Show markers only when mode has markers for large data"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.28",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.217",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.124.1",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Oct 2025 07:20:53 GMT",
       "tag": "@fluentui/react-charting_v5.24.37",
       "version": "5.24.37",
