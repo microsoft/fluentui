@@ -1103,7 +1103,7 @@ export type AxisProps = {
 /**
  * Represents a single data point in a series.
  */
-export interface IDataPointV2<X extends string | number | Date, Y extends string | number | Date> {
+export interface DataPointV2<X extends string | number | Date, Y extends string | number | Date> {
   /**
    * X-axis value of the data point.
    */
@@ -1153,7 +1153,7 @@ export interface IDataPointV2<X extends string | number | Date, Y extends string
 /**
  * Base interface for a series.
  */
-export interface IDataSeries {
+export interface DataSeries {
   /**
    * Name of the series to be displayed in the legend.
    */
@@ -1193,7 +1193,7 @@ export interface IDataSeries {
 /**
  * Represents a bar series.
  */
-export interface IBarSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+export interface BarSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
   /**
    * Type discriminator: always 'bar' for this series.
    */
@@ -1202,7 +1202,7 @@ export interface IBarSeries<X extends string | number | Date, Y extends string |
   /**
    * Array of data points for the series.
    */
-  data: IDataPointV2<X, Y>[];
+  data: DataPointV2<X, Y>[];
 
   /**
    * Optional group identifier for the series.
@@ -1213,7 +1213,7 @@ export interface IBarSeries<X extends string | number | Date, Y extends string |
 /**
  * Represents a line series.
  */
-export interface ILineSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
+export interface LineSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
   /**
    * Type discriminator: always 'line' for this series.
    */
@@ -1222,7 +1222,7 @@ export interface ILineSeries<X extends string | number | Date, Y extends string 
   /**
    * Array of data points for the series.
    */
-  data: IDataPointV2<X, Y>[];
+  data: DataPointV2<X, Y>[];
 
   /**
    * Optional gaps to render in the line.

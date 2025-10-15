@@ -3,8 +3,8 @@ import {
   CartesianChartStyleProps,
   CartesianChartStyles,
   GroupedVerticalBarChartData,
-  IBarSeries,
-  ILineSeries,
+  BarSeries,
+  LineSeries,
 } from '../../index';
 
 /**
@@ -100,7 +100,7 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
    * New flexible data prop - supports both bar and line series.
    * Use `dataV2` instead of `data` when line series are included.
    */
-  dataV2?: (IBarSeries<string, number> | ILineSeries<string, number>)[];
+  dataV2?: (BarSeries<string, number> | LineSeries<string, number>)[];
 }
 
 /**

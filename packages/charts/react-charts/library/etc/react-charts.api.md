@@ -82,6 +82,13 @@ export type AxisProps = {
 // @public
 export type AxisScaleType = 'default' | 'log';
 
+// @public
+export interface BarSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
+    data: DataPointV2<X, Y>[];
+    key?: string;
+    type: 'bar';
+}
+
 // @public (undocumented)
 export interface Basestate {
     // (undocumented)
@@ -435,6 +442,30 @@ export interface DataPoint {
     y: number;
 }
 
+// @public
+export interface DataPointV2<X extends string | number | Date, Y extends string | number | Date> {
+    callOutAccessibilityData?: AccessibilityProps;
+    color?: string;
+    markerSize?: number;
+    onClick?: () => void;
+    text?: string;
+    x: X;
+    xAxisCalloutData?: string;
+    y: Y;
+    yAxisCalloutData?: string;
+}
+
+// @public
+export interface DataSeries {
+    color?: string;
+    gradient?: [string, string];
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
+}
+
 // @public (undocumented)
 export const DataVizPalette: {
     color1: string;
@@ -770,7 +801,7 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: GroupedVerticalBarChartData[];
-    dataV2?: (IBarSeries<string, number> | ILineSeries<string, number>)[];
+    dataV2?: (BarSeries<string, number> | LineSeries<string, number>)[];
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
@@ -985,51 +1016,10 @@ export interface HorizontalDataPoint {
     x: number;
 }
 
-// @public
-export interface IBarSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
-    data: IDataPointV2<X, Y>[];
-    key?: string;
-    type: 'bar';
-}
-
-// @public
-export interface IDataPointV2<X extends string | number | Date, Y extends string | number | Date> {
-    callOutAccessibilityData?: AccessibilityProps;
-    color?: string;
-    markerSize?: number;
-    onClick?: () => void;
-    text?: string;
-    x: X;
-    xAxisCalloutData?: string;
-    y: Y;
-    yAxisCalloutData?: string;
-}
-
-// @public
-export interface IDataSeries {
-    color?: string;
-    gradient?: [string, string];
-    legend: string;
-    legendShape?: LegendShape;
-    onLegendClick?: (selectedLegend: string | null | string[]) => void;
-    opacity?: number;
-    useSecondaryYScale?: boolean;
-}
-
 // @public (undocumented)
 export interface IDeclarativeChart {
     // (undocumented)
     exportAsImage: (opts?: ImageExportOptions) => Promise<string>;
-}
-
-// @public
-export interface ILineSeries<X extends string | number | Date, Y extends string | number | Date> extends IDataSeries {
-    data: IDataPointV2<X, Y>[];
-    gaps?: LineChartGap[];
-    hideInactiveDots?: boolean;
-    lineOptions?: LineChartLineOptions;
-    onLineClick?: () => void;
-    type: 'line';
 }
 
 // @public (undocumented)
@@ -1238,6 +1228,16 @@ export interface LineDataInVerticalStackedBarChart {
     y: number | string;
     // (undocumented)
     yAxisCalloutData?: string;
+}
+
+// @public
+export interface LineSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
+    data: DataPointV2<X, Y>[];
+    gaps?: LineChartGap[];
+    hideInactiveDots?: boolean;
+    lineOptions?: LineChartLineOptions;
+    onLineClick?: () => void;
+    type: 'line';
 }
 
 // @public (undocumented)

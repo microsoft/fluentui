@@ -166,8 +166,8 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
 
   return (
     <div className="containerDiv">
-      <div style={{ display: 'flex' }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', marginInlineEnd: 20 }}>
           <Label htmlFor={_widthSliderId}>Change width:</Label>
           <Slider
             value={width}
@@ -178,7 +178,7 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
             aria-valuetext={`Width slider: ${width}`}
           />
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', marginInlineStart: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <Label htmlFor={_heightSliderId}>Change height:</Label>
           <Slider
             value={height}
@@ -210,10 +210,10 @@ export const GroupedVerticalBarChartLine = (): JSXElement => {
           height={height}
           width={width}
           isCalloutForStack={calloutVariant === 'StackCallout'}
+          reflowProps={{ mode: 'min-width' }}
           legendProps={{
             canSelectMultipleLegends: selectMultipleLegends,
           }}
-          reflowProps={{ mode: 'min-width' }}
         />
       </div>
     </div>
