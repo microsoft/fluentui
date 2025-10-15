@@ -121,6 +121,14 @@ export interface DonutChartProps extends CartesianChartProps {
    * @default false
    */
   roundCorners?: boolean;
+
+  /**
+   * Rendering order of the legend
+   * @default 'default'
+   * 'default' - as per data provided
+   * 'sorted' - in descending order of value
+   */
+  order?: 'default' | 'sorted';
 }
 
 /**

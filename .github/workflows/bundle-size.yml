@@ -35,7 +35,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 

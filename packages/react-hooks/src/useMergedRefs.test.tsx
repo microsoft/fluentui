@@ -52,7 +52,7 @@ describe('useMergedRefs', () => {
   });
 
   it('updates the current property', () => {
-    let mergedRef: (React.RefObject<string> & ((val: string) => void)) | undefined = undefined;
+    let mergedRef: (React.RefObject<string | null> & ((val: string) => void)) | undefined = undefined;
 
     const TestComponent: React.FunctionComponent = () => {
       mergedRef = useMergedRefs(React.useRef<string>(''), React.useRef<string>(''));
@@ -73,7 +73,7 @@ describe('useMergedRefs', () => {
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const refValueFunc = (val: boolean) => {};
-    let refCallback: React.RefObject<boolean> | undefined = undefined;
+    let refCallback: React.RefObject<boolean | null> | undefined = undefined;
 
     const TestComponent: React.FunctionComponent = () => {
       refCallback = useMergedRefs<boolean>(refObject, refValueFunc);

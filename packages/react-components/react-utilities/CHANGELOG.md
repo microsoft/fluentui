@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 02 Oct 2025 15:12:09 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Oct 2025 12:04:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.1)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.25.0..@fluentui/react-utilities_v9.25.1)
+
+### Patches
+
+- refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type ([PR #35290](https://github.com/microsoft/fluentui/pull/35290) by dmytrokirpa@microsoft.com)
 
 ## [9.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.0)
 

@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 03 Oct 2025 14:19:03 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Oct 2025 12:04:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.2)
+
+Wed, 08 Oct 2025 12:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.1..@fluentui/react-components_v9.72.2)
+
+### Patches
+
+- `@fluentui/react-nav`
+  - fix(react-nav): Make NavDrawerBody focus attributes overridable by props ([PR #35280](https://github.com/microsoft/fluentui/pull/35280) by jiangemma@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: In StrictMode, Tooltip now shows correctly on elements that are focused when created ([PR #35282](https://github.com/microsoft/fluentui/pull/35282) by vgenaev@gmail.com)
+- `@fluentui/react-utilities`
+  - refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type ([PR #35290](https://github.com/microsoft/fluentui/pull/35290) by dmytrokirpa@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - feat: add react 19 support ([PR #35285](https://github.com/microsoft/fluentui/pull/35285) by martinhochel@microsoft.com)
+- `@fluentui/react-infobutton`
+  - feat: add react 19 support ([PR #35285](https://github.com/microsoft/fluentui/pull/35285) by martinhochel@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - feat: add react 19 support ([PR #35285](https://github.com/microsoft/fluentui/pull/35285) by martinhochel@microsoft.com)
+
+## [9.72.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.1)
+
+Mon, 06 Oct 2025 15:01:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.0..@fluentui/react-components_v9.72.1)
+
+### Minor changes
+
+- `@fluentui/react-tree`
+  - added return type to useTreeNavigation hook ([PR #35283](https://github.com/microsoft/fluentui/pull/35283) by patrycja.fogelman@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - feat: enable wrapping of string x-axis labels in scatterchart ([PR #35231](https://github.com/microsoft/fluentui/pull/35231) by 132879294+v-baambati@users.noreply.github.com)
 
 ## [9.72.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.0)
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IChartProps, ILineChartPoints, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ILineChartMultipleExampleState {
   width: number;
@@ -18,7 +19,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div className="containerDiv">
         <label htmlFor="changeWidth_Multiple">Change Width:</label>
@@ -63,7 +64,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
     }
   };
 
-  private _styledExample(): JSX.Element {
+  private _styledExample(): JSXElement {
     const points: ILineChartPoints[] = [
       {
         data: [

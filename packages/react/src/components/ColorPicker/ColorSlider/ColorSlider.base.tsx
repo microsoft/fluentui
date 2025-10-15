@@ -12,6 +12,8 @@ import { clamp } from '../../../utilities/color/clamp';
 import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from '../../../utilities/color/consts';
 import type { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles, IColorSlider } from './ColorSlider.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
 
 export interface IColorSliderState {
@@ -79,8 +81,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     this._disposeListeners();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const type = this._type;
     const maxValue = this._maxValue;
     const {

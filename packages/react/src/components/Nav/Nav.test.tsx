@@ -9,6 +9,8 @@ import { isConformant } from '../../common/isConformant';
 import type { INavLink, IRenderGroupHeaderProps, INavLinkGroup, INavButtonProps } from './Nav.types';
 import type { IRenderFunction, IComponentAsProps } from '@fluentui/utilities';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const linkOne: INavLink = {
   key: 'Bing',
   name: 'Bing',
@@ -50,8 +52,7 @@ describe('Nav', () => {
   });
 
   it('render Nav with overrides correctly', () => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const LinkAs = (props: IComponentAsProps<INavButtonProps>): JSX.Element | null => {
+    const LinkAs = (props: IComponentAsProps<INavButtonProps>): JSXElement | null => {
       const { defaultRender: DefaultRender, ...buttonProps } = props;
 
       if (!DefaultRender) {
@@ -65,8 +66,7 @@ describe('Nav', () => {
       );
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    function onRenderNavLink(props?: INavLink, defaultRender?: IRenderFunction<INavLink>): JSX.Element | null {
+    function onRenderNavLink(props?: INavLink, defaultRender?: IRenderFunction<INavLink>): JSXElement | null {
       if (!props || !defaultRender) {
         return null;
       }
@@ -77,8 +77,7 @@ describe('Nav', () => {
     function onRenderGroupHeader(
       props?: IRenderGroupHeaderProps,
       defaultRender?: IRenderFunction<IRenderGroupHeaderProps>,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-    ): JSX.Element | null {
+    ): JSXElement | null {
       if (!props || !defaultRender) {
         return null;
       }

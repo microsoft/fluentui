@@ -11,6 +11,8 @@ import type { ShadowConfig } from '@fluentui/merge-styles';
 
 import { memoizeFunction } from '../memoize';
 
+import type { JSXElement } from '../jsx';
+
 const memoizedMakeShadowConfig = memoizeFunction(makeShadowConfig);
 const mergeComponentStyles = memoizeFunction(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -54,7 +56,7 @@ export function customizable(
       }
 
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      public render(): JSX.Element {
+      public render(): JSXElement {
         return (
           <MergeStylesShadowRootConsumer stylesheetKey={scope}>
             {(inShadow: boolean) => {

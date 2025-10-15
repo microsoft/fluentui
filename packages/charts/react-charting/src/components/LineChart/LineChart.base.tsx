@@ -959,11 +959,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         );
 
         // Add individual markers if mode includes 'markers'
-        const showMarkers = lineMode?.includes('markers') || !lineMode; // Show markers by default if no mode specified
+        const showMarkers = !!lineMode?.includes('markers');
         if (showMarkers) {
           for (let k = 0; k < this._points[i].data.length; k++) {
             const { x, y } = this._points[i].data[k];
-            const xPoint = this._xAxisScale(x instanceof Date ? x.getTime() : x);
+            const xPoint = this._xAxisScale(x);
             const yPoint = yScale(y);
 
             if (isPlottable(xPoint, yPoint)) {

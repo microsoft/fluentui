@@ -9,6 +9,8 @@ import type {
 } from './DocumentCardStatus.types';
 import type { IProcessedStyleSet } from '../../Styling';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDocumentCardStatusStyleProps, IDocumentCardStatusStyles>();
 
 /**
@@ -23,8 +25,7 @@ export class DocumentCardStatusBase extends React.Component<IDocumentCardStatusP
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { statusIcon, status, styles, theme, className } = this.props;
     const iconProps = {
       iconName: statusIcon,

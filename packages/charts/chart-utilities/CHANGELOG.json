@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Fri, 10 Oct 2025 07:20:53 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.33",
+      "version": "1.1.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "7c9406120303f4feea69f9879fd305f2f8b0cc33",
+            "comment": "fix: use fallback for scatter trace when axis type is category"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Oct 2025 07:20:14 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.32",
       "version": "1.1.32",

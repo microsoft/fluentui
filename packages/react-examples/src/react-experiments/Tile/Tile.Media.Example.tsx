@@ -12,8 +12,9 @@ import {
 } from '@fluentui/react-experiments';
 import { lorem } from '@fluentui/example-data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
+import type { JSXElement } from '@fluentui/utilities';
 
-const ITEMS: { name: JSX.Element; activity: JSX.Element }[] = [
+const ITEMS: { name: JSXElement; activity: JSXElement }[] = [
   {
     name: <>{lorem(2)}</>,
     activity: (
@@ -108,7 +109,7 @@ interface IImageTileProps {
   item: (typeof ITEMS)[0];
 }
 
-const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTileProps): JSX.Element => {
+const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTileProps): JSXElement => {
   const tile = (
     <Tile
       contentSize={props.tileSize}
@@ -174,7 +175,7 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { imagesLoaded, nameplateOnlyOnHover, generateLinks, linkInNewTab } = this.state;
     const exampleUrl = 'http://www.contoso.com/';
     const linkHref = generateLinks ? exampleUrl : undefined;

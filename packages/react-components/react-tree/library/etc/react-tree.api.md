@@ -466,7 +466,7 @@ export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState
 
 // @public
 export function useTreeNavigation(navigationMode?: TreeNavigationMode): {
-    navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => void;
+    navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => HTMLElement | null;
     treeRef: React_2.RefCallback<HTMLElement>;
     forceUpdateRovingTabIndex: () => void;
 };

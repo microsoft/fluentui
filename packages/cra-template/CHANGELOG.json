@@ -2,6 +2,21 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Tue, 14 Oct 2025 07:21:44 GMT",
+      "tag": "@fluentui/cra-template_v8.4.218",
+      "version": "8.4.218",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/cra-template",
+            "commit": "45374db8331035d988a5b6e6a7781bafb854043a",
+            "comment": "[chore]: bump min version of node from 20 to 22"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Apr 2025 07:20:23 GMT",
       "tag": "@fluentui/cra-template_v8.4.204",
       "version": "8.4.204",

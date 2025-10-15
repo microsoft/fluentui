@@ -308,7 +308,7 @@ export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?:
 
 // @public
 export const FocusRects: React_2.FunctionComponent<{
-    rootRef?: React_2.RefObject<HTMLElement>;
+    rootRef?: React_2.RefObject<HTMLElement | null>;
 }>;
 
 // @public (undocumented)
@@ -319,7 +319,7 @@ export const FocusRectsProvider: React_2.FC<FocusRectsProviderProps>;
 
 // @public (undocumented)
 export type FocusRectsProviderProps = {
-    providerRef: React_2.RefObject<HTMLElement>;
+    providerRef: React_2.RefObject<HTMLElement | null>;
     layerRoot?: boolean;
     children?: React_2.ReactNode;
 };
@@ -624,10 +624,10 @@ export interface IFitContentToBoundsOptions {
 
 // @public (undocumented)
 export type IFocusRectsContext = {
-    readonly providerRef: React_2.RefObject<HTMLElement>;
-    readonly registeredProviders: React_2.RefObject<HTMLElement>[];
-    readonly registerProvider: (ref: React_2.RefObject<HTMLElement>) => void;
-    readonly unregisterProvider: (ref: React_2.RefObject<HTMLElement>) => void;
+    readonly providerRef: React_2.RefObject<HTMLElement | null>;
+    readonly registeredProviders: React_2.RefObject<HTMLElement | null>[];
+    readonly registerProvider: (ref: React_2.RefObject<HTMLElement | null>) => void;
+    readonly unregisterProvider: (ref: React_2.RefObject<HTMLElement | null>) => void;
 };
 
 // @public
@@ -701,7 +701,7 @@ export interface IReactProps<T> {
     // (undocumented)
     key?: React_2.Key | undefined;
     // (undocumented)
-    ref?: React_2.LegacyRef<T> | undefined;
+    ref?: React_2.Ref<T> | undefined;
 }
 
 // @public
@@ -721,17 +721,17 @@ export interface IRectangle {
 }
 
 // @public (undocumented)
-export type IRefObject<T> = React_2.RefObject<T> | RefObject<T> | ((ref: T | null) => void);
+export type IRefObject<T> = React_2.MutableRefObject<T | null> | RefObject<T | null> | ((ref: T | null) => void);
 
 // @public
 export interface IRenderComponent<TProps> {
-    children: (props: TProps) => JSX.Element;
+    children: (props: TProps) => JSXElement;
 }
 
 // @public
 export interface IRenderFunction<P> {
     // (undocumented)
-    (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
+    (props?: P, defaultRender?: (props?: P) => JSXElement | null): JSXElement | null;
 }
 
 // @public
@@ -891,6 +891,15 @@ export interface IWarnControlledUsageParams<P> {
     readOnlyProp?: keyof P;
     valueProp: keyof P;
 }
+
+// @public
+export type JSXElement = React_2.ReactElement<any, any>;
+
+// @public
+export type JSXIntrinsicElement<Element extends JSXIntrinsicElementKeys> = React_2.ComponentProps<Element>;
+
+// @public
+export type JSXIntrinsicElementKeys = Exclude<React_2.ElementType, React_2.ComponentType>;
 
 // @public
 export const KeyCodes: {
@@ -1097,7 +1106,7 @@ export type MergeStylesShadowRootProviderProps = {
 export function modalize(target: HTMLElement): () => void;
 
 // @public
-export function nullRender(): JSX.Element | null;
+export function nullRender(): JSXElement | null;
 
 // @public
 export const olProperties: Record<string, number>;
@@ -1271,7 +1280,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element, registeredProviders?: React_2.RefObject<HTMLElement>[]): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, registeredProviders?: React_2.RefObject<HTMLElement | null>[]): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;
@@ -1356,7 +1365,7 @@ export const useAdoptedStylesheetEx: AdoptedStylesheetExHook;
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
 
 // @public
-export function useFocusRects(rootRef?: React_2.RefObject<HTMLElement>): void;
+export function useFocusRects(rootRef?: React_2.RefObject<HTMLElement | null>): void;
 
 // @public
 export const useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
