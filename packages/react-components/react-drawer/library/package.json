@@ -17,8 +17,7 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*",
-    "resize-observer-polyfill": "1.5.1"
+    "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
     "@fluentui/react-dialog": "^9.15.4",
