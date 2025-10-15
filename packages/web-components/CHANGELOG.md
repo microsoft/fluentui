@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 14 Oct 2025 04:06:46 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Oct 2025 04:07:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.128](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.128)
+
+Wed, 15 Oct 2025 04:07:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.127..@fluentui/web-components_v3.0.0-beta.128)
+
+### Changes
+
+- exclude node_modules and dist so CEM type parser maps types properly ([PR #35326](https://github.com/microsoft/fluentui/pull/35326) by jes@microsoft.com)
 
 ## [3.0.0-beta.127](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.127)
 
