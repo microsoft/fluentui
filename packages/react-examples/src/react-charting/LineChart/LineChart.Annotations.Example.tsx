@@ -89,7 +89,8 @@ export class LineChartAnnotationsExample extends React.Component<{}, IStyledLine
       },
       {
         id: 'experiment',
-        text: `<div><strong>Pricing experiment</strong><br /><em>A/B test running</em><ul><li>Variant B at 52%</li><li>Average order ↑</li></ul></div>`,
+        text: `<div><strong>Pricing experiment</strong><br /><em>A/B test running</em><ul><li>Variant B at 52%</li>
+        <li>Average order ↑</li></ul></div>`,
         coordinates: { type: 'data', x: 3, y: 37 },
         layout: {
           align: 'center',
