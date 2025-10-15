@@ -22,16 +22,20 @@ export interface IScrollContainerContext {
   scrollContainer: IScrollContainer;
 }
 
+/**
+ * Use the `ScrollContainerContext` instead, as PropTypes legacy context types are deprecated in React 19.
+ * @deprecated
+ */
 export const ScrollContainerContextTypes = {
   scrollContainer: PropTypes.object.isRequired,
 };
+
+export const ScrollContainerContext = React.createContext<IScrollContainerContext | null>(null);
 
 export class ScrollContainer
   extends React.Component<React.PropsWithChildren<IScrollContainerProps>>
   implements IScrollContainer
 {
-  public static childContextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
-
   private _observer: IntersectionObserver;
 
   private _root: HTMLDivElement;
@@ -77,13 +81,15 @@ export class ScrollContainer
     const { children, className } = this.props;
 
     return (
-      <div
-        className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)}
-        data-is-scrollable={true}
-        ref={this._resolveRoot}
-      >
-        {children as React.ReactElement}
-      </div>
+      <ScrollContainerContext.Provider value={{ scrollContainer: this }}>
+        <div
+          className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)}
+          data-is-scrollable={true}
+          ref={this._resolveRoot}
+        >
+          {children as React.ReactElement}
+        </div>
+      </ScrollContainerContext.Provider>
     );
   }
 
