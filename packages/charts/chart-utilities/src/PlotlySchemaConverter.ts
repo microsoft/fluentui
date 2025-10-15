@@ -272,33 +272,11 @@ const validateScatterData = (data: Partial<PlotData>, layout: Partial<Layout> | 
   const mode = data.mode ?? '';
   const xAxisType = data && data.x && data.x.length > 0 ? typeof data?.x?.[0] : 'undefined';
   const yAxisType = data && data.y && data.y.length > 0 ? typeof data?.y?.[0] : 'undefined';
-  if (isScatterMarkers(mode)) {
-    // Any series having only markers -> Supported number x/string x/date x + number y or string y
-    if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
-    }
-    if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
-    }
-  } else if (
-    [
-      'lines+markers',
-      'markers+lines',
-      'text+lines+markers',
-      'lines',
-      'text+lines',
-      'lines+text',
-      'lines+markers+text',
-    ].includes(mode)
-  ) {
-    if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
-    }
-    if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
-    }
-  } else {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, Unsupported mode`);
+  if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
+  }
+  if (!isNumberArray(data.y) && !isStringArray(data.y)) {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
   }
 
   const isAreaChart = isScatterAreaChart(data);
@@ -488,6 +466,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
     }
 
     const validTraces = getValidTraces(validSchema.data, validSchema.layout);
+    let encounteredGantt = false;
     let mappedTraces = validTraces.map(trace => {
       const traceIndex = trace[0];
       const traceData = validSchema.data[traceIndex];
@@ -536,7 +515,12 @@ export const mapFluentChart = (input: any): OutputChartType => {
         case 'scatter':
         case 'scattergl':
           const scatterData = traceData as Partial<PlotData>;
-          const isAreaChart = isScatterAreaChart(scatterData);
+
+          if (isScatterGanttChart(scatterData, encounteredGantt)) {
+            encounteredGantt = true;
+            return { isValid: true, traceIndex, type: 'gantt' };
+          }
+
           const isScatterChart = isScatterMarkers(scatterData.mode ?? '');
           const hasLineShape =
             Array.isArray(validSchema?.layout?.shapes) &&
@@ -550,6 +534,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
             };
           }
 
+          const isAreaChart = isScatterAreaChart(scatterData);
           if (!doesScatterNeedFallback(scatterData, validSchema.layout)) {
             return { isValid: true, traceIndex, type: isAreaChart ? 'area' : 'line' };
           }
@@ -683,4 +668,38 @@ const doesScatterNeedFallback = (data: Partial<PlotData>, layout: Partial<Layout
     return false;
   }
   return !supportedScatterInLineChart(data, layout);
+};
+
+/** https://github.com/plotly/plotly.py/blob/f27f38f303d25fd47bd4c4c619c0a07ac7aaa0f1/plotly/figure_factory/_gantt.py */
+const isScatterGanttChart = (data: Partial<PlotData>, encounteredGantt: boolean) => {
+  let cornerPoints = true;
+  for (let i = 0; i < data.x!.length; i += 5) {
+    if (
+      data.x![i] !== data.x![i + 3] ||
+      data.x![i + 1] !== data.x![i + 2] ||
+      data.y![i] !== data.y![i + 1] ||
+      data.y![i + 2] !== data.y![i + 3] ||
+      (i > 0 && data.y![i - 1] !== null)
+    ) {
+      cornerPoints = false;
+      break;
+    }
+  }
+
+  if (data.mode === 'none' && data.fill === 'toself' && cornerPoints) {
+    return true;
+  }
+
+  if (
+    data.mode === 'markers' &&
+    data.marker?.size === 1 &&
+    data.marker?.opacity === 0 &&
+    data.name === '' &&
+    data.showlegend === false &&
+    encounteredGantt
+  ) {
+    return true;
+  }
+
+  return false;
 };

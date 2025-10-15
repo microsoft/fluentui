@@ -1379,10 +1379,15 @@ export const transformPlotlyJsonToGanttChartProps = (
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): GanttChartProps => {
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  const data = input.data.filter((series: Partial<PlotData>) => series.type !== 'scatter' || series.mode !== 'markers');
+  const { legends, hideLegend } = getLegendProps(data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
-  const chartData: GanttChartDataPoint[] = input.data
-    .map((series: Partial<PlotData>, index: number) => {
+  const ganttData: GanttChartDataPoint[] = [];
+  data.forEach((series: Partial<PlotData>, index: number) => {
+    const legend = legends[index];
+    const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
+
+    if (series.type === 'bar') {
       colorScale = createColorScale(input.layout, series, colorScale);
 
       // extract colors for each series only once
@@ -1393,46 +1398,63 @@ export const transformPlotlyJsonToGanttChartProps = (
         colorMap,
         isDarkTheme,
       ) as string[] | string | undefined;
-      const legend = legends[index];
-      const isXDate = input.layout?.xaxis?.type === 'date' || isDateArray(series.x);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const convertXValueToNumber = (value: any) => {
         return isInvalidValue(value) ? 0 : isXDate ? +parseLocalDate(value) : +value;
       };
 
-      return (series.y as Datum[])
-        .map((yVal, i: number) => {
-          if (isInvalidValue(yVal)) {
-            return null;
-          }
-          // resolve color for each legend's bars from the colorscale or extracted colors
-          const color = colorScale
-            ? colorScale(
-                isArrayOrTypedArray(series.marker?.color)
-                  ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
-                  : 0,
-              )
-            : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
-          const opacity = getOpacity(series, i);
-          const base = convertXValueToNumber(series.base?.[i]);
-          const xVal = convertXValueToNumber(series.x?.[i]);
+      (series.y as Datum[]).forEach((yVal, i: number) => {
+        if (isInvalidValue(yVal)) {
+          return;
+        }
+        // resolve color for each legend's bars from the colorscale or extracted colors
+        const color = colorScale
+          ? colorScale(
+              isArrayOrTypedArray(series.marker?.color)
+                ? ((series.marker?.color as Color[])?.[i % (series.marker?.color as Color[]).length] as number)
+                : 0,
+            )
+          : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
+        const opacity = getOpacity(series, i);
+        const base = convertXValueToNumber(series.base?.[i]);
+        const xVal = convertXValueToNumber(series.x?.[i]);
 
-          return {
-            x: {
-              start: isXDate ? new Date(base) : base,
-              end: isXDate ? new Date(base + xVal) : base + xVal,
-            },
-            y: yVal,
-            legend,
-            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
-          } as GanttChartDataPoint;
-        })
-        .filter(point => point !== null) as GanttChartDataPoint[];
-    })
-    .flat();
+        ganttData.push({
+          x: {
+            start: isXDate ? new Date(base) : base,
+            end: isXDate ? new Date(base + xVal) : base + xVal,
+          },
+          y: yVal as string | number,
+          legend,
+          color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+        });
+      });
+    } else if (series.type === 'scatter' && series.mode === 'none' && isNumberArray(series.y)) {
+      for (let i = 0; i < series.y!.length; i += 5) {
+        if (isInvalidValue(series.y![i]) || isInvalidValue(series.y![i + 3])) {
+          continue;
+        }
+
+        const x0 = isXDate ? parseLocalDate(series.x![i] as string | number) : (series.x![i] as number);
+        const x1 = isXDate ? parseLocalDate(series.x![i + 1] as string | number) : (series.x![i + 1] as number);
+        const y0 = series.y![i] as number;
+        const y1 = series.y![i + 3] as number;
+
+        ganttData.push({
+          x: {
+            start: x0,
+            end: x1,
+          },
+          y: Math.round((y0 + y1) / 2),
+          legend,
+          color: series.fillcolor,
+        });
+      }
+    }
+  });
 
   return {
-    data: chartData,
+    data: ganttData,
     showYAxisLables: true,
     height: input.layout?.height ?? 350,
     width: input.layout?.width,
@@ -1443,9 +1465,9 @@ export const transformPlotlyJsonToGanttChartProps = (
     roundCorners: true,
     useUTC: false,
     ...getTitles(input.layout),
-    ...getAxisCategoryOrderProps(input.data, input.layout),
-    ...getBarProps(input.data, input.layout, true),
-    ...getAxisTickProps(input.data, input.layout),
+    ...getAxisCategoryOrderProps(data, input.layout),
+    ...getBarProps(data, input.layout, true),
+    ...getAxisTickProps(data, input.layout),
   };
 };
 
