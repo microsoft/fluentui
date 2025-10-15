@@ -4,7 +4,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
 <button
   aria-describedby="id__1"
   aria-labelledby="id__0"
-  className=
+  class=
       ms-Button
       ms-Button--compound
       {
@@ -97,17 +97,11 @@ exports[`Button renders CompoundButton correctly 1`] = `
       &:active .ms-Button-description {
         color: inherit;
       }
-  data-is-focusable={true}
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  onMouseDown={[Function]}
-  onMouseUp={[Function]}
+  data-is-focusable="true"
   type="button"
 >
   <span
-    className=
+    class=
         ms-Button-flexContainer
         {
           align-items: flex-start;
@@ -125,7 +119,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
     data-automationid="splitbuttonprimary"
   >
     <span
-      className=
+      class=
           ms-Button-textContainer
           {
             display: block;
@@ -134,7 +128,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
           }
     >
       <span
-        className=
+        class=
             ms-Button-label
             {
               display: block;
@@ -150,7 +144,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
         Create account
       </span>
       <span
-        className=
+        class=
             ms-Button-description
             {
               -moz-osx-font-smoothing: grayscale;

@@ -127,7 +127,7 @@ jobs:
 
       - name: React Versions Integration Tests (17,19) - Test
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--19--test --exclude='react-19-tests-v9,react-charting,react'
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--19--test --exclude='react-19-tests-v9,react-charting'
 
       - name: React Versions Integration Tests (17,19) - Type-check
         run: |

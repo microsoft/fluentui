@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
 //import { Customizer } from '@fluentui/utilities';
 import { Fabric } from './Fabric';
 //import { Checkbox } from '@fluentui/react/lib/Checkbox';
@@ -13,15 +12,13 @@ import { getBySelector } from '../../common/testUtilities';
 
 describe('Fabric', () => {
   it('renders a Fabric component correctly', () => {
-    const component = create(<Fabric>test</Fabric>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Fabric>test</Fabric>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a Fabric component with applyTheme correctly', () => {
-    const component = create(<Fabric applyTheme>test</Fabric>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Fabric applyTheme>test</Fabric>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   /*it('renders a Fabric component in RTL and LTR theme', () => {
@@ -52,25 +49,24 @@ describe('Fabric', () => {
       </div>
     );
     // Render with no theme context
-    const component = create(content);
+    const { container, rerender } = render(content);
     // Render in RTL context
-    const rtlComponent = create(<Customizer settings={{ theme: rtlTheme }}>{content}</Customizer>);
+    const rtlComponent = rerender(<Customizer settings={{ theme: rtlTheme }}>{content}</Customizer>);
     // Render in LTR Context
-    const ltrComponent = create(<Customizer settings={{ theme: ltrTheme }}>{content}</Customizer>);
+    const ltrComponent = rerender(<Customizer settings={{ theme: ltrTheme }}>{content}</Customizer>);
 
-    const tree = component.toJSON();
+
     const rtlTree = rtlComponent.toJSON();
     const ltrTree = ltrComponent.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
     expect(rtlTree).toMatchSnapshot();
     expect(ltrTree).toMatchSnapshot();
   });*/
 
   it('renders as a span using the "as" prop', () => {
-    const component = create(<Fabric as="span" />);
+    const { container } = render(<Fabric as="span" />);
 
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a Fabric component with applyThemeToBody correctly', () => {

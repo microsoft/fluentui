@@ -32,7 +32,6 @@
     "@fluentui/example-data": "*",
     "@fluentui/jest-serializer-merge-styles": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/test-utilities": "*",
     "@fluentui/webpack-utilities": "*",
     "office-ui-fabric-core": "^11.0.0",
     "@fluentui/scripts-api-extractor": "*",
