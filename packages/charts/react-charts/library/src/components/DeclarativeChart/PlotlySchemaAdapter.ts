@@ -2868,12 +2868,12 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
       if (axId === 'x') {
         props.xAxis = {
           tickStep: dtick,
-          tick0: tick0,
+          tick0,
         };
       } else if (axId === 'y') {
         props.yAxis = {
           tickStep: dtick,
-          tick0: tick0,
+          tick0,
         };
       }
       return;
@@ -2961,7 +2961,7 @@ const plotlyTick0 = (tick0: number | string | undefined, axType: AxisType | unde
   return isNumber(tick0) ? Number(tick0) : 0;
 };
 
-interface IAxisObject extends Partial<LayoutAxis> {
+interface AxisObject extends Partial<LayoutAxis> {
   _id: string;
 }
 
@@ -2977,12 +2977,12 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
     yAxisIds.add(axisIds.y);
   });
 
-  const makeAxisObject = (axLetter: 'x' | 'y', axId: number): IAxisObject => ({
+  const makeAxisObject = (axLetter: 'x' | 'y', axId: number): AxisObject => ({
     ...layout?.[getAxisKey(axLetter, axId)],
     _id: `${axLetter}${axId > 1 ? axId : ''}`,
   });
 
-  const axisObjects: Record<string, IAxisObject> = {};
+  const axisObjects: Record<string, AxisObject> = {};
 
   if (typeof xAxisId === 'number') {
     axisObjects.x = makeAxisObject('x', xAxisId);
@@ -2999,10 +2999,10 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
   return axisObjects;
 };
 
-function getAxisType(data: Data[], ax: IAxisObject): AxisType;
+function getAxisType(data: Data[], ax: AxisObject): AxisType;
 function getAxisType(data: Data[], layout: Partial<Layout> | undefined, axisId: string): AxisType;
-function getAxisType(data: Data[], arg2: IAxisObject | Partial<Layout> | undefined, arg3?: string): AxisType {
-  let ax: IAxisObject | undefined;
+function getAxisType(data: Data[], arg2: AxisObject | Partial<Layout> | undefined, arg3?: string): AxisType {
+  let ax: AxisObject | undefined;
 
   if (arg2 && typeof arg2 === 'object' && '_id' in arg2) {
     ax = arg2;
