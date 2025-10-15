@@ -70,11 +70,11 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
 
   const onScroll = React.useCallback(() => {
     cancelScrollAnimationFrame();
-    setScrollAnimationFrame(() => updateScrollState());
+    setScrollAnimationFrame(updateScrollState);
   }, [cancelScrollAnimationFrame, setScrollAnimationFrame, updateScrollState]);
 
   // Update scroll state on children change
-  useIsomorphicLayoutEffect(() => updateScrollState(), [props.children, updateScrollState]);
+  useIsomorphicLayoutEffect(updateScrollState, [props.children, updateScrollState]);
 
   // Update scroll state on mount and when resize occurs
   useIsomorphicLayoutEffect(() => {
@@ -82,7 +82,7 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
       return;
     }
 
-    const observer = new win.ResizeObserver(() => setResizeAnimationFrame(() => updateScrollState()));
+    const observer = new win.ResizeObserver(() => setResizeAnimationFrame(updateScrollState));
 
     observer.observe(scrollRef.current);
 
