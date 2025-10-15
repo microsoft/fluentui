@@ -9,15 +9,11 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  useIsSSR,
 } from '@fluentui/react-components';
 
 export const KeepRenderedInTheDOM = (): JSXElement => {
-  const isSSR = useIsSSR();
-
   return (
-    /* Always unmount the element when in SSR mode to avoid hydration issues */
-    <Dialog unmountOnClose={isSSR ? true : false}>
+    <Dialog unmountOnClose={false}>
       <DialogTrigger disableButtonEnhancement>
         <Button>Open dialog</Button>
       </DialogTrigger>
