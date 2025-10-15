@@ -19,7 +19,7 @@ export const addMinutes = (date: Date, minutes: number): Date => {
  * @param increments - Time increments
  * @returns Date with ceiled minute
  */
-export const ceilMinuteToIncrement = (date: Date, increments: number) => {
+export const ceilMinuteToIncrement = (date: Date, increments: number): Date => {
   const result = new Date(date.getTime());
   let minute = result.getMinutes();
   if (TimeConstants.MinutesInOneHour % increments) {

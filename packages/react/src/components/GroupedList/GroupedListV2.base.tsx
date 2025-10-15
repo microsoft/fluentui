@@ -610,7 +610,7 @@ export class GroupedListV2Wrapper
     return <GroupedListV2FC {...this.props} {...this.state} groupedListRef={this._groupedList} />;
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this._forceListUpdate();
   }

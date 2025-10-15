@@ -47,7 +47,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
     this._disposables.forEach(dispose => dispose());
   }
 
-  public render() {
+  public render(): React.ReactElement | null {
     return this._resolveRoute();
   }
 

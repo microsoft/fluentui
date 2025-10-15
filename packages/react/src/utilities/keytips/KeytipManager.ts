@@ -45,7 +45,7 @@ export class KeytipManager {
    * @param delayUpdatingKeytipChange - T/F if we should delay notifiying keytip subscribers
    * of keytip changes
    */
-  public init(delayUpdatingKeytipChange: boolean) {
+  public init(delayUpdatingKeytipChange: boolean): void {
     this.delayUpdatingKeytipChange = delayUpdatingKeytipChange;
   }
 
@@ -180,7 +180,7 @@ export class KeytipManager {
   /**
    * Public function to bind for overflow items that have a submenu
    */
-  public menuExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
+  public menuExecute(overflowButtonSequences: string[], keytipSequences: string[]): void {
     EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, {
       overflowButtonSequences,
       keytipSequences,

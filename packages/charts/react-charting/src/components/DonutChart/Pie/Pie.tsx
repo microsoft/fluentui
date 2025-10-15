@@ -6,6 +6,7 @@ import { IChartDataPoint } from '../index';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Pie.styles';
 import { getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IPieStyleProps, IPieStyles>();
 const TEXT_PADDING: number = 5;
@@ -34,7 +35,7 @@ export class Pie extends React.Component<IPieProps, {}> {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
+  public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSXElement => {
     let color = d && d.data && d.data.color;
     let nextColor = color;
 
@@ -73,7 +74,7 @@ export class Pie extends React.Component<IPieProps, {}> {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { pie, data } = this.props;
     const focusData = this._pieForFocusRing(data);
     const piechart = pie(data);

@@ -113,7 +113,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
     this._selection = new Selection();
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const breadcrumbStyle = {
       root: [
         {
@@ -177,7 +177,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
 function onRenderDetailsHeader(
   props: IDetailsHeaderProps,
   defaultRender?: IRenderFunction<IDetailsHeaderProps>,
-): JSX.Element {
+): React.ReactElement {
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
@@ -190,7 +190,7 @@ function onRenderDetailsHeader(
   );
 }
 
-function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
+function onRenderDetailsFooter(props: IDetailsFooterProps): React.ReactElement {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <div style={{ display: 'inline-block' }}>

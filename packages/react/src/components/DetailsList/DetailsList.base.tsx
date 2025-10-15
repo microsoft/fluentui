@@ -889,7 +889,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     return 0;
   }
 
-  public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }) {
+  public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }): void {
     const NO_COLUMNS: IColumn[] = [];
 
     const { columns = NO_COLUMNS, selectionMode, checkboxVisibility, columnReorderOptions } = this.props;
@@ -939,7 +939,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     this._async.dispose();
   }
 
-  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
+  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void {
     this._notifyColumnsResized();
 
     const doc = getDocumentEx(this.context);
@@ -1526,7 +1526,7 @@ export function buildColumns(
   groupedColumnKey?: string,
   isMultiline?: boolean,
   columnActionsMode?: ColumnActionsMode,
-) {
+): IColumn[] {
   const columns: IColumn[] = [];
 
   if (items && items.length) {
