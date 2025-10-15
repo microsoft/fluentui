@@ -5,7 +5,7 @@ import * as React from 'react';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { presenceMotionSlot } from '@fluentui/react-motion';
-import { useControllableState, useEventCallback, useId, useIsSSR } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 
 import { useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
@@ -21,16 +21,8 @@ import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.ty
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const {
-    children,
-    modalType = 'modal',
-    onOpenChange,
-    inertTrapFocus = false,
-    unmountOnClose: shouldUnmountOnClose = true,
-  } = props;
+  const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false, unmountOnClose = true } = props;
 
-  const isSSR = useIsSSR();
-  const unmountOnClose = isSSR ? true : shouldUnmountOnClose;
   const dialogTitleId = useId('dialog-title-');
 
   const [trigger, content] = childrenToTriggerAndContent(children);
