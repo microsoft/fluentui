@@ -40,9 +40,13 @@ const decodeHtmlEntities = (html: string, documentRef: Document): string => {
     return html;
   }
 
-  const textarea = documentRef.createElement('textarea');
-  textarea.innerHTML = html;
-  return textarea.value;
+  if (!documentRef?.implementation?.createHTMLDocument) {
+    return html;
+  }
+
+  const workingDocument = documentRef.implementation.createHTMLDocument('');
+  workingDocument.body.innerHTML = html;
+  return workingDocument.body.textContent ?? '';
 };
 
 const sanitizeAnnotationHtml = (html: string): string => {
@@ -50,16 +54,16 @@ const sanitizeAnnotationHtml = (html: string): string => {
     return '';
   }
 
-  if (typeof window === 'undefined' || !window.document?.createElement) {
+  if (typeof window === 'undefined' || !window.document?.implementation?.createHTMLDocument) {
     return html;
   }
 
-  const template = window.document.createElement('template');
-  template.innerHTML = decodeHtmlEntities(html, window.document);
+  const workingDocument = window.document.implementation.createHTMLDocument('');
+  workingDocument.body.innerHTML = decodeHtmlEntities(html, window.document);
 
-  template.content.querySelectorAll('script, iframe, object, embed, link').forEach(node => node.remove());
+  workingDocument.body.querySelectorAll('script, iframe, object, embed, link').forEach(node => node.remove());
 
-  template.content.querySelectorAll('*').forEach(node => {
+  workingDocument.body.querySelectorAll('*').forEach(node => {
     Array.from(node.attributes).forEach(attr => {
       if (/^on/i.test(attr.name)) {
         node.removeAttribute(attr.name);
@@ -67,7 +71,7 @@ const sanitizeAnnotationHtml = (html: string): string => {
     });
   });
 
-  return template.innerHTML;
+  return workingDocument.body.innerHTML;
 };
 
 const normalizeBandOffset = (
@@ -321,9 +325,9 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
       const minArrowClearance = 6;
       const minDistance = Math.max(startPadding + endPadding + minArrowClearance, startPadding);
 
-      let dx = displayPoint.x - resolved.anchor.x;
-      let dy = displayPoint.y - resolved.anchor.y;
-      let distance = Math.sqrt(dx * dx + dy * dy);
+      const dx = displayPoint.x - resolved.anchor.x;
+      const dy = displayPoint.y - resolved.anchor.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < minDistance) {
         const fallbackDirection: IAnnotationPoint = { x: 0, y: -1 };
@@ -380,7 +384,7 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
             className={css(classNames.annotationContent, layout?.className, annotation.style?.className)}
             style={contentStyle}
             dangerouslySetInnerHTML={{ __html: annotationHtml }}
-          ></div>
+          />
         </div>,
       );
     }
@@ -410,7 +414,7 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
             data-chart-annotation="true"
             data-annotation-key={key}
             dangerouslySetInnerHTML={{ __html: annotationHtml }}
-          ></div>
+          />
         </div>
       </foreignObject>,
     );
