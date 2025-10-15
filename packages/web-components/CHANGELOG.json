@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 15 Oct 2025 04:07:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.128",
+      "version": "3.0.0-beta.128",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f511e153749497a89f5dc5ae04a4965745f57ba4",
+            "comment": "exclude node_modules and dist so CEM type parser maps types properly"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Oct 2025 04:06:46 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.127",
       "version": "3.0.0-beta.127",
