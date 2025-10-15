@@ -4,7 +4,7 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
-import { useIsVisualRefreshEnabled, VISUAL_REFRESH_TOKENS } from '@fluentui/visual-refresh-preview';
+import { semanticTokenVar, useIsVisualRefreshEnabled } from '@fluentui/visual-refresh-preview';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
 
@@ -553,19 +553,32 @@ const useIconStyles = makeStyles({
 
 const useVisualRefreshStyles = makeStyles({
   root: {
-    fontWeight: VISUAL_REFRESH_TOKENS.buttonRootFontWeight,
-    padding: VISUAL_REFRESH_TOKENS.buttonRootPadding,
-    ...shorthands.borderWidth(VISUAL_REFRESH_TOKENS.buttonRootBorderWidth),
+    background: SEMANTIC_TOKENS.groupButtonBackground,
+    // fontWeight: VISUAL_REFRESH_TOKENS.buttonRootFontWeight,
+    // padding: VISUAL_REFRESH_TOKENS.buttonRootPadding,
+    // ...shorthands.borderWidth(VISUAL_REFRESH_TOKENS.buttonRootBorderWidth),
   },
   rounded: {
-    borderRadius: VISUAL_REFRESH_TOKENS.buttonBorderRadius,
-    fontFamily: VISUAL_REFRESH_TOKENS.buttonRoundedFontFamily,
+    // borderRadius: VISUAL_REFRESH_TOKENS.buttonBorderRadius,
+    // fontFamily: VISUAL_REFRESH_TOKENS.buttonRoundedFontFamily,
   },
   square: {
-    fontWeight: VISUAL_REFRESH_TOKENS.buttonSquareFontWeight,
+    // fontWeight: VISUAL_REFRESH_TOKENS.buttonSquareFontWeight,
   },
   primary: {
-    backgroundColor: VISUAL_REFRESH_TOKENS.buttonPrimaryBackgroundColor,
+    // backgroundColor: VISUAL_REFRESH_TOKENS.buttonPrimaryBackgroundColor,
+  },
+  small: {
+    height: semanticTokenVar('size/ctrl/sm'),
+    minHeight: semanticTokenVar('size/ctrl/sm'),
+  },
+  medium: {
+    height: semanticTokenVar('size/ctrl/default'),
+    minHeight: semanticTokenVar('size/ctrl/default'),
+  },
+  large: {
+    height: semanticTokenVar('size/ctrl/lg'),
+    minHeight: semanticTokenVar('size/ctrl/lg'),
   },
 });
 
@@ -619,7 +632,8 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     // User provided class name
     state.root.className,
 
-    visualRefreshOverrides,
+    isVisualRefreshEnabled && visualRefreshOverrides,
+    isVisualRefreshEnabled && visualRefreshStyles[size],
   );
 
   if (state.icon) {
