@@ -2486,9 +2486,11 @@ export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index
   return 1;
 };
 
-export const getValidXYRanges = (series: Partial<PlotData>,
+export const getValidXYRanges = (
+  series: Partial<PlotData>,
   resolveX?: (v: Datum) => Datum,
-  resolveY?: (v: Datum) => Datum,): [number, number][] => {
+  resolveY?: (v: Datum) => Datum,
+): [number, number][] => {
   if (!isArrayOrTypedArray(series.x) || !isArrayOrTypedArray(series.y)) {
     return [];
   }
@@ -2975,7 +2977,7 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
     yAxisIds.add(axisIds.y);
   });
 
-const makeAxisObject = (axLetter: 'x' | 'y', axId: number): IAxisObject => ({
+  const makeAxisObject = (axLetter: 'x' | 'y', axId: number): IAxisObject => ({
     ...layout?.[getAxisKey(axLetter, axId)],
     _id: `${axLetter}${axId > 1 ? axId : ''}`,
   });
