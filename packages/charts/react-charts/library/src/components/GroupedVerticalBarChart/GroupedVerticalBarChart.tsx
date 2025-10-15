@@ -461,6 +461,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     hoverXValue,
     culture: props.culture,
     isCartesian: true,
+    isCalloutForStack: props.isCalloutForStack,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData, 'text', false),
   };
@@ -970,24 +971,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     groupData: any,
     activeLinePoint = '',
   ) => {
-    // this.setState({
-    //   refSelected: target,
-    //   isCalloutVisible: _noLegendHighlighted() || _legendHighlighted(pointData.legend),
-    //   calloutLegend: pointData.legend,
-    //   dataForHoverCard: pointData.data,
-    //   color: pointData.color,
-    //   xCalloutValue: pointData.xAxisCalloutData ?? groupData.xAxisPoint,
-    //   yCalloutValue: pointData.yAxisCalloutData,
-    //   dataPointCalloutProps: pointData,
-    //   callOutAccessibilityData: props.isCalloutForStack
-    //     ? groupData.stackCallOutAccessibilityData
-    //     : pointData.callOutAccessibilityData,
-    //   YValueHover: groupData.groupSeries.filter(
-    //     (item: YValueHover) => _noLegendHighlighted() || _legendHighlighted(item.legend!),
-    //   ),
-    //   hoverXValue: pointData.xAxisCalloutData ?? groupData.xAxisPoint,
-    //   activeLinePoint: props.isCalloutForStack ? groupData.xAxisPoint : activeLinePoint,
-    // });
     setPopoverTarget(target);
     setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
     setCalloutLegend(pointData.legend);
