@@ -2988,8 +2988,14 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 
       if (axId === 'x') {
         props.tickValues = tickValues;
+        props.xAxis = {
+          tickText: ax.ticktext,
+        };
       } else if (axId === 'y') {
         props.yAxisTickValues = tickValues;
+        props.yAxis = {
+          tickText: ax.ticktext,
+        };
       }
       return;
     }

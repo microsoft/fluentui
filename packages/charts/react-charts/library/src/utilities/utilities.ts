@@ -260,6 +260,7 @@ export function createNumericXAxis(
     calcMaxLabelWidth,
     tickStep,
     tick0,
+    tickText,
   } = xAxisParams;
   const xAxisScale = createNumericScale(scaleType)
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -268,6 +269,9 @@ export function createNumericXAxis(
 
   let tickCount = xAxisCount ?? 6;
   const tickFormat = (domainValue: NumberValue, _index: number, defaultFormat?: (val: NumberValue) => string) => {
+    if (tickParams.tickValues && tickText) {
+      return tickText[_index];
+    }
     if (tickParams.tickFormat) {
       return d3Format(tickParams.tickFormat)(domainValue);
     }
@@ -437,6 +441,7 @@ export function createDateXAxis(
     calcMaxLabelWidth,
     tickStep,
     tick0,
+    tickText,
   } = xAxisParams;
   const isUtcSet = useUTC === true || useUTC === 'utc';
   const xAxisScale = isUtcSet ? d3ScaleUtc() : d3ScaleTime();
@@ -473,6 +478,9 @@ export function createDateXAxis(
   );
 
   const tickFormat = (domainValue: Date, _index: number) => {
+    if (tickParams.tickValues && tickText) {
+      return tickText[_index];
+    }
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
     }
@@ -549,6 +557,7 @@ export function createStringXAxis(
     containerWidth,
     hideTickOverlap,
     calcMaxLabelWidth,
+    tickText,
   } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
@@ -558,6 +567,9 @@ export function createStringXAxis(
 
   let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
   const tickFormat = (domainValue: string, _index: number) => {
+    if (tickParams.tickValues && tickText) {
+      return tickText[_index];
+    }
     return formatToLocaleString(domainValue, culture) as string;
   };
   if (hideTickOverlap) {
@@ -708,6 +720,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
     tickValues,
     tickStep,
     tick0,
+    tickText,
   } = yAxisParams;
 
   // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
@@ -763,6 +776,7 @@ export function createNumericYAxis(
     tickValues,
     tickStep,
     tick0,
+    tickText,
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
@@ -816,6 +830,9 @@ export function createNumericYAxis(
   }
 
   const tickFormat = (domainValue: NumberValue, index: number, defaultFormat?: (val: NumberValue) => string) => {
+    if (tickValues && tickText) {
+      return tickText[index];
+    }
     const value = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
     return defaultFormat?.(value) === '' ? '' : defaultYAxisTickFormatter(value);
   };
