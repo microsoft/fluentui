@@ -241,4 +241,4 @@ export const TEAMS_VISUAL_REFRESH_TOKENS = {
   // Appearance tokens
   buttonPrimaryBackgroundColor: 'purple',
   buttonHorizontalPadding: '12px',
-} satisfies VisualRefreshTheme;
+};

@@ -553,7 +553,7 @@ const useIconStyles = makeStyles({
 
 const useVisualRefreshStyles = makeStyles({
   root: {
-    background: SEMANTIC_TOKENS.groupButtonBackground,
+    // background: SEMANTIC_TOKENS.groupButtonBackground,
     // fontWeight: VISUAL_REFRESH_TOKENS.buttonRootFontWeight,
     // padding: VISUAL_REFRESH_TOKENS.buttonRootPadding,
     // ...shorthands.borderWidth(VISUAL_REFRESH_TOKENS.buttonRootBorderWidth),
