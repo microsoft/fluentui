@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: resolve React 19 incompatible types",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

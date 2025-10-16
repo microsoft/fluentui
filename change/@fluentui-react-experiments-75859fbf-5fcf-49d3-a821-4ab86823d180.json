@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: fix VirtualizedList legacy context issue with React 19",
-  "packageName": "@fluentui/react-experiments",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
