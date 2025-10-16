@@ -20,6 +20,7 @@ export type {
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeNavigationMode,
+  TreeNavigationDataParam,
 } from './Tree';
 
 export {
@@ -99,3 +100,5 @@ export type {
 
 export { flattenTree_unstable } from './utils/flattenTree';
 export type { FlattenTreeItem } from './utils/flattenTree';
+
+export { useTreeNavigation } from './hooks/useTreeNavigation';

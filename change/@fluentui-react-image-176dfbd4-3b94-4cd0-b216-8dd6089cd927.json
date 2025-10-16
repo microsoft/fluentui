@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: apply fit fill styles only if height and width are not provided",
-  "packageName": "@fluentui/react-image",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

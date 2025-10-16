@@ -2,7 +2,7 @@
 
 exports[`Pagination render buttons Pagination correctly 1`] = `
 <div
-  className=
+  class=
       ms-Pagination-container
       {
         align-items: center;
@@ -15,22 +15,17 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
     role="radiogroup"
   >
     <div
-      className=
+      class=
           ms-TooltipHost
           {
             display: inline;
           }
-      onBlurCapture={[Function]}
-      onFocusCapture={[Function]}
-      onKeyDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       role="none"
     >
       <button
-        aria-disabled={true}
+        aria-disabled="true"
         aria-label="first page"
-        className=
+        class=
             ms-Button
             ms-Button--icon
             is-disabled
@@ -112,18 +107,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             &:focus {
               outline: 0px;
             }
-        data-is-focusable={false}
-        disabled={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+        data-is-focusable="false"
+        disabled=""
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -135,8 +124,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -167,52 +156,32 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                   color: GrayText;
                 }
             data-icon-name="Previous"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-1\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-1\\";"
           >
             
           </i>
         </span>
       </button>
       <div
-        hidden={true}
+        hidden=""
         id="tooltip0"
-        style={
-          Object {
-            "border": 0,
-            "height": 1,
-            "margin": -1,
-            "overflow": "hidden",
-            "padding": 0,
-            "position": "absolute",
-            "whiteSpace": "nowrap",
-            "width": 1,
-          }
-        }
+        style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
       >
         first page
       </div>
     </div>
     <div
-      className=
+      class=
           ms-TooltipHost
           {
             display: inline;
           }
-      onBlurCapture={[Function]}
-      onFocusCapture={[Function]}
-      onKeyDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       role="none"
     >
       <button
-        aria-disabled={true}
+        aria-disabled="true"
         aria-label="previous page"
-        className=
+        class=
             ms-Button
             ms-Button--icon
             is-disabled
@@ -294,18 +263,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             &:focus {
               outline: 0px;
             }
-        data-is-focusable={false}
-        disabled={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+        data-is-focusable="false"
+        disabled=""
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -317,8 +280,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -349,39 +312,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                   color: GrayText;
                 }
             data-icon-name="CaretSolidLeft"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-8\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-8\\";"
           >
             
           </i>
         </span>
       </button>
       <div
-        hidden={true}
+        hidden=""
         id="tooltip4"
-        style={
-          Object {
-            "border": 0,
-            "height": 1,
-            "margin": -1,
-            "overflow": "hidden",
-            "padding": 0,
-            "position": "absolute",
-            "whiteSpace": "nowrap",
-            "width": 1,
-          }
-        }
+        style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
       >
         previous page
       </div>
     </div>
     <button
-      aria-checked={true}
+      aria-checked="true"
       aria-label="page 1 of 10 selected"
-      className=
+      class=
           ms-Button
           ms-Pagination-pageNumber
           ms-Button--default
@@ -479,18 +427,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             border-color: Highlight;
             color: Highlight;
           }
-      data-is-focusable={true}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
+      data-is-focusable="true"
       role="radio"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Button-flexContainer
             {
               align-items: center;
@@ -505,9 +447,9 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
-      aria-checked={false}
+      aria-checked="false"
       aria-label="page 2 of 10"
-      className=
+      class=
           ms-Button
           ms-Pagination-pageNumber
           ms-Button--default
@@ -605,18 +547,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             border-color: Highlight;
             color: Highlight;
           }
-      data-is-focusable={true}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
+      data-is-focusable="true"
       role="radio"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Button-flexContainer
             {
               align-items: center;
@@ -631,9 +567,9 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
-      aria-checked={false}
+      aria-checked="false"
       aria-label="page 3 of 10"
-      className=
+      class=
           ms-Button
           ms-Pagination-pageNumber
           ms-Button--default
@@ -731,18 +667,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             border-color: Highlight;
             color: Highlight;
           }
-      data-is-focusable={true}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
+      data-is-focusable="true"
       role="radio"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Button-flexContainer
             {
               align-items: center;
@@ -757,9 +687,9 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
-      aria-checked={false}
+      aria-checked="false"
       aria-label="page 4 of 10"
-      className=
+      class=
           ms-Button
           ms-Pagination-pageNumber
           ms-Button--default
@@ -857,18 +787,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             border-color: Highlight;
             color: Highlight;
           }
-      data-is-focusable={true}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
+      data-is-focusable="true"
       role="radio"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Button-flexContainer
             {
               align-items: center;
@@ -883,9 +807,9 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
-      aria-checked={false}
+      aria-checked="false"
       aria-label="page 5 of 10"
-      className=
+      class=
           ms-Button
           ms-Pagination-pageNumber
           ms-Button--default
@@ -983,18 +907,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             border-color: Highlight;
             color: Highlight;
           }
-      data-is-focusable={true}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
+      data-is-focusable="true"
       role="radio"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Button-flexContainer
             {
               align-items: center;
@@ -1009,21 +927,16 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <div
-      className=
+      class=
           ms-TooltipHost
           {
             display: inline;
           }
-      onBlurCapture={[Function]}
-      onFocusCapture={[Function]}
-      onKeyDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       role="none"
     >
       <button
         aria-label="next page"
-        className=
+        class=
             ms-Button
             ms-Button--icon
             {
@@ -1109,17 +1022,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               background-color: #edebe9;
               color: #005a9e;
             }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+        data-is-focusable="true"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -1131,8 +1038,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -1160,51 +1067,31 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="CaretSolidRight"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-8\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-8\\";"
           >
             
           </i>
         </span>
       </button>
       <div
-        hidden={true}
+        hidden=""
         id="tooltip23"
-        style={
-          Object {
-            "border": 0,
-            "height": 1,
-            "margin": -1,
-            "overflow": "hidden",
-            "padding": 0,
-            "position": "absolute",
-            "whiteSpace": "nowrap",
-            "width": 1,
-          }
-        }
+        style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
       >
         next page
       </div>
     </div>
     <div
-      className=
+      class=
           ms-TooltipHost
           {
             display: inline;
           }
-      onBlurCapture={[Function]}
-      onFocusCapture={[Function]}
-      onKeyDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       role="none"
     >
       <button
         aria-label="last page"
-        className=
+        class=
             ms-Button
             ms-Button--icon
             {
@@ -1290,17 +1177,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               background-color: #edebe9;
               color: #005a9e;
             }
-        data-is-focusable={true}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+        data-is-focusable="true"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -1312,8 +1193,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -1341,31 +1222,16 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="Next"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons-1\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons-1\\";"
           >
             
           </i>
         </span>
       </button>
       <div
-        hidden={true}
+        hidden=""
         id="tooltip27"
-        style={
-          Object {
-            "border": 0,
-            "height": 1,
-            "margin": -1,
-            "overflow": "hidden",
-            "padding": 0,
-            "position": "absolute",
-            "whiteSpace": "nowrap",
-            "width": 1,
-          }
-        }
+        style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
       >
         page 10
       </div>
@@ -1373,7 +1239,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
   </div>
   <div
     aria-label="1 - 10 of 268"
-    className=
+    class=
 
         {
           color: #605e5c;
@@ -1386,12 +1252,12 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
 
 exports[`Pagination render comboBox Pagination correctly 1`] = `
 <div
-  className="ms-Pagination-container"
+  class="ms-Pagination-container"
 >
   <button
-    aria-disabled={true}
+    aria-disabled="true"
     aria-label="first page"
-    className=
+    class=
         ms-Button
         ms-Button--icon
         is-disabled
@@ -1473,18 +1339,12 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         &:focus {
           outline: 0px;
         }
-    data-is-focusable={false}
-    disabled={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
+    data-is-focusable="false"
+    disabled=""
     type="button"
   >
     <span
-      className=
+      class=
           ms-Button-flexContainer
           {
             align-items: center;
@@ -1496,8 +1356,8 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       data-automationid="splitbuttonprimary"
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
             ms-Icon
             ms-Button-icon
             {
@@ -1528,20 +1388,16 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               color: GrayText;
             }
         data-icon-name="Previous"
-        style={
-          Object {
-            "fontFamily": "\\"FabricMDL2Icons-1\\"",
-          }
-        }
+        style="font-family: \\"FabricMDL2Icons-1\\";"
       >
         
       </i>
     </span>
   </button>
   <button
-    aria-disabled={true}
+    aria-disabled="true"
     aria-label="previous page"
-    className=
+    class=
         ms-Button
         ms-Button--icon
         is-disabled
@@ -1623,18 +1479,12 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         &:focus {
           outline: 0px;
         }
-    data-is-focusable={false}
-    disabled={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
+    data-is-focusable="false"
+    disabled=""
     type="button"
   >
     <span
-      className=
+      class=
           ms-Button-flexContainer
           {
             align-items: center;
@@ -1646,8 +1496,8 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       data-automationid="splitbuttonprimary"
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
             ms-Icon
             ms-Button-icon
             {
@@ -1678,18 +1528,14 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               color: GrayText;
             }
         data-icon-name="CaretSolidLeft"
-        style={
-          Object {
-            "fontFamily": "\\"FabricMDL2Icons-8\\"",
-          }
-        }
+        style="font-family: \\"FabricMDL2Icons-8\\";"
       >
         
       </i>
     </span>
   </button>
   <div
-    className=
+    class=
         ms-ComboBox-container
         {
           display: inline-block;
@@ -1698,7 +1544,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-ComboBox
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1831,16 +1677,16 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             right: 0px;
             top: 0px;
           }
-      data-ktp-target={true}
+      data-ktp-target="true"
       id="ComboBox6wrapper"
     >
       <input
         aria-autocomplete="both"
-        aria-expanded={false}
-        aria-invalid={false}
-        autoCapitalize="off"
-        autoComplete="off"
-        className=
+        aria-expanded="false"
+        aria-invalid="false"
+        autocapitalize="off"
+        autocomplete="off"
+        class=
             ms-ComboBox-Input
             {
               background-color: #ffffff;
@@ -1884,33 +1730,18 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               color: WindowText;
               forced-color-adjust: none;
             }
-        data-is-interactable={true}
-        data-ktp-execute-target={true}
-        data-lpignore={true}
+        data-is-interactable="true"
+        data-ktp-execute-target="true"
+        data-lpignore="true"
         id="ComboBox6-input"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onClick={[Function]}
-        onCompositionEnd={[Function]}
-        onCompositionStart={[Function]}
-        onCompositionUpdate={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onTouchStart={[Function]}
         role="combobox"
-        spellCheck={false}
-        style={
-          Object {
-            "fontFamily": "inherit",
-          }
-        }
+        spellcheck="false"
+        style="font-family: inherit;"
         type="text"
         value="1"
       />
       <button
-        className=
+        class=
             ms-Button
             ms-Button--icon
             ms-ComboBox-CaretDown-button
@@ -2017,19 +1848,12 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               color: HighlightText;
               forced-color-adjust: none;
             }
-        data-is-focusable={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        tabIndex={-1}
+        data-is-focusable="false"
+        tabindex="-1"
         type="button"
       >
         <span
-          className=
+          class=
               ms-Button-flexContainer
               {
                 align-items: center;
@@ -2041,8 +1865,8 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           data-automationid="splitbuttonprimary"
         >
           <i
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-Icon
                 ms-Button-icon
                 {
@@ -2069,11 +1893,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="ChevronDown"
-            style={
-              Object {
-                "fontFamily": "\\"FabricMDL2Icons\\"",
-              }
-            }
+            style="font-family: \\"FabricMDL2Icons\\";"
           >
             
           </i>
@@ -2083,7 +1903,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
   </div>
   <button
     aria-label="next page"
-    className=
+    class=
         ms-Button
         ms-Button--icon
         {
@@ -2169,17 +1989,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           background-color: #edebe9;
           color: #005a9e;
         }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
+    data-is-focusable="true"
     type="button"
   >
     <span
-      className=
+      class=
           ms-Button-flexContainer
           {
             align-items: center;
@@ -2191,8 +2005,8 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       data-automationid="splitbuttonprimary"
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
             ms-Icon
             ms-Button-icon
             {
@@ -2219,11 +2033,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               text-align: center;
             }
         data-icon-name="CaretSolidRight"
-        style={
-          Object {
-            "fontFamily": "\\"FabricMDL2Icons-8\\"",
-          }
-        }
+        style="font-family: \\"FabricMDL2Icons-8\\";"
       >
         
       </i>
@@ -2231,7 +2041,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
   </button>
   <button
     aria-label="last page"
-    className=
+    class=
         ms-Button
         ms-Button--icon
         {
@@ -2317,17 +2127,11 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           background-color: #edebe9;
           color: #005a9e;
         }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
+    data-is-focusable="true"
     type="button"
   >
     <span
-      className=
+      class=
           ms-Button-flexContainer
           {
             align-items: center;
@@ -2339,8 +2143,8 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       data-automationid="splitbuttonprimary"
     >
       <i
-        aria-hidden={true}
-        className=
+        aria-hidden="true"
+        class=
             ms-Icon
             ms-Button-icon
             {
@@ -2367,11 +2171,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               text-align: center;
             }
         data-icon-name="Next"
-        style={
-          Object {
-            "fontFamily": "\\"FabricMDL2Icons-1\\"",
-          }
-        }
+        style="font-family: \\"FabricMDL2Icons-1\\";"
       >
         
       </i>

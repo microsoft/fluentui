@@ -48,7 +48,7 @@ export const BREAKPOINTS = [
 
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
-export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number) => {
+export const calcNeedleRotation = (chartValue: number, minValue: number, maxValue: number): number => {
   let needleRotation = ((chartValue - minValue) / (maxValue - minValue)) * 180;
   if (needleRotation < 0) {
     needleRotation = 0;
@@ -65,7 +65,7 @@ export const getSegmentLabel = (
   maxValue: number,
   variant?: GaugeChartVariant,
   isAriaLabel: boolean = false,
-) => {
+): string => {
   if (isAriaLabel) {
     return minValue === 0 && variant === GaugeChartVariant.SingleSegment
       ? `${segment.legend}, ${segment.size} out of ${maxValue} or ${((segment.size / maxValue) * 100).toFixed()}%`

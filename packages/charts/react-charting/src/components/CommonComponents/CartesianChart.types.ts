@@ -26,6 +26,7 @@ import { IChartHoverCardProps } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
 import { ScaleBand, ScaleLinear } from 'd3-scale';
+import type { JSXElement } from '@fluentui/utilities';
 
 /**
  * Cartesian Chart style properties
@@ -609,7 +610,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Legends of the chart.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  legendBars: JSX.Element | null;
+  legendBars: JSXElement | null;
 
   /**
    * Callout props

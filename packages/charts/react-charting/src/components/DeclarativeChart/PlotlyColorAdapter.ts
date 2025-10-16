@@ -212,7 +212,7 @@ export const createColorScale = (
   layout: Partial<Layout> | undefined,
   series: Partial<PlotData>,
   currentColorScale: ((value: number) => string) | undefined,
-) => {
+): ((value: number) => string) | undefined => {
   if (
     layout?.coloraxis?.colorscale?.length &&
     isArrayOrTypedArray(series.marker?.color) &&

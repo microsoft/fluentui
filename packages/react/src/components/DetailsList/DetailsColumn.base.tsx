@@ -15,6 +15,8 @@ import type {
 } from './DetailsColumn.types';
 import { ITooltipHost } from '../Tooltip/TooltipHost.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
 const getClassNames = classNamesFunction<IDetailsColumnStyleProps, IDetailsColumnStyles>();
@@ -24,8 +26,7 @@ const CLASSNAME_ADD_INTERVAL = 20; // ms
 
 const defaultOnRenderHeader =
   (classNames: IProcessedStyleSet<IDetailsColumnStyles>) =>
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  (props?: IDetailsColumnProps): JSX.Element | null => {
+  (props?: IDetailsColumnProps): JSXElement | null => {
     if (!props) {
       return null;
     }
@@ -57,8 +58,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     this._events = new EventGroup(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       column,
       parentId,
@@ -252,16 +252,14 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
   private _onRenderFilterIcon =
     (classNames: IProcessedStyleSet<IDetailsColumnStyles>) =>
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    (props: IDetailsColumnFilterIconProps): JSX.Element => {
+    (props: IDetailsColumnFilterIconProps): JSXElement => {
       const { columnProps, ...iconProps } = props;
       const IconComponent = columnProps?.useFastIcons ? FontIcon : Icon;
 
       return <IconComponent {...iconProps} />;
     };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderColumnHeaderTooltip = (tooltipHostProps: IDetailsColumnRenderTooltipProps): JSX.Element => {
+  private _onRenderColumnHeaderTooltip = (tooltipHostProps: IDetailsColumnRenderTooltipProps): JSXElement => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
 
@@ -328,8 +326,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderAccessibleDescription(): JSX.Element | null {
+  private _renderAccessibleDescription(): JSXElement | null {
     const { column, parentId } = this.props;
     const classNames = this._classNames;
 

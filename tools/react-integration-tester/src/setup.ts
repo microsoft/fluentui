@@ -224,6 +224,8 @@ function prepareTsConfigTemplate(options: {
     '**/*.spec.tsx',
     '**/*.test.tsx',
     '**/src/testing/**',
+    '**/*.cy.tsx',
+    '**/*.cy.tsx',
   ];
 
   const filesDefaults = [

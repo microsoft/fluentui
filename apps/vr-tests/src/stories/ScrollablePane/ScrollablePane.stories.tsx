@@ -6,7 +6,7 @@ import { lorem } from '@fluentui/example-data';
 
 const colors = ['#eaeaea', '#dadada', '#d0d0d0', '#c8c8c8', '#a6a6a6', '#c7e0f4'];
 
-const contentAreas: JSX.Element[] = [];
+const contentAreas: React.ReactElement[] = [];
 for (let i = 0; i < 5; i++) {
   contentAreas.push(createContentArea(i));
 }

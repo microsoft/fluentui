@@ -31,7 +31,7 @@ public appendItems(): void {
   })
 }
 
-public render(): JSX.Element {
+public render(): JSXElement {
   const { items } = this.state;
 
   return <List items={items} />;

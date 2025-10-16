@@ -7,11 +7,12 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { LayoutGroupBasicExample } from './LayoutGroup.Basic.Example';
+import type { JSXElement } from '@fluentui/utilities';
 const LayoutGroupBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/LayoutGroup/LayoutGroup.Basic.Example.tsx') as string;
 
 export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="LayoutGroup"

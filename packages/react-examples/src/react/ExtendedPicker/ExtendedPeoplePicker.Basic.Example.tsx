@@ -35,7 +35,7 @@ const focusZoneProps = {
 };
 
 export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
-  const picker = React.useRef<ExtendedPeoplePicker>(null);
+  const picker = React.useRef<ExtendedPeoplePicker | null>(null);
   const [peopleList, setPeopleList] = React.useState<IPersonaProps[]>(people);
   const [mostRecentlyUsed, setMostRecentlyUsed] = React.useState<IPersonaProps[]>(mru);
   const [searchMoreAvailable, setSearchMoreAvailable] = React.useState<boolean>(true);

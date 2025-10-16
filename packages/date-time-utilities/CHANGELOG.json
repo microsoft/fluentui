@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Thu, 16 Oct 2025 07:21:57 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.6.11",
+      "version": "8.6.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "6c4630f5f8aa3ac42ce4c45be7d39642899e1e85",
+            "comment": "style: resolve explicit-return tyle lint errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2025 07:22:41 GMT",
       "tag": "@fluentui/date-time-utilities_v8.6.10",
       "version": "8.6.10",

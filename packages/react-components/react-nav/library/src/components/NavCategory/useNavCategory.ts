@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useNavContext_unstable } from '../NavContext';
 

@@ -2,6 +2,6 @@
 
 exports[`Pickers BaseFloatingPicker renders BaseFloatingPicker correctly 1`] = `
 <div
-  className="ms-BasePicker ms-BaseFloatingPicker"
+  class="ms-BasePicker ms-BaseFloatingPicker"
 />
 `;

@@ -12,6 +12,8 @@ import { DocumentCardContext } from './DocumentCard.base';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getWindowEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>();
 
 export interface IDocumentCardTitleState {
@@ -87,8 +89,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
     this._async.dispose();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { title, shouldTruncate, showAsSecondaryTitle, styles, theme, className } = this.props;
     const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
 

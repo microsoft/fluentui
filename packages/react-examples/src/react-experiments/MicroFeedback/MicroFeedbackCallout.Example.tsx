@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { IMicroFeedbackQuestion, VoteType, MicroFeedback } from '@fluentui/react-experiments';
+import type { JSXElement } from '@fluentui/utilities';
 
 export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const followUpOnDislike: IMicroFeedbackQuestion = {
       options: ['Translation is incorrect', 'Context is incorrect', 'Language can be better'],
       question: 'Please help us improve',

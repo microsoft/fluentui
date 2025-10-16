@@ -12,7 +12,7 @@ const onFormatDate = (date?: Date): string => {
 
 export const DatePickerFormatExample: React.FunctionComponent = () => {
   const [value, setValue] = React.useState<Date | undefined>();
-  const datePickerRef = React.useRef<IDatePicker>(null);
+  const datePickerRef = React.useRef<IDatePicker | null>(null);
 
   const onClick = React.useCallback((): void => {
     setValue(undefined);

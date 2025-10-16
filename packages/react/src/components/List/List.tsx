@@ -26,6 +26,7 @@ import type {
 } from './List.types';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getWindowEx } from '../../utilities/dom';
+import type { JSXElement } from '@fluentui/utilities';
 // import { ListDebugRenderer } from './utils/ListDebugRenderer';
 
 const RESIZE_DELAY = 16;
@@ -57,8 +58,8 @@ export interface IListState<T = any> {
 
 interface IPageCacheItem<T> {
   page: IPage<T>;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  pageElement?: JSX.Element;
+
+  pageElement?: JSXElement;
 }
 
 interface IPageCache<T> {
@@ -106,12 +107,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   public static defaultProps = {
     startIndex: 0,
 
-    onRenderCell: (
-      item: any,
-      index: number,
-      containsFocus: boolean,
-    ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-    JSX.Element => <>{(item && item.name) || ''}</>,
+    onRenderCell: (item: any, index: number, containsFocus: boolean): JSXElement => <>{(item && item.name) || ''}</>,
     onRenderCellConditional: undefined,
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND,
@@ -498,12 +494,11 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     return this._surfaceRect!.height;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const { className, role = 'list', onRenderSurface, onRenderRoot } = this.props;
     const { pages = [] } = this.state;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const pageElements: JSX.Element[] = [];
+
+    const pageElements: JSXElement[] = [];
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     for (const page of pages) {
@@ -573,8 +568,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._pageCache = {};
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderPage(page: IPage<T>): JSX.Element {
+  private _renderPage(page: IPage<T>): JSXElement {
     const { usePageCache } = this.props;
     let cachedPage;
     // if usePageCache is set and cached page element can be found, just return cached page
@@ -616,8 +610,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     return pageElement;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderRoot = (props: IListOnRenderRootProps<T>): JSX.Element => {
+  private _onRenderRoot = (props: IListOnRenderRootProps<T>): JSXElement => {
     const { rootRef, surfaceElement, divProps } = props;
 
     return (
@@ -627,8 +620,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderSurface = (props: IListOnRenderSurfaceProps<T>): JSX.Element => {
+  private _onRenderSurface = (props: IListOnRenderSurfaceProps<T>): JSXElement => {
     const { surfaceRef, pageElements, divProps } = props;
 
     return (

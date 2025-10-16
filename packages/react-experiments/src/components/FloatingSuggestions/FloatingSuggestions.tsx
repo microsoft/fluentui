@@ -10,6 +10,7 @@ import type {
   IFloatingSuggestionsInnerSuggestionProps,
 } from './FloatingSuggestions.types';
 import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IFloatingSuggestionsState {
   queryString: string;
@@ -145,7 +146,7 @@ export class FloatingSuggestions<TItem extends {}>
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className } = this.props;
     return (
       <div ref={this.root} className={css('ms-BasePicker ms-BaseFloatingPicker', className ? className : '')}>
@@ -190,7 +191,7 @@ export class FloatingSuggestions<TItem extends {}>
     }
   }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderSuggestions(): JSX.Element | null {
+  private _renderSuggestions(): JSXElement | null {
     // Express this as 2 separate statements instead of a single one, because `undefined` isn't filtered out of the type
     // when using `|| SuggestionsControl`
     let TypedSuggestionsControl: React.ComponentType<IFloatingSuggestionsInnerSuggestionProps<TItem>> | undefined =

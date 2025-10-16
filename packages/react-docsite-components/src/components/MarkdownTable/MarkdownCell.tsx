@@ -6,7 +6,7 @@ import { getStyles } from './MarkdownTable.styles';
 const getClassNames = classNamesFunction<IMarkdownTableStyleProps, IMarkdownTableStyles>();
 
 export class MarkdownCellBase extends React.PureComponent<React.PropsWithChildren<IMarkdownTableCellProps>> {
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { as = 'td', children, styles, theme } = this.props;
 
     const classNames = getClassNames(styles, {

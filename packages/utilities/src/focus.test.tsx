@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { createTestContainer } from '@fluentui/test-utilities';
 
 import {
   isElementVisible,
@@ -12,8 +11,8 @@ import {
   getLastTabbable,
 } from './focus';
 
-function renderIntoDocument(element: React.ReactElement<{}>, container: HTMLElement): HTMLElement {
-  const component = render(element, { container });
+function renderIntoDocument(element: React.ReactElement<{}>): HTMLElement {
+  const component = render(element);
   const renderedDOM = component.container.firstChild as HTMLElement;
 
   return renderedDOM;
@@ -59,39 +58,31 @@ describe('isElementVisible', () => {
   });
 
   it('returns false if data-is-visible is false', () => {
-    testContainer = createTestContainer();
-
     const _hiddenElement = renderIntoDocument(
       <div data-is-visible={false}>
         <button />
       </div>,
-      testContainer,
-    ) as HTMLElement;
+    );
 
     expect(isElementVisible(_hiddenElement)).toEqual(false);
   });
 
   it('returns true if data-is-visible is true', () => {
-    testContainer = createTestContainer();
     const _visibleElement = renderIntoDocument(
       <div data-is-visible={true}>
         <button />
       </div>,
-      testContainer,
-    ) as HTMLElement;
+    );
 
     expect(isElementVisible(_visibleElement)).toEqual(true);
   });
 
   it('returns true if data-is-visible is undefined but element is visible', () => {
-    testContainer = createTestContainer();
-
     const _element = renderIntoDocument(
       <div>
         <button />
       </div>,
-      testContainer,
-    ) as HTMLElement;
+    );
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (_element as any).isVisible = true;
@@ -220,15 +211,12 @@ describe('focusAsync', () => {
   });
 
   it('focuses on an item on the next frame', () => {
-    testContainer = createTestContainer();
-
     const container = renderIntoDocument(
       <div>
         <button className="a">a</button>
         <button className="b">b</button>
         <button className="c">c</button>
       </div>,
-      testContainer,
     );
 
     const buttonA = container.querySelector('.a') as HTMLElement;
@@ -359,7 +347,6 @@ describe('getFirstTabbable', () => {
   });
 
   it('focuses on the next tabbable item', () => {
-    testContainer = createTestContainer();
     const container = renderIntoDocument(
       <div>
         <div className="parent">
@@ -374,7 +361,6 @@ describe('getFirstTabbable', () => {
           </button>
         </div>
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -385,8 +371,6 @@ describe('getFirstTabbable', () => {
   });
 
   it('focuses on the next tabbable item in shadow DOM', () => {
-    testContainer = createTestContainer();
-
     const innerHTML = `
     <button class="a" data-is-visible="true">
       a
@@ -404,7 +388,6 @@ describe('getFirstTabbable', () => {
       <div>
         <ShadowDiv />
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -415,7 +398,6 @@ describe('getFirstTabbable', () => {
   });
 
   it('does not focus on an item with tabIndex of -1', () => {
-    testContainer = createTestContainer();
     const container = renderIntoDocument(
       <div>
         <div className="parent">
@@ -430,7 +412,6 @@ describe('getFirstTabbable', () => {
           </button>
         </div>
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -450,7 +431,6 @@ describe('getLastTabbable', () => {
   });
 
   it('focuses on the last tabbable item', () => {
-    testContainer = createTestContainer();
     const container = renderIntoDocument(
       <div>
         <div className="parent">
@@ -465,7 +445,6 @@ describe('getLastTabbable', () => {
           </button>
         </div>
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -476,8 +455,6 @@ describe('getLastTabbable', () => {
   });
 
   it('focuses on the last tabbable item in shadow DOM', () => {
-    testContainer = createTestContainer();
-
     const innerHTML = `
     <button class="a" data-is-visible="true">
       a
@@ -495,7 +472,6 @@ describe('getLastTabbable', () => {
       <div>
         <ShadowDiv />
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;
@@ -506,7 +482,6 @@ describe('getLastTabbable', () => {
   });
 
   it('does not focus on an item with tabIndex of -1', () => {
-    testContainer = createTestContainer();
     const container = renderIntoDocument(
       <div>
         <div className="parent">
@@ -521,7 +496,6 @@ describe('getLastTabbable', () => {
           </button>
         </div>
       </div>,
-      testContainer,
     );
 
     const parent = container.querySelector('.parent') as HTMLElement;

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
 import { useArcStyles } from './useArcStyles.styles';
@@ -22,13 +24,22 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       _updateChart(props);
     }, [props]);
 
-    function _onFocus(data: ChartDataPoint, id: string, event: React.FocusEvent<SVGPathElement, Element>): void {
-      props.onFocusCallback!(data, id, event, currentRef.current);
+    function _onFocus(
+      data: ChartDataPoint,
+      id: string,
+      event: React.FocusEvent<SVGPathElement, Element>,
+      targetElement?: HTMLElement | null,
+    ): void {
+      props.onFocusCallback!(data, id, event, currentRef.current, targetElement);
     }
 
-    function _hoverOn(data: ChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
+    function _hoverOn(
+      data: ChartDataPoint,
+      mouseEvent: React.MouseEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
       mouseEvent.persist();
-      props.hoverOnCallback!(data, mouseEvent);
+      props.hoverOnCallback!(data, mouseEvent, targetElement);
     }
 
     function _hoverOff(): void {
@@ -101,6 +112,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const opacity: number =
       activeArc && activeArc.length > 0 ? (activeArc.includes(props.data?.data.legend!) ? 1 : 0.1) : 1;
     const cornerRadius = props.roundCorners ? 3 : 0;
+    const targetElement = document.getElementById(id);
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (
@@ -129,9 +141,9 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           }
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
-          onFocus={event => _onFocus(props.data!.data, id, event)}
-          onMouseOver={event => _hoverOn(props.data!.data, event)}
-          onMouseMove={event => _hoverOn(props.data!.data, event)}
+          onFocus={event => _onFocus(props.data!.data, id, event, targetElement)}
+          onMouseOver={event => _hoverOn(props.data!.data, event, targetElement)}
+          onMouseMove={event => _hoverOn(props.data!.data, event, targetElement)}
           onMouseLeave={_hoverOff}
           tabIndex={_shouldHighlightArc(props.data!.data.legend!) || props.activeArc?.length === 0 ? 0 : undefined}
           onBlur={_onBlur}

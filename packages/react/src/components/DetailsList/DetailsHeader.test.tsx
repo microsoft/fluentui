@@ -6,7 +6,6 @@ import { DetailsListLayoutMode, ColumnActionsMode, CheckboxVisibility } from './
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
 import { render, screen, act } from '@testing-library/react';
-import * as renderer from 'react-test-renderer';
 import { getTheme } from '../../Styling';
 import type { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
 import type { IColumn } from './DetailsList.types';
@@ -239,7 +238,7 @@ a starts at 40px. All columns from a to e have a width of 220px. f has a width o
 
 describe('DetailsHeader', () => {
   it('can render', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsHeader
         selection={_selection}
         selectionMode={SelectionMode.multiple}
@@ -247,11 +246,11 @@ describe('DetailsHeader', () => {
         columns={_columns}
       />,
     );
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('can render a hidden select all checkbox in single selection mode', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsHeader
         selection={_selection}
         selectionMode={SelectionMode.single}
@@ -260,7 +259,7 @@ describe('DetailsHeader', () => {
         columns={_columns}
       />,
     );
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('can resize columns', () => {
@@ -328,7 +327,7 @@ describe('DetailsHeader', () => {
   });
 
   it('renders accessible labels', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsHeader
         selection={_selection}
         selectionMode={SelectionMode.multiple}
@@ -338,7 +337,7 @@ describe('DetailsHeader', () => {
       />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   // if ariaLabelForSelectAllCheckbox is not provided, the select all checkbox label should not be rendered

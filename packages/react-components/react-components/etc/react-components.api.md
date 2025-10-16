@@ -1507,6 +1507,7 @@ import { TreeItemSlots } from '@fluentui/react-tree';
 import { TreeItemState } from '@fluentui/react-tree';
 import { TreeItemValue } from '@fluentui/react-tree';
 import { TreeNavigationData_unstable } from '@fluentui/react-tree';
+import { TreeNavigationDataParam } from '@fluentui/react-tree';
 import { TreeNavigationEvent_unstable } from '@fluentui/react-tree';
 import { TreeOpenChangeData } from '@fluentui/react-tree';
 import { TreeOpenChangeEvent } from '@fluentui/react-tree';
@@ -2015,6 +2016,7 @@ import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
+import { useTreeNavigation } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { useTypingAnnounce } from '@fluentui/react-aria';
 import { useUncontrolledFocus } from '@fluentui/react-tabster';
@@ -5028,6 +5030,8 @@ export { TreeItemValue }
 
 export { TreeNavigationData_unstable }
 
+export { TreeNavigationDataParam }
+
 export { TreeNavigationEvent_unstable }
 
 export { TreeOpenChangeData }
@@ -6043,6 +6047,8 @@ export { useTreeItemPersonaLayout_unstable }
 export { useTreeItemPersonaLayoutStyles_unstable }
 
 export { useTreeItemStyles_unstable }
+
+export { useTreeNavigation }
 
 export { useTreeStyles_unstable }
 

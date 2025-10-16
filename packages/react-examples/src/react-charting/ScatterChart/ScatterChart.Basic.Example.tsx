@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IChartProps, IScatterChartProps, ScatterChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IScatterChartBasicState {
   width: number;
@@ -41,7 +42,7 @@ export class ScatterChartBasicExample extends React.Component<{}, IScatterChartB
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -62,7 +63,7 @@ export class ScatterChartBasicExample extends React.Component<{}, IScatterChartB
     this.setState({ useUTC: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Project Revenue and Transactions Over Time',
       scatterChartData: [

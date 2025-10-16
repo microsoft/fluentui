@@ -46,7 +46,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
     }
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { colors, isCondensed, styles, theme, className } = this.props;
     const { selectedColor } = this.state;
 
@@ -114,7 +114,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
     );
   };
 
-  private _renderDetail = (color: IColorSwatch): JSX.Element => {
+  private _renderDetail = (color: IColorSwatch): React.ReactElement => {
     const { hex, code } = color;
     const { name = hex } = color;
     const textColor = colorCheck.colorBrightnessDifference('#ffffff', hex) ? '#ffffff' : '#000000';
@@ -159,7 +159,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
     }
   }
 
-  private _renderCodeDetails = (code: IColorSwatchCode): JSX.Element | null => {
+  private _renderCodeDetails = (code: IColorSwatchCode): React.ReactElement | null => {
     const { core, react, themeSlot } = code;
     if (core || react || themeSlot) {
       return (

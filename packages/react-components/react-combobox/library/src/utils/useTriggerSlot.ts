@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';

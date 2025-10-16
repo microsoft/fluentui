@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
@@ -24,5 +26,5 @@ export const useNavDrawerBody_unstable = (
     tabbable,
   });
 
-  return useDrawerBody_unstable({ ...props, ...focusAttributes }, ref);
+  return useDrawerBody_unstable({ ...focusAttributes, ...props }, ref);
 };

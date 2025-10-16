@@ -1,0 +1,7 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-deprecated": "off"
+  }
+}

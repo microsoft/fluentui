@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import {
@@ -13,7 +15,6 @@ import {
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
-  useTimeout,
   getTriggerChild,
   mergeCallbacks,
   useEventCallback,
@@ -22,6 +23,7 @@ import {
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
+import { useTooltipTimeout } from './private/useTooltipTimeout';
 import { Escape } from '@fluentui/keyboard-keys';
 
 /**
@@ -38,7 +40,8 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   const context = useTooltipVisibility();
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
-  const [setDelayTimeout, clearDelayTimeout] = useTimeout();
+
+  const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
 
   const {
     appearance = 'normal',
@@ -52,20 +55,6 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     hideDelay = 250,
     mountNode,
   } = props;
-
-  const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
-  const setVisible = React.useCallback(
-    (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => {
-      clearDelayTimeout();
-      setVisibleInternal(oldVisible => {
-        if (data.visible !== oldVisible) {
-          onVisibleChange?.(ev, data);
-        }
-        return data.visible;
-      });
-    },
-    [clearDelayTimeout, setVisibleInternal, onVisibleChange],
-  );
 
   const state: TooltipState = {
     withArrow,
@@ -113,6 +102,21 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     containerRef: React.MutableRefObject<HTMLDivElement>;
     arrowRef: React.MutableRefObject<HTMLDivElement>;
   } = usePositioning(positioningOptions);
+
+  const [setDelayTimeout, clearDelayTimeout] = useTooltipTimeout(containerRef);
+
+  const setVisible = React.useCallback(
+    (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => {
+      clearDelayTimeout();
+      setVisibleInternal(oldVisible => {
+        if (data.visible !== oldVisible) {
+          onVisibleChange?.(ev, data);
+        }
+        return data.visible;
+      });
+    },
+    [clearDelayTimeout, setVisibleInternal, onVisibleChange],
+  );
 
   state.content.ref = useMergedRefs(state.content.ref, containerRef);
   state.arrowRef = arrowRef;

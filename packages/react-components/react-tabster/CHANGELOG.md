@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 08 Sep 2025 12:50:42 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Oct 2025 12:04:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.26.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.7)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.6..@fluentui/react-tabster_v9.26.7)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+
+## [9.26.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.6)
+
+Thu, 02 Oct 2025 15:12:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.26.5..@fluentui/react-tabster_v9.26.6)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.2 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
 
 ## [9.26.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.26.5)
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { Shimmer } from './Shimmer';
 import { ShimmerElementType as ElemType } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
@@ -7,6 +6,8 @@ import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
 import { act, render } from '@testing-library/react';
 import { getBySelector } from '../../common/testUtilities';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 describe('Shimmer', () => {
   beforeEach(() => {
@@ -20,7 +21,7 @@ describe('Shimmer', () => {
   });
 
   it('renders Shimmer correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Shimmer
         width={'50%'}
         shimmerElements={[
@@ -30,13 +31,11 @@ describe('Shimmer', () => {
         ]}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Shimmer with custom elements correctly', () => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const customElements: JSX.Element = (
+    const customElements: JSXElement = (
       <div style={{ display: 'flex' }}>
         <ShimmerElementsGroup
           shimmerElements={[
@@ -55,9 +54,8 @@ describe('Shimmer', () => {
       </div>
     );
 
-    const component = renderer.create(<Shimmer customElementsGroup={customElements} width={350} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Shimmer customElementsGroup={customElements} width={350} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

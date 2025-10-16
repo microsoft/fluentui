@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
 import { setWarningCallback, setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 
@@ -23,26 +23,22 @@ describe('PersonaCoin', () => {
   });
 
   it('renders correctly', () => {
-    const component = create(<PersonaCoin />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with text', () => {
-    const component = create(<PersonaCoin primaryText="Kat Larrson" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin primaryText="Kat Larrson" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with provided initials', () => {
-    const component = create(<PersonaCoin imageInitials="JG" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin imageInitials="JG" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with image', () => {
-    const component = create(<PersonaCoin primaryText="Kat Larrson" imageUrl={testImage1x1} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin primaryText="Kat Larrson" imageUrl={testImage1x1} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

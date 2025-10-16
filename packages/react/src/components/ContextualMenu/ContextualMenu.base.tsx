@@ -66,6 +66,8 @@ import type {
 } from './ContextualMenuItem.types';
 import type { IPopupRestoreFocusParams } from '../../Popup';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
 
@@ -275,7 +277,7 @@ function usePreviousActiveElement(
   targetWindow: Window | undefined,
   hostElement: any,
 ) {
-  const previousActiveElement = React.useRef<undefined | HTMLElement>();
+  const previousActiveElement = React.useRef<undefined | HTMLElement>(undefined);
 
   const tryFocusPreviousActiveElement = React.useCallback(
     (options: IPopupRestoreFocusParams) => {
@@ -318,11 +320,11 @@ function useKeyHandlers(
     focusZoneProps: { checkForNoWrap, direction: focusZoneDirection = FocusZoneDirection.vertical } = {},
   }: IContextualMenuProps,
   dismiss: (ev?: any, dismissAll?: boolean | undefined) => void | undefined,
-  hostElement: React.RefObject<HTMLDivElement>,
+  hostElement: React.RefObject<HTMLDivElement | null>,
   openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement) => void,
 ) {
   /** True if the most recent keydown event was for alt (option) or meta (command). */
-  const lastKeyDownWasAltOrMeta = React.useRef<boolean | undefined>();
+  const lastKeyDownWasAltOrMeta = React.useRef<boolean | undefined>(undefined);
 
   /**
    * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
@@ -370,10 +372,7 @@ function useKeyHandlers(
   const shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     return (
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      ev.which === KeyCodes.escape ||
-      shouldCloseSubMenu(ev) ||
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey))
+      ev.which === KeyCodes.escape || shouldCloseSubMenu(ev) || (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey))
     );
   };
 
@@ -456,7 +455,7 @@ function useKeyHandlers(
 
 function useScrollHandler(asyncTracker: Async) {
   const isScrollIdle = React.useRef<boolean>(true);
-  const scrollIdleTimeoutId = React.useRef<number | undefined>();
+  const scrollIdleTimeoutId = React.useRef<number | undefined>(undefined);
 
   /**
    * Scroll handler for the callout to make sure the mouse events
@@ -521,18 +520,18 @@ function useSubmenuEnterTimer({ subMenuHoverDelay = NavigationIdleDelay }: ICont
     }, subMenuHoverDelay);
   };
 
-  return [cancelSubMenuTimer, startSubmenuTimer, enterTimerRef as React.RefObject<number | undefined>] as const;
+  return [cancelSubMenuTimer, startSubmenuTimer, enterTimerRef as React.RefObject<number | undefined | null>] as const;
 }
 
 function useMouseHandlers(
   props: IContextualMenuProps,
   isScrollIdle: React.MutableRefObject<boolean>,
-  subMenuEntryTimer: React.RefObject<number | undefined>,
+  subMenuEntryTimer: React.RefObject<number | undefined | null>,
   targetWindow: Window | undefined,
   shouldUpdateFocusOnMouseEvent: React.MutableRefObject<boolean>,
   gotMouseMove: React.MutableRefObject<boolean>,
   expandedMenuItemKey: string | undefined,
-  hostElement: React.RefObject<HTMLDivElement>,
+  hostElement: React.RefObject<HTMLDivElement | null>,
   startSubmenuTimer: (onTimerExpired: () => void) => void,
   cancelSubMenuTimer: () => void,
   openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean) => void,
@@ -783,8 +782,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
       defaultRender?: IRenderFunction<IContextualMenuListProps>,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-    ): JSX.Element => {
+    ): JSXElement => {
       let indexCorrection = 0;
       const { items, totalItemCount, hasCheckmarks, hasIcons } = menuListProps;
 
@@ -810,8 +808,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       );
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const renderFocusZone = (children: JSX.Element | null, adjustedFocusZoneProps: IFocusZoneProps): JSX.Element => {
+    const renderFocusZone = (children: JSXElement | null, adjustedFocusZoneProps: IFocusZoneProps): JSXElement => {
       const { focusZoneAs: ChildrenRenderer = FocusZone } = props;
       return <ChildrenRenderer {...adjustedFocusZoneProps}>{children}</ChildrenRenderer>;
     };
@@ -829,8 +826,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       hasIcons: boolean,
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-    ): JSX.Element => {
+    ): JSXElement => {
       const renderedItems: React.ReactNode[] = [];
       const iconProps = item.iconProps || { iconName: 'None' };
       const {
@@ -912,8 +908,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
               totalItemCount,
               hasCheckmarks,
               hasIcons,
-              // eslint-disable-next-line @typescript-eslint/no-deprecated
-            ) as JSX.Element;
+            ) as JSXElement;
 
           const menuItem = props.onRenderContextualMenuItem
             ? props.onRenderContextualMenuItem(item, defaultRenderNormalItem)
@@ -1389,8 +1384,7 @@ function onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLEle
 function onDefaultRenderSubMenu(
   subMenuProps: IContextualMenuProps,
   defaultRender?: IRenderFunction<IContextualMenuProps>,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-): JSX.Element {
+): JSXElement {
   throw Error(
     'ContextualMenuBase: onRenderSubMenu callback is null or undefined. ' +
       'Please ensure to set `onRenderSubMenu` property either manually or with `styled` helper.',

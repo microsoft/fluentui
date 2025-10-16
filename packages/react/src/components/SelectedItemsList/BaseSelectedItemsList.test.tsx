@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, act } from '@testing-library/react';
 import { BaseSelectedItemsList } from './BaseSelectedItemsList';
 import { isConformant } from '../../common/isConformant';
@@ -23,9 +22,8 @@ describe('SelectedItemsList', () => {
     ) => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
 
     it('renders BaseSelectedItemsList correctly', () => {
-      const component = renderer.create(<BaseSelectedItemsListWithType />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<BaseSelectedItemsListWithType />);
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     isConformant({

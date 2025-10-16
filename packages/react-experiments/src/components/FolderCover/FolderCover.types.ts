@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { IBaseProps, ISize } from '../../Utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 export type FolderCoverSize = 'small' | 'large';
 
@@ -39,5 +40,5 @@ export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<HTML
    * The children to pass into the content area of the folder cover.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  children?: React.ReactNode | ((childrenProps: IFolderCoverChildrenProps) => JSX.Element | null);
+  children?: React.ReactNode | ((childrenProps: IFolderCoverChildrenProps) => JSXElement | null);
 }

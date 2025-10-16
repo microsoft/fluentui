@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCarousel_unstable } from './useCarousel';

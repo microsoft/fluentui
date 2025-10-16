@@ -20,7 +20,7 @@ const focusClassName = 'shouldFocusInput';
 
 export const FocusTrapZoneBoxCustomElementExample = () => {
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
-  const toggle = React.useRef<IToggle>(null);
+  const toggle = React.useRef<IToggle | null>(null);
   return (
     <Stack tokens={stackTokens}>
       <Stack.Item>

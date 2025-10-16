@@ -1,3 +1,5 @@
+'use client';
+
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import {
   max as d3Max,
@@ -68,6 +70,7 @@ import {
   HorizontalBarChartWithAxisDataPoint,
   LineChartLineOptions,
   AxisCategoryOrder,
+  YValueHover,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -909,22 +912,9 @@ export const createStringYAxis = (
 
 // changing the type to any as it is used by multiple charts with different data types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function calloutData(values: ((LineChartPoints | ScatterChartPoints) & { index?: number })[]): {
-  x: string | number;
-  values: {
-    legend: string;
-    y: number;
-    color: string;
-    xAxisCalloutData?: string;
-    yAxisCalloutData?:
-      | string
-      | {
-          [id: string]: number;
-        };
-    callOutAccessibilityData?: AccessibilityProps;
-    index?: number;
-  }[];
-}[] {
+export function calloutData(
+  values: ((LineChartPoints | ScatterChartPoints) & { index?: number })[],
+): Record<string, YValueHover[]> {
   let combinedResult: ((LineChartDataPoint | ScatterChartDataPoint) & {
     legend: string;
     color?: string;
@@ -988,11 +978,7 @@ export function calloutData(values: ((LineChartPoints | ScatterChartPoints) & { 
     }
   });
 
-  const result = Object.keys(xValToDataPoints).map(xValue => {
-    const originalXValue = isNaN(Number(xValue)) ? xValue : Number(xValue);
-    return { x: originalXValue, values: xValToDataPoints[xValue] };
-  });
-  return result;
+  return xValToDataPoints;
 }
 
 export function getUnique(
@@ -2395,3 +2381,21 @@ export function precisionRound(value: number, precision: number, base: number = 
   const exp = Math.pow(base, precision);
   return Math.round(value * exp) / exp;
 }
+
+export const findCalloutPoints = (
+  calloutPointsByX: Record<string, YValueHover[]>,
+  x: string | number | Date | null,
+): { x: string | number | Date; values: YValueHover[] } | undefined => {
+  if (x === null) {
+    return undefined;
+  }
+
+  const key = x instanceof Date ? x.getTime() : x;
+  if (!calloutPointsByX[key]) {
+    return undefined;
+  }
+  return {
+    x,
+    values: calloutPointsByX[key],
+  };
+};

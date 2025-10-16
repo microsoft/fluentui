@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ContextualMenu, IContextualMenuProps, IIconProps } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -53,7 +54,7 @@ export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExample
   );
 };
 
-function _getMenu(props: IContextualMenuProps): JSX.Element {
+function _getMenu(props: IContextualMenuProps): JSXElement {
   // Customize contextual menu with menuAs
   return <ContextualMenu {...props} />;
 }

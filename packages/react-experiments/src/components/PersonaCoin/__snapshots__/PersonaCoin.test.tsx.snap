@@ -2,7 +2,7 @@
 
 exports[`PersonaCoin renders a coin with a contact icon 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -17,8 +17,8 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
       }
 >
   <i
-    aria-hidden={true}
-    className=
+    aria-hidden="true"
+    class=
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -40,7 +40,7 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
 
 exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -55,8 +55,8 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
       }
 >
   <i
-    aria-hidden={true}
-    className=
+    aria-hidden="true"
+    class=
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -78,7 +78,7 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
 
 exports[`PersonaCoin renders a coin with the initials JB 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -93,7 +93,7 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
       }
 >
   <span
-    className=
+    class=
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -114,7 +114,7 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
 
 exports[`PersonaCoin renders a correct persona 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -129,7 +129,7 @@ exports[`PersonaCoin renders a correct persona 1`] = `
       }
 >
   <span
-    className=
+    class=
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -150,7 +150,7 @@ exports[`PersonaCoin renders a correct persona 1`] = `
 
 exports[`PersonaCoin renders a red coin 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -165,7 +165,7 @@ exports[`PersonaCoin renders a red coin 1`] = `
       }
 >
   <span
-    className=
+    class=
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -186,7 +186,7 @@ exports[`PersonaCoin renders a red coin 1`] = `
 
 exports[`PersonaCoin renders presence correctly when a very large coin is rendered 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -201,8 +201,8 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
       }
 >
   <i
-    aria-hidden={true}
-    className=
+    aria-hidden="true"
+    class=
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -220,7 +220,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
     
   </i>
   <div
-    className=
+    class=
         ms-Persona-presence
         {
           -ms-high-contrast-adjust: none;
@@ -243,16 +243,11 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           border-color: Window;
         }
     role="presentation"
-    style={
-      Object {
-        "height": "33.333333333333336px",
-        "width": "33.333333333333336px",
-      }
-    }
+    style="width: 33.333333333333336px; height: 33.333333333333336px;"
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-Persona-presenceIcon
           {
             -moz-osx-font-smoothing: grayscale;
@@ -272,12 +267,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
             color: Window;
           }
       data-icon-name="SkypeMinus"
-      style={
-        Object {
-          "fontSize": "16.666666666666668px",
-          "lineHeight": "33.333333333333336px",
-        }
-      }
+      style="font-size: 16.666666666666668px; line-height: 33.333333333333336px;"
     >
       
     </i>
@@ -287,7 +277,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
 
 exports[`PersonaCoin renders presence when it is passed 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -302,8 +292,8 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
       }
 >
   <i
-    aria-hidden={true}
-    className=
+    aria-hidden="true"
+    class=
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -321,7 +311,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
     
   </i>
   <div
-    className=
+    class=
         ms-Persona-presence
         {
           -ms-high-contrast-adjust: none;
@@ -344,16 +334,11 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           border-color: Window;
         }
     role="presentation"
-    style={
-      Object {
-        "height": "16px",
-        "width": "16px",
-      }
-    }
+    style="width: 16px; height: 16px;"
   >
     <i
-      aria-hidden={true}
-      className=
+      aria-hidden="true"
+      class=
           ms-Persona-presenceIcon
           {
             -moz-osx-font-smoothing: grayscale;
@@ -373,12 +358,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
             color: Window;
           }
       data-icon-name="SkypeMinus"
-      style={
-        Object {
-          "fontSize": "8px",
-          "lineHeight": "16px",
-        }
-      }
+      style="font-size: 8px; line-height: 16px;"
     >
       
     </i>
@@ -388,7 +368,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
 
 exports[`PersonaCoin renders the coin with the provided image 1`] = `
 <div
-  className=
+  class=
       test-cn-root
       {
         align-items: center;
@@ -403,7 +383,7 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
       }
 >
   <span
-    className=
+    class=
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -420,7 +400,7 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
     EG
   </span>
   <div
-    className=
+    class=
         ms-Image
         test-cn-image
         {
@@ -437,16 +417,11 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
           top: 0px;
           width: 48px;
         }
-    style={
-      Object {
-        "height": 48,
-        "width": 48,
-      }
-    }
+    style="width: 48px; height: 48px;"
   >
     <img
       alt=""
-      className=
+      class=
           ms-Image-image
           ms-Image-image--cover
           ms-Image-image--portrait
@@ -459,8 +434,6 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
             opacity: 0;
             width: 100%;
           }
-      onError={[Function]}
-      onLoad={[Function]}
       src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets//persona-male.png"
     />
   </div>

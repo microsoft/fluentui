@@ -1,3 +1,5 @@
+'use client';
+
 import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 

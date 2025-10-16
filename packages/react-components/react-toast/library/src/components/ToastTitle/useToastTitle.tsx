@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';

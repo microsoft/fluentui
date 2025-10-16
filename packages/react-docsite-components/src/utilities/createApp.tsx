@@ -15,7 +15,7 @@ import { ExampleGroup, IExample } from './examplesOf';
  */
 export function createApp(
   examples: ExampleGroup | ExampleGroup[],
-  defaultRouteComponent: () => JSX.Element | null = () => null,
+  defaultRouteComponent: () => React.ReactElement | null = () => null,
   appTitle?: string,
   headerLinks?: IAppLink[],
 ): void {
@@ -26,7 +26,7 @@ export function createApp(
     rootElement = document.createElement('div');
     document.body.appendChild(rootElement);
 
-    const routes: (JSX.Element | JSX.Element[])[] = groups.map(group =>
+    const routes: (React.ReactElement | React.ReactElement[])[] = groups.map(group =>
       group.examples.map(example => {
         return <Route key={example.key} path={'#component=' + example.key} component={example.onRender} />;
       }),
@@ -86,7 +86,7 @@ type ReactProps<T> = {
   ref?: React.LegacyRef<T>;
 };
 
-function _getComponent<TProps extends ReactProps<{}>>(props: TProps): JSX.Element {
+function _getComponent<TProps extends ReactProps<{}>>(props: TProps): React.ReactElement {
   return <div {...(props as React.HTMLAttributes<HTMLDivElement>)} />;
 }
 

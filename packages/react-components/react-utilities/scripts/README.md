@@ -1,5 +1,14 @@
 # JSX Intrinsic Elements Type Transformer
 
+> **Note:** This solution is not currently used in the codebase. We found an alternative workaround using type utilities in [`@packages/react-components/react-utilities/src/utils/types.ts`](../src/utils/types.ts):
+>
+> ```ts
+> export type JSXIntrinsicElementKeys = Exclude<React.ElementType, React.ComponentType>;
+> export type JSXIntrinsicElement<Element extends JSXIntrinsicElementKeys> = React.ComponentProps<Element>;
+> ```
+>
+> The script is kept for future reference in case the current workaround doesn't work with future React versions.
+
 This directory contains TypeScript transform scripts that extract actual JSX intrinsic element names from React type definitions and emit them as literal string unions instead of preserving `keyof JSX.IntrinsicElements` references.
 
 ## Problem Solved

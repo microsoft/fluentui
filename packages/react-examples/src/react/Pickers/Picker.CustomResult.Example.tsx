@@ -26,6 +26,7 @@ import {
 import { IButtonProps } from '@fluentui/react/lib/Button';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { useBoolean } from '@fluentui/react-hooks';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IFullDocumentCardProps {
   documentCardProps?: IDocumentCardProps;
@@ -290,7 +291,7 @@ const data: IFullDocumentCardProps[] = [
   },
 ];
 
-const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
+const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSXElement = (
   documentProps: IFullDocumentCardProps,
   itemProps: ISuggestionItemProps<any>,
 ) => {
@@ -310,7 +311,7 @@ const log =
   (): void =>
     console.log(text);
 
-const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (
+const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSXElement = (
   documentProps: IPickerItemProps<IFullDocumentCardProps>,
 ) => {
   const { documentActionsProps, documentPreviewProps, documentActivityProps, documentTitleProps } = documentProps.item;

@@ -7,6 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IStackedBarState {
   enableGradient: boolean;
@@ -22,7 +23,7 @@ export class StackedBarChartMultipleExample extends React.Component<{}, IStacked
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const points: IChartDataPoint[] = [
       { legend: 'This is the first legend of the chart', data: 40, color: getColorFromToken(DataVizPalette.color3) },
       { legend: 'This is the second legend of the chart', data: 23, color: getColorFromToken(DataVizPalette.color9) },

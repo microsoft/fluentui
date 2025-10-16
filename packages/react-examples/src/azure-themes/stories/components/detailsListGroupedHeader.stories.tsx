@@ -13,6 +13,7 @@ import {
 import { createListItems, createGroups, IExampleItem } from '@fluentui/example-data';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { Dropdown, IDropdownOption, IDropdownStyles } from '@fluentui/react/lib/Dropdown';
+import type { JSXElement } from '@fluentui/utilities';
 
 const ROW_HEIGHT: number = 42; // from DEFAULT_ROW_HEIGHTS in DetailsRow.styles.ts
 const GROUP_HEADER_AND_FOOTER_SPACING: number = 8;
@@ -68,7 +69,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
     this.state = { selectedItem: dropdownOptions[0] };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <>
         <Dropdown

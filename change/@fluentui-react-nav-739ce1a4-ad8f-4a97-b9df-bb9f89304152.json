@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: NavHeader is not included in the arrow nav region",
-  "packageName": "@fluentui/react-nav",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

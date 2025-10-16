@@ -37,7 +37,10 @@ export interface IResizeGroupState {
 /**
  * Returns a simple object is able to store measurements with a given key.
  */
-export const getMeasurementCache = () => {
+export const getMeasurementCache = (): {
+  getCachedMeasurement: (data: any) => number | undefined;
+  addMeasurementToCache: (data: any, measurement: number) => void;
+} => {
   const measurementsCache: { [key: string]: number } = {};
 
   return {
@@ -69,7 +72,18 @@ export const getMeasurementCache = () => {
  * Returns a function that is able to compute the next state for the ResizeGroup given the current
  * state and any measurement updates.
  */
-export const getNextResizeGroupStateProvider = (measurementCache = getMeasurementCache()) => {
+export const getNextResizeGroupStateProvider = (
+  measurementCache = getMeasurementCache(),
+): {
+  getNextState: (
+    props: IResizeGroupProps,
+    currentState: IResizeGroupState,
+    getElementToMeasureDimension: () => number,
+    newContainerDimension?: number,
+  ) => IResizeGroupState | undefined;
+  shouldRenderDataForMeasurement: (dataToMeasure: any | undefined) => boolean;
+  getInitialResizeGroupState: (data: any) => IResizeGroupState;
+} => {
   const _measurementCache = measurementCache;
   let _containerDimension: number | undefined;
 

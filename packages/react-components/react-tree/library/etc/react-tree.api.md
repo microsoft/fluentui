@@ -334,6 +334,12 @@ export type TreeNavigationData_unstable = {
     type: typeof End;
 });
 
+// @public
+export type TreeNavigationDataParam = TreeNavigationData_unstable & {
+    preventScroll(): void;
+    isScrollPrevented(): boolean;
+};
+
 // @public (undocumented)
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
@@ -457,6 +463,13 @@ export const useTreeItemPersonaLayoutStyles_unstable: (state: TreeItemPersonaLay
 
 // @public
 export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState;
+
+// @public
+export function useTreeNavigation(navigationMode?: TreeNavigationMode): {
+    navigate: (data: TreeNavigationData_unstable, focusOptions?: FocusOptions) => HTMLElement | null;
+    treeRef: React_2.RefCallback<HTMLElement>;
+    forceUpdateRovingTabIndex: () => void;
+};
 
 // @public (undocumented)
 export const useTreeStyles_unstable: (state: TreeState) => TreeState;

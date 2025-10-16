@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
 import { Calendar, compareDatePart, DayOfWeek, FirstWeekOfYear } from '@fluentui/react-calendar-compat';

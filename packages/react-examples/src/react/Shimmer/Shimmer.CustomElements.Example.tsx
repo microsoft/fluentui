@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Shimmer, ShimmerElementType, ShimmerElementsGroup, ThemeProvider, mergeStyles } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 const wrapperClass = mergeStyles({
   padding: 2,
@@ -10,7 +11,7 @@ const wrapperClass = mergeStyles({
   },
 });
 const wrapperStyle = { display: 'flex' };
-const getCustomElementsExampleOne = (): JSX.Element => {
+const getCustomElementsExampleOne = (): JSXElement => {
   return (
     <div style={wrapperStyle}>
       <ShimmerElementsGroup
@@ -31,7 +32,7 @@ const getCustomElementsExampleOne = (): JSX.Element => {
   );
 };
 
-const getCustomElementsExampleTwo = (): JSX.Element => {
+const getCustomElementsExampleTwo = (): JSXElement => {
   return (
     <div style={wrapperStyle}>
       <ShimmerElementsGroup
@@ -52,7 +53,7 @@ const getCustomElementsExampleTwo = (): JSX.Element => {
   );
 };
 
-const getCustomElementsExampleThree = (): JSX.Element => {
+const getCustomElementsExampleThree = (): JSXElement => {
   return (
     <div style={wrapperStyle}>
       <ShimmerElementsGroup

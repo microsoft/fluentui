@@ -31,11 +31,12 @@ const SelectedPeopleListWithEditExampleCode =
   require('!raw-loader?esModule=false!./SelectedPeopleList.WithEdit.Example') as string;
 
 import { SelectedPeopleListWithContextMenuExample } from './SelectedPeopleList.WithContextMenu.Example';
+import type { JSXElement } from '@fluentui/utilities';
 const SelectedPeopleListWithContextMenuExampleCode =
   require('!raw-loader?esModule=false!./SelectedPeopleList.WithContextMenu.Example') as string;
 
 export class SelectedPeopleListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <ComponentPage
         title="SelectedPeopleList"

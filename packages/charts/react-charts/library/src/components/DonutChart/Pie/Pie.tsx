@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -30,12 +32,21 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       .value((d: any) => d.data)
       .padAngle(0);
 
-    function _focusCallback(data: ChartDataPoint, id: string, e: React.FocusEvent<SVGPathElement>): void {
-      props.onFocusCallback!(data, id, e);
+    function _focusCallback(
+      data: ChartDataPoint,
+      id: string,
+      e: React.FocusEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
+      props.onFocusCallback!(data, id, e, targetElement);
     }
 
-    function _hoverCallback(data: ChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
-      props.hoverOnCallback!(data, e);
+    function _hoverCallback(
+      data: ChartDataPoint,
+      e: React.MouseEvent<SVGPathElement>,
+      targetElement?: HTMLElement | null,
+    ): void {
+      props.hoverOnCallback!(data, e, targetElement);
     }
 
     function _computeTotalValue() {

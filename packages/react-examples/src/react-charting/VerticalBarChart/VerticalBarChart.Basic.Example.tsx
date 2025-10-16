@@ -12,6 +12,7 @@ import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Label } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IVerticalChartState {
   width: number;
@@ -64,7 +65,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -105,7 +106,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
     this.setState({ selectMultipleLegends: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const points: IVerticalBarChartDataPoint[] = [
       {
         x: 0,

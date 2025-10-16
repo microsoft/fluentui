@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css } from '@fluentui/react/lib/Utilities';
 import * as SignalFieldStyles from './SignalField.scss';
+import type { JSXElement } from '@fluentui/utilities';
 
 export type SignalFieldMode = 'wide' | 'compact';
 
@@ -16,7 +17,7 @@ export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement>
  * Pass the main value as the children.
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export const SignalField: React.FunctionComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSX.Element => {
+export const SignalField: React.FunctionComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSXElement => {
   const { before, after, className, signalsFieldMode = 'compact', ...spanProps } = props;
   return (
     <span

@@ -6,6 +6,7 @@ import { ITheme, mergeStyleSets, getFocusStyle } from '@fluentui/react/lib/Styli
 import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { useConst } from '@fluentui/react-hooks';
 import { useTheme } from '@fluentui/react/lib/Theme';
+import type { JSXElement } from '@fluentui/utilities';
 
 const generateStyles = (theme: ITheme) => {
   return mergeStyleSets({
@@ -63,7 +64,7 @@ export const ListGhostingExample: React.FunctionComponent = () => {
   const classNames = React.useMemo(() => generateStyles(theme), [theme]);
 
   const onRenderCell = React.useCallback(
-    (item: IExampleItem, index: number, isScrolling: boolean): JSX.Element => {
+    (item: IExampleItem, index: number, isScrolling: boolean): JSXElement => {
       return (
         <div className={classNames.itemCell} data-is-focusable={true}>
           <Image

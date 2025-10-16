@@ -9,11 +9,12 @@ import type {
   IFloatingSuggestionsListProps,
 } from './FloatingSuggestionsList.types';
 import type { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestionsListProps<T>): JSX.Element => {
+export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestionsListProps<T>): JSXElement => {
   const classNames = getClassNames(getStyles);
   const { className, suggestionItems, onRenderNoResultFound, ariaLabel, noResultsFoundText } = props;
   const hasNoSuggestions = !suggestionItems || !suggestionItems.length;
@@ -23,7 +24,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const renderHeader = (): JSX.Element | null => {
+  const renderHeader = (): JSXElement | null => {
     const {
       onRenderHeader,
       suggestionsHeaderText,
@@ -70,7 +71,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const renderFooter = (): JSX.Element | null => {
+  const renderFooter = (): JSXElement | null => {
     const { onRenderFooter, footerItemsProps, selectedFooterIndex, suggestionsFooterContainerAriaLabel } = props;
 
     if (footerItemsProps) {
@@ -111,7 +112,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const renderSuggestions = (): JSX.Element | null => {
+  const renderSuggestions = (): JSXElement | null => {
     if (suggestionItems.length === 0) {
       return null;
     }

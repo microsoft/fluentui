@@ -9,6 +9,7 @@ import { mru } from '@fluentui/example-data';
 import { useConst } from '@fluentui/react-hooks';
 import { Autofill } from '@fluentui/react';
 import { KeyCodes } from '@fluentui/react-experiments/lib/Utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 const _suggestions = [
   {
@@ -53,7 +54,7 @@ const _suggestions = [
   },
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
-export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
+export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSXElement => {
   const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
     ..._suggestions,
   ]);
@@ -61,7 +62,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
   const [selectedFooterIndex, setSelectedFooterIndex] = React.useState<number>(-1);
   const selectedHeaderIndex = -1;
 
-  const input = React.useRef<Autofill>(null);
+  const input = React.useRef<Autofill | null>(null);
 
   const suggestionProps = useConst(() => {
     return {

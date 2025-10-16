@@ -7,6 +7,8 @@ import type {
   IDocumentCardLocationStyles,
 } from './DocumentCardLocation.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDocumentCardLocationStyleProps, IDocumentCardLocationStyles>();
 
 /**
@@ -21,8 +23,7 @@ export class DocumentCardLocationBase extends React.Component<IDocumentCardLocat
     initializeComponentRef(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { location, locationHref, ariaLabel, onClick, styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {

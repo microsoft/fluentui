@@ -1,3 +1,5 @@
+'use client';
+
 import { type ARIAButtonElement } from '@fluentui/react-aria';
 import { useButton_unstable } from '@fluentui/react-button';
 import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';

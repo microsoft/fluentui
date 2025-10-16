@@ -13,6 +13,7 @@ import {
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IExampleState {
   dynamicData: IChartProps;
@@ -86,7 +87,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
     this._changeColors = this._changeColors.bind(this);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div>
         <div style={{ display: 'flex' }}>

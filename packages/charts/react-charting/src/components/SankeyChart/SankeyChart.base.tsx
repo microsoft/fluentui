@@ -192,7 +192,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  * This is used to group nodes by column index.
  */
 // This is exported for unit tests.
-export function groupNodesByColumn(graph: ISankeyChartData) {
+export function groupNodesByColumn(graph: ISankeyChartData): NodesInColumns {
   const nodesInColumn: NodesInColumns = {};
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;

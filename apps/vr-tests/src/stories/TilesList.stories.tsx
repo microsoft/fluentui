@@ -48,7 +48,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
     };
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const gridSegment: ITilesGridSegment<IBasicItem> = {
       items: this.state.items,
       key: 'grid',
@@ -61,7 +61,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
   }
 }
 
-function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
+function renderItem(item: IBasicItem, finalSize?: ITileSize): React.ReactElement {
   return (
     <div
       style={{

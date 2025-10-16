@@ -12,6 +12,7 @@ import {
 } from '@fluentui/react';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { useBoolean, useConst } from '@fluentui/react-hooks';
+import type { JSXElement } from '@fluentui/utilities';
 
 const classNames = mergeStyleSets({
   compactCard: {
@@ -42,7 +43,7 @@ const log = (text: string): (() => void) => {
 const items: IExampleItem[] = createListItems(10);
 const columns: IColumn[] = buildColumns(items).filter(column => column.name === 'location' || column.name === 'key');
 
-const onRenderCompactCard = (item: IExampleItem): JSX.Element => {
+const onRenderCompactCard = (item: IExampleItem): JSXElement => {
   return (
     <div className={classNames.compactCard}>
       <a target="_blank" href={`http://wikipedia.org/wiki/${item.location}`}>
@@ -52,7 +53,7 @@ const onRenderCompactCard = (item: IExampleItem): JSX.Element => {
   );
 };
 
-const onRenderExpandedCard = (item: IExampleItem): JSX.Element => {
+const onRenderExpandedCard = (item: IExampleItem): JSXElement => {
   return (
     <div className={classNames.expandedCard}>
       {item.description}
@@ -67,7 +68,7 @@ const onRenderExpandedCard = (item: IExampleItem): JSX.Element => {
  */
 const KeyCellWithHoverCard: React.FunctionComponent<{ item: IExampleItem }> = ({ item }) => {
   const [contentRendered, { toggle: toggleContentRendered }] = useBoolean(false);
-  const targetElementRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(null);
+  const targetElementRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef<HTMLDivElement | null>(null);
   const expandingCardProps: IExpandingCardProps = useConst({
     onRenderCompactCard,
     onRenderExpandedCard,
@@ -101,7 +102,7 @@ const KeyCellWithHoverCard: React.FunctionComponent<{ item: IExampleItem }> = ({
   );
 };
 
-const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
+const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSXElement | string | number => {
   if (column.key === 'key') {
     return <KeyCellWithHoverCard item={item} />;
   }

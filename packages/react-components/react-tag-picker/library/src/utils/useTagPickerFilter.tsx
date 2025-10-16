@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { TagPickerOption } from '../TagPickerOption';
 import type { JSXElement } from '@fluentui/react-utilities';

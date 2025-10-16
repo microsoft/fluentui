@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Fabric, Icon, Label, Pivot, IPivotItemProps, PivotItem, Toggle } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
+import type { JSXElement } from '@fluentui/utilities';
 
 export const PivotOverflowMenuExample: React.FunctionComponent = () => {
   const [overflow, { toggle: toggleOverflow }] = useBoolean(true);
@@ -54,8 +55,8 @@ export const PivotOverflowMenuExample: React.FunctionComponent = () => {
 
 function _customRenderer(
   link?: IPivotItemProps,
-  defaultRenderer?: (link?: IPivotItemProps) => JSX.Element | null,
-): JSX.Element | null {
+  defaultRenderer?: (link?: IPivotItemProps) => JSXElement | null,
+): JSXElement | null {
   if (!link || !defaultRenderer) {
     return null;
   }

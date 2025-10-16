@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { screen, render, fireEvent, cleanup } from '@testing-library/react';
+import { act, screen, render, fireEvent, cleanup } from '@testing-library/react';
 import { KeyCodes } from '../../Utilities';
 import { Autofill } from './index';
 import { mockEvent } from '../../common/testUtilities';
 import type { IRefObject } from '../../Utilities';
 import type { IAutofill } from './index';
-import { act } from 'react-test-renderer';
 
 jest.useFakeTimers();
 

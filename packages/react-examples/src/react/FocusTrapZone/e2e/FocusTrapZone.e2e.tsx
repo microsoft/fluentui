@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import type { IFocusTrapZoneProps, IFocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
@@ -481,7 +481,7 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Imperatively focusing the FTZ', () => {
-    function imperativeFocus(componentRef: React.RefObject<IFocusTrapZone>) {
+    function imperativeFocus(componentRef: React.RefObject<IFocusTrapZone | null>) {
       // Ensure the component has rendered before calling focus()
       cy.contains('first').then(() => {
         componentRef.current!.focus();

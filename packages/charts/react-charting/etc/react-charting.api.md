@@ -21,6 +21,7 @@ import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from '@fluentui/react';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { ITheme as ITheme_2 } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 import * as React_2 from 'react';
 import { SankeyLink } from 'd3-sankey';
 import { SankeyNode } from 'd3-sankey';
@@ -1324,7 +1325,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     };
     getYDomainMargins?: (containerHeight: number) => IMargins;
     isCalloutForStack?: boolean;
-    legendBars: JSX.Element | null;
+    legendBars: JSXElement | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;

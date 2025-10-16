@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   IChartProps,
   ICustomizedCalloutData,
@@ -21,7 +22,7 @@ export class LineChartGapsExample extends React.Component<{}, ILineChartGapsStat
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._gapsExample()}</div>;
   }
 
@@ -38,7 +39,7 @@ export class LineChartGapsExample extends React.Component<{}, ILineChartGapsStat
     return undefined;
   };
 
-  private _gapsExample(): JSX.Element {
+  private _gapsExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: [

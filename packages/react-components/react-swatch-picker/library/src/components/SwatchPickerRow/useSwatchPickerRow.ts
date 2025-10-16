@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerRowProps, SwatchPickerRowState } from './SwatchPickerRow.types';

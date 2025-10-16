@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Drawer, DrawerProps } from '@fluentui/react-drawer';
 import { RefAttributes, slot } from '@fluentui/react-utilities';

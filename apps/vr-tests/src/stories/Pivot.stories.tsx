@@ -121,8 +121,8 @@ TabsLarge.storyName = 'Tabs large';
 
 function _customRenderer(
   link: IPivotItemProps,
-  defaultRenderer: (link: IPivotItemProps) => JSX.Element,
-): JSX.Element {
+  defaultRenderer: (link: IPivotItemProps) => React.ReactElement,
+): React.ReactElement {
   return (
     <span style={{ flex: '0 1 100%' }}>
       {defaultRenderer({ ...link, itemIcon: undefined })}

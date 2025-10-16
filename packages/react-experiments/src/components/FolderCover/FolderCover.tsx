@@ -5,6 +5,7 @@ import * as SignalStylesModule from '../signals/Signal.scss';
 import { Icon } from '@fluentui/react/lib/Icon';
 import type { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.types';
 import type { ISize } from '../../Utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 const FolderCoverStyles = FolderCoverStylesModule as any;
 const SignalStyles = SignalStylesModule as any;
@@ -72,7 +73,7 @@ const ASSETS: {
 
 export class FolderCover extends React.Component<IFolderCoverProps, IFolderCoverState> {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const {
       folderCoverSize: size = 'large',
       folderCoverType: type = 'default',
@@ -122,7 +123,7 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
     );
   }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderChildren({ children }: Pick<IFolderCoverProps, 'children'>): JSX.Element | null {
+  private _renderChildren({ children }: Pick<IFolderCoverProps, 'children'>): JSXElement | null {
     const finalChildren =
       typeof children === 'function' ? children(getFolderCoverLayoutFromProps(this.props)) : children;
 
@@ -139,7 +140,7 @@ export interface IFolderCoverLayout {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export function getFolderCoverLayout(element: JSX.Element): IFolderCoverLayout {
+export function getFolderCoverLayout(element: JSXElement): IFolderCoverLayout {
   const folderCoverProps: IFolderCoverProps = element.props;
 
   return getFolderCoverLayoutFromProps(folderCoverProps);
@@ -156,7 +157,7 @@ function getFolderCoverLayoutFromProps(folderCoverProps: IFolderCoverProps): IFo
 }
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export function renderFolderCoverWithLayout(element: JSX.Element, props: Partial<IFolderCoverProps>): JSX.Element {
+export function renderFolderCoverWithLayout(element: JSXElement, props: Partial<IFolderCoverProps>): JSXElement {
   const Tag = element.type;
 
   return <Tag {...element.props} {...props} />;

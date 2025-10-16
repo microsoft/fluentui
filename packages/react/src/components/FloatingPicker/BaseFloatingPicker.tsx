@@ -9,6 +9,8 @@ import type { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloati
 import type { ISuggestionModel } from '../../Pickers';
 import type { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const styles: any = stylesImport;
 
 export interface IBaseFloatingPickerState {
@@ -143,8 +145,7 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className } = this.props;
     return (
       <div ref={this.root} className={css('ms-BasePicker ms-BaseFloatingPicker', className ? className : '')}>
@@ -153,8 +154,7 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  protected renderSuggestions(): JSX.Element | null {
+  protected renderSuggestions(): JSXElement | null {
     const TypedSuggestionsControl = this.SuggestionsControlOfProperType;
 
     if (this.props.suggestionItems) {

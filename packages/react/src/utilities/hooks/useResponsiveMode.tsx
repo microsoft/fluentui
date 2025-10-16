@@ -12,7 +12,7 @@ import { useWindow } from '../../WindowProvider';
 export const useResponsiveMode = (
   elementRef: React.RefObject<HTMLElement | null>,
   overrideResponsiveMode?: ResponsiveMode,
-) => {
+): ResponsiveMode => {
   const [lastResponsiveMode, setLastResponsiveMode] = React.useState<ResponsiveMode>(getInitialResponsiveMode());
 
   const onResize = React.useCallback(() => {

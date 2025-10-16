@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, fireEvent } from '@testing-library/react';
 import { getBySelector } from '../../../common/testUtilities';
 import { ContextualMenuButton } from './ContextualMenuButton';
@@ -18,7 +17,7 @@ describe('ContextualMenuButton', () => {
     });
 
     it('renders the contextual menu split button correctly', () => {
-      const component = renderer.create(
+      const { container } = render(
         <ContextualMenuButton
           item={menuItem}
           classNames={menuClassNames}
@@ -27,8 +26,7 @@ describe('ContextualMenuButton', () => {
           totalItemCount={1}
         />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {

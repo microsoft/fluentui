@@ -3,6 +3,7 @@ import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluent
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ILineChartBasicState {
   width: number;
@@ -49,7 +50,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     document.head.appendChild(style);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -70,7 +71,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     this.setState({ useUTC: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: [

@@ -155,7 +155,7 @@ export type JSXElement = React_2.ReactElement<any, any>;
 export type JSXIntrinsicElement<Element extends JSXIntrinsicElementKeys> = React_2.ComponentProps<Element>;
 
 // @public
-export type JSXIntrinsicElementKeys = ReactVersionDependent<JSXIntrinsicElementKeysLatest, JSXIntrinsicElementKeysCompat>;
+export type JSXIntrinsicElementKeys = Exclude<React_2.ElementType, React_2.ComponentType>;
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;

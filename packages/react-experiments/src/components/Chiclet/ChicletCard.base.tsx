@@ -2,6 +2,7 @@ import * as React from 'react';
 import { css, classNamesFunction } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import type { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
@@ -22,7 +23,7 @@ export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { title, description, url, onClick, className, footer, theme, styles } = this.props;
 
     const actionable = onClick ? true : false;
@@ -45,7 +46,7 @@ export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
     );
   }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderPreview(): JSX.Element {
+  private _renderPreview(): JSXElement {
     const { image, imageAlt, preview } = this.props;
 
     return (

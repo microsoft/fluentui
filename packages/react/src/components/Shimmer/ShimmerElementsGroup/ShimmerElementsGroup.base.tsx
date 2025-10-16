@@ -15,6 +15,8 @@ import type { IShimmerLineStyles } from '../ShimmerLine/ShimmerLine.types';
 import type { IShimmerGapStyles } from '../ShimmerGap/ShimmerGap.types';
 import type { IShimmerCircleStyles } from '../ShimmerCircle/ShimmerCircle.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>();
 
 /**
@@ -51,8 +53,8 @@ function getRenderedElements(
   const renderedElements: React.ReactNode = shimmerElements ? (
     shimmerElements.map(
       // false positive
-      // eslint-disable-next-line array-callback-return, @typescript-eslint/no-deprecated
-      (element: IShimmerElement, index: number): JSX.Element => {
+      // eslint-disable-next-line array-callback-return
+      (element: IShimmerElement, index: number): JSXElement => {
         const { type, ...filteredElem } = element;
         const { verticalAlign, height } = filteredElem;
         const styles = getElementStyles(verticalAlign, type, height, backgroundColor, rowHeight);

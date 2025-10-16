@@ -6,6 +6,7 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from '../../index';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<ISparklineStyleProps, ISparklineStyles>();
 
@@ -45,7 +46,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     this._emptyChartId = getId('_SparklineChart_empty');
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (!this._isChartEmpty()) {
       const area = d3Area()
         /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -83,7 +84,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     }
   }
 
-  public drawSparkline() {
+  public drawSparkline(): JSXElement {
     return (
       <>
         <path
@@ -107,7 +108,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     );
   }
 
-  public render() {
+  public render(): JSXElement {
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
     });

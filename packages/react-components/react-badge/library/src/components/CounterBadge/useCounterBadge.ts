@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { BadgeState } from '../Badge/index';
 import { useBadge_unstable } from '../Badge/index';

@@ -69,6 +69,7 @@ import {
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericScale = D3ScaleLinear<number, number>;
@@ -122,7 +123,7 @@ export class VerticalStackedBarChartBase
   private _dataset: IVerticalStackedBarDataPoint[];
   private _xAxisLabels: string[];
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _bars: JSX.Element[];
+  private _bars: JSXElement[];
   private _xAxisType: XAxisTypes;
   private _barWidth: number;
   private _calloutId: string;
@@ -210,7 +211,7 @@ export class VerticalStackedBarChartBase
       const { isCalloutForStack = false } = this.props;
       this._dataset = this._createDataSetLayer();
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const legendBars: JSX.Element = this._getLegendData(
+      const legendBars: JSXElement = this._getLegendData(
         this._points,
         this.props.theme!.palette,
         this._createLegendsForLine(this.props.data),
@@ -416,7 +417,7 @@ export class VerticalStackedBarChartBase
     containerWidth: number,
     yScaleSecondary?: NumericScale,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element => {
+  ): JSXElement => {
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
     const borderForLines: React.ReactNode[] = [];
@@ -603,7 +604,7 @@ export class VerticalStackedBarChartBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderCallout(props?: IVSChartDataPoint): JSX.Element | null {
+  private _renderCallout(props?: IVSChartDataPoint): JSXElement | null {
     return props ? (
       <ChartHoverCard
         XValue={props.xAxisCalloutData}
@@ -643,7 +644,7 @@ export class VerticalStackedBarChartBase
     palette: IPalette,
     lineLegends: LineLegends[],
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element {
+  ): JSXElement {
     if (this.props.hideLegend) {
       return <></>;
     }
@@ -939,7 +940,7 @@ export class VerticalStackedBarChartBase
     containerHeight: number,
     xElement: SVGElement,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element[] => {
+  ): JSXElement[] => {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = this.props;
     const _isHavingLines = this.props.data.some(
       (item: IVerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
@@ -1205,7 +1206,7 @@ export class VerticalStackedBarChartBase
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    return bars.filter((bar): bar is JSX.Element => !!bar);
+    return bars.filter((bar): bar is JSXElement => !!bar);
   };
 
   private _getScales = (containerHeight: number, containerWidth: number) => {

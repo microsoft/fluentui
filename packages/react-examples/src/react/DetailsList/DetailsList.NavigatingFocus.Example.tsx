@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DetailsList, IColumn } from '@fluentui/react/lib/DetailsList';
 import { Link } from '@fluentui/react/lib/Link';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IDetailsListNavigatingFocusExampleState {
   items: string[];
@@ -32,7 +33,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     } as IColumn,
   ];
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     // By default, when the list is re-rendered on navigation or some other event,
     // focus goes to the list container and the user has to tab back into the list body.
     // Setting initialFocusedIndex makes focus go directly to a particular item instead.

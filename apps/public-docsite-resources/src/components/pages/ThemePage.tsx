@@ -63,7 +63,7 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
     };
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     // Don't mutate state to display lists
     const palette = [...this.state.palette];
     const semanticColors = [...this.state.semanticColors];
@@ -152,7 +152,7 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
       colorPickerProps: {
         targetElement: (ev.currentTarget as HTMLElement).children[0] as HTMLElement,
         value: item.value,
-        index: index,
+        index,
       },
       activeList: list,
     });

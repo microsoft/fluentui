@@ -1,6 +1,4 @@
-import '@testing-library/jest-dom';
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
 import { TestImages } from '@fluentui/example-data';
 import { Icon } from '../../Icon';
 import { setRTL } from '../../Utilities';
@@ -11,6 +9,8 @@ import { PersonaPresence, PersonaSize } from './index';
 import { isConformant } from '../../common/isConformant';
 import type { IPersonaSharedProps, IPersonaCoinProps } from './index';
 import { wrapPersona } from './test-utils';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -23,8 +23,7 @@ const testImage1x1 =
 //   red: '.ms-Persona-initials--red',
 // };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-const customOnRenderPersonaFunction = (props: IPersonaCoinProps): JSX.Element | null => {
+const customOnRenderPersonaFunction = (props: IPersonaCoinProps): JSXElement | null => {
   return <Icon iconName="Dictionary" />;
 };
 
@@ -45,51 +44,45 @@ describe('Persona', () => {
   });
 
   it('renders Persona correctly with no props', () => {
-    const component = create(<Persona />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Persona />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Persona correctly with initials', () => {
-    const component = create(<Persona text="Kat Larrson" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Persona text="Kat Larrson" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Persona correctly with image', () => {
-    const component = create(<Persona text="Kat Larrson" imageUrl={testImage1x1} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Persona text="Kat Larrson" imageUrl={testImage1x1} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Persona correctly with UnknownPersona coin', () => {
-    const component = create(<Persona text="Kat Larrson" showUnknownPersonaCoin={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Persona text="Kat Larrson" showUnknownPersonaCoin={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Persona which calls onRenderCoin callback without imageUrl', () => {
     // removing imageUrl prop from example
     const { imageUrl, ...exampleWithoutImage } = examplePersona;
-    const component = create(
+    const { container } = render(
       <Persona
         {...exampleWithoutImage}
         // eslint-disable-next-line @typescript-eslint/no-deprecated
         onRenderCoin={wrapPersona(exampleWithoutImage, true)}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Persona which calls onRenderPersonaCoin callback with custom render', () => {
-    const component = create(<Persona {...examplePersona} onRenderPersonaCoin={customOnRenderPersonaFunction} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Persona {...examplePersona} onRenderPersonaCoin={customOnRenderPersonaFunction} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with onRender callback', () => {
-    const component = create(
+    const { container } = render(
       <Persona
         {...examplePersona}
         onRenderPrimaryText={wrapPersona(examplePersona)}
@@ -97,18 +90,16 @@ describe('Persona', () => {
         onRenderTertiaryText={wrapPersona(examplePersona)}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Persona children correctly', () => {
-    const component = create(
+    const { container } = render(
       <Persona text="Kat Larrson">
         <span>Persona Children</span>
       </Persona>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

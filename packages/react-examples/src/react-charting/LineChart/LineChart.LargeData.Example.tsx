@@ -8,6 +8,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface ILineChartBasicState {
   width: number;
@@ -25,7 +26,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -75,7 +76,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
     return res;
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: [

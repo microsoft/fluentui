@@ -1,3 +1,5 @@
+'use client';
+
 import { useBrowserTimer } from './useBrowserTimer';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 

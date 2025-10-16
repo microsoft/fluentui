@@ -8,7 +8,7 @@ import * as styles from './PlatformPicker.module.scss';
 export class PlatformPicker<TPlatforms extends string = string> extends React.PureComponent<
   IPlatformPickerProps<TPlatforms>
 > {
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { activePlatform, platforms, pagePlatforms } = this.props;
 
     return (

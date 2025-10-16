@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { Fabric } from '../../Fabric';
@@ -38,107 +37,98 @@ describe('Stack', () => {
   });
 
   it('renders default vertical Stack correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders reversed vertical Stack correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack reversed>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders default horizontal Stack correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders reversed horizontal Stack correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal reversed>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders vertical Stack with vertical and horizontal alignment correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontalAlign="start" verticalAlign="end">
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack with vertical and horizontal alignment correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal horizontalAlign="start" verticalAlign="end">
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders vertical Stack with vertical fill correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack with vertical fill correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders vertical Stack with grow correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack>
         <Stack grow={5}>Item 1</Stack>
         <Stack grow={2}>Item 2</Stack>
         <Stack grow>Item 3</Stack>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack with grow correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal>
         <Stack horizontal grow={5}>
           Item 1
@@ -151,56 +141,51 @@ describe('Stack', () => {
         </Stack>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders vertical Stack with StackItems correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack with StackItems correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders vertical Stack with a gap correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack tokens={{ childrenGap: 10 }}>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack with a gap correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal tokens={{ childrenGap: 10 }}>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack with a gap in rtl context correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       <Fabric dir="rtl">
         <Stack horizontal tokens={{ childrenGap: 10 }}>
@@ -209,23 +194,21 @@ describe('Stack', () => {
         </Stack>
       </Fabric>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders vertical Stack with shrinking StackItems correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders vertical Stack with StackItems inside a React.Fragment correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack>
         <>
           <Stack.Item>Item 1</Stack.Item>
@@ -233,23 +216,21 @@ describe('Stack', () => {
         </>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack with shrinking StackItems correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack with StackItems inside a React.Fragment correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal>
         <>
           <Stack.Item>Item 1</Stack.Item>
@@ -257,34 +238,31 @@ describe('Stack', () => {
         </>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders vertical Stack with shrinking StackItems correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item disableShrink>Item 2</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack with shrinking StackItems correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item disableShrink>Item 2</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders vertical Stack with item alignments correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack>
         <Stack.Item align="auto">Auto</Stack.Item>
         <Stack.Item align="stretch">Stretch</Stack.Item>
@@ -294,12 +272,11 @@ describe('Stack', () => {
         <Stack.Item align="end">End</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders horizontal Stack item alignments correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal>
         <Stack.Item align="auto">Auto</Stack.Item>
         <Stack.Item align="stretch">Stretch</Stack.Item>
@@ -309,31 +286,28 @@ describe('Stack', () => {
         <Stack.Item align="end">End</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders wrapped horizontal Stack correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack horizontal wrap>
         <Stack.Item>1</Stack.Item>
         <Stack.Item>2</Stack.Item>
         <Stack.Item>3</Stack.Item>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('accepts custom className on child items', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Stack>
         <Stack.Item className={sampleClass}>Item 1</Stack.Item>
         <div className={sampleClass}>Item 2</div>
       </Stack>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('respects the className passed in an inner Stack', () => {

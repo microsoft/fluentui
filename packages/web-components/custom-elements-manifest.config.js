@@ -6,6 +6,10 @@ import { cemInheritancePlugin } from '@wc-toolkit/cem-inheritance';
 export default {
   /** Globs to analyze */
   globs: ['src/**/*.ts'],
+  /** Directory to output the manifest to */
+  outdir: './',
+  /** Disable package.json updates */
+  packagejson: false,
   /** Globs to exclude */
   exclude: [
     '_docs/**/*',
@@ -35,6 +39,7 @@ export default {
           main: 'off',
           module: 'off',
           types: 'off',
+          customElements: 'off',
         },
         manifest: {
           schemaVersion: 'off',

@@ -41,7 +41,7 @@ export class Video extends React.Component<IVideoProps, IVideoState> {
     }
   };
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { source } = this.props;
 
     return (

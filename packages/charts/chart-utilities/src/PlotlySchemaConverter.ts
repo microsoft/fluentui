@@ -143,9 +143,9 @@ export const isYearArray = (data: Datum[] | Datum[][] | TypedArray | undefined):
   return isArrayOfType(data, (value: any): boolean => isYear(value) || value === null);
 };
 
-export const isStringArray = (data: Datum[] | Datum[][] | TypedArray | undefined) => {
+export const isStringArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return isArrayOfType(data, (value: any) => typeof value === 'string' || value === null);
+  return isArrayOfType(data, (value: any): boolean => typeof value === 'string' || value === null);
 };
 
 export const isObjectArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
@@ -168,7 +168,7 @@ export const validate2Dseries = (series: Partial<PlotData>): boolean => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isInvalidValue = (value: any) => {
+export const isInvalidValue = (value: any): boolean => {
   return typeof value === 'undefined' || value === null || (typeof value === 'number' && !isFinite(value));
 };
 
@@ -193,11 +193,11 @@ export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
   return jsonObject;
 };
 
-export function isTypedArray(a: any) {
+export function isTypedArray(a: any): boolean {
   return ArrayBuffer.isView(a) && !(a instanceof DataView);
 }
 
-export function isArrayOrTypedArray(a: any) {
+export function isArrayOrTypedArray(a: any): boolean {
   return Array.isArray(a) || isTypedArray(a);
 }
 
@@ -302,7 +302,7 @@ const validateScatterData = (data: Partial<PlotData>, layout: Partial<Layout> | 
   }
 
   const isAreaChart = isScatterAreaChart(data);
-  const isFallbackNeeded = doesScatterNeedFallback(data);
+  const isFallbackNeeded = doesScatterNeedFallback(data, layout);
   if (isAreaChart && isFallbackNeeded) {
     throw new Error(
       `${UNSUPPORTED_MSG_PREFIX} ${data.type}, Fallback to VerticalStackedBarChart is not allowed for Area Charts.`,
@@ -538,11 +538,19 @@ export const mapFluentChart = (input: any): OutputChartType => {
           const scatterData = traceData as Partial<PlotData>;
           const isAreaChart = isScatterAreaChart(scatterData);
           const isScatterChart = isScatterMarkers(scatterData.mode ?? '');
+          const hasLineShape =
+            Array.isArray(validSchema?.layout?.shapes) &&
+            validSchema.layout.shapes.some((shape: any) => shape.type === 'line');
+
           if (isScatterChart) {
-            return { isValid: true, traceIndex, type: 'scatter' };
+            return {
+              isValid: true,
+              traceIndex,
+              type: hasLineShape && supportedScatterInLineChart(scatterData, validSchema.layout) ? 'line' : 'scatter',
+            };
           }
 
-          if (!doesScatterNeedFallback(scatterData)) {
+          if (!doesScatterNeedFallback(scatterData, validSchema.layout)) {
             return { isValid: true, traceIndex, type: isAreaChart ? 'area' : 'line' };
           }
 
@@ -624,7 +632,7 @@ const canMapToGantt = (data: Partial<PlotData>) => {
   return isDateArray(data.base) || isNumberArray(data.base);
 };
 
-export const getAxisIds = (data: Partial<PlotData>) => {
+export const getAxisIds = (data: Partial<PlotData>): { x: number; y: number } => {
   let xAxisId = 1;
   if (typeof data.xaxis === 'string' && /^x\d+$/.test(data.xaxis)) {
     xAxisId = parseInt(data.xaxis.slice(1), 10);
@@ -641,22 +649,17 @@ export const getAxisIds = (data: Partial<PlotData>) => {
   };
 };
 
-export const getAxisKey = (axLetter: 'x' | 'y', axId: number) => {
+export const getAxisKey = (axLetter: 'x' | 'y', axId: number): keyof Layout => {
   return `${axLetter}axis${axId > 1 ? axId : ''}` as keyof Layout;
 };
 
-export const isScatterAreaChart = (data: Partial<PlotData>) => {
+export const isScatterAreaChart = (data: Partial<PlotData>): boolean => {
   return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
 };
 
-const doesScatterNeedFallback = (data: Partial<PlotData>) => {
-  if (isScatterMarkers(data.mode ?? '')) {
-    return false;
-  }
-
+const supportedScatterInLineChart = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
   const isXDate = isDateArray(data.x);
   const isXNumber = isNumberArray(data.x);
-
   // Consider year as categorical variable not numeric continuous variable
   // Also year is not considered a date variable as it is represented as a point
   // in time and brings additional complexity of handling timezone and locale
@@ -664,9 +667,20 @@ const doesScatterNeedFallback = (data: Partial<PlotData>) => {
   const isXYear = isYearArray(data.x);
   const isXMonth = isMonthArray(data.x);
   const isYString = isStringArray(data.y);
-  if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
+
+  const axisIds = getAxisIds(data);
+  const xAxisKey = getAxisKey('x', axisIds.x);
+  const isCatXAxis = layout?.[xAxisKey]?.type === 'category';
+
+  if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString && !isCatXAxis) {
+    return true;
+  }
+  return false;
+};
+
+const doesScatterNeedFallback = (data: Partial<PlotData>, layout: Partial<Layout> | undefined) => {
+  if (isScatterMarkers(data.mode ?? '')) {
     return false;
   }
-
-  return true;
+  return !supportedScatterInLineChart(data, layout);
 };

@@ -3,6 +3,7 @@ import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
 import type { ISuggestionItemProps } from './SuggestionsItem.types';
 import type { IPersonaProps } from '@fluentui/react/lib/Persona';
 import type { IRefObject } from '@fluentui/react/lib/Utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
@@ -88,7 +89,7 @@ export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>,
 
 export interface ISuggestionsHeaderFooterProps {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  renderItem: () => JSX.Element;
+  renderItem: () => JSXElement;
   onExecute?: () => void;
   className?: string;
   ariaLabel?: string;
@@ -98,7 +99,7 @@ export interface ISuggestionsHeaderFooterProps {
 export interface ISuggestionsHeaderFooterItemProps {
   componentRef?: IRefObject<{}>;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  renderItem: () => JSX.Element;
+  renderItem: () => JSXElement;
   onExecute?: () => void;
   isSelected: boolean;
   id: string;

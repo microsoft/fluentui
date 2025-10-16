@@ -1,18 +1,14 @@
 import * as React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@fluentui/scripts-cypress';
 
 import { ContextualMenuExample } from './ContextualMenuExample';
 
 const menuTriggerSelector = '[type="button"]';
 const menuSelector = '[role="menu"]';
 
-describe('ContextualMenu in React 18', () => {
+describe('ContextualMenu', () => {
   it('renders ContextualMenu when trigger button is clicked', () => {
-    mount(
-      <React.StrictMode>
-        <ContextualMenuExample />
-      </React.StrictMode>,
-    );
+    mount(<ContextualMenuExample />);
 
     cy.get(menuTriggerSelector).click().get(menuSelector).should('be.visible');
   });

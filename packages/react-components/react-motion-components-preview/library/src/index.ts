@@ -4,7 +4,7 @@ export {
   CollapseRelaxed,
   CollapseDelayed,
   type CollapseParams,
-  type CollapseDelayedParams,
+  type CollapseDurations,
 } from './components/Collapse';
 export { Fade, FadeSnappy, FadeRelaxed, type FadeParams } from './components/Fade';
 export { Scale, ScaleSnappy, ScaleRelaxed, type ScaleParams } from './components/Scale';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useAriaLive_unstable } from './useAriaLive';
 import { renderAriaLive_unstable } from './renderAriaLive';

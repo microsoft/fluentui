@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTreeItemLayout_unstable } from './useTreeItemLayout';
 import { renderTreeItemLayout_unstable } from './renderTreeItemLayout';

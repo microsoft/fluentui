@@ -78,7 +78,7 @@ const getMoveDelta = (ev: React.KeyboardEvent<HTMLElement>): number => {
   return delta;
 };
 
-const useComponentRef = (props: IModalProps, focusTrapZone: React.RefObject<IFocusTrapZone>) => {
+const useComponentRef = (props: IModalProps, focusTrapZone: React.RefObject<IFocusTrapZone | null>) => {
   React.useImperativeHandle(
     props.componentRef,
     () => ({

@@ -55,7 +55,7 @@ const getPercent = (value: number, sliderMin: number, sliderMax: number) => {
 
 const useComponentRef = (
   props: ISliderProps,
-  sliderBoxRef: React.RefObject<HTMLDivElement>,
+  sliderBoxRef: React.RefObject<HTMLDivElement | null>,
   value: number | undefined,
   range: [number, number] | undefined,
 ) => {
@@ -76,7 +76,24 @@ const useComponentRef = (
   );
 };
 
-export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivElement>) => {
+export const useSlider = (
+  props: ISliderProps,
+  ref: React.ForwardedRef<HTMLDivElement>,
+): {
+  root: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
+  label: ILabelProps | undefined;
+  sliderBox: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>;
+  container: React.HTMLAttributes<HTMLDivElement>;
+  valueLabel: ILabelProps | undefined;
+  lowerValueLabel: ILabelProps | undefined;
+  thumb: React.HTMLAttributes<HTMLSpanElement>;
+  lowerValueThumb: React.HTMLAttributes<HTMLSpanElement> | undefined;
+  zeroTick: React.HTMLAttributes<HTMLSpanElement> | undefined;
+  activeTrack: React.HTMLAttributes<HTMLSpanElement>;
+  topInactiveTrack: React.HTMLAttributes<HTMLSpanElement>;
+  bottomInactiveTrack: React.HTMLAttributes<HTMLSpanElement>;
+  sliderLine: React.HTMLAttributes<HTMLDivElement>;
+} => {
   const {
     step = 1,
     className,

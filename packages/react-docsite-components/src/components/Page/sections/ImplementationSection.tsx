@@ -46,7 +46,7 @@ export const ImplementationSection: React.FunctionComponent<IImplementationSecti
   );
 };
 
-function _getNativePropsInfo(props: IImplementationSectionProps): JSX.Element | null {
+function _getNativePropsInfo(props: IImplementationSectionProps): React.ReactElement | null {
   const { allowNativeProps, allowNativePropsForComponentName, nativePropsElement = 'div' } = props;
   if (!allowNativeProps) {
     return null;
@@ -62,7 +62,7 @@ function _getNativePropsInfo(props: IImplementationSectionProps): JSX.Element | 
   elementsArr.pop(); // remove last ' and '
   elementsArr.push(` tag${nativePropsElems.length > 1 ? 's' : ''}`);
 
-  let componentNameJsx: JSX.Element | undefined;
+  let componentNameJsx: React.ReactElement | undefined;
   if (allowNativePropsForComponentName) {
     componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
   }

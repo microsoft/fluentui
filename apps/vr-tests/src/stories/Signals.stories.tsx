@@ -32,7 +32,7 @@ interface ISignalExampleProps {
 
 const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
   props: ISignalExampleProps,
-): JSX.Element => {
+): React.ReactElement => {
   return (
     <div>
       <Fabric>

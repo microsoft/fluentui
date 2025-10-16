@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { usePortalMountNode } from '@fluentui/react-shared-contexts';

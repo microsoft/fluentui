@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { RadioGroupSlots, RadioGroupState } from './RadioGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

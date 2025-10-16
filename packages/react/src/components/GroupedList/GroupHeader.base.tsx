@@ -14,6 +14,8 @@ import type {
   IGroupHeaderCheckboxProps,
 } from './GroupHeader.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
 
 export interface IGroupHeaderState {
@@ -59,8 +61,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const {
       group,
       groupLevel = 0,
@@ -246,8 +247,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     return <FastCheck theme={checkboxProps.theme} checked={checkboxProps.checked} />;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderTitle = (props: IGroupHeaderProps): JSX.Element | null => {
+  private _onRenderTitle = (props: IGroupHeaderProps): JSXElement | null => {
     const { group } = props;
 
     if (!group) {
@@ -272,8 +272,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _onRenderName = (props: IGroupHeaderProps): JSX.Element | null => {
+  private _onRenderName = (props: IGroupHeaderProps): JSXElement | null => {
     const { group } = props;
 
     if (!group) {

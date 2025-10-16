@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createPriorityQueue, useEventCallback, slot, useTimeout } from '@fluentui/react-utilities';
 import type { AnnounceOptions, AriaLiveProps, AriaLiveState, LiveMessage } from './AriaLive.types';

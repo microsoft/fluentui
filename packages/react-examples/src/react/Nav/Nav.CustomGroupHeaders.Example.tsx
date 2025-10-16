@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Nav, INavLinkGroup } from '@fluentui/react/lib/Nav';
+import type { JSXElement } from '@fluentui/utilities';
 
 const navLinkGroups: INavLinkGroup[] = [
   {
@@ -28,6 +29,6 @@ export const NavCustomGroupHeadersExample: React.FunctionComponent = () => {
   );
 };
 
-function _onRenderGroupHeader(group: INavLinkGroup): JSX.Element {
+function _onRenderGroupHeader(group: INavLinkGroup): JSXElement {
   return <h3>{group.name}</h3>;
 }

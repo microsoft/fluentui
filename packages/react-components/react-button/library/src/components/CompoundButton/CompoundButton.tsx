@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { renderCompoundButton_unstable } from './renderCompoundButton';
 import { useCompoundButton_unstable } from './useCompoundButton';

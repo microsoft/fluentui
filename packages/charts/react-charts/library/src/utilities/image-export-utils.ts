@@ -1,3 +1,5 @@
+'use client';
+
 import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
 import { copyStyle, createMeasurementSpan, resolveCSSVariables } from './index';
 import { ImageExportOptions } from '../types/index';

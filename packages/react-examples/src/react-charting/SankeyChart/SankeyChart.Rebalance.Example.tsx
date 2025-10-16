@@ -7,6 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 
 const enum DataSouce {
   Simple,
@@ -363,7 +364,7 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
     this.state = { width: 820, height: 400, dataSource: DataSouce.Simple };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._rebalanceExample()}</div>;
   }
 
@@ -378,7 +379,7 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
     this.setState({ dataSource: checked ? DataSouce.Simple : DataSouce.Complex });
   };
 
-  private _rebalanceExample(): JSX.Element {
+  private _rebalanceExample(): JSXElement {
     const data: IChartProps = this.state.dataSource === DataSouce.Simple ? dataSimple : dataComplex;
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };

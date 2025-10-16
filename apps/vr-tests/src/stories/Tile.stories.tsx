@@ -13,8 +13,8 @@ import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
 import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 interface IDocumentItem {
-  name: JSX.Element;
-  activity: JSX.Element;
+  name: React.ReactElement;
+  activity: React.ReactElement;
 }
 
 interface IDocumentTileWithThumbnailProps {
@@ -22,7 +22,7 @@ interface IDocumentTileWithThumbnailProps {
   item: IDocumentItem;
 }
 
-const DocumentTileBox = (props: { children: React.ReactNode }): JSX.Element => {
+const DocumentTileBox = (props: { children: React.ReactNode }): React.ReactElement => {
   return (
     <div
       style={{
@@ -38,7 +38,7 @@ const DocumentTileBox = (props: { children: React.ReactNode }): JSX.Element => {
 
 const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbnailProps> = (
   props: IDocumentTileWithThumbnailProps,
-): JSX.Element => {
+): React.ReactElement => {
   function renderForeground(foregroundProps: { foregroundSize?: ISize }) {
     const { foregroundSize = { width: 0, height: 0 } } = foregroundProps;
 

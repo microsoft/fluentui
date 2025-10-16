@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Option } from '../Option';
 import type { JSXElement } from '@fluentui/react-utilities';

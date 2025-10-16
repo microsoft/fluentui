@@ -2,7 +2,7 @@
 
 exports[`Slider renders correctly 1`] = `
 <div
-  className=
+  class=
       ms-Slider
       ms-Slider-enabled
       ms-Slider-row
@@ -16,7 +16,7 @@ exports[`Slider renders correctly 1`] = `
       }
 >
   <label
-    className=
+    class=
         ms-Label
         {
           -moz-osx-font-smoothing: grayscale;
@@ -39,12 +39,12 @@ exports[`Slider renders correctly 1`] = `
           padding-top: 0px;
           word-wrap: break-word;
         }
-    htmlFor="Slider2"
+    for="Slider2"
   >
     I am a slider
   </label>
   <label
-    className=
+    class=
         ms-Label
         ms-Slider-value
         {
@@ -75,7 +75,7 @@ exports[`Slider renders correctly 1`] = `
     : 0
   </label>
   <div
-    className=
+    class=
         ms-Slider-container
         {
           align-items: center;
@@ -85,12 +85,12 @@ exports[`Slider renders correctly 1`] = `
         }
   >
     <div
-      aria-disabled={false}
+      aria-disabled="false"
       aria-label="I am a slider"
-      aria-valuemax={10}
-      aria-valuemin={0}
-      aria-valuenow={0}
-      className=
+      aria-valuemax="10"
+      aria-valuemin="0"
+      aria-valuenow="0"
+      class=
           ms-Slider-slideBox
           ms-Slider-showValue
           ms-Slider-showTransitions
@@ -182,16 +182,13 @@ exports[`Slider renders correctly 1`] = `
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Slider-zeroTick {
             background-color: Highlight;
           }
-      data-is-focusable={true}
+      data-is-focusable="true"
       id="Slider2"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onTouchStart={[Function]}
       role="slider"
-      tabIndex={0}
+      tabindex="0"
     >
       <div
-        className=
+        class=
             ms-Slider-line
             {
               display: flex;
@@ -200,7 +197,7 @@ exports[`Slider renders correctly 1`] = `
             }
       >
         <span
-          className=
+          class=
               ms-Slider-regularLabel
               {
                 background: #c8c6c4;
@@ -212,16 +209,12 @@ exports[`Slider renders correctly 1`] = `
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 background-color: WindowText;
               }
-          style={
-            Object {
-              "left": "0%",
-            }
-          }
+          style="left: 0%;"
         >
           0
         </span>
         <span
-          className=
+          class=
               ms-Slider-regularLabel
               {
                 background: #c8c6c4;
@@ -233,16 +226,12 @@ exports[`Slider renders correctly 1`] = `
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 background-color: WindowText;
               }
-          style={
-            Object {
-              "left": "100%",
-            }
-          }
+          style="left: 100%;"
         >
           10
         </span>
         <span
-          className=
+          class=
               ms-Slider-thumb
               {
                 background: #ffffff;
@@ -260,14 +249,10 @@ exports[`Slider renders correctly 1`] = `
                 width: 16px;
               }
           id="targetButton1"
-          style={
-            Object {
-              "left": "0%",
-            }
-          }
+          style="left: 0%;"
         />
         <span
-          className=
+          class=
               ms-Slider-active
               {
                 border-radius: 4px;
@@ -282,14 +267,10 @@ exports[`Slider renders correctly 1`] = `
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 background-color: WindowText;
               }
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
+          style="width: 0%;"
         />
         <span
-          className=
+          class=
               ms-Slider-inactive
               {
                 border-radius: 4px;
@@ -304,11 +285,7 @@ exports[`Slider renders correctly 1`] = `
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
               }
-          style={
-            Object {
-              "width": "100%",
-            }
-          }
+          style="width: 100%;"
         />
       </div>
     </div>

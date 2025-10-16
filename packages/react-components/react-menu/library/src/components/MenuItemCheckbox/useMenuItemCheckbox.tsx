@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { Checkmark16Filled } from '@fluentui/react-icons';

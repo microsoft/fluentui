@@ -5,6 +5,8 @@ import type { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import type { IRefObject } from '../../Utilities';
 import type { ICalloutProps } from '../Callout/Callout.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
   isSuggestionsShown: boolean;
@@ -51,8 +53,8 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
+
+  onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSXElement;
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.

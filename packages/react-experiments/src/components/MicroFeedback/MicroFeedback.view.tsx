@@ -10,6 +10,7 @@ import type {
   IMicroFeedbackSlots,
   IMicroFeedbackQuestion,
 } from './MicroFeedback.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   const {
@@ -58,9 +59,9 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const renderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSX.Element => {
+  const renderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSXElement => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
+    const onRenderCalloutItem = (item: string, index: number | undefined): JSXElement => {
       const listOption = (): void => {
         onCalloutDismiss();
         if (sendFollowUpIndex && index !== undefined && followUp) {

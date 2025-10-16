@@ -5,11 +5,12 @@ import * as stylesImport from '../PeoplePicker.scss';
 import type { IPersonaProps } from '../../../../Persona';
 import type { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../../../Pickers';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export const SuggestionItemNormal: (
   persona: IPersonaProps,
   suggestionProps?: IBasePickerSuggestionsProps,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps?: ISuggestionItemProps<IPersonaProps>) => {
+) => JSXElement = (personaProps: IPersonaProps, suggestionItemProps?: ISuggestionItemProps<IPersonaProps>) => {
   return (
     <div className={css('ms-PeoplePicker-personaContent', stylesImport.peoplePickerPersonaContent)}>
       <Persona

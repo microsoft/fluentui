@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';

@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { TreeItemCSSProperties, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

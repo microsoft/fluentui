@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useWindow } from '@fluentui/react-window-provider';
 import type { Point } from '@fluentui/utilities';
 
-export type Target = Element | string | MouseEvent | Point | Rectangle | null | React.RefObject<Element>;
+export type Target = Element | string | MouseEvent | Point | Rectangle | null | React.RefObject<Element | null>;
 
 /**
  * Hook to calculate and cache the target element specified by the given target attribute,
@@ -17,8 +17,8 @@ export function useTarget<TElement extends HTMLElement = HTMLElement>(
   hostElement?: React.RefObject<TElement | null>,
 ): Readonly<[React.RefObject<Element | MouseEvent | Point | Rectangle | null>, Window | undefined]> {
   const previousTargetProp = React.useRef<
-    Element | string | MouseEvent | Point | Rectangle | React.RefObject<Element> | null | undefined
-  >();
+    Element | string | MouseEvent | Point | Rectangle | React.RefObject<Element | null> | null | undefined
+  >(undefined);
 
   const targetRef = React.useRef<Element | MouseEvent | Point | Rectangle | null>(null);
   /**

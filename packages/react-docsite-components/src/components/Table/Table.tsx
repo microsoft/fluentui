@@ -4,7 +4,7 @@ import { ITableProps, ITableColumnProps, ITableRowProps } from './Table.types';
 import * as styles from './Table.module.scss';
 
 export class Table extends React.Component<ITableProps> {
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { className, columns, rows, formatter } = this.props;
 
     return (

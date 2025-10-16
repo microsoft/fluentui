@@ -22,6 +22,7 @@ import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import Dialog, { DialogFooter, DialogType } from '@fluentui/react/lib/Dialog';
 import { IFocusZone } from '@fluentui/react-focus';
 import { getDocument } from '@fluentui/utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 const RESIZE = 'Resize';
 const REORDER = 'Reorder';
@@ -78,7 +79,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const onChangeColumnReorderEnabled = (event: React.MouseEvent<HTMLElement>, checked: boolean) =>
     setIsColumnReorderEnabled(checked);
 
-  const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
+  const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSXElement | string => {
     const key = column.key as keyof IExampleItem;
     if (key === 'name') {
       return (
@@ -187,13 +188,13 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const [frozenColumnCountFromStart, setFrozenColumnCountFromStart] = React.useState<string>('0');
   const [frozenColumnCountFromEnd, setFrozenColumnCountFromEnd] = React.useState<string>('0');
   const [isDialogHidden, setIsDialogHidden] = React.useState(true);
-  const textfieldRef = React.useRef<ITextField>(null);
+  const textfieldRef = React.useRef<ITextField | null>(null);
   const columnToEdit = React.useRef<IColumn | null>(null);
   const clickHandler = React.useRef<string>(RESIZE);
   const [contextualMenuProps, setContextualMenuProps] = React.useState<IContextualMenuProps | undefined>(undefined);
-  const detailsListRef = React.useRef<IDetailsList>(null);
+  const detailsListRef = React.useRef<IDetailsList | null>(null);
   const input = React.useRef<number | null>(null);
-  const focusZoneRef = React.useRef<IFocusZone>(null);
+  const focusZoneRef = React.useRef<IFocusZone | null>(null);
 
   /** This callback provides support for keyboard shortcuts to resize & reorder columns */
   const onColumnKeyDown = React.useCallback(

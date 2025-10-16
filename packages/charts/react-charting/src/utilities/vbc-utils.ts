@@ -22,7 +22,11 @@ export const getClosestPairDiffAndRange = (data: number[] | Date[]): [number, nu
   return [minDiff, range];
 };
 
-export const calculateAppropriateBarWidth = (data: number[] | Date[], totalWidth: number, innerPadding: number) => {
+export const calculateAppropriateBarWidth = (
+  data: number[] | Date[],
+  totalWidth: number,
+  innerPadding: number,
+): number => {
   const result = getClosestPairDiffAndRange(data);
   if (!result || result[1] === 0) {
     return 16;
@@ -46,7 +50,7 @@ export const calcTotalWidth = (containerWidth: number, margins: IMargins, extraM
 /**
  * Calculates the combined size of all bands and the gaps between them, in units relative to the bandwidth.
  */
-export const calcTotalBandUnits = (numBands: number, innerPadding: number) => {
+export const calcTotalBandUnits = (numBands: number, innerPadding: number): number => {
   // inner_padding = space_between_bands / (space_between_bands + bandwidth)
   // => space_between_bands = (inner_padding / (1 - inner_padding)) * bandwidth
   const gapToBandRatio = innerPadding / (1 - innerPadding);
@@ -56,7 +60,7 @@ export const calcTotalBandUnits = (numBands: number, innerPadding: number) => {
 /**
  * Calculates the total width required to render all bands including the gaps between them.
  */
-export const calcRequiredWidth = (bandwidth: number, numBands: number, innerPadding: number) => {
+export const calcRequiredWidth = (bandwidth: number, numBands: number, innerPadding: number): number => {
   return bandwidth * calcTotalBandUnits(numBands, innerPadding);
 };
 
@@ -64,6 +68,6 @@ export const calcRequiredWidth = (bandwidth: number, numBands: number, innerPadd
  * Calculates the maximum possible bandwidth such that the combined widths of all bands
  * and the gaps between them exactly fill the total available width.
  */
-export const calcBandwidth = (totalWidth: number, numBands: number, innerPadding: number) => {
+export const calcBandwidth = (totalWidth: number, numBands: number, innerPadding: number): number => {
   return totalWidth / calcTotalBandUnits(numBands, innerPadding);
 };

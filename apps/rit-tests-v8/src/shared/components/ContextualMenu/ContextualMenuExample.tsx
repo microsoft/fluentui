@@ -75,7 +75,7 @@ export const ContextualMenuExample: React.FunctionComponent = () => {
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 
-function renderCharmMenuItem(item: IContextualMenuItem, dismissMenu: () => void): React.JSX.Element {
+function renderCharmMenuItem(item: IContextualMenuItem, dismissMenu: () => void): React.ReactElement {
   return (
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
@@ -88,7 +88,7 @@ function renderCharmMenuItem(item: IContextualMenuItem, dismissMenu: () => void)
   );
 }
 
-function renderCategoriesList(item: IContextualMenuItem): React.JSX.Element {
+function renderCategoriesList(item: IContextualMenuItem): React.ReactElement {
   return (
     <ul className={classNames.categoriesList}>
       <li className="ms-ContextualMenu-item">

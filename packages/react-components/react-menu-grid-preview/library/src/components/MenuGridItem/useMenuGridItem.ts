@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMergedRefs, slot } from '@fluentui/react-utilities';
 

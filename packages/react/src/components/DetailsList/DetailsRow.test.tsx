@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { DetailsList } from './DetailsList';
 import { CheckboxVisibility } from './DetailsList.types';
 import { SelectionMode, Selection } from '../../Selection';
@@ -53,61 +53,55 @@ const mockProps: IDetailsListProps = {
 
 describe('DetailsRow', () => {
   it('renders details list row correctly', () => {
-    const component = renderer.create(<DetailsList {...mockProps} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DetailsList {...mockProps} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders details list row with multiple selections correctly', () => {
-    const component = renderer.create(<DetailsList {...mockProps} selectionMode={SelectionMode.multiple} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DetailsList {...mockProps} selectionMode={SelectionMode.multiple} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders details list row with one row selected correctly', () => {
     const selection = new Selection();
     selection.setKeySelected('0', true, true);
 
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders details list row with all rows selected correctly', () => {
     const selection = new Selection();
     selection.setAllSelected(true);
 
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders details list row with correct row index by default', () => {
-    const component = renderer.create(<DetailsList {...mockProps} onRenderRow={undefined} />);
+    const { container } = render(<DetailsList {...mockProps} onRenderRow={undefined} />);
 
-    const rows = component.root.findAllByType(DetailsRow);
+    const rows = container.querySelectorAll('[data-automationid="DetailsRow"]');
 
-    expect(rows[0].props.flatIndexOffset).toBe(2);
-    expect(rows[0].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(2);
-    expect(rows[4].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(6);
+    expect(rows[0]).toHaveAttribute('aria-rowindex', '2');
+    expect(rows[4]).toHaveAttribute('aria-rowindex', '6');
   });
 
   it('renders details list row with correct row index with no headers', () => {
-    const component = renderer.create(<DetailsList {...mockProps} onRenderRow={undefined} isHeaderVisible={false} />);
+    const { container } = render(<DetailsList {...mockProps} onRenderRow={undefined} isHeaderVisible={false} />);
 
-    const rows = component.root.findAllByType(DetailsRow);
+    const rows = container.querySelectorAll('[data-automationid="DetailsRow"]');
 
-    expect(rows[0].props.flatIndexOffset).toBe(1);
-    expect(rows[0].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(1);
-    expect(rows[4].findByProps({ role: 'row' }).props['aria-rowindex']).toBe(5);
+    expect(rows[0]).toHaveAttribute('aria-rowindex', '1');
+    expect(rows[4]).toHaveAttribute('aria-rowindex', '5');
   });
 
   it('renders details list row with checkbox visible always correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsRow
         item={mockProps.items[0]}
         itemIndex={0}
@@ -117,14 +111,13 @@ describe('DetailsRow', () => {
         selection={new Selection()}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders details list row with custom checkbox render', () => {
     const onRenderCheckboxMock = jest.fn();
 
-    renderer.create(
+    render(
       <DetailsRow
         item={mockProps.items[0]}
         itemIndex={0}

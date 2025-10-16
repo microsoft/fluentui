@@ -17,6 +17,8 @@ import type {
   IEditingSelectedPeopleItemStylesProps,
 } from './EditingItem.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 export class EditingItem extends React.Component<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
   private _editingInput: HTMLInputElement;
   private _editingFloatingPicker = React.createRef<FloatingPeoplePicker>();
@@ -37,8 +39,7 @@ export class EditingItem extends React.Component<IEditingSelectedPeopleItemProps
     this._editingInput.focus();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const itemId = getId();
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     const getClassNames = classNamesFunction<IEditingSelectedPeopleItemStylesProps, IEditingSelectedPeopleItemStyles>();
@@ -63,8 +64,7 @@ export class EditingItem extends React.Component<IEditingSelectedPeopleItemProps
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderEditingSuggestions = (): JSX.Element => {
+  private _renderEditingSuggestions = (): JSXElement => {
     const FloatingPicker = this.props.onRenderFloatingPicker;
     const floatingPickerProps = this.props.floatingPickerProps;
     if (!FloatingPicker || !floatingPickerProps) {

@@ -96,7 +96,7 @@ export function styled<
   const { scope, fields = DefaultFields } = customizable;
 
   const Wrapped = React.forwardRef((props: React.PropsWithoutRef<TComponentProps>, forwardedRef: React.Ref<TRef>) => {
-    const styles = React.useRef<StyleFunction<TStyleProps, TStyleSet>>();
+    const styles = React.useRef<StyleFunction<TStyleProps, TStyleSet>>(undefined);
 
     const settings = useCustomizationSettings(fields, scope);
     const { styles: customizedStyles, dir, ...rest } = settings;

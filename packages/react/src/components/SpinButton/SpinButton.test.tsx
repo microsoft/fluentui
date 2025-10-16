@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 
 import { SpinButton } from './SpinButton';
@@ -113,17 +112,17 @@ describe('SpinButton', () => {
 
   describe('snapshots', () => {
     it('renders correctly', () => {
-      const component = create(<SpinButton min={0} max={100} label="label" />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<SpinButton min={0} max={100} label="label" />);
+
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('renders correctly with user-provided values', () => {
-      const component = create(
+      const { container } = render(
         <SpinButton min={0} max={100} label="label" value="0" ariaValueText="0 pt" data-test="test" />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+
+      expect(container.firstChild).toMatchSnapshot();
     });
   });
 

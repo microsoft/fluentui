@@ -4,8 +4,9 @@ import { CommandButton } from '../../Button';
 import { useId } from '@fluentui/react-hooks';
 import type { IButtonGridCellProps } from './ButtonGridCell.types';
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>): JSX.Element => {
+import type { JSXElement } from '@fluentui/utilities';
+
+export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>): JSXElement => {
   const defaultId = useId('gridCell');
   const {
     item,

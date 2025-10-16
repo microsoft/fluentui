@@ -8,6 +8,8 @@ import { ISchemeNames } from '@fluentui/style-utilities';
 import { IStyle } from '@fluentui/style-utilities';
 import { IStyleSetBase } from '@fluentui/style-utilities';
 import { ITheme } from '@fluentui/style-utilities';
+import type { JSXIntrinsicElement } from '@fluentui/utilities';
+import type { JSXIntrinsicElementKeys } from '@fluentui/utilities';
 import { styled as legacyStyled } from '@fluentui/utilities';
 import * as React_2 from 'react';
 
@@ -73,7 +75,7 @@ export interface IFactoryOptions<TProps> {
 }
 
 // @public
-export type IHTMLElementSlot<TElement extends keyof JSX.IntrinsicElements> = ISlotProp<JSX.IntrinsicElements[TElement]>;
+export type IHTMLElementSlot<TElement extends JSXIntrinsicElementKeys> = ISlotProp<JSXIntrinsicElement<TElement>>;
 
 // @public
 export type IHTMLSlot = ISlotProp<React_2.DetailedHTMLProps<React_2.HTMLAttributes<any>, any>>;

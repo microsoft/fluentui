@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import {
   HoverCard,
   IHoverCard,
@@ -31,13 +32,13 @@ const onCardHide = (): void => {
 };
 
 export const HoverCardInstantDismissExample: React.FunctionComponent = () => {
-  const hoverCard = React.useRef<IHoverCard>(null);
+  const hoverCard = React.useRef<IHoverCard | null>(null);
   const instantDismissCard = (): void => {
     if (hoverCard.current) {
       hoverCard.current.dismiss();
     }
   };
-  const onRenderPlainCard = (): JSX.Element => {
+  const onRenderPlainCard = (): JSXElement => {
     return (
       <div className={classNames.plainCard}>
         <DefaultButton

@@ -17,7 +17,7 @@ interface IFolderCoverWithImageProps extends IFolderCoverProps {
 
 const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> = (
   props: IFolderCoverWithImageProps,
-): JSX.Element => {
+): React.ReactElement => {
   const { originalImageSize, ...folderCoverProps } = props;
 
   const folderCover = <FolderCover {...folderCoverProps} />;

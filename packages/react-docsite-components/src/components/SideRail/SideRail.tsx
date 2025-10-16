@@ -48,7 +48,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     }
   }
 
-  public render(): JSX.Element | null {
+  public render(): React.ReactElement | null {
     this._classNames = getClassNames(this.props.styles, { theme: this.props.theme });
 
     const jumpLinkList = this._renderJumpLinkList();
@@ -76,7 +76,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     }
   };
 
-  private _renderJumpLinkList = (): JSX.Element | null => {
+  private _renderJumpLinkList = (): React.ReactElement | null => {
     const { activeLink } = this.state;
     const { jumpLinks } = this.props;
     const classNames = this._classNames;
@@ -108,12 +108,12 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   };
 
   private _renderLinkList(
-    linksFromProps: ISideRailLink[] | JSX.Element | undefined,
+    linksFromProps: ISideRailLink[] | React.ReactElement | undefined,
     title: string,
-  ): JSX.Element | null {
+  ): React.ReactElement | null {
     const classNames = this._classNames;
 
-    let links: JSX.Element | undefined;
+    let links: React.ReactElement | undefined;
     if (_isElement(linksFromProps)) {
       links = <div className={classNames.markdownList}>{linksFromProps}</div>;
     } else if (Array.isArray(linksFromProps)) {
@@ -161,8 +161,8 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function _isElement(x: any): x is JSX.Element {
-  return !!(x && (x as JSX.Element).props && (x as JSX.Element).type);
+function _isElement(x: any): x is React.ReactElement {
+  return !!(x && (x as React.ReactElement).props && (x as React.ReactElement).type);
 }
 
 export const SideRail: React.FunctionComponent<ISideRailProps> = styled<

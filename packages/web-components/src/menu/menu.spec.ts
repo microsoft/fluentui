@@ -284,7 +284,7 @@ test.describe('Menu', () => {
     await fastPage.setTemplate(/* html */ `
       <fluent-menu>
         <fluent-menu-button appearance="primary" slot="trigger" icon-only></fluent-menu-button>
-        <fluent-button appearance="primary" slot="primary-action">Primary Action</fluent-menu-button>
+        <fluent-button appearance="primary" slot="primary-action">Primary Action</fluent-button>
         <fluent-menu-list>
           <fluent-menu-item>
             Item 1

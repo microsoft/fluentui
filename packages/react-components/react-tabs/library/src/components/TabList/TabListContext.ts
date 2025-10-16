@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { Context, ContextSelector } from '@fluentui/react-context-selector';
 import { TabListContextValue } from './TabList.types';

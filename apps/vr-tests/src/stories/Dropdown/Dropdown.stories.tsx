@@ -94,7 +94,7 @@ export const CustomDropdown = () => (
     label="Custom example:"
     id="Customdrop1"
     ariaLabel="Custom dropdown example"
-    onRenderPlaceholder={(props: IDropdownProps): JSX.Element => {
+    onRenderPlaceholder={(props: IDropdownProps): React.ReactElement => {
       return (
         <div className="dropdownExample-placeholder">
           <Icon style={{ marginRight: '8px' }} iconName={'MessageFill'} aria-hidden="true" />
@@ -102,7 +102,7 @@ export const CustomDropdown = () => (
         </div>
       );
     }}
-    onRenderTitle={(options: IDropdownOption[]): JSX.Element => {
+    onRenderTitle={(options: IDropdownOption[]): React.ReactElement => {
       const option = options[0];
 
       return (
@@ -119,7 +119,7 @@ export const CustomDropdown = () => (
         </div>
       );
     }}
-    onRenderOption={(option: IDropdownOption): JSX.Element => {
+    onRenderOption={(option: IDropdownOption): React.ReactElement => {
       return (
         <div>
           {option.data && option.data.icon && (
@@ -134,7 +134,7 @@ export const CustomDropdown = () => (
         </div>
       );
     }}
-    onRenderCaretDown={(): JSX.Element => {
+    onRenderCaretDown={(): React.ReactElement => {
       return <Icon iconName="CirclePlus" />;
     }}
     options={[

@@ -56,8 +56,8 @@ export function createSite<TPlatforms extends string>(
     currentFabricBreakpoint();
   }
 
-  function _createRoutes(pages: INavPage<TPlatforms>[]): JSX.Element[] {
-    let routes: JSX.Element[] = [];
+  function _createRoutes(pages: INavPage<TPlatforms>[]): React.ReactElement[] {
+    let routes: React.ReactElement[] = [];
     pages.forEach((page: INavPage<TPlatforms>) => {
       // Create a route for each page and its children.
       // Categories don't have an actual corresponding URL but may have children.
@@ -80,7 +80,7 @@ export function createSite<TPlatforms extends string>(
   }
 
   function _getSiteRoutes() {
-    const routes: JSX.Element[] = _createRoutes(siteDefinition.pages);
+    const routes: React.ReactElement[] = _createRoutes(siteDefinition.pages);
 
     // Add the default route
     if (defaultRouteComponent) {

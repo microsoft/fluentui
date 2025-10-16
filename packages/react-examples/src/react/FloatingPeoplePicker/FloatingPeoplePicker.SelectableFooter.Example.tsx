@@ -29,11 +29,11 @@ const startsWith = (text: string, filterText: string): boolean => {
 };
 
 export const FloatingPeoplePickerTypesSelectableFooterExample: React.FunctionComponent = () => {
-  const inputElementRef = React.useRef<HTMLInputElement>(null);
+  const inputElementRef = React.useRef<HTMLInputElement | null>(null);
   const suggestionsStore = useConst(() => new SuggestionsStore<IPersonaProps>());
   const [peopleList, setPeopleList] = React.useState(people);
   const [searchValue, setSearchValue] = React.useState('');
-  const picker = React.useRef<IBaseFloatingPicker>(null);
+  const picker = React.useRef<IBaseFloatingPicker | null>(null);
 
   const onFocus = (): void => {
     if (picker.current) {

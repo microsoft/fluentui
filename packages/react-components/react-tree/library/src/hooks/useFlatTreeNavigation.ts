@@ -1,3 +1,5 @@
+'use client';
+
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { TreeNavigationData_unstable } from '../Tree';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';

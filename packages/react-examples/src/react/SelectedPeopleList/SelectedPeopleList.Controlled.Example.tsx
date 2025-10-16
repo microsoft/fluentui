@@ -8,10 +8,11 @@ import {
 } from '@fluentui/react/lib/SelectedItemsList';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { people, groupOne, groupTwo } from '@fluentui/example-data';
+import type { JSXElement } from '@fluentui/utilities';
 
 const primaryButtonStyles: Partial<IButtonStyles> = { root: { display: 'block', marginBottom: 20 } };
 const stackStyles: Partial<IStackStyles> = { root: { maxWidth: '100%' } };
-const onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
+const onRenderItem = (props: ISelectedPeopleItemProps): JSXElement => {
   return <ExtendedSelectedItem {...props} />;
 };
 const onCopyItems = (items: IExtendedPersonaProps[]): string => {
@@ -21,7 +22,7 @@ const onCopyItems = (items: IExtendedPersonaProps[]): string => {
 export const SelectedPeopleListControlledExample: React.FunctionComponent = () => {
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IExtendedPersonaProps[]>([people[40]]);
-  const selectionList = React.useRef<SelectedPeopleList>(null);
+  const selectionList = React.useRef<SelectedPeopleList | null>(null);
 
   const onAddItemButtonClicked = (): void => {
     setCurrentSelectedItems([...currentSelectedItems, people[nextPersonIndex]]);

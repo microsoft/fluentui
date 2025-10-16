@@ -2,7 +2,7 @@
 
 exports[`Toggle renders hidden toggle correctly 1`] = `
 <div
-  className=
+  class=
       ms-Toggle
       is-enabled
       {
@@ -13,10 +13,10 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
         font-weight: 400;
         margin-bottom: 8px;
       }
-  hidden={true}
+  hidden=""
 >
   <div
-    className=
+    class=
         ms-Toggle-innerContainer
         {
           display: flex;
@@ -24,8 +24,8 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
         }
   >
     <button
-      aria-checked={false}
-      className=
+      aria-checked="false"
+      class=
           ms-Toggle-background
           {
             align-items: center;
@@ -84,16 +84,15 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
-      data-is-focusable={true}
-      data-ktp-target={true}
-      hidden={true}
+      data-is-focusable="true"
+      data-ktp-target="true"
+      hidden=""
       id="Toggle0"
-      onClick={[Function]}
       role="switch"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Toggle-thumb
             {
               background-color: #605e5c;
@@ -115,7 +114,7 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
 
 exports[`Toggle renders toggle correctly 1`] = `
 <div
-  className=
+  class=
       ms-Toggle
       is-enabled
       {
@@ -128,7 +127,7 @@ exports[`Toggle renders toggle correctly 1`] = `
       }
 >
   <label
-    className=
+    class=
         ms-Label
         ms-Toggle-label
         {
@@ -152,13 +151,13 @@ exports[`Toggle renders toggle correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="Toggle0"
+    for="Toggle0"
     id="Toggle0-label"
   >
     Label
   </label>
   <div
-    className=
+    class=
         ms-Toggle-innerContainer
         {
           display: flex;
@@ -166,9 +165,9 @@ exports[`Toggle renders toggle correctly 1`] = `
         }
   >
     <button
-      aria-checked={false}
+      aria-checked="false"
       aria-labelledby="Toggle0-label"
-      className=
+      class=
           ms-Toggle-background
           {
             align-items: center;
@@ -227,15 +226,14 @@ exports[`Toggle renders toggle correctly 1`] = `
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
-      data-is-focusable={true}
-      data-ktp-target={true}
+      data-is-focusable="true"
+      data-ktp-target="true"
       id="Toggle0"
-      onClick={[Function]}
       role="switch"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Toggle-thumb
             {
               background-color: #605e5c;
@@ -257,7 +255,7 @@ exports[`Toggle renders toggle correctly 1`] = `
 
 exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
 <div
-  className=
+  class=
       ms-Toggle
       is-enabled
       {
@@ -272,7 +270,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
       }
 >
   <label
-    className=
+    class=
         ms-Label
         ms-Toggle-label
         {
@@ -298,7 +296,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           word-break: break-word;
           word-wrap: break-word;
         }
-    htmlFor="Toggle0"
+    for="Toggle0"
     id="Toggle0-label"
   >
     <p>
@@ -306,7 +304,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
     </p>
   </label>
   <div
-    className=
+    class=
         ms-Toggle-innerContainer
         {
           display: flex;
@@ -314,9 +312,9 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
         }
   >
     <button
-      aria-checked={false}
+      aria-checked="false"
       aria-labelledby="Toggle0-label"
-      className=
+      class=
           ms-Toggle-background
           {
             align-items: center;
@@ -375,15 +373,14 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
-      data-is-focusable={true}
-      data-ktp-target={true}
+      data-is-focusable="true"
+      data-ktp-target="true"
       id="Toggle0"
-      onClick={[Function]}
       role="switch"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Toggle-thumb
             {
               background-color: #605e5c;
@@ -405,7 +402,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
 
 exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
 <div
-  className=
+  class=
       ms-Toggle
       is-enabled
       {
@@ -420,7 +417,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
       }
 >
   <label
-    className=
+    class=
         ms-Label
         ms-Toggle-label
         {
@@ -446,13 +443,13 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           word-break: break-word;
           word-wrap: break-word;
         }
-    htmlFor="Toggle0"
+    for="Toggle0"
     id="Toggle0-label"
   >
     Label
   </label>
   <div
-    className=
+    class=
         ms-Toggle-innerContainer
         {
           display: flex;
@@ -460,9 +457,9 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
         }
   >
     <button
-      aria-checked={false}
+      aria-checked="false"
       aria-labelledby="Toggle0-label"
-      className=
+      class=
           ms-Toggle-background
           {
             align-items: center;
@@ -521,15 +518,14 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
-      data-is-focusable={true}
-      data-ktp-target={true}
+      data-is-focusable="true"
+      data-ktp-target="true"
       id="Toggle0"
-      onClick={[Function]}
       role="switch"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Toggle-thumb
             {
               background-color: #605e5c;
@@ -551,7 +547,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
 
 exports[`Toggle renders toggle correctly with inline label and on/off text provided 1`] = `
 <div
-  className=
+  class=
       ms-Toggle
       is-enabled
       {
@@ -566,7 +562,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
       }
 >
   <label
-    className=
+    class=
         ms-Label
         ms-Toggle-label
         {
@@ -591,13 +587,13 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           word-break: break-word;
           word-wrap: break-word;
         }
-    htmlFor="Toggle0"
+    for="Toggle0"
     id="Toggle0-label"
   >
     Label
   </label>
   <div
-    className=
+    class=
         ms-Toggle-innerContainer
         {
           display: flex;
@@ -605,9 +601,9 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
         }
   >
     <button
-      aria-checked={false}
+      aria-checked="false"
       aria-labelledby="Toggle0-label"
-      className=
+      class=
           ms-Toggle-background
           {
             align-items: center;
@@ -666,15 +662,14 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
-      data-is-focusable={true}
-      data-ktp-target={true}
+      data-is-focusable="true"
+      data-ktp-target="true"
       id="Toggle0"
-      onClick={[Function]}
       role="switch"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Toggle-thumb
             {
               background-color: #605e5c;
@@ -691,7 +686,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
       />
     </button>
     <label
-      className=
+      class=
           ms-Label
           ms-Toggle-stateText
           {
@@ -727,7 +722,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             padding-top: 0;
             user-select: none;
           }
-      htmlFor="Toggle0"
+      for="Toggle0"
       id="Toggle0-stateText"
     >
       Off

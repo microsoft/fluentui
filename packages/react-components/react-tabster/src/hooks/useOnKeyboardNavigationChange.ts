@@ -1,3 +1,5 @@
+'use client';
+
 import type { KeyborgCallback } from 'keyborg';
 import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';

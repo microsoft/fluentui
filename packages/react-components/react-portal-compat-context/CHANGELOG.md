@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-portal-compat-context
 
-This log was last generated on Mon, 08 Sep 2025 12:51:15 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Oct 2025 15:12:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.15)
+
+Thu, 02 Oct 2025 15:12:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.14..@fluentui/react-portal-compat-context_v9.0.15)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
 
 ## [9.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.14)
 

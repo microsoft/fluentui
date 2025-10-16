@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 
@@ -99,7 +101,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     const { overflowStyles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSXElement[] = [];
-    props.legends.map((legend, index) => {
+    dataToRender.map((legend, index) => {
       const hoverCardElement = _renderButton(legend, index);
       overflowHoverCardLegends.push(hoverCardElement);
     });

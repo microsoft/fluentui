@@ -3,6 +3,8 @@ import {
   CartesianChartStyleProps,
   CartesianChartStyles,
   GroupedVerticalBarChartData,
+  BarSeries,
+  LineSeries,
 } from '../../index';
 
 /**
@@ -93,6 +95,12 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
    * The prop used to enable rounded corners for the chart.
    */
   roundCorners?: boolean;
+
+  /**
+   * New flexible data prop - supports both bar and line series.
+   * Use `dataV2` instead of `data` when line series are included.
+   */
+  dataV2?: (BarSeries<string, number> | LineSeries<string, number>)[];
 }
 
 /**

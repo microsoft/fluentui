@@ -2,6 +2,8 @@ import * as React from 'react';
 import { createMemoizer } from '../memoize';
 import type { IComponentAs, IComponentAsProps } from '../IComponentAs';
 
+import type { JSXElement } from '../jsx';
+
 interface IComposeComponentAs {
   <TProps extends {}>(outer: IComponentAs<TProps>): (inner: IComponentAs<TProps>) => IComponentAs<TProps>;
 }
@@ -21,8 +23,7 @@ function createComposedComponent<TProps extends {}>(
     const innerMemoizer = createMemoizer((defaultRender: IComponentAs<TProps>) => {
       const InnerWithDefaultRender: React.ComponentType<IComponentAsProps<TProps>> = (
         innerProps: IComponentAsProps<TProps>,
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-      ): JSX.Element => {
+      ): JSXElement => {
         return <Inner {...innerProps} defaultRender={defaultRender} />;
       };
 
@@ -31,8 +32,7 @@ function createComposedComponent<TProps extends {}>(
 
     const OuterWithDefaultRender: React.ComponentType<IComponentAsProps<TProps>> = (
       outerProps: IComponentAsProps<TProps>,
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-    ): JSX.Element => {
+    ): JSXElement => {
       const { defaultRender } = outerProps;
 
       return <Outer {...outerProps} defaultRender={defaultRender ? innerMemoizer(defaultRender) : Inner} />;

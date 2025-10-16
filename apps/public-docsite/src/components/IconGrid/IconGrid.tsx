@@ -96,7 +96,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     }
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const areIconsLoaded = !!this.state.resolvedIcons;
     const icons = this._getItems();
 
@@ -132,8 +132,8 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     return resolvedIcons.filter(icon => icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
   };
 
-  private _renderIcon = (icon: IIconDefinition, index?: number): JSX.Element => {
-    let renderedIcon: JSX.Element;
+  private _renderIcon = (icon: IIconDefinition, index?: number): React.ReactElement => {
+    let renderedIcon: React.ReactElement;
     switch (icon.iconType) {
       case 'core-font':
         let iconClassName = `ms-Icon ms-Icon--${icon.name}`;

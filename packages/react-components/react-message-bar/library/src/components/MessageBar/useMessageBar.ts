@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
@@ -22,6 +24,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
   const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
+
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { className: transitionClassName, nodeRef } = useMessageBarTransitionContext();
   const motionRef = useMotionForwardedRef();
