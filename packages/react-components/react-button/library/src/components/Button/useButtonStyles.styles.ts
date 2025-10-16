@@ -552,34 +552,188 @@ const useIconStyles = makeStyles({
 });
 
 const useVisualRefreshStyles = makeStyles({
-  root: {
-    // background: SEMANTIC_TOKENS.groupButtonBackground,
-    // fontWeight: VISUAL_REFRESH_TOKENS.buttonRootFontWeight,
-    // padding: VISUAL_REFRESH_TOKENS.buttonRootPadding,
-    // ...shorthands.borderWidth(VISUAL_REFRESH_TOKENS.buttonRootBorderWidth),
+  base: {
+    backgroundColor: semanticTokenVar('background/ctrl/neutral/rest'),
+    ...shorthands.borderColor(semanticTokenVar('borderColor/ctrl/neutral/rest')),
+    ':hover': {
+      backgroundColor: semanticTokenVar('background/ctrl/neutral/hover'),
+      ...shorthands.borderColor(semanticTokenVar('borderColor/ctrl/neutral/hover')),
+    },
+    ':hover:active': {
+      backgroundColor: semanticTokenVar('background/ctrl/neutral/pressed'),
+      ...shorthands.borderColor(semanticTokenVar('borderColor/ctrl/neutral/pressed')),
+    },
+    ':disabled': {
+      backgroundColor: semanticTokenVar('background/ctrl/neutral/disabled'),
+      ...shorthands.borderColor(semanticTokenVar('borderColor/ctrl/neutral/disabled')),
+    },
   },
-  rounded: {
-    // borderRadius: VISUAL_REFRESH_TOKENS.buttonBorderRadius,
-    // fontFamily: VISUAL_REFRESH_TOKENS.buttonRoundedFontFamily,
-  },
-  square: {
-    // fontWeight: VISUAL_REFRESH_TOKENS.buttonSquareFontWeight,
+
+  // Appearance variations
+  outline: {
+    backgroundColor: tokens.colorTransparentBackground,
+
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+    },
+
+    ':hover:active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+    },
   },
   primary: {
-    // backgroundColor: VISUAL_REFRESH_TOKENS.buttonPrimaryBackgroundColor,
+    backgroundColor: tokens.colorBrandBackground,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForegroundOnBrand,
+
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+
+    ':hover:active': {
+      backgroundColor: tokens.colorBrandBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+
+    '@media (forced-colors: active)': {
+      backgroundColor: 'Highlight',
+      ...shorthands.borderColor('HighlightText'),
+      color: 'HighlightText',
+      forcedColorAdjust: 'none',
+
+      ':hover': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
+
+      ':hover:active': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
+    },
   },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
+  },
+  subtle: {
+    backgroundColor: tokens.colorSubtleBackground,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForeground2,
+
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2Hover,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandHover,
+      },
+    },
+
+    ':hover:active': {
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2Pressed,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandPressed,
+      },
+    },
+
+    '@media (forced-colors: active)': {
+      ':hover': {
+        color: 'Highlight',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'Highlight',
+        },
+      },
+      ':hover:active': {
+        color: 'Highlight',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'Highlight',
+        },
+      },
+    },
+  },
+  transparent: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForeground2,
+
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandHover,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+    },
+
+    ':hover:active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandPressed,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+    },
+  },
+
   small: {
     minHeight: semanticTokenVar('size/ctrl/sm'),
     height: semanticTokenVar('size/ctrl/sm'),
-    maxHeight: semanticTokenVar('size/ctrl/sm'),
+
+    padding: `${semanticTokenVar('padding/ctrl/vertical/sm')} ${semanticTokenVar('padding/ctrl/horizontal/sm')}`,
+    borderRadius: semanticTokenVar('corner/ctrl/sm'),
+
+    fontSize: semanticTokenVar('fontSize/ctrl/sm'),
+    fontWeight: semanticTokenVar('lineHeight/ctrl/sm'),
+    lineHeight: semanticTokenVar('fontWeight/ctrl/sm'),
   },
   medium: {
-    height: semanticTokenVar('size/ctrl/default'),
-    minHeight: semanticTokenVar('size/ctrl/default'),
+    minHeight: semanticTokenVar('size/ctrl/md'),
+    height: semanticTokenVar('size/ctrl/md'),
+
+    padding: `${semanticTokenVar('padding/ctrl/vertical/md')} ${semanticTokenVar('padding/ctrl/horizontal/md')}`,
+    borderRadius: semanticTokenVar('corner/ctrl/md'),
+
+    fontSize: semanticTokenVar('fontSize/ctrl/md'),
+    fontWeight: semanticTokenVar('lineHeight/ctrl/md'),
+    lineHeight: semanticTokenVar('fontWeight/ctrl/md'),
   },
   large: {
-    height: semanticTokenVar('size/ctrl/lg'),
     minHeight: semanticTokenVar('size/ctrl/lg'),
+    height: semanticTokenVar('size/ctrl/lg'),
+
+    padding: `${semanticTokenVar('padding/ctrl/vertical/lg')} ${semanticTokenVar('padding/ctrl/horizontal/lg')}`,
+    borderRadius: semanticTokenVar('corner/ctrl/lg'),
+
+    fontSize: semanticTokenVar('fontSize/ctrl/lg'),
+    fontWeight: semanticTokenVar('lineHeight/ctrl/lg'),
+    lineHeight: semanticTokenVar('fontWeight/ctrl/lg'),
   },
 });
 

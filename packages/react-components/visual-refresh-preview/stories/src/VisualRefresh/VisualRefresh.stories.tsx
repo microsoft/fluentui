@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Button, Input, Label, Select, makeStyles, useId } from '@fluentui/react-components';
-import type { ButtonProps, InputProps } from '@fluentui/react-components';
+import { Button, Input, Label, Select, Switch, makeStyles, useId } from '@fluentui/react-components';
+import type { ButtonProps, InputProps, SwitchOnChangeData } from '@fluentui/react-components';
 import { tokens } from '@fluentui/react-theme';
 import {
   sanitizeTokenName,
@@ -50,6 +50,7 @@ const useStoryStyles = makeStyles({
     borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
     color: tokens.colorNeutralForeground2,
     fontWeight: tokens.fontWeightRegular,
+    opacity: '0.8',
     padding: '0.75rem',
     textAlign: 'left',
   },
@@ -148,13 +149,12 @@ const useInputStateStyles = makeStyles({
 });
 
 const VisualRefreshProvider = ({ children }: { children: React.ReactNode }) => {
-  const theme = TEAMS_VISUAL_REFRESH_TOKENS;
   const customProperties: Record<string, string> = {};
-  for (const key of Object.keys(theme) as Array<keyof typeof theme>) {
-    customProperties[`--visual-refresh-${key}`] = theme[key];
+  for (const [key, value] of Object.entries(TEAMS_VISUAL_REFRESH_TOKENS ?? {})) {
+    customProperties[`--visual-refresh-${key}`] = value;
   }
-  for (const key of Object.keys(TEAMS_VISUAL_REFRESH_THEME) as Array<keyof typeof theme>) {
-    customProperties[`--${sanitizeTokenName(key)}`] = TEAMS_VISUAL_REFRESH_THEME[key];
+  for (const [key, value] of Object.entries(TEAMS_VISUAL_REFRESH_THEME)) {
+    customProperties[`--${sanitizeTokenName(key)}`] = String(value);
   }
   return (
     <VisualRefreshContext.Provider value={true}>
@@ -239,9 +239,12 @@ const ComponentStatesTable = ({ controlSize }: { controlSize: ButtonProps['size'
   const styles = useStoryStyles();
 
   const buttonVariants: Array<{ label: string; appearance?: ButtonProps['appearance']; content: string }> = [
-    { label: 'Secondary', appearance: 'secondary', content: 'Secondary' },
+    { label: 'Outline', appearance: 'outline', content: 'Outline' },
     { label: 'Primary', appearance: 'primary', content: 'Primary' },
+    { label: 'Secondary', appearance: 'secondary', content: 'Secondary' },
     { label: 'Subtle', appearance: 'subtle', content: 'Subtle' },
+    { label: 'Transparent', appearance: 'transparent', content: 'Transparent' },
+    { label: 'Tint', appearance: 'secondary', content: 'Tint' },
   ];
 
   const inputVariants: Array<{
@@ -251,7 +254,12 @@ const ComponentStatesTable = ({ controlSize }: { controlSize: ButtonProps['size'
     disabledValue: string;
   }> = [
     { label: 'Outline', appearance: 'outline', defaultValue: 'Outline input', disabledValue: 'Outline disabled' },
-    { label: 'Underline', appearance: 'underline', defaultValue: 'Underline input', disabledValue: 'Underline disabled' },
+    {
+      label: 'Underline',
+      appearance: 'underline',
+      defaultValue: 'Underline input',
+      disabledValue: 'Underline disabled',
+    },
   ];
 
   return (
@@ -321,13 +329,13 @@ const ComponentStatesTable = ({ controlSize }: { controlSize: ButtonProps['size'
 
 export const VisualRefresh = (): JSXElement => {
   const styles = useStoryStyles();
-  const selectId = useId('visual-refresh-toggle');
+  const switchId = useId('visual-refresh-toggle');
   const sizeSelectId = useId('visual-refresh-size');
-  const [isVisualRefreshEnabled, setIsVisualRefreshEnabled] = React.useState<'off' | 'on'>('off');
+  const [isVisualRefreshEnabled, setIsVisualRefreshEnabled] = React.useState(false);
   const [controlSize, setControlSize] = React.useState<ButtonProps['size']>('medium');
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setIsVisualRefreshEnabled(event.target.value as 'off' | 'on');
+  const handleThemeChange = (_event: React.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => {
+    setIsVisualRefreshEnabled(Boolean(data.checked));
   };
 
   const handleSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -338,17 +346,18 @@ export const VisualRefresh = (): JSXElement => {
     <div className={styles.container}>
       <div className={styles.controls}>
         <div className={styles.controlItem}>
-          <Label htmlFor={selectId}>Visual refresh theme</Label>
-          <Select id={selectId} value={isVisualRefreshEnabled} onChange={handleChange} className={styles.select}>
-            <option value="off">Off (v9)</option>
-            <option value="on">On</option>
-          </Select>
+          <Switch
+            id={switchId}
+            checked={isVisualRefreshEnabled}
+            onChange={handleThemeChange}
+            label="Visual refresh theme"
+          />
         </div>
         <div className={styles.controlItem}>
           <Label htmlFor={sizeSelectId}>Control size</Label>
           <Select id={sizeSelectId} value={controlSize} onChange={handleSizeChange} className={styles.select}>
             <option value="small">Small</option>
-            <option value="medium">Default (medium)</option>
+            <option value="medium">Medium</option>
             <option value="large">Large</option>
           </Select>
         </div>
@@ -357,7 +366,7 @@ export const VisualRefresh = (): JSXElement => {
     </div>
   );
 
-  return isVisualRefreshEnabled === 'on' ? <VisualRefreshProvider>{content}</VisualRefreshProvider> : content;
+  return isVisualRefreshEnabled ? <VisualRefreshProvider>{content}</VisualRefreshProvider> : content;
 };
 
 VisualRefresh.parameters = {

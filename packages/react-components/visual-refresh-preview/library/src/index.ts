@@ -204,11 +204,108 @@ export const MAI_SEMANTIC_TOKENS = {
   [key: string]: any;
 };
 
+/**
+ * Notes
+ * 1. sm, default, lg -> sm, md, lg.
+ * 2. padding/ctrl/horizontal-default -> padding/ctrl/horizontal/md
+ * 3. gap/inside/ctrl/default -> gap/ctrl/md
+ * 4. fontWeight, lineHeight - ?
+ * 5. @media (forced-colors: active) ?
+ * 6. background/ctrl/neutral/selected - Selected?
+ */
+
 export const TEAMS_VISUAL_REFRESH_THEME = {
-  'size/ctrl/default': '36px',
+  'size/ctrl/md': '36px',
   'size/ctrl/sm': '28px',
   'size/ctrl/lg': '40px',
+  // Button
+  // Padding
+  'padding/ctrl/horizontal/sm': '8px',
+  'padding/ctrl/horizontal/md': '12px',
+  'padding/ctrl/horizontal/lg': '12px',
+
+  'padding/ctrl/vertical/sm': '4px',
+  'padding/ctrl/vertical/md': '8px',
+  'padding/ctrl/vertical/lg': '10px',
+  // Gap
+  'gap/ctrl/sm': '4px',
+  'gap/ctrl/md': '6px',
+  'gap/ctrl/lg': '6px',
+
+  // Border radius
+  'corner/ctrl/sm': '12px',
+  'corner/ctrl/md': '12px',
+  'corner/ctrl/lg': '12px',
+
+  // Font
+  'fontSize/ctrl/sm': '12px',
+  'fontSize/ctrl/md': '14px',
+  'fontSize/ctrl/lg': '14px',
+
+  'lineHeight/ctrl/sm': '16px',
+  'lineHeight/ctrl/md': '20px',
+  'lineHeight/ctrl/lg': '20px',
+
+  'fontWeight/ctrl/sm': tokens.fontWeightRegular,
+  'fontWeight/ctrl/md': tokens.fontWeightRegular,
+  'fontWeight/ctrl/lg': tokens.fontWeightRegular,
+
+  // Background
+  'background/ctrl/neutral/rest': 'hsl(0, 0%, 98%)',
+  'background/ctrl/neutral/hover': 'hsl(0, 0%, 94%)',
+  'background/ctrl/neutral/pressed': 'hsl(0, 0%, 86%)',
+  'background/ctrl/neutral/disabled': 'hsl(0, 0%, 94%)',
+
+  'background/ctrl/brand/rest': 'hsl(182, 95%, 25%)',
+  'background/ctrl/brand/hover': 'hsl(183, 100%, 21%)',
+  'background/ctrl/brand/pressed': 'hsl(184, 100%, 12%)',
+  'background/ctrl/brand/disabled': 'hsl(0, 0%, 94%)',
+
+  'background/ctrl/outline/rest': {},
+  'background/ctrl/outline/hover': {},
+  'background/ctrl/outline/pressed': {},
+  'background/ctrl/outline/disabled': {},
+
+  'background/ctrl/subtle/rest': {},
+  'background/ctrl/subtle/hover': {},
+  'background/ctrl/subtle/pressed': {},
+  'background/ctrl/subtle/disabled': {},
+
+  'background/ctrl/transparent/rest': {},
+  'background/ctrl/transparent/hover': {},
+  'background/ctrl/transparent/pressed': {},
+  'background/ctrl/transparent/disabled': {},
+
+  // Border
+  'borderColor/ctrl/neutral/rest': '#D1D1D1',
+  'borderColor/ctrl/neutral/hover': '#C7C7C7',
+  'borderColor/ctrl/neutral/pressed': '#B3B3B3',
+  'borderColor/ctrl/neutral/disabled': '#E0E0E0',
+
+  'borderColor/ctrl/brand/rest': 'transparent', // Acturally should be the same as background, if not sizes would be different
+  'borderColor/ctrl/brand/hover': 'transparent',
+  'borderColor/ctrl/brand/pressed': 'transparent',
+  'borderColor/ctrl/brand/disabled': 'transparent',
+
+  'borderColor/ctrl/outline/rest': {},
+  'borderColor/ctrl/outline/hover': {},
+  'borderColor/ctrl/outline/pressed': {},
+  'borderColor/ctrl/outline/disabled': {},
+
+  'borderColor/ctrl/subtle/rest': {},
+  'borderColor/ctrl/subtle/hover': {},
+  'borderColor/ctrl/subtle/pressed': {},
+  'borderColor/ctrl/subtle/disabled': {},
+
+  'borderColor/ctrl/transparent/rest': {},
+  'borderColor/ctrl/transparent/hover': {},
+  'borderColor/ctrl/transparent/pressed': {},
+  'borderColor/ctrl/transparent/disabled': {},
 };
+
+export const TEAMS_VISUAL_REFRESH_TOKENS = Object.fromEntries(
+  Object.entries(TEAMS_VISUAL_REFRESH_THEME).map(([key, value]) => [sanitizeTokenName(key), String(value)]),
+) as Record<string, string>;
 
 export const EXPECTED_SEMANTIC_V2_TOKENS = {
   groupButtonBackground: 'background/ctrl/neutral/rest', // -> colorNeutralBackground1
@@ -218,27 +315,7 @@ export function sanitizeTokenName(token: string) {
   return token.replace(/\//g, '_');
 }
 
-type TokenName = keyof typeof MAI_SEMANTIC_TOKENS;
+type TokenName = keyof typeof MAI_SEMANTIC_TOKENS | keyof typeof TEAMS_VISUAL_REFRESH_THEME;
 export function semanticTokenVar(token: TokenName) {
   return `var(--${sanitizeTokenName(token)})`;
 }
-
-// Note: `VisualRefreshTheme` expects a flat key/value map, so the exported theme must stay flat.
-// Question to David: If grouping is needed, create intermediate objects
-// (e.g. `const buttonShape = { ... }`) and spread them here.
-export const TEAMS_VISUAL_REFRESH_TOKENS = {
-  // Button
-  // Shape tokens
-  buttonBorderRadius: '16px',
-  buttonRoundedFontFamily: '"Comic Sans MS", "Comic Sans", cursive',
-  buttonSquareFontWeight: '800',
-
-  // Root tokens
-  buttonRootFontWeight: '400',
-  buttonRootPadding: '8px 16px',
-  buttonRootBorderWidth: '2px',
-
-  // Appearance tokens
-  buttonPrimaryBackgroundColor: 'purple',
-  buttonHorizontalPadding: '12px',
-};
