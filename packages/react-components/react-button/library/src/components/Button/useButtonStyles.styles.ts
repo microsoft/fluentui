@@ -554,11 +554,7 @@ const useIconStyles = makeStyles({
 
 export type VisualRefreshAppearanceName = 'base' | NonNullable<ButtonProps['appearance']>;
 
-type VisualRefreshAppearanceVariant =
-  | VisualRefreshAppearanceName
-  | 'base'
-  | 'neutral'
-  | 'brand';
+type VisualRefreshAppearanceVariant = VisualRefreshAppearanceName | 'base' | 'neutral' | 'brand';
 
 const visualRefreshAppearanceAlias: Record<
   VisualRefreshAppearanceVariant,
@@ -579,13 +575,16 @@ type SemanticTokenName = Parameters<typeof semanticTokenVar>[0];
 const getSemanticTokenValue = (token: string) => semanticTokenVar(token as SemanticTokenName);
 const createVisualRefreshAppearanceStyles = (appearance: VisualRefreshAppearanceVariant): GriffelStyle => {
   const tokenGroup = visualRefreshAppearanceAlias[appearance] ?? 'neutral';
+  const foregroundTokenBase = `foreground/ctrl/${tokenGroup}`;
   const backgroundTokenBase = `background/ctrl/${tokenGroup}`;
   const borderTokenBase = `borderColor/ctrl/${tokenGroup}`;
 
   return {
+    color: getSemanticTokenValue(`${foregroundTokenBase}/rest`),
     backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/rest`),
     ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/rest`)),
     ':hover': {
+      color: getSemanticTokenValue(`${foregroundTokenBase}/hover`),
       backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/hover`),
       ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/hover`)),
       [`& .${iconFilledClassName}`]: {
@@ -599,10 +598,12 @@ const createVisualRefreshAppearanceStyles = (appearance: VisualRefreshAppearance
       },
     },
     ':hover:active': {
+      color: getSemanticTokenValue(`${foregroundTokenBase}/pressed`),
       backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/pressed`),
       ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/pressed`)),
     },
     ':disabled': {
+      color: getSemanticTokenValue(`${foregroundTokenBase}/disabled`),
       backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/disabled`),
       ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/disabled`)),
     },
@@ -612,6 +613,7 @@ const createVisualRefreshAppearanceStyles = (appearance: VisualRefreshAppearance
 type VisualRefreshInteractionState = 'rest' | 'hover' | 'pressed' | 'disabled';
 
 export type VisualRefreshAppearanceStateTokens = {
+  foreground: Record<VisualRefreshInteractionState, string>;
   background: Record<VisualRefreshInteractionState, string>;
   border: Record<VisualRefreshInteractionState, string>;
 };
@@ -630,8 +632,16 @@ export const getVisualRefreshAppearanceStateTokens = (
 ): VisualRefreshAppearanceStateTokens => {
   const variant = resolveVisualRefreshAppearanceVariant(appearance);
   const tokenGroup = visualRefreshAppearanceAlias[variant] ?? 'neutral';
+  const foregroundTokenBase = `foreground/ctrl/${tokenGroup}`;
   const backgroundTokenBase = `background/ctrl/${tokenGroup}`;
   const borderTokenBase = `borderColor/ctrl/${tokenGroup}`;
+
+  const foreground = {
+    rest: getSemanticTokenValue(`${foregroundTokenBase}/rest`),
+    hover: getSemanticTokenValue(`${foregroundTokenBase}/hover`),
+    pressed: getSemanticTokenValue(`${foregroundTokenBase}/pressed`),
+    disabled: getSemanticTokenValue(`${foregroundTokenBase}/disabled`),
+  };
 
   const background = {
     rest: getSemanticTokenValue(`${backgroundTokenBase}/rest`),
@@ -654,7 +664,7 @@ export const getVisualRefreshAppearanceStateTokens = (
     border.disabled = 'transparent';
   }
 
-  return { background, border };
+  return { foreground, background, border };
 };
 
 const useVisualRefreshStyles = makeStyles({
@@ -677,8 +687,8 @@ const useVisualRefreshStyles = makeStyles({
     borderRadius: semanticTokenVar('corner/ctrl/sm'),
 
     fontSize: semanticTokenVar('fontSize/ctrl/sm'),
-    fontWeight: semanticTokenVar('lineHeight/ctrl/sm'),
-    lineHeight: semanticTokenVar('fontWeight/ctrl/sm'),
+    fontWeight: semanticTokenVar('fontWeight/ctrl/sm'),
+    lineHeight: semanticTokenVar('lineHeight/ctrl/sm'),
   },
   medium: {
     minHeight: semanticTokenVar('size/ctrl/md'),
@@ -688,8 +698,8 @@ const useVisualRefreshStyles = makeStyles({
     borderRadius: semanticTokenVar('corner/ctrl/md'),
 
     fontSize: semanticTokenVar('fontSize/ctrl/md'),
-    fontWeight: semanticTokenVar('lineHeight/ctrl/md'),
-    lineHeight: semanticTokenVar('fontWeight/ctrl/md'),
+    fontWeight: semanticTokenVar('fontWeight/ctrl/md'),
+    lineHeight: semanticTokenVar('lineHeight/ctrl/md'),
   },
   large: {
     minHeight: semanticTokenVar('size/ctrl/lg'),
@@ -699,8 +709,8 @@ const useVisualRefreshStyles = makeStyles({
     borderRadius: semanticTokenVar('corner/ctrl/lg'),
 
     fontSize: semanticTokenVar('fontSize/ctrl/lg'),
-    fontWeight: semanticTokenVar('lineHeight/ctrl/lg'),
-    lineHeight: semanticTokenVar('fontWeight/ctrl/lg'),
+    fontWeight: semanticTokenVar('fontWeight/ctrl/lg'),
+    lineHeight: semanticTokenVar('lineHeight/ctrl/lg'),
   },
 });
 

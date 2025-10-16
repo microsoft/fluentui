@@ -9,7 +9,7 @@ import {
   TEAMS_VISUAL_REFRESH_TOKENS,
   VisualRefreshContext,
 } from '@fluentui/visual-refresh-preview';
-import { mergeClasses } from '@griffel/react';
+import { mergeClasses, shorthands } from '@griffel/react';
 import { getVisualRefreshAppearanceStateTokens } from '../../../../react-button/library/src/components/Button/useButtonStyles.styles';
 
 type ComponentState = 'rest' | 'hover' | 'focus' | 'disabled';
@@ -81,35 +81,8 @@ const useStoryStyles = makeStyles({
 });
 
 const useButtonStateStyles = makeStyles({
-  base: {
-    pointerEvents: 'none',
-  },
-  hoverSecondary: {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    borderColor: tokens.colorNeutralStroke1Hover,
-    color: tokens.colorNeutralForeground1Hover,
-    cursor: 'pointer',
-  },
-  hoverPrimary: {
-    backgroundColor: tokens.colorBrandBackgroundHover,
-    borderColor: 'transparent',
-    color: tokens.colorNeutralForegroundOnBrand,
-    cursor: 'pointer',
-  },
-  hoverSubtle: {
-    backgroundColor: tokens.colorSubtleBackgroundHover,
-    borderColor: 'transparent',
-    color: tokens.colorNeutralForeground2Hover,
-    cursor: 'pointer',
-  },
-  hoverTransparent: {
-    backgroundColor: tokens.colorTransparentBackgroundHover,
-    borderColor: 'transparent',
-    color: tokens.colorNeutralForeground2BrandHover,
-    cursor: 'pointer',
-  },
   focus: {
-    borderColor: tokens.colorStrokeFocus2,
+    ...shorthands.borderColor(tokens.colorStrokeFocus2),
     boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
     outlineOffset: '2px',
@@ -178,18 +151,7 @@ const ButtonStateCell = ({
   isVisualRefreshEnabled: boolean;
 }) => {
   const buttonStateClasses = useButtonStateStyles();
-  const hoverClass =
-    !isVisualRefreshEnabled && state === 'hover'
-      ? appearance === 'primary'
-        ? buttonStateClasses.hoverPrimary
-        : appearance === 'subtle'
-        ? buttonStateClasses.hoverSubtle
-        : appearance === 'transparent'
-        ? buttonStateClasses.hoverTransparent
-        : buttonStateClasses.hoverSecondary
-      : undefined;
   const focusClass = state === 'focus' ? buttonStateClasses.focus : undefined;
-  const className = mergeClasses(buttonStateClasses.base, hoverClass, focusClass);
   const visualRefreshStyle = React.useMemo(() => {
     if (!isVisualRefreshEnabled) {
       return undefined;
@@ -197,6 +159,7 @@ const ButtonStateCell = ({
     const tokens = getVisualRefreshAppearanceStateTokens(appearance ?? 'secondary');
     const stateKey = state === 'hover' ? 'hover' : state === 'disabled' ? 'disabled' : 'rest';
     const style: React.CSSProperties = {
+      color: tokens.foreground[stateKey],
       backgroundColor: tokens.background[stateKey],
       borderColor: tokens.border[stateKey],
     };
@@ -210,7 +173,7 @@ const ButtonStateCell = ({
     <Button
       appearance={appearance}
       disabled={state === 'disabled'}
-      className={className}
+      className={focusClass}
       size={size}
       style={visualRefreshStyle}
       tabIndex={-1}

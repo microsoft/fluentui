@@ -246,9 +246,34 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   'lineHeight/ctrl/md': '20px',
   'lineHeight/ctrl/lg': '20px',
 
-  'fontWeight/ctrl/sm': tokens.fontWeightRegular,
-  'fontWeight/ctrl/md': tokens.fontWeightRegular,
-  'fontWeight/ctrl/lg': tokens.fontWeightRegular,
+  'fontWeight/ctrl/sm': '600',
+  'fontWeight/ctrl/md': '600',
+  'fontWeight/ctrl/lg': '600',
+
+  'foreground/ctrl/neutral/rest': '#616161',
+  'foreground/ctrl/neutral/hover': '#424242',
+  'foreground/ctrl/neutral/pressed': '#424242',
+  'foreground/ctrl/neutral/disabled': '#BDBDBD',
+
+  'foreground/ctrl/brand/rest': '#FFFFFF',
+  'foreground/ctrl/brand/hover': '#FFFFFF',
+  'foreground/ctrl/brand/pressed': '#FFFFFF',
+  'foreground/ctrl/brand/disabled': '#BDBDBD',
+
+  'foreground/ctrl/outline/rest': '#616161',
+  'foreground/ctrl/outline/hover': '#424242',
+  'foreground/ctrl/outline/pressed': '#424242',
+  'foreground/ctrl/outline/disabled': '#BDBDBD',
+
+  'foreground/ctrl/subtle/rest': '#616161',
+  'foreground/ctrl/subtle/hover': '#424242',
+  'foreground/ctrl/subtle/pressed': '#424242',
+  'foreground/ctrl/subtle/disabled': '#BDBDBD',
+
+  'foreground/ctrl/transparent/rest': '#616161',
+  'foreground/ctrl/transparent/hover': '#00686D',
+  'foreground/ctrl/transparent/pressed': '#00595D',
+  'foreground/ctrl/transparent/disabled': '#BDBDBD',
 
   // Background
   'background/ctrl/neutral/rest': 'hsl(0, 0%, 98%)',
@@ -287,20 +312,20 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   'borderColor/ctrl/brand/pressed': 'transparent',
   'borderColor/ctrl/brand/disabled': 'transparent',
 
-  'borderColor/ctrl/outline/rest': '',
-  'borderColor/ctrl/outline/hover': '',
-  'borderColor/ctrl/outline/pressed': '',
-  'borderColor/ctrl/outline/disabled': '',
+  'borderColor/ctrl/outline/rest': '#D1D1D1',
+  'borderColor/ctrl/outline/hover': '#C7C7C7',
+  'borderColor/ctrl/outline/pressed': '#B3B3B3',
+  'borderColor/ctrl/outline/disabled': '#E0E0E0',
 
-  'borderColor/ctrl/subtle/rest': '',
-  'borderColor/ctrl/subtle/hover': '',
-  'borderColor/ctrl/subtle/pressed': '',
-  'borderColor/ctrl/subtle/disabled': '',
+  'borderColor/ctrl/subtle/rest': 'transparent',
+  'borderColor/ctrl/subtle/hover': 'transparent',
+  'borderColor/ctrl/subtle/pressed': 'transparent',
+  'borderColor/ctrl/subtle/disabled': 'transparent',
 
-  'borderColor/ctrl/transparent/rest': '',
-  'borderColor/ctrl/transparent/hover': '',
-  'borderColor/ctrl/transparent/pressed': '',
-  'borderColor/ctrl/transparent/disabled': '',
+  'borderColor/ctrl/transparent/rest': 'transparent',
+  'borderColor/ctrl/transparent/hover': 'transparent',
+  'borderColor/ctrl/transparent/pressed': 'transparent',
+  'borderColor/ctrl/transparent/disabled': 'transparent',
 };
 
 export const TEAMS_VISUAL_REFRESH_TOKENS = Object.fromEntries(
