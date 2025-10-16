@@ -32,9 +32,15 @@ const useStoryStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     gap: '0.75rem',
+    flexWrap: 'wrap',
   },
   select: {
     width: '200px',
+  },
+  controlItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
   },
   table: {
     borderCollapse: 'collapse',
@@ -73,7 +79,9 @@ const useStoryStyles = makeStyles({
 });
 
 const useButtonStateStyles = makeStyles({
-  base: {},
+  base: {
+    pointerEvents: 'none',
+  },
   hoverSecondary: {
     backgroundColor: tokens.colorNeutralBackground1Hover,
     borderColor: tokens.colorNeutralStroke1Hover,
@@ -109,6 +117,7 @@ const useButtonStateStyles = makeStyles({
 const useInputStateStyles = makeStyles({
   base: {
     width: '200px',
+    pointerEvents: 'none',
   },
   hoverOutline: {
     borderColor: tokens.colorNeutralStroke1Hover,
@@ -158,10 +167,12 @@ const ButtonStateCell = ({
   appearance,
   state,
   children,
+  size,
 }: {
   appearance?: ButtonProps['appearance'];
   state: ComponentState;
   children: React.ReactNode;
+  size: ButtonProps['size'];
 }) => {
   const buttonStateClasses = useButtonStateStyles();
   const hoverClass =
@@ -178,7 +189,7 @@ const ButtonStateCell = ({
   const className = mergeClasses(buttonStateClasses.base, hoverClass, focusClass);
 
   return (
-    <Button appearance={appearance} disabled={state === 'disabled'} className={className} tabIndex={-1}>
+    <Button appearance={appearance} disabled={state === 'disabled'} className={className} size={size} tabIndex={-1}>
       {children}
     </Button>
   );
@@ -189,11 +200,13 @@ const InputStateCell = ({
   state,
   defaultValue,
   disabledValue,
+  size,
 }: {
   appearance: NonNullable<InputProps['appearance']>;
   state: ComponentState;
   defaultValue: string;
   disabledValue: string;
+  size: NonNullable<InputProps['size']>;
 }) => {
   const inputStateClasses = useInputStateStyles();
   const hoverClass =
@@ -216,12 +229,13 @@ const InputStateCell = ({
       className={className}
       defaultValue={state === 'disabled' ? disabledValue : defaultValue}
       disabled={state === 'disabled'}
+      size={size}
       readOnly={state !== 'disabled'}
     />
   );
 };
 
-const ComponentStatesTable = () => {
+const ComponentStatesTable = ({ controlSize }: { controlSize: ButtonProps['size'] }) => {
   const styles = useStoryStyles();
 
   const buttonVariants: Array<{ label: string; appearance?: ButtonProps['appearance']; content: string }> = [
@@ -266,7 +280,7 @@ const ComponentStatesTable = () => {
               {buttonStateOrder.map(state => (
                 <td key={state} className={styles.stateCell}>
                   <div className={styles.stateContent}>
-                    <ButtonStateCell appearance={variant.appearance} state={state}>
+                    <ButtonStateCell appearance={variant.appearance} state={state} size={controlSize}>
                       {state === 'disabled' ? 'Disabled' : variant.content}
                     </ButtonStateCell>
                   </div>
@@ -292,6 +306,7 @@ const ComponentStatesTable = () => {
                       state={state}
                       defaultValue={variant.defaultValue}
                       disabledValue={variant.disabledValue}
+                      size={controlSize}
                     />
                   </div>
                 </td>
@@ -307,22 +322,38 @@ const ComponentStatesTable = () => {
 export const VisualRefresh = (): JSXElement => {
   const styles = useStoryStyles();
   const selectId = useId('visual-refresh-toggle');
+  const sizeSelectId = useId('visual-refresh-size');
   const [isVisualRefreshEnabled, setIsVisualRefreshEnabled] = React.useState<'off' | 'on'>('off');
+  const [controlSize, setControlSize] = React.useState<ButtonProps['size']>('medium');
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setIsVisualRefreshEnabled(event.target.value as 'off' | 'on');
   };
 
+  const handleSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setControlSize(event.target.value as ButtonProps['size']);
+  };
+
   const content = (
     <div className={styles.container}>
       <div className={styles.controls}>
-        <Label htmlFor={selectId}>Visual refresh theme</Label>
-        <Select id={selectId} value={isVisualRefreshEnabled} onChange={handleChange} className={styles.select}>
-          <option value="off">Off (v9)</option>
-          <option value="on">On</option>
-        </Select>
+        <div className={styles.controlItem}>
+          <Label htmlFor={selectId}>Visual refresh theme</Label>
+          <Select id={selectId} value={isVisualRefreshEnabled} onChange={handleChange} className={styles.select}>
+            <option value="off">Off (v9)</option>
+            <option value="on">On</option>
+          </Select>
+        </div>
+        <div className={styles.controlItem}>
+          <Label htmlFor={sizeSelectId}>Control size</Label>
+          <Select id={sizeSelectId} value={controlSize} onChange={handleSizeChange} className={styles.select}>
+            <option value="small">Small</option>
+            <option value="medium">Default (medium)</option>
+            <option value="large">Large</option>
+          </Select>
+        </div>
       </div>
-      <ComponentStatesTable />
+      <ComponentStatesTable controlSize={controlSize} />
     </div>
   );
 

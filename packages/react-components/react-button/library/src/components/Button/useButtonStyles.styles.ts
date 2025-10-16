@@ -569,8 +569,9 @@ const useVisualRefreshStyles = makeStyles({
     // backgroundColor: VISUAL_REFRESH_TOKENS.buttonPrimaryBackgroundColor,
   },
   small: {
-    height: semanticTokenVar('size/ctrl/sm'),
     minHeight: semanticTokenVar('size/ctrl/sm'),
+    height: semanticTokenVar('size/ctrl/sm'),
+    maxHeight: semanticTokenVar('size/ctrl/sm'),
   },
   medium: {
     height: semanticTokenVar('size/ctrl/default'),
