@@ -49,7 +49,7 @@ jobs:
           PR_DETAILS: ${{steps.pr_details.outputs.result}}
 
       - name: Checkout Forked Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ steps.pr_details.outputs.result.head.ref }}
           repository: ${{ steps.pr_details.outputs.result.repo.full_name }}
@@ -129,7 +129,7 @@ jobs:
       contents: 'read'
       actions: 'read'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
