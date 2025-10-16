@@ -20,7 +20,7 @@
     "@fluentui/react-button": "^9.6.8",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-label": "^9.3.7",
-    "@fluentui/react-link": "^9.6.5",
+    "@fluentui/react-link": "^9.6.7",
     "@fluentui/react-menu": "^9.20.1",
     "@fluentui/react-provider": "^9.22.7",
     "@fluentui/react-shared-contexts": "^9.25.1",
