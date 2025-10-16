@@ -119,15 +119,15 @@ it('should clear error message when required input has date text and allowTextIn
   const input = container.querySelector('input')!;
 
   // open the datepicker then dismiss
-  await userEvent.click(input);
-  await userEvent.click(input);
+  userEvent.click(input);
+  userEvent.click(input);
 
   await waitFor(() => {
     expect(container.querySelector('[data-automation-id="error-message"]')).toHaveTextContent('Field is required');
   });
 
-  await userEvent.type(input, 'Jan 1 2030');
-  await userEvent.click(input);
+  userEvent.type(input, 'Jan 1 2030');
+  userEvent.click(input);
 
   expect(container.querySelector('[data-automation-id="error-message"]')).toBeNull();
 });
@@ -142,8 +142,8 @@ it('should not set initial error when required input is empty and validateOnLoad
   expect(container.querySelector('[data-automation-id="error-message"]')).toBeNull();
 
   // open the datepicker then dismiss
-  await userEvent.click(input);
-  await userEvent.click(input);
+  userEvent.click(input);
+  userEvent.click(input);
 
   await waitFor(() => {
     expect(container.querySelector('[data-automation-id="error-message"]')).toBeInTheDocument();
@@ -155,16 +155,16 @@ it('clears error message when required input has date selected from calendar and
   const input = container.querySelector('input')!;
 
   // open the datepicker then dismiss
-  await userEvent.click(input);
-  await userEvent.click(input);
+  userEvent.click(input);
+  userEvent.click(input);
 
   await waitFor(() => {
     expect(container.querySelector('[data-automation-id="error-message"]')).toHaveTextContent('Field is required');
   });
 
-  await userEvent.click(input);
+  userEvent.click(input);
   const date = new Date();
-  await userEvent.type(input, date.toDateString());
+  userEvent.type(input, date.toDateString());
 
   expect(container.querySelector('[data-automation-id="error-message"]')).toBeNull();
 });
@@ -183,8 +183,8 @@ it('should not clear initial error when datepicker is opened', async () => {
   expect(container.querySelector('[data-automation-id="error-message"]')).toBeNull();
 
   // open the datepicker then dismiss
-  await userEvent.click(input);
-  await userEvent.click(input);
+  userEvent.click(input);
+  userEvent.click(input);
 
   await waitFor(() => {
     expect(container.querySelector('[data-automation-id="error-message"]')).not.toBeNull();
@@ -199,8 +199,8 @@ it('should show status message and reset value when allowTextInput is true and i
   expect(status).toBeEmptyDOMElement();
 
   // input invalid string "test", then blur
-  await userEvent.type(input, 'test', { delay: 100 });
-  await userEvent.click(container);
+  userEvent.type(input, 'test');
+  userEvent.click(container);
 
   await waitFor(() => {
     expect(status).not.toBeEmptyDOMElement();
@@ -214,42 +214,42 @@ it('should reset status message after selecting a valid date', async () => {
   const status = container.querySelector('[aria-live="assertive"]');
 
   // input invalid string "test", then blur
-  await userEvent.type(input, 'test', { delay: 100 });
-  await userEvent.click(container);
+  userEvent.type(input, 'test');
+  userEvent.click(container);
 
   await waitFor(() => {
     expect(status).not.toBeEmptyDOMElement();
   });
 
   // pick valid date, then blur
-  await userEvent.clear(input);
-  await userEvent.type(input, '2021-04-10');
-  await userEvent.click(container);
+  userEvent.clear(input);
+  userEvent.type(input, '2021-04-10');
+  userEvent.click(container);
 
   await waitFor(() => {
     expect(status).toBeEmptyDOMElement();
   });
 });
 
-it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', async () => {
+it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
   const onSelectDate = jest.fn();
 
   const { container } = render(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />);
   const input = container.querySelector('input')!;
 
   // open the datepicker then dismiss
-  await userEvent.type(input, '2021-04-10');
-  await userEvent.click(input);
+  userEvent.type(input, '2021-04-10');
+  userEvent.click(input);
 
   expect(onSelectDate).toHaveBeenCalledTimes(1);
 });
 
-it('should set "Calendar" as the Callout\'s aria-label', async () => {
+it('should set "Calendar" as the Callout\'s aria-label', () => {
   const { container, getByLabelText } = render(<DatePickerBase />);
   const input = container.querySelectorAll('div')[5];
 
   // open the datepicker then dismiss
-  await userEvent.click(input);
+  userEvent.click(input);
 
   const callout = getByLabelText('Calendar');
 
@@ -258,7 +258,7 @@ it('should set "Calendar" as the Callout\'s aria-label', async () => {
   expect(callout).toHaveClass('ms-Callout-main');
 });
 
-it('should reflect the correct date in the input field when selecting a value', async () => {
+it('should reflect the correct date in the input field when selecting a value', () => {
   const today = new Date('January 15, 2020');
   const initiallySelectedDate = new Date('January 10, 2020');
   // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
@@ -270,13 +270,13 @@ it('should reflect the correct date in the input field when selecting a value', 
   const input = container.querySelector('input')!;
 
   // open the datepicker then dismiss
-  await userEvent.click(input);
-  await userEvent.type(input, today.toDateString());
+  userEvent.click(input);
+  userEvent.type(input, today.toDateString());
 
   expect(input.value).toBe('Wed Jan 15 2020');
 });
 
-it('reflects the correct date in the input field when selecting a value and a different format is given', async () => {
+it('reflects the correct date in the input field when selecting a value and a different format is given', () => {
   const today = new Date('January 15, 2020');
   const initiallySelectedDate = new Date('January 10, 2020');
   const onFormatDate = (date: Date): string => {
@@ -296,8 +296,8 @@ it('reflects the correct date in the input field when selecting a value and a di
   const input = container.querySelector('input')!;
 
   // open the datepicker then dismiss
-  await userEvent.click(input);
-  await userEvent.type(input, today.toDateString());
+  userEvent.click(input);
+  userEvent.type(input, today.toDateString());
 
   expect(input.value).toBe('Wed Jan 15 2020');
 });
@@ -328,34 +328,34 @@ describe('DatePickerBase - date boundaries', () => {
     isOutOfBoundsErrorMessage: 'out of bounds',
   };
 
-  it('should display error for dates outside boundary', async () => {
+  it('should display error for dates outside boundary', () => {
     render(<DatePickerBase allowTextInput minDate={minDate} maxDate={maxDate} strings={strings} />);
     const input = screen.getByRole('combobox');
 
-    await userEvent.type(input, 'Jan 1 2010');
-    await userEvent.tab();
+    userEvent.type(input, 'Jan 1 2010');
+    userEvent.tab();
 
     expect(input).toHaveAttribute('aria-invalid', 'true');
 
-    await userEvent.clear(input);
-    await userEvent.type(input, 'Jan 1 2020');
-    await userEvent.tab();
+    userEvent.clear(input);
+    userEvent.type(input, 'Jan 1 2020');
+    userEvent.tab();
 
     expect(input).toHaveAttribute('aria-invalid', 'true');
   });
 
-  it('should not display error for dates within or on boundary', async () => {
+  it('should not display error for dates within or on boundary', () => {
     render(<DatePickerBase allowTextInput minDate={minDate} maxDate={maxDate} strings={strings} />);
     const input = screen.getByRole('combobox');
 
-    await userEvent.type(input, 'Dec 16 2017');
-    await userEvent.tab();
+    userEvent.type(input, 'Dec 16 2017');
+    userEvent.tab();
 
     expect(input).toHaveAttribute('aria-invalid', 'false');
 
-    await userEvent.clear(input);
-    await userEvent.type(input, 'Jan 1 2017');
-    await userEvent.tab();
+    userEvent.clear(input);
+    userEvent.type(input, 'Jan 1 2017');
+    userEvent.tab();
 
     expect(input).toHaveAttribute('aria-invalid', 'false');
   });
