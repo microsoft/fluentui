@@ -12,6 +12,7 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     requestOpenChange,
     modalAttributes,
     triggerAttributes,
+    unmountOnClose,
   } = state;
 
   /**
@@ -27,6 +28,7 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     inertTrapFocus,
     modalAttributes,
     triggerAttributes,
+    unmountOnClose,
     requestOpenChange,
   };
 
