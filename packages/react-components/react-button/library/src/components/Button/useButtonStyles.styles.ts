@@ -4,6 +4,7 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
 import { semanticTokenVar, useIsVisualRefreshEnabled } from '@fluentui/visual-refresh-preview';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
@@ -551,156 +552,76 @@ const useIconStyles = makeStyles({
   },
 });
 
-const useVisualRefreshStyles = makeStyles({
-  base: {
-    backgroundColor: semanticTokenVar('background/ctrl/neutral/rest'),
-    ...shorthands.borderColor(semanticTokenVar('borderColor/ctrl/neutral/rest')),
+type VisualRefreshAppearanceVariant =
+  | 'base'
+  | 'neutral'
+  | 'secondary'
+  | 'brand'
+  | 'primary'
+  | 'outline'
+  | 'subtle'
+  | 'transparent';
+
+const visualRefreshAppearanceAlias: Record<
+  VisualRefreshAppearanceVariant,
+  'neutral' | 'brand' | 'outline' | 'subtle' | 'transparent'
+> = {
+  base: 'neutral',
+  neutral: 'neutral',
+  secondary: 'neutral',
+  brand: 'brand',
+  primary: 'brand',
+  outline: 'outline',
+  subtle: 'subtle',
+  transparent: 'transparent',
+};
+
+type SemanticTokenName = Parameters<typeof semanticTokenVar>[0];
+
+const getSemanticTokenValue = (token: string) => semanticTokenVar(token as SemanticTokenName);
+const createVisualRefreshAppearanceStyles = (appearance: VisualRefreshAppearanceVariant): GriffelStyle => {
+  const tokenGroup = visualRefreshAppearanceAlias[appearance] ?? 'neutral';
+  const backgroundTokenBase = `background/ctrl/${tokenGroup}`;
+  const borderTokenBase = `borderColor/ctrl/${tokenGroup}`;
+
+  return {
+    backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/rest`),
+    ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/rest`)),
     ':hover': {
-      backgroundColor: semanticTokenVar('background/ctrl/neutral/hover'),
-      ...shorthands.borderColor(semanticTokenVar('borderColor/ctrl/neutral/hover')),
+      backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/hover`),
+      ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/hover`)),
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        // color: tokens.colorNeutralForeground2BrandHover,
+      },
     },
     ':hover:active': {
-      backgroundColor: semanticTokenVar('background/ctrl/neutral/pressed'),
-      ...shorthands.borderColor(semanticTokenVar('borderColor/ctrl/neutral/pressed')),
+      backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/pressed`),
+      ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/pressed`)),
     },
     ':disabled': {
-      backgroundColor: semanticTokenVar('background/ctrl/neutral/disabled'),
-      ...shorthands.borderColor(semanticTokenVar('borderColor/ctrl/neutral/disabled')),
+      backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/disabled`),
+      ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/disabled`)),
     },
-  },
+  };
+};
+
+const useVisualRefreshStyles = makeStyles({
+  base: createVisualRefreshAppearanceStyles('neutral'),
 
   // Appearance variations
-  outline: {
-    backgroundColor: tokens.colorTransparentBackground,
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-    },
-
-    ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-    },
-  },
-  primary: {
-    backgroundColor: tokens.colorBrandBackground,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundOnBrand,
-
-    ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
-    },
-
-    ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
-    },
-
-    '@media (forced-colors: active)': {
-      backgroundColor: 'Highlight',
-      ...shorthands.borderColor('HighlightText'),
-      color: 'HighlightText',
-      forcedColorAdjust: 'none',
-
-      ':hover': {
-        backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
-        color: 'Highlight',
-      },
-
-      ':hover:active': {
-        backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
-        color: 'Highlight',
-      },
-    },
-  },
+  outline: createVisualRefreshAppearanceStyles('outline'),
+  primary: createVisualRefreshAppearanceStyles('brand'),
   secondary: {
-    /* The secondary styles are exactly the same as the base styles. */
+    // same as base
   },
-  subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2,
-
-    ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-      [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
-      },
-    },
-
-    ':hover:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Pressed,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-      [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
-      },
-    },
-
-    '@media (forced-colors: active)': {
-      ':hover': {
-        color: 'Highlight',
-
-        [`& .${buttonClassNames.icon}`]: {
-          color: 'Highlight',
-        },
-      },
-      ':hover:active': {
-        color: 'Highlight',
-
-        [`& .${buttonClassNames.icon}`]: {
-          color: 'Highlight',
-        },
-      },
-    },
-  },
-  transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2,
-
-    ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-
-    ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-    },
-  },
+  subtle: createVisualRefreshAppearanceStyles('subtle'),
+  transparent: createVisualRefreshAppearanceStyles('transparent'),
 
   small: {
     minHeight: semanticTokenVar('size/ctrl/sm'),
