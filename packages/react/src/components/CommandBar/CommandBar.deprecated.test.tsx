@@ -2,7 +2,6 @@ import '@testing-library/jest-dom';
 import * as React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import * as renderer from 'react-test-renderer';
 import { CommandBar } from './CommandBar';
 
 afterEach(() => {
@@ -13,18 +12,16 @@ afterEach(() => {
 
 describe('CommandBar deprecated', () => {
   it('renders commands correctly (snapshot)', () => {
-    const tree = renderer
-      .create(
-        <CommandBar
-          items={[
-            { key: '1', name: 'asdf' },
-            { key: '2', name: 'asdf' },
-          ]}
-          className="TestClassName"
-        />,
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(
+      <CommandBar
+        items={[
+          { key: '1', name: 'asdf' },
+          { key: '2', name: 'asdf' },
+        ]}
+        className="TestClassName"
+      />,
+    );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('opens a menu with subMenuProps.items', () => {

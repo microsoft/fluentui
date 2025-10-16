@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { DocumentCard } from './DocumentCard';
 import { DocumentCardTitle } from './DocumentCardTitle';
@@ -8,14 +8,13 @@ import { DocumentCardActivity } from './DocumentCardActivity';
 
 describe('DocumentCard', () => {
   it('renders DocumentCard correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DocumentCard>
         <DocumentCardPreview previewImages={[]} />
         <DocumentCardTitle title="" />
         <DocumentCardActivity activity="" people={[{ name: '', profileImageSrc: '' }]} />
       </DocumentCard>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
