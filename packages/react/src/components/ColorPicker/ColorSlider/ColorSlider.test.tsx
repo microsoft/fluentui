@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import { ColorSlider } from './ColorSlider';
@@ -39,23 +38,20 @@ describe('ColorSlider', () => {
   }
 
   it('renders hue slider correctly', () => {
-    const component = renderer.create(<ColorSlider type="hue" value={30} ariaLabel="Hue" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ColorSlider type="hue" value={30} ariaLabel="Hue" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders alpha slider correctly', () => {
-    const component = renderer.create(<ColorSlider type="alpha" value={30} overlayColor="ff0000" ariaLabel="Alpha" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<ColorSlider type="alpha" value={30} overlayColor="ff0000" ariaLabel="Alpha" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders transparency slider correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <ColorSlider type="transparency" value={30} overlayColor="ff0000" ariaLabel="Transparency" />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('defaults to hue slider', () => {

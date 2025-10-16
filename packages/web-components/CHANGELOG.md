@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 15 Oct 2025 04:07:30 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Oct 2025 04:09:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.129](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.129)
+
+Thu, 16 Oct 2025 04:09:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.128..@fluentui/web-components_v3.0.0-beta.129)
+
+### Changes
+
+- fix(web-components): ensure menu initialization is queued ([PR #35328](https://github.com/microsoft/fluentui/pull/35328) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.128](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.128)
 

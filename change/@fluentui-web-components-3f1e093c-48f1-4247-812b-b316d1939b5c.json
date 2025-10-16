@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(web-components): ensure menu initialization is queued",
-  "packageName": "@fluentui/web-components",
-  "email": "863023+radium-v@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

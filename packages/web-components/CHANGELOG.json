@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 16 Oct 2025 04:09:10 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.129",
+      "version": "3.0.0-beta.129",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "9420f34801bf2cc184ecb9e0b32c9cacb37fa929",
+            "comment": "fix(web-components): ensure menu initialization is queued"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Oct 2025 04:07:30 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.128",
       "version": "3.0.0-beta.128",

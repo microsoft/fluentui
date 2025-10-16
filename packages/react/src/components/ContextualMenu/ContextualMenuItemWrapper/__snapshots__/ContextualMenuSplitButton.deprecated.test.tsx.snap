@@ -2,31 +2,26 @@
 
 exports[`ContextualMenuSplitButton creates a normal split button renders the contextual menu split button correctly 1`] = `
 <div
-  aria-disabled={false}
-  aria-haspopup={true}
-  aria-posinset={1}
-  aria-setsize={1}
-  className="splitContainer"
-  data-is-focusable={true}
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseMove={[Function]}
-  onTouchStart={[Function]}
+  aria-disabled="false"
+  aria-haspopup="true"
+  aria-posinset="1"
+  aria-setsize="1"
+  class="splitContainer"
+  data-is-focusable="true"
   role="menuitem"
-  tabIndex={0}
+  tabindex="0"
 >
   <button
-    className="splitPrimary"
-    data-is-focusable={false}
+    class="splitPrimary"
+    data-is-focusable="false"
     id="id__0"
   >
     <div
-      className="linkContent"
+      class="linkContent"
     />
   </button>
   <span
-    className=
+    class=
 
         {
           align-items: center;
@@ -40,7 +35,7 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
         }
   >
     <span
-      className=
+      class=
 
           {
             background-color: #c8c6c4;
@@ -50,18 +45,13 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
     />
   </span>
   <button
-    aria-haspopup={true}
+    aria-haspopup="true"
     aria-labelledby="id__0"
-    className="splitMenu"
-    data-is-focusable={false}
-    disabled={false}
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseMove={[Function]}
+    class="splitMenu"
+    data-is-focusable="false"
   >
     <div
-      className="linkContentMenu"
+      class="linkContentMenu"
     />
   </button>
 </div>
