@@ -17,7 +17,7 @@ const styles = mergeStyleSets({
 export const AnimationDetailGrid: React.FunctionComponent<IAnimationDetailGridProps> = props => {
   return (
     <div className={styles.root}>
-      {props.children.map((item: JSX.Element, i: number) => (
+      {props.children.map((item: React.ReactElement, i: number) => (
         <div key={i} className={styles.item}>
           {item}
         </div>

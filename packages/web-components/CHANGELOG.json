@@ -2,6 +2,57 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 16 Oct 2025 04:09:10 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.129",
+      "version": "3.0.0-beta.129",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "9420f34801bf2cc184ecb9e0b32c9cacb37fa929",
+            "comment": "fix(web-components): ensure menu initialization is queued"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Oct 2025 04:07:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.128",
+      "version": "3.0.0-beta.128",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f511e153749497a89f5dc5ae04a4965745f57ba4",
+            "comment": "exclude node_modules and dist so CEM type parser maps types properly"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Oct 2025 04:06:46 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.127",
+      "version": "3.0.0-beta.127",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e4dc9d0a2583ec18066c680daab1d1924225791d",
+            "comment": "remove aria-hidden from field labels to zoom text accessibility works, remove field text-input and text-area examples from storybook"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "45374db8331035d988a5b6e6a7781bafb854043a",
+            "comment": "[chore]: bump min version of node from 20 to 22"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Oct 2025 04:08:57 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.126",
       "version": "3.0.0-beta.126",

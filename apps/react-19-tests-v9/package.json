@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c"
   },

@@ -11,7 +11,7 @@ import * as React from 'react';
  *
  * @param callback - Function to call once the component has been mounted.
  */
-export const useMountSync = (callback: () => void) => {
+export const useMountSync = (callback: () => void): void => {
   const mountRef = React.useRef(callback);
   mountRef.current = callback;
   // eslint-disable-next-line no-restricted-properties

@@ -44,7 +44,7 @@ const renderCell = (text: string) => {
     return <span>{text}</span>;
   }
 
-  const eltChildren: JSX.Element[] = [];
+  const eltChildren: React.ReactElement[] = [];
 
   let codeIndex = 0;
   let textIndex = 0;
@@ -138,7 +138,7 @@ class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
     this._groups = !props.renderAsEnum ? this._getGroups() : undefined;
   }
 
-  public render(): JSX.Element | null {
+  public render(): React.ReactElement | null {
     const { title, renderAsEnum, styles, theme } = this.props;
 
     if (this._properties.length === 0) {

@@ -377,7 +377,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
     { data: chartPoints, barWidth: 'auto', maxBarWidth: 50 },
     container => {
       // Assert
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars).toHaveLength(6);
       expect(bars[0].getAttribute('width')).toEqual('50');
       expect(bars[1].getAttribute('width')).toEqual('50');
@@ -392,7 +392,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
     container => {
       // colors mentioned in the data points itself
       // Assert
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars[0].getAttribute('fill')).toEqual('#00bcf2');
       expect(bars[1].getAttribute('fill')).toEqual('#0078d4');
       expect(bars[2].getAttribute('fill')).toEqual('#00bcf2');
@@ -418,7 +418,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
     { data: accessibilityDataPoints },
     container => {
       // Assert
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars[0]).toHaveAttribute(
         'aria-label',
         'Group series 1 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
@@ -448,7 +448,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       //const legends = getByClass(container, /legend-/i);
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseOver(legends[0]);
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(bars[0]).toHaveAttribute('opacity', '');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
@@ -466,7 +466,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseOver(legends[0]);
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(bars[0]).toHaveAttribute('opacity', '');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
@@ -475,7 +475,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       expect(bars[4]).toHaveAttribute('opacity', '');
       expect(bars[5]).toHaveAttribute('opacity', '0.1');
       fireEvent.mouseOver(legends[1]);
-      const updatedBars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const updatedBars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(updatedBars[0]).toHaveAttribute('opacity', '0.1');
       expect(updatedBars[1]).toHaveAttribute('opacity', '');
@@ -496,7 +496,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       const legendsAfterClickEvent = screen.getAllByText(
         (content, element) => element!.tagName.toLowerCase() === 'button',
       );
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true');
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
@@ -520,7 +520,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       const legendsAfterClickEvent = screen.getAllByText(
         (content, element) => element!.tagName.toLowerCase() === 'button',
       );
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false');
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
@@ -551,7 +551,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       expect(firstLegend).toHaveAttribute('aria-selected', 'true');
       expect(secondLegend).toHaveAttribute('aria-selected', 'true');
 
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const bars = container.querySelectorAll('rect[role="img"]');
       expect(bars[0]).toHaveAttribute('opacity', '0.1');
       expect(bars[1]).toHaveAttribute('opacity', '');
       expect(bars[2]).toHaveAttribute('opacity', '');
@@ -692,7 +692,7 @@ describe('Render calling with respective to props', () => {
 describe('GroupedVerticalBarChart - mouse events', () => {
   it('Should render callout correctly on mouseover', async () => {
     const { container } = render(<GroupedVerticalBarChart data={chartPoints} calloutProps={{}} />);
-    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    const bars = container.querySelectorAll('rect[role="img"]');
     fireEvent.mouseOver(bars[0]);
     // Wait for any async updates (if needed)
     await new Promise(resolve => setTimeout(resolve, 0));
@@ -701,7 +701,7 @@ describe('GroupedVerticalBarChart - mouse events', () => {
 
   it('Should render callout correctly on mousemove', () => {
     const { container } = render(<GroupedVerticalBarChart data={chartPoints} />);
-    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    const bars = container.querySelectorAll('rect[role="img"]');
     fireEvent.mouseMove(bars[2]);
     const html1 = container.innerHTML;
     fireEvent.mouseMove(bars[3]);

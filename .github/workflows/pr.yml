@@ -42,7 +42,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
@@ -97,7 +97,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
@@ -114,7 +114,7 @@ jobs:
       - name: React Versions Integration Tests (17,19) - E2E
         id: e2e
         run: |
-          yarn nx affected -t test-rit--17--e2e,test-rit--19--e2e --exclude='react-19-tests-v9,react-charting,react,react-hooks,react-examples,react-experiments'
+          yarn nx affected -t test-rit--17--e2e,test-rit--19--e2e --exclude='react-19-tests-v9,react-charting,react'
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@v4
@@ -127,7 +127,7 @@ jobs:
 
       - name: React Versions Integration Tests (17,19) - Test
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--19--test --exclude='react-19-tests-v9,react-charting,react,react-hooks,react-examples,react-experiments'
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--19--test --exclude='react-19-tests-v9,react-charting,react'
 
       - name: React Versions Integration Tests (17,19) - Type-check
         run: |
@@ -153,7 +153,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 
@@ -187,7 +187,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
 

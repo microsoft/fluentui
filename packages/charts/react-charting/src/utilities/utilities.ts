@@ -15,6 +15,8 @@ import {
   scaleTime as d3ScaleTime,
   scaleLog as d3ScaleLog,
   NumberValue,
+  ScaleBand,
+  ScaleLinear,
   ScaleContinuousNumeric as IScaleContinuousNumeric,
   ScaleTime as IScaleTime,
 } from 'd3-scale';
@@ -245,7 +247,7 @@ export function createNumericXAxis(
   chartType: ChartTypes,
   culture?: string,
   scaleType?: AxisScaleType,
-) {
+): { xScale: IScaleContinuousNumeric<number, number>; tickValues: string[] } {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = true,
@@ -379,7 +381,7 @@ function getMultiLevelD3DateFormatter(
   return formatter;
 }
 
-export function getDateFormatLevel(date: Date, useUTC?: boolean) {
+export function getDateFormatLevel(date: Date, useUTC?: boolean): number {
   const timeSecond = useUTC ? d3UtcSecond : d3TimeSecond;
   const timeMinute = useUTC ? d3UtcMinute : d3TimeMinute;
   const timeHour = useUTC ? d3UtcHour : d3TimeHour;
@@ -424,7 +426,7 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
   chartType?: ChartTypes,
-) {
+): { xScale: IScaleTime<number, number>; tickValues: string[] } {
   const {
     domainNRangeValues,
     xAxisElement,
@@ -531,7 +533,7 @@ export function createStringXAxis(
   tickParams: ITickParams,
   dataset: string[],
   culture?: string,
-) {
+): { xScale: ScaleBand<string>; tickValues: string[] } {
   const {
     domainNRangeValues,
     xAxistickSize = 6,
@@ -657,7 +659,10 @@ export function prepareDatapoints(
   return dataPointsArray;
 }
 
-export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
+export function createYAxisForHorizontalBarChartWithAxis(
+  yAxisParams: IYAxisParams,
+  isRtl: boolean,
+): ScaleLinear<number, number> {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -708,7 +713,7 @@ export function createNumericYAxis(
   supportNegativeData: boolean = false,
   roundedTicks: boolean = false,
   scaleType?: AxisScaleType,
-) {
+): ScaleLinear<number, number, never> {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -784,7 +789,7 @@ export function createNumericYAxis(
     ? yAxis.tickFormat(yAxisTickFormat)
     : yAxis.tickFormat((v, i) => tickFormat(v, i, yAxisScale.tickFormat(yAxisTickCount)));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
-  return yAxisScale;
+  return yAxisScale as ScaleLinear<number, number, never>;
 }
 
 /**
@@ -798,7 +803,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   dataPoints: string[],
   isRtl: boolean,
   barWidth: number,
-) => {
+): ScaleBand<string> => {
   const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding } = yAxisParams;
 
   let yAxisPaddingValue = yAxisPadding ?? 0.5;
@@ -828,7 +833,7 @@ export const createStringYAxis = (
   isRtl: boolean,
   barWidth?: number,
   chartType?: ChartTypes,
-) => {
+): ScaleBand<string> => {
   const {
     containerHeight,
     tickPadding = 12,
@@ -864,7 +869,26 @@ export const createStringYAxis = (
  */
 // changing the type to any as it is used by multiple charts with different data types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function calloutData(values: ((ILineChartPoints | IScatterChartPoints) & { index?: number })[]) {
+export function calloutData(values: ((ILineChartPoints | IScatterChartPoints) & { index?: number })[]): {
+  [key: number]: {
+    legend: string;
+    y: number;
+    color: string;
+    xAxisCalloutData?: string;
+    yAxisCalloutData?: string | { [id: string]: number };
+    callOutAccessibilityData?: IAccessibilityProps;
+    index?: number;
+  }[];
+  [key: string]: {
+    legend: string;
+    y: number;
+    color: string;
+    xAxisCalloutData?: string;
+    yAxisCalloutData?: string | { [id: string]: number };
+    callOutAccessibilityData?: IAccessibilityProps;
+    index?: number;
+  }[];
+} {
   let combinedResult: ((ILineChartDataPoint | IScatterChartDataPoint) & {
     legend: string;
     color?: string;
@@ -933,7 +957,7 @@ export function calloutData(values: ((ILineChartPoints | IScatterChartPoints) & 
 export function getUnique(
   arr: { x: number | Date | string; values: { legend: string; y: number }[] }[],
   comp: string | number,
-) {
+): { x: number | Date | string; values: { legend: string; y: number }[] }[] {
   const unique = arr
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .map((e: { [x: string]: any }) => e[comp])
@@ -977,7 +1001,7 @@ export const DEFAULT_WRAP_WIDTH = 10;
  * @param {IWrapLabelProps} wrapLabelProps
  * @returns
  */
-export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
+export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | undefined {
   const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip, width = DEFAULT_WRAP_WIDTH } = wrapLabelProps;
   if (node === null) {
     return;
@@ -1067,7 +1091,7 @@ export function createYAxisLabels(
   noOfCharsToTruncate: number,
   truncateLabel: boolean,
   isRtl: boolean,
-) {
+): void {
   if (node === null) {
     return;
   }
@@ -1114,7 +1138,7 @@ export function createYAxisLabels(
   });
 }
 
-export const wrapContent = (content: string, id: string, maxWidth: number) => {
+export const wrapContent = (content: string, id: string, maxWidth: number): boolean => {
   const textElement = d3Select<SVGTextElement, {}>(`#${id}`);
   textElement.text(content);
   if (!textElement.node()) {
@@ -1166,7 +1190,7 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function tooltipOfAxislabels(axistooltipProps: any) {
+export function tooltipOfAxislabels(axistooltipProps: any): void | null {
   const { tooltipCls, axis, id } = axistooltipProps;
   if (axis === null) {
     return null;
@@ -1655,7 +1679,13 @@ export const getAccessibleDataObject = (
   accessibleData?: IAccessibilityProps,
   role: string = 'text',
   isDataFocusable: boolean = true,
-) => {
+): {
+  role: string;
+  'data-is-focusable': boolean;
+  'aria-label': string | undefined;
+  'aria-labelledby': string | undefined;
+  'aria-describedby': string | undefined;
+} => {
   accessibleData = accessibleData ?? {};
   return {
     role,
@@ -1666,7 +1696,7 @@ export const getAccessibleDataObject = (
   };
 };
 
-export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
+export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps): number | undefined {
   const { node, xAxis } = rotateLabelProps;
   if (node === null || xAxis === null) {
     return;
@@ -1713,7 +1743,7 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   return Math.floor(maxHeight / 1.414); // Compute maxHeight/tanInverse(45) to get the vertical height of labels.
 }
 
-export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
+export function wrapTextInsideDonut(selectorClass: string, maxWidth: number): void {
   let idx: number = 0;
   d3SelectAll(`.${selectorClass}`).each(function () {
     const text = d3Select(this);
@@ -1752,7 +1782,7 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
   });
 }
 
-export function formatScientificLimitWidth(value: number) {
+export function formatScientificLimitWidth(value: number): string {
   return yAxisTickFormatterInternal(value, true);
 }
 
@@ -1816,14 +1846,14 @@ export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
 
 const cssVarRegExp = /var\((--[a-zA-Z0-9\-]+)\)/g;
 
-export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string) {
+export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string): string {
   const containerStyles = getComputedStyle(chartContainer);
   return styleRules.replace(cssVarRegExp, (match, group1) => {
     return containerStyles.getPropertyValue(group1);
   });
 }
 
-export function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element) {
+export function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element): void {
   const styles = getComputedStyle(fromEl);
   if (Array.isArray(properties)) {
     properties.forEach(prop => {
@@ -1848,7 +1878,11 @@ const MEASUREMENT_SPAN_STYLE = {
 };
 const MEASUREMENT_SPAN_ID = getId('measurement_span_');
 
-export const createMeasurementSpan = (text: string | number, className: string, parentElement?: HTMLElement | null) => {
+export const createMeasurementSpan = (
+  text: string | number,
+  className: string,
+  parentElement?: HTMLElement | null,
+): HTMLElement => {
   let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
   if (!measurementSpan) {
     measurementSpan = document.createElement('span');
@@ -2010,7 +2044,7 @@ export function isTextMode(points: (ILineChartPoints | IScatterChartPoints)[]): 
 }
 
 // TODO: Refactor to encapsulate the complete numeric scale creation logic here, including setting domain and range.
-const createNumericScale = (scaleType?: AxisScaleType) => {
+const createNumericScale = (scaleType?: AxisScaleType): IScaleContinuousNumeric<number, number> => {
   if (scaleType === 'log') {
     return d3ScaleLog();
   } else {
@@ -2018,7 +2052,11 @@ const createNumericScale = (scaleType?: AxisScaleType) => {
   }
 };
 
-export const getDomainPaddingForMarkers = (minVal: number, maxVal: number, scaleType?: AxisScaleType) => {
+export const getDomainPaddingForMarkers = (
+  minVal: number,
+  maxVal: number,
+  scaleType?: AxisScaleType,
+): { start: number; end: number } => {
   if (scaleType === 'log') {
     return {
       start: minVal * 0.5,
@@ -2038,19 +2076,19 @@ export const getDomainPaddingForMarkers = (minVal: number, maxVal: number, scale
  * For log scales, ensures the value is strictly positive to prevent undefined scale behavior.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isValidDomainValue = (value: any, scaleType?: AxisScaleType) => {
+export const isValidDomainValue = (value: any, scaleType?: AxisScaleType): boolean => {
   return typeof value !== 'number' || scaleType !== 'log' || value > 0;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isPlottable = (x: any, y: any) => {
+export const isPlottable = (x: any, y: any): boolean => {
   return !isInvalidValue(x) && !isInvalidValue(y);
 };
 
 export const getScatterXDomainExtent = (
   points: ILineChartPoints[] | IScatterChartPoints[],
   scaleType?: AxisScaleType,
-) => {
+): [number | Date, number | Date] => {
   const isValidDataPointForScale = (item: ILineChartDataPoint | IScatterChartDataPoint) =>
     isValidDomainValue(item.x, scaleType);
 
@@ -2111,7 +2149,7 @@ export const getRangeForScatterMarkerSize = ({
   return Math.min(extraXPixels, extraYPixels);
 };
 
-export const generateLinearTicks = (tick0: number, tickStep: number, scaleDomain: number[]) => {
+export const generateLinearTicks = (tick0: number, tickStep: number, scaleDomain: number[]): number[] => {
   const domainMin = d3Min(scaleDomain)!;
   const domainMax = d3Max(scaleDomain)!;
 
@@ -2128,7 +2166,12 @@ export const generateLinearTicks = (tick0: number, tickStep: number, scaleDomain
   return ticks;
 };
 
-export const generateMonthlyTicks = (tick0: Date, tickStepInMonths: number, scaleDomain: Date[], useUTC?: boolean) => {
+export const generateMonthlyTicks = (
+  tick0: Date,
+  tickStepInMonths: number,
+  scaleDomain: Date[],
+  useUTC?: boolean,
+): Date[] => {
   const domainMin = +d3Min(scaleDomain)!;
   const domainMax = +d3Max(scaleDomain)!;
 
@@ -2226,7 +2269,7 @@ const generateDateTicks = (
 export const findCalloutPoints = (
   calloutPointsByX: Record<string, IYValueHover[]>,
   x: string | number | Date | null,
-) => {
+): { x: string | number | Date; values: IYValueHover[] } | undefined => {
   if (x === null) {
     return undefined;
   }

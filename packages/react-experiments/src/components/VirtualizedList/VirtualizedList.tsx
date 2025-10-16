@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
+import { ScrollContainerContext } from '../../utilities/scrolling/ScrollContainer';
 import { getParent, css, initializeComponentRef, EventGroup } from '@fluentui/react/lib/Utilities';
 import type { IVirtualizedListProps } from './VirtualizedList.types';
 import type { IScrollContainerContext } from '../../utilities/scrolling/ScrollContainer';
@@ -28,7 +28,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   IVirtualizedListProps<TItem>,
   IVirtualizedListState
 > {
-  public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
+  public static contextType = ScrollContainerContext;
   public context: IScrollContainerContext;
 
   private _root = React.createRef<HTMLDivElement>();

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Fri, 10 Oct 2025 07:20:53 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Oct 2025 07:21:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.34)
+
+Thu, 16 Oct 2025 07:21:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.33..@fluentui/chart-utilities_v1.1.34)
+
+### Patches
+
+- fix: resolve React 19 incompatible types ([PR #35303](https://github.com/microsoft/fluentui/pull/35303) by martinhochel@microsoft.com)
 
 ## [1.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.33)
 

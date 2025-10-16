@@ -273,7 +273,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     );
   }
 
-  public open() {
+  public open(): void {
     if (this.props.isOpen !== undefined) {
       return;
     }
@@ -285,7 +285,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     this.setState({ visibility: PanelVisibilityState.animatingOpen });
   }
 
-  public close() {
+  public close(): void {
     if (this.props.isOpen !== undefined) {
       return;
     }
