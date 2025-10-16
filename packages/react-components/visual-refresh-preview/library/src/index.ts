@@ -261,20 +261,20 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   'background/ctrl/brand/pressed': 'hsl(184, 100%, 12%)',
   'background/ctrl/brand/disabled': 'hsl(0, 0%, 94%)',
 
-  'background/ctrl/outline/rest': '',
-  'background/ctrl/outline/hover': '',
-  'background/ctrl/outline/pressed': '',
-  'background/ctrl/outline/disabled': '',
+  'background/ctrl/outline/rest': 'transparent',
+  'background/ctrl/outline/hover': 'transparent',
+  'background/ctrl/outline/pressed': 'transparent',
+  'background/ctrl/outline/disabled': 'transparent',
 
-  'background/ctrl/subtle/rest': '',
-  'background/ctrl/subtle/hover': '',
-  'background/ctrl/subtle/pressed': '',
+  'background/ctrl/subtle/rest': 'transparent',
+  'background/ctrl/subtle/hover': '#F5F5F5',
+  'background/ctrl/subtle/pressed': '#E0E0E0',
   'background/ctrl/subtle/disabled': '',
 
-  'background/ctrl/transparent/rest': '',
-  'background/ctrl/transparent/hover': '',
-  'background/ctrl/transparent/pressed': '',
-  'background/ctrl/transparent/disabled': '',
+  'background/ctrl/transparent/rest': 'transparent',
+  'background/ctrl/transparent/hover': 'transparent',
+  'background/ctrl/transparent/pressed': 'transparent',
+  'background/ctrl/transparent/disabled': 'transparent',
 
   // Border
   'borderColor/ctrl/neutral/rest': '#D1D1D1',

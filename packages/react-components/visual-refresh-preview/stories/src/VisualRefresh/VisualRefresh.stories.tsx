@@ -10,6 +10,7 @@ import {
   VisualRefreshContext,
 } from '@fluentui/visual-refresh-preview';
 import { mergeClasses } from '@griffel/react';
+import { getVisualRefreshAppearanceStateTokens } from '../../../../react-button/library/src/components/Button/useButtonStyles.styles';
 
 type ComponentState = 'rest' | 'hover' | 'focus' | 'disabled';
 
@@ -168,15 +169,17 @@ const ButtonStateCell = ({
   state,
   children,
   size,
+  isVisualRefreshEnabled,
 }: {
   appearance?: ButtonProps['appearance'];
   state: ComponentState;
   children: React.ReactNode;
   size: ButtonProps['size'];
+  isVisualRefreshEnabled: boolean;
 }) => {
   const buttonStateClasses = useButtonStateStyles();
   const hoverClass =
-    state === 'hover'
+    !isVisualRefreshEnabled && state === 'hover'
       ? appearance === 'primary'
         ? buttonStateClasses.hoverPrimary
         : appearance === 'subtle'
@@ -187,9 +190,31 @@ const ButtonStateCell = ({
       : undefined;
   const focusClass = state === 'focus' ? buttonStateClasses.focus : undefined;
   const className = mergeClasses(buttonStateClasses.base, hoverClass, focusClass);
+  const visualRefreshStyle = React.useMemo(() => {
+    if (!isVisualRefreshEnabled) {
+      return undefined;
+    }
+    const tokens = getVisualRefreshAppearanceStateTokens(appearance ?? 'secondary');
+    const stateKey = state === 'hover' ? 'hover' : state === 'disabled' ? 'disabled' : 'rest';
+    const style: React.CSSProperties = {
+      backgroundColor: tokens.background[stateKey],
+      borderColor: tokens.border[stateKey],
+    };
+    if (state === 'hover') {
+      style.cursor = 'pointer';
+    }
+    return style;
+  }, [appearance, isVisualRefreshEnabled, state]);
 
   return (
-    <Button appearance={appearance} disabled={state === 'disabled'} className={className} size={size} tabIndex={-1}>
+    <Button
+      appearance={appearance}
+      disabled={state === 'disabled'}
+      className={className}
+      size={size}
+      style={visualRefreshStyle}
+      tabIndex={-1}
+    >
       {children}
     </Button>
   );
@@ -235,7 +260,13 @@ const InputStateCell = ({
   );
 };
 
-const ComponentStatesTable = ({ controlSize }: { controlSize: ButtonProps['size'] }) => {
+const ComponentStatesTable = ({
+  controlSize,
+  isVisualRefreshEnabled,
+}: {
+  controlSize: ButtonProps['size'];
+  isVisualRefreshEnabled: boolean;
+}) => {
   const styles = useStoryStyles();
 
   const buttonVariants: Array<{ label: string; appearance?: ButtonProps['appearance']; content: string }> = [
@@ -288,7 +319,12 @@ const ComponentStatesTable = ({ controlSize }: { controlSize: ButtonProps['size'
               {buttonStateOrder.map(state => (
                 <td key={state} className={styles.stateCell}>
                   <div className={styles.stateContent}>
-                    <ButtonStateCell appearance={variant.appearance} state={state} size={controlSize}>
+                    <ButtonStateCell
+                      appearance={variant.appearance}
+                      state={state}
+                      size={controlSize}
+                      isVisualRefreshEnabled={isVisualRefreshEnabled}
+                    >
                       {state === 'disabled' ? 'Disabled' : variant.content}
                     </ButtonStateCell>
                   </div>
@@ -362,7 +398,7 @@ export const VisualRefresh = (): JSXElement => {
           </Select>
         </div>
       </div>
-      <ComponentStatesTable controlSize={controlSize} />
+      <ComponentStatesTable controlSize={controlSize} isVisualRefreshEnabled={isVisualRefreshEnabled} />
     </div>
   );
 

@@ -7,7 +7,7 @@ import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/
 import type { GriffelStyle } from '@griffel/react';
 import { semanticTokenVar, useIsVisualRefreshEnabled } from '@fluentui/visual-refresh-preview';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { ButtonSlots, ButtonState } from './Button.types';
+import type { ButtonProps, ButtonSlots, ButtonState } from './Button.types';
 
 export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
@@ -552,15 +552,13 @@ const useIconStyles = makeStyles({
   },
 });
 
+export type VisualRefreshAppearanceName = 'base' | NonNullable<ButtonProps['appearance']>;
+
 type VisualRefreshAppearanceVariant =
+  | VisualRefreshAppearanceName
   | 'base'
   | 'neutral'
-  | 'secondary'
-  | 'brand'
-  | 'primary'
-  | 'outline'
-  | 'subtle'
-  | 'transparent';
+  | 'brand';
 
 const visualRefreshAppearanceAlias: Record<
   VisualRefreshAppearanceVariant,
@@ -611,12 +609,60 @@ const createVisualRefreshAppearanceStyles = (appearance: VisualRefreshAppearance
   };
 };
 
+type VisualRefreshInteractionState = 'rest' | 'hover' | 'pressed' | 'disabled';
+
+export type VisualRefreshAppearanceStateTokens = {
+  background: Record<VisualRefreshInteractionState, string>;
+  border: Record<VisualRefreshInteractionState, string>;
+};
+
+const resolveVisualRefreshAppearanceVariant = (
+  appearance?: VisualRefreshAppearanceName,
+): VisualRefreshAppearanceVariant => {
+  if (!appearance) {
+    return 'secondary';
+  }
+  return appearance;
+};
+
+export const getVisualRefreshAppearanceStateTokens = (
+  appearance?: VisualRefreshAppearanceName,
+): VisualRefreshAppearanceStateTokens => {
+  const variant = resolveVisualRefreshAppearanceVariant(appearance);
+  const tokenGroup = visualRefreshAppearanceAlias[variant] ?? 'neutral';
+  const backgroundTokenBase = `background/ctrl/${tokenGroup}`;
+  const borderTokenBase = `borderColor/ctrl/${tokenGroup}`;
+
+  const background = {
+    rest: getSemanticTokenValue(`${backgroundTokenBase}/rest`),
+    hover: getSemanticTokenValue(`${backgroundTokenBase}/hover`),
+    pressed: getSemanticTokenValue(`${backgroundTokenBase}/pressed`),
+    disabled: getSemanticTokenValue(`${backgroundTokenBase}/disabled`),
+  };
+
+  const border = {
+    rest: getSemanticTokenValue(`${borderTokenBase}/rest`),
+    hover: getSemanticTokenValue(`${borderTokenBase}/hover`),
+    pressed: getSemanticTokenValue(`${borderTokenBase}/pressed`),
+    disabled: getSemanticTokenValue(`${borderTokenBase}/disabled`),
+  };
+
+  if (appearance === 'primary' || appearance === 'subtle' || appearance === 'transparent') {
+    border.rest = 'transparent';
+    border.hover = 'transparent';
+    border.pressed = 'transparent';
+    border.disabled = 'transparent';
+  }
+
+  return { background, border };
+};
+
 const useVisualRefreshStyles = makeStyles({
-  base: createVisualRefreshAppearanceStyles('neutral'),
+  base: createVisualRefreshAppearanceStyles('base'),
 
   // Appearance variations
   outline: createVisualRefreshAppearanceStyles('outline'),
-  primary: createVisualRefreshAppearanceStyles('brand'),
+  primary: createVisualRefreshAppearanceStyles('primary'),
   secondary: {
     // same as base
   },
