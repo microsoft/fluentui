@@ -33,8 +33,16 @@ const useRootStyles = makeStyles({
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
       borderRightWidth: semanticTokens.groupButtonDividerStrokewidth,
-      ':hover': { borderTopRightRadius: 0, borderBottomRightRadius: 0 },
-      ':hover:active': { borderTopRightRadius: 0, borderBottomRightRadius: 0 },
+      ':hover': {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
+        borderRightWidth: semanticTokens.groupButtonDividerStrokewidth,
+      },
+      ':hover:active': {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
+        borderRightWidth: semanticTokens.groupButtonDividerStrokewidth,
+      },
     },
 
     [`& .${splitButtonClassNames.menuButton}`]: {
