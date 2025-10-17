@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: update dropdown forced-colors mode states",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "patch"
+}
