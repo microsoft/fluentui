@@ -1,7 +1,7 @@
-import { generics } from '../src/definitions/generics';
-import { primitives } from '../src/definitions/primitives';
-import { GroupPart, groups } from '../src/definitions/groups';
-import { controls } from '../src/definitions/controls';
+import { generics } from './definitions/generics';
+import { primitives } from './definitions/primitives';
+import { GroupPart, groups } from './definitions/groups';
+import { controls } from './definitions/controls';
 
 const joiner = '.';
 

@@ -1,9 +1,9 @@
 import { generateControlTokens, generateGenericTokens, generateGroupTokens } from './generateTokens';
 import fs from 'fs';
 import path from 'node:path';
-import { groupFallbacks } from '../src/definitions/groupFallbacks';
-import { genericFallbacks } from '../src/definitions/genericFallbacks';
-import { controlFallbacks } from '../src/definitions/controlFallbacks';
+import { groupFallbacks } from './definitions/groupFallbacks';
+import { genericFallbacks } from './definitions/genericFallbacks';
+import { controlFallbacks } from './definitions/controlFallbacks';
 
 function dotToCamelCase(str: string): string {
   return str

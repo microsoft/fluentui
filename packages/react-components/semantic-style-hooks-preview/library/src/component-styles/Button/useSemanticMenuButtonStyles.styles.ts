@@ -1,3 +1,5 @@
+'use client';
+
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';

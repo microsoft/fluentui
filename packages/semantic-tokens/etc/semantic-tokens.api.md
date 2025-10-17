@@ -335,7 +335,7 @@ export const groupButtonNeutralStrokePressed = "var(--smtc-group-button-neutral-
 export const groupButtonNeutralStrokePressedSelected = "var(--smtc-group-button-neutral-stroke-pressed-selected, var(--colorNeutralStroke1Pressed))";
 
 // @public (undocumented)
-export const groupButtonNeutralStrokeSelected = "var(--smtc-group-button-neutral-stroke-selected, var(--colorNeutralStroke1))";
+export const groupButtonNeutralStrokeSelected = "var(--smtc-group-button-neutral-stroke-selected, var(--colorNeutralStroke1Selected))";
 
 // @public (undocumented)
 export const groupButtonNeutralTextForeground = "var(--smtc-group-button-neutral-text-foreground, var(--colorNeutralForeground1))";

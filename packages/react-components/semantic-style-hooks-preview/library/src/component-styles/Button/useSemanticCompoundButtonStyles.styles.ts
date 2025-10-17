@@ -1,3 +1,5 @@
+'use client';
+
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';
@@ -340,7 +342,7 @@ export const useSemanticCompoundButtonStyles = (_state: unknown): CompoundButton
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
 
-  const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, size } = state;
+  const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
 
   useSemanticButtonStyles(state);
 
@@ -373,7 +375,6 @@ export const useSemanticCompoundButtonStyles = (_state: unknown): CompoundButton
   );
 
   if (state.icon) {
-    console.log('iconPosition', iconPosition);
     state.icon.className = mergeClasses(
       state.icon.className,
       compoundButtonClassNames.icon,
