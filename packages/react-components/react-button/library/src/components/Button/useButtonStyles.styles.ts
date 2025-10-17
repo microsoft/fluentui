@@ -578,11 +578,16 @@ const createVisualRefreshAppearanceStyles = (appearance: VisualRefreshAppearance
   const foregroundTokenBase = `foreground/ctrl/${tokenGroup}`;
   const backgroundTokenBase = `background/ctrl/${tokenGroup}`;
   const borderTokenBase = `borderColor/ctrl/${tokenGroup}`;
+  const iconColorTokenBase = `iconColor/ctrl/${tokenGroup}`;
 
   return {
     color: getSemanticTokenValue(`${foregroundTokenBase}/rest`),
     backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/rest`),
     ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/rest`)),
+    [`& .${buttonClassNames.icon}`]: {
+      color: getSemanticTokenValue(`${iconColorTokenBase}/rest`),
+    },
+
     ':hover': {
       color: getSemanticTokenValue(`${foregroundTokenBase}/hover`),
       backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/hover`),
@@ -594,77 +599,48 @@ const createVisualRefreshAppearanceStyles = (appearance: VisualRefreshAppearance
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        // color: tokens.colorNeutralForeground2BrandHover,
+        color: getSemanticTokenValue(`${iconColorTokenBase}/hover`),
       },
     },
+
     ':hover:active': {
       color: getSemanticTokenValue(`${foregroundTokenBase}/pressed`),
       backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/pressed`),
       ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/pressed`)),
+      [`& .${buttonClassNames.icon}`]: {
+        color: getSemanticTokenValue(`${iconColorTokenBase}/pressed`),
+      },
     },
+
+    ':focus': {
+      ...shorthands.borderColor(tokens.colorStrokeFocus2),
+      boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
+      outlineOffset: '2px',
+      color: getSemanticTokenValue(`${foregroundTokenBase}/hover`),
+      backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/hover`),
+      ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/hover`)),
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: getSemanticTokenValue(`${iconColorTokenBase}/hover`),
+      },
+    },
+
     ':disabled': {
+      pointerEvents: 'none',
       color: getSemanticTokenValue(`${foregroundTokenBase}/disabled`),
       backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/disabled`),
       ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/disabled`)),
+      [`& .${buttonClassNames.icon}`]: {
+        color: getSemanticTokenValue(`${iconColorTokenBase}/disabled`),
+      },
     },
   };
-};
-
-type VisualRefreshInteractionState = 'rest' | 'hover' | 'pressed' | 'disabled';
-
-export type VisualRefreshAppearanceStateTokens = {
-  foreground: Record<VisualRefreshInteractionState, string>;
-  background: Record<VisualRefreshInteractionState, string>;
-  border: Record<VisualRefreshInteractionState, string>;
-};
-
-const resolveVisualRefreshAppearanceVariant = (
-  appearance?: VisualRefreshAppearanceName,
-): VisualRefreshAppearanceVariant => {
-  if (!appearance) {
-    return 'secondary';
-  }
-  return appearance;
-};
-
-export const getVisualRefreshAppearanceStateTokens = (
-  appearance?: VisualRefreshAppearanceName,
-): VisualRefreshAppearanceStateTokens => {
-  const variant = resolveVisualRefreshAppearanceVariant(appearance);
-  const tokenGroup = visualRefreshAppearanceAlias[variant] ?? 'neutral';
-  const foregroundTokenBase = `foreground/ctrl/${tokenGroup}`;
-  const backgroundTokenBase = `background/ctrl/${tokenGroup}`;
-  const borderTokenBase = `borderColor/ctrl/${tokenGroup}`;
-
-  const foreground = {
-    rest: getSemanticTokenValue(`${foregroundTokenBase}/rest`),
-    hover: getSemanticTokenValue(`${foregroundTokenBase}/hover`),
-    pressed: getSemanticTokenValue(`${foregroundTokenBase}/pressed`),
-    disabled: getSemanticTokenValue(`${foregroundTokenBase}/disabled`),
-  };
-
-  const background = {
-    rest: getSemanticTokenValue(`${backgroundTokenBase}/rest`),
-    hover: getSemanticTokenValue(`${backgroundTokenBase}/hover`),
-    pressed: getSemanticTokenValue(`${backgroundTokenBase}/pressed`),
-    disabled: getSemanticTokenValue(`${backgroundTokenBase}/disabled`),
-  };
-
-  const border = {
-    rest: getSemanticTokenValue(`${borderTokenBase}/rest`),
-    hover: getSemanticTokenValue(`${borderTokenBase}/hover`),
-    pressed: getSemanticTokenValue(`${borderTokenBase}/pressed`),
-    disabled: getSemanticTokenValue(`${borderTokenBase}/disabled`),
-  };
-
-  if (appearance === 'primary' || appearance === 'subtle' || appearance === 'transparent') {
-    border.rest = 'transparent';
-    border.hover = 'transparent';
-    border.pressed = 'transparent';
-    border.disabled = 'transparent';
-  }
-
-  return { foreground, background, border };
 };
 
 const useVisualRefreshStyles = makeStyles({
@@ -778,4 +754,65 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     );
   }
   return state;
+};
+
+/**
+ *  Visual Refresh Storybook utils
+ *  */
+type VisualRefreshInteractionState = 'rest' | 'hover' | 'pressed' | 'disabled';
+type VisualRefreshIconVariant = 'regular' | 'filled';
+
+const filledIconStates = new Set<VisualRefreshInteractionState>(['hover', 'pressed']);
+
+const visualRefreshInteractionStates: readonly VisualRefreshInteractionState[] = [
+  'rest',
+  'hover',
+  'pressed',
+  'disabled',
+];
+
+const createInteractionStateTokens = (tokenBase: string): Record<VisualRefreshInteractionState, string> =>
+  Object.fromEntries(
+    visualRefreshInteractionStates.map(state => [state, getSemanticTokenValue(`${tokenBase}/${state}`)]),
+  ) as Record<VisualRefreshInteractionState, string>;
+
+const createIconVariantTokens = (): Record<VisualRefreshInteractionState, VisualRefreshIconVariant> =>
+  Object.fromEntries(
+    visualRefreshInteractionStates.map(state => [state, filledIconStates.has(state) ? 'filled' : 'regular']),
+  ) as Record<VisualRefreshInteractionState, VisualRefreshIconVariant>;
+
+export type VisualRefreshAppearanceStateTokens = {
+  foreground: Record<VisualRefreshInteractionState, string>;
+  background: Record<VisualRefreshInteractionState, string>;
+  border: Record<VisualRefreshInteractionState, string>;
+  icon: {
+    color: Record<VisualRefreshInteractionState, string>;
+    variant: Record<VisualRefreshInteractionState, VisualRefreshIconVariant>;
+  };
+};
+
+const resolveVisualRefreshAppearanceVariant = (
+  appearance?: VisualRefreshAppearanceName,
+): VisualRefreshAppearanceVariant => {
+  if (!appearance) {
+    return 'secondary';
+  }
+  return appearance;
+};
+
+export const getVisualRefreshAppearanceStateTokens = (
+  appearance?: VisualRefreshAppearanceName,
+): VisualRefreshAppearanceStateTokens => {
+  const variant = resolveVisualRefreshAppearanceVariant(appearance);
+  const tokenGroup = visualRefreshAppearanceAlias[variant] ?? 'neutral';
+
+  const foreground = createInteractionStateTokens(`foreground/ctrl/${tokenGroup}`);
+  const background = createInteractionStateTokens(`background/ctrl/${tokenGroup}`);
+  const border = createInteractionStateTokens(`borderColor/ctrl/${tokenGroup}`);
+  const icon = {
+    color: createInteractionStateTokens(`iconColor/ctrl/${tokenGroup}`),
+    variant: createIconVariantTokens(),
+  };
+
+  return { foreground, background, border, icon };
 };

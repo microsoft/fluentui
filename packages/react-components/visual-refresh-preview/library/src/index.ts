@@ -208,10 +208,15 @@ export const MAI_SEMANTIC_TOKENS = {
  * Notes
  * 1. sm, default, lg -> sm, md, lg.
  * 2. padding/ctrl/horizontal-default -> padding/ctrl/horizontal/md
- * 3. gap/inside/ctrl/default -> gap/ctrl/md
- * 4. fontWeight, lineHeight - ?
- * 5. @media (forced-colors: active) ?
- * 6. background/ctrl/neutral/selected - Selected?
+ * 3. gap/inside/ctrl/default -> gap/ctrl/md - no gap outside
+ * 4. fontWeight, lineHeight - ? - no size relation (sm, md, lg)
+ * 5. @media (forced-colors: active) ? - missed
+ * 6. background/ctrl/neutral/selected - no "selected" option for the current Button implementation
+ * 7. background/ctrl/neutral/hover vs iconColor/ctrl/default/rest
+ * 8. Fluent UI not defines chevron as icon for Button. Intead the call Button with chevron MenuButton
+ *      - MenuButton + icon/ctrl
+ *      - Button + primaryIcon/ctrl + secondaryIcon/ctrl
+ * 9. if border="transparent" it makes button height 2px size less depends on variant
  */
 
 export const TEAMS_VISUAL_REFRESH_THEME = {
@@ -326,6 +331,32 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   'borderColor/ctrl/transparent/hover': 'transparent',
   'borderColor/ctrl/transparent/pressed': 'transparent',
   'borderColor/ctrl/transparent/disabled': 'transparent',
+
+  // Icon
+  'iconColor/ctrl/neutral/rest': '#616161',
+  'iconColor/ctrl/neutral/hover': '#424242',
+  'iconColor/ctrl/neutral/pressed': '#00595D',
+  'iconColor/ctrl/neutral/disabled': '#BDBDBD',
+
+  'iconColor/ctrl/brand/rest': '#FFFFFF',
+  'iconColor/ctrl/brand/hover': '#FFFFFF',
+  'iconColor/ctrl/brand/pressed': '#FFFFFF',
+  'iconColor/ctrl/brand/disabled': '#BDBDBD',
+
+  'iconColor/ctrl/outline/rest': '#616161',
+  'iconColor/ctrl/outline/hover': '#424242',
+  'iconColor/ctrl/outline/pressed': '#00595D',
+  'iconColor/ctrl/outline/disabled': '#BDBDBD',
+
+  'iconColor/ctrl/subtle/rest': '#616161',
+  'iconColor/ctrl/subtle/hover': '#00686D',
+  'iconColor/ctrl/subtle/pressed': '#00595D',
+  'iconColor/ctrl/subtle/disabled': '#BDBDBD',
+
+  'iconColor/ctrl/transparent/rest': '#616161',
+  'iconColor/ctrl/transparent/hover': '#00686D',
+  'iconColor/ctrl/transparent/pressed': '#00595D',
+  'iconColor/ctrl/transparent/disabled': '#BDBDBD',
 };
 
 export const TEAMS_VISUAL_REFRESH_TOKENS = Object.fromEntries(

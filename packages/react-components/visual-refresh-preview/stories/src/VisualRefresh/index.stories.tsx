@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta } from '@storybook/react';
 
 export { VisualRefresh } from './VisualRefresh.stories';
+export { ButtonVisualRefresh as Button } from './Button.stories';
 
 const Component = () => <div />;
 

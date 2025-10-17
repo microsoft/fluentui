@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Button, Input, Label, Select, Switch, makeStyles, useId } from '@fluentui/react-components';
-import type { ButtonProps, InputProps, SwitchOnChangeData } from '@fluentui/react-components';
+import { Button, Label, Select, Switch, makeStyles, useId } from '@fluentui/react-components';
+import type { ButtonProps, SwitchOnChangeData } from '@fluentui/react-components';
 import { tokens } from '@fluentui/react-theme';
 import {
   sanitizeTokenName,
@@ -9,17 +9,29 @@ import {
   TEAMS_VISUAL_REFRESH_TOKENS,
   VisualRefreshContext,
 } from '@fluentui/visual-refresh-preview';
-import { mergeClasses, shorthands } from '@griffel/react';
-import { getVisualRefreshAppearanceStateTokens } from '../../../../react-button/library/src/components/Button/useButtonStyles.styles';
+import {
+  getVisualRefreshAppearanceStateTokens,
+  type VisualRefreshAppearanceStateTokens,
+} from '../../../../react-button/library/src/components/Button/useButtonStyles.styles';
+import { bundleIcon, ChatEmptyFilled, ChatEmptyRegular } from '@fluentui/react-icons';
 
-type ComponentState = 'rest' | 'hover' | 'focus' | 'disabled';
+type ComponentState = 'rest' | 'hover' | 'pressed' | 'focus' | 'disabled';
+type AppearanceStateKey = keyof VisualRefreshAppearanceStateTokens['foreground'];
 
-const buttonStateOrder: ComponentState[] = ['rest', 'hover', 'focus', 'disabled'];
+const buttonStateOrder: ComponentState[] = ['rest', 'hover', 'pressed', 'focus', 'disabled'];
 const buttonStateLabels: Record<ComponentState, string> = {
   rest: 'Rest',
   hover: 'Hover',
+  pressed: 'Pressed',
   focus: 'Focus',
   disabled: 'Disabled',
+};
+const componentStateToAppearanceStateKey: Record<ComponentState, AppearanceStateKey> = {
+  rest: 'rest',
+  hover: 'hover',
+  pressed: 'pressed',
+  focus: 'rest',
+  disabled: 'disabled',
 };
 
 const useStoryStyles = makeStyles({
@@ -79,49 +91,7 @@ const useStoryStyles = makeStyles({
   },
   stateContent: {
     display: 'flex',
-    justifyContent: 'center',
-  },
-});
-
-const useButtonStateStyles = makeStyles({
-  focus: {
-    ...shorthands.borderColor(tokens.colorStrokeFocus2),
-    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-    outlineOffset: '2px',
-  },
-});
-
-const useInputStateStyles = makeStyles({
-  base: {
-    width: '200px',
-    pointerEvents: 'none',
-  },
-  hoverOutline: {
-    borderColor: tokens.colorNeutralStroke1Hover,
-    borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-    cursor: 'text',
-  },
-  hoverUnderline: {
-    borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-    cursor: 'text',
-  },
-  focusOutline: {
-    borderColor: tokens.colorNeutralStroke1Pressed,
-    borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-    cursor: 'text',
-    '::after': {
-      borderBottomColor: tokens.colorCompoundBrandStroke,
-      transform: 'scaleX(1)',
-    },
-  },
-  focusUnderline: {
-    borderBottomColor: tokens.colorCompoundBrandStroke,
-    cursor: 'text',
-    '::after': {
-      borderBottomColor: tokens.colorCompoundBrandStroke,
-      transform: 'scaleX(1)',
-    },
+    justifyContent: 'start',
   },
 });
 
@@ -153,14 +123,16 @@ const ButtonStateCell = ({
   size: ButtonProps['size'];
   isVisualRefreshEnabled: boolean;
 }) => {
-  const buttonStateClasses = useButtonStateStyles();
-  const focusClass = state === 'focus' ? buttonStateClasses.focus : undefined;
-  const visualRefreshStyle = React.useMemo(() => {
+  const visualRefreshState = React.useMemo(() => {
     if (!isVisualRefreshEnabled) {
-      return undefined;
+      return {
+        style: undefined,
+        iconVariant: undefined,
+        iconColor: undefined,
+      };
     }
     const tokens = getVisualRefreshAppearanceStateTokens(appearance ?? 'secondary');
-    const stateKey = state === 'hover' ? 'hover' : state === 'disabled' ? 'disabled' : 'rest';
+    const stateKey = componentStateToAppearanceStateKey[state];
     const style: React.CSSProperties = {
       color: tokens.foreground[stateKey],
       backgroundColor: tokens.background[stateKey],
@@ -169,60 +141,33 @@ const ButtonStateCell = ({
     if (state === 'hover') {
       style.cursor = 'pointer';
     }
-    return style;
+    return {
+      style,
+      iconVariant: tokens.icon.variant[stateKey],
+      iconColor: tokens.icon.color[stateKey],
+    };
   }, [appearance, isVisualRefreshEnabled, state]);
+
+  const visualRefreshStyle = visualRefreshState.style;
+  const visualRefreshIconVariant = visualRefreshState.iconVariant;
+  const visualRefreshIconColor = visualRefreshState.iconColor;
+
+  const ChatEmpty = bundleIcon(ChatEmptyFilled, ChatEmptyRegular);
+  const chatIconFilled = isVisualRefreshEnabled ? visualRefreshIconVariant === 'filled' : undefined;
+  const chatIconStyle =
+    isVisualRefreshEnabled && visualRefreshIconColor ? { color: visualRefreshIconColor } : undefined;
 
   return (
     <Button
       appearance={appearance}
       disabled={state === 'disabled'}
-      className={focusClass}
       size={size}
       style={visualRefreshStyle}
       tabIndex={-1}
+      icon={<ChatEmpty filled={chatIconFilled} style={chatIconStyle} />}
     >
       {children}
     </Button>
-  );
-};
-
-const InputStateCell = ({
-  appearance,
-  state,
-  defaultValue,
-  disabledValue,
-  size,
-}: {
-  appearance: NonNullable<InputProps['appearance']>;
-  state: ComponentState;
-  defaultValue: string;
-  disabledValue: string;
-  size: NonNullable<InputProps['size']>;
-}) => {
-  const inputStateClasses = useInputStateStyles();
-  const hoverClass =
-    state === 'hover'
-      ? appearance === 'underline'
-        ? inputStateClasses.hoverUnderline
-        : inputStateClasses.hoverOutline
-      : undefined;
-  const focusClass =
-    state === 'focus'
-      ? appearance === 'underline'
-        ? inputStateClasses.focusUnderline
-        : inputStateClasses.focusOutline
-      : undefined;
-  const className = mergeClasses(inputStateClasses.base, hoverClass, focusClass);
-
-  return (
-    <Input
-      appearance={appearance}
-      className={className}
-      defaultValue={state === 'disabled' ? disabledValue : defaultValue}
-      disabled={state === 'disabled'}
-      size={size}
-      readOnly={state !== 'disabled'}
-    />
   );
 };
 
@@ -242,21 +187,6 @@ const ComponentStatesTable = ({
     { label: 'Subtle', appearance: 'subtle', content: 'Subtle' },
     { label: 'Transparent', appearance: 'transparent', content: 'Transparent' },
     { label: 'Tint', appearance: 'secondary', content: 'Tint' },
-  ];
-
-  const inputVariants: Array<{
-    label: string;
-    appearance: NonNullable<InputProps['appearance']>;
-    defaultValue: string;
-    disabledValue: string;
-  }> = [
-    { label: 'Outline', appearance: 'outline', defaultValue: 'Outline input', disabledValue: 'Outline disabled' },
-    {
-      label: 'Underline',
-      appearance: 'underline',
-      defaultValue: 'Underline input',
-      disabledValue: 'Underline disabled',
-    },
   ];
 
   return (
@@ -299,37 +229,12 @@ const ComponentStatesTable = ({
             </tr>
           ))}
         </React.Fragment>
-        <React.Fragment>
-          {inputVariants.map((variant, index) => (
-            <tr key={`input-${variant.label}`}>
-              {index === 0 && (
-                <td className={styles.componentCell} rowSpan={inputVariants.length}>
-                  Input
-                </td>
-              )}
-              <td className={styles.variantCell}>{variant.label}</td>
-              {buttonStateOrder.map(state => (
-                <td key={state} className={styles.stateCell}>
-                  <div className={styles.stateContent}>
-                    <InputStateCell
-                      appearance={variant.appearance}
-                      state={state}
-                      defaultValue={variant.defaultValue}
-                      disabledValue={variant.disabledValue}
-                      size={controlSize}
-                    />
-                  </div>
-                </td>
-              ))}
-            </tr>
-          ))}
-        </React.Fragment>
       </tbody>
     </table>
   );
 };
 
-export const VisualRefresh = (): JSXElement => {
+export const ButtonVisualRefresh = (): JSXElement => {
   const styles = useStoryStyles();
   const switchId = useId('visual-refresh-toggle');
   const sizeSelectId = useId('visual-refresh-size');
@@ -371,10 +276,10 @@ export const VisualRefresh = (): JSXElement => {
   return isVisualRefreshEnabled ? <VisualRefreshProvider>{content}</VisualRefreshProvider> : content;
 };
 
-VisualRefresh.parameters = {
+ButtonVisualRefresh.parameters = {
   docs: {
     description: {
-      story: 'Compare Button and Input variants across interaction states with and without the visual refresh theme.',
+      story: 'Compare Button variants across interaction states with and without the visual refresh theme.',
     },
   },
 };
