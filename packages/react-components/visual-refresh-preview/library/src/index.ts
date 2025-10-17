@@ -219,6 +219,18 @@ export const MAI_SEMANTIC_TOKENS = {
  * 9. if border="transparent" it makes button height 2px size less depends on variant
  * 10. size/ctrl/lg - what should we do with icon size? 12px/16px/16px
  * 11. Theme support? light/dark/HC?
+ *
+ * Delta
+ * ------------------------------------------------------
+ * Colors
+ * '#00595D', // tokens.colorPaletteLightTealForeground2
+ * '#00686D', // tokens.colorPaletteLightTealForeground2
+ * '#03787c', // tokens.colorPaletteTealForeground2
+ * '#00393d', // tokens.colorPaletteSteelForeground2
+ *
+ * ------------------------------------------------------
+ * Border Radius (12px)
+ * Sizes (all)
  */
 
 export const TEAMS_VISUAL_REFRESH_THEME = {
@@ -228,17 +240,17 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
 
   // Button
   // Padding
-  'padding/ctrl/horizontal/sm': '8px',
-  'padding/ctrl/horizontal/md': '12px',
-  'padding/ctrl/horizontal/lg': '12px',
+  'padding/ctrl/horizontal/sm': tokens.spacingHorizontalS,
+  'padding/ctrl/horizontal/md': tokens.spacingHorizontalM,
+  'padding/ctrl/horizontal/lg': tokens.spacingHorizontalM,
 
-  'padding/ctrl/vertical/sm': '4px',
-  'padding/ctrl/vertical/md': '8px',
-  'padding/ctrl/vertical/lg': '10px',
+  'padding/ctrl/vertical/sm': tokens.spacingVerticalXS,
+  'padding/ctrl/vertical/md': tokens.spacingVerticalS,
+  'padding/ctrl/vertical/lg': tokens.spacingVerticalMNudge,
   // Gap
-  'gap/ctrl/sm': '4px',
-  'gap/ctrl/md': '6px',
-  'gap/ctrl/lg': '6px',
+  'gap/ctrl/sm': tokens.spacingHorizontalXS,
+  'gap/ctrl/md': tokens.spacingHorizontalSNudge,
+  'gap/ctrl/lg': tokens.spacingHorizontalSNudge,
 
   // Border radius
   'corner/ctrl/sm': '12px',
@@ -246,17 +258,17 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   'corner/ctrl/lg': '12px',
 
   // Font
-  'fontSize/ctrl/sm': '12px',
-  'fontSize/ctrl/md': '14px',
-  'fontSize/ctrl/lg': '14px',
+  'fontSize/ctrl/sm': tokens.fontSizeBase200,
+  'fontSize/ctrl/md': tokens.fontSizeBase300,
+  'fontSize/ctrl/lg': tokens.fontSizeBase300,
 
-  'lineHeight/ctrl/sm': '16px',
-  'lineHeight/ctrl/md': '20px',
-  'lineHeight/ctrl/lg': '20px',
+  'lineHeight/ctrl/sm': tokens.lineHeightBase200,
+  'lineHeight/ctrl/md': tokens.lineHeightBase300,
+  'lineHeight/ctrl/lg': tokens.lineHeightBase300,
 
-  'fontWeight/ctrl/sm': '600',
-  'fontWeight/ctrl/md': '600',
-  'fontWeight/ctrl/lg': '600',
+  'fontWeight/ctrl/sm': tokens.fontWeightSemibold,
+  'fontWeight/ctrl/md': tokens.fontWeightSemibold,
+  'fontWeight/ctrl/lg': tokens.fontWeightSemibold,
 
   'foreground/ctrl/neutral/rest': tokens.colorNeutralForeground3,
   'foreground/ctrl/neutral/hover': tokens.colorNeutralForeground3Hover,
@@ -279,8 +291,8 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   'foreground/ctrl/subtle/disabled': tokens.colorNeutralForegroundDisabled,
 
   'foreground/ctrl/transparent/rest': tokens.colorNeutralForeground3,
-  'foreground/ctrl/transparent/hover': '#00686D',
-  'foreground/ctrl/transparent/pressed': '#00595D',
+  'foreground/ctrl/transparent/hover': '#00686D', // tokens.colorPaletteLightTealForeground2
+  'foreground/ctrl/transparent/pressed': '#00595D', // tokens.colorPaletteLightTealForeground2
   'foreground/ctrl/transparent/disabled': tokens.colorNeutralForegroundDisabled,
 
   // Background
@@ -289,9 +301,9 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   'background/ctrl/neutral/pressed': tokens.colorNeutralBackground2Pressed,
   'background/ctrl/neutral/disabled': tokens.colorNeutralBackgroundDisabled,
 
-  'background/ctrl/brand/rest': '#03787c',
-  'background/ctrl/brand/hover': '#00666b',
-  'background/ctrl/brand/pressed': '#00393d',
+  'background/ctrl/brand/rest': '#03787c', // tokens.colorPaletteTealForeground2
+  'background/ctrl/brand/hover': tokens.colorPaletteLightTealForeground2,
+  'background/ctrl/brand/pressed': '#00393d', // tokens.colorPaletteSteelForeground2
   'background/ctrl/brand/disabled': tokens.colorNeutralBackgroundDisabled,
 
   'background/ctrl/outline/rest': tokens.colorTransparentBackground,
@@ -300,8 +312,8 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   'background/ctrl/outline/disabled': tokens.colorTransparentBackground,
 
   'background/ctrl/subtle/rest': tokens.colorTransparentBackground,
-  'background/ctrl/subtle/hover': '#F5F5F5',
-  'background/ctrl/subtle/pressed': '#E0E0E0',
+  'background/ctrl/subtle/hover': tokens.colorSubtleBackgroundHover,
+  'background/ctrl/subtle/pressed': tokens.colorSubtleBackgroundPressed,
   'background/ctrl/subtle/disabled': tokens.colorTransparentBackground,
 
   'background/ctrl/transparent/rest': tokens.colorTransparentBackground,
@@ -310,20 +322,20 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   'background/ctrl/transparent/disabled': tokens.colorTransparentBackground,
 
   // Border
-  'borderColor/ctrl/neutral/rest': '#D1D1D1',
-  'borderColor/ctrl/neutral/hover': '#C7C7C7',
-  'borderColor/ctrl/neutral/pressed': '#B3B3B3',
-  'borderColor/ctrl/neutral/disabled': '#E0E0E0',
+  'borderColor/ctrl/neutral/rest': tokens.colorNeutralStroke1,
+  'borderColor/ctrl/neutral/hover': tokens.colorNeutralStroke1Hover,
+  'borderColor/ctrl/neutral/pressed': tokens.colorNeutralStroke1Pressed,
+  'borderColor/ctrl/neutral/disabled': tokens.colorNeutralStrokeDisabled,
 
   'borderColor/ctrl/brand/rest': tokens.colorTransparentStroke, // Acturally should be the same as background, if not sizes would be different
   'borderColor/ctrl/brand/hover': tokens.colorTransparentStroke,
   'borderColor/ctrl/brand/pressed': tokens.colorTransparentStroke,
   'borderColor/ctrl/brand/disabled': tokens.colorTransparentStroke,
 
-  'borderColor/ctrl/outline/rest': '#D1D1D1',
-  'borderColor/ctrl/outline/hover': '#C7C7C7',
-  'borderColor/ctrl/outline/pressed': '#B3B3B3',
-  'borderColor/ctrl/outline/disabled': '#E0E0E0',
+  'borderColor/ctrl/outline/rest': tokens.colorNeutralStroke1,
+  'borderColor/ctrl/outline/hover': tokens.colorNeutralStroke1Hover,
+  'borderColor/ctrl/outline/pressed': tokens.colorNeutralStroke1Pressed,
+  'borderColor/ctrl/outline/disabled': tokens.colorNeutralStrokeDisabled,
 
   'borderColor/ctrl/subtle/rest': tokens.colorTransparentStroke,
   'borderColor/ctrl/subtle/hover': tokens.colorTransparentStroke,
@@ -338,27 +350,27 @@ export const TEAMS_VISUAL_REFRESH_THEME = {
   // Icon
   'iconColor/ctrl/neutral/rest': tokens.colorNeutralForeground3,
   'iconColor/ctrl/neutral/hover': tokens.colorNeutralForeground3Hover,
-  'iconColor/ctrl/neutral/pressed': '#00595D',
-  'iconColor/ctrl/neutral/disabled': '#BDBDBD',
+  'iconColor/ctrl/neutral/pressed': '#00595D', // tokens.colorPaletteLightTealForeground2
+  'iconColor/ctrl/neutral/disabled': tokens.colorNeutralForegroundDisabled,
 
-  'iconColor/ctrl/brand/rest': '#FFFFFF',
-  'iconColor/ctrl/brand/hover': '#FFFFFF',
-  'iconColor/ctrl/brand/pressed': '#FFFFFF',
+  'iconColor/ctrl/brand/rest': tokens.colorNeutralForegroundOnBrand,
+  'iconColor/ctrl/brand/hover': tokens.colorNeutralForegroundOnBrand,
+  'iconColor/ctrl/brand/pressed': tokens.colorNeutralForegroundOnBrand,
   'iconColor/ctrl/brand/disabled': tokens.colorNeutralForegroundDisabled,
 
   'iconColor/ctrl/outline/rest': tokens.colorNeutralForeground3,
   'iconColor/ctrl/outline/hover': tokens.colorNeutralForeground3Hover,
-  'iconColor/ctrl/outline/pressed': '#00595D',
+  'iconColor/ctrl/outline/pressed': '#00595D', // tokens.colorPaletteLightTealForeground2
   'iconColor/ctrl/outline/disabled': tokens.colorNeutralForegroundDisabled,
 
   'iconColor/ctrl/subtle/rest': tokens.colorNeutralForeground3,
-  'iconColor/ctrl/subtle/hover': '#00686D',
-  'iconColor/ctrl/subtle/pressed': '#00595D',
+  'iconColor/ctrl/subtle/hover': '#00686D', // tokens.colorPaletteLightTealForeground2
+  'iconColor/ctrl/subtle/pressed': '#00595D', // tokens.colorPaletteLightTealForeground2
   'iconColor/ctrl/subtle/disabled': tokens.colorNeutralForegroundDisabled,
 
   'iconColor/ctrl/transparent/rest': tokens.colorNeutralForeground3,
-  'iconColor/ctrl/transparent/hover': '#00686D',
-  'iconColor/ctrl/transparent/pressed': '#00595D',
+  'iconColor/ctrl/transparent/hover': '#00686D', // tokens.colorPaletteLightTealForeground2
+  'iconColor/ctrl/transparent/pressed': '#00595D', // tokens.colorPaletteLightTealForeground2
   'iconColor/ctrl/transparent/disabled': tokens.colorNeutralForegroundDisabled,
 };
 
