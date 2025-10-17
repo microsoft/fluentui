@@ -52,7 +52,7 @@ Carousel provides callbacks on navigation changes, as well as the ability to dri
 
 ### Carousel
 
-Carousel is the context wrapper and container for all carousel content/controls, it has no direct style or slot opinions. Carousel also provides API interfaces for callbacks that will occur on navigation events.
+Carousel is the context wrapper and container for all carousel content/controls. By default it keeps styling minimal, but an `appearance` prop can be used to apply additional visual treatments such as rounded corners and shadow. Carousel also provides API interfaces for callbacks that will occur on navigation events.
 
 ### CarouselAutoplayButton
 

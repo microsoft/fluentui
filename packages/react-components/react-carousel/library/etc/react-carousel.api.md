@@ -32,6 +32,9 @@ export const Carousel: ForwardRefComponent<CarouselProps>;
 // @public
 export type CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => string;
 
+// @public (undocumented)
+export type CarouselAppearance = 'flat' | 'elevated';
+
 // @public
 export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonProps>;
 
@@ -98,6 +101,7 @@ export const carouselContextDefaultValue: CarouselContextValue;
 // @public (undocumented)
 export type CarouselContextValue = {
     activeIndex: number;
+    appearance: CarouselAppearance;
     circular: boolean;
     selectPageByElement: (event: React_2.FocusEvent, element: HTMLElement, jump?: boolean) => number;
     selectPageByDirection: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, direction: 'next' | 'prev') => number;
@@ -211,6 +215,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     defaultActiveIndex?: number;
     align?: 'center' | 'start' | 'end';
     activeIndex?: number;
+    appearance?: CarouselAppearance;
     onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
     circular?: boolean;
     groupSize?: number | 'auto';
