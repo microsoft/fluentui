@@ -575,355 +575,345 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="LineChart. Line chart with 1 lines. The X axis displays values. The Y axis displays values. "
+        focusable="false"
+        height="310"
+        role="region"
+        style="display: block;"
+        width="108"
       >
-        <svg
-          aria-label="LineChart. Line chart with 1 lines. The X axis displays values. The Y axis displays values. "
-          focusable="false"
-          height="310"
-          role="region"
-          style="display: block;"
-          width="108"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_9"
+          text-anchor="middle"
+          transform="translate(0, 275)"
         >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H88.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_9"
-            text-anchor="middle"
-            transform="translate(0, 275)"
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
           >
-            <path
-              class="domain"
-              d="M40.5,6V0.5H88.5V6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(40.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                20
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(52.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                25
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(64.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(76.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                35
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(88.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                40
-              </text>
-            </g>
-          </g>
-          <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_9"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M-6,275.5H0.5V20.5H-6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,275.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,211.75)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                20
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,148)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                40
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,84.25)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                80
-              </text>
-            </g>
-          </g>
-          <g>
             <line
-              id="verticalLine3"
-              stroke="#323130"
-              stroke-dasharray="5,5"
-              transform="translate(40, 115.625)"
-              visibility="visibility"
-              x1="0"
-              x2="0"
-              y1="0"
-              y2="165.375"
+              stroke="currentColor"
+              y2="6"
             />
-            <g>
-              <g
-                aria-label="metaData1, line 1 of 1 with 2 data points."
-                role="region"
-              >
-                <line
-                  id="lineID1_0_1"
-                  opacity="1"
-                  stroke="red"
-                  stroke-linecap="round"
-                  stroke-width="4"
-                  x1="40"
-                  x2="88"
-                  y1="115.625"
-                  y2="20"
-                />
-                <path
-                  aria-label="20. metaData1, 50."
-                  d="M34.5 115.625
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(52.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(64.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(76.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              35
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(88.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              40
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_9"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,275.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,275.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,211.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,148)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              40
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,84.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              60
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              80
+            </text>
+          </g>
+        </g>
+        <g>
+          <line
+            id="verticalLine3"
+            stroke="#323130"
+            stroke-dasharray="5,5"
+            transform="translate(40, 115.625)"
+            visibility="visibility"
+            x1="0"
+            x2="0"
+            y1="0"
+            y2="165.375"
+          />
+          <g>
+            <g
+              aria-label="metaData1, line 1 of 1 with 2 data points."
+              role="region"
+            >
+              <line
+                id="lineID1_0_1"
+                opacity="1"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="40"
+                x2="88"
+                y1="115.625"
+                y2="20"
+              />
+              <path
+                aria-label="20. metaData1, 50."
+                d="M34.5 115.625
      A5.5 5.5 0 1 0 45.5 115.625
      M34.5 115.625
      A 5.5 5.5 0 1 1 45.5 115.625
      "
-                  data-is-focusable="true"
-                  fill="#ffffff"
-                  id="circle0_0_1"
-                  opacity="1"
-                  role="img"
-                  stroke="red"
-                  stroke-width="4"
-                  tabindex="0"
-                />
-                <path
-                  aria-label="40. metaData1, 80."
-                  d="M87.5 20
+                data-is-focusable="true"
+                fill="#ffffff"
+                id="circle0_0_1"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData1, 80."
+                d="M87.5 20
      A0.5 0.5 0 1 0 88.5 20
      M87.5 20
      A 0.5 0.5 0 1 1 88.5 20
      "
-                  data-is-focusable="true"
-                  fill="red"
-                  id="circle0_0_11L"
-                  opacity="1"
-                  role="img"
-                  stroke="red"
-                  stroke-width="4"
-                  tabindex="-1"
-                />
-                <circle
-                  cx="88"
-                  cy="20"
-                  focusable="false"
-                  id="circle0_0_11D"
-                  opacity="0"
-                  r="8"
-                  stroke-width="0"
-                  width="0"
-                />
-              </g>
+                data-is-focusable="true"
+                fill="red"
+                id="circle0_0_11L"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="-1"
+              />
+              <circle
+                cx="88"
+                cy="20"
+                focusable="false"
+                id="circle0_0_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
             </g>
           </g>
-        </svg>
-      </div>
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -1292,355 +1282,345 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="LineChart. Line chart with 1 lines. The X axis displays values. The Y axis displays values. "
+        focusable="false"
+        height="310"
+        role="region"
+        style="display: block;"
+        width="108"
       >
-        <svg
-          aria-label="LineChart. Line chart with 1 lines. The X axis displays values. The Y axis displays values. "
-          focusable="false"
-          height="310"
-          role="region"
-          style="display: block;"
-          width="108"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_9"
+          text-anchor="middle"
+          transform="translate(0, 275)"
         >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H88.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_9"
-            text-anchor="middle"
-            transform="translate(0, 275)"
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
           >
-            <path
-              class="domain"
-              d="M40.5,6V0.5H88.5V6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(40.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                20
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(52.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                25
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(64.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(76.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                35
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(88.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                40
-              </text>
-            </g>
-          </g>
-          <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_9"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M-6,275.5H0.5V20.5H-6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,275.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,211.75)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                20
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,148)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                40
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,84.25)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="48"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                80
-              </text>
-            </g>
-          </g>
-          <g>
             <line
-              id="verticalLine3"
-              stroke="#323130"
-              stroke-dasharray="5,5"
-              transform="translate(40, 115.625)"
-              visibility="visibility"
-              x1="0"
-              x2="0"
-              y1="0"
-              y2="165.375"
+              stroke="currentColor"
+              y2="6"
             />
-            <g>
-              <g
-                aria-label="metaData1, line 1 of 1 with 2 data points."
-                role="region"
-              >
-                <line
-                  id="lineID1_0_1"
-                  opacity="1"
-                  stroke="red"
-                  stroke-linecap="round"
-                  stroke-width="4"
-                  x1="40"
-                  x2="88"
-                  y1="115.625"
-                  y2="20"
-                />
-                <path
-                  aria-label="20. metaData1, 50."
-                  d="M34.5 115.625
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(52.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(64.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(76.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              35
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(88.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              40
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_9"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,275.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,275.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,211.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,148)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              40
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,84.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              60
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="48"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              80
+            </text>
+          </g>
+        </g>
+        <g>
+          <line
+            id="verticalLine3"
+            stroke="#323130"
+            stroke-dasharray="5,5"
+            transform="translate(40, 115.625)"
+            visibility="visibility"
+            x1="0"
+            x2="0"
+            y1="0"
+            y2="165.375"
+          />
+          <g>
+            <g
+              aria-label="metaData1, line 1 of 1 with 2 data points."
+              role="region"
+            >
+              <line
+                id="lineID1_0_1"
+                opacity="1"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="40"
+                x2="88"
+                y1="115.625"
+                y2="20"
+              />
+              <path
+                aria-label="20. metaData1, 50."
+                d="M34.5 115.625
      A5.5 5.5 0 1 0 45.5 115.625
      M34.5 115.625
      A 5.5 5.5 0 1 1 45.5 115.625
      "
-                  data-is-focusable="true"
-                  fill="#ffffff"
-                  id="circle0_0_1"
-                  opacity="1"
-                  role="img"
-                  stroke="red"
-                  stroke-width="4"
-                  tabindex="0"
-                />
-                <path
-                  aria-label="40. metaData1, 80."
-                  d="M87.5 20
+                data-is-focusable="true"
+                fill="#ffffff"
+                id="circle0_0_1"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData1, 80."
+                d="M87.5 20
      A0.5 0.5 0 1 0 88.5 20
      M87.5 20
      A 0.5 0.5 0 1 1 88.5 20
      "
-                  data-is-focusable="true"
-                  fill="red"
-                  id="circle0_0_11L"
-                  opacity="1"
-                  role="img"
-                  stroke="red"
-                  stroke-width="4"
-                  tabindex="-1"
-                />
-                <circle
-                  cx="88"
-                  cy="20"
-                  focusable="false"
-                  id="circle0_0_11D"
-                  opacity="0"
-                  r="8"
-                  stroke-width="0"
-                  width="0"
-                />
-              </g>
+                data-is-focusable="true"
+                fill="red"
+                id="circle0_0_11L"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="-1"
+              />
+              <circle
+                cx="88"
+                cy="20"
+                focusable="false"
+                id="circle0_0_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
             </g>
           </g>
-        </svg>
-      </div>
+        </g>
+      </svg>
     </div>
     <div
       class=

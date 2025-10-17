@@ -34,446 +34,436 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_1"
+          text-anchor="middle"
+          transform="translate(0, 257)"
         >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_1"
-            text-anchor="middle"
-            transform="translate(0, 257)"
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
           >
-            <path
-              class="domain"
-              d="M40.5,6V0.5H630.5V6"
+            <line
               stroke="currentColor"
+              y2="-272"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(40.5,0)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
             >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(114.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                5000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(188,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                10,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(261.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                15,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                20,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(409.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                25,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(483,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                30,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(556.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                35,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(630.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                40,000
-              </text>
-            </g>
+              0
+            </text>
           </g>
           <g
+            class="tick"
+            opacity="1"
+            transform="translate(114.25,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              5000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(188,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(261.75,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(409.25,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              25,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(483,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              30,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(556.75,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              35,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(630.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              40,000
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_1"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,241.5H0.5V36.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,241.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,200.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              10k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,159.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              20k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,118.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              30k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,77.49999999999999)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              40k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,36.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              50k
+            </text>
+          </g>
+        </g>
+        <g>
+          <rect
+            aria-label="10%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
             class=
 
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
+                {
+                  opacity: ;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_1"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M-6,241.5H0.5V36.5H-6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,241.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,200.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                10k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,159.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                20k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,118.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                30k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,77.49999999999999)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                40k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,36.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                50k
-              </text>
-            </g>
-          </g>
-          <g>
-            <rect
-              aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="0"
+            width="147.5"
+            x="40"
+            y="212.5"
+          />
+          <rect
+            aria-label="88%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="147.5"
-              x="40"
-              y="212.5"
-            />
-            <rect
-              aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#00bcf2"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="590"
+            x="40"
+            y="179.7"
+          />
+          <rect
+            aria-label="37%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="590"
-              x="40"
-              y="179.7"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#00188f"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="368.75"
+            x="40"
+            y="110"
+          />
+          <rect
+            aria-label="20%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="368.75"
-              x="40"
-              y="110"
-            />
-            <rect
-              aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#002050"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="295"
-              x="40"
-              y="28"
-            />
-          </g>
-        </svg>
-      </div>
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="295"
+            x="40"
+            y="28"
+          />
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -972,446 +962,436 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_1"
+          text-anchor="middle"
+          transform="translate(0, 257)"
         >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_1"
-            text-anchor="middle"
-            transform="translate(0, 257)"
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
           >
-            <path
-              class="domain"
-              d="M40.5,6V0.5H630.5V6"
+            <line
               stroke="currentColor"
+              y2="-272"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(40.5,0)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
             >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(114.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                5000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(188,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                10,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(261.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                15,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                20,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(409.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                25,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(483,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                30,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(556.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                35,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(630.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                40,000
-              </text>
-            </g>
+              0
+            </text>
           </g>
           <g
+            class="tick"
+            opacity="1"
+            transform="translate(114.25,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              5000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(188,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(261.75,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(409.25,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              25,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(483,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              30,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(556.75,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              35,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(630.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              40,000
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_1"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,241.5H0.5V36.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,241.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,200.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              10k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,159.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              20k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,118.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              30k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,77.49999999999999)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              40k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,36.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              50k
+            </text>
+          </g>
+        </g>
+        <g>
+          <rect
+            aria-label="10%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
             class=
 
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
+                {
+                  opacity: ;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_1"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M-6,241.5H0.5V36.5H-6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,241.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,200.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                10k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,159.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                20k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,118.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                30k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,77.49999999999999)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                40k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,36.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                50k
-              </text>
-            </g>
-          </g>
-          <g>
-            <rect
-              aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="0"
+            width="147.5"
+            x="40"
+            y="212.5"
+          />
+          <rect
+            aria-label="88%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="147.5"
-              x="40"
-              y="212.5"
-            />
-            <rect
-              aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#00bcf2"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="590"
+            x="40"
+            y="179.7"
+          />
+          <rect
+            aria-label="37%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="590"
-              x="40"
-              y="179.7"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#00188f"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="368.75"
+            x="40"
+            y="110"
+          />
+          <rect
+            aria-label="20%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="368.75"
-              x="40"
-              y="110"
-            />
-            <rect
-              aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#002050"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="295"
-              x="40"
-              y="28"
-            />
-          </g>
-        </svg>
-      </div>
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="295"
+            x="40"
+            y="28"
+          />
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -1923,446 +1903,436 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
         data-focuszone-id="FocusZone7"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
-        <div
-          class=
-
-              {
-                height: 100%;
-                position: relative;
-                width: 100%;
-              }
+        <svg
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+          focusable="false"
+          height="292"
+          role="region"
+          style="display: block;"
+          width="650"
         >
-          <svg
-            aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-            focusable="false"
-            height="292"
-            role="region"
-            style="display: block;"
-            width="650"
+          <g
+            class=
+
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #f3f2f1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #f3f2f1;
+                  width: 1px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                  opacity: 0.1;
+                  stroke: CanvasText;
+                }
+                & path {
+                  display: none;
+                }
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_4"
+            text-anchor="middle"
+            transform="translate(0, 257)"
           >
+            <path
+              class="domain"
+              d="M40.5,6V0.5H630.5V6"
+              stroke="currentColor"
+            />
             <g
-              class=
-
-                  & text {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    fill: #f3f2f1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 10px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                    fill: CanvasText;
-                  }
-                  & line {
-                    opacity: 0.2;
-                    stroke: #f3f2f1;
-                    width: 1px;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                    opacity: 0.1;
-                    stroke: CanvasText;
-                  }
-                  & path {
-                    display: none;
-                  }
-              fill="none"
-              font-family="sans-serif"
-              font-size="10"
-              id="xAxisGElementchart_4"
-              text-anchor="middle"
-              transform="translate(0, 257)"
+              class="tick"
+              opacity="1"
+              transform="translate(40.5,0)"
             >
-              <path
-                class="domain"
-                d="M40.5,6V0.5H630.5V6"
+              <line
                 stroke="currentColor"
+                y2="-272"
               />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(40.5,0)"
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
               >
-                <line
-                  stroke="currentColor"
-                  y2="-272"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  0
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(114.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-272"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  5000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(188,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-272"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  10,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(261.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-272"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  15,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(335.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-272"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  20,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(409.25,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-272"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  25,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(483,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-272"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  30,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(556.75,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-272"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  35,000
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(630.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="-272"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="10"
-                >
-                  40,000
-                </text>
-              </g>
+                0
+              </text>
             </g>
             <g
+              class="tick"
+              opacity="1"
+              transform="translate(114.25,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-272"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                5000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(188,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-272"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                10,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(261.75,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-272"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                15,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(335.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-272"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                20,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(409.25,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-272"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                25,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(483,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-272"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                30,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(556.75,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-272"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                35,000
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(630.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="-272"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="10"
+              >
+                40,000
+              </text>
+            </g>
+          </g>
+          <g
+            class=
+
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #f3f2f1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
+                }
+                & path {
+                  display: none;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #f3f2f1;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                  opacity: 0.1;
+                  stroke: CanvasText;
+                }
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_4"
+            text-anchor="end"
+            transform="translate(40, 0)"
+          >
+            <path
+              class="domain"
+              d="M-6,241.5H0.5V36.5H-6"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,241.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-16"
+              >
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,200.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-16"
+              >
+                10k
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,159.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-16"
+              >
+                20k
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,118.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-16"
+              >
+                30k
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,77.49999999999999)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-16"
+              >
+                40k
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,36.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="-6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-16"
+              >
+                50k
+              </text>
+            </g>
+          </g>
+          <g>
+            <rect
+              aria-label="10%. 2020/04/30."
+              aria-labelledby="toolTipcallout3"
               class=
 
-                  & text {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    fill: #f3f2f1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 10px;
-                    font-weight: 600;
+                  {
+                    opacity: ;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                    fill: CanvasText;
-                  }
-                  & path {
-                    display: none;
-                  }
-                  & line {
-                    opacity: 0.2;
-                    stroke: #f3f2f1;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                    opacity: 0.1;
-                    stroke: CanvasText;
-                  }
-              fill="none"
-              font-family="sans-serif"
-              font-size="10"
-              id="yAxisGElementchart_4"
-              text-anchor="end"
-              transform="translate(40, 0)"
-            >
-              <path
-                class="domain"
-                d="M-6,241.5H0.5V36.5H-6"
-                stroke="currentColor"
-              />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,241.5)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="-6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-16"
-                >
-                  0
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,200.5)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="-6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-16"
-                >
-                  10k
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,159.5)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="-6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-16"
-                >
-                  20k
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,118.5)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="-6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-16"
-                >
-                  30k
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,77.49999999999999)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="-6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-16"
-                >
-                  40k
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,36.5)"
-              >
-                <line
-                  stroke="currentColor"
-                  x2="-6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-16"
-                >
-                  50k
-                </text>
-              </g>
-            </g>
-            <g>
-              <rect
-                aria-label="10%. 2020/04/30."
-                aria-labelledby="toolTipcallout3"
-                class=
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="16"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="147.5"
+              x="40"
+              y="212.5"
+            />
+            <rect
+              aria-label="88%. 2020/04/30."
+              aria-labelledby="toolTipcallout3"
+              class=
 
-                    {
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#0078d4"
-                height="16"
-                role="img"
-                rx="0"
-                tabindex="0"
-                width="147.5"
-                x="40"
-                y="212.5"
-              />
-              <rect
-                aria-label="88%. 2020/04/30."
-                aria-labelledby="toolTipcallout3"
-                class=
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="16"
+              role="img"
+              rx="0"
+              tabindex="-1"
+              width="590"
+              x="40"
+              y="179.7"
+            />
+            <rect
+              aria-label="37%. 2020/04/30."
+              aria-labelledby="toolTipcallout3"
+              class=
 
-                    {
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#00bcf2"
-                height="16"
-                role="img"
-                rx="0"
-                tabindex="-1"
-                width="590"
-                x="40"
-                y="179.7"
-              />
-              <rect
-                aria-label="37%. 2020/04/30."
-                aria-labelledby="toolTipcallout3"
-                class=
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#00188f"
+              height="16"
+              role="img"
+              rx="0"
+              tabindex="-1"
+              width="368.75"
+              x="40"
+              y="110"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout3"
+              class=
 
-                    {
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#00188f"
-                height="16"
-                role="img"
-                rx="0"
-                tabindex="-1"
-                width="368.75"
-                x="40"
-                y="110"
-              />
-              <rect
-                aria-label="20%. 2020/04/30."
-                aria-labelledby="toolTipcallout3"
-                class=
-
-                    {
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#002050"
-                height="16"
-                role="img"
-                rx="0"
-                tabindex="-1"
-                width="295"
-                x="40"
-                y="28"
-              />
-            </g>
-          </svg>
-        </div>
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#002050"
+              height="16"
+              role="img"
+              rx="0"
+              tabindex="-1"
+              width="295"
+              x="40"
+              y="28"
+            />
+          </g>
+        </svg>
       </div>
       <div
         class=
@@ -2862,446 +2832,436 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_1"
+          text-anchor="middle"
+          transform="translate(0, 257)"
         >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_1"
-            text-anchor="middle"
-            transform="translate(0, 257)"
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
           >
-            <path
-              class="domain"
-              d="M40.5,6V0.5H630.5V6"
+            <line
               stroke="currentColor"
+              y2="-272"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(40.5,0)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
             >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(114.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                5000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(188,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                10,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(261.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                15,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                20,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(409.25,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                25,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(483,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                30,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(556.75,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                35,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(630.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                40,000
-              </text>
-            </g>
+              0
+            </text>
           </g>
           <g
+            class="tick"
+            opacity="1"
+            transform="translate(114.25,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              5000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(188,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(261.75,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(409.25,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              25,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(483,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              30,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(556.75,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              35,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(630.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              40,000
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_1"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,241.5H0.5V36.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,241.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,200.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              10k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,159.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              20k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,118.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              30k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,77.49999999999999)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              40k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,36.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              50k
+            </text>
+          </g>
+        </g>
+        <g>
+          <rect
+            aria-label="10%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
             class=
 
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
+                {
+                  opacity: ;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_1"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M-6,241.5H0.5V36.5H-6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,241.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,200.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                10k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,159.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                20k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,118.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                30k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,77.49999999999999)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                40k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,36.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                50k
-              </text>
-            </g>
-          </g>
-          <g>
-            <rect
-              aria-label="10%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="0"
+            width="147.5"
+            x="40"
+            y="212.5"
+          />
+          <rect
+            aria-label="88%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="147.5"
-              x="40"
-              y="212.5"
-            />
-            <rect
-              aria-label="88%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#00bcf2"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="590"
+            x="40"
+            y="179.7"
+          />
+          <rect
+            aria-label="37%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00bcf2"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="590"
-              x="40"
-              y="179.7"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#00188f"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="368.75"
+            x="40"
+            y="110"
+          />
+          <rect
+            aria-label="20%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="368.75"
-              x="40"
-              y="110"
-            />
-            <rect
-              aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcallout0"
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#002050"
-              height="16"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="295"
-              x="40"
-              y="28"
-            />
-          </g>
-        </svg>
-      </div>
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="16"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="295"
+            x="40"
+            y="28"
+          />
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -3800,356 +3760,346 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_1"
+          text-anchor="middle"
+          transform="translate(0, 257)"
         >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H630.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_1"
-            text-anchor="middle"
-            transform="translate(0, 257)"
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
           >
-            <path
-              class="domain"
-              d="M40.5,6V0.5H630.5V6"
+            <line
               stroke="currentColor"
+              y2="-272"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(40.5,0)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
             >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(158.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                1000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(276.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                2000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(394.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                3000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(512.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                4000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(630.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="-272"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                5000
-              </text>
-            </g>
+              0
+            </text>
           </g>
           <g
+            class="tick"
+            opacity="1"
+            transform="translate(158.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              1000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(276.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              2000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(394.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              3000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(512.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              4000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(630.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="-272"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              5000
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_1"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,249.5H0.5V28.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,212.16666666666666)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              String Four
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,163.05555555555554)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              String Three
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,113.94444444444443)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              String Two
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,64.83333333333331)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              String One
+            </text>
+          </g>
+        </g>
+        <g>
+          <rect
+            aria-label="1000. String One."
+            aria-labelledby="toolTipcallout0"
             class=
 
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
+                {
+                  opacity: ;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_1"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M-6,249.5H0.5V28.5H-6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,212.16666666666666)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                String Four
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,163.05555555555554)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                String Three
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,113.94444444444443)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                String Two
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,64.83333333333331)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                x="-16"
-              >
-                String One
-              </text>
-            </g>
-          </g>
-          <g>
-            <rect
-              aria-label="1000. String One."
-              aria-labelledby="toolTipcallout0"
-              class=
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="31.571428571428573"
+            role="img"
+            rx="0"
+            tabindex="0"
+            transform="translate(0,-3.507936507936508)"
+            width="118"
+            x="40"
+            y="52.55555555555554"
+          />
+          <rect
+            aria-label="5000. String Two."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="31.571428571428573"
-              role="img"
-              rx="0"
-              tabindex="0"
-              transform="translate(0,-3.507936507936508)"
-              width="118"
-              x="40"
-              y="52.55555555555554"
-            />
-            <rect
-              aria-label="5000. String Two."
-              aria-labelledby="toolTipcallout0"
-              class=
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="31.571428571428573"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            transform="translate(0,-3.507936507936508)"
+            width="590"
+            x="40"
+            y="101.66666666666666"
+          />
+          <rect
+            aria-label="3000. String Three."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#002050"
-              height="31.571428571428573"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              transform="translate(0,-3.507936507936508)"
-              width="590"
-              x="40"
-              y="101.66666666666666"
-            />
-            <rect
-              aria-label="3000. String Three."
-              aria-labelledby="toolTipcallout0"
-              class=
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#00188f"
+            height="31.571428571428573"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            transform="translate(0,-3.507936507936508)"
+            width="354"
+            x="40"
+            y="150.77777777777777"
+          />
+          <rect
+            aria-label="2000. String Four."
+            aria-labelledby="toolTipcallout0"
+            class=
 
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="31.571428571428573"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              transform="translate(0,-3.507936507936508)"
-              width="354"
-              x="40"
-              y="150.77777777777777"
-            />
-            <rect
-              aria-label="2000. String Four."
-              aria-labelledby="toolTipcallout0"
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="31.571428571428573"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              transform="translate(0,-3.507936507936508)"
-              width="236"
-              x="40"
-              y="199.88888888888889"
-            />
-          </g>
-        </svg>
-      </div>
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="31.571428571428573"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            transform="translate(0,-3.507936507936508)"
+            width="236"
+            x="40"
+            y="199.88888888888889"
+          />
+        </g>
+      </svg>
     </div>
     <div
       class=

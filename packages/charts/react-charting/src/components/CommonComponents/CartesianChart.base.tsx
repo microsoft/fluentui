@@ -611,121 +611,74 @@ export class CartesianChartBase
             className={this._classNames.chart}
             {...getSecureProps(svgProps)}
           >
-              <g
-                ref={(e: SVGSVGElement | null) => {
-                  this.xAxisElement = e;
+            <g
+              ref={(e: SVGSVGElement | null) => {
+                this.xAxisElement = e;
+              }}
+              id={`xAxisGElement${this.idForGraph}`}
+              // To add wrap of x axis lables feature, need to remove word height from svg height.
+              transform={`translate(0, ${
+                svgDimensions.height - this.margins.bottom! - this._removalValueForTextTuncate
+              })`}
+              className={this._classNames.xAxis}
+            />
+            {this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '' && (
+              <SVGTooltipText
+                content={this.props.xAxisTitle}
+                textProps={{
+                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  y: svgDimensions.height - this.titleMargin,
+                  className: this._classNames.axisTitle!,
+                  textAnchor: 'middle',
+                  'aria-hidden': true,
                 }}
-                id={`xAxisGElement${this.idForGraph}`}
-                // To add wrap of x axis lables feature, need to remove word height from svg height.
-                transform={`translate(0, ${
-                  svgDimensions.height - this.margins.bottom! - this._removalValueForTextTuncate
-                })`}
-                className={this._classNames.xAxis}
+                maxWidth={xAxisTitleMaximumAllowedWidth}
+                {...commonSvgToolTipProps}
               />
-              {this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '' && (
-                <SVGTooltipText
-                  content={this.props.xAxisTitle}
-                  textProps={{
-                    x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
-                    y: svgDimensions.height - this.titleMargin,
-                    className: this._classNames.axisTitle!,
-                    textAnchor: 'middle',
-                    'aria-hidden': true,
-                  }}
-                  maxWidth={xAxisTitleMaximumAllowedWidth}
-                  {...commonSvgToolTipProps}
-                />
-              )}
-              {this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '' && (
-                <SVGTooltipText
-                  content={this.props.xAxisAnnotation}
-                  textProps={{
-                    x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
-                    y: this.titleMargin + 3,
-                    className: this._classNames.axisAnnotation!,
-                    textAnchor: 'middle',
-                    'aria-hidden': true,
-                  }}
-                  maxWidth={xAxisTitleMaximumAllowedWidth}
-                  {...commonSvgToolTipProps}
-                />
-              )}
-              <g
-                ref={(e: SVGSVGElement | null) => {
-                  this.yAxisElement = e;
+            )}
+            {this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '' && (
+              <SVGTooltipText
+                content={this.props.xAxisAnnotation}
+                textProps={{
+                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  y: this.titleMargin + 3,
+                  className: this._classNames.axisAnnotation!,
+                  textAnchor: 'middle',
+                  'aria-hidden': true,
                 }}
-                id={`yAxisGElement${this.idForGraph}`}
-                transform={`translate(${
-                  this._isRtl
-                    ? svgDimensions.width - this.margins.right! - this.state.startFromX
-                    : this.margins.left! + this.state.startFromX
-                }, 0)`}
-                className={this._classNames.yAxis}
+                maxWidth={xAxisTitleMaximumAllowedWidth}
+                {...commonSvgToolTipProps}
               />
-              {this.props.secondaryYScaleOptions && (
-                <g>
-                  <g
-                    ref={(e: SVGSVGElement | null) => {
-                      this.yAxisElementSecondary = e;
-                    }}
-                    id={`yAxisGElementSecondary${this.idForGraph}`}
-                    transform={`translate(${
-                      this._isRtl
-                        ? this.margins.left! + this.state.startFromX
-                        : svgDimensions.width - this.margins.right! - this.state.startFromX
-                    }, 0)`}
-                    className={this._classNames.yAxis}
-                  />
-                  {this.props.secondaryYAxistitle !== undefined && this.props.secondaryYAxistitle !== '' && (
-                    <SVGTooltipText
-                      content={this.props.secondaryYAxistitle}
-                      textProps={{
-                        x:
-                          (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
-                          this._removalValueForTextTuncate,
-                        y: this._isRtl
-                          ? this.state.startFromX - this.titleMargin
-                          : svgDimensions.width - this.margins.right!,
-                        textAnchor: 'middle',
-                        transform: `translate(${
-                          this._isRtl
-                            ? this.margins.right! / 2 - this.titleMargin
-                            : this.margins.right! / 2 + this.titleMargin
-                        },
-                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
-                        className: this._classNames.axisTitle!,
-                        'aria-hidden': true,
-                      }}
-                      maxWidth={yAxisTitleMaximumAllowedHeight}
-                      {...commonSvgToolTipProps}
-                    />
-                  )}
-                </g>
-              )}
-              {children}
-              {this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '' && (
-                <SVGTooltipText
-                  content={this.props.yAxisTitle}
-                  textProps={{
-                    x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
-                    y: this._isRtl
-                      ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
-                      : this.margins.left! / 2 - this.titleMargin,
-                    textAnchor: 'middle',
-                    transform: `translate(0,
-                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
-                    className: this._classNames.axisTitle!,
-                    'aria-hidden': true,
+            )}
+            <g
+              ref={(e: SVGSVGElement | null) => {
+                this.yAxisElement = e;
+              }}
+              id={`yAxisGElement${this.idForGraph}`}
+              transform={`translate(${
+                this._isRtl
+                  ? svgDimensions.width - this.margins.right! - this.state.startFromX
+                  : this.margins.left! + this.state.startFromX
+              }, 0)`}
+              className={this._classNames.yAxis}
+            />
+            {this.props.secondaryYScaleOptions && (
+              <g>
+                <g
+                  ref={(e: SVGSVGElement | null) => {
+                    this.yAxisElementSecondary = e;
                   }}
-                  maxWidth={yAxisTitleMaximumAllowedHeight}
-                  {...commonSvgToolTipProps}
+                  id={`yAxisGElementSecondary${this.idForGraph}`}
+                  transform={`translate(${
+                    this._isRtl
+                      ? this.margins.left! + this.state.startFromX
+                      : svgDimensions.width - this.margins.right! - this.state.startFromX
+                  }, 0)`}
+                  className={this._classNames.yAxis}
                 />
-              )}
-              {this.props.yAxisAnnotation !== undefined &&
-                this.props.yAxisAnnotation !== '' &&
-                (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '') && (
+                {this.props.secondaryYAxistitle !== undefined && this.props.secondaryYAxistitle !== '' && (
                   <SVGTooltipText
-                    content={this.props.yAxisAnnotation}
+                    content={this.props.secondaryYAxistitle}
                     textProps={{
                       x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
                       y: this._isRtl
@@ -738,13 +691,58 @@ export class CartesianChartBase
                           : this.margins.right! / 2 + this.titleMargin
                       },
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
-                      className: this._classNames.axisAnnotation!,
+                      className: this._classNames.axisTitle!,
                       'aria-hidden': true,
                     }}
                     maxWidth={yAxisTitleMaximumAllowedHeight}
                     {...commonSvgToolTipProps}
                   />
                 )}
+              </g>
+            )}
+            {children}
+            {this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '' && (
+              <SVGTooltipText
+                content={this.props.yAxisTitle}
+                textProps={{
+                  x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
+                  y: this._isRtl
+                    ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
+                    : this.margins.left! / 2 - this.titleMargin,
+                  textAnchor: 'middle',
+                  transform: `translate(0,
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                  className: this._classNames.axisTitle!,
+                  'aria-hidden': true,
+                }}
+                maxWidth={yAxisTitleMaximumAllowedHeight}
+                {...commonSvgToolTipProps}
+              />
+            )}
+            {this.props.yAxisAnnotation !== undefined &&
+              this.props.yAxisAnnotation !== '' &&
+              (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '') && (
+                <SVGTooltipText
+                  content={this.props.yAxisAnnotation}
+                  textProps={{
+                    x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
+                    y: this._isRtl
+                      ? this.state.startFromX - this.titleMargin
+                      : svgDimensions.width - this.margins.right!,
+                    textAnchor: 'middle',
+                    transform: `translate(${
+                      this._isRtl
+                        ? this.margins.right! / 2 - this.titleMargin
+                        : this.margins.right! / 2 + this.titleMargin
+                    },
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                    className: this._classNames.axisAnnotation!,
+                    'aria-hidden': true,
+                  }}
+                  maxWidth={yAxisTitleMaximumAllowedHeight}
+                  {...commonSvgToolTipProps}
+                />
+              )}
           </svg>
           {hasAnnotations && annotationContext && (
             <ChartAnnotationLayer

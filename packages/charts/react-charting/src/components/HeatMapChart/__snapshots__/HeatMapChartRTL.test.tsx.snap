@@ -628,292 +628,282 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_1"
+          text-anchor="middle"
+          transform="translate(0, 257)"
         >
+          <path
+            class="domain"
+            d="M40.5,0.5H630.5"
+            stroke="currentColor"
+          />
           <g
+            class="tick"
+            opacity="1"
+            transform="translate(188.96039603960392,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(481.039603960396,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              40
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_1"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M0.5,257.5V20.5"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,197.16336633663366)"
+          >
+            <line
+              stroke="currentColor"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.83663366336633)"
+          >
+            <line
+              stroke="currentColor"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              20
+            </text>
+          </g>
+        </g>
+        <g
+          aria-label="Lorem ipsum dolor sit amet"
+          data-is-focusable="true"
+          fill-opacity="1"
+          role="img"
+          tabindex="0"
+          transform="translate(45.8415841584158, 22.34653465346534)"
+        >
+          <rect
+            fill="rgb(151, 189, 219)"
+            height="114.98019801980197"
+            width="286.23762376237624"
+          />
+          <text
             class=
 
-                & text {
+                {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
+                  font-size: 14px;
                   font-weight: 600;
+                  pointer-events: none;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_1"
+            dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
-            transform="translate(0, 257)"
-          >
-            <path
-              class="domain"
-              d="M40.5,0.5H630.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(188.96039603960392,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(481.039603960396,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                40
-              </text>
-            </g>
-          </g>
-          <g
+            transform="translate(143.11881188118812, 57.49009900990099)"
+          />
+        </g>
+        <g
+          aria-label="ut labore et dolore magna aliqua"
+          data-is-focusable="true"
+          fill-opacity="1"
+          role="img"
+          tabindex="-1"
+          transform="translate(337.9207920792079, 22.34653465346534)"
+        >
+          <rect
+            fill="rgb(166, 207, 226)"
+            height="114.98019801980197"
+            width="286.23762376237624"
+          />
+          <text
             class=
 
-                & text {
+                {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
+                  font-size: 14px;
                   font-weight: 600;
+                  pointer-events: none;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_1"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M0.5,257.5V20.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,197.16336633663366)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                10
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,79.83663366336633)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                20
-              </text>
-            </g>
-          </g>
-          <g
-            aria-label="Lorem ipsum dolor sit amet"
-            data-is-focusable="true"
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.34653465346534)"
-          >
-            <rect
-              fill="rgb(151, 189, 219)"
-              height="114.98019801980197"
-              width="286.23762376237624"
-            />
-            <text
-              class=
+            dominant-baseline="middle"
+            fill="#323130"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
+          />
+        </g>
+        <g
+          aria-label="sed do eiusmod tempor incididunt"
+          data-is-focusable="true"
+          fill-opacity="1"
+          role="img"
+          tabindex="-1"
+          transform="translate(45.8415841584158, 139.67326732673268)"
+        >
+          <rect
+            fill="rgb(159, 198, 222)"
+            height="114.98019801980197"
+            width="286.23762376237624"
+          />
+          <text
+            class=
 
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    pointer-events: none;
-                  }
-              dominant-baseline="middle"
-              fill="#323130"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 57.49009900990099)"
-            />
-          </g>
-          <g
-            aria-label="ut labore et dolore magna aliqua"
-            data-is-focusable="true"
-            fill-opacity="1"
-            role="img"
-            tabindex="-1"
-            transform="translate(337.9207920792079, 22.34653465346534)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="114.98019801980197"
-              width="286.23762376237624"
-            />
-            <text
-              class=
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  pointer-events: none;
+                }
+            dominant-baseline="middle"
+            fill="#323130"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
+          />
+        </g>
+        <g
+          aria-label="consectetur adipiscing elit"
+          data-is-focusable="true"
+          fill-opacity="1"
+          role="img"
+          tabindex="-1"
+          transform="translate(337.9207920792079, 139.67326732673268)"
+        >
+          <rect
+            fill="rgb(144, 180, 215)"
+            height="114.98019801980197"
+            width="286.23762376237624"
+          />
+          <text
+            class=
 
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    pointer-events: none;
-                  }
-              dominant-baseline="middle"
-              fill="#323130"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 57.49009900990099)"
-            />
-          </g>
-          <g
-            aria-label="sed do eiusmod tempor incididunt"
-            data-is-focusable="true"
-            fill-opacity="1"
-            role="img"
-            tabindex="-1"
-            transform="translate(45.8415841584158, 139.67326732673268)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="114.98019801980197"
-              width="286.23762376237624"
-            />
-            <text
-              class=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    pointer-events: none;
-                  }
-              dominant-baseline="middle"
-              fill="#323130"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 57.49009900990099)"
-            />
-          </g>
-          <g
-            aria-label="consectetur adipiscing elit"
-            data-is-focusable="true"
-            fill-opacity="1"
-            role="img"
-            tabindex="-1"
-            transform="translate(337.9207920792079, 139.67326732673268)"
-          >
-            <rect
-              fill="rgb(144, 180, 215)"
-              height="114.98019801980197"
-              width="286.23762376237624"
-            />
-            <text
-              class=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    pointer-events: none;
-                  }
-              dominant-baseline="middle"
-              fill="#323130"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 57.49009900990099)"
-            />
-          </g>
-        </svg>
-      </div>
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  pointer-events: none;
+                }
+            dominant-baseline="middle"
+            fill="#323130"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
+          />
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -1212,300 +1202,290 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
       data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Heat map chart with 4 data points. The X axis displays categories. The Y axis displays categories. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_1"
+          text-anchor="middle"
+          transform="translate(0, 257)"
         >
+          <path
+            class="domain"
+            d="M40.5,0.5H630.5"
+            stroke="currentColor"
+          />
           <g
+            class="tick"
+            opacity="1"
+            transform="translate(188.96039603960392,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              xPoint p3
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(481.039603960396,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="0"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="10"
+            >
+              xPoint p4
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_1"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M0.5,257.5V20.5"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,197.16336633663366)"
+          >
+            <line
+              stroke="currentColor"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              yPoint p1
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.83663366336633)"
+          >
+            <line
+              stroke="currentColor"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              yPoint p2
+            </text>
+          </g>
+        </g>
+        <g
+          aria-label="xPoint p3, yPoint p2. Nasty, 25."
+          data-is-focusable="true"
+          fill-opacity="1"
+          role="img"
+          tabindex="0"
+          transform="translate(45.8415841584158, 22.34653465346534)"
+        >
+          <rect
+            fill="rgb(166, 207, 226)"
+            height="114.98019801980197"
+            width="286.23762376237624"
+          />
+          <text
             class=
 
-                & text {
+                {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
+                  font-size: 14px;
                   font-weight: 600;
+                  pointer-events: none;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_1"
+            dominant-baseline="middle"
+            fill="#323130"
             text-anchor="middle"
-            transform="translate(0, 257)"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
-            <path
-              class="domain"
-              d="M40.5,0.5H630.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(188.96039603960392,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                xPoint p3
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(481.039603960396,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="0"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="10"
-              >
-                xPoint p4
-              </text>
-            </g>
-          </g>
-          <g
+            25
+          </text>
+        </g>
+        <g
+          aria-label="xPoint p4, yPoint p2. Excellent, 100."
+          data-is-focusable="true"
+          fill-opacity="1"
+          role="img"
+          tabindex="-1"
+          transform="translate(337.9207920792079, 22.34653465346534)"
+        >
+          <rect
+            fill="rgb(144, 180, 215)"
+            height="114.98019801980197"
+            width="286.23762376237624"
+          />
+          <text
             class=
 
-                & text {
+                {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
+                  font-size: 14px;
                   font-weight: 600;
+                  pointer-events: none;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_1"
-            text-anchor="end"
-            transform="translate(40, 0)"
+            dominant-baseline="middle"
+            fill="#323130"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
-            <path
-              class="domain"
-              d="M0.5,257.5V20.5"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,197.16336633663366)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                yPoint p1
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,79.83663366336633)"
-            >
-              <line
-                stroke="currentColor"
-                x2="0"
-              />
-              <text
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                yPoint p2
-              </text>
-            </g>
-          </g>
-          <g
-            aria-label="xPoint p3, yPoint p2. Nasty, 25."
-            data-is-focusable="true"
-            fill-opacity="1"
-            role="img"
-            tabindex="0"
-            transform="translate(45.8415841584158, 22.34653465346534)"
-          >
-            <rect
-              fill="rgb(166, 207, 226)"
-              height="114.98019801980197"
-              width="286.23762376237624"
-            />
-            <text
-              class=
+            100
+          </text>
+        </g>
+        <g
+          aria-label="xPoint p3, yPoint p1. Excellent, 75."
+          data-is-focusable="true"
+          fill-opacity="1"
+          role="img"
+          tabindex="-1"
+          transform="translate(45.8415841584158, 139.67326732673268)"
+        >
+          <rect
+            fill="rgb(151, 189, 219)"
+            height="114.98019801980197"
+            width="286.23762376237624"
+          />
+          <text
+            class=
 
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    pointer-events: none;
-                  }
-              dominant-baseline="middle"
-              fill="#323130"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 57.49009900990099)"
-            >
-              25
-            </text>
-          </g>
-          <g
-            aria-label="xPoint p4, yPoint p2. Excellent, 100."
-            data-is-focusable="true"
-            fill-opacity="1"
-            role="img"
-            tabindex="-1"
-            transform="translate(337.9207920792079, 22.34653465346534)"
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  pointer-events: none;
+                }
+            dominant-baseline="middle"
+            fill="#323130"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
-            <rect
-              fill="rgb(144, 180, 215)"
-              height="114.98019801980197"
-              width="286.23762376237624"
-            />
-            <text
-              class=
+            75
+          </text>
+        </g>
+        <g
+          aria-label="xPoint p4, yPoint p1. Nasty, 50."
+          data-is-focusable="true"
+          fill-opacity="1"
+          role="img"
+          tabindex="-1"
+          transform="translate(337.9207920792079, 139.67326732673268)"
+        >
+          <rect
+            fill="rgb(159, 198, 222)"
+            height="114.98019801980197"
+            width="286.23762376237624"
+          />
+          <text
+            class=
 
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    pointer-events: none;
-                  }
-              dominant-baseline="middle"
-              fill="#323130"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 57.49009900990099)"
-            >
-              100
-            </text>
-          </g>
-          <g
-            aria-label="xPoint p3, yPoint p1. Excellent, 75."
-            data-is-focusable="true"
-            fill-opacity="1"
-            role="img"
-            tabindex="-1"
-            transform="translate(45.8415841584158, 139.67326732673268)"
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  pointer-events: none;
+                }
+            dominant-baseline="middle"
+            fill="#323130"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
           >
-            <rect
-              fill="rgb(151, 189, 219)"
-              height="114.98019801980197"
-              width="286.23762376237624"
-            />
-            <text
-              class=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    pointer-events: none;
-                  }
-              dominant-baseline="middle"
-              fill="#323130"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 57.49009900990099)"
-            >
-              75
-            </text>
-          </g>
-          <g
-            aria-label="xPoint p4, yPoint p1. Nasty, 50."
-            data-is-focusable="true"
-            fill-opacity="1"
-            role="img"
-            tabindex="-1"
-            transform="translate(337.9207920792079, 139.67326732673268)"
-          >
-            <rect
-              fill="rgb(159, 198, 222)"
-              height="114.98019801980197"
-              width="286.23762376237624"
-            />
-            <text
-              class=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    pointer-events: none;
-                  }
-              dominant-baseline="middle"
-              fill="#323130"
-              text-anchor="middle"
-              transform="translate(143.11881188118812, 57.49009900990099)"
-            >
-              50
-            </text>
-          </g>
-        </svg>
-      </div>
+            50
+          </text>
+        </g>
+      </svg>
     </div>
     <div
       class=

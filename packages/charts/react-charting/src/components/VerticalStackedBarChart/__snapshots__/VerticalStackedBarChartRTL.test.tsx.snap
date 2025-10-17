@@ -34,512 +34,502 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 222)"
         >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_3"
-            text-anchor="middle"
-            transform="translate(0, 222)"
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)rotate(-45)"
           >
-            <path
-              class="domain"
-              d="M279.5,6V0.5H391.5V6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(287,0)rotate(-45)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                January
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)rotate(-45)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                February
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(383,0)rotate(-45)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                March
-              </text>
-            </g>
+              January
+            </text>
           </g>
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_3"
-            text-anchor="end"
-            transform="translate(40, 0)"
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)rotate(-45)"
           >
-            <path
-              class="domain"
-              d="M-6,222.5H0.5V20.5H-6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,222.5)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,172)"
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)rotate(-45)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                25
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,121.5)"
+              March
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,222.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,222.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,71)"
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,172)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                75
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,121.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,71)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.040000000000001"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="217.96"
               />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                100
-              </text>
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="1.0100000000000002"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="216.95000000000002"
+              />
             </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="210.95000000000002"
+            >
+              2.5
+            </text>
           </g>
           <g>
-            <g>
-              <g
-                aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
-                data-is-focusable="true"
-                id="0-singleBar"
-                role="img"
-                tabindex="0"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="4.040000000000001"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="279"
-                  y="217.96"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="1.0100000000000002"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="279"
-                  y="216.95000000000002"
-                />
-              </g>
-              <text
-                aria-label="Total: 2.5"
+            <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#0078d4"
+                height="60.6"
+                rx="0"
                 transform="translate(0, 0)"
-                x="287"
-                y="210.95000000000002"
-              >
-                2.5
-              </text>
-            </g>
-            <g>
-              <g
-                aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
-                data-is-focusable="true"
-                id="1-singleBar"
-                role="img"
-                tabindex="-1"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="60.6"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="161.4"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="6.0600000000000005"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="155.34"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00bcf2"
-                  height="80.8"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="74.54"
-                />
-              </g>
-              <text
-                aria-label="Total: 73"
+                width="16"
+                x="327"
+                y="161.4"
+              />
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#00188f"
+                height="6.0600000000000005"
+                rx="0"
                 transform="translate(0, 0)"
-                x="335"
-                y="68.54"
-              >
-                73
-              </text>
-            </g>
-            <g>
-              <g
-                aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
-                data-is-focusable="true"
-                id="2-singleBar"
-                role="img"
-                tabindex="-1"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="20.2"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="201.8"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="121.2"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="80.60000000000001"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00bcf2"
-                  height="60.6"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="20.000000000000007"
-                />
-              </g>
-              <text
-                aria-label="Total: 100"
+                width="16"
+                x="327"
+                y="155.34"
+              />
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#00bcf2"
+                height="80.8"
+                rx="0"
                 transform="translate(0, 0)"
-                x="383"
-                y="14.000000000000007"
-              >
-                100
-              </text>
+                width="16"
+                x="327"
+                y="74.54"
+              />
             </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="68.54"
+            >
+              73
+            </text>
           </g>
           <g>
-            <line
-              opacity="1"
-              stroke="#e3008c"
-              stroke-linecap="round"
-              stroke-width="3"
-              transform="translate(8, 0)"
-              x1="279"
-              x2="327"
-              y1="137.16000000000003"
-              y2="139.18"
-            />
-            <line
-              opacity="1"
-              stroke="#e3008c"
-              stroke-linecap="round"
-              stroke-width="3"
-              transform="translate(8, 0)"
-              x1="327"
-              x2="375"
-              y1="139.18"
-              y2="20"
-            />
-            <circle
-              cx="279"
-              cy="137.16000000000003"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
-            <circle
-              cx="327"
-              cy="139.18"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
-            <circle
-              cx="375"
-              cy="20"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="20.2"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="201.8"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="121.2"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="80.60000000000001"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="60.6"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="20.000000000000007"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="14.000000000000007"
+            >
+              100
+            </text>
           </g>
-        </svg>
-      </div>
+        </g>
+        <g>
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="137.16000000000003"
+            y2="139.18"
+          />
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="139.18"
+            y2="20"
+          />
+          <circle
+            cx="279"
+            cy="137.16000000000003"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="327"
+            cy="139.18"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="375"
+            cy="20"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -1038,512 +1028,502 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
       data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 222)"
         >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_3"
-            text-anchor="middle"
-            transform="translate(0, 222)"
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)rotate(-45)"
           >
-            <path
-              class="domain"
-              d="M279.5,6V0.5H391.5V6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(287,0)rotate(-45)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                January
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)rotate(-45)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                February
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(383,0)rotate(-45)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                March
-              </text>
-            </g>
+              January
+            </text>
           </g>
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_3"
-            text-anchor="end"
-            transform="translate(40, 0)"
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)rotate(-45)"
           >
-            <path
-              class="domain"
-              d="M-6,222.5H0.5V20.5H-6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,222.5)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,172)"
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)rotate(-45)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                25
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,121.5)"
+              March
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,222.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,222.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,71)"
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,172)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                75
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,121.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,71)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.040000000000001"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="217.96"
               />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                100
-              </text>
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="1.0100000000000002"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="216.95000000000002"
+              />
             </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="210.95000000000002"
+            >
+              2.5
+            </text>
           </g>
           <g>
-            <g>
-              <g
-                aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
-                data-is-focusable="true"
-                id="0-singleBar"
-                role="img"
-                tabindex="0"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="4.040000000000001"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="279"
-                  y="217.96"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="1.0100000000000002"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="279"
-                  y="216.95000000000002"
-                />
-              </g>
-              <text
-                aria-label="Total: 2.5"
+            <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#0078d4"
+                height="60.6"
+                rx="0"
                 transform="translate(0, 0)"
-                x="287"
-                y="210.95000000000002"
-              >
-                2.5
-              </text>
-            </g>
-            <g>
-              <g
-                aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
-                data-is-focusable="true"
-                id="1-singleBar"
-                role="img"
-                tabindex="-1"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="60.6"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="161.4"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="6.0600000000000005"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="155.34"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00bcf2"
-                  height="80.8"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="74.54"
-                />
-              </g>
-              <text
-                aria-label="Total: 73"
+                width="16"
+                x="327"
+                y="161.4"
+              />
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#00188f"
+                height="6.0600000000000005"
+                rx="0"
                 transform="translate(0, 0)"
-                x="335"
-                y="68.54"
-              >
-                73
-              </text>
-            </g>
-            <g>
-              <g
-                aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
-                data-is-focusable="true"
-                id="2-singleBar"
-                role="img"
-                tabindex="-1"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="20.2"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="201.8"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="121.2"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="80.60000000000001"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00bcf2"
-                  height="60.6"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="20.000000000000007"
-                />
-              </g>
-              <text
-                aria-label="Total: 100"
+                width="16"
+                x="327"
+                y="155.34"
+              />
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#00bcf2"
+                height="80.8"
+                rx="0"
                 transform="translate(0, 0)"
-                x="383"
-                y="14.000000000000007"
-              >
-                100
-              </text>
+                width="16"
+                x="327"
+                y="74.54"
+              />
             </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="68.54"
+            >
+              73
+            </text>
           </g>
           <g>
-            <line
-              opacity="1"
-              stroke="#e3008c"
-              stroke-linecap="round"
-              stroke-width="3"
-              transform="translate(8, 0)"
-              x1="279"
-              x2="327"
-              y1="137.16000000000003"
-              y2="139.18"
-            />
-            <line
-              opacity="1"
-              stroke="#e3008c"
-              stroke-linecap="round"
-              stroke-width="3"
-              transform="translate(8, 0)"
-              x1="327"
-              x2="375"
-              y1="139.18"
-              y2="20"
-            />
-            <circle
-              cx="279"
-              cy="137.16000000000003"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
-            <circle
-              cx="327"
-              cy="139.18"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
-            <circle
-              cx="375"
-              cy="20"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="20.2"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="201.8"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="121.2"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="80.60000000000001"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="60.6"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="20.000000000000007"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="14.000000000000007"
+            >
+              100
+            </text>
           </g>
-        </svg>
-      </div>
+        </g>
+        <g>
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="137.16000000000003"
+            y2="139.18"
+          />
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="139.18"
+            y2="20"
+          />
+          <circle
+            cx="279"
+            cy="137.16000000000003"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="327"
+            cy="139.18"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="375"
+            cy="20"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -2042,512 +2022,502 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
       data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
         >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_3"
-            text-anchor="middle"
-            transform="translate(0, 257)"
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)"
           >
-            <path
-              class="domain"
-              d="M279.5,6V0.5H391.5V6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(287,0)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                January
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                February
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(383,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                March
-              </text>
-            </g>
+              January
+            </text>
           </g>
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_3"
-            text-anchor="end"
-            transform="translate(40, 0)"
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)"
           >
-            <path
-              class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,257.5)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,198.25)"
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                25
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,139)"
+              March
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,79.75)"
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                75
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              75
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              100
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="4.74"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="252.26"
               />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                100
-              </text>
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="1.185"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="251.075"
+              />
             </g>
+            <text
+              aria-label="Total: 2.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="245.075"
+            >
+              2.5
+            </text>
           </g>
           <g>
-            <g>
-              <g
-                aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
-                data-is-focusable="true"
-                id="0-singleBar"
-                role="img"
-                tabindex="0"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="4.74"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="279"
-                  y="252.26"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="1.185"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="279"
-                  y="251.075"
-                />
-              </g>
-              <text
-                aria-label="Total: 2.5"
+            <g
+              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#0078d4"
+                height="71.1"
+                rx="0"
                 transform="translate(0, 0)"
-                x="287"
-                y="245.075"
-              >
-                2.5
-              </text>
-            </g>
-            <g>
-              <g
-                aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
-                data-is-focusable="true"
-                id="1-singleBar"
-                role="img"
-                tabindex="-1"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="71.1"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="185.9"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="7.109999999999999"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="178.79000000000002"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00bcf2"
-                  height="94.79999999999998"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="83.99000000000004"
-                />
-              </g>
-              <text
-                aria-label="Total: 73"
+                width="16"
+                x="327"
+                y="185.9"
+              />
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#00188f"
+                height="7.109999999999999"
+                rx="0"
                 transform="translate(0, 0)"
-                x="335"
-                y="77.99000000000004"
-              >
-                73
-              </text>
-            </g>
-            <g>
-              <g
-                aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
-                data-is-focusable="true"
-                id="2-singleBar"
-                role="img"
-                tabindex="-1"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="23.700000000000003"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="233.3"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="142.20000000000002"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="91.1"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00bcf2"
-                  height="71.10000000000001"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="19.999999999999986"
-                />
-              </g>
-              <text
-                aria-label="Total: 100"
+                width="16"
+                x="327"
+                y="178.79000000000002"
+              />
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#00bcf2"
+                height="94.79999999999998"
+                rx="0"
                 transform="translate(0, 0)"
-                x="383"
-                y="13.999999999999986"
-              >
-                100
-              </text>
+                width="16"
+                x="327"
+                y="83.99000000000004"
+              />
             </g>
+            <text
+              aria-label="Total: 73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="77.99000000000004"
+            >
+              73
+            </text>
           </g>
           <g>
-            <line
-              opacity="1"
-              stroke="#e3008c"
-              stroke-linecap="round"
-              stroke-width="3"
-              transform="translate(8, 0)"
-              x1="279"
-              x2="327"
-              y1="157.46000000000004"
-              y2="159.83"
-            />
-            <line
-              opacity="1"
-              stroke="#e3008c"
-              stroke-linecap="round"
-              stroke-width="3"
-              transform="translate(8, 0)"
-              x1="327"
-              x2="375"
-              y1="159.83"
-              y2="20"
-            />
-            <circle
-              cx="279"
-              cy="157.46000000000004"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
-            <circle
-              cx="327"
-              cy="159.83"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
-            <circle
-              cx="375"
-              cy="20"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="23.700000000000003"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="233.3"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="142.20000000000002"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="91.1"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="71.10000000000001"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="19.999999999999986"
+              />
+            </g>
+            <text
+              aria-label="Total: 100"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="13.999999999999986"
+            >
+              100
+            </text>
           </g>
-        </svg>
-      </div>
+        </g>
+        <g>
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="157.46000000000004"
+            y2="159.83"
+          />
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="159.83"
+            y2="20"
+          />
+          <circle
+            cx="279"
+            cy="157.46000000000004"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="327"
+            cy="159.83"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="375"
+            cy="20"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -3059,413 +3029,403 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
         data-focuszone-id="FocusZone13"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
-        <div
-          class=
-
-              {
-                height: 100%;
-                position: relative;
-                width: 100%;
-              }
+        <svg
+          aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+          focusable="false"
+          height="292"
+          role="region"
+          style="display: block;"
+          width="650"
         >
-          <svg
-            aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-            focusable="false"
-            height="292"
-            role="region"
-            style="display: block;"
-            width="650"
-          >
-            <g
-              class=
+          <g
+            class=
 
-                  & text {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    fill: #f3f2f1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 10px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                    fill: CanvasText;
-                  }
-                  & line {
-                    opacity: 0.2;
-                    stroke: #f3f2f1;
-                    width: 1px;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                    opacity: 0.1;
-                    stroke: CanvasText;
-                  }
-                  & path {
-                    display: none;
-                  }
-              fill="none"
-              font-family="sans-serif"
-              font-size="10"
-              id="xAxisGElementchart_6"
-              text-anchor="middle"
-              transform="translate(0, 257)"
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #f3f2f1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #f3f2f1;
+                  width: 1px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                  opacity: 0.1;
+                  stroke: CanvasText;
+                }
+                & path {
+                  display: none;
+                }
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="xAxisGElementchart_6"
+            text-anchor="middle"
+            transform="translate(0, 257)"
+          >
+            <path
+              class="domain"
+              d="M56.5,6V0.5H614.5V6"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(56.5,0)"
             >
-              <path
-                class="domain"
-                d="M56.5,6V0.5H614.5V6"
+              <line
                 stroke="currentColor"
+                y2="6"
               />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(56.5,0)"
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="16"
               >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  0
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(196,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  5
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(335.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  10
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(475,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  15
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(614.5,0)"
-              >
-                <line
-                  stroke="currentColor"
-                  y2="6"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.71em"
-                  fill="currentColor"
-                  y="16"
-                >
-                  20
-                </text>
-              </g>
+                0
+              </text>
             </g>
             <g
-              class=
-
-                  & text {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    fill: #f3f2f1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 10px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                    fill: CanvasText;
-                  }
-                  & path {
-                    display: none;
-                  }
-                  & line {
-                    opacity: 0.2;
-                    stroke: #f3f2f1;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                    opacity: 0.1;
-                    stroke: CanvasText;
-                  }
-              fill="none"
-              font-family="sans-serif"
-              font-size="10"
-              id="yAxisGElementchart_6"
-              text-anchor="end"
-              transform="translate(40, 0)"
+              class="tick"
+              opacity="1"
+              transform="translate(196,0)"
             >
-              <path
-                class="domain"
-                d="M-6,257.5H0.5V20.5H-6"
+              <line
                 stroke="currentColor"
+                y2="6"
               />
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,257.5)"
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="16"
               >
-                <line
-                  stroke="currentColor"
-                  x2="590"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-10"
-                >
-                  0
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,198.25)"
+                5
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(335.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="16"
               >
-                <line
-                  stroke="currentColor"
-                  x2="590"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-10"
-                >
-                  13
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,139)"
+                10
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(475,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="16"
               >
-                <line
-                  stroke="currentColor"
-                  x2="590"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-10"
-                >
-                  26
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,79.75)"
+                15
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(614.5,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="6"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="16"
               >
-                <line
-                  stroke="currentColor"
-                  x2="590"
-                />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-10"
-                >
-                  39
-                </text>
-              </g>
-              <g
-                class="tick"
-                opacity="1"
-                transform="translate(0,20.5)"
+                20
+              </text>
+            </g>
+          </g>
+          <g
+            class=
+
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #f3f2f1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
+                }
+                & path {
+                  display: none;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #f3f2f1;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                  opacity: 0.1;
+                  stroke: CanvasText;
+                }
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            id="yAxisGElementchart_6"
+            text-anchor="end"
+            transform="translate(40, 0)"
+          >
+            <path
+              class="domain"
+              d="M-6,257.5H0.5V20.5H-6"
+              stroke="currentColor"
+            />
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,257.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
               >
-                <line
-                  stroke="currentColor"
-                  x2="590"
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,198.25)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                13
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,139)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                26
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,79.75)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                39
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,20.5)"
+            >
+              <line
+                stroke="currentColor"
+                x2="590"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.32em"
+                fill="currentColor"
+                x="-10"
+              >
+                52
+              </text>
+            </g>
+          </g>
+          <g>
+            <g>
+              <g
+                id="0-singleBar"
+              >
+                <rect
+                  aria-label="2020/04/30. Metadata1, 40%."
+                  class=
+
+                      {
+                        cursor: default;
+                        opacity: ;
+                      }
+                  data-is-focusable="true"
+                  fill="#0078d4"
+                  height="182.30769230769232"
+                  role="img"
+                  rx="0"
+                  tabindex="0"
+                  transform="translate(-8, 0)"
+                  width="16"
+                  x="56"
+                  y="74.69230769230768"
                 />
-                <text
-                  aria-hidden="true"
-                  dy="0.32em"
-                  fill="currentColor"
-                  x="-10"
-                >
-                  52
-                </text>
+                <rect
+                  aria-label="2020/04/30. Metadata2, 5%."
+                  class=
+
+                      {
+                        cursor: default;
+                        opacity: ;
+                      }
+                  data-is-focusable="true"
+                  fill="#00188f"
+                  height="22.78846153846154"
+                  role="img"
+                  rx="0"
+                  tabindex="-1"
+                  transform="translate(-8, 0)"
+                  width="16"
+                  x="56"
+                  y="51.90384615384614"
+                />
               </g>
+              <text
+                aria-label="Total: 45"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
+                role="img"
+                text-anchor="middle"
+                transform="translate(-8, 0)"
+                x="64"
+                y="45.90384615384614"
+              >
+                45
+              </text>
             </g>
             <g>
-              <g>
-                <g
-                  id="0-singleBar"
-                >
-                  <rect
-                    aria-label="2020/04/30. Metadata1, 40%."
-                    class=
-
-                        {
-                          cursor: default;
-                          opacity: ;
-                        }
-                    data-is-focusable="true"
-                    fill="#0078d4"
-                    height="182.30769230769232"
-                    role="img"
-                    rx="0"
-                    tabindex="0"
-                    transform="translate(-8, 0)"
-                    width="16"
-                    x="56"
-                    y="74.69230769230768"
-                  />
-                  <rect
-                    aria-label="2020/04/30. Metadata2, 5%."
-                    class=
-
-                        {
-                          cursor: default;
-                          opacity: ;
-                        }
-                    data-is-focusable="true"
-                    fill="#00188f"
-                    height="22.78846153846154"
-                    role="img"
-                    rx="0"
-                    tabindex="-1"
-                    transform="translate(-8, 0)"
-                    width="16"
-                    x="56"
-                    y="51.90384615384614"
-                  />
-                </g>
-                <text
-                  aria-label="Total: 45"
+              <g
+                id="1-singleBar"
+              >
+                <rect
+                  aria-label="2020/04/30. Metadata1, 30%."
                   class=
 
                       {
-                        fill: #f3f2f1;
-                        font-size: 12px;
-                        font-weight: 600;
+                        cursor: default;
+                        opacity: ;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                        fill: CanvasText;
-                      }
+                  data-is-focusable="true"
+                  fill="#0078d4"
+                  height="136.73076923076923"
                   role="img"
-                  text-anchor="middle"
+                  rx="0"
+                  tabindex="-1"
                   transform="translate(-8, 0)"
-                  x="64"
-                  y="45.90384615384614"
-                >
-                  45
-                </text>
-              </g>
-              <g>
-                <g
-                  id="1-singleBar"
-                >
-                  <rect
-                    aria-label="2020/04/30. Metadata1, 30%."
-                    class=
-
-                        {
-                          cursor: default;
-                          opacity: ;
-                        }
-                    data-is-focusable="true"
-                    fill="#0078d4"
-                    height="136.73076923076923"
-                    role="img"
-                    rx="0"
-                    tabindex="-1"
-                    transform="translate(-8, 0)"
-                    width="16"
-                    x="614"
-                    y="120.26923076923077"
-                  />
-                  <rect
-                    aria-label="2020/04/30. Metadata2, 20%."
-                    class=
-
-                        {
-                          cursor: default;
-                          opacity: ;
-                        }
-                    data-is-focusable="true"
-                    fill="#00188f"
-                    height="91.15384615384615"
-                    role="img"
-                    rx="0"
-                    tabindex="-1"
-                    transform="translate(-8, 0)"
-                    width="16"
-                    x="614"
-                    y="29.115384615384627"
-                  />
-                </g>
-                <text
-                  aria-label="Total: 50"
+                  width="16"
+                  x="614"
+                  y="120.26923076923077"
+                />
+                <rect
+                  aria-label="2020/04/30. Metadata2, 20%."
                   class=
 
                       {
-                        fill: #f3f2f1;
-                        font-size: 12px;
-                        font-weight: 600;
+                        cursor: default;
+                        opacity: ;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                        fill: CanvasText;
-                      }
+                  data-is-focusable="true"
+                  fill="#00188f"
+                  height="91.15384615384615"
                   role="img"
-                  text-anchor="middle"
+                  rx="0"
+                  tabindex="-1"
                   transform="translate(-8, 0)"
-                  x="622"
-                  y="23.115384615384627"
-                >
-                  50
-                </text>
+                  width="16"
+                  x="614"
+                  y="29.115384615384627"
+                />
               </g>
+              <text
+                aria-label="Total: 50"
+                class=
+
+                    {
+                      fill: #f3f2f1;
+                      font-size: 12px;
+                      font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
+                role="img"
+                text-anchor="middle"
+                transform="translate(-8, 0)"
+                x="622"
+                y="23.115384615384627"
+              >
+                50
+              </text>
             </g>
-            <g />
-          </svg>
-        </div>
+          </g>
+          <g />
+        </svg>
       </div>
       <div
         class=
@@ -9853,512 +9813,502 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
         >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="currentColor"
+          />
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_3"
-            text-anchor="middle"
-            transform="translate(0, 257)"
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)"
           >
-            <path
-              class="domain"
-              d="M279.5,6V0.5H391.5V6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(287,0)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                January
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                February
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(383,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                March
-              </text>
-            </g>
+              January
+            </text>
           </g>
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_3"
-            text-anchor="end"
-            transform="translate(40, 0)"
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)"
           >
-            <path
-              class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,257.5)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,198.25)"
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                10
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,139)"
+              March
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                20
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,79.75)"
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              40
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, -2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="11.85"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="257"
               />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                40
-              </text>
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="2.9625"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="254.0375"
+              />
             </g>
+            <text
+              aria-label="Total: -1.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="269"
+            >
+              −1.5
+            </text>
           </g>
           <g>
-            <g>
-              <g
-                aria-label="January. Metadata1, -2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
-                data-is-focusable="true"
-                id="0-singleBar"
-                role="img"
-                tabindex="0"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="11.85"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="279"
-                  y="257"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="2.9625"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="279"
-                  y="254.0375"
-                />
-              </g>
-              <text
-                aria-label="Total: -1.5"
+            <g
+              aria-label="February. Metadata1, -30. Metadata2, -3. Metadata3, -40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#0078d4"
+                height="177.75"
+                rx="0"
                 transform="translate(0, 0)"
-                x="287"
-                y="269"
-              >
-                −1.5
-              </text>
-            </g>
-            <g>
-              <g
-                aria-label="February. Metadata1, -30. Metadata2, -3. Metadata3, -40. Supported Builds, 41."
-                data-is-focusable="true"
-                id="1-singleBar"
-                role="img"
-                tabindex="-1"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="177.75"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="257"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="17.775"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="434.75"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00bcf2"
-                  height="237"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="327"
-                  y="452.525"
-                />
-              </g>
-              <text
-                aria-label="Total: -73"
+                width="16"
+                x="327"
+                y="257"
+              />
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#00188f"
+                height="17.775"
+                rx="0"
                 transform="translate(0, 0)"
-                x="335"
-                y="701.525"
-              >
-                −73
-              </text>
-            </g>
-            <g>
-              <g
-                aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, -30. Supported Builds, 100."
-                data-is-focusable="true"
-                id="2-singleBar"
-                role="img"
-                tabindex="-1"
-              >
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#0078d4"
-                  height="59.25"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="197.75"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00188f"
-                  height="355.5"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="-157.75"
-                />
-                <rect
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  fill="#00bcf2"
-                  height="177.75"
-                  rx="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="375"
-                  y="257"
-                />
-              </g>
-              <text
-                aria-label="Total: 40"
+                width="16"
+                x="327"
+                y="434.75"
+              />
+              <rect
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                role="img"
-                text-anchor="middle"
+                fill="#00bcf2"
+                height="237"
+                rx="0"
                 transform="translate(0, 0)"
-                x="383"
-                y="251"
-              >
-                40
-              </text>
+                width="16"
+                x="327"
+                y="452.525"
+              />
             </g>
+            <text
+              aria-label="Total: -73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="701.525"
+            >
+              −73
+            </text>
           </g>
           <g>
-            <line
-              opacity="1"
-              stroke="#e3008c"
-              stroke-linecap="round"
-              stroke-width="3"
-              transform="translate(8, 0)"
-              x1="279"
-              x2="327"
-              y1="8.149999999999988"
-              y2="14.075000000000022"
-            />
-            <line
-              opacity="1"
-              stroke="#e3008c"
-              stroke-linecap="round"
-              stroke-width="3"
-              transform="translate(8, 0)"
-              x1="327"
-              x2="375"
-              y1="14.075000000000022"
-              y2="-335.5"
-            />
-            <circle
-              cx="279"
-              cy="8.149999999999988"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
-            <circle
-              cx="327"
-              cy="14.075000000000022"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
-            <circle
-              cx="375"
-              cy="-335.5"
-              fill="#ffffff"
-              opacity="0"
-              r="8"
-              stroke="#e3008c"
-              stroke-width="3"
-              transform="translate(8, 0)"
-            />
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, -30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="59.25"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="197.75"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="355.5"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="-157.75"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="177.75"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="257"
+              />
+            </g>
+            <text
+              aria-label="Total: 40"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="251"
+            >
+              40
+            </text>
           </g>
-        </svg>
-      </div>
+        </g>
+        <g>
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="8.149999999999988"
+            y2="14.075000000000022"
+          />
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="14.075000000000022"
+            y2="-335.5"
+          />
+          <circle
+            cx="279"
+            cy="8.149999999999988"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="327"
+            cy="14.075000000000022"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="375"
+            cy="-335.5"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+        </g>
+      </svg>
     </div>
     <div
       class=
@@ -10857,413 +10807,403 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
       data-focuszone-id="FocusZone10"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
-      <div
-        class=
-
-            {
-              height: 100%;
-              position: relative;
-              width: 100%;
-            }
+      <svg
+        aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
       >
-        <svg
-          aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-          focusable="false"
-          height="292"
-          role="region"
-          style="display: block;"
-          width="650"
-        >
-          <g
-            class=
+        <g
+          class=
 
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_3"
-            text-anchor="middle"
-            transform="translate(0, 257)"
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
           >
-            <path
-              class="domain"
-              d="M56.5,6V0.5H614.5V6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(56.5,0)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(196,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                5
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                10
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(475,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                15
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(614.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                20
-              </text>
-            </g>
+              0
+            </text>
           </g>
           <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
-                  fill: CanvasText;
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
-                  opacity: 0.1;
-                  stroke: CanvasText;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_3"
-            text-anchor="end"
-            transform="translate(40, 0)"
+            class="tick"
+            opacity="1"
+            transform="translate(196,0)"
           >
-            <path
-              class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+            <line
               stroke="currentColor"
+              y2="6"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,257.5)"
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,198.25)"
+              5
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                13
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,139)"
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(475,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                26
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,79.75)"
+              15
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(614.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                39
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
+              20
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
             >
-              <line
-                stroke="currentColor"
-                x2="590"
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              52
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              id="0-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 40%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="182.30769230769232"
+                role="img"
+                rx="0"
+                tabindex="0"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="74.69230769230768"
               />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                52
-              </text>
+              <rect
+                aria-label="2020/04/30. Metadata2, 5%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                data-is-focusable="true"
+                fill="#00188f"
+                height="22.78846153846154"
+                role="img"
+                rx="0"
+                tabindex="-1"
+                transform="translate(-8, 0)"
+                width="16"
+                x="56"
+                y="51.90384615384614"
+              />
             </g>
+            <text
+              aria-label="Total: 45"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="64"
+              y="45.90384615384614"
+            >
+              45
+            </text>
           </g>
           <g>
-            <g>
-              <g
-                id="0-singleBar"
-              >
-                <rect
-                  aria-label="2020/04/30. Metadata1, 40%."
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  data-is-focusable="true"
-                  fill="#0078d4"
-                  height="182.30769230769232"
-                  role="img"
-                  rx="0"
-                  tabindex="0"
-                  transform="translate(-8, 0)"
-                  width="16"
-                  x="56"
-                  y="74.69230769230768"
-                />
-                <rect
-                  aria-label="2020/04/30. Metadata2, 5%."
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  data-is-focusable="true"
-                  fill="#00188f"
-                  height="22.78846153846154"
-                  role="img"
-                  rx="0"
-                  tabindex="-1"
-                  transform="translate(-8, 0)"
-                  width="16"
-                  x="56"
-                  y="51.90384615384614"
-                />
-              </g>
-              <text
-                aria-label="Total: 45"
+            <g
+              id="1-singleBar"
+            >
+              <rect
+                aria-label="2020/04/30. Metadata1, 30%."
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="136.73076923076923"
                 role="img"
-                text-anchor="middle"
+                rx="0"
+                tabindex="-1"
                 transform="translate(-8, 0)"
-                x="64"
-                y="45.90384615384614"
-              >
-                45
-              </text>
-            </g>
-            <g>
-              <g
-                id="1-singleBar"
-              >
-                <rect
-                  aria-label="2020/04/30. Metadata1, 30%."
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  data-is-focusable="true"
-                  fill="#0078d4"
-                  height="136.73076923076923"
-                  role="img"
-                  rx="0"
-                  tabindex="-1"
-                  transform="translate(-8, 0)"
-                  width="16"
-                  x="614"
-                  y="120.26923076923077"
-                />
-                <rect
-                  aria-label="2020/04/30. Metadata2, 20%."
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  data-is-focusable="true"
-                  fill="#00188f"
-                  height="91.15384615384615"
-                  role="img"
-                  rx="0"
-                  tabindex="-1"
-                  transform="translate(-8, 0)"
-                  width="16"
-                  x="614"
-                  y="29.115384615384627"
-                />
-              </g>
-              <text
-                aria-label="Total: 50"
+                width="16"
+                x="614"
+                y="120.26923076923077"
+              />
+              <rect
+                aria-label="2020/04/30. Metadata2, 20%."
                 class=
 
                     {
-                      fill: #323130;
-                      font-size: 12px;
-                      font-weight: 600;
+                      cursor: default;
+                      opacity: ;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
+                data-is-focusable="true"
+                fill="#00188f"
+                height="91.15384615384615"
                 role="img"
-                text-anchor="middle"
+                rx="0"
+                tabindex="-1"
                 transform="translate(-8, 0)"
-                x="622"
-                y="23.115384615384627"
-              >
-                50
-              </text>
+                width="16"
+                x="614"
+                y="29.115384615384627"
+              />
             </g>
+            <text
+              aria-label="Total: 50"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(-8, 0)"
+              x="622"
+              y="23.115384615384627"
+            >
+              50
+            </text>
           </g>
-          <g />
-        </svg>
-      </div>
+        </g>
+        <g />
+      </svg>
     </div>
     <div
       class=
