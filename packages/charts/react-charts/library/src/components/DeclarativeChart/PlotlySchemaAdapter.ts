@@ -1235,16 +1235,50 @@ const transformPlotlyJsonToScatterTraceProps = (
     })
     .flat();
 
+  const xMinValue = chartData[0]?.data[0].x;
+  const xMaxValue = chartData[0]?.data[chartData[0].data.length - 1].x;
+  const yMinValue = chartData[0]?.data[0].y;
+  const yMaxValue = chartData[0]?.data[chartData[0].data.length - 1].y;
+
   const lineShape: LineChartPoints[] = (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
     .map((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const resolveX = (val: any) => {
+        if (shape.xref === 'paper') {
+          if (val === 0) {
+            return xMinValue;
+          }
+          if (val === 1) {
+            return xMaxValue;
+          }
+          return typeof xMinValue === 'number' && typeof xMaxValue === 'number'
+            ? xMinValue + val * (xMaxValue - xMinValue)
+            : val;
+        }
+        return val;
+      };
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const resolveY = (val: any) => {
+        if (shape.yref === 'paper') {
+          if (val === 0) {
+            return yMinValue;
+          }
+          if (val === 1) {
+            return yMaxValue;
+          }
+          return yMinValue + val * (yMaxValue - yMinValue);
+        }
+        return val;
+      };
 
       return {
         legend: `Reference_${shapeIdx}`,
         data: [
-          { x: shape.x0, y: shape.y0 },
-          { x: shape.x1, y: shape.y1 },
+          { x: resolveX(shape.x0!), y: resolveY(shape.y0!) },
+          { x: resolveX(shape.x1!), y: resolveY(shape.y1!) },
         ],
         color: rgb(lineColor!).formatHex8() ?? lineColor,
         lineOptions: getLineOptions(shape.line),
