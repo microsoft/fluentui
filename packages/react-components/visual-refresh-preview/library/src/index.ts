@@ -218,6 +218,7 @@ export const MAI_SEMANTIC_TOKENS = {
  *      - Button + primaryIcon/ctrl + secondaryIcon/ctrl
  * 9. if border="transparent" it makes button height 2px size less depends on variant
  * 10. size/ctrl/lg - what should we do with icon size? 12px/16px/16px
+ * 11. Theme support? light/dark/HC?
  */
 
 export const TEAMS_VISUAL_REFRESH_THEME = {

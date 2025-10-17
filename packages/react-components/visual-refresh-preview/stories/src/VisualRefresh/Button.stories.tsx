@@ -40,7 +40,7 @@ const buttonVariants: Array<{ label: string; appearance?: ButtonProps['appearanc
   { label: 'Outline', appearance: 'outline', content: 'Outline' },
   { label: 'Subtle', appearance: 'subtle', content: 'Subtle' },
   { label: 'Transparent', appearance: 'transparent', content: 'Transparent' },
-  { label: 'Tint', appearance: 'secondary', content: 'Tint' },
+  // { label: 'Tint', appearance: 'secondary', content: 'Tint' },
 ];
 
 const useStoryStyles = makeStyles({
@@ -86,7 +86,7 @@ const useStoryStyles = makeStyles({
   previewContent: {
     display: 'flex',
     alignItems: 'center',
-    gap: '1rem',
+    gap: '34px',
     flexWrap: 'wrap',
   },
   headerCell: {
@@ -220,30 +220,25 @@ const ComponentStatesTable = ({
   const styles = useStoryStyles();
 
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th className={styles.headerCell}>Component</th>
-          <th className={styles.headerCell}>Variant</th>
-          {buttonStateOrder.map(state => (
-            <th key={state} className={styles.headerCell}>
-              {buttonStateLabels[state]}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        <React.Fragment>
-          {buttonVariants.map((variant, index) => (
-            <tr key={`button-${variant.label}`}>
-              {index === 0 && (
-                <td className={styles.componentCell} rowSpan={buttonVariants.length}>
-                  Button
-                </td>
-              )}
-              <td className={styles.variantCell}>{variant.label}</td>
-              {buttonStateOrder.map(state => (
-                <td key={state} className={styles.stateCell}>
+    <div>
+      <Label className={styles.previewLabel}>States</Label>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th className={styles.headerCell}>State</th>
+            {buttonVariants.map(variant => (
+              <th key={variant.label} className={styles.headerCell}>
+                {variant.label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {buttonStateOrder.map((state, stateIndex) => (
+            <tr key={state}>
+              <td className={styles.variantCell}>{buttonStateLabels[state]}</td>
+              {buttonVariants.map(variant => (
+                <td key={variant.label} className={styles.stateCell}>
                   <div className={styles.stateContent}>
                     <ButtonStateCell
                       appearance={variant.appearance}
@@ -258,9 +253,9 @@ const ComponentStatesTable = ({
               ))}
             </tr>
           ))}
-        </React.Fragment>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   );
 };
 
@@ -302,7 +297,7 @@ export const ButtonVisualRefresh = (): JSXElement => {
         </div>
       </div>
       <div className={styles.previewSection}>
-        <Label className={styles.previewLabel}>Button preview</Label>
+        <Label className={styles.previewLabel}>Preview</Label>
         <div className={styles.previewContent}>
           {buttonVariants.map(variant => (
             <Button key={variant.label} appearance={variant.appearance} size={controlSize} icon={<ChatEmpty />}>
@@ -311,7 +306,9 @@ export const ButtonVisualRefresh = (): JSXElement => {
           ))}
         </div>
       </div>
-      <ComponentStatesTable controlSize={controlSize} isVisualRefreshEnabled={isVisualRefreshEnabled} />
+      {isVisualRefreshEnabled && (
+        <ComponentStatesTable controlSize={controlSize} isVisualRefreshEnabled={isVisualRefreshEnabled} />
+      )}
     </div>
   );
 
