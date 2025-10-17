@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: implement custom JSX namespace instead of @ts-ignore workaround",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
