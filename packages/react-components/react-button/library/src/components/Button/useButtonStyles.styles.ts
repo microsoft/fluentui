@@ -612,25 +612,6 @@ const createVisualRefreshAppearanceStyles = (appearance: VisualRefreshAppearance
       },
     },
 
-    ':focus': {
-      ...shorthands.borderColor(tokens.colorStrokeFocus2),
-      boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-      outlineOffset: '2px',
-      color: getSemanticTokenValue(`${foregroundTokenBase}/hover`),
-      backgroundColor: getSemanticTokenValue(`${backgroundTokenBase}/hover`),
-      ...shorthands.borderColor(getSemanticTokenValue(`${borderTokenBase}/hover`)),
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-      [`& .${buttonClassNames.icon}`]: {
-        color: getSemanticTokenValue(`${iconColorTokenBase}/hover`),
-      },
-    },
-
     ':disabled': {
       pointerEvents: 'none',
       color: getSemanticTokenValue(`${foregroundTokenBase}/disabled`),
@@ -690,6 +671,28 @@ const useVisualRefreshStyles = makeStyles({
   },
 });
 
+const useVisualRefreshIconStyles = makeStyles({
+  small: {
+    fontSize: '12px',
+    height: '12px',
+    width: '12px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalXS,
+  },
+  medium: {
+    fontSize: '16px',
+    height: '16px',
+    width: '16px',
+  },
+  large: {
+    fontSize: '16px',
+    height: '16px',
+    width: '16px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
+  },
+});
+
 export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   'use no memo';
 
@@ -704,6 +707,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootFocusStyles = useRootFocusStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
+  const iconVisualRefreshStyles = useVisualRefreshIconStyles();
 
   const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
 
@@ -730,9 +734,9 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
     // Focus styles
-    appearance === 'primary' && rootFocusStyles.primary,
-    rootFocusStyles[size],
-    rootFocusStyles[shape],
+    !isVisualRefreshEnabled && appearance === 'primary' && rootFocusStyles.primary,
+    !isVisualRefreshEnabled && rootFocusStyles[size],
+    !isVisualRefreshEnabled && rootFocusStyles[shape],
 
     // Icon-only styles
     iconOnly && rootIconOnlyStyles[size],
@@ -750,6 +754,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
       iconBaseClassName,
       !!state.root.children && iconStyles[iconPosition],
       iconStyles[size],
+      isVisualRefreshEnabled && iconVisualRefreshStyles[size],
       state.icon.className,
     );
   }

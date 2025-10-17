@@ -9,6 +9,8 @@ import {
   TEAMS_VISUAL_REFRESH_TOKENS,
   VisualRefreshContext,
 } from '@fluentui/visual-refresh-preview';
+import { shorthands } from '@griffel/react';
+
 import {
   getVisualRefreshAppearanceStateTokens,
   type VisualRefreshAppearanceStateTokens,
@@ -30,9 +32,16 @@ const componentStateToAppearanceStateKey: Record<ComponentState, AppearanceState
   rest: 'rest',
   hover: 'hover',
   pressed: 'pressed',
-  focus: 'rest',
+  focus: 'hover',
   disabled: 'disabled',
 };
+const buttonVariants: Array<{ label: string; appearance?: ButtonProps['appearance']; content: string }> = [
+  { label: 'Primary', appearance: 'primary', content: 'Primary' },
+  { label: 'Outline', appearance: 'outline', content: 'Outline' },
+  { label: 'Subtle', appearance: 'subtle', content: 'Subtle' },
+  { label: 'Transparent', appearance: 'transparent', content: 'Transparent' },
+  { label: 'Tint', appearance: 'secondary', content: 'Tint' },
+];
 
 const useStoryStyles = makeStyles({
   container: {
@@ -61,6 +70,24 @@ const useStoryStyles = makeStyles({
   table: {
     borderCollapse: 'collapse',
     minWidth: '720px',
+    pointerEvents: 'none',
+  },
+  previewSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.75rem',
+    paddingBottom: '1.5rem',
+    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+  },
+  previewLabel: {
+    color: tokens.colorNeutralForeground2,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  previewContent: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+    flexWrap: 'wrap',
   },
   headerCell: {
     borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
@@ -95,6 +122,15 @@ const useStoryStyles = makeStyles({
   },
 });
 
+const useButtonStateStyles = makeStyles({
+  focus: {
+    ...shorthands.borderColor(tokens.colorStrokeFocus2),
+    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
+    outlineOffset: '2px',
+  },
+});
+
 const VisualRefreshProvider = ({ children }: { children: React.ReactNode }) => {
   const customProperties: Record<string, string> = {};
   for (const [key, value] of Object.entries(TEAMS_VISUAL_REFRESH_TOKENS ?? {})) {
@@ -123,6 +159,8 @@ const ButtonStateCell = ({
   size: ButtonProps['size'];
   isVisualRefreshEnabled: boolean;
 }) => {
+  const buttonStateClasses = useButtonStateStyles();
+  const focusClass = state === 'focus' ? buttonStateClasses.focus : undefined;
   const visualRefreshState = React.useMemo(() => {
     if (!isVisualRefreshEnabled) {
       return {
@@ -161,6 +199,7 @@ const ButtonStateCell = ({
     <Button
       appearance={appearance}
       disabled={state === 'disabled'}
+      className={focusClass}
       size={size}
       style={visualRefreshStyle}
       tabIndex={-1}
@@ -179,15 +218,6 @@ const ComponentStatesTable = ({
   isVisualRefreshEnabled: boolean;
 }) => {
   const styles = useStoryStyles();
-
-  const buttonVariants: Array<{ label: string; appearance?: ButtonProps['appearance']; content: string }> = [
-    { label: 'Outline', appearance: 'outline', content: 'Outline' },
-    { label: 'Primary', appearance: 'primary', content: 'Primary' },
-    { label: 'Secondary', appearance: 'secondary', content: 'Secondary' },
-    { label: 'Subtle', appearance: 'subtle', content: 'Subtle' },
-    { label: 'Transparent', appearance: 'transparent', content: 'Transparent' },
-    { label: 'Tint', appearance: 'secondary', content: 'Tint' },
-  ];
 
   return (
     <table className={styles.table}>
@@ -249,6 +279,8 @@ export const ButtonVisualRefresh = (): JSXElement => {
     setControlSize(event.target.value as ButtonProps['size']);
   };
 
+  const ChatEmpty = bundleIcon(ChatEmptyFilled, ChatEmptyRegular);
+
   const content = (
     <div className={styles.container}>
       <div className={styles.controls}>
@@ -267,6 +299,16 @@ export const ButtonVisualRefresh = (): JSXElement => {
             <option value="medium">Medium</option>
             <option value="large">Large</option>
           </Select>
+        </div>
+      </div>
+      <div className={styles.previewSection}>
+        <Label className={styles.previewLabel}>Button preview</Label>
+        <div className={styles.previewContent}>
+          {buttonVariants.map(variant => (
+            <Button key={variant.label} appearance={variant.appearance} size={controlSize} icon={<ChatEmpty />}>
+              {variant.content}
+            </Button>
+          ))}
         </div>
       </div>
       <ComponentStatesTable controlSize={controlSize} isVisualRefreshEnabled={isVisualRefreshEnabled} />

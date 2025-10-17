@@ -217,12 +217,14 @@ export const MAI_SEMANTIC_TOKENS = {
  *      - MenuButton + icon/ctrl
  *      - Button + primaryIcon/ctrl + secondaryIcon/ctrl
  * 9. if border="transparent" it makes button height 2px size less depends on variant
+ * 10. size/ctrl/lg - what should we do with icon size? 12px/16px/16px
  */
 
 export const TEAMS_VISUAL_REFRESH_THEME = {
   'size/ctrl/md': '36px',
   'size/ctrl/sm': '28px',
   'size/ctrl/lg': '40px',
+
   // Button
   // Padding
   'padding/ctrl/horizontal/sm': '8px',
