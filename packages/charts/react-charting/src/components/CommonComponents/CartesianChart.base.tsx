@@ -530,14 +530,18 @@ export class CartesianChartBase
       height: plotHeight,
     };
 
-    const annotationContext: IChartAnnotationContext = {
-      plotRect,
-      svgRect: svgDimensions,
-      isRtl: this._isRtl,
-      xScale: this._xScale,
-      yScalePrimary,
-      yScaleSecondary,
-    };
+    const annotations = this.props.annotations ?? [];
+    const hasAnnotations = annotations.length > 0;
+    const annotationContext: IChartAnnotationContext | undefined = hasAnnotations
+      ? {
+          plotRect,
+          svgRect: svgDimensions,
+          isRtl: this._isRtl,
+          xScale: this._xScale,
+          yScalePrimary,
+          yScaleSecondary,
+        }
+      : undefined;
 
     let focusDirection;
     if (this.props.focusZoneDirection === FocusZoneDirection.vertical) {
@@ -598,16 +602,15 @@ export class CartesianChartBase
           {...svgFocusZoneProps}
         >
           {this._isFirstRender && <div id={this.idForDefaultTabbableElement} />}
-          <div className={this._classNames.plotContainer}>
-            <svg
-              width={svgDimensions.width}
-              height={svgDimensions.height}
-              role="region"
-              aria-label={this._getChartDescription()}
-              style={{ display: 'block' }}
-              className={this._classNames.chart}
-              {...getSecureProps(svgProps)}
-            >
+          <svg
+            width={svgDimensions.width}
+            height={svgDimensions.height}
+            role="region"
+            aria-label={this._getChartDescription()}
+            style={{ display: 'block' }}
+            className={this._classNames.chart}
+            {...getSecureProps(svgProps)}
+          >
               <g
                 ref={(e: SVGSVGElement | null) => {
                   this.xAxisElement = e;
@@ -742,14 +745,15 @@ export class CartesianChartBase
                     {...commonSvgToolTipProps}
                   />
                 )}
-            </svg>
+          </svg>
+          {hasAnnotations && annotationContext && (
             <ChartAnnotationLayer
-              annotations={this.props.annotations}
+              annotations={annotations}
               context={annotationContext}
               theme={this.props.theme!}
               className={this._classNames.annotationLayer}
             />
-          </div>
+          )}
         </FocusZone>
 
         {!this.props.hideLegend && (
