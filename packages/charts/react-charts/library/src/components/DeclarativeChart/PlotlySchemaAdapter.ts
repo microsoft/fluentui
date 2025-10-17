@@ -66,6 +66,7 @@ import type {
   TraceInfo,
   DTickValue,
   AxisType,
+  Shape,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -1101,6 +1102,27 @@ export const transformPlotlyJsonToScatterChartProps = (
   ) as ScatterChartProps;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mapColorFillBars = (layout: Partial<Layout> | undefined) => {
+  if (!Array.isArray(layout?.shapes)) {
+    return [];
+  }
+
+  return layout.shapes
+    .filter((shape: Partial<Shape>) => shape.type === 'rect')
+    .map((shape: { x0?: Datum; x1?: Datum; fillcolor?: string }) => {
+      //colorFillbars doesn't support string dates or categories
+      if (typeof shape.x0 === 'string' || typeof shape.x1 === 'string') {
+        return null;
+      }
+      return {
+        color: shape.fillcolor!,
+        data: [{ startX: shape.x0, endX: shape.x1 }],
+        applyPattern: false,
+      };
+    });
+};
+
 const transformPlotlyJsonToScatterTraceProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -1281,6 +1303,11 @@ const transformPlotlyJsonToScatterTraceProps = (
             ...getAxisCategoryOrderProps(input.data, input.layout),
           }
         : {}),
+      ...(!isScatterChart &&
+        (() => {
+          const bars = mapColorFillBars(input.layout);
+          return bars && !bars.includes(null) ? { colorFillBars: bars } : {};
+        })()),
     } as LineChartProps;
   }
 };

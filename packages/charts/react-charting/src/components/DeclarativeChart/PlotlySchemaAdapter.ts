@@ -1306,9 +1306,11 @@ const transformPlotlyJsonToScatterTraceProps = (
             ...getAxisCategoryOrderProps(input.data, input.layout),
           }
         : {}),
-      ...(!isScatterChart && mapColorFillBars(input.layout)?.length
-        ? { colorFillBars: mapColorFillBars(input.layout) }
-        : {}),
+      ...(!isScatterChart &&
+        (() => {
+          const bars = mapColorFillBars(input.layout);
+          return bars && !bars.includes(null) ? { colorFillBars: bars } : {};
+        })()),
     } as ILineChartProps | IScatterChartProps;
   }
 };
