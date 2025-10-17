@@ -172,7 +172,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralStroke1Pressed,
     },
     groupButtonOutlineStrokeSelected: {
-      fluent: tokens.colorNeutralStroke1Selected,
+      fluent: tokens.colorNeutralStroke1,
     },
     groupButtonOutlineStrokeHoverSelected: {
       fluent: tokens.colorNeutralStroke1Selected,

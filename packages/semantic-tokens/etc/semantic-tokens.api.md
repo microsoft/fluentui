@@ -437,7 +437,7 @@ export const groupButtonOutlineStrokePressed = "var(--smtc-group-button-outline-
 export const groupButtonOutlineStrokePressedSelected = "var(--smtc-group-button-outline-stroke-pressed-selected, var(--colorNeutralStroke1Selected))";
 
 // @public (undocumented)
-export const groupButtonOutlineStrokeSelected = "var(--smtc-group-button-outline-stroke-selected, var(--colorNeutralStroke1Selected))";
+export const groupButtonOutlineStrokeSelected = "var(--smtc-group-button-outline-stroke-selected, var(--colorNeutralStroke1))";
 
 // @public (undocumented)
 export const groupButtonOutlineStrokewidth = "var(--smtc-group-button-outline-strokewidth)";
