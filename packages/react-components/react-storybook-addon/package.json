@@ -27,8 +27,7 @@
     "@fluentui/react-utilities": "^9.25.1",
     "@fluentui/react-theme": "^9.2.0",
     "@griffel/react": "^1.5.22",
-    "@swc/helpers": "^0.5.1",
-    "@fluentui/semantic-style-hooks-preview": "*"
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@storybook/addon-docs": "^7.6.20",
