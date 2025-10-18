@@ -28,7 +28,9 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -883,7 +885,9 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1661,7 +1665,9 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2456,7 +2462,9 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             &:focus {
               outline: none;
             }
-
+            {
+              position: relative;
+            }
         data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -3239,7 +3247,9 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4024,7 +4034,9 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -5066,7 +5078,9 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -5886,7 +5900,9 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -6668,7 +6684,9 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -7610,7 +7628,9 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

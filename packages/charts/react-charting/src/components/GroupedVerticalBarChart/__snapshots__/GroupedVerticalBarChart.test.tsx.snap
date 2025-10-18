@@ -28,7 +28,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -603,7 +605,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

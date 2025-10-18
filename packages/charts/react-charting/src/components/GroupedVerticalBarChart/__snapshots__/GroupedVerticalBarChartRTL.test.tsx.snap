@@ -39,7 +39,9 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -801,7 +803,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1563,7 +1567,9 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2325,7 +2331,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -3087,7 +3095,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4486,7 +4496,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -5061,7 +5073,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -7849,7 +7863,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-
+            {
+              position: relative;
+            }
         data-focuszone-id="FocusZone16"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
