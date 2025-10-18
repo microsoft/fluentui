@@ -3074,6 +3074,7 @@ Object {
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToLineChartProps - Should return line chart props 1`] = `
 Object {
   "chartTitle": "",
+  "colorFillBars": Array [],
   "data": Object {
     "lineChartData": Array [
       Object {
