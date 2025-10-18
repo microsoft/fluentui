@@ -1098,6 +1098,11 @@ export type AxisProps = {
    *   - Exception: when `tickStep` uses `"L<f>"`, you can specify the raw value directly.
    */
   tick0?: number | Date;
+
+  /**
+   *
+   */
+  tickText?: string[];
 };
 
 /**
