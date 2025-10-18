@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { resetIds } from '../../Utilities';
 import { VerticalBarChart, IVerticalBarChartDataPoint } from '../../index';
 import { chartPointsVBC } from '../../utilities/test-data';
-import { render } from '@testing-library/react';
-const rendererAct = renderer.act;
+import { render, act } from '@testing-library/react';
 declare const global: any;
 
 function sharedBeforeEach() {
@@ -25,93 +23,83 @@ describe('VerticalBarChart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
 
   it('renders VerticalBarChart correctly', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders showXAxisLablesTooltip correctly', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} showXAxisLablesTooltip={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} showXAxisLablesTooltip={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders wrapXAxisLables correctly', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} wrapXAxisLables={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} wrapXAxisLables={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders yAxisTickFormat correctly', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'/%d'} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'/%d'} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('Should not render bar labels', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideLabels={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} hideLabels={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('Should render gradients on bars', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} enableGradient={false} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} enableGradient={false} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('Should render rounded corners on bars', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPointsVBC} roundCorners={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalBarChart data={chartPointsVBC} roundCorners={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 });
 
@@ -182,13 +170,11 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart {...props} />);
-    });
-    const htmlBefore = component!.toJSON();
-    component.update(<VerticalBarChart {...props} />);
-    const htmlAfter = component!.toJSON();
+    const { container, rerender } = render(<VerticalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<VerticalBarChart {...props} />);
+    const htmlAfter = container.innerHTML;
+    // Even with no prop changes, the chart may regenerate with new IDs
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 
@@ -199,13 +185,10 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart {...props} />);
-    });
-    const htmlBefore = component!.toJSON();
-    component.update(<VerticalBarChart {...props} hideLegend={false} />);
-    const htmlAfter = component!.toJSON();
+    const { container, rerender } = render(<VerticalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<VerticalBarChart {...props} hideLegend={false} />);
+    const htmlAfter = container.innerHTML;
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
@@ -218,11 +201,9 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 
   it('Empty chart aria label div rendered', () => {
-    let component: any;
-    rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={[]} roundCorners={true} />);
-    });
-    const tree = component!.toJSON();
-    expect(tree.props['aria-label']).toBe('Graph has no data to display');
+    const { container } = render(<VerticalBarChart data={[]} roundCorners={true} />);
+    const emptyDiv = container.querySelector('[aria-label="Graph has no data to display"]');
+    expect(emptyDiv).toBeDefined();
+    expect(emptyDiv).not.toBeNull();
   });
 });

@@ -127,11 +127,11 @@ jobs:
 
       - name: React Versions Integration Tests (17,19) - Test
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--19--test --exclude='react-19-tests-v9,react-charting'
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--test,test-rit--19--test --exclude='react-19-tests-v9'
 
       - name: React Versions Integration Tests (17,19) - Type-check
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--19--type-check --exclude='react-19-tests-v9,react-charting'
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--19--type-check --exclude='react-19-tests-v9'
 
   react_19_v9_source_code_typecheck:
     if: ${{ github.repository_owner == 'microsoft' }}
