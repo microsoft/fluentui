@@ -703,18 +703,16 @@ export const transformPlotlyJsonToVSBCProps = (
     .filter(shape => shape.type === 'line')
     .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const resolveX = (val: any) => {
+      const resolveX = (val: Datum) => {
         if (typeof val === 'number' && Array.isArray(xCategories) && xCategories[val] !== undefined) {
           return xCategories[val];
         }
         return val;
       };
 
-      const x0Key = resolveX(shape.x0);
-      const x1Key = resolveX(shape.x1);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const resolveY = (val: any) => {
+      const x0Key = resolveX(shape.x0!);
+      const x1Key = resolveX(shape.x1!);
+      const resolveY = (val: Datum) => {
         if (shape.yref === 'paper') {
           if (val === 0) {
             return yMinValue;
@@ -722,23 +720,26 @@ export const transformPlotlyJsonToVSBCProps = (
           if (val === 1) {
             return yMaxValue;
           }
-          return yMinValue + val * (yMaxValue - yMinValue);
+          if (typeof val === 'number') {
+            return yMinValue + val * (yMaxValue - yMinValue);
+          }
+          return val;
         }
         return val;
       };
 
-      const y0Val = resolveY(shape.y0);
-      const y1Val = resolveY(shape.y1);
-      mapXToDataPoints[x0Key].lineData!.push({
+      const y0Val = resolveY(shape.y0!);
+      const y1Val = resolveY(shape.y1!);
+      mapXToDataPoints[x0Key as string].lineData!.push({
         legend: `Reference_${shapeIdx}`,
-        y: y0Val,
+        y: y0Val as string,
         color: rgb(lineColor!).formatHex8() ?? lineColor,
         lineOptions: getLineOptions(shape.line),
         useSecondaryYScale: false,
       });
-      mapXToDataPoints[x1Key].lineData!.push({
+      mapXToDataPoints[x1Key as string].lineData!.push({
         legend: `Reference_${shapeIdx}`,
-        y: y1Val,
+        y: y1Val as string,
         color: rgb(lineColor!).formatHex8() ?? lineColor,
         lineOptions: getLineOptions(shape.line),
         useSecondaryYScale: false,
@@ -1102,7 +1103,6 @@ export const transformPlotlyJsonToScatterChartProps = (
   ) as IScatterChartProps;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mapColorFillBars = (layout: Partial<Layout> | undefined) => {
   if (!Array.isArray(layout?.shapes)) {
     return [];
@@ -1236,16 +1236,51 @@ const transformPlotlyJsonToScatterTraceProps = (
     })
     .flat();
 
+  const xMinValue = chartData[0]?.data[0]?.x;
+  const xMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.x;
+  const yMinValue = chartData[0]?.data[0]?.y;
+  const yMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.y;
   const lineShape: ILineChartPoints[] = (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
     .map((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
 
+      const resolveX = (val: Datum) => {
+        if (shape.xref === 'paper') {
+          if (val === 0) {
+            return xMinValue;
+          }
+          if (val === 1) {
+            return xMaxValue;
+          }
+          return typeof xMinValue === 'number' && typeof xMaxValue === 'number' && typeof val === 'number'
+            ? xMinValue + val * (xMaxValue - xMinValue)
+            : val;
+        }
+        return val;
+      };
+
+      const resolveY = (val: Datum) => {
+        if (shape.yref === 'paper') {
+          if (val === 0) {
+            return yMinValue;
+          }
+          if (val === 1) {
+            return yMaxValue;
+          }
+          if (typeof val === 'number') {
+            return yMinValue + val * (yMaxValue - yMinValue);
+          }
+          return val;
+        }
+        return val;
+      };
+
       return {
         legend: `Reference_${shapeIdx}`,
         data: [
-          { x: shape.x0, y: shape.y0 },
-          { x: shape.x1, y: shape.y1 },
+          { x: resolveX(shape.x0!), y: resolveY(shape.y0!) },
+          { x: resolveX(shape.x1!), y: resolveY(shape.y1!) },
         ],
         color: rgb(lineColor!).formatHex8() ?? lineColor,
         lineOptions: getLineOptions(shape.line),
@@ -1306,9 +1341,11 @@ const transformPlotlyJsonToScatterTraceProps = (
             ...getAxisCategoryOrderProps(input.data, input.layout),
           }
         : {}),
-      ...(!isScatterChart && mapColorFillBars(input.layout)?.length
-        ? { colorFillBars: mapColorFillBars(input.layout) }
-        : {}),
+      ...(!isScatterChart &&
+        (() => {
+          const bars = mapColorFillBars(input.layout);
+          return bars && !bars.includes(null) ? { colorFillBars: bars } : {};
+        })()),
     } as ILineChartProps | IScatterChartProps;
   }
 };
