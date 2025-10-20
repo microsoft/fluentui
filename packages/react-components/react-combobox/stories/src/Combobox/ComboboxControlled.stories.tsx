@@ -18,11 +18,19 @@ const useStyles = makeStyles({
   },
 });
 
+const optionData = [
+  { text: 'Katri Athokas', value: 'kathok', presence: 'available', secondaryText: 'Available' },
+  { text: 'Elvia Atkins', value: 'eatkins', presence: 'busy', secondaryText: 'Busy' },
+  { text: 'Cameron Evans', value: 'cevans', presence: 'away', secondaryText: 'Away' },
+  { text: 'Wanda Howard', value: 'whoward', presence: 'out-of-office', secondaryText: 'Out of office' },
+];
+
 export const Controlled = (props: Partial<ComboboxProps>): JSXElement => {
   const comboId = useId('combo-controlled');
   const styles = useStyles();
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(['eatkins']);
   const [value, setValue] = React.useState('Elvia Atkins');
+  const [open, setOpen] = React.useState(false);
 
   const onOptionSelect: (typeof props)['onOptionSelect'] = (ev, data) => {
     setSelectedOptions(data.selectedOptions);
@@ -33,51 +41,30 @@ export const Controlled = (props: Partial<ComboboxProps>): JSXElement => {
     setValue(ev.target.value);
   };
 
+  // Reset the typed value when the Combobox closes to reflect the selected options
+  React.useEffect(() => {
+    if (!open) {
+      setValue(selectedOptions.join(', '));
+    }
+  }, [open]);
+
   return (
     <div className={styles.root}>
       <div className={styles.field}>
         <label htmlFor={`${comboId}-default`}>Schedule a meeting (default selection)</label>
         <Combobox id={`${comboId}-default`} {...props} defaultValue="Elvia Atkins" defaultSelectedOptions={['eatkins']}>
-          <Option text="Katri Athokas" value="kathok">
-            <Persona
-              avatar={{ color: 'colorful', 'aria-hidden': true }}
-              name="Katri Athokas"
-              presence={{
-                status: 'available',
-              }}
-              secondaryText="Available"
-            />
-          </Option>
-          <Option text="Elvia Atkins" value="eatkins">
-            <Persona
-              avatar={{ color: 'colorful', 'aria-hidden': true }}
-              name="Elvia Atkins"
-              presence={{
-                status: 'busy',
-              }}
-              secondaryText="Busy"
-            />
-          </Option>
-          <Option text="Cameron Evans" value="cevans">
-            <Persona
-              avatar={{ color: 'colorful', 'aria-hidden': true }}
-              name="Cameron Evans"
-              presence={{
-                status: 'away',
-              }}
-              secondaryText="Away"
-            />
-          </Option>
-          <Option text="Wanda Howard" value="whoward">
-            <Persona
-              avatar={{ color: 'colorful', 'aria-hidden': true }}
-              name="Wanda Howard"
-              presence={{
-                status: 'out-of-office',
-              }}
-              secondaryText="Out of office"
-            />
-          </Option>
+          {optionData.map(opt => (
+            <Option key={opt.value} text={opt.text} value={opt.value}>
+              <Persona
+                avatar={{ color: 'colorful', 'aria-hidden': true }}
+                name={opt.text}
+                presence={{
+                  status: opt.presence as any,
+                }}
+                secondaryText={opt.secondaryText}
+              />
+            </Option>
+          ))}
         </Combobox>
       </div>
 
@@ -90,47 +77,20 @@ export const Controlled = (props: Partial<ComboboxProps>): JSXElement => {
           selectedOptions={selectedOptions}
           onInput={onInput}
           onOptionSelect={onOptionSelect}
+          onOpenChange={(_, data) => setOpen(data.open)}
         >
-          <Option text="Katri Athokas" value="kathok">
-            <Persona
-              avatar={{ color: 'colorful', 'aria-hidden': true }}
-              name="Katri Athokas"
-              presence={{
-                status: 'available',
-              }}
-              secondaryText="Available"
-            />
-          </Option>
-          <Option text="Elvia Atkins" value="eatkins">
-            <Persona
-              avatar={{ color: 'colorful', 'aria-hidden': true }}
-              name="Elvia Atkins"
-              presence={{
-                status: 'busy',
-              }}
-              secondaryText="Busy"
-            />
-          </Option>
-          <Option text="Cameron Evans" value="cevans">
-            <Persona
-              avatar={{ color: 'colorful', 'aria-hidden': true }}
-              name="Cameron Evans"
-              presence={{
-                status: 'away',
-              }}
-              secondaryText="Away"
-            />
-          </Option>
-          <Option text="Wanda Howard" value="whoward">
-            <Persona
-              avatar={{ color: 'colorful', 'aria-hidden': true }}
-              name="Wanda Howard"
-              presence={{
-                status: 'out-of-office',
-              }}
-              secondaryText="Out of office"
-            />
-          </Option>
+          {optionData.map(opt => (
+            <Option key={opt.value} text={opt.text} value={opt.value}>
+              <Persona
+                avatar={{ color: 'colorful', 'aria-hidden': true }}
+                name={opt.text}
+                presence={{
+                  status: opt.presence as any,
+                }}
+                secondaryText={opt.secondaryText}
+              />
+            </Option>
+          ))}
         </Combobox>
       </div>
     </div>
