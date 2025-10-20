@@ -668,5 +668,29 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonDividerMarginVertical: {
       fluent: '0px',
     },
+    groupButtonPrimaryShadow: {
+      // Shadow needs to be null-populated to work with combinations for focus
+      fluent: '0 0 0 transparent',
+    },
+    groupButtonNeutralShadow: {
+      // Shadow needs to be null-populated to work with combinations for focus
+      fluent: '0 0 0 transparent',
+    },
+    groupButtonPrimaryShadowDisabled: {
+      // Shadow needs to be null-populated to work with combinations for focus
+      fluent: '0 0 0 transparent',
+    },
+    groupButtonNeutralShadowDisabled: {
+      // Shadow needs to be null-populated to work with combinations for focus
+      fluent: '0 0 0 transparent',
+    },
+    groupButtonPrimaryShadowSelected: {
+      // Shadow needs to be null-populated to work with combinations for focus
+      fluent: '0 0 0 transparent',
+    },
+    groupButtonNeutralShadowSelected: {
+      // Shadow needs to be null-populated to work with combinations for focus
+      fluent: '0 0 0 transparent',
+    },
   },
 };

@@ -182,14 +182,14 @@ export const groupButtonOutlineStrokewidthPressed =
   'var(--smtc-group-button-outline-strokewidth-pressed, var(--strokeWidthThin))';
 export const groupButtonOutlineStrokewidthSelected =
   'var(--smtc-group-button-outline-strokewidth-selected, var(--strokeWidthThicker))';
-export const groupButtonNeutralShadow = 'var(--smtc-group-button-neutral-shadow)';
-export const groupButtonNeutralShadowDisabled = 'var(--smtc-group-button-neutral-shadow-disabled)';
-export const groupButtonNeutralShadowSelected = 'var(--smtc-group-button-neutral-shadow-selected)';
+export const groupButtonNeutralShadow = 'var(--smtc-group-button-neutral-shadow, 0 0 0 transparent)';
+export const groupButtonNeutralShadowDisabled = 'var(--smtc-group-button-neutral-shadow-disabled, 0 0 0 transparent)';
+export const groupButtonNeutralShadowSelected = 'var(--smtc-group-button-neutral-shadow-selected, 0 0 0 transparent)';
 export const groupButtonNeutralShadowDisabledSelected = 'var(--smtc-group-button-neutral-shadow-disabled-selected)';
-export const groupButtonBrandShadow = 'var(--smtc-group-button-brand-shadow)';
-export const groupButtonBrandShadowDisabled = 'var(--smtc-group-button-brand-shadow-disabled)';
-export const groupButtonBrandShadowSelected = 'var(--smtc-group-button-brand-shadow-selected)';
-export const groupButtonBrandShadowDisabledSelected = 'var(--smtc-group-button-brand-shadow-disabled-selected)';
+export const groupButtonPrimaryShadow = 'var(--smtc-group-button-primary-shadow, 0 0 0 transparent)';
+export const groupButtonPrimaryShadowDisabled = 'var(--smtc-group-button-primary-shadow-disabled, 0 0 0 transparent)';
+export const groupButtonPrimaryShadowSelected = 'var(--smtc-group-button-primary-shadow-selected, 0 0 0 transparent)';
+export const groupButtonPrimaryShadowDisabledSelected = 'var(--smtc-group-button-primary-shadow-disabled-selected)';
 export const groupButtonSmallIcononlyPadding = 'var(--smtc-group-button-small-icononly-padding, 1px)';
 export const groupButtonMediumIcononlyPadding = 'var(--smtc-group-button-medium-icononly-padding, 5px)';
 export const groupButtonLargeIcononlyPadding = 'var(--smtc-group-button-large-icononly-padding, 7px)';

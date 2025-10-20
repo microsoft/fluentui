@@ -89,18 +89,6 @@ export const focusStrokewidthInner = "var(--smtc-focus-strokewidth-inner, var(--
 export const focusStrokewidthOuter = "var(--smtc-focus-strokewidth-outer, var(--strokeWidthThick))";
 
 // @public (undocumented)
-export const groupButtonBrandShadow = "var(--smtc-group-button-brand-shadow)";
-
-// @public (undocumented)
-export const groupButtonBrandShadowDisabled = "var(--smtc-group-button-brand-shadow-disabled)";
-
-// @public (undocumented)
-export const groupButtonBrandShadowDisabledSelected = "var(--smtc-group-button-brand-shadow-disabled-selected)";
-
-// @public (undocumented)
-export const groupButtonBrandShadowSelected = "var(--smtc-group-button-brand-shadow-selected)";
-
-// @public (undocumented)
 export const groupButtonDividerMarginVertical = "var(--smtc-group-button-divider-margin-vertical, 0px)";
 
 // @public (undocumented)
@@ -305,16 +293,16 @@ export const groupButtonNeutralIconForegroundPressed = "var(--smtc-group-button-
 export const groupButtonNeutralIconForegroundSelected = "var(--smtc-group-button-neutral-icon-foreground-selected, var(--colorNeutralForeground1Selected))";
 
 // @public (undocumented)
-export const groupButtonNeutralShadow = "var(--smtc-group-button-neutral-shadow)";
+export const groupButtonNeutralShadow = "var(--smtc-group-button-neutral-shadow, 0 0 0 transparent)";
 
 // @public (undocumented)
-export const groupButtonNeutralShadowDisabled = "var(--smtc-group-button-neutral-shadow-disabled)";
+export const groupButtonNeutralShadowDisabled = "var(--smtc-group-button-neutral-shadow-disabled, 0 0 0 transparent)";
 
 // @public (undocumented)
 export const groupButtonNeutralShadowDisabledSelected = "var(--smtc-group-button-neutral-shadow-disabled-selected)";
 
 // @public (undocumented)
-export const groupButtonNeutralShadowSelected = "var(--smtc-group-button-neutral-shadow-selected)";
+export const groupButtonNeutralShadowSelected = "var(--smtc-group-button-neutral-shadow-selected, 0 0 0 transparent)";
 
 // @public (undocumented)
 export const groupButtonNeutralStroke = "var(--smtc-group-button-neutral-stroke, var(--colorNeutralStroke1))";
@@ -531,6 +519,18 @@ export const groupButtonPrimaryIconForegroundPressed = "var(--smtc-group-button-
 
 // @public (undocumented)
 export const groupButtonPrimaryIconForegroundSelected = "var(--smtc-group-button-primary-icon-foreground-selected, var(--colorNeutralForegroundOnBrand))";
+
+// @public (undocumented)
+export const groupButtonPrimaryShadow = "var(--smtc-group-button-primary-shadow, 0 0 0 transparent)";
+
+// @public (undocumented)
+export const groupButtonPrimaryShadowDisabled = "var(--smtc-group-button-primary-shadow-disabled, 0 0 0 transparent)";
+
+// @public (undocumented)
+export const groupButtonPrimaryShadowDisabledSelected = "var(--smtc-group-button-primary-shadow-disabled-selected)";
+
+// @public (undocumented)
+export const groupButtonPrimaryShadowSelected = "var(--smtc-group-button-primary-shadow-selected, 0 0 0 transparent)";
 
 // @public (undocumented)
 export const groupButtonPrimaryStroke = "var(--smtc-group-button-primary-stroke, transparent)";

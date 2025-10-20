@@ -95,6 +95,8 @@ const useRootCheckedStyles = makeStyles({
     backgroundColor: semanticTokens.groupButtonPrimaryBackgroundSelected,
     ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeSelected),
     color: semanticTokens.groupButtonPrimaryTextForegroundSelected,
+    boxShadow: semanticTokens.groupButtonPrimaryShadowSelected,
+
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonPrimaryIconForegroundSelected,
     },
@@ -112,6 +114,7 @@ const useRootCheckedStyles = makeStyles({
     },
   },
   secondary: {
+    boxShadow: semanticTokens.groupButtonNeutralShadowSelected,
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {

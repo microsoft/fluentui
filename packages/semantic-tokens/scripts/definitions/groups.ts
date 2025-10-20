@@ -35,9 +35,9 @@ const buttonGroup: GroupPart = {
       variantStateProperties: ['strokewidth'],
     },
     {
-      // Shadow is only available on brand/neutral variant buttons
+      // Shadow is only available on primary/neutral variant buttons
       states: ['', 'disabled', 'selected', 'disabled.selected'],
-      variants: ['neutral', 'brand'],
+      variants: ['neutral', 'primary'],
       variantStateProperties: ['shadow'],
     },
   ],

@@ -178,6 +178,8 @@ const useRootStyles = makeStyles({
     backgroundColor: semanticTokens.groupButtonPrimaryBackground,
     ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStroke),
     color: semanticTokens.groupButtonPrimaryTextForeground,
+    boxShadow: semanticTokens.groupButtonPrimaryShadow,
+
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonPrimaryIconForegroundPressed,
     },
@@ -220,7 +222,8 @@ const useRootStyles = makeStyles({
     },
   },
   secondary: {
-    /* The secondary styles are exactly the same as the base styles. */
+    boxShadow: semanticTokens.groupButtonNeutralShadow,
+    /* Other than shadow, the secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     backgroundColor: semanticTokens.groupButtonSubtleBackground,
@@ -531,6 +534,7 @@ const useRootDisabledStyles = makeStyles({
   primary: {
     backgroundColor: semanticTokens.groupButtonPrimaryBackgroundDisabled,
     color: semanticTokens.groupButtonPrimaryTextForegroundDisabled,
+    boxShadow: semanticTokens.groupButtonPrimaryShadowDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeDisabled),
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonPrimaryIconForegroundDisabled,
@@ -546,6 +550,7 @@ const useRootDisabledStyles = makeStyles({
   },
   secondary: {
     color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
+    boxShadow: semanticTokens.groupButtonNeutralShadowDisabled,
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonNeutralIconForegroundDisabled,
     },
@@ -620,9 +625,9 @@ const useRootFocusStyles = makeStyles({
   primary: {
     ...createCustomFocusIndicatorStyle({
       ...shorthands.borderColor(semanticTokens.focusStrokeInner),
-      boxShadow: `${tokens.shadow2}, 0 0 0 ${semanticTokens.focusStrokewidthInner} ${semanticTokens.focusStrokeInner} inset,  0 0 0 ${semanticTokens.focusStrokewidthOuter} ${semanticTokens.focusStrokeOnbrand} inset`,
+      boxShadow: `${semanticTokens.groupButtonPrimaryShadow}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.focusStrokewidthInner} ${semanticTokens.focusStrokeInner} inset,  0 0 0 ${semanticTokens.focusStrokewidthOuter} ${semanticTokens.focusStrokeOnbrand} inset`,
       ':hover': {
-        boxShadow: `${tokens.shadow2}, 0 0 0 ${semanticTokens.focusStrokewidthOuter} ${semanticTokens.focusStrokeInner} inset`,
+        boxShadow: `${semanticTokens.groupButtonPrimaryShadow}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.focusStrokewidthOuter} ${semanticTokens.focusStrokeInner} inset`,
         ...shorthands.borderColor(semanticTokens.focusStrokeOnbrandHover),
       },
     }),
@@ -631,10 +636,73 @@ const useRootFocusStyles = makeStyles({
     '@supports (-moz-appearance:button)': {
       ...createCustomFocusIndicatorStyle({
         // TODO: Replace shadow2 with semantic shadow
-        boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.focusStrokeInner} inset,  0 0 0 ${semanticTokens.focusStrokewidthOuter} ${semanticTokens.focusStrokeOnbrand} inset`,
+        boxShadow: `${semanticTokens.groupButtonPrimaryShadow}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.focusStrokeInner} inset,  0 0 0 ${semanticTokens.focusStrokewidthOuter} ${semanticTokens.focusStrokeOnbrand} inset`,
         ':hover': {
-          boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.focusStrokeOnbrandHover} inset`,
+          boxShadow: `${semanticTokens.groupButtonPrimaryShadow}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.focusStrokeOnbrandHover} inset`,
         },
+      }),
+    },
+  },
+  primaryDisabled: {
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor(semanticTokens.focusStrokeInner),
+      boxShadow: `${semanticTokens.groupButtonPrimaryShadowDisabled}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.focusStrokewidthInner} ${semanticTokens.focusStrokeInner} inset,  0 0 0 ${semanticTokens.focusStrokewidthOuter} ${semanticTokens.focusStrokeOnbrand} inset`,
+      ':hover': {
+        boxShadow: `${semanticTokens.groupButtonPrimaryShadowDisabled}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.focusStrokewidthOuter} ${semanticTokens.focusStrokeInner} inset`,
+        ...shorthands.borderColor(semanticTokens.focusStrokeOnbrandHover),
+      },
+    }),
+
+    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
+    '@supports (-moz-appearance:button)': {
+      ...createCustomFocusIndicatorStyle({
+        // TODO: Replace shadow2 with semantic shadow
+        boxShadow: `${semanticTokens.groupButtonPrimaryShadowDisabled}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.focusStrokeInner} inset,  0 0 0 ${semanticTokens.focusStrokewidthOuter} ${semanticTokens.focusStrokeOnbrand} inset`,
+        ':hover': {
+          boxShadow: `${semanticTokens.groupButtonPrimaryShadowDisabled}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.focusStrokeOnbrandHover} inset`,
+        },
+      }),
+    },
+  },
+  secondary: {
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor(semanticTokens.focusStrokeInner),
+      borderRadius: semanticTokens.groupButtonMediumCorner,
+      ...shorthands.borderWidth('1px'),
+      outline: `${semanticTokens.focusStrokewidthOuter} solid ${semanticTokens.focusStrokeOuter}`,
+      boxShadow: `${semanticTokens.groupButtonNeutralShadow}, 0 0 0 ${semanticTokens.focusStrokewidthInner} ${semanticTokens.focusStrokeInner}
+      inset
+    `,
+      zIndex: 1,
+    }),
+
+    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
+    '@supports (-moz-appearance:button)': {
+      ...createCustomFocusIndicatorStyle({
+        boxShadow: `${semanticTokens.groupButtonNeutralShadow}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.focusStrokeInner}
+      inset
+    `,
+      }),
+    },
+  },
+  secondaryDisabled: {
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor(semanticTokens.focusStrokeInner),
+      borderRadius: semanticTokens.groupButtonMediumCorner,
+      ...shorthands.borderWidth('1px'),
+      outline: `${semanticTokens.focusStrokewidthOuter} solid ${semanticTokens.focusStrokeOuter}`,
+      boxShadow: `${semanticTokens.groupButtonNeutralShadowDisabled}, 0 0 0 ${semanticTokens.focusStrokewidthInner} ${semanticTokens.focusStrokeInner}
+      inset
+    `,
+      zIndex: 1,
+    }),
+
+    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
+    '@supports (-moz-appearance:button)': {
+      ...createCustomFocusIndicatorStyle({
+        boxShadow: `${semanticTokens.groupButtonNeutralShadowDisabled}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.focusStrokeInner}
+      inset
+    `,
       }),
     },
   },
@@ -740,6 +808,9 @@ export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
 
     // Focus styles
     appearance === 'primary' && rootFocusStyles.primary,
+    appearance === 'secondary' && rootFocusStyles.secondary,
+    (disabled || disabledFocusable) && appearance === 'primary' && rootFocusStyles.primaryDisabled,
+    (disabled || disabledFocusable) && appearance === 'secondary' && rootFocusStyles.secondaryDisabled,
     rootFocusStyles[size],
     rootFocusStyles[shape],
 
