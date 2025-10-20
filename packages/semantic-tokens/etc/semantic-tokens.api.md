@@ -374,13 +374,13 @@ export const groupButtonOutlineBackgroundDisabled = "var(--smtc-group-button-out
 export const groupButtonOutlineBackgroundHover = "var(--smtc-group-button-outline-background-hover, var(--colorTransparentBackgroundHover))";
 
 // @public (undocumented)
-export const groupButtonOutlineBackgroundHoverSelected = "var(--smtc-group-button-outline-background-hover-selected)";
+export const groupButtonOutlineBackgroundHoverSelected = "var(--smtc-group-button-outline-background-hover-selected, var(--colorTransparentBackgroundHover))";
 
 // @public (undocumented)
 export const groupButtonOutlineBackgroundPressed = "var(--smtc-group-button-outline-background-pressed, var(--colorTransparentBackgroundPressed))";
 
 // @public (undocumented)
-export const groupButtonOutlineBackgroundPressedSelected = "var(--smtc-group-button-outline-background-pressed-selected)";
+export const groupButtonOutlineBackgroundPressedSelected = "var(--smtc-group-button-outline-background-pressed-selected, var(--colorTransparentBackgroundPressed))";
 
 // @public (undocumented)
 export const groupButtonOutlineBackgroundSelected = "var(--smtc-group-button-outline-background-selected, var(--colorTransparentBackgroundSelected))";
@@ -467,16 +467,16 @@ export const groupButtonOutlineTextForegroundPressed = "var(--smtc-group-button-
 export const groupButtonOutlineTextForegroundSelected = "var(--smtc-group-button-outline-text-foreground-selected, var(--colorNeutralForeground1Selected))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextSecondaryForeground = "var(--smtc-group-button-outline-text-secondary-foreground)";
+export const groupButtonOutlineTextSecondaryForeground = "var(--smtc-group-button-outline-text-secondary-foreground, var(--colorNeutralForeground2))";
 
 // @public (undocumented)
 export const groupButtonOutlineTextSecondaryForegroundDisabled = "var(--smtc-group-button-outline-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextSecondaryForegroundHover = "var(--smtc-group-button-outline-text-secondary-foreground-hover)";
+export const groupButtonOutlineTextSecondaryForegroundHover = "var(--smtc-group-button-outline-text-secondary-foreground-hover, var(--colorNeutralForeground2Hover))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextSecondaryForegroundPressed = "var(--smtc-group-button-outline-text-secondary-foreground-pressed)";
+export const groupButtonOutlineTextSecondaryForegroundPressed = "var(--smtc-group-button-outline-text-secondary-foreground-pressed, var(--colorNeutralForeground2Pressed))";
 
 // @public (undocumented)
 export const groupButtonPrimaryBackground = "var(--smtc-group-button-primary-background, var(--colorBrandBackground))";
