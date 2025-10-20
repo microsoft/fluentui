@@ -604,7 +604,7 @@ export const transformPlotlyJsonToVSBCProps = (
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
-  const resolveXAxisValue = getAxisValueResolver(input.data, input.layout, 'x');
+  const resolveXValue = getAxisValueResolver(getAxisType(input.data, getAxisObjects(input.data, input.layout).x));
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     colorScale = createColorScale(input.layout, series, colorScale);
     // extract bar colors for each series only once
@@ -624,7 +624,7 @@ export const transformPlotlyJsonToVSBCProps = (
       isDarkTheme,
     ) as string[] | string | undefined;
 
-    const validXYRanges = getValidXYRanges(series, resolveXAxisValue);
+    const validXYRanges = getValidXYRanges(series, resolveXValue);
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
       const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
@@ -632,7 +632,7 @@ export const transformPlotlyJsonToVSBCProps = (
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
           mapXToDataPoints[x] = {
-            xAxisPoint: resolveXAxisValue(x)!,
+            xAxisPoint: resolveXValue(x)!,
             chartData: [],
             lineData: [],
           };
@@ -1125,8 +1125,9 @@ const transformPlotlyJsonToScatterTraceProps = (
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
-  const resolveXAxisValue = getAxisValueResolver(input.data, input.layout, 'x');
-  const shouldWrapLabels = getAxisType(input.data, input.layout, 'x') === 'category';
+  const xAxisType = getAxisType(input.data, getAxisObjects(input.data, input.layout).x);
+  const resolveXValue = getAxisValueResolver(xAxisType);
+  const shouldWrapLabels = xAxisType === 'category';
   const chartData: LineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -1160,7 +1161,7 @@ const transformPlotlyJsonToScatterTraceProps = (
         !series.mode?.includes('text') && series.type !== 'scatterpolar' ? getLineOptions(series.line) : undefined;
       const legendShape = getLegendShape(series);
 
-      const validXYRanges = getValidXYRanges(series, resolveXAxisValue);
+      const validXYRanges = getValidXYRanges(series, resolveXValue);
       return validXYRanges.map(([rangeStart, rangeEnd], rangeIdx) => {
         const rangeXValues = xValues.slice(rangeStart, rangeEnd);
         const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
@@ -1178,7 +1179,7 @@ const transformPlotlyJsonToScatterTraceProps = (
           legend,
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
-            x: resolveXAxisValue(x),
+            x: resolveXValue(x),
             y: rangeYValues[i],
             ...(Array.isArray(series.marker?.size)
               ? { markerSize: markerSizes[i] }
@@ -1374,7 +1375,13 @@ export const transformPlotlyJsonToGanttChartProps = (
   const data = input.data.filter((series: Partial<PlotData>) => series.type !== 'scatter' || series.mode !== 'markers');
   const { legends, hideLegend } = getLegendProps(data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
-  const isXDate = getAxisType(input.data, input.layout, 'x') === 'date';
+  const xAxisType = getAxisType(data, getAxisObjects(data, input.layout).x);
+  const resolveXValue = getAxisValueResolver(xAxisType, parseLocalDate);
+  const resolveGanttXValue = (value: Datum) => {
+    const resolvedValue = resolveXValue(value);
+    return typeof resolvedValue === 'string' ? 0 : resolvedValue ?? 0;
+  };
+  const isXDate = xAxisType === 'date';
   const ganttData: GanttChartDataPoint[] = [];
   data.forEach((series: Partial<PlotData>, index: number) => {
     const legend = legends[index];
@@ -1390,10 +1397,6 @@ export const transformPlotlyJsonToGanttChartProps = (
         colorMap,
         isDarkTheme,
       ) as string[] | string | undefined;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const convertXValueToNumber = (value: any) => {
-        return isInvalidValue(value) ? 0 : isXDate ? +parseLocalDate(value) : +value;
-      };
 
       (series.y as Datum[]).forEach((yVal, i: number) => {
         if (isInvalidValue(yVal)) {
@@ -1408,8 +1411,8 @@ export const transformPlotlyJsonToGanttChartProps = (
             )
           : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
         const opacity = getOpacity(series, i);
-        const base = convertXValueToNumber(series.base?.[i]);
-        const xVal = convertXValueToNumber(series.x?.[i]);
+        const base = +resolveGanttXValue(series.base?.[i] as Datum);
+        const xVal = +resolveGanttXValue(series.x?.[i] as Datum);
 
         ganttData.push({
           x: {
@@ -1421,14 +1424,14 @@ export const transformPlotlyJsonToGanttChartProps = (
           color: rgb(color).copy({ opacity }).formatHex8() ?? color,
         });
       });
-    } else if (series.type === 'scatter' && series.mode === 'none' && isNumberArray(series.y)) {
+    } else if (series.type === 'scatter' && series.mode === 'none' && series.fill === 'toself') {
       for (let i = 0; i < series.y!.length; i += 5) {
         if (isInvalidValue(series.y![i]) || isInvalidValue(series.y![i + 3])) {
           continue;
         }
 
-        const x0 = isXDate ? parseLocalDate(series.x![i] as string | number) : (series.x![i] as number);
-        const x1 = isXDate ? parseLocalDate(series.x![i + 1] as string | number) : (series.x![i + 1] as number);
+        const x0 = resolveGanttXValue(series.x![i] as Datum);
+        const x1 = resolveGanttXValue(series.x![i + 1] as Datum);
         const y0 = series.y![i] as number;
         const y1 = series.y![i + 3] as number;
 
@@ -3138,18 +3141,7 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
   return axisObjects;
 };
 
-function getAxisType(data: Data[], ax: AxisObject): AxisType;
-function getAxisType(data: Data[], layout: Partial<Layout> | undefined, axisId: string): AxisType;
-function getAxisType(data: Data[], arg2: AxisObject | Partial<Layout> | undefined, arg3?: string): AxisType {
-  let ax: AxisObject | undefined;
-
-  if (arg2 && typeof arg2 === 'object' && '_id' in arg2) {
-    ax = arg2;
-  } else if (typeof arg3 === 'string') {
-    const layout = arg2 as Partial<Layout> | undefined;
-    ax = getAxisObjects(data, layout)[arg3];
-  }
-
+const getAxisType = (data: Data[], ax: AxisObject): AxisType => {
   if (!ax) {
     return 'category';
   }
@@ -3178,10 +3170,13 @@ function getAxisType(data: Data[], arg2: AxisObject | Partial<Layout> | undefine
     return 'date';
   }
   return 'category';
-}
+};
 
-const getAxisValueResolver = (data: Data[], layout: Partial<Layout> | undefined, axisId: string) => {
-  const axType = getAxisType(data, layout, axisId);
+const getAxisValueResolver = (axType: AxisType, dateParser?: (v: string | number) => Date) => {
+  const toDate = (value: string | number): Date | null => {
+    const date = dateParser ? dateParser(value) : new Date(value);
+    return isNaN(date.getTime()) ? null : date;
+  };
 
   return (value: Datum): Datum => {
     if (isInvalidValue(value)) {
@@ -3195,10 +3190,10 @@ const getAxisValueResolver = (data: Data[], layout: Partial<Layout> | undefined,
 
       case 'date':
         if (isNumber(value)) {
-          return new Date(+value!);
+          return toDate(+value!);
         }
         if (typeof value === 'string') {
-          return new Date(value);
+          return toDate(value);
         }
         return null;
 

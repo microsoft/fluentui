@@ -466,7 +466,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
     }
 
     const validTraces = getValidTraces(validSchema.data, validSchema.layout);
-    let encounteredGantt = false;
+    let foundScatterGantt = false;
     let mappedTraces = validTraces.map(trace => {
       const traceIndex = trace[0];
       const traceData = validSchema.data[traceIndex];
@@ -516,8 +516,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
         case 'scattergl':
           const scatterData = traceData as Partial<PlotData>;
 
-          if (isScatterGanttChart(scatterData, encounteredGantt)) {
-            encounteredGantt = true;
+          if (isScatterGanttChart(scatterData, foundScatterGantt)) {
+            foundScatterGantt = true;
             return { isValid: true, traceIndex, type: 'gantt' };
           }
 
@@ -670,24 +670,28 @@ const doesScatterNeedFallback = (data: Partial<PlotData>, layout: Partial<Layout
   return !supportedScatterInLineChart(data, layout);
 };
 
-/** https://github.com/plotly/plotly.py/blob/f27f38f303d25fd47bd4c4c619c0a07ac7aaa0f1/plotly/figure_factory/_gantt.py */
-const isScatterGanttChart = (data: Partial<PlotData>, encounteredGantt: boolean) => {
-  let cornerPoints = true;
-  for (let i = 0; i < data.x!.length; i += 5) {
-    if (
-      data.x![i] !== data.x![i + 3] ||
-      data.x![i + 1] !== data.x![i + 2] ||
-      data.y![i] !== data.y![i + 1] ||
-      data.y![i + 2] !== data.y![i + 3] ||
-      (i > 0 && data.y![i - 1] !== null)
-    ) {
-      cornerPoints = false;
-      break;
+/**
+ * @see {@link https://github.com/plotly/plotly.py/blob/main/plotly/figure_factory/_gantt.py}
+ */
+const isScatterGanttChart = (data: Partial<PlotData>, foundScatterGantt: boolean) => {
+  if (data.mode === 'none' && data.fill === 'toself') {
+    let foundCornerPoints = true;
+    for (let i = 0; i < data.x!.length; i += 5) {
+      if (
+        data.x![i] !== data.x![i + 3] ||
+        data.x![i + 1] !== data.x![i + 2] ||
+        data.y![i] !== data.y![i + 1] ||
+        data.y![i + 2] !== data.y![i + 3] ||
+        (i > 0 && data.y![i - 1] !== null)
+      ) {
+        foundCornerPoints = false;
+        break;
+      }
     }
-  }
 
-  if (data.mode === 'none' && data.fill === 'toself' && cornerPoints) {
-    return true;
+    if (foundCornerPoints) {
+      return true;
+    }
   }
 
   if (
@@ -696,7 +700,7 @@ const isScatterGanttChart = (data: Partial<PlotData>, encounteredGantt: boolean)
     data.marker?.opacity === 0 &&
     data.name === '' &&
     data.showlegend === false &&
-    encounteredGantt
+    foundScatterGantt
   ) {
     return true;
   }
