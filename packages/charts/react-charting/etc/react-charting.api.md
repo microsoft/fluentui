@@ -39,6 +39,7 @@ export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascend
 export type AxisProps = {
     tickStep?: number | string;
     tick0?: number | Date;
+    tickText?: string[];
 };
 
 // @public

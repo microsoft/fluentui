@@ -570,7 +570,7 @@ export function createStringXAxis(
     if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
       return tickText[_index];
     }
-    return formatToLocaleString(domainValue, culture) as string;
+    return domainValue;
   };
   if (hideTickOverlap) {
     let nonOverlappingTickValues = [];

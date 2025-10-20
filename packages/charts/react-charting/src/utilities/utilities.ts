@@ -259,6 +259,7 @@ export function createNumericXAxis(
     calcMaxLabelWidth,
     tickStep,
     tick0,
+    tickText,
   } = xAxisParams;
   const xAxisScale = createNumericScale(scaleType)
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -267,6 +268,9 @@ export function createNumericXAxis(
 
   let tickCount = xAxisCount ?? 6;
   const tickFormat = (domainValue: NumberValue, _index: number, defaultFormat?: (val: NumberValue) => string) => {
+    if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
     if (tickParams.tickFormat) {
       return d3Format(tickParams.tickFormat)(domainValue);
     }
@@ -436,6 +440,7 @@ export function createDateXAxis(
     calcMaxLabelWidth,
     tickStep,
     tick0,
+    tickText,
   } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
@@ -471,6 +476,9 @@ export function createDateXAxis(
   );
 
   const tickFormat = (domainValue: Date, _index: number) => {
+    if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
     }
@@ -544,6 +552,7 @@ export function createStringXAxis(
     containerWidth,
     hideTickOverlap,
     calcMaxLabelWidth,
+    tickText,
   } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
@@ -552,6 +561,12 @@ export function createStringXAxis(
     .paddingOuter(typeof xAxisOuterPadding !== 'undefined' ? xAxisOuterPadding : xAxisPadding);
 
   let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
+  const tickFormat = (domainValue: string, _index: number) => {
+    if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
+    return domainValue;
+  };
   if (hideTickOverlap) {
     let nonOverlappingTickValues = [];
     // Here, we need the width of each individual label to detect overlaps,
@@ -583,7 +598,11 @@ export function createStringXAxis(
     tickValues = nonOverlappingTickValues;
   }
 
-  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).tickValues(tickValues);
+  const xAxis = d3AxisBottom(xAxisScale)
+    .tickSize(xAxistickSize)
+    .tickPadding(tickPadding)
+    .tickValues(tickValues)
+    .tickFormat(tickFormat);
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
@@ -677,6 +696,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
     tickValues,
     tickStep,
     tick0,
+    tickText,
   } = yAxisParams;
 
   // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
@@ -688,7 +708,17 @@ export function createYAxisForHorizontalBarChartWithAxis(
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
+  const tickFormat = (domainValue: NumberValue, index: number) => {
+    if (tickValues && tickText && typeof tickText[index] !== 'undefined') {
+      return tickText[index];
+    }
+    if (yAxisTickFormat) {
+      return d3Format(yAxisTickFormat)(domainValue);
+    }
+    const value = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
+    return defaultYAxisTickFormatter(value);
+  };
+  yAxis.tickFormat(tickFormat);
 
   let customTickValues: number[] | undefined;
   if (tickValues) {
@@ -731,6 +761,7 @@ export function createNumericYAxis(
     tickValues,
     tickStep,
     tick0,
+    tickText,
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
@@ -782,12 +813,16 @@ export function createNumericYAxis(
   }
 
   const tickFormat = (domainValue: NumberValue, index: number, defaultFormat?: (val: NumberValue) => string) => {
+    if (tickValues && tickText && typeof tickText[index] !== 'undefined') {
+      return tickText[index];
+    }
+    if (yAxisTickFormat) {
+      return d3Format(yAxisTickFormat)(domainValue);
+    }
     const value = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
     return defaultFormat?.(value) === '' ? '' : defaultYAxisTickFormatter(value);
   };
-  yAxisTickFormat
-    ? yAxis.tickFormat(yAxisTickFormat)
-    : yAxis.tickFormat((v, i) => tickFormat(v, i, yAxisScale.tickFormat(yAxisTickCount)));
+  yAxis.tickFormat((v, i) => tickFormat(v, i, yAxisScale.tickFormat(yAxisTickCount)));
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale as ScaleLinear<number, number, never>;
 }
@@ -804,7 +839,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   isRtl: boolean,
   barWidth: number,
 ): ScaleBand<string> => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding } = yAxisParams;
+  const { containerHeight, tickPadding = 12, margins, yAxisElement, yAxisPadding, tickValues, tickText } = yAxisParams;
 
   let yAxisPaddingValue = yAxisPadding ?? 0.5;
   yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
@@ -813,10 +848,14 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
     .range([containerHeight - margins.bottom!, margins.top!])
     .padding(yAxisPaddingValue);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis.tickPadding(tickPadding).ticks(dataPoints);
-  if (yAxisTickFormat) {
-    yAxis.tickFormat(yAxisTickFormat);
-  }
+  const customTickValues = (tickValues as string[] | undefined) ?? dataPoints;
+  const tickFormat = (domainValue: string, _index: number) => {
+    if (tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
+    return domainValue;
+  };
+  const yAxis = axis.tickPadding(tickPadding).tickValues(customTickValues).tickFormat(tickFormat);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
   return yAxisScale;
 };
@@ -838,10 +877,11 @@ export const createStringYAxis = (
     containerHeight,
     tickPadding = 12,
     margins,
-    yAxisTickFormat,
     yAxisElement,
     yAxisPadding = 0,
     containerWidth,
+    tickValues,
+    tickText,
   } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
@@ -851,12 +891,16 @@ export const createStringYAxis = (
     yAxisScale.paddingInner(1).paddingOuter(0);
   }
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis.tickPadding(tickPadding).tickValues(dataPoints).tickSize(0);
+  const customTickValues = (tickValues as string[] | undefined) ?? dataPoints;
+  const tickFormat = (domainValue: string, _index: number) => {
+    if (tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
+    return domainValue;
+  };
+  const yAxis = axis.tickPadding(tickPadding).tickValues(customTickValues).tickFormat(tickFormat).tickSize(0);
   if (chartType === ChartTypes.VerticalStackedBarChart) {
     axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-  }
-  if (yAxisTickFormat) {
-    yAxis.tickFormat(yAxisTickFormat);
   }
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
   return yAxisScale;
