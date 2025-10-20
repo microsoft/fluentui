@@ -72,6 +72,7 @@ const useRootBaseClassName = makeResetStyles({
 
   padding: `${semanticTokens.groupButtonMediumPaddingTop} ${paddingHorizontalNoIcon} ${semanticTokens.groupButtonMediumPaddingBottom} ${paddingHorizontalNoIcon}`,
   minWidth: semanticTokens.groupButtonMediumMinwidth,
+  minHeight: semanticTokens.groupButtonMediumMinheight,
 
   fontSize: semanticTokens.groupButtonMediumTextFontsize,
   fontWeight: semanticTokens.groupButtonMediumTextFontweight,
@@ -347,6 +348,7 @@ const useRootStyles = makeStyles({
   // Size variations
   small: {
     minWidth: semanticTokens.groupButtonSmallMinwidth,
+    minHeight: semanticTokens.groupButtonSmallMinheight,
     padding: `${semanticTokens.groupButtonSmallPaddingTop} ${paddingSmHorizontalNoIcon} ${semanticTokens.groupButtonSmallPaddingBottom} ${paddingSmHorizontalNoIcon}`, //3px
     borderRadius: semanticTokens.groupButtonSmallCorner,
     ':hover': {
@@ -385,6 +387,7 @@ const useRootStyles = makeStyles({
   },
   large: {
     minWidth: semanticTokens.groupButtonLargeMinwidth,
+    minHeight: semanticTokens.groupButtonLargeMinheight,
     padding: `${semanticTokens.groupButtonLargePaddingTop} ${paddingLgHorizontalNoIcon} ${semanticTokens.groupButtonLargePaddingBottom} ${paddingLgHorizontalNoIcon}`,
     borderRadius: semanticTokens.groupButtonLargeCorner,
     ':hover': {

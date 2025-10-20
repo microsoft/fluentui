@@ -48,7 +48,19 @@ const useRootStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    /* No styles */
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
+      color: semanticTokens.groupButtonOutlineTextSecondaryForeground,
+    },
+    ':hover': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundHover,
+      },
+    },
+    ':hover:active': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundPressed,
+      },
+    },
   },
   primary: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {

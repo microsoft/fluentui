@@ -76,13 +76,13 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonOutlineBackgroundHover,
+      backgroundColor: semanticTokens.groupButtonOutlineBackgroundHoverSelected,
       ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeHoverSelected),
       ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonOutlineBackgroundPressed,
+      backgroundColor: semanticTokens.groupButtonOutlineBackgroundPressedSelected,
       ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokePressedSelected),
       ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
     },
