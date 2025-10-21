@@ -13,11 +13,7 @@
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start": "just-scripts dev",
-    "test": "just-scripts test"
+    "start": "just-scripts dev"
   },
   "devDependencies": {
     "@fluentui/common-styles": "*",
