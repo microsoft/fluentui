@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: replace Node.ELEMENT_NODE with hardcoded value for SSR compatibility",
+  "packageName": "@fluentui/react-portal",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

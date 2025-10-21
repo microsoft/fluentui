@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add fill for scatter polar chart",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
