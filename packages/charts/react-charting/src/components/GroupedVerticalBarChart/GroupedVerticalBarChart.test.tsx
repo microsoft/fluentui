@@ -323,7 +323,7 @@ describe('GroupedVerticalBarChart - mouse events', () => {
     });
   });
 
-  describe.skip('Render empty chart aria label div when chart is empty', () => {
+  describe('Render empty chart aria label div when chart is empty', () => {
     beforeEach(() => {
       resetIds();
     });
