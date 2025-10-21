@@ -19,7 +19,8 @@ const markup = require<any>('react-syntax-highlighter/dist/esm/languages/prism/m
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Import SyntaxHighlighter styles
-const style: { [key: string]: React.CSSProperties } = require('react-syntax-highlighter/dist/esm/styles/prism/prism').default;
+const style: { [key: string]: React.CSSProperties } =
+  require('react-syntax-highlighter/dist/esm/styles/prism/prism').default;
 
 // Register languages
 SyntaxHighlighter.registerLanguage('tsx', ts);

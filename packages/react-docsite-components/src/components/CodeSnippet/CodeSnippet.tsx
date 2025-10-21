@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  IStyleFunctionOrObject,
-  ITheme,
-  IStyle,
-  styled,
-  classNamesFunction,
-  DefaultPalette,
-} from '@fluentui/react';
+import { IStyleFunctionOrObject, ITheme, IStyle, styled, classNamesFunction, DefaultPalette } from '@fluentui/react';
 import { NeutralColors, SharedColors } from '@fluentui/theme';
 import { baseCodeStyle, getStyles } from './CodeSnippet.styles';
 
@@ -22,7 +15,8 @@ const xml = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/xml')
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Import SyntaxHighlighter styles
-const style: { [key: string]: React.CSSProperties } = require('react-syntax-highlighter/dist/esm/styles/hljs/github').default;
+const style: { [key: string]: React.CSSProperties } =
+  require('react-syntax-highlighter/dist/esm/styles/hljs/github').default;
 
 // Register languages
 SyntaxHighlighter.registerLanguage('typescript', ts);
