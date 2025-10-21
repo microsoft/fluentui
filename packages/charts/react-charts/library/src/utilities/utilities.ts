@@ -880,7 +880,16 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   isRtl: boolean,
   barWidth: number,
 ): ScaleBand<string> => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat,yAxisElement, yAxisPadding, tickValues, tickText } = yAxisParams;
+  const {
+    containerHeight,
+    tickPadding = 12,
+    margins,
+    yAxisTickFormat,
+    yAxisElement,
+    yAxisPadding,
+    tickValues,
+    tickText,
+  } = yAxisParams;
 
   let yAxisPaddingValue = yAxisPadding ?? 0.5;
   yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
