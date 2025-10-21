@@ -41,7 +41,7 @@ export const PortalInner: React.FC<PortalInnerProps> = props => {
   const { target, rtl } = useFluentContext();
   const registerPortalEl = usePortalCompat();
 
-  const box = usePortalBox({ className, target, rtl });
+  const box = usePortalBox({ className, targetNode: target?.body, rtl });
   // PortalInner should render elements even without a context
   // eslint-disable-next-line
   const container: HTMLElement | null = isBrowser() ? mountNode || box || document.body : null;
