@@ -22,10 +22,12 @@ import {
   isUndefinedValue,
   // @ts-ignore
   normalizeNestedProperty,
+  // @ts-ignore
+  processStyleWithPlugins,
   RULE_TYPE,
 } from 'fela-utils';
 
-import { FelaRenderer, FelaRendererChange } from './types';
+import type { FelaRenderer, RendererRuleChange } from './types';
 
 function isPlainObject(val: any) {
   return val != null && typeof val === 'object' && Array.isArray(val) === false;
@@ -74,8 +76,20 @@ function generateDeclarationReference(
 //
 
 export function felaPerformanceEnhancer(renderer: FelaRenderer) {
+  // Copied to pass down a mutable `changes` array
+  renderer._renderStyle = function _renderStyle(
+    style: ICSSInJSStyle,
+    props: Record<string, unknown>,
+    changes: RendererRuleChange[],
+  ): string {
+    const processedStyle = processStyleWithPlugins(renderer, style, RULE_TYPE, props);
+
+    return renderer._renderStyleToClassNames(processedStyle, changes).slice(1);
+  };
+
   renderer._renderStyleToClassNames = function _renderStyleToClassNames(
     { _className, ...style }: ICSSInJSStyle & { _className?: string },
+    changes: RendererRuleChange[],
     pseudo: string = '',
     media: string = '',
     support: string = '',
@@ -89,16 +103,17 @@ export function felaPerformanceEnhancer(renderer: FelaRenderer) {
         if (isNestedSelector(property)) {
           classNames += renderer._renderStyleToClassNames(
             value as any,
+            changes,
             pseudo + normalizeNestedProperty(property),
             media,
             support,
           );
         } else if (isMediaQuery(property)) {
           const combinedMediaQuery = generateCombinedMediaQuery(media, property.slice(6).trim());
-          classNames += renderer._renderStyleToClassNames(value as any, pseudo, combinedMediaQuery, support);
+          classNames += renderer._renderStyleToClassNames(value as any, changes, pseudo, combinedMediaQuery, support);
         } else if (isSupport(property)) {
           const combinedSupport = generateCombinedMediaQuery(support, property.slice(9).trim());
-          classNames += renderer._renderStyleToClassNames(value as any, pseudo, media, combinedSupport);
+          classNames += renderer._renderStyleToClassNames(value as any, changes, pseudo, media, combinedSupport);
         } else {
           // eslint-disable-next-line no-console
           console.warn(`The object key "${property}" is not a valid nested key in Fela.
@@ -114,7 +129,7 @@ Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information
           if (isUndefinedValue(value)) {
             renderer.cache[declarationReference] = {
               className: '',
-            } as FelaRendererChange;
+            } as RendererRuleChange;
             /* eslint-disable no-continue */
             continue;
             /* eslint-enable */
@@ -137,10 +152,10 @@ Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information
           };
 
           renderer.cache[declarationReference] = change;
-          renderer._emitChange(change);
+          changes.push(change);
         }
 
-        const cachedClassName = renderer.cache[declarationReference].className;
+        const cachedClassName = (renderer.cache[declarationReference] as RendererRuleChange).className;
 
         // only append if we got a class cached
         if (cachedClassName) {

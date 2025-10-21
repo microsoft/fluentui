@@ -5,11 +5,10 @@
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/react-northstar-styles-renderer": "^0.68.0",
+    "@fluentui/react-northstar-fela-renderer": "^0.68.0",
     "@fluentui/styles": "^0.68.0",
     "css-in-js-utils": "^3.0.0",
     "fela": "^10.6.1",
-    "fela-dom": "^11.7.0",
     "fela-plugin-embedded": "^10.6.1",
     "fela-plugin-fallback-value": "^10.6.1",
     "fela-plugin-placeholder-prefixer": "^10.6.1",

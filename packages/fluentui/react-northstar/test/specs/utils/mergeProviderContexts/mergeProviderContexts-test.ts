@@ -1,5 +1,5 @@
 import { ProviderContextInput } from '@fluentui/react-bindings';
-import type { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
+import type { CreateRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { mergeProviderContexts, mergePerformanceOptions, getRenderer } from 'src/utils/mergeProviderContexts';
 
 describe('getRenderer', () => {

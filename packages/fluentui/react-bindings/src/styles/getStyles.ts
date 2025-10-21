@@ -8,6 +8,7 @@ import { resolveStyles } from './resolveStyles';
 
 export type GetStylesResult = {
   classes: ComponentSlotClasses;
+  changes: any[];
   variables: ComponentVariablesObject;
   styles: ComponentSlotStylesResolved;
   theme: ProviderContextPrepared['theme'];
@@ -28,7 +29,7 @@ export const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
     options.performance.enableVariablesCaching,
   );
 
-  const { classes, resolvedStyles, resolvedStylesDebug } = resolveStyles(options, resolvedVariables);
+  const { classes, resolvedStyles, resolvedStylesDebug, changes } = resolveStyles(options, resolvedVariables);
 
   // conditionally add sources for evaluating debug information to component
   if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
@@ -53,6 +54,7 @@ export const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
 
   return {
     classes,
+    changes,
     variables: resolvedVariables,
     styles: resolvedStyles,
     theme: options.theme,
