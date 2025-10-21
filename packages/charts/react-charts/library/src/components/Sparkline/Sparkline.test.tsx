@@ -2,7 +2,6 @@ import * as React from 'react';
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { ChartProps, Sparkline } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import * as renderer from 'react-test-renderer';
 
 expect.extend(toHaveNoViolations);
 
@@ -129,15 +128,13 @@ describe('Sparkline Chart - axe-core', () => {
 describe('Sparkline snapShot testing', () => {
   /* eslint-disable @typescript-eslint/no-deprecated */
   it('renders Sparkline correctly', () => {
-    const component = renderer.create(<Sparkline data={sparkline1Points} showLegend={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Sparkline data={sparkline1Points} showLegend={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Sparkline correctly with no legend', () => {
-    const component = renderer.create(<Sparkline data={sparkline2Points} showLegend={false} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Sparkline data={sparkline2Points} showLegend={false} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
   /* eslint-enable @typescript-eslint/no-deprecated */
 });

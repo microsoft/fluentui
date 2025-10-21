@@ -38,6 +38,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   outline: none;
                 }
                 {
+                  position: relative;
                   width: 100%;
                 }
             data-focuszone-id="FocusZone9"
@@ -4933,6 +4934,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   outline: none;
                 }
                 {
+                  position: relative;
                   width: 100%;
                 }
             data-focuszone-id="FocusZone4"
