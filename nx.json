@@ -181,7 +181,8 @@
         "packages/react-examples/**",
         "packages/react-experiments/**",
         "packages/charts/react-charting/**",
-        "packages/utilities/**"
+        "packages/utilities/**",
+        "packages/react-window-provider/**"
       ]
     }
   ],
