@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/circulars-test",
-  "version": "0.67.1",
+  "version": "0.67.2",
   "private": true,
   "license": "MIT",
   "dependencies": {

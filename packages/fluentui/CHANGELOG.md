@@ -18,6 +18,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.67.2 ]------------------------------- -->
+## [v0.67.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.67.2) (21-10-2025)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.68.1..@fluentui/react-northstar_v0.67.2)
+
+### Fixes
+- Compile core for IE11 https://github.com/microsoft/fluentui/pull/35360
+
 <!--------------------------------[ v0.67.1 ]------------------------------- -->
 ## [v0.67.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.67.1) (03-10-2025)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.68.0..@fluentui/react-northstar_v0.67.1)
