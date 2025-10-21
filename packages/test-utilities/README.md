@@ -1,30 +1,16 @@
 # @fluentui/test-utilities
 
-Provides a set of common test utilities for testing code within the Fluent UI React repo.
+Set of common test utilities for testing code within the Fluent UI React repo.
 
-## API
-
-`safeCreate(jsxContent, callback): void` - Abstraction on `create` method in the `react-test-renderer` package which
-will auto unmount after executing the given callback.
-
-Example:
-
-```tsx
-safeCreate(<Foo />, foo => {
-  // assert things about foo
-});
-```
+**React support:** 16 and 17.
 
 > [!WARNING]
-> This api is deprecated. use `@testing-library/react` instead
-
-`safeMount(jsxContent, callback): void` - Abstraction on `mount` method in `enzyme` package which
-will auto unmount after executing the given callback.
-
-Example:
-
-```tsx
-safeMount(<Foo />, foo => {
-  // assert things about foo
-});
-```
+> ⚠️ Most of this package public API is deprecated and won't work with new React major versions. Pleas migrate to `@testing-library/react` instead
+>
+> If you gonna run incompatible APIs with new React major versions those will throw Runtime Error with appropriate message.
+>
+> **Affected APIs:**
+>
+> - `create` / wont work with React >=19
+> - `safeCreate` / wont work with React >=19
+> - `safeMount` / wont work with React >=18
