@@ -36,7 +36,8 @@ export function getParent(child: Node | null, options: GetParentOptions = {}): N
 
   const parent = child.parentNode;
 
-  if (parent && parent.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+  const win = child.ownerDocument?.defaultView;
+  if (parent && win && parent.nodeType === win.Node.DOCUMENT_FRAGMENT_NODE) {
     return (parent as ShadowRoot).host;
   }
 
