@@ -1,12 +1,14 @@
 import { generics } from './definitions/generics';
 import { primitives } from './definitions/primitives';
-import { GroupPart, groups } from './definitions/groups';
+import { groups } from './definitions/groups';
+import { GroupPart } from './definitions/groups.types';
 import { controls } from './definitions/controls';
 
 const joiner = '.';
 
 export interface Token {
   name: string;
+  figmaAlias: string;
   type?: string;
   property?: string;
   group?: string;
@@ -31,6 +33,68 @@ const propertyTypes = {
   strokewidth: 'dimension',
   fontfamily: 'string',
   weight: 'weight',
+};
+
+const generateGenericTokenName = ({
+  variant,
+  scale,
+  partName,
+  property,
+  state,
+}: {
+  collectionName?: string;
+  groupName?: string;
+  variant?: string;
+  scale?: string;
+  partName?: string;
+  property?: string;
+  state?: string;
+}) => {
+  return [property, variant, state].filter(Boolean).join(joiner);
+};
+
+const generateGroupTokenName = ({
+  collectionName,
+  groupName,
+  variant,
+  scale,
+  partName,
+  property,
+  state,
+}: {
+  collectionName?: string;
+  groupName?: string;
+  variant?: string;
+  scale?: string;
+  partName?: string;
+  property?: string;
+  state?: string;
+}) => {
+  return [collectionName, groupName, variant, scale, partName, property, state].filter(Boolean).join(joiner);
+};
+
+// We use a different format for figma interfaces, optimized for use/searchability
+const generateFigmaName = ({
+  collectionName,
+  groupName,
+  variant,
+  scale,
+  partName,
+  property,
+  state,
+}: {
+  collectionName?: string;
+  groupName?: string;
+  variant?: string;
+  scale?: string;
+  partName?: string;
+  property?: string;
+  state?: string;
+}) => {
+  if (state === '') {
+    state = 'rest';
+  }
+  return [property, collectionName, groupName, variant, scale, partName, state].filter(Boolean).join(joiner);
 };
 
 export function generatePrimitiveTokens() {
@@ -59,10 +123,10 @@ export function generateGenericTokens() {
     for (const variant of generics[property].variants) {
       const states = generics[property].states || [''];
       for (const state of states) {
-        let tokenParts = [property, variant, state];
-
         const propertyToken = {
-          name: tokenParts.filter(Boolean).join(joiner),
+          name: generateGenericTokenName({ property, variant, state }),
+          // Figma alias is the same on generic tokens (property first)
+          figmaAlias: generateGenericTokenName({ property, variant, state }),
           type: generics[property].type || 'dimension',
           property,
           variant,
@@ -85,14 +149,11 @@ export function generateComponentGroupTokens(
   let result: Array<Token> = [];
   const groupCoreGroupProperties = group.coreProperties || [];
   for (const property of groupCoreGroupProperties) {
-    let tokenParts = [];
     let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-    // Group-first
-    tokenParts = [collectionName, groupName, partName, property];
-
     const groupToken = {
-      name: tokenParts.filter(Boolean).join(joiner),
+      name: generateGroupTokenName({ collectionName, groupName, partName, property }),
+      figmaAlias: generateFigmaName({ collectionName, groupName, partName, property }),
       type,
       property: property,
       group: groupName,
@@ -110,14 +171,11 @@ export function generateComponentGroupTokens(
     for (let variant of groupVariants) {
       const groupStates = group.states || ['rest'];
       for (let state of groupStates) {
-        let tokenParts = [];
         let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-        // Group-first
-        tokenParts = [collectionName, groupName, variant, partName, property, state];
-
         const groupToken = {
-          name: tokenParts.filter(Boolean).join(joiner),
+          name: generateGroupTokenName({ collectionName, groupName, variant, partName, property, state }),
+          figmaAlias: generateFigmaName({ collectionName, groupName, variant, partName, property, state }),
           type,
           property: property,
           group: groupName,
@@ -135,14 +193,11 @@ export function generateComponentGroupTokens(
   for (const property of groupVariantProperties) {
     const groupVariants = group.variants || [];
     for (let variant of groupVariants) {
-      let tokenParts = [];
       let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-      // Group-first
-      tokenParts = [collectionName, groupName, variant, partName, property];
-
       const groupToken = {
-        name: tokenParts.filter(Boolean).join(joiner),
+        name: generateGroupTokenName({ collectionName, groupName, variant, partName, property }),
+        figmaAlias: generateFigmaName({ collectionName, groupName, variant, partName, property }),
         type,
         property: property,
         group: groupName,
@@ -159,14 +214,11 @@ export function generateComponentGroupTokens(
   for (const scale of groupScales) {
     const groupScaleProperties = group.scaleProperties || [];
     for (const property of groupScaleProperties) {
-      let tokenParts = [];
       let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-      // Group-first
-      tokenParts = [collectionName, groupName, scale, partName, property];
-
       const groupScaleToken = {
-        name: tokenParts.filter(Boolean).join(joiner),
+        name: generateGroupTokenName({ collectionName, groupName, scale, partName, property }),
+        figmaAlias: generateFigmaName({ collectionName, groupName, scale, partName, property }),
         type,
         property,
         group: groupName,
@@ -186,13 +238,11 @@ export function generateComponentGroupTokens(
     for (let scale of groupScales) {
       const groupStates = group.states || ['rest'];
       for (let state of groupStates) {
-        let tokenParts = [];
         let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-        tokenParts = [collectionName, groupName, scale, partName, property, state];
-
         const groupToken = {
-          name: tokenParts.filter(Boolean).join(joiner),
+          name: generateGroupTokenName({ collectionName, groupName, scale, partName, property, state }),
+          figmaAlias: generateFigmaName({ collectionName, groupName, scale, partName, property, state }),
           type,
           property: property,
           group: groupName,
