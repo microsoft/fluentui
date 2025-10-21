@@ -39,7 +39,7 @@ const useRootBaseStyles = makeResetStyles({
   ':hover': {
     color: tokens.colorNeutralForeground2Hover,
     backgroundColor: tokens.colorSubtleBackgroundHover,
-    // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon  for styling
+    // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon for styling
     [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
       color: tokens.colorNeutralForeground3Hover,
     },
@@ -55,6 +55,33 @@ const useRootStyles = makeStyles({
   },
   branch: {
     paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
+  },
+  // Size variations
+  medium: {
+    ...typographyStyles.body1,
+  },
+  small: {
+    minHeight: '24px',
+    ...typographyStyles.caption1,
+  },
+  // Appearance variations
+  subtle: {},
+  'subtle-alpha': {
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundLightAlphaHover
+    },
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundLightAlphaPressed,
+    }
+  },
+  transparent: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+    },
   },
 });
 

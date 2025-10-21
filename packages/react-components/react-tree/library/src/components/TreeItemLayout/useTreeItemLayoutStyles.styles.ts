@@ -28,7 +28,7 @@ const useRootBaseStyles = makeResetStyles({
   ':hover': {
     color: tokens.colorNeutralForeground2Hover,
     backgroundColor: tokens.colorSubtleBackgroundHover,
-    // TODO: stop using treeItemLayoutClassNames.expandIcon  for styling
+    // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
     [`& .${treeItemLayoutClassNames.expandIcon}`]: {
       color: tokens.colorNeutralForeground3Hover,
     },
@@ -53,6 +53,7 @@ const useRootStyles = makeStyles({
   branch: {
     paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
   },
+  // Size variations
   medium: {
     ...typographyStyles.body1,
   },
