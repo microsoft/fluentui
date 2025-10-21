@@ -7,6 +7,9 @@ import { getPlacement } from './positioningHelper';
 import { PopperChildrenFn, PopperProps, PopperRefHandle } from './types';
 import { usePopper } from './usePopper';
 
+const DEFAULT_MODIFIERS = [];
+const DEFAULT_POSITIONING_DEPENDENCIES = [];
+
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
  *
@@ -21,6 +24,11 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
 
   const popperRef = React.useRef<PopperRefHandle | null>(null);
   const { targetRef, containerRef, arrowRef } = usePopper({
+    enabled: true,
+    modifiers: DEFAULT_MODIFIERS,
+    positionFixed: false,
+    positioningDependencies: DEFAULT_POSITIONING_DEPENDENCIES,
+
     ...props,
 
     popperRef: useMergedRefs(props.popperRef, popperRef),
@@ -59,11 +67,4 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     : (props.children as React.ReactElement);
 
   return child ? <Ref innerRef={containerRef}>{React.Children.only(child)}</Ref> : null;
-};
-
-Popper.defaultProps = {
-  enabled: true,
-  modifiers: [],
-  positionFixed: false,
-  positioningDependencies: [],
 };

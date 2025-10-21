@@ -50,6 +50,7 @@ export const MenuItemIndicator = React.forwardRef<HTMLSpanElement, MenuItemIndic
   const context = useFluentContext();
 
   const {
+    accessibility = indicatorBehavior,
     className,
     children,
     design,
@@ -83,12 +84,12 @@ export const MenuItemIndicator = React.forwardRef<HTMLSpanElement, MenuItemIndic
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: MenuItemIndicator.displayName,
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(MenuItemIndicator.handledProps, props);
 
   const element = (
@@ -102,11 +103,6 @@ export const MenuItemIndicator = React.forwardRef<HTMLSpanElement, MenuItemIndic
   FluentComponentStaticProps<MenuItemIndicatorProps>;
 
 MenuItemIndicator.displayName = 'MenuItemIndicator';
-
-MenuItemIndicator.defaultProps = {
-  as: 'span',
-  accessibility: indicatorBehavior,
-};
 
 MenuItemIndicator.propTypes = {
   ...commonPropTypes.createCommon(),

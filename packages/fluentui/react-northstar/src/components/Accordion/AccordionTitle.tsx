@@ -95,13 +95,13 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
     const context = useFluentContext();
 
     const {
-      contentRef,
+      contentRef = _.noop,
       children,
       content,
-      indicator,
-      contentWrapper,
+      indicator = {},
+      contentWrapper = {},
       disabled,
-      accessibility,
+      accessibility = accordionTitleBehavior,
       canBeCollapsed,
       as,
       active,
@@ -240,13 +240,5 @@ AccordionTitle.propTypes = {
 };
 
 AccordionTitle.handledProps = Object.keys(AccordionTitle.propTypes) as any;
-
-AccordionTitle.defaultProps = {
-  accessibility: accordionTitleBehavior,
-  as: 'div',
-  contentRef: _.noop,
-  indicator: {},
-  contentWrapper: {},
-};
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });

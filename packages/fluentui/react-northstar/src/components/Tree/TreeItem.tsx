@@ -127,7 +127,7 @@ export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, 
   const context = useFluentContext();
 
   const {
-    accessibility,
+    accessibility = treeItemBehavior,
     children,
     className,
     contentRef,
@@ -141,7 +141,7 @@ export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, 
     variables,
     treeSize,
     selectionIndicator,
-    selectable,
+    selectable = true,
     id,
     parent,
   } = props;
@@ -355,11 +355,6 @@ TreeItem.propTypes = {
   selectable: PropTypes.bool,
   unstyled: PropTypes.bool,
   onKeyDown: PropTypes.func,
-};
-
-TreeItem.defaultProps = {
-  accessibility: treeItemBehavior,
-  selectable: true,
 };
 
 TreeItem.handledProps = Object.keys(TreeItem.propTypes) as any;

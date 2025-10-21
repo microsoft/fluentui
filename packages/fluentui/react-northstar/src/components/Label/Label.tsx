@@ -78,12 +78,12 @@ export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) 
     color,
     content,
     icon,
-    iconPosition,
+    iconPosition = 'end',
     design,
     styles,
     variables,
     image,
-    imagePosition,
+    imagePosition = 'start',
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -105,7 +105,7 @@ export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) 
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(Label.handledProps, props);
 
   if (childrenExist(children)) {
@@ -177,11 +177,5 @@ Label.propTypes = {
   fluid: PropTypes.bool,
 };
 Label.handledProps = Object.keys(Label.propTypes) as any;
-
-Label.defaultProps = {
-  as: 'span',
-  imagePosition: 'start',
-  iconPosition: 'end',
-};
 
 Label.create = createShorthandFactory({ Component: Label, mappedProp: 'content' });

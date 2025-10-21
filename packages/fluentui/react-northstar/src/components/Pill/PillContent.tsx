@@ -61,7 +61,7 @@ export const PillContent = React.forwardRef<HTMLSpanElement, PillContentProps>((
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(PillContent.handledProps, props);
 
   const element = (
@@ -89,10 +89,6 @@ PillContent.propTypes = {
 };
 
 PillContent.handledProps = Object.keys(PillContent.propTypes) as any;
-
-PillContent.defaultProps = {
-  as: 'span',
-};
 
 PillContent.shorthandConfig = {
   mappedProp: 'content',

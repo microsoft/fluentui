@@ -48,7 +48,17 @@ export const buttonGroupClassName = 'ui-buttons';
 export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { children, buttons, circular, content, className, design, styles, variables } = props;
+  const {
+    accessibility = buttonGroupBehavior,
+    children,
+    buttons,
+    circular,
+    content,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(ButtonGroup.handledProps, props);
   const { classes, styles: resolvedStyles } = useStyles<ButtonGroupStylesProps>(ButtonGroup.displayName, {
@@ -65,7 +75,7 @@ export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((p
     rtl: context.rtl,
   });
 
-  const getA11yProps = useAccessibility<ButtonGroupBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<ButtonGroupBehaviorProps>(accessibility, {
     debugName: ButtonGroup.displayName,
     rtl: context.rtl,
   });
@@ -122,10 +132,6 @@ ButtonGroup.propTypes = {
   ...commonPropTypes.createCommon(),
   buttons: customPropTypes.collectionShorthand,
   circular: PropTypes.bool,
-};
-
-ButtonGroup.defaultProps = {
-  accessibility: buttonGroupBehavior,
 };
 
 ButtonGroup.handledProps = Object.keys(ButtonGroup.propTypes) as any;

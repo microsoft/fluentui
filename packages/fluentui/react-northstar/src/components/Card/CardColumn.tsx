@@ -27,10 +27,11 @@ export const cardColumnClassName = 'ui-card__column';
 export const CardColumn = React.forwardRef<HTMLDivElement, CardColumnProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, design, styles, variables, children } = props;
+  const { accessibility, className, design, styles, variables, children } = props;
+
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CardColumn.handledProps, props);
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: CardColumn.displayName,
     rtl: context.rtl,
   });

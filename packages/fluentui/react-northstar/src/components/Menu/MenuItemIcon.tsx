@@ -36,7 +36,7 @@ export const menuItemIconClassName = 'ui-menu__itemicon';
 export const MenuItemIcon = React.forwardRef<HTMLSpanElement, MenuItemIconProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, children, design, styles, variables, content, hasContent, iconOnly } = props;
+  const { accessibility, className, children, design, styles, variables, content, hasContent, iconOnly } = props;
 
   const { classes } = useStyles<MenuItemIconStylesProps>(MenuItemIcon.displayName, {
     className: menuItemIconClassName,
@@ -53,12 +53,12 @@ export const MenuItemIcon = React.forwardRef<HTMLSpanElement, MenuItemIconProps>
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: MenuItemIcon.displayName,
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(MenuItemIcon.handledProps, props);
 
   const element = (
@@ -72,10 +72,6 @@ export const MenuItemIcon = React.forwardRef<HTMLSpanElement, MenuItemIconProps>
   FluentComponentStaticProps<MenuItemIconProps>;
 
 MenuItemIcon.displayName = 'MenuItemIcon';
-
-MenuItemIcon.defaultProps = {
-  as: 'span',
-};
 
 MenuItemIcon.propTypes = {
   ...commonPropTypes.createCommon(),

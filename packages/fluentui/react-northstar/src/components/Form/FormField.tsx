@@ -67,6 +67,8 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
   hasErrorMessage: boolean;
 };
 
+const DEFAULT_CONTROL = { as: Input };
+
 /**
  * A FormField represents a Form element containing a label and an input.
  */
@@ -75,7 +77,7 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
 
   const {
     children,
-    control,
+    control = DEFAULT_CONTROL,
     id,
     label,
     message,
@@ -97,7 +99,7 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
   const labelId = React.useRef<string>();
   labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
 
-  const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility ?? formFieldBehavior, {
     debugName: FormField.displayName,
     mapPropsToBehavior: () => ({
       hasErrorMessage: !!errorMessage,
@@ -201,10 +203,5 @@ FormField.propTypes = {
 };
 
 FormField.handledProps = Object.keys(FormField.propTypes) as any;
-
-FormField.defaultProps = {
-  accessibility: formFieldBehavior,
-  control: { as: Input },
-};
 
 FormField.create = createShorthandFactory({ Component: FormField, mappedProp: 'label' });

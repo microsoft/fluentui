@@ -48,7 +48,7 @@ export const FormFieldCustom = React.forwardRef<HTMLDivElement, FormFieldCustomP
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(FormFieldCustom.handledProps, props);
 
-  const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility ?? formFieldBehavior, {
     debugName: FormFieldCustom.displayName,
     rtl: context.rtl,
   });
@@ -99,7 +99,3 @@ FormFieldCustom.propTypes = {
 };
 
 FormFieldCustom.handledProps = Object.keys(FormFieldCustom.propTypes) as any;
-
-FormFieldCustom.defaultProps = {
-  accessibility: formFieldBehavior,
-};

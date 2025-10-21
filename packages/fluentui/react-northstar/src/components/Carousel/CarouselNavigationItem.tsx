@@ -94,6 +94,7 @@ export const CarouselNavigationItem = React.forwardRef<HTMLLIElement, CarouselNa
   const context = useFluentContext();
 
   const {
+    accessibility = tabBehavior,
     children,
     thumbnails,
     vertical,
@@ -101,17 +102,17 @@ export const CarouselNavigationItem = React.forwardRef<HTMLLIElement, CarouselNa
     content,
     iconOnly,
     primary,
-    indicator,
+    indicator = {},
     className,
     design,
     styles,
     variables,
     disableClickableNav,
   } = props;
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'li');
   const unhandledProps = useUnhandledProps(CarouselNavigationItem.handledProps, props);
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: CarouselNavigationItem.displayName,
     actionHandlers: {
       performClick: event => !event.defaultPrevented && handleClick(event),
@@ -210,12 +211,6 @@ CarouselNavigationItem.propTypes = {
 };
 
 CarouselNavigationItem.handledProps = Object.keys(CarouselNavigationItem.propTypes) as any;
-
-CarouselNavigationItem.defaultProps = {
-  accessibility: tabBehavior,
-  as: 'li',
-  indicator: {},
-};
 
 CarouselNavigationItem.create = createShorthandFactory({
   Component: CarouselNavigationItem,

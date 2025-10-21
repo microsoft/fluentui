@@ -34,7 +34,7 @@ export const avatarStatusIconClassName = 'ui-avatar__statusicon';
 export const AvatarStatusIcon = React.forwardRef<HTMLSpanElement, AvatarStatusIconProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { children, className, design, size, state, styles, variables } = props;
+  const { accessibility, children, className, design, size, state, styles, variables } = props;
 
   const { classes } = useStyles<AvatarStatusIconStylesProps>(AvatarStatusIcon.displayName, {
     className: avatarStatusIconClassName,
@@ -51,12 +51,12 @@ export const AvatarStatusIcon = React.forwardRef<HTMLSpanElement, AvatarStatusIc
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: AvatarStatusIcon.displayName,
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(AvatarStatusIcon.handledProps, props);
 
   const element = (
@@ -73,8 +73,5 @@ AvatarStatusIcon.propTypes = {
   state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown']),
 };
 AvatarStatusIcon.handledProps = Object.keys(AvatarStatusIcon.propTypes) as any;
-AvatarStatusIcon.defaultProps = {
-  as: 'span',
-};
 
 AvatarStatusIcon.create = createShorthandFactory({ Component: AvatarStatusIcon });

@@ -115,8 +115,8 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
     contextMenu,
     menu,
     // Popup props:
-    accessibility,
-    align,
+    accessibility = menuButtonBehavior,
+    align = 'start',
     className,
     defaultOpen,
     flipBoundary,
@@ -128,7 +128,7 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
     overflowBoundary,
     pointing,
     popperRef,
-    position,
+    position = 'below',
     positionFixed,
     tabbableTrigger,
     target,
@@ -347,12 +347,6 @@ MenuButton.propTypes = {
     PropTypes.arrayOf(customPropTypes.itemShorthandWithoutJSX),
   ]),
   contextMenu: PropTypes.bool,
-};
-
-MenuButton.defaultProps = {
-  accessibility: menuButtonBehavior,
-  align: 'start',
-  position: 'below',
 };
 
 MenuButton.handledProps = Object.keys(MenuButton.propTypes) as any;

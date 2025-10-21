@@ -62,8 +62,19 @@ export const dividerClassName = 'ui-divider';
 export const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { children, color, fitted, size, important, vertical, className, design, styles, variables, accessibility } =
-    props;
+  const {
+    children,
+    color,
+    fitted,
+    size = 0,
+    important,
+    vertical,
+    className,
+    design,
+    styles,
+    variables,
+    accessibility,
+  } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Divider.handledProps, props);
   const getA11yProps = useAccessibility<never>(accessibility, {
@@ -118,10 +129,6 @@ Divider.propTypes = {
   size: PropTypes.number,
   important: PropTypes.bool,
   vertical: PropTypes.bool,
-};
-
-Divider.defaultProps = {
-  size: 0,
 };
 
 Divider.Content = DividerContent;

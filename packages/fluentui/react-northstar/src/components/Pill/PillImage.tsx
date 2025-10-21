@@ -35,7 +35,7 @@ export const pillImageClassName = 'ui-pill__image';
 export const PillImage = React.forwardRef<HTMLImageElement, PillImageProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { accessibility, className, design, styles, variables, size } = props;
+  const { accessibility = pillImageBehavior, className, design, styles, variables, size } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: PillImage.displayName,
@@ -56,7 +56,7 @@ export const PillImage = React.forwardRef<HTMLImageElement, PillImageProps>((pro
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'img');
   const unhandledProps = useUnhandledProps(PillImage.handledProps, props);
 
   const result = <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })} />;
@@ -65,11 +65,6 @@ export const PillImage = React.forwardRef<HTMLImageElement, PillImageProps>((pro
 }) as unknown as ForwardRefWithAs<'img', HTMLImageElement, PillImageProps> & FluentComponentStaticProps<PillImageProps>;
 
 PillImage.displayName = 'PillImage';
-
-PillImage.defaultProps = {
-  accessibility: pillImageBehavior,
-  as: 'img',
-};
 
 PillImage.propTypes = {
   ...commonPropTypes.createCommon({

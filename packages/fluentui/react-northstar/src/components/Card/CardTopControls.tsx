@@ -28,10 +28,10 @@ export const cardTopControlsClassName = 'ui-card__topcontrols';
 export const CardTopControls = React.forwardRef<HTMLDivElement, CardTopControlsProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, design, styles, variables, children } = props;
+  const { accessibility, className, design, styles, variables, children } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CardTopControls.handledProps, props);
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: CardTopControls.displayName,
     rtl: context.rtl,
   });

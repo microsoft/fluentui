@@ -67,7 +67,7 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
     const context = useFluentContext();
 
     const {
-      accessibility,
+      accessibility = buttonBehavior,
       as,
       children,
       content,
@@ -115,7 +115,7 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
     });
 
     const unhandledProps = useUnhandledProps(SplitButtonToggle.handledProps, props);
-    const ElementType = getElementType(props);
+    const ElementType = getElementType(props, 'button');
 
     const handleClick = (e: React.SyntheticEvent) => {
       if (disabled) {
@@ -145,11 +145,6 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
   },
 ) as unknown as ForwardRefWithAs<'button', HTMLButtonElement, SplitButtonToggleProps> &
   FluentComponentStaticProps<SplitButtonToggleProps>;
-
-SplitButtonToggle.defaultProps = {
-  as: 'button',
-  accessibility: buttonBehavior,
-};
 
 SplitButtonToggle.displayName = 'SplitButtonToggle';
 

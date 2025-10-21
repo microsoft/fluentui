@@ -83,11 +83,11 @@ export const AlertDismissAction = React.forwardRef<
   const context = useFluentContext();
 
   const {
-    accessibility,
-    as,
+    accessibility = buttonBehavior,
+    as = 'button',
     children,
     className,
-    content,
+    content = {},
     disabled,
     design,
     styles,
@@ -173,12 +173,6 @@ export const AlertDismissAction = React.forwardRef<
   return result;
 }) as unknown as ForwardRefWithAs<'button', HTMLButtonElement, AlertDismissActionProps> &
   FluentComponentStaticProps<AlertDismissActionProps>;
-
-AlertDismissAction.defaultProps = {
-  as: 'button',
-  accessibility: buttonBehavior,
-  content: {},
-};
 
 AlertDismissAction.displayName = 'AlertDismissAction';
 

@@ -76,7 +76,7 @@ export const CarouselNavigation = React.forwardRef<HTMLUListElement, CarouselNav
   const context = useFluentContext();
 
   const {
-    accessibility,
+    accessibility = tabListBehavior,
     variables,
     children,
     className,
@@ -91,7 +91,7 @@ export const CarouselNavigation = React.forwardRef<HTMLUListElement, CarouselNav
     styles,
     disableClickableNav,
   } = props;
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'ul');
   const unhandledProps = useUnhandledProps(CarouselNavigation.handledProps, props);
 
   const getA11yProps = useAccessibility(accessibility, {
@@ -176,11 +176,6 @@ CarouselNavigation.propTypes = {
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   vertical: PropTypes.bool,
   disableClickableNav: PropTypes.bool,
-};
-
-CarouselNavigation.defaultProps = {
-  accessibility: tabListBehavior,
-  as: 'ul',
 };
 
 CarouselNavigation.handledProps = Object.keys(CarouselNavigation.propTypes) as any;

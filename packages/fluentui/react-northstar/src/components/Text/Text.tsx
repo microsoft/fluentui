@@ -146,7 +146,7 @@ export const Text = React.forwardRef<HTMLSpanElement, TextProps>((props, ref) =>
   });
 
   const unhandledProps = useUnhandledProps(Text.handledProps, props);
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
 
   const element = (
     <ElementType
@@ -166,9 +166,6 @@ export const Text = React.forwardRef<HTMLSpanElement, TextProps>((props, ref) =>
 
 Text.displayName = 'Text';
 
-Text.defaultProps = {
-  as: 'span' as const,
-};
 Text.propTypes = {
   ...commonPropTypes.createCommon({ color: true }),
   atMention: PropTypes.oneOfType<any>([PropTypes.bool, PropTypes.oneOf(['me'])]),

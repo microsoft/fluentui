@@ -76,6 +76,8 @@ export interface ListProps extends UIComponentProps, ChildrenComponentProps {
 export type ListStylesProps = Pick<ListProps, 'debug' | 'horizontal'> & { isListTag: boolean };
 export const listClassName = 'ui-list';
 
+const DEFAULT_WRAP = (children: ReactChildren) => <>{children}</>;
+
 /**
  * A List displays a group of related sequential items.
  *
@@ -92,7 +94,7 @@ export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.R
   const context = useFluentContext();
 
   const {
-    accessibility,
+    accessibility = listBehavior,
     as,
     children,
     className,
@@ -106,7 +108,7 @@ export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.R
     truncateContent,
     truncateHeader,
     variables,
-    wrap,
+    wrap = DEFAULT_WRAP,
   } = props;
 
   const [selectedIndex, setSelectedIndex] = useControllableState({
@@ -133,7 +135,7 @@ export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.R
   const latestProps = React.useRef<ListProps>(props);
   latestProps.current = props;
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'ul');
   const unhandledProps = useUnhandledProps(List.handledProps, props);
 
   const hasContent = childrenExist(children) || (items && items.length > 0);
@@ -191,11 +193,6 @@ export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.R
 
 List.displayName = 'List';
 
-List.defaultProps = {
-  as: 'ul',
-  accessibility: listBehavior,
-  wrap: children => children,
-};
 List.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

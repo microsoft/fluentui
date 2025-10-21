@@ -44,7 +44,17 @@ export const statusClassName = 'ui-status';
 export const Status = React.forwardRef<HTMLSpanElement, StatusProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, color, icon, size, state, design, styles, variables } = props;
+  const {
+    accessibility = statusBehavior,
+    className,
+    color,
+    icon,
+    size = 'medium',
+    state = 'unknown',
+    design,
+    styles,
+    variables,
+  } = props;
   const { classes, styles: resolvedStyles } = useStyles<StatusStylesProps>(Status.displayName, {
     className: statusClassName,
     mapPropsToStyles: () => ({
@@ -60,11 +70,11 @@ export const Status = React.forwardRef<HTMLSpanElement, StatusProps>((props, ref
     }),
     rtl: context.rtl,
   });
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: Status.displayName,
     rtl: context.rtl,
   });
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(Status.handledProps, props);
 
   const iconElement = Box.create(icon, {
@@ -102,11 +112,5 @@ Status.propTypes = {
   ]),
 };
 Status.handledProps = Object.keys(Status.propTypes) as any;
-Status.defaultProps = {
-  accessibility: statusBehavior,
-  as: 'span' as const,
-  size: 'medium',
-  state: 'unknown',
-};
 
 Status.create = createShorthandFactory({ Component: Status, mappedProp: 'state' });

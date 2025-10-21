@@ -80,7 +80,8 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
 export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, design, disabled, label, labelPosition, indicator, styles, toggle, variables } = props;
+  const { accessibility, className, design, disabled, label, labelPosition, indicator, styles, toggle, variables } =
+    props;
 
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
@@ -88,7 +89,7 @@ export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, 
     initialState: false,
   });
 
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: Checkbox.displayName,
     mapPropsToBehavior: () => ({
       checked,

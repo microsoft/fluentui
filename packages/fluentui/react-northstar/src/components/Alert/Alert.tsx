@@ -126,6 +126,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
   const context = useFluentContext();
 
   const {
+    accessibility = alertBehavior,
     warning,
     danger,
     info,
@@ -139,11 +140,11 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
     styles,
     children,
     actions,
-    dismissAction,
+    dismissAction = {},
     content,
     icon,
     header,
-    body,
+    body = {},
   } = props;
 
   const [visible, setVisible] = useControllableState({
@@ -156,7 +157,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Alert.handledProps, props);
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: Alert.displayName,
     mapPropsToBehavior: () => ({
       warning,
@@ -282,12 +283,6 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
   FluentComponentStaticProps<AlertProps> & {
     DismissAction: typeof AlertDismissAction;
   };
-
-Alert.defaultProps = {
-  accessibility: alertBehavior,
-  dismissAction: {},
-  body: {},
-};
 
 Alert.propTypes = {
   ...commonPropTypes.createCommon({ content: 'shorthand' }),

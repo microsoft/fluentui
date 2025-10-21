@@ -60,7 +60,7 @@ export const Header = React.forwardRef<HTMLHeadingElement, HeaderProps>((props, 
   const context = useFluentContext();
 
   const { children, content, variables, align, className, design, styles, description, color } = props;
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'h1');
   const unhandledProps = useUnhandledProps(Header.handledProps, props);
   const hasChildren = childrenExist(children);
   const contentElement = hasChildren ? children : content;
@@ -118,10 +118,6 @@ Header.propTypes = {
   ...commonPropTypes.createCommon({ color: true }),
   description: customPropTypes.itemShorthand,
   align: customPropTypes.align,
-};
-
-Header.defaultProps = {
-  as: 'h1',
 };
 
 Header.handledProps = Object.keys(Header.propTypes) as any;

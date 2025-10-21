@@ -56,7 +56,18 @@ export const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>((props, 
   const context = useFluentContext();
 
   const rowRef = React.useRef<HTMLElement>();
-  const { className, design, styles, items, header, compact, children, accessibility, variables, selected } = props;
+  const {
+    className,
+    design,
+    styles,
+    items,
+    header,
+    compact,
+    children,
+    accessibility = tableRowBehavior,
+    variables,
+    selected,
+  } = props;
 
   const hasChildren = childrenExist(children);
   const ElementType = getElementType(props);
@@ -141,9 +152,5 @@ TableRow.propTypes = {
 };
 
 TableRow.handledProps = Object.keys(TableRow.propTypes) as any;
-
-TableRow.defaultProps = {
-  accessibility: tableRowBehavior,
-};
 
 TableRow.create = createShorthandFactory({ Component: TableRow, mappedArrayProp: 'items' });

@@ -44,11 +44,4 @@ describe('Embed', () => {
       );
     });
   });
-
-  describe('variables', () => {
-    it('should be set by default', () => {
-      const variables = mountWithProviderAndGetComponent(Embed, <Embed />).prop('variables');
-      expect(variables).toEqual({});
-    });
-  });
 });

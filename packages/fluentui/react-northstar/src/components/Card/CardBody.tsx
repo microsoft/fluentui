@@ -31,10 +31,10 @@ export const cardBodyClassName = 'ui-card__body';
 export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, design, styles, variables, children, fitted } = props;
+  const { accessibility, className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CardBody.handledProps, props);
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: CardBody.displayName,
     rtl: context.rtl,
   });

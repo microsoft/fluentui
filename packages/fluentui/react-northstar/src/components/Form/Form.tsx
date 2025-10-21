@@ -57,7 +57,7 @@ export const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) =>
   const context = useFluentContext();
 
   const { className, design, styles, variables, action, children, accessibility } = props;
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'form');
   const unhandledProps = useUnhandledProps(Form.handledProps, props);
 
   const { classes } = useStyles<FormStylesProps>(Form.displayName, {
@@ -118,11 +118,6 @@ Form.propTypes = {
   fields: customPropTypes.collectionShorthand,
   onSubmit: PropTypes.func,
 };
-
-Form.defaultProps = {
-  as: 'form' as const,
-};
-
 Form.handledProps = Object.keys(Form.propTypes) as any;
 
 Form.create = createShorthandFactory({

@@ -170,10 +170,10 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
     className,
     design,
     secondary,
-    accessibility,
+    accessibility = menuBehavior,
   } = props;
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'ul');
 
   const slotProps = {
     divider: {
@@ -202,7 +202,7 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
 
   const unhandledProps = useUnhandledProps(Menu.handledProps, props);
 
-  const getA11yProps = useAccessibility<MenuBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<MenuBehaviorProps>(accessibility, {
     debugName: Menu.displayName,
     mapPropsToBehavior: () => ({
       vertical,
@@ -381,11 +381,6 @@ Menu.propTypes = {
 };
 
 Menu.handledProps = Object.keys(Menu.propTypes) as any;
-
-Menu.defaultProps = {
-  as: 'ul',
-  accessibility: menuBehavior,
-};
 
 Menu.Item = MenuItem;
 Menu.ItemIcon = MenuItemIcon;

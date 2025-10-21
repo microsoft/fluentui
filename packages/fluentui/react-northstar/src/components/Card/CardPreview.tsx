@@ -35,10 +35,10 @@ export const cardPreviewClassName = 'ui-card__preview';
 export const CardPreview = React.forwardRef<HTMLDivElement, CardPreviewProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, design, styles, variables, children, horizontal, fitted } = props;
+  const { accessibility, className, design, styles, variables, children, horizontal, fitted } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CardPreview.handledProps, props);
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: CardPreview.displayName,
     rtl: context.rtl,
   });

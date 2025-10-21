@@ -43,7 +43,7 @@ export const HeaderDescription = React.forwardRef<HTMLParagraphElement, HeaderDe
   const context = useFluentContext();
 
   const { children, content, color, className, design, styles, variables } = props;
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'p');
   const unhandledProps = useUnhandledProps(HeaderDescription.handledProps, props);
 
   const getA11yProps = useAccessibility<never>(props.accessibility, {
@@ -86,10 +86,6 @@ HeaderDescription.displayName = 'HeaderDescription';
 
 HeaderDescription.propTypes = {
   ...commonPropTypes.createCommon({ color: true }),
-};
-
-HeaderDescription.defaultProps = {
-  as: 'p',
 };
 
 HeaderDescription.handledProps = Object.keys(HeaderDescription.propTypes) as any;

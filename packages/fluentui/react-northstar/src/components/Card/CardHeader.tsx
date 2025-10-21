@@ -32,10 +32,10 @@ export const cardHeaderClassName = 'ui-card__header';
 export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, design, styles, variables, children, fitted } = props;
+  const { accessibility, className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CardHeader.handledProps, props);
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: CardHeader.displayName,
     rtl: context.rtl,
   });

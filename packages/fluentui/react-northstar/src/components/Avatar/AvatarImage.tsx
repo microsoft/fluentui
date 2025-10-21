@@ -50,7 +50,7 @@ export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>(
   const context = useFluentContext();
 
   const {
-    accessibility,
+    accessibility = imageBehavior,
     alt,
     'aria-label': ariaLabel,
     avatar,
@@ -88,7 +88,7 @@ export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>(
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'img');
   const unhandledProps = useUnhandledProps(AvatarImage.handledProps, props);
 
   const result = <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })} />;
@@ -98,10 +98,6 @@ export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>(
   FluentComponentStaticProps<AvatarImageProps>;
 
 AvatarImage.displayName = 'AvatarImage';
-AvatarImage.defaultProps = {
-  as: 'img',
-  accessibility: imageBehavior,
-};
 
 AvatarImage.propTypes = {
   ...commonPropTypes.createCommon({

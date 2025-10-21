@@ -34,6 +34,7 @@ import {
   Position,
   AutoSize,
   AUTOSIZES,
+  Offset,
 } from '../../utils/positioner';
 import { PortalInner } from '../Portal/PortalInner';
 import { TooltipContent, TooltipContentProps } from './TooltipContent';
@@ -95,6 +96,8 @@ export interface TooltipProps
 
 export const tooltipClassName = 'ui-tooltip';
 
+const DEFAULT_OFFSET: Offset = [4, 4];
+
 /**
  * A Tooltip displays additional non-modal information on top of its target element.
  * Tooltip doesn't receive focus and cannot contain focusable elements.
@@ -109,26 +112,26 @@ export const Tooltip: React.FC<TooltipProps> &
   const context = useFluentContext();
 
   const {
-    accessibility,
-    align,
+    accessibility = tooltipAsLabelBehavior,
+    align = 'center',
     content,
     flipBoundary,
     mountNode,
-    mouseLeaveDelay,
-    offset,
+    mouseLeaveDelay = 10,
+    offset = DEFAULT_OFFSET,
     overflowBoundary,
     pointing,
     popperRef,
-    position,
+    position = 'above',
     positionFixed,
     target,
     trigger,
     unstable_disableTether,
     unstable_pinned,
     autoSize,
-    subtle,
+    subtle = true,
     dismissOnContentMouseEnter,
-    mouseEnterDelay,
+    mouseEnterDelay = 0,
   } = props;
 
   const [open, setOpen] = useControllableState({
@@ -296,15 +299,6 @@ export const Tooltip: React.FC<TooltipProps> &
 
 Tooltip.displayName = 'Tooltip';
 
-Tooltip.defaultProps = {
-  align: 'center',
-  position: 'above',
-  mouseLeaveDelay: 10,
-  mouseEnterDelay: 0,
-  subtle: true,
-  accessibility: tooltipAsLabelBehavior,
-  offset: [4, 4],
-};
 Tooltip.propTypes = {
   ...commonPropTypes.createCommon({
     as: false,
