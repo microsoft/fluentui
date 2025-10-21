@@ -26,7 +26,11 @@ module.exports = (/** @type {import('@babel/core').ConfigAPI} */ api) => {
       {
         loose: true,
         modules: useESModules ? false : 'cjs',
-        targets: isNode ? { node: '10' } : undefined,
+        targets: isNode
+          ? { node: '10' }
+          : {
+              browsers: ['last 2 versions', 'ie 11'],
+            },
         exclude: [
           // https://github.com/microsoft/fluent-ui-react/pull/1895
           'proposal-object-rest-spread',
