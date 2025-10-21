@@ -2,7 +2,7 @@
 
 exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -17,13 +17,12 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -33,23 +32,17 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -78,7 +71,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -112,51 +105,41 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -166,51 +149,41 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -219,7 +192,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -227,7 +200,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -241,38 +214,26 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
@@ -283,7 +244,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -293,10 +254,10 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                 >
                   <button
                     aria-label="Metadata1"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -343,16 +304,12 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -369,7 +326,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -387,7 +344,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -397,10 +354,10 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                 >
                   <button
                     aria-label="Metadata2"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -447,16 +404,12 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -473,7 +426,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -502,7 +455,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
 
 exports[`VerticalStackedBarChart snapShot testing Should render gradients on bars 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -517,13 +470,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -533,23 +485,17 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -578,7 +524,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -611,7 +557,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
             id="0-singleBar"
           >
             <defs>
-              <linearGradient
+              <lineargradient
                 id="VSBC_Gradient6_0_0"
                 x1="0%"
                 x2="0%"
@@ -620,40 +566,35 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               >
                 <stop
                   offset="0"
-                  stopColor="#4760D5"
+                  stop-color="#4760D5"
                 />
                 <stop
                   offset="100%"
-                  stopColor="#637CEF"
+                  stop-color="#637CEF"
                 />
-              </linearGradient>
+              </lineargradient>
             </defs>
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="url(#VSBC_Gradient6_0_0)"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <defs>
-              <linearGradient
+              <lineargradient
                 id="VSBC_Gradient7_0_1"
                 x1="0%"
                 x2="0%"
@@ -662,37 +603,32 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               >
                 <stop
                   offset="0"
-                  stopColor="#795AA6"
+                  stop-color="#795AA6"
                 />
                 <stop
                   offset="100%"
-                  stopColor="#9373C0"
+                  stop-color="#9373C0"
                 />
-              </linearGradient>
+              </lineargradient>
             </defs>
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="url(#VSBC_Gradient7_0_1)"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -701,7 +637,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
             id="1-singleBar"
           >
             <defs>
-              <linearGradient
+              <lineargradient
                 id="VSBC_Gradient8_1_0"
                 x1="0%"
                 x2="0%"
@@ -710,40 +646,35 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               >
                 <stop
                   offset="0"
-                  stopColor="#4760D5"
+                  stop-color="#4760D5"
                 />
                 <stop
                   offset="100%"
-                  stopColor="#637CEF"
+                  stop-color="#637CEF"
                 />
-              </linearGradient>
+              </lineargradient>
             </defs>
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="url(#VSBC_Gradient8_1_0)"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <defs>
-              <linearGradient
+              <lineargradient
                 id="VSBC_Gradient9_1_1"
                 x1="0%"
                 x2="0%"
@@ -752,37 +683,32 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
               >
                 <stop
                   offset="0"
-                  stopColor="#795AA6"
+                  stop-color="#795AA6"
                 />
                 <stop
                   offset="100%"
-                  stopColor="#9373C0"
+                  stop-color="#9373C0"
                 />
-              </linearGradient>
+              </lineargradient>
             </defs>
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="url(#VSBC_Gradient9_1_1)"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -791,7 +717,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -799,7 +725,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -813,38 +739,26 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
@@ -855,7 +769,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -865,10 +779,10 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                 >
                   <button
                     aria-label="Metadata1"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -915,16 +829,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #4760D5;
@@ -941,7 +851,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -959,7 +869,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -969,10 +879,10 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                 >
                   <button
                     aria-label="Metadata2"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -1019,16 +929,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #795AA6;
@@ -1045,7 +951,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1074,7 +980,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
 
 exports[`VerticalStackedBarChart snapShot testing Should render rounded corners on bars 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -1089,13 +995,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -1105,23 +1010,17 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -1150,7 +1049,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -1184,51 +1083,41 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#4760D5"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={3}
+              rx="3"
+              tabindex="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#795AA6"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={3}
+              rx="3"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -1238,51 +1127,41 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#4760D5"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={3}
+              rx="3"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#795AA6"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={3}
+              rx="3"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -1291,7 +1170,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -1299,7 +1178,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -1313,38 +1192,26 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
@@ -1355,7 +1222,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1365,10 +1232,10 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                 >
                   <button
                     aria-label="Metadata1"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -1415,16 +1282,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #4760D5;
@@ -1441,7 +1304,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1459,7 +1322,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1469,10 +1332,10 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                 >
                   <button
                     aria-label="Metadata2"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -1519,16 +1382,12 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #795AA6;
@@ -1545,7 +1404,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1574,7 +1433,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
 
 exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChart correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -1589,13 +1448,12 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -1605,23 +1463,17 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -1650,7 +1502,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -1684,51 +1536,41 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -1738,51 +1580,41 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -1791,7 +1623,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -1799,7 +1631,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -1813,38 +1645,26 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
@@ -1855,7 +1675,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1865,10 +1685,10 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                 >
                   <button
                     aria-label="Metadata1"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -1915,16 +1735,12 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -1941,7 +1757,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1959,7 +1775,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -1969,10 +1785,10 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                 >
                   <button
                     aria-label="Metadata2"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -2019,16 +1835,12 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -2045,7 +1857,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -2074,7 +1886,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
 
 exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -2089,13 +1901,12 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -2105,23 +1916,17 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2150,7 +1955,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2184,51 +1989,41 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -2238,51 +2033,41 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -2291,7 +2076,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -2299,7 +2084,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -2313,21 +2098,18 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
     >
       <div
         aria-label="Legends"
-        aria-multiselectable={false}
-        className=
+        aria-multiselectable="false"
+        class=
             ms-FocusZone
             &:focus {
               outline: none;
             }
         data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
         role="listbox"
       >
         <div
-          className=
+          class=
               ms-OverflowSet
               {
                 display: flex;
@@ -2338,7 +2120,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           role="group"
         >
           <div
-            className=
+            class=
                 ms-OverflowSet-item
                 {
                   display: inherit;
@@ -2348,10 +2130,10 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           >
             <button
               aria-label="Metadata1"
-              aria-posinset={1}
-              aria-selected={false}
-              aria-setsize={2}
-              className=
+              aria-posinset="1"
+              aria-selected="false"
+              aria-setsize="2"
+              class=
 
                   {
                     align-items: center;
@@ -2398,16 +2180,12 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
+              data-is-focusable="true"
               role="option"
+              tabindex="0"
             >
               <div
-                className=
+                class=
 
                     {
                       background-color: #0078d4;
@@ -2424,7 +2202,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     }
               />
               <div
-                className=
+                class=
 
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -2442,7 +2220,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             </button>
           </div>
           <div
-            className=
+            class=
                 ms-OverflowSet-item
                 {
                   display: inherit;
@@ -2452,10 +2230,10 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           >
             <button
               aria-label="Metadata2"
-              aria-posinset={2}
-              aria-selected={false}
-              aria-setsize={2}
-              className=
+              aria-posinset="2"
+              aria-selected="false"
+              aria-setsize="2"
+              class=
 
                   {
                     align-items: center;
@@ -2502,16 +2280,12 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
+              data-is-focusable="true"
               role="option"
+              tabindex="-1"
             >
               <div
-                className=
+                class=
 
                     {
                       background-color: #00188f;
@@ -2528,7 +2302,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     }
               />
               <div
-                className=
+                class=
 
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -2554,7 +2328,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
 
 exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -2569,13 +2343,12 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -2585,23 +2358,17 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2630,7 +2397,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2664,51 +2431,41 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -2718,51 +2475,41 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -2775,7 +2522,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
 
 exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -2790,13 +2537,12 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -2806,23 +2552,17 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2851,7 +2591,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -2885,51 +2625,41 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               fill="#0078d4"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               fill="#00188f"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -2939,51 +2669,41 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               fill="#0078d4"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={false}
+              data-is-focusable="false"
               fill="#00188f"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -2992,7 +2712,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -3000,7 +2720,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -3014,38 +2734,26 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
@@ -3056,7 +2764,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3066,10 +2774,10 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                 >
                   <button
                     aria-label="Metadata1"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -3116,16 +2824,12 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -3142,7 +2846,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3160,7 +2864,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3170,10 +2874,10 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                 >
                   <button
                     aria-label="Metadata2"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -3220,16 +2924,12 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -3246,7 +2946,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3275,7 +2975,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
 
 exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -3290,13 +2990,12 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -3306,23 +3005,17 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -3351,7 +3044,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -3382,90 +3075,80 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         <g>
           <g
             aria-label="0. Metadata1, 40%. Metadata2, 5%."
-            data-is-focusable={true}
+            data-is-focusable="true"
             id="0-singleBar"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
             role="img"
+            tabindex="0"
           >
             <rect
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
               fill="#0078d4"
-              height={42.30769230769231}
-              rx={0}
+              height="42.30769230769231"
+              rx="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
               fill="#00188f"
-              height={5.288461538461538}
-              rx={0}
+              height="5.288461538461538"
+              rx="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
         <g>
           <g
             aria-label="20. Metadata1, 30%. Metadata2, 20%."
-            data-is-focusable={true}
+            data-is-focusable="true"
             id="1-singleBar"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseMove={[Function]}
-            onMouseOver={[Function]}
             role="img"
+            tabindex="-1"
           >
             <rect
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
               fill="#0078d4"
-              height={31.73076923076923}
-              rx={0}
+              height="31.73076923076923"
+              rx="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
               fill="#00188f"
-              height={21.153846153846153}
-              rx={0}
+              height="21.153846153846153"
+              rx="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -3474,7 +3157,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -3482,7 +3165,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -3496,38 +3179,26 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
@@ -3538,7 +3209,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3548,10 +3219,10 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                 >
                   <button
                     aria-label="Metadata1"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -3598,16 +3269,12 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -3624,7 +3291,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3642,7 +3309,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -3652,10 +3319,10 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                 >
                   <button
                     aria-label="Metadata2"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -3702,16 +3369,12 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -3728,7 +3391,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -3757,7 +3420,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
 
 exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -3772,13 +3435,12 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -3788,23 +3450,17 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -3833,7 +3489,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -3867,51 +3523,41 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -3921,51 +3567,41 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -3974,7 +3610,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -3982,7 +3618,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -3996,38 +3632,26 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
@@ -4038,7 +3662,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -4048,10 +3672,10 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                 >
                   <button
                     aria-label="Metadata1"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -4098,16 +3722,12 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -4124,7 +3744,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -4142,7 +3762,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -4152,10 +3772,10 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                 >
                   <button
                     aria-label="Metadata2"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -4202,16 +3822,12 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -4228,7 +3844,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -4257,7 +3873,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
 
 exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -4272,13 +3888,12 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -4288,23 +3903,17 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -4333,7 +3942,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -4367,51 +3976,41 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -4421,51 +4020,41 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -4474,7 +4063,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -4482,7 +4071,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -4496,38 +4085,26 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
@@ -4538,7 +4115,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -4548,10 +4125,10 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                 >
                   <button
                     aria-label="Metadata1"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -4598,16 +4175,12 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -4624,7 +4197,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -4642,7 +4215,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -4652,10 +4225,10 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                 >
                   <button
                     aria-label="Metadata2"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -4702,16 +4275,12 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -4728,7 +4297,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -4757,7 +4326,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
 
 exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -4772,13 +4341,12 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         width: 100%;
       }
   id="chart_3"
-  onMouseLeave={[Function]}
 >
   <div
     id="defaultTabbableElement_4"
   />
   <div
-    className=
+    class=
         ms-FocusZone
         &:focus {
           outline: none;
@@ -4788,23 +4356,17 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <svg
       aria-label="Vertical bar chart with 2 stacked bars. The X axis displays values. The Y axis displays values. "
-      height={0}
+      focusable="false"
+      height="0"
       role="region"
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
+      style="display: block;"
+      width="0"
     >
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -4833,7 +4395,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         transform="translate(0, -35)"
       />
       <g
-        className=
+        class=
 
             & text {
               -moz-osx-font-smoothing: grayscale;
@@ -4867,51 +4429,41 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           >
             <rect
               aria-label="2020/04/30. Metadata1, 40%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={42.30769230769231}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="42.30769230769231"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="0"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-77.3076923076923}
+              width="1"
+              x="48.5"
+              y="-77.3076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={5.288461538461538}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="5.288461538461538"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={48.5}
-              y={-82.59615384615384}
+              width="1"
+              x="48.5"
+              y="-82.59615384615384"
             />
           </g>
         </g>
@@ -4921,51 +4473,41 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           >
             <rect
               aria-label="2020/04/30. Metadata1, 30%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#0078d4"
-              height={31.73076923076923}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="31.73076923076923"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-66.73076923076923}
+              width="1"
+              x="-28.5"
+              y="-66.73076923076923"
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
-              className=
+              class=
 
                   {
                     cursor: default;
                     opacity: ;
                   }
-              data-is-focusable={true}
+              data-is-focusable="true"
               fill="#00188f"
-              height={21.153846153846153}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
+              height="21.153846153846153"
               role="img"
-              rx={0}
+              rx="0"
+              tabindex="-1"
               transform="translate(-0.5, 0)"
-              width={1}
-              x={-28.5}
-              y={-87.88461538461539}
+              width="1"
+              x="-28.5"
+              y="-87.88461538461539"
             />
           </g>
         </g>
@@ -4974,7 +4516,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
     </svg>
   </div>
   <div
-    className=
+    class=
 
         {
           margin-left: 20px;
@@ -4982,7 +4524,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         }
   >
     <div
-      className=
+      class=
 
           {
             align-items: center;
@@ -4996,38 +4538,26 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
     >
       <div>
         <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
+          style="position: relative;"
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
+            style="position: fixed; visibility: hidden;"
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={false}
-              className=
+              aria-multiselectable="false"
+              class=
                   ms-FocusZone
                   &:focus {
                     outline: none;
                   }
               data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
-                className=
+                class=
                     ms-OverflowSet
                     {
                       display: flex;
@@ -5038,7 +4568,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                 role="group"
               >
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -5048,10 +4578,10 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                 >
                   <button
                     aria-label="Metadata1"
-                    aria-posinset={1}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="1"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -5098,16 +4628,12 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="0"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #0078d4;
@@ -5124,7 +4650,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -5142,7 +4668,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   </button>
                 </div>
                 <div
-                  className=
+                  class=
                       ms-OverflowSet-item
                       {
                         display: inherit;
@@ -5152,10 +4678,10 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                 >
                   <button
                     aria-label="Metadata2"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={2}
-                    className=
+                    aria-posinset="2"
+                    aria-selected="false"
+                    aria-setsize="2"
+                    class=
 
                         {
                           align-items: center;
@@ -5202,16 +4728,12 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
+                    data-is-focusable="true"
                     role="option"
+                    tabindex="-1"
                   >
                     <div
-                      className=
+                      class=
 
                           {
                             background-color: #00188f;
@@ -5228,7 +4750,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           }
                     />
                     <div
-                      className=
+                      class=
 
                           {
                             -moz-osx-font-smoothing: grayscale;

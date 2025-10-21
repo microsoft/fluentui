@@ -17,7 +17,6 @@ import { VerticalBarChartProps } from './VerticalBarChart.types';
 import { VerticalBarChartDataPoint } from '../../index';
 import { allNegativeChartPointsVBC, chartPointsVBC, negativeChartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import * as renderer from 'react-test-renderer';
 const { Timezone } = require('../../../scripts/constants');
 const env = require('../../../config/tests');
 
@@ -871,63 +870,53 @@ describe('VerticalBarChart snapShot testing', () => {
   afterEach(sharedAfterEach);
 
   it('renders VerticalBarChart correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders showXAxisLablesTooltip correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} showXAxisLablesTooltip={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} showXAxisLablesTooltip={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders wrapXAxisLables correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} wrapXAxisLables={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} wrapXAxisLables={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders yAxisTickFormat correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'/%d'} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'/%d'} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('Should not render bar labels', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideLabels={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} hideLabels={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('Should render gradients on bars', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} enableGradient={false} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} enableGradient={false} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('Should render rounded corners on bars', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} roundCorners={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} roundCorners={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
 /* eslint-enable @typescript-eslint/no-deprecated */

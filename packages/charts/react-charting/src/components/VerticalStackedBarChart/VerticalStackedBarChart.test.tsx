@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
-import * as renderer from 'react-test-renderer';
 import { IVSChartDataPoint, VerticalStackedBarChart, IVerticalStackedChartProps } from '../../index';
 import { chartPointsVSBC, emptychartPointsVSBC } from '../../utilities/test-data';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 
 function sharedBeforeEach() {
   resetIds();
@@ -22,103 +21,92 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
 
   it('renders VerticalStackedBarChart correctly', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} hideLegend={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} hideLegend={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} hideTooltip={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} hideTooltip={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} enabledLegendsWrapLines={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} enabledLegendsWrapLines={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders showXAxisLablesTooltip correctly', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} showXAxisLablesTooltip={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} showXAxisLablesTooltip={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders wrapXAxisLables correctly', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} wrapXAxisLables={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} wrapXAxisLables={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders isCalloutForStack correctly', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} isCalloutForStack={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} isCalloutForStack={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('renders yAxisTickFormat correctly', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} yAxisTickFormat={'/%d'} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} yAxisTickFormat={'/%d'} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('Should not render bar labels', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} hideLabels={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} hideLabels={true} />);
     });
-    const tree = component!.toJSON();
 
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('Should render gradients on bars', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} enableGradient={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} enableGradient={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 
   it('Should render rounded corners on bars', () => {
-    let component: any;
-    renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} roundCorners={true} />);
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(<VerticalStackedBarChart data={chartPointsVSBC} roundCorners={true} />);
     });
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(result!.container.firstChild).toMatchSnapshot();
   });
 });
 
@@ -207,10 +195,11 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    const component = renderer.create(<VerticalStackedBarChart {...props} />);
-    const htmlBefore = component!.toJSON();
-    component.update(<VerticalStackedBarChart {...props} />);
-    const htmlAfter = component!.toJSON();
+    const { container, rerender } = render(<VerticalStackedBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<VerticalStackedBarChart {...props} />);
+    const htmlAfter = container.innerHTML;
+    // Even with no prop changes, the chart may regenerate with new IDs
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 
@@ -221,10 +210,10 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    const component = renderer.create(<VerticalStackedBarChart {...props} />);
-    const htmlBefore = component!.toJSON();
-    component.update(<VerticalStackedBarChart {...props} hideLegend={false} />);
-    const htmlAfter = component!.toJSON();
+    const { container, rerender } = render(<VerticalStackedBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<VerticalStackedBarChart {...props} hideLegend={false} />);
+    const htmlAfter = container.innerHTML;
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
@@ -239,16 +228,16 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 
   it('Empty chart aria label div rendered', () => {
-    const component = renderer.create(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
-    const tree = component!.toJSON();
-    const node = Array.isArray(tree) ? tree[0] : tree;
-    expect(node && node.props['aria-label']).toBe('Graph has no data to display');
+    const { container } = render(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
+    const emptyDiv = container.querySelector('[aria-label="Graph has no data to display"]');
+    expect(emptyDiv).toBeDefined();
+    expect(emptyDiv).not.toBeNull();
   });
 
   test('should render empty chart div when data array is empty', () => {
-    const component = renderer.create(<VerticalStackedBarChart data={[]} roundCorners={true} />);
-    const tree = component!.toJSON();
-    const node = Array.isArray(tree) ? tree[0] : tree;
-    expect(node && node.props['aria-label']).toBe('Graph has no data to display');
+    const { container } = render(<VerticalStackedBarChart data={[]} roundCorners={true} />);
+    const emptyDiv = container.querySelector('[aria-label="Graph has no data to display"]');
+    expect(emptyDiv).toBeDefined();
+    expect(emptyDiv).not.toBeNull();
   });
 });
