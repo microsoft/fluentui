@@ -2,7 +2,6 @@ import * as React from 'react';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { css } from '@fluentui/react/lib/Utilities';
 import { CODE_FONT_FAMILY } from './consts';
-import type { IRawStyle } from '@fluentui/react/lib/Styling';
 import type { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 
 // react-syntax-highlighter has typings, but they're wrong aside from the props and missing many paths...
@@ -11,7 +10,7 @@ const SyntaxHighlighter = require<{
   default: React.ComponentType<SyntaxHighlighterProps> & { registerLanguage: (lang: string, func: any) => void };
 }>('react-syntax-highlighter/dist/esm/prism-light').default;
 const ts = require<any>('react-syntax-highlighter/dist/esm/languages/prism/tsx').default;
-const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/prism/vs').default;
+const style: { [key: string]: React.CSSProperties } = require('react-syntax-highlighter/dist/styles/prism/vs').default;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Register languages
@@ -26,7 +25,7 @@ const colorMap: { [key: string]: string } = {
   '#ff0000': '#ee0000', // attrs, various (not from monaco)
   '#393a34': '#000000', // operators, function names
 };
-const codeStyle: IRawStyle = {
+const codeStyle: React.CSSProperties = {
   fontFamily: CODE_FONT_FAMILY,
   fontSize: '12px', // matches Monaco
   color: 'black',
@@ -76,7 +75,7 @@ export interface ITypeScriptSnippetProps {
 export const TypeScriptSnippet: React.FunctionComponent<React.PropsWithChildren<ITypeScriptSnippetProps>> = props => {
   return (
     <SyntaxHighlighter className={css(rootClass, props.className)} language="tsx" style={style}>
-      {props.children}
+      {String(props.children || '')}
     </SyntaxHighlighter>
   );
 };
