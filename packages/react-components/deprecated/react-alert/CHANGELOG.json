@@ -2,6 +2,33 @@
   "name": "@fluentui/react-alert",
   "entries": [
     {
+      "date": "Tue, 21 Oct 2025 14:16:59 GMT",
+      "tag": "@fluentui/react-alert_v9.0.0-beta.126",
+      "version": "9.0.0-beta.126",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-avatar to v9.9.9",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-button to v9.6.9",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.0",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Oct 2025 12:04:51 GMT",
       "tag": "@fluentui/react-alert_v9.0.0-beta.125",
       "version": "9.0.0-beta.125",

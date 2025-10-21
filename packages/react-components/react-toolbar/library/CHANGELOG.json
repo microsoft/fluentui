@@ -2,6 +2,39 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Tue, 21 Oct 2025 14:16:59 GMT",
+      "tag": "@fluentui/react-toolbar_v9.6.9",
+      "version": "9.6.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-button to v9.6.9",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-divider to v9.4.8",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.0",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-radio to v9.5.8",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Oct 2025 12:04:53 GMT",
       "tag": "@fluentui/react-toolbar_v9.6.8",
       "version": "9.6.8",
