@@ -712,7 +712,10 @@ export function createYAxisForHorizontalBarChartWithAxis(
     if (tickValues && tickText && typeof tickText[index] !== 'undefined') {
       return tickText[index];
     }
-    if (yAxisTickFormat) {
+    if (typeof yAxisTickFormat === 'function') {
+      return yAxisTickFormat(domainValue, index);
+    }
+    if (typeof yAxisTickFormat === 'string') {
       return d3Format(yAxisTickFormat)(domainValue);
     }
     const value = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
@@ -816,7 +819,10 @@ export function createNumericYAxis(
     if (tickValues && tickText && typeof tickText[index] !== 'undefined') {
       return tickText[index];
     }
-    if (yAxisTickFormat) {
+    if (typeof yAxisTickFormat === 'function') {
+      return yAxisTickFormat(domainValue, index);
+    }
+    if (typeof yAxisTickFormat === 'string') {
       return d3Format(yAxisTickFormat)(domainValue);
     }
     const value = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
@@ -839,7 +845,16 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   isRtl: boolean,
   barWidth: number,
 ): ScaleBand<string> => {
-  const { containerHeight, tickPadding = 12, margins, yAxisElement, yAxisPadding, tickValues, tickText } = yAxisParams;
+  const {
+    containerHeight,
+    tickPadding = 12,
+    margins,
+    yAxisTickFormat,
+    yAxisElement,
+    yAxisPadding,
+    tickValues,
+    tickText,
+  } = yAxisParams;
 
   let yAxisPaddingValue = yAxisPadding ?? 0.5;
   yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
@@ -852,6 +867,9 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   const tickFormat = (domainValue: string, _index: number) => {
     if (tickValues && tickText && typeof tickText[_index] !== 'undefined') {
       return tickText[_index];
+    }
+    if (typeof yAxisTickFormat === 'function') {
+      return yAxisTickFormat(domainValue, _index);
     }
     return domainValue;
   };
@@ -877,6 +895,7 @@ export const createStringYAxis = (
     containerHeight,
     tickPadding = 12,
     margins,
+    yAxisTickFormat,
     yAxisElement,
     yAxisPadding = 0,
     containerWidth,
@@ -895,6 +914,9 @@ export const createStringYAxis = (
   const tickFormat = (domainValue: string, _index: number) => {
     if (tickValues && tickText && typeof tickText[_index] !== 'undefined') {
       return tickText[_index];
+    }
+    if (typeof yAxisTickFormat === 'function') {
+      return yAxisTickFormat(domainValue, _index);
     }
     return domainValue;
   };

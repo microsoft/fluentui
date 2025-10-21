@@ -23461,7 +23461,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  0.0
                 </text>
               </g>
               <g
@@ -23480,7 +23480,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  37.0
                 </text>
               </g>
               <g
@@ -23499,7 +23499,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  74.0
                 </text>
               </g>
               <g
@@ -23518,7 +23518,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  111.0
                 </text>
               </g>
               <g
@@ -23537,7 +23537,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  148.0
                 </text>
               </g>
             </g>
@@ -24317,7 +24317,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                0.0
               </text>
             </g>
             <g
@@ -24336,7 +24336,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                37.0
               </text>
             </g>
             <g
@@ -24355,7 +24355,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                74.0
               </text>
             </g>
             <g
@@ -24374,7 +24374,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                111.0
               </text>
             </g>
             <g
@@ -24393,7 +24393,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                148.0
               </text>
             </g>
           </g>
