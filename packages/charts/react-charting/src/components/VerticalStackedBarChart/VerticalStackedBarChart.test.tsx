@@ -87,7 +87,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   it('renders yAxisTickFormat correctly', () => {
     let component: any;
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} yAxisTickFormat={'/%d'} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} yAxisTickFormat={'.1f'} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();

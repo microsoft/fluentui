@@ -907,7 +907,7 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', () => {
-    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'/%d'} />);
+    let component = renderer.create(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'.1f'} />);
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
