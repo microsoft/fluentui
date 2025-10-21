@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-utilities): use numeric literal for DOCUMENT_FRAGMENT_NODE",
+  "packageName": "@fluentui/react-utilities",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
