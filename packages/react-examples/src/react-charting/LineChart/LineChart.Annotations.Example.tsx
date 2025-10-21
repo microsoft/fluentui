@@ -7,6 +7,7 @@ import {
   getColorFromToken,
   ChartAnnotation,
 } from '@fluentui/react-charting';
+import type { JSXElement } from '@fluentui/utilities';
 
 interface IStyledLineChartExampleState {
   width: number;
@@ -22,7 +23,7 @@ export class LineChartAnnotationsExample extends React.Component<{}, IStyledLine
     };
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._styledExample()}</div>;
   }
 
@@ -33,7 +34,7 @@ export class LineChartAnnotationsExample extends React.Component<{}, IStyledLine
     this.setState({ height: parseInt(e.target.value, 10) });
   };
 
-  private _styledExample(): JSX.Element {
+  private _styledExample(): JSXElement {
     const chartData: IChartProps = {
       chartTitle: 'Weekly signups',
       lineChartData: [
