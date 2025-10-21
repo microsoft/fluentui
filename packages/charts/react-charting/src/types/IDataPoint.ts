@@ -1114,7 +1114,7 @@ export type AxisProps = {
   tick0?: number | Date;
 
   /**
-   *
+   * Sets the text displayed at each tick position specified by `tickValues`. Used with `tickValues`.
    */
   tickText?: string[];
 };

@@ -10352,7 +10352,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            0.0
           </text>
         </g>
         <g
@@ -10371,7 +10371,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            12500.0
           </text>
         </g>
         <g
@@ -10390,7 +10390,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            25000.0
           </text>
         </g>
         <g
@@ -10409,7 +10409,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            37500.0
           </text>
         </g>
         <g
@@ -10428,7 +10428,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            50000.0
           </text>
         </g>
       </g>
