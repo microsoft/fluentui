@@ -1,14 +1,19 @@
-This document describes how to set up your development environment and contribute changes to the Fluent UI project. It assumes basic working knowledge with Git and related tools. A typical developer should budget 2 hours from fresh install to their first successful build completion.
-
 # Basic setup
 
-### Install dev tools
+This document describes how to set up your development environment and contribute changes to the Fluent UI project. It
+assumes basic working knowledge with Git and related tools. A typical developer should budget 2 hours from fresh install
+to their first successful build completion.
 
-Note that the core team does not support native Windows as a development platform. Many team members use macOS or WSL for their environment. We are working on updating our developer docs to include more information about WSL. Please bear with us until we have that workflow fully flushed out.
+## Install dev tools
+
+Note that the core team does not support native Windows as a development platform. Many team members use macOS or WSL
+for their environment. We are working on updating our developer docs to include more information about WSL. Please bear
+with us until we have that workflow fully flushed out.
 
 - If you don't have a **GitHub account**, [create one](https://github.com/join)
 
-  - Microsoft employees: please [link your GitHub account](https://repos.opensource.microsoft.com) (new or existing) to your MS account
+  - Microsoft employees: please [link your GitHub account](https://repos.opensource.microsoft.com) (new or existing) to
+    your MS account
 
 - Windows users should install **[WSL](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)**
 - Install **[Node.js LTS](https://nodejs.org/en/)** (20 as of writing)
@@ -44,46 +49,47 @@ Run `yarn start` and select your start up project.
 - @fluentui/public-docsite starts the public v8 documentation site.
 - @fluentui/public-docsite-v9 starts the public v9 documentation storybook site.
 
-# Configuration for contribution
+## Configuration for contribution
 
-## Creating your own fork
+### Creating your own fork
 
-We use forks forks for development, which means you need to setup a fork. [Read about that here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+We use forks forks for development, which means you need to setup a fork.
+[Read about that here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
 
 1. Ensure you are logged in to GitHub.
 2. Navigate to the **[microsoft/fluentui](https://github.com/microsoft/fluentui)** repository.
 3. Click on the **Fork** button at the top right corner of the page.
 4. Create the fork under your account. Your GitHub profile should now show **fluentui** as one of your repositories.
 
-## Cloning your fork and setting the upstream remote
+### Cloning your fork and setting the upstream remote
 
 (For demo purposes, let's assume your username is **johndoe**.)
 
 Change to an appropriate directory _(the path should not include spaces)_ and clone your fork. Notice how your GitHub username is in the repository location.
 
-```
+```shell
 git clone https://github.com/johndoe/fluentui.git
 cd fluentui
 ```
 
 Now set your `upstream` remote to the primary **fluentui** repository:
 
-```
+```shell
 git remote add upstream https://github.com/microsoft/fluentui.git
 ```
 
 To check that this is set up correctly, you can run `git remote -v`:
 
-```
-git remote -v
-
+```shell
+$ git remote -v
+>
     origin  https://github.com/johndoe/fluentui.git (fetch)
     origin  https://github.com/johndoe/fluentui.git (push)
     upstream        https://github.com/microsoft/fluentui.git (fetch)
     upstream        https://github.com/microsoft/fluentui.git (push)
 ```
 
-## Git configuration
+### Git configuration
 
 We recommend setting up the following Git configuration. In the command line, run:
 
@@ -92,5 +98,7 @@ We recommend setting up the following Git configuration. In the command line, ru
 - `git config --global user.email "you@example.com"` - set your email to appear in commits
   - If a Microsoft employee, we prefer that you use your Microsoft email
   - You can also set this per-repo by omitting the `--global` flag
-- Optional: `git config --global push.default current` - when running `git push`, only include the current branch by default
-- Optional: `git config --global core.editor "code --wait"` - to set VS Code as your Git commit editor (assumes you have VS Code in your `PATH`)
+- Optional: `git config --global push.default current` - when running `git push`, only include the current branch by
+  default
+- Optional: `git config --global core.editor "code --wait"` - to set VS Code as your Git commit editor (assumes you have
+  VS Code in your `PATH`)
