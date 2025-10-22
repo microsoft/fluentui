@@ -18,6 +18,7 @@ const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(
 
 describe('Menu', () => {
   isConformant(Menu, {
+    defaultAs: 'ul',
     testPath: __filename,
     constructorName: 'Menu',
     autoControlledProps: ['activeIndex'],

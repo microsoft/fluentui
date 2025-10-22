@@ -5,7 +5,7 @@ import { Pill } from 'src/components/Pill/Pill';
 import { mountWithProvider } from '../../../utils/index';
 
 describe('Pill', () => {
-  isConformant(Pill, { testPath: __filename, constructorName: 'Pill' });
+  isConformant(Pill, { defaultAs: 'span', testPath: __filename, constructorName: 'Pill' });
 
   describe('PillBehavior', () => {
     const testFacade = new ComponentTestFacade(Pill, {});

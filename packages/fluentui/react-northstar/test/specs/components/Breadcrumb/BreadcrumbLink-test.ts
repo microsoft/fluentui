@@ -3,6 +3,7 @@ import { BreadcrumbLink } from 'src/components/Breadcrumb/BreadcrumbLink';
 
 describe('BreadcrumbLink', () => {
   isConformant(BreadcrumbLink, {
+    defaultAs: 'a',
     testPath: __filename,
     constructorName: 'BreadcrumbLink',
   });

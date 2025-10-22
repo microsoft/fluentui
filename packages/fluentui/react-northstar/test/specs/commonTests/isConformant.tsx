@@ -27,6 +27,7 @@ interface Conformant<TProps = {}>
   /** Path to the test file. */
   testPath: string;
   constructorName?: string;
+  defaultAs?: React.ElementType | null;
   /** Map of events and the child component to target. */
   eventTargets?: object;
   hasAccessibilityProp?: boolean;
@@ -63,6 +64,7 @@ export function isConformant(
 ) {
   const {
     testPath,
+    defaultAs,
     constructorName = Component.prototype.constructor.name,
     eventTargets = {},
     hasAccessibilityProp = true,
@@ -142,6 +144,25 @@ export function isConformant(
 
   if (skipAsPropTests !== 'all') {
     describe('"as" prop (common)', () => {
+      if (defaultAs !== null) {
+        test('renders default component as a HTML element', () => {
+          // silence element nesting warnings
+          consoleUtil.disableOnce();
+
+          const wrapper = mount(
+            <Component
+              {...{
+                ...(defaultAs && { as: defaultAs }),
+                ...requiredProps,
+              }}
+            />,
+          );
+          const component = getComponent(wrapper);
+
+          expect(component.is(defaultAs ?? 'div')).toEqual(true);
+        });
+      }
+
       test('renders the component as HTML tags or passes "as" to the next component', () => {
         // silence element nesting warnings
         consoleUtil.disableOnce();

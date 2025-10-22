@@ -21,6 +21,7 @@ const setUserInputValue = (inputComp: ReactWrapper, value: string) => {
 
 describe('Input', () => {
   isConformant(Input, {
+    defaultAs: null,
     testPath: __filename,
     constructorName: 'Input',
     eventTargets: {

@@ -19,6 +19,7 @@ import {
 
 describe('Button', () => {
   isConformant(Button, {
+    defaultAs: 'button',
     testPath: __filename,
     constructorName: 'Button',
   });
