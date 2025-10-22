@@ -15,11 +15,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test"
+    "clean": "just-scripts clean"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -32,8 +28,8 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.8.0 <20.0.0",
+    "react": ">=16.8.0 <20.0.0"
   },
   "exports": {
     ".": {

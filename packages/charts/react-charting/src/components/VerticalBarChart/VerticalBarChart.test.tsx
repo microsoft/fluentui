@@ -73,7 +73,7 @@ describe('VerticalBarChart snapShot testing', () => {
   it('renders yAxisTickFormat correctly', () => {
     let result: ReturnType<typeof render> | undefined;
     act(() => {
-      result = render(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'/%d'} />);
+      result = render(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'.1f'} />);
     });
     expect(result!.container.firstChild).toMatchSnapshot();
   });

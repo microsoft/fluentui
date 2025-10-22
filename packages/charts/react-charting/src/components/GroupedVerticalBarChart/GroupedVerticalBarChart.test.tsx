@@ -143,7 +143,7 @@ describe('GroupedVerticalBarChart snapShot testing', () => {
 
   // FIXME - non deterministic snapshots causing master pipeline breaks
   it.skip('renders yAxisTickFormat correctly', async () => {
-    const { container } = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    const { container } = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'.1f'} />);
     expect(container).toMatchSnapshot();
   });
 });
