@@ -12,8 +12,8 @@ import { ISize, Fabric } from '@fluentui/react';
 import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 interface IDocumentItem {
-  name: JSX.Element;
-  activity: JSX.Element;
+  name: React.ReactElement;
+  activity: React.ReactElement;
 }
 
 interface IMediaTileWithThumbnailProps {
@@ -25,7 +25,7 @@ interface IMediaTileWithThumbnailProps {
 const MEDIA_TILE_WIDTH = 200;
 const MEDIA_TILE_HEIGHT = 150;
 
-const MediaTileBox = (props: { children: React.ReactNode }): JSX.Element => {
+const MediaTileBox = (props: { children: React.ReactNode }): React.ReactElement => {
   return (
     <div
       style={{
@@ -41,7 +41,7 @@ const MediaTileBox = (props: { children: React.ReactNode }): JSX.Element => {
 
 const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailProps> = (
   props: IMediaTileWithThumbnailProps,
-): JSX.Element => {
+): React.ReactElement => {
   const { imageSize, item, nameplateOnlyOnHover } = props;
 
   function renderBackground(backgroundProps: ITileBackgroundProps) {

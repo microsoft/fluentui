@@ -81,7 +81,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
     this._events.dispose();
   }
 
-  public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState) {
+  public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState): void {
     if (prevProps.target !== this.props.target) {
       this._events.off();
       this._setEventListeners();

@@ -16,7 +16,7 @@ mergeStyles({
   },
 });
 
-export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent) {
+export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent): void {
   let rootElement: HTMLElement | null;
 
   function _scrollAnchorLink(): void {
@@ -35,11 +35,11 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
     );
   }
 
-  function _getRoutes(): JSX.Element[] {
+  function _getRoutes(): React.ReactElement[] {
     const routes = appDefinition.testPages.map((page: IAppLink) => (
       <Route key={page.key} path={page.url} component={page.component} />
     ));
-    const appRoutes: JSX.Element[] = [];
+    const appRoutes: React.ReactElement[] = [];
 
     appDefinition.examplePages.forEach((group: IAppLinkGroup) => {
       appRoutes.push(..._getRoutesFromLinks(group.links));
@@ -62,8 +62,8 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
     return routes;
   }
 
-  function _getRoutesFromLinks(links: IAppLink[]): JSX.Element[] {
-    const routes: JSX.Element[] = [];
+  function _getRoutesFromLinks(links: IAppLink[]): React.ReactElement[] {
+    const routes: React.ReactElement[] = [];
     for (const link of links) {
       if (link.component || link.getComponent) {
         routes.push(

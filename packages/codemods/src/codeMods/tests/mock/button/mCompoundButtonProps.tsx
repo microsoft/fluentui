@@ -3,7 +3,7 @@ import * as React from 'react';
 import { CompoundButton } from 'office-ui-fabric-react/lib/Button';
 
 export class RenderButton extends React.Component<LocalButtonProps> {
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { id, ...restProps } = this.props;
     return (
       <div>

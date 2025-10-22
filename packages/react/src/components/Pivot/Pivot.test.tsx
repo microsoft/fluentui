@@ -4,7 +4,6 @@ import * as React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { resetIds } from '@fluentui/utilities';
 import { Pivot, PivotItem, IPivot } from './index';
-import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 
 describe('Pivot', () => {
@@ -19,16 +18,13 @@ describe('Pivot', () => {
   });
 
   it('renders link Pivot correctly', () => {
-    safeCreate(
+    const { container } = render(
       <Pivot>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
       </Pivot>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -58,7 +54,7 @@ describe('Pivot', () => {
   });
 
   it('supports JSX expressions', () => {
-    safeCreate(
+    const { container } = render(
       <Pivot defaultSelectedKey="1">
         <PivotItem headerText="Test Link 1">
           <div>This is item 1</div>
@@ -68,103 +64,79 @@ describe('Pivot', () => {
           <div>This is Item 3</div>
         </PivotItem>
       </Pivot>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders large link Pivot correctly', () => {
-    safeCreate(
+    const { container } = render(
       <Pivot linkSize="large">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
       </Pivot>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders tabbed Pivot correctly', () => {
-    safeCreate(
+    const { container } = render(
       <Pivot linkFormat="tabs">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
       </Pivot>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders large tabbed Pivot correctly', () => {
-    safeCreate(
+    const { container } = render(
       <Pivot linkFormat="tabs" linkSize="large">
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
       </Pivot>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Pivot correctly with custom className', () => {
-    safeCreate(
+    const { container } = render(
       <Pivot className="specialClassName">
         <PivotItem headerText="Test Link 1" className="specialClassName" />
         <PivotItem headerText="Test Link 2" />
       </Pivot>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Pivot correctly with icon, text and count', () => {
-    safeCreate(
+    const { container } = render(
       <Pivot>
         <PivotItem itemCount={12} />
         <PivotItem headerText="Test Link" itemCount={12} />
         <PivotItem headerText="Text with icon" itemIcon="Recent" />
       </Pivot>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Pivot correctly when itemCount is a string', () => {
-    safeCreate(
+    const { container } = render(
       <Pivot>
         <PivotItem headerText="test" />
         <PivotItem headerText="Test Link" itemCount="20+" />
       </Pivot>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Pivot with overflow', () => {
-    safeCreate(
+    const { container } = render(
       <Pivot overflowBehavior="menu">
         <PivotItem headerText="Test 1" />
         <PivotItem headerText="Test 2" />
       </Pivot>,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('passes aria-label and aria-labelledby to tablist', () => {

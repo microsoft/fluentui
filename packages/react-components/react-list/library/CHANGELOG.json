@@ -2,6 +2,33 @@
   "name": "@fluentui/react-list",
   "entries": [
     {
+      "date": "Tue, 21 Oct 2025 14:16:59 GMT",
+      "tag": "@fluentui/react-list_v9.6.3",
+      "version": "9.6.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "43a35d07a33feba827e20e2929dd412597b5c9b1",
+            "comment": "Fix selection becoming broken after re-enabling"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-checkbox to v9.5.8",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.0",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Oct 2025 12:04:53 GMT",
       "tag": "@fluentui/react-list_v9.6.2",
       "version": "9.6.2",

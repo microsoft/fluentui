@@ -80,7 +80,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
     };
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     return (
       <div
         className="testRoot"

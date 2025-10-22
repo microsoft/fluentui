@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 14 Oct 2025 07:21:45 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Oct 2025 07:21:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.39)
+
+Thu, 16 Oct 2025 07:21:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.38..@fluentui/react-charting_v5.24.39)
+
+### Patches
+
+- fix: resolve React 19 incompatible types ([PR #35303](https://github.com/microsoft/fluentui/pull/35303) by martinhochel@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.34 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/react-focus to v8.9.29 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/theme-samples to v8.7.218 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/react to v8.124.2 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
 
 ## [5.24.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.38)
 

@@ -459,11 +459,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     this._focusAlignment = point;
   }
 
-  public get defaultFocusElement() {
+  public get defaultFocusElement(): HTMLElement | null {
     return this._defaultFocusElement;
   }
 
-  public get activeElement() {
+  public get activeElement(): HTMLElement | null {
     return this._activeElement;
   }
 

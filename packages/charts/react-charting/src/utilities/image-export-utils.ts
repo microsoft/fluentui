@@ -78,6 +78,27 @@ const SVG_TEXT_STYLE_PROPERTIES = [
   'text-align',
   'border',
 ];
+const ANNOTATION_HTML_STYLE_PROPERTIES = [
+  'background-color',
+  'border',
+  'border-radius',
+  'box-shadow',
+  'color',
+  'font-family',
+  'font-size',
+  'font-style',
+  'font-weight',
+  'letter-spacing',
+  'line-height',
+  'opacity',
+  'padding',
+  'pointer-events',
+  'text-align',
+  'text-decoration',
+  'text-transform',
+  'white-space',
+];
+const ANNOTATION_FOREIGN_OBJECT_STYLE_PROPERTIES = ['overflow', 'pointer-events'];
 
 function toSVG(
   chartContainer: HTMLElement,
@@ -123,6 +144,42 @@ function toSVG(
   const w1 = Math.max(svgWidth, legendGroup.width);
   const h1 = svgHeight + legendGroup.height;
 
+  const annotationSvg = chartContainer.querySelector<SVGSVGElement>('[data-chart-annotation-svg="true"]');
+  let annotationClone: SVGSVGElement | null = null;
+
+  if (annotationSvg) {
+    annotationClone = annotationSvg.cloneNode(true) as SVGSVGElement;
+    copyStyle(SVG_STYLE_PROPERTIES, annotationSvg, annotationClone);
+
+    const annotationElements = annotationSvg.getElementsByTagName('*');
+    const clonedAnnotationElements = annotationClone.getElementsByTagName('*');
+
+    for (let i = 0; i < annotationElements.length; i++) {
+      const original = annotationElements[i];
+      const cloned = clonedAnnotationElements[i];
+      const tag = original.tagName.toLowerCase();
+      const isSvgElement = original instanceof SVGElement;
+      const isTextElement = tag === 'text';
+      const isHtmlElement = original instanceof HTMLElement;
+
+      if (isSvgElement) {
+        if (isTextElement) {
+          copyStyle([...SVG_STYLE_PROPERTIES, ...SVG_TEXT_STYLE_PROPERTIES], original, cloned);
+        } else {
+          copyStyle(SVG_STYLE_PROPERTIES, original, cloned);
+        }
+      }
+
+      if (isHtmlElement) {
+        copyStyle(ANNOTATION_HTML_STYLE_PROPERTIES, original, cloned);
+      }
+
+      if (tag === 'foreignobject') {
+        copyStyle(ANNOTATION_FOREIGN_OBJECT_STYLE_PROPERTIES, original, cloned);
+      }
+    }
+  }
+
   if (legendGroup.node) {
     d3Select(legendGroup.node).attr('transform', `translate(0, ${svgHeight})`);
     clonedSvg.append(() => legendGroup.node);
@@ -139,6 +196,11 @@ function toSVG(
     .attr('height', h1)
     .attr('viewBox', `0 0 ${w1} ${h1}`)
     .attr('direction', isRTL ? 'rtl' : 'ltr');
+
+  if (annotationClone) {
+    d3Select(annotationClone).attr('x', 0).attr('y', 0).attr('width', svgWidth).attr('height', svgHeight);
+    clonedSvg.append(() => annotationClone as SVGSVGElement);
+  }
 
   const result = {
     node: clonedSvg.node(),
@@ -168,7 +230,7 @@ export function cloneLegendsToSVG(
     isRTL: boolean;
   },
   legendContainer?: HTMLElement | null,
-) {
+): { node: SVGGElement | null; width: number; height: number } {
   if (legends.length === 0) {
     return {
       node: null,

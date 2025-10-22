@@ -718,9 +718,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected getActiveDescendant(): string | undefined;
     // (undocumented)
-    static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
-        items: any[];
-    } | null;
+    static getDerivedStateFromProps(newProps: IBasePickerProps<any>): IBasePickerState<any> | null;
     // (undocumented)
     protected _getDescribedBy: (items: T[], hasError: boolean) => string;
     // @deprecated (undocumented)
@@ -826,9 +824,7 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
     // (undocumented)
     protected copyItems(items: T[]): void;
     // (undocumented)
-    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): {
-        items: any[];
-    } | null;
+    static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>): IBaseSelectedItemsListState<any> | null;
     // (undocumented)
     hasSelectedItems(): boolean;
     // (undocumented)

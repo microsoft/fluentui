@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add deprecations and runtime assert on non supporter react majors",
+  "packageName": "@fluentui/test-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

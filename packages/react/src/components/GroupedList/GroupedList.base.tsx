@@ -123,7 +123,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     return this._list.current!.getStartItemIndexInView() || 0;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { groupProps, groups = [] } = this.props;
 
     if (groupProps && groupProps.isAllGroupsCollapsed) {
@@ -185,7 +185,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     );
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this._forceListUpdates();
   }

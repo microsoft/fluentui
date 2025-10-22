@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: callout not appearing on scatter chart",
+  "comment": "feat: map deprecated plotly create_gantt() scatter traces to gantt chart",
   "packageName": "@fluentui/react-charts",
   "email": "kumarkshitij@microsoft.com",
   "dependentChangeType": "patch"

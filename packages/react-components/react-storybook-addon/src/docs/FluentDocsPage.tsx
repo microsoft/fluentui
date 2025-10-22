@@ -26,6 +26,7 @@ import { getDocsPageConfig } from './utils';
 import { DirSwitch } from './DirSwitch';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
+import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -346,6 +347,7 @@ export const FluentDocsPage = (): JSXElement => {
     tableOfContents: showTableOfContents,
     dirSwitcher: showDirSwitcher,
     themePicker: showThemePicker,
+    copyAsMarkdown: showCopyAsMarkdown,
     argTable,
   } = docsPageConfig;
 
@@ -366,10 +368,11 @@ export const FluentDocsPage = (): JSXElement => {
       <Title />
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          {(showThemePicker || showDirSwitcher) && (
+          {(showThemePicker || showDirSwitcher || showCopyAsMarkdown) && (
             <div className={styles.globalTogglesContainer}>
               {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} />}
               {showDirSwitcher && <DirSwitch dir={dir} />}
+              {showCopyAsMarkdown && <CopyAsMarkdownButton storyId={primaryStory.id} />}
             </div>
           )}
           <Subtitle />

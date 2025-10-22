@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix selection becoming broken after re-enabling",
-  "packageName": "@fluentui/react-list",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

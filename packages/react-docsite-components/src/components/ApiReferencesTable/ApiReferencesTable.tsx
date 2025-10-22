@@ -93,7 +93,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     this._isTypeAlias = !!(renderAs === 'typeAlias' || props.renderAsTypeAlias);
   }
 
-  public render(): JSX.Element | null {
+  public render(): React.ReactElement | null {
     const { extendsTokens, deprecated, deprecatedMessage, tokenResolver, properties, methods } = this.props;
 
     const hasProperties = properties.length > 0;
@@ -125,7 +125,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     );
   }
 
-  private _renderTables(): JSX.Element | undefined {
+  private _renderTables(): React.ReactElement | undefined {
     const { properties, methods, tokenResolver, title } = this.props;
 
     if (this._isClass) {
@@ -177,7 +177,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     );
   }
 
-  private _renderTitle(): JSX.Element | undefined {
+  private _renderTitle(): React.ReactElement | undefined {
     const { title, name } = this.props;
 
     return title ? (
