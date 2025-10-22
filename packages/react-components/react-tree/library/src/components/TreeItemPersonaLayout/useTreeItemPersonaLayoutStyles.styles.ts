@@ -6,6 +6,7 @@ import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
+import { useTreeContext_unstable } from '../../contexts/treeContext';
 
 export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots> = {
   root: 'fui-TreeItemPersonaLayout',
@@ -68,11 +69,11 @@ const useRootStyles = makeStyles({
   subtle: {},
   'subtle-alpha': {
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundLightAlphaHover
+      backgroundColor: tokens.colorSubtleBackgroundLightAlphaHover,
     },
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundLightAlphaPressed,
-    }
+    },
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -171,12 +172,16 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   const mainBaseStyles = useMainBaseStyles();
   const mainStyles = useMainStyles();
 
+  const size = useTreeContext_unstable(ctx => ctx.size);
+  const appearance = useTreeContext_unstable(ctx => ctx.appearance);
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
   state.root.className = mergeClasses(
     treeItemPersonaLayoutClassNames.root,
     rootBaseStyles,
     rootStyles[itemType],
+    rootStyles[appearance],
+    rootStyles[size],
     state.root.className,
   );
 

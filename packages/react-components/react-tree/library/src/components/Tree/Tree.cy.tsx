@@ -9,10 +9,12 @@ import {
   Tree,
   TreeItem,
   TreeItemLayout,
+  TreeItemPersonaLayout,
   treeItemLayoutClassNames,
   TreeItemValue,
 } from '@fluentui/react-tree';
 import { Button } from '@fluentui/react-button';
+import { Avatar } from '@fluentui/react-avatar';
 
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -758,6 +760,162 @@ describe('TreeItem', () => {
     cy.get('[data-testid="item1__item1"]').realClick();
     cy.get('[data-testid="item1__expandIcon"]').realClick();
     cy.get('@onClick').should('not.have.been.called');
+  });
+
+  it('should render subtle appearance by default', () => {
+    mount(
+      <TreeTest id="tree" aria-label="Tree">
+        <TreeItem open itemType="branch" value="item1" data-testid="item1">
+          <TreeItemLayout data-testid="item1_layout">level 1, item 1</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+              <TreeItemLayout data-testid="item1__item1_layout">level 2, item 1</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+        <TreeItem open itemType="branch" value="item2" data-testid="item2">
+          <TreeItemPersonaLayout media={<Avatar name="Level 1" color="colorful" />} data-testid="item2_layout">
+            level 1, item 2
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf" value="item2__item1" data-testid="item2__item1">
+              <TreeItemPersonaLayout
+                media={<Avatar name="Level 2" color="colorful" />}
+                data-testid="item2__item1_layout"
+              >
+                level 2, item 2
+              </TreeItemPersonaLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </TreeTest>,
+    );
+    cy.get('[data-testid="item1_layout"]').realHover().should('have.css', 'background-color', 'rgb(245, 245, 245)');
+    cy.get('[data-testid="item1__item1_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgb(245, 245, 245)');
+    cy.get('[data-testid="item2_layout"]').realHover().should('have.css', 'background-color', 'rgb(245, 245, 245)');
+    cy.get('[data-testid="item2__item1_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgb(245, 245, 245)');
+  });
+
+  it('should render subtle appearance when explicitly defined', () => {
+    mount(
+      <TreeTest id="tree" aria-label="Tree" appearance="subtle">
+        <TreeItem open itemType="branch" value="item1" data-testid="item1">
+          <TreeItemLayout data-testid="item1_layout">level 1, item 1</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+              <TreeItemLayout data-testid="item1__item1_layout">level 2, item 1</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+        <TreeItem open itemType="branch" value="item2" data-testid="item2">
+          <TreeItemPersonaLayout media={<Avatar name="Level 1" color="colorful" />} data-testid="item2_layout">
+            level 1, item 2
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf" value="item2__item1" data-testid="item2__item1">
+              <TreeItemPersonaLayout
+                media={<Avatar name="Level 2" color="colorful" />}
+                data-testid="item2__item1_layout"
+              >
+                level 2, item 2
+              </TreeItemPersonaLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </TreeTest>,
+    );
+    cy.get('[data-testid="item1_layout"]').realHover().should('have.css', 'background-color', 'rgb(245, 245, 245)');
+    cy.get('[data-testid="item1__item1_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgb(245, 245, 245)');
+    cy.get('[data-testid="item2_layout"]').realHover().should('have.css', 'background-color', 'rgb(245, 245, 245)');
+    cy.get('[data-testid="item2__item1_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgb(245, 245, 245)');
+  });
+
+  it('should render subtle-alpha appearance correctly for item layout', () => {
+    mount(
+      <TreeTest id="tree" aria-label="Tree" appearance="subtle-alpha">
+        <TreeItem open itemType="branch" value="item1" data-testid="item1">
+          <TreeItemLayout data-testid="item1_layout">level 1, item 1</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+              <TreeItemLayout data-testid="item1__item1_layout">level 2, item 1</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+        <TreeItem open itemType="branch" value="item2" data-testid="item2">
+          <TreeItemPersonaLayout media={<Avatar name="Level 1" color="colorful" />} data-testid="item2_layout">
+            level 1, item 2
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf" value="item2__item1" data-testid="item2__item1">
+              <TreeItemPersonaLayout
+                media={<Avatar name="Level 2" color="colorful" />}
+                data-testid="item2__item1_layout"
+              >
+                level 2, item 2
+              </TreeItemPersonaLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </TreeTest>,
+    );
+    cy.get('[data-testid="item1_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgba(255, 255, 255, 0.7)');
+    cy.get('[data-testid="item1__item1_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgba(255, 255, 255, 0.7)');
+    cy.get('[data-testid="item2_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgba(255, 255, 255, 0.7)');
+    cy.get('[data-testid="item2__item1_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgba(255, 255, 255, 0.7)');
+  });
+
+  it('should render transparent appearance correctly for item layout', () => {
+    mount(
+      <TreeTest id="tree" aria-label="Tree" appearance="transparent">
+        <TreeItem open itemType="branch" value="item1" data-testid="item1">
+          <TreeItemLayout data-testid="item1_layout">level 1, item 1</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+              <TreeItemLayout data-testid="item1__item1_layout">level 2, item 1</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+        <TreeItem open itemType="branch" value="item2" data-testid="item2">
+          <TreeItemPersonaLayout media={<Avatar name="Level 1" color="colorful" />} data-testid="item2_layout">
+            level 1, item 2
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf" value="item2__item1" data-testid="item2__item1">
+              <TreeItemPersonaLayout
+                media={<Avatar name="Level 2" color="colorful" />}
+                data-testid="item2__item1_layout"
+              >
+                level 2, item 2
+              </TreeItemPersonaLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </TreeTest>,
+    );
+    cy.get('[data-testid="item1_layout"]').realHover().should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+    cy.get('[data-testid="item1__item1_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+    cy.get('[data-testid="item2_layout"]').realHover().should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+    cy.get('[data-testid="item2__item1_layout"]')
+      .realHover()
+      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
   });
 });
 
