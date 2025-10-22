@@ -21,12 +21,16 @@ import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from '@fluentui/react';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { ITheme as ITheme_2 } from '@fluentui/react';
+import type { Margin } from '@fluentui/chart-utilities';
 import * as React_2 from 'react';
 import { SankeyLink } from 'd3-sankey';
 import { SankeyNode } from 'd3-sankey';
 import { ScaleBand } from 'd3-scale';
 import { ScaleLinear } from 'd3-scale';
 import { TimeLocaleDefinition } from 'd3-time-format';
+
+// @public (undocumented)
+export const AnnotationOnlyChart: React_2.FC<IAnnotationOnlyChartProps>;
 
 // @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
@@ -216,6 +220,26 @@ export interface IAccessibilityProps {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
+}
+
+// @public
+export interface IAnnotationOnlyChartProps {
+    // Warning: (ae-forgotten-export) The symbol "IChartAnnotation" needs to be exported by the entry point index.d.ts
+    annotations: IChartAnnotation[];
+    calloutProps?: any;
+    chartTitle?: string;
+    componentRef?: React_2.RefObject<IChart>;
+    description?: string;
+    fontColor?: string;
+    fontFamily?: string;
+    height?: number;
+    legendProps?: Partial<ILegendsProps>;
+    margin?: Partial<Margin>;
+    paperBackgroundColor?: string;
+    plotBackgroundColor?: string;
+    width?: number;
+    xAxisAnnotation?: string;
+    yAxisAnnotation?: string;
 }
 
 // @public

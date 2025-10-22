@@ -2,6 +2,7 @@ import type { Datum, TypedArray, PlotData, PlotlySchema, Data, Layout, SankeyDat
 import { decodeBase64Fields } from './DecodeBase64Data';
 
 export type FluentChart =
+  | 'annotation'
   | 'area'
   | 'composite'
   | 'donut'
@@ -201,6 +202,16 @@ export function isArrayOrTypedArray(a: any) {
   return Array.isArray(a) || isTypedArray(a);
 }
 
+type PlotlyAnnotations = PlotlySchema extends { layout?: { annotations?: infer T } } ? T : unknown;
+
+const hasAnnotationContent = (annotations: PlotlyAnnotations | undefined): boolean => {
+  if (!annotations) {
+    return false;
+  }
+
+  return !isArrayOrTypedArray(annotations) || (annotations as { length: number }).length > 0;
+};
+
 export const getValidSchema = (input: any): PlotlySchema => {
   try {
     const validatedSchema = input as PlotlySchema;
@@ -210,10 +221,24 @@ export const getValidSchema = (input: any): PlotlySchema => {
     if (typeof validatedSchema !== 'object') {
       throw new Error(`Plotly input is not an object. Input type: ${typeof validatedSchema}`);
     }
+    const hasAnnotations = hasAnnotationContent(validatedSchema?.layout?.annotations);
+
     if (!isArrayOrTypedArray(validatedSchema.data)) {
+      if (hasAnnotations) {
+        return {
+          ...validatedSchema,
+          data: [],
+        };
+      }
       throw new Error('Plotly input data is not a valid array or typed array');
     }
     if (validatedSchema.data.length === 0) {
+      if (hasAnnotations) {
+        return {
+          ...validatedSchema,
+          data: [],
+        };
+      }
       throw new Error('Plotly input data is empty');
     }
     return validatedSchema;
@@ -485,6 +510,13 @@ export const mapFluentChart = (input: any): OutputChartType => {
       validSchema = decodeBase64Fields(validSchema);
     } catch (error) {
       return { isValid: false, errorMessage: `Failed to decode plotly schema: ${error}` };
+    }
+
+    const hasAnnotations = hasAnnotationContent(validSchema?.layout?.annotations);
+    const hasTraces = isArrayOrTypedArray(validSchema.data) && validSchema.data.length > 0;
+
+    if (!hasTraces && hasAnnotations) {
+      return { isValid: true, type: 'annotation', validTracesInfo: [] };
     }
 
     const validTraces = getValidTraces(validSchema.data, validSchema.layout);

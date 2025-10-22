@@ -38,6 +38,7 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { IChartTableProps } from '../ChartTable/index';
+import type { IAnnotationOnlyChartProps } from '../AnnotationOnlyChart/AnnotationOnlyChart.types';
 import {
   DEFAULT_DATE_STRING,
   findNumericMinMaxOfY,
@@ -45,6 +46,7 @@ import {
   MIN_DONUT_RADIUS,
 } from '../../utilities/utilities';
 import type {
+  Annotations,
   Datum,
   Layout,
   PlotlySchema,
@@ -88,6 +90,11 @@ import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
 import { IGanttChartProps } from '../GanttChart/GanttChart.types';
 import { calculatePrecision, precisionRound } from '@fluentui/react';
+import type {
+  IChartAnnotation,
+  ChartAnnotationCoordinateValue,
+  ChartAnnotationCoordinates,
+} from '../../types/IChartAnnotation';
 
 export const NON_PLOT_KEY_PREFIX = 'nonplot_';
 export const SINGLE_REPEAT = 'repeat(1, 1fr)';
@@ -158,6 +165,206 @@ const dashOptions = {
     lineBorderWidth: '4',
   },
 } as const;
+
+type PlotlyAnnotationLike = Partial<Annotations> & {
+  [key: string]: unknown;
+};
+
+const isPixelRef = (ref: string | undefined): boolean => (ref ?? '').toLowerCase() === 'pixel';
+const isPaperRef = (ref: string | undefined): boolean => (ref ?? '').toLowerCase().includes('paper');
+const isDomainRef = (ref: string | undefined): boolean => (ref ?? '').toLowerCase().includes('domain');
+
+const toNumber = (value: unknown): number | undefined => {
+  if (typeof value === 'number' && !Number.isNaN(value)) {
+    return value;
+  }
+  if (typeof value === 'string' && value.trim() !== '') {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : undefined;
+  }
+  return undefined;
+};
+
+const toStringValue = (value: unknown): string | undefined =>
+  typeof value === 'string' && value.trim() !== '' ? value : undefined;
+
+const toColorString = (value: unknown): string | undefined => (typeof value === 'string' ? value : undefined);
+
+const toPaddingString = (pad: unknown): string | undefined => {
+  if (!pad || typeof pad !== 'object') {
+    return undefined;
+  }
+  const { t, r, b, l } = pad as { t?: unknown; r?: unknown; b?: unknown; l?: unknown };
+  const top = toNumber(t) ?? 0;
+  const right = toNumber(r) ?? 0;
+  const bottom = toNumber(b) ?? 0;
+  const left = toNumber(l) ?? 0;
+  if (top === 0 && right === 0 && bottom === 0 && left === 0) {
+    return undefined;
+  }
+  return `${top}px ${right}px ${bottom}px ${left}px`;
+};
+
+const toHorizontalAlign = (anchor?: string, align?: string): 'start' | 'center' | 'end' | undefined => {
+  const candidate = align ?? anchor;
+  switch ((candidate ?? '').toLowerCase()) {
+    case 'left':
+      return 'start';
+    case 'right':
+      return 'end';
+    case 'middle':
+    case 'center':
+      return 'center';
+    default:
+      return undefined;
+  }
+};
+
+const toVerticalAlign = (anchor?: string): 'top' | 'middle' | 'bottom' | undefined => {
+  switch ((anchor ?? '').toLowerCase()) {
+    case 'top':
+      return 'top';
+    case 'middle':
+    case 'center':
+      return 'middle';
+    case 'bottom':
+      return 'bottom';
+    default:
+      return undefined;
+  }
+};
+
+const clamp01 = (value: number): number => Math.min(1, Math.max(0, value));
+
+const resolveAnnotationCoordinates = (annotation: PlotlyAnnotationLike): ChartAnnotationCoordinates | undefined => {
+  const { xref, yref, x, y } = annotation;
+
+  if (isPixelRef(xref) || isPixelRef(yref)) {
+    const pixelX = toNumber(x);
+    const pixelY = toNumber(y);
+    if (pixelX !== undefined && pixelY !== undefined) {
+      return { type: 'pixel', x: pixelX, y: pixelY };
+    }
+    return undefined;
+  }
+
+  if (isPaperRef(xref) || isPaperRef(yref) || isDomainRef(xref) || isDomainRef(yref)) {
+    const relX = toNumber(x);
+    const relY = toNumber(y);
+    if (relX !== undefined && relY !== undefined) {
+      return { type: 'relative', x: clamp01(relX), y: clamp01(relY) };
+    }
+  }
+
+  if (x !== undefined && y !== undefined) {
+    const yAxis = typeof yref === 'string' && /y2$/i.test(yref) ? 'secondary' : 'primary';
+    return {
+      type: 'data',
+      x: x as ChartAnnotationCoordinateValue,
+      y: y as ChartAnnotationCoordinateValue,
+      yAxis,
+    };
+  }
+
+  return undefined;
+};
+
+const buildAnnotationConnector = (annotation: PlotlyAnnotationLike) => {
+  if (annotation.showarrow === false) {
+    return undefined;
+  }
+
+  const strokeColorCandidate = annotation.arrowcolor;
+  const strokeColor = typeof strokeColorCandidate === 'string' ? strokeColorCandidate : undefined;
+  const strokeWidth = toNumber(annotation.arrowwidth);
+  const dashArray = toStringValue(annotation.arrowdash);
+  const startPadding = toNumber(annotation.standoff);
+  const arrowhead = toNumber(annotation.arrowhead);
+
+  if (
+    !strokeColor &&
+    !strokeWidth &&
+    !dashArray &&
+    startPadding === undefined &&
+    (arrowhead === undefined || arrowhead === 0)
+  ) {
+    return undefined;
+  }
+
+  return {
+    strokeColor,
+    strokeWidth: strokeWidth ?? undefined,
+    dashArray,
+    startPadding: startPadding ?? undefined,
+    arrow: arrowhead === 0 ? ('none' as const) : ('end' as const),
+  };
+};
+
+const convertLayoutAnnotation = (annotation: PlotlyAnnotationLike): IChartAnnotation | undefined => {
+  if (!annotation) {
+    return undefined;
+  }
+
+  const coordinates = resolveAnnotationCoordinates(annotation);
+  if (!coordinates) {
+    return undefined;
+  }
+
+  const layout = {
+    align: toHorizontalAlign(toStringValue(annotation.xanchor), toStringValue(annotation.align)),
+    verticalAlign: toVerticalAlign(toStringValue(annotation.yanchor)),
+    offsetX: toNumber(annotation.xshift),
+    offsetY: toNumber(annotation.yshift),
+    maxWidth: toNumber(annotation.width),
+    clipToBounds: annotation.cliponaxis !== false,
+  };
+
+  const font = (annotation.font ?? {}) as { [key: string]: unknown } & {
+    color?: string | number;
+    size?: number | string;
+    weight?: React.CSSProperties['fontWeight'];
+  };
+
+  const textColorCandidate = font.color;
+
+  const style = {
+    backgroundColor: toColorString(annotation.bgcolor),
+    borderColor: toColorString(annotation.bordercolor),
+    borderWidth: toNumber(annotation.borderwidth),
+    opacity: annotation.opacity,
+    textColor: typeof textColorCandidate === 'string' ? textColorCandidate : undefined,
+    fontSize: toNumber(font.size),
+    fontWeight: font.weight,
+    padding: toPaddingString(annotation.pad),
+  };
+
+  const connector = buildAnnotationConnector(annotation);
+
+  return {
+    id: toStringValue(annotation.name) ?? toStringValue((annotation.meta as { id?: unknown } | undefined)?.id),
+    text: annotation.text as string | undefined,
+    coordinates,
+    layout,
+    style,
+    connector,
+  };
+};
+
+const getChartAnnotationsFromLayout = (
+  layout: Partial<Layout> | undefined,
+  _data: Data[] | undefined,
+  _isMultiPlot: boolean,
+): IChartAnnotation[] => {
+  if (!layout?.annotations) {
+    return [];
+  }
+
+  const source = Array.isArray(layout.annotations) ? layout.annotations : [layout.annotations];
+
+  return source
+    .map(item => convertLayoutAnnotation((item ?? {}) as PlotlyAnnotationLike))
+    .filter((annotation): annotation is IChartAnnotation => Boolean(annotation));
+};
 
 function getTitles(layout: Partial<Layout> | undefined) {
   const titles = {
@@ -482,6 +689,43 @@ export const normalizeObjectArrayForGVBC = (
   });
 
   return { traces, x };
+};
+
+export const transformPlotlyJsonToAnnotationChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  _colorMap: React.MutableRefObject<Map<string, string>>,
+  _colorwayType: ColorwayType,
+  _isDarkTheme?: boolean,
+): IAnnotationOnlyChartProps => {
+  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot) ?? [];
+  const titles = getTitles(input.layout);
+  const layoutTitle = titles.chartTitle || undefined;
+
+  const layoutWithMeta = input.layout as Partial<Layout> & { meta?: { description?: string } };
+  const description =
+    typeof layoutWithMeta?.meta?.description === 'string' ? layoutWithMeta.meta.description : undefined;
+
+  const width = typeof input.layout?.width === 'number' ? input.layout.width : undefined;
+  const height = typeof input.layout?.height === 'number' ? input.layout.height : undefined;
+  const paperBackgroundColor = typeof input.layout?.paper_bgcolor === 'string' ? input.layout.paper_bgcolor : undefined;
+  const plotBackgroundColor = typeof input.layout?.plot_bgcolor === 'string' ? input.layout.plot_bgcolor : undefined;
+  const fontColor = typeof input.layout?.font?.color === 'string' ? input.layout.font.color : undefined;
+  const fontFamily = typeof input.layout?.font?.family === 'string' ? input.layout.font.family : undefined;
+  const margin = input.layout?.margin;
+
+  return {
+    annotations,
+    chartTitle: layoutTitle,
+    description,
+    width,
+    height,
+    paperBackgroundColor,
+    plotBackgroundColor,
+    fontColor,
+    fontFamily,
+    margin,
+  };
 };
 
 export const transformPlotlyJsonToDonutProps = (
