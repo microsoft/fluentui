@@ -156,7 +156,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._events.dispose();
 
     if (this._dragDropSubscription) {
@@ -164,7 +164,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     }
   }
 
-  public componentDidUpdate(previousProps: IGroupedListSectionProps) {
+  public componentDidUpdate(previousProps: IGroupedListSectionProps): void {
     if (
       this.props.group !== previousProps.group ||
       this.props.groupIndex !== previousProps.groupIndex ||
@@ -274,12 +274,12 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     );
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this.forceListUpdate();
   }
 
-  public forceListUpdate() {
+  public forceListUpdate(): void {
     const { group } = this.props;
 
     if (this._list.current) {

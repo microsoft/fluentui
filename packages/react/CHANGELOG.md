@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 14 Oct 2025 07:21:45 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Oct 2025 07:21:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.124.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.124.2)
+
+Thu, 16 Oct 2025 07:21:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.124.1..@fluentui/react_v8.124.2)
+
+### Patches
+
+- fix: resolve React 19 incompatible types ([PR #35303](https://github.com/microsoft/fluentui/pull/35303) by martinhochel@microsoft.com)
+- Bump @fluentui/date-time-utilities to v8.6.11 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/foundation-legacy to v8.5.2 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.66 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/react-focus to v8.9.29 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/react-hooks to v8.9.1 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/style-utilities to v8.13.2 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/theme to v2.6.69 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/utilities to v8.16.1 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
 
 ## [8.124.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.124.1)
 

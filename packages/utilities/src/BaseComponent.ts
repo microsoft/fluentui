@@ -273,7 +273,6 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
  *
  * @public
  */
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 export function nullRender(): JSXElement | null {
   return null;
 }

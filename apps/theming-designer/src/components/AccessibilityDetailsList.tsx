@@ -36,7 +36,7 @@ export const AccessibilityDetailsList: React.FunctionComponent<IAccessibilityDet
   let columns: IColumn[] = [];
   const newTheme = props.theme;
 
-  const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): JSX.Element => {
+  const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): React.ReactElement => {
     // Set each row's background and text color to what's specified by its respective slot rule
     if (detailsRowProps && newTheme) {
       const rowStyles: Partial<IDetailsRowStyles> = {

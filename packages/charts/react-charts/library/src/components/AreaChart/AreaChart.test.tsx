@@ -691,7 +691,7 @@ describe('AreaChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    let wrapper = render(<AreaChart data={chartData} yAxisTickFormat={'/%d'} />);
+    let wrapper = render(<AreaChart data={chartData} yAxisTickFormat={'.1f'} />);
     expect(wrapper).toMatchSnapshot();
   });
 

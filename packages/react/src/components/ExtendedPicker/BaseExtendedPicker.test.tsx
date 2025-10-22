@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { fireEvent, render, act } from '@testing-library/react';
 
 import { BaseExtendedPicker } from './BaseExtendedPicker';
@@ -98,7 +97,7 @@ describe('Pickers', () => {
     });
 
     it('renders BaseExtendedPicker correctly with no items', () => {
-      const component = renderer.create(
+      const { container } = render(
         <BaseExtendedPickerWithType
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
@@ -106,12 +105,11 @@ describe('Pickers', () => {
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('renders BaseExtendedPicker correctly with selected and suggested items', () => {
-      const component = renderer.create(
+      const { container } = render(
         <BaseExtendedPickerWithType
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
@@ -135,8 +133,7 @@ describe('Pickers', () => {
           ]}
         />,
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container.firstChild).toMatchSnapshot();
     });
 
     it('force resolves to the first suggestion', () => {

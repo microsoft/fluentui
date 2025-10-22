@@ -64,6 +64,7 @@ import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -195,15 +196,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private margins: IMargins;
   private eventLabelHeight: number = 36;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private lines: JSX.Element[];
+  private lines: JSXElement[];
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderedColorFillBars: JSX.Element[];
+  private _renderedColorFillBars: JSXElement[];
   private _colorFillBars: IColorFillBarsProps[];
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
+  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSXElement;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
@@ -284,7 +285,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
 
@@ -563,7 +564,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
+  private _createLegends(data: LineChartDataWithIndex[]): JSXElement {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const mapLegendToPoints: Record<string, LineChartDataWithIndex[]> = {};
@@ -716,9 +717,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   };
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
+  private _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const lines: JSX.Element[] = [];
+    const lines: JSXElement[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
@@ -736,11 +737,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     for (let i = this._points.length - 1; i >= 0; i--) {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const linesForLine: JSX.Element[] = [];
+      const linesForLine: JSXElement[] = [];
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const bordersForLine: JSX.Element[] = [];
+      const bordersForLine: JSXElement[] = [];
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const pointsForLine: JSX.Element[] = [];
+      const pointsForLine: JSXElement[] = [];
 
       const legendVal: string = this._points[i].legend;
       const lineColor: string = this._points[i].color!;
@@ -1493,7 +1494,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _createColorFillBars = (containerHeight: number) => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const colorFillBars: JSX.Element[] = [];
+    const colorFillBars: JSXElement[] = [];
     if (this.state.isSelectedLegend) {
       this._colorFillBars = this.state.selectedColorBarLegend;
     } else {

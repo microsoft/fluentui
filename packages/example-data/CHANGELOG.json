@@ -2,6 +2,21 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Thu, 16 Oct 2025 07:21:57 GMT",
+      "tag": "@fluentui/example-data_v8.4.25",
+      "version": "8.4.25",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "6c4630f5f8aa3ac42ce4c45be7d39642899e1e85",
+            "comment": "style: resolve explicit-return tyle lint errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:13 GMT",
       "tag": "@fluentui/example-data_v8.4.25",
       "version": "8.4.25",

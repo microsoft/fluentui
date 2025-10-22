@@ -6,6 +6,8 @@ import * as renderer from 'react-test-renderer';
  * then unmounts. This prevents mounted components from sitting around doing
  * unfathomable things in the background while other tests start executing.
  *
+ * @deprecated Use `@testing-library/react` directly instead. This function uses `react-test-renderer` which may not work with react >= v19
+ *
  * @param content - JSX content to test.
  * @param callback - Function callback which receives the component to use.
  */

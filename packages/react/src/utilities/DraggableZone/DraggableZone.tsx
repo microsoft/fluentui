@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getClassNames } from './DraggableZone.styles';
 import { on } from '../../Utilities';
 import type { IDraggableZoneProps, ICoordinates, IDragData } from './DraggableZone.types';
+import type { JSXElement } from '@fluentui/utilities';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx } from '../dom';
 
@@ -46,17 +47,17 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     };
   }
 
-  public componentDidUpdate(prevProps: IDraggableZoneProps) {
+  public componentDidUpdate(prevProps: IDraggableZoneProps): void {
     if (this.props.position && (!prevProps.position || this.props.position !== prevProps.position)) {
       this.setState({ position: this.props.position });
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._events.forEach(dispose => dispose());
   }
 
-  public render() {
+  public render(): JSXElement {
     const child: any = React.Children.only(this.props.children);
     const { props } = child;
     const { position } = this.props;

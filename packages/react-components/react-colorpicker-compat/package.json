@@ -19,7 +19,7 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.2.2",
+    "@fluentui/react-jsx-runtime": "^9.3.0",
     "@fluentui/react-theme": "^9.2.0",
     "@fluentui/react-utilities": "^9.25.1",
     "@griffel/react": "^1.5.22",
