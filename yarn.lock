@@ -272,7 +272,7 @@
     "@jridgewell/trace-mapping" "^0.3.28"
     jsesc "^3.0.2"
 
-"@babel/helper-annotate-as-pure@^7.10.4", "@babel/helper-annotate-as-pure@^7.27.1", "@babel/helper-annotate-as-pure@^7.27.3":
+"@babel/helper-annotate-as-pure@^7.10.4", "@babel/helper-annotate-as-pure@^7.24.6", "@babel/helper-annotate-as-pure@^7.27.1", "@babel/helper-annotate-as-pure@^7.27.3":
   version "7.27.3"
   resolved "https://registry.yarnpkg.com/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.27.3.tgz#f31fd86b915fc4daf1f3ac6976c59be7084ed9c5"
   integrity sha512-fXSwMQqitTGeHLBC08Eq5yXz2m37E4pJX1qAU1+2cNedz/ifv/bVXft90VeSav5nFO61EcNgwr0aJxbyPaWBPg==
@@ -327,6 +327,13 @@
   version "7.24.6"
   resolved "https://registry.yarnpkg.com/@babel/helper-environment-visitor/-/helper-environment-visitor-7.24.6.tgz#ac7ad5517821641550f6698dd5468f8cef78620d"
   integrity sha512-Y50Cg3k0LKLMjxdPjIl40SdJgMB85iXn27Vk/qbHZCFx/o5XO3PSnpi675h1KEmmDb6OFArfd5SCQEQ5Q4H88g==
+
+"@babel/helper-environment-visitor@^7.24.6":
+  version "7.24.7"
+  resolved "https://registry.yarnpkg.com/@babel/helper-environment-visitor/-/helper-environment-visitor-7.24.7.tgz#4b31ba9551d1f90781ba83491dd59cf9b269f7d9"
+  integrity sha512-DoiN84+4Gnd0ncbBOM9AZENV4a5ZiL39HYMyZJGZ/AZEykHYdJw0wW3kdcsh9/Kn+BRXHLkkklZ51ecPKmI1CQ==
+  dependencies:
+    "@babel/types" "^7.24.7"
 
 "@babel/helper-globals@^7.28.0":
   version "7.28.0"
@@ -425,7 +432,7 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-validator-option/-/helper-validator-option-7.27.1.tgz#fa52f5b1e7db1ab049445b421c4471303897702f"
   integrity sha512-YvjJow9FxbhFFKDSuFnVCe2WxXk1zWc22fFePVNEaWJEu8IrZVlda6N0uHwzZrUM1il7NC9Mlp4MaJYbYd9JSg==
 
-"@babel/helper-wrap-function@^7.27.1":
+"@babel/helper-wrap-function@^7.24.6", "@babel/helper-wrap-function@^7.27.1":
   version "7.28.3"
   resolved "https://registry.yarnpkg.com/@babel/helper-wrap-function/-/helper-wrap-function-7.28.3.tgz#fe4872092bc1438ffd0ce579e6f699609f9d0a7a"
   integrity sha512-zdf983tNfLZFletc0RRXYrHrucBEg95NIFMkn6K9dbeMYnsgHaSBGcQqdsCSStG2PYwRre0Qc2NNSCXbG+xc6g==
@@ -554,7 +561,7 @@
     "@babel/helper-plugin-utils" "^7.18.6"
     "@babel/plugin-syntax-numeric-separator" "^7.10.4"
 
-"@babel/plugin-proposal-object-rest-spread@7.20.7", "@babel/plugin-proposal-object-rest-spread@^7.20.0":
+"@babel/plugin-proposal-object-rest-spread@^7.20.0":
   version "7.20.7"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-object-rest-spread/-/plugin-proposal-object-rest-spread-7.20.7.tgz#aa662940ef425779c75534a5c41e9d936edc390a"
   integrity sha512-d2S98yCiLxDVmBmE8UjGcfPvNEUbA1U5q5WxaWFUGRzJSVAZqm5W6MbPct0jxnegUZ0niLeNX+IOzEs7wYg9Dg==
@@ -1015,7 +1022,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.27.1"
 
-"@babel/plugin-transform-object-rest-spread@^7.28.4":
+"@babel/plugin-transform-object-rest-spread@7.28.4", "@babel/plugin-transform-object-rest-spread@^7.28.4":
   version "7.28.4"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-object-rest-spread/-/plugin-transform-object-rest-spread-7.28.4.tgz#9ee1ceca80b3e6c4bac9247b2149e36958f7f98d"
   integrity sha512-373KA2HQzKhQCYiRVIRr+3MjpCObqzDlyrM6u4I201wL8Mp2wHf7uB8GhDwis03k2ti8Zr65Zyyqs1xOxUF/Ew==
@@ -1414,7 +1421,7 @@
     "@babel/types" "^7.28.4"
     debug "^4.3.1"
 
-"@babel/types@7.28.5", "@babel/types@^7.28.5":
+"@babel/types@7.28.5", "@babel/types@^7.24.7", "@babel/types@^7.28.5":
   version "7.28.5"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.28.5.tgz#10fc405f60897c35f07e85493c932c7b5ca0592b"
   integrity sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==
@@ -6937,6 +6944,11 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+baseline-browser-mapping@^2.8.19:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/baseline-browser-mapping/-/baseline-browser-mapping-2.9.0.tgz#b4b91c7ec4deac14527bc5495b914fb9db1a251a"
+  integrity sha512-Mh++g+2LPfzZToywfE1BUzvZbfOY52Nil0rn9H1CPC5DJ7fX+Vir7nToBeoiSbB1zTNeGYbELEvJESujgGrzXw==
+
 basic-ftp@^5.0.2:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/basic-ftp/-/basic-ftp-5.0.5.tgz#14a474f5fffecca1f4f406f1c26b18f800225ac0"
@@ -7380,7 +7392,7 @@ caniuse-lite@^1.0.30001173, caniuse-lite@^1.0.30001687:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001753.tgz#419f8fc9bab6f1a1d10d9574d0b3374f823c5b00"
   integrity sha512-Bj5H35MD/ebaOV4iDLqPEtiliTN29qkGtEHCwawWn4cYm+bPJM2NsaP30vtZcnERClMzp52J4+aw2UNbK4o+zw==
 
-caniuse-lite@^1.0.30001716:
+caniuse-lite@^1.0.30001716, caniuse-lite@^1.0.30001751:
   version "1.0.30001759"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001759.tgz#d569e7b010372c6b0ca3946e30dada0a2e9d5006"
   integrity sha512-Pzfx9fOKoKvevQf8oCXoyNRQ5QyxJj+3O0Rqx2V5oxT61KGx8+n6hV/IUyJeifUci2clnmmKVpvtiqRzgiWjSw==
@@ -9352,7 +9364,7 @@ ejs@3.1.10, ejs@^3.1.10, ejs@^3.1.7:
   dependencies:
     jake "^10.8.5"
 
-electron-to-chromium@^1.5.149:
+electron-to-chromium@^1.5.149, electron-to-chromium@^1.5.238:
   version "1.5.264"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.264.tgz#38d2262e290bf5b424ba1488e072c7b0163400be"
   integrity sha512-1tEf0nLgltC3iy9wtlYDlQDc5Rg9lEKVjEmIHJ21rI9OcqkvD45K1oyNIRA4rR1z3LgJ7KeGzEBojVcV6m4qjA==
@@ -15955,7 +15967,7 @@ node-plop@0.25.0, node-plop@~0.25.0:
     mkdirp "^0.5.1"
     resolve "^1.12.0"
 
-node-releases@^2.0.19:
+node-releases@^2.0.19, node-releases@^2.0.26:
   version "2.0.27"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.27.tgz#eedca519205cf20f650f61d56b070db111231e4e"
   integrity sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==
@@ -16508,11 +16520,6 @@ pako@^1.0.3, pako@~1.0.2:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
-
-pako@~0.2.0:
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
-  integrity sha512-NUcwaKxUxWrZLpDG+z/xZaCgQITkA/Dv4V/T6bw7VON6l1Xz/VnrBqrYjZQ12TamKHzITTfOEIYUj48y2KXImA==
 
 param-case@^2.1.0:
   version "2.1.1"
@@ -20651,7 +20658,7 @@ unzipper@^0.10.14:
     readable-stream "~2.3.6"
     setimmediate "~1.0.4"
 
-update-browserslist-db@^1.1.3:
+update-browserslist-db@^1.1.3, update-browserslist-db@^1.1.4:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/update-browserslist-db/-/update-browserslist-db-1.2.2.tgz#cfb4358afa08b3d5731a2ecd95eebf4ddef8033e"
   integrity sha512-E85pfNzMQ9jpKkA7+TJAi4TJN+tBCuWh5rUcS/sv6cFi+1q9LYDwDI5dpUL0u/73EElyQ8d3TEaeW4sPedBqYA==
