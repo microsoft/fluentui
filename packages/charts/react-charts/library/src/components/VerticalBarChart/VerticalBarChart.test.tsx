@@ -900,7 +900,7 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', () => {
-    const { container } = render(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'/%d'} />);
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'.1f'} />);
     expect(container.firstChild).toMatchSnapshot();
   });
 

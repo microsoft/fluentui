@@ -8789,7 +8789,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            0.0
           </text>
         </g>
         <g
@@ -8808,7 +8808,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            13.0
           </text>
         </g>
         <g
@@ -8827,7 +8827,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            26.0
           </text>
         </g>
         <g
@@ -8846,7 +8846,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            39.0
           </text>
         </g>
         <g
@@ -8865,7 +8865,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
             style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
             x="-10"
           >
-            /%d
+            52.0
           </text>
         </g>
       </g>
