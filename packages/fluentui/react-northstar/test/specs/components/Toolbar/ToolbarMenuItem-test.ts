@@ -6,6 +6,7 @@ import { ToolbarMenuItem, toolbarMenuItemClassName } from 'src/components/Toolba
 
 describe('ToolbarMenuItem', () => {
   isConformant(ToolbarMenuItem, {
+    defaultAs: 'button',
     testPath: __filename,
     wrapperComponent: Box,
     autoControlledProps: ['menuOpen'],

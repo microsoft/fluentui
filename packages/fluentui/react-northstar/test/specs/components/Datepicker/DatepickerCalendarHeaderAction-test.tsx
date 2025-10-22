@@ -3,6 +3,7 @@ import { DatepickerCalendarHeaderAction } from 'src/components/Datepicker/Datepi
 
 describe('DatepickerCalendarHeaderAction', () => {
   isConformant(DatepickerCalendarHeaderAction, {
+    defaultAs: 'button',
     testPath: __filename,
     constructorName: 'DatepickerCalendarHeaderAction',
   });

@@ -7,6 +7,7 @@ import { ListItem } from 'src/components/List/ListItem';
 
 describe('ListItem', () => {
   isConformant(ListItem, {
+    defaultAs: 'li',
     testPath: __filename,
     constructorName: 'ListItem',
   });

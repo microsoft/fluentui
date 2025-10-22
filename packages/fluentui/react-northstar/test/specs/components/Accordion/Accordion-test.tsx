@@ -62,6 +62,7 @@ const getAccordionTitleAtIndex = (accordion, index) =>
 
 describe('Accordion', () => {
   isConformant(Accordion, {
+    defaultAs: 'dl',
     testPath: __filename,
     constructorName: 'Accordion',
     autoControlledProps: ['activeIndex'],

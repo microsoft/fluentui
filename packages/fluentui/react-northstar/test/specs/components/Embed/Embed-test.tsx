@@ -4,7 +4,12 @@ import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
 
 describe('Embed', () => {
-  isConformant(Embed, { testPath: __filename, constructorName: 'Embed', autoControlledProps: ['active'] });
+  isConformant(Embed, {
+    defaultAs: 'span',
+    testPath: __filename,
+    constructorName: 'Embed',
+    autoControlledProps: ['active'],
+  });
 
   describe('accessibility', () => {
     handlesAccessibility(Embed, { defaultRootRole: 'presentation' });

@@ -6,7 +6,7 @@ import { TreeTitle } from 'src/components/Tree/TreeTitle';
 import { isConformant, implementsShorthandProp } from 'test/specs/commonTests';
 
 describe('TreeTitle', () => {
-  isConformant(TreeTitle, { testPath: __filename, constructorName: 'TreeTitle' });
+  isConformant(TreeTitle, { defaultAs: 'a', testPath: __filename, constructorName: 'TreeTitle' });
 
   implementsShorthandProp(TreeTitle)('selectionIndicator', Box, {
     mapsValueToProp: 'children',

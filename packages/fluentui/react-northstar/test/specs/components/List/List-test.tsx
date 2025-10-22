@@ -11,6 +11,7 @@ const listImplementsCollectionShorthandProp = implementsCollectionShorthandProp(
 
 describe('List', () => {
   isConformant(List, {
+    defaultAs: 'ul',
     testPath: __filename,
     constructorName: 'List',
   });

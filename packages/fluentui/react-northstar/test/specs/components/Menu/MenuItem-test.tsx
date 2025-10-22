@@ -14,6 +14,7 @@ import { MenuItemWrapper, menuItemWrapperClassName } from 'src/components/Menu/M
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
+    defaultAs: 'a',
     testPath: __filename,
     constructorName: 'MenuItem',
     wrapperComponent: MenuItemWrapper,

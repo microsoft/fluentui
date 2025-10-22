@@ -5,6 +5,7 @@ import { ToolbarMenu } from 'src/components/Toolbar/ToolbarMenu';
 
 describe('ToolbarItem', () => {
   isConformant(ToolbarItem, {
+    defaultAs: 'button',
     testPath: __filename,
     constructorName: 'ToolbarItem',
   });
