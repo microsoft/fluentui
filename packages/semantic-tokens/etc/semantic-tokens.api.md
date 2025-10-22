@@ -275,7 +275,7 @@ export const groupButtonNeutralChevronForegroundPressed = "var(--smtc-group-butt
 export const groupButtonNeutralChevronForegroundSelected = "var(--smtc-group-button-neutral-chevron-foreground-selected)";
 
 // @public (undocumented)
-export const groupButtonNeutralDividerStroke = "var(--smtc-group-button-neutral-divider-foreground)";
+export const groupButtonNeutralDividerStroke = "var(--smtc-group-button-neutral-divider-stroke, var(--colorNeutralStroke1))";
 
 // @public (undocumented)
 export const groupButtonNeutralIconForeground = "var(--smtc-group-button-neutral-icon-foreground, var(--colorNeutralForeground1))";
@@ -389,7 +389,7 @@ export const groupButtonOutlineChevronForegroundPressed = "var(--smtc-group-butt
 export const groupButtonOutlineChevronForegroundSelected = "var(--smtc-group-button-outline-chevron-foreground-selected)";
 
 // @public (undocumented)
-export const groupButtonOutlineDividerStroke = "var(--smtc-group-button-outline-divider-foreground, var(--colorNeutralStroke1))";
+export const groupButtonOutlineDividerStroke = "var(--smtc-group-button-outline-divider-stroke, var(--colorNeutralStroke1))";
 
 // @public (undocumented)
 export const groupButtonOutlineIconForeground = "var(--smtc-group-button-outline-icon-foreground, var(--colorNeutralForeground1))";
@@ -503,7 +503,7 @@ export const groupButtonPrimaryChevronForegroundPressed = "var(--smtc-group-butt
 export const groupButtonPrimaryChevronForegroundSelected = "var(--smtc-group-button-primary-chevron-foreground-selected)";
 
 // @public (undocumented)
-export const groupButtonPrimaryDividerStroke = "var(--smtc-group-button-primary-divider-foreground, var(--colorNeutralStrokeOnBrand))";
+export const groupButtonPrimaryDividerStroke = "var(--smtc-group-button-primary-divider-stroke, var(--colorNeutralStrokeOnBrand))";
 
 // @public (undocumented)
 export const groupButtonPrimaryIconForeground = "var(--smtc-group-button-primary-icon-foreground, var(--colorNeutralForegroundOnBrand))";
@@ -692,7 +692,7 @@ export const groupButtonSubtleChevronForegroundPressed = "var(--smtc-group-butto
 export const groupButtonSubtleChevronForegroundSelected = "var(--smtc-group-button-subtle-chevron-foreground-selected)";
 
 // @public (undocumented)
-export const groupButtonSubtleDividerStroke = "var(--smtc-group-button-subtle-divider-foreground, transparent)";
+export const groupButtonSubtleDividerStroke = "var(--smtc-group-button-subtle-divider-stroke, transparent)";
 
 // @public (undocumented)
 export const groupButtonSubtleIconForeground = "var(--smtc-group-button-subtle-icon-foreground, var(--colorNeutralForeground2))";
@@ -797,7 +797,7 @@ export const groupButtonTransparentChevronForegroundPressed = "var(--smtc-group-
 export const groupButtonTransparentChevronForegroundSelected = "var(--smtc-group-button-transparent-chevron-foreground-selected)";
 
 // @public (undocumented)
-export const groupButtonTransparentDividerStroke = "var(--smtc-group-button-transparent-divider-foreground, transparent)";
+export const groupButtonTransparentDividerStroke = "var(--smtc-group-button-transparent-divider-stroke, transparent)";
 
 // @public (undocumented)
 export const groupButtonTransparentIconForeground = "var(--smtc-group-button-transparent-icon-foreground, var(--colorNeutralForeground2))";
