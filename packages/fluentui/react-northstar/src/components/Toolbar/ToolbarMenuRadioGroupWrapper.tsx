@@ -23,11 +23,12 @@ export const ToolbarMenuRadioGroupWrapper = compose<
   displayName: 'ToolbarMenuRadioGroupWrapper',
 
   overrideStyles: true,
+
   shorthandConfig: { mappedProp: 'content' },
+  defaultProps: {
+    as: 'li',
+    accessibility: toolbarMenuRadioGroupWrapperBehavior,
+  },
 });
 
-ToolbarMenuRadioGroupWrapper.defaultProps = {
-  as: 'li',
-  accessibility: toolbarMenuRadioGroupWrapperBehavior,
-};
 ToolbarMenuRadioGroupWrapper.propTypes = commonPropTypes.createCommon();

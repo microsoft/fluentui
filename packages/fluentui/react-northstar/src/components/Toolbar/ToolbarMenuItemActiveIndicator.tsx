@@ -25,10 +25,11 @@ export const ToolbarMenuItemActiveIndicator = compose<
   shorthandConfig: {
     mappedProp: 'content',
   },
+
+  defaultProps: {
+    as: 'span',
+  },
   overrideStyles: true,
 });
 
-ToolbarMenuItemActiveIndicator.defaultProps = {
-  as: 'span',
-};
 ToolbarMenuItemActiveIndicator.propTypes = commonPropTypes.createCommon();

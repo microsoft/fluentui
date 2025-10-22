@@ -376,6 +376,26 @@ const isEmpty = prop => {
   return typeof prop === 'object' && !prop.props && !_.get(prop, 'children') && !_.get(prop, 'content');
 };
 
+const DEFAULT_CLOSE_INDICATOR = <CloseIcon outline />;
+const DEFAULT_TOGGLE_INDICATOR = <ChevronDownIcon outline />;
+
+const DEFAULT_ITEM_TO_STRING = item => {
+  if (!item || React.isValidElement(item)) {
+    return '';
+  }
+
+  // targets DropdownItem shorthand objects
+  return (item as any).header || String(item);
+};
+const DEFAULT_ITEM_TO_VALUE = item => {
+  if (!item || React.isValidElement(item)) {
+    return '';
+  }
+
+  // targets DropdownItem shorthand objects
+  return (item as any).header || String(item);
+};
+
 /**
  * A Dropdown allows user to select one or more values from a list of options.
  * Can be created with search and multi-selection capabilities.
@@ -395,7 +415,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, 
     'aria-invalid': ariaInvalid,
     allowFreeform,
     clearable,
-    clearIndicator,
+    clearIndicator = DEFAULT_CLOSE_INDICATOR,
     checkable,
     checkableIndicator,
     className,
@@ -408,8 +428,8 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, 
     getA11yStatusMessage,
     inline,
     inverted,
-    itemToString,
-    itemToValue,
+    itemToString = DEFAULT_ITEM_TO_STRING,
+    itemToValue = DEFAULT_ITEM_TO_VALUE,
     items,
     highlightFirstItemOnOpen,
     multiple,
@@ -424,23 +444,24 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, 
     search,
     searchInput,
     styles,
-    toggleIndicator,
-    triggerButton,
+    toggleIndicator = DEFAULT_TOGGLE_INDICATOR,
+    triggerButton = {},
     variables,
+    list: listFromProps = {},
   } = props;
 
   const {
-    align,
+    align = 'start',
     flipBoundary,
     overflowBoundary,
-    position,
+    position = 'below',
     positionFixed,
     offset,
     unstable_disableTether,
     unstable_pinned,
     autoSize,
   } = props; // PositioningProps passed directly to Dropdown
-  const [list, positioningProps] = partitionPopperPropsFromShorthand(props.list); // PositioningProps passed to Dropdown `list` prop's `popper` key
+  const [list, positioningProps] = partitionPopperPropsFromShorthand(listFromProps); // PositioningProps passed to Dropdown `list` prop's `popper` key
 
   const buttonRef = React.useRef<HTMLElement>();
   const inputRef = React.useRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
@@ -1893,31 +1914,6 @@ Dropdown.propTypes = {
   autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
 };
 Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
-
-Dropdown.defaultProps = {
-  align: 'start',
-  clearIndicator: <CloseIcon outline />,
-  itemToString: item => {
-    if (!item || React.isValidElement(item)) {
-      return '';
-    }
-
-    // targets DropdownItem shorthand objects
-    return (item as any).header || String(item);
-  },
-  itemToValue: item => {
-    if (!item || React.isValidElement(item)) {
-      return '';
-    }
-
-    // targets DropdownItem shorthand objects
-    return (item as any).header || String(item);
-  },
-  list: {},
-  position: 'below',
-  toggleIndicator: <ChevronDownIcon outline />,
-  triggerButton: {},
-};
 
 Dropdown.Item = DropdownItem;
 Dropdown.SearchInput = DropdownSearchInput;

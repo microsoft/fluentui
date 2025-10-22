@@ -179,12 +179,12 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
   const context = useFluentContext();
 
   const {
-    accessibility,
+    accessibility = carouselBehavior,
     items,
     circular,
     getItemPositionText,
-    paddlePrevious,
-    paddleNext,
+    paddlePrevious = {},
+    paddleNext = {},
     navigation,
     thumbnails,
     children,
@@ -195,10 +195,10 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
     styles,
     variables,
     disableClickableNav,
-    animationEnterFromPrev,
-    animationEnterFromNext,
-    animationExitToPrev,
-    animationExitToNext,
+    animationEnterFromPrev = 'carousel-slide-to-previous-enter',
+    animationEnterFromNext = 'carousel-slide-to-next-enter',
+    animationExitToPrev = '',
+    animationExitToNext = '',
   } = props;
 
   const ElementType = getElementType(props);
@@ -554,16 +554,6 @@ Carousel.propTypes = {
   animationEnterFromNext: PropTypes.string,
   animationExitToPrev: PropTypes.string,
   animationExitToNext: PropTypes.string,
-};
-
-Carousel.defaultProps = {
-  accessibility: carouselBehavior,
-  paddlePrevious: {},
-  paddleNext: {},
-  animationEnterFromPrev: 'carousel-slide-to-previous-enter',
-  animationEnterFromNext: 'carousel-slide-to-next-enter',
-  animationExitToPrev: '',
-  animationExitToNext: '',
 };
 
 Carousel.Item = CarouselItem;

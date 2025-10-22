@@ -95,7 +95,6 @@ export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.R
 
   const {
     accessibility = listBehavior,
-    as,
     children,
     className,
     debug,
@@ -125,9 +124,11 @@ export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.R
     }),
     rtl: context.rtl,
   });
+
+  const ElementType = getElementType(props, 'ul');
   const { classes } = useStyles<ListStylesProps>(List.displayName, {
     className: listClassName,
-    mapPropsToStyles: () => ({ isListTag: as === 'ol' || as === 'ul', debug, horizontal }),
+    mapPropsToStyles: () => ({ isListTag: ElementType === 'ol' || ElementType === 'ul', debug, horizontal }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
   });
@@ -135,7 +136,6 @@ export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.R
   const latestProps = React.useRef<ListProps>(props);
   latestProps.current = props;
 
-  const ElementType = getElementType(props, 'ul');
   const unhandledProps = useUnhandledProps(List.handledProps, props);
 
   const hasContent = childrenExist(children) || (items && items.length > 0);

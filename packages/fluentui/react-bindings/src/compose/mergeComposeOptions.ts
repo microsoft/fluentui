@@ -51,6 +51,11 @@ export function mergeComposeOptions(
 
     render: typeof input === 'function' ? input : parentOptions.render,
 
+    defaultProps: {
+      ...parentOptions.defaultProps,
+      ...inputOptions.defaultProps,
+    },
+
     handledProps: [...parentOptions.handledProps, ...((inputOptions.handledProps as never[]) || ([] as never[]))],
 
     overrideStyles: inputOptions.overrideStyles || false,

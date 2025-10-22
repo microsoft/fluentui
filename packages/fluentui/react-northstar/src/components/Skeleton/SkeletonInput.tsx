@@ -26,6 +26,9 @@ export const SkeletonInput = compose<
   displayName: 'SkeletonInput',
   overrideStyles: true,
   shorthandConfig: {},
+  defaultProps: {
+    as: 'span',
+  },
   handledProps: ['fluid'],
   mapPropsToStylesProps: ({ fluid }) => ({
     fluid,
@@ -35,8 +38,4 @@ export const SkeletonInput = compose<
 SkeletonInput.propTypes = {
   ...commonPropTypes.createCommon(),
   fluid: PropTypes.bool,
-};
-
-SkeletonInput.defaultProps = {
-  as: 'span',
 };

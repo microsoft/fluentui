@@ -27,14 +27,17 @@ export const ToolbarMenuItemIcon = compose<
   mapPropsToStylesProps: props => ({
     hasContent: props.hasContent,
   }),
+
   shorthandConfig: {
     mappedProp: 'content',
   },
+
+  defaultProps: {
+    as: 'span',
+  },
   handledProps: ['hasContent'],
+
   overrideStyles: true,
 });
 
-ToolbarMenuItemIcon.defaultProps = {
-  as: 'span',
-};
 ToolbarMenuItemIcon.propTypes = commonPropTypes.createCommon();

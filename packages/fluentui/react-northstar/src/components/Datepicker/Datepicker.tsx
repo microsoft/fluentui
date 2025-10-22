@@ -149,13 +149,34 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
   return formattedString;
 };
 
+const DEFAULT_PROPS: Partial<DatepickerProps> = {
+  accessibility: datepickerBehavior,
+
+  inputOnly: false,
+  buttonOnly: false,
+  calendar: {},
+  popup: {},
+  input: {},
+
+  firstDayOfWeek: DayOfWeek.Monday,
+  firstWeekOfYear: FirstWeekOfYear.FirstDay,
+  dateRangeType: DateRangeType.Day,
+
+  fallbackToLastCorrectDateOnBlur: true,
+  allowManualInput: true,
+  required: false,
+
+  ...DEFAULT_CALENDAR_STRINGS,
+};
+
 /**
  * A Datepicker is a control which is used to display dates grid and allow user to select them.
  *
  * @accessibilityIssues
  * [NVDA - Aria-selected is not narrated for the gridcell](https://github.com/nvaccess/nvda/issues/11986)
  */
-export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((props, ref) => {
+export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((_props, ref) => {
+  const props = _.defaults({}, _props, DEFAULT_PROPS);
   const context = useFluentContext();
 
   const inputRef = React.useRef<HTMLElement>();
@@ -197,6 +218,7 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
   };
 
   const {
+    accessibility,
     calendar,
     popup,
     input,
@@ -290,7 +312,7 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((pro
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: Datepicker.displayName,
     actionHandlers: {
       open: e => {
@@ -532,26 +554,6 @@ Datepicker.propTypes = {
 
   'aria-labelledby': PropTypes.string,
   'aria-invalid': PropTypes.bool,
-};
-
-Datepicker.defaultProps = {
-  accessibility: datepickerBehavior,
-
-  inputOnly: false,
-  buttonOnly: false,
-  calendar: {},
-  popup: {},
-  input: {},
-
-  firstDayOfWeek: DayOfWeek.Monday,
-  firstWeekOfYear: FirstWeekOfYear.FirstDay,
-  dateRangeType: DateRangeType.Day,
-
-  fallbackToLastCorrectDateOnBlur: true,
-  allowManualInput: true,
-  required: false,
-
-  ...DEFAULT_CALENDAR_STRINGS,
 };
 
 Datepicker.handledProps = Object.keys(Datepicker.propTypes) as any;

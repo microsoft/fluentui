@@ -25,10 +25,10 @@ export const ToolbarMenuItemContent = compose<
   shorthandConfig: {
     mappedProp: 'content',
   },
+  defaultProps: {
+    as: 'span',
+  },
   overrideStyles: true,
 });
 
-ToolbarMenuItemContent.defaultProps = {
-  as: 'span',
-};
 ToolbarMenuItemContent.propTypes = commonPropTypes.createCommon();

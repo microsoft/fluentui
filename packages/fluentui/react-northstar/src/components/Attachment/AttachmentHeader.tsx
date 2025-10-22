@@ -21,13 +21,14 @@ export const AttachmentHeader = compose<
   className: attachmentHeaderClassName,
   displayName: 'AttachmentHeader',
 
+  defaultProps: {
+    as: 'span',
+  },
+
   overrideStyles: true,
   shorthandConfig: {
     mappedProp: 'content',
   },
 });
 
-AttachmentHeader.defaultProps = {
-  as: 'span',
-};
 AttachmentHeader.propTypes = commonPropTypes.createCommon();

@@ -20,13 +20,12 @@ export const DatepickerCalendarHeaderCell = compose<
   className: datepickerCalendarHeaderCellClassName,
   displayName: 'DatepickerCalendarHeaderCell',
   overrideStyles: true,
+  defaultProps: {
+    as: 'th',
+  },
   shorthandConfig: {
     mappedProp: 'content',
   },
 });
-
-DatepickerCalendarHeaderCell.defaultProps = {
-  as: 'th',
-};
 
 DatepickerCalendarHeaderCell.propTypes = commonPropTypes.createCommon();

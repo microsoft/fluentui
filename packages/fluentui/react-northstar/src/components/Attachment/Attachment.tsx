@@ -198,6 +198,11 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
       header: AttachmentHeader,
       icon: AttachmentIcon,
     },
+
+    defaultProps: {
+      accessibility: attachmentBehavior,
+      body: {},
+    },
     handledProps: [
       'accessibility',
       'action',
@@ -239,10 +244,6 @@ Attachment.propTypes = {
   icon: customPropTypes.shorthandAllowingChildren,
   onClick: PropTypes.func,
   progress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-Attachment.defaultProps = {
-  accessibility: attachmentBehavior,
-  body: {},
 };
 
 Attachment.Action = AttachmentAction;

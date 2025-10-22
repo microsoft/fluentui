@@ -76,12 +76,11 @@ export const BreadcrumbLink = compose<'a', BreadcrumbLinkProps, BreadcrumbLinkSt
   {
     className: breadcrumbLinkClassName,
     displayName: 'BreadcrumbLink',
+    defaultProps: {
+      as: 'a',
+    },
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
 );
-
-BreadcrumbLink.defaultProps = {
-  as: 'a',
-};
 
 BreadcrumbLink.propTypes = commonPropTypes.createCommon();

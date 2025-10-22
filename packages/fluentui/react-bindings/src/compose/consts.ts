@@ -107,6 +107,8 @@ export type ComposeOptions<
 
   mapPropsToStylesProps?: (props: TParentStylesProps & TInputProps) => TInputStylesProps;
 
+  defaultProps?: Partial<TParentProps & TInputProps & { as: React.ElementType }>;
+
   handledProps?: (keyof TInputProps | 'as')[];
 
   overrideStyles?: boolean;
@@ -162,6 +164,7 @@ export type ComposePreparedOptions<TProps = {}, TInputState = any, TParentState 
   mapPropsToStylesPropsChain: ((props: object) => object)[];
   render: ComposeRenderFunction;
 
+  defaultProps: Partial<TProps & { as: React.ElementType }>;
   handledProps: (keyof TProps | 'as')[];
 
   overrideStyles: boolean;
@@ -226,6 +229,7 @@ export const defaultComposeOptions: Required<ComposePreparedOptions> = {
   displayNames: [],
   mapPropsToStylesPropsChain: [],
   render: () => null,
+  defaultProps: {},
   handledProps: [] as never[],
   overrideStyles: false,
   // eslint-disable-next-line @typescript-eslint/naming-convention

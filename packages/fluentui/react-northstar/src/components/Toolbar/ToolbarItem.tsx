@@ -369,6 +369,12 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     }),
 
     shorthandConfig: { mappedProp: 'content' },
+
+    defaultProps: {
+      as: 'button',
+      accessibility: toolbarItemBehavior,
+      wrapper: {},
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -418,9 +424,4 @@ ToolbarItem.propTypes = {
     PropTypes.string,
   ]),
   wrapper: customPropTypes.shorthandAllowingChildren,
-};
-ToolbarItem.defaultProps = {
-  as: 'button',
-  accessibility: toolbarItemBehavior,
-  wrapper: {},
 };

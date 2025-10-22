@@ -26,6 +26,10 @@ export const SkeletonText = compose<
   displayName: 'SkeletonText',
   overrideStyles: true,
   shorthandConfig: {},
+  defaultProps: {
+    as: 'span',
+    size: 'medium',
+  },
   handledProps: ['size'],
   mapPropsToStylesProps: ({ size }) => ({
     size,
@@ -35,9 +39,4 @@ export const SkeletonText = compose<
 SkeletonText.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,
-};
-
-SkeletonText.defaultProps = {
-  as: 'span',
-  size: 'medium',
 };

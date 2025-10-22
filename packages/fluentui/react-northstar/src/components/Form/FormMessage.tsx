@@ -20,6 +20,9 @@ export const FormMessage = compose<'span', FormMessageProps, FormMessageStylesPr
   displayName: 'FormMessage',
 
   mapPropsToStylesProps: ({ error }) => ({ error }),
+  defaultProps: {
+    as: 'span',
+  },
   handledProps: ['error'],
 
   overrideStyles: true,
@@ -28,7 +31,4 @@ export const FormMessage = compose<'span', FormMessageProps, FormMessageStylesPr
   },
 });
 
-FormMessage.defaultProps = {
-  as: 'span',
-};
 FormMessage.propTypes = commonPropTypes.createCommon();

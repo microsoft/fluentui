@@ -63,12 +63,13 @@ export const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, Toolbar
     displayName: 'ToolbarMenuDivider',
 
     shorthandConfig: { mappedProp: 'content' },
+
+    defaultProps: {
+      as: 'li',
+      accessibility: toolbarMenuDividerBehavior,
+    },
     handledProps: ['accessibility', 'as', 'children', 'className', 'content', 'design', 'styles', 'variables'],
   },
 ) as ComponentWithAs<'li', ToolbarMenuDividerProps>;
 
 ToolbarMenuDivider.propTypes = commonPropTypes.createCommon();
-ToolbarMenuDivider.defaultProps = {
-  as: 'li',
-  accessibility: toolbarMenuDividerBehavior,
-};

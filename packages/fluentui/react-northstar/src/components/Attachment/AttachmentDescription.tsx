@@ -21,13 +21,14 @@ export const AttachmentDescription = compose<
   className: attachmentDescriptionClassName,
   displayName: 'AttachmentDescription',
 
+  defaultProps: {
+    as: 'span',
+  },
+
   overrideStyles: true,
   shorthandConfig: {
     mappedProp: 'content',
   },
 });
 
-AttachmentDescription.defaultProps = {
-  as: 'span',
-};
 AttachmentDescription.propTypes = commonPropTypes.createCommon();

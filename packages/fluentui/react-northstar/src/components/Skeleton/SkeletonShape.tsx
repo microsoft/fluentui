@@ -23,6 +23,12 @@ export const SkeletonShape = compose<'span', SkeletonShapeOwnProps, SkeletonShap
     displayName: 'SkeletonShape',
     overrideStyles: true,
     shorthandConfig: {},
+    defaultProps: {
+      as: 'span',
+      width: '100px',
+      height: '100px',
+      round: false,
+    },
     handledProps: ['round', 'width', 'height'],
     mapPropsToStylesProps: ({ width, height, round }) => ({ width, height, round }),
   },
@@ -33,11 +39,4 @@ SkeletonShape.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   round: PropTypes.bool,
-};
-
-SkeletonShape.defaultProps = {
-  as: 'span',
-  width: '100px',
-  height: '100px',
-  round: false,
 };

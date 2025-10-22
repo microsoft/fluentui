@@ -72,10 +72,10 @@ export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((props, r
   const chatDensity = useChatDensityContext();
   const {
     accessibility,
-    attached,
+    attached = false,
     children,
     className,
-    contentPosition,
+    contentPosition = 'start',
     density = chatDensity,
     design,
     gutter,
@@ -131,7 +131,7 @@ export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((props, r
     );
   };
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'li');
   const unhandledProps = useUnhandledProps(ChatItem.handledProps, props);
 
   const element = (
@@ -152,11 +152,6 @@ export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((props, r
 
 ChatItem.displayName = 'ChatItem';
 
-ChatItem.defaultProps = {
-  as: 'li',
-  contentPosition: 'start',
-  attached: false,
-};
 ChatItem.propTypes = {
   ...commonPropTypes.createCommon({ content: false }),
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),

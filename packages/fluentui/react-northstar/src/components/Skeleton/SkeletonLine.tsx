@@ -22,6 +22,11 @@ export const SkeletonLine = compose<'span', SkeletonLineOwnProps, SkeletonLineSt
     displayName: 'SkeletonLine',
     overrideStyles: true,
     shorthandConfig: {},
+    defaultProps: {
+      as: 'span',
+      width: '100%',
+      height: '1rem',
+    },
     handledProps: ['width', 'height'],
     mapPropsToStylesProps: ({ width, height }) => ({ width, height }),
   },
@@ -31,10 +36,4 @@ SkeletonLine.propTypes = {
   ...commonPropTypes.createCommon(),
   width: PropTypes.string,
   height: PropTypes.string,
-};
-
-SkeletonLine.defaultProps = {
-  as: 'span',
-  width: '100%',
-  height: '1rem',
 };

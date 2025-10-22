@@ -69,6 +69,53 @@ export type LayoutStylesProps = Required<
   Pick<LayoutProps, 'alignItems' | 'debug' | 'gap' | 'justifyItems' | 'mainSize' | 'endSize' | 'startSize' | 'vertical'>
 > & { hasStart: boolean; hasMain: boolean; hasEnd: boolean };
 
+// TODO: when an area is another Layout, do not wrap them in an extra div
+// TODO: option 1) higher value layouts could use start={Layout.create(start)} to ensure Areas are layout root
+const DEFAULT_RENDER_START_AREA: NonNullable<LayoutProps['renderStartArea']> = ({ start, classes }) => {
+  return (
+    start && (
+      <div
+        className={cx(layoutSlotClassNames.start, classes.start)}
+        {...rtlTextContainer.getAttributes({ forElements: [start] })}
+      >
+        {start}
+      </div>
+    )
+  );
+};
+
+const DEFAULT_RENDER_MAIN_AREA: NonNullable<LayoutProps['renderMainArea']> = ({ main, classes }) => {
+  return (
+    main && (
+      <div
+        className={cx(layoutSlotClassNames.main, classes.main)}
+        {...rtlTextContainer.getAttributes({ forElements: [main] })}
+      >
+        {main}
+      </div>
+    )
+  );
+};
+
+const DEFAULT_RENDER_END_AREA: NonNullable<LayoutProps['renderEndArea']> = ({ end, classes }) => {
+  return (
+    end && (
+      <div
+        className={cx(layoutSlotClassNames.end, classes.end)}
+        {...rtlTextContainer.getAttributes({ forElements: [end] })}
+      >
+        {end}
+      </div>
+    )
+  );
+};
+
+// Heads up!
+// IE11 Doesn't support grid-gap, insert virtual columns instead
+const DEFAULT_RENDER_GAP: NonNullable<LayoutProps['renderGap']> = ({ gap, classes }) => {
+  return gap && <span className={cx(layoutSlotClassNames.gap, classes.gap)} />;
+};
+
 /**
  * (DEPRECATED) A layout is a utility for arranging the content of a component.
  */
@@ -78,20 +125,20 @@ export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStatic
   const {
     reducing,
     disappearing,
-    renderStartArea,
-    renderMainArea,
-    renderEndArea,
-    renderGap,
+    renderStartArea = DEFAULT_RENDER_START_AREA,
+    renderMainArea = DEFAULT_RENDER_MAIN_AREA,
+    renderEndArea = DEFAULT_RENDER_END_AREA,
+    renderGap = DEFAULT_RENDER_GAP,
     alignItems,
     debug,
     gap,
     justifyItems,
     main,
-    mainSize,
+    mainSize = '1fr',
     end,
-    endSize,
+    endSize = 'auto',
     start,
-    startSize,
+    startSize = 'auto',
     vertical,
     className,
     design,
@@ -228,59 +275,6 @@ Layout.propTypes = {
   disappearing: PropTypes.bool,
 
   vertical: PropTypes.bool,
-};
-
-Layout.defaultProps = {
-  startSize: 'auto',
-  mainSize: '1fr',
-  endSize: 'auto',
-
-  // TODO: when an area is another Layout, do not wrap them in an extra div
-  // TODO: option 1) higher value layouts could use start={Layout.create(start)} to ensure Areas are layout root
-  renderStartArea({ start, classes }) {
-    return (
-      start && (
-        <div
-          className={cx(layoutSlotClassNames.start, classes.start)}
-          {...rtlTextContainer.getAttributes({ forElements: [start] })}
-        >
-          {start}
-        </div>
-      )
-    );
-  },
-
-  renderMainArea({ main, classes }) {
-    return (
-      main && (
-        <div
-          className={cx(layoutSlotClassNames.main, classes.main)}
-          {...rtlTextContainer.getAttributes({ forElements: [main] })}
-        >
-          {main}
-        </div>
-      )
-    );
-  },
-
-  renderEndArea({ end, classes }) {
-    return (
-      end && (
-        <div
-          className={cx(layoutSlotClassNames.end, classes.end)}
-          {...rtlTextContainer.getAttributes({ forElements: [end] })}
-        >
-          {end}
-        </div>
-      )
-    );
-  },
-
-  // Heads up!
-  // IE11 Doesn't support grid-gap, insert virtual columns instead
-  renderGap({ gap, classes }) {
-    return gap && <span className={cx(layoutSlotClassNames.gap, classes.gap)} />;
-  },
 };
 
 Layout.handledProps = Object.keys(Layout.propTypes) as any;

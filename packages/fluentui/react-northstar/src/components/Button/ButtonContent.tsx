@@ -22,14 +22,14 @@ export const ButtonContent = compose<'span', ButtonContentProps, ButtonContentSt
   handledProps: ['size'],
 
   overrideStyles: true,
+  defaultProps: {
+    as: 'span',
+  },
   shorthandConfig: {
     mappedProp: 'content',
   },
 });
 
-ButtonContent.defaultProps = {
-  as: 'span',
-};
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,

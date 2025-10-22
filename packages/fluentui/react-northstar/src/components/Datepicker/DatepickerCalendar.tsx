@@ -95,13 +95,29 @@ const normalizeDateInGrid = (date: Date): Date => {
   return result;
 };
 
+const DEFAULT_PROPS: Partial<DatepickerCalendarProps> = {
+  accessibility: datepickerCalendarBehavior,
+  firstDayOfWeek: DayOfWeek.Monday,
+  firstWeekOfYear: FirstWeekOfYear.FirstDay,
+  dateRangeType: DateRangeType.Day,
+  header: {},
+  calendarCell: {},
+  calendarCellButton: {},
+  calendarHeaderCell: {},
+  calendarGrid: {},
+  calendarGridRow: {},
+  ...DEFAULT_CALENDAR_STRINGS,
+};
+
 /**
  * A DatepickerCalendar is used to display dates in sematically grouped way.
  */
-export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCalendarProps>((props, ref) => {
+export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCalendarProps>((_props, ref) => {
+  const props = _.defaults({}, _props, DEFAULT_PROPS);
   const context = useFluentContext();
 
   const {
+    accessibility,
     className,
     design,
     styles,
@@ -142,7 +158,7 @@ export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCal
       setGridNavigatedDate(date);
     }
   };
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: DatepickerCalendar.displayName,
     actionHandlers: {
       addWeek: e => {
@@ -492,20 +508,6 @@ DatepickerCalendar.propTypes = {
   inputBoundedFormatString: PropTypes.string,
   inputMinBoundedFormatString: PropTypes.string,
   inputMaxBoundedFormatString: PropTypes.string,
-};
-
-DatepickerCalendar.defaultProps = {
-  accessibility: datepickerCalendarBehavior,
-  firstDayOfWeek: DayOfWeek.Monday,
-  firstWeekOfYear: FirstWeekOfYear.FirstDay,
-  dateRangeType: DateRangeType.Day,
-  header: {},
-  calendarCell: {},
-  calendarCellButton: {},
-  calendarHeaderCell: {},
-  calendarGrid: {},
-  calendarGridRow: {},
-  ...DEFAULT_CALENDAR_STRINGS,
 };
 
 DatepickerCalendar.handledProps = Object.keys(DatepickerCalendar.propTypes) as any;

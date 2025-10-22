@@ -247,6 +247,16 @@ export function isConformant(
   });
 
   // ---------------------------------------
+  // Default props
+  // ---------------------------------------
+
+  describe('defaultProps (common)', () => {
+    test('should not be defined on components', () => {
+      expect(Component.hasOwnProperty('defaultProps')).toBe(false);
+    });
+  });
+
+  // ---------------------------------------
   // Handled props
   // ---------------------------------------
   describe('handles props', () => {
@@ -263,17 +273,13 @@ export function isConformant(
       expect(handledProps).toContain('variables');
     });
 
-    test('handledProps includes props defined in autoControlledProps, defaultProps or propTypes', () => {
-      const computedProps = _.union(
-        Component.autoControlledProps,
-        _.keys(Component.defaultProps),
-        _.keys(Component.propTypes),
-      );
+    test('handledProps includes props defined in autoControlledProps or propTypes', () => {
+      const computedProps = _.union(Component.autoControlledProps, _.keys(Component.propTypes));
       const expectedProps = _.uniq(computedProps).sort();
 
       const message =
         'Not all handled props were defined correctly. All props defined in handled props, must be defined' +
-        'either in static autoControlledProps, static defaultProps or static propTypes.';
+        'either in static autoControlledProps or static propTypes.';
 
       expect({
         message,

@@ -55,7 +55,16 @@ export const chatSlotClassNames: ChatSlotClassNames = {
 export const Chat = React.forwardRef<HTMLUListElement, ChatProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { accessibility, children, className, density, design, items, styles, variables } = props;
+  const {
+    accessibility = chatBehavior,
+    children,
+    className,
+    density = defaultChatDensity,
+    design,
+    items,
+    styles,
+    variables,
+  } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Chat.displayName,
@@ -73,7 +82,7 @@ export const Chat = React.forwardRef<HTMLUListElement, ChatProps>((props, ref) =
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'ul');
   const unhandledProps = useUnhandledProps(Chat.handledProps, props);
 
   const element = getA11Props.unstable_wrapWithFocusZone(
@@ -109,11 +118,6 @@ export const Chat = React.forwardRef<HTMLUListElement, ChatProps>((props, ref) =
 
 Chat.displayName = 'Chat';
 
-Chat.defaultProps = {
-  accessibility: chatBehavior,
-  as: 'ul',
-  density: defaultChatDensity,
-};
 Chat.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

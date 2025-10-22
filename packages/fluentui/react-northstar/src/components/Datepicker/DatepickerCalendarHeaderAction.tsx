@@ -35,16 +35,15 @@ export const DatepickerCalendarHeaderAction = compose<
     text: true,
     disabled: p.disabledNavigatableButton,
   }),
+  defaultProps: {
+    as: 'button',
+    accessibility: buttonBehavior,
+    size: 'medium',
+    icon: {},
+  },
   slotProps: props => ({
     icon: {
       content: props.direction === 'next' ? <ChevronEndIcon /> : <ChevronStartIcon />,
     },
   }),
 });
-
-DatepickerCalendarHeaderAction.defaultProps = {
-  as: 'button',
-  accessibility: buttonBehavior,
-  size: 'medium',
-  icon: {},
-};

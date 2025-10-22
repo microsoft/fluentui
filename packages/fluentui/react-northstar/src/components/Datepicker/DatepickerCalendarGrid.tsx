@@ -20,13 +20,12 @@ export const DatepickerCalendarGrid = compose<
   className: datepickerCalendarGridClassName,
   displayName: 'DatepickerCalendarGrid',
   overrideStyles: true,
+  defaultProps: {
+    as: 'table',
+  },
   shorthandConfig: {
     mappedProp: 'content',
   },
 });
-
-DatepickerCalendarGrid.defaultProps = {
-  as: 'table',
-};
 
 DatepickerCalendarGrid.propTypes = commonPropTypes.createCommon();

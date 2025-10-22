@@ -21,13 +21,14 @@ export const AttachmentIcon = compose<
   className: attachmentIconClassName,
   displayName: 'AttachmentIcon',
 
+  defaultProps: {
+    as: 'span',
+  },
+
   overrideStyles: true,
   shorthandConfig: {
     mappedProp: 'content',
   },
 });
 
-AttachmentIcon.defaultProps = {
-  as: 'span',
-};
 AttachmentIcon.propTypes = commonPropTypes.createCommon();

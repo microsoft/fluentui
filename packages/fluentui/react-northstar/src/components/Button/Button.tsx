@@ -298,6 +298,11 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     shorthandConfig: {
       mappedProp: 'content',
     },
+    defaultProps: {
+      as: 'button',
+      accessibility: buttonBehavior,
+      size: 'medium',
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -332,12 +337,6 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
   shorthandConfig: ShorthandConfig<ButtonProps>;
   Content: typeof ButtonContent;
   Group: typeof ButtonGroup;
-};
-
-Button.defaultProps = {
-  as: 'button',
-  accessibility: buttonBehavior,
-  size: 'medium',
 };
 
 Button.propTypes = {

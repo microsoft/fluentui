@@ -194,6 +194,11 @@ export const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProp
     shorthandConfig: {
       mappedArrayProp: 'items',
     },
+
+    defaultProps: {
+      accessibility: toolbarMenuBehavior,
+      as: 'ul',
+    },
     handledProps: [
       'accessibility',
       'as',
@@ -217,8 +222,4 @@ ToolbarMenu.propTypes = {
   onItemClick: PropTypes.func,
   submenu: PropTypes.bool,
   submenuIndicator: customPropTypes.shorthandAllowingChildren,
-};
-ToolbarMenu.defaultProps = {
-  accessibility: toolbarMenuBehavior,
-  as: 'ul',
 };
