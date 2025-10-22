@@ -650,19 +650,22 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonTransparentIconForegroundSelected: {
       fluent: tokens.colorNeutralForeground2BrandSelected,
     },
+    groupButtonNeutralDividerStroke: {
+      fluent: tokens.colorNeutralStroke1,
+    },
     groupButtonDividerStrokewidth: {
       fluent: tokens.strokeWidthThin,
     },
-    groupButtonOutlineDividerForeground: {
+    groupButtonOutlineDividerStroke: {
       fluent: tokens.colorNeutralStroke1,
     },
-    groupButtonPrimaryDividerForeground: {
+    groupButtonPrimaryDividerStroke: {
       fluent: tokens.colorNeutralStrokeOnBrand,
     },
-    groupButtonSubtleDividerForeground: {
+    groupButtonSubtleDividerStroke: {
       fluent: 'transparent',
     },
-    groupButtonTransparentDividerForeground: {
+    groupButtonTransparentDividerStroke: {
       fluent: 'transparent',
     },
     groupButtonDividerMarginVertical: {

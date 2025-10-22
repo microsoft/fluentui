@@ -53,7 +53,7 @@ export const buttonGroup: GroupPart = {
     divider: {
       coreProperties: ['strokewidth', 'margin.vertical'],
       variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
-      variantProperties: ['foreground'],
+      variantProperties: ['stroke'],
     },
     chevron: {
       variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],

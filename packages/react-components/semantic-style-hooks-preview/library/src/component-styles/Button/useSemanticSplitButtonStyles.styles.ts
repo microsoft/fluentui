@@ -35,15 +35,18 @@ const useRootStyles = makeStyles({
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
       borderRightWidth: semanticTokens.groupButtonDividerStrokewidth,
+      borderRightColor: semanticTokens.groupButtonNeutralDividerStroke,
       ':hover': {
         borderTopRightRadius: 0,
         borderBottomRightRadius: 0,
         borderRightWidth: semanticTokens.groupButtonDividerStrokewidth,
+        borderRightColor: semanticTokens.groupButtonNeutralDividerStroke,
       },
       ':hover:active': {
         borderTopRightRadius: 0,
         borderBottomRightRadius: 0,
         borderRightWidth: semanticTokens.groupButtonDividerStrokewidth,
+        borderRightColor: semanticTokens.groupButtonNeutralDividerStroke,
       },
     },
 
@@ -66,12 +69,12 @@ const useRootStyles = makeStyles({
   // Appearance variations
   outline: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.groupButtonOutlineDividerForeground,
+      borderRightColor: semanticTokens.groupButtonOutlineDividerStroke,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonOutlineDividerForeground,
+        borderRightColor: semanticTokens.groupButtonOutlineDividerStroke,
       },
 
       [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
@@ -79,25 +82,25 @@ const useRootStyles = makeStyles({
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonOutlineDividerForeground,
+        borderRightColor: semanticTokens.groupButtonOutlineDividerStroke,
       },
       [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
     },
   },
   primary: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.groupButtonPrimaryDividerForeground,
+      borderRightColor: semanticTokens.groupButtonPrimaryDividerStroke,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonPrimaryDividerForeground,
+        borderRightColor: semanticTokens.groupButtonPrimaryDividerStroke,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonPrimaryDividerForeground,
+        borderRightColor: semanticTokens.groupButtonPrimaryDividerStroke,
       },
     },
 
@@ -124,35 +127,35 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.groupButtonSubtleDividerForeground,
+      borderRightColor: semanticTokens.groupButtonSubtleDividerStroke,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonSubtleDividerForeground,
+        borderRightColor: semanticTokens.groupButtonSubtleDividerStroke,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonSubtleDividerForeground,
+        borderRightColor: semanticTokens.groupButtonSubtleDividerStroke,
       },
     },
   },
   transparent: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.groupButtonTransparentDividerForeground,
+      borderRightColor: semanticTokens.groupButtonTransparentDividerStroke,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonTransparentDividerForeground,
+        borderRightColor: semanticTokens.groupButtonTransparentDividerStroke,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonTransparentDividerForeground,
+        borderRightColor: semanticTokens.groupButtonTransparentDividerStroke,
       },
     },
   },
