@@ -24,6 +24,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false, unmountOnClose = true } = props;
 
   const dialogTitleId = useId('dialog-title-');
+
   const [trigger, content] = childrenToTriggerAndContent(children);
 
   const [open, setOpen] = useControllableState({
