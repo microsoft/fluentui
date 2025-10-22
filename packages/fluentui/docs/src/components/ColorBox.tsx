@@ -56,9 +56,9 @@ const ColorBox: React.FC<ColorBoxProps> = ({
   name,
   rounded,
   value,
-  showColorValue,
-  copyToClipboardIcon,
-  size,
+  showColorValue = true,
+  copyToClipboardIcon = true,
+  size = 'normal',
 }) => (
   <Box
     styles={({ theme: { siteVariables } }) => ({
@@ -131,11 +131,5 @@ const ColorBox: React.FC<ColorBoxProps> = ({
     </Box>
   </Box>
 );
-
-ColorBox.defaultProps = {
-  size: 'normal',
-  copyToClipboardIcon: true,
-  showColorValue: true,
-};
 
 export default ColorBox;

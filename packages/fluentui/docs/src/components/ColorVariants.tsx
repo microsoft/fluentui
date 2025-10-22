@@ -10,7 +10,7 @@ type ColorVariantsProps = {
   size?: 'small' | 'normal' | 'big';
 };
 
-const ColorVariants: React.FC<ColorVariantsProps> = ({ name, headerOnly, size }) => (
+const ColorVariants: React.FC<ColorVariantsProps> = ({ name, headerOnly = false, size = 'big' }) => (
   <ProviderConsumer
     render={({ siteVariables: { colors } }) => (
       <Box
@@ -35,10 +35,5 @@ const ColorVariants: React.FC<ColorVariantsProps> = ({ name, headerOnly, size })
     )}
   />
 );
-
-ColorVariants.defaultProps = {
-  headerOnly: false,
-  size: 'big',
-};
 
 export default ColorVariants;

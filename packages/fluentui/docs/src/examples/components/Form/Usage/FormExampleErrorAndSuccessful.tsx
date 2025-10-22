@@ -29,7 +29,13 @@ const FormExampleErrorAndSatisfactory = () => (
       <FormLabel id="email-label" htmlFor="email-field">
         E-mail*
       </FormLabel>
-      <Input successIndicator={<PresenceAvailableIcon />} required name="email-field" id="email-field" />
+      <Input
+        successIndicator={<PresenceAvailableIcon />}
+        required
+        name="email-field"
+        id="email-field"
+        defaultValue="Hello wolrd"
+      />
     </FormField>
     <FormField>
       <Button>Submit</Button>

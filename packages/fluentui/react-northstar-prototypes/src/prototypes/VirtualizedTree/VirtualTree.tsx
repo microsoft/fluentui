@@ -48,7 +48,16 @@ export interface VirtualItemData {
 export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
   const context = useFluentContext();
 
-  const { children, className, design, styles, variables, height, estimatedItemSize } = props;
+  const {
+    accessibility = treeBehavior,
+    children,
+    className,
+    design,
+    styles,
+    variables,
+    height,
+    estimatedItemSize = 50,
+  } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(
@@ -56,7 +65,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
     props,
   );
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: VirtualTree.displayName,
     rtl: context.rtl,
   });
@@ -177,8 +186,3 @@ const ItemWrapper = React.memo<ListChildComponentProps & { data: VirtualItemData
 });
 
 VirtualTree.displayName = 'VirtualTree';
-
-VirtualTree.defaultProps = {
-  accessibility: treeBehavior,
-  estimatedItemSize: 50,
-};

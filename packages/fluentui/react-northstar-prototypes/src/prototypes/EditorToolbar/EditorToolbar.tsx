@@ -48,6 +48,7 @@ type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemS
 type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: keyof ToolbarMenuItemShorthandKinds }>;
 
 const EditorToolbar: React.FC<EditorToolbarProps> = props => {
+  const target = props.target || document;
   const overflowIndex = React.useRef<number>();
 
   const linkItemRef = React.useRef<HTMLElement>(null);
@@ -257,7 +258,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       }
     },
     type: 'keydown',
-    target: props.target,
+    target,
   });
   useEventListener({
     listener: () => {
@@ -272,7 +273,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       }
     },
     type: 'resize',
-    target: props.target.defaultView,
+    target: target.defaultView,
   });
 
   return (
@@ -333,10 +334,6 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       </Flex>
     </>
   );
-};
-
-EditorToolbar.defaultProps = {
-  target: document,
 };
 
 export default EditorToolbar;

@@ -14,8 +14,10 @@ type KnobProviderProps = {
   components?: Partial<KnobComponents>;
 };
 
+const DEFAULT_COMPONENTS = {};
+
 export const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
-  const { children, components } = props;
+  const { children, components = DEFAULT_COMPONENTS } = props;
 
   const [knobs, setKnobs] = React.useState<KnobSet>({});
   const [items, setItems] = React.useState<string[]>([]);
@@ -67,8 +69,4 @@ export const KnobProvider: React.FunctionComponent<KnobProviderProps> = props =>
       </LogContextFunctions.Provider>
     </KnobContext.Provider>
   );
-};
-
-KnobProvider.defaultProps = {
-  components: {},
 };
