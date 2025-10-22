@@ -91,26 +91,31 @@ export const dropdownSelectedItemSlotClassNames: DropdownSelectedItemSlotClassNa
 
 export type DropdownSelectedItemStylesProps = { hasImage: boolean };
 
+const DEFAULT_ICON = <CloseIcon />;
+
 /**
  * A DropdownSelectedItem represents a selected item of 'multiple-selection' Dropdown.
  */
 export const DropdownSelectedItem = React.forwardRef<HTMLSpanElement, DropdownSelectedItemProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { active, header, icon, image, className, design, styles, variables, disabled } = props;
+  const { active, header, icon = DEFAULT_ICON, image, className, design, styles, variables, disabled } = props;
 
   const itemRef = React.useRef<HTMLElement>();
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(DropdownSelectedItem.handledProps, props);
 
-  const getA11yProps = useAccessibility<DropdownSelectedItemBehaviorProps>(props.accessibility, {
-    debugName: DropdownSelectedItem.displayName,
-    mapPropsToBehavior: () => ({
-      header: header as string,
-      active,
-    }),
-    rtl: context.rtl,
-  });
+  const getA11yProps = useAccessibility<DropdownSelectedItemBehaviorProps>(
+    props.accessibility ?? dropdownSelectedItemBehavior,
+    {
+      debugName: DropdownSelectedItem.displayName,
+      mapPropsToBehavior: () => ({
+        header: header as string,
+        active,
+      }),
+      rtl: context.rtl,
+    },
+  );
 
   React.useEffect(() => {
     if (active) {
@@ -228,12 +233,6 @@ DropdownSelectedItem.propTypes = {
 };
 
 DropdownSelectedItem.handledProps = Object.keys(DropdownSelectedItem.propTypes) as any;
-
-DropdownSelectedItem.defaultProps = {
-  accessibility: dropdownSelectedItemBehavior,
-  as: 'span',
-  icon: <CloseIcon />,
-};
 
 DropdownSelectedItem.create = createShorthandFactory({
   Component: DropdownSelectedItem,

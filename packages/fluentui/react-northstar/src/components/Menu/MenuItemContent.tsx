@@ -54,7 +54,19 @@ export const MenuItemContent = React.forwardRef<HTMLSpanElement, MenuItemContent
     vertical: v => v.vertical,
   }) as unknown as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
-  const { className, children, design, styles, variables, content, hasMenu, hasIcon, vertical, inSubmenu } = props;
+  const {
+    accessibility,
+    className,
+    children,
+    design,
+    styles,
+    variables,
+    content,
+    hasMenu,
+    hasIcon,
+    vertical,
+    inSubmenu,
+  } = props;
 
   const { classes } = useStyles<MenuItemContentStylesProps>(MenuItemContent.displayName, {
     className: menuItemContentClassName,
@@ -73,12 +85,12 @@ export const MenuItemContent = React.forwardRef<HTMLSpanElement, MenuItemContent
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: MenuItemContent.displayName,
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(MenuItemContent.handledProps, props);
 
   const element = (
@@ -99,10 +111,6 @@ export const MenuItemContent = React.forwardRef<HTMLSpanElement, MenuItemContent
   FluentComponentStaticProps<MenuItemContentProps>;
 
 MenuItemContent.displayName = 'MenuItemContent';
-
-MenuItemContent.defaultProps = {
-  as: 'span',
-};
 
 MenuItemContent.propTypes = {
   ...commonPropTypes.createCommon(),

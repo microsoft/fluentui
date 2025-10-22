@@ -85,7 +85,7 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, r
   const context = useFluentContext();
 
   const {
-    accessibility,
+    accessibility = listItemBehavior,
     className,
     content,
     contentMedia,
@@ -146,7 +146,7 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, r
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'li');
   const unhandledProps = useUnhandledProps(ListItem.handledProps, props);
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
@@ -219,11 +219,6 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, r
   FluentComponentStaticProps<ListItemProps>;
 
 ListItem.displayName = 'ListItem';
-
-ListItem.defaultProps = {
-  as: 'li',
-  accessibility: listItemBehavior,
-};
 
 ListItem.propTypes = {
   ...commonPropTypes.createCommon({

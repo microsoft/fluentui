@@ -176,6 +176,8 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
   submenu: `${menuItemClassName}__submenu`,
 };
 
+const DEFAULT_INDICATOR = <ChevronEndIcon outline />;
+
 /**
  * A MenuItem is an actionable item within a Menu.
  */
@@ -204,12 +206,12 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
     children,
     content,
     icon,
-    wrapper,
+    wrapper = {},
     primary,
     secondary,
     active,
     vertical,
-    indicator,
+    indicator = DEFAULT_INDICATOR,
     disabled,
     underlined,
     iconOnly,
@@ -241,7 +243,7 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
 
   const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'a');
   const unhandledProps = useUnhandledProps(MenuItem.handledProps, props);
 
   const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
@@ -619,10 +621,4 @@ MenuItem.handledProps = Object.keys(MenuItem.propTypes) as any;
 
 MenuItem.shorthandConfig = {
   mappedProp: 'content',
-};
-
-MenuItem.defaultProps = {
-  as: 'a',
-  wrapper: {},
-  indicator: <ChevronEndIcon outline />,
 };

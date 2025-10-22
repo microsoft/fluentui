@@ -55,7 +55,18 @@ export const pillIconClassName = 'ui-pill__icon';
 export const PillIcon = React.forwardRef<HTMLSpanElement, PillIconProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { accessibility, children, className, content, design, styles, variables, size, selectable, image } = props;
+  const {
+    accessibility = pillIconBehavior,
+    children,
+    className,
+    content,
+    design,
+    styles,
+    variables,
+    size,
+    selectable,
+    image,
+  } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: PillIcon.displayName,
@@ -69,7 +80,7 @@ export const PillIcon = React.forwardRef<HTMLSpanElement, PillIconProps>((props,
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(PillIcon.handledProps, props);
 
   const element = (
@@ -86,11 +97,6 @@ export const PillIcon = React.forwardRef<HTMLSpanElement, PillIconProps>((props,
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, PillIconProps> & FluentComponentStaticProps<PillIconProps>;
-
-PillIcon.defaultProps = {
-  accessibility: pillIconBehavior,
-  as: 'span' as const,
-};
 
 PillIcon.displayName = 'PillIcon';
 

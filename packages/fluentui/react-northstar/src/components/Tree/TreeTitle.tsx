@@ -103,7 +103,7 @@ export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((pr
 
   const { focusItemById, toggleItemActive, toggleItemSelect } = React.useContext(TreeContext);
   const {
-    accessibility,
+    accessibility = treeTitleBehavior,
     id,
     children,
     className,
@@ -115,7 +115,7 @@ export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((pr
     styles,
     treeSize,
     variables,
-    selectionIndicator,
+    selectionIndicator = {},
     disabled,
     selected,
     selectable,
@@ -169,7 +169,7 @@ export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((pr
     unstyled: props.unstyled,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'a');
   const unhandledProps = useUnhandledProps(TreeTitle.handledProps, props);
 
   const handleClick = e => {
@@ -242,11 +242,6 @@ TreeTitle.propTypes = {
   unstyled: PropTypes.bool,
   indeterminate: PropTypes.bool,
   parent: PropTypes.string,
-};
-TreeTitle.defaultProps = {
-  as: 'a' as const,
-  selectionIndicator: {},
-  accessibility: treeTitleBehavior,
 };
 TreeTitle.handledProps = Object.keys(TreeTitle.propTypes) as any;
 

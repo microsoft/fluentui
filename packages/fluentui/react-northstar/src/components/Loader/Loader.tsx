@@ -49,16 +49,8 @@ export interface LoaderProps extends UIComponentProps {
   /** A size of the loader. */
   size?: SizeValue;
 
-  /** A loader can contain a custom svg element. */
-  svg?: ShorthandValue<BoxProps>;
-
   /** A loader can be secondary */
   secondary?: boolean;
-}
-
-export interface LoaderState {
-  visible: boolean;
-  labelId: string;
 }
 
 export const loaderClassName = 'ui-loader';
@@ -78,14 +70,26 @@ export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | '
 export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { delay, secondary, label, indicator, inline, labelPosition, className, design, styles, variables, size } =
-    props;
+  const {
+    accessibility = loaderBehavior,
+    delay = 0,
+    secondary,
+    label,
+    indicator = {},
+    inline,
+    labelPosition = 'below',
+    className,
+    design,
+    styles,
+    variables,
+    size = 'medium',
+  } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Loader.handledProps, props);
 
   const delayTimer = React.useRef<number>();
-  const [visible, setVisible] = React.useState(props.delay === 0);
+  const [visible, setVisible] = React.useState(delay === 0);
 
   const labelId = React.useRef<string>();
   labelId.current = getOrGenerateIdFromShorthand('loader-label-', label, labelId.current);
@@ -107,7 +111,7 @@ export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref)
     rtl: context.rtl,
   });
 
-  const getA11yProps = useAccessibility<LoaderBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<LoaderBehaviorProps>(accessibility, {
     debugName: Loader.displayName,
     mapPropsToBehavior: () => ({
       labelId: labelId.current,
@@ -179,17 +183,7 @@ Loader.propTypes = {
   label: customPropTypes.itemShorthand,
   labelPosition: PropTypes.oneOf(['above', 'below', 'start', 'end']),
   size: customPropTypes.size,
-  svg: customPropTypes.itemShorthand,
   secondary: PropTypes.bool,
-};
-
-Loader.defaultProps = {
-  accessibility: loaderBehavior,
-  delay: 0,
-  indicator: {},
-  labelPosition: 'below',
-  svg: '',
-  size: 'medium',
 };
 
 Loader.handledProps = Object.keys(Loader.propTypes) as any;

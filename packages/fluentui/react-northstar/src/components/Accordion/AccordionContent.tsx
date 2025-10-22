@@ -54,11 +54,21 @@ export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, '
 export const AccordionContent = React.forwardRef<HTMLDListElement, AccordionContentProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { children, content, accordionTitleId, active, className, design, styles, variables } = props;
+  const {
+    accessibility = accordionContentBehavior,
+    children,
+    content,
+    accordionTitleId,
+    active,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(AccordionContent.handledProps, props);
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: AccordionContent.displayName,
     mapPropsToBehavior: () => ({
       accordionTitleId,
@@ -112,11 +122,6 @@ AccordionContent.propTypes = {
   accordionTitleId: PropTypes.string,
   active: PropTypes.bool,
   onClick: PropTypes.func,
-};
-
-AccordionContent.defaultProps = {
-  accessibility: accordionContentBehavior,
-  as: 'div',
 };
 
 AccordionContent.handledProps = Object.keys(AccordionContent.propTypes) as any;

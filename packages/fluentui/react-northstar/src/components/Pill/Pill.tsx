@@ -124,6 +124,7 @@ export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =>
   const parentProps = usePillContext();
 
   const {
+    accessibility,
     className,
     design,
     styles,
@@ -150,7 +151,7 @@ export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =>
     initialState: false,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(Pill.handledProps, props);
 
   const handleDismiss = e => {
@@ -165,7 +166,7 @@ export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =>
     _.invoke(props, 'onClick', e, props);
   };
 
-  const getA11yProps = useAccessibility(props.accessibility || parentProps.pillBehavior || pillBehavior, {
+  const getA11yProps = useAccessibility(accessibility || parentProps.pillBehavior || pillBehavior, {
     debugName: Pill.displayName,
     actionHandlers: {
       performDismiss: handleDismiss,
@@ -256,11 +257,6 @@ export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =>
 
   return element;
 }) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, PillProps> & FluentComponentStaticProps<PillProps>;
-
-Pill.defaultProps = {
-  as: 'span' as const,
-  accessibility: pillBehavior,
-};
 
 Pill.propTypes = {
   ...commonPropTypes.createCommon(),

@@ -64,11 +64,11 @@ export type RadioGroupStylesProps = Required<Pick<RadioGroupProps, 'vertical'>>;
 export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { children, vertical, items, className, design, styles, variables } = props;
+  const { accessibility = radioGroupBehavior, children, vertical, items, className, design, styles, variables } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(RadioGroup.handledProps, props);
 
-  const getA11yProps = useAccessibility<RadioGroupBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<RadioGroupBehaviorProps>(accessibility, {
     debugName: RadioGroup.displayName,
     actionHandlers: {
       nextItem: event => setCheckedItem(event, 1),
@@ -217,10 +217,6 @@ RadioGroup.propTypes = {
   items: customPropTypes.collectionShorthand,
   onCheckedValueChange: PropTypes.func,
   vertical: PropTypes.bool,
-};
-
-RadioGroup.defaultProps = {
-  accessibility: radioGroupBehavior,
 };
 
 RadioGroup.handledProps = Object.keys(RadioGroup.propTypes) as any;

@@ -37,8 +37,8 @@ export const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIcon
     disabled,
     children,
     outline,
-    rotate,
-    size,
+    rotate = 0,
+    size = 'medium',
     styles,
     variables,
     xSpacing,
@@ -59,7 +59,7 @@ export const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIcon
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = getUnhandledProps(SvgIcon.handledProps, props);
 
   const element = (
@@ -79,8 +79,3 @@ export const SvgIcon: ComponentWithAs<'span', SvgIconProps & { children: SvgIcon
 
 SvgIcon.displayName = svgIconDisplayName;
 SvgIcon.handledProps = [...svgIconHandledProps, 'children'];
-SvgIcon.defaultProps = {
-  as: 'span',
-  size: 'medium',
-  rotate: 0,
-};

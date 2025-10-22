@@ -35,7 +35,7 @@ export const pillGroupClassName = 'ui-pills';
 export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { accessibility, children, className, design, styles, variables } = props;
+  const { accessibility = PillGroupBehavior, children, className, design, styles, variables } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: PillGroup.displayName,
@@ -78,10 +78,6 @@ export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props
 PillGroup.displayName = 'PillGroup';
 
 PillGroup.propTypes = commonPropTypes.createCommon();
-
-PillGroup.defaultProps = {
-  accessibility: PillGroupBehavior,
-};
 
 PillGroup.handledProps = Object.keys(PillGroup.propTypes) as any;
 

@@ -94,7 +94,7 @@ export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((
     isFromKeyboard,
     styles,
     checkable,
-    checkableIndicator,
+    checkableIndicator = {},
     selected,
     variables,
   } = props;
@@ -112,7 +112,7 @@ export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'li');
   const unhandledProps = useUnhandledProps(DropdownItem.handledProps, props);
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
@@ -181,11 +181,6 @@ export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((
   FluentComponentStaticProps<DropdownItemProps>;
 
 DropdownItem.displayName = 'DropdownItem';
-
-DropdownItem.defaultProps = {
-  as: 'li',
-  checkableIndicator: {},
-};
 
 DropdownItem.propTypes = {
   ...commonPropTypes.createCommon({

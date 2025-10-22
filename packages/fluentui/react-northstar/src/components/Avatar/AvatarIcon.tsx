@@ -40,7 +40,7 @@ export const avatarIconClassName = 'ui-avatar__icon';
 export const AvatarIcon = React.forwardRef<HTMLSpanElement, AvatarIconProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, children, design, styles, variables, size, square, content } = props;
+  const { accessibility, className, children, design, styles, variables, size, square, content } = props;
 
   const { classes } = useStyles<AvatarIconStylesProps>(AvatarIcon.displayName, {
     className: avatarIconClassName,
@@ -57,12 +57,12 @@ export const AvatarIcon = React.forwardRef<HTMLSpanElement, AvatarIconProps>((pr
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: AvatarIcon.displayName,
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(AvatarIcon.handledProps, props);
 
   const element = (
@@ -82,9 +82,6 @@ AvatarIcon.propTypes = {
   size: customPropTypes.size,
 };
 AvatarIcon.handledProps = Object.keys(AvatarIcon.propTypes) as any;
-AvatarIcon.defaultProps = {
-  as: 'span',
-};
 
 AvatarIcon.shorthandConfig = {
   mappedProp: 'content',

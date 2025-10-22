@@ -32,7 +32,7 @@ export const CarouselPaddlesContainer = React.forwardRef<HTMLDivElement, Carouse
   (props, ref) => {
     const context = useFluentContext();
 
-    const { className, children, design, styles, variables, content } = props;
+    const { accessibility, className, children, design, styles, variables, content } = props;
 
     const { classes } = useStyles<CarouselPaddlesContainerStylesProps>(CarouselPaddlesContainer.displayName, {
       className: carouselPaddlesContainerClassName,
@@ -45,7 +45,7 @@ export const CarouselPaddlesContainer = React.forwardRef<HTMLDivElement, Carouse
       rtl: context.rtl,
     });
 
-    const getA11Props = useAccessibility(props.accessibility, {
+    const getA11Props = useAccessibility(accessibility, {
       debugName: CarouselPaddlesContainer.displayName,
       rtl: context.rtl,
     });

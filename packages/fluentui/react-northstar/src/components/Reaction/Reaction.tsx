@@ -60,7 +60,7 @@ export const Reaction = React.forwardRef<HTMLSpanElement, ReactionProps>((props,
   const context = useFluentContext();
 
   const { children, icon, content, className, design, styles, variables } = props;
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(Reaction.handledProps, props);
 
   const getA11yProps = useAccessibility<never>(props.accessibility, {
@@ -127,10 +127,6 @@ Reaction.propTypes = {
     content: 'shorthand',
   }),
   icon: customPropTypes.shorthandAllowingChildren,
-};
-
-Reaction.defaultProps = {
-  as: 'span',
 };
 
 Reaction.handledProps = Object.keys(Reaction.propTypes) as any;

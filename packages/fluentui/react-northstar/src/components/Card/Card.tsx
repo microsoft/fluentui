@@ -106,6 +106,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
   const cardRef = React.useRef<HTMLElement>();
 
   const {
+    accessibility = cardBehavior,
     className,
     design,
     styles,
@@ -114,7 +115,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
     compact,
     horizontal,
     centered,
-    size,
+    size = 'medium',
     fluid,
     onClick,
     disabled,
@@ -125,8 +126,9 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
     selected,
   } = props;
   const ElementType = getElementType(props);
+
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: Card.displayName,
     actionHandlers: {
       performClick: e => {
@@ -223,11 +225,6 @@ Card.propTypes = {
   ghost: PropTypes.bool,
   inverted: PropTypes.bool,
   selected: PropTypes.bool,
-};
-
-Card.defaultProps = {
-  accessibility: cardBehavior,
-  size: 'medium',
 };
 
 Card.handledProps = Object.keys(Card.propTypes) as any;

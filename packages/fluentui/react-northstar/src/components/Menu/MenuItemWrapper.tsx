@@ -83,6 +83,7 @@ export const MenuItemWrapper = React.forwardRef<HTMLLIElement, MenuItemWrapperPr
   const context = useFluentContext();
 
   const {
+    accessibility,
     className,
     children,
     design,
@@ -126,12 +127,12 @@ export const MenuItemWrapper = React.forwardRef<HTMLLIElement, MenuItemWrapperPr
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: MenuItemWrapper.displayName,
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'li');
   const unhandledProps = useUnhandledProps(MenuItemWrapper.handledProps, props);
 
   const element = (
@@ -145,10 +146,6 @@ export const MenuItemWrapper = React.forwardRef<HTMLLIElement, MenuItemWrapperPr
   FluentComponentStaticProps<MenuItemWrapperProps>;
 
 MenuItemWrapper.displayName = 'MenuItemWrapper';
-
-MenuItemWrapper.defaultProps = {
-  as: 'li',
-};
 
 MenuItemWrapper.propTypes = {
   ...commonPropTypes.createCommon(),

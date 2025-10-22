@@ -111,12 +111,21 @@ export type TreeStylesProps = never;
 export const Tree = React.forwardRef<HTMLDivElement, TreeProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { selectable, children, renderedItems, className, design, styles, variables } = props;
+  const {
+    accessibility = treeBehavior,
+    selectable,
+    children,
+    renderedItems,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Tree.handledProps, props);
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: Tree.displayName,
     rtl: context.rtl,
     mapPropsToBehavior: () => ({
@@ -236,10 +245,6 @@ Tree.propTypes = {
 
 Tree.Item = TreeItem;
 Tree.Title = TreeTitle;
-
-Tree.defaultProps = {
-  accessibility: treeBehavior,
-};
 
 Tree.handledProps = Object.keys(Tree.propTypes) as any;
 

@@ -35,13 +35,24 @@ export interface PillActionProps extends UIComponentProps, ChildrenComponentProp
 export type PillActionStylesProps = Required<Pick<PillActionProps, 'size'>>;
 export const pillActionClassName = 'ui-pill__action';
 
+const DEFAULT_CONTENT = <CloseIcon />;
+
 /**
  * A PillAction allows user to execute an action.
  */
 export const PillAction = React.forwardRef<HTMLDivElement, PillActionProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { accessibility, children, className, content, design, styles, variables, size } = props;
+  const {
+    accessibility = pillActionBehavior,
+    children,
+    className,
+    content = DEFAULT_CONTENT,
+    design,
+    styles,
+    variables,
+    size,
+  } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: PillAction.displayName,
@@ -81,11 +92,6 @@ PillAction.propTypes = {
 };
 
 PillAction.handledProps = Object.keys(PillAction.propTypes) as any;
-
-PillAction.defaultProps = {
-  accessibility: pillActionBehavior,
-  content: <CloseIcon />,
-};
 
 PillAction.shorthandConfig = {
   mappedProp: 'content',

@@ -85,11 +85,24 @@ export type EmbedStylesProps = Required<Pick<EmbedProps, 'active'>> & { iframeLo
 export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { alt, title, control, iframe, placeholder, video, variables, styles, className, design } = props;
-  const ElementType = getElementType(props);
+  const {
+    accessibility = embedBehavior,
+    alt,
+    title,
+    control = {},
+    iframe,
+    placeholder,
+    video,
+    variables,
+    styles,
+    className,
+    design,
+  } = props;
+
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(Embed.handledProps, props);
 
-  const getA11yProps = useAccessibility<EmbedBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<EmbedBehaviorProps>(accessibility, {
     debugName: Embed.displayName,
     actionHandlers: {
       performClick: event => handleClick(event),
@@ -232,13 +245,6 @@ Embed.propTypes = {
   onClick: PropTypes.func,
   placeholder: PropTypes.string,
   video: customPropTypes.every([customPropTypes.disallow(['iframe']), customPropTypes.itemShorthand]),
-};
-
-Embed.defaultProps = {
-  as: 'span' as const,
-  accessibility: embedBehavior,
-  control: {},
-  variables: {},
 };
 
 Embed.handledProps = Object.keys(Embed.propTypes) as any;

@@ -115,7 +115,7 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
   const {
     expanded,
     exclusive,
-    accessibility,
+    accessibility = accordionBehavior,
     children,
     className,
     design,
@@ -178,7 +178,7 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
 
   const getNavigationItemsSize = () => props.panels.length;
   const unhandledProps = useUnhandledProps(Accordion.handledProps, props);
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'dl');
 
   const focusHandler: ContainerFocusHandler = new ContainerFocusHandler(
     getNavigationItemsSize,
@@ -344,11 +344,6 @@ Accordion.propTypes = {
 
   renderPanelTitle: PropTypes.func,
   renderPanelContent: PropTypes.func,
-};
-
-Accordion.defaultProps = {
-  accessibility: accordionBehavior,
-  as: 'dl',
 };
 
 Accordion.handledProps = Object.keys(Accordion.propTypes) as any;

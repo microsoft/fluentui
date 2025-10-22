@@ -46,13 +46,25 @@ export type VideoStylesProps = Required<Pick<VideoProps, 'variables'>>;
  * A Video provides ability to embed video content.
  */
 export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
-  const { controls, autoPlay, loop, poster, src, muted, variables, className, design, styles } = props;
+  const {
+    accessibility = videoBehavior,
+    controls = true,
+    autoPlay = false,
+    loop,
+    poster,
+    src,
+    muted = false,
+    variables,
+    className,
+    design,
+    styles,
+  } = props;
   const videoRef = React.useRef<HTMLVideoElement>();
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'video');
   const unhandledProps = useUnhandledProps(Video.handledProps, props);
 
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: Video.displayName,
   });
 
@@ -116,14 +128,6 @@ Video.propTypes = {
   muted: PropTypes.bool,
   poster: PropTypes.string,
   src: PropTypes.string,
-};
-
-Video.defaultProps = {
-  as: 'video' as const,
-  accessibility: videoBehavior,
-  controls: true,
-  autoPlay: false,
-  muted: false,
 };
 
 Video.handledProps = Object.keys(Video.propTypes) as any;

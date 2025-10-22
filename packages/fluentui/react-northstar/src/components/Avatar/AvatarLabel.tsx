@@ -67,7 +67,7 @@ export const AvatarLabel = React.forwardRef<HTMLSpanElement, AvatarLabelProps>((
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(AvatarLabel.handledProps, props);
 
   const element = (
@@ -96,10 +96,6 @@ AvatarLabel.propTypes = {
   circular: PropTypes.bool,
 };
 AvatarLabel.handledProps = Object.keys(AvatarLabel.propTypes) as any;
-
-AvatarLabel.defaultProps = {
-  as: 'span',
-};
 
 AvatarLabel.shorthandConfig = {
   mappedProp: 'content',

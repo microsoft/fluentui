@@ -47,7 +47,19 @@ export const avatarStatusClassName = statusClassName;
 export const AvatarStatus = React.forwardRef<HTMLSpanElement, AvatarStatusProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { className, color, design, icon, image, size, state, styles, variables } = props;
+  const {
+    accessibility = avatarStatusBehavior,
+    className,
+    color,
+    design,
+    icon,
+    image,
+    size = 'medium',
+    state = 'unknown',
+    styles,
+    variables,
+  } = props;
+
   const { classes } = useStyles<AvatarStatusStylesProps>(AvatarStatus.displayName, {
     className: avatarStatusClassName,
     mapPropsToStyles: () => ({
@@ -63,11 +75,11 @@ export const AvatarStatus = React.forwardRef<HTMLSpanElement, AvatarStatusProps>
     }),
     rtl: context.rtl,
   });
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: AvatarStatus.displayName,
     rtl: context.rtl,
   });
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(AvatarStatus.handledProps, props);
 
   const iconElement = createShorthand<React.FC<AvatarStatusIconProps>>(AvatarStatusIcon, icon, {
@@ -106,11 +118,5 @@ AvatarStatus.propTypes = {
   state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown']),
 };
 AvatarStatus.handledProps = Object.keys(AvatarStatus.propTypes) as any;
-AvatarStatus.defaultProps = {
-  accessibility: avatarStatusBehavior,
-  as: 'span',
-  size: 'medium',
-  state: 'unknown',
-};
 
 AvatarStatus.create = createShorthandFactory({ Component: AvatarStatus, mappedProp: 'state' });

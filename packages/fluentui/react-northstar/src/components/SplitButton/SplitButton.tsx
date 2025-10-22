@@ -118,10 +118,10 @@ export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((p
     menu,
     primary,
     secondary,
-    toggleButton,
+    toggleButton = {},
     size,
-    position,
-    align,
+    position = 'below',
+    align = 'start',
     flipBoundary,
     flat,
     overflowBoundary,
@@ -134,7 +134,7 @@ export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((p
     className,
     design,
     styles,
-    accessibility,
+    accessibility = splitButtonBehavior,
     variables,
   } = props;
 
@@ -326,13 +326,6 @@ SplitButton.propTypes = {
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
   autoSize: PropTypes.oneOf<AutoSize>(AUTOSIZES),
-};
-
-SplitButton.defaultProps = {
-  accessibility: splitButtonBehavior,
-  toggleButton: {},
-  position: 'below',
-  align: 'start',
 };
 
 SplitButton.handledProps = Object.keys(SplitButton.propTypes) as any;

@@ -149,9 +149,6 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
 
 Provider.displayName = 'Provider';
 
-Provider.defaultProps = {
-  theme: {},
-};
 Provider.propTypes = {
   as: PropTypes.elementType,
   design: PropTypes.object,

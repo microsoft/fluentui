@@ -35,7 +35,7 @@ export const avatarStatusImageClassName = 'ui-avatar__statusimage';
 export const AvatarStatusImage = React.forwardRef<HTMLImageElement, AvatarStatusImageProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { children, className, design, size, styles, variables } = props;
+  const { accessibility = imageBehavior, children, className, design, size, styles, variables } = props;
 
   const { classes } = useStyles<AvatarStatusImageStylesProps>(AvatarStatusImage.displayName, {
     className: avatarStatusImageClassName,
@@ -51,12 +51,12 @@ export const AvatarStatusImage = React.forwardRef<HTMLImageElement, AvatarStatus
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11Props = useAccessibility(accessibility, {
     debugName: AvatarStatusImage.displayName,
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'img');
   const unhandledProps = useUnhandledProps(AvatarStatusImage.handledProps, props);
 
   const element = (
@@ -74,10 +74,6 @@ AvatarStatusImage.propTypes = {
   size: customPropTypes.size,
 };
 AvatarStatusImage.handledProps = Object.keys(AvatarStatusImage.propTypes) as any;
-AvatarStatusImage.defaultProps = {
-  accessibility: imageBehavior,
-  as: 'img',
-};
 
 AvatarStatusImage.shorthandConfig = {
   allowsJSX: false,

@@ -86,6 +86,9 @@ export const radioGroupItemSlotClassNames: RadioGroupItemSlotClassNames = {
 
 export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disabled' | 'vertical' | 'checked'>>;
 
+const DEFAULT_INDICATOR = <RadioButtonIcon outline />;
+const DEFAULT_CHECKED_INDICATOR = <RadioButtonIcon />;
+
 /**
  * A RadioGroupItem represents single input element within a RadioGroup.
  *
@@ -95,8 +98,19 @@ export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disa
 export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { label, checkedIndicator, indicator, disabled, vertical, className, design, styles, variables, shouldFocus } =
-    props;
+  const {
+    accessibility = radioGroupItemBehavior,
+    label,
+    checkedIndicator = DEFAULT_CHECKED_INDICATOR,
+    indicator = DEFAULT_INDICATOR,
+    disabled,
+    vertical,
+    className,
+    design,
+    styles,
+    variables,
+    shouldFocus,
+  } = props;
   const elementRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(RadioGroupItem.handledProps, props);
@@ -145,7 +159,7 @@ export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemPro
     rtl: context.rtl,
   });
 
-  const getA11yProps = useAccessibility<RadioGroupItemBehaviorProps>(props.accessibility, {
+  const getA11yProps = useAccessibility<RadioGroupItemBehaviorProps>(accessibility, {
     debugName: RadioGroupItem.displayName,
     actionHandlers: {
       performClick: e => {
@@ -218,12 +232,6 @@ RadioGroupItem.propTypes = {
   shouldFocus: PropTypes.bool,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   vertical: PropTypes.bool,
-};
-
-RadioGroupItem.defaultProps = {
-  accessibility: radioGroupItemBehavior,
-  indicator: <RadioButtonIcon outline />,
-  checkedIndicator: <RadioButtonIcon />,
 };
 
 RadioGroupItem.handledProps = Object.keys(RadioGroupItem.propTypes) as any;

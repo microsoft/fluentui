@@ -9,10 +9,11 @@ describe('Loader', () => {
   isConformant(Loader, { testPath: __filename, constructorName: 'Loader' });
 
   describe('delay', () => {
-    it('is "0" by default', () => {
+    it('is "0" by default, renders child instantly', () => {
+      const selector = `.${loaderClassName}`;
       const wrapper = mountWithProvider(<Loader />);
 
-      expect(wrapper.find(Loader).prop('delay')).toBe(0);
+      expect(wrapper.find(selector).exists()).toBe(true);
     });
 
     it('renders children only when "delay" is passed', () => {

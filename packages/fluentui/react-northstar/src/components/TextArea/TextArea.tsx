@@ -68,7 +68,18 @@ export const textAreaClassName = 'ui-textarea';
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables, error } = props;
+  const {
+    disabled,
+    accessibility = textAreaBehavior,
+    inverted,
+    resize,
+    fluid,
+    className,
+    design,
+    styles,
+    variables,
+    error,
+  } = props;
 
   const [value, setValue] = useControllableState({
     defaultState: props.defaultValue,
@@ -104,7 +115,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((pr
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'textarea');
 
   const handleChange = (e: React.ChangeEvent | React.FormEvent) => {
     const newValue = _.get(e, 'target.value');
@@ -144,11 +155,6 @@ TextArea.propTypes = {
   fluid: PropTypes.bool,
   error: PropTypes.bool,
   resize: PropTypes.oneOf(['none', 'both', 'horizontal', 'vertical']),
-};
-
-TextArea.defaultProps = {
-  as: 'textarea',
-  accessibility: textAreaBehavior,
 };
 
 TextArea.handledProps = Object.keys(TextArea.propTypes) as any;

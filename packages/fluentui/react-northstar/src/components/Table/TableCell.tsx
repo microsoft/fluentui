@@ -59,11 +59,21 @@ export const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>((props
 
   const cellRef = React.useRef<HTMLElement>();
 
-  const { children, content, truncateContent, className, design, styles, variables } = props;
+  const {
+    accessibility = tableCellBehavior,
+    children,
+    content,
+    truncateContent,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
+
   const hasChildren = childrenExist(children);
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TableCell.handledProps, props);
-  const getA11yProps = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(accessibility, {
     debugName: TableCell.displayName,
     actionHandlers: {
       focusCell: e => {
@@ -131,9 +141,5 @@ TableCell.propTypes = {
 };
 
 TableCell.handledProps = Object.keys(TableCell.propTypes) as any;
-
-TableCell.defaultProps = {
-  accessibility: tableCellBehavior,
-};
 
 TableCell.create = createShorthandFactory({ Component: TableCell, mappedProp: 'content' });

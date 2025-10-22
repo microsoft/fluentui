@@ -77,7 +77,17 @@ export type TableStylesProps = never;
 export const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { children, rows, header, compact, accessibility, className, design, styles, variables } = props;
+  const {
+    children,
+    rows,
+    header,
+    compact,
+    accessibility = tableBehavior,
+    className,
+    design,
+    styles,
+    variables,
+  } = props;
   const hasChildren = childrenExist(children);
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Table.handledProps, props);
@@ -174,7 +184,3 @@ Table.propTypes = {
 };
 
 Table.handledProps = Object.keys(Table.propTypes) as any;
-
-Table.defaultProps = {
-  accessibility: tableBehavior,
-};

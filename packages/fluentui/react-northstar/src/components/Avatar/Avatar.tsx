@@ -18,6 +18,7 @@ import { AvatarStatusProps, AvatarStatus } from './AvatarStatus';
 import { AvatarImage, AvatarImageProps } from './AvatarImage';
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
 import { AvatarLabel, AvatarLabelProps } from './AvatarLabel';
+import { getDefaultInitials } from './getDefaultInitials';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -64,13 +65,13 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref)
     accessibility,
     className,
     design,
-    getInitials,
+    getInitials = getDefaultInitials,
     label,
     icon,
     image,
     name,
     square,
-    size,
+    size = 'medium',
     status,
     styles,
     variables,
@@ -146,32 +147,6 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref)
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, AvatarProps> & FluentComponentStaticProps<AvatarProps>;
 
 Avatar.displayName = 'Avatar';
-
-Avatar.defaultProps = {
-  size: 'medium',
-  getInitials(name: string) {
-    if (!name) {
-      return '';
-    }
-
-    const reducedName = name
-      .replace(/\s+/g, ' ')
-      .replace(/\s*\(.*?\)\s*/g, ' ')
-      .replace(/\s*{.*?}\s*/g, ' ')
-      .replace(/\s*\[.*?]\s*/g, ' ');
-
-    const initials = reducedName
-      .split(' ')
-      .filter(item => item !== '')
-      .map(item => item.charAt(0))
-      .reduce((accumulator, currentValue) => accumulator + currentValue, '');
-
-    if (initials.length > 2) {
-      return initials.charAt(0) + initials.charAt(initials.length - 1);
-    }
-    return initials;
-  },
-};
 
 Avatar.propTypes = {
   ...commonPropTypes.createCommon({

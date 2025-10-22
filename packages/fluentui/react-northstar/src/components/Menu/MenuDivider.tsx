@@ -105,7 +105,7 @@ export const MenuDivider = React.forwardRef<HTMLLIElement, MenuDividerProps>((in
     unstable_props: props,
   });
 
-  const ElementType = getElementType(props);
+  const ElementType = getElementType(props, 'li');
   const unhandledProps = useUnhandledProps(MenuDivider.handledProps, props);
 
   const element = (
@@ -123,10 +123,6 @@ export const MenuDivider = React.forwardRef<HTMLLIElement, MenuDividerProps>((in
 
   return element;
 }) as unknown as ForwardRefWithAs<'li', HTMLLIElement, MenuDividerProps> & FluentComponentStaticProps<MenuDividerProps>;
-
-MenuDivider.defaultProps = {
-  as: 'li',
-};
 
 MenuDivider.displayName = 'MenuDivider';
 
