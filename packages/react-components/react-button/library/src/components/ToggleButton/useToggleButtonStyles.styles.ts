@@ -2,9 +2,9 @@
 
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
-import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
+import { buttonClassNames, useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots } from '../Button/Button.types';
 import type { ToggleButtonState } from './ToggleButton.types';
@@ -17,11 +17,13 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
 const useRootCheckedStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    color: tokens.colorNeutralForeground1Selected,
-
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
+    backgroundColor: semanticTokens.groupButtonNeutralBackgroundSelected,
+    ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeSelected),
+    color: semanticTokens.groupButtonNeutralTextForegroundSelected,
+    ...shorthands.borderWidth(semanticTokens.groupButtonStrokewidth),
+    [`& .${buttonClassNames.icon}`]: {
+      color: semanticTokens.groupButtonNeutralIconForegroundSelected,
+    },
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline',
@@ -31,15 +33,15 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1Hover,
+      backgroundColor: semanticTokens.groupButtonNeutralBackgroundHoverSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeHoverSelected),
+      color: semanticTokens.groupButtonNeutralTextForegroundHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1Pressed,
+      backgroundColor: semanticTokens.groupButtonNeutralBackgroundPressedSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokePressedSelected),
+      color: semanticTokens.groupButtonNeutralTextForegroundPressed,
     },
   },
 
@@ -69,77 +71,97 @@ const useRootCheckedStyles = makeStyles({
       },
     },
   },
-
   // Appearance variations
   outline: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ...shorthands.borderWidth(tokens.strokeWidthThicker),
+    backgroundColor: semanticTokens.groupButtonOutlineBackgroundSelected,
+    color: semanticTokens.groupButtonOutlineTextForegroundSelected,
+    ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeSelected),
+    ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
+    [`& .${buttonClassNames.icon}`]: {
+      color: semanticTokens.groupButtonOutlineIconForegroundSelected,
+    },
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: semanticTokens.groupButtonOutlineBackgroundHoverSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeHoverSelected),
+      ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: semanticTokens.groupButtonOutlineBackgroundPressedSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokePressedSelected),
+      ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
     },
 
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeSelected),
     }),
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackgroundSelected,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: semanticTokens.groupButtonPrimaryBackgroundSelected,
+    ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeSelected),
+    color: semanticTokens.groupButtonPrimaryTextForegroundSelected,
+    boxShadow: semanticTokens.groupButtonPrimaryShadowSelected,
+
+    [`& .${buttonClassNames.icon}`]: {
+      color: semanticTokens.groupButtonPrimaryIconForegroundSelected,
+    },
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: semanticTokens.groupButtonPrimaryBackgroundHoverSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeHoverSelected),
+      color: semanticTokens.groupButtonPrimaryTextForegroundSelected,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: semanticTokens.groupButtonPrimaryBackgroundPressedSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokePressedSelected),
+      color: semanticTokens.groupButtonPrimaryTextForegroundSelected,
     },
   },
   secondary: {
+    boxShadow: semanticTokens.groupButtonNeutralShadowSelected,
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2Selected,
+    backgroundColor: semanticTokens.groupButtonSubtleBackgroundSelected,
+    ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeSelected),
+    color: semanticTokens.groupButtonSubtleTextForegroundSelected,
+
+    [`& .${buttonClassNames.icon}`]: {
+      color: semanticTokens.groupButtonSubtleIconForegroundSelected,
+    },
 
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundHoverSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeHoverSelected),
+      color: semanticTokens.groupButtonSubtleTextForegroundHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Pressed,
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundPressedSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokePressedSelected),
+      color: semanticTokens.groupButtonSubtleTextForegroundPressed,
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2BrandSelected,
+    backgroundColor: semanticTokens.groupButtonTransparentBackgroundSelected,
+    ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeSelected),
+    color: semanticTokens.groupButtonTransparentTextForegroundSelected,
+    [`& .${buttonClassNames.icon}`]: {
+      color: semanticTokens.groupButtonTransparentIconForegroundSelected,
+    },
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      backgroundColor: semanticTokens.groupButtonTransparentBackgroundHoverSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeHoverSelected),
+      color: semanticTokens.groupButtonTransparentTextForegroundHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      backgroundColor: semanticTokens.groupButtonTransparentBackgroundPressedSelected,
+      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokePressedSelected),
+      color: semanticTokens.groupButtonTransparentTextForegroundPressed,
     },
   },
 });
@@ -147,76 +169,98 @@ const useRootCheckedStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
+    ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
+    color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
+      color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
+      color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
     },
   },
 
   // Appearance variations
   outline: {
-    /* No styles */
-  },
-  primary: {
-    ...shorthands.borderColor('transparent'),
+    backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
+    ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeDisabled),
+    color: semanticTokens.groupButtonOutlineTextForegroundDisabled,
 
     ':hover': {
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeDisabled),
+      color: semanticTokens.groupButtonOutlineTextForegroundDisabled,
     },
 
     ':hover:active': {
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeDisabled),
+      color: semanticTokens.groupButtonOutlineTextForegroundDisabled,
+    },
+  },
+  primary: {
+    backgroundColor: semanticTokens.groupButtonPrimaryBackgroundDisabled,
+    ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeDisabled),
+    color: semanticTokens.groupButtonPrimaryTextForegroundDisabled,
+
+    ':hover': {
+      backgroundColor: semanticTokens.groupButtonPrimaryBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeDisabled),
+      color: semanticTokens.groupButtonPrimaryTextForegroundDisabled,
+    },
+
+    ':hover:active': {
+      backgroundColor: semanticTokens.groupButtonPrimaryBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeDisabled),
+      color: semanticTokens.groupButtonPrimaryTextForegroundDisabled,
     },
   },
   secondary: {
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor('transparent'),
+    backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
+    ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
+    color: semanticTokens.groupButtonSubtleTextForegroundDisabled,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
+      color: semanticTokens.groupButtonSubtleTextForegroundDisabled,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
+      color: semanticTokens.groupButtonSubtleTextForegroundDisabled,
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor('transparent'),
+    backgroundColor: semanticTokens.groupButtonTransparentBackgroundDisabled,
+    ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
+    color: semanticTokens.groupButtonTransparentTextForegroundDisabled,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: semanticTokens.groupButtonTransparentBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
+      color: semanticTokens.groupButtonTransparentTextForegroundDisabled,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
+      backgroundColor: semanticTokens.groupButtonTransparentBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
+      color: semanticTokens.groupButtonTransparentTextForegroundDisabled,
     },
   },
 });
 
 const useIconCheckedStyles = makeStyles({
-  // Appearance variations
-  subtleOrTransparent: {
-    color: tokens.colorNeutralForeground2BrandSelected,
-  },
   // High contrast styles
   highContrast: {
     '@media (forced-colors: active)': {
@@ -275,14 +319,12 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
     (disabled || disabledFocusable) && rootDisabledStyles.base,
     appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
-    // User provided class name
     state.root.className,
   );
 
   if (state.icon) {
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
-      checked && (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
       iconCheckedStyles.highContrast,
       state.icon.className,
     );
