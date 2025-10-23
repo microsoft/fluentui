@@ -28,7 +28,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1020,7 +1022,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2012,7 +2016,9 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -3017,7 +3023,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-
+            {
+              position: relative;
+            }
         data-focuszone-id="FocusZone13"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -9799,7 +9807,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -10791,7 +10801,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone10"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

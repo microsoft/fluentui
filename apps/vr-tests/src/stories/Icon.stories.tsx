@@ -7,7 +7,7 @@ import { IconNames } from '@fluentui/font-icons-mdl2';
 import { TestImages } from '@fluentui/example-data';
 
 // Rendering allIcons tests that the icon package can initialize all icons from the cdn
-const allIcons: JSX.Element[] = [];
+const allIcons: React.ReactElement[] = [];
 
 // eslint-disable-next-line @fluentui/max-len
 // @ts-expect-error - IconNames is a const enum -> const' enums can only be used in property or index access expressions or the right hand side of an import declaration or export assignment or type query.ts(2475)

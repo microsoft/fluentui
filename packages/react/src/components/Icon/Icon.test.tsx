@@ -1,52 +1,49 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { Icon } from './index';
-import { Image } from '../Image/Image';
 import { TestImages } from '@fluentui/example-data';
 import { isConformant } from '../../common/isConformant';
 
 describe('Icon', () => {
   it('renders Icon correctly using iconName', () => {
-    const component = renderer.create(<Icon iconName="Upload" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Icon iconName="Upload" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('sets Icon name with ariaLabel', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Icon
         iconName="CompassNW"
         // eslint-disable-next-line @typescript-eslint/no-deprecated
         ariaLabel="asdf"
       />,
     );
-    const iconInstance = component.root.findByType('i');
+    const iconInstance = container.querySelector('i');
 
-    expect(iconInstance.props.role).toBe('img');
-    expect(iconInstance.props['aria-label']).toBe('asdf');
-    expect(iconInstance.props['aria-hidden']).toBeFalsy();
+    expect(iconInstance).toHaveAttribute('role', 'img');
+    expect(iconInstance).toHaveAttribute('aria-label', 'asdf');
+    expect(iconInstance).not.toHaveAttribute('aria-hidden');
   });
 
   it('sets Icon name with aria-labelledby', () => {
-    const component = renderer.create(<Icon iconName="Upload" aria-labelledby="id" />);
-    const iconInstance = component.root.findByType('i');
+    const { container } = render(<Icon iconName="Upload" aria-labelledby="id" />);
+    const iconInstance = container.querySelector('i');
 
-    expect(iconInstance.props.role).toBe('img');
-    expect(iconInstance.props['aria-label']).toBeFalsy();
-    expect(iconInstance.props['aria-hidden']).toBeFalsy();
-    expect(iconInstance.props['aria-labelledby']).toBe('id');
+    expect(iconInstance).toHaveAttribute('role', 'img');
+    expect(iconInstance).not.toHaveAttribute('aria-label');
+    expect(iconInstance).not.toHaveAttribute('aria-hidden');
+    expect(iconInstance).toHaveAttribute('aria-labelledby', 'id');
   });
 
   it('renders Icon with imageProps correctly', () => {
-    const component = renderer.create(<Icon iconName="CompassNW" imageProps={{ src: TestImages.iconOne }} />);
+    const { container } = render(<Icon iconName="CompassNW" imageProps={{ src: TestImages.iconOne }} />);
 
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('sets Icon name with imageProps correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Icon
         iconName="Upload"
         imageProps={{
@@ -55,37 +52,36 @@ describe('Icon', () => {
         }}
       />,
     );
-    const iconInstance = component.root.findByType('span');
-    const imageInstance = component.root.findByType(Image);
+    const iconInstance = container.querySelector('span');
+    const imageInstance = container.querySelector('img');
 
-    expect(iconInstance.props.role).toBeUndefined();
-    expect(iconInstance.props['aria-label']).toBeUndefined();
-    expect(iconInstance.props['aria-hidden']).toBeFalsy();
-    expect(imageInstance.props.alt).toBe('icon one');
+    expect(iconInstance).not.toHaveAttribute('role');
+    expect(iconInstance).not.toHaveAttribute('aria-label');
+    expect(iconInstance).not.toHaveAttribute('aria-hidden');
+    expect(imageInstance).toHaveAttribute('alt', 'icon one');
   });
 
   it('renders Icon with children correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Icon iconName="Upload">
         <span>This icon has children that are rendered inside of it</span>
       </Icon>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Icon with custom styles', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Icon iconName="Upload" styles={{ root: 'root', imageContainer: 'imageContainer' }} />,
     );
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Icon with getStyles', () => {
     const customStyles = (props: {}) => ({ root: 'root', imageContainer: 'imageContainer' });
 
-    const component = renderer.create(<Icon className="className" iconName="Upload" styles={customStyles} />);
-    expect(component.toJSON()).toMatchSnapshot();
+    const { container } = render(<Icon className="className" iconName="Upload" styles={customStyles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

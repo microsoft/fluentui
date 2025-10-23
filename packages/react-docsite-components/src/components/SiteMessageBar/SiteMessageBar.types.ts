@@ -1,9 +1,10 @@
+import type * as React from 'react';
 import { IStyleFunctionOrObject } from '@fluentui/react';
 import { IMessageBarStyles, IMessageBarStyleProps } from '@fluentui/react/lib/MessageBar';
 
 export interface ISiteMessageBarProps {
   /** Text for the message bar */
-  text: string | JSX.Element;
+  text: string | React.ReactElement;
 
   /** Text for a link shown after the main text */
   linkText?: string;

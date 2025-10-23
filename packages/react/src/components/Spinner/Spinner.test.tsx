@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, act } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 
@@ -7,9 +6,8 @@ import { Spinner, SpinnerBase, SpinnerSize } from './index';
 
 describe('Spinner', () => {
   it('renders Spinner correctly', () => {
-    const component = renderer.create(<Spinner label="Standard spinner" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Spinner label="Standard spinner" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

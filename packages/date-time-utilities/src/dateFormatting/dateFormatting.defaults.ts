@@ -4,14 +4,14 @@ import { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateForma
  * Format date to a day string representation
  * @param date - input date to format
  */
-export const formatDay = (date: Date) => date.getDate().toString();
+export const formatDay = (date: Date): string => date.getDate().toString();
 
 /**
  * Format date to a month-day-year string
  * @param date - input date to format
  * @param strings - localized strings
  */
-export const formatMonthDayYear = (date: Date, strings: IDateGridStrings) =>
+export const formatMonthDayYear = (date: Date, strings: IDateGridStrings): string =>
   strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
 
 /**
@@ -19,7 +19,7 @@ export const formatMonthDayYear = (date: Date, strings: IDateGridStrings) =>
  * @param date - input date to format
  * @param strings - localized strings
  */
-export const formatMonthYear = (date: Date, strings: IDateGridStrings) =>
+export const formatMonthYear = (date: Date, strings: IDateGridStrings): string =>
   strings.months[date.getMonth()] + ' ' + date.getFullYear();
 
 /**
@@ -27,13 +27,13 @@ export const formatMonthYear = (date: Date, strings: IDateGridStrings) =>
  * @param date - input date to format
  * @param strings - localized strings
  */
-export const formatMonth = (date: Date, strings: IDateGridStrings) => strings.months[date.getMonth()];
+export const formatMonth = (date: Date, strings: IDateGridStrings): string => strings.months[date.getMonth()];
 
 /**
  * Format date to a year string representation
  * @param date - input date to format
  */
-export const formatYear = (date: Date) => date.getFullYear().toString();
+export const formatYear = (date: Date): string => date.getFullYear().toString();
 
 export const DEFAULT_DATE_GRID_STRINGS: IDateGridStrings = {
   months: [

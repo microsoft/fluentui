@@ -111,6 +111,13 @@ export type {
   IDataSeries,
   IBarSeries,
   ILineSeries,
+  IChartAnnotation as ChartAnnotation,
+  ChartAnnotationCoordinate,
+  IChartAnnotationConnectorProps as ChartAnnotationConnectorProps,
+  ChartAnnotationArrowHead,
+  IChartAnnotationLayoutProps as ChartAnnotationLayoutProps,
+  IChartAnnotationStyleProps as ChartAnnotationStyleProps,
+  IChartAnnotationAccessibilityProps as ChartAnnotationAccessibilityProps,
 } from './types/index';
 export type {
   IChartHoverCardProps,

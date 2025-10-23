@@ -8,6 +8,7 @@ import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { ITheme } from '@fluentui/react';
 import { resolveCSSVariables } from '../../utilities/utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 function invertHexColor(hex: string, theme: ITheme): string {
   const color = d3.color(hex);
@@ -65,7 +66,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { headers, rows, width, height, styles, theme } = this.props;
 
     const classNames = getClassNames(styles!, {

@@ -50,6 +50,7 @@ import { ChartTable } from '../ChartTable/index';
 import { FunnelChart } from '../FunnelChart/FunnelChart';
 import { GanttChart } from '../GanttChart/index';
 import { ILegendsProps, Legends } from '../Legends/index';
+import type { JSXElement } from '@fluentui/utilities';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -135,7 +136,7 @@ function renderChart<TProps>(
   cellRow: number,
   cellColumn: number,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-): JSX.Element {
+): JSXElement {
   const chartProps = transformer(...transformerArgs);
   return (
     <div
@@ -380,7 +381,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  function createLegends(legendProps: ILegendsProps): JSX.Element {
+  function createLegends(legendProps: ILegendsProps): JSXElement {
     // eslint-disable-next-line react/jsx-no-bind
     return <Legends {...legendProps} selectedLegends={activeLegends} onChange={onActiveLegendsChange} />;
   }

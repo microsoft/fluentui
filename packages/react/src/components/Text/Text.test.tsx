@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
@@ -7,15 +7,13 @@ import { Text } from './Text';
 
 describe('Text', () => {
   it('renders default Text correctly', () => {
-    const component = renderer.create(<Text>I'm default text</Text>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Text>I'm default text</Text>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Text with {0} as its children correctly', () => {
-    const component = renderer.create(<Text>{0}</Text>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Text>{0}</Text>);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

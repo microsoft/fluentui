@@ -1,6 +1,6 @@
 import { registerIconAlias } from '@fluentui/style-utilities';
 
-export const registerIconAliases = () => {
+export const registerIconAliases = (): void => {
   registerIconAlias('trash', 'delete');
   registerIconAlias('onedrive', 'onedrivelogo');
   registerIconAlias('alertsolid12', 'eventdatemissed12');

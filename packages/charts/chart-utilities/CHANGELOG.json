@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Thu, 16 Oct 2025 07:21:56 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.34",
+      "version": "1.1.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "6c4630f5f8aa3ac42ce4c45be7d39642899e1e85",
+            "comment": "fix: resolve React 19 incompatible types"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Oct 2025 07:20:53 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.33",
       "version": "1.1.33",

@@ -144,9 +144,9 @@ export const isYearArray = (data: Datum[] | Datum[][] | TypedArray | undefined):
   return isArrayOfType(data, (value: any): boolean => isYear(value) || value === null);
 };
 
-export const isStringArray = (data: Datum[] | Datum[][] | TypedArray | undefined) => {
+export const isStringArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return isArrayOfType(data, (value: any) => typeof value === 'string' || value === null);
+  return isArrayOfType(data, (value: any): boolean => typeof value === 'string' || value === null);
 };
 
 export const isObjectArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
@@ -169,7 +169,7 @@ export const validate2Dseries = (series: Partial<PlotData>): boolean => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isInvalidValue = (value: any) => {
+export const isInvalidValue = (value: any): boolean => {
   return typeof value === 'undefined' || value === null || (typeof value === 'number' && !isFinite(value));
 };
 
@@ -194,11 +194,11 @@ export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
   return jsonObject;
 };
 
-export function isTypedArray(a: any) {
+export function isTypedArray(a: any): boolean {
   return ArrayBuffer.isView(a) && !(a instanceof DataView);
 }
 
-export function isArrayOrTypedArray(a: any) {
+export function isArrayOrTypedArray(a: any): boolean {
   return Array.isArray(a) || isTypedArray(a);
 }
 
@@ -297,33 +297,11 @@ const validateScatterData = (data: Partial<PlotData>, layout: Partial<Layout> | 
   const mode = data.mode ?? '';
   const xAxisType = data && data.x && data.x.length > 0 ? typeof data?.x?.[0] : 'undefined';
   const yAxisType = data && data.y && data.y.length > 0 ? typeof data?.y?.[0] : 'undefined';
-  if (isScatterMarkers(mode)) {
-    // Any series having only markers -> Supported number x/string x/date x + number y or string y
-    if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
-    }
-    if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
-    }
-  } else if (
-    [
-      'lines+markers',
-      'markers+lines',
-      'text+lines+markers',
-      'lines',
-      'text+lines',
-      'lines+text',
-      'lines+markers+text',
-    ].includes(mode)
-  ) {
-    if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
-    }
-    if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
-    }
-  } else {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, Unsupported mode`);
+  if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
+  }
+  if (!isNumberArray(data.y) && !isStringArray(data.y)) {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
   }
 
   const isAreaChart = isScatterAreaChart(data);
@@ -520,6 +498,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
     }
 
     const validTraces = getValidTraces(validSchema.data, validSchema.layout);
+    let foundScatterGantt = false;
     let mappedTraces = validTraces.map(trace => {
       const traceIndex = trace[0];
       const traceData = validSchema.data[traceIndex];
@@ -568,7 +547,12 @@ export const mapFluentChart = (input: any): OutputChartType => {
         case 'scatter':
         case 'scattergl':
           const scatterData = traceData as Partial<PlotData>;
-          const isAreaChart = isScatterAreaChart(scatterData);
+
+          if (isScatterGanttChart(scatterData, foundScatterGantt)) {
+            foundScatterGantt = true;
+            return { isValid: true, traceIndex, type: 'gantt' };
+          }
+
           const isScatterChart = isScatterMarkers(scatterData.mode ?? '');
           const hasLineShape =
             Array.isArray(validSchema?.layout?.shapes) &&
@@ -582,6 +566,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
             };
           }
 
+          const isAreaChart = isScatterAreaChart(scatterData);
           if (!doesScatterNeedFallback(scatterData, validSchema.layout)) {
             return { isValid: true, traceIndex, type: isAreaChart ? 'area' : 'line' };
           }
@@ -664,7 +649,7 @@ const canMapToGantt = (data: Partial<PlotData>) => {
   return isDateArray(data.base) || isNumberArray(data.base);
 };
 
-export const getAxisIds = (data: Partial<PlotData>) => {
+export const getAxisIds = (data: Partial<PlotData>): { x: number; y: number } => {
   let xAxisId = 1;
   if (typeof data.xaxis === 'string' && /^x\d+$/.test(data.xaxis)) {
     xAxisId = parseInt(data.xaxis.slice(1), 10);
@@ -681,11 +666,11 @@ export const getAxisIds = (data: Partial<PlotData>) => {
   };
 };
 
-export const getAxisKey = (axLetter: 'x' | 'y', axId: number) => {
+export const getAxisKey = (axLetter: 'x' | 'y', axId: number): keyof Layout => {
   return `${axLetter}axis${axId > 1 ? axId : ''}` as keyof Layout;
 };
 
-export const isScatterAreaChart = (data: Partial<PlotData>) => {
+export const isScatterAreaChart = (data: Partial<PlotData>): boolean => {
   return data.fill === 'tonexty' || data.fill === 'tozeroy' || !!data.stackgroup;
 };
 
@@ -715,4 +700,42 @@ const doesScatterNeedFallback = (data: Partial<PlotData>, layout: Partial<Layout
     return false;
   }
   return !supportedScatterInLineChart(data, layout);
+};
+
+/**
+ * @see {@link https://github.com/plotly/plotly.py/blob/main/plotly/figure_factory/_gantt.py}
+ */
+const isScatterGanttChart = (data: Partial<PlotData>, foundScatterGantt: boolean) => {
+  if (data.mode === 'none' && data.fill === 'toself') {
+    let foundCornerPoints = true;
+    for (let i = 0; i < data.x!.length; i += 5) {
+      if (
+        data.x![i] !== data.x![i + 3] ||
+        data.x![i + 1] !== data.x![i + 2] ||
+        data.y![i] !== data.y![i + 1] ||
+        data.y![i + 2] !== data.y![i + 3] ||
+        (i > 0 && data.y![i - 1] !== null)
+      ) {
+        foundCornerPoints = false;
+        break;
+      }
+    }
+
+    if (foundCornerPoints) {
+      return true;
+    }
+  }
+
+  if (
+    data.mode === 'markers' &&
+    data.marker?.size === 1 &&
+    data.marker?.opacity === 0 &&
+    data.name === '' &&
+    data.showlegend === false &&
+    foundScatterGantt
+  ) {
+    return true;
+  }
+
+  return false;
 };

@@ -270,6 +270,103 @@ describe('transform Plotly Json To chart Props', () => {
     ).toMatchSnapshot();
   });
 
+  test('transformPlotlyJsonToLineChartProps - maps layout annotations to chart annotations', () => {
+    const plotlySchema = require('./tests/schema/fluent_line_annotations_test.json');
+    const result = transformPlotlyJsonToLineChartProps(plotlySchema, false, { current: colorMap }, 'default', true);
+
+    expect(result.annotations).toBeDefined();
+    expect(result.annotations).toHaveLength(4);
+
+    const [primary, relative, pixel, domain] = result.annotations!;
+
+    expect(primary).toBeDefined();
+    expect(primary?.id).toBe('annotation-0-peak-value');
+    expect(primary?.coordinates).toEqual({
+      type: 'data',
+      x: new Date('2024-01-02T00:00:00.000Z'),
+      y: 20,
+    });
+    expect(primary?.layout).toEqual({
+      align: 'start',
+      verticalAlign: 'bottom',
+      offsetX: -30,
+      offsetY: -25,
+      maxWidth: 180,
+      clipToBounds: true,
+    });
+    expect(primary?.style).toEqual({
+      textColor: '#ff0000',
+      backgroundColor: '#ffffff',
+      borderColor: '#ff0000',
+      borderWidth: 1,
+      padding: '8px',
+      opacity: 0.9,
+      fontSize: '14px',
+    });
+    expect(primary?.connector).toEqual({
+      strokeColor: '#ff0000',
+      strokeWidth: 2,
+      dashArray: '5, 5',
+      endPadding: 6,
+      arrow: 'end',
+    });
+
+    expect(relative).toBeDefined();
+    expect(relative?.coordinates).toEqual({
+      type: 'relative',
+      x: 0.5,
+      y: 0.9,
+    });
+    expect(relative?.style).toEqual({
+      backgroundColor: '#333333',
+      textColor: '#ffffff',
+      fontSize: '12px',
+    });
+    expect(relative?.layout).toBeUndefined();
+    expect(relative?.connector).toBeUndefined();
+
+    expect(pixel).toBeDefined();
+    expect(pixel?.coordinates).toEqual({
+      type: 'pixel',
+      x: 40,
+      y: 40,
+    });
+    expect(pixel?.layout).toEqual({
+      offsetX: 15,
+      offsetY: 12,
+    });
+    expect(pixel?.style).toEqual({
+      textColor: '#111111',
+    });
+    expect(pixel?.connector).toEqual({
+      strokeColor: '#0078d4',
+      strokeWidth: 1.5,
+      dashArray: '1, 5',
+      startPadding: 4,
+      arrow: 'start',
+    });
+
+    expect(domain).toBeDefined();
+    expect(domain?.coordinates?.type).toBe('relative');
+    if (domain?.coordinates?.type === 'relative') {
+      expect(domain.coordinates.x).toBeCloseTo(0.25);
+      expect(domain.coordinates.y).toBeCloseTo(0.2, 5);
+    }
+    expect(domain?.style).toEqual({
+      textColor: '#222222',
+      fontSize: '12px',
+    });
+    expect(domain?.layout).toBeUndefined();
+    expect(domain?.connector).toBeUndefined();
+  });
+
+  test('transformPlotlyJsonToLineChartProps - does not return annotations for multi plot', () => {
+    const plotlySchema = require('./tests/schema/fluent_line_annotations_test.json');
+    const result = transformPlotlyJsonToLineChartProps(plotlySchema, true, { current: new Map() }, 'default', true);
+
+    expect(result.annotations).toBeUndefined();
+  });
+
   test('transformPlotlyJsonToLineChartProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {

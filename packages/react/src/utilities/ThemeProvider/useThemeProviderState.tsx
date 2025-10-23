@@ -26,7 +26,7 @@ const getThemeId = (...themes: (Theme | PartialTheme | undefined)[]) => {
   return ids.join('-');
 };
 
-export const useThemeProviderState = (draftState: ThemeProviderState) => {
+export const useThemeProviderState = (draftState: ThemeProviderState): void => {
   const userTheme: PartialTheme = draftState.theme;
 
   // Pull contextual theme.

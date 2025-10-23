@@ -1,4 +1,3 @@
-/*  eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';

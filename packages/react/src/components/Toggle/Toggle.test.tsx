@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { create } from '@fluentui/test-utilities';
 import { resetIds } from '@fluentui/utilities';
 import { Toggle } from './Toggle';
 import { isConformant } from '../../common/isConformant';
@@ -18,33 +17,28 @@ describe('Toggle', () => {
   });
 
   it('renders toggle correctly', () => {
-    const component = create(<Toggle label="Label" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Toggle label="Label" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders toggle correctly with inline label (string)', () => {
-    const component = create(<Toggle label="Label" inlineLabel={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Toggle label="Label" inlineLabel={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders toggle correctly with inline label (JSX Element)', () => {
-    const component = create(<Toggle label={<p>Label</p>} inlineLabel={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Toggle label={<p>Label</p>} inlineLabel={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders toggle correctly with inline label and on/off text provided', () => {
-    const component = create(<Toggle label="Label" inlineLabel={true} onText="On" offText="Off" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Toggle label="Label" inlineLabel={true} onText="On" offText="Off" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders hidden toggle correctly', () => {
-    const component = create(<Toggle hidden />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Toggle hidden />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

@@ -51,3 +51,14 @@ HTMLCanvasElement.prototype.getContext = () => {
     },
   };
 };
+
+// Mock getComputedTextLength for SVG tspan elements
+Object.defineProperty(
+  Object.getPrototypeOf(document.createElementNS('http://www.w3.org/2000/svg', 'tspan')),
+  'getComputedTextLength',
+  {
+    value: () => 100,
+    writable: true,
+    configurable: true,
+  },
+);

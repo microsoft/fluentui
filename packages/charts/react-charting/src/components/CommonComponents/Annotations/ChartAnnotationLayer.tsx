@@ -18,7 +18,7 @@ import {
   getDefaultConnectorStrokeColor,
   getStyles,
 } from './ChartAnnotationLayer.styles';
-import type { IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles } from './ChartAnnotationLayer.types';
+import type { IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles } from './ChartAnnotationLayer.styles';
 
 const getClassNames = classNamesFunction<IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles>();
 
@@ -176,7 +176,7 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
   const { annotations: annotationsProp, theme, context, className } = props;
 
   const classNames = getClassNames(getStyles, { theme, className });
-  const idPrefix = React.useMemo(() => `chart-annotation-${Math.random().toString(36).slice(2)}`, []);
+  const idPrefix = React.useMemo(() => getId('chart-annotation'), []);
 
   const [measurements, setMeasurements] = React.useState<Record<string, MeasurementEntry>>({});
 
