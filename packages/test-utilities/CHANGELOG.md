@@ -1,8 +1,21 @@
 # Change Log - @fluentui/test-utilities
 
-This log was last generated on Thu, 08 May 2025 07:22:42 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Oct 2025 10:23:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.5.0)
+
+Thu, 23 Oct 2025 10:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.4.0..@fluentui/test-utilities_v8.5.0)
+
+### Minor changes
+
+- feat: bump react range to support React 19 ([PR #35362](https://github.com/microsoft/fluentui/pull/35362) by martinhochel@microsoft.com)
+
+### Patches
+
+- fix: add deprecations and runtime assert on non supporter react majors ([PR #35359](https://github.com/microsoft/fluentui/pull/35359) by martinhochel@microsoft.com)
 
 ## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.4.0)
 
