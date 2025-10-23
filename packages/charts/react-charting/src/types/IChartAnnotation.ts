@@ -1,85 +1,107 @@
 import * as React from 'react';
 
-export type ChartAnnotationCoordinateValue = number | string | Date;
+export type ChartAnnotationCoordinate = {
+  /** Cartesian data coordinates mapped through the chart scales or
+   * Normalised coordinates within the plot area (0-1) or
+   * Absolute pixel position relative to the chart's SVG origin
+   */
+  type: 'data' | 'relative' | 'pixel';
+  /** x-axis value in the data domain */
+  x: number | string | Date;
+  /** y-axis value in the data domain */
+  y: number | string | Date;
+  /** Use the secondary y scale when available */
+  yAxis?: 'primary' | 'secondary';
+};
 
-export type ChartAnnotationCoordinates =
-  | {
-      type: 'data';
-      x: ChartAnnotationCoordinateValue;
-      y: ChartAnnotationCoordinateValue;
-      /** Which y axis the annotation should bind to when rendered against a Cartesian surface. */
-      yAxis?: 'primary' | 'secondary';
-    }
-  | {
-      type: 'relative';
-      /** Fractional value across the horizontal domain (0-1). */
-      x: number;
-      /** Fractional value across the vertical domain (0-1). */
-      y: number;
-    }
-  | {
-      type: 'pixel';
-      /** Offset in device pixels from the left edge of the plot area. */
-      x: number;
-      /** Offset in device pixels from the top edge of the plot area. */
-      y: number;
-    };
+export type ChartAnnotationHorizontalAlign = 'start' | 'center' | 'end';
+export type ChartAnnotationVerticalAlign = 'top' | 'middle' | 'bottom';
 
-export interface IChartAnnotationLayout {
-  /** Horizontal alignment of the annotation container. */
-  align?: 'start' | 'center' | 'end';
-  /** Vertical alignment of the annotation container. */
-  verticalAlign?: 'top' | 'middle' | 'bottom';
-  /** Pixel offset applied after coordinate resolution along the X axis. */
-  offsetX?: number;
-  /** Pixel offset applied after coordinate resolution along the Y axis. */
-  offsetY?: number;
-  /** Maximum width (in pixels) allowed for the annotation content. */
-  maxWidth?: number;
-  /** When true, the annotation position is clamped to the visible plot bounds. */
-  clipToBounds?: boolean;
-  /** Additional className applied to the annotation container. */
-  className?: string;
-}
+export type ChartAnnotationArrowHead = 'none' | 'start' | 'end' | 'both';
 
-export interface IChartAnnotationStyle {
-  backgroundColor?: string;
-  borderColor?: string;
-  borderWidth?: number;
-  borderStyle?: React.CSSProperties['borderStyle'];
-  borderRadius?: number | string;
-  padding?: number | string;
-  boxShadow?: string;
-  opacity?: number;
-  textColor?: string;
-  fontSize?: number | string;
-  fontWeight?: React.CSSProperties['fontWeight'];
-  className?: string;
-}
-
-export type ChartAnnotationConnectorArrow = 'none' | 'start' | 'end' | 'both';
-
-export interface IChartAnnotationConnector {
+export interface IChartAnnotationConnectorProps {
+  /** Distance in pixels between the annotation element and the start of the connector. */
   startPadding?: number;
+  /** Distance in pixels between the anchor point and the end of the connector. */
   endPadding?: number;
+  /** Stroke colour for the connector. */
   strokeColor?: string;
+  /** Stroke width in pixels. */
   strokeWidth?: number;
+  /** SVG stroke dash array for dashed connectors. */
   dashArray?: string;
-  arrow?: ChartAnnotationConnectorArrow;
+  /** Arrow head placement. Defaults to `'end'`. */
+  arrow?: ChartAnnotationArrowHead;
 }
 
-export interface IChartAnnotationAccessibilityInfo {
-  role?: string;
+export interface IChartAnnotationLayoutProps {
+  /** Horizontal alignment of the annotation relative to the anchor point */
+  align?: ChartAnnotationHorizontalAlign;
+  /** Vertical alignment of the annotation relative to the anchor point */
+  verticalAlign?: ChartAnnotationVerticalAlign;
+  /** Horizontal offset in pixels applied after alignment */
+  offsetX?: number;
+  /** Vertical offset in pixels applied after alignment */
+  offsetY?: number;
+  /** Optional maximum width for wrapped text */
+  maxWidth?: number;
+  /** Whether the annotation should remain inside the plot area */
+  clipToBounds?: boolean;
+  /** Additional CSS classes applied to the annotation wrapper */
+  className?: string;
+}
+
+export interface IChartAnnotationStyleProps {
+  /** Text colour */
+  textColor?: string;
+  /** Background colour for the annotation container */
+  backgroundColor?: string;
+  /** Border colour */
+  borderColor?: string;
+  /** Border width */
+  borderWidth?: number;
+  /** Border style (solid, dashed, etc.) */
+  borderStyle?: React.CSSProperties['borderStyle'];
+  /** Border radius */
+  borderRadius?: number;
+  /** Box shadow applied to annotation */
+  boxShadow?: string;
+  /** Font size override */
+  fontSize?: string;
+  /** Font weight override */
+  fontWeight?: React.CSSProperties['fontWeight'];
+  /** Padding around the text. Accepts CSS shorthand notation */
+  padding?: string;
+  /** Opacity for the annotation container */
+  opacity?: number;
+  /** Optional class name applied to the annotation element */
+  className?: string;
+}
+
+export interface IChartAnnotationAccessibilityProps {
+  /** Accessible label announced by assistive technologies */
   ariaLabel?: string;
+  /** Accessible description id */
   ariaDescribedBy?: string;
+  /** Custom role */
+  role?: string;
 }
 
 export interface IChartAnnotation {
+  /** Optional id for React reconciliation */
   id?: string;
-  text?: string;
-  coordinates?: ChartAnnotationCoordinates;
-  layout?: IChartAnnotationLayout;
-  style?: IChartAnnotationStyle;
-  connector?: IChartAnnotationConnector;
-  accessibility?: IChartAnnotationAccessibilityInfo;
+  /** Primary textual content */
+  text: string;
+  /** Coordinates describing where the annotation should be anchored */
+  coordinates: ChartAnnotationCoordinate;
+  /** Layout customisation */
+  layout?: IChartAnnotationLayoutProps;
+  /** Visual styling */
+  style?: IChartAnnotationStyleProps;
+  /** Optional connector line that links the annotation to its anchor. */
+  connector?: IChartAnnotationConnectorProps;
+  /** Accessibility metadata */
+  accessibility?: IChartAnnotationAccessibilityProps;
+  /** Optional application specific metadata */
+  data?: Record<string, unknown>;
 }

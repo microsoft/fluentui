@@ -1,90 +1,139 @@
-import { getColorFromString } from '@fluentui/react/lib/Color';
-import type { ITheme } from '@fluentui/react';
-import type { IStyle } from '@fluentui/react/lib/Styling';
-import type { IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles } from './ChartAnnotationLayer.types';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 
-export const DEFAULT_ANNOTATION_BACKGROUND_OPACITY = 0.9;
-export const DEFAULT_CONNECTOR_START_PADDING = 16;
-export const DEFAULT_CONNECTOR_END_PADDING = 4;
+export interface IChartAnnotationLayerStyleProps {
+  theme: ITheme;
+  className?: string;
+}
+import { color as d3Color } from 'd3-color';
+import { ChartAnnotationArrowHead } from '../../../types/IChartAnnotation';
+
+export interface IChartAnnotationLayerStyles {
+  root?: IStyle;
+  annotation?: IStyle;
+  connectorLayer?: IStyle;
+  measurement?: IStyle;
+  annotationContent?: IStyle;
+  annotationForeignObject?: IStyle;
+  annotationContentInteractive?: IStyle;
+  annotationForeignObjectInteractive?: IStyle;
+  connectorGroup?: IStyle;
+}
+
+export const DEFAULT_ANNOTATION_BACKGROUND_OPACITY = 0.8;
+export const DEFAULT_ANNOTATION_PADDING = '4px 8px';
+export const DEFAULT_CONNECTOR_START_PADDING = 12;
+export const DEFAULT_CONNECTOR_END_PADDING = 0;
 export const DEFAULT_CONNECTOR_STROKE_WIDTH = 2;
-export const DEFAULT_CONNECTOR_ARROW: 'end' = 'end';
-
-const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
-
-const toRgbaString = (color: string, opacity: number) => {
-  const parsed = getColorFromString(color);
-  if (!parsed) {
-    return color;
-  }
-  const alpha = clamp(opacity, 0, 1);
-  return `rgba(${parsed.r}, ${parsed.g}, ${parsed.b}, ${alpha})`;
-};
+export const DEFAULT_CONNECTOR_ARROW: ChartAnnotationArrowHead = 'end';
 
 export const applyOpacityToColor = (color: string | undefined, opacity: number): string | undefined => {
   if (!color) {
+    return undefined;
+  }
+
+  const parsed = d3Color(color);
+  if (!parsed) {
     return color;
   }
-  return toRgbaString(color, opacity);
+
+  parsed.opacity = Math.max(0, Math.min(1, opacity));
+  return parsed.toString();
 };
 
-export const getDefaultConnectorStrokeColor = (theme: ITheme): string => {
-  return theme.palette?.neutralPrimary ?? theme.palette?.neutralDark ?? theme.semanticColors.bodyText;
-};
+export const getDefaultAnnotationBackgroundColor = (theme: ITheme): string | undefined =>
+  applyOpacityToColor(theme.semanticColors.bodyBackground, DEFAULT_ANNOTATION_BACKGROUND_OPACITY);
 
-const baseFlex: IStyle = {
-  display: 'flex',
-};
+export const getDefaultConnectorStrokeColor = (theme: ITheme): string => theme.palette.neutralPrimary;
 
-export const getStyles = (props: IChartAnnotationLayerStyleProps): IChartAnnotationLayerStyles => {
+export const getStyles: IStyleFunctionOrObject<IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles> = (
+  props: IChartAnnotationLayerStyleProps,
+) => {
   const { theme, className } = props;
+  const defaultBackground = getDefaultAnnotationBackgroundColor(theme);
+  const defaultTextColor = theme.semanticColors.bodyText;
+  const defaultBorderColor = theme.semanticColors.bodyDivider;
 
   return {
     root: [
       {
-        position: 'relative',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         width: '100%',
         height: '100%',
+        pointerEvents: 'none',
+        overflow: 'visible',
+        zIndex: 1,
       },
       className,
     ],
-    connectorLayer: {
-      position: 'absolute',
-      inset: 0,
-      pointerEvents: 'none',
-    },
-    connectorGroup: {
-      pointerEvents: 'none',
-      fill: 'none',
-      strokeLinejoin: 'round',
-    },
-    annotationForeignObject: {
-      overflow: 'visible',
-      pointerEvents: 'none',
-    },
     annotation: [
-      baseFlex,
+      theme.fonts.small,
       {
-        boxSizing: 'border-box',
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'auto',
-        color: theme.semanticColors.bodyText,
-        backgroundColor: theme.semanticColors.bodyBackground,
-        borderRadius: theme.effects.roundedCorner2 ?? 4,
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        backgroundColor: defaultBackground,
+        color: defaultTextColor,
+        padding: DEFAULT_ANNOTATION_PADDING,
+        borderRadius: 4,
+        boxShadow: theme.effects.elevation4,
+        border: `1px solid ${defaultBorderColor}`,
+        whiteSpace: 'pre-wrap',
+        zIndex: 2,
       },
     ],
-    annotationContent: {
-      width: '100%',
-      height: '100%',
-      display: 'block',
-    },
-    measurement: {
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      visibility: 'hidden',
-      pointerEvents: 'none',
-      zIndex: -1,
-    },
+    connectorLayer: [
+      {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        overflow: 'visible',
+      },
+    ],
+    measurement: [
+      {
+        position: 'absolute',
+        visibility: 'hidden',
+        pointerEvents: 'none',
+      },
+    ],
+    annotationContent: [
+      {
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+      },
+    ],
+    annotationForeignObject: [
+      {
+        overflow: 'visible',
+        pointerEvents: 'none',
+      },
+    ],
+    annotationContentInteractive: [
+      {
+        pointerEvents: 'auto',
+      },
+    ],
+    annotationForeignObjectInteractive: [
+      {
+        pointerEvents: 'auto',
+      },
+    ],
+    connectorGroup: [
+      {
+        pointerEvents: 'none',
+      },
+    ],
   };
 };

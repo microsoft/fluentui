@@ -176,7 +176,7 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
   const { annotations: annotationsProp, theme, context, className } = props;
 
   const classNames = getClassNames(getStyles, { theme, className });
-  const idPrefix = React.useMemo(() => getId('chart-annotation'), []);
+  const idPrefix = React.useMemo(() => `chart-annotation-${Math.random().toString(36).slice(2)}`, []);
 
   const [measurements, setMeasurements] = React.useState<Record<string, MeasurementEntry>>({});
 

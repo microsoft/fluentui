@@ -252,7 +252,10 @@ const resolveAnnotationCoordinates = (annotation: PlotlyAnnotationLike): ChartAn
     const relX = toNumber(x);
     const relY = toNumber(y);
     if (relX !== undefined && relY !== undefined) {
-      return { type: 'relative', x: clamp01(relX), y: clamp01(relY) };
+      // Plotly uses bottom-up coordinates (0 = bottom, 1 = top)
+      // SVG/Fluent UI uses top-down coordinates (0 = top, 1 = bottom)
+      // Invert Y to convert from Plotly to SVG coordinate system
+      return { type: 'relative', x: clamp01(relX), y: clamp01(1 - relY) };
     }
   }
 

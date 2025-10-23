@@ -1,14 +1,12 @@
-import type { ITheme } from '@fluentui/react';
-import type { IStyle } from '@fluentui/react/lib/Styling';
-import type { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import type { IChartAnnotation } from '../../../types/IChartAnnotation';
+import { ITheme } from '@fluentui/react/lib/Styling';
+import { IChartAnnotation, ChartAnnotationArrowHead } from '../../../types/IChartAnnotation';
 
 export interface IAnnotationPoint {
   x: number;
   y: number;
 }
 
-export interface IAnnotationRect {
+export interface IAnnotationPlotRect {
   x: number;
   y: number;
   width: number;
@@ -16,12 +14,21 @@ export interface IAnnotationRect {
 }
 
 export interface IChartAnnotationContext {
-  plotRect: IAnnotationRect;
+  /** Rectangle describing the drawable area of the chart (without margins) */
+  plotRect: IAnnotationPlotRect;
+  /** Size of the owning SVG element */
   svgRect: { width: number; height: number };
+  /** Indicates if layout should be mirrored */
   isRtl?: boolean;
-  xScale?: (((value: unknown) => number) & { bandwidth?: () => number }) | undefined;
-  yScalePrimary?: (((value: unknown) => number) & { bandwidth?: () => number }) | undefined;
-  yScaleSecondary?: (((value: unknown) => number) & { bandwidth?: () => number }) | undefined;
+  /** Primary x scale mapping data domain to pixels */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  xScale?: (value: any) => number;
+  /** Primary y scale mapping data domain to pixels */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  yScalePrimary?: (value: any) => number;
+  /** Secondary y scale when present */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  yScaleSecondary?: (value: any) => number;
 }
 
 export interface IChartAnnotationLayerProps {
@@ -32,38 +39,20 @@ export interface IChartAnnotationLayerProps {
 }
 
 export interface IResolvedAnnotationPosition {
-  anchor: IAnnotationPoint;
+  /** Final absolute position after applying layout and offsets */
   point: IAnnotationPoint;
+  /** Raw anchor position before offsets (used for connectors) */
+  anchor: IAnnotationPoint;
 }
 
-export interface ConnectorRenderData {
+export type ConnectorRenderData = {
   key: string;
   start: IAnnotationPoint;
   end: IAnnotationPoint;
   strokeColor: string;
   strokeWidth: number;
   dashArray?: string;
-  arrow?: 'none' | 'start' | 'end' | 'both';
+  arrow: ChartAnnotationArrowHead;
   markerSize: number;
   markerStrokeWidth: number;
-}
-
-export interface IChartAnnotationLayerStyleProps {
-  theme: ITheme;
-  className?: string;
-}
-
-export interface IChartAnnotationLayerStyles {
-  root: IStyle;
-  connectorLayer: IStyle;
-  connectorGroup: IStyle;
-  annotationForeignObject: IStyle;
-  annotation: IStyle;
-  annotationContent: IStyle;
-  measurement: IStyle;
-}
-
-export type ChartAnnotationLayerStyleFunction = IStyleFunctionOrObject<
-  IChartAnnotationLayerStyleProps,
-  IChartAnnotationLayerStyles
->;
+};
