@@ -50,8 +50,8 @@ function isFiberRef(node: Element | Fiber | Text | null): boolean {
 }
 
 export class Ref extends React.Component<RefProps, RefState> {
-  prevNode?: Node | null;
-  currentNode?: Node | null;
+  nodeForFind?: Node | null;
+  nodeForForward?: Node | null;
 
   state = { kind: null };
 
@@ -75,7 +75,7 @@ export class Ref extends React.Component<RefProps, RefState> {
     handleRef((children as React.ReactElement & { ref: React.Ref<any> }).ref, node);
     handleRef(innerRef, node);
 
-    this.currentNode = node;
+    this.nodeForForward = node;
   };
 
   handleSelfOverride = (node: HTMLElement) => {
@@ -95,7 +95,7 @@ export class Ref extends React.Component<RefProps, RefState> {
         }
       }
 
-      this.prevNode = currentNode;
+      this.nodeForFind = currentNode;
       handleRef(this.props.innerRef, currentNode);
     }
   }
@@ -103,7 +103,7 @@ export class Ref extends React.Component<RefProps, RefState> {
   componentDidUpdate(prevProps: RefProps) {
     if (this.state.kind === 'forward') {
       if (prevProps.innerRef !== this.props.innerRef) {
-        handleRef(this.props.innerRef, this.currentNode);
+        handleRef(this.props.innerRef, this.nodeForForward);
       }
     } else if (this.state.kind === 'find') {
       let currentNode = ReactDOM.findDOMNode(this);
@@ -114,11 +114,11 @@ export class Ref extends React.Component<RefProps, RefState> {
         }
       }
 
-      const isNodeChanged = this.prevNode !== currentNode;
+      const isNodeChanged = this.nodeForFind !== currentNode;
       const isRefChanged = prevProps.innerRef !== this.props.innerRef;
 
       if (isNodeChanged) {
-        this.prevNode = currentNode;
+        this.nodeForFind = currentNode;
       }
 
       if (isNodeChanged || isRefChanged) {
@@ -128,11 +128,9 @@ export class Ref extends React.Component<RefProps, RefState> {
   }
 
   componentWillUnmount() {
-    if (this.state.kind === 'forward') {
-      delete this.currentNode;
-    } else if (this.state.kind === 'find') {
+    if (this.state.kind === 'find') {
       handleRef(this.props.innerRef, null);
-      delete this.prevNode;
+      this.nodeForFind = null;
     }
   }
 
