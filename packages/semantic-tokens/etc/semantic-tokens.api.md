@@ -71,24 +71,6 @@ export const ctrlCompoundbuttonSmallPaddingHorizontal = "var(--smtc-ctrl-compoun
 export const ctrlCompoundbuttonSmallPaddingTop = "var(--smtc-ctrl-compoundbutton-small-padding-top, var(--spacingHorizontalS))";
 
 // @public (undocumented)
-export const focusStrokeInner = "var(--smtc-focus-stroke-inner, var(--colorStrokeFocus2))";
-
-// @public (undocumented)
-export const focusStrokeOnbrand = "var(--smtc-focus-stroke-onbrand, var(--colorNeutralForegroundOnBrand))";
-
-// @public (undocumented)
-export const focusStrokeOnbrandHover = "var(--smtc-focus-stroke-onbrand-hover, var(--colorStrokeFocus2))";
-
-// @public (undocumented)
-export const focusStrokeOuter = "var(--smtc-focus-stroke-outer, var(--colorTransparentStroke))";
-
-// @public (undocumented)
-export const focusStrokewidthInner = "var(--smtc-focus-strokewidth-inner, var(--strokeWidthThin))";
-
-// @public (undocumented)
-export const focusStrokewidthOuter = "var(--smtc-focus-strokewidth-outer, var(--strokeWidthThick))";
-
-// @public (undocumented)
 export const groupButtonDividerMarginVertical = "var(--smtc-group-button-divider-margin-vertical, 0px)";
 
 // @public (undocumented)
@@ -861,6 +843,24 @@ export const groupButtonTransparentTextSecondaryForegroundHover = "var(--smtc-gr
 
 // @public (undocumented)
 export const groupButtonTransparentTextSecondaryForegroundPressed = "var(--smtc-group-button-transparent-text-secondary-foreground-pressed, var(--colorNeutralForeground2BrandPressed))";
+
+// @public (undocumented)
+export const groupFocusInnerStroke = "var(--smtc-group-focus-inner-stroke, var(--colorStrokeFocus2))";
+
+// @public (undocumented)
+export const groupFocusInnerStrokewidth = "var(--smtc-group-focus-inner-strokewidth, var(--strokeWidthThin))";
+
+// @public (undocumented)
+export const groupFocusOnbrandStroke = "var(--smtc-group-focus-onbrand-stroke, var(--colorNeutralForegroundOnBrand))";
+
+// @public (undocumented)
+export const groupFocusOnbrandStrokeHover = "var(--smtc-group-focus-onbrand-stroke-hover, var(--colorStrokeFocus2))";
+
+// @public (undocumented)
+export const groupFocusOuterStroke = "var(--smtc-group-focus-outer-stroke, var(--colorTransparentStroke))";
+
+// @public (undocumented)
+export const groupFocusOuterStrokewidth = "var(--smtc-group-focus-outer-strokewidth, var(--strokeWidthThick))";
 
 // (No @packageDocumentation comment for this package)
 
