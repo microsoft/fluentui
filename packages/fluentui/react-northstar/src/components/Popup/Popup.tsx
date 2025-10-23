@@ -147,23 +147,23 @@ export const Popup: React.FC<PopupProps> &
   const context = useFluentContext();
 
   const {
-    accessibility,
-    align,
+    accessibility = popupBehavior,
+    align = 'start',
     autoFocus,
     inline,
     contentRef,
     flipBoundary,
-    on,
+    on = 'click',
     mountNode,
-    mouseLeaveDelay,
+    mouseLeaveDelay = 500,
     offset,
     overflowBoundary,
     pointing,
     popperRef,
-    position,
+    position = 'above',
     positionFixed,
     renderContent,
-    tabbableTrigger,
+    tabbableTrigger = true,
     target,
     trapFocus,
     trigger,
@@ -689,14 +689,7 @@ Popup.propTypes = {
   autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   closeOnScroll: PropTypes.bool,
 };
-Popup.defaultProps = {
-  accessibility: popupBehavior,
-  align: 'start',
-  position: 'above',
-  on: 'click',
-  mouseLeaveDelay: 500,
-  tabbableTrigger: true,
-};
+
 Popup.handledProps = Object.keys(Popup.propTypes) as any;
 
 Popup.Content = PopupContent;
