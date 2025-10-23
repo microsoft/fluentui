@@ -143,19 +143,19 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
   const context = useFluentContext();
 
   const {
-    accessibility,
+    accessibility = dialogBehavior,
     content,
     header,
-    actions,
+    actions = {},
     cancelButton,
-    closeOnOutsideClick,
+    closeOnOutsideClick = true,
     confirmButton,
     headerAction,
-    overlay,
-    trapFocus,
+    overlay = {},
+    trapFocus = true,
     trigger,
-    footer,
-    backdrop,
+    footer = {},
+    backdrop = true,
     className,
     design,
     styles,
@@ -438,16 +438,6 @@ Dialog.propTypes = {
   overlay: customPropTypes.itemShorthand,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   trigger: PropTypes.any,
-};
-
-Dialog.defaultProps = {
-  accessibility: dialogBehavior,
-  actions: {},
-  backdrop: true,
-  closeOnOutsideClick: true,
-  overlay: {},
-  footer: {},
-  trapFocus: true,
 };
 
 Dialog.handledProps = Object.keys(Dialog.propTypes) as any;
