@@ -11,6 +11,7 @@ import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
 import { Theme, webLightTheme } from '@fluentui/tokens';
+import { resolveCSSVariables } from '../../utilities/utilities';
 
 function invertHexColor(hex: string): string {
   const color = d3.color(hex);
@@ -21,14 +22,26 @@ function invertHexColor(hex: string): string {
   return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
 }
 
-function getSafeBackgroundColor(v9Theme: Theme, foreground?: string, background?: string): string {
+function getSafeBackgroundColor(
+  v9Theme: Theme,
+  chartContainer: HTMLElement,
+  foreground?: string,
+  background?: string,
+): string {
   const fallbackFg = v9Theme.colorNeutralForeground1;
   const fallbackBg = v9Theme.colorNeutralBackground1;
-
-  const fg = d3.color(foreground || fallbackFg);
-  const bg = d3.color(background || fallbackBg);
-  if (!fg || !bg) {
+  if (!chartContainer) {
     return fallbackBg;
+  }
+
+  const resolvedFg = resolveCSSVariables(chartContainer, foreground || fallbackFg);
+  const resolvedBg = resolveCSSVariables(chartContainer, background || fallbackBg);
+
+  const fg = d3.color(resolvedFg);
+  const bg = d3.color(resolvedBg);
+
+  if (!fg || !bg) {
+    return resolvedBg;
   }
   const contrast = getColorContrast(fg.formatHex(), bg.formatHex());
   if (contrast >= 3) {
@@ -128,7 +141,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                       if (useSharedBackground) {
                         style.backgroundColor = sharedBackgroundColor;
                       } else if (fg || bg) {
-                        style.backgroundColor = getSafeBackgroundColor(v9Theme, fg, bg);
+                        style.backgroundColor = getSafeBackgroundColor(v9Theme!, _rootElem.current!, fg, bg);
                       }
                       return (
                         <th key={idx} className={classes.headerCell} style={style} tabIndex={0}>
@@ -147,7 +160,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
                           const fg = style.color;
                           const bg = style.backgroundColor;
                           if (fg || bg) {
-                            style.backgroundColor = getSafeBackgroundColor(v9Theme, fg, bg);
+                            style.backgroundColor = getSafeBackgroundColor(v9Theme, _rootElem.current!, fg, bg);
                           }
                           return (
                             <td key={colIdx} className={classes.bodyCell} style={style} tabIndex={0}>
