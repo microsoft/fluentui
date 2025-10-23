@@ -3,7 +3,7 @@
 //
 
 import * as React from 'react';
-import { styled, classNamesFunction, IRawStyle } from '@fluentui/react';
+import { styled, classNamesFunction } from '@fluentui/react';
 import { ICodeSnippetStyleProps, ICodeSnippetStyles, ICodeSnippetProps } from './CodeSnippet';
 import { getStyles, baseCodeStyle } from './CodeSnippet.styles';
 
@@ -19,7 +19,8 @@ const markup = require<any>('react-syntax-highlighter/dist/esm/languages/prism/m
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Import SyntaxHighlighter styles
-const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/prism/prism').default;
+const style: { [key: string]: React.CSSProperties } =
+  require('react-syntax-highlighter/dist/esm/styles/prism/prism').default;
 
 // Register languages
 SyntaxHighlighter.registerLanguage('tsx', ts);
@@ -28,8 +29,8 @@ SyntaxHighlighter.registerLanguage('markdown', md);
 SyntaxHighlighter.registerLanguage('bash', bash);
 SyntaxHighlighter.registerLanguage('html', markup);
 
-const codeStyle: IRawStyle = {
-  ...baseCodeStyle,
+const codeStyle: React.CSSProperties = {
+  ...(baseCodeStyle as React.CSSProperties),
   lineHeight: '1.6',
   border: 'none',
   overflow: undefined,
