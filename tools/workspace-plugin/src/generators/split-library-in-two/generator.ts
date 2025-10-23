@@ -468,13 +468,13 @@ function getImportPaths(tree: Tree, filePath: string) {
   const fileContent = tree.read(filePath, 'utf8') ?? '';
   const ast = tsquery.ast(fileContent);
 
-  const importNodes = tsquery.match(ast, 'ImportDeclaration') as import('typescript').ImportDeclaration[];
+  const importNodes = tsquery.match(ast, 'ImportDeclaration') as unknown as import('typescript').ImportDeclaration[];
   const importPaths = importNodes.map(node => node.moduleSpecifier.getText().replace(/['"]/g, ''));
 
   const requireNodes = tsquery.match(
     ast,
     'CallExpression[expression.name="require"]',
-  ) as import('typescript').CallExpression[];
+  ) as unknown as import('typescript').CallExpression[];
   const requirePaths = requireNodes.map(node => (node.arguments[0] as import('typescript').StringLiteral).text);
 
   return [...importPaths, ...requirePaths];
