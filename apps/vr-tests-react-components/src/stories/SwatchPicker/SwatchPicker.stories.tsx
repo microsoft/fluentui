@@ -4,11 +4,12 @@ import { SwatchPicker } from '@fluentui/react-swatch-picker';
 import { SampleSwatchPickerColors, SampleSwatchPickerImages, SampleSwatchPickerGrid } from './utils';
 import { Steps } from 'storywright';
 
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'SwatchPicker Converged',
-  decorators: [story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default').end() })],
+  parameters: { storyWright: { steps: new Steps().snapshot('default').end() } } satisfies StoryParameters,
 } satisfies Meta<typeof SwatchPicker>;
 
 export const Default = () => (

@@ -3,7 +3,8 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { tokens } from '@fluentui/react-theme';
-import { getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps, TestWrapperDecorator } from '../../utilities';
+import { getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const PopoverPositioning: React.FC = () => {
   const positions = [
@@ -50,14 +51,12 @@ const PopoverPositioning: React.FC = () => {
 export default {
   title: 'Popover Converged',
 
-  decorators: [
-    TestWrapperDecorator,
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps().click('#show-popovers').snapshot('positioned popovers', { cropTo: '.testWrapper' }).end(),
-      }),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().click('#show-popovers').snapshot('positioned popovers', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Popover>;
 
 export const Positioning = () => <PopoverPositioning />;

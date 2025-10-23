@@ -5,7 +5,7 @@ import { makeStyles, shorthands } from '@griffel/react';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { Steps } from 'storywright';
 
-import { withStoryWrightSteps } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const useStyles = makeStyles({
   container: {
@@ -71,14 +71,9 @@ const Example = () => {
 
 export default {
   title: 'Menu',
-
-  decorators: [
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps().snapshot('default').hover('#nested').snapshot('nested menu').end(),
-      }),
-  ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default').hover('#nested').snapshot('nested menu').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Menu>;
 
 export const NestedSubmenusSmallViewportStacked = () => <Example />;
