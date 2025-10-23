@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal-compat-context",
   "entries": [
     {
+      "date": "Thu, 02 Oct 2025 15:12:30 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.15",
+      "version": "9.0.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Sep 2025 12:51:15 GMT",
       "tag": "@fluentui/react-portal-compat-context_v9.0.14",
       "version": "9.0.14",

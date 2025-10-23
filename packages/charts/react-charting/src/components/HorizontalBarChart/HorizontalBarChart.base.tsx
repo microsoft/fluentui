@@ -21,6 +21,7 @@ import {
 } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -80,7 +81,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { data, theme } = this.props;
     this._adjustProps();
     const { palette } = theme!;
@@ -269,7 +270,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getDefaultTextData(data: IChartProps): JSX.Element {
+  private _getDefaultTextData(data: IChartProps): JSXElement {
     const { culture } = this.props;
     const chartDataMode = this.props.chartDataMode || 'default';
     const chartData: IChartDataPoint = data!.chartData![0];
@@ -306,7 +307,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createBenchmark(data: IChartProps): JSX.Element {
+  private _createBenchmark(data: IChartProps): JSXElement {
     const totalData = data.chartData![0].horizontalBarChartdata!.y;
     const benchmarkData = data.chartData![0].data;
     const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
@@ -330,7 +331,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
    */
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createBars(data: IChartProps, palette: IPalette, dataPointIndex: number): JSX.Element[] {
+  private _createBars(data: IChartProps, palette: IPalette, dataPointIndex: number): JSXElement[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;

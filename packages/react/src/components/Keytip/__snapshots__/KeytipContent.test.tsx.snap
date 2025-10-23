@@ -2,7 +2,7 @@
 
 exports[`Keytip renders invisible Keytip correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         background-color: #201f1e;
@@ -10,7 +10,7 @@ exports[`Keytip renders invisible Keytip correctly 1`] = `
       }
 >
   <span
-    className=
+    class=
 
         {
           -moz-osx-font-smoothing: grayscale;
@@ -36,14 +36,14 @@ exports[`Keytip renders invisible Keytip correctly 1`] = `
 
 exports[`Keytip renders visible Keytip correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         background-color: #201f1e;
       }
 >
   <span
-    className=
+    class=
 
         {
           -moz-osx-font-smoothing: grayscale;
@@ -69,7 +69,7 @@ exports[`Keytip renders visible Keytip correctly 1`] = `
 
 exports[`Keytip renders visible disabled Keytip correctly 1`] = `
 <div
-  className=
+  class=
 
       {
         background-color: #201f1e;
@@ -81,7 +81,7 @@ exports[`Keytip renders visible disabled Keytip correctly 1`] = `
       }
 >
   <span
-    className=
+    class=
 
         {
           -moz-osx-font-smoothing: grayscale;

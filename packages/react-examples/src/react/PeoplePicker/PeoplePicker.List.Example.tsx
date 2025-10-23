@@ -10,6 +10,7 @@ import {
   IPeoplePickerItemSuggestionStyles,
 } from '@fluentui/react/lib/Pickers';
 import { people, mru } from '@fluentui/example-data';
+import type { JSXElement } from '@fluentui/utilities';
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
@@ -138,7 +139,7 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
   };
 
   const onGetErrorMessage = React.useCallback(
-    (items: IPersonaProps[]): string | JSX.Element | PromiseLike<string | JSX.Element> | undefined => {
+    (items: IPersonaProps[]): string | JSXElement | PromiseLike<string | JSXElement> | undefined => {
       return isPickerRequired && (items || []).length === 0 ? 'Please fill out this field.' : undefined;
     },
     [isPickerRequired],

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import type { MenuItemSwitchProps, MenuItemSwitchState } from './MenuItemSwitch.types';

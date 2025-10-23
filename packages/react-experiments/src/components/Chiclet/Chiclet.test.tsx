@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { ChicletXsmall } from './ChicletXsmall';
 import { ChicletCard } from './ChicletCard';
@@ -13,11 +13,9 @@ describe('Chiclet', () => {
       itemType: 'docx',
       onClick: () => console.log('test'),
     };
-    const component = renderer.create(<ChicletXsmall {...chicletCardProps} />);
+    const component = render(<ChicletXsmall {...chicletCardProps} />);
 
-    const tree = component.toJSON();
-
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders Xsmall chiclet with title, preview, onClick, and url', () => {
@@ -28,11 +26,9 @@ describe('Chiclet', () => {
       image: 'https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg',
       onClick: () => console.log('test'),
     };
-    const component = renderer.create(<ChicletXsmall {...chicletCardProps} />);
+    const component = render(<ChicletXsmall {...chicletCardProps} />);
 
-    const tree = component.toJSON();
-
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders Xsmall Chiclet with the correct icon from a file extension', () => {
@@ -41,11 +37,9 @@ describe('Chiclet', () => {
       title: 'My Daily Notes.xlsx',
       onClick: () => console.log('test'),
     };
-    const component = renderer.create(<ChicletXsmall {...chicletCardProps} />);
+    const component = render(<ChicletXsmall {...chicletCardProps} />);
 
-    const tree = component.toJSON();
-
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('renders Medium chiclet with title, icon, onClick, and url', () => {
@@ -55,11 +49,9 @@ describe('Chiclet', () => {
       itemType: 'docx',
       onClick: () => console.log('test'),
     };
-    const component = renderer.create(<ChicletCard {...chicletCardProps} />);
+    const component = render(<ChicletCard {...chicletCardProps} />);
 
-    const tree = component.toJSON();
-
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 
   it('should set className on preview', () => {
@@ -74,10 +66,8 @@ describe('Chiclet', () => {
       return <img src="http://via.placeholder.com/100x100" {...props} />;
     };
 
-    const component = renderer.create(<ChicletCard {...chicletCardProps} preview={<Preview />} />);
+    const component = render(<ChicletCard {...chicletCardProps} preview={<Preview />} />);
 
-    const tree = component.toJSON();
-
-    expect(tree).toMatchSnapshot();
+    expect(component.container.firstChild).toMatchSnapshot();
   });
 });

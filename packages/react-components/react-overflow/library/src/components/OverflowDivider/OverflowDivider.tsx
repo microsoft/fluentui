@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { applyTriggerPropsToChildren, useMergedRefs } from '@fluentui/react-utilities';
 import { useOverflowDivider } from '../../useOverflowDivider';

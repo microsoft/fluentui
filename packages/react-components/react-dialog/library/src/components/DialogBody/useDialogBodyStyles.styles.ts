@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

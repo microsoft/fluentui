@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { select } from 'd3-selection';
 import { getSecureProps } from '../../../utilities/utilities';

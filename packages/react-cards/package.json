@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-cards",
-  "version": "0.205.215",
+  "version": "0.206.2",
   "description": "Deprecated experimental Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,15 +14,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "start": "just-scripts dev:storybook",
-    "start-test": "just-scripts jest-watch",
-    "update-snapshots": "just-scripts jest -u"
+    "build": "just-scripts build"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -33,17 +25,17 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.123.6",
-    "@fluentui/foundation-legacy": "^8.4.30",
+    "@fluentui/react": "^8.124.2",
+    "@fluentui/foundation-legacy": "^8.5.2",
     "@fluentui/set-version": "^8.2.24",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.8.0 <20.0.0",
+    "@types/react-dom": ">=16.8.0 <20.0.0",
+    "react": ">=16.8.0 <20.0.0",
+    "react-dom": ">=16.8.0 <20.0.0"
   },
   "exports": {
     ".": {

@@ -2,6 +2,71 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Thu, 16 Oct 2025 07:21:58 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.66",
+      "version": "8.5.66",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "6c4630f5f8aa3ac42ce4c45be7d39642899e1e85",
+            "comment": "style: resolve explicit-return tyle lint errors"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.13.2",
+            "commit": "36be47512933fadd0418d11cdc1e3530c13f0575"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.16.1",
+            "commit": "36be47512933fadd0418d11cdc1e3530c13f0575"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Oct 2025 07:21:45 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.65",
+      "version": "8.5.65",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.13.1",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Oct 2025 07:21:59 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.64",
+      "version": "8.5.64",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.13.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.16.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Aug 2025 07:21:44 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.5.63",
       "version": "8.5.63",

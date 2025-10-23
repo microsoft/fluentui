@@ -134,7 +134,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
     this._selection = new Selection();
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     return (
       <div className={classNames.wrapper}>
         <Fabric>
@@ -174,7 +174,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
 function onRenderDetailsHeader(
   props: IDetailsHeaderProps,
   defaultRender?: IRenderFunction<IDetailsHeaderProps>,
-): JSX.Element {
+): React.ReactElement {
   return (
     <Sticky
       stickyPosition={StickyPositionType.Header}
@@ -191,7 +191,7 @@ function onRenderDetailsHeader(
   );
 }
 
-function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
+function onRenderDetailsFooter(props: IDetailsFooterProps): React.ReactElement {
   return (
     <Sticky
       stickyPosition={StickyPositionType.Footer}
@@ -225,7 +225,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
 function _onRenderCheckForFooterRow(
   props: IDetailsRowCheckProps,
   DefaultRender: React.ComponentType<IDetailsRowCheckProps> = DetailsRowCheck,
-): JSX.Element {
+): React.ReactElement {
   return <DefaultRender {...props} style={{ visibility: 'hidden' }} selected={true} />;
 }
 

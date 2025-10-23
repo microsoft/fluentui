@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses } from '@fluentui/react-components';
 import * as React from 'react';
 import { useAttachmentBodyStyles } from './AttachmentBody.styles';

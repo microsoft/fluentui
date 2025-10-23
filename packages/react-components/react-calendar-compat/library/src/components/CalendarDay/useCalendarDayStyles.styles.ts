@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils/animations';

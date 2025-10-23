@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';

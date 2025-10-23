@@ -1,3 +1,5 @@
+'use client';
+
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';

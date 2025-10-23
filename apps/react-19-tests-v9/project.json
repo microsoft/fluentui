@@ -4,32 +4,95 @@
   "projectType": "application",
   "implicitDependencies": [],
   "tags": ["vNext"],
+  "metadata": {
+    "targetGroups": {
+      "React Integration Tester": ["test-rit--19--prepare", "test-rit--19--type-check", "test-rit"]
+    }
+  },
   "targets": {
-    "type-check:integration": {
+    "test-rit--19--prepare": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn rit --prepare-only --no-install --project-id ci --react 19 --verbose"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "production",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/tools/react-integration-testing/**"
+      ],
+      "outputs": ["{workspaceRoot}/tmp/rit/react-19/rit-tests-v9-react-19-ci"],
       "dependsOn": ["^build"],
-      "inputs": [
-        "{projectRoot}/tsconfig.react-19.json",
-        "{workspaceRoot}/packages/react-components/*/stories/**/*.stories.ts(x)?",
-        "!{workspaceRoot}/packages/react-components/*/stories/**/index.stories.ts(x)?",
-        "!{workspaceRoot}/packages/react-components/react-migration-v[80]-v9/**",
-        "!{workspaceRoot}/packages/react-components/react-[a-z]+-compat/**"
-      ]
+      "metadata": {
+        "technologies": ["react-integration-tester"],
+        "description": "Run react integration tests against React 19",
+        "help": {
+          "command": "yarn rit --help",
+          "example": {}
+        }
+      },
+      "executor": "nx:run-commands",
+      "configurations": {},
+      "parallelism": true
     },
-    "e2e:integration": {
-      "dependsOn": [],
+    "test-rit--19--type-check": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn rit --project-id ci --react 19 --run type-check --verbose"
+      },
+      "cache": true,
       "inputs": [
-        "{projectRoot}/cypress-react-19.config.ts",
-        "{workspaceRoot}/packages/react-components/**/*.cy.ts(x)?",
-        "!{workspaceRoot}/packages/react-components/react-migration-v[80]-v9/**",
-        "!{workspaceRoot}/packages/react-components/react-[a-z]+-compat/**"
-      ]
+        "default",
+        "production",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/tools/react-integration-testing/**"
+      ],
+      "outputs": [],
+      "dependsOn": ["test-rit--19--prepare"],
+      "metadata": {
+        "technologies": ["react-integration-tester"],
+        "description": "Run react integration tests against React 19",
+        "help": {
+          "command": "yarn rit --help",
+          "example": {}
+        }
+      },
+      "executor": "nx:run-commands",
+      "configurations": {},
+      "parallelism": true
     },
-    "test:integration": {
-      "dependsOn": ["^build"],
+    "test-rit": {
+      "executor": "nx:noop",
+      "cache": true,
+      "dependsOn": [
+        {
+          "target": "test-rit--19--type-check",
+          "projects": "self",
+          "params": "forward"
+        }
+      ],
       "inputs": [
-        "{projectRoot}/jest-react-19.config.js",
-        "{workspaceRoot}/packages/react-components/**/*.(test|spec).ts(x)?"
-      ]
+        "default",
+        "production",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/tools/react-integration-testing/**"
+      ],
+      "outputs": [],
+      "metadata": {
+        "technologies": ["react-integration-tester"],
+        "description": "Run react integration tests against React 19",
+        "help": {
+          "command": "yarn rit --help",
+          "example": {}
+        }
+      },
+      "configurations": {},
+      "options": {},
+      "parallelism": true
     }
   }
 }

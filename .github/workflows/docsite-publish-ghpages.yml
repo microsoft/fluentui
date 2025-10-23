@@ -25,7 +25,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '22'
           cache: 'yarn'
 
       - name: Install packages
@@ -51,7 +51,6 @@ jobs:
           rm -rf _pages
           mkdir -p _pages/react _pages/charts _pages/web-components
 
-          cp -R apps/public-docsite-v9/dist/storybook/* _pages/
           cp -R apps/public-docsite-v9/dist/react/* _pages/react/
           cp -R apps/chart-docsite/dist/storybook/* _pages/charts/
           cp -R packages/web-components/dist/storybook/* _pages/web-components

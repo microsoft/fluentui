@@ -8,6 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 const options: IChoiceGroupOption[] = [
   { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
@@ -49,7 +50,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
       barGapMax: 2,
     };
   }
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return <div>{this._basicExample()}</div>;
   }
 
@@ -89,7 +90,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
     this.setState({ roundCorners: checked });
   };
 
-  private _basicExample(): JSX.Element {
+  private _basicExample(): JSXElement {
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 2, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata2', data: 0.5, color: getColorFromToken(DataVizPalette.color2) },

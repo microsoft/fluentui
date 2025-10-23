@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Mon, 08 Sep 2025 12:51:09 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Oct 2025 12:04:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.11.1)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.11.0..@fluentui/react-motion_v9.11.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.11.0)
+
+Thu, 02 Oct 2025 15:12:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.10.4..@fluentui/react-motion_v9.11.0)
+
+### Minor changes
+
+- feat(motion): add createMotionComponentVariant factory ([PR #35149](https://github.com/microsoft/fluentui/pull/35149) by robertpenner@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.2 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
 
 ## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.10.4)
 

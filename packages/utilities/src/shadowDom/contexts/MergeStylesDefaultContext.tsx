@@ -1,4 +1,5 @@
-import { DEFAULT_SHADOW_CONFIG, ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
+import { DEFAULT_SHADOW_CONFIG } from '@fluentui/merge-styles';
+import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 import * as React from 'react';
 
 import type { AdoptedStylesheetExHook, AdoptedStylesheetHook } from '../hooks/useAdoptedStylesheet';
@@ -10,10 +11,10 @@ import type {
 import type { MergeStylesRootStylesheetsHook } from '../hooks/useMergeStylesRootStylesheets';
 import type { UseStyledHook } from '../hooks/useStyled';
 
-export const noop = () => false;
-export const noopShadow = () => DEFAULT_SHADOW_CONFIG;
-export const noopRootStylesheets = () => new Map();
-export const noopUndefined = () => undefined;
+const noop = () => false;
+const noopShadow = () => DEFAULT_SHADOW_CONFIG;
+const noopRootStylesheets = () => new Map();
+const noopUndefined = () => undefined;
 
 export const getNewContext = (): MergeStylesDefaultContextValue => {
   return {

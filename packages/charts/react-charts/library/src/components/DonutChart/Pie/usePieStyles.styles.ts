@@ -1,3 +1,5 @@
+'use client';
+
 import { PieProps, PieStyles } from './Pie.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 

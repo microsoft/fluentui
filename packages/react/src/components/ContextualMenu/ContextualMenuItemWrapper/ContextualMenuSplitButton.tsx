@@ -18,11 +18,13 @@ import { getIsChecked, getMenuItemAriaRole, hasSubmenu, isItemDisabled } from '.
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import type { IKeytipProps } from '../../../Keytip';
 import type { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
 import { IContextualMenuItemProps } from '../ContextualMenuItem.types';
+
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IContextualMenuSplitButtonState {}
 
@@ -53,7 +55,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     this._dismissLabelId = getId();
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (this._splitButton && 'onpointerdown' in this._splitButton) {
       this._events.on(this._splitButton, 'pointerdown', this._onPointerDown, true);
     }
@@ -64,8 +66,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     this._events.dispose();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element | null {
+  public render(): JSXElement | null {
     const {
       item,
       classNames,
@@ -96,13 +97,12 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
     return (
       <KeytipData keytipProps={keytipProps} disabled={isItemDisabled(item)}>
-        {(
-          keytipAttributes: any,
-        ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-        JSX.Element => (
+        {(keytipAttributes: any): JSXElement => (
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
-            ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
+            ref={(splitButton: HTMLDivElement) => {
+              this._splitButton = splitButton;
+            }}
             role={getMenuItemAriaRole(item)}
             aria-label={item.ariaLabel}
             className={classNames.splitContainer}
@@ -155,7 +155,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     return this._splitButton;
   };
 
-  protected _renderAriaDescription = (ariaDescription?: string, className?: string) => {
+  protected _renderAriaDescription = (ariaDescription?: string, className?: string): JSXElement | null => {
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan
     return ariaDescription ? (
       <span id={this._ariaDescriptionId} className={className}>
@@ -171,7 +171,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean,
-  ) {
+  ): JSXElement {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem, onItemClick } = this.props;
 
     const itemProps: IContextualMenuItem = {
@@ -210,7 +210,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     );
   }
 
-  private _renderSplitDivider(item: IContextualMenuItem) {
+  private _renderSplitDivider(item: IContextualMenuItem): JSXElement {
     const getDividerClassNames =
       item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
     return (

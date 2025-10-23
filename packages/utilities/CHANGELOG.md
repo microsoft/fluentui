@@ -1,8 +1,26 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 14 Aug 2025 07:19:46 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Oct 2025 07:22:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.16.1)
+
+Thu, 16 Oct 2025 07:22:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.16.0..@fluentui/utilities_v8.16.1)
+
+### Patches
+
+- style: resolve explicit-return tyle lint errors ([PR #35303](https://github.com/microsoft/fluentui/pull/35303) by martinhochel@microsoft.com)
+
+## [8.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.16.0)
+
+Thu, 09 Oct 2025 07:21:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.23..@fluentui/utilities_v8.16.0)
+
+### Minor changes
+
+- fix: resolve react 19 type issues ([PR #35288](https://github.com/microsoft/fluentui/pull/35288) by dmytrokirpa@microsoft.com)
 
 ## [8.15.23](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.23)
 

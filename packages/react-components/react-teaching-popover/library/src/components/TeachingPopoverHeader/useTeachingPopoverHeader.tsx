@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TeachingPopoverHeaderProps, TeachingPopoverHeaderState } from './TeachingPopoverHeader.types';

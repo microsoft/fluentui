@@ -6,6 +6,7 @@
 
 import { CurveFactory } from 'd3-shape';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { RefObject } from 'react';
 import { SankeyGraph } from 'd3-sankey';
@@ -76,10 +77,18 @@ export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascend
 export type AxisProps = {
     tickStep?: number | string;
     tick0?: number | Date;
+    tickText?: string[];
 };
 
 // @public
 export type AxisScaleType = 'default' | 'log';
+
+// @public
+export interface BarSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
+    data: DataPointV2<X, Y>[];
+    key?: string;
+    type: 'bar';
+}
 
 // @public (undocumented)
 export interface Basestate {
@@ -296,6 +305,8 @@ export interface ChartPopoverProps {
     // (undocumented)
     legend?: string | number | Date;
     // (undocumented)
+    positioning?: PositioningShorthand;
+    // (undocumented)
     ratio?: [number, number];
     // (undocumented)
     styles?: Partial<PopoverComponentStyles>;
@@ -432,6 +443,30 @@ export interface DataPoint {
     y: number;
 }
 
+// @public
+export interface DataPointV2<X extends string | number | Date, Y extends string | number | Date> {
+    callOutAccessibilityData?: AccessibilityProps;
+    color?: string;
+    markerSize?: number;
+    onClick?: () => void;
+    text?: string;
+    x: X;
+    xAxisCalloutData?: string;
+    y: Y;
+    yAxisCalloutData?: string;
+}
+
+// @public
+export interface DataSeries {
+    color?: string;
+    gradient?: [string, string];
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
+}
+
 // @public (undocumented)
 export const DataVizPalette: {
     color1: string;
@@ -516,6 +551,7 @@ export interface DonutChartProps extends CartesianChartProps {
     // (undocumented)
     legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSXElement | undefined;
+    order?: 'default' | 'sorted';
     parentRef?: HTMLElement | null;
     roundCorners?: boolean;
     showLabelsInPercent?: boolean;
@@ -766,6 +802,7 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: GroupedVerticalBarChartData[];
+    dataV2?: (BarSeries<string, number> | LineSeries<string, number>)[];
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
@@ -792,7 +829,7 @@ export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns;
 // @public (undocumented)
 export interface GVBarChartSeriesPoint {
     callOutAccessibilityData?: AccessibilityProps;
-    color: string;
+    color?: string;
     data: number;
     key: string;
     legend: string;
@@ -1101,6 +1138,7 @@ export const LineChart: React_2.FunctionComponent<LineChartProps>;
 
 // @public (undocumented)
 export interface LineChartDataPoint extends BaseDataPoint {
+    markerColor?: string;
     text?: string;
     x: number | Date;
     y: number;
@@ -1191,6 +1229,16 @@ export interface LineDataInVerticalStackedBarChart {
     y: number | string;
     // (undocumented)
     yAxisCalloutData?: string;
+}
+
+// @public
+export interface LineSeries<X extends string | number | Date, Y extends string | number | Date> extends DataSeries {
+    data: DataPointV2<X, Y>[];
+    gaps?: LineChartGap[];
+    hideInactiveDots?: boolean;
+    lineOptions?: LineChartLineOptions;
+    onLineClick?: () => void;
+    type: 'line';
 }
 
 // @public (undocumented)
@@ -1404,6 +1452,7 @@ export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
 
 // @public
 export interface ScatterChartDataPoint extends BaseDataPoint {
+    markerColor?: string;
     markerSize?: number;
     text?: string;
     x: number | Date | string;

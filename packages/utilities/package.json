@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/utilities",
-  "version": "8.15.23",
+  "version": "8.16.1",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,19 +22,11 @@
   ],
   "scripts": {
     "build": "just-scripts build",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start-test": "just-scripts jest-watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u",
     "verify-packaging": "just-scripts verify-packaging"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/jest-serializer-merge-styles": "*",
-    "@fluentui/test-utilities": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*"
@@ -47,8 +39,8 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.8.0 <20.0.0",
+    "react": ">=16.8.0 <20.0.0"
   },
   "exports": {
     ".": {

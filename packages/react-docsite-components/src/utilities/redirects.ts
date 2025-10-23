@@ -4,7 +4,7 @@ import { IRedirect } from './SiteDefinition.types';
  * If the hash contains any of the given object's keys, replace that segment of the hash with the
  * given value and redirect.
  */
-export function handleRedirects(redirects?: IRedirect[]) {
+export function handleRedirects(redirects?: IRedirect[]): void {
   if (!redirects) {
     return;
   }

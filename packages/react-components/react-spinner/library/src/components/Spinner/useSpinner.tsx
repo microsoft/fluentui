@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, useTimeout, slot } from '@fluentui/react-utilities';
 import type { SpinnerProps, SpinnerState } from './Spinner.types';

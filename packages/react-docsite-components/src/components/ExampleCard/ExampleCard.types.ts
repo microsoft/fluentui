@@ -21,9 +21,9 @@ export interface IExampleCardProps {
   /** Whether the example is right aligned */
   isRightAligned?: boolean;
   /** Example dos */
-  dos?: JSX.Element;
+  dos?: React.ReactElement;
   /** Example don'ts */
-  donts?: JSX.Element;
+  donts?: React.ReactElement;
   /** Whether the example is scrollable */
   isScrollable?: boolean;
   /**

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   useThemeClassName_unstable as useThemeClassName,
@@ -132,7 +134,8 @@ const useModernElementFactory: UseElementFactory = options => {
         // before mounting the portal. We hardcode the value to `Node.ELEMENT_NODE` to pass this check and avoid
         // premature node creation
         if (property === 'nodeType') {
-          return Node.ELEMENT_NODE;
+          // Can't use the `Node.ELEMENT_NODE` as it's a browser API and  not available in all environments, e.g SSR
+          return 1; // `Node.ELEMENT_NODE`
         }
 
         // Heads up!
