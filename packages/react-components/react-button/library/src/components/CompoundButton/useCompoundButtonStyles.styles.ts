@@ -362,7 +362,6 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
 
   state.root.className = mergeClasses(
-    state.root.className,
     compoundButtonClassNames.root,
 
     // Root styles
