@@ -139,7 +139,6 @@ function generateLibraryOutput() {
     const tokenName = dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
     const fluentFallback = controlFallbacks[tokenGroup]?.[tokenName]?.fluent;
-    console.log('control token:', tokenName, cssVarName, fluentFallback);
     let exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
     if (fluentFallback) {
       exportToken = `export const ${tokenName} = 'var(${cssVarName}, ${fluentFallback})';`;

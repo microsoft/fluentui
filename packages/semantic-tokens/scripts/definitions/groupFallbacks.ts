@@ -11,6 +11,26 @@ export type GroupFallbacks = {
 };
 
 export const groupFallbacks: GroupFallbacks = {
+  focus: {
+    groupFocusOuterStroke: {
+      fluent: tokens.colorTransparentStroke,
+    },
+    groupFocusInnerStroke: {
+      fluent: tokens.colorStrokeFocus2,
+    },
+    groupFocusOnbrandStrokeHover: {
+      fluent: tokens.colorStrokeFocus2,
+    },
+    groupFocusOnbrandStroke: {
+      fluent: tokens.colorNeutralForegroundOnBrand,
+    },
+    groupFocusOuterStrokewidth: {
+      fluent: tokens.strokeWidthThick,
+    },
+    groupFocusInnerStrokewidth: {
+      fluent: tokens.strokeWidthThin,
+    },
+  },
   button: {
     groupButtonTextFontfamily: {
       fluent: tokens.fontFamilyBase,

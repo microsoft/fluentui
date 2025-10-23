@@ -1,13 +1,13 @@
+export { cornerCircular, cornerSquare } from './generics/tokens';
 export {
-  focusStrokeOuter,
-  focusStrokeInner,
-  focusStrokeOnbrandHover,
-  focusStrokeOnbrand,
-  focusStrokewidthOuter,
-  focusStrokewidthInner,
-  cornerCircular,
-  cornerSquare,
-} from './generics/tokens';
+  groupFocusOuterStroke,
+  groupFocusInnerStroke,
+  groupFocusOuterStrokewidth,
+  groupFocusInnerStrokewidth,
+  groupFocusOnbrandStroke,
+  groupFocusOnbrandStrokeHover,
+} from './groups/focus/tokens';
+
 export {
   groupButtonStrokewidth,
   groupButtonNeutralBackground,
