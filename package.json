@@ -67,8 +67,8 @@
     "@griffel/webpack-loader": "2.2.10",
     "@jest/reporters": "29.7.0",
     "@mdx-js/loader": "2.3.0",
-    "@microsoft/api-extractor": "7.49.1",
-    "@microsoft/api-extractor-model": "7.30.2",
+    "@microsoft/api-extractor": "7.51.0",
+    "@microsoft/api-extractor-model": "7.31.2",
     "@microsoft/eslint-plugin-sdl": "1.0.1",
     "@microsoft/load-themed-styles": "1.10.26",
     "@microsoft/loader-load-themed-styles": "2.0.17",
@@ -355,7 +355,6 @@
   "resolutions": {
     "@types/jest-axe/axe-core": "4.7.2",
     "esbuild": "0.25.0",
-    "@microsoft/api-extractor/typescript": "5.5.2",
     "swc-loader": "^0.2.6",
     "prettier": "2.8.8",
     "puppeteer": "19.6.3",

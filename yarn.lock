@@ -2554,33 +2554,42 @@
     "@types/mdx" "^2.0.0"
     "@types/react" ">=16"
 
-"@microsoft/api-extractor-model@7.30.2":
-  version "7.30.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.30.2.tgz#9c0b2446f6bbcdd0159e16b0e8f8694d645ce257"
-  integrity sha512-3/t2F+WhkJgBzSNwlkTIL0tBgUoBqDqL66pT+nh2mPbM0NIDGVGtpqbGWPgHIzn/mn7kGS/Ep8D8po58e8UUIw==
+"@microsoft/api-extractor-model@7.30.3":
+  version "7.30.3"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.30.3.tgz#d1256b6955c8c2a1115e0cfe99e1e8f9802e52cc"
+  integrity sha512-yEAvq0F78MmStXdqz9TTT4PZ05Xu5R8nqgwI5xmUmQjWBQ9E6R2n8HB/iZMRciG4rf9iwI2mtuQwIzDXBvHn1w==
   dependencies:
     "@microsoft/tsdoc" "~0.15.1"
     "@microsoft/tsdoc-config" "~0.17.1"
-    "@rushstack/node-core-library" "5.10.2"
+    "@rushstack/node-core-library" "5.11.0"
 
-"@microsoft/api-extractor@7.49.1":
-  version "7.49.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.49.1.tgz#e525cadfa09a9d376fd05e8b9415f6bc6260f01a"
-  integrity sha512-jRTR/XbQF2kb+dYn8hfYSicOGA99+Fo00GrsdMwdfE3eIgLtKdH6Qa2M3wZV9S2XmbgCaGX1OdPtYctbfu5jQg==
+"@microsoft/api-extractor-model@7.31.2":
+  version "7.31.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor-model/-/api-extractor-model-7.31.2.tgz#b47fecb6c6a5a2a52455ee434a8ed82526e1691e"
+  integrity sha512-d0WwxwBLZaHokTrOngqHVkQK59NlveV5RE4wEpjaybhSNmEK9N7KPCcT5n8JcpH6k5o6AhxG47g1km2D7BZw8Q==
   dependencies:
-    "@microsoft/api-extractor-model" "7.30.2"
     "@microsoft/tsdoc" "~0.15.1"
     "@microsoft/tsdoc-config" "~0.17.1"
-    "@rushstack/node-core-library" "5.10.2"
+    "@rushstack/node-core-library" "5.17.1"
+
+"@microsoft/api-extractor@7.51.0":
+  version "7.51.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/api-extractor/-/api-extractor-7.51.0.tgz#c2efec5cdb0cf236daa26f895d39084a7f3b939f"
+  integrity sha512-LjyQ2xljliss2kIsSo8Npu9mBv6wnaR3ikBagCU2mC7Ggn30sTAOFLzVNyMLOMiuSOFxsEbskrBO5lLn92qnZQ==
+  dependencies:
+    "@microsoft/api-extractor-model" "7.30.3"
+    "@microsoft/tsdoc" "~0.15.1"
+    "@microsoft/tsdoc-config" "~0.17.1"
+    "@rushstack/node-core-library" "5.11.0"
     "@rushstack/rig-package" "0.5.3"
-    "@rushstack/terminal" "0.14.5"
-    "@rushstack/ts-command-line" "4.23.3"
+    "@rushstack/terminal" "0.15.0"
+    "@rushstack/ts-command-line" "4.23.5"
     lodash "~4.17.15"
     minimatch "~3.0.3"
     resolve "~1.22.1"
     semver "~7.5.4"
     source-map "~0.6.1"
-    typescript "5.7.2"
+    typescript "5.7.3"
 
 "@microsoft/applicationinsights-analytics-js@3.3.0":
   version "3.3.0"
@@ -3838,15 +3847,29 @@
     timsort "~0.3.0"
     z-schema "~5.0.2"
 
-"@rushstack/node-core-library@5.10.2":
-  version "5.10.2"
-  resolved "https://registry.yarnpkg.com/@rushstack/node-core-library/-/node-core-library-5.10.2.tgz#8d12bc5bd9244ea57f441877246efb0a1b7b7df6"
-  integrity sha512-xOF/2gVJZTfjTxbo4BDj9RtQq/HFnrrKdtem4JkyRLnwsRz2UDTg8gA1/et10fBx5RxmZD9bYVGST69W8ME5OQ==
+"@rushstack/node-core-library@5.11.0":
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/@rushstack/node-core-library/-/node-core-library-5.11.0.tgz#8ceb980f3a591e1254167bb5ffdc200d1893b783"
+  integrity sha512-I8+VzG9A0F3nH2rLpPd7hF8F7l5Xb7D+ldrWVZYegXM6CsKkvWc670RlgK3WX8/AseZfXA/vVrh0bpXe2Y2UDQ==
   dependencies:
     ajv "~8.13.0"
     ajv-draft-04 "~1.0.0"
     ajv-formats "~3.0.1"
-    fs-extra "~7.0.1"
+    fs-extra "~11.3.0"
+    import-lazy "~4.0.0"
+    jju "~1.4.0"
+    resolve "~1.22.1"
+    semver "~7.5.4"
+
+"@rushstack/node-core-library@5.17.1":
+  version "5.17.1"
+  resolved "https://registry.yarnpkg.com/@rushstack/node-core-library/-/node-core-library-5.17.1.tgz#5fbeb8278ee3b30fe644df30bc752d65d1d68b95"
+  integrity sha512-Mtcsa0aRJgYJOpeTe4qElLTRBlijNohdliq/xOhqce5rlzMIfLr73j9wUuj6GYPZPbG0S+is/RL2l0m/vnL55A==
+  dependencies:
+    ajv "~8.13.0"
+    ajv-draft-04 "~1.0.0"
+    ajv-formats "~3.0.1"
+    fs-extra "~11.3.0"
     import-lazy "~4.0.0"
     jju "~1.4.0"
     resolve "~1.22.1"
@@ -3867,20 +3890,20 @@
     resolve "~1.22.1"
     strip-json-comments "~3.1.1"
 
-"@rushstack/terminal@0.14.5":
-  version "0.14.5"
-  resolved "https://registry.yarnpkg.com/@rushstack/terminal/-/terminal-0.14.5.tgz#4b0e79b139b4372901956f920b5a4a405a1d09d8"
-  integrity sha512-TEOpNwwmsZVrkp0omnuTUTGZRJKTr6n6m4OITiNjkqzLAkcazVpwR1SOtBg6uzpkIBLgrcNHETqI8rbw3uiUfw==
+"@rushstack/terminal@0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@rushstack/terminal/-/terminal-0.15.0.tgz#9599c6684ed2adc9e74b767a2d45159975bcddb8"
+  integrity sha512-vXQPRQ+vJJn4GVqxkwRe+UGgzNxdV8xuJZY2zem46Y0p3tlahucH9/hPmLGj2i9dQnUBFiRnoM9/KW7PYw8F4Q==
   dependencies:
-    "@rushstack/node-core-library" "5.10.2"
+    "@rushstack/node-core-library" "5.11.0"
     supports-color "~8.1.1"
 
-"@rushstack/ts-command-line@4.23.3":
-  version "4.23.3"
-  resolved "https://registry.yarnpkg.com/@rushstack/ts-command-line/-/ts-command-line-4.23.3.tgz#a42fe413159c0f3f2c57afdceedf91a5b75c2d67"
-  integrity sha512-HazKL8fv4HMQMzrKJCrOrhyBPPdzk7iajUXgsASwjQ8ROo1cmgyqxt/k9+SdmrNLGE1zATgRqMUH3s/6smbRMA==
+"@rushstack/ts-command-line@4.23.5":
+  version "4.23.5"
+  resolved "https://registry.yarnpkg.com/@rushstack/ts-command-line/-/ts-command-line-4.23.5.tgz#523e0db8906d831a730f15acc15fbcf7906c650a"
+  integrity sha512-jg70HfoK44KfSP3MTiL5rxsZH7X1ktX3cZs9Sl8eDu1/LxJSbPsh0MOFRC710lIuYYSgxWjI5AjbCBAl7u3RxA==
   dependencies:
-    "@rushstack/terminal" "0.14.5"
+    "@rushstack/terminal" "0.15.0"
     "@types/argparse" "1.0.38"
     argparse "~1.0.9"
     string-argv "~0.3.1"
@@ -11621,6 +11644,15 @@ fs-extra@^9.0.0, fs-extra@^9.1.0:
   integrity sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==
   dependencies:
     at-least-node "^1.0.0"
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
+fs-extra@~11.3.0:
+  version "11.3.2"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.3.2.tgz#c838aeddc6f4a8c74dd15f85e11fe5511bfe02a4"
+  integrity sha512-Xr9F6z6up6Ws+NjzMCZc6WXg2YFRlrLP9NQDO3VQrWrfiojdhS56TzueT88ze0uBdCTwEIhQ3ptnmKeWGFAe0A==
+  dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"
     universalify "^2.0.0"
@@ -20897,11 +20929,6 @@ typescript-eslint@8.46.2, typescript-eslint@^8.0.0, typescript-eslint@^8.46.2:
     "@typescript-eslint/parser" "8.46.2"
     "@typescript-eslint/typescript-estree" "8.46.2"
     "@typescript-eslint/utils" "8.46.2"
-
-typescript@5.5.2, typescript@5.7.2:
-  version "5.5.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.2.tgz#c26f023cb0054e657ce04f72583ea2d85f8d0507"
-  integrity sha512-NcRtPEOsPFFWjobJEtfihkLCZCXZt/os3zf8nTxjVH3RvTSxjrCamJpbExGvYOF+tFHc3pA65qpdwPbzjohhew==
 
 typescript@5.7.3, typescript@~5.7.2:
   version "5.7.3"
