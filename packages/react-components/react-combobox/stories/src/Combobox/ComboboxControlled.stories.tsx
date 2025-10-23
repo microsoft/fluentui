@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement } from '@fluentui/react-components';
+import type { JSXElement, PresenceBadgeStatus } from '@fluentui/react-components';
 import { Combobox, makeStyles, Option, useId, Persona } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
@@ -46,7 +46,7 @@ export const Controlled = (props: Partial<ComboboxProps>): JSXElement => {
     if (!open) {
       setValue(selectedOptions.join(', '));
     }
-  }, [open]);
+  }, [open, selectedOptions]);
 
   return (
     <div className={styles.root}>
@@ -59,7 +59,7 @@ export const Controlled = (props: Partial<ComboboxProps>): JSXElement => {
                 avatar={{ color: 'colorful', 'aria-hidden': true }}
                 name={opt.text}
                 presence={{
-                  status: opt.presence as any,
+                  status: opt.presence as PresenceBadgeStatus,
                 }}
                 secondaryText={opt.secondaryText}
               />
@@ -85,7 +85,7 @@ export const Controlled = (props: Partial<ComboboxProps>): JSXElement => {
                 avatar={{ color: 'colorful', 'aria-hidden': true }}
                 name={opt.text}
                 presence={{
-                  status: opt.presence as any,
+                  status: opt.presence as PresenceBadgeStatus,
                 }}
                 secondaryText={opt.secondaryText}
               />
