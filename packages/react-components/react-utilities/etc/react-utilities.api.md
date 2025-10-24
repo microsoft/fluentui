@@ -260,6 +260,8 @@ export interface SelectionMethods {
     toggleAllItems(event: React_2.SyntheticEvent, itemIds: SelectionItemId[]): void;
     // (undocumented)
     toggleItem(event: React_2.SyntheticEvent, id: SelectionItemId): void;
+    // (undocumented)
+    toggleSomeItems(event: React_2.SyntheticEvent, itemIds: SelectionItemId[]): void;
 }
 
 // @public (undocumented)

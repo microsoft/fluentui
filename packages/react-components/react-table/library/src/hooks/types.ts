@@ -77,6 +77,10 @@ export interface TableSelectionState {
    */
   toggleAllRows: (e: React.SyntheticEvent) => void;
   /**
+   * Toggle selection of some rows
+   */
+  toggleSomeRows: (e: React.SyntheticEvent, rowIds: Set<TableRowId>) => void;
+  /**
    * Toggle selection of single row
    */
   toggleRow: (e: React.SyntheticEvent, rowId: TableRowId) => void;
