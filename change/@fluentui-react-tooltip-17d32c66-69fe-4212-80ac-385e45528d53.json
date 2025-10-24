@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Tooltip does not prevent rendering with aria-expanded unless aria-haspopup is also set",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
