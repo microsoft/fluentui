@@ -31,6 +31,7 @@ export function createNextFlatCheckedItems(
   if (data.selectionMode === 'single') {
     return ImmutableMap.from([[data.value, data.checked]]);
   }
+
   const treeItem = headlessTree.get(data.value);
   if (!treeItem) {
     if (process.env.NODE_ENV !== 'production') {
@@ -42,34 +43,50 @@ export function createNextFlatCheckedItems(
     }
     return previousCheckedItems;
   }
-  let nextCheckedItems = previousCheckedItems;
-  for (const children of headlessTree.subtree(data.value)) {
-    nextCheckedItems = nextCheckedItems.set(children.value, data.checked);
-  }
-  nextCheckedItems = nextCheckedItems.set(data.value, data.checked);
 
+  // Calling `ImmutableMap.set()` creates a new ImmutableMap - avoid this in loops.
+  // Instead write all updates to a native Map and create a new ImmutableMap at the end.
+  // Note that all descendants of the toggled item are processed even if they are collapsed,
+  // making the choice of algorithm more important.
+
+  const nextCheckedItemsMap = new Map(ImmutableMap.dangerouslyGetInternalMap(previousCheckedItems));
+
+  // The toggled item itself
+  nextCheckedItemsMap.set(data.value, data.checked);
+
+  // Descendant updates
+  for (const children of headlessTree.subtree(data.value)) {
+    nextCheckedItemsMap.set(children.value, data.checked);
+  }
+
+  // Ancestor updates - must be done after adding descendants and the toggle item.
+  // If any ancestor is mixed, all ancestors above it are mixed too.
   let isAncestorsMixed = false;
-  for (const parent of headlessTree.ancestors(treeItem.value)) {
-    // if one parent is mixed, all ancestors are mixed
+
+  for (const ancestor of headlessTree.ancestors(treeItem.value)) {
     if (isAncestorsMixed) {
-      nextCheckedItems = nextCheckedItems.set(parent.value, 'mixed');
+      nextCheckedItemsMap.set(ancestor.value, 'mixed');
       continue;
     }
-    let checkedChildrenAmount = 0;
-    for (const child of headlessTree.children(parent.value)) {
-      if ((nextCheckedItems.get(child.value) || false) === data.checked) {
-        checkedChildrenAmount++;
+
+    // For each ancestor, if all of its children now have the same checked state as the toggled item,
+    // set the ancestor to that checked state too. Otherwise it is 'mixed'.
+    let childrenWithSameState = 0;
+    for (const child of headlessTree.children(ancestor.value)) {
+      if ((nextCheckedItemsMap.get(child.value) || false) === data.checked) {
+        childrenWithSameState++;
       }
     }
-    // if all children are checked, parent is checked
-    if (checkedChildrenAmount === parent.childrenValues.length) {
-      nextCheckedItems = nextCheckedItems.set(parent.value, data.checked);
+
+    if (childrenWithSameState === ancestor.childrenValues.length) {
+      nextCheckedItemsMap.set(ancestor.value, data.checked);
     } else {
-      // if one parent is mixed, all ancestors are mixed
+      nextCheckedItemsMap.set(ancestor.value, 'mixed');
       isAncestorsMixed = true;
-      nextCheckedItems = nextCheckedItems.set(parent.value, 'mixed');
     }
   }
+
+  const nextCheckedItems = ImmutableMap.from(nextCheckedItemsMap);
   return nextCheckedItems;
 }
 
