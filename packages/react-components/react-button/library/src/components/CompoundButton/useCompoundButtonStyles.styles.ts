@@ -1,6 +1,6 @@
 'use client';
 
-import { tokens } from '@fluentui/react-theme';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -13,24 +13,25 @@ export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots> = {
   secondaryContent: 'fui-CompoundButton__secondaryContent',
 };
 
+const iconSpacingVar = '--fui-Button__icon--spacing';
 const useRootStyles = makeStyles({
   // Base styles
   base: {
     height: 'auto',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: semanticTokens.groupButtonNeutralTextSecondaryForeground,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Hover,
+        color: semanticTokens.groupButtonNeutralTextSecondaryForegroundHover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Pressed,
+        color: semanticTokens.groupButtonNeutralTextSecondaryForegroundPressed,
       },
     },
   },
@@ -54,22 +55,34 @@ const useRootStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    /* No styles */
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
+      color: semanticTokens.groupButtonOutlineTextSecondaryForeground,
+    },
+    ':hover': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundHover,
+      },
+    },
+    ':hover:active': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundPressed,
+      },
+    },
   },
   primary: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: semanticTokens.groupButtonPrimaryTextSecondaryForeground,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundOnBrand,
+        color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundHover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundOnBrand,
+        color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundPressed,
       },
     },
 
@@ -84,18 +97,18 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: semanticTokens.groupButtonSubtleTextSecondaryForeground,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Hover,
+        color: semanticTokens.groupButtonSubtleTextSecondaryForegroundHover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2Pressed,
+        color: semanticTokens.groupButtonSubtleTextSecondaryForegroundPressed,
       },
     },
 
@@ -114,59 +127,50 @@ const useRootStyles = makeStyles({
   },
   transparent: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: semanticTokens.groupButtonTransparentTextSecondaryForeground,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
+        color: semanticTokens.groupButtonTransparentTextSecondaryForegroundHover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: semanticTokens.groupButtonTransparentTextSecondaryForegroundPressed,
       },
     },
   },
 
   // Size variations
   small: {
-    padding: `${tokens.spacingHorizontalS} ${tokens.spacingHorizontalS} ${tokens.spacingHorizontalMNudge} ${tokens.spacingHorizontalS}`,
+    padding: `${semanticTokens.ctrlCompoundbuttonSmallPaddingTop}
+    ${semanticTokens.ctrlCompoundbuttonSmallPaddingHorizontal}
+    ${semanticTokens.ctrlCompoundbuttonSmallPaddingBottom}
+    ${semanticTokens.ctrlCompoundbuttonSmallPaddingHorizontal}`,
 
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    // Small compound button uses medium text styles
+    fontSize: semanticTokens.groupButtonMediumTextFontsize,
+    lineHeight: semanticTokens.groupButtonMediumTextLineheight,
   },
   medium: {
-    padding: `14px ${tokens.spacingHorizontalM} ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalM}`,
+    padding: `${semanticTokens.ctrlCompoundbuttonMediumPaddingTop}
+    ${semanticTokens.ctrlCompoundbuttonMediumPaddingHorizontal}
+    ${semanticTokens.ctrlCompoundbuttonMediumPaddingBottom}
+    ${semanticTokens.ctrlCompoundbuttonMediumPaddingHorizontal}`,
 
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontSize: semanticTokens.groupButtonMediumTextFontsize,
+    lineHeight: semanticTokens.groupButtonMediumTextLineheight,
   },
   large: {
-    padding: `18px ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalXL} ${tokens.spacingHorizontalL}`,
+    padding: `${semanticTokens.ctrlCompoundbuttonLargePaddingTop}
+    ${semanticTokens.ctrlCompoundbuttonLargePaddingHorizontal}
+    ${semanticTokens.ctrlCompoundbuttonLargePaddingBottom}
+    ${semanticTokens.ctrlCompoundbuttonLargePaddingHorizontal}`,
 
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-  },
-
-  // Disabled styles
-  disabled: {
-    [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-    },
-
-    ':hover': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-    },
-
-    ':hover:active': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-      },
-    },
+    fontSize: semanticTokens.groupButtonLargeTextFontsize,
+    lineHeight: semanticTokens.groupButtonLargeTextLineheight,
   },
 
   // Disabled high contrast styles
@@ -191,24 +195,113 @@ const useRootStyles = makeStyles({
   },
 });
 
+const useDisabledStyles = makeStyles({
+  base: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
+      color: semanticTokens.groupButtonNeutralTextSecondaryForegroundDisabled,
+    },
+
+    ':hover': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonNeutralTextSecondaryForegroundDisabled,
+      },
+    },
+
+    ':hover:active': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonNeutralTextSecondaryForegroundDisabled,
+      },
+    },
+  },
+  secondary: {
+    // Covered in base
+  },
+  outline: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
+      color: semanticTokens.groupButtonOutlineTextSecondaryForegroundDisabled,
+    },
+
+    ':hover': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundDisabled,
+      },
+    },
+
+    ':hover:active': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundDisabled,
+      },
+    },
+  },
+  transparent: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
+      color: semanticTokens.groupButtonTransparentTextSecondaryForegroundDisabled,
+    },
+
+    ':hover': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonTransparentTextSecondaryForegroundDisabled,
+      },
+    },
+
+    ':hover:active': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonTransparentTextSecondaryForegroundDisabled,
+      },
+    },
+  },
+  primary: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
+      color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundDisabled,
+    },
+
+    ':hover': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundDisabled,
+      },
+    },
+
+    ':hover:active': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundDisabled,
+      },
+    },
+  },
+  subtle: {
+    [`& .${compoundButtonClassNames.secondaryContent}`]: {
+      color: semanticTokens.groupButtonSubtleTextSecondaryForegroundDisabled,
+    },
+    ':hover': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonSubtleTextSecondaryForegroundDisabled,
+      },
+    },
+    ':hover:active': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: semanticTokens.groupButtonSubtleTextSecondaryForegroundDisabled,
+      },
+    },
+  },
+});
+
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    padding: tokens.spacingHorizontalXS,
+    padding: semanticTokens.ctrlCompoundbuttonSmallIcononlyPadding,
 
-    maxWidth: '48px',
+    maxWidth: 'unset',
     minWidth: '48px',
   },
   medium: {
-    padding: tokens.spacingHorizontalSNudge,
+    padding: semanticTokens.ctrlCompoundbuttonMediumIcononlyPadding,
 
-    maxWidth: '52px',
+    maxWidth: 'unset',
     minWidth: '52px',
   },
   large: {
-    padding: tokens.spacingHorizontalS,
+    padding: semanticTokens.ctrlCompoundbuttonLargeIcononlyPadding,
 
-    maxWidth: '56px',
+    maxWidth: 'unset',
     minWidth: '56px',
   },
 });
@@ -216,17 +309,10 @@ const useRootIconOnlyStyles = makeStyles({
 const useIconStyles = makeStyles({
   // Base styles
   base: {
-    fontSize: '40px',
-    height: '40px',
-    width: '40px',
-  },
-
-  // Icon position variations
-  before: {
-    marginRight: tokens.spacingHorizontalM,
-  },
-  after: {
-    marginLeft: tokens.spacingHorizontalM,
+    fontSize: semanticTokens.ctrlCompoundbuttonIconSize,
+    height: semanticTokens.ctrlCompoundbuttonIconSize,
+    width: semanticTokens.ctrlCompoundbuttonIconSize,
+    [iconSpacingVar]: semanticTokens.ctrlCompoundbuttonGap,
   },
 });
 
@@ -242,19 +328,24 @@ const useContentContainerStyles = makeStyles({
 const useSecondaryContentStyles = makeStyles({
   // Base styles
   base: {
-    lineHeight: '100%',
-    fontWeight: tokens.fontWeightRegular,
+    fontSize: semanticTokens.groupButtonMediumTextSecondaryFontsize,
+    lineHeight: semanticTokens.groupButtonMediumTextSecondaryLineheight,
+    fontWeight: semanticTokens.groupButtonMediumTextSecondaryFontweight,
   },
 
   // Size variations
   small: {
-    fontSize: tokens.fontSizeBase200,
+    fontSize: semanticTokens.groupButtonSmallTextSecondaryFontsize,
+    lineHeight: semanticTokens.groupButtonSmallTextSecondaryLineheight,
+    fontWeight: semanticTokens.groupButtonSmallTextSecondaryFontweight,
   },
   medium: {
-    fontSize: tokens.fontSizeBase200,
+    // Covered by base
   },
   large: {
-    fontSize: tokens.fontSizeBase300,
+    fontSize: semanticTokens.groupButtonLargeTextSecondaryFontsize,
+    lineHeight: semanticTokens.groupButtonLargeTextSecondaryLineheight,
+    fontWeight: semanticTokens.groupButtonLargeTextSecondaryFontweight,
   },
 });
 
@@ -262,12 +353,13 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   'use no memo';
 
   const rootStyles = useRootStyles();
+  const disabledStyles = useDisabledStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
 
-  const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, size } = state;
+  const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
 
   state.root.className = mergeClasses(
     compoundButtonClassNames.root,
@@ -279,13 +371,13 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
     rootStyles[size],
 
     // Disabled styles
-    (disabled || disabledFocusable) && rootStyles.disabled,
+    (disabled || disabledFocusable) && disabledStyles.base,
+    (disabled || disabledFocusable) && disabledStyles[appearance],
     (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
 
     // Icon-only styles
     iconOnly && rootIconOnlyStyles[size],
 
-    // User provided class name
     state.root.className,
   );
 
@@ -296,12 +388,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(
-      compoundButtonClassNames.icon,
-      iconStyles.base,
-      state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
-      state.icon.className,
-    );
+    state.icon.className = mergeClasses(compoundButtonClassNames.icon, iconStyles.base, state.icon.className);
   }
 
   if (state.secondaryContent) {

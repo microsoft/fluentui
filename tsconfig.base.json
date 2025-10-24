@@ -205,6 +205,7 @@
         "packages/react-components/react-utilities-compat/stories/src/index.ts"
       ],
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
+      "@fluentui/semantic-tokens": ["packages/semantic-tokens/src/index.ts"],
       "@fluentui/storybook-llms-extractor": ["tools/storybook-llms-extractor/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
