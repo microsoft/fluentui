@@ -49,6 +49,7 @@ const useStyles = makeStyles({
   },
   calloutBlockContainer: {
     color: tokens.colorNeutralForeground2,
+    textAlign: 'left',
   },
   calloutBlockContainerCartesian: {
     ...typographyStyles.caption1,

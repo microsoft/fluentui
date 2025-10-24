@@ -18,11 +18,13 @@ import { useValidateNesting } from '../../utils/useValidateNesting';
  */
 export function useMenuGridCell_unstable(props: MenuGridCellProps, ref: React.Ref<HTMLDivElement>): MenuGridCellState {
   const { visuallyHidden } = props;
-  const validateNestingRef = useValidateNesting('MenuGridCell');
-  const { dir } = useFluent();
 
-  const CloseArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
+  const { dir } = useFluent();
+  const validateNestingRef = useValidateNesting('MenuGridCell');
+
   const onKeyDownWithPrevent = useEventCallback((event: React.KeyboardEvent<HTMLElement>) => {
+    const CloseArrowKey = dir === 'ltr' ? ArrowLeft : ArrowRight;
+
     if (event.key === CloseArrowKey) {
       event.preventDefault();
     }
