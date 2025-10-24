@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction, css, getId } from '@fluentui/react/lib/Utilities';
-import { IChartAnnotation } from '../../../types/IChartAnnotation';
-import {
+import type { IChartAnnotation } from '../../../types/IChartAnnotation';
+import type {
   IAnnotationPoint,
   IChartAnnotationContext,
   IChartAnnotationLayerProps,
@@ -17,9 +17,8 @@ import {
   DEFAULT_CONNECTOR_STROKE_WIDTH,
   getDefaultConnectorStrokeColor,
   getStyles,
-  IChartAnnotationLayerStyleProps,
-  IChartAnnotationLayerStyles,
 } from './ChartAnnotationLayer.styles';
+import type { IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles } from './ChartAnnotationLayer.styles';
 
 const getClassNames = classNamesFunction<IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles>();
 
