@@ -1,8 +1,8 @@
-import { useControllableState } from '@fluentui/react-bindings';
 import { shallow } from 'enzyme';
 import { renderHook, act } from '@testing-library/react-hooks';
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
+
+import { useControllableState } from '../../src/hooks/useControllableState';
 
 type TestComponentProps = {
   defaultValue?: string;
@@ -66,7 +66,7 @@ describe('useControllableState', () => {
   it('handles state updates based on values', () => {
     const wrapper = shallow(<TestComponent />);
 
-    ReactTestUtils.act(() => {
+    act(() => {
       wrapper.find('input').simulate('change', { target: { value: 'foo' } });
     });
 
@@ -76,13 +76,13 @@ describe('useControllableState', () => {
   it('handles state updates based on function', () => {
     const wrapper = shallow(<TestComponent />);
 
-    ReactTestUtils.act(() => {
+    act(() => {
       wrapper.find('input').simulate('change', { target: { value: 'bar' } });
     });
 
     expect(wrapper.find('input').prop('value')).toBe('bar');
 
-    ReactTestUtils.act(() => {
+    act(() => {
       wrapper.find('button').simulate('click');
     });
 
@@ -92,7 +92,7 @@ describe('useControllableState', () => {
   it('handles state updates with a default value', () => {
     const wrapper = shallow(<TestComponent defaultValue="foo" />);
 
-    ReactTestUtils.act(() => {
+    act(() => {
       wrapper.find('input').simulate('change', { target: { value: 'bar' } });
     });
 
@@ -102,7 +102,7 @@ describe('useControllableState', () => {
   it('ignores state updates if controlled', () => {
     const wrapper = shallow(<TestComponent value="foo" />);
 
-    ReactTestUtils.act(() => {
+    act(() => {
       wrapper.find('input').simulate('change', { target: { value: 'bar' } });
     });
 
@@ -112,12 +112,12 @@ describe('useControllableState', () => {
   it('sets values of controlled props to the state on updates', () => {
     const wrapper = shallow(<TestComponent value="foo" />);
 
-    ReactTestUtils.act(() => {
+    act(() => {
       wrapper.setProps({ value: 'bar' });
     });
     expect(wrapper.find('input').prop('value')).toBe('bar');
 
-    ReactTestUtils.act(() => {
+    act(() => {
       wrapper.setProps({ value: 'baz' });
     });
     expect(wrapper.find('input').prop('value')).toBe('baz');
@@ -126,7 +126,7 @@ describe('useControllableState', () => {
   it('keeps last value of controlled prop in the state if value gets "undefined"', () => {
     const wrapper = shallow(<TestComponent defaultValue="foo" />);
 
-    ReactTestUtils.act(() => {
+    act(() => {
       wrapper.setProps({ value: undefined });
     });
     expect(wrapper.find('input').prop('value')).toBe('foo');

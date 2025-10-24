@@ -1,7 +1,9 @@
-import { useStyles, Unstable_FluentContextProvider } from '@fluentui/react-bindings';
 import { ComponentSlotStyle, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
+
+import { Unstable_FluentContextProvider } from '../../src/context';
+import { useStyles } from '../../src/hooks/useStyles';
 
 type TestComponentProps = {
   className?: string;

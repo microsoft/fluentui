@@ -5,11 +5,11 @@ import {
   getCode,
   keyboardKey,
 } from '@fluentui/accessibility';
-import { FocusZone } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
+import { FocusZone } from '../../src/FocusZone/FocusZone';
 import { createTestContainer } from './test-utils';
 
 describe('FocusZone', () => {

@@ -1,4 +1,4 @@
-import { getUnhandledProps } from '@fluentui/react-bindings';
+import { getUnhandledProps } from '../../src/utils/getUnhandledProps';
 
 describe('getUnhandledProps', () => {
   test('leaves props that are not defined in handledProps', () => {

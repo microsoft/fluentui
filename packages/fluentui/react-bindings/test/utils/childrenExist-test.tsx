@@ -1,4 +1,4 @@
-import { childrenExist } from '@fluentui/react-bindings';
+import { childrenExist } from '../../src/utils/childrenExist';
 import * as React from 'react';
 
 describe('childrenExist', () => {

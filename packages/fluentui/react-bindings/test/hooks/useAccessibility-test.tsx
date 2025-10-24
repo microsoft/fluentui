@@ -1,7 +1,8 @@
 import { Accessibility, keyboardKey } from '@fluentui/accessibility';
-import { useAccessibility } from '@fluentui/react-bindings';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
+
+import { useAccessibility } from '../../src/hooks/useAccessibility';
 
 type TestBehaviorProps = {
   disabled: boolean;

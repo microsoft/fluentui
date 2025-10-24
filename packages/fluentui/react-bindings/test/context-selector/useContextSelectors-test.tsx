@@ -1,7 +1,9 @@
-import { createContext, useContextSelectors } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
+
+import { createContext } from '../../src/context-selector/createContext';
+import { useContextSelectors } from '../../src/context-selector/useContextSelectors';
 
 const TestContext = createContext<{ index: number; value: string }>({
   index: -1,

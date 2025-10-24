@@ -1,11 +1,13 @@
 import { FocusZoneDirection, keyboardKey } from '@fluentui/accessibility';
-import { FocusTrapZone, FocusZone, FocusTrapZoneProps } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { createTestContainer } from './test-utils';
 import * as FocusUtilities from '../../src/FocusZone/focusUtilities';
+import { FocusZone } from '../../src/FocusZone/FocusZone';
+import { FocusTrapZone } from '../../src/FocusZone/FocusTrapZone';
+import { type FocusTrapZoneProps } from '../../src/FocusZone/FocusTrapZone.types';
 
 const originalRAF = window.requestAnimationFrame;
 

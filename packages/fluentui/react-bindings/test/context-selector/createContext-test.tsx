@@ -1,5 +1,5 @@
-import { createContext } from '@fluentui/react-bindings';
 import * as ReactIs from 'react-is';
+import { createContext } from '../../src/context-selector/createContext';
 
 describe('createContext', () => {
   it('creates a Provider component', () => {
