@@ -1029,18 +1029,13 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     }
 
     function _getAriaLabel(lineIndex: number, pointIndex: number): string {
-      console.log('lineIndex, pointIndex', lineIndex, pointIndex);
       const line = props.data.lineChartData![lineIndex];
-      console.log('line', line);
       const point = line.data[pointIndex];
-      console.log('point1', point);
-      console.log('point', point.x instanceof Date);
       const formattedDate =
         point.x instanceof Date ? formatDateToLocaleString(point.x, props.culture, props.useUTC as boolean) : point.x;
       const xValue = point.xAxisCalloutData || formattedDate;
       const legend = line.legend;
       const yValue = point.yAxisCalloutData || point.y;
-      console.log('return label', point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`);
       return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
     }
 
