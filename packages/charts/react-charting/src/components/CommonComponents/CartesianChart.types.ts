@@ -830,6 +830,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     yAxisParams: IYAxisParams,
     dataPoints: string[],
     isRtl: boolean,
+    axisData: IAxisData,
     barWidth: number | undefined,
     chartType?: ChartTypes,
   ) => ScaleBand<string>;
