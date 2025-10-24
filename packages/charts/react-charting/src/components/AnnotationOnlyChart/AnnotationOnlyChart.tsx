@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useTheme } from '@fluentui/react';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-hooks';
 import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
 import type { IAnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
 import type { IChartAnnotationContext } from '../CommonComponents/Annotations/ChartAnnotationLayer.types';
@@ -44,7 +43,7 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const [measuredWidth, setMeasuredWidth] = React.useState<number>(width ?? 0);
 
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     if (typeof width === 'number' && width > 0) {
       setMeasuredWidth(width);
       return;
