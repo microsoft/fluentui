@@ -67,7 +67,6 @@ const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 // Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
 //const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
 const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
-const ResponsiveAnnotationOnlyChart = withResponsiveContainer(AnnotationOnlyChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -175,7 +174,7 @@ const LineAreaPreTransformOp = (plotlyInput: PlotlySchema) => {
 type ChartTypeMap = {
   annotation: {
     transformer: typeof transformPlotlyJsonToAnnotationChartProps;
-    renderer: typeof ResponsiveAnnotationOnlyChart;
+    renderer: typeof AnnotationOnlyChart;
   } & PreTransformHooks;
   donut: {
     transformer: typeof transformPlotlyJsonToDonutProps;
@@ -242,7 +241,7 @@ type ChartTypeMap = {
 const chartMap: ChartTypeMap = {
   annotation: {
     transformer: transformPlotlyJsonToAnnotationChartProps,
-    renderer: ResponsiveAnnotationOnlyChart,
+    renderer: AnnotationOnlyChart,
   },
   // PieData category charts
   donut: {

@@ -12,7 +12,6 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
           display: flex;
           flex-direction: column;
           font-family: Arial, sans-serif;
-          height: 100%;
           min-height: 400px;
           padding-bottom: 20px;
           padding-left: 25px;
@@ -20,7 +19,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
           padding-top: 10px;
           position: relative;
           row-gap: 8px;
-          width: 100%;
+          width: 600px;
         }
     data-chart-annotation-only="true"
   >
@@ -324,11 +323,10 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
           display: flex;
           flex-direction: column;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          height: 100%;
           min-height: 400px;
           position: relative;
           row-gap: 8px;
-          width: 100%;
+          width: 600px;
         }
     data-chart-annotation-only="true"
   >
@@ -617,7 +615,6 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with empty annotations 1
           display: flex;
           flex-direction: column;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          height: 100%;
           min-height: 240px;
           position: relative;
           row-gap: 8px;
