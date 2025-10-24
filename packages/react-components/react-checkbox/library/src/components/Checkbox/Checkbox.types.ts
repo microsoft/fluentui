@@ -35,7 +35,7 @@ export type CheckboxSlots = {
   /**
    * The checkmark icon displayed inside the indicator when checked.
    */
-  checkmarkIcon: Slot<'svg', 'div' | 'span' | 'img'>;
+  checkmarkIcon: Slot<'svg', 'span' | 'img' | 'div'>;
 };
 
 /**
