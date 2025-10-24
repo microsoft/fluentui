@@ -1,3 +1,5 @@
+'use client';
+
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses, makeResetStyles } from '@griffel/react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
