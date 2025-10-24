@@ -59,35 +59,6 @@ const useRootStyles = makeStyles({
 });
 
 /**
- * Styles for the expand icon slot
- */
-const useMediaBaseStyles = makeResetStyles({
-  display: 'flex',
-  alignItems: 'center',
-  width: '32px',
-  height: '32px',
-  gridArea: 'media',
-  padding: `0 ${tokens.spacingHorizontalXS} 0 ${tokens.spacingHorizontalXXS}`,
-});
-
-const useMainBaseStyles = makeResetStyles({
-  gridArea: 'main',
-  padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalXS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS}`,
-});
-
-const useMainStyles = makeStyles({
-  withDescription: {
-    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalXS} 0 ${tokens.spacingHorizontalS}`,
-  },
-});
-
-const useDescriptionBaseStyles = makeResetStyles({
-  gridArea: 'description',
-  ...typographyStyles.caption1,
-  padding: `0 ${tokens.spacingHorizontalXS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS}`,
-});
-
-/**
  * Styles for the action icon slot
  */
 const useActionsBaseStyles = makeResetStyles({
@@ -127,6 +98,41 @@ const useExpandIconBaseStyles = makeResetStyles({
 });
 
 /**
+ * Styles for the main content slot
+ */
+const useMainBaseStyles = makeResetStyles({
+  gridArea: 'main',
+  padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalXS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS}`,
+});
+
+const useMainStyles = makeStyles({
+  withDescription: {
+    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalXS} 0 ${tokens.spacingHorizontalS}`,
+  },
+});
+
+/**
+ * Styles for the description content slot
+ */
+const useDescriptionBaseStyles = makeResetStyles({
+  gridArea: 'description',
+  ...typographyStyles.caption1,
+  padding: `0 ${tokens.spacingHorizontalXS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS}`,
+});
+
+/**
+ * Styles for the media slot
+ */
+const useMediaBaseStyles = makeResetStyles({
+  display: 'flex',
+  alignItems: 'center',
+  width: '32px',
+  height: '32px',
+  gridArea: 'media',
+  padding: `0 ${tokens.spacingHorizontalXS} 0 ${tokens.spacingHorizontalXXS}`,
+});
+
+/**
  * Apply styling to the TreeItemPersonaLayout slots based on the state
  */
 export const useTreeItemPersonaLayoutStyles_unstable = (
@@ -134,62 +140,62 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
 ): TreeItemPersonaLayoutState => {
   'use no memo';
 
-  const rootBaseStyles = useRootBaseStyles();
+  const { main, media, description, expandIcon, root, aside, actions, selector } = state;
   const rootStyles = useRootStyles();
-  const mediaBaseStyles = useMediaBaseStyles();
-  const descriptionBaseStyles = useDescriptionBaseStyles();
+  const rootBaseStyles = useRootBaseStyles();
   const actionsBaseStyles = useActionsBaseStyles();
   const asideBaseStyles = useAsideBaseStyles();
-  const expandIconBaseStyles = useExpandIconBaseStyles();
+
+  const mediaBaseStyles = useMediaBaseStyles();
+  const descriptionBaseStyles = useDescriptionBaseStyles();
+
   const mainBaseStyles = useMainBaseStyles();
   const mainStyles = useMainStyles();
 
+  const expandIconBaseStyles = useExpandIconBaseStyles();
+
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
-  state.root.className = mergeClasses(
+  root.className = mergeClasses(
     treeItemPersonaLayoutClassNames.root,
     rootBaseStyles,
     rootStyles[itemType],
-    state.root.className,
+    root.className,
   );
 
-  state.media.className = mergeClasses(treeItemPersonaLayoutClassNames.media, mediaBaseStyles, state.media.className);
+  media.className = mergeClasses(treeItemPersonaLayoutClassNames.media, mediaBaseStyles, media.className);
 
-  if (state.main) {
-    state.main.className = mergeClasses(
+  if (main) {
+    main.className = mergeClasses(
       treeItemPersonaLayoutClassNames.main,
       mainBaseStyles,
-      state.description && mainStyles.withDescription,
-      state.main.className,
+      description && mainStyles.withDescription,
+      main.className,
     );
   }
-  if (state.description) {
-    state.description.className = mergeClasses(
+  if (description) {
+    description.className = mergeClasses(
       treeItemPersonaLayoutClassNames.description,
       descriptionBaseStyles,
-      state.description.className,
+      description.className,
     );
   }
-  if (state.actions) {
-    state.actions.className = mergeClasses(
-      treeItemPersonaLayoutClassNames.actions,
-      actionsBaseStyles,
-      state.actions.className,
-    );
+  if (actions) {
+    actions.className = mergeClasses(treeItemPersonaLayoutClassNames.actions, actionsBaseStyles, actions.className);
   }
-  if (state.aside) {
-    state.aside.className = mergeClasses(treeItemPersonaLayoutClassNames.aside, asideBaseStyles, state.aside.className);
+  if (aside) {
+    aside.className = mergeClasses(treeItemPersonaLayoutClassNames.aside, asideBaseStyles, aside.className);
   }
-  if (state.expandIcon) {
-    state.expandIcon.className = mergeClasses(
+  if (expandIcon) {
+    expandIcon.className = mergeClasses(
       treeItemPersonaLayoutClassNames.expandIcon,
       expandIconBaseStyles,
-      state.expandIcon.className,
+      expandIcon.className,
     );
   }
 
-  if (state.selector) {
-    state.selector.className = mergeClasses(treeItemPersonaLayoutClassNames.selector, state.selector.className);
+  if (selector) {
+    selector.className = mergeClasses(treeItemPersonaLayoutClassNames.selector, selector.className);
   }
 
   return state;

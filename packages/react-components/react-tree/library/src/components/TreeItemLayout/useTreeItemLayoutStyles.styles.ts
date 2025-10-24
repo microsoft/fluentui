@@ -20,7 +20,12 @@ export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
 };
 
 const useRootBaseStyles = makeResetStyles({
-  display: 'flex',
+  display: 'grid',
+  gridTemplateRows: '1fr auto',
+  gridTemplateColumns: 'auto 1fr auto',
+  gridTemplateAreas: `
+    "expandIcon main aside"
+  `,
   alignItems: 'center',
   minHeight: '32px',
   boxSizing: 'border-box',
@@ -115,6 +120,7 @@ const useExpandIconBaseStyles = makeResetStyles({
   minWidth: '24px',
   boxSizing: 'border-box',
   color: tokens.colorNeutralForeground3,
+  gridArea: 'expandIcon',
   flex: `0 0 auto`,
   padding: `${tokens.spacingVerticalXS} 0`,
 });
@@ -124,6 +130,7 @@ const useExpandIconBaseStyles = makeResetStyles({
  */
 const useMainBaseStyles = makeResetStyles({
   padding: `0 ${tokens.spacingHorizontalXXS}`,
+  gridArea: 'main',
 });
 
 /**
