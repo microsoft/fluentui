@@ -33,6 +33,25 @@ const useDrawerRootStyles = makeStyles({
     width: '100%',
     height: `var(${drawerCSSVars.drawerSizeVar})`,
   },
+
+  /* Hidden */
+  drawerHiddenStart: {
+    // Negative margin to hide the drawer while keeping it in the DOM flow
+    marginRight: `calc(-1 * var(${drawerCSSVars.drawerSizeVar}))`,
+    transitionProperty: 'margin-right',
+  },
+
+  drawerHiddenEnd: {
+    // Negative margin to hide the drawer while keeping it in the DOM flow
+    marginLeft: `calc(-1 * var(${drawerCSSVars.drawerSizeVar}))`,
+    transitionProperty: 'margin-left',
+  },
+
+  drawerHiddenBottom: {
+    // Negative margin to hide the drawer while keeping it in the DOM flow
+    marginTop: `calc(-1 * var(${drawerCSSVars.drawerSizeVar}))`,
+    transitionProperty: 'margin-top',
+  },
 });
 
 function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<typeof useDrawerRootStyles>) {
@@ -55,6 +74,28 @@ function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<type
   }
 }
 
+function getHiddenClass(state: InlineDrawerState, classNames: ReturnType<typeof useDrawerRootStyles>) {
+  const mountedAndClosed = !state.unmountOnClose && !state.open;
+
+  if (!mountedAndClosed) {
+    return undefined;
+  }
+
+  switch (state.position) {
+    case 'start':
+      return classNames.drawerHiddenStart;
+
+    case 'end':
+      return classNames.drawerHiddenEnd;
+
+    case 'bottom':
+      return classNames.drawerHiddenBottom;
+
+    default:
+      return undefined;
+  }
+}
+
 /**
  * Apply styling to the InlineDrawer slots based on the state
  */
@@ -71,6 +112,7 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
     baseClassNames,
     getSeparatorClass(state, rootStyles),
     rootStyles[state.position],
+    getHiddenClass(state, rootStyles),
     state.root.className,
   );
 
