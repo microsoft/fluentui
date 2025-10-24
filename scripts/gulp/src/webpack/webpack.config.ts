@@ -127,8 +127,10 @@ const webpackConfig: webpack.Configuration &
       src: paths.packageSrc('react-northstar'),
       faker: 'faker/locale/en',
 
-      react: paths.docs('node_modules/react'),
-      'react-dom': paths.docs('node_modules/react-dom'),
+      react: paths.base('node_modules/react'),
+      'react-dom': paths.base('node_modules/react-dom'),
+      'react-dom/client': paths.base('node_modules/react-dom/client'),
+      'react-dom/server': paths.base('node_modules/react-dom/server'),
 
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
     },

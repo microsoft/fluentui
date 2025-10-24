@@ -20,8 +20,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-tasks": "*",
-    "@testing-library/dom": "8.11.3",
-    "@testing-library/react": "12.1.2",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/react": "16.3.0",
     "@types/react": "17.0.44",
     "@types/react-dom": "17.0.15"
   },

@@ -114,10 +114,15 @@ const config = {
     },
     {
       packages: [
-        // hybrid package use for v0 and react-button test in v9
-        '@fluentui/a11y-testing',
         // v8 - TODO make this package private, then bump to r18
         '@fluentui/codemods',
+      ],
+      dependencies: ['react', 'react-dom'],
+    },
+    {
+      packages: [
+        // hybrid package use for v0 and react-button test in v9
+        '@fluentui/a11y-testing',
         // v0
         '@fluentui/react-northstar',
         '@fluentui/accessibility',

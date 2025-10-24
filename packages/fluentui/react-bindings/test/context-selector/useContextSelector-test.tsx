@@ -1,6 +1,5 @@
+import { act, render } from '@testing-library/react';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { act } from 'react-dom/test-utils';
 
 import { createContext } from '../../src/context-selector/createContext';
 import { useContextSelector } from '../../src/context-selector/useContextSelector';
@@ -42,16 +41,12 @@ describe('useContextSelector', () => {
 
   it('updates only on selector match', () => {
     const onUpdate = jest.fn();
-    ReactDOM.render(
+
+    render(
       <TestProvider>
         <TestComponent index={1} onUpdate={onUpdate} />
       </TestProvider>,
-      container,
     );
-
-    act(() => {
-      // no-op to wait for effects
-    });
 
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');
     expect(onUpdate).toHaveBeenCalledTimes(1);
@@ -84,11 +79,10 @@ describe('useContextSelector', () => {
     const MemoComponent = React.memo(TestComponent, () => true);
     const onUpdate = jest.fn();
 
-    ReactDOM.render(
+    render(
       <TestProvider>
         <MemoComponent index={1} onUpdate={onUpdate} />
       </TestProvider>,
-      container,
     );
 
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');

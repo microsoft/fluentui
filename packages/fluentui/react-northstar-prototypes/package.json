@@ -23,7 +23,6 @@
     "moment": "^2.18.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-document-title": "^2.0.3",
-    "react-dom": "17.0.2",
     "react-hook-form": "^5.7.2",
     "react-textarea-autosize": "7.0.4",
     "react-virtualized": "^9.21.1",
@@ -40,8 +39,8 @@
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-virtualized": "^9.21.8",
     "@types/react-window": "^1.8.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "files": [
     "dist"
@@ -50,8 +49,8 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "react": "^16.8.0 || ^17",
-    "react-dom": "^16.8.0 || ^17"
+    "react": "^18",
+    "react-dom": "^18"
   },
   "repository": "microsoft/fluentui.git",
   "license": "MIT",

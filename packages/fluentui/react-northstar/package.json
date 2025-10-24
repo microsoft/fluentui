@@ -41,10 +41,10 @@
     "@types/react-is": "17.0.7",
     "@types/react-transition-group": "4.4.12",
     "@types/simulant": "^0.2.0",
-    "@testing-library/dom": "8.11.3",
-    "@testing-library/react": "12.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/react": "16.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "csstype": "^3.0.2",
     "faker": "^4.1.0",
     "fela-tools": "^10.6.1",
@@ -52,7 +52,8 @@
     "qs": "^6.8.0",
     "simulant": "^0.2.2",
     "enzyme": "3.10.0",
-    "enzyme-to-json": "3.6.2"
+    "enzyme-to-json": "3.6.2",
+    "@cfaester/enzyme-adapter-react-18": "0.8.0"
   },
   "files": [
     "dist"
@@ -63,8 +64,8 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "react": "^16.8.0 || ^17",
-    "react-dom": "^16.8.0 || ^17"
+    "react": "^18",
+    "react-dom": "^18"
   },
   "publishConfig": {
     "access": "public"

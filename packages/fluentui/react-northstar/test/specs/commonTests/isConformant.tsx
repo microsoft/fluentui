@@ -8,8 +8,8 @@ import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as path from 'path';
 import * as React from 'react';
+import { act } from '@testing-library/react';
 import { ComponentType, ReactWrapper } from 'enzyme';
-import { act } from 'react-dom/test-utils';
 import {
   getDisplayName,
   mountWithProvider as mount,

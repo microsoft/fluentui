@@ -1,6 +1,6 @@
 import { Accessibility, AriaRole, keyboardKey } from '@fluentui/accessibility';
+import { act } from '@testing-library/react';
 import * as React from 'react';
-import { act } from 'react-dom/test-utils';
 
 import { mountWithProviderAndGetComponent, mountWithProvider } from 'test/utils';
 import { EVENT_TARGET_ATTRIBUTE, getEventTargetComponent } from './eventTarget';

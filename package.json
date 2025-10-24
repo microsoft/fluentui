@@ -373,8 +373,8 @@
       "@fluentui/react-northstar-proptypes/@types/react-custom-scrollbars",
       "**/enzyme",
       "**/enzyme/**",
-      "**/@wojtekmaj/enzyme-adapter-react-17",
-      "**/@wojtekmaj/enzyme-adapter-react-17/**",
+      "**/@cfaester/enzyme-adapter-react-18",
+      "**/@cfaester/enzyme-adapter-react-18/**",
       "**/enzyme-to-json",
       "**/enzyme-to-json/**"
     ]

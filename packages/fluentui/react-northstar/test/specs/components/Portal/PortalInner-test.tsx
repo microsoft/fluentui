@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { PortalContext } from 'src/components/Provider/portalContext';
 import { PortalInner, PortalInnerProps } from 'src/components/Portal/PortalInner';
-import { mountWithProvider } from 'test/utils';
+import { consoleUtil, mountWithProvider } from 'test/utils';
 
 const mountPortalInner = (props: PortalInnerProps) =>
   mountWithProvider(
@@ -18,6 +18,10 @@ describe('PortalInner', () => {
   describe('render', () => {
     it('calls react createPortal', () => {
       const mountNodeEl = document.createElement('div');
+
+      // Produces an error about deprecated `findDOMNode`
+      consoleUtil.disableOnce();
+
       const componentElements = mountPortalInner({ mountNode: mountNodeEl })
         // A fragment is being used in PortalInner, there are multiple elements returned
         .getDOMNode() as unknown as HTMLElement[];
