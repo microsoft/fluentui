@@ -7,7 +7,14 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "react/jsx-runtime": [
+        "packages/fluentui/react-northstar-fela-renderer/node_modules/@types/react/jsx-runtime.d.ts"
+      ],
+      "react": ["packages/fluentui/react-northstar-fela-renderer/node_modules/@types/react/index.d.ts"],
+      "react-dom": ["packages/fluentui/react-northstar-fela-renderer/node_modules/@types/react-dom/index.d.ts"]
+    }
   },
   "include": ["src", "test"],
   "references": [
