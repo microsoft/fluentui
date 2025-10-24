@@ -6,7 +6,7 @@ import type { IAnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
 import type { IChartAnnotationContext } from '../CommonComponents/Annotations/ChartAnnotationLayer.types';
 
 const DEFAULT_HEIGHT = 240;
-const FALLBACK_WIDTH = 400;
+const DEFAULT_WIDTH = 400;
 
 const buildPadding = (margin: IAnnotationOnlyChartProps['margin']): string | undefined => {
   if (!margin) {
@@ -30,7 +30,7 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
     annotations,
     chartTitle,
     description,
-    width,
+    width = DEFAULT_WIDTH,
     height,
     paperBackgroundColor,
     plotBackgroundColor,
@@ -41,46 +41,8 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
 
   const theme = useTheme();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
-  const [measuredWidth, setMeasuredWidth] = React.useState<number>(width ?? 0);
 
-  React.useLayoutEffect(() => {
-    if (typeof width === 'number' && width > 0) {
-      setMeasuredWidth(width);
-      return;
-    }
-
-    const node = containerRef.current;
-    if (!node || typeof ResizeObserver === 'undefined') {
-      const rect = node?.getBoundingClientRect();
-      if (rect && rect.width > 0) {
-        setMeasuredWidth(rect.width);
-      } else {
-        setMeasuredWidth(prev => (prev > 0 ? prev : FALLBACK_WIDTH));
-      }
-      return;
-    }
-
-    const observer = new ResizeObserver(entries => {
-      const entry = entries[0];
-      if (!entry) {
-        return;
-      }
-      const newWidth = entry.contentRect.width;
-      if (newWidth > 0 && Math.abs(newWidth - measuredWidth) > 0.5) {
-        setMeasuredWidth(newWidth);
-      }
-    });
-
-    const rect = node.getBoundingClientRect();
-    if (rect.width > 0) {
-      setMeasuredWidth(rect.width);
-    }
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [width, measuredWidth]);
-
-  const resolvedWidth = Math.max(measuredWidth || FALLBACK_WIDTH, 1);
+  const resolvedWidth = Math.max(width, 1);
   const resolvedHeight = Math.max(height ?? DEFAULT_HEIGHT, 1);
 
   const context = React.useMemo<IChartAnnotationContext>(
@@ -98,7 +60,8 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
     () =>
       mergeStyles({
         position: 'relative',
-        width: width ? `${width}px` : '100%',
+        width: '100%',
+        height: '100%',
         minHeight: resolvedHeight,
         backgroundColor: paperBackgroundColor ?? theme.semanticColors.bodyBackground,
         color: fontColor ?? theme.semanticColors.bodyText,
@@ -108,7 +71,7 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
         flexDirection: 'column',
         rowGap: '8px',
       }),
-    [fontColor, fontFamily, paperBackgroundColor, padding, resolvedHeight, theme, width],
+    [fontColor, fontFamily, paperBackgroundColor, padding, resolvedHeight, theme],
   );
 
   const contentClassName = React.useMemo(

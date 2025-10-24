@@ -1979,7 +1979,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideLegend,
     useUTC: false,
     optimizeLargeData: numDataPoints > 1000,
-    shouldWrapLabels: shouldWrapLabels,
+    shouldWrapLabels,
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,

@@ -67,6 +67,7 @@ const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 // Removing responsive wrapper for FunnelChart as responsive container is not working with FunnelChart
 //const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
 const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
+const ResponsiveAnnotationOnlyChart = withResponsiveContainer(AnnotationOnlyChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
@@ -174,7 +175,7 @@ const LineAreaPreTransformOp = (plotlyInput: PlotlySchema) => {
 type ChartTypeMap = {
   annotation: {
     transformer: typeof transformPlotlyJsonToAnnotationChartProps;
-    renderer: typeof AnnotationOnlyChart;
+    renderer: typeof ResponsiveAnnotationOnlyChart;
   } & PreTransformHooks;
   donut: {
     transformer: typeof transformPlotlyJsonToDonutProps;
@@ -241,7 +242,7 @@ type ChartTypeMap = {
 const chartMap: ChartTypeMap = {
   annotation: {
     transformer: transformPlotlyJsonToAnnotationChartProps,
-    renderer: AnnotationOnlyChart,
+    renderer: ResponsiveAnnotationOnlyChart,
   },
   // PieData category charts
   donut: {
@@ -514,9 +515,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
           let chartType: ChartType;
 
-          if (chart.type === 'annotation') {
-            chartType = 'annotation';
-          } else if (chart.type === 'fallback' || chart.type === 'groupedverticalbar') {
+          if (chart.type === 'fallback' || chart.type === 'groupedverticalbar') {
             chartType = chart.type as ChartType;
           } else {
             chartType = (filteredTracesInfo[0]?.type ?? chart.type) as ChartType;

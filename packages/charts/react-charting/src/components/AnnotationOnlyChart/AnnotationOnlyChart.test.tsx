@@ -1,21 +1,8 @@
 import * as React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { AnnotationOnlyChart } from './AnnotationOnlyChart';
 import { IAnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
 import { IChartAnnotation } from '../../types/IChartAnnotation';
-
-// Mock ResizeObserver
-const mockObserve = jest.fn();
-const mockUnobserve = jest.fn();
-const mockDisconnect = jest.fn();
-
-class MockResizeObserver {
-  observe = mockObserve;
-  unobserve = mockUnobserve;
-  disconnect = mockDisconnect;
-}
-
-global.ResizeObserver = MockResizeObserver as any;
 
 const mockAnnotations: IChartAnnotation[] = [
   {
@@ -41,12 +28,6 @@ const defaultProps: IAnnotationOnlyChartProps = {
 };
 
 describe('AnnotationOnlyChart', () => {
-  beforeEach(() => {
-    mockObserve.mockClear();
-    mockUnobserve.mockClear();
-    mockDisconnect.mockClear();
-  });
-
   describe('Rendering', () => {
     it('renders without crashing', () => {
       const { container } = render(<AnnotationOnlyChart {...defaultProps} />);
@@ -213,53 +194,19 @@ describe('AnnotationOnlyChart', () => {
       expect(annotationLayer).toBeNull();
     });
 
-    it('passes correct context to ChartAnnotationLayer', async () => {
+    it('passes correct context to ChartAnnotationLayer', () => {
       const { container } = render(<AnnotationOnlyChart {...defaultProps} width={600} height={400} />);
 
-      await waitFor(() => {
-        const svg = container.querySelector('svg[data-chart-annotation-svg="true"]');
-        expect(svg).toBeInTheDocument();
-        expect(svg?.getAttribute('viewBox')).toContain('600');
-        expect(svg?.getAttribute('viewBox')).toContain('400');
-      });
-    });
-  });
-
-  describe('ResizeObserver', () => {
-    it('sets up ResizeObserver when width is not provided', () => {
-      const props = { ...defaultProps };
-      delete props.width;
-      const { container } = render(<AnnotationOnlyChart {...props} />);
-
-      const root = container.querySelector('[data-chart-annotation-only="true"]');
-      expect(root).toBeInTheDocument();
-      expect(mockObserve).toHaveBeenCalled();
-    });
-
-    it('does not set up ResizeObserver when explicit width is provided', () => {
-      mockObserve.mockClear();
-      const { container } = render(<AnnotationOnlyChart {...defaultProps} width={600} />);
-
-      const root = container.querySelector('[data-chart-annotation-only="true"]');
-      expect(root).toBeInTheDocument();
-      // Observer not created when width is explicit
-      expect(mockObserve).not.toHaveBeenCalled();
-    });
-
-    it('disconnects ResizeObserver on unmount', () => {
-      const props = { ...defaultProps };
-      delete props.width;
-      const { unmount } = render(<AnnotationOnlyChart {...props} />);
-
-      unmount();
-
-      expect(mockDisconnect).toHaveBeenCalled();
+      const svg = container.querySelector('svg[data-chart-annotation-svg="true"]');
+      expect(svg).toBeInTheDocument();
+      expect(svg?.getAttribute('viewBox')).toContain('600');
+      expect(svg?.getAttribute('viewBox')).toContain('400');
     });
   });
 
   describe('Edge Cases', () => {
     it('handles undefined annotations gracefully', () => {
-      const { container } = render(<AnnotationOnlyChart annotations={undefined as any} />);
+      const { container } = render(<AnnotationOnlyChart annotations={undefined as unknown as IChartAnnotation[]} />);
       expect(container.firstChild).toBeInTheDocument();
     });
 

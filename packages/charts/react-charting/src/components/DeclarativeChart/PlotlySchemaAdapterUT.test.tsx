@@ -29,7 +29,6 @@ import {
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 import type { PlotlySchema } from '@fluentui/chart-utilities';
-import type { MutableRefObject } from 'react';
 
 const date = new Date();
 const colorMap = new Map<string, string>();
@@ -460,7 +459,7 @@ describe('transform Plotly Json To chart Props', () => {
   });
 
   describe('transformPlotlyJsonToAnnotationChartProps', () => {
-    const mockColorMap: MutableRefObject<Map<string, string>> = { current: new Map() };
+    const mockColorMap = { current: new Map<string, string>() };
 
     beforeEach(() => {
       mockColorMap.current.clear();
@@ -569,11 +568,12 @@ describe('transform Plotly Json To chart Props', () => {
 
     describe('Color Extraction', () => {
       test('extracts paper_bgcolor from layout', () => {
+        const layout = {} as NonNullable<PlotlySchema['layout']>;
+        layout.paper_bgcolor = '#f0f0f0';
+
         const input: PlotlySchema = {
           data: [],
-          layout: {
-            paper_bgcolor: '#f0f0f0',
-          },
+          layout,
         };
 
         const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
@@ -582,11 +582,12 @@ describe('transform Plotly Json To chart Props', () => {
       });
 
       test('extracts plot_bgcolor from layout', () => {
+        const layout = {} as NonNullable<PlotlySchema['layout']>;
+        layout.plot_bgcolor = 'rgba(255, 255, 255, 0.5)';
+
         const input: PlotlySchema = {
           data: [],
-          layout: {
-            plot_bgcolor: 'rgba(255, 255, 255, 0.5)',
-          },
+          layout,
         };
 
         const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
@@ -595,12 +596,13 @@ describe('transform Plotly Json To chart Props', () => {
       });
 
       test('returns undefined for non-string color values', () => {
+        const layout = {} as NonNullable<PlotlySchema['layout']>;
+        layout.paper_bgcolor = 123 as unknown as string;
+        layout.plot_bgcolor = null as unknown as string;
+
         const input: PlotlySchema = {
           data: [],
-          layout: {
-            paper_bgcolor: 123 as unknown as string,
-            plot_bgcolor: null as unknown as string,
-          },
+          layout,
         };
 
         const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
@@ -725,28 +727,31 @@ describe('transform Plotly Json To chart Props', () => {
 
     describe('Complete Transformation', () => {
       test('transforms complete Plotly schema with all properties', () => {
+        const layout = {
+          title: 'Complete Test Chart',
+          width: 1000,
+          height: 800,
+          font: {
+            color: '#000000',
+            family: 'Segoe UI, sans-serif',
+          },
+          margin: {
+            t: 50,
+            r: 50,
+            b: 50,
+            l: 50,
+          },
+          meta: {
+            description: 'A complete test chart',
+          },
+        } as NonNullable<PlotlySchema['layout']>;
+
+        layout.paper_bgcolor = '#ffffff';
+        layout.plot_bgcolor = '#f5f5f5';
+
         const input: PlotlySchema = {
           data: [],
-          layout: {
-            title: 'Complete Test Chart',
-            width: 1000,
-            height: 800,
-            paper_bgcolor: '#ffffff',
-            plot_bgcolor: '#f5f5f5',
-            font: {
-              color: '#000000',
-              family: 'Segoe UI, sans-serif',
-            },
-            margin: {
-              t: 50,
-              r: 50,
-              b: 50,
-              l: 50,
-            },
-            meta: {
-              description: 'A complete test chart',
-            },
-          } as unknown as PlotlySchema['layout'],
+          layout,
         };
 
         const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
