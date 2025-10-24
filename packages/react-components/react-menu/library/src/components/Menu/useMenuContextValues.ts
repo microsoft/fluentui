@@ -5,10 +5,8 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
     checkedValues,
     hasCheckmarks,
     hasIcons,
-    inline,
     isSubmenu,
     menuPopoverRef,
-    mountNode,
     onCheckedValueChange,
     open,
     openOnContext,
@@ -18,6 +16,9 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
     setOpen,
     triggerId,
     triggerRef,
+    popoverId,
+    positioning,
+    submenuFallbackPositions,
   } = state;
 
   // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
@@ -25,10 +26,8 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
     checkedValues,
     hasCheckmarks,
     hasIcons,
-    inline,
     isSubmenu,
     menuPopoverRef,
-    mountNode,
     onCheckedValueChange,
     open,
     openOnContext,
@@ -38,6 +37,9 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
     setOpen,
     triggerId,
     triggerRef,
+    popoverId,
+    positioning,
+    submenuFallbackPositions,
   };
 
   return { menu };
