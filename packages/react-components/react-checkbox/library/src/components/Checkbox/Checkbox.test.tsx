@@ -54,6 +54,13 @@ describe('Checkbox', () => {
     expect(renderedComponent.container).toMatchSnapshot();
   });
 
+  it('renders a custom checkmark icon', () => {
+    const renderedComponent = render(
+      <Checkbox checkmarkIcon={<span id="checkmark-icon" />} label="Custom checkmark icon" />,
+    );
+    expect(renderedComponent.container).toMatchSnapshot();
+  });
+
   it('respects id prop', () => {
     const renderedComponent = render(<Checkbox id="checkbox" label="Checkbox" />);
     expect(renderedComponent.getByRole('checkbox').id).toEqual('checkbox');
