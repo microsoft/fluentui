@@ -21,8 +21,9 @@ jest.mock('./utils', () => {
     ...originalModule,
     gitPush: jest.fn(async () => {}),
     gitTag: jest.fn(async () => {}),
-    getLatestTag: jest.fn(async arg => {
-      return originalModule.getLatestTag(arg);
+    getLatestTag: jest.fn().mockReturnValue({
+      tag: '@fluentui/react-northstar_v0.68.0',
+      extractedVersion: '0.68.0',
     }),
   };
 });
