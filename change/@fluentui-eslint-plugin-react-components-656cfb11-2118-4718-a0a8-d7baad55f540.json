@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update ts-eslint to 8.46.2",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
