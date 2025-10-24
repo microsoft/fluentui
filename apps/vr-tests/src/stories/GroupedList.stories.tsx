@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { GroupedList } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
@@ -87,10 +89,10 @@ const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
 export default {
   title: 'GroupedList',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-GroupHeader-expand')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -98,9 +100,9 @@ export default {
         .hover('.ms-GroupHeader-expand')
         .snapshot('click', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof GroupedList>;
 
 export const Root = () => (
   <GroupedList

@@ -2,7 +2,7 @@ import { shorthands, makeStyles } from '@griffel/react';
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { withStoryWrightSteps } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const useFocusStylesA = makeStyles({
   root: {
@@ -58,21 +58,21 @@ export default {
         {storyFn(context)}
       </div>
     ),
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps()
-          .snapshot('normal', { cropTo: '.testWrapper' })
-          .focus('#boxA')
-          .snapshot('boxA, focus', { cropTo: '.testWrapper' })
-          .hover('#boxA')
-          .snapshot('boxA, focus+hover', { cropTo: '.testWrapper' })
-          .focus('#boxB')
-          .hover('#boxB')
-          .snapshot('boxB, focus+hover', { cropTo: '.testWrapper' })
-          .end(),
-      }),
   ],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
+        .focus('#boxA')
+        .snapshot('boxA, focus', { cropTo: '.testWrapper' })
+        .hover('#boxA')
+        .snapshot('boxA, focus+hover', { cropTo: '.testWrapper' })
+        .focus('#boxB')
+        .hover('#boxB')
+        .snapshot('boxB, focus+hover', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<'div'>;
 
 export const InsertionIsOrdered = () => <BoxWithPseudo />;

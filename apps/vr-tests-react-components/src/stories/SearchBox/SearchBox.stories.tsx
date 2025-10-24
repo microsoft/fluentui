@@ -1,28 +1,27 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { SearchBox } from '@fluentui/react-search';
 import { ArrowEnterLeftRegular, MicRegular } from '@fluentui/react-icons';
 
-import { getStoryVariant, withStoryWrightSteps, TestWrapperDecorator, RTL } from '../../utilities';
+import { getStoryVariant, TestWrapperDecorator, RTL } from '../../utilities';
 
 export default {
   title: 'SearchBox Converged',
-  decorators: [
-    TestWrapperDecorator,
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .click('input')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .click('input')
-          .wait(250) // let focus border animation finish
-          .snapshot('focused', { cropTo: '.testWrapper' })
-          .end(),
-      }),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .click('input')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('input')
+        .wait(250) // let focus border animation finish
+        .snapshot('focused', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof SearchBox>;
 
 export const WithValue = () => <SearchBox defaultValue="Value!" />;

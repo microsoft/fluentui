@@ -1,29 +1,26 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Dropdown, Option, OptionGroup } from '@fluentui/react-combobox';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 
 import { TestWrapperDecoratorFixedWidth } from '../../utilities';
 
 export default {
   title: 'Dropdown Converged',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => (
-      <StoryWright
-        steps={new Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('[role=combobox]')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .keys('input', 'ArrowDown')
-          .snapshot('active option', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </StoryWright>
-    ),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('[role=combobox]')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .keys('input', 'ArrowDown')
+        .snapshot('active option', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Dropdown>;
 
 export const Open = () => (

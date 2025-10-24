@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../utilities';
 import { DevOnlyStoryHeader } from '../utilities';
 import { Suggestions, ISuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { Fabric } from '@fluentui/react/lib/Fabric';
@@ -129,10 +130,10 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
 export default {
   title: '(Dev-Only) Suggestions',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testRoot' })
         .hover('#province-fake-long-province')
         .snapshot('Hovering over a wide suggestion element', { cropTo: '.testRoot' })
@@ -141,8 +142,8 @@ export default {
           cropTo: '.testRoot',
         })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 
   excludeStories: ['SimpleSuggestionsExample'],
 };

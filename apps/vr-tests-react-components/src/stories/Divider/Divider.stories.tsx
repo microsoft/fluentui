@@ -1,18 +1,17 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Divider } from '@fluentui/react-divider';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, RTL, HIGH_CONTRAST, DARK_MODE } from '../../utilities';
 
 export default {
   title: 'Divider Converged - Horizontal',
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => (
-      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-    ),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Divider>;
 
 export const WithoutContent = () => <Divider />;

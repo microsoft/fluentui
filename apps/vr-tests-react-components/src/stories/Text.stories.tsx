@@ -22,7 +22,8 @@ import {
   Title3,
 } from '@fluentui/react-text';
 
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Text Converged',
@@ -33,8 +34,10 @@ export default {
         {storyFn(context)}
       </div>
     ),
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() }),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Text>;
 
 export const Default = () => (

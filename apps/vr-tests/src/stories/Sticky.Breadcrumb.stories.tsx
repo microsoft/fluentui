@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -221,10 +223,10 @@ const cropTo = { cropTo: '.testWrapper' };
 export default {
   title: 'Sticky breadcrumb and sticky details list header',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', cropTo)
         .executeScript(`${getElement}.scrollTop = 5`)
         .snapshot(
@@ -242,11 +244,10 @@ export default {
         .executeScript(`${getElement}.scrollTop = 0`)
         .snapshot('scroll back to the top when horizontal scroll is non-zero', cropTo)
         .end(),
-    ),
-  ],
-
+    },
+  } satisfies StoryParameters,
   excludeStories: ['ScrollablePaneStickyBreadcrumbExample'],
-};
+} satisfies Meta<typeof ScrollablePaneStickyBreadcrumbExample>;
 
 export const ScrollablePaneStickyBreadcrumbDetailsList = () => (
   <ScrollablePaneStickyBreadcrumbExample />

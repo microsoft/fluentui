@@ -1,11 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  RTL,
-  StoryWrightDecorator,
-  TestWrapperDecoratorTallFixedWidth,
-} from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorTallFixedWidth } from '../utilities';
 import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from '@fluentui/react';
 
 const testOptions = [
@@ -44,10 +41,10 @@ const onRenderFontOption = (item: ISelectableOption) => {
 export default {
   title: 'ComboBox',
 
-  decorators: [
-    TestWrapperDecoratorTallFixedWidth,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecoratorTallFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-ComboBox-Input')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -55,9 +52,9 @@ export default {
         .hover('.ms-Button-flexContainer')
         .snapshot('click', { cropTo: '.ms-Layer' }) // Dropdown extends beyond testWrapper
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof ComboBox>;
 
 export const Root = () => (
   <ComboBox

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import {
   GroupedVerticalBarChart,
   ILineChartLineOptions,
@@ -15,13 +15,12 @@ import {
 export default {
   title: 'react-charting/VerticalBarChart',
 
-  decorators: [
-    (story, context) => TestWrapperDecorator(story, context),
-    (story, context) => {
-      const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
-      return <StoryWright steps={steps}>{story(context)}</StoryWright>;
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
     },
-  ],
+  } satisfies StoryParameters,
 } satisfies Meta<typeof VerticalBarChart>;
 
 export const BasicSecondaryYAxis = () => {

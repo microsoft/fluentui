@@ -19680,10 +19680,10 @@ storybook@7.6.20:
   dependencies:
     "@storybook/cli" "7.6.20"
 
-storywright@0.0.27-storybook7.12:
-  version "0.0.27-storybook7.12"
-  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.27-storybook7.12.tgz#73622ccbacade15621036df584da71cefe7c5c7a"
-  integrity sha512-EmkTHFfOH09YiAMgziIT53c4MIt/J8an7X2Ebwvt+NYuOBiZteH620AkyIFhiIRXEzATzNrpkBf7f/JSuYdXXQ==
+storywright@0.0.27-storybook7.14:
+  version "0.0.27-storybook7.14"
+  resolved "https://registry.yarnpkg.com/storywright/-/storywright-0.0.27-storybook7.14.tgz#640ac6c4736b4688e8a1349698f4743015ea36fd"
+  integrity sha512-SP5U9dWsd8UlBnGL/szs7MExJQOuzgTPvgI8h0H1qUPegme8FW78p4I0je1qkwuXbNWANtpMctPb2ojmUmWBtQ==
   dependencies:
     playwright "^1.34.3"
     prop-types "^15.6.0"

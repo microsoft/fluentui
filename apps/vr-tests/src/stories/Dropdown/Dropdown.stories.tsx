@@ -1,5 +1,7 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import {
   Dropdown,
   DropdownMenuItemType,
@@ -7,15 +9,15 @@ import {
   Icon,
   IDropdownOption,
 } from '@fluentui/react';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 
 export default {
   title: 'Dropdown',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Dropdown')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -25,9 +27,9 @@ export default {
         .hover('.ms-Dropdown-item')
         .snapshot('hover item', { cropTo: '.ms-Layer' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Dropdown>;
 
 export const Root = () => (
   <Dropdown

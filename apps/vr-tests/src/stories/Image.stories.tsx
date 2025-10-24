@@ -1,7 +1,8 @@
 import { Image, ImageFit, Label, Layer, IImageProps } from '@fluentui/react';
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../utilities';
 
 const img350x150 = 'http://fabricweb.azureedge.net/fabric-website/placeholders/350x150.png';
 
@@ -50,10 +51,10 @@ const border = 'solid 1px black';
 export default {
   title: 'Image',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 };
 
 export const NoFitNoWH = () => (

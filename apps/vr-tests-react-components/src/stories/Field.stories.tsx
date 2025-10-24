@@ -14,7 +14,7 @@ import { Textarea } from '@fluentui/react-textarea';
 import type { Meta, Decorator } from '@storybook/react';
 import { Steps } from 'storywright';
 
-import { withStoryWrightSteps } from '../utilities';
+import type { StoryParameters } from 'storywright';
 
 const TestWrapperDecoratorFixedWidth400: Decorator = story => (
   <div style={{ display: 'flex' }}>
@@ -26,10 +26,10 @@ const TestWrapperDecoratorFixedWidth400: Decorator = story => (
 
 export default {
   title: 'Field',
-  decorators: [
-    TestWrapperDecoratorFixedWidth400,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth400],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Field>;
 
 export const Base = () => (

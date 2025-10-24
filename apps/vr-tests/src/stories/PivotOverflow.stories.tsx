@@ -1,8 +1,8 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
-import { StoryWrightDecorator } from '../utilities';
 
 export default {
   title: 'Pivot - Overflow',
@@ -18,8 +18,11 @@ export default {
         </div>
       </div>
     ),
-    StoryWrightDecorator(
-      new Steps()
+  ],
+
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .executeScript('document.getElementById("testWrapper").style.width = "500px"')
         .snapshot('Medium', { cropTo: '.testWrapper' })
         .executeScript('document.getElementById("testWrapper").style.width = "750px"')
@@ -34,8 +37,8 @@ export default {
         .hover('.ms-Pivot-overflowMenuButton')
         .snapshot('Narrow - Overflow menu', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Pivot>;
 
 export const Root = () => (

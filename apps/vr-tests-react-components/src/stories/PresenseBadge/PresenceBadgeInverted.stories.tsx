@@ -3,17 +3,18 @@ import type { Meta } from '@storybook/react';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { tokens } from '@fluentui/react-theme';
 import { Steps } from 'storywright';
-import { getStoryVariant, withStoryWrightSteps, TestWrapperDecorator, HIGH_CONTRAST, DARK_MODE } from '../../utilities';
+import { getStoryVariant, TestWrapperDecorator, HIGH_CONTRAST, DARK_MODE } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const statuses = ['available', 'away', 'busy', 'do-not-disturb', 'offline', 'out-of-office', 'unknown'] as const;
 const sizes = ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'] as const;
 
 export default {
   title: 'PresenceBadge Converged - inverted background',
-  decorators: [
-    TestWrapperDecorator,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof PresenceBadge>;
 
 export const Default = () => (

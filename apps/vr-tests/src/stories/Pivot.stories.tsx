@@ -1,16 +1,18 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Pivot, PivotItem, IPivotItemProps, Icon } from '@fluentui/react';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 
 export default {
   title: 'Pivot',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Pivot-link.is-selected')
         .snapshot('hover-selected', { cropTo: '.testWrapper' })
@@ -20,8 +22,8 @@ export default {
         .hover('.ms-Pivot-link.is-selected')
         .snapshot('click', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Pivot>;
 
 export const Root = () => (

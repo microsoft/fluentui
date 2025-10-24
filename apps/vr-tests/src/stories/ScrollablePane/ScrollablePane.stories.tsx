@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../../utilities';
 import { Fabric, ScrollablePane, StickyPositionType, Sticky } from '@fluentui/react';
 import { lorem } from '@fluentui/example-data';
 
@@ -43,18 +44,18 @@ function createContentArea(index: number) {
 export default {
   title: 'ScrollablePane',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 9999",
         )
         .snapshot('scrolled', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 };
 
 export const DefaultScrollablePaneExample = () => (

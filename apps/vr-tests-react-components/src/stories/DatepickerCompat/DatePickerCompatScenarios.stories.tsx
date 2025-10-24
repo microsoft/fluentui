@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { DatePicker as DatePickerBase } from '@fluentui/react-datepicker-compat';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
 import { Field } from '@fluentui/react-field';
@@ -20,12 +21,10 @@ const DatePicker = (props: DatePickerProps & { renderRelativeElement?: boolean }
 export default {
   title: 'DatePicker Compat',
   component: DatePicker,
-  decorators: [
-    TestWrapperDecorator,
-    story => (
-      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-    ),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof DatePicker>;
 
 export const Required = () => (

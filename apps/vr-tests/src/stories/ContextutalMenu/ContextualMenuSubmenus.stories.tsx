@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../../utilities';
 import { IContextualMenuItem } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -49,10 +51,10 @@ const itemsWithSubmenuHrefs: IContextualMenuItem[] = [
 export default {
   title: 'ContextualMenu',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .click('#button')
         .snapshot('menu opened', { cropTo: '.ms-Layer' })
         .hover('#parent')
@@ -62,9 +64,9 @@ export default {
         .hover('#item2')
         .snapshot('item2 hovered', { cropTo: '.ms-Layer' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof DefaultButton>;
 
 export const WithSubmenusWithHrefs = () => (
   <DefaultButton

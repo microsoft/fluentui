@@ -1,20 +1,17 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  RTL,
-  StoryWrightDecorator,
-  TestWrapperDecoratorFixedWidth,
-} from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorFixedWidth } from '../utilities';
 import { TextField } from '@fluentui/react';
 
 export default {
   title: 'TextField',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-TextField-field')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -22,9 +19,9 @@ export default {
         .hover('.ms-TextField-field')
         .snapshot('click', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof TextField>;
 
 export const Root = () => <TextField label="Standard" />;
 export const Placeholder = () => <TextField label="Standard" placeholder="Placeholder" />;

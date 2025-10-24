@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { DefaultButton, Panel, PanelType, PrimaryButton } from '@fluentui/react';
 
 const defaultProps = {
@@ -18,8 +20,13 @@ const onRenderFooterContent = () => (
 export default {
   title: 'Panel',
 
-  decorators: [TestWrapperDecorator, StoryWrightDecorator(new Steps().snapshot('default').end())],
-};
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default').end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Panel>;
 
 export const SmallLeftWCloseButton = () => (
   <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />

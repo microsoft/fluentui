@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
 import { TextDefinition, FluentDesignSystem, colorNeutralBackground6 } from '@fluentui/web-components';
 
 TextDefinition.define(FluentDesignSystem.registry);
@@ -10,14 +10,13 @@ export default {
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-          <div className="testWrapper" style={{ width: '322px' }}>
-            {story()}
-          </div>
-        </StoryWright>
+        <div className="testWrapper" style={{ width: '322px' }}>
+          {story()}
+        </div>
       );
     },
   ],
+  parameters: { storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() } },
 };
 
 export const Default = () =>

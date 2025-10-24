@@ -1,13 +1,13 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Label } from '@fluentui/react-label';
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 
 export default {
   title: 'Label Converged',
 
-  decorators: [story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default').end() })],
+  parameters: { storyWright: { steps: new Steps().snapshot('default').end() } } satisfies StoryParameters,
 } satisfies Meta<typeof Label>;
 
 export const Root = () => <Label>I'm a label</Label>;

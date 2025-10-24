@@ -1,11 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  RTL,
-  StoryWrightDecorator,
-  TestWrapperDecoratorFullWidth,
-} from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorFullWidth } from '../utilities';
 import { Fabric, mergeStyleSets, DefaultPalette, IStyle, Stack } from '@fluentui/react';
 
 const rootStyles = {
@@ -74,11 +71,13 @@ const defaultProps = {
 export default {
   title: 'Stack',
 
-  decorators: [
-    TestWrapperDecoratorFullWidth,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
-};
+  decorators: [TestWrapperDecoratorFullWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Stack>;
 
 export const VerticalStackDefault = () => (
   <Fabric>

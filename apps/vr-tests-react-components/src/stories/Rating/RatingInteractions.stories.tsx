@@ -1,30 +1,22 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Rating } from '@fluentui/react-rating';
 
-import {
-  getStoryVariant,
-  withStoryWrightSteps,
-  TestWrapperDecoratorFixedWidth,
-  HIGH_CONTRAST,
-  DARK_MODE,
-} from '../../utilities';
+import { getStoryVariant, TestWrapperDecoratorFixedWidth, HIGH_CONTRAST, DARK_MODE } from '../../utilities';
 
 export default {
   title: 'Rating Converged',
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps()
-          .snapshot('rest', { cropTo: '.testWrapper' })
-          .hover('input')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .end(),
-      }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('rest', { cropTo: '.testWrapper' })
+        .hover('input')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Rating>;
 
 export const NeutralRatingWithHalfStar = () => <Rating defaultValue={3.5} />;

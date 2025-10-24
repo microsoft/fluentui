@@ -8,8 +8,9 @@ import {
 } from '@fluentui/react-experiments';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { ISize, Fabric } from '@fluentui/react';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import { TestWrapperDecorator } from '../utilities';
 
 interface IDocumentItem {
   name: React.ReactElement;
@@ -71,17 +72,17 @@ const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailPro
 export default {
   title: 'MediaTile',
 
-  decorators: [
-    story => <Fabric>{story()}</Fabric>,
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [story => <Fabric>{story()}</Fabric>, TestWrapperDecorator],
+
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Tile')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Tile>;
 
 export const MediaTileWithSingleActivityLine = () => (

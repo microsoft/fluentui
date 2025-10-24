@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../utilities';
 import { Coachmark, DirectionalHint, TeachingBubbleContent, Fabric } from '@fluentui/react';
 import { useId } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/Button';
@@ -48,13 +50,13 @@ const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {
 export default {
   title: 'Coachmark',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps().snapshot('default', { cropTo: '.ms-PositioningContainer' }).end(),
-    ),
-  ],
-};
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.ms-PositioningContainer' }).end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Coachmark>;
 
 export const Collapsed = () => (
   <Fabric>
