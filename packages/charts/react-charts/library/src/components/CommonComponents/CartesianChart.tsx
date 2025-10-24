@@ -65,19 +65,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
    * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
    */
   let _removalValueForTextTuncate: number = 0;
+  const _yAxisTickText = React.useRef<string[]>([]);
 
   const [containerWidth, setContainerWidth] = React.useState<number>(0);
   const [containerHeight, setContainerHeight] = React.useState<number>(0);
   const [startFromX, setStartFromX] = React.useState<number>(0);
   const [prevProps, setPrevProps] = React.useState<ModifiedCartesianChartProps | null>(null);
 
-  const chartTypesWithStringYAxis = [
-    ChartTypes.HorizontalBarChartWithAxis,
-    ChartTypes.HeatMapChart,
-    ChartTypes.VerticalStackedBarChart,
-    ChartTypes.GanttChart,
-    ChartTypes.ScatterChart,
-  ];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
    * So that, in RTL, left margins becomes right margins and viceversa.
@@ -132,12 +126,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     if (props !== null) {
       setPrevProps(props);
     }
-    if (
-      chartTypesWithStringYAxis.includes(props.chartType) &&
-      props.showYAxisLables &&
-      yAxisElement &&
-      props.yAxisType === YAxisType.StringAxis
-    ) {
+    if (props.showYAxisLables) {
       const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
@@ -157,12 +146,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         _fitParentContainer();
       }
     }
-    if (
-      chartTypesWithStringYAxis.includes(props.chartType) &&
-      props.showYAxisLables &&
-      yAxisElement &&
-      props.yAxisType === YAxisType.StringAxis
-    ) {
+    if (props.showYAxisLables) {
       const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
@@ -201,7 +185,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       return str;
     };
     return calculateLongestLabelWidth(
-      props.stringDatasetForYAxisDomain!.map(label => formatTickLabel(label)),
+      _yAxisTickText.current.map(label => formatTickLabel(label)),
       `.${className} text`,
     );
   }
@@ -220,13 +204,10 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     _fitParentContainer();
   }
   const margin = { ...margins };
-  // Note: This check is unnecessary since startFromX is only set for charts with string y-axis.
-  if (chartTypesWithStringYAxis.includes(props.chartType)) {
-    if (!_useRtl) {
-      margin.left! += startFromX;
-    } else {
-      margin.right! += startFromX;
-    }
+  if (!_useRtl) {
+    margin.left! += startFromX;
+  } else {
+    margin.right! += startFromX;
   }
   // Callback for margins to the chart
   props.getmargins && props.getmargins(margin);
@@ -356,12 +337,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     let yScalePrimary: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScaleSecondary: any;
-    const axisData: IAxisData = { yAxisDomainValues: [] };
+    const axisData: IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     if (props.yAxisType && props.yAxisType === YAxisType.StringAxis) {
       yScalePrimary = props.createStringYAxis(
         YAxisParams,
         props.stringDatasetForYAxisDomain!,
         _useRtl,
+        axisData,
         props.barwidth,
         props.chartType,
       );
@@ -410,43 +392,43 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         _useRtl,
       );
     }
+    _yAxisTickText.current = axisData.yAxisTickText;
+    props.getAxisData && props.getAxisData(axisData);
 
-    if (chartTypesWithStringYAxis.includes(props.chartType) && props.yAxisType === YAxisType.StringAxis) {
-      // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
-      // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
-      // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
-      if (!props.showYAxisLablesTooltip) {
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          //eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
-      // Used to display tooltip at y axis labels.
-      if (props.showYAxisLablesTooltip) {
-        // To create y axis tick values by if specified truncating the rest of the text
-        // and showing elipsis or showing the whole string,
-        yScalePrimary &&
-          // Note: This function should be invoked within the showYAxisLablesTooltip check,
-          // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
-          createYAxisLabels(
-            yAxisElement.current!,
-            yScalePrimary,
-            props.noOfCharsToTruncate || 4,
-            props.showYAxisLablesTooltip || false,
-            _useRtl,
-          );
-        const _yAxisElement = d3Select(yAxisElement.current!).call(yScalePrimary);
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          //eslint-disable-next-line no-empty
-        } catch (e) {}
-        const ytooltipProps = {
-          tooltipCls: classes.tooltip!,
-          id: _tooltipId,
-          axis: _yAxisElement,
-        };
-        _yAxisElement && tooltipOfAxislabels(ytooltipProps);
-      }
+    // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
+    // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
+    // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
+    if (!props.showYAxisLablesTooltip) {
+      try {
+        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
+        //eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at y axis labels.
+    if (props.showYAxisLablesTooltip) {
+      // To create y axis tick values by if specified truncating the rest of the text
+      // and showing elipsis or showing the whole string,
+      yScalePrimary &&
+        // Note: This function should be invoked within the showYAxisLablesTooltip check,
+        // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
+        createYAxisLabels(
+          yAxisElement.current!,
+          yScalePrimary,
+          props.noOfCharsToTruncate || 4,
+          props.showYAxisLablesTooltip || false,
+          _useRtl,
+        );
+      const _yAxisElement = d3Select(yAxisElement.current!).call(yScalePrimary);
+      try {
+        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
+        //eslint-disable-next-line no-empty
+      } catch (e) {}
+      const ytooltipProps = {
+        tooltipCls: classes.tooltip!,
+        id: _tooltipId,
+        axis: _yAxisElement,
+      };
+      _yAxisElement && tooltipOfAxislabels(ytooltipProps);
     }
 
     // Call back to the chart.
@@ -464,7 +446,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         );
     };
 
-    props.getAxisData && props.getAxisData(axisData);
     // Callback function for chart, returns axis
     _getData(xScale, yScalePrimary, yScaleSecondary);
 
