@@ -1,0 +1,424 @@
+export const groupButtonStrokewidth = 'var(--smtc-group-button-strokewidth, var(--strokeWidthThin))';
+export const groupButtonNeutralBackground =
+  'var(--smtc-group-button-neutral-background, var(--colorNeutralBackground1))';
+export const groupButtonNeutralBackgroundHover =
+  'var(--smtc-group-button-neutral-background-hover, var(--colorNeutralBackground1Hover))';
+export const groupButtonNeutralBackgroundPressed =
+  'var(--smtc-group-button-neutral-background-pressed, var(--colorNeutralBackground1Pressed))';
+export const groupButtonNeutralBackgroundSelected =
+  'var(--smtc-group-button-neutral-background-selected, var(--colorNeutralBackground1Selected))';
+export const groupButtonNeutralBackgroundHoverSelected =
+  'var(--smtc-group-button-neutral-background-hover-selected, var(--colorNeutralBackground1Hover))';
+export const groupButtonNeutralBackgroundPressedSelected =
+  'var(--smtc-group-button-neutral-background-pressed-selected, var(--colorNeutralBackground1Pressed))';
+export const groupButtonNeutralBackgroundDisabled =
+  'var(--smtc-group-button-neutral-background-disabled, var(--colorNeutralBackgroundDisabled))';
+export const groupButtonPrimaryBackground = 'var(--smtc-group-button-primary-background, var(--colorBrandBackground))';
+export const groupButtonPrimaryBackgroundHover =
+  'var(--smtc-group-button-primary-background-hover, var(--colorBrandBackgroundHover))';
+export const groupButtonPrimaryBackgroundPressed =
+  'var(--smtc-group-button-primary-background-pressed, var(--colorBrandBackgroundPressed))';
+export const groupButtonPrimaryBackgroundSelected =
+  'var(--smtc-group-button-primary-background-selected, var(--colorBrandBackgroundSelected))';
+export const groupButtonPrimaryBackgroundHoverSelected =
+  'var(--smtc-group-button-primary-background-hover-selected, var(--colorBrandBackgroundHover))';
+export const groupButtonPrimaryBackgroundPressedSelected =
+  'var(--smtc-group-button-primary-background-pressed-selected, var(--colorBrandBackgroundPressed))';
+export const groupButtonPrimaryBackgroundDisabled =
+  'var(--smtc-group-button-primary-background-disabled, var(--colorNeutralBackgroundDisabled))';
+export const groupButtonOutlineBackground =
+  'var(--smtc-group-button-outline-background, var(--colorTransparentBackground))';
+export const groupButtonOutlineBackgroundHover =
+  'var(--smtc-group-button-outline-background-hover, var(--colorTransparentBackgroundHover))';
+export const groupButtonOutlineBackgroundPressed =
+  'var(--smtc-group-button-outline-background-pressed, var(--colorTransparentBackgroundPressed))';
+export const groupButtonOutlineBackgroundSelected =
+  'var(--smtc-group-button-outline-background-selected, var(--colorTransparentBackgroundSelected))';
+export const groupButtonOutlineBackgroundHoverSelected =
+  'var(--smtc-group-button-outline-background-hover-selected, var(--colorTransparentBackgroundHover))';
+export const groupButtonOutlineBackgroundPressedSelected =
+  'var(--smtc-group-button-outline-background-pressed-selected, var(--colorTransparentBackgroundPressed))';
+export const groupButtonOutlineBackgroundDisabled =
+  'var(--smtc-group-button-outline-background-disabled, var(--colorTransparentBackground))';
+export const groupButtonSubtleBackground = 'var(--smtc-group-button-subtle-background, var(--colorSubtleBackground))';
+export const groupButtonSubtleBackgroundHover =
+  'var(--smtc-group-button-subtle-background-hover, var(--colorSubtleBackgroundHover))';
+export const groupButtonSubtleBackgroundPressed =
+  'var(--smtc-group-button-subtle-background-pressed, var(--colorSubtleBackgroundPressed))';
+export const groupButtonSubtleBackgroundSelected =
+  'var(--smtc-group-button-subtle-background-selected, var(--colorSubtleBackgroundSelected))';
+export const groupButtonSubtleBackgroundHoverSelected =
+  'var(--smtc-group-button-subtle-background-hover-selected, var(--colorSubtleBackgroundHover))';
+export const groupButtonSubtleBackgroundPressedSelected =
+  'var(--smtc-group-button-subtle-background-pressed-selected, var(--colorSubtleBackgroundPressed))';
+export const groupButtonSubtleBackgroundDisabled =
+  'var(--smtc-group-button-subtle-background-disabled, var(--colorTransparentBackground))';
+export const groupButtonTransparentBackground =
+  'var(--smtc-group-button-transparent-background, var(--colorTransparentBackground))';
+export const groupButtonTransparentBackgroundHover =
+  'var(--smtc-group-button-transparent-background-hover, var(--colorTransparentBackgroundHover))';
+export const groupButtonTransparentBackgroundPressed =
+  'var(--smtc-group-button-transparent-background-pressed, var(--colorTransparentBackgroundPressed))';
+export const groupButtonTransparentBackgroundSelected =
+  'var(--smtc-group-button-transparent-background-selected, var(--colorTransparentBackgroundSelected))';
+export const groupButtonTransparentBackgroundHoverSelected =
+  'var(--smtc-group-button-transparent-background-hover-selected, var(--colorTransparentBackgroundHover))';
+export const groupButtonTransparentBackgroundPressedSelected =
+  'var(--smtc-group-button-transparent-background-pressed-selected, var(--colorTransparentBackgroundPressed))';
+export const groupButtonTransparentBackgroundDisabled =
+  'var(--smtc-group-button-transparent-background-disabled, var(--colorTransparentBackground))';
+export const groupButtonNeutralStroke = 'var(--smtc-group-button-neutral-stroke, var(--colorNeutralStroke1))';
+export const groupButtonNeutralStrokeHover =
+  'var(--smtc-group-button-neutral-stroke-hover, var(--colorNeutralStroke1Hover))';
+export const groupButtonNeutralStrokePressed =
+  'var(--smtc-group-button-neutral-stroke-pressed, var(--colorNeutralStroke1Pressed))';
+export const groupButtonNeutralStrokeSelected =
+  'var(--smtc-group-button-neutral-stroke-selected, var(--colorNeutralStroke1Selected))';
+export const groupButtonNeutralStrokeHoverSelected =
+  'var(--smtc-group-button-neutral-stroke-hover-selected, var(--colorNeutralStroke1Hover))';
+export const groupButtonNeutralStrokePressedSelected =
+  'var(--smtc-group-button-neutral-stroke-pressed-selected, var(--colorNeutralStroke1Pressed))';
+export const groupButtonNeutralStrokeDisabled =
+  'var(--smtc-group-button-neutral-stroke-disabled, var(--colorNeutralStrokeDisabled))';
+export const groupButtonPrimaryStroke = 'var(--smtc-group-button-primary-stroke, transparent)';
+export const groupButtonPrimaryStrokeHover = 'var(--smtc-group-button-primary-stroke-hover, transparent)';
+export const groupButtonPrimaryStrokePressed = 'var(--smtc-group-button-primary-stroke-pressed, transparent)';
+export const groupButtonPrimaryStrokeSelected = 'var(--smtc-group-button-primary-stroke-selected, transparent)';
+export const groupButtonPrimaryStrokeHoverSelected =
+  'var(--smtc-group-button-primary-stroke-hover-selected, transparent)';
+export const groupButtonPrimaryStrokePressedSelected =
+  'var(--smtc-group-button-primary-stroke-pressed-selected, transparent)';
+export const groupButtonPrimaryStrokeDisabled = 'var(--smtc-group-button-primary-stroke-disabled, transparent)';
+export const groupButtonOutlineStroke = 'var(--smtc-group-button-outline-stroke, var(--colorNeutralStroke1))';
+export const groupButtonOutlineStrokeHover =
+  'var(--smtc-group-button-outline-stroke-hover, var(--colorNeutralStroke1Hover))';
+export const groupButtonOutlineStrokePressed =
+  'var(--smtc-group-button-outline-stroke-pressed, var(--colorNeutralStroke1Pressed))';
+export const groupButtonOutlineStrokeSelected =
+  'var(--smtc-group-button-outline-stroke-selected, var(--colorNeutralStroke1))';
+export const groupButtonOutlineStrokeHoverSelected =
+  'var(--smtc-group-button-outline-stroke-hover-selected, var(--colorNeutralStroke1Selected))';
+export const groupButtonOutlineStrokePressedSelected =
+  'var(--smtc-group-button-outline-stroke-pressed-selected, var(--colorNeutralStroke1Selected))';
+export const groupButtonOutlineStrokeDisabled =
+  'var(--smtc-group-button-outline-stroke-disabled, var(--colorNeutralStrokeDisabled))';
+export const groupButtonSubtleStroke = 'var(--smtc-group-button-subtle-stroke, transparent)';
+export const groupButtonSubtleStrokeHover = 'var(--smtc-group-button-subtle-stroke-hover, transparent)';
+export const groupButtonSubtleStrokePressed = 'var(--smtc-group-button-subtle-stroke-pressed, transparent)';
+export const groupButtonSubtleStrokeSelected = 'var(--smtc-group-button-subtle-stroke-selected, transparent)';
+export const groupButtonSubtleStrokeHoverSelected =
+  'var(--smtc-group-button-subtle-stroke-hover-selected, transparent)';
+export const groupButtonSubtleStrokePressedSelected =
+  'var(--smtc-group-button-subtle-stroke-pressed-selected, transparent)';
+export const groupButtonSubtleStrokeDisabled = 'var(--smtc-group-button-subtle-stroke-disabled, transparent)';
+export const groupButtonTransparentStroke = 'var(--smtc-group-button-transparent-stroke, transparent)';
+export const groupButtonTransparentStrokeHover = 'var(--smtc-group-button-transparent-stroke-hover, transparent)';
+export const groupButtonTransparentStrokePressed = 'var(--smtc-group-button-transparent-stroke-pressed, transparent)';
+export const groupButtonTransparentStrokeSelected = 'var(--smtc-group-button-transparent-stroke-selected, transparent)';
+export const groupButtonTransparentStrokeHoverSelected =
+  'var(--smtc-group-button-transparent-stroke-hover-selected, transparent)';
+export const groupButtonTransparentStrokePressedSelected =
+  'var(--smtc-group-button-transparent-stroke-pressed-selected, transparent)';
+export const groupButtonTransparentStrokeDisabled = 'var(--smtc-group-button-transparent-stroke-disabled, transparent)';
+export const groupButtonSmallPaddingHorizontal =
+  'var(--smtc-group-button-small-padding-horizontal, var(--spacingHorizontalS))';
+export const groupButtonSmallPaddingTop = 'var(--smtc-group-button-small-padding-top, 3px)';
+export const groupButtonSmallPaddingBottom = 'var(--smtc-group-button-small-padding-bottom, 3px)';
+export const groupButtonSmallGap = 'var(--smtc-group-button-small-gap, var(--spacingHorizontalXS))';
+export const groupButtonSmallMinwidth = 'var(--smtc-group-button-small-minwidth, 64px)';
+export const groupButtonSmallMinheight = 'var(--smtc-group-button-small-minheight)';
+export const groupButtonMediumPaddingHorizontal =
+  'var(--smtc-group-button-medium-padding-horizontal, var(--spacingHorizontalM))';
+export const groupButtonMediumPaddingTop = 'var(--smtc-group-button-medium-padding-top, 5px)';
+export const groupButtonMediumPaddingBottom = 'var(--smtc-group-button-medium-padding-bottom, 5px)';
+export const groupButtonMediumGap = 'var(--smtc-group-button-medium-gap, var(--spacingHorizontalSNudge))';
+export const groupButtonMediumMinwidth = 'var(--smtc-group-button-medium-minwidth, 96px)';
+export const groupButtonMediumMinheight = 'var(--smtc-group-button-medium-minheight)';
+export const groupButtonLargePaddingHorizontal =
+  'var(--smtc-group-button-large-padding-horizontal, var(--spacingHorizontalL))';
+export const groupButtonLargePaddingTop = 'var(--smtc-group-button-large-padding-top, var(--spacingVerticalS))';
+export const groupButtonLargePaddingBottom = 'var(--smtc-group-button-large-padding-bottom, var(--spacingVerticalS))';
+export const groupButtonLargeGap = 'var(--smtc-group-button-large-gap, var(--spacingHorizontalSNudge))';
+export const groupButtonLargeMinwidth = 'var(--smtc-group-button-large-minwidth, 96px)';
+export const groupButtonLargeMinheight = 'var(--smtc-group-button-large-minheight)';
+export const groupButtonSmallCorner = 'var(--smtc-group-button-small-corner, var(--borderRadiusMedium))';
+export const groupButtonSmallCornerHover = 'var(--smtc-group-button-small-corner-hover, var(--borderRadiusMedium))';
+export const groupButtonSmallCornerPressed = 'var(--smtc-group-button-small-corner-pressed, var(--borderRadiusMedium))';
+export const groupButtonSmallCornerSelected =
+  'var(--smtc-group-button-small-corner-selected, var(--borderRadiusMedium))';
+export const groupButtonSmallCornerHoverSelected =
+  'var(--smtc-group-button-small-corner-hover-selected, var(--borderRadiusMedium))';
+export const groupButtonSmallCornerPressedSelected =
+  'var(--smtc-group-button-small-corner-pressed-selected, var(--borderRadiusMedium))';
+export const groupButtonSmallCornerDisabled =
+  'var(--smtc-group-button-small-corner-disabled, var(--borderRadiusMedium))';
+export const groupButtonMediumCorner = 'var(--smtc-group-button-medium-corner, var(--borderRadiusMedium))';
+export const groupButtonMediumCornerHover = 'var(--smtc-group-button-medium-corner-hover, var(--borderRadiusMedium))';
+export const groupButtonMediumCornerPressed =
+  'var(--smtc-group-button-medium-corner-pressed, var(--borderRadiusMedium))';
+export const groupButtonMediumCornerSelected =
+  'var(--smtc-group-button-medium-corner-selected, var(--borderRadiusMedium))';
+export const groupButtonMediumCornerHoverSelected =
+  'var(--smtc-group-button-medium-corner-hover-selected, var(--borderRadiusMedium))';
+export const groupButtonMediumCornerPressedSelected =
+  'var(--smtc-group-button-medium-corner-pressed-selected, var(--borderRadiusMedium))';
+export const groupButtonMediumCornerDisabled =
+  'var(--smtc-group-button-medium-corner-disabled, var(--borderRadiusMedium))';
+export const groupButtonLargeCorner = 'var(--smtc-group-button-large-corner, var(--borderRadiusMedium))';
+export const groupButtonLargeCornerHover = 'var(--smtc-group-button-large-corner-hover, var(--borderRadiusMedium))';
+export const groupButtonLargeCornerPressed = 'var(--smtc-group-button-large-corner-pressed, var(--borderRadiusMedium))';
+export const groupButtonLargeCornerSelected =
+  'var(--smtc-group-button-large-corner-selected, var(--borderRadiusMedium))';
+export const groupButtonLargeCornerHoverSelected =
+  'var(--smtc-group-button-large-corner-hover-selected, var(--borderRadiusMedium))';
+export const groupButtonLargeCornerPressedSelected =
+  'var(--smtc-group-button-large-corner-pressed-selected, var(--borderRadiusMedium))';
+export const groupButtonLargeCornerDisabled =
+  'var(--smtc-group-button-large-corner-disabled, var(--borderRadiusMedium))';
+export const groupButtonOutlineStrokewidth = 'var(--smtc-group-button-outline-strokewidth)';
+export const groupButtonOutlineStrokewidthHover =
+  'var(--smtc-group-button-outline-strokewidth-hover, var(--strokeWidthThin))';
+export const groupButtonOutlineStrokewidthPressed =
+  'var(--smtc-group-button-outline-strokewidth-pressed, var(--strokeWidthThin))';
+export const groupButtonOutlineStrokewidthSelected =
+  'var(--smtc-group-button-outline-strokewidth-selected, var(--strokeWidthThicker))';
+export const groupButtonNeutralShadow = 'var(--smtc-group-button-neutral-shadow, 0 0 0 transparent)';
+export const groupButtonNeutralShadowDisabled = 'var(--smtc-group-button-neutral-shadow-disabled, 0 0 0 transparent)';
+export const groupButtonNeutralShadowSelected = 'var(--smtc-group-button-neutral-shadow-selected, 0 0 0 transparent)';
+export const groupButtonNeutralShadowDisabledSelected = 'var(--smtc-group-button-neutral-shadow-disabled-selected)';
+export const groupButtonPrimaryShadow = 'var(--smtc-group-button-primary-shadow, 0 0 0 transparent)';
+export const groupButtonPrimaryShadowDisabled = 'var(--smtc-group-button-primary-shadow-disabled, 0 0 0 transparent)';
+export const groupButtonPrimaryShadowSelected = 'var(--smtc-group-button-primary-shadow-selected, 0 0 0 transparent)';
+export const groupButtonPrimaryShadowDisabledSelected = 'var(--smtc-group-button-primary-shadow-disabled-selected)';
+export const groupButtonSmallIcononlyPadding = 'var(--smtc-group-button-small-icononly-padding, 1px)';
+export const groupButtonMediumIcononlyPadding = 'var(--smtc-group-button-medium-icononly-padding, 5px)';
+export const groupButtonLargeIcononlyPadding = 'var(--smtc-group-button-large-icononly-padding, 7px)';
+export const groupButtonNeutralIconForeground =
+  'var(--smtc-group-button-neutral-icon-foreground, var(--colorNeutralForeground1))';
+export const groupButtonNeutralIconForegroundHover =
+  'var(--smtc-group-button-neutral-icon-foreground-hover, var(--colorNeutralForeground1Hover))';
+export const groupButtonNeutralIconForegroundPressed =
+  'var(--smtc-group-button-neutral-icon-foreground-pressed, var(--colorNeutralForeground1Pressed))';
+export const groupButtonNeutralIconForegroundDisabled =
+  'var(--smtc-group-button-neutral-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonNeutralIconForegroundSelected =
+  'var(--smtc-group-button-neutral-icon-foreground-selected, var(--colorNeutralForeground1Selected))';
+export const groupButtonPrimaryIconForeground =
+  'var(--smtc-group-button-primary-icon-foreground, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonPrimaryIconForegroundHover =
+  'var(--smtc-group-button-primary-icon-foreground-hover, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonPrimaryIconForegroundPressed =
+  'var(--smtc-group-button-primary-icon-foreground-pressed, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonPrimaryIconForegroundDisabled =
+  'var(--smtc-group-button-primary-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonPrimaryIconForegroundSelected =
+  'var(--smtc-group-button-primary-icon-foreground-selected, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonOutlineIconForeground =
+  'var(--smtc-group-button-outline-icon-foreground, var(--colorNeutralForeground1))';
+export const groupButtonOutlineIconForegroundHover =
+  'var(--smtc-group-button-outline-icon-foreground-hover, var(--colorNeutralForeground1Hover))';
+export const groupButtonOutlineIconForegroundPressed =
+  'var(--smtc-group-button-outline-icon-foreground-pressed, var(--colorNeutralForeground1Pressed))';
+export const groupButtonOutlineIconForegroundDisabled =
+  'var(--smtc-group-button-outline-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonOutlineIconForegroundSelected =
+  'var(--smtc-group-button-outline-icon-foreground-selected, var(--colorNeutralForeground1Selected))';
+export const groupButtonSubtleIconForeground =
+  'var(--smtc-group-button-subtle-icon-foreground, var(--colorNeutralForeground2))';
+export const groupButtonSubtleIconForegroundHover =
+  'var(--smtc-group-button-subtle-icon-foreground-hover, var(--colorNeutralForeground2BrandHover))';
+export const groupButtonSubtleIconForegroundPressed =
+  'var(--smtc-group-button-subtle-icon-foreground-pressed, var(--colorNeutralForeground2BrandPressed))';
+export const groupButtonSubtleIconForegroundDisabled =
+  'var(--smtc-group-button-subtle-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonSubtleIconForegroundSelected =
+  'var(--smtc-group-button-subtle-icon-foreground-selected, var(--colorNeutralForeground2BrandSelected))';
+export const groupButtonTransparentIconForeground =
+  'var(--smtc-group-button-transparent-icon-foreground, var(--colorNeutralForeground2))';
+export const groupButtonTransparentIconForegroundHover =
+  'var(--smtc-group-button-transparent-icon-foreground-hover, var(--colorNeutralForeground2BrandHover))';
+export const groupButtonTransparentIconForegroundPressed =
+  'var(--smtc-group-button-transparent-icon-foreground-pressed, var(--colorNeutralForeground2BrandPressed))';
+export const groupButtonTransparentIconForegroundDisabled =
+  'var(--smtc-group-button-transparent-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonTransparentIconForegroundSelected =
+  'var(--smtc-group-button-transparent-icon-foreground-selected, var(--colorNeutralForeground2BrandSelected))';
+export const groupButtonSmallIconSize = 'var(--smtc-group-button-small-icon-size, 20px)';
+export const groupButtonMediumIconSize = 'var(--smtc-group-button-medium-icon-size, 20px)';
+export const groupButtonLargeIconSize = 'var(--smtc-group-button-large-icon-size, 24px)';
+export const groupButtonDividerStrokewidth = 'var(--smtc-group-button-divider-strokewidth, var(--strokeWidthThin))';
+export const groupButtonDividerMarginVertical = 'var(--smtc-group-button-divider-margin-vertical, 0px)';
+export const groupButtonNeutralDividerStroke =
+  'var(--smtc-group-button-neutral-divider-stroke, var(--colorNeutralStroke1))';
+export const groupButtonPrimaryDividerStroke =
+  'var(--smtc-group-button-primary-divider-stroke, var(--colorNeutralStrokeOnBrand))';
+export const groupButtonOutlineDividerStroke =
+  'var(--smtc-group-button-outline-divider-stroke, var(--colorNeutralStroke1))';
+export const groupButtonSubtleDividerStroke = 'var(--smtc-group-button-subtle-divider-stroke, transparent)';
+export const groupButtonTransparentDividerStroke = 'var(--smtc-group-button-transparent-divider-stroke, transparent)';
+export const groupButtonNeutralChevronForeground = 'var(--smtc-group-button-neutral-chevron-foreground)';
+export const groupButtonNeutralChevronForegroundHover = 'var(--smtc-group-button-neutral-chevron-foreground-hover)';
+export const groupButtonNeutralChevronForegroundPressed = 'var(--smtc-group-button-neutral-chevron-foreground-pressed)';
+export const groupButtonNeutralChevronForegroundSelected =
+  'var(--smtc-group-button-neutral-chevron-foreground-selected)';
+export const groupButtonNeutralChevronForegroundDisabled =
+  'var(--smtc-group-button-neutral-chevron-foreground-disabled)';
+export const groupButtonPrimaryChevronForeground = 'var(--smtc-group-button-primary-chevron-foreground)';
+export const groupButtonPrimaryChevronForegroundHover = 'var(--smtc-group-button-primary-chevron-foreground-hover)';
+export const groupButtonPrimaryChevronForegroundPressed = 'var(--smtc-group-button-primary-chevron-foreground-pressed)';
+export const groupButtonPrimaryChevronForegroundSelected =
+  'var(--smtc-group-button-primary-chevron-foreground-selected)';
+export const groupButtonPrimaryChevronForegroundDisabled =
+  'var(--smtc-group-button-primary-chevron-foreground-disabled)';
+export const groupButtonOutlineChevronForeground = 'var(--smtc-group-button-outline-chevron-foreground)';
+export const groupButtonOutlineChevronForegroundHover = 'var(--smtc-group-button-outline-chevron-foreground-hover)';
+export const groupButtonOutlineChevronForegroundPressed = 'var(--smtc-group-button-outline-chevron-foreground-pressed)';
+export const groupButtonOutlineChevronForegroundSelected =
+  'var(--smtc-group-button-outline-chevron-foreground-selected)';
+export const groupButtonOutlineChevronForegroundDisabled =
+  'var(--smtc-group-button-outline-chevron-foreground-disabled)';
+export const groupButtonSubtleChevronForeground = 'var(--smtc-group-button-subtle-chevron-foreground)';
+export const groupButtonSubtleChevronForegroundHover = 'var(--smtc-group-button-subtle-chevron-foreground-hover)';
+export const groupButtonSubtleChevronForegroundPressed = 'var(--smtc-group-button-subtle-chevron-foreground-pressed)';
+export const groupButtonSubtleChevronForegroundSelected = 'var(--smtc-group-button-subtle-chevron-foreground-selected)';
+export const groupButtonSubtleChevronForegroundDisabled = 'var(--smtc-group-button-subtle-chevron-foreground-disabled)';
+export const groupButtonTransparentChevronForeground = 'var(--smtc-group-button-transparent-chevron-foreground)';
+export const groupButtonTransparentChevronForegroundHover =
+  'var(--smtc-group-button-transparent-chevron-foreground-hover)';
+export const groupButtonTransparentChevronForegroundPressed =
+  'var(--smtc-group-button-transparent-chevron-foreground-pressed)';
+export const groupButtonTransparentChevronForegroundSelected =
+  'var(--smtc-group-button-transparent-chevron-foreground-selected)';
+export const groupButtonTransparentChevronForegroundDisabled =
+  'var(--smtc-group-button-transparent-chevron-foreground-disabled)';
+export const groupButtonSmallChevronSize = 'var(--smtc-group-button-small-chevron-size)';
+export const groupButtonMediumChevronSize = 'var(--smtc-group-button-medium-chevron-size)';
+export const groupButtonLargeChevronSize = 'var(--smtc-group-button-large-chevron-size)';
+export const groupButtonTextFontfamily = 'var(--smtc-group-button-text-fontfamily, var(--fontFamilyBase))';
+export const groupButtonNeutralTextForeground =
+  'var(--smtc-group-button-neutral-text-foreground, var(--colorNeutralForeground1))';
+export const groupButtonNeutralTextForegroundHover =
+  'var(--smtc-group-button-neutral-text-foreground-hover, var(--colorNeutralForeground1Hover))';
+export const groupButtonNeutralTextForegroundPressed =
+  'var(--smtc-group-button-neutral-text-foreground-pressed, var(--colorNeutralForeground1Pressed))';
+export const groupButtonNeutralTextForegroundDisabled =
+  'var(--smtc-group-button-neutral-text-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonNeutralTextForegroundSelected =
+  'var(--smtc-group-button-neutral-text-foreground-selected, var(--colorNeutralForeground1Selected))';
+export const groupButtonPrimaryTextForeground =
+  'var(--smtc-group-button-primary-text-foreground, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonPrimaryTextForegroundHover =
+  'var(--smtc-group-button-primary-text-foreground-hover, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonPrimaryTextForegroundPressed =
+  'var(--smtc-group-button-primary-text-foreground-pressed, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonPrimaryTextForegroundDisabled =
+  'var(--smtc-group-button-primary-text-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonPrimaryTextForegroundSelected =
+  'var(--smtc-group-button-primary-text-foreground-selected, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonOutlineTextForeground =
+  'var(--smtc-group-button-outline-text-foreground, var(--colorNeutralForeground1))';
+export const groupButtonOutlineTextForegroundHover =
+  'var(--smtc-group-button-outline-text-foreground-hover, var(--colorNeutralForeground1Hover))';
+export const groupButtonOutlineTextForegroundPressed =
+  'var(--smtc-group-button-outline-text-foreground-pressed, var(--colorNeutralForeground1Pressed))';
+export const groupButtonOutlineTextForegroundDisabled =
+  'var(--smtc-group-button-outline-text-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonOutlineTextForegroundSelected =
+  'var(--smtc-group-button-outline-text-foreground-selected, var(--colorNeutralForeground1Selected))';
+export const groupButtonSubtleTextForeground =
+  'var(--smtc-group-button-subtle-text-foreground, var(--colorNeutralForeground2))';
+export const groupButtonSubtleTextForegroundHover =
+  'var(--smtc-group-button-subtle-text-foreground-hover, var(--colorNeutralForeground2Hover))';
+export const groupButtonSubtleTextForegroundPressed =
+  'var(--smtc-group-button-subtle-text-foreground-pressed, var(--colorNeutralForeground2Pressed))';
+export const groupButtonSubtleTextForegroundDisabled =
+  'var(--smtc-group-button-subtle-text-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonSubtleTextForegroundSelected =
+  'var(--smtc-group-button-subtle-text-foreground-selected, var(--colorNeutralForeground2Selected))';
+export const groupButtonTransparentTextForeground =
+  'var(--smtc-group-button-transparent-text-foreground, var(--colorNeutralForeground2))';
+export const groupButtonTransparentTextForegroundHover =
+  'var(--smtc-group-button-transparent-text-foreground-hover, var(--colorNeutralForeground2BrandHover))';
+export const groupButtonTransparentTextForegroundPressed =
+  'var(--smtc-group-button-transparent-text-foreground-pressed, var(--colorNeutralForeground2BrandPressed))';
+export const groupButtonTransparentTextForegroundDisabled =
+  'var(--smtc-group-button-transparent-text-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonTransparentTextForegroundSelected =
+  'var(--smtc-group-button-transparent-text-foreground-selected, var(--colorNeutralForeground2BrandSelected))';
+export const groupButtonSmallTextPaddingHorizontal = 'var(--smtc-group-button-small-text-padding-horizontal, 0px)';
+export const groupButtonSmallTextFontsize = 'var(--smtc-group-button-small-text-fontsize, var(--fontSizeBase200))';
+export const groupButtonSmallTextLineheight =
+  'var(--smtc-group-button-small-text-lineheight, var(--lineHeightBase200))';
+export const groupButtonSmallTextFontweight =
+  'var(--smtc-group-button-small-text-fontweight, var(--fontWeightRegular))';
+export const groupButtonMediumTextPaddingHorizontal = 'var(--smtc-group-button-medium-text-padding-horizontal, 0px)';
+export const groupButtonMediumTextFontsize = 'var(--smtc-group-button-medium-text-fontsize, var(--fontSizeBase300))';
+export const groupButtonMediumTextLineheight =
+  'var(--smtc-group-button-medium-text-lineheight, var(--lineHeightBase300))';
+export const groupButtonMediumTextFontweight =
+  'var(--smtc-group-button-medium-text-fontweight, var(--fontWeightSemibold))';
+export const groupButtonLargeTextPaddingHorizontal = 'var(--smtc-group-button-large-text-padding-horizontal, 0px)';
+export const groupButtonLargeTextFontsize = 'var(--smtc-group-button-large-text-fontsize, var(--fontSizeBase400))';
+export const groupButtonLargeTextLineheight =
+  'var(--smtc-group-button-large-text-lineheight, var(--lineHeightBase400))';
+export const groupButtonLargeTextFontweight =
+  'var(--smtc-group-button-large-text-fontweight, var(--fontWeightSemibold))';
+export const groupButtonSmallTextFontweightSelected = 'var(--smtc-group-button-small-text-fontweight-selected)';
+export const groupButtonMediumTextFontweightSelected = 'var(--smtc-group-button-medium-text-fontweight-selected)';
+export const groupButtonLargeTextFontweightSelected = 'var(--smtc-group-button-large-text-fontweight-selected)';
+export const groupButtonNeutralTextSecondaryForeground =
+  'var(--smtc-group-button-neutral-text-secondary-foreground, var(--colorNeutralForeground2))';
+export const groupButtonNeutralTextSecondaryForegroundHover =
+  'var(--smtc-group-button-neutral-text-secondary-foreground-hover, var(--colorNeutralForeground2Hover))';
+export const groupButtonNeutralTextSecondaryForegroundPressed =
+  'var(--smtc-group-button-neutral-text-secondary-foreground-pressed, var(--colorNeutralForeground2Pressed))';
+export const groupButtonNeutralTextSecondaryForegroundDisabled =
+  'var(--smtc-group-button-neutral-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonPrimaryTextSecondaryForeground =
+  'var(--smtc-group-button-primary-text-secondary-foreground, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonPrimaryTextSecondaryForegroundHover =
+  'var(--smtc-group-button-primary-text-secondary-foreground-hover, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonPrimaryTextSecondaryForegroundPressed =
+  'var(--smtc-group-button-primary-text-secondary-foreground-pressed, var(--colorNeutralForegroundOnBrand))';
+export const groupButtonPrimaryTextSecondaryForegroundDisabled =
+  'var(--smtc-group-button-primary-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonOutlineTextSecondaryForeground =
+  'var(--smtc-group-button-outline-text-secondary-foreground, var(--colorNeutralForeground2))';
+export const groupButtonOutlineTextSecondaryForegroundHover =
+  'var(--smtc-group-button-outline-text-secondary-foreground-hover, var(--colorNeutralForeground2Hover))';
+export const groupButtonOutlineTextSecondaryForegroundPressed =
+  'var(--smtc-group-button-outline-text-secondary-foreground-pressed, var(--colorNeutralForeground2Pressed))';
+export const groupButtonOutlineTextSecondaryForegroundDisabled =
+  'var(--smtc-group-button-outline-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonSubtleTextSecondaryForeground =
+  'var(--smtc-group-button-subtle-text-secondary-foreground, var(--colorNeutralForeground2))';
+export const groupButtonSubtleTextSecondaryForegroundHover =
+  'var(--smtc-group-button-subtle-text-secondary-foreground-hover, var(--colorNeutralForeground2Hover))';
+export const groupButtonSubtleTextSecondaryForegroundPressed =
+  'var(--smtc-group-button-subtle-text-secondary-foreground-pressed, var(--colorNeutralForeground2Pressed))';
+export const groupButtonSubtleTextSecondaryForegroundDisabled =
+  'var(--smtc-group-button-subtle-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonTransparentTextSecondaryForeground =
+  'var(--smtc-group-button-transparent-text-secondary-foreground, var(--colorNeutralForeground2))';
+export const groupButtonTransparentTextSecondaryForegroundHover =
+  'var(--smtc-group-button-transparent-text-secondary-foreground-hover, var(--colorNeutralForeground2BrandHover))';
+export const groupButtonTransparentTextSecondaryForegroundPressed =
+  'var(--smtc-group-button-transparent-text-secondary-foreground-pressed, var(--colorNeutralForeground2BrandPressed))';
+export const groupButtonTransparentTextSecondaryForegroundDisabled =
+  'var(--smtc-group-button-transparent-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupButtonSmallTextSecondaryFontsize =
+  'var(--smtc-group-button-small-text-secondary-fontsize, var(--fontSizeBase200))';
+export const groupButtonSmallTextSecondaryLineheight = 'var(--smtc-group-button-small-text-secondary-lineheight, 100%)';
+export const groupButtonSmallTextSecondaryFontweight =
+  'var(--smtc-group-button-small-text-secondary-fontweight, var(--fontWeightRegular))';
+export const groupButtonMediumTextSecondaryFontsize =
+  'var(--smtc-group-button-medium-text-secondary-fontsize, var(--fontSizeBase200))';
+export const groupButtonMediumTextSecondaryLineheight =
+  'var(--smtc-group-button-medium-text-secondary-lineheight, 100%)';
+export const groupButtonMediumTextSecondaryFontweight =
+  'var(--smtc-group-button-medium-text-secondary-fontweight, var(--fontWeightRegular))';
+export const groupButtonLargeTextSecondaryFontsize =
+  'var(--smtc-group-button-large-text-secondary-fontsize, var(--fontSizeBase300))';
+export const groupButtonLargeTextSecondaryLineheight = 'var(--smtc-group-button-large-text-secondary-lineheight, 100%)';
+export const groupButtonLargeTextSecondaryFontweight =
+  'var(--smtc-group-button-large-text-secondary-fontweight, var(--fontWeightRegular))';
