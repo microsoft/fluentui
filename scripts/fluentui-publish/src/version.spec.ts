@@ -3,6 +3,14 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 
 import { changelog } from './version';
 
+jest.mock('./utils', () => ({
+  ...jest.requireActual('./utils'),
+  getLatestTag: jest.fn().mockReturnValue({
+    tag: '@fluentui/react-northstar_v0.68.0',
+    extractedVersion: '0.68.0',
+  }),
+}));
+
 describe(`version`, () => {
   it.todo('not sure if this is good idea to test on jest level');
 });
