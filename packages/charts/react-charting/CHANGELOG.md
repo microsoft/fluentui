@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 16 Oct 2025 07:21:58 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Oct 2025 10:23:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.0)
+
+Thu, 23 Oct 2025 10:23:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.39..@fluentui/react-charting_v5.25.0)
+
+### Minor changes
+
+- feat: bump react range to support React 19 ([PR #35362](https://github.com/microsoft/fluentui/pull/35362) by martinhochel@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.35 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/react-focus to v8.10.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/theme-samples to v8.7.219 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/react to v8.125.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+
+### Patches
+
+- feat: map deprecated plotly create_gantt() scatter traces to gantt chart ([PR #35334](https://github.com/microsoft/fluentui/pull/35334) by kumarkshitij@microsoft.com)
+- fix chart exception issue ([PR #35342](https://github.com/microsoft/fluentui/pull/35342) by anushgupta@microsoft.com)
+- feat(react-charting): Annotations ([PR #35324](https://github.com/microsoft/fluentui/pull/35324) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.24.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.39)
 

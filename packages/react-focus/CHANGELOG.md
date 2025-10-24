@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 16 Oct 2025 07:21:59 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Oct 2025 10:23:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.10.0)
+
+Thu, 23 Oct 2025 10:23:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.29..@fluentui/react-focus_v8.10.0)
+
+### Minor changes
+
+- feat: bump react range to support React 19 ([PR #35362](https://github.com/microsoft/fluentui/pull/35362) by martinhochel@microsoft.com)
+- Bump @fluentui/style-utilities to v8.13.3 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/utilities to v8.17.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
 
 ## [8.9.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.29)
 
