@@ -186,7 +186,7 @@ export class CartesianChartBase
       this._fitParentContainer();
     }
 
-    this._initMargins();
+    this.margins = this._calcMargins();
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(this.margins);
 
@@ -1053,14 +1053,14 @@ export class CartesianChartBase
     }
   };
 
-  private _initMargins = () => {
+  private _calcMargins = (): IMargins => {
     /**
      * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
      * So that, in RTL, left margins becomes right margins and viceversa.
      * As graph needs to be drawn perfecty, these values consider as default values.
      * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
      */
-    this.margins = {
+    const margins = {
       top: 20,
       bottom: 35,
       left: Math.max(40, this.state.startFromX + 20),
@@ -1071,33 +1071,33 @@ export class CartesianChartBase
     const TITLE_MARGIN_VERTICAL = 20;
 
     if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
-      this.margins.bottom! += TITLE_MARGIN_VERTICAL;
+      margins.bottom! += TITLE_MARGIN_VERTICAL;
     }
     if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
-      this.margins.left! += TITLE_MARGIN_HORIZONTAL;
+      margins.left! += TITLE_MARGIN_HORIZONTAL;
     }
     if (this.props.secondaryYAxistitle !== undefined && this.props.secondaryYAxistitle !== '') {
-      this.margins.right! += TITLE_MARGIN_HORIZONTAL;
+      margins.right! += TITLE_MARGIN_HORIZONTAL;
     }
     if (this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '') {
-      this.margins.bottom! += TITLE_MARGIN_VERTICAL;
+      margins.bottom! += TITLE_MARGIN_VERTICAL;
     }
     if (
       this.props.yAxisAnnotation !== undefined &&
       this.props.yAxisAnnotation !== '' &&
       (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '')
     ) {
-      this.margins.right! += TITLE_MARGIN_HORIZONTAL;
+      margins.right! += TITLE_MARGIN_HORIZONTAL;
     }
 
     if (this._isRtl) {
-      const leftMargin = this.margins.left;
-      this.margins.left = this.margins.right;
-      this.margins.right = leftMargin;
+      const leftMargin = margins.left;
+      margins.left = margins.right;
+      margins.right = leftMargin;
     }
 
-    this.margins = {
-      ...this.margins,
+    return {
+      ...margins,
       ...this.props.margins,
     };
   };

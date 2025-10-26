@@ -3836,36 +3836,36 @@ Object {
 
 exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain and range values correctly for numeric x-axis 1`] = `
 Object {
-  "dEndValue": 30,
+  "dEndValue": 31,
   "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 6,
+  "rStartValue": 5,
 }
 `;
 
 exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
 Object {
   "dEndValue": 0,
-  "dStartValue": 30,
-  "rEndValue": 89,
+  "dStartValue": 31,
+  "rEndValue": 90,
   "rStartValue": 5,
 }
 `;
 
 exports[`domainRangeOfNumericForHorizontalBarChartWithAxisStacked should return domain and range values correctly for numeric x-axis 1`] = `
 Object {
-  "dEndValue": 60,
+  "dEndValue": 61,
   "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 6,
+  "rStartValue": 5,
 }
 `;
 
 exports[`domainRangeOfNumericForHorizontalBarChartWithAxisStacked should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
 Object {
   "dEndValue": 0,
-  "dStartValue": 60,
-  "rEndValue": 89,
+  "dStartValue": 61,
+  "rEndValue": 90,
   "rStartValue": 5,
 }
 `;
@@ -3959,10 +3959,10 @@ Object {
 
 exports[`getDomainNRangeValues should return domain and range values correctly for horizontal bar chart with numeric x-axis 1`] = `
 Object {
-  "dEndValue": NaN,
-  "dStartValue": NaN,
+  "dEndValue": 46,
+  "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 21,
+  "rStartValue": 5,
 }
 `;
 

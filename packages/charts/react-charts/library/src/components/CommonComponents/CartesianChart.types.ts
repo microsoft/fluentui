@@ -498,6 +498,17 @@ export interface CartesianChartProps {
    * Use this to control `tickStep`, `tick0`, etc.
    */
   yAxis?: AxisProps;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
 }
 
 export interface YValueHover {
@@ -720,7 +731,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | string[] | undefined,
-    shiftX: number,
   ) => IDomainNRange;
 
   /**

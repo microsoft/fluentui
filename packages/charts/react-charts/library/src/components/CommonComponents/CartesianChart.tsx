@@ -72,51 +72,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const [startFromX, setStartFromX] = React.useState<number>(0);
   const [prevProps, setPrevProps] = React.useState<ModifiedCartesianChartProps | null>(null);
 
-  /**
-   * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
-   * So that, in RTL, left margins becomes right margins and viceversa.
-   * As graph needs to be drawn perfecty, these values consider as default values.
-   * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
-   */
-  // eslint-disable-next-line prefer-const
-  margins = {
-    top: props.margins?.top ?? 20,
-    bottom: props.margins?.bottom ?? 35,
-    right: _useRtl ? props.margins?.left ?? 40 : props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20,
-    left: _useRtl ? (props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20) : props.margins?.left ?? 40,
-  };
-  const TITLE_MARGIN_HORIZONTAL = 24;
-  const TITLE_MARGIN_VERTICAL = 20;
-  if (props.xAxisTitle !== undefined && props.xAxisTitle !== '') {
-    margins.bottom! = props.margins?.bottom ?? margins.bottom! + TITLE_MARGIN_VERTICAL;
-  }
-  if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
-    margins.left! = _useRtl
-      ? props.margins?.right ?? props?.secondaryYAxistitle
-        ? margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
-        : margins.right! + TITLE_MARGIN_HORIZONTAL
-      : props.margins?.left ?? margins.left! + TITLE_MARGIN_HORIZONTAL;
-    margins.right! = _useRtl
-      ? props.margins?.left ?? margins.left! + TITLE_MARGIN_HORIZONTAL
-      : props.margins?.right ?? props?.secondaryYAxistitle
-      ? margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
-      : margins.right! + TITLE_MARGIN_HORIZONTAL;
-  }
-  if (props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '') {
-    margins.top! = props.margins?.top ?? margins.top! + TITLE_MARGIN_VERTICAL;
-  }
-  if (
-    props.yAxisAnnotation !== undefined &&
-    props.yAxisAnnotation !== '' &&
-    (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '')
-  ) {
-    if (_useRtl) {
-      margins.left! = props.margins?.right ?? margins.right! + TITLE_MARGIN_HORIZONTAL;
-    } else {
-      margins.right! = props.margins?.right ?? margins.right! + TITLE_MARGIN_HORIZONTAL;
-    }
-  }
-
   const classes = useCartesianChartStyles(props);
   const focusAttributes = useFocusableGroup();
   const arrowAttributes = useArrowNavigationGroup({ axis: 'horizontal' });
@@ -203,14 +158,10 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   if (props.parentRef) {
     _fitParentContainer();
   }
-  const margin = { ...margins };
-  if (!_useRtl) {
-    margin.left! += startFromX;
-  } else {
-    margin.right! += startFromX;
-  }
+
+  margins = _calcMargins();
   // Callback for margins to the chart
-  props.getmargins && props.getmargins(margin);
+  props.getmargins && props.getmargins(margins);
 
   let callout: JSXElement | null = null;
 
@@ -227,8 +178,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         props.xAxisType,
         props.barwidth!,
         props.tickValues!,
-        // This is only used for Horizontal Bar Chart with Axis for y as string axis
-        startFromX,
       ),
       // FIXME: In XAxisParams, containerHeight is used by HBWA to generate vertical gridlines.
       // Since the x-axis in HBWA is numeric, it typically doesn't require transformation.
@@ -466,7 +415,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     height: containerHeight,
   };
 
-  const xAxisTitleMaximumAllowedWidth = svgDimensions.width - margins.left! - margins.right! - startFromX!;
+  const xAxisTitleMaximumAllowedWidth = svgDimensions.width - margins.left! - margins.right!;
   const yAxisTitleMaximumAllowedHeight =
     svgDimensions.height - margins.bottom! - margins.top! - _removalValueForTextTuncate! - titleMargin;
 
@@ -613,6 +562,55 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     }
   }
 
+  function _calcMargins(): IMargins {
+    /**
+     * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
+     * So that, in RTL, left margins becomes right margins and viceversa.
+     * As graph needs to be drawn perfecty, these values consider as default values.
+     * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
+     */
+    const _margins = {
+      top: 20,
+      bottom: 35,
+      left: Math.max(40, startFromX + 20),
+      right: props.secondaryYScaleOptions ? 40 : 20,
+    };
+
+    const TITLE_MARGIN_HORIZONTAL = 24;
+    const TITLE_MARGIN_VERTICAL = 20;
+
+    if (props.xAxisTitle !== undefined && props.xAxisTitle !== '') {
+      _margins.bottom! += TITLE_MARGIN_VERTICAL;
+    }
+    if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
+      _margins.left! += TITLE_MARGIN_HORIZONTAL;
+    }
+    if (props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '') {
+      _margins.right! += TITLE_MARGIN_HORIZONTAL;
+    }
+    if (props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '') {
+      _margins.bottom! += TITLE_MARGIN_VERTICAL;
+    }
+    if (
+      props.yAxisAnnotation !== undefined &&
+      props.yAxisAnnotation !== '' &&
+      (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '')
+    ) {
+      _margins.right! += TITLE_MARGIN_HORIZONTAL;
+    }
+
+    if (_useRtl) {
+      const leftMargin = _margins.left;
+      _margins.left = _margins.right;
+      _margins.right = leftMargin;
+    }
+
+    return {
+      ..._margins,
+      ...props.margins,
+    };
+  }
+
   /**
    * We have use the {@link defaultTabbableElement } to fix
    * the Focus not landing on chart while tabbing, instead  goes to legend.
@@ -665,7 +663,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               {...commonSvgToolTipProps}
               content={props.xAxisTitle}
               textProps={{
-                x: margins.left! + startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                x: margins.left! + xAxisTitleMaximumAllowedWidth / 2,
                 y: svgDimensions.height - titleMargin,
                 className: classes.axisTitle!,
                 textAnchor: 'middle',
@@ -678,7 +676,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               {...commonSvgToolTipProps}
               content={props.xAxisAnnotation}
               textProps={{
-                x: margins.left! + startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                x: margins.left! + xAxisTitleMaximumAllowedWidth / 2,
                 y: titleMargin + 3,
                 className: classes.axisAnnotation!,
                 textAnchor: 'middle',
@@ -692,9 +690,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               yAxisElement.current = e!;
             }}
             id={`yAxisGElement${idForGraph}`}
-            transform={`translate(${
-              _useRtl ? svgDimensions.width - margins.right! - startFromX : margins.left! + startFromX
-            }, 0)`}
+            transform={`translate(${_useRtl ? svgDimensions.width - margins.right! : margins.left!}, 0)`}
             className={classes.yAxis}
           />
           {props.secondaryYScaleOptions && (
@@ -704,9 +700,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   yAxisElementSecondary.current = e!;
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}
-                transform={`translate(${
-                  _useRtl ? margins.left! + startFromX : svgDimensions.width - margins.right! - startFromX
-                }, 0)`}
+                transform={`translate(${_useRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}
                 className={classes.yAxis}
               />
               {props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '' && (
@@ -715,7 +709,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   content={props.secondaryYAxistitle}
                   textProps={{
                     x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
-                    y: _useRtl ? startFromX - titleMargin : svgDimensions.width - margins.right!,
+                    y: _useRtl ? -titleMargin : svgDimensions.width - margins.right!,
                     textAnchor: 'middle',
                     transform: `translate(${
                       _useRtl ? margins.right! / 2 - titleMargin : margins.right! / 2 + titleMargin
@@ -752,7 +746,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                 content={props.yAxisAnnotation}
                 textProps={{
                   x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
-                  y: _useRtl ? startFromX - titleMargin : svgDimensions.width - margins.right!,
+                  y: _useRtl ? -titleMargin : svgDimensions.width - margins.right!,
                   textAnchor: 'middle',
                   transform: `translate(${
                     _useRtl ? margins.right! / 2 - titleMargin : margins.right! / 2 + titleMargin

@@ -1446,14 +1446,13 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
-  shiftX: number,
   X_ORIGIN?: number,
 ): IDomainNRange {
   const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN!);
   const xMax = longestBars.longestPositiveBar;
   const xMin = longestBars.longestNegativeBar;
-  const rMin = isRTL ? margins.left! : margins.left! + shiftX;
-  const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
+  const rMin = margins.left!;
+  const rMax = containerWidth - margins.right!;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN!), rStartValue: rMin, rEndValue: rMax }

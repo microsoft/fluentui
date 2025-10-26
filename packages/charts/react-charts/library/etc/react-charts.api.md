@@ -184,6 +184,8 @@ export interface CartesianChartProps {
     };
     secondaryYScaleType?: AxisScaleType;
     showXAxisLablesTooltip?: boolean;
+    showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: CartesianChartStyles;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
@@ -684,8 +686,6 @@ export interface GanttChartProps extends CartesianChartProps {
     maxBarHeight?: number;
     onRenderCalloutPerDataPoint?: RenderFunction<GanttChartDataPoint>;
     roundCorners?: boolean;
-    showYAxisLables?: boolean;
-    showYAxisLablesTooltip?: boolean;
     yAxisPadding?: number;
 }
 
@@ -887,8 +887,6 @@ export interface HeatMapChartProps extends CartesianChartProps {
     data: HeatMapChartData[];
     domainValuesForColorScale: number[];
     rangeValuesForColorScale: string[];
-    showYAxisLables?: boolean;
-    showYAxisLablesTooltip?: boolean;
     sortOrder?: 'none' | 'alphabetical';
     styles?: HeatMapChartStyles;
     xAxisDateFormatString?: string;
@@ -987,8 +985,6 @@ export interface HorizontalBarChartWithAxisProps extends CartesianChartProps {
     enableGradient?: boolean;
     onRenderCalloutPerDataPoint?: RenderFunction<HorizontalBarChartWithAxisDataPoint>;
     roundCorners?: boolean;
-    showYAxisLables?: boolean;
-    showYAxisLablesTooltip?: boolean;
     styles?: HorizontalBarChartWithAxisStyles;
     useSingleColor?: boolean;
     yAxisPadding?: number;
@@ -1273,7 +1269,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     // (undocumented)
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => Margins;
-    getDomainNRangeValues: (points: LineChartPoints[] | VerticalBarChartDataPoint[] | VerticalStackedBarDataPoint[] | HorizontalBarChartWithAxisDataPoint[] | GroupedVerticalBarChartData[] | HeatMapChartDataPoint[] | GanttChartDataPoint[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
+    getDomainNRangeValues: (points: LineChartPoints[] | VerticalBarChartDataPoint[] | VerticalStackedBarDataPoint[] | HorizontalBarChartWithAxisDataPoint[] | GroupedVerticalBarChartData[] | HeatMapChartDataPoint[] | GanttChartDataPoint[], margins: Margins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
     getMinMaxOfYAxis: (points: LineChartPoints[] | HorizontalBarChartWithAxisDataPoint[] | VerticalBarChartDataPoint[] | DataPoint[] | ScatterChartPoints[] | GanttChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
@@ -1477,7 +1473,6 @@ export interface ScatterChartProps extends CartesianChartProps {
     data: ChartProps;
     getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
-    showYAxisLablesTooltip?: boolean;
     styles?: ScatterChartStyles;
 }
 
@@ -1621,8 +1616,6 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
     onRenderCalloutPerDataPoint?: RenderFunction<VSChartDataPoint>;
     onRenderCalloutPerStack?: RenderFunction<VerticalStackedChartProps>;
     roundCorners?: boolean;
-    showYAxisLables?: boolean;
-    showYAxisLablesTooltip?: boolean;
     styles?: Partial<VerticalStackedBarChartStyles>;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
