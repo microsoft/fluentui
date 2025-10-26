@@ -105,57 +105,6 @@ export class CartesianChartBase
     this.titleMargin = 8;
     this.idForDefaultTabbableElement = getId('defaultTabbableElement_');
     this._tooltipId = getId('tooltip_');
-    /**
-     * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
-     * So that, in RTL, left margins becomes right margins and viceversa.
-     * As graph needs to be drawn perfecty, these values consider as default values.
-     * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
-     */
-    this.margins = {
-      top: this.props.margins?.top ?? 20,
-      bottom: this.props.margins?.bottom ?? 35,
-      right: this._isRtl
-        ? this.props.margins?.left ?? 40
-        : this.props.margins?.right ?? this.props?.secondaryYScaleOptions
-        ? 40
-        : 20,
-      left: this._isRtl
-        ? this.props.margins?.right ?? this.props?.secondaryYScaleOptions
-          ? 40
-          : 20
-        : this.props.margins?.left ?? 40,
-    };
-    const TITLE_MARGIN_HORIZONTAL = 24;
-    const TITLE_MARGIN_VERTICAL = 20;
-    if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
-      this.margins.bottom! = this.props.margins?.bottom ?? this.margins.bottom! + TITLE_MARGIN_VERTICAL;
-    }
-    if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
-      this.margins.left! = this._isRtl
-        ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
-          ? this.margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
-          : this.margins.right! + TITLE_MARGIN_HORIZONTAL
-        : this.props.margins?.left ?? this.margins.left! + TITLE_MARGIN_HORIZONTAL;
-      this.margins.right! = this._isRtl
-        ? this.props.margins?.left ?? this.margins.left! + TITLE_MARGIN_HORIZONTAL
-        : this.props.margins?.right ?? this.props?.secondaryYAxistitle
-        ? this.margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
-        : this.margins.right! + TITLE_MARGIN_HORIZONTAL;
-    }
-    if (this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '') {
-      this.margins.top! = this.props.margins?.top ?? this.margins.top! + TITLE_MARGIN_VERTICAL;
-    }
-    if (
-      this.props.yAxisAnnotation !== undefined &&
-      this.props.yAxisAnnotation !== '' &&
-      (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '')
-    ) {
-      if (this._isRtl) {
-        this.margins.left! = this.props.margins?.right ?? this.margins.right! + TITLE_MARGIN_HORIZONTAL;
-      } else {
-        this.margins.right! = this.props.margins?.right ?? this.margins.right! + TITLE_MARGIN_HORIZONTAL;
-      }
-    }
   }
 
   public componentDidMount(): void {
@@ -237,14 +186,9 @@ export class CartesianChartBase
       this._fitParentContainer();
     }
 
-    const margin = { ...this.margins };
-    if (!this._isRtl) {
-      margin.left! += this.state.startFromX;
-    } else {
-      margin.right! += this.state.startFromX;
-    }
+    this._initMargins();
     // Callback for margins to the chart
-    this.props.getmargins && this.props.getmargins(margin);
+    this.props.getmargins && this.props.getmargins(this.margins);
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -279,8 +223,6 @@ export class CartesianChartBase
           this.props.xAxisType,
           this.props.barwidth!,
           this.props.tickValues!,
-          // This is only used for Horizontal Bar Chart with Axis for y as string axis
-          this.state.startFromX,
         ),
         // FIXME: In XAxisParams, containerHeight is used by HBWA to generate vertical gridlines.
         // Since the x-axis in HBWA is numeric, it typically doesn't require transformation.
@@ -496,15 +438,14 @@ export class CartesianChartBase
       height: this.state.containerHeight,
     };
 
-    const startFromX = this.state.startFromX || 0;
-    const plotWidth = Math.max(0, svgDimensions.width - this.margins.left! - this.margins.right! - startFromX);
+    const plotWidth = Math.max(0, svgDimensions.width - this.margins.left! - this.margins.right!);
     const plotHeight = Math.max(
       0,
       svgDimensions.height - this.margins.top! - this.margins.bottom! - this._removalValueForTextTuncate,
     );
 
     const plotRect = {
-      x: this._isRtl ? this.margins.left! : this.margins.left! + startFromX,
+      x: this._isRtl ? this.margins.left! : this.margins.left!,
       y: this.margins.top!,
       width: plotWidth,
       height: plotHeight,
@@ -532,8 +473,7 @@ export class CartesianChartBase
       focusDirection = FocusZoneDirection.horizontal;
     }
 
-    const xAxisTitleMaximumAllowedWidth =
-      svgDimensions.width - this.margins.left! - this.margins.right! - this.state.startFromX!;
+    const xAxisTitleMaximumAllowedWidth = svgDimensions.width - this.margins.left! - this.margins.right!;
     const yAxisTitleMaximumAllowedHeight =
       svgDimensions.height -
       this.margins.bottom! -
@@ -606,7 +546,7 @@ export class CartesianChartBase
               <SVGTooltipText
                 content={this.props.xAxisTitle}
                 textProps={{
-                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  x: this.margins.left! + xAxisTitleMaximumAllowedWidth / 2,
                   y: svgDimensions.height - this.titleMargin,
                   className: this._classNames.axisTitle!,
                   textAnchor: 'middle',
@@ -620,7 +560,7 @@ export class CartesianChartBase
               <SVGTooltipText
                 content={this.props.xAxisAnnotation}
                 textProps={{
-                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  x: this.margins.left! + xAxisTitleMaximumAllowedWidth / 2,
                   y: this.titleMargin + 3,
                   className: this._classNames.axisAnnotation!,
                   textAnchor: 'middle',
@@ -636,9 +576,7 @@ export class CartesianChartBase
               }}
               id={`yAxisGElement${this.idForGraph}`}
               transform={`translate(${
-                this._isRtl
-                  ? svgDimensions.width - this.margins.right! - this.state.startFromX
-                  : this.margins.left! + this.state.startFromX
+                this._isRtl ? svgDimensions.width - this.margins.right! : this.margins.left!
               }, 0)`}
               className={this._classNames.yAxis}
             />
@@ -650,9 +588,7 @@ export class CartesianChartBase
                   }}
                   id={`yAxisGElementSecondary${this.idForGraph}`}
                   transform={`translate(${
-                    this._isRtl
-                      ? this.margins.left! + this.state.startFromX
-                      : svgDimensions.width - this.margins.right! - this.state.startFromX
+                    this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
                   }, 0)`}
                   className={this._classNames.yAxis}
                 />
@@ -661,9 +597,7 @@ export class CartesianChartBase
                     content={this.props.secondaryYAxistitle}
                     textProps={{
                       x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
-                      y: this._isRtl
-                        ? this.state.startFromX - this.titleMargin
-                        : svgDimensions.width - this.margins.right!,
+                      y: this._isRtl ? -this.titleMargin : svgDimensions.width - this.margins.right!,
                       textAnchor: 'middle',
                       transform: `translate(${
                         this._isRtl
@@ -706,9 +640,7 @@ export class CartesianChartBase
                   content={this.props.yAxisAnnotation}
                   textProps={{
                     x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
-                    y: this._isRtl
-                      ? this.state.startFromX - this.titleMargin
-                      : svgDimensions.width - this.margins.right!,
+                    y: this._isRtl ? -this.titleMargin : svgDimensions.width - this.margins.right!,
                     textAnchor: 'middle',
                     transform: `translate(${
                       this._isRtl
@@ -1119,5 +1051,54 @@ export class CartesianChartBase
       // this.margins.bottom is used as padding here
       this._removalValueForTextTuncate = rotatedHeight + this.margins.bottom!;
     }
+  };
+
+  private _initMargins = () => {
+    /**
+     * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
+     * So that, in RTL, left margins becomes right margins and viceversa.
+     * As graph needs to be drawn perfecty, these values consider as default values.
+     * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
+     */
+    this.margins = {
+      top: 20,
+      bottom: 35,
+      left: Math.max(40, this.state.startFromX + 20),
+      right: this.props.secondaryYScaleOptions ? 40 : 20,
+    };
+
+    const TITLE_MARGIN_HORIZONTAL = 24;
+    const TITLE_MARGIN_VERTICAL = 20;
+
+    if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
+      this.margins.bottom! += TITLE_MARGIN_VERTICAL;
+    }
+    if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
+      this.margins.left! += TITLE_MARGIN_HORIZONTAL;
+    }
+    if (this.props.secondaryYAxistitle !== undefined && this.props.secondaryYAxistitle !== '') {
+      this.margins.right! += TITLE_MARGIN_HORIZONTAL;
+    }
+    if (this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '') {
+      this.margins.bottom! += TITLE_MARGIN_VERTICAL;
+    }
+    if (
+      this.props.yAxisAnnotation !== undefined &&
+      this.props.yAxisAnnotation !== '' &&
+      (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '')
+    ) {
+      this.margins.right! += TITLE_MARGIN_HORIZONTAL;
+    }
+
+    if (this._isRtl) {
+      const leftMargin = this.margins.left;
+      this.margins.left = this.margins.right;
+      this.margins.right = leftMargin;
+    }
+
+    this.margins = {
+      ...this.margins,
+      ...this.props.margins,
+    };
   };
 }

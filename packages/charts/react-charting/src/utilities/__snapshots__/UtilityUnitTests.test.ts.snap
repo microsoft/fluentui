@@ -3661,7 +3661,7 @@ Object {
   "dEndValue": 30,
   "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 6,
+  "rStartValue": 5,
 }
 `;
 
@@ -3669,7 +3669,7 @@ exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain 
 Object {
   "dEndValue": 0,
   "dStartValue": 30,
-  "rEndValue": 89,
+  "rEndValue": 90,
   "rStartValue": 5,
 }
 `;
@@ -3679,7 +3679,7 @@ Object {
   "dEndValue": 60,
   "dStartValue": 0,
   "rEndValue": 90,
-  "rStartValue": 6,
+  "rStartValue": 5,
 }
 `;
 
@@ -3687,7 +3687,7 @@ exports[`domainRangeOfNumericForHorizontalBarChartWithAxisStacked should return 
 Object {
   "dEndValue": 0,
   "dStartValue": 60,
-  "rEndValue": 89,
+  "rEndValue": 90,
   "rStartValue": 5,
 }
 `;

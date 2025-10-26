@@ -427,7 +427,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
