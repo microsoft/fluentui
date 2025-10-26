@@ -6,6 +6,12 @@ import { attr, FASTElement } from '@microsoft/fast-element';
  */
 export class BaseAvatar extends FASTElement {
   /**
+   * Reference to the default slot element.
+   * @internal
+   */
+  public defaultSlot!: HTMLSlotElement;
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -36,5 +42,21 @@ export class BaseAvatar extends FASTElement {
     super();
 
     this.elementInternals.role = 'img';
+  }
+
+  /**
+   * Removes any empty text nodes from the default slot when the slotted content changes.
+   *
+   * @param e - The event object
+   * @internal
+   */
+  public slotchangeHandler(e: Event): void {
+    if (!this.innerText.trim()) {
+      this.defaultSlot.assignedNodes().forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          (node as Element).remove();
+        }
+      });
+    }
   }
 }
