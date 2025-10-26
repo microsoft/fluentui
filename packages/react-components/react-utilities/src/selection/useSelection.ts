@@ -83,7 +83,14 @@ function useMultipleSelection(params: Omit<SelectionHookParams, 'selectionMode'>
       changeSelection(event, nextSelectedItems);
     },
     toggleSomeItems: (event, itemIds) => {
-      methods.toggleAllItems(event, itemIds);
+      const allItemsSelected = itemIds.every(itemId => selected.has(itemId));
+      const nextSelectedItems = new Set(selected);
+      if (allItemsSelected) {
+        itemIds.forEach(itemId => nextSelectedItems.delete(itemId));
+      } else {
+        itemIds.forEach(itemId => nextSelectedItems.add(itemId));
+      }
+      changeSelection(event, nextSelectedItems);
     }
   };
   return [selected, methods] as const;
