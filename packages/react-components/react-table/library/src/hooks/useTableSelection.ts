@@ -102,7 +102,7 @@ export function useTableSelectionState<TItem>(
   });
 
   const toggleSomeRows: TableSelectionState['toggleSomeRows'] = useEventCallback((e, rowIds: Set<TableRowId>) => {
-    selectionMethods.toggleAllItems(
+    selectionMethods.toggleSomeItems(
       e,
       Array.from(rowIds).map((rowId, i) => Number(rowId) ?? i),
     );
