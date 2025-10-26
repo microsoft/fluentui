@@ -3,10 +3,11 @@ import { Separator } from '@fluentui/react/lib/Separator';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 import { Text } from '@fluentui/react/lib/Text';
+import type { JSXElement } from '@fluentui/utilities';
 
 const stackTokens: IStackTokens = { childrenGap: 12 };
 
-const HorizontalSeparatorStack = (props: { children: JSX.Element[] }) => (
+const HorizontalSeparatorStack = (props: { children: JSXElement[] }) => (
   <>
     {React.Children.map(props.children, child => {
       return <Stack tokens={stackTokens}>{child}</Stack>;
@@ -14,7 +15,7 @@ const HorizontalSeparatorStack = (props: { children: JSX.Element[] }) => (
   </>
 );
 
-const VerticalSeparatorStack = (props: { children: JSX.Element[] }) => (
+const VerticalSeparatorStack = (props: { children: JSXElement[] }) => (
   <Stack horizontal horizontalAlign="space-evenly">
     {React.Children.map(props.children, child => {
       return (

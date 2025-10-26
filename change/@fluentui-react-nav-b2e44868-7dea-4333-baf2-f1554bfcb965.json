@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-nav): Make NavDrawerBody focus attributes overridable by props",
-  "packageName": "@fluentui/react-nav",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}

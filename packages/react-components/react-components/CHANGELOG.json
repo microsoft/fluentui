@@ -2,6 +2,154 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 21 Oct 2025 14:16:55 GMT",
+      "tag": "@fluentui/react-components_v9.72.3",
+      "version": "9.72.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3e97366b95a16e99be07349ef6e28d4e1cb1e099",
+            "comment": "fix: callout not appearing on scatter chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5b64175cd4af4a9728a1159bcee44f12a878ced3",
+            "comment": "fix place value formatting bug in donut chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "7fb5e43ae16073e8fb90dc9993ff14c9c21f294e",
+            "comment": "add missing code in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d9c729c7f8535c9820a4f507fe754ac4a7080a7f",
+            "comment": "fix: resolve data points based on axis type + replace invalid values with 0 for valid coordinates"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "51e3f058a0da2f5984716bd87f8b518876972fbc",
+            "comment": "support reference lines in line chart and VBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5092cdf44b11370f0711eff15093faf7aa495f03",
+            "comment": "fix legend shape bug"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "64f118dac00919f9d5af2bbb27c2a9927eed5dc1",
+            "comment": "feat: add support for lines in GVBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689",
+            "comment": "fix donut colors and segment orders"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "abca12004c5d866f753fe677f83ca39d4a2b88bf",
+            "comment": "add fill for scatter polar chart"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "64cf912b18554bbd759c01b48bf664c92916b644",
+            "comment": "fix(react-charts): Show markers only when mode has markers for large data"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "99c58da79ec6c96af26295319ec5329997dd4e6e",
+            "comment": "fix popover positioning issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "002f3d9ca75a903654557218aedee7a198edc804",
+            "comment": "fix chart exception issue"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e86e8451823a023326b86f430f3ae78e2010e702",
+            "comment": "fix: update drawer scroll state when content changes"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "43a35d07a33feba827e20e2929dd412597b5c9b1",
+            "comment": "Fix selection becoming broken after re-enabling"
+          }
+        ],
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "2b65850802f79fb369197c59b33714b79417d1d5",
+            "comment": "feat: implement custom JSX namespace instead of @ts-ignore workaround"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Oct 2025 12:04:51 GMT",
+      "tag": "@fluentui/react-components_v9.72.2",
+      "version": "9.72.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          }
+        ],
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "38ef2e7719b277bb3331c32097adf4d4a2e689e0",
+            "comment": "fix(react-nav): Make NavDrawerBody focus attributes overridable by props"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "de104fff5f19e87dc00c19e41ec1dda0d80140bf",
+            "comment": "fix: In StrictMode, Tooltip now shows correctly on elements that are focused when created"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "85e89e8402deff8f1a24141b6838034f3d52cda0",
+            "comment": "refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Oct 2025 15:01:58 GMT",
       "tag": "@fluentui/react-components_v9.72.1",
       "version": "9.72.1",

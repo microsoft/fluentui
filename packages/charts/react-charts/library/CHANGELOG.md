@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Mon, 06 Oct 2025 15:01:58 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Oct 2025 14:16:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.3)
+
+Tue, 21 Oct 2025 14:16:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.2..@fluentui/react-charts_v9.3.3)
+
+### Patches
+
+- fix: callout not appearing on scatter chart ([PR #35310](https://github.com/microsoft/fluentui/pull/35310) by kumarkshitij@microsoft.com)
+- fix place value formatting bug in donut chart ([PR #35315](https://github.com/microsoft/fluentui/pull/35315) by anushgupta@microsoft.com)
+- add missing code in v9 ([PR #35318](https://github.com/microsoft/fluentui/pull/35318) by anushgupta@microsoft.com)
+- fix: resolve data points based on axis type + replace invalid values with 0 for valid coordinates ([PR #35323](https://github.com/microsoft/fluentui/pull/35323) by kumarkshitij@microsoft.com)
+- support reference lines in line chart and VBC ([PR #35330](https://github.com/microsoft/fluentui/pull/35330) by anushgupta@microsoft.com)
+- fix legend shape bug ([PR #35335](https://github.com/microsoft/fluentui/pull/35335) by anushgupta@microsoft.com)
+- feat: add support for lines in GVBC ([PR #35321](https://github.com/microsoft/fluentui/pull/35321) by kumarkshitij@microsoft.com)
+- fix donut colors and segment orders ([PR #35316](https://github.com/microsoft/fluentui/pull/35316) by anushgupta@microsoft.com)
+- add fill for scatter polar chart ([PR #35317](https://github.com/microsoft/fluentui/pull/35317) by anushgupta@microsoft.com)
+- fix(react-charts): Show markers only when mode has markers for large data ([PR #35311](https://github.com/microsoft/fluentui/pull/35311) by 120183316+srmukher@users.noreply.github.com)
+- fix popover positioning issue ([PR #35289](https://github.com/microsoft/fluentui/pull/35289) by anushgupta@microsoft.com)
+- fix chart exception issue ([PR #35342](https://github.com/microsoft/fluentui/pull/35342) by anushgupta@microsoft.com)
+- Bump @fluentui/react-button to v9.6.9 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.0 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-overflow to v9.6.2 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-popover to v9.12.9 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.8 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+
+## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.2)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.1..@fluentui/react-charts_v9.3.2)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.6.8 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-overflow to v9.6.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-popover to v9.12.8 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-tabster to v9.26.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
 
 ## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.1)
 

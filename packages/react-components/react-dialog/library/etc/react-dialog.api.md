@@ -95,6 +95,7 @@ export type DialogContextValue = {
     dialogTitleId?: string;
     isNestedDialog: boolean;
     dialogRef: React_2.Ref<DialogSurfaceElement | null>;
+    unmountOnClose?: boolean;
     modalType: DialogModalType;
     requestOpenChange: (data: DialogOpenChangeData) => void;
 } & Partial<ReturnType<typeof useModalAttributes>>;
@@ -137,6 +138,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSXElement, JSXElement] | JSXElement;
     inertTrapFocus?: boolean;
+    unmountOnClose?: boolean;
 };
 
 // @public (undocumented)
@@ -186,6 +188,7 @@ export type DialogSurfaceSlots = {
 // @public
 export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<DialogContextValue, 'isNestedDialog'> & Pick<PortalProps, 'mountNode'> & {
     open?: boolean;
+    unmountOnClose?: boolean;
     transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 };
 

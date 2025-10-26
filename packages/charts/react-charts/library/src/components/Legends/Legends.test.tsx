@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { Legends } from './index';
 import { render, act } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -99,27 +98,23 @@ const focusZonePropsInHoverCard = {
 /* eslint-disable @typescript-eslint/no-deprecated */
 describe('Legends snapShot testing', () => {
   it('renders Legends correctly', () => {
-    const component = renderer.create(<Legends legends={legends} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Legends legends={legends} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders allowFocusOnLegends correctly', () => {
-    const component = renderer.create(<Legends legends={legends} allowFocusOnLegends={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Legends legends={legends} allowFocusOnLegends={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders canSelectMultipleLegends correctly', () => {
-    const component = renderer.create(<Legends legends={legends} canSelectMultipleLegends={true} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Legends legends={legends} canSelectMultipleLegends={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders styles correctly', () => {
-    const component = renderer.create(<Legends legends={legends} {...styles} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Legends legends={legends} {...styles} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
 

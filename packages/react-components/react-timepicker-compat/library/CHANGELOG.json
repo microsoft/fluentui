@@ -2,6 +2,66 @@
   "name": "@fluentui/react-timepicker-compat",
   "entries": [
     {
+      "date": "Tue, 21 Oct 2025 14:16:59 GMT",
+      "tag": "@fluentui/react-timepicker-compat_v0.4.21",
+      "version": "0.4.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-combobox to v9.16.9",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-field to v9.4.8",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.0",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Oct 2025 12:04:53 GMT",
+      "tag": "@fluentui/react-timepicker-compat_v0.4.20",
+      "version": "0.4.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-combobox to v9.16.8",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-field to v9.4.7",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.2",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.25.1",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Oct 2025 15:12:07 GMT",
       "tag": "@fluentui/react-timepicker-compat_v0.4.17",
       "version": "0.4.17",

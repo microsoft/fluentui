@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Thu, 02 Oct 2025 15:12:22 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Oct 2025 14:16:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.3.8)
+
+Tue, 21 Oct 2025 14:16:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.3.7..@fluentui/react-label_v9.3.8)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.3.0 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.3.7)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.3.6..@fluentui/react-label_v9.3.7)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
 
 ## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.3.6)
 

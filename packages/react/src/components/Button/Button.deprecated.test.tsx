@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { resetIds, setWarningCallback } from '@fluentui/utilities';
 import { render } from '@testing-library/react';
@@ -25,11 +24,10 @@ describe('Button', () => {
   });
 
   it('renders CompoundButton correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <CompoundButton description="You can create a new account here.">Create account</CompoundButton>,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   describe('DefaultButton', () => {

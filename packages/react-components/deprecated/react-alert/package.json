@@ -1,0 +1,59 @@
+{
+  "name": "@fluentui/react-alert",
+  "version": "9.0.0-beta.126",
+  "description": "An alert component to display brief messages",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-griffel": "*",
+    "@fluentui/scripts-api-extractor": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-avatar": "^9.9.9",
+    "@fluentui/react-button": "^9.6.9",
+    "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-tabster": "^9.26.7",
+    "@fluentui/react-theme": "^9.2.0",
+    "@fluentui/react-utilities": "^9.25.1",
+    "@fluentui/react-jsx-runtime": "^9.3.0",
+    "@griffel/react": "^1.5.22",
+    "@swc/helpers": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.14.0 <20.0.0",
+    "@types/react-dom": ">=16.9.0 <20.0.0",
+    "react": ">=16.14.0 <20.0.0",
+    "react-dom": ">=16.14.0 <20.0.0"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
+}

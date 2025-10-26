@@ -157,7 +157,7 @@ export interface IPageSectionProps<TPlatforms extends string = string>
   jumpLinkName?: string;
 
   /** Content to render into the section. */
-  content?: JSX.Element | string;
+  content?: React.ReactElement | string;
 
   /** Optional className to wrap the section in. */
   className?: string;

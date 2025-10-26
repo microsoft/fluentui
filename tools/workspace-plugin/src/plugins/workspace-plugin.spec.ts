@@ -268,7 +268,7 @@ describe(`workspace-plugin`, () => {
               "production",
               "^production",
               "{workspaceRoot}/jest.preset.js",
-              "{workspaceRoot}/tools/react-integration-testing/**",
+              "{workspaceRoot}/tools/react-integration-tester/**",
             ],
             "metadata": Object {
               "description": "Run react integration tests against React 17",
@@ -296,7 +296,7 @@ describe(`workspace-plugin`, () => {
               "production",
               "^production",
               "{workspaceRoot}/jest.preset.js",
-              "{workspaceRoot}/tools/react-integration-testing/**",
+              "{workspaceRoot}/tools/react-integration-tester/**",
             ],
             "metadata": Object {
               "description": "Run react integration tests against React 17",
@@ -675,7 +675,7 @@ describe(`workspace-plugin`, () => {
                         "production",
                         "^production",
                         "{workspaceRoot}/jest.preset.js",
-                        "{workspaceRoot}/tools/react-integration-testing/**",
+                        "{workspaceRoot}/tools/react-integration-tester/**",
                       ],
                       "metadata": Object {
                         "description": "Run react integration tests against React 17, 18",
