@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Enable semantic tokens on v9 buttons",
+  "packageName": "@fluentui/react-button",
+  "email": "99835933+Mitch-At-Work@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
