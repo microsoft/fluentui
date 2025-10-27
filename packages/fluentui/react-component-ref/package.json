@@ -17,11 +17,12 @@
     "@types/react-dom": "17.0.15",
     "@types/react-is": "17.0.7",
     "@types/react-test-renderer": "17.0.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-test-renderer": "17.0.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-test-renderer": "18.3.1",
     "enzyme": "3.10.0",
-    "enzyme-to-json": "3.6.2"
+    "enzyme-to-json": "3.6.2",
+    "@cfaester/enzyme-adapter-react-18": "0.8.0"
   },
   "files": [
     "dist"

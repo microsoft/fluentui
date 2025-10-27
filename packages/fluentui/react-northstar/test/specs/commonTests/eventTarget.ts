@@ -1,8 +1,12 @@
 import { ReactWrapper } from 'enzyme';
+import * as consoleUtil from '../../utils/consoleUtil';
 
 export const EVENT_TARGET_ATTRIBUTE = 'data-simulate-event-here';
 
 export const getEventTargetComponent = (wrapper: ReactWrapper, listenerName: string, eventTargets: object = {}) => {
+  // Produces an error about deprecated `findDOMNode`
+  consoleUtil.disableOnce();
+
   const eventTarget = eventTargets[listenerName]
     ? wrapper.find(eventTargets[listenerName]).hostNodes().first()
     : wrapper.find(`[${EVENT_TARGET_ATTRIBUTE}]`).hostNodes().first();

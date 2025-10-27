@@ -7,7 +7,7 @@ const { TextEncoder, TextDecoder } = require('node:util');
 
 Object.assign(global, { TextDecoder, TextEncoder });
 
-const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
+const Adapter = require('@cfaester/enzyme-adapter-react-18').default;
 const enzyme = require('enzyme');
 
 enzyme.configure({

@@ -1,8 +1,14 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './app';
 
 const mountNode = document.createElement('div');
 document.body.appendChild(mountNode);
 
-ReactDOM.render(<App />, mountNode);
+const root = createRoot(mountNode);
+
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
