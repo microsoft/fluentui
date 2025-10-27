@@ -18,13 +18,24 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.69.0 ]------------------------------- -->
+## [v0.69.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.69.0) (27-10-2025)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.68.2..@fluentui/react-northstar_v0.69.0)
+
+### BREAKING CHANGES
+- Packages now require React 18 https://github.com/microsoft/fluentui/pull/35381
+
+### Fixes
+- `Portal` is safe for Concurrent & Strict Modes https://github.com/microsoft/fluentui/pull/35272, https://github.com/microsoft/fluentui/pull/35371
+- `Ref` is safe for Strict Mode https://github.com/microsoft/fluentui/pull/35382
+- `.defaultProps` are removed to avoid warnings in Strict Mode https://github.com/microsoft/fluentui/pull/35363, https://github.com/microsoft/fluentui/pull/35370, https://github.com/microsoft/fluentui/pull/35367, https://github.com/microsoft/fluentui/pull/35383 
+
 <!--------------------------------[ v0.68.2 ]------------------------------- -->
 ## [v0.68.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.68.2) (27-10-2025)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.68.1..@fluentui/react-northstar_v0.68.2)
 
 ### Fixes
 - Compile core for IE11 https://github.com/microsoft/fluentui/pull/35360
-
 
 <!--------------------------------[ v0.67.2 ]------------------------------- -->
 ## [v0.67.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.67.2) (21-10-2025)
@@ -37,6 +48,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [v0.68.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.68.1) (03-10-2025)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.68.0..@fluentui/react-northstar_v0.68.1)
 
+### Fixes
 - Fix `data-tabster` attr in `Dropdown` https://github.com/microsoft/fluentui/pull/35271
 - Fix state handling in `Slider` https://github.com/microsoft/fluentui/pull/35273
 - Fix switch `Dropdown` back to `useAutoControlled()` https://github.com/microsoft/fluentui/pull/35274
