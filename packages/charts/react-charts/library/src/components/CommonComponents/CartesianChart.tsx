@@ -589,7 +589,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       _margins.right! += TITLE_MARGIN_HORIZONTAL;
     }
     if (props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '') {
-      _margins.bottom! += TITLE_MARGIN_VERTICAL;
+      _margins.top! += TITLE_MARGIN_VERTICAL;
     }
     if (
       props.yAxisAnnotation !== undefined &&

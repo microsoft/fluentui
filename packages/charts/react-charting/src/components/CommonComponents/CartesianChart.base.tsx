@@ -1080,7 +1080,7 @@ export class CartesianChartBase
       margins.right! += TITLE_MARGIN_HORIZONTAL;
     }
     if (this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '') {
-      margins.bottom! += TITLE_MARGIN_VERTICAL;
+      margins.top! += TITLE_MARGIN_VERTICAL;
     }
     if (
       this.props.yAxisAnnotation !== undefined &&
