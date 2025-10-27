@@ -9,7 +9,7 @@ import {
   unstable_getStyles as getStyles,
   ProviderContextPrepared,
 } from '@fluentui/react-bindings';
-import { noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { noopRenderer } from '@fluentui/react-northstar-fela-renderer';
 import {
   emptyTheme,
   ComponentSlotStylesResolved,

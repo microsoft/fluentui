@@ -1,5 +1,5 @@
 import { ProviderContextPrepared } from '@fluentui/react-northstar';
-import { Renderer } from '@fluentui/react-northstar-styles-renderer';
+import { Renderer } from '@fluentui/react-northstar-fela-renderer';
 import { callable } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as React from 'react';

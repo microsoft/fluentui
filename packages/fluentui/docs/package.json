@@ -16,7 +16,6 @@
     "@fluentui/react-northstar": "*",
     "@fluentui/react-northstar-fela-renderer": "*",
     "@fluentui/react-northstar-prototypes": "*",
-    "@fluentui/react-northstar-styles-renderer": "*",
     "@fluentui/styles": "*",
     "@hot-loader/react-dom": "17.0.2",
     "@mdx-js/react": "^2.3.0",

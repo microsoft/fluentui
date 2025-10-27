@@ -54,8 +54,8 @@ describe(`publish`, () => {
       },
     });
 
-    expect(gitTag).not.toHaveBeenCalled();
-    expect(gitPush).not.toHaveBeenCalled();
+    expect(gitTag).toHaveBeenCalledWith(expect.objectContaining({ dryRun: true, verbose: false }));
+    expect(gitPush).toHaveBeenCalledWith({ dryRun: true, verbose: false });
     expect(releasePublish).toHaveBeenCalledWith({
       dryRun: true,
       groups: ['northstar'],

@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { RendererRenderRule, noopRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { RendererRenderRule, noopRenderer } from '@fluentui/react-northstar-fela-renderer';
 import {
   ComponentSlotStylesPrepared,
   ComponentVariablesObject,
