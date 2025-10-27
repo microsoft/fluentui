@@ -700,15 +700,34 @@ export const transformPlotlyJsonToVSBCProps = (
     });
   });
 
-  const xCategories = (input.data[0] as Partial<PlotData>)?.x ?? [];
+  const xCategories = Array.from(
+    new Set(
+      (input.data ?? [])
+        .flatMap(trace => {
+          const xData = (trace as Partial<PlotData>).x;
+          if (!xData) return [];
+          if (Array.isArray(xData)) {
+            return xData.flat().map(x => {
+              return x;
+            });
+          }
+          return [];
+        })
+        .filter(x => x !== undefined && x !== null),
+    ),
+  );
 
   (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
     .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
       const resolveX = (val: Datum) => {
-        if (typeof val === 'number' && Array.isArray(xCategories) && xCategories[val] !== undefined) {
-          return xCategories[val];
+        if (typeof val === 'number' && Array.isArray(xCategories)) {
+          if (xCategories[val] !== undefined) {
+            return xCategories[val];
+          } else {
+            return xCategories[shapeIdx];
+          }
         }
         return val;
       };
