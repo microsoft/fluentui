@@ -705,7 +705,9 @@ export const transformPlotlyJsonToVSBCProps = (
       (input.data ?? [])
         .flatMap(trace => {
           const xData = (trace as Partial<PlotData>).x;
-          if (!xData) return [];
+          if (!xData) {
+            return [];
+          }
           if (Array.isArray(xData)) {
             return xData.flat().map(x => {
               return x;
