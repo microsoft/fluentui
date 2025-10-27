@@ -3836,7 +3836,7 @@ Object {
 
 exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain and range values correctly for numeric x-axis 1`] = `
 Object {
-  "dEndValue": 31,
+  "dEndValue": 30,
   "dStartValue": 0,
   "rEndValue": 90,
   "rStartValue": 5,
@@ -3846,7 +3846,7 @@ Object {
 exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
 Object {
   "dEndValue": 0,
-  "dStartValue": 31,
+  "dStartValue": 30,
   "rEndValue": 90,
   "rStartValue": 5,
 }
@@ -3854,7 +3854,7 @@ Object {
 
 exports[`domainRangeOfNumericForHorizontalBarChartWithAxisStacked should return domain and range values correctly for numeric x-axis 1`] = `
 Object {
-  "dEndValue": 61,
+  "dEndValue": 60,
   "dStartValue": 0,
   "rEndValue": 90,
   "rStartValue": 5,
@@ -3864,7 +3864,7 @@ Object {
 exports[`domainRangeOfNumericForHorizontalBarChartWithAxisStacked should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
 Object {
   "dEndValue": 0,
-  "dStartValue": 61,
+  "dStartValue": 60,
   "rEndValue": 90,
   "rStartValue": 5,
 }

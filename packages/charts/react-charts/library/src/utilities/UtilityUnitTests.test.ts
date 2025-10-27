@@ -962,12 +962,12 @@ describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1, X_ORIGIN);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, X_ORIGIN);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1, X_ORIGIN);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, X_ORIGIN);
     matchResult(result);
   });
 });
@@ -987,12 +987,12 @@ describe('domainRangeOfNumericForHorizontalBarChartWithAxisStacked', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1, X_ORIGIN);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, X_ORIGIN);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1, X_ORIGIN);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, X_ORIGIN);
     matchResult(result);
   });
 });
