@@ -26,6 +26,7 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-menu": "^9.20.2",
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-table": "^9.19.2",
     "@fluentui/react-tabster": "^9.26.7",
     "@fluentui/react-jsx-runtime": "^9.3.0",
