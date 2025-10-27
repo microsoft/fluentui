@@ -862,6 +862,114 @@ export const groupFocusOuterStroke = "var(--smtc-group-focus-outer-stroke, var(-
 // @public (undocumented)
 export const groupFocusOuterStrokewidth = "var(--smtc-group-focus-outer-strokewidth, var(--strokeWidthThick))";
 
+// @public (undocumented)
+export const groupLinkBrandIconForeground = "var(--smtc-group-link-brand-icon-foreground)";
+
+// @public (undocumented)
+export const groupLinkBrandIconForegroundDisabled = "var(--smtc-group-link-brand-icon-foreground-disabled)";
+
+// @public (undocumented)
+export const groupLinkBrandIconForegroundHover = "var(--smtc-group-link-brand-icon-foreground-hover)";
+
+// @public (undocumented)
+export const groupLinkBrandIconForegroundPressed = "var(--smtc-group-link-brand-icon-foreground-pressed)";
+
+// @public (undocumented)
+export const groupLinkBrandTextForeground = "var(--smtc-group-link-brand-text-foreground, var(--colorBrandForegroundLink))";
+
+// @public (undocumented)
+export const groupLinkBrandTextForegroundDisabled = "var(--smtc-group-link-brand-text-foreground-disabled, var(--colorNeutralForegroundDisabled))";
+
+// @public (undocumented)
+export const groupLinkBrandTextForegroundHover = "var(--smtc-group-link-brand-text-foreground-hover, var(--colorBrandForegroundLinkHover))";
+
+// @public (undocumented)
+export const groupLinkBrandTextForegroundPressed = "var(--smtc-group-link-brand-text-foreground-pressed, var(--colorBrandForegroundLinkPressed))";
+
+// @public (undocumented)
+export const groupLinkGap = "var(--smtc-group-link-gap)";
+
+// @public (undocumented)
+export const groupLinkLargeIconSize = "var(--smtc-group-link-large-icon-size)";
+
+// @public (undocumented)
+export const groupLinkLargeTextFontsize = "var(--smtc-group-link-large-text-fontsize)";
+
+// @public (undocumented)
+export const groupLinkLargeTextFontweight = "var(--smtc-group-link-large-text-fontweight)";
+
+// @public (undocumented)
+export const groupLinkLargeTextLineheight = "var(--smtc-group-link-large-text-lineheight)";
+
+// @public (undocumented)
+export const groupLinkMediumIconSize = "var(--smtc-group-link-medium-icon-size)";
+
+// @public (undocumented)
+export const groupLinkMediumTextFontsize = "var(--smtc-group-link-medium-text-fontsize, var(--fontSizeBase300))";
+
+// @public (undocumented)
+export const groupLinkMediumTextFontweight = "var(--smtc-group-link-medium-text-fontweight, var(--fontWeightRegular))";
+
+// @public (undocumented)
+export const groupLinkMediumTextLineheight = "var(--smtc-group-link-medium-text-lineheight, var(--lineHeightBase300))";
+
+// @public (undocumented)
+export const groupLinkNeutralIconForeground = "var(--smtc-group-link-neutral-icon-foreground)";
+
+// @public (undocumented)
+export const groupLinkNeutralIconForegroundDisabled = "var(--smtc-group-link-neutral-icon-foreground-disabled)";
+
+// @public (undocumented)
+export const groupLinkNeutralIconForegroundHover = "var(--smtc-group-link-neutral-icon-foreground-hover)";
+
+// @public (undocumented)
+export const groupLinkNeutralIconForegroundPressed = "var(--smtc-group-link-neutral-icon-foreground-pressed)";
+
+// @public (undocumented)
+export const groupLinkNeutralTextForeground = "var(--smtc-group-link-neutral-text-foreground, var(--colorNeutralForeground2))";
+
+// @public (undocumented)
+export const groupLinkNeutralTextForegroundDisabled = "var(--smtc-group-link-neutral-text-foreground-disabled, var(--colorNeutralForegroundDisabled))";
+
+// @public (undocumented)
+export const groupLinkNeutralTextForegroundHover = "var(--smtc-group-link-neutral-text-foreground-hover, var(--colorNeutralForeground2Hover))";
+
+// @public (undocumented)
+export const groupLinkNeutralTextForegroundPressed = "var(--smtc-group-link-neutral-text-foreground-pressed, var(--colorNeutralForeground2Pressed))";
+
+// @public (undocumented)
+export const groupLinkOnpageTextDecorationline = "var(--smtc-group-link-onpage-text-decorationline, none)";
+
+// @public (undocumented)
+export const groupLinkOnpageTextDecorationlineDisabled = "var(--smtc-group-link-onpage-text-decorationline-disabled, none)";
+
+// @public (undocumented)
+export const groupLinkOnpageTextDecorationlineHover = "var(--smtc-group-link-onpage-text-decorationline-hover, underline)";
+
+// @public (undocumented)
+export const groupLinkOnpageTextDecorationlinePressed = "var(--smtc-group-link-onpage-text-decorationline-pressed, underline)";
+
+// @public (undocumented)
+export const groupLinkSmallIconSize = "var(--smtc-group-link-small-icon-size)";
+
+// @public (undocumented)
+export const groupLinkSmallTextFontsize = "var(--smtc-group-link-small-text-fontsize)";
+
+// @public (undocumented)
+export const groupLinkSmallTextFontweight = "var(--smtc-group-link-small-text-fontweight)";
+
+// @public (undocumented)
+export const groupLinkSmallTextLineheight = "var(--smtc-group-link-small-text-lineheight)";
+
+// @public (undocumented)
+export const groupLinkTextFontfamily = "var(--smtc-group-link-text-fontfamily, var(--fontFamilyBase))";
+
+// @public (undocumented)
+export const groupLinkTextUnderlineStrokewidth = "var(--smtc-group-link-text-underline-strokewidth, var(--strokeWidthThin))";
+
+// @public (undocumented)
+export const groupLinkTextUnderlineStyle = "var(--smtc-group-link-text-underline-style, solid)";
+
 // (No @packageDocumentation comment for this package)
 
 ```

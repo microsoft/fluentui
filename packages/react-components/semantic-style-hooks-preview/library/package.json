@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@fluentui/react-button": "^9.4.6",
+    "@fluentui/react-link": "^9.6.7",
     "@fluentui/semantic-tokens": "^0.0.1",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-provider": "^9.22.7",
