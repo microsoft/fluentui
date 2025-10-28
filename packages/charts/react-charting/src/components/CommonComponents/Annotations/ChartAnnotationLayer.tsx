@@ -20,6 +20,8 @@ import {
   IChartAnnotationLayerStyleProps,
   IChartAnnotationLayerStyles,
 } from './ChartAnnotationLayer.styles';
+import { sanitizeHtml } from '../../../utilities/htmlSanitization';
+import { convertHtmlToReactNodes } from '../../../utilities/htmlRendering';
 
 const getClassNames = classNamesFunction<IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles>();
 
@@ -34,45 +36,6 @@ const getAnnotationKey = (annotation: IChartAnnotation, index: number) =>
   annotation.id ??
   (typeof annotation.text === 'string' || typeof annotation.text === 'number' ? String(annotation.text) : undefined) ??
   `annotation-${index}`;
-
-const decodeHtmlEntities = (html: string, documentRef: Document): string => {
-  if (!html || html.indexOf('&') === -1) {
-    return html;
-  }
-
-  if (!documentRef?.implementation?.createHTMLDocument) {
-    return html;
-  }
-
-  const workingDocument = documentRef.implementation.createHTMLDocument('');
-  workingDocument.body.innerHTML = html;
-  return workingDocument.body.textContent ?? '';
-};
-
-const sanitizeAnnotationHtml = (html: string): string => {
-  if (!html) {
-    return '';
-  }
-
-  if (typeof window === 'undefined' || !window.document?.implementation?.createHTMLDocument) {
-    return html;
-  }
-
-  const workingDocument = window.document.implementation.createHTMLDocument('');
-  workingDocument.body.innerHTML = decodeHtmlEntities(html, window.document);
-
-  workingDocument.body.querySelectorAll('script, iframe, object, embed, link').forEach(node => node.remove());
-
-  workingDocument.body.querySelectorAll('*').forEach(node => {
-    Array.from(node.attributes).forEach(attr => {
-      if (/^on/i.test(attr.name)) {
-        node.removeAttribute(attr.name);
-      }
-    });
-  });
-
-  return workingDocument.body.innerHTML;
-};
 
 const normalizeBandOffset = (
   scale: (((value: unknown) => number) & { bandwidth?: () => number }) | undefined,
@@ -253,7 +216,7 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
       return;
     }
 
-    const annotationHtml = sanitizeAnnotationHtml(annotation.text ?? '');
+    const annotationHtml = sanitizeHtml(annotation.text ?? '');
 
     const layout = annotation.layout;
     const horizontalAlign = layout?.align ?? DEFAULT_HORIZONTAL_ALIGN;
@@ -379,12 +342,12 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
           data-annotation-key={key}
           data-chart-annotation-measurement="true"
         >
-          {/* eslint-disable-next-line react/no-danger -- content sanitized via sanitizeAnnotationHtml */}
           <div
             className={css(classNames.annotationContent, layout?.className, annotation.style?.className)}
             style={contentStyle}
-            dangerouslySetInnerHTML={{ __html: annotationHtml }}
-          />
+          >
+            {convertHtmlToReactNodes(annotationHtml, `${key}-measurement`)}
+          </div>
         </div>,
       );
     }
@@ -404,7 +367,6 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
           style={containerStyle}
           data-annotation-key={key}
         >
-          {/* eslint-disable-next-line react/no-danger -- content sanitized via sanitizeAnnotationHtml */}
           <div
             className={css(classNames.annotationContent, annotation.style?.className)}
             style={contentStyle}
@@ -413,8 +375,9 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
             aria-describedby={annotation.accessibility?.ariaDescribedBy}
             data-chart-annotation="true"
             data-annotation-key={key}
-            dangerouslySetInnerHTML={{ __html: annotationHtml }}
-          />
+          >
+            {convertHtmlToReactNodes(annotationHtml, `${key}-content`)}
+          </div>
         </div>
       </foreignObject>,
     );
