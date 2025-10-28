@@ -16,7 +16,7 @@ import {
   UIComponentProps,
   commonPropTypes,
   SizeValue,
-  getOrGenerateIdFromShorthand,
+  useIdOrFromShorthand,
 } from '../../utils';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
@@ -91,8 +91,7 @@ export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref)
   const delayTimer = React.useRef<number>();
   const [visible, setVisible] = React.useState(delay === 0);
 
-  const labelId = React.useRef<string>();
-  labelId.current = getOrGenerateIdFromShorthand('loader-label-', label, labelId.current);
+  const labelId = useIdOrFromShorthand(label);
 
   const { classes, styles: resolvedStyles } = useStyles<LoaderStylesProps>(Loader.displayName, {
     className: loaderClassName,
@@ -114,7 +113,7 @@ export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref)
   const getA11yProps = useAccessibility<LoaderBehaviorProps>(accessibility, {
     debugName: Loader.displayName,
     mapPropsToBehavior: () => ({
-      labelId: labelId.current,
+      labelId,
     }),
     rtl: context.rtl,
   });
@@ -158,7 +157,7 @@ export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref)
           getA11yProps('label', {
             className: loaderSlotClassNames.label,
             styles: resolvedStyles.label,
-            id: labelId.current,
+            id: labelId,
           }),
       })}
     </ElementType>

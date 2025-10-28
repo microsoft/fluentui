@@ -24,7 +24,7 @@ import {
   commonPropTypes,
   ContentComponentProps,
   doesNodeContainClick,
-  getOrGenerateIdFromShorthand,
+  useIdOrFromShorthand,
   createShorthand,
   createShorthandFactory,
 } from '../../utils';
@@ -169,10 +169,8 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
   const overlayRef = React.useRef<HTMLElement>();
   const triggerRef = React.useRef<HTMLElement>();
 
-  const contentId = React.useRef<string>();
-  contentId.current = getOrGenerateIdFromShorthand('dialog-content-', content, contentId.current);
-  const headerId = React.useRef<string>();
-  headerId.current = getOrGenerateIdFromShorthand('dialog-header-', header, headerId.current);
+  const contentId = useIdOrFromShorthand(content);
+  const headerId = useIdOrFromShorthand(header);
 
   const getA11yProps = useAccessibility<DialogBehaviorProps>(accessibility, {
     debugName: Dialog.displayName,
@@ -186,8 +184,8 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
       close: e => handleDialogCancel(e),
     },
     mapPropsToBehavior: () => ({
-      headerId: headerId.current,
-      contentId: contentId.current,
+      headerId,
+      contentId,
       trapFocus,
       trigger,
     }),

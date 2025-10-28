@@ -183,7 +183,7 @@ export function isConformant(
 
       if (skipAsPropTests !== 'as-component') {
         test('renders as a functional component or passes "as" to the next component', () => {
-          const MyComponent = React.forwardRef(() => null);
+          const MyComponent = React.forwardRef<HTMLDivElement>((_props, ref) => <div ref={ref} />);
 
           const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
           const component = getComponent(wrapper);
@@ -202,6 +202,9 @@ export function isConformant(
               return <div data-my-react-class />;
             }
           }
+
+          // Silence a warning about `findDONNode()` usage
+          consoleUtil.disableOnce();
 
           const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
           const component = getComponent(wrapper);
