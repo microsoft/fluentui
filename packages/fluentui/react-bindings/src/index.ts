@@ -12,6 +12,8 @@ export * from './FocusZone/FocusZone.types';
 export * from './FocusZone/focusUtilities';
 
 export { useAccessibility } from './hooks/useAccessibility';
+export { useAccessibilityBehavior } from './hooks/useAccessibilityBehavior';
+export { useAccessibilitySlotProps } from './hooks/useAccessibilitySlotProps';
 export { useCallbackRef } from './hooks/useCallbackRef';
 export { useControllableState } from './hooks/useControllableState';
 export { useDeepMemo } from './hooks/useDeepMemo';
@@ -36,6 +38,7 @@ export { childrenExist } from './utils/childrenExist';
 export { getElementType } from './utils/getElementType';
 export { getUnhandledProps } from './utils/getUnhandledProps';
 export { mergeVariablesOverrides } from './utils/mergeVariablesOverrides';
+export { wrapWithFocusZone } from './utils/wrapWithFocusZone';
 
 export * from './context';
 

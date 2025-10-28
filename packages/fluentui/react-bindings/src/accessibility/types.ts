@@ -5,9 +5,10 @@ import * as React from 'react';
  * Accessibility types for React implementation.
  */
 
-export interface ReactAccessibilityBehavior extends AccessibilityDefinition {
+export interface ReactAccessibilityBehavior extends Pick<AccessibilityDefinition, 'focusZone' | 'childBehaviors'> {
   attributes: AccessibilityAttributesBySlot;
   keyHandlers: AccessibilityKeyHandlers;
+  rtl: boolean;
 }
 
 export type AccessibilityKeyHandlers = {
@@ -22,4 +23,4 @@ export type AccessibilityActionHandlers = {
   [actionName: string]: KeyboardEventHandler;
 };
 
-export type KeyboardEventHandler = (event: React.KeyboardEvent) => void;
+export type KeyboardEventHandler = (event: React.KeyboardEvent, ...args: unknown[]) => void;

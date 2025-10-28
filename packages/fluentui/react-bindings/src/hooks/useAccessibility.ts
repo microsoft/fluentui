@@ -33,9 +33,8 @@ export const useAccessibility = <Props extends {}>(
   behavior: Accessibility<Props>,
   options: UseAccessibilityOptions<Props> = {},
 ) => {
-  const { actionHandlers, debugName = 'Undefined', mapPropsToBehavior = () => ({}), rtl = false } = options;
-
-  const definition = getAccessibility(debugName, behavior, mapPropsToBehavior(), rtl, actionHandlers);
+  const { actionHandlers, mapPropsToBehavior = () => ({}), rtl = false } = options;
+  const definition = getAccessibility(behavior, mapPropsToBehavior(), rtl, actionHandlers);
 
   const latestDefinition = React.useRef<ReactAccessibilityBehavior>();
   const slotHandlers = React.useRef<Record<string, KeyboardEventHandler>>({});
