@@ -2,7 +2,8 @@ import { Accessibility } from '@fluentui/accessibility';
 import {
   ForwardRefWithAs,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -85,8 +86,7 @@ export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((props, r
     unstable_layout: layout = 'default',
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: ChatItem.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<ChatItemStylesProps>(ChatItem.displayName, {
@@ -106,24 +106,24 @@ export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((props, r
     rtl: context.rtl,
   });
 
-  const renderContent = () => {
-    const gutterElement = Box.create(gutter, {
-      defaultProps: () =>
-        getA11Props('gutter', {
-          className: chatItemSlotClassNames.gutter,
-          styles: resolvedStyles.gutter,
-        }),
-    });
-    const messageElement = Box.create(message, {
-      defaultProps: () =>
-        getA11Props('message', {
-          className: chatItemSlotClassNames.message,
-          styles: resolvedStyles.message,
-        }),
-    });
+  const gutterElement = Box.create(gutter, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'gutter', {
+      className: chatItemSlotClassNames.gutter,
+      styles: resolvedStyles.gutter,
+    }),
+  });
+  const messageElement = Box.create(message, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'message', {
+      className: chatItemSlotClassNames.message,
+      styles: resolvedStyles.message,
+    }),
+  });
 
+  const itemContextValue = React.useMemo(() => ({ attached }), [attached]);
+
+  const renderContent = () => {
     return (
-      <ChatItemContextProvider value={{ attached }}>
+      <ChatItemContextProvider value={itemContextValue}>
         {(contentPosition === 'start' || density === 'compact') && gutterElement}
         {messageElement}
         {contentPosition === 'end' && density === 'comfy' && gutterElement}
@@ -136,7 +136,7 @@ export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((props, r
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),

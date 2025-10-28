@@ -18,7 +18,8 @@ import { HeaderDescription, HeaderDescriptionProps } from './HeaderDescription';
 
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -59,14 +60,13 @@ export type HeaderStylesProps = Required<Pick<HeaderProps, 'align' | 'color'>> &
 export const Header = React.forwardRef<HTMLHeadingElement, HeaderProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { children, content, variables, align, className, design, styles, description, color } = props;
+  const { accessibility, children, content, variables, align, className, design, styles, description, color } = props;
   const ElementType = getElementType(props, 'h1');
   const unhandledProps = useUnhandledProps(Header.handledProps, props);
   const hasChildren = childrenExist(children);
   const contentElement = hasChildren ? children : content;
 
-  const getA11yProps = useAccessibility<never>(props.accessibility, {
-    debugName: Header.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(accessibility, {
     rtl: context.rtl,
   });
 
@@ -86,9 +86,13 @@ export const Header = React.forwardRef<HTMLHeadingElement, HeaderProps>((props, 
     rtl: context.rtl,
   });
 
+  const descriptionElement = HeaderDescription.create(description, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'description', {}),
+  });
+
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,
@@ -99,10 +103,7 @@ export const Header = React.forwardRef<HTMLHeadingElement, HeaderProps>((props, 
       })}
     >
       {rtlTextContainer.createFor({ element: contentElement, condition: !!description })}
-      {!hasChildren &&
-        HeaderDescription.create(description, {
-          defaultProps: () => getA11yProps('description', {}),
-        })}
+      {!hasChildren && descriptionElement}
     </ElementType>
   );
 

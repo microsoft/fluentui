@@ -14,7 +14,8 @@ import {
   getElementType,
   useUnhandledProps,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
   useControllableState,
@@ -102,15 +103,14 @@ export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) 
   const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(Embed.handledProps, props);
 
-  const getA11yProps = useAccessibility<EmbedBehaviorProps>(accessibility, {
-    debugName: Embed.displayName,
+  const a11yBehavior = useAccessibilityBehavior<EmbedBehaviorProps>(accessibility, {
     actionHandlers: {
       performClick: event => handleClick(event),
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       alt,
       title,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -165,7 +165,7 @@ export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) 
     <Image
       src={placeholder}
       styles={resolvedStyles.image}
-      variables={{ width: variables.width, height: variables.height }}
+      variables={{ width: variables?.width, height: variables?.height }}
     />
   ) : null;
 
@@ -174,9 +174,37 @@ export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) 
   const controlVisible = !active || hasVideo;
   const placeholderVisible = !active || (hasIframe && active && !iframeLoaded);
 
+  const controlElement = Box.create(control, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'control', {
+      className: embedSlotClassNames.control,
+      styles: resolvedStyles.control,
+    }),
+  });
+  const iframeElement = Box.create(iframe, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'iframe', {
+      as: 'iframe',
+      styles: resolvedStyles.iframe,
+    }),
+    overrideProps: handleFrameOverrides,
+  });
+  const videoElement = Video.create(video, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'video', {
+      autoPlay: true,
+      controls: false,
+      loop: true,
+      muted: true,
+      poster: placeholder,
+      styles: resolvedStyles.video,
+      variables: {
+        width: variables?.width,
+        height: variables?.height,
+      },
+    }),
+  });
+
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         onClick: handleClick,
         ref,
@@ -185,45 +213,13 @@ export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) 
     >
       {active && (
         <>
-          {Video.create(video, {
-            defaultProps: () =>
-              getA11yProps('video', {
-                autoPlay: true,
-                controls: false,
-                loop: true,
-                muted: true,
-                poster: placeholder,
-                styles: resolvedStyles.video,
-                variables: {
-                  width: variables.width,
-                  height: variables.height,
-                },
-              }),
-          })}
-          {iframe && (
-            <Ref innerRef={frameRef}>
-              {Box.create(iframe, {
-                defaultProps: () =>
-                  getA11yProps('iframe', {
-                    as: 'iframe',
-                    styles: resolvedStyles.iframe,
-                  }),
-                overrideProps: handleFrameOverrides,
-              })}
-            </Ref>
-          )}
+          {videoElement}
+          {iframe && <Ref innerRef={frameRef}>{iframeElement}</Ref>}
         </>
       )}
 
       {placeholderVisible && placeholderElement}
-      {controlVisible &&
-        Box.create(control, {
-          defaultProps: () =>
-            getA11yProps('control', {
-              className: embedSlotClassNames.control,
-              styles: resolvedStyles.control,
-            }),
-        })}
+      {controlVisible && controlElement}
     </ElementType>
   );
 

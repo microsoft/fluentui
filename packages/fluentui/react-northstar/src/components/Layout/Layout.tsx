@@ -11,7 +11,8 @@ import {
   getElementType,
   useFluentContext,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
 } from '@fluentui/react-bindings';
 
 export interface LayoutSlotClassNames {
@@ -149,8 +150,7 @@ export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStatic
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Layout.handledProps, props);
 
-  const getA11yProps = useAccessibility<never>(props.accessibility, {
-    debugName: Layout.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(props.accessibility, {
     rtl: context.rtl,
   });
 
@@ -182,15 +182,12 @@ export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStatic
   const mainArea = renderMainArea({ ...props, classes });
   const endArea = renderEndArea({ ...props, classes });
 
+  const rootA11yProps = useAccessibilitySlotProps(a11yBehavior, 'root', {
+    ...unhandledProps,
+  });
+
   if (!startArea && !mainArea && !endArea) {
-    return (
-      <ElementType
-        {...getA11yProps('root', {
-          className: classes.root,
-          ...unhandledProps,
-        })}
-      />
-    );
+    return <ElementType {...rootA11yProps} className={classes.root} />;
   }
 
   const activeAreas = [startArea, mainArea, endArea].filter(Boolean);
@@ -210,24 +207,14 @@ export const Layout: ComponentWithAs<'div', LayoutProps> & FluentComponentStatic
     );
 
     return (
-      <ElementType
-        {...getA11yProps('root', {
-          className: composedClasses,
-          ...unhandledProps,
-        })}
-      >
+      <ElementType {...rootA11yProps} className={composedClasses}>
         {start || main || end}
       </ElementType>
     );
   }
 
   return (
-    <ElementType
-      {...getA11yProps('root', {
-        className: classes.root,
-        ...unhandledProps,
-      })}
-    >
+    <ElementType {...rootA11yProps} className={classes.root}>
       {startArea}
       {startArea && mainArea && renderGap({ ...props, classes })}
       {mainArea}

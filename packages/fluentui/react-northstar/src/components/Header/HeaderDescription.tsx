@@ -17,7 +17,8 @@ import {
   useFluentContext,
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -42,12 +43,11 @@ export type HeaderDescriptionStylesProps = Pick<HeaderDescriptionProps, 'color'>
 export const HeaderDescription = React.forwardRef<HTMLParagraphElement, HeaderDescriptionProps>((props, ref) => {
   const context = useFluentContext();
 
-  const { children, content, color, className, design, styles, variables } = props;
+  const { accessibility, children, content, color, className, design, styles, variables } = props;
   const ElementType = getElementType(props, 'p');
   const unhandledProps = useUnhandledProps(HeaderDescription.handledProps, props);
 
-  const getA11yProps = useAccessibility<never>(props.accessibility, {
-    debugName: HeaderDescription.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(accessibility, {
     rtl: context.rtl,
   });
 
@@ -67,7 +67,7 @@ export const HeaderDescription = React.forwardRef<HTMLParagraphElement, HeaderDe
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

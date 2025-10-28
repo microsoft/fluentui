@@ -2,7 +2,8 @@ import { Accessibility, statusBehavior, StatusBehaviorProps } from '@fluentui/ac
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
   ForwardRefWithAs,
@@ -70,23 +71,23 @@ export const Status = React.forwardRef<HTMLSpanElement, StatusProps>((props, ref
     }),
     rtl: context.rtl,
   });
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: Status.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(Status.handledProps, props);
 
   const iconElement = Box.create(icon, {
-    defaultProps: () =>
-      getA11Props('icon', {
-        styles: resolvedStyles.icon,
-        as: 'span',
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'icon', {
+      styles: resolvedStyles.icon,
+      as: 'span',
+    }),
   });
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+    <ElementType
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...unhandledProps })}
+    >
       {iconElement}
     </ElementType>
   );

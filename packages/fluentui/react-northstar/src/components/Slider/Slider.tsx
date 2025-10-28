@@ -3,7 +3,8 @@ import {
   getElementType,
   useControllableState,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -163,17 +164,16 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
     value: String(value),
   });
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: Slider.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       disabled,
       getA11yValueMessageOnChange,
       max: numericMax,
       min: numericMax,
       value: numericValue,
       vertical,
-    }),
+    },
   });
   const { classes, styles: resolvedStyles } = useStyles<SliderStylesProps>(Slider.displayName, {
     className: sliderClassName,
@@ -211,31 +211,36 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
   // we need 2 wrappers around the slider rail, track, input and thumb slots to achieve correct component sizes
 
   const inputElement = Box.create(input || type, {
-    defaultProps: () =>
-      getA11Props('input', {
-        ...htmlInputProps,
-        as: 'input',
-        className: sliderSlotClassNames.input,
-        min: numericMin,
-        max: numericMax,
-        step,
-        styles: resolvedStyles.input,
-        type,
-        value: numericValue,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'input', {
+      ...htmlInputProps,
+      as: 'input',
+      className: sliderSlotClassNames.input,
+      min: numericMin,
+      max: numericMax,
+      step,
+      styles: resolvedStyles.input,
+      type,
+      value: numericValue,
+    }),
     overrideProps: handleInputOverrides,
   });
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ref, ...restProps })}>
+    <ElementType {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...restProps })}>
       <div
-        {...getA11Props('inputWrapper', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'inputWrapper', {
           className: cx(sliderSlotClassNames.inputWrapper, classes.inputWrapper),
         })}
       >
-        <span {...getA11Props('rail', { className: cx(sliderSlotClassNames.rail, classes.rail) })} />
         <span
-          {...getA11Props('track', { className: cx(sliderSlotClassNames.track, classes.track) })}
+          {...useAccessibilitySlotProps(a11yBehavior, 'rail', {
+            className: cx(sliderSlotClassNames.rail, classes.rail),
+          })}
+        />
+        <span
+          {...useAccessibilitySlotProps(a11yBehavior, 'track', {
+            className: cx(sliderSlotClassNames.track, classes.track),
+          })}
           style={{ width: valueAsPercentage }}
         />
         <Ref
@@ -248,7 +253,9 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, re
         </Ref>
         {/* the thumb slot needs to appear after the input slot */}
         <span
-          {...getA11Props('thumb', { className: cx(sliderSlotClassNames.thumb, classes.thumb) })}
+          {...useAccessibilitySlotProps(a11yBehavior, 'thumb', {
+            className: cx(sliderSlotClassNames.thumb, classes.thumb),
+          })}
           style={{ [context.rtl ? 'right' : 'left']: valueAsPercentage }}
         />
       </div>

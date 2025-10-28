@@ -6,7 +6,8 @@ import {
   getElementType,
   useUnhandledProps,
   useStyles,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
@@ -111,11 +112,10 @@ export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref)
     rtl: context.rtl,
   });
 
-  const getA11yProps = useAccessibility<LoaderBehaviorProps>(accessibility, {
-    debugName: Loader.displayName,
-    mapPropsToBehavior: () => ({
+  const a11yBehavior = useAccessibilityBehavior<LoaderBehaviorProps>(accessibility, {
+    behaviorProps: {
       labelId: labelId.current,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -137,34 +137,32 @@ export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref)
     </svg>
   );
 
-  const element = visible && (
+  const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,
       })}
     >
       {Box.create(indicator, {
-        defaultProps: () =>
-          getA11yProps('indicator', {
-            children: svgElement,
-            className: loaderSlotClassNames.indicator,
-            styles: resolvedStyles.indicator,
-          }),
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'indicator', {
+          children: svgElement,
+          className: loaderSlotClassNames.indicator,
+          styles: resolvedStyles.indicator,
+        }),
       })}
       {Text.create(label, {
-        defaultProps: () =>
-          getA11yProps('label', {
-            className: loaderSlotClassNames.label,
-            styles: resolvedStyles.label,
-            id: labelId.current,
-          }),
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'label', {
+          className: loaderSlotClassNames.label,
+          styles: resolvedStyles.label,
+          id: labelId.current,
+        }),
       })}
     </ElementType>
   );
 
-  return element;
+  return visible ? element : null;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, LoaderProps> &
   FluentComponentStaticProps<LoaderProps> & {
     shorthandConfig: ShorthandConfig<LoaderProps>;

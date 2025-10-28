@@ -14,7 +14,8 @@ import {
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
 import { FluentComponentStaticProps } from '../../types';
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   getElementType,
   useUnhandledProps,
@@ -75,8 +76,7 @@ export const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
     variables,
   } = props;
   const ElementType = getElementType(props);
-  const getA11yProps = useAccessibility<CarouselItemBehaviorProps>(accessibility, {
-    debugName: CarouselItem.displayName,
+  const a11yBehavior = useAccessibilityBehavior<CarouselItemBehaviorProps>(accessibility, {
     actionHandlers: {
       arrowKeysNavigationStopPropagation: e => {
         // let event propagate, when it was invoke on the element where arrow keys should rotate carousel
@@ -85,10 +85,11 @@ export const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
         }
       },
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       navigation,
       active,
-    }),
+    },
+    rtl: context.rtl,
   });
 
   const { classes } = useStyles<CarouselItemStylesProps>(CarouselItem.displayName, {
@@ -104,7 +105,7 @@ export const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

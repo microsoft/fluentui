@@ -3,7 +3,9 @@ import { Accessibility, PillGroupBehavior, PillGroupBehaviorProps } from '@fluen
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -37,8 +39,7 @@ export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props
 
   const { accessibility = PillGroupBehavior, children, className, design, styles, variables } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: PillGroup.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -50,7 +51,7 @@ export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(PillGroup.handledProps, props);
-  const pillBehavior = getA11Props.unstable_behaviorDefinition().childBehaviors?.pill;
+  const pillBehavior = a11yBehavior.childBehaviors?.pill;
 
   const childProps: PillsContextValue = React.useMemo(
     () => ({
@@ -59,9 +60,10 @@ export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props
     [pillBehavior],
   );
 
-  const element = getA11Props.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),

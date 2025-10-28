@@ -19,7 +19,8 @@ import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
   ForwardRefWithAs,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -68,7 +69,6 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
 
     const {
       accessibility = buttonBehavior,
-      as,
       children,
       content,
       disabled,
@@ -83,12 +83,12 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
 
     const hasChildren = childrenExist(children);
 
-    const getA11Props = useAccessibility(accessibility, {
-      debugName: SplitButtonToggle.displayName,
-      mapPropsToBehavior: () => ({
-        as: String(as),
+    const ElementType = getElementType(props, 'button');
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
+      behaviorProps: {
+        as: String(ElementType),
         disabled,
-      }),
+      },
       actionHandlers: {
         performClick: event => {
           event.preventDefault();
@@ -115,7 +115,6 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
     });
 
     const unhandledProps = useUnhandledProps(SplitButtonToggle.handledProps, props);
-    const ElementType = getElementType(props, 'button');
 
     const handleClick = (e: React.SyntheticEvent) => {
       if (disabled) {
@@ -129,7 +128,7 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
     const result = (
       <ElementType
         {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...getA11Props('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           onClick: handleClick,
           disabled,
           className: classes.root,

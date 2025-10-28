@@ -19,7 +19,8 @@ import {
   useUnhandledProps,
   useFluentContext,
   useStyles,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
@@ -99,13 +100,12 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
   const labelId = React.useRef<string>();
   labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
 
-  const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility ?? formFieldBehavior, {
-    debugName: FormField.displayName,
-    mapPropsToBehavior: () => ({
+  const a11yBehavior = useAccessibilityBehavior<FormFieldBehaviorProps>(props.accessibility ?? formFieldBehavior, {
+    behaviorProps: {
       hasErrorMessage: !!errorMessage,
       messageId: messageId.current,
       labelId: labelId.current,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -127,34 +127,31 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
   });
 
   const labelElement = Text.create(label, {
-    defaultProps: () =>
-      getA11yProps('label', {
-        as: 'label',
-        htmlFor: id,
-        id: labelId.current,
-        styles: resolvedStyles.label,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'label', {
+      as: 'label',
+      htmlFor: id,
+      id: labelId.current,
+      styles: resolvedStyles.label,
+    }),
   });
 
   const messageElement = Text.create(errorMessage || message, {
-    defaultProps: () =>
-      getA11yProps('message', {
-        className: formFieldMessageClassName,
-        id: messageId.current,
-        styles: resolvedStyles.message,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'message', {
+      className: formFieldMessageClassName,
+      id: messageId.current,
+      styles: resolvedStyles.message,
+    }),
   });
 
   const controlElement = Box.create(control || {}, {
-    defaultProps: () =>
-      getA11yProps('control', {
-        required,
-        name,
-        id,
-        type,
-        error: !!errorMessage || null,
-        styles: resolvedStyles.control,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'control', {
+      required,
+      name,
+      id,
+      type,
+      error: !!errorMessage || null,
+      styles: resolvedStyles.control,
+    }),
   });
 
   const shouldControlAppearFirst = () => {
@@ -172,7 +169,7 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

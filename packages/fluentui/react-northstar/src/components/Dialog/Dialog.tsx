@@ -1,7 +1,8 @@
 import { Accessibility, dialogBehavior, DialogBehaviorProps, getCode, keyboardKey } from '@fluentui/accessibility';
 import {
   FocusTrapZoneProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
   useUnhandledProps,
@@ -174,8 +175,7 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
   const headerId = React.useRef<string>();
   headerId.current = getOrGenerateIdFromShorthand('dialog-header-', header, headerId.current);
 
-  const getA11yProps = useAccessibility<DialogBehaviorProps>(accessibility, {
-    debugName: Dialog.displayName,
+  const a11yBehavior = useAccessibilityBehavior<DialogBehaviorProps>(accessibility, {
     actionHandlers: {
       closeAndFocusTrigger: e => {
         handleDialogCancel(e);
@@ -185,12 +185,12 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
       },
       close: e => handleDialogCancel(e),
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       headerId: headerId.current,
       contentId: contentId.current,
       trapFocus,
       trigger,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -325,7 +325,7 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
   const dialogContent = (
     <Ref innerRef={contentRef}>
       <ElementType
-        {...getA11yProps('popup', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'popup', {
           className: classes.root,
           ref,
           ...unhandledProps,
@@ -333,28 +333,25 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
         })}
       >
         {Header.create(header, {
-          defaultProps: () =>
-            getA11yProps('header', {
-              as: 'h2',
-              className: dialogSlotClassNames.header,
-              styles: resolvedStyles.header,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'header', {
+            as: 'h2',
+            className: dialogSlotClassNames.header,
+            styles: resolvedStyles.header,
+          }),
         })}
         {createShorthand(Button, headerAction, {
-          defaultProps: () =>
-            getA11yProps('headerAction', {
-              className: dialogSlotClassNames.headerAction,
-              styles: resolvedStyles.headerAction,
-              text: true,
-              iconOnly: true,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'headerAction', {
+            className: dialogSlotClassNames.headerAction,
+            styles: resolvedStyles.headerAction,
+            text: true,
+            iconOnly: true,
+          }),
         })}
         {Box.create(content, {
-          defaultProps: () =>
-            getA11yProps('content', {
-              styles: resolvedStyles.content,
-              className: dialogSlotClassNames.content,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'content', {
+            styles: resolvedStyles.content,
+            className: dialogSlotClassNames.content,
+          }),
         })}
         {DialogFooter.create(footer, {
           overrideProps: {

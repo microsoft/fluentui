@@ -4,7 +4,8 @@ import { Accessibility, imageBehavior, ImageBehaviorProps } from '@fluentui/acce
 import {
   ForwardRefWithAs,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -51,8 +52,7 @@ export const AvatarStatusImage = React.forwardRef<HTMLImageElement, AvatarStatus
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: AvatarStatusImage.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -60,7 +60,11 @@ export const AvatarStatusImage = React.forwardRef<HTMLImageElement, AvatarStatus
   const unhandledProps = useUnhandledProps(AvatarStatusImage.handledProps, props);
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>{children}</ElementType>
+    <ElementType
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...unhandledProps })}
+    >
+      {children}
+    </ElementType>
   );
 
   return element;

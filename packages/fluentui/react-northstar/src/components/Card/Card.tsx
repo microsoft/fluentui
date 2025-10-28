@@ -1,7 +1,9 @@
 import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
 import {
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   useFluentContext,
   useUnhandledProps,
@@ -128,8 +130,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
   const ElementType = getElementType(props);
 
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: Card.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       performClick: e => {
         // prevent Spacebar from scrolling
@@ -140,9 +141,9 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
         cardRef.current.focus();
       },
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       disabled,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -182,9 +183,10 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
 
   const element = (
     <Ref innerRef={cardRef}>
-      {getA11yProps.unstable_wrapWithFocusZone(
+      {wrapWithFocusZone(
+        a11yBehavior,
         <ElementType
-          {...getA11yProps('root', {
+          {...useAccessibilitySlotProps(a11yBehavior, 'root', {
             className: classes.root,
             onClick: handleClick,
             ref,

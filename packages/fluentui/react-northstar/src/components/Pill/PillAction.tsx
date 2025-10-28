@@ -3,7 +3,8 @@ import { Accessibility, pillActionBehavior, PillActionBehaviorProps } from '@flu
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -54,8 +55,7 @@ export const PillAction = React.forwardRef<HTMLDivElement, PillActionProps>((pro
     size,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: PillAction.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -71,7 +71,7 @@ export const PillAction = React.forwardRef<HTMLDivElement, PillActionProps>((pro
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),

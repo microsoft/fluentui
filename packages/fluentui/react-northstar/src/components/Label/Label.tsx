@@ -2,7 +2,8 @@ import { Accessibility } from '@fluentui/accessibility';
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -86,8 +87,7 @@ export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) 
     imagePosition = 'start',
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: Label.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<LabelStylesProps>(Label.displayName, {
@@ -107,23 +107,6 @@ export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) 
 
   const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(Label.handledProps, props);
-
-  if (childrenExist(children)) {
-    const element = (
-      <ElementType
-        {...getA11Props('root', {
-          className: classes.root,
-          ref,
-          ...rtlTextContainer.getAttributes({ forElements: [children] }),
-          ...unhandledProps,
-        })}
-      >
-        {children}
-      </ElementType>
-    );
-
-    return element;
-  }
 
   const imageElement = Image.create(image, {
     defaultProps: () => ({
@@ -148,17 +131,24 @@ export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) 
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
+        ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
     >
-      {startImage}
-      {startIcon}
-      {contentElement}
-      {endIcon}
-      {endImage}
+      {childrenExist(children) ? (
+        children
+      ) : (
+        <>
+          {startImage}
+          {startIcon}
+          {contentElement}
+          {endIcon}
+          {endImage}
+        </>
+      )}
     </ElementType>
   );
 

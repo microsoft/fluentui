@@ -9,7 +9,8 @@ import {
 import {
   AutoFocusZoneProps,
   FocusTrapZoneProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useControllableState,
   useFluentContext,
   useTriggerElement,
@@ -202,8 +203,7 @@ export const Popup: React.FC<PopupProps> &
     });
   });
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: Popup.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       closeAndFocusTrigger: e => {
         e.preventDefault();
@@ -230,14 +230,14 @@ export const Popup: React.FC<PopupProps> &
         e.stopPropagation();
       },
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       isOpenedByRightClick,
       on,
       trapFocus,
       tabbableTrigger,
       trigger: trigger as any,
       inline,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -430,22 +430,24 @@ export const Popup: React.FC<PopupProps> &
     return relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
+  const popupContentA11yProps = useAccessibilitySlotProps(a11yBehavior, 'popup', {});
+
   const renderPopperChildren =
-    classes =>
+    (classes: string) =>
     ({ placement, scheduleUpdate }: PopperChildrenProps) => {
       const content = renderContent ? renderContent(scheduleUpdate) : props.content;
-      const popupContent = Popup.Content.create(content || {}, {
-        defaultProps: () =>
-          getA11yProps('popup', {
-            ...getContentProps(),
-            placement,
-            pointing,
-            pointerRef: pointerTargetRef,
-            trapFocus,
-            autoFocus,
-            autoSize,
-            className: classes,
-          }),
+      const popupContent = PopupContent.create(content || {}, {
+        defaultProps: {
+          ...getContentProps(),
+          ...popupContentA11yProps,
+          placement,
+          pointing,
+          pointerRef: pointerTargetRef,
+          trapFocus,
+          autoFocus,
+          autoSize,
+          className: classes,
+        },
         overrideProps: getContentProps,
       });
 
@@ -623,10 +625,10 @@ export const Popup: React.FC<PopupProps> &
     </Animation>
   );
 
+  const triggerA11yProps = useAccessibilitySlotProps(a11yBehavior, 'trigger', triggerProps);
+
   const triggerElement = triggerNode && (
-    <Ref innerRef={triggerRef}>
-      {React.cloneElement(triggerNode as React.ReactElement, getA11yProps('trigger', triggerProps))}
-    </Ref>
+    <Ref innerRef={triggerRef}>{React.cloneElement(triggerNode as React.ReactElement, triggerA11yProps)}</Ref>
   );
 
   const element = (

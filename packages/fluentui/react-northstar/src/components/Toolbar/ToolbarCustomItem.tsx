@@ -4,7 +4,8 @@ import {
   getElementType,
   mergeVariablesOverrides,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
 } from '@fluentui/react-bindings';
@@ -65,8 +66,7 @@ export const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarC
     const { accessibility, children, className, content, design, fitted, focusable, styles, variables } = props;
     const parentVariables = React.useContext(ToolbarVariablesContext);
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       rtl: context.rtl,
     });
     const { classes } = useStyles<ToolbarCustomItemStylesProps>(composeOptions.displayName, {
@@ -100,7 +100,7 @@ export const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarC
 
     const element = (
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           [IS_FOCUSABLE_ATTRIBUTE]: focusable,
           ...unhandledProps,
           className: classes.root,

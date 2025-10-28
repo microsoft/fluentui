@@ -16,7 +16,9 @@ import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useFluentContext,
   useUnhandledProps,
   useStyles,
@@ -54,8 +56,7 @@ export const Segment = React.forwardRef<HTMLDivElement, SegmentProps>((props, re
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Segment.handledProps, props);
 
-  const getA11yProps = useAccessibility<never>(props.accessibility, {
-    debugName: Segment.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(props.accessibility, {
     rtl: context.rtl,
   });
 
@@ -75,9 +76,10 @@ export const Segment = React.forwardRef<HTMLDivElement, SegmentProps>((props, re
     rtl: context.rtl,
   });
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),

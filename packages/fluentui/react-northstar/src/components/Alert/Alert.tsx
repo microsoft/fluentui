@@ -19,7 +19,9 @@ import { Text, TextProps } from '../Text/Text';
 import { ButtonGroup, ButtonGroupProps } from '../Button/ButtonGroup';
 import { AlertDismissAction, AlertDismissActionProps } from './AlertDismissAction';
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   getElementType,
   useStyles,
   useFluentContext,
@@ -157,14 +159,8 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Alert.handledProps, props);
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: Alert.displayName,
-    mapPropsToBehavior: () => ({
-      warning,
-      danger,
-      bodyId,
-      visible,
-    }),
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
+    behaviorProps: React.useMemo(() => ({ warning, danger, bodyId, visible }), [warning, danger, bodyId, visible]),
     rtl: context.rtl,
   });
 
@@ -201,80 +197,73 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
     _.invoke(props, 'onFocus', e, props);
   };
 
-  const renderContent = () => {
-    const bodyContent = (
-      <>
-        {Text.create(header, {
-          defaultProps: () =>
-            getA11yProps('header', {
-              className: alertSlotClassNames.header,
-              styles: resolvedStyles.header,
-            }),
-        })}
-        {Box.create(content, {
-          defaultProps: () =>
-            getA11yProps('content', {
-              className: alertSlotClassNames.content,
-              styles: resolvedStyles.content,
-            }),
-        })}
-      </>
-    );
+  const bodyContentElement = (
+    <>
+      {Text.create(header, {
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'header', {
+          className: alertSlotClassNames.header,
+          styles: resolvedStyles.header,
+        }),
+      })}
+      {Box.create(content, {
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'content', {
+          className: alertSlotClassNames.content,
+          styles: resolvedStyles.content,
+        }),
+      })}
+    </>
+  );
+  const dismissActionElement = AlertDismissAction.create(dismissAction, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'dismissAction', {
+      danger,
+      warning,
+      info,
+      success,
+      variables,
+    }),
+    overrideProps: handleDismissOverrides,
+  });
 
-    return (
-      <>
-        {Box.create(icon, {
-          defaultProps: () =>
-            getA11yProps('icon', {
-              className: alertSlotClassNames.icon,
-              styles: resolvedStyles.icon,
-            }),
-        })}
-        {Box.create(body, {
-          defaultProps: () =>
-            getA11yProps('body', {
-              className: alertSlotClassNames.body,
-              styles: resolvedStyles.body,
-              id: bodyId,
-            }),
-          overrideProps: {
-            children: bodyContent,
-          },
-        })}
+  const contentElement = (
+    <>
+      {Box.create(icon, {
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'icon', {
+          className: alertSlotClassNames.icon,
+          styles: resolvedStyles.icon,
+        }),
+      })}
+      {Box.create(body, {
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'body', {
+          className: alertSlotClassNames.body,
+          styles: resolvedStyles.body,
+          id: bodyId,
+        }),
+        overrideProps: {
+          children: bodyContentElement,
+        },
+      })}
 
-        {ButtonGroup.create(actions, {
-          defaultProps: () =>
-            getA11yProps('actions', {
-              className: alertSlotClassNames.actions,
-              styles: resolvedStyles.actions,
-            }),
-        })}
-        {dismissible &&
-          AlertDismissAction.create(dismissAction, {
-            defaultProps: () =>
-              getA11yProps('dismissAction', {
-                danger,
-                warning,
-                info,
-                success,
-                variables,
-              }),
-            overrideProps: handleDismissOverrides,
-          })}
-      </>
-    );
-  };
+      {ButtonGroup.create(actions, {
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'actions', {
+          className: alertSlotClassNames.actions,
+          styles: resolvedStyles.actions,
+        }),
+      })}
+      {dismissible && dismissActionElement}
+    </>
+  );
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         onFocus: handleFocus,
         ref,
         ...unhandledProps,
       })}
     >
-      {childrenExist(children) ? children : renderContent()}
+      {childrenExist(children) ? children : contentElement}
     </ElementType>,
   );
 

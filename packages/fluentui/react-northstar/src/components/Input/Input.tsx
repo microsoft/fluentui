@@ -24,7 +24,8 @@ import {
   useUnhandledProps,
   useFluentContext,
   useStyles,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   compose,
   ComponentWithAs,
 } from '@fluentui/react-bindings';
@@ -214,8 +215,7 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       unstable_props: props,
     });
 
-    const getA11yProps = useAccessibility<InputBehaviorProps>(props.accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior<InputBehaviorProps>(props.accessibility, {
       actionHandlers: {
         clear: e => {
           if (clearable && value !== '') {
@@ -225,11 +225,11 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
           }
         },
       },
-      mapPropsToBehavior: () => ({
+      behaviorProps: {
         disabled,
         required,
         error,
-      }),
+      },
       rtl: context.rtl,
     });
 
@@ -323,7 +323,7 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
     const inputElement = Box.create(
       { 'data-tid': input ? input['data-tid'] : undefined },
       {
-        defaultProps: () => ({
+        defaultProps: {
           children: (
             <>
               <Ref
@@ -334,49 +334,46 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
                 }}
               >
                 {createShorthand(composeOptions.slots.control, input || type, {
-                  defaultProps: () =>
-                    getA11yProps('input', {
-                      ...htmlInputProps,
-                      as: 'input',
-                      disabled,
-                      type,
-                      required,
-                      value: value || '',
-                      id: inputId.current,
-                      className: inputSlotClassNames.input,
-                      styles: resolvedStyles.input,
-                      onChange: handleChange,
-                    }),
+                  defaultProps: useAccessibilitySlotProps(a11yBehavior, 'input', {
+                    ...htmlInputProps,
+                    as: 'input',
+                    disabled,
+                    type,
+                    required,
+                    value: value || '',
+                    id: inputId.current,
+                    className: inputSlotClassNames.input,
+                    styles: resolvedStyles.input,
+                    onChange: handleChange,
+                  }),
                 })}
               </Ref>
               {createShorthand(composeOptions.slots.icon, computeIcon(), {
-                defaultProps: () =>
-                  getA11yProps('icon', {
-                    className: inputSlotClassNames.icon,
-                    styles: resolvedStyles.icon,
-                  }),
+                defaultProps: useAccessibilitySlotProps(a11yBehavior, 'icon', {
+                  className: inputSlotClassNames.icon,
+                  styles: resolvedStyles.icon,
+                }),
                 overrideProps: handleIconOverrides,
               })}
             </>
           ),
           styles: resolvedStyles.inputContainer,
-        }),
+        },
       },
     );
 
     const element = Box.create(wrapper, {
-      defaultProps: () =>
-        getA11yProps('root', {
-          className: classes.root,
-          children: (
-            <>
-              {labelElement}
-              {inputElement}
-            </>
-          ),
-          styles: resolvedStyles.root,
-          ...restProps,
-        }),
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'root', {
+        className: classes.root,
+        children: (
+          <>
+            {labelElement}
+            {inputElement}
+          </>
+        ),
+        styles: resolvedStyles.root,
+        ...restProps,
+      }),
       overrideProps: {
         as: (wrapper && (wrapper as any).as) || ElementType,
       },

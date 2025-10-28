@@ -17,7 +17,8 @@ import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } fro
 import {
   ForwardRefWithAs,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -84,7 +85,6 @@ export const AlertDismissAction = React.forwardRef<
 
   const {
     accessibility = buttonBehavior,
-    as = 'button',
     children,
     className,
     content = {},
@@ -101,12 +101,12 @@ export const AlertDismissAction = React.forwardRef<
   const hasChildren = childrenExist(children);
   const hasContent = !!content && !_.isEmpty(content);
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: AlertDismissAction.displayName,
-    mapPropsToBehavior: () => ({
-      as: String(as),
+  const ElementType = getElementType(props, 'button');
+  const a11yBehavior = useAccessibilityBehavior<ButtonBehaviorProps>(accessibility, {
+    behaviorProps: {
+      as: String(ElementType),
       disabled,
-    }),
+    },
     actionHandlers: {
       performClick: event => {
         event.preventDefault();
@@ -135,7 +135,6 @@ export const AlertDismissAction = React.forwardRef<
   });
 
   const unhandledProps = useUnhandledProps(AlertDismissAction.handledProps, props);
-  const ElementType = getElementType(props);
 
   const handleClick = (e: React.SyntheticEvent) => {
     if (disabled) {
@@ -146,10 +145,18 @@ export const AlertDismissAction = React.forwardRef<
     _.invoke(props, 'onClick', e, props);
   };
 
-  const result = (
+  const contentElement = Box.create(content, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'content', {
+      as: 'span',
+      className: alertDismissActionSlotClassNames.content,
+      styles: resolvedStyles.content,
+    }),
+  });
+
+  return (
     <ElementType
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         onClick: handleClick,
         disabled,
         className: classes.root,
@@ -157,20 +164,9 @@ export const AlertDismissAction = React.forwardRef<
         ref,
       })}
     >
-      {hasChildren
-        ? children
-        : Box.create(content, {
-            defaultProps: () =>
-              getA11Props('content', {
-                as: 'span',
-                className: alertDismissActionSlotClassNames.content,
-                styles: resolvedStyles.content,
-              }),
-          })}
+      {hasChildren ? children : contentElement}
     </ElementType>
   );
-
-  return result;
 }) as unknown as ForwardRefWithAs<'button', HTMLButtonElement, AlertDismissActionProps> &
   FluentComponentStaticProps<AlertDismissActionProps>;
 

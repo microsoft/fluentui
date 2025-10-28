@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   getElementType,
   useFluentContext,
   useUnhandledProps,
@@ -48,8 +49,7 @@ export const SplitButtonDivider = React.forwardRef<HTMLDivElement, SplitButtonDi
   const ElementType = getElementType(props);
   const { primary } = props;
   const unhandledProps = useUnhandledProps(SplitButtonDivider.handledProps, props);
-  const getA11yProps = useAccessibility<never>(accessibility, {
-    debugName: SplitButtonDivider.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(accessibility, {
     rtl: context.rtl,
   });
   const { classes } = useStyles<SplitButtonDividerStylesProps>(SplitButtonDivider.displayName, {
@@ -68,7 +68,7 @@ export const SplitButtonDivider = React.forwardRef<HTMLDivElement, SplitButtonDi
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

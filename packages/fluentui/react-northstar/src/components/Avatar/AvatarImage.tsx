@@ -2,7 +2,8 @@ import { Accessibility, AccessibilityAttributes, imageBehavior, ImageBehaviorPro
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -63,12 +64,8 @@ export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>(
     size,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: AvatarImage.displayName,
-    mapPropsToBehavior: () => ({
-      alt,
-      'aria-label': ariaLabel,
-    }),
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
+    behaviorProps: { alt, 'aria-label': ariaLabel },
     rtl: context.rtl,
   });
   const { classes } = useStyles<AvatarImageStylesProps>(AvatarImage.displayName, {
@@ -91,7 +88,11 @@ export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>(
   const ElementType = getElementType(props, 'img');
   const unhandledProps = useUnhandledProps(AvatarImage.handledProps, props);
 
-  const result = <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })} />;
+  const result = (
+    <ElementType
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...unhandledProps })}
+    />
+  );
 
   return result;
 }) as unknown as ForwardRefWithAs<'img', HTMLImageElement, AvatarImageProps> &

@@ -4,7 +4,9 @@ import {
   getElementType,
   useFluentContext,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -94,8 +96,7 @@ export const CarouselNavigation = React.forwardRef<HTMLUListElement, CarouselNav
   const ElementType = getElementType(props, 'ul');
   const unhandledProps = useUnhandledProps(CarouselNavigation.handledProps, props);
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: CarouselNavigation.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -125,28 +126,31 @@ export const CarouselNavigation = React.forwardRef<HTMLUListElement, CarouselNav
     variables: mergeVariablesOverrides(variables, predefinedProps.variables),
   });
 
+  const itemA11yProps = useAccessibilitySlotProps(a11yBehavior, 'item', {});
+
   const renderItems = () => {
     return _.map(items, (item, index) =>
       CarouselNavigationItem.create(item, {
-        defaultProps: () =>
-          getA11yProps('item', {
-            active: index === activeIndex,
-            iconOnly,
-            index,
-            primary,
-            secondary,
-            vertical,
-            thumbnails,
-            disableClickableNav,
-          }),
+        defaultProps: () => ({
+          ...itemA11yProps,
+          active: index === activeIndex,
+          iconOnly,
+          index,
+          primary,
+          secondary,
+          vertical,
+          thumbnails,
+          disableClickableNav,
+        }),
         overrideProps: handleItemOverrides(variables),
       }),
     );
   };
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

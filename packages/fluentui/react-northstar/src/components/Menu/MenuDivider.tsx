@@ -4,7 +4,8 @@ import {
   getElementType,
   mergeVariablesOverrides,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useUnhandledProps,
   useContextSelectors,
@@ -79,8 +80,7 @@ export const MenuDivider = React.forwardRef<HTMLLIElement, MenuDividerProps>((in
     variables,
   } = props;
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: MenuDivider.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -110,7 +110,7 @@ export const MenuDivider = React.forwardRef<HTMLLIElement, MenuDividerProps>((in
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         ...unhandledProps,

@@ -2,7 +2,9 @@ import { Accessibility, tableRowBehavior, GridRowBehaviorProps } from '@fluentui
 import {
   getElementType,
   mergeVariablesOverrides,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   useUnhandledProps,
   useFluentContext,
@@ -72,8 +74,7 @@ export const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>((props, 
   const hasChildren = childrenExist(children);
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TableRow.handledProps, props);
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: TableRow.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       // https://github.com/microsoft/fluent-ui-react/issues/2150
       unsetRowTabbable: e => {
@@ -86,10 +87,10 @@ export const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>((props, 
         }
       },
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       selected,
       header,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -108,10 +109,12 @@ export const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>((props, 
     rtl: context.rtl,
   });
 
+  const cellA11yProps = useAccessibilitySlotProps(a11yBehavior, 'cell', {});
+
   const renderCells = () => {
     return _.map(items, (item: TableCellProps) => {
       return TableCell.create(item, {
-        defaultProps: () => getA11yProps('cell', {}),
+        defaultProps: () => cellA11yProps,
         overrideProps: predefinedProps => ({
           variables: mergeVariablesOverrides(variables, predefinedProps.variables),
         }),
@@ -121,9 +124,10 @@ export const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>((props, 
 
   const element = (
     <Ref innerRef={rowRef}>
-      {getA11yProps.unstable_wrapWithFocusZone(
+      {wrapWithFocusZone(
+        a11yBehavior,
         <ElementType
-          {...getA11yProps('root', {
+          {...useAccessibilitySlotProps(a11yBehavior, 'root', {
             className: classes.root,
             ref,
             ...unhandledProps,

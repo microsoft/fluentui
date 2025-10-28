@@ -18,7 +18,8 @@ import {
 import { Button, ButtonProps } from './Button';
 import {
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useUnhandledProps,
   useStyles,
   useFluentContext,
@@ -75,8 +76,7 @@ export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((p
     rtl: context.rtl,
   });
 
-  const getA11yProps = useAccessibility<ButtonGroupBehaviorProps>(accessibility, {
-    debugName: ButtonGroup.displayName,
+  const a11yBehavior = useAccessibilityBehavior<ButtonGroupBehaviorProps>(accessibility, {
     rtl: context.rtl,
   });
 
@@ -99,7 +99,7 @@ export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((p
   const element = (
     <ElementType
       {...{
-        ...getA11yProps('root', {
+        ...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           ref,
           ...unhandledProps,

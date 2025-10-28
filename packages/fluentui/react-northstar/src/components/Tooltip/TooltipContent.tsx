@@ -2,7 +2,8 @@ import { Accessibility } from '@fluentui/accessibility';
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -74,8 +75,7 @@ export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentPro
     subtle,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: TooltipContent.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const { classes } = useStyles<TooltipContentStylesProps>(TooltipContent.displayName, {
@@ -100,7 +100,7 @@ export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentPro
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
@@ -109,7 +109,7 @@ export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentPro
     >
       {open && pointing && <div className={classes.pointer} ref={pointerRef} />}
 
-      <div {...getA11Props('content', { className: classes.content })}>
+      <div {...useAccessibilitySlotProps(a11yBehavior, 'content', { className: classes.content })}>
         {childrenExist(children) ? children : content}
       </div>
     </ElementType>

@@ -4,7 +4,8 @@ import { Accessibility } from '@fluentui/accessibility';
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -49,8 +50,7 @@ export const PillContent = React.forwardRef<HTMLSpanElement, PillContentProps>((
 
   const { accessibility, children, className, content, design, styles, variables, size, actionable } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: PillContent.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -66,7 +66,7 @@ export const PillContent = React.forwardRef<HTMLSpanElement, PillContentProps>((
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),

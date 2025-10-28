@@ -2,7 +2,8 @@ import { Accessibility, treeItemBehavior, TreeItemBehaviorProps } from '@fluentu
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
   ForwardRefWithAs,
@@ -158,7 +159,7 @@ export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, 
 
   const { selected, hasSubtree, childrenIds } = getItemById(id);
 
-  const getA11Props = useAccessibility(accessibility, {
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       performClick: e => {
         if (shouldPreventDefaultOnKeyDown(e)) {
@@ -202,8 +203,7 @@ export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, 
         handleSelection(e);
       },
     },
-    debugName: TreeItem.displayName,
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       expanded,
       level,
       index,
@@ -212,7 +212,7 @@ export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, 
       selected: selected === true,
       selectable,
       indeterminate: selected === 'indeterminate',
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -290,9 +290,30 @@ export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, 
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
+
+  const titleElement = TreeTitle.create(title, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'title', {
+      hasSubtree,
+      as: hasSubtree ? 'span' : 'a',
+      level,
+      treeSize,
+      expanded,
+      index,
+      selected: selected === true,
+      selectable,
+      parent,
+      ...(hasSubtree && {
+        indeterminate: selected === 'indeterminate',
+      }),
+      selectionIndicator,
+    }),
+    render: renderItemTitle,
+    overrideProps: handleTitleOverrides,
+  });
+
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         id,
         ref: elementRef,
@@ -303,28 +324,7 @@ export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, 
         ...unhandledProps,
       })}
     >
-      {childrenExist(children)
-        ? children
-        : TreeTitle.create(title, {
-            defaultProps: () =>
-              getA11Props('title', {
-                hasSubtree,
-                as: hasSubtree ? 'span' : 'a',
-                level,
-                treeSize,
-                expanded,
-                index,
-                selected: selected === true,
-                selectable,
-                parent,
-                ...(hasSubtree && {
-                  indeterminate: selected === 'indeterminate',
-                }),
-                selectionIndicator,
-              }),
-            render: renderItemTitle,
-            overrideProps: handleTitleOverrides,
-          })}
+      {childrenExist(children) ? children : titleElement}
     </ElementType>
   );
 

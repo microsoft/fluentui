@@ -8,7 +8,8 @@ import {
   getElementType,
   useUnhandledProps,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
   useControllableState,
@@ -89,11 +90,10 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((pr
 
   const unhandledProps = useUnhandledProps(TextArea.handledProps, props);
 
-  const getA11yProps = useAccessibility<TextAreaBehaviorProps>(accessibility, {
-    debugName: TextArea.displayName,
-    mapPropsToBehavior: () => ({
+  const a11yBehavior = useAccessibilityBehavior<TextAreaBehaviorProps>(accessibility, {
+    behaviorProps: {
       disabled,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -126,7 +126,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((pr
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         value,
         disabled,

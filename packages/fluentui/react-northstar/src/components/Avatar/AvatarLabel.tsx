@@ -2,7 +2,8 @@ import { Accessibility } from '@fluentui/accessibility';
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -51,8 +52,7 @@ export const AvatarLabel = React.forwardRef<HTMLSpanElement, AvatarLabelProps>((
 
   const { accessibility, children, className, content, design, styles, variables, square, size, circular } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: AvatarLabel.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -72,7 +72,7 @@ export const AvatarLabel = React.forwardRef<HTMLSpanElement, AvatarLabelProps>((
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),

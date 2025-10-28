@@ -20,7 +20,8 @@ import {
   getElementType,
   useFluentContext,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -112,14 +113,14 @@ export const CarouselNavigationItem = React.forwardRef<HTMLLIElement, CarouselNa
   const ElementType = getElementType(props, 'li');
   const unhandledProps = useUnhandledProps(CarouselNavigationItem.handledProps, props);
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: CarouselNavigationItem.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       performClick: event => !event.defaultPrevented && handleClick(event),
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       active,
-    }),
+    },
+    rtl: context.rtl,
   });
 
   const { classes, styles: resolvedStyles } = useStyles<CarouselNavigationItemStylesProps>(
@@ -176,7 +177,7 @@ export const CarouselNavigationItem = React.forwardRef<HTMLLIElement, CarouselNa
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         onBlur: handleBlur,
         onFocus: handleFocus,

@@ -15,10 +15,10 @@ export const useAccessibilitySlotProps = <SlotProps extends Record<string, unkno
   slotName: string,
   slotProps: SlotProps,
 ): MergedProps<SlotProps> => {
+  const accessibilityHandler = definition.keyHandlers[slotName]?.onKeyDown;
   const childBehavior = definition.childBehaviors ? definition.childBehaviors[slotName] : undefined;
 
   const handleKeyDown = useEventCallback((e: React.KeyboardEvent, ...args: unknown[]) => {
-    const accessibilityHandler = definition.keyHandlers[slotName]?.onKeyDown;
     const userHandler = slotProps.onKeyDown;
 
     if (accessibilityHandler) accessibilityHandler(e);
@@ -29,6 +29,6 @@ export const useAccessibilitySlotProps = <SlotProps extends Record<string, unkno
     ...(childBehavior && { accessibility: childBehavior }),
     ...definition.attributes[slotName],
     ...slotProps,
-    onKeyDown: handleKeyDown,
+    ...(!!accessibilityHandler && { onKeyDown: handleKeyDown }),
   };
 };

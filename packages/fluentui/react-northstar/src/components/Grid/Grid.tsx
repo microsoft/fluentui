@@ -1,7 +1,9 @@
 import { Accessibility, GridBehaviorProps } from '@fluentui/accessibility';
 import {
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   useFluentContext,
   useUnhandledProps,
@@ -47,9 +49,7 @@ export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => 
 
   const { accessibility, children, className, columns, content, design, rows, styles, variables } = props;
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: Grid.displayName,
-
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const { classes } = useStyles<GridStylesProps>(Grid.displayName, {
@@ -67,9 +67,10 @@ export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Grid.handledProps, props);
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),

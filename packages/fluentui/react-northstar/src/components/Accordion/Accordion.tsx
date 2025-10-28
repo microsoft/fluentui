@@ -24,7 +24,8 @@ import {
 } from '../../types';
 import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useUnhandledProps,
   getElementType,
@@ -134,28 +135,25 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
     initialState: exclusive ? alwaysActiveIndex : [alwaysActiveIndex],
   });
 
-  const actionHandlers = {
-    moveNext: e => {
-      e.preventDefault();
-      focusHandler.moveNext();
+  const a11yBehavior = useAccessibilityBehavior<AccordionBehaviorProps>(accessibility, {
+    actionHandlers: {
+      moveNext: e => {
+        e.preventDefault();
+        focusHandler.moveNext();
+      },
+      movePrevious: e => {
+        e.preventDefault();
+        focusHandler.movePrevious();
+      },
+      moveFirst: e => {
+        e.preventDefault();
+        focusHandler.moveFirst();
+      },
+      moveLast: e => {
+        e.preventDefault();
+        focusHandler.moveLast();
+      },
     },
-    movePrevious: e => {
-      e.preventDefault();
-      focusHandler.movePrevious();
-    },
-    moveFirst: e => {
-      e.preventDefault();
-      focusHandler.moveFirst();
-    },
-    moveLast: e => {
-      e.preventDefault();
-      focusHandler.moveLast();
-    },
-  };
-
-  const getA11yProps = useAccessibility<AccordionBehaviorProps>(accessibility, {
-    debugName: Accordion.displayName,
-    actionHandlers,
     rtl: context.rtl,
   });
 
@@ -170,10 +168,10 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
     rtl: context.rtl,
   });
 
-  const [focusedIndex, setfocusedIndex] = React.useState<number>();
+  const [focusedIndex, setFocusedIndex] = React.useState<number>();
 
   const handleNavigationFocus = (index: number) => {
-    setfocusedIndex(index);
+    setFocusedIndex(index);
   };
 
   const getNavigationItemsSize = () => props.panels.length;
@@ -218,7 +216,7 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
       const { index } = titleProps;
       const activeIndex = computeNewIndex(index);
       setActiveIndex(activeIndex);
-      setfocusedIndex(index);
+      setFocusedIndex(index);
 
       _.invoke(props, 'onActiveIndexChange', e, { ...props, activeIndex });
       _.invoke(predefinedProps, 'onClick', e, titleProps);
@@ -226,7 +224,7 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
     },
     onFocus: (e: React.SyntheticEvent, titleProps: AccordionTitleProps) => {
       _.invoke(predefinedProps, 'onFocus', e, titleProps);
-      setfocusedIndex(predefinedProps.index);
+      setFocusedIndex(predefinedProps.index);
     },
   });
 
@@ -296,7 +294,7 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ...unhandledProps,
         ref,

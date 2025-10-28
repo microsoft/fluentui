@@ -7,7 +7,8 @@ import {
   getElementType,
   useUnhandledProps,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
@@ -34,8 +35,7 @@ export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>((props, 
   const { accessibility, className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CardBody.handledProps, props);
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: CardBody.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -53,7 +53,7 @@ export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>((props, 
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

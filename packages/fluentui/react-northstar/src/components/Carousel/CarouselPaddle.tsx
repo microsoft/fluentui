@@ -18,7 +18,8 @@ import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } fro
 import {
   getElementType,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useUnhandledProps,
   ForwardRefWithAs,
@@ -80,7 +81,6 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
 
     const {
       accessibility = buttonBehavior,
-      as,
       children,
       className,
       content = {},
@@ -96,12 +96,12 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
 
     const hasChildren = childrenExist(children);
 
-    const getA11Props = useAccessibility(accessibility, {
-      debugName: CarouselPaddle.displayName,
-      mapPropsToBehavior: () => ({
-        as: String(as),
+    const ElementType = getElementType(props, 'button');
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
+      behaviorProps: {
+        as: String(ElementType),
         disabled,
-      }),
+      },
       actionHandlers: {
         performClick: event => {
           event.preventDefault();
@@ -129,7 +129,6 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
     });
 
     const unhandledProps = useUnhandledProps(CarouselPaddle.handledProps, props);
-    const ElementType = getElementType(props, 'button');
 
     const handleClick = (e: React.SyntheticEvent) => {
       if (disabled) {
@@ -140,10 +139,18 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
       _.invoke(props, 'onClick', e, props);
     };
 
+    const contentElement = Box.create(content, {
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'content', {
+        as: 'span',
+        className: carouselPaddleSlotClassNames.content,
+        styles: resolvedStyles.content,
+      }),
+    });
+
     const result = (
       <ElementType
         {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...getA11Props('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           onClick: handleClick,
           disabled,
           className: classes.root,
@@ -151,16 +158,7 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
           ...unhandledProps,
         })}
       >
-        {hasChildren
-          ? children
-          : Box.create(content, {
-              defaultProps: () =>
-                getA11Props('content', {
-                  as: 'span',
-                  className: carouselPaddleSlotClassNames.content,
-                  styles: resolvedStyles.content,
-                }),
-            })}
+        {hasChildren ? children : contentElement}
       </ElementType>
     );
 

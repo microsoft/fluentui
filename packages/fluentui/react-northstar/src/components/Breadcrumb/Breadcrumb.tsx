@@ -3,7 +3,9 @@ import * as PropTypes from 'prop-types';
 import {
   compose,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   useUnhandledProps,
   getElementType,
@@ -58,8 +60,7 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     const { accessibility, children, content, className, design, styles, variables, size } = props;
 
     const contextValue = React.useMemo(() => ({ size }), [size]);
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       rtl: context.rtl,
     });
 
@@ -80,16 +81,17 @@ export const Breadcrumb = compose<'nav', BreadcrumbProps, BreadcrumbStylesProps,
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
-    const result = getA11yProps.unstable_wrapWithFocusZone(
+    const result = wrapWithFocusZone(
+      a11yBehavior,
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           ...unhandledProps,
         })}
       >
         <BreadcrumbContext.Provider value={contextValue}>
           <div
-            {...getA11yProps('container', {
+            {...useAccessibilitySlotProps(a11yBehavior, 'container', {
               className: classes.container,
             })}
           >

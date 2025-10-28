@@ -21,7 +21,8 @@ import {
   getElementType,
   useUnhandledProps,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -116,8 +117,7 @@ export const Text = React.forwardRef<HTMLSpanElement, TextProps>((props, ref) =>
     weight,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: Text.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const { classes } = useStyles<TextStylesProps>(Text.displayName, {
@@ -150,7 +150,7 @@ export const Text = React.forwardRef<HTMLSpanElement, TextProps>((props, ref) =>
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),

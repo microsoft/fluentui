@@ -2,7 +2,8 @@ import { Accessibility } from '@fluentui/accessibility';
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   mergeVariablesOverrides,
@@ -77,8 +78,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref)
     variables,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: Avatar.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const { classes } = useStyles(Avatar.displayName, {
@@ -96,46 +96,44 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref)
   const unhandledProps = useUnhandledProps(Avatar.handledProps, props);
 
   const imageElement = createShorthand(AvatarImage, image, {
-    defaultProps: () =>
-      getA11Props('image', {
-        fluid: true,
-        avatar: !square,
-        title: name,
-        size,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'image', {
+      fluid: true,
+      avatar: !square,
+      title: name,
+      size,
+    }),
   });
 
   const iconElement = createShorthand(AvatarIcon, icon, {
-    defaultProps: () =>
-      getA11Props('icon', {
-        title: name,
-        size,
-        square,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'icon', {
+      title: name,
+      size,
+      square,
+    }),
   });
 
   const labelElement = createShorthand(AvatarLabel, label || {}, {
-    defaultProps: () =>
-      getA11Props('label', {
-        content: getInitials(name),
-        circular: !square,
-        title: name,
-        size,
-        square,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'label', {
+      content: getInitials(name),
+      circular: !square,
+      title: name,
+      size,
+      square,
+    }),
   });
 
   const hasGlyph = !!image || !!icon;
 
   const result = (
-    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+    <ElementType
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...unhandledProps })}
+    >
       {hasGlyph && (imageElement || iconElement)}
       {!hasGlyph && labelElement}
       {createShorthand(AvatarStatus, status as ShorthandValue<AvatarStatusProps & { as: 'span' }>, {
-        defaultProps: () =>
-          getA11Props('status', {
-            size,
-          }),
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'status', {
+          size,
+        }),
         overrideProps: (predefinedProps: AvatarStatusProps) => ({
           variables: mergeVariablesOverrides(variables, predefinedProps.variables),
         }),

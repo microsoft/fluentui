@@ -2,7 +2,8 @@ import { Accessibility, treeTitleBehavior, TreeTitleBehaviorProps } from '@fluen
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
   ForwardRefWithAs,
@@ -123,8 +124,7 @@ export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((pr
     indeterminate,
   } = props;
 
-  const getA11Props = useAccessibility<TreeTitleBehaviorProps>(accessibility, {
-    debugName: TreeTitle.displayName,
+  const a11yBehavior = useAccessibilityBehavior<TreeTitleBehaviorProps>(accessibility, {
     actionHandlers: {
       performClick: e => {
         if (shouldPreventDefaultOnKeyDown(e)) {
@@ -138,14 +138,14 @@ export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((pr
         focusItemById(props.parent);
       },
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       hasSubtree,
       level,
       index,
       treeSize,
       selected,
       selectable,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -192,23 +192,19 @@ export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((pr
     },
   });
 
-  const selectionIndicatorElement =
-    selectable &&
-    Box.create(selectionIndicator, {
-      defaultProps: () => ({
-        as: 'span',
-        selected,
-        ...getA11Props('indicator', {
-          className: treeTitleSlotClassNames.indicator,
-          styles: resolvedStyles.selectionIndicator,
-        }),
-      }),
-      overrideProps: selectionIndicatorOverrideProps,
-    });
+  const selectionIndicatorElement = Box.create(selectionIndicator, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'indicator', {
+      as: 'span',
+      selected,
+      className: treeTitleSlotClassNames.indicator,
+      styles: resolvedStyles.selectionIndicator,
+    }),
+    overrideProps: selectionIndicatorOverrideProps,
+  });
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         onClick: handleClick,
         selected,
@@ -218,7 +214,7 @@ export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((pr
       })}
     >
       {childrenExist(children) ? children : content}
-      {selectionIndicatorElement}
+      {selectable && selectionIndicatorElement}
     </ElementType>
   );
 

@@ -3,7 +3,9 @@ import {
   getElementType,
   mergeVariablesOverrides,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   useFluentContext,
   ForwardRefWithAs,
@@ -92,8 +94,7 @@ export const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) =
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Table.handledProps, props);
 
-  const getA11yProps = useAccessibility<TableBehaviorProps>(accessibility, {
-    debugName: Table.displayName,
+  const a11yBehavior = useAccessibilityBehavior<TableBehaviorProps>(accessibility, {
     rtl: context.rtl,
   });
 
@@ -108,16 +109,18 @@ export const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) =
     rtl: context.rtl,
   });
 
+  const rowA11yProps = useAccessibilitySlotProps(a11yBehavior, 'row', {});
+
   const renderRows = () => {
     return _.map(rows, (row: TableRowProps) => {
       return TableRow.create(row, {
-        defaultProps: () =>
-          getA11yProps('row', {
-            compact,
-            onClick: (e, props) => {
-              _.invoke(row, 'onClick', e, props);
-            },
-          }),
+        defaultProps: () => ({
+          ...rowA11yProps,
+          compact,
+          onClick: (e, props) => {
+            _.invoke(row, 'onClick', e, props);
+          },
+        }),
         overrideProps: predefinedProps => ({
           variables: mergeVariablesOverrides(variables, predefinedProps.variables),
         }),
@@ -127,21 +130,22 @@ export const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) =
 
   const renderHeader = () => {
     return TableRow.create(header, {
-      defaultProps: () =>
-        getA11yProps('row', {
-          header: true,
-          compact,
-          className: tableSlotClassNames.header,
-        }),
+      defaultProps: () => ({
+        ...rowA11yProps,
+        header: true,
+        compact,
+        className: tableSlotClassNames.header,
+      }),
       overrideProps: predefinedProps => ({
         variables: mergeVariablesOverrides(variables, predefinedProps.variables),
       }),
     });
   };
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

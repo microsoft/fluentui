@@ -2,7 +2,8 @@ import { Accessibility } from '@fluentui/accessibility';
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -35,8 +36,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>((pro
   const { accessibility, className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CardHeader.handledProps, props);
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: CardHeader.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -54,7 +54,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>((pro
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

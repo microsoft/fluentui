@@ -1,6 +1,7 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   getElementType,
   useFluentContext,
   useUnhandledProps,
@@ -77,8 +78,7 @@ export const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, re
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Divider.handledProps, props);
-  const getA11yProps = useAccessibility<never>(accessibility, {
-    debugName: Divider.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(accessibility, {
     rtl: context.rtl,
   });
   const { classes } = useStyles<DividerStylesProps>(Divider.displayName, {
@@ -104,7 +104,7 @@ export const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, re
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),

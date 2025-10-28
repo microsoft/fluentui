@@ -24,7 +24,8 @@ import { CarouselNavigationItem, CarouselNavigationItemProps } from './CarouselN
 import { CarouselPaddle, CarouselPaddleProps } from './CarouselPaddle';
 import {
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
   useUnhandledProps,
@@ -225,8 +226,15 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
   const previousPaddleHidden = items !== undefined && !circular && activeIndex === 0;
 
   const unhandledProps = useUnhandledProps(Carousel.handledProps, props);
-  const getA11yProps = useAccessibility<CarouselBehaviorProps>(accessibility, {
-    debugName: Carousel.displayName,
+  const a11yBehavior = useAccessibilityBehavior<CarouselBehaviorProps>(accessibility, {
+    behaviorProps: {
+      paddlePreviousHidden: previousPaddleHidden,
+      paddleNextHidden: nextPaddleHidden,
+      navigation,
+      ariaLiveOn,
+      'aria-roledescription': ariaRoleDescription,
+      'aria-label': ariaLabel,
+    },
     actionHandlers: {
       showNextSlideByKeyboardNavigation: e => {
         e.preventDefault();
@@ -247,14 +255,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
         handlePreviousPaddleFocus();
       },
     },
-    mapPropsToBehavior: () => ({
-      paddlePreviousHidden: previousPaddleHidden,
-      paddleNextHidden: nextPaddleHidden,
-      navigation,
-      ariaLiveOn,
-      'aria-roledescription': ariaRoleDescription,
-      'aria-label': ariaLabel,
-    }),
+    rtl: context.rtl,
   });
 
   const { classes } = useStyles<CarouselStylesProps>(Carousel.displayName, {
@@ -328,52 +329,50 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
     },
   });
 
-  const renderContent = () => {
-    return (
+  const contentElement = (
+    <div
+      {...useAccessibilitySlotProps(a11yBehavior, 'itemsContainerWrapper', {
+        className: classes.itemsContainerWrapper,
+      })}
+    >
       <div
-        {...getA11yProps('itemsContainerWrapper', {
-          className: classes.itemsContainerWrapper,
+        {...useAccessibilitySlotProps(a11yBehavior, 'itemsContainer', {
+          className: cx(carouselSlotClassNames.itemsContainer, classes.itemsContainer),
         })}
       >
-        <div
-          {...getA11yProps('itemsContainer', {
-            className: cx(carouselSlotClassNames.itemsContainer, classes.itemsContainer),
-          })}
-        >
-          {items &&
-            items.map((item, index) => {
-              const itemRef = itemRefs[index];
-              const active = activeIndex === index;
-              const animationName = getAnimationName({
-                active,
-                dir,
-                animationEnterFromPrev,
-                animationEnterFromNext,
-                animationExitToPrev,
-                animationExitToNext,
-              });
+        {items &&
+          items.map((item, index) => {
+            const itemRef = itemRefs[index];
+            const active = activeIndex === index;
+            const animationName = getAnimationName({
+              active,
+              dir,
+              animationEnterFromPrev,
+              animationEnterFromNext,
+              animationExitToPrev,
+              animationExitToNext,
+            });
 
-              return (
-                <Animation visible={active} key={item['key'] || index} mountOnEnter unmountOnExit name={animationName}>
-                  <Ref innerRef={itemRef}>
-                    {CarouselItem.create(item, {
-                      defaultProps: () => ({
-                        active,
-                        navigation: !!navigation,
-                        ...(getItemPositionText && {
-                          itemPositionText: getItemPositionText(index, items.length),
-                        }),
+            return (
+              <Animation visible={active} key={item['key'] || index} mountOnEnter unmountOnExit name={animationName}>
+                <Ref innerRef={itemRef}>
+                  {CarouselItem.create(item, {
+                    defaultProps: () => ({
+                      active,
+                      navigation: !!navigation,
+                      ...(getItemPositionText && {
+                        itemPositionText: getItemPositionText(index, items.length),
                       }),
-                      overrideProps: overrideItemProps,
-                    })}
-                  </Ref>
-                </Animation>
-              );
-            })}
-        </div>
+                    }),
+                    overrideProps: overrideItemProps,
+                  })}
+                </Ref>
+              </Animation>
+            );
+          })}
       </div>
-    );
-  };
+    </div>
+  );
 
   const handleNextPaddleFocus = () => {
     // if 'next' paddle will disappear, will focus 'previous' one.
@@ -425,26 +424,24 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
     <>
       <Ref innerRef={paddlePreviousRef}>
         {CarouselPaddle.create(paddlePrevious, {
-          defaultProps: () =>
-            getA11yProps('paddlePrevious', {
-              className: carouselSlotClassNames.paddlePrevious,
-              previous: true,
-              hidden: previousPaddleHidden,
-              disableClickableNav,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'paddlePrevious', {
+            className: carouselSlotClassNames.paddlePrevious,
+            previous: true,
+            hidden: previousPaddleHidden,
+            disableClickableNav,
+          }),
           overrideProps: (predefinedProps: CarouselPaddleProps) =>
             handlePaddleOverrides(predefinedProps, 'paddlePrevious'),
         })}
       </Ref>
       <Ref innerRef={paddleNextRef}>
         {CarouselPaddle.create(paddleNext, {
-          defaultProps: () =>
-            getA11yProps('paddleNext', {
-              className: carouselSlotClassNames.paddleNext,
-              next: true,
-              hidden: nextPaddleHidden,
-              disableClickableNav,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'paddleNext', {
+            className: carouselSlotClassNames.paddleNext,
+            next: true,
+            hidden: nextPaddleHidden,
+            disableClickableNav,
+          }),
           overrideProps: (predefinedProps: CarouselPaddleProps) => handlePaddleOverrides(predefinedProps, 'paddleNext'),
         })}
       </Ref>
@@ -501,7 +498,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,
@@ -512,7 +509,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
       ) : (
         <>
           {renderPaddles()}
-          {renderContent()}
+          {contentElement}
           {renderNavigation()}
         </>
       )}

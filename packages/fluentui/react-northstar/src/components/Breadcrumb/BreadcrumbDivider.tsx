@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   compose,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useUnhandledProps,
   getElementType,
@@ -32,8 +33,7 @@ export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, Breadcr
 
     const { accessibility, children, content, className, design, styles, variables } = props;
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       rtl: context.rtl,
     });
 
@@ -55,7 +55,7 @@ export const BreadcrumbDivider = compose<'span', BreadcrumbDividerProps, Breadcr
 
     const result = (
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           ref,
           ...unhandledProps,

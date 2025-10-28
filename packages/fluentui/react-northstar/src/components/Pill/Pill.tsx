@@ -8,7 +8,9 @@ import { ShorthandValue, FluentComponentStaticProps, ComponentEventHandler } fro
 import { BoxProps } from '../Box/Box';
 
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   getElementType,
   useStyles,
   useFluentContext,
@@ -166,19 +168,18 @@ export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =>
     _.invoke(props, 'onClick', e, props);
   };
 
-  const getA11yProps = useAccessibility(accessibility || parentProps.pillBehavior || pillBehavior, {
-    debugName: Pill.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility || parentProps.pillBehavior || pillBehavior, {
     actionHandlers: {
       performDismiss: handleDismiss,
       performClick: handleClick,
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       actionable,
       selectable,
       selected,
       role,
       dismissible: Boolean(onDismiss),
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -214,9 +215,10 @@ export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =>
     return <AcceptIcon />;
   };
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...((actionable || selectable) && { onClick: handleClick }),

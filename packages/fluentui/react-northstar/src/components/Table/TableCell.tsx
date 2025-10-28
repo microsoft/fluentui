@@ -17,7 +17,9 @@ import {
   useFluentContext,
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
@@ -73,8 +75,7 @@ export const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>((props
   const hasChildren = childrenExist(children);
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TableCell.handledProps, props);
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: TableCell.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       focusCell: e => {
         e.preventDefault();
@@ -106,9 +107,10 @@ export const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>((props
 
   const element = (
     <Ref innerRef={cellRef}>
-      {getA11yProps.unstable_wrapWithFocusZone(
+      {wrapWithFocusZone(
+        a11yBehavior,
         <ElementType
-          {...getA11yProps('root', {
+          {...useAccessibilitySlotProps(a11yBehavior, 'root', {
             className: classes.root,
             ref,
             ...unhandledProps,

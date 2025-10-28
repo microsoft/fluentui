@@ -2,7 +2,9 @@ import { Accessibility, treeBehavior, TreeBehaviorProps } from '@fluentui/access
 import {
   useUnhandledProps,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   useFluentContext,
   ForwardRefWithAs,
@@ -125,12 +127,11 @@ export const Tree = React.forwardRef<HTMLDivElement, TreeProps>((props, ref) => 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Tree.handledProps, props);
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: Tree.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       selectable,
-    }),
+    },
   });
 
   const { classes } = useStyles<TreeStylesProps>(Tree.displayName, {
@@ -177,15 +178,17 @@ export const Tree = React.forwardRef<HTMLDivElement, TreeProps>((props, ref) => 
     ],
   );
 
+  const defaultItemProps = useAccessibilitySlotProps(a11yBehavior, 'item', {
+    renderItemTitle: props.renderItemTitle,
+  });
+
   const renderContent = (): React.ReactElement[] => {
     return visibleItemIds.map(id => {
       const item = getItemById(id);
       const { expanded, parent, level, index, treeSize } = item;
+
       return TreeItem.create(item.item, {
-        defaultProps: () =>
-          getA11yProps('item', {
-            renderItemTitle: props.renderItemTitle,
-          }),
+        defaultProps: defaultItemProps,
         overrideProps: {
           expanded,
           parent,
@@ -201,9 +204,10 @@ export const Tree = React.forwardRef<HTMLDivElement, TreeProps>((props, ref) => 
 
   const element = (
     <TreeContext.Provider value={contextValue}>
-      {getA11yProps.unstable_wrapWithFocusZone(
+      {wrapWithFocusZone(
+        a11yBehavior,
         <ElementType
-          {...getA11yProps('root', {
+          {...useAccessibilitySlotProps(a11yBehavior, 'root', {
             className: classes.root,
             ref,
             ...rtlTextContainer.getAttributes({ forElements: [children] }),

@@ -3,7 +3,8 @@ import {
   ForwardRefWithAs,
   useFluentContext,
   useStyles,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   getElementType,
   useUnhandledProps,
   childrenExist,
@@ -84,8 +85,7 @@ export const MenuItemIndicator = React.forwardRef<HTMLSpanElement, MenuItemIndic
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: MenuItemIndicator.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -93,7 +93,9 @@ export const MenuItemIndicator = React.forwardRef<HTMLSpanElement, MenuItemIndic
   const unhandledProps = useUnhandledProps(MenuItemIndicator.handledProps, props);
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+    <ElementType
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...unhandledProps })}
+    >
       {childrenExist(children) ? children : content}
     </ElementType>
   );

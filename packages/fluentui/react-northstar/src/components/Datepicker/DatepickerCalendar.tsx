@@ -21,7 +21,8 @@ import {
 import {
   ForwardRefWithAs,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -158,8 +159,7 @@ export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCal
       setGridNavigatedDate(date);
     }
   };
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: DatepickerCalendar.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       addWeek: e => {
         e.preventDefault();
@@ -330,30 +330,32 @@ export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCal
     }
   }, [gridNavigatedDate, normalizedGridDate, shouldFocusInDayGrid]);
 
+  const cellA11yProps = useAccessibilitySlotProps(a11yBehavior, 'calendarCell', {});
+
   const renderCell = (day: IDay, content) =>
     createShorthand(DatepickerCalendarCell, calendarCell, {
-      defaultProps: () =>
-        getA11yProps('calendarCell', {
-          content,
-          key: day.key,
-          selected: day.isSelected,
-          disabled: !day.isInBounds,
-          quiet: !day.isInMonth,
-          today: compareDates(day.originalDate, props.today ?? new Date()),
-        }),
+      defaultProps: {
+        ...cellA11yProps,
+        content,
+        key: day.key,
+        selected: day.isSelected,
+        disabled: !day.isInBounds,
+        quiet: !day.isInMonth,
+        today: compareDates(day.originalDate, props.today ?? new Date()),
+      },
     });
 
   const renderCellButton = (day: IDay, dateRange: IDay[]) =>
     createShorthand(DatepickerCalendarCellButton, calendarCellButton, {
-      defaultProps: () =>
-        getA11yProps('calendarCell', {
-          content: day.date,
-          'aria-label': formatMonthDayYear(day.originalDate, dateFormatting),
-          selected: day.isSelected,
-          disabled: !day.isInBounds,
-          quiet: !day.isInMonth,
-          today: compareDates(day.originalDate, props.today ?? new Date()),
-        }),
+      defaultProps: {
+        ...cellA11yProps,
+        content: day.date,
+        'aria-label': formatMonthDayYear(day.originalDate, dateFormatting),
+        selected: day.isSelected,
+        disabled: !day.isInBounds,
+        quiet: !day.isInMonth,
+        today: compareDates(day.originalDate, props.today ?? new Date()),
+      },
       overrideProps: (
         predefinedProps: DatepickerCalendarCellButtonProps & { ref: React.Ref<HTMLButtonElement> },
       ): DatepickerCalendarCellButtonProps & { ref: React.Ref<HTMLButtonElement> } => ({
@@ -374,9 +376,12 @@ export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCal
     });
   const renderWeekRow = (week: IDay[]) => _.map(week, (day: IDay) => renderCell(day, renderCellButton(day, week)));
 
+  const gridRowA11yProps = useAccessibilitySlotProps(a11yBehavior, 'calendarGridRow', {});
+  const headerCellA11yProps = useAccessibilitySlotProps(a11yBehavior, 'calendarHeaderCell', {});
+
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,
@@ -403,42 +408,40 @@ export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCal
         }),
       })}
       {createShorthand(DatepickerCalendarGrid, calendarGrid, {
-        defaultProps: () =>
-          getA11yProps('calendarGrid', {
-            content: (
-              <>
-                <thead>
-                  {createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
-                    defaultProps: () =>
-                      getA11yProps('calendarGridRow', {
-                        children: _.times(DAYS_IN_WEEK, dayNumber =>
-                          createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
-                            defaultProps: () =>
-                              getA11yProps('calendarHeaderCell', {
-                                'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                                content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
-                                key: dayNumber,
-                              }),
-                          }),
-                        ),
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'calendarGrid', {
+          content: (
+            <>
+              <thead>
+                {createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
+                  defaultProps: useAccessibilitySlotProps(a11yBehavior, 'calendarGridRow', {
+                    children: _.times(DAYS_IN_WEEK, dayNumber =>
+                      createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
+                        defaultProps: {
+                          ...headerCellA11yProps,
+                          'aria-label': days[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                          content: shortDays[(dayNumber + firstDayOfWeek) % DAYS_IN_WEEK],
+                          key: dayNumber,
+                        },
                       }),
-                  })}
-                </thead>
-                <tbody>
-                  {_.map(visibleGrid, week =>
-                    createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
-                      defaultProps: () =>
-                        getA11yProps('calendarGridRow', {
-                          children: renderWeekRow(week),
-                          isRowSelectionActive: dateRangeType === DateRangeType.Week,
-                          key: week[0].key,
-                        }),
-                    }),
-                  )}
-                </tbody>
-              </>
-            ),
-          }),
+                    ),
+                  }),
+                })}
+              </thead>
+              <tbody>
+                {_.map(visibleGrid, week =>
+                  createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
+                    defaultProps: {
+                      ...gridRowA11yProps,
+                      children: renderWeekRow(week),
+                      isRowSelectionActive: dateRangeType === DateRangeType.Week,
+                      key: week[0].key,
+                    },
+                  }),
+                )}
+              </tbody>
+            </>
+          ),
+        }),
       })}
     </ElementType>
   );

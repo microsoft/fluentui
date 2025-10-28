@@ -14,7 +14,8 @@ import {
   getElementType,
   useUnhandledProps,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -39,8 +40,7 @@ export const DialogFooter = React.forwardRef<HTMLDivElement, DialogFooterProps>(
   const { children, content, className, design, styles, variables, accessibility } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(DialogFooter.handledProps, props);
-  const getA11yProps = useAccessibility<never>(accessibility, {
-    debugName: DialogFooter.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(accessibility, {
     rtl: context.rtl,
   });
   const { classes } = useStyles<DialogFooterStylesProps>(DialogFooter.displayName, {
@@ -54,7 +54,9 @@ export const DialogFooter = React.forwardRef<HTMLDivElement, DialogFooterProps>(
     rtl: context.rtl,
   });
   const element = (
-    <ElementType {...getA11yProps('root', { className: classes.root, ref, ...unhandledProps })}>
+    <ElementType
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...unhandledProps })}
+    >
       {childrenExist(children) ? children : content}
     </ElementType>
   );

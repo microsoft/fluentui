@@ -5,7 +5,8 @@ import {
 } from '@fluentui/accessibility';
 import {
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
   useUnhandledProps,
@@ -56,15 +57,14 @@ export const DatepickerCalendarCell = compose<
     const { accessibility, className, design, styles, variables, disabled, selected, quiet, today, content } = props;
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       actionHandlers: {},
-      mapPropsToBehavior: () => ({
+      behaviorProps: {
         selected,
         disabled,
         quiet,
         today,
-      }),
+      },
       rtl: context.rtl,
     });
 
@@ -89,7 +89,7 @@ export const DatepickerCalendarCell = compose<
 
     const element = (
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           ref,
           ...unhandledProps,

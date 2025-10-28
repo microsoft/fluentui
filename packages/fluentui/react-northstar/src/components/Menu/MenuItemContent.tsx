@@ -3,7 +3,8 @@ import {
   ForwardRefWithAs,
   useFluentContext,
   useStyles,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useUnhandledProps,
   getElementType,
   childrenExist,
@@ -85,8 +86,7 @@ export const MenuItemContent = React.forwardRef<HTMLSpanElement, MenuItemContent
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: MenuItemContent.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -95,7 +95,7 @@ export const MenuItemContent = React.forwardRef<HTMLSpanElement, MenuItemContent
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         ref,

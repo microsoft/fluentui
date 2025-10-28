@@ -19,7 +19,8 @@ import {
   useFluentContext,
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -63,8 +64,7 @@ export const Reaction = React.forwardRef<HTMLSpanElement, ReactionProps>((props,
   const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(Reaction.handledProps, props);
 
-  const getA11yProps = useAccessibility<never>(props.accessibility, {
-    debugName: Reaction.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(props.accessibility, {
     rtl: context.rtl,
   });
 
@@ -82,9 +82,22 @@ export const Reaction = React.forwardRef<HTMLSpanElement, ReactionProps>((props,
     rtl: context.rtl,
   });
 
+  const iconElement = Box.create(icon, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'icon', {
+      className: reactionSlotClassNames.icon,
+      styles: resolvedStyles.icon,
+    }),
+  });
+  const contentElement = Box.create(content, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'content', {
+      className: reactionSlotClassNames.content,
+      styles: resolvedStyles.content,
+    }),
+  });
+
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,
@@ -95,20 +108,8 @@ export const Reaction = React.forwardRef<HTMLSpanElement, ReactionProps>((props,
         children
       ) : (
         <>
-          {Box.create(icon, {
-            defaultProps: () =>
-              getA11yProps('icon', {
-                className: reactionSlotClassNames.icon,
-                styles: resolvedStyles.icon,
-              }),
-          })}
-          {Box.create(content, {
-            defaultProps: () =>
-              getA11yProps('content', {
-                className: reactionSlotClassNames.content,
-                styles: resolvedStyles.content,
-              }),
-          })}
+          {iconElement}
+          {contentElement}
         </>
       )}
     </ElementType>

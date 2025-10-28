@@ -19,7 +19,8 @@ import {
   useUnhandledProps,
   useStyles,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
@@ -71,8 +72,7 @@ export const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) =>
     rtl: context.rtl,
   });
 
-  const getA11yProps = useAccessibility<never>(accessibility, {
-    debugName: Form.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(accessibility, {
     rtl: context.rtl,
   });
 
@@ -92,7 +92,7 @@ export const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) =>
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),

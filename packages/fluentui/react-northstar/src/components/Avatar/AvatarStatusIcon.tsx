@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   useFluentContext,
   useStyles,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   getElementType,
   useUnhandledProps,
   ForwardRefWithAs,
@@ -51,8 +52,7 @@ export const AvatarStatusIcon = React.forwardRef<HTMLSpanElement, AvatarStatusIc
     rtl: context.rtl,
   });
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: AvatarStatusIcon.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -60,7 +60,11 @@ export const AvatarStatusIcon = React.forwardRef<HTMLSpanElement, AvatarStatusIc
   const unhandledProps = useUnhandledProps(AvatarStatusIcon.handledProps, props);
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>{children}</ElementType>
+    <ElementType
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...unhandledProps })}
+    >
+      {children}
+    </ElementType>
   );
 
   return element;

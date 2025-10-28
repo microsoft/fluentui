@@ -15,7 +15,9 @@ import { MenuItemProps } from '../Menu/MenuItem';
 import { focusMenuItem } from './focusUtils';
 import { ALIGNMENTS, POSITIONS, PositioningProps, AutoSize, AUTOSIZES } from '../../utils/positioner';
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   getElementType,
   useUnhandledProps,
   useFluentContext,
@@ -163,14 +165,13 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(MenuButton.handledProps, props);
 
-  const getA11yProps = useAccessibility<MenuButtonBehaviorProps>(accessibility, {
-    debugName: MenuButton.displayName,
+  const a11yBehavior = useAccessibilityBehavior<MenuButtonBehaviorProps>(accessibility, {
     actionHandlers: {
       closeMenu: e => closeMenu(e),
       openAndFocusFirst: e => openAndFocus(e, 'first'),
       openAndFocusLast: e => openAndFocus(e, 'last'),
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       menuId: menuId.current,
       triggerId: triggerId.current,
       open,
@@ -178,7 +179,7 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
       contextMenu,
       on,
       tabbableTrigger,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -249,16 +250,15 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
   });
 
   const content = Menu.create(menu, {
-    defaultProps: () =>
-      getA11yProps('menu', {
-        vertical: true,
-        className: menuButtonSlotClassNames.menu,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'menu', {
+      vertical: true,
+      className: menuButtonSlotClassNames.menu,
+    }),
     overrideProps: handleMenuOverrides,
   });
 
   const overrideProps: PopupProps = {
-    accessibility: getA11yProps.unstable_behaviorDefinition,
+    accessibility: () => a11yBehavior,
     open,
     onOpenChange: (e, { open }) => {
       handleOpenChange(e, open);
@@ -281,14 +281,10 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
   };
 
   const popup = Popup.create(popupProps, { overrideProps });
-
-  if (contextMenu) {
-    return popup;
-  }
-
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         ref,
         className: classes.root,
         ...unhandledProps,
@@ -297,6 +293,10 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
       <Ref innerRef={triggerRef}>{popup}</Ref>
     </ElementType>,
   );
+
+  if (contextMenu) {
+    return popup;
+  }
 
   return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps>;

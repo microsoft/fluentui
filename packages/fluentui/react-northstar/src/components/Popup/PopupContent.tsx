@@ -5,7 +5,8 @@ import {
   FocusTrapZone,
   FocusTrapZoneProps,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -108,8 +109,7 @@ export const PopupContent = React.forwardRef<HTMLDivElement, PopupContentProps>(
     autoSize,
   } = props;
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: PopupContent.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const { classes } = useStyles<PopupContentStylesProps>(PopupContent.displayName, {
@@ -134,7 +134,7 @@ export const PopupContent = React.forwardRef<HTMLDivElement, PopupContentProps>(
     _.invoke(props, 'onMouseLeave', e, props);
   };
 
-  const popupContentProps: PopupContentProps = getA11yProps('root', {
+  const popupContentProps: PopupContentProps = useAccessibilitySlotProps(a11yBehavior, 'root', {
     className: classes.root,
     ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
     ...unhandledProps,

@@ -1,10 +1,12 @@
-import { Accessibility, attachmentBehavior, AttachmentBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, attachmentBehavior, type AttachmentBehaviorProps } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
   compose,
   getElementType,
   mergeVariablesOverrides,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   useFluentContext,
   useUnhandledProps,
@@ -94,8 +96,7 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
       variables,
     } = props;
 
-    const getA11Props = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11Behavior = useAccessibilityBehavior<AttachmentBehaviorProps>(accessibility, {
       actionHandlers: {
         performClick: e => {
           if (e.currentTarget === e.target) {
@@ -104,7 +105,7 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
           }
         },
       },
-      mapPropsToBehavior: () => ({ actionable }),
+      behaviorProps: { actionable },
       rtl: context.rtl,
     });
 
@@ -139,8 +140,16 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
       _.invoke(props, 'onClick', e, props);
     };
 
-    const element = getA11Props.unstable_wrapWithFocusZone(
-      <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}>
+    const element = wrapWithFocusZone(
+      a11Behavior,
+      <ElementType
+        {...useAccessibilitySlotProps(a11Behavior, 'root', {
+          className: classes.root,
+          onClick: handleClick,
+          ref,
+          ...unhandledProps,
+        })}
+      >
         {createShorthand(composeOptions.slots.icon, icon, {
           defaultProps: () => slotProps.icon,
           overrideProps: predefinedProps => ({

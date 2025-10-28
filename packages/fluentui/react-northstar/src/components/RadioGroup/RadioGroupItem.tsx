@@ -15,7 +15,9 @@ import { Box, BoxProps } from '../Box/Box';
 import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -159,8 +161,7 @@ export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemPro
     rtl: context.rtl,
   });
 
-  const getA11yProps = useAccessibility<RadioGroupItemBehaviorProps>(accessibility, {
-    debugName: RadioGroupItem.displayName,
+  const a11yBehavior = useAccessibilityBehavior<RadioGroupItemBehaviorProps>(accessibility, {
     actionHandlers: {
       performClick: e => {
         if (shouldPreventDefaultOnKeyDown(e)) {
@@ -169,10 +170,10 @@ export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemPro
         handleClick(e);
       },
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       checked,
       disabled,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -182,10 +183,11 @@ export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemPro
     _.invoke(props, 'onChange', e, { ...props, checked });
   };
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <Ref innerRef={elementRef}>
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           onClick: handleClick,
           onChange: handleChange,

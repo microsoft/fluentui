@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   useFluentContext,
   useStyles,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   getElementType,
   useUnhandledProps,
   ForwardRefWithAs,
@@ -75,8 +76,7 @@ export const AvatarStatus = React.forwardRef<HTMLSpanElement, AvatarStatusProps>
     }),
     rtl: context.rtl,
   });
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: AvatarStatus.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const ElementType = getElementType(props, 'span');
@@ -90,14 +90,15 @@ export const AvatarStatus = React.forwardRef<HTMLSpanElement, AvatarStatusProps>
   });
 
   const imageElement = createShorthand(AvatarStatusImage, image, {
-    defaultProps: () =>
-      getA11Props('image', {
-        size,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'image', {
+      size,
+    }),
   });
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+    <ElementType
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...unhandledProps })}
+    >
       {imageElement || iconElement}
     </ElementType>
   );

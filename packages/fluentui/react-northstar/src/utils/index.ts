@@ -7,9 +7,6 @@ export { getOrGenerateIdFromShorthand } from './getOrGenerateIdFromShorthand';
 export * from './factories';
 export { mergeProviderContexts } from './mergeProviderContexts';
 
-export * from './renderComponent';
-export { renderComponent } from './renderComponent';
-
 export { htmlImageProps, htmlInputAttrs, htmlInputEvents, htmlInputProps, partitionHTMLProps } from './htmlPropsUtils';
 
 export { isBrowser } from './isBrowser';

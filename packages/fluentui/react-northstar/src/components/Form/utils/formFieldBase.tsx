@@ -8,7 +8,8 @@ import { Box, BoxProps } from '../../Box/Box';
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   compose,
   useStyles,
@@ -49,7 +50,8 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
   (props, ref, composeOptions) => {
     const context = useFluentContext();
 
-    const { message, inline, errorMessage, control, label, className, design, styles, variables } = props;
+    const { accessibility, message, inline, errorMessage, control, label, className, design, styles, variables } =
+      props;
 
     const slotProps = composeOptions.resolveSlotProps<FormFieldBaseProps>(props);
     const ElementType = getElementType(props);
@@ -72,13 +74,12 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       unstable_props: props,
     });
 
-    const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility, {
-      debugName: composeOptions.displayName,
-      mapPropsToBehavior: () => ({
+    const a11yBehavior = useAccessibilityBehavior<FormFieldBehaviorProps>(accessibility, {
+      behaviorProps: {
         hasErrorMessage: !!errorMessage,
         messageId: messageId.current,
         labelId: labelId.current,
-      }),
+      },
       rtl: context.rtl,
     });
 
@@ -93,17 +94,16 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
 
     const element = (
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
         })}
       >
         {createShorthand(composeOptions.slots.label, label, {
-          defaultProps: () =>
-            getA11yProps('label', {
-              id: labelId.current,
-              inline,
-              ...slotProps.label,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'label', {
+            id: labelId.current,
+            inline,
+            ...slotProps.label,
+          }),
         })}
         {/**
          * When there's a message for the input the labelId and messageId should be consistent in the
@@ -112,21 +112,19 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
          */}
         <FormFieldBaseProvider value={childProps}>
           {createShorthand(composeOptions.slots.control, control || {}, {
-            defaultProps: () =>
-              getA11yProps('control', {
-                error: !!errorMessage || null,
-                ref,
-                ...unhandledProps,
-                ...slotProps.control,
-              }),
+            defaultProps: useAccessibilitySlotProps(a11yBehavior, 'control', {
+              error: !!errorMessage || null,
+              ref,
+              ...unhandledProps,
+              ...slotProps.control,
+            }),
           })}
         </FormFieldBaseProvider>
         {createShorthand(composeOptions.slots.message, errorMessage || message, {
-          defaultProps: () =>
-            getA11yProps('message', {
-              id: messageId.current,
-              ...slotProps.message,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'message', {
+            id: messageId.current,
+            ...slotProps.message,
+          }),
         })}
       </ElementType>
     );

@@ -6,7 +6,8 @@ import {
   useFluentContext,
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
   useContextSelectors,
@@ -246,8 +247,7 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
   const ElementType = getElementType(props, 'a');
   const unhandledProps = useUnhandledProps(MenuItem.handledProps, props);
 
-  const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
-    debugName: Menu.displayName,
+  const a11yBehavior = useAccessibilityBehavior<MenuItemBehaviorProps>(accessibility, {
     actionHandlers: {
       performClick: event => !event.defaultPrevented && handleClick(event),
       openMenu: event => openMenu(event),
@@ -259,13 +259,13 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
       },
       closeAllMenus: event => closeAllMenus(event),
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       menuOpen,
       hasMenu: !!menu,
       disabled,
       vertical,
       active, // for tabBehavior
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -439,6 +439,39 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
     });
   };
 
+  const indicatorElement = createShorthand(MenuItemIndicator, indicator, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'indicator', {
+      iconOnly,
+      vertical,
+      inSubmenu,
+      active,
+      primary,
+      underlined,
+    }),
+  });
+
+  const contentElement = (
+    <>
+      <>
+        {createShorthand(MenuItemIcon, icon, {
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'icon', {
+            hasContent: !!content,
+            iconOnly,
+          }),
+        })}
+        {createShorthand(MenuItemContent, content, {
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'content', {
+            hasIcon: !!icon,
+            hasMenu: !!menu,
+            inSubmenu,
+            vertical,
+          }),
+        })}
+        {menu && indicatorElement}
+      </>
+    </>
+  );
+
   const menuItemInner = (
     <Ref
       innerRef={node => {
@@ -447,7 +480,7 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
       }}
     >
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           disabled,
           onBlur: handleBlur,
@@ -457,40 +490,7 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
         })}
         {...rootHandlers}
       >
-        {childrenExist(children) ? (
-          children
-        ) : (
-          <>
-            {createShorthand(MenuItemIcon, icon, {
-              defaultProps: () =>
-                getA11yProps('icon', {
-                  hasContent: !!content,
-                  iconOnly,
-                }),
-            })}
-            {createShorthand(MenuItemContent, content, {
-              defaultProps: () =>
-                getA11yProps('content', {
-                  hasIcon: !!icon,
-                  hasMenu: !!menu,
-                  inSubmenu,
-                  vertical,
-                }),
-            })}
-            {menu &&
-              createShorthand(MenuItemIndicator, indicator, {
-                defaultProps: () =>
-                  getA11yProps('indicator', {
-                    iconOnly,
-                    vertical,
-                    inSubmenu,
-                    active,
-                    primary,
-                    underlined,
-                  }),
-              })}
-          </>
-        )}
+        {childrenExist(children) ? children : contentElement}
       </ElementType>
     </Ref>
   );
@@ -550,34 +550,33 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
       </>
     ) : null;
 
-  if (wrapper) {
-    const wrapperElement = createShorthand(MenuItemWrapper, wrapper, {
-      defaultProps: () =>
-        getA11yProps('wrapper', {
-          active,
-          disabled,
-          iconOnly,
-          isFromKeyboard,
-          pills,
-          pointing,
-          secondary,
-          underlined,
-          vertical,
-          primary,
-          on,
-          variables,
-        }),
-      overrideProps: predefinedProps => ({
-        children: (
-          <>
-            {menuItemInner}
-            {maybeSubmenu}
-          </>
-        ),
-        ...handleWrapperOverrides(predefinedProps),
-      }),
-    });
+  const wrapperElement = createShorthand(MenuItemWrapper, wrapper, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'wrapper', {
+      active,
+      disabled,
+      iconOnly,
+      isFromKeyboard,
+      pills,
+      pointing,
+      secondary,
+      underlined,
+      vertical,
+      primary,
+      on,
+      variables,
+    }),
+    overrideProps: predefinedProps => ({
+      children: (
+        <>
+          {menuItemInner}
+          {maybeSubmenu}
+        </>
+      ),
+      ...handleWrapperOverrides(predefinedProps),
+    }),
+  });
 
+  if (wrapper) {
     return wrapperElement;
   }
 

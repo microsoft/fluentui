@@ -10,7 +10,8 @@ import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '../../utils/date-tim
 import {
   ForwardRefWithAs,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -86,9 +87,7 @@ export const DatepickerCalendarHeader = React.forwardRef<HTMLDivElement, Datepic
     } = props;
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(DatepickerCalendarHeader.handledProps, props);
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: DatepickerCalendarHeader.displayName,
-      actionHandlers: {},
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       rtl: context.rtl,
     });
 
@@ -105,27 +104,25 @@ export const DatepickerCalendarHeader = React.forwardRef<HTMLDivElement, Datepic
 
     const element = (
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           ref,
           ...unhandledProps,
         })}
       >
         {createShorthand(Text, label, {
-          defaultProps: () =>
-            getA11yProps('label', {
-              className: classes.label,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'label', {
+            className: classes.label,
+          }),
         })}
 
         {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
-          defaultProps: () =>
-            getA11yProps('previousButton', {
-              title: prevMonthAriaLabel,
-              direction: 'previous' as const,
-              'aria-disabled': disabledPreviousButton,
-              disabledNavigatableButton: disabledPreviousButton,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'previousButton', {
+            title: prevMonthAriaLabel,
+            direction: 'previous' as const,
+            'aria-disabled': disabledPreviousButton,
+            disabledNavigatableButton: disabledPreviousButton,
+          }),
           overrideProps: (
             predefinedProps: DatepickerCalendarHeaderActionProps,
           ): DatepickerCalendarHeaderActionProps => ({
@@ -138,13 +135,12 @@ export const DatepickerCalendarHeader = React.forwardRef<HTMLDivElement, Datepic
           }),
         })}
         {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
-          defaultProps: () =>
-            getA11yProps('nextButton', {
-              title: nextMonthAriaLabel,
-              direction: 'next' as const,
-              'aria-disabled': disabledNextButton,
-              disabledNavigatableButton: disabledNextButton,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'nextButton', {
+            title: nextMonthAriaLabel,
+            direction: 'next' as const,
+            'aria-disabled': disabledNextButton,
+            disabledNavigatableButton: disabledNextButton,
+          }),
           overrideProps: (
             predefinedProps: DatepickerCalendarHeaderActionProps,
           ): DatepickerCalendarHeaderActionProps => ({

@@ -5,7 +5,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   ForwardRefWithAs,
@@ -68,8 +69,7 @@ export const PillIcon = React.forwardRef<HTMLSpanElement, PillIconProps>((props,
     image,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: PillIcon.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
 
@@ -85,7 +85,7 @@ export const PillIcon = React.forwardRef<HTMLSpanElement, PillIconProps>((props,
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,

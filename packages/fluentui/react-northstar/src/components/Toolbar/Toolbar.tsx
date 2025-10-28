@@ -11,7 +11,9 @@ import {
   getElementType,
   getFirstFocusable,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
@@ -172,8 +174,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
     const lastVisibleItemIndex = React.useRef<number>();
     const animationFrameId = React.useRef<number>();
 
-    const getA11Props = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       rtl: context.rtl,
     });
     const { classes } = useStyles<ToolbarStylesProps>(composeOptions.displayName, {
@@ -544,7 +545,28 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
     const menuSlot = composeOptions.slots.menu;
     const menuToolbarContextValue = React.useMemo(() => ({ slots: { menu: menuSlot } }), [menuSlot]);
 
-    const element = overflow ? (
+    const content = overflow ? (
+      <>
+        <div className={classes.overflowContainer} ref={overflowContainerRef}>
+          <ToolbarMenuContextProvider value={menuToolbarContextValue}>
+            <ToolbarVariablesProvider value={variables}>
+              {childrenExist(children) ? children : renderItems(getVisibleItems())}
+              {overflowSentinel && renderOverflowSentinel()}
+              {renderOverflowItem(overflowItem)}
+            </ToolbarVariablesProvider>
+          </ToolbarMenuContextProvider>
+        </div>
+        <div className={classes.offsetMeasure} ref={offsetMeasureRef} />
+      </>
+    ) : (
+      <ToolbarMenuContextProvider value={menuToolbarContextValue}>
+        <ToolbarVariablesProvider value={variables}>
+          {childrenExist(children) ? children : renderItems(items)}
+        </ToolbarVariablesProvider>
+      </ToolbarMenuContextProvider>
+    );
+
+    return (
       <>
         <Ref
           innerRef={(node: HTMLDivElement) => {
@@ -552,43 +574,18 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
             handleRef(ref, node);
           }}
         >
-          {getA11Props.unstable_wrapWithFocusZone(
-            <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
-              <div className={classes.overflowContainer} ref={overflowContainerRef}>
-                <ToolbarMenuContextProvider value={menuToolbarContextValue}>
-                  <ToolbarVariablesProvider value={variables}>
-                    {childrenExist(children) ? children : renderItems(getVisibleItems())}
-                    {overflowSentinel && renderOverflowSentinel()}
-                    {renderOverflowItem(overflowItem)}
-                  </ToolbarVariablesProvider>
-                </ToolbarMenuContextProvider>
-              </div>
-              <div className={classes.offsetMeasure} ref={offsetMeasureRef} />
+          {wrapWithFocusZone(
+            a11yBehavior,
+            <ElementType
+              {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ...unhandledProps })}
+            >
+              {content}
             </ElementType>,
           )}
         </Ref>
-        <EventListener listener={handleWindowResize} target={context.target.defaultView} type="resize" />
+        {overflow && <EventListener listener={handleWindowResize} target={context.target.defaultView} type="resize" />}
       </>
-    ) : (
-      <Ref
-        innerRef={(node: HTMLDivElement) => {
-          containerRef.current = node;
-          handleRef(ref, node);
-        }}
-      >
-        {getA11Props.unstable_wrapWithFocusZone(
-          <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
-            <ToolbarMenuContextProvider value={menuToolbarContextValue}>
-              <ToolbarVariablesProvider value={variables}>
-                {childrenExist(children) ? children : renderItems(items)}
-              </ToolbarVariablesProvider>
-            </ToolbarMenuContextProvider>
-          </ElementType>,
-        )}
-      </Ref>
     );
-
-    return element;
   },
   {
     className: toolbarClassName,

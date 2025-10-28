@@ -1,11 +1,17 @@
-import { Accessibility, toolbarItemBehavior, ToolbarItemBehaviorProps } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  toolbarItemBehavior,
+  ToolbarItemBehaviorProps,
+  ToggleButtonBehaviorProps,
+} from '@fluentui/accessibility';
 import {
   compose,
   getElementType,
   mergeVariablesOverrides,
   useUnhandledProps,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useContextSelectors,
 } from '@fluentui/react-bindings';
@@ -148,8 +154,8 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     );
     const { menuSlot } = useContextSelectors(ToolbarMenuContext, menuSelector) as unknown as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const ElementType = getElementType(props);
+    const a11yBehavior = useAccessibilityBehavior<ToolbarItemBehaviorProps | ToggleButtonBehaviorProps>(accessibility, {
       actionHandlers: {
         performClick: event => {
           event.preventDefault();
@@ -166,15 +172,15 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
           event.stopPropagation();
         },
       },
-      mapPropsToBehavior: () => ({
-        as: String(props.as),
+      behaviorProps: {
+        as: String(ElementType),
         disabled,
         disabledFocusable,
         hasMenu: !!menu,
         hasPopup: !!popup,
         menuOpen,
         active,
-      }),
+      },
       rtl: context.rtl,
     });
     const { classes } = useStyles<ToolbarItemStylesProps>(composeOptions.displayName, {
@@ -260,7 +266,6 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       },
     });
 
-    const ElementType = getElementType(props);
     const slotProps = composeOptions.resolveSlotProps<ToolbarItemProps>(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
@@ -272,7 +277,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
         }}
       >
         <ElementType
-          {...getA11yProps('root', {
+          {...useAccessibilitySlotProps(a11yBehavior, 'root', {
             ...unhandledProps,
             disabled,
             className: classes.root,
@@ -313,6 +318,23 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       </Unstable_NestingAuto>
     ) : null;
 
+    const contentElement = (
+      <>
+        {itemElement}
+        {submenuElement}
+      </>
+    );
+    const wrapperElement = createShorthand(composeOptions.slots.wrapper, wrapper, {
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'wrapper', { ...slotProps.wrapper }),
+      overrideProps: predefinedProps => ({
+        children: contentElement,
+        onClick: e => {
+          handleWrapperClick(e);
+          _.invoke(predefinedProps, 'onClick', e);
+        },
+      }),
+    });
+
     if (popup) {
       const popupElement = createShorthand(composeOptions.slots.popup, popup, {
         defaultProps: () => slotProps.popup,
@@ -327,25 +349,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
 
     // wrap the item if it has menu (even if it is closed = not rendered)
     if (menu) {
-      const contentElement = (
-        <>
-          {itemElement}
-          {submenuElement}
-        </>
-      );
-
       if (wrapper) {
-        const wrapperElement = createShorthand(composeOptions.slots.wrapper, wrapper, {
-          defaultProps: () => getA11yProps('wrapper', slotProps.wrapper || {}),
-          overrideProps: predefinedProps => ({
-            children: contentElement,
-            onClick: e => {
-              handleWrapperClick(e);
-              _.invoke(predefinedProps, 'onClick', e);
-            },
-          }),
-        });
-
         return wrapperElement;
       }
 

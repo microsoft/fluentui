@@ -9,7 +9,8 @@ import {
   mergeVariablesOverrides,
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
 } from '@fluentui/react-bindings';
@@ -77,8 +78,7 @@ export const ToolbarMenuRadioGroup = compose<
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       rtl: context.rtl,
     });
     const { classes } = useStyles<ToolbarMenuRadioGroupStylesProps>(composeOptions.displayName, {
@@ -106,7 +106,9 @@ export const ToolbarMenuRadioGroup = compose<
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
     const content = (
-      <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root, ref })}>
+      <ElementType
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', { ...unhandledProps, className: classes.root, ref })}
+      >
         <ToolbarVariablesProvider value={mergedVariables}>
           {_.map(items, (item, index) =>
             createShorthand(ToolbarMenuItem, item, {
@@ -122,14 +124,15 @@ export const ToolbarMenuRadioGroup = compose<
         </ToolbarVariablesProvider>
       </ElementType>
     );
-    const element = createShorthand(composeOptions.slots.wrapper, wrapper, {
-      defaultProps: () => getA11yProps('wrapper', slotProps.wrapper || {}),
+
+    const wrapperElement = createShorthand(composeOptions.slots.wrapper, wrapper, {
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'wrapper', { ...slotProps.wrapper }),
       overrideProps: {
         children: content,
       },
     });
 
-    return element;
+    return wrapperElement;
   },
   {
     className: toolbarMenuRadioGroupClassName,

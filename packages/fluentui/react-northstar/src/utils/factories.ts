@@ -12,7 +12,7 @@ type ShorthandProp = 'children' | 'src' | 'type';
 
 interface CreateShorthandOptions<P extends {}> {
   /** Default props object */
-  defaultProps?: () => Partial<Props<P>>;
+  defaultProps?: (() => Partial<Props<P>>) | Partial<Props<P>>;
 
   /** Override props object or function (called with regular props) */
   overrideProps?: Partial<Props<P>> | ((props: P) => Partial<Props<P>>);
@@ -144,7 +144,8 @@ export function createShorthandInternal<P extends {}>({
   // ----------------------------------------
   // Build up props
   // ----------------------------------------
-  const defaultProps = options.defaultProps ? options.defaultProps() || ({} as Props<P>) : ({} as Props<P>);
+  const defaultProps =
+    (typeof options.defaultProps === 'function' ? options.defaultProps() : options.defaultProps) ?? ({} as Props<P>);
 
   // User's props
   const usersProps =

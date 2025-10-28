@@ -9,8 +9,10 @@ import {
   getElementType,
   useStyles,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   ForwardRefWithAs,
+  useFluentContext,
 } from '@fluentui/react-bindings';
 
 export interface VideoProps extends UIComponentProps {
@@ -59,13 +61,15 @@ export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref)
     design,
     styles,
   } = props;
+
+  const context = useFluentContext();
   const videoRef = React.useRef<HTMLVideoElement>();
 
   const ElementType = getElementType(props, 'video');
   const unhandledProps = useUnhandledProps(Video.handledProps, props);
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: Video.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
+    rtl: context.rtl,
   });
 
   React.useEffect(() => {
@@ -96,7 +100,7 @@ export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref)
   const element = (
     <Ref innerRef={videoRef}>
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           autoPlay,
           controls,

@@ -10,7 +10,9 @@ import {
   mergeVariablesOverrides,
   useUnhandledProps,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
@@ -87,8 +89,7 @@ export const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProp
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
     const slotProps = composeOptions.resolveSlotProps<ToolbarMenuProps>(props);
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       actionHandlers: {
         performClick: e => {
           _.invoke(props, 'onClick', e, props);
@@ -160,8 +161,9 @@ export const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProp
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    const element = getA11yProps.unstable_wrapWithFocusZone(
-      <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root })}>
+    const element = wrapWithFocusZone(
+      a11yBehavior,
+      <ElementType {...useAccessibilitySlotProps(a11yBehavior, 'root', { ...unhandledProps, className: classes.root })}>
         <ToolbarVariablesProvider value={mergedVariables}>
           {childrenExist(children) ? children : renderItems()}
         </ToolbarVariablesProvider>

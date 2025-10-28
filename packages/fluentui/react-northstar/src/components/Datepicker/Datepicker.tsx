@@ -17,7 +17,9 @@ import {
 
 import {
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -312,8 +314,7 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((_pr
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Datepicker.handledProps, props);
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: Datepicker.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       open: e => {
         if (allowManualInput) {
@@ -326,11 +327,11 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((_pr
         e.preventDefault();
       },
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       'aria-invalid': ariaInvalid,
       'aria-labelledby': ariaLabelledby,
       allowManualInput,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -361,7 +362,7 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((_pr
   });
 
   const calendarElement = createShorthand(DatepickerCalendar, calendar, {
-    defaultProps: () => getA11yProps('calendar', { ...calendarOptions, ...dateFormatting }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'calendar', { ...calendarOptions, ...dateFormatting }),
     overrideProps: overrideDatepickerCalendarProps,
   });
 
@@ -420,28 +421,29 @@ export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((_pr
     <Button icon={<CalendarIcon />} title={props.openCalendarTitle} iconOnly disabled={props.disabled} type="button" />
   );
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const inputElement = createShorthand(Input, input, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'input', {
+      placeholder: props.inputPlaceholder,
+      disabled: props.disabled,
+      error: !!error,
+      value: formattedDate,
+      readOnly: !allowManualInput,
+      required: props.required,
+      'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
+    }),
+    overrideProps: overrideInputProps,
+  });
+
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,
       })}
     >
-      {!props.buttonOnly &&
-        createShorthand(Input, input, {
-          defaultProps: () =>
-            getA11yProps('input', {
-              placeholder: props.inputPlaceholder,
-              disabled: props.disabled,
-              error: !!error,
-              value: formattedDate,
-              readOnly: !allowManualInput,
-              required: props.required,
-              'aria-label': formatRestrictedInput(restrictedDatesOptions, dateFormatting),
-            }),
-          overrideProps: overrideInputProps,
-        })}
+      {!props.buttonOnly && inputElement}
       {createShorthand(Popup, popup, {
         defaultProps: () => ({
           open: openState && !props.disabled,

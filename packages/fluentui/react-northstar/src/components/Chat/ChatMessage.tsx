@@ -8,7 +8,9 @@ import {
 } from '@fluentui/accessibility';
 import {
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useControllableState,
   useContextSelector,
   useFluentContext,
@@ -335,7 +337,7 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
   // `focused` state is used for show/hide actionMenu
   const [focused, setFocused] = React.useState<boolean>(false);
 
-  const getA11Props = useAccessibility(accessibility, {
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       // prevents default FocusZone behavior, e.g., in ChatMessageBehavior, it prevents FocusZone from using arrow keys
       // as navigation (only Tab key should work)
@@ -354,12 +356,11 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
         }
       },
     },
-    debugName: ChatMessage.displayName,
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       hasActionMenu,
       inlineActionMenu,
       actionMenuId: actionMenuId.current,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -543,39 +544,95 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
     defaultProps: () => ({ density }),
   });
 
+  const compactBodyElement = Box.create(compactBody || {}, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'compactBody', {
+      className: chatMessageSlotClassNames.compactBody,
+      styles: resolvedStyles.compactBody,
+    }),
+    overrideProps: () => ({
+      content: (
+        <>
+          <Flex.Item grow={1}>
+            <div>
+              {authorElement}
+              {messageContent}
+            </div>
+          </Flex.Item>
+          {timestampElement}
+          {detailsElement}
+          {badgeElement}
+        </>
+      ),
+    }),
+  });
+
+  const bubbleElement = Box.create(bubble || {}, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'bubble', {
+      className: chatMessageSlotClassNames.bubble,
+      styles: resolvedStyles.bubble,
+    }),
+    overrideProps: () => ({
+      ref: actionsMenuTargetRef,
+      content: (
+        <>
+          {actionMenuElement}
+          {messageContent}
+          {reactionGroupElement}
+          {readStatusElement}
+        </>
+      ),
+      onMouseEnter(e: React.SyntheticEvent) {
+        popperRef.current?.updatePosition();
+        handleMouseEnter(e);
+      },
+      onMouseLeave(e: React.SyntheticEvent) {
+        handleMouseLeave(e);
+      },
+    }),
+  });
+
+  const bubbleInsetElement = Box.create(bubbleInset || {}, {
+    defaultProps: () => ({
+      as: 'span',
+      className: chatMessageSlotClassNames.bubbleInset,
+      styles: resolvedStyles.bubbleInset,
+    }),
+    overrideProps: () => ({
+      content: (
+        <>
+          {badgeElement}
+          {bubbleInsetContent}
+          {timestampElement}
+        </>
+      ),
+    }),
+  });
+
+  const bodyElement = Box.create(body || {}, {
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'body', {
+      className: chatMessageSlotClassNames.body,
+      styles: resolvedStyles.body,
+    }),
+    overrideProps: () => ({
+      content: (
+        <>
+          {bubbleElement}
+          {bubbleInsetElement}
+        </>
+      ),
+    }),
+  });
+
   let elements = <></>;
   if (density === 'compact') {
     const headerElement = createShorthand(ChatMessageHeader, header);
-
-    const bodyElement = Box.create(compactBody || {}, {
-      defaultProps: () =>
-        getA11Props('compactBody', {
-          className: chatMessageSlotClassNames.compactBody,
-          styles: resolvedStyles.compactBody,
-        }),
-      overrideProps: () => ({
-        content: (
-          <>
-            <Flex.Item grow={1}>
-              <div>
-                {authorElement}
-                {messageContent}
-              </div>
-            </Flex.Item>
-            {timestampElement}
-            {detailsElement}
-            {badgeElement}
-          </>
-        ),
-      }),
-    });
 
     elements = (
       <>
         {actionMenuElement}
         <div className={chatMessageSlotClassNames.bar} />
         {headerElement}
-        {bodyElement}
+        {compactBodyElement}
         {reactionGroupElement}
         {readStatusElement}
       </>
@@ -589,65 +646,6 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
             {authorElement}
             {headerContent}
             {detailsElement}
-          </>
-        ),
-      }),
-    });
-
-    const bubbleElement = Box.create(bubble || {}, {
-      defaultProps: () =>
-        getA11Props('bubble', {
-          className: chatMessageSlotClassNames.bubble,
-          styles: resolvedStyles.bubble,
-        }),
-      overrideProps: () => ({
-        ref: actionsMenuTargetRef,
-        content: (
-          <>
-            {actionMenuElement}
-            {messageContent}
-            {reactionGroupElement}
-            {readStatusElement}
-          </>
-        ),
-        onMouseEnter(e: React.SyntheticEvent) {
-          popperRef.current?.updatePosition();
-          handleMouseEnter(e);
-        },
-        onMouseLeave(e: React.SyntheticEvent) {
-          handleMouseLeave(e);
-        },
-      }),
-    });
-
-    const bubbleInsetElement = Box.create(bubbleInset || {}, {
-      defaultProps: () => ({
-        as: 'span',
-        className: chatMessageSlotClassNames.bubbleInset,
-        styles: resolvedStyles.bubbleInset,
-      }),
-      overrideProps: () => ({
-        content: (
-          <>
-            {badgeElement}
-            {bubbleInsetContent}
-            {timestampElement}
-          </>
-        ),
-      }),
-    });
-
-    const bodyElement = Box.create(body || {}, {
-      defaultProps: () =>
-        getA11Props('body', {
-          className: chatMessageSlotClassNames.body,
-          styles: resolvedStyles.body,
-        }),
-      overrideProps: () => ({
-        content: (
-          <>
-            {bubbleElement}
-            {bubbleInsetElement}
           </>
         ),
       }),
@@ -689,9 +687,10 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
 
   const element = (
     <Ref innerRef={!isRefreshComfyLayout && actionsMenuTargetRef}>
-      {getA11Props.unstable_wrapWithFocusZone(
+      {wrapWithFocusZone(
+        a11yBehavior,
         <ElementType
-          {...getA11Props('root', {
+          {...useAccessibilitySlotProps(a11yBehavior, 'root', {
             className: rootClasses,
             onBlur: handleBlur,
             onFocus: handleFocus,

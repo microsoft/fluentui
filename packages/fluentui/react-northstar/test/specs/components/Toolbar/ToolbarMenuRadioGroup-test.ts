@@ -9,7 +9,10 @@ describe('ToolbarMenuRadioGroup', () => {
     testPath: __filename,
     wrapperComponent: ToolbarMenuRadioGroupWrapper,
     constructorName: 'ToolbarMenuRadioGroup',
-    getTargetElement: result => result.container.querySelector(`[data-aa-class="ToolbarMenuRadioGroup"]`),
+    requiredProps: {
+      'data-root': true,
+    },
+    getTargetElement: result => result.container.querySelector(`[data-root]`),
   });
 
   describe('accessibility', () => {

@@ -3,9 +3,11 @@ import {
   ComponentWithAs,
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
+  wrapWithFocusZone,
 } from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
 import * as React from 'react';
@@ -39,8 +41,7 @@ export const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
 
     const { accessibility, className, design, styles, variables, children, content } = props;
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       rtl: context.rtl,
     });
     const { classes } = useStyles<BoxStylesProps>(composeOptions.displayName, {
@@ -59,9 +60,10 @@ export const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
     const ElementType = getElementType(props);
 
-    const result = getA11yProps.unstable_wrapWithFocusZone(
+    const result = wrapWithFocusZone(
+      a11yBehavior,
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
           className: classes.root,
           ref,

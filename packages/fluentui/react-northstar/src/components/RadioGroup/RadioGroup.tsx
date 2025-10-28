@@ -19,7 +19,9 @@ import {
   useFluentContext,
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useStyles,
   ForwardRefWithAs,
   useControllableState,
@@ -68,8 +70,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>((pro
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(RadioGroup.handledProps, props);
 
-  const getA11yProps = useAccessibility<RadioGroupBehaviorProps>(accessibility, {
-    debugName: RadioGroup.displayName,
+  const a11yBehavior = useAccessibilityBehavior<RadioGroupBehaviorProps>(accessibility, {
     actionHandlers: {
       nextItem: event => setCheckedItem(event, 1),
       prevItem: event => setCheckedItem(event, -1),
@@ -157,15 +158,17 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>((pro
     shouldFocus,
   });
 
+  const itemA11yProps = useAccessibilitySlotProps(a11yBehavior, 'item', {});
+
   const renderItems = (vertical: boolean) => {
     const isNoneValueSelected = checkedValue === undefined;
     return _.map(items, (item, index) =>
       RadioGroupItem.create(item, {
-        defaultProps: () =>
-          getA11yProps('item', {
-            vertical,
-            ...(index === 0 && isNoneValueSelected && { tabIndex: 0 }),
-          }),
+        defaultProps: {
+          ...itemA11yProps,
+          vertical,
+          ...(index === 0 && isNoneValueSelected && { tabIndex: 0 }),
+        },
         overrideProps: handleItemOverrides,
       }),
     );
@@ -187,9 +190,10 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>((pro
     _.invoke(props, 'onCheckedValueChange', event, itemProps);
   };
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

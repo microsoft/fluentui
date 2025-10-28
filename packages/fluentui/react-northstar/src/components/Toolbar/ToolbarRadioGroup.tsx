@@ -9,7 +9,8 @@ import {
   getElementType,
   mergeVariablesOverrides,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
 } from '@fluentui/react-bindings';
@@ -71,8 +72,7 @@ export const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarR
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       actionHandlers: {
         nextItem: event => setFocusedItem(event, 1),
         prevItem: event => setFocusedItem(event, -1),
@@ -155,7 +155,7 @@ export const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarR
 
     const element = (
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           ...unhandledProps,
           className: classes.root,
           ref,

@@ -8,7 +8,8 @@ import {
   useUnhandledProps,
   useFluentContext,
   useStyles,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
 } from '@fluentui/react-bindings';
 
 export interface FormFieldCustomProps extends UIComponentProps, ChildrenComponentProps {
@@ -48,8 +49,7 @@ export const FormFieldCustom = React.forwardRef<HTMLDivElement, FormFieldCustomP
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(FormFieldCustom.handledProps, props);
 
-  const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility ?? formFieldBehavior, {
-    debugName: FormFieldCustom.displayName,
+  const a11yBehavior = useAccessibilityBehavior<FormFieldBehaviorProps>(props.accessibility ?? formFieldBehavior, {
     rtl: context.rtl,
   });
 
@@ -71,7 +71,7 @@ export const FormFieldCustom = React.forwardRef<HTMLDivElement, FormFieldCustomP
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,

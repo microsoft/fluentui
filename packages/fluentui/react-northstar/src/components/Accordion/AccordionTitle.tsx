@@ -20,7 +20,8 @@ import {
   getElementType,
   useFluentContext,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -103,7 +104,6 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
       disabled,
       accessibility = accordionTitleBehavior,
       canBeCollapsed,
-      as,
       active,
       accordionContentId,
       className,
@@ -114,8 +114,7 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(AccordionTitle.handledProps, props);
 
-    const getA11yProps = useAccessibility<AccordionTitleBehaviorProps>(accessibility, {
-      debugName: AccordionTitle.displayName,
+    const a11yBehavior = useAccessibilityBehavior<AccordionTitleBehaviorProps>(accessibility, {
       actionHandlers: {
         performClick: e => {
           e.preventDefault();
@@ -123,14 +122,13 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
           handleClick(e);
         },
       },
-      mapPropsToBehavior: () => ({
-        hasContent: !!content,
+      behaviorProps: {
         canBeCollapsed,
-        as: String(as),
+        as: String(ElementType),
         active,
         disabled,
         accordionContentId,
-      }),
+      },
       rtl: context.rtl,
     });
 
@@ -161,34 +159,23 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
       _.invoke(props, 'onFocus', e, props);
     };
 
-    const handleWrapperOverrides = predefinedProps => ({
-      onFocus: (e: React.FocusEvent) => {
-        handleFocus(e);
-        _.invoke(predefinedProps, 'onFocus', e, props);
-      },
-      onClick: (e: React.MouseEvent) => {
-        handleClick(e);
-        _.invoke(predefinedProps, 'onClick', e, props);
-      },
+    const indicatorElement = Box.create(indicator, {
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'indicator', {
+        styles: resolvedStyles.indicator,
+      }),
     });
 
     const contentWrapperElement = (
       <Ref innerRef={contentRef}>
         {Box.create(contentWrapper, {
-          defaultProps: () =>
-            getA11yProps('content', {
-              className: accordionTitleSlotClassNames.contentWrapper,
-              styles: resolvedStyles.contentWrapper,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'content', {
+            className: accordionTitleSlotClassNames.contentWrapper,
+            styles: resolvedStyles.contentWrapper,
+          }),
           overrideProps: predefinedProps => ({
             children: (
               <>
-                {Box.create(indicator, {
-                  defaultProps: () =>
-                    getA11yProps('indicator', {
-                      styles: resolvedStyles.indicator,
-                    }),
-                })}
+                {indicatorElement}
                 {Box.create(content, {
                   defaultProps: () => ({
                     styles: resolvedStyles.content,
@@ -196,7 +183,14 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
                 })}
               </>
             ),
-            ...handleWrapperOverrides(predefinedProps),
+            onFocus: (e: React.FocusEvent) => {
+              handleFocus(e);
+              _.invoke(predefinedProps, 'onFocus', e, props);
+            },
+            onClick: (e: React.MouseEvent) => {
+              handleClick(e);
+              _.invoke(predefinedProps, 'onClick', e, props);
+            },
           }),
         })}
       </Ref>
@@ -205,7 +199,7 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
     const element = (
       <ElementType
         {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           ref,
           ...unhandledProps,

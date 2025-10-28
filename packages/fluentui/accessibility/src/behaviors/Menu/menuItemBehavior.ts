@@ -70,6 +70,8 @@ export const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => (
 });
 
 export type MenuItemBehaviorProps = {
+  /** Indicates if tab is selected. */
+  active?: boolean;
   /** Indicated if menu item has submenu. */
   hasMenu?: boolean | object;
   /** Defines if submenu is opened. */

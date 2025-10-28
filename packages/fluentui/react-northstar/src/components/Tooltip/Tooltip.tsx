@@ -1,6 +1,7 @@
 import { Accessibility, tooltipAsLabelBehavior, TooltipBehaviorProps } from '@fluentui/accessibility';
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useControllableState,
   useFluentContext,
   useTriggerElement,
@@ -161,7 +162,7 @@ export const Tooltip: React.FC<TooltipProps> &
   const contentId = React.useRef<string>();
   contentId.current = getOrGenerateIdFromShorthand('tooltip-content-', content, contentId.current);
 
-  const getA11Props = useAccessibility(accessibility, {
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       close: e => {
         setTooltipOpen(false, e);
@@ -169,14 +170,15 @@ export const Tooltip: React.FC<TooltipProps> &
         e.preventDefault();
       },
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       'aria-describedby': props['aria-describedby'],
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       contentId: contentId.current,
       triggerAriaLabel: trigger && trigger.props['aria-label'],
       open,
-    }),
+    },
+    rtl: context.rtl,
   });
 
   const getContentOverrideProps = (
@@ -194,16 +196,17 @@ export const Tooltip: React.FC<TooltipProps> &
     },
   });
 
+  const tooltipContentA11yProps = useAccessibilitySlotProps(a11yBehavior, 'tooltip', {});
   const renderPopperChildren = (popperProps: PopperChildrenProps) => {
     const tooltipContent = TooltipContent.create(content, {
-      defaultProps: () =>
-        getA11Props('tooltip', {
-          open,
-          placement: popperProps.placement,
-          pointing,
-          pointerRef: pointerTargetRef,
-          subtle,
-        }),
+      defaultProps: () => ({
+        ...tooltipContentA11yProps,
+        open,
+        placement: popperProps.placement,
+        pointing,
+        pointerRef: pointerTargetRef,
+        subtle,
+      }),
       generateKey: false,
       overrideProps: getContentOverrideProps,
     });
@@ -262,16 +265,15 @@ export const Tooltip: React.FC<TooltipProps> &
     },
   };
 
+  const triggerA11yProps = useAccessibilitySlotProps(a11yBehavior, 'trigger', {
+    ...unhandledProps,
+    ...triggerElement?.props,
+    ...triggerProps,
+  });
+
   const element = (
     <>
-      {triggerElement && (
-        <Ref innerRef={triggerRef}>
-          {React.cloneElement(
-            triggerElement,
-            getA11Props('trigger', { ...unhandledProps, ...triggerElement.props, ...triggerProps }),
-          )}
-        </Ref>
-      )}
+      {triggerElement && <Ref innerRef={triggerRef}>{React.cloneElement(triggerElement, triggerA11yProps)}</Ref>}
       <PortalInner mountNode={mountNode}>
         <Popper
           align={align}

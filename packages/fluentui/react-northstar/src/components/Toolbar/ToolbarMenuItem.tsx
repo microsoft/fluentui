@@ -21,7 +21,8 @@ import {
   useFluentContext,
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useContextSelectors,
 } from '@fluentui/react-bindings';
 
@@ -184,18 +185,16 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     const slotProps = composeOptions.resolveSlotProps<ToolbarMenuItemProps>(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
-      mapPropsToBehavior: () => ({
+    const a11yBehavior = useAccessibilityBehavior<ToolbarMenuItemBehaviorProps>(accessibility, {
+      behaviorProps: {
         hasMenu: !!menu,
-        active,
         menuOpen,
         disabled,
         disabledFocusable,
         'aria-label': props['aria-label'],
         'aria-labelledby': props['aria-labelledby'],
         'aria-describedby': props['aria-describedby'],
-      }),
+      },
       actionHandlers: {
         performClick: event => {
           event.preventDefault();
@@ -333,9 +332,13 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       _.invoke(props, 'onClick', e, props);
     };
 
+    const contentElement = createShorthand(composeOptions.slots.content, content, {
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'content', { ...slotProps.content }),
+    });
+
     const element = (
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           onClick: handleClick,
           disabled,
@@ -348,9 +351,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
         ) : (
           <>
             {createShorthand(composeOptions.slots.icon, icon, { defaultProps: () => slotProps.icon })}
-            {createShorthand(composeOptions.slots.content, content, {
-              defaultProps: () => getA11yProps('content', slotProps.content),
-            })}
+            {contentElement}
             {active &&
               createShorthand(composeOptions.slots.activeIndicator, activeIndicator, {
                 defaultProps: () => slotProps.activeIndicator,
@@ -434,10 +435,9 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     }
 
     const wrapperElement = Box.create(wrapper, {
-      defaultProps: () =>
-        getA11yProps('wrapper', {
-          className: cx(toolbarMenuItemSlotClassNames.wrapper, classes.wrapper),
-        }),
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'wrapper', {
+        className: cx(toolbarMenuItemSlotClassNames.wrapper, classes.wrapper),
+      }),
       overrideProps: () => ({
         children: (
           <>

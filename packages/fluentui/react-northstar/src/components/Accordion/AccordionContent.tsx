@@ -17,7 +17,8 @@ import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import {
   useFluentContext,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useUnhandledProps,
   useStyles,
   ForwardRefWithAs,
@@ -68,11 +69,8 @@ export const AccordionContent = React.forwardRef<HTMLDListElement, AccordionCont
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(AccordionContent.handledProps, props);
 
-  const getA11yProps = useAccessibility(accessibility, {
-    debugName: AccordionContent.displayName,
-    mapPropsToBehavior: () => ({
-      accordionTitleId,
-    }),
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
+    behaviorProps: { accordionTitleId },
     rtl: context.rtl,
   });
   const handleClick = (e: React.SyntheticEvent) => {
@@ -95,7 +93,7 @@ export const AccordionContent = React.forwardRef<HTMLDListElement, AccordionCont
 
   const element = (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         onClick: handleClick,
         ref,

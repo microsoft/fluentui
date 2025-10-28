@@ -2,7 +2,8 @@ import { Accessibility, checkboxBehavior, CheckboxBehaviorProps } from '@fluentu
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useControllableState,
   useFluentContext,
   useStyles,
@@ -99,12 +100,11 @@ export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, 
     initialState: false,
   });
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: Checkbox.displayName,
-    mapPropsToBehavior: () => ({
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
+    behaviorProps: {
       checked,
       disabled,
-    }),
+    },
     actionHandlers: {
       performClick: (e: React.KeyboardEvent) => {
         e.preventDefault();
@@ -156,16 +156,15 @@ export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, 
   };
 
   const labelElement = Text.create(label, {
-    defaultProps: () =>
-      getA11Props('label', {
-        styles: resolvedStyles.label,
-        className: checkboxSlotClassNames.label,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'label', {
+      styles: resolvedStyles.label,
+      className: checkboxSlotClassNames.label,
+    }),
   });
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         onClick: handleClick,
         onChange: handleChange,
@@ -175,11 +174,10 @@ export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, 
     >
       {labelPosition === 'start' && labelElement}
       {Box.create(indicator, {
-        defaultProps: () =>
-          getA11Props('indicator', {
-            className: checkboxSlotClassNames.indicator,
-            styles: toggle ? resolvedStyles.toggle : resolvedStyles.checkbox,
-          }),
+        defaultProps: useAccessibilitySlotProps(a11yBehavior, 'indicator', {
+          className: checkboxSlotClassNames.indicator,
+          styles: toggle ? resolvedStyles.toggle : resolvedStyles.checkbox,
+        }),
       })}
       {labelPosition === 'end' && labelElement}
     </ElementType>

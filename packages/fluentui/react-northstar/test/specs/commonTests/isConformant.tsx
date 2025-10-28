@@ -498,7 +498,7 @@ export function isConformant(
   // ---------------------------------------
   if (isComposedComponent) {
     describe('compose', () => {
-      describe('debug', () => {
+      it('overrides default "displayName"', () => {
         const displayName = 'ComposedComponent';
         const ComposedComponent = compose<'div', { accessibility?: Accessibility }, {}, {}, {}>(
           Component as ComposedComponent,
@@ -507,22 +507,7 @@ export function isConformant(
           },
         );
 
-        it('overrides default "displayName"', () => {
-          expect(ComposedComponent.displayName).toBe(displayName);
-        });
-
-        it('overrides default debug name for accessibility', () => {
-          const noopBehavior: Accessibility = () => ({
-            attributes: {
-              root: { 'aria-label': 'test' },
-            },
-          });
-
-          const wrapper = mount(<ComposedComponent {...requiredProps} accessibility={noopBehavior} />);
-          const element = getComponent(wrapper);
-
-          expect(element.prop('data-aa-class')).toBe(displayName);
-        });
+        expect(ComposedComponent.displayName).toBe(displayName);
       });
 
       describe('styles', () => {

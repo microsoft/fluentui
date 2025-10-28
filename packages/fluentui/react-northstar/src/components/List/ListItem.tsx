@@ -2,7 +2,9 @@ import { Accessibility, listItemBehavior, ListItemBehaviorProps } from '@fluentu
 import {
   getElementType,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useFluentContext,
   useStyles,
   useContextSelectors,
@@ -118,19 +120,18 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, r
     variables = parentProps.variables,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: ListItem.displayName,
+  const itemA11yProps = useAccessibilityBehavior(accessibility, {
     actionHandlers: {
       performClick: e => {
         e.preventDefault();
         handleClick(e);
       },
     },
-    mapPropsToBehavior: () => ({
+    behaviorProps: {
       navigable,
       selectable,
       selected,
-    }),
+    },
     rtl: context.rtl,
   });
   const { classes } = useStyles<ListItemStylesProps>(ListItem.displayName, {
@@ -184,9 +185,10 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, r
     }),
   });
 
-  const element = getA11Props.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    itemA11yProps,
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(itemA11yProps, 'root', {
         className: classes.root,
         onClick: handleClick,
         ...unhandledProps,

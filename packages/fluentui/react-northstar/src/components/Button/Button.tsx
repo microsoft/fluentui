@@ -3,7 +3,8 @@ import {
   compose,
   ComponentWithAs,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -135,7 +136,6 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       accessibility,
       // @ts-ignore
       active,
-      as,
       children,
       content,
       icon,
@@ -161,14 +161,14 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
 
     const hasChildren = childrenExist(children);
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
-      mapPropsToBehavior: () => ({
-        as,
+    const ElementType = getElementType(props, 'button');
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
+      behaviorProps: {
+        as: String(ElementType),
         active,
         disabled,
         disabledFocusable,
-      }),
+      },
       actionHandlers: {
         performClick: event => {
           event.preventDefault();
@@ -209,33 +209,23 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const slotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-    const ElementType = getElementType(props);
 
-    const renderIcon = () => {
-      return createShorthand(composeOptions.slots.icon, icon, {
-        defaultProps: () =>
-          getA11yProps('icon', {
-            styles: resolvedStyles.icon,
-            ...slotProps.icon,
-          }),
-      });
-    };
+    const iconElement = createShorthand(composeOptions.slots.icon, icon, {
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'icon', {
+        styles: resolvedStyles.icon,
+        ...slotProps.icon,
+      }),
+    });
+    const loaderElement = createShorthand(composeOptions.slots.loader, loader || {}, {
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'loader', {
+        styles: resolvedStyles.loader,
+        ...slotProps.loader,
+      }),
+    });
 
-    const renderLoader = () => {
-      return createShorthand(composeOptions.slots.loader, loader || {}, {
-        defaultProps: () =>
-          getA11yProps('loader', {
-            styles: resolvedStyles.loader,
-            ...slotProps.loader,
-          }),
-      });
-    };
-
-    const renderContent = () => {
-      return createShorthand(composeOptions.slots.content, content, {
-        defaultProps: () => getA11yProps('content', slotProps.content),
-      });
-    };
+    const contentElement = createShorthand(composeOptions.slots.content, content, {
+      defaultProps: useAccessibilitySlotProps(a11yBehavior, 'content', { ...slotProps.content }),
+    });
 
     const handleClick = (e: React.SyntheticEvent) => {
       if (disabled || disabledFocusable) {
@@ -253,7 +243,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const result = (
       <ElementType
         {...rtlTextContainer.getAttributes({ forElements: [children] })}
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           onClick: handleClick,
           className: classes.root,
           onFocus: handleFocus,
@@ -265,10 +255,10 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
           children
         ) : (
           <>
-            {loading && renderLoader()}
-            {iconPosition !== 'after' && renderIcon()}
-            {renderContent()}
-            {iconPosition === 'after' && renderIcon()}
+            {loading && loaderElement}
+            {iconPosition !== 'after' && iconElement}
+            {contentElement}
+            {iconPosition === 'after' && iconElement}
           </>
         )}
       </ElementType>

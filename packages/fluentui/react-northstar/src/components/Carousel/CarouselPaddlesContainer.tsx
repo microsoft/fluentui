@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   useFluentContext,
   useStyles,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   getElementType,
   useUnhandledProps,
   ForwardRefWithAs,
@@ -45,8 +46,7 @@ export const CarouselPaddlesContainer = React.forwardRef<HTMLDivElement, Carouse
       rtl: context.rtl,
     });
 
-    const getA11Props = useAccessibility(accessibility, {
-      debugName: CarouselPaddlesContainer.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       rtl: context.rtl,
     });
 
@@ -54,7 +54,9 @@ export const CarouselPaddlesContainer = React.forwardRef<HTMLDivElement, Carouse
     const unhandledProps = useUnhandledProps(CarouselPaddlesContainer.handledProps, props);
 
     const element = (
-      <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+      <ElementType
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', { className: classes.root, ref, ...unhandledProps })}
+      >
         {childrenExist(children) ? children : content}
       </ElementType>
     );

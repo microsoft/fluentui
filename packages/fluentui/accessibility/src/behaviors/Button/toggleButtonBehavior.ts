@@ -11,7 +11,7 @@ export const toggleButtonBehavior: Accessibility<ToggleButtonBehaviorProps> = pr
   return behaviorData;
 };
 
-type ToggleButtonBehaviorProps = ButtonBehaviorProps & {
+export type ToggleButtonBehaviorProps = ButtonBehaviorProps & {
   /** Indicates if a button is in pressed state. */
   active: boolean;
 };

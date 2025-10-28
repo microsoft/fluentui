@@ -2,7 +2,9 @@ import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/access
 import {
   ForwardRefWithAs,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -66,8 +68,7 @@ export const Chat = React.forwardRef<HTMLUListElement, ChatProps>((props, ref) =
     variables,
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: Chat.displayName,
+  const a11yBehavior = useAccessibilityBehavior(accessibility, {
     rtl: context.rtl,
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
@@ -85,9 +86,10 @@ export const Chat = React.forwardRef<HTMLUListElement, ChatProps>((props, ref) =
   const ElementType = getElementType(props, 'ul');
   const unhandledProps = useUnhandledProps(Chat.handledProps, props);
 
-  const element = getA11Props.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11Props('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),

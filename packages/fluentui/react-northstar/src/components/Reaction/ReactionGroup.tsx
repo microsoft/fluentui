@@ -18,7 +18,8 @@ import {
   getElementType,
   useUnhandledProps,
   useFluentContext,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
@@ -47,8 +48,7 @@ export const ReactionGroup = React.forwardRef<HTMLDivElement, ReactionGroupProps
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(ReactionGroup.handledProps, props);
 
-  const getA11yProps = useAccessibility<never>(props.accessibility, {
-    debugName: ReactionGroup.displayName,
+  const a11yBehavior = useAccessibilityBehavior<never>(props.accessibility, {
     rtl: context.rtl,
   });
 
@@ -63,30 +63,31 @@ export const ReactionGroup = React.forwardRef<HTMLDivElement, ReactionGroupProps
     rtl: context.rtl,
   });
 
-  const element = _.isNil(items) ? (
+  const shouldRenderChildren = _.isNil(items);
+
+  const potentialChildren = shouldRenderChildren ? (childrenExist(children) ? children : content) : null;
+  const potentialItems = shouldRenderChildren
+    ? null
+    : _.map(items, reaction =>
+        Reaction.create(reaction, {
+          defaultProps: () => ({
+            styles: resolvedStyles.reaction,
+          }),
+        }),
+      );
+
+  return (
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ref,
         ...unhandledProps,
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
     >
-      {childrenExist(children) ? children : content}
-    </ElementType>
-  ) : (
-    <ElementType {...unhandledProps} className={classes.root}>
-      {_.map(items, reaction =>
-        Reaction.create(reaction, {
-          defaultProps: () => ({
-            styles: resolvedStyles.reaction,
-          }),
-        }),
-      )}
+      {shouldRenderChildren ? potentialChildren : potentialItems}
     </ElementType>
   );
-
-  return element;
 }) as unknown as ForwardRefWithAs<'div', HTMLDivElement, ReactionGroupProps> &
   FluentComponentStaticProps<ReactionGroupProps>;
 

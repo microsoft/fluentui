@@ -3,7 +3,8 @@ import {
   getElementType,
   mergeVariablesOverrides,
   useUnhandledProps,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   useStyles,
   useFluentContext,
   compose,
@@ -33,8 +34,7 @@ export const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDivider
     const { accessibility, className, design, styles, variables } = props;
     const parentVariables = React.useContext(ToolbarVariablesContext);
 
-    const getA11yProps = useAccessibility(accessibility, {
-      debugName: composeOptions.displayName,
+    const a11yBehavior = useAccessibilityBehavior(accessibility, {
       rtl: context.rtl,
     });
     const { classes } = useStyles<ToolbarDividerStylesProps>(composeOptions.displayName, {
@@ -53,7 +53,11 @@ export const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDivider
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
 
-    const element = <ElementType {...getA11yProps('root', { ref, ...unhandledProps, className: classes.root })} />;
+    const element = (
+      <ElementType
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', { ref, ...unhandledProps, className: classes.root })}
+      />
+    );
 
     return element;
   },

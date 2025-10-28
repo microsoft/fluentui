@@ -26,7 +26,8 @@ import { Ref } from '@fluentui/react-component-ref';
 import { PositioningProps, AutoSize } from '../../utils/positioner/types';
 
 import {
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   getElementType,
   useFluentContext,
   useUnhandledProps,
@@ -149,11 +150,10 @@ export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((p
 
   const [isFromKeyboard, setIsFromKeyboard] = React.useState<boolean>(false);
 
-  const getA11yProps = useAccessibility<SplitButtonBehaviorProps>(accessibility, {
-    debugName: SplitButton.displayName,
-    mapPropsToBehavior: () => ({
+  const a11yBehavior = useAccessibilityBehavior<SplitButtonBehaviorProps>(accessibility, {
+    behaviorProps: {
       open,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -202,7 +202,7 @@ export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((p
   const element = (
     <Ref innerRef={targetRef}>
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           ref,
           ...unhandledProps,
@@ -211,32 +211,31 @@ export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((p
         {MenuButton.create(
           {},
           {
-            defaultProps: () =>
-              getA11yProps('menuButton', {
-                menu,
-                on: [],
-                open,
-                trigger: createShorthand(Button, button, {
-                  defaultProps: () => ({
-                    styles: resolvedStyles.menuButton,
-                    primary,
-                    secondary,
-                    disabled,
-                  }),
-                  overrideProps: handleMenuButtonTriggerOverrides,
+            defaultProps: useAccessibilitySlotProps(a11yBehavior, 'menuButton', {
+              menu,
+              on: [],
+              open,
+              trigger: createShorthand(Button, button, {
+                defaultProps: () => ({
+                  styles: resolvedStyles.menuButton,
+                  primary,
+                  secondary,
+                  disabled,
                 }),
-                target: targetRef.current,
-                position,
-                align,
-                flipBoundary,
-                overflowBoundary,
-                popperRef,
-                positionFixed,
-                offset,
-                unstable_disableTether,
-                unstable_pinned,
-                autoSize,
+                overrideProps: handleMenuButtonTriggerOverrides,
               }),
+              target: targetRef.current,
+              position,
+              align,
+              flipBoundary,
+              overflowBoundary,
+              popperRef,
+              positionFixed,
+              offset,
+              unstable_disableTether,
+              unstable_pinned,
+              autoSize,
+            }),
             overrideProps: handleMenuButtonOverrides,
           },
         )}
@@ -245,21 +244,19 @@ export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((p
           SplitButtonDivider,
           {},
           {
-            defaultProps: () =>
-              getA11yProps('divider', {
-                primary,
-              }),
+            defaultProps: useAccessibilitySlotProps(a11yBehavior, 'divider', {
+              primary,
+            }),
           },
         )}
         {SplitButtonToggle.create(toggleButton, {
-          defaultProps: () =>
-            getA11yProps('toggleButton', {
-              disabled,
-              primary,
-              secondary,
-              size,
-              flat,
-            }),
+          defaultProps: useAccessibilitySlotProps(a11yBehavior, 'toggleButton', {
+            disabled,
+            primary,
+            secondary,
+            size,
+            flat,
+          }),
           overrideProps: (predefinedProps: ButtonProps) => ({
             onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
               _.invoke(predefinedProps, 'onClick', e, buttonProps);

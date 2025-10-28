@@ -2,7 +2,9 @@ import { Accessibility, menuBehavior, MenuBehaviorProps } from '@fluentui/access
 import {
   getElementType,
   mergeVariablesOverrides,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
+  wrapWithFocusZone,
   useFluentContext,
   useStyles,
   useUnhandledProps,
@@ -202,11 +204,10 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
 
   const unhandledProps = useUnhandledProps(Menu.handledProps, props);
 
-  const getA11yProps = useAccessibility<MenuBehaviorProps>(accessibility, {
-    debugName: Menu.displayName,
-    mapPropsToBehavior: () => ({
+  const a11yBehavior = useAccessibilityBehavior<MenuBehaviorProps>(accessibility, {
+    behaviorProps: {
       vertical,
-    }),
+    },
     rtl: context.rtl,
   });
 
@@ -282,6 +283,9 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
     variables: mergeVariablesOverrides(variables, predefinedProps.variables),
   });
 
+  const dividerA11yProps = useAccessibilitySlotProps(a11yBehavior, 'divider', {});
+  const itemA11yProps = useAccessibilitySlotProps(a11yBehavior, 'item', {});
+
   const renderItems = () => {
     const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
     let itemPosition = 0;
@@ -291,7 +295,7 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
 
       if (kind === 'divider') {
         return createShorthand(MenuDivider, item as ShorthandValue<MenuDividerProps>, {
-          defaultProps: () => getA11yProps('divider', {}),
+          defaultProps: () => dividerA11yProps,
           overrideProps: handleDividerOverrides,
         });
       }
@@ -299,12 +303,12 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
       itemPosition++;
 
       return createShorthand(MenuItem, item, {
-        defaultProps: () =>
-          getA11yProps('item', {
-            index,
-            itemPosition,
-            itemsCount,
-          }),
+        defaultProps: {
+          ...itemA11yProps,
+          index,
+          itemPosition,
+          itemsCount,
+        },
         overrideProps: handleItemOverrides,
       });
     });
@@ -330,9 +334,10 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
     },
   };
 
-  const element = getA11yProps.unstable_wrapWithFocusZone(
+  const element = wrapWithFocusZone(
+    a11yBehavior,
     <ElementType
-      {...getA11yProps('root', {
+      {...useAccessibilitySlotProps(a11yBehavior, 'root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,

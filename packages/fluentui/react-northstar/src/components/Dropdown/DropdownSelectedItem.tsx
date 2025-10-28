@@ -26,7 +26,8 @@ import {
   useStyles,
   useFluentContext,
   getElementType,
-  useAccessibility,
+  useAccessibilityBehavior,
+  useAccessibilitySlotProps,
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
@@ -105,14 +106,13 @@ export const DropdownSelectedItem = React.forwardRef<HTMLSpanElement, DropdownSe
   const ElementType = getElementType(props, 'span');
   const unhandledProps = useUnhandledProps(DropdownSelectedItem.handledProps, props);
 
-  const getA11yProps = useAccessibility<DropdownSelectedItemBehaviorProps>(
+  const a11yBehavior = useAccessibilityBehavior<DropdownSelectedItemBehaviorProps>(
     props.accessibility ?? dropdownSelectedItemBehavior,
     {
-      debugName: DropdownSelectedItem.displayName,
-      mapPropsToBehavior: () => ({
+      behaviorProps: {
         header: header as string,
         active,
-      }),
+      },
       rtl: context.rtl,
     },
   );
@@ -169,36 +169,33 @@ export const DropdownSelectedItem = React.forwardRef<HTMLSpanElement, DropdownSe
   });
 
   const headerElement = Box.create(header, {
-    defaultProps: () =>
-      getA11yProps('header', {
-        as: 'span',
-        className: dropdownSelectedItemSlotClassNames.header,
-        styles: resolvedStyles.header,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'header', {
+      as: 'span',
+      className: dropdownSelectedItemSlotClassNames.header,
+      styles: resolvedStyles.header,
+    }),
   });
 
   const iconElement = Box.create(icon, {
-    defaultProps: () =>
-      getA11yProps('icon', {
-        className: dropdownSelectedItemSlotClassNames.icon,
-        styles: resolvedStyles.icon,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'icon', {
+      className: dropdownSelectedItemSlotClassNames.icon,
+      styles: resolvedStyles.icon,
+    }),
     overrideProps: handleIconOverrides,
   });
 
   const imageElement = Image.create(image, {
-    defaultProps: () =>
-      getA11yProps('image', {
-        avatar: true,
-        className: dropdownSelectedItemSlotClassNames.image,
-        styles: resolvedStyles.image,
-      }),
+    defaultProps: useAccessibilitySlotProps(a11yBehavior, 'image', {
+      avatar: true,
+      className: dropdownSelectedItemSlotClassNames.image,
+      styles: resolvedStyles.image,
+    }),
   });
 
   const element = (
     <Ref innerRef={itemRef}>
       <ElementType
-        {...getA11yProps('root', {
+        {...useAccessibilitySlotProps(a11yBehavior, 'root', {
           className: classes.root,
           onClick: handleClick,
           onKeyDown: handleKeyDown,
