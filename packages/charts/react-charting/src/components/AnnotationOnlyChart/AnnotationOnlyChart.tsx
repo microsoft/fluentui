@@ -2,7 +2,9 @@ import * as React from 'react';
 import { useTheme } from '@fluentui/react';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
+import { toImage as exportToImage } from '../../utilities/image-export-utils';
 import type { IAnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
+import type { IChart, IImageExportOptions } from '../../types/index';
 import type { IChartAnnotationContext } from '../CommonComponents/Annotations/ChartAnnotationLayer.types';
 
 const DEFAULT_HEIGHT = 240;
@@ -37,11 +39,14 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
     fontColor,
     fontFamily,
     margin,
+    componentRef,
   } = props;
 
   const theme = useTheme();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
   const [measuredWidth, setMeasuredWidth] = React.useState<number>(width ?? 0);
+  const [contentHeight, setContentHeight] = React.useState<number>(height ?? DEFAULT_HEIGHT);
 
   React.useEffect(() => {
     if (typeof width === 'number' && width > 0) {
@@ -82,6 +87,52 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
 
   const resolvedWidth = Math.max(measuredWidth || FALLBACK_WIDTH, 1);
   const resolvedHeight = Math.max(height ?? DEFAULT_HEIGHT, 1);
+
+  React.useEffect(() => {
+    const node = contentRef.current;
+    if (!node) {
+      setContentHeight(prev => (prev > 0 ? prev : resolvedHeight));
+      return;
+    }
+
+    if (typeof ResizeObserver === 'undefined') {
+      const rect = node.getBoundingClientRect();
+      setContentHeight(prev => (rect.height > 0 ? rect.height : prev > 0 ? prev : resolvedHeight));
+      return;
+    }
+
+    const observer = new ResizeObserver(entries => {
+      const entry = entries[0];
+      if (!entry) {
+        return;
+      }
+
+      const newHeight = entry.contentRect.height;
+      if (newHeight > 0) {
+        setContentHeight(prev => (Math.abs(prev - newHeight) > 0.5 ? newHeight : prev));
+      }
+    });
+
+    const rect = node.getBoundingClientRect();
+    setContentHeight(prev => (rect.height > 0 ? rect.height : prev > 0 ? prev : resolvedHeight));
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [
+    resolvedHeight,
+    resolvedWidth,
+    annotations,
+    chartTitle,
+    description,
+    margin,
+    plotBackgroundColor,
+    paperBackgroundColor,
+    fontColor,
+    fontFamily,
+    theme,
+  ]);
+
+  const svgHeight = Math.max(Math.ceil(contentHeight || 0), resolvedHeight);
 
   const context = React.useMemo<IChartAnnotationContext>(
     () => ({
@@ -131,34 +182,54 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
     [theme.fonts.large],
   );
 
-  if (!annotations || annotations.length === 0) {
-    return (
-      <div ref={containerRef} className={rootClassName} data-chart-annotation-only="true">
-        {chartTitle && (
-          <span className={titleClassName} aria-hidden="true">
-            {chartTitle}
-          </span>
-        )}
-        <div className={contentClassName} role="presentation" />
-      </div>
-    );
-  }
+  const resolvedAnnotations = annotations ?? [];
+  const hasAnnotations = resolvedAnnotations.length > 0;
+  const ariaLabel = hasAnnotations ? description ?? chartTitle : undefined;
+
+  React.useImperativeHandle(
+    componentRef,
+    () => {
+      const chartHandle: IChart = {
+        chartContainer: containerRef.current,
+        toImage: (opts?: IImageExportOptions) => {
+          if (!containerRef.current) {
+            return Promise.reject(new Error('Chart container is not defined'));
+          }
+
+          return exportToImage(containerRef.current, undefined, !!theme?.rtl, opts);
+        },
+      };
+
+      return chartHandle;
+    },
+    [theme?.rtl],
+  );
 
   return (
-    <div
-      ref={containerRef}
-      className={rootClassName}
-      aria-label={description ?? chartTitle}
-      data-chart-annotation-only="true"
-    >
-      {chartTitle && (
-        <span className={titleClassName} aria-hidden="true">
-          {chartTitle}
-        </span>
-      )}
-      <div className={contentClassName} role="presentation">
-        <ChartAnnotationLayer annotations={annotations} context={context} theme={theme} />
-      </div>
+    <div ref={containerRef} data-chart-annotation-container="true">
+      <svg
+        width={resolvedWidth}
+        height={svgHeight}
+        viewBox={`0 0 ${resolvedWidth} ${svgHeight}`}
+        style={{ width: width ? `${width}px` : '100%', height: `${svgHeight}px`, display: 'block' }}
+        role={ariaLabel ? 'img' : undefined}
+        aria-label={ariaLabel}
+      >
+        <foreignObject x={0} y={0} width={resolvedWidth} height={svgHeight}>
+          <div ref={contentRef} className={rootClassName} data-chart-annotation-only="true" aria-label={ariaLabel}>
+            {chartTitle && (
+              <span className={titleClassName} aria-hidden="true">
+                {chartTitle}
+              </span>
+            )}
+            <div className={contentClassName} role="presentation">
+              {hasAnnotations ? (
+                <ChartAnnotationLayer annotations={resolvedAnnotations} context={context} theme={theme} />
+              ) : null}
+            </div>
+          </div>
+        </foreignObject>
+      </svg>
     </div>
   );
 };
