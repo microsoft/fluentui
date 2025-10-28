@@ -437,22 +437,24 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const groupedTraces: Record<string, number[]> = {};
   let nonCartesianTraceCount = 0;
-  plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
-    let traceKey = '';
-    if (isNonPlotType(chart.validTracesInfo![index].type)) {
-      traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
-      nonCartesianTraceCount++;
-    } else {
-      traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
-    }
-    if (!groupedTraces[traceKey]) {
-      groupedTraces[traceKey] = [];
-    }
-    groupedTraces[traceKey].push(index);
-  });
 
-  if (chart.type === 'annotation' && Object.keys(groupedTraces).length === 0) {
-    groupedTraces.annotation = [];
+  // For annotation-only charts, create a single group entry
+  if (chart.type === 'annotation') {
+    groupedTraces[DEFAULT_XAXIS] = [];
+  } else {
+    plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
+      let traceKey = '';
+      if (isNonPlotType(chart.validTracesInfo![index].type)) {
+        traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
+        nonCartesianTraceCount++;
+      } else {
+        traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
+      }
+      if (!groupedTraces[traceKey]) {
+        groupedTraces[traceKey] = [];
+      }
+      groupedTraces[traceKey].push(index);
+    });
   }
 
   isMultiPlot.current = Object.keys(groupedTraces).length > 1;
