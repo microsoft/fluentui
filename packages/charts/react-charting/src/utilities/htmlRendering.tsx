@@ -25,8 +25,8 @@ const SUPPORTED_HTML_TAGS = new Set([
   'ul',
 ]);
 
-const ELEMENT_NODE_TYPE = 1;
-const TEXT_NODE_TYPE = 3;
+const ELEMENT_NODE_TYPE = 1; // DOM Node.ELEMENT_NODE
+const TEXT_NODE_TYPE = 3; // DOM Node.TEXT_NODE
 
 const hyphenToCamelCase = (property: string): string =>
   property
