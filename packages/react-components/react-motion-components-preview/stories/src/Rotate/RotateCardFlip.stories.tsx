@@ -156,7 +156,7 @@ export const CardFlip = (): JSXElement => {
             <Rotate
               visible={activePatterns.has(pattern.id)}
               axis={pattern.axis}
-              angle={pattern.angle}
+              fromAngle={pattern.angle}
               duration={pattern.duration}
               easing={pattern.easing}
               exitEasing={pattern.exitEasing}
