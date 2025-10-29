@@ -23,6 +23,10 @@ const vars = {
 
 const overshootEasing = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
 
+// Animation scale values
+const scaleVisible = 'scale(1)';
+const scaleHidden = 'scale(0)';
+
 // The indicator size is used by the indicator and label styles
 const indicatorSizeMedium = '16px';
 const indicatorSizeLarge = '20px';
@@ -150,23 +154,19 @@ const useIndicatorBaseClassName = makeResetStyles({
   height: indicatorSizeMedium,
   width: indicatorSizeMedium,
 
-  transition: `background-color 5s ${overshootEasing}`,
+  transition: `background-color ${tokens.durationNormal} ${overshootEasing}`,
+  position: 'relative', // Required for absolutely positioned children
 
-  // When icon appears, animate it in
-  '> *': {
-    animationName: {
-      '0%': {
-        opacity: 0,
-        transform: 'scale(0)',
-      },
-      '100%': {
-        opacity: 1,
-        transform: 'scale(1)',
-      },
-    },
-    animationDuration: '5s',
-    animationTimingFunction: overshootEasing,
-    animationFillMode: 'both',
+  // Shared styles for both icon containers
+  '> div': {
+    position: 'absolute',
+    inset: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: 0,
+    transform: scaleHidden,
+    transition: `opacity ${tokens.durationNormal} ${overshootEasing}, transform ${tokens.durationNormal} ${overshootEasing}`,
   },
 });
 
@@ -178,6 +178,21 @@ const useIndicatorStyles = makeStyles({
   },
 
   circular: { borderRadius: tokens.borderRadiusCircular },
+
+  unchecked: {
+    '> div:nth-child(1)': { opacity: 0, transform: scaleHidden }, // Hide checkmark
+    '> div:nth-child(2)': { opacity: 0, transform: scaleHidden }, // Hide mixed
+  },
+
+  checked: {
+    '> div:nth-child(1)': { opacity: 1, transform: scaleVisible }, // Show checkmark
+    '> div:nth-child(2)': { opacity: 0, transform: scaleHidden }, // Hide mixed
+  },
+
+  mixed: {
+    '> div:nth-child(1)': { opacity: 0, transform: scaleHidden }, // Hide checkmark
+    '> div:nth-child(2)': { opacity: 1, transform: scaleVisible }, // Show mixed
+  },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
@@ -249,6 +264,14 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
       indicatorBaseClassName,
       size === 'large' && indicatorStyles.large,
       shape === 'circular' && indicatorStyles.circular,
+      // Add animation state classes
+      disabled
+        ? undefined // No animation when disabled
+        : checked === 'mixed'
+        ? indicatorStyles.mixed
+        : checked
+        ? indicatorStyles.checked
+        : indicatorStyles.unchecked,
       state.indicator.className,
     );
   }
