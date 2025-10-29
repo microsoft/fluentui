@@ -59,13 +59,6 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
   const mixedIcon =
     shape === 'circular' ? <CircleFilled /> : size === 'large' ? <Square16Filled /> : <Square12Filled />;
 
-  const iconContainer = (
-    <>
-      <div>{checkmarkIcon}</div>
-      <div>{mixedIcon}</div>
-    </>
-  );
-
   const state: CheckboxState = {
     shape,
     checked,
@@ -108,7 +101,12 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
       renderByDefault: true,
       defaultProps: {
         'aria-hidden': true,
-        children: iconContainer,
+        children: (
+          <>
+            {checkmarkIcon}
+            {mixedIcon}
+          </>
+        ),
       },
       elementType: 'div',
     }),

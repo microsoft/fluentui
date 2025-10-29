@@ -158,9 +158,8 @@ const useIndicatorBaseClassName = makeResetStyles({
   position: 'relative', // Required for absolutely positioned children
 
   // Shared styles for both icon containers
-  '> div': {
+  '> svg': {
     position: 'absolute',
-    inset: 0,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -180,18 +179,18 @@ const useIndicatorStyles = makeStyles({
   circular: { borderRadius: tokens.borderRadiusCircular },
 
   unchecked: {
-    '> div:nth-child(1)': { opacity: 0, transform: scaleHidden }, // Hide checkmark
-    '> div:nth-child(2)': { opacity: 0, transform: scaleHidden }, // Hide mixed
+    '> svg:nth-child(1)': { opacity: 0, transform: scaleHidden }, // Hide checkmark
+    '> svg:nth-child(2)': { opacity: 0, transform: scaleHidden }, // Hide mixed
   },
 
   checked: {
-    '> div:nth-child(1)': { opacity: 1, transform: scaleVisible }, // Show checkmark
-    '> div:nth-child(2)': { opacity: 0, transform: scaleHidden }, // Hide mixed
+    '> svg:nth-child(1)': { opacity: 1, transform: scaleVisible }, // Show checkmark
+    '> svg:nth-child(2)': { opacity: 0, transform: scaleHidden }, // Hide mixed
   },
 
   mixed: {
-    '> div:nth-child(1)': { opacity: 0, transform: scaleHidden }, // Hide checkmark
-    '> div:nth-child(2)': { opacity: 1, transform: scaleVisible }, // Show mixed
+    '> svg:nth-child(1)': { opacity: 0, transform: scaleHidden }, // Hide checkmark
+    '> svg:nth-child(2)': { opacity: 1, transform: scaleVisible }, // Show mixed
   },
 });
 
