@@ -173,7 +173,7 @@ describe('ChartAnnotationLayer', () => {
         annotations={[
           {
             id: 'markup',
-            text: 'Start <b>bold</b> <i>italic</i> <br>Next <span>span</span> <u>underline</u> <script>alert(1)</script>',
+            text: 'Start <b>bold</b> <i>italic</i> <br>Next <span>span</span> <u>underline</u> <b>&lt;script&gt;text&lt;/script&gt;</b>',
             coordinates: { type: 'relative', x: 0.5, y: 0.5 },
           },
         ]}
@@ -205,12 +205,12 @@ describe('ChartAnnotationLayer', () => {
     const textContent = annotationContent!.textContent ?? '';
     expect(textContent).toContain('<span>span</span>');
     expect(textContent).toContain('<u>underline</u>');
-    expect(textContent).toContain('<script>alert(1)</script>');
+    expect(textContent).toContain('&lt;script&gt;text&lt;/script&gt;');
 
     const innerHTML = annotationContent!.innerHTML;
     expect(innerHTML).toContain('&lt;span&gt;span&lt;/span&gt;');
     expect(innerHTML).toContain('&lt;u&gt;underline&lt;/u&gt;');
-    expect(innerHTML).toContain('&lt;script&gt;alert(1)&lt;/script&gt;');
+    expect(innerHTML).toContain('&amp;lt;script&amp;gt;text&amp;lt;/script&amp;gt;');
   });
 
   it('decodes HTML entities before parsing', () => {

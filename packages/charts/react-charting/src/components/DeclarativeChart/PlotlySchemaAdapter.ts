@@ -413,6 +413,14 @@ const flattenObject = (obj: Record<string, unknown>, prefix: string = ''): Recor
 
 type PlotlyAnnotation = Partial<Annotations> | null | undefined;
 
+const encodeHtmlEntities = (value: string): string =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 const toFiniteNumber = (value: unknown): number | undefined => {
   if (value === undefined || value === null) {
     return undefined;
@@ -842,11 +850,12 @@ const convertPlotlyAnnotation = (
   }
 
   const textValue = annotation.text;
-  const text = textValue === undefined || textValue === null ? '' : String(textValue);
+  const rawText = textValue === undefined || textValue === null ? '' : String(textValue);
+  const encodedText = encodeHtmlEntities(rawText);
 
   const chartAnnotation: IChartAnnotation = {
-    id: createAnnotationId(text, index),
-    text,
+    id: createAnnotationId(rawText, index),
+    text: encodedText,
     coordinates,
   };
 

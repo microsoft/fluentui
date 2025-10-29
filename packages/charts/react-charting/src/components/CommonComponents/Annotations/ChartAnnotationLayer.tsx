@@ -31,6 +31,8 @@ const MIN_ARROW_SIZE = 6;
 const MAX_ARROW_SIZE = 24;
 const ARROW_SIZE_SCALE = 0.35;
 const MAX_SIMPLE_MARKUP_DEPTH = 5;
+const CHAR_CODE_LESS_THAN = '<'.codePointAt(0)!;
+const CHAR_CODE_GREATER_THAN = '>'.codePointAt(0)!;
 const getAnnotationKey = (annotation: IChartAnnotation, index: number) =>
   annotation.id ??
   (typeof annotation.text === 'string' || typeof annotation.text === 'number' ? String(annotation.text) : undefined) ??
@@ -47,25 +49,57 @@ type StackFrame = {
   node: ElementMarkupNode | null;
 };
 
-const decodeBasicEntities = (input: string): string => {
+const decodeSimpleMarkupInput = (input: string): string => {
   const namedEntities: Record<string, string> = {
-    lt: '<',
-    gt: '>',
     amp: '&',
     quot: '"',
     apos: "'",
     nbsp: '\u00a0',
   };
 
-  return input.replace(/&(#x?[0-9a-f]+|#\d+|[a-z][\w-]*);/gi, (match, entity) => {
+  const withBasicEntitiesDecoded = input.replace(/&(#x?[0-9a-f]+|#\d+|[a-z][\w-]*);/gi, (match, entity) => {
     const lower = entity.toLowerCase();
+    if (lower === 'lt' || lower === 'gt') {
+      return `&${lower};`;
+    }
     if (lower.startsWith('#')) {
       const isHex = lower[1] === 'x';
       const digits = lower.slice(isHex ? 2 : 1);
       const codePoint = Number.parseInt(digits, isHex ? 16 : 10);
-      return Number.isNaN(codePoint) ? match : String.fromCodePoint(codePoint);
+      if (Number.isNaN(codePoint)) {
+        return match;
+      }
+      if (codePoint === CHAR_CODE_LESS_THAN) {
+        return '&lt;';
+      }
+      if (codePoint === CHAR_CODE_GREATER_THAN) {
+        return '&gt;';
+      }
+      return String.fromCodePoint(codePoint);
     }
     return namedEntities[lower] ?? match;
+  });
+
+  return withBasicEntitiesDecoded.replace(/&lt;([^;]+)&gt;/gi, (match, inner) => {
+    const normalized = inner.trim().replace(/\s+/g, ' ');
+    const lower = normalized.toLowerCase();
+
+    switch (lower) {
+      case 'b':
+        return '<b>';
+      case '/b':
+        return '</b>';
+      case 'i':
+        return '<i>';
+      case '/i':
+        return '</i>';
+      case 'br':
+      case 'br/':
+      case 'br /':
+        return '<br />';
+      default:
+        return match;
+    }
   });
 };
 
@@ -100,7 +134,7 @@ const parseSimpleMarkup = (input: string): SimpleMarkupNode[] => {
     return [];
   }
 
-  const decodedInput = decodeBasicEntities(input);
+  const decodedInput = decodeSimpleMarkupInput(input);
   const rootChildren: SimpleMarkupNode[] = [];
   const stack: StackFrame[] = [{ node: null }];
   const currentChildren = () => stack[stack.length - 1].node?.children ?? rootChildren;
