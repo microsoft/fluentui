@@ -111,6 +111,7 @@ const disabledRules = {
   'no-await-in-loop': 'off',
   'max-len': 'off',
   'no-empty-character-class': 'off',
+  'default-param-last': 'off',
 };
 
 /** @type {import('eslint').Linter.RulesRecord} */

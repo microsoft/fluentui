@@ -10,7 +10,7 @@ const { defineConfig } = require('eslint/config');
 /** @type { import("eslint").Linter.Config } */
 module.exports = defineConfig(
   {
-    files: ['**/*.{jsx,tsx}'],
+    files: ['**/*.{jsx,tsx,ts,js}'],
     plugins: {
       react: reactPlugin,
       '@griffel': fixupPluginRules(/** @type {any} */ (griffelPlugin)),
