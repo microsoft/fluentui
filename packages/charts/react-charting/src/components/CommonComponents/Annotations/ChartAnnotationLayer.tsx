@@ -47,13 +47,27 @@ type StackFrame = {
   node: ElementMarkupNode | null;
 };
 
-const decodeBasicEntities = (input: string): string =>
-  input
-    .replace(/&lt;/gi, '<')
-    .replace(/&gt;/gi, '>')
-    .replace(/&amp;/gi, '&')
-    .replace(/&quot;/gi, '"')
-    .replace(/&#39;/g, "'");
+const decodeBasicEntities = (input: string): string => {
+  const namedEntities: Record<string, string> = {
+    lt: '<',
+    gt: '>',
+    amp: '&',
+    quot: '"',
+    apos: "'",
+    nbsp: '\u00a0',
+  };
+
+  return input.replace(/&(#x?[0-9a-f]+|#\d+|[a-z][\w-]*);/gi, (match, entity) => {
+    const lower = entity.toLowerCase();
+    if (lower.startsWith('#')) {
+      const isHex = lower[1] === 'x';
+      const digits = lower.slice(isHex ? 2 : 1);
+      const codePoint = Number.parseInt(digits, isHex ? 16 : 10);
+      return Number.isNaN(codePoint) ? match : String.fromCodePoint(codePoint);
+    }
+    return namedEntities[lower] ?? match;
+  });
+};
 
 const appendTextNode = (nodes: SimpleMarkupNode[], text: string) => {
   if (text.length === 0) {

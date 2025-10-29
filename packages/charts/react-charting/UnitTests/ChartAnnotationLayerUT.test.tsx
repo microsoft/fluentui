@@ -206,5 +206,46 @@ describe('ChartAnnotationLayer', () => {
     expect(textContent).toContain('<span>span</span>');
     expect(textContent).toContain('<u>underline</u>');
     expect(textContent).toContain('<script>alert(1)</script>');
+
+    const innerHTML = annotationContent!.innerHTML;
+    expect(innerHTML).toContain('&lt;span&gt;span&lt;/span&gt;');
+    expect(innerHTML).toContain('&lt;u&gt;underline&lt;/u&gt;');
+    expect(innerHTML).toContain('&lt;script&gt;alert(1)&lt;/script&gt;');
+  });
+
+  it('decodes HTML entities before parsing', () => {
+    render(
+      <ChartAnnotationLayer
+        annotations={[
+          {
+            id: 'entity',
+            text: 'Encoded &#x3C;b&#x3E;bold&#x3C;/b&#x3E; and &#60;i&#62;italic&#60;/i&#62; &#x3C;br&#x3E;After',
+            coordinates: { type: 'relative', x: 0.5, y: 0.5 },
+          },
+        ]}
+        context={baseContext}
+        theme={theme}
+      />,
+    );
+
+    const annotationContent = document.querySelector(
+      'foreignObject [data-chart-annotation="true"][data-annotation-key="entity"]',
+    ) as HTMLElement | null;
+
+    expect(annotationContent).not.toBeNull();
+
+    const strong = annotationContent!.querySelector('strong');
+    expect(strong).not.toBeNull();
+    expect(strong!.textContent).toBe('bold');
+
+    const em = annotationContent!.querySelector('em');
+    expect(em).not.toBeNull();
+    expect(em!.textContent).toBe('italic');
+
+    expect(annotationContent!.querySelectorAll('br')).toHaveLength(1);
+
+    const innerHTML = annotationContent!.innerHTML;
+    expect(innerHTML).not.toContain('&#x3C;');
+    expect(innerHTML).not.toContain('&#60;');
   });
 });
