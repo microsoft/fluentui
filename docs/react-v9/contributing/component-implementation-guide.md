@@ -101,7 +101,7 @@ We do this by looking at these areas:
 
 The [Open UI](https://open-ui.org/) project is working on standardizing UI component names and structures, but it is still in the early stages. If the component you're converging doesn't already have a research page on Open UI, you should do a survey of other established UI platforms and contribute it to Open UI to help with the standardization effort. This research will help inform the converged component's API, and help the Open UI effort to eventually create a standard for UI platforms.
 
-Creating or updating an Open UI component research page is especially useful as an education and preparation tool for Fluent UI developers. You can find information on contributing here at <https://open-ui.org/contribute>. Fluent UI developers can participate in Open UI beyond creating or updating a component research page, but it is not required for Fluent UI development.
+Creating or updating an Open UI component research page is especially useful as an education and preparation tool for Fluent UI developers. You can find information on contributing here at https://open-ui.org/contribute. Fluent UI developers can participate in Open UI beyond creating or updating a component research page, but it is not required for Fluent UI development.
 
 ### Find open issues on GitHub
 
