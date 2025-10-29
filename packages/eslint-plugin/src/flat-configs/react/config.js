@@ -4,11 +4,11 @@ const reactPlugin = require('eslint-plugin-react');
 const reactHooksPlugin = require('eslint-plugin-react-hooks');
 const griffelPlugin = require('@griffel/eslint-plugin');
 const configHelpers = require('../../utils/configHelpers');
-const tseslint = require('typescript-eslint');
 const { fixupPluginRules } = require('@eslint/compat');
+const { defineConfig } = require('eslint/config');
 
-/** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config(
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig(
   {
     files: ['**/*.{jsx,tsx}'],
     plugins: {

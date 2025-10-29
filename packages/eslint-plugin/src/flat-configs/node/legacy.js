@@ -1,9 +1,9 @@
 // @ts-check
 const legacy = require('../base/legacy');
-const tseslint = require('typescript-eslint');
+const { defineConfig } = require('eslint/config');
 
-/** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config(legacy, {
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig(legacy, {
   files: ['**/*.{ts,js}'],
   rules: {},
 });
