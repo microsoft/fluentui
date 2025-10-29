@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix previous month button not appearing disabled in WHCM",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}
