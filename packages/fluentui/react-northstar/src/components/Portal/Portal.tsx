@@ -14,11 +14,9 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { FluentComponentStaticProps } from '../../types';
 import {
-  childrenExist,
   doesNodeContainClick,
   ChildrenComponentProps,
   commonPropTypes,
-  ContentComponentProps,
   rtlTextContainer,
   createShorthandFactory,
 } from '../../utils';
@@ -29,7 +27,7 @@ export type TriggerAccessibility = {
   keyHandlers?: AccessibilityHandlerProps;
 };
 
-export interface PortalProps extends ChildrenComponentProps, ContentComponentProps {
+export interface PortalProps extends ChildrenComponentProps<React.ReactElement> {
   /** Initial value of open. */
   defaultOpen?: boolean;
 
@@ -85,7 +83,7 @@ export interface PortalProps extends ChildrenComponentProps, ContentComponentPro
 export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalProps> = props => {
   const context = useFluentContext();
 
-  const { children, content, trapFocus, trigger, triggerAccessibility = {} } = props;
+  const { children, trapFocus, trigger, triggerAccessibility = {} } = props;
   const portalRef = React.useRef<HTMLElement>();
   const triggerRef = React.useRef<HTMLElement>();
 
@@ -96,20 +94,21 @@ export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalPr
   });
 
   const renderPortal = (): JSX.Element | undefined => {
-    const contentToRender = childrenExist(children) ? children : content;
     const focusTrapZoneProps = typeof trapFocus === 'boolean' ? {} : trapFocus;
+
     return (
       open && (
-        <Ref innerRef={portalRef}>
+        <>
           <PortalInner
             onMount={handleMount}
             onUnmount={handleUnmount}
-            {...rtlTextContainer.getAttributes({ forElements: [contentToRender] })}
+            ref={portalRef}
+            {...rtlTextContainer.getAttributes({ forElements: [children] })}
           >
-            {trapFocus ? <FocusTrapZone {...focusTrapZoneProps}>{contentToRender}</FocusTrapZone> : contentToRender}
-            <EventListener listener={handleDocumentClick} target={context.target} type="click" />
+            {trapFocus ? <FocusTrapZone {...focusTrapZoneProps}>{children}</FocusTrapZone> : children}
           </PortalInner>
-        </Ref>
+          <EventListener listener={handleDocumentClick} target={context.target} type="click" />
+        </>
       )
     );
   };
@@ -174,8 +173,11 @@ Portal.propTypes = {
     accessibility: false,
     as: false,
     className: false,
+    content: false,
+    children: false,
     styled: false,
   }),
+  children: PropTypes.element,
   defaultOpen: PropTypes.bool,
   onMount: PropTypes.func,
   onUnmount: PropTypes.func,

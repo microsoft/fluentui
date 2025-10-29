@@ -15,7 +15,7 @@ const DEFAULT_POSITIONING_DEPENDENCIES = [];
  *
  * @deprecated Please use "usePopper()" hook instead.
  */
-export const Popper: React.FunctionComponent<PopperProps> = props => {
+export const Popper = React.forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const usesRenderProps: boolean = typeof props.children === 'function';
 
   const proposedPlacement = getPlacement(props.align, props.position, props.rtl);
@@ -64,7 +64,8 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
         placement: computedPlacement,
         scheduleUpdate,
       })
-    : (props.children as React.ReactElement);
+    : (props.children as React.ReactElement | null);
+  const childRef = useMergedRefs(containerRef, ref);
 
-  return child ? <Ref innerRef={containerRef}>{React.Children.only(child)}</Ref> : null;
-};
+  return child ? <Ref innerRef={childRef}>{React.Children.only(child)}</Ref> : null;
+});

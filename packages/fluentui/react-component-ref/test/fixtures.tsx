@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-export const DOMFunction: React.FunctionComponent = props => <div {...props} id="node" />;
+export const DOMFunction: React.FunctionComponent<{ isButton?: boolean; id?: string }> = props => {
+  const { id = 'node', isButton, ...rest } = props;
+
+  return isButton ? <button {...rest} id={id} /> : <div {...rest} id={id} />;
+};
 
 export const CompositeFunction: React.FunctionComponent = props => <DOMFunction {...props} />;
 

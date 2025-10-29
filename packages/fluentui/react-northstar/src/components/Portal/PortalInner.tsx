@@ -7,12 +7,13 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Ref } from '@fluentui/react-component-ref';
 
 import { isBrowser, ChildrenComponentProps, commonPropTypes } from '../../utils';
 import { PortalContext } from '../Provider/portalContext';
 import { usePortalBox } from './usePortalBox';
 
-export interface PortalInnerProps extends ChildrenComponentProps {
+export interface PortalInnerProps extends ChildrenComponentProps<React.ReactElement> {
   /** Existing element the portal should be bound to. */
   mountNode?: HTMLElement;
 
@@ -34,7 +35,7 @@ export interface PortalInnerProps extends ChildrenComponentProps {
 /**
  * A PortalInner is a container for Portal's content.
  */
-export const PortalInner: React.FC<PortalInnerProps> = props => {
+export const PortalInner = React.forwardRef<HTMLElement, PortalInnerProps>((props, ref) => {
   const { children, mountNode } = props;
 
   const { className } = React.useContext(PortalContext);
@@ -60,7 +61,7 @@ export const PortalInner: React.FC<PortalInnerProps> = props => {
     container &&
     ReactDOM.createPortal(
       <>
-        {children}
+        <Ref innerRef={ref}>{children}</Ref>
         {/* Heads up!
          *  This node exists only to ensure that the portal is not empty as we rely on that in `usePortalBox`
          *  hook for React 18+.
@@ -70,16 +71,18 @@ export const PortalInner: React.FC<PortalInnerProps> = props => {
       container,
     )
   );
-};
+});
 
 PortalInner.propTypes = {
   ...commonPropTypes.createCommon({
     accessibility: false,
     as: false,
     className: false,
+    children: false,
     content: false,
     styled: false,
   }),
+  children: PropTypes.element,
   mountNode: customPropTypes.domNode,
   onMount: PropTypes.func,
   onUnmount: PropTypes.func,
