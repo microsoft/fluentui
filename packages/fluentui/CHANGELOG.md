@@ -18,6 +18,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.69.1 ]------------------------------- -->
+## [v0.69.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.69.1) (29-10-2025)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.69.0..@fluentui/react-northstar_v0.69.1)
+
+### Fixes
+- Fix `variables` access in `Embed` https://github.com/microsoft/fluentui/pull/35413
+
 <!--------------------------------[ v0.69.0 ]------------------------------- -->
 ## [v0.69.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.69.0) (27-10-2025)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.68.2..@fluentui/react-northstar_v0.69.0)
