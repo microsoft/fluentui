@@ -1,0 +1,30 @@
+erDiagram
+    Wrapper ||--o| Searchbox : contains
+    ResultList ||--o{ ResultOption : contains
+    Wrapper ||--o{ ResultList : contains
+    Wrapper {
+        bool showResultsDropdown
+        func onSelect()
+        func onSearchBoxChange()
+    }
+    Searchbox {}
+    ResultList {
+        int numberResults
+        bool showMoreLink
+        bool showRecents
+        bool showLoading
+        bool showSuggestions
+        str noResultsMessage
+        bool isVisible
+        Spinner loadingComponent
+        ResultOptions[] suggestions
+        ResultOptions[] recents
+        Link showMoreURL
+    }
+    ResultOption {
+        object resultComponent
+        object media
+        string textShown
+        bool disabled
+        func onClick()
+    }
