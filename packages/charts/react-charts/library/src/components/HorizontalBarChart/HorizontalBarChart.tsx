@@ -7,7 +7,7 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { formatScientificLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
@@ -219,11 +219,11 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       1;
     const totalMarginPercent = barSpacingInPercent * (noOfBars - 1);
     const defaultColors: string[] = [
-      tokens.colorPaletteBlueForeground2,
-      tokens.colorPaletteCornflowerForeground2,
-      tokens.colorPaletteDarkGreenForeground2,
-      tokens.colorPaletteNavyForeground2,
-      tokens.colorPaletteDarkOrangeForeground2,
+      chartTokens.colorPaletteBlueForeground2,
+      chartTokens.colorPaletteCornflowerForeground2,
+      chartTokens.colorPaletteDarkGreenForeground2,
+      chartTokens.colorPaletteNavyForeground2,
+      chartTokens.colorPaletteDarkOrangeForeground2,
     ];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -406,7 +406,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
               x: points.chartData![0].horizontalBarChartdata!.total! - datapoint!,
               total: points.chartData![0].horizontalBarChartdata!.total!,
             },
-            color: tokens.colorBackgroundOverlay,
+            color: chartTokens.colorBackgroundOverlay,
           };
         }
 

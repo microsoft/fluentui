@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import { useId } from '@fluentui/react-utilities';
 import { sum as d3Sum } from 'd3-array';
 import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
@@ -995,7 +995,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       //Fixing tooltip position by attaching it to the element rather than page
       select(_tooltip.current)
         .style('opacity', 0.9)
-        .style('color', tokens.colorNeutralForeground1)
+        .style('color', chartTokens.colorNeutralForeground1)
         .style('left', evt.pageX + 'px')
         .style('top', evt.pageY - 28 + 'px')
         .html(text);
@@ -1160,7 +1160,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
                   <g
                     key={`${(links[item.index].source as SNode).nodeId}-${(links[item.index].target as SNode).nodeId}`}
                     className={classes.links}
-                    stroke={props.pathColor ? props.pathColor : tokens.colorStrokeFocus2}
+                    stroke={props.pathColor ? props.pathColor : chartTokens.colorStrokeFocus2}
                     strokeOpacity={1}
                   >
                     {linkData![item.index]}

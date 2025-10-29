@@ -42,7 +42,7 @@ import {
   ScatterChartPoints,
   YValueHover,
 } from '../../index';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import {
   calloutData,
   ChartTypes,
@@ -372,7 +372,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
 
   function _getPointFill(seriesColor: string, pointId: string, pointIndex: number, isLastPoint: boolean) {
     if (activePoint === pointId) {
-      return tokens.colorNeutralBackground1;
+      return chartTokens.colorNeutralBackground1;
     } else {
       return seriesColor;
     }

@@ -5,7 +5,7 @@ import { useAreaChartStyles } from './useAreaChartStyles.styles';
 import { max as d3Max, bisector } from 'd3-array';
 import { pointer } from 'd3-selection';
 import { select as d3Select } from 'd3-selection';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
 import {
   AccessibilityProps,
@@ -666,7 +666,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       let fillColor = lineColor;
       if (nearestCircleToHighlight === xDataPoint || activePoint === circleId) {
         if (!isCircleClicked) {
-          fillColor = tokens.colorNeutralBackground1;
+          fillColor = chartTokens.colorNeutralBackground1;
         }
       }
 

@@ -54,7 +54,7 @@ import {
   ChildProps,
 } from '../../index';
 import { toImage } from '../../utilities/image-export-utils';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 
 type NumericScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -843,7 +843,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
                 x2={x2}
                 y2={y2}
                 fill="transparent"
-                stroke={series.lineOptions?.lineBorderColor ?? tokens.colorNeutralBackground1}
+                stroke={series.lineOptions?.lineBorderColor ?? chartTokens.colorNeutralBackground1}
                 strokeWidth={3 + lineBorderWidth * 2}
                 strokeLinecap="round"
                 opacity={shouldHighlight ? 1 : 0.1}
@@ -879,7 +879,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             cx={x2}
             cy={y2}
             r={shouldHighlight && isLinePointActive ? 8 : 0.3}
-            fill={tokens.colorNeutralBackground1}
+            fill={chartTokens.colorNeutralBackground1}
             stroke={series.color}
             strokeWidth={3}
             opacity={shouldHighlight ? 1 : 0.1}

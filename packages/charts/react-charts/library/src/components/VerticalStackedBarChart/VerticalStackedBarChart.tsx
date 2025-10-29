@@ -14,7 +14,7 @@ import {
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -630,7 +630,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               strokeWidth={3 + lineBorderWidth * 2}
               fill="transparent"
               strokeLinecap="round"
-              stroke={tokens.colorNeutralBackground1}
+              stroke={chartTokens.colorNeutralBackground1}
               transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
             />,
           );
@@ -679,7 +679,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             onMouseLeave={_handleMouseOut}
             r={_getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
             stroke={circlePoint.color}
-            fill={tokens.colorNeutralBackground1}
+            fill={chartTokens.colorNeutralBackground1}
             strokeWidth={3}
             // Elements with visibility: hidden cannot receive focus, so use opacity: 0 instead to hide them.
             // For more information, see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html

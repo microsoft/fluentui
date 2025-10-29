@@ -30,7 +30,7 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { CartesianChart, ChartPopoverProps, ChildProps } from '../CommonComponents/index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import { useHeatMapChartStyles } from './useHeatMapChartStyles.styles';
 import { Legend, Legends, LegendContainer } from '../Legends/index';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
@@ -157,7 +157,9 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       /** Show the callout if highlighted rectangle is focused and Hide it if unhighlighted rectangle is focused */
       setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
       setCalloutYValue(`${data.rectText}`);
-      setCalloutTextColor(Number.isNaN(data.value) ? tokens.colorNeutralForeground1 : _colorScale.current(data.value));
+      setCalloutTextColor(
+        Number.isNaN(data.value) ? chartTokens.colorNeutralForeground1 : _colorScale.current(data.value),
+      );
       setCalloutLegend(data.legend);
       setRatio(data.ratio);
       setDescriptionMessage(data.descriptionMessage || '');
@@ -173,7 +175,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
         setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
         setCalloutYValue(`${data.rectText}`);
         setCalloutTextColor(
-          Number.isNaN(data.value) ? tokens.colorNeutralForeground1 : _colorScale.current(data.value),
+          Number.isNaN(data.value) ? chartTokens.colorNeutralForeground1 : _colorScale.current(data.value),
         );
         setCalloutLegend(data.legend);
         setRatio(data.ratio);
@@ -192,7 +194,9 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     };
 
     const _getInvertedTextColor = (color: string): string => {
-      return color === tokens.colorNeutralForeground1 ? tokens.colorNeutralBackground1 : tokens.colorNeutralForeground1;
+      return color === chartTokens.colorNeutralForeground1
+        ? chartTokens.colorNeutralBackground1
+        : chartTokens.colorNeutralForeground1;
     };
 
     /**
@@ -222,7 +226,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
              */
             const dataPointObject = _dataSet.current[yAxisDataPoint][index];
             let styleRules = '';
-            let foregroundColor = tokens.colorNeutralForeground1;
+            let foregroundColor = chartTokens.colorNeutralForeground1;
             if (cartesianChartRef.current?.chartContainer) {
               styleRules = resolveCSSVariables(cartesianChartRef.current.chartContainer, foregroundColor);
             }

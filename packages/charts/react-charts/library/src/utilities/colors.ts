@@ -1,5 +1,5 @@
-import { tokens } from '@fluentui/react-theme';
 import { rgb as d3Rgb } from 'd3-color';
+import * as chartTokens from './chartTokens';
 
 export const DataVizPalette = {
   color1: 'qualitative.1',
@@ -169,11 +169,13 @@ export const getColorContrast = (c1: string, c2: string): number => {
 };
 
 export const getInvertedTextColor = (color: string, isDarkTheme: boolean = false): string => {
-  return color === tokens.colorNeutralForeground1 ? tokens.colorNeutralBackground1 : tokens.colorNeutralForeground1;
+  return color === chartTokens.colorNeutralForeground1
+    ? chartTokens.colorNeutralBackground1
+    : chartTokens.colorNeutralForeground1;
 };
 
 export function getContrastTextColor(backgroundColor: string, isDarkTheme: boolean = false): string {
-  let textColor = tokens.colorNeutralForeground1;
+  let textColor = chartTokens.colorNeutralForeground1;
   const contrastRatio = getColorContrast(textColor, backgroundColor);
   if (contrastRatio < 3) {
     textColor = getInvertedTextColor(textColor, isDarkTheme);

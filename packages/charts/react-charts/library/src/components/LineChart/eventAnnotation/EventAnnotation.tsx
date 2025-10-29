@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScaleTime } from 'd3-scale';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../../utilities/chartTokens';
 import { findIndex } from '../../../utilities/index';
 import { LineDef, LabelLink, LabelDef } from './LabelLink';
 import { EventsAnnotationProps } from '../LineChart.types';
@@ -27,7 +27,7 @@ export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendPr
 
   const fill: string | undefined = props.strokeColor
     ? getColorFromToken(props.strokeColor, false /*ToDo fix */)
-    : tokens.colorNeutralForeground1;
+    : chartTokens.colorNeutralForeground1;
 
   const lines = uniqBy(lineDefs, x => x.date.toString()).map((x, i) => (
     <line key={i} x1={x.x} x2={x.x} y1={lineTopY} y2={props.chartYBottom} stroke={fill} strokeDasharray="8" />

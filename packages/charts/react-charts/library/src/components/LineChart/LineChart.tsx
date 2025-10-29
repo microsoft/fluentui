@@ -29,7 +29,7 @@ import {
   YValueHover,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import {
   calloutData,
   ChartTypes,
@@ -512,20 +512,20 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       if (allowMultipleShapesForPoints) {
         if (pointIndex === 1 || isLastPoint) {
           if (activePoint === pointId) {
-            return tokens.colorNeutralBackground1;
+            return chartTokens.colorNeutralBackground1;
           } else {
             return lineColor;
           }
         } else {
           if (activePoint === pointId) {
-            return tokens.colorNeutralBackground1;
+            return chartTokens.colorNeutralBackground1;
           } else {
             return lineColor;
           }
         }
       } else {
         if (activePoint === pointId) {
-          return tokens.colorNeutralBackground1;
+          return chartTokens.colorNeutralBackground1;
         } else {
           return lineColor;
         }
@@ -599,7 +599,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     }
                     cx={xPoint}
                     cy={yPoint}
-                    fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
+                    fill={activePoint === circleId ? chartTokens.colorNeutralBackground1 : lineColor}
                     opacity={isLegendSelected ? 1 : 0.1}
                     tabIndex={isLegendSelected ? 0 : undefined}
                     onMouseOver={(event: React.MouseEvent<SVGElement>) =>
@@ -722,7 +722,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                   fill="transparent"
                   strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                   strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                  stroke={_points[i].lineOptions?.lineBorderColor || tokens.colorNeutralBackground1}
+                  stroke={_points[i].lineOptions?.lineBorderColor || chartTokens.colorNeutralBackground1}
                   opacity={1}
                 />,
               );
@@ -772,7 +772,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               r={5.5}
               cx={0}
               cy={0}
-              fill={tokens.colorNeutralBackground1}
+              fill={chartTokens.colorNeutralBackground1}
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
               stroke={lineColor}
               visibility={'hidden'}
@@ -807,7 +807,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     cy={yPoint}
                     fill={
                       activePoint === _circleId
-                        ? tokens.colorNeutralBackground1
+                        ? chartTokens.colorNeutralBackground1
                         : perPointColor || _points[i]?.color || lineColor
                     }
                     stroke={perPointColor || lineColor}
@@ -1217,7 +1217,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         y2={yPoint2}
                         strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                         strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                        stroke={_points[i].lineOptions?.lineBorderColor || tokens.colorNeutralBackground1}
+                        stroke={_points[i].lineOptions?.lineBorderColor || chartTokens.colorNeutralBackground1}
                         opacity={1}
                       />,
                     );

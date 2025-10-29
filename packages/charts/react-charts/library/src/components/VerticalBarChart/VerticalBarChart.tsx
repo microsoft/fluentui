@@ -13,7 +13,7 @@ import {
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -189,7 +189,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   ): React.ReactNode {
     const isStringAxis = _xAxisType === XAxisTypes.StringAxis;
     const colorScale = _createColors();
-    const { data, lineLegendColor = tokens.colorPaletteYellowBackground1, lineLegendText } = props;
+    const { data, lineLegendColor = chartTokens.colorPaletteYellowBackground1, lineLegendText } = props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
     const line: JSXElement[] = [];
@@ -269,7 +269,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onMouseOut={_onBarLeave}
             r={_getCircleVisibilityAndRadius(item.x, lineLegendText!).radius}
             stroke={lineLegendColor}
-            fill={tokens.colorNeutralBackground1}
+            fill={chartTokens.colorNeutralBackground1}
             strokeWidth={3}
             visibility={_getCircleVisibilityAndRadius(item.x, lineLegendText!).visibility}
             onClick={item.point.lineData?.onClick}
@@ -329,11 +329,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     _points = props.data || [];
     _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, undefined, props.mode);
     const defaultColors: string[] = [
-      tokens.colorPaletteBlueForeground2,
-      tokens.colorPaletteCornflowerForeground2,
-      tokens.colorPaletteDarkGreenForeground2,
-      tokens.colorPaletteNavyForeground2,
-      tokens.colorPaletteDarkOrangeForeground2,
+      chartTokens.colorPaletteBlueForeground2,
+      chartTokens.colorPaletteCornflowerForeground2,
+      chartTokens.colorPaletteDarkGreenForeground2,
+      chartTokens.colorPaletteNavyForeground2,
+      chartTokens.colorPaletteDarkOrangeForeground2,
     ];
     _colors = props.colors || defaultColors;
     _isHavingLine = _checkForLine();
@@ -426,7 +426,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     if (useSingleColor) {
       return (_p?: number) => {
         const { colors } = props;
-        return colors && colors.length > 0 ? colors[0] : tokens.colorPaletteBlueBackground2;
+        return colors && colors.length > 0 ? colors[0] : chartTokens.colorPaletteBlueBackground2;
       };
     }
     const domainValues = [];
@@ -448,7 +448,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const YValueHover: YValueHover[] = [];
     const { useSingleColor = false } = props;
-    const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
+    const { data, lineLegendText, lineLegendColor = chartTokens.colorPaletteYellowBackground1 } = props;
     const selectedPoint = data!.filter((xDataPoint: VerticalBarChartDataPoint) => xDataPoint.x === point.x);
     // Check if the line legend is highlighted or no legend is highlighted
     if (
@@ -588,7 +588,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     point: VerticalBarChartDataPoint,
     _refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
   ) {
-    const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
+    const { lineLegendText = '', lineLegendColor = chartTokens.colorPaletteYellowBackground1 } = props;
     setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(lineLegendText));
     setCalloutLegend(lineLegendText);
     setDataForHoverCard(point.lineData!.y);
@@ -920,7 +920,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
   function _getLegendData(data: VerticalBarChartDataPoint[]): JSXElement {
     const { useSingleColor } = props;
-    const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
+    const { lineLegendText, lineLegendColor = chartTokens.colorPaletteYellowForeground1 } = props;
     const actions: Legend[] = [];
     const mapLegendToColor: Record<string, string> = {};
     data.forEach((point: VerticalBarChartDataPoint, _index: number) => {

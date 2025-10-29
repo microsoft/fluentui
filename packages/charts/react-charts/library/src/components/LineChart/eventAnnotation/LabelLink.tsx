@@ -4,7 +4,7 @@ import * as React from 'react';
 import { EventAnnotation } from '../../../types/EventAnnotation';
 import { Textbox } from './Textbox';
 import { getColorFromToken } from '../../../utilities/colors';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../../utilities/chartTokens';
 
 export interface LineDef extends EventAnnotation {
   x: number;
@@ -61,7 +61,7 @@ export const LabelLink: React.FunctionComponent<LabelLinkProps> = props => {
   let text: string;
   const fill: string | undefined = props.textColor
     ? getColorFromToken(props.textColor, false)
-    : tokens.colorNeutralForeground1;
+    : chartTokens.colorNeutralForeground1;
 
   if (props.labelDef.aggregatedIdx.length === 1) {
     text = props.lineDefs[props.labelDef.aggregatedIdx[0]].event;

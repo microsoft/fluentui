@@ -10,7 +10,7 @@ import { useLegendStyles } from './useLegendsStyles.styles';
 import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
 import { mergeClasses } from '@griffel/react';
 
@@ -307,7 +307,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           style={{
             '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
             '--rect-backgroundColor': legend.stripePattern ? '' : color,
-            '--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
+            '--rect-borderColor': legend.color ? legend.color : chartTokens.colorNeutralStroke1,
             '--rect-content': legend.stripePattern
               ? // eslint-disable-next-line @fluentui/max-len
                 `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
@@ -315,7 +315,10 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           }} /* eslint-enable react/jsx-no-bind */
         >
           {shape}
-          <div className={classes.text} style={{ opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '' }}>
+          <div
+            className={classes.text}
+            style={{ opacity: color === chartTokens.colorNeutralBackground1 ? '0.67' : '' }}
+          >
             {legend.title}
           </div>
         </Button>
@@ -341,13 +344,13 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             {
               height: legend.isLineLegendInBarChart ? '4px' : '12px',
               backgroundColor: legend.stripePattern ? '' : color,
-              borderColor: legend.color ? legend.color : tokens.colorNeutralStroke1,
+              borderColor: legend.color ? legend.color : chartTokens.colorNeutralStroke1,
               content: legend.stripePattern
                 ? // eslint-disable-next-line @fluentui/max-len
                   `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
                 : '',
               '--rect-content-high-contrast': `linear-gradient(to right, ${color}, ${color})`,
-              '--rect-opacity-high-contrast': color === tokens.colorNeutralBackground1 ? '0.6' : '',
+              '--rect-opacity-high-contrast': color === chartTokens.colorNeutralBackground1 ? '0.6' : '',
             } as React.CSSProperties
           }
         />
@@ -364,7 +367,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         }
         // if the given legend is unselected
         else {
-          legendColor = tokens.colorNeutralBackground1;
+          legendColor = chartTokens.colorNeutralBackground1;
         }
       }
       // if no legend is selected
@@ -376,7 +379,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         }
         // if there is a hovered legend but the given legend is not the one
         else {
-          legendColor = tokens.colorNeutralBackground1;
+          legendColor = chartTokens.colorNeutralBackground1;
         }
       }
       return legendColor;

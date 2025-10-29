@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { mergeClasses } from '@griffel/react';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
-import { tokens } from '@fluentui/react-theme';
+import * as chartTokens from '../../utilities/chartTokens';
 import { useId } from '@fluentui/react-utilities';
 import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
@@ -82,8 +82,8 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                   <div
                     className={classes.calloutContentY}
                     style={{
-                      color: props.color ? props.color : tokens.colorNeutralForeground1,
-                      fontSize: tokens.fontSizeHero700,
+                      color: props.color ? props.color : chartTokens.colorNeutralForeground1,
+                      fontSize: chartTokens.fontSizeHero700,
                     }}
                   >
                     {formatToLocaleString(YValue, props.culture) as React.ReactNode}
@@ -143,13 +143,13 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                       ? {
                           display: 'inline-block',
                           ...(shouldDrawBorderBottom && {
-                            borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+                            borderBottom: `1px solid ${chartTokens.colorNeutralStroke2}`,
                             paddingBottom: '10px',
                           }),
                         }
                       : {
                           ...(shouldDrawBorderBottom && {
-                            borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+                            borderBottom: `1px solid ${chartTokens.colorNeutralStroke2}`,
                             paddingBottom: '10px',
                           }),
                         }
@@ -255,7 +255,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                 </div>
                 <div
                   className={classes.calloutContentY}
-                  style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
+                  style={{ color: props.color ? props.color : chartTokens.colorNeutralForeground1 }}
                 >
                   {formatToLocaleString(subcounts[subcountName], culture) as React.ReactNode}
                 </div>

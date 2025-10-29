@@ -4,25 +4,25 @@ import * as React from 'react';
 import { ChartTableProps } from './ChartTable.types';
 import { useChartTableStyles } from './useChartTableStyles.styles';
 import { useRtl } from '../../utilities/utilities';
+import * as chartTokens from '../../utilities/chartTokens';
 import { ImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
-import { tokens } from '@fluentui/react-theme';
-import * as d3 from 'd3-color';
+import { color as d3Color, rgb as d3Rgb } from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { resolveCSSVariables } from '../../utilities/utilities';
 
 function invertHexColor(hex: string): string {
-  const color = d3.color(hex);
+  const color = d3Color(hex);
   if (!color) {
-    return tokens.colorNeutralForeground1!;
+    return chartTokens.colorNeutralForeground1!;
   }
   const rgb = color.rgb();
-  return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
+  return d3Rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
 }
 
 function getSafeBackgroundColor(chartContainer: HTMLElement, foreground?: string, background?: string): string {
-  const fallbackFg = tokens.colorNeutralForeground1;
-  const fallbackBg = tokens.colorNeutralBackground1;
+  const fallbackFg = chartTokens.colorNeutralForeground1;
+  const fallbackBg = chartTokens.colorNeutralBackground1;
   if (!chartContainer) {
     return fallbackBg;
   }
@@ -30,8 +30,8 @@ function getSafeBackgroundColor(chartContainer: HTMLElement, foreground?: string
   const resolvedFg = resolveCSSVariables(chartContainer, foreground || fallbackFg);
   const resolvedBg = resolveCSSVariables(chartContainer, background || fallbackBg);
 
-  const fg = d3.color(resolvedFg);
-  const bg = d3.color(resolvedBg);
+  const fg = d3Color(resolvedFg);
+  const bg = d3Color(resolvedBg);
 
   if (!fg || !bg) {
     return resolvedBg;
@@ -71,7 +71,7 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
     const bgColorSet = new Set<string>();
     headers.forEach(header => {
       const bg = header?.style?.backgroundColor;
-      const normalized = d3.color(bg || '')?.formatHex();
+      const normalized = d3Color(bg || '')?.formatHex();
       if (normalized) {
         bgColorSet.add(normalized);
       }
