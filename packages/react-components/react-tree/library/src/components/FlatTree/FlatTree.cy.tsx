@@ -733,5 +733,204 @@ describe('FlatTree', () => {
         .realHover()
         .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
     });
+
+    it('should have the correct sizing (medium) by default', () => {
+      mount(
+        <TreeTest id="flat-tree" aria-label="Tree" openItems={['item1', 'item2']}>
+          <FlatTreeItem
+            open
+            itemType="branch"
+            value="item1"
+            data-testid="item1"
+            aria-level={1}
+            aria-posinset={1}
+            aria-setsize={2}
+          >
+            <TreeItemLayout data-testid="item1_layout">level 1, item 1</TreeItemLayout>
+            <>
+              <FlatTreeItem
+                itemType="leaf"
+                value="item1__item1"
+                data-testid="item1__item1"
+                aria-level={2}
+                aria-posinset={1}
+                aria-setsize={1}
+                parentValue={'item1'}
+              >
+                <TreeItemLayout data-testid="item1__item1_layout">level 2, item 1</TreeItemLayout>
+              </FlatTreeItem>
+            </>
+          </FlatTreeItem>
+          <FlatTreeItem
+            open
+            itemType="branch"
+            value="item2"
+            data-testid="item2"
+            aria-level={1}
+            aria-posinset={2}
+            aria-setsize={2}
+          >
+            <TreeItemPersonaLayout media={<Avatar name="Level 1" color="colorful" />} data-testid="item2_layout">
+              level 1, item 2
+            </TreeItemPersonaLayout>
+            <>
+              <FlatTreeItem
+                itemType="leaf"
+                value="item2__item1"
+                data-testid="item2__item1"
+                aria-level={2}
+                aria-posinset={1}
+                aria-setsize={1}
+                parentValue={'item2'}
+              >
+                <TreeItemPersonaLayout
+                  media={<Avatar name="Level 2" color="colorful" />}
+                  data-testid="item2__item1_layout"
+                >
+                  level 2, item 2
+                </TreeItemPersonaLayout>
+              </FlatTreeItem>
+            </>
+          </FlatTreeItem>
+        </TreeTest>,
+      );
+
+      cy.get('[data-testid="item1_layout"]').should('have.css', 'font-size', '14px');
+      cy.get('[data-testid="item1__item1_layout"]').should('have.css', 'font-size', '14px');
+      cy.get('[data-testid="item2_layout"]').should('have.css', 'font-size', '14px');
+      cy.get('[data-testid="item2__item1_layout"]').should('have.css', 'font-size', '14px');
+    });
+
+    it('should have the correct sizing (medium) when declared explicitly', () => {
+      mount(
+        <TreeTest id="flat-tree" aria-label="Tree" openItems={['item1', 'item2']} size="medium">
+          <FlatTreeItem
+            open
+            itemType="branch"
+            value="item1"
+            data-testid="item1"
+            aria-level={1}
+            aria-posinset={1}
+            aria-setsize={2}
+          >
+            <TreeItemLayout data-testid="item1_layout">level 1, item 1</TreeItemLayout>
+            <>
+              <FlatTreeItem
+                itemType="leaf"
+                value="item1__item1"
+                data-testid="item1__item1"
+                aria-level={2}
+                aria-posinset={1}
+                aria-setsize={1}
+                parentValue={'item1'}
+              >
+                <TreeItemLayout data-testid="item1__item1_layout">level 2, item 1</TreeItemLayout>
+              </FlatTreeItem>
+            </>
+          </FlatTreeItem>
+          <FlatTreeItem
+            open
+            itemType="branch"
+            value="item2"
+            data-testid="item2"
+            aria-level={1}
+            aria-posinset={2}
+            aria-setsize={2}
+          >
+            <TreeItemPersonaLayout media={<Avatar name="Level 1" color="colorful" />} data-testid="item2_layout">
+              level 1, item 2
+            </TreeItemPersonaLayout>
+            <>
+              <FlatTreeItem
+                itemType="leaf"
+                value="item2__item1"
+                data-testid="item2__item1"
+                aria-level={2}
+                aria-posinset={1}
+                aria-setsize={1}
+                parentValue={'item2'}
+              >
+                <TreeItemPersonaLayout
+                  media={<Avatar name="Level 2" color="colorful" />}
+                  data-testid="item2__item1_layout"
+                >
+                  level 2, item 2
+                </TreeItemPersonaLayout>
+              </FlatTreeItem>
+            </>
+          </FlatTreeItem>
+        </TreeTest>,
+      );
+      cy.get('[data-testid="item1_layout"]').should('have.css', 'font-size', '14px');
+      cy.get('[data-testid="item1__item1_layout"]').should('have.css', 'font-size', '14px');
+      cy.get('[data-testid="item2_layout"]').should('have.css', 'font-size', '14px');
+      cy.get('[data-testid="item2__item1_layout"]').should('have.css', 'font-size', '14px');
+    });
+
+    it('should have the correct sizing (small) when declared explicitly', () => {
+      mount(
+        <TreeTest id="flat-tree" aria-label="Tree" openItems={['item1', 'item2']} size="small">
+          <FlatTreeItem
+            open
+            itemType="branch"
+            value="item1"
+            data-testid="item1"
+            aria-level={1}
+            aria-posinset={1}
+            aria-setsize={2}
+          >
+            <TreeItemLayout data-testid="item1_layout">level 1, item 1</TreeItemLayout>
+            <>
+              <FlatTreeItem
+                itemType="leaf"
+                value="item1__item1"
+                data-testid="item1__item1"
+                aria-level={2}
+                aria-posinset={1}
+                aria-setsize={1}
+                parentValue={'item1'}
+              >
+                <TreeItemLayout data-testid="item1__item1_layout">level 2, item 1</TreeItemLayout>
+              </FlatTreeItem>
+            </>
+          </FlatTreeItem>
+          <FlatTreeItem
+            open
+            itemType="branch"
+            value="item2"
+            data-testid="item2"
+            aria-level={1}
+            aria-posinset={2}
+            aria-setsize={2}
+          >
+            <TreeItemPersonaLayout media={<Avatar name="Level 1" color="colorful" />} data-testid="item2_layout">
+              level 1, item 2
+            </TreeItemPersonaLayout>
+            <>
+              <FlatTreeItem
+                itemType="leaf"
+                value="item2__item1"
+                data-testid="item2__item1"
+                aria-level={2}
+                aria-posinset={1}
+                aria-setsize={1}
+                parentValue={'item2'}
+              >
+                <TreeItemPersonaLayout
+                  media={<Avatar name="Level 2" color="colorful" />}
+                  data-testid="item2__item1_layout"
+                >
+                  level 2, item 2
+                </TreeItemPersonaLayout>
+              </FlatTreeItem>
+            </>
+          </FlatTreeItem>
+        </TreeTest>,
+      );
+      cy.get('[data-testid="item1_layout"]').should('have.css', 'font-size', '12px');
+      cy.get('[data-testid="item1__item1_layout"]').should('have.css', 'font-size', '12px');
+      cy.get('[data-testid="item2_layout"]').should('have.css', 'font-size', '12px');
+      cy.get('[data-testid="item2__item1_layout"]').should('have.css', 'font-size', '12px');
+    });
   });
 });
