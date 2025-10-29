@@ -165,7 +165,7 @@ export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) 
     <Image
       src={placeholder}
       styles={resolvedStyles.image}
-      variables={{ width: variables.width, height: variables.height }}
+      variables={{ width: variables?.width, height: variables?.height }}
     />
   ) : null;
 
@@ -195,8 +195,8 @@ export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) 
                 poster: placeholder,
                 styles: resolvedStyles.video,
                 variables: {
-                  width: variables.width,
-                  height: variables.height,
+                  width: variables?.width,
+                  height: variables?.height,
                 },
               }),
           })}
