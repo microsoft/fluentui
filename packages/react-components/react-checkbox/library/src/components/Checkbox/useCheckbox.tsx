@@ -61,10 +61,10 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
     } else {
       checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
     }
-  } else {
-    // Always render the checkmark icon, even when unchecked (CSS will handle visibility)
+  } else if (checked) {
     checkmarkIcon = size === 'large' ? <Checkmark16Filled /> : <Checkmark12Filled />;
   }
+  // When unchecked, checkmarkIcon remains undefined (no icon rendered)
 
   const state: CheckboxState = {
     shape,

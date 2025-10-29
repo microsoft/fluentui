@@ -152,9 +152,30 @@ const useIndicatorBaseClassName = makeResetStyles({
 
   transition: `background-color ${tokens.durationNormal} ${overshootEasing}`,
 
+  // When empty (no icon), show a subtle placeholder
+  ':empty::before': {
+    content: '""',
+    width: '100%',
+    height: '100%',
+    display: 'block',
+    opacity: 0,
+  },
+
+  // When icon appears, animate it in
   '> *': {
-    transition: `transform ${tokens.durationNormal} ${overshootEasing}`,
-    transform: 'scale(0)',
+    animationName: {
+      '0%': {
+        opacity: 0,
+        transform: 'scale(0)',
+      },
+      '100%': {
+        opacity: 1,
+        transform: 'scale(1)',
+      },
+    },
+    animationDuration: '5s',
+    animationTimingFunction: overshootEasing,
+    animationFillMode: 'both',
   },
 });
 
@@ -166,24 +187,6 @@ const useIndicatorStyles = makeStyles({
   },
 
   circular: { borderRadius: tokens.borderRadiusCircular },
-
-  unchecked: {
-    '> *': {
-      transform: 'scale(0)',
-    },
-  },
-
-  checked: {
-    '> *': {
-      transform: 'scale(1)',
-    },
-  },
-
-  mixed: {
-    '> *': {
-      transform: 'scale(1)',
-    },
-  },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
