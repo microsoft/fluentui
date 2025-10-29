@@ -166,4 +166,45 @@ describe('ChartAnnotationLayer', () => {
     expect(connector!.getAttribute('marker-start')).toContain('url(');
     expect(connector!.getAttribute('marker-end')).toContain('url(');
   });
+
+  it('only renders <b>, <i>, and <br> markup while treating other tags as text', () => {
+    render(
+      <ChartAnnotationLayer
+        annotations={[
+          {
+            id: 'markup',
+            text: 'Start <b>bold</b> <i>italic</i> <br>Next <span>span</span> <u>underline</u> <script>alert(1)</script>',
+            coordinates: { type: 'relative', x: 0.5, y: 0.5 },
+          },
+        ]}
+        context={baseContext}
+        theme={theme}
+      />,
+    );
+
+    const annotationContent = document.querySelector(
+      'foreignObject [data-chart-annotation="true"][data-annotation-key="markup"]',
+    ) as HTMLElement | null;
+
+    expect(annotationContent).not.toBeNull();
+
+    const strong = annotationContent!.querySelector('strong');
+    expect(strong).not.toBeNull();
+    expect(strong!.textContent).toBe('bold');
+
+    const em = annotationContent!.querySelector('em');
+    expect(em).not.toBeNull();
+    expect(em!.textContent).toBe('italic');
+
+    expect(annotationContent!.querySelector('br')).not.toBeNull();
+
+    expect(annotationContent!.querySelector('span')).toBeNull();
+    expect(annotationContent!.querySelector('u')).toBeNull();
+    expect(annotationContent!.querySelector('script')).toBeNull();
+
+    const textContent = annotationContent!.textContent ?? '';
+    expect(textContent).toContain('<span>span</span>');
+    expect(textContent).toContain('<u>underline</u>');
+    expect(textContent).toContain('<script>alert(1)</script>');
+  });
 });

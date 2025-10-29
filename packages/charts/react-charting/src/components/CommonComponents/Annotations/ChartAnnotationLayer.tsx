@@ -30,6 +30,7 @@ const DEFAULT_FOREIGN_OBJECT_HEIGHT = 60;
 const MIN_ARROW_SIZE = 6;
 const MAX_ARROW_SIZE = 24;
 const ARROW_SIZE_SCALE = 0.35;
+const MAX_SIMPLE_MARKUP_DEPTH = 5;
 const getAnnotationKey = (annotation: IChartAnnotation, index: number) =>
   annotation.id ??
   (typeof annotation.text === 'string' || typeof annotation.text === 'number' ? String(annotation.text) : undefined) ??
@@ -116,6 +117,10 @@ const parseSimpleMarkup = (input: string): SimpleMarkupNode[] => {
           appendTextNode(currentChildren(), fullMatch);
         }
       } else {
+        if (stack.length - 1 >= MAX_SIMPLE_MARKUP_DEPTH) {
+          appendTextNode(currentChildren(), fullMatch);
+          continue;
+        }
         const elementNode: ElementMarkupNode = {
           type: 'element',
           tag: tagName as 'b' | 'i',
