@@ -18,7 +18,10 @@ const vars = {
   indicatorColor: '--fui-Checkbox__indicator--color',
   indicatorBorderColor: '--fui-Checkbox__indicator--borderColor',
   indicatorBackgroundColor: '--fui-Checkbox__indicator--backgroundColor',
+  indicatorBackgroundOpacity: '--fui-Checkbox__indicator--backgroundOpacity',
 } as const;
+
+const overshootEasing = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
 
 // The indicator size is used by the indicator and label styles
 const indicatorSizeMedium = '16px';
@@ -36,6 +39,7 @@ const useRootBaseClassName = makeResetStyles({
 
 const useRootStyles = makeStyles({
   unchecked: {
+    [vars.indicatorBackgroundOpacity]: '0',
     ':hover': {
       color: tokens.colorNeutralForeground2,
       [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
@@ -50,6 +54,7 @@ const useRootStyles = makeStyles({
   checked: {
     color: tokens.colorNeutralForeground1,
     [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
+    [vars.indicatorBackgroundOpacity]: '1',
     [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
     [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
 
@@ -66,6 +71,7 @@ const useRootStyles = makeStyles({
 
   mixed: {
     color: tokens.colorNeutralForeground1,
+    [vars.indicatorBackgroundOpacity]: '1',
     [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
     [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
 
@@ -131,7 +137,7 @@ const useIndicatorBaseClassName = makeResetStyles({
   overflow: 'hidden',
 
   color: `var(${vars.indicatorColor})`,
-  backgroundColor: `var(${vars.indicatorBackgroundColor})`,
+  backgroundColor: `rgba(from var(${vars.indicatorBackgroundColor}) r g b / var(${vars.indicatorBackgroundOpacity}))`,
   borderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
   borderStyle: 'solid',
   borderWidth: tokens.strokeWidthThin,
@@ -143,6 +149,13 @@ const useIndicatorBaseClassName = makeResetStyles({
   fontSize: '12px',
   height: indicatorSizeMedium,
   width: indicatorSizeMedium,
+
+  transition: `background-color ${tokens.durationNormal} ${overshootEasing}`,
+
+  '> *': {
+    transition: `transform ${tokens.durationNormal} ${overshootEasing}`,
+    transform: 'scale(0)',
+  },
 });
 
 const useIndicatorStyles = makeStyles({
@@ -153,6 +166,24 @@ const useIndicatorStyles = makeStyles({
   },
 
   circular: { borderRadius: tokens.borderRadiusCircular },
+
+  unchecked: {
+    '> *': {
+      transform: 'scale(0)',
+    },
+  },
+
+  checked: {
+    '> *': {
+      transform: 'scale(1)',
+    },
+  },
+
+  mixed: {
+    '> *': {
+      transform: 'scale(1)',
+    },
+  },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
@@ -224,6 +255,14 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
       indicatorBaseClassName,
       size === 'large' && indicatorStyles.large,
       shape === 'circular' && indicatorStyles.circular,
+      // Add animation state classes
+      disabled
+        ? undefined // No animation when disabled
+        : checked === 'mixed'
+        ? indicatorStyles.mixed
+        : checked
+        ? indicatorStyles.checked
+        : indicatorStyles.unchecked,
       state.indicator.className,
     );
   }
