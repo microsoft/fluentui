@@ -150,16 +150,7 @@ const useIndicatorBaseClassName = makeResetStyles({
   height: indicatorSizeMedium,
   width: indicatorSizeMedium,
 
-  transition: `background-color ${tokens.durationNormal} ${overshootEasing}`,
-
-  // When empty (no icon), show a subtle placeholder
-  ':empty::before': {
-    content: '""',
-    width: '100%',
-    height: '100%',
-    display: 'block',
-    opacity: 0,
-  },
+  transition: `background-color 5s ${overshootEasing}`,
 
   // When icon appears, animate it in
   '> *': {
@@ -258,14 +249,6 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
       indicatorBaseClassName,
       size === 'large' && indicatorStyles.large,
       shape === 'circular' && indicatorStyles.circular,
-      // Add animation state classes
-      disabled
-        ? undefined // No animation when disabled
-        : checked === 'mixed'
-        ? indicatorStyles.mixed
-        : checked
-        ? indicatorStyles.checked
-        : indicatorStyles.unchecked,
       state.indicator.className,
     );
   }
