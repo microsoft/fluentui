@@ -1,10 +1,10 @@
-import { createRenderer, IRenderer, IStyle, TPlugin } from 'fela';
+import { createRenderer, IStyle, TPlugin } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
-import * as React from 'react';
 
+import { insertChange } from './dom/insertChange';
 import { felaDisableAnimationsPlugin } from './felaDisableAnimationsPlugin';
 import { felaExpandCssShorthandsPlugin } from './felaExpandCssShorthandsPlugin';
 import { felaFocusVisibleEnhancer } from './felaFocusVisibleEnhancer';
@@ -12,8 +12,7 @@ import { felaInvokeKeyframesPlugin } from './felaInvokeKeyframesPlugin';
 import { felaPerformanceEnhancer } from './felaPerformanceEnhancer';
 import { felaSanitizeCssPlugin } from './felaSanitizeCssPlugin';
 import { felaStylisEnhancer } from './felaStylisEnhancer';
-import { RendererProvider } from './RendererProvider';
-import type { CreateRenderer, FelaRenderer, FelaRendererParam, Renderer } from './types';
+import type { CreateRenderer, FelaRenderer, FelaRendererChange, FelaRendererParam } from './types';
 
 const blocklistedClassNames = [
   // Blocklist contains a list of classNames that are used by FontAwesome
@@ -39,7 +38,38 @@ const filterClassName = (className: string): boolean => {
 const rendererConfig = {
   devMode: false,
   filterClassName,
-  enhancers: [felaPerformanceEnhancer, felaFocusVisibleEnhancer, felaStylisEnhancer],
+  enhancers: [
+    function felaPendingChangesEnhancer(felaRenderer: FelaRenderer) {
+      felaRenderer._emitChange = change => {
+        // Only handle "RULE" & "KEYFRAME" changes to insert
+        if (change.type === 'RULE' || change.type === 'KEYFRAME') {
+          felaRenderer._pendingChanges.add(change);
+          return;
+        }
+
+        // "clear" is allowed only in tests
+        if (process.env.NODE_ENV === 'test') {
+          if (change.type === 'CLEAR') {
+            felaRenderer._pendingChanges.clear();
+            felaRenderer.nodes = {};
+            felaRenderer.scoreIndex = {};
+
+            return;
+          }
+        }
+
+        if (process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
+          console.error('FelaRenderer: _emitChange() should not be called.');
+        }
+      };
+
+      return felaRenderer;
+    },
+    felaPerformanceEnhancer,
+    felaFocusVisibleEnhancer,
+    felaStylisEnhancer,
+  ],
   plugins: [
     felaDisableAnimationsPlugin as TPlugin,
 
@@ -68,27 +98,20 @@ export type CreateFelaRendererOptions = {
 export function createFelaRenderer(options: CreateFelaRendererOptions = {}): CreateRenderer {
   const { nonce } = options;
 
-  return () => {
-    const felaRenderer = createRenderer(rendererConfig) as FelaRenderer & {
-      listeners: [];
-      nodes: Record<string, HTMLStyleElement>;
-      updateSubscription: Function | undefined;
-    };
+  return (targetDocument = typeof document === 'undefined' ? undefined : document) => {
     let usedRenderers: number = 0;
+
+    const felaRenderer = createRenderer(rendererConfig) as FelaRenderer & {
+      _emitChange: (change: FelaRendererChange) => void;
+    };
+
+    felaRenderer._pendingChanges = new Set<FelaRendererChange>();
 
     if (nonce) {
       felaRenderer.styleNodeAttributes = {
         nonce,
       };
     }
-
-    // rehydration disabled to avoid leaking styles between renderers
-    // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
-    const Provider: Renderer['Provider'] = props => (
-      <RendererProvider renderer={felaRenderer} rehydrate={false} targetDocument={props.target}>
-        {props.children}
-      </RendererProvider>
-    );
 
     return {
       registerUsage: () => {
@@ -98,9 +121,7 @@ export function createFelaRenderer(options: CreateFelaRendererOptions = {}): Cre
         usedRenderers -= 1;
 
         if (usedRenderers === 0) {
-          felaRenderer.listeners = [];
           felaRenderer.nodes = {};
-          felaRenderer.updateSubscription = undefined;
         }
       },
 
@@ -112,17 +133,23 @@ export function createFelaRenderer(options: CreateFelaRendererOptions = {}): Cre
 
         return felaRenderer.renderRule(() => styles as unknown as IStyle, felaParam);
       },
+      insertPendingRules: () => {
+        if (targetDocument && felaRenderer._pendingChanges.size > 0) {
+          felaRenderer._pendingChanges.forEach(change => {
+            insertChange(felaRenderer, targetDocument, change);
+          });
+          felaRenderer._pendingChanges.clear();
+        }
+      },
 
       // getOriginalRenderer() is implemented only for tests to be compatible with jest-react-fela expectations.
-      getOriginalRenderer: (): IRenderer => {
+      getOriginalRenderer: (): FelaRenderer => {
         if (process.env.NODE_ENV !== 'test') {
           throw new Error('This method implements private API and can be used only in tests');
         }
 
         return felaRenderer;
       },
-
-      Provider,
     };
   };
 }

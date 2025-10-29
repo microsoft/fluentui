@@ -552,6 +552,7 @@ export function isConformant(
 
               return props.stylesTest ? 'has-test' : 'has-not-test';
             },
+            insertPendingRules: () => {},
           };
           const theme = {
             ...emptyTheme,
