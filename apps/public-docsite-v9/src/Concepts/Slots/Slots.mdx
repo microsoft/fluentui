@@ -103,7 +103,7 @@ For example, the `Button` component can be passed an `img` or an `CalendarRegula
 
 ```tsx
 <>
-  <Button icon={<img src='site-icon.png' alt='branded site icon' /> }
+  <Button icon={<img className="sbdocs-img" src='site-icon.png' alt='branded site icon' /> }
   <Button icon={<CalendarRegular24 />} />
 </>
 ```
@@ -112,11 +112,11 @@ Any shorthand value provided to a slot is converted to that slot's children cont
 
 ```html
 <!-- button root element -->
-<button class="fui-Button">
+<button className="fui-Button">
   <!-- icon slot -->
-  <span class="fui-Button__icon">
+  <span className="fui-Button__icon">
     <!-- icon slot children -->
-    <img src="site-icon.png" alt="branded site icon" />
+    <img className="sbdocs-img" src="site-icon.png" alt="branded site icon" />
   </span>
 </button>
 ```
@@ -161,8 +161,8 @@ Note that you must choose from one of the available element types the slot suppo
 ```
 
 ```html
-<h1 class="fui-AccordionHeader">
-  <a class="fui-AccordionHeader__button"> Accordion Header as h1 </a>
+<h1 className="fui-AccordionHeader">
+  <a className="fui-AccordionHeader__button"> Accordion Header as h1 </a>
 </h1>
 ```
 

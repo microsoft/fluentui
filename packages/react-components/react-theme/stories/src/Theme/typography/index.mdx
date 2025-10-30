@@ -1,4 +1,5 @@
-import { Meta, Canvas, Title, Story } from '@storybook/addon-docs';
+import { Meta, Title, Story } from '@storybook/addon-docs';
+import { FluentCanvas } from '@fluentui/react-storybook-addon';
 import { Text } from '@fluentui/react-components';
 import { Typography } from './ThemeTypography.stories';
 import { Example } from './Example.stories';
@@ -14,9 +15,9 @@ Typography style is represented by a set of tokens instead of an individual toke
 > **ℹ️ &nbsp;This page guides you on how to fully leverage the tokens to create a consistent typography system.<br />
 > To take full advantage of the typography system, you should also read the [Text component documentation](./?path=/docs/components-text--docs).**
 
-<Canvas withSource="none">
+<FluentCanvas>
   <Typography />
-</Canvas>
+</FluentCanvas>
 
 ## How to use
 
@@ -37,9 +38,9 @@ export const Example = () => {
 };
 ```
 
-<Canvas withSource="none">
+<FluentCanvas>
   <Example />
-</Canvas>
+</FluentCanvas>
 
 ## Composing Tokens
 
@@ -65,9 +66,9 @@ export const Composing = () => {
 };
 ```
 
-<Canvas withSource="none">
+<FluentCanvas>
   <Composing />
-</Canvas>
+</FluentCanvas>
 
 ## Mixing tokens and custom styles
 
@@ -104,6 +105,6 @@ export const MixedStyles = () => {
 };
 ```
 
-<Canvas withSource="none">
+<FluentCanvas>
   <MixedStyles />
-</Canvas>
+</FluentCanvas>

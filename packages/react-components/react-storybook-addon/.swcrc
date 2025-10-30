@@ -14,7 +14,8 @@
       "syntax": "typescript",
       "tsx": true,
       "decorators": false,
-      "dynamicImport": false
+      "dynamicImport": false,
+      "allowSyntheticDefaultImports": true
     },
     "externalHelpers": true,
     "transform": {

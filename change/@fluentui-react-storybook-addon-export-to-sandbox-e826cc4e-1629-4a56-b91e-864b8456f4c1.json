@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: upgrade storybook to v8",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}

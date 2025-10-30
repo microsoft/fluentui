@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
@@ -199,7 +199,7 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
     }
   };
 
-  const component = story.component as InternalComponentApi;
+  const component = story.moduleExport as InternalComponentApi;
   const subcomponents = story.subcomponents as Record<string, InternalComponentApi>;
 
   if (options.slotsApi) {
@@ -281,7 +281,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgsTable of={component} />
+      <ArgTypes of={component} />
     </>
   );
 };
@@ -334,8 +334,11 @@ export const FluentDocsPage = (): JSXElement => {
         <Title />
         <Subtitle />
         <Description />
-        <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-        <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
+        <RenderPrimaryStory
+          primaryStory={primaryStory as unknown as PrimaryStory}
+          skipPrimaryStory={skipPrimaryStory}
+        />
+        <RenderArgsTable story={primaryStory as unknown as PrimaryStory} hideArgsTable={hideArgsTable} />
         <Stories />
       </div>
     );
@@ -379,9 +382,12 @@ export const FluentDocsPage = (): JSXElement => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+          <RenderPrimaryStory
+            primaryStory={primaryStory as unknown as PrimaryStory}
+            skipPrimaryStory={skipPrimaryStory}
+          />
           <RenderArgsTable
-            story={primaryStory}
+            story={primaryStory as unknown as PrimaryStory}
             hideArgsTable={hideArgsTable}
             showSlotsApi={argTable.slotsApi}
             showNativePropsApi={argTable.nativePropsApi}

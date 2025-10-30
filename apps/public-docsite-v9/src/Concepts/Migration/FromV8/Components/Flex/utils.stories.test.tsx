@@ -50,7 +50,7 @@ test('renders Markdown source blocks', () => {
         code={`function test() {
           console.log("test");
         }`}
-        language="js"
+        language="jsextra"
       />,
     ],
   });
@@ -85,7 +85,7 @@ test.each([
   ['css', 'CSS'],
   ['js', 'JavaScript'],
   ['jsx', 'React'],
-])('for language %s uses the header %s', (language, expectedHeader) => {
+] as const)('for language %s uses the header %s', (language, expectedHeader) => {
   const renderer = createRenderer();
   renderer.render(
     <CodeExample>
@@ -99,7 +99,7 @@ test.each([
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    children: [<h3>{expectedHeader}</h3>, <Source code={`Code`} language={language} />],
+    children: [<h3>{expectedHeader}</h3>, <Source code={`Code`} language={language === 'js' ? 'jsextra' : language} />],
   });
 });
 
@@ -117,6 +117,6 @@ test('overrides the default title', () => {
   const result = renderer.getRenderOutput();
 
   expect(result.props).toEqual({
-    children: [<h3>Custom title</h3>, <Source code={`Code`} language="js" />],
+    children: [<h3>Custom title</h3>, <Source code={`Code`} language="jsextra" />],
   });
 });
