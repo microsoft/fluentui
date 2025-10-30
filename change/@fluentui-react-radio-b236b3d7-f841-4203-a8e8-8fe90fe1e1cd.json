@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding motion to Radio component",
+  "packageName": "@fluentui/react-radio",
+  "email": "edwl@microsoft.com",
+  "dependentChangeType": "patch"
+}
