@@ -59,7 +59,7 @@ const useClasses = makeStyles({
 const curveSpringRelaxed = `linear(0.0000 0.00%, 0.9935 36.00%, 1.042 38.00%, 1.072 40.00%, 1.084 42.00%, 1.080 44.00%, 1.055 47.00%, 0.9933 53.00%, 0.9746 57.00%, 0.9797 62.00%, 1.002 69.00%, 1.008 73.00%, 1.008 76.00%, 0.9980 87.00%, 1.000 100.00%)`;
 
 type RequiredRotateParams = Required<
-  Pick<RotateParams, 'axis' | 'angle' | 'duration' | 'easing' | 'exitEasing' | 'exitDuration'>
+  Pick<RotateParams, 'axis' | 'fromAngle' | 'duration' | 'easing' | 'exitEasing' | 'exitDuration'>
 >;
 
 type RotatePattern = {
@@ -78,7 +78,7 @@ const patterns: RotatePattern[] = [
     icon: '↔️',
     color: tokens.colorPaletteBlueForeground2,
     axis: 'y',
-    angle: 180,
+    fromAngle: 180,
     easing: curveSpringRelaxed,
     exitEasing: motionTokens.curveDecelerateMid,
     duration: motionTokens.durationUltraSlow * 4, // 2000ms = 500ms * 4
@@ -91,7 +91,7 @@ const patterns: RotatePattern[] = [
     icon: '↕️',
     color: tokens.colorPaletteGreenForeground2,
     axis: 'x',
-    angle: 180,
+    fromAngle: 180,
     easing: curveSpringRelaxed,
     exitEasing: motionTokens.curveDecelerateMid,
     duration: motionTokens.durationUltraSlow * 4, // 2000ms = 500ms * 4
@@ -104,7 +104,7 @@ const patterns: RotatePattern[] = [
     icon: '🔄',
     color: tokens.colorPaletteRedForeground2,
     axis: 'z',
-    angle: 180,
+    fromAngle: 180,
     easing: curveSpringRelaxed,
     exitEasing: motionTokens.curveDecelerateMid,
     duration: motionTokens.durationUltraSlow * 4, // 2000ms = 500ms * 4
@@ -156,7 +156,7 @@ export const CardFlip = (): JSXElement => {
             <Rotate
               visible={activePatterns.has(pattern.id)}
               axis={pattern.axis}
-              fromAngle={pattern.angle}
+              fromAngle={pattern.fromAngle}
               duration={pattern.duration}
               easing={pattern.easing}
               exitEasing={pattern.exitEasing}
