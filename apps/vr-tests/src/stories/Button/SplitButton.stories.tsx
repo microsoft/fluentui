@@ -1,11 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  RTL,
-  StoryWrightDecorator,
-  TestWrapperDecoratorTall,
-} from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorTall } from '../../utilities';
 import { DefaultButton, IButtonProps, CommandBarButton } from '@fluentui/react/lib/Button';
 
 const commandProps: IButtonProps = {
@@ -35,10 +32,10 @@ const commandProps: IButtonProps = {
 export default {
   title: 'Button Split (compat)',
 
-  decorators: [
-    TestWrapperDecoratorTall,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecoratorTall],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button:nth-child(1)')
         .snapshot('hover main', { cropTo: '.testWrapper' })
@@ -54,9 +51,9 @@ export default {
         // .hover('.ms-Button') // move mouse to make click work
         // .snapshot('open', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof DefaultButton>;
 
 export const Root = () => <DefaultButton {...commandProps} split={true} />;
 

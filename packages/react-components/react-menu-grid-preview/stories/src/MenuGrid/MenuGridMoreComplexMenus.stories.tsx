@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuPopover } from '@fluentui/react-components';
 import { MenuGrid, MenuGridCell, MenuGridRow } from '@fluentui/react-menu-grid-preview';
+import { CameraRegular, DeleteRegular, GlobePersonRegular, PhoneRegular } from '@fluentui/react-icons';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
@@ -13,20 +14,25 @@ export const MoreComplexMenus = (): JSXElement => {
       </MenuTrigger>
       <MenuPopover>
         <MenuGrid>
-          {items.map((name, index) => (
-            <MenuGridRow key={index} aria-label={name}>
+          {items.map(name => (
+            <MenuGridRow key={name} aria-label={name}>
+              <MenuGridCell>
+                <Button
+                  size="small"
+                  appearance="transparent"
+                  icon={<GlobePersonRegular />}
+                  aria-label={`Profile card for ${name}`}
+                />
+              </MenuGridCell>
               <MenuGridCell>{name}</MenuGridCell>
               <MenuGridCell>
-                <Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>
+                <Button size="small" appearance="transparent" icon={<PhoneRegular />} aria-label="Audio call" />
               </MenuGridCell>
               <MenuGridCell>
-                <Button>Audio call</Button>
+                <Button size="small" appearance="transparent" icon={<CameraRegular />} aria-label="Video call" />
               </MenuGridCell>
               <MenuGridCell>
-                <Button>Video call</Button>
-              </MenuGridCell>
-              <MenuGridCell>
-                <Button aria-label={`Remove ${name}`}>Remove</Button>
+                <Button size="small" appearance="transparent" icon={<DeleteRegular />} aria-label={`Remove ${name}`} />
               </MenuGridCell>
             </MenuGridRow>
           ))}

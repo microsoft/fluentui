@@ -2,11 +2,12 @@ import * as React from 'react';
 import { Breadcrumb } from '@fluentui/react-breadcrumb';
 import { SampleBreadcrumbButtons, steps } from './utils';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Breadcrumb Converged',
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof Breadcrumb>;
 
 export const Appearance = () => (

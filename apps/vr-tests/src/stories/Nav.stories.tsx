@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { Nav, INavLink } from '@fluentui/react/lib/Nav';
 
 const links: INavLink[] = [
@@ -88,10 +90,10 @@ const disabledLinks: INavLink[] = [
 export default {
   title: 'Nav',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Nav-compositeLink')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -99,9 +101,9 @@ export default {
         .hover('.ms-Nav-compositeLink')
         .snapshot('click', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Nav>;
 
 export const Root = () => (
   <div style={{ width: '208px' }}>

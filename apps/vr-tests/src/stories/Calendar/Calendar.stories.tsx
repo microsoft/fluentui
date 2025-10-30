@@ -1,11 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  RTL,
-  StoryWrightDecorator,
-  TestWrapperDecoratorFixedWidth,
-} from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorFixedWidth } from '../../utilities';
 import { Fabric, Calendar } from '@fluentui/react';
 
 const date = new Date(2010, 1, 12);
@@ -13,11 +10,13 @@ const date = new Date(2010, 1, 12);
 export default {
   title: 'Calendar',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
-};
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Calendar>;
 
 export const Root = () => (
   <Fabric>

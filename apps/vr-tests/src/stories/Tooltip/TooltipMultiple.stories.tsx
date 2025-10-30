@@ -1,15 +1,17 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecoratorFixedWidth } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecoratorFixedWidth } from '../../utilities';
 import { TooltipHost } from '@fluentui/react';
 
 export default {
   title: 'Tooltip - Multiple',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .hover('#outerTooltip')
         .wait(200)
         .snapshot('hover outer')
@@ -17,9 +19,9 @@ export default {
         .wait(200)
         .snapshot('hover inner')
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof TooltipHost>;
 
 export const TwoTooltips = () => (
   <div>

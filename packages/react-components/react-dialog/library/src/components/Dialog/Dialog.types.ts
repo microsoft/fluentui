@@ -107,6 +107,14 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @default false
    */
   inertTrapFocus?: boolean;
+  /**
+   * Decides whether the dialog should be removed from the DOM tree when it is closed.
+   * This can be useful when dealing with components that may contain state that should not
+   * be reset when the dialog is closed.
+   *
+   * @default true
+   */
+  unmountOnClose?: boolean;
 };
 
 export type DialogState = ComponentState<InternalDialogSlots> &
