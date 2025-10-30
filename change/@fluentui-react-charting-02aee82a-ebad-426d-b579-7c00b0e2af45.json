@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charting):Updated annotation layer to remove inner html",
-  "packageName": "@fluentui/react-charting",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

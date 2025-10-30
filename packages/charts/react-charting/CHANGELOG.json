@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 30 Oct 2025 12:37:12 GMT",
+      "tag": "@fluentui/react-charting_v5.25.1",
+      "version": "5.25.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "338f4c18fa6c837f7a652e0dbb15fe86e7373571",
+            "comment": "fix(react-charting):Updated annotation layer to remove inner html"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Oct 2025 10:23:15 GMT",
       "tag": "@fluentui/react-charting_v5.25.0",
       "version": "5.25.0",

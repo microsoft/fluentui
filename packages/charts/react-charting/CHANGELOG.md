@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 23 Oct 2025 10:23:15 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Oct 2025 12:37:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.1)
+
+Thu, 30 Oct 2025 12:37:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.25.0..@fluentui/react-charting_v5.25.1)
+
+### Patches
+
+- fix(react-charting):Updated annotation layer to remove inner html ([PR #35410](https://github.com/microsoft/fluentui/pull/35410) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.0)
 
