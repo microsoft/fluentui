@@ -10,6 +10,7 @@ import {
   commonPropTypes,
   childrenExist,
   createShorthandFactory,
+  useId,
 } from '../../utils';
 import { ComponentEventHandler, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
@@ -153,7 +154,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
     initialState: true,
   });
 
-  const [bodyId] = React.useState(_.uniqueId('alert-body-'));
+  const bodyId = useId();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Alert.handledProps, props);
 
