@@ -6,7 +6,10 @@
   "tags": ["v8"],
   "targets": {
     "type-check": {
-      "dependsOn": ["prebundle", "^build"]
+      "dependsOn": ["prebundle"]
+    },
+    "prebundle": {
+      "dependsOn": ["^build"]
     }
   }
 }
