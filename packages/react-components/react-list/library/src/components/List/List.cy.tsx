@@ -173,9 +173,18 @@ const validateSetOfListItems = (expectedStates: Array<boolean>) =>
     listItem.should('have.attr', 'aria-selected', checked.toString());
 
     cy.log('Validate checkbox state on item', index + 1);
-    cy.get(`[data-test="list-item-${index + 1}"] .fui-Checkbox__indicator > svg`).should(
-      checked ? 'exist' : 'not.exist',
-    );
+    // Updated to check for visibility instead of existence
+    if (checked) {
+      // When checked, the checkmark (first svg) should be visible
+      cy.get(`[data-test="list-item-${index + 1}"] .fui-Checkbox__indicator > svg:first-child`).should(
+        'have.css',
+        'opacity',
+        '1',
+      );
+    } else {
+      // When unchecked, both icons should be hidden
+      cy.get(`[data-test="list-item-${index + 1}"] .fui-Checkbox__indicator > svg`).should('have.css', 'opacity', '0');
+    }
 
     cy.log('Validate that the item is present/not present in the parent state (or stringified state)');
     cy.get(`[data-test="selected-items"]`).should(checked ? 'contain' : 'not.contain', `list-item-${index + 1}`);

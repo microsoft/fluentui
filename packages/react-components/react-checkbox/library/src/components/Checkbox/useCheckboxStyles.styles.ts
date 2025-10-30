@@ -258,19 +258,16 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
   const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
   if (state.indicator) {
+    // Apply the appropriate visibility styles even when disabled
+    const visibilityClass =
+      checked === 'mixed' ? indicatorStyles.mixed : checked ? indicatorStyles.checked : indicatorStyles.unchecked;
+
     state.indicator.className = mergeClasses(
       checkboxClassNames.indicator,
       indicatorBaseClassName,
       size === 'large' && indicatorStyles.large,
       shape === 'circular' && indicatorStyles.circular,
-      // Add animation state classes
-      disabled
-        ? undefined // No animation when disabled
-        : checked === 'mixed'
-        ? indicatorStyles.mixed
-        : checked
-        ? indicatorStyles.checked
-        : indicatorStyles.unchecked,
+      visibilityClass, // Always apply visibility styles
       state.indicator.className,
     );
   }
