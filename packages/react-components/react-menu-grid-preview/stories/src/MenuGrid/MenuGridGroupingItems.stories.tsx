@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { MenuGrid, MenuGridGroup, MenuGridGroupHeader, MenuGridItem } from '@fluentui/react-menu-grid-preview';
+import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
 
 const items = {
   people: ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'],
@@ -18,11 +19,25 @@ export const GroupingItems = (): JSXElement => {
         <MenuGrid>
           <MenuGridGroup>
             <MenuGridGroupHeader>People</MenuGridGroupHeader>
-            {items.people.map((name, index) => (
+            {items.people.map(name => (
               <MenuGridItem
-                key={index}
-                firstSubAction={<Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>}
-                secondSubAction={<Button aria-label={`Remove ${name}`}>Remove</Button>}
+                key={name}
+                icon={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<GlobePersonRegular />}
+                    aria-label={`Profile card for ${name}`}
+                  />
+                }
+                firstSubAction={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<DeleteRegular />}
+                    aria-label={`Remove ${name}`}
+                  />
+                }
                 aria-label={name}
               >
                 {name}
@@ -31,11 +46,25 @@ export const GroupingItems = (): JSXElement => {
           </MenuGridGroup>
           <MenuGridGroup>
             <MenuGridGroupHeader>Agents and bots</MenuGridGroupHeader>
-            {items.agentsAndBots.map((name, index) => (
+            {items.agentsAndBots.map(name => (
               <MenuGridItem
-                key={index}
-                firstSubAction={<Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>}
-                secondSubAction={<Button aria-label={`Remove ${name}`}>Remove</Button>}
+                key={name}
+                icon={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<GlobePersonRegular />}
+                    aria-label={`Profile card for ${name}`}
+                  />
+                }
+                firstSubAction={
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<DeleteRegular />}
+                    aria-label={`Remove ${name}`}
+                  />
+                }
                 aria-label={name}
               >
                 {name}

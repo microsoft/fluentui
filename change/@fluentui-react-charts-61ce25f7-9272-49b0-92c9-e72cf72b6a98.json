@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "support reference lines in line chart and VBC",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

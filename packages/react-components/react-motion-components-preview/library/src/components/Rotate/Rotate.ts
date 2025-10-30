@@ -12,9 +12,9 @@ import { RotateParams } from './rotate-types';
  * @param exitDuration - Time (ms) for the exit transition (rotate-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (rotate-out). Defaults to the `curveAccelerateMax` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'y'.
- * @param angle - The starting rotation angle in degrees. Defaults to -90.
- * @param exitAngle - The ending rotation angle in degrees. Defaults to the negation of `angle`.
+ * @param axis - The axis of rotation: 'x', 'y', or 'z'. Defaults to 'z'.
+ * @param fromAngle - The starting rotation angle in degrees. Defaults to -90.
+ * @param toAngle - The ending rotation angle in degrees. Defaults to 0.
  * @param animateOpacity - Whether to animate the opacity during the rotation. Defaults to `true`.
  */
 const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
@@ -24,9 +24,9 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
   exitDuration = duration,
   exitEasing = motionTokens.curveAccelerateMax,
   exitDelay = delay,
-  axis = 'y',
-  angle = -90,
-  exitAngle = -angle,
+  axis = 'z',
+  fromAngle = -90,
+  toAngle = 0,
   animateOpacity = true,
 }: RotateParams) => {
   const enterAtoms: AtomMotion[] = [
@@ -36,8 +36,8 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
       easing,
       delay,
       axis,
-      angle,
-      exitAngle,
+      fromAngle,
+      toAngle,
     }),
   ];
 
@@ -48,8 +48,8 @@ const rotatePresenceFn: PresenceMotionFn<RotateParams> = ({
       easing: exitEasing,
       delay: exitDelay,
       axis,
-      angle,
-      exitAngle,
+      fromAngle,
+      toAngle,
     }),
   ];
 

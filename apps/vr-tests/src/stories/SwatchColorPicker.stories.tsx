@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { SwatchColorPicker, ISwatchColorPickerProps } from '@fluentui/react';
 
 const props: ISwatchColorPickerProps = {
@@ -17,10 +19,10 @@ const props: ISwatchColorPickerProps = {
 export default {
   title: 'SwatchColorPicker',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -42,9 +44,9 @@ export default {
         .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
         .snapshot('Selected and Focused', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof SwatchColorPicker>;
 
 export const Circle = () => <SwatchColorPicker {...props} />;
 

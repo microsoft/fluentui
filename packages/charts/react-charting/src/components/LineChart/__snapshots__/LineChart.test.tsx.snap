@@ -570,6 +570,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -1276,6 +1277,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"

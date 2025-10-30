@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "feat: add support for lines in GVBC",
+  "comment": "fix dark mode styles of chart table",
   "packageName": "@fluentui/react-charts",
-  "email": "kumarkshitij@microsoft.com",
+  "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"
 }

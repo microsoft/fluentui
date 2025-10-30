@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../../utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -235,10 +236,10 @@ const cropTo = { cropTo: '.testWrapper' };
 export default {
   title: 'ScrollablePane Grouped Details List',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default: scrollbars should be visible', cropTo)
         .executeScript(`${getElement}.scrollTop = 100`)
         .snapshot('Scrollbars visibility when header is sticky', cropTo)
@@ -276,8 +277,8 @@ export default {
           cropTo,
         )
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 };
 
 export const ScrollablePaneScrollbarsVisibility = () => <ScrollablePaneDetailsListStory />;

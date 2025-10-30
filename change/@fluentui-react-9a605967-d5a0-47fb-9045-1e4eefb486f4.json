@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: migrate tests from react-test-renderer to @testing-library/react and resolve React 19 issues",
-  "packageName": "@fluentui/react",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

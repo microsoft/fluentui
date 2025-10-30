@@ -47,7 +47,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>): JSXElement =
         <Combobox
           id={`${comboId}`}
           placeholder="Select a number"
-          positioning={{ autoSize: 'width' }}
+          positioning={{ autoSize: true }}
           listbox={{ ref: mergedRefs, className: styles.listbox }}
           onOpenChange={(e, data) => {
             clearScrollTimer();
@@ -97,7 +97,7 @@ ComboboxVirtualizer.parameters = {
     description: {
       story:
         'A Combobox can use Virtualizer to display a large number of options\n' +
-        `To manually control the maxHeight of the listbox, refer to the [positioning autoSize property](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target)`,
+        `To manually control the maxHeight of the listbox, refer to the [positioning autoSize property](https://storybooks.fluentui.dev/react/?path=/docs/concepts-developer-positioning-components--docs#auto-size-for-small-viewport)`,
     },
   },
 };

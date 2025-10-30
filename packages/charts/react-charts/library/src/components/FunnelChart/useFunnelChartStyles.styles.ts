@@ -27,6 +27,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightRegular,
     position: 'relative',
+    textAlign: 'left',
   },
   chart: {
     display: 'block',

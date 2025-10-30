@@ -20,12 +20,15 @@ import { LineChartNegativeExample } from './LineChart.Negative.Example';
 import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
 import { LineChartSecondaryYAxisExample } from './LineChart.SecondaryYAxis.Example';
 import { LineChartLogAxisExample } from './LineChart.LogAxis.Example';
+import { LineChartAnnotationsExample } from './LineChart.Annotations.Example';
 import type { JSXElement } from '@fluentui/utilities';
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
 const LineChartStyledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
+const LineChartAnnotationsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Annotations.Example.tsx') as string;
 const MultipleLineChartExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Multiple.Example.tsx') as string;
 const LineChartEventsExampleCode =
@@ -62,6 +65,9 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="LineChart styled" code={LineChartStyledExampleCode}>
               <LineChartStyledExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart with annotations" code={LineChartAnnotationsExampleCode}>
+              <LineChartAnnotationsExample />
             </ExampleCard>
             <ExampleCard title="Multiple Line chart" code={MultipleLineChartExampleCode}>
               <LineChartMultipleExample />

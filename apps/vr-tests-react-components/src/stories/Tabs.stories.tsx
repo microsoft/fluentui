@@ -3,25 +3,24 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { TabList, Tab } from '@fluentui/react-tabs';
 
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'TabList and Tab Converged',
 
-  decorators: [
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps()
-          .snapshot('default')
-          .hover('.mouse-target')
-          .snapshot('hover')
-          .mouseDown('.mouse-target')
-          .snapshot('pressed')
-          .mouseUp('.mouse-target')
-          .end(),
-      }),
-  ],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default')
+        .hover('.mouse-target')
+        .snapshot('hover')
+        .mouseDown('.mouse-target')
+        .snapshot('pressed')
+        .mouseUp('.mouse-target')
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof TabList>;
 
 export const Default = () => (

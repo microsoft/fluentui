@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 16 Oct 2025 07:21:59 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Oct 2025 10:23:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.16.0)
+
+Thu, 23 Oct 2025 10:23:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.15.2..@fluentui/react-experiments_v8.16.0)
+
+### Minor changes
+
+- feat: bump react range to support React 19 ([PR #35362](https://github.com/microsoft/fluentui/pull/35362) by martinhochel@microsoft.com)
+- Bump @fluentui/react to v8.125.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/theme to v2.7.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/foundation-legacy to v8.6.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.67 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/react-hooks to v8.10.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/style-utilities to v8.13.3 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/utilities to v8.17.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
 
 ## [8.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.15.2)
 

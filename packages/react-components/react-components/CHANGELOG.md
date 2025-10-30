@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 08 Oct 2025 12:04:51 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Oct 2025 14:16:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.3)
+
+Tue, 21 Oct 2025 14:16:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.2..@fluentui/react-components_v9.72.3)
+
+### Minor changes
+
+- `@fluentui/react-jsx-runtime`
+  - feat: implement custom JSX namespace instead of @ts-ignore workaround ([PR #35295](https://github.com/microsoft/fluentui/pull/35295) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - fix: callout not appearing on scatter chart ([PR #35310](https://github.com/microsoft/fluentui/pull/35310) by kumarkshitij@microsoft.com)
+  - fix place value formatting bug in donut chart ([PR #35315](https://github.com/microsoft/fluentui/pull/35315) by anushgupta@microsoft.com)
+  - add missing code in v9 ([PR #35318](https://github.com/microsoft/fluentui/pull/35318) by anushgupta@microsoft.com)
+  - fix: resolve data points based on axis type + replace invalid values with 0 for valid coordinates ([PR #35323](https://github.com/microsoft/fluentui/pull/35323) by kumarkshitij@microsoft.com)
+  - support reference lines in line chart and VBC ([PR #35330](https://github.com/microsoft/fluentui/pull/35330) by anushgupta@microsoft.com)
+  - fix legend shape bug ([PR #35335](https://github.com/microsoft/fluentui/pull/35335) by anushgupta@microsoft.com)
+  - feat: add support for lines in GVBC ([PR #35321](https://github.com/microsoft/fluentui/pull/35321) by kumarkshitij@microsoft.com)
+  - fix donut colors and segment orders ([PR #35316](https://github.com/microsoft/fluentui/pull/35316) by anushgupta@microsoft.com)
+  - add fill for scatter polar chart ([PR #35317](https://github.com/microsoft/fluentui/pull/35317) by anushgupta@microsoft.com)
+  - fix(react-charts): Show markers only when mode has markers for large data ([PR #35311](https://github.com/microsoft/fluentui/pull/35311) by 120183316+srmukher@users.noreply.github.com)
+  - fix popover positioning issue ([PR #35289](https://github.com/microsoft/fluentui/pull/35289) by anushgupta@microsoft.com)
+  - fix chart exception issue ([PR #35342](https://github.com/microsoft/fluentui/pull/35342) by anushgupta@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: update drawer scroll state when content changes ([PR #35210](https://github.com/microsoft/fluentui/pull/35210) by marcosvmmoura@gmail.com)
+- `@fluentui/react-list`
+  - Fix selection becoming broken after re-enabling ([PR #35331](https://github.com/microsoft/fluentui/pull/35331) by jirivyhnalek@microsoft.com)
 
 ## [9.72.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.2)
 

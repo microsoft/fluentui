@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import type { Meta } from '@storybook/react';
 import { Combobox, Option } from '@fluentui/react-combobox';
 import { TestWrapperDecoratorFixedWidth } from '../../utilities';
@@ -7,23 +8,19 @@ import { TestWrapperDecoratorFixedWidth } from '../../utilities';
 export default {
   title: 'Combobox Converged',
   component: Combobox,
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => (
-      <StoryWright
-        steps={new Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('input')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .focus('input')
-          .wait(250) // let focus border animation finish
-          .snapshot('focused', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </StoryWright>
-    ),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('input')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .focus('input')
+        .wait(250) // let focus border animation finish
+        .snapshot('focused', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Combobox>;
 
 export const AppearanceOutlineDefault = () => (

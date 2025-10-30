@@ -32,6 +32,17 @@ describe('blurAtom', () => {
     });
   });
 
+  it('applies custom toRadius values', () => {
+    const atom = blurAtom({
+      direction: 'enter',
+      duration: 300,
+      fromRadius: '20px',
+      toRadius: '5px',
+    });
+
+    expect(atom.keyframes).toEqual([{ filter: 'blur(20px)' }, { filter: 'blur(5px)' }]);
+  });
+
   it('uses default fromRadius when not provided', () => {
     const atom = blurAtom({
       direction: 'enter',
@@ -51,20 +62,24 @@ describe('blurAtom', () => {
     expect(atom.easing).toBe(motionTokens.curveLinear);
   });
 
-  it('handles different CSS units for fromRadius', () => {
+  it('handles different CSS units for fromRadius and toRadius', () => {
     const atomPx = blurAtom({
       direction: 'enter',
       duration: 300,
       fromRadius: '8px',
+      toRadius: '2px',
     });
 
     const atomRem = blurAtom({
       direction: 'enter',
       duration: 300,
       fromRadius: '1rem',
+      toRadius: '0.5rem',
     });
 
     expect(atomPx.keyframes[0]).toEqual({ filter: 'blur(8px)' });
+    expect(atomPx.keyframes[1]).toEqual({ filter: 'blur(2px)' });
     expect(atomRem.keyframes[0]).toEqual({ filter: 'blur(1rem)' });
+    expect(atomRem.keyframes[1]).toEqual({ filter: 'blur(0.5rem)' });
   });
 });

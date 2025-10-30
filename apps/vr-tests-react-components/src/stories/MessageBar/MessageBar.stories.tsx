@@ -11,14 +11,15 @@ import { Steps } from 'storywright';
 import { Button } from '@fluentui/react-button';
 import { Link } from '@fluentui/react-link';
 import { DismissRegular } from '@fluentui/react-icons';
-import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
 
 export default {
   title: 'MessageBar',
   component: MessageBar,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof MessageBar>;
 
 const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];

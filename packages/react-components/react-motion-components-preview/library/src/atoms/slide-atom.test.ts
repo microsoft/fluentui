@@ -12,7 +12,7 @@ import {
 function expectSlideAtom(
   atom: import('@fluentui/react-motion').AtomMotion,
   direction: 'enter' | 'exit',
-  fromTranslate: string = '0px 20px',
+  fromTranslate: string = '0px 0px',
   toTranslate: string = '0px 0px',
 ) {
   expectValidAtomMotion(atom);
@@ -36,8 +36,8 @@ describe('slideAtom', () => {
       duration: 300,
     });
 
-    expect(enterAtom.keyframes).toEqual([{ translate: '0px 20px' }, { translate: '0px 0px' }]);
-    expect(exitAtom.keyframes).toEqual([{ translate: '0px 0px' }, { translate: '0px 20px' }]);
+    expect(enterAtom.keyframes).toEqual([{ translate: '0px 0px' }, { translate: '0px 0px' }]);
+    expect(exitAtom.keyframes).toEqual([{ translate: '0px 0px' }, { translate: '0px 0px' }]);
   });
 
   it('applies custom fromX and fromY values', () => {
@@ -51,15 +51,30 @@ describe('slideAtom', () => {
     expect(atom.keyframes).toEqual([{ translate: '100px -50px' }, { translate: '0px 0px' }]);
   });
 
+  it('applies custom toX and toY values', () => {
+    const atom = slideAtom({
+      direction: 'enter',
+      duration: 300,
+      fromX: '100px',
+      fromY: '-50px',
+      toX: '20px',
+      toY: '10px',
+    });
+
+    expect(atom.keyframes).toEqual([{ translate: '100px -50px' }, { translate: '20px 10px' }]);
+  });
+
   it('handles percentage-based translate values', () => {
     const atom = slideAtom({
       direction: 'enter',
       duration: 300,
       fromX: '100%',
       fromY: '-100%',
+      toX: '50%',
+      toY: '25%',
     });
 
-    expect(atom.keyframes).toEqual([{ translate: '100% -100%' }, { translate: '0px 0px' }]);
+    expect(atom.keyframes).toEqual([{ translate: '100% -100%' }, { translate: '50% 25%' }]);
   });
 
   it('uses default values when fromX and fromY are not provided', () => {
@@ -68,7 +83,7 @@ describe('slideAtom', () => {
       duration: 300,
     });
 
-    expect(atom.keyframes).toEqual([{ translate: '0px 20px' }, { translate: '0px 0px' }]);
+    expect(atom.keyframes).toEqual([{ translate: '0px 0px' }, { translate: '0px 0px' }]);
   });
 
   it('applies custom easing and delay', () => {
@@ -94,10 +109,12 @@ describe('slideAtom', () => {
       easing: 'ease-in-out',
       fromX: '200px',
       fromY: '100px',
+      toX: '50px',
+      toY: '25px',
     });
 
     expect(atom).toMatchObject({
-      keyframes: [{ translate: '200px 100px' }, { translate: '0px 0px' }],
+      keyframes: [{ translate: '200px 100px' }, { translate: '50px 25px' }],
       duration: 400,
       easing: 'ease-in-out',
       delay: 50,
@@ -145,16 +162,20 @@ describe('slideAtom', () => {
       duration: 300,
       fromX: '100px',
       fromY: '-50px',
+      toX: '20px',
+      toY: '10px',
     });
     const exitAtom = slideAtom({
       direction: 'exit',
       duration: 300,
       fromX: '100px',
       fromY: '-50px',
+      toX: '20px',
+      toY: '10px',
     });
 
-    expectSlideAtom(enterAtom, 'enter', '100px -50px', '0px 0px');
-    expectSlideAtom(exitAtom, 'exit', '100px -50px', '0px 0px');
+    expectSlideAtom(enterAtom, 'enter', '100px -50px', '20px 10px');
+    expectSlideAtom(exitAtom, 'exit', '100px -50px', '20px 10px');
   });
 
   it('validates custom timing parameters with test utility', () => {

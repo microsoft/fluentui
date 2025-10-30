@@ -22,15 +22,15 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.124.2",
-    "@fluentui/theme": "^2.6.69",
+    "@fluentui/react": "^8.125.0",
+    "@fluentui/theme": "^2.7.0",
     "@storybook/addon-essentials": "7.6.20",
-    "@fluentui/azure-themes": "^8.6.142",
-    "@fluentui/theme-samples": "^8.7.218",
+    "@fluentui/azure-themes": "^8.6.143",
+    "@fluentui/theme-samples": "^8.7.219",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.8.0 <20.0.0",
+    "react": ">=16.8.0 <20.0.0"
   }
 }

@@ -45,9 +45,10 @@ describe('fadeAtom', () => {
       direction: 'enter',
       duration: 300,
       fromOpacity: 0.5,
+      toOpacity: 0.8,
     });
 
-    expect(atom.keyframes).toEqual([{ opacity: 0.5 }, { opacity: 1 }]);
+    expect(atom.keyframes).toEqual([{ opacity: 0.5 }, { opacity: 0.8 }]);
   });
 
   it('has fill mode "both" by default to prevent opacity flickering during delays', () => {
@@ -109,11 +110,11 @@ describe('fadeAtom', () => {
   });
 
   it('validates custom opacity values with test utility', () => {
-    const enterAtom = fadeAtom({ direction: 'enter', duration: 300, fromOpacity: 0.3 });
-    const exitAtom = fadeAtom({ direction: 'exit', duration: 300, fromOpacity: 0.3 });
+    const enterAtom = fadeAtom({ direction: 'enter', duration: 300, fromOpacity: 0.2, toOpacity: 0.7 });
+    const exitAtom = fadeAtom({ direction: 'exit', duration: 300, fromOpacity: 0.3, toOpacity: 0.8 });
 
-    expectFadeAtom(enterAtom, 'enter', 0.3, 1);
-    expectFadeAtom(exitAtom, 'exit', 0.3, 1);
+    expectFadeAtom(enterAtom, 'enter', 0.2, 0.7);
+    expectFadeAtom(exitAtom, 'exit', 0.3, 0.8);
   });
 
   it('validates custom timing parameters with test utility', () => {

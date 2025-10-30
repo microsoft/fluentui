@@ -1,12 +1,8 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  RTL,
-  StoryWrightDecorator,
-  TestWrapperDecoratorTall,
-} from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorTall } from '../../utilities';
 import { IButtonProps, CommandBarButton } from '@fluentui/react/lib/Button';
 
 const commandProps: IButtonProps = {
@@ -41,8 +37,11 @@ export default {
       <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>{story()}</div>
     ),
     TestWrapperDecoratorTall,
-    StoryWrightDecorator(
-      new Steps()
+  ],
+
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -52,8 +51,8 @@ export default {
         .hover('.ms-Button')
         .snapshot('open', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof CommandBarButton>;
 
 export const Root = () => <CommandBarButton {...commandProps} />;

@@ -2,15 +2,15 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Table } from '@fluentui/react-table';
 import { Steps } from 'storywright';
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 import { CellActionsAlwaysVisible, CellActionsDefault, CellActionsInHeaderCell } from './utils';
 
 export default {
   title: 'Table layout flex - cell actions',
-
-  decorators: [
-    story => withStoryWrightSteps({ story, steps: new Steps().hover('.row-1').snapshot('hover row').end() }),
-  ],
+  parameters: {
+    storyWright: { steps: new Steps().hover('.row-1').snapshot('hover row').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Table>;
 
 export const Default = () => <CellActionsDefault noNativeElements={true} />;

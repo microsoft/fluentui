@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Thu, 16 Oct 2025 07:21:58 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Oct 2025 12:37:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.14.1)
+
+Thu, 30 Oct 2025 12:37:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.14.0..@fluentui/react-docsite-components_v8.14.1)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.8.1 ([PR #35419](https://github.com/microsoft/fluentui/pull/35419) by beachball)
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.14.0)
+
+Thu, 23 Oct 2025 10:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.257..@fluentui/react-docsite-components_v8.14.0)
+
+### Minor changes
+
+- feat: bump react range to support React 19 ([PR #35362](https://github.com/microsoft/fluentui/pull/35362) by martinhochel@microsoft.com)
+- Bump @fluentui/react to v8.125.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/theme to v2.7.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/react-hooks to v8.10.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.8.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
 
 ## [8.13.257](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.257)
 

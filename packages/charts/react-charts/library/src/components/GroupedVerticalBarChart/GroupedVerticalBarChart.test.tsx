@@ -617,7 +617,7 @@ describe('GroupedVerticalBarChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'.1f'} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import {
   DataGrid,
   DataGridBody,
@@ -9,24 +9,21 @@ import {
   DataGridHeaderCell,
   DataGridRow,
 } from '@fluentui/react-table';
-import { withStoryWrightSteps } from '../../utilities';
 import { columns, items, type Item } from './utils';
 
 export default {
   title: 'DataGridConverged - subtle single select',
 
-  decorators: [
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps()
-          .hover('.fui-DataGridHeader > .fui-DataGridRow')
-          .snapshot('hover header row')
-          .hover('.fui-DataGridBody > .fui-DataGridRow')
-          .snapshot('hover row')
-          .end(),
-      }),
-  ],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .hover('.fui-DataGridHeader > .fui-DataGridRow')
+        .snapshot('hover header row')
+        .hover('.fui-DataGridBody > .fui-DataGridRow')
+        .snapshot('hover row')
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof DataGrid>;
 
 export const Default = () => {
@@ -37,7 +34,6 @@ export const Default = () => {
       sortable
       selectionMode="single"
       subtleSelection
-      // eslint-disable-next-line react/jsx-no-bind
       getRowId={(item: Item) => item.file.label}
       focusMode="composite"
       style={{ minWidth: '550px' }}

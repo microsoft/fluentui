@@ -39,6 +39,7 @@ const useStyles = makeStyles({
     height: '100%',
     flexDirection: 'column',
     overflow: 'hidden',
+    textAlign: 'left',
   },
   chartWrapper: {
     overflow: 'auto',

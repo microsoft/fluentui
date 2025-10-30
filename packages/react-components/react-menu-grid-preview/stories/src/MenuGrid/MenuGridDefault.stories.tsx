@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { MenuGrid, MenuGridItem } from '@fluentui/react-menu-grid-preview';
+import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
 
 const items = ['Olivia Carter', 'Liam Thompson', 'Sophia Martinez', 'Noah Patel', 'Emma Robinson'];
 
@@ -13,12 +14,21 @@ export const Default = (): JSXElement => {
       </MenuTrigger>
       <MenuPopover>
         <MenuGrid>
-          {items.map((name, index) => (
+          {items.map(name => (
             <MenuGridItem
-              key={index}
-              firstSubAction={<Button aria-label={`Profile card for ${name}`}>Avatar icon</Button>}
-              secondSubAction={<Button aria-label={`Remove ${name}`}>Remove</Button>}
+              key={name}
               aria-label={name}
+              icon={
+                <Button
+                  size="small"
+                  appearance="transparent"
+                  icon={<GlobePersonRegular />}
+                  aria-label={`Profile card for ${name}`}
+                />
+              }
+              secondSubAction={
+                <Button size="small" appearance="transparent" icon={<DeleteRegular />} aria-label={`Remove ${name}`} />
+              }
             >
               {name}
             </MenuGridItem>

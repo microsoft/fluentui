@@ -1,29 +1,26 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Dropdown, Option } from '@fluentui/react-combobox';
 import { TestWrapperDecoratorFixedWidth } from '../../utilities';
 
 export default {
   title: 'Dropdown Converged',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => (
-      <StoryWright
-        steps={new Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('[role=combobox]')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .focus('[role=combobox]')
-          .wait(250) // let focus border animation finish
-          .snapshot('focused', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </StoryWright>
-    ),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('[role=combobox]')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .focus('[role=combobox]')
+        .wait(250) // let focus border animation finish
+        .snapshot('focused', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Dropdown>;
 
 export const AppearanceOutlineDefault = () => (

@@ -1112,6 +1112,11 @@ export type AxisProps = {
    *   - Exception: when `tickStep` uses `"L<f>"`, you can specify the raw value directly.
    */
   tick0?: number | Date;
+
+  /**
+   * Sets the text displayed at each tick position specified by `tickValues`. Used with `tickValues`.
+   */
+  tickText?: string[];
 };
 
 /**

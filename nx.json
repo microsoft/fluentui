@@ -180,8 +180,14 @@
         "packages/react-focus/**",
         "packages/react-examples/**",
         "packages/react-experiments/**",
+        "packages/react-window-provider/**",
+        "packages/react-icon-provider/**",
         "packages/charts/react-charting/**",
-        "packages/utilities/**"
+        "packages/utilities/**",
+        "packages/react-icons-mdl2/**",
+        "packages/react-monaco-editor/**",
+        "packages/react-docsite-components/**",
+        "packages/react-file-type-icons/**"
       ]
     }
   ],

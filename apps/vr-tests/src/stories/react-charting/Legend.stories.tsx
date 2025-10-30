@@ -1,27 +1,18 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, StoryParameters } from 'storywright';
 import { ILegend, Legends } from '@fluentui/react-charting';
 
 export default {
   title: 'react-charting/Legend',
 
-  decorators: [
-    (story, context) => TestWrapperDecorator(story, context),
-    (story, context) => {
-      const steps = context.name.includes('Overflow')
-        ? new Steps()
-            .snapshot('default', { cropTo: '.testWrapper' })
-            .executeScript(
-              `document.querySelectorAll('div[class^="overflowIndicationTextStyle"]')[0].click()`,
-            )
-            .snapshot('expanded', { cropTo: '.testWrapper' })
-            .end()
-        : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
-      return <StoryWright steps={steps}>{story()}</StoryWright>;
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
     },
-  ],
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Legends>;
 
 export const Basic = () => {
@@ -287,6 +278,18 @@ export const Overflow = () => {
     </div>
   );
 };
+
+Overflow.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .executeScript(
+        `document.querySelectorAll('div[class^="overflowIndicationTextStyle"]')[0].click()`,
+      )
+      .snapshot('expanded', { cropTo: '.testWrapper' })
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const OverflowDarkMode = getStoryVariant(Overflow, DARK_MODE);
 

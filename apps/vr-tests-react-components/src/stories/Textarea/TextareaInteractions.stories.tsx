@@ -3,25 +3,24 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Textarea } from '@fluentui/react-textarea';
 
-import { withStoryWrightSteps, TestWrapperDecoratorFixedWidth } from '../../utilities';
+import { TestWrapperDecoratorFixedWidth } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Textarea Converged',
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('textarea')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .click('textarea')
-          .wait(250) // needed for bottom focus border animation
-          .snapshot('focused', { cropTo: '.testWrapper' })
-          .end(),
-      }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('textarea')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('textarea')
+        .wait(250) // let focus border animation finish
+        .snapshot('focused', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Textarea>;
 
 export const AppearanceOutlineDefault = () => <Textarea placeholder="Placeholder" />;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { StoryWright, Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { AreaChart, ICustomizedCalloutData, ChartHoverCard } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react';
@@ -8,26 +8,19 @@ import { DefaultPalette } from '@fluentui/react';
 export default {
   title: 'react-charting/AreaChart',
 
-  decorators: [
-    (story, context) => TestWrapperDecorator(story, context),
-    (story, context) => {
-      const steps =
-        (context.name.startsWith('Basic') || context.name.startsWith('Multiple')) &&
-        !context.name.includes('RTL')
-          ? new Steps()
-              .snapshot('default', { cropTo: '.testWrapper' })
-              // to hover over the area charts and show the callout
-              .executeScript(
-                // eslint-disable-next-line @fluentui/max-len
-                `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:400,clientY:100}))`,
-              )
-              .snapshot('hover', { cropTo: '.testWrapper' })
-              .end()
-          : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
-      return <StoryWright steps={steps}>{story()}</StoryWright>;
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
     },
-  ],
+  } satisfies StoryParameters,
 } satisfies Meta<typeof AreaChart>;
+
+const stepsWithHover = new Steps()
+  .snapshot('default', { cropTo: '.testWrapper' })
+  .hover('.ms-AreaChart-line')
+  .snapshot('hover', { cropTo: '.testWrapper' })
+  .end();
 
 export const Basic = () => {
   const chart1Points = [
@@ -162,9 +155,16 @@ export const Basic = () => {
   );
 };
 
+Basic.parameters = {
+  storyWright: {
+    steps: stepsWithHover,
+  } satisfies StoryParameters,
+};
+
 export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
 export const BasicRTL = getStoryVariant(Basic, RTL);
+BasicRTL.parameters.storyWright = undefined;
 
 export const CustomAccessibility = () => {
   const chart1Points = [
@@ -467,6 +467,13 @@ export const Multiple = () => {
   );
 };
 
+Multiple.parameters = {
+  storyWright: {
+    steps: stepsWithHover,
+  } satisfies StoryParameters,
+};
+
 export const MultipleDarkMode = getStoryVariant(Multiple, DARK_MODE);
 
 export const MultipleRTL = getStoryVariant(Multiple, RTL);
+MultipleRTL.parameters.storyWright = undefined;

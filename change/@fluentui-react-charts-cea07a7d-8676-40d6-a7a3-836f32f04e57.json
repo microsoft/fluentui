@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: resolve data points based on axis type + replace invalid values with 0 for valid coordinates",
+  "comment": "feat: map deprecated plotly create_gantt() scatter traces to gantt chart",
   "packageName": "@fluentui/react-charts",
   "email": "kumarkshitij@microsoft.com",
   "dependentChangeType": "patch"

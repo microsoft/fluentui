@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Legend, Legends } from '@fluentui/react-charts';
 
 const overflowText = 'Overflow Items';
@@ -9,28 +9,12 @@ const overflowText = 'Overflow Items';
 export default {
   title: 'Charts/Legend',
 
-  decorators: [
-    (story, context) => TestWrapperDecorator(story, context),
-    (story, context) => {
-      const steps = context.name.includes('Overflow')
-        ? new Steps()
-            .snapshot('default', { cropTo: '.testWrapper' })
-            .executeScript(
-              `document.evaluate(
-                  "//button[contains(text(), 'Overflow Items')]",
-                  document,
-                  null,
-                  XPathResult.FIRST_ORDERED_NODE_TYPE,
-                  null
-              ).singleNodeValue
-              .click()`,
-            )
-            .snapshot('expanded', { cropTo: '.testWrapper' })
-            .end()
-        : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
-      return <StoryWright steps={steps}>{story()}</StoryWright>;
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
     },
-  ],
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Legends>;
 
 export const Basic = () => {
@@ -296,6 +280,24 @@ export const Overflow = () => {
     </div>
   );
 };
+Overflow.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .executeScript(
+        `document.evaluate(
+          "//button[contains(text(), 'Overflow Items')]",
+          document,
+          null,
+          XPathResult.FIRST_ORDERED_NODE_TYPE,
+          null
+      ).singleNodeValue
+      .click()`,
+      )
+      .snapshot('expanded', { cropTo: '.testWrapper' })
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const OverflowDarkMode = getStoryVariant(Overflow, DARK_MODE);
 

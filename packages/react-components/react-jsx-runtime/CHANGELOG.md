@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Wed, 08 Oct 2025 12:04:53 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Oct 2025 14:16:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.3.0)
+
+Tue, 21 Oct 2025 14:16:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.2.2..@fluentui/react-jsx-runtime_v9.3.0)
+
+### Minor changes
+
+- feat: implement custom JSX namespace instead of @ts-ignore workaround ([PR #35295](https://github.com/microsoft/fluentui/pull/35295) by martinhochel@microsoft.com)
 
 ## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.2.2)
 

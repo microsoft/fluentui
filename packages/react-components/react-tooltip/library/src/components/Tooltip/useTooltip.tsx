@@ -243,7 +243,9 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   const child = getTriggerChild(children);
 
   const triggerAriaProps: Pick<TooltipChildProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
-  const isExpanded = child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true';
+  const isPopupExpanded =
+    child?.props?.['aria-haspopup'] &&
+    (child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true');
 
   if (relationship === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
@@ -261,8 +263,8 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   }
 
   // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
-  // Case 2: Don't render the Tooltip, if it triggers Menu and it's already opened
-  if (isServerSideRender || isExpanded) {
+  // Case 2: Don't render the Tooltip, if it triggers Menu or another popup and it's already opened
+  if (isServerSideRender || isPopupExpanded) {
     state.shouldRenderTooltip = false;
   }
 

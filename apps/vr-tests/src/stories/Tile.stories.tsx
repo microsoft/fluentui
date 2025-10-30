@@ -9,8 +9,9 @@ import {
 } from '@fluentui/react-experiments';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import { TestWrapperDecorator } from '../utilities';
 
 interface IDocumentItem {
   name: React.ReactElement;
@@ -81,11 +82,12 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
 export default {
   title: 'Tile',
 
-  decorators: [
-    story => <Fabric>{story()}</Fabric>,
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [story => <Fabric>{story()}</Fabric>, TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Tile>;
 
 export const DocumentTileWithFitLandscapeImage = () => (

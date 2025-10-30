@@ -19,6 +19,8 @@ import { SlideParams } from './slide-types';
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
  * @param fromX - The X translate value with units to animate from. Defaults to `'0px'`.
  * @param fromY - The Y translate value with units to animate from. Defaults to `'20px'`.
+ * @param toX - The X translate value with units to animate to. Defaults to `'0px'`.
+ * @param toY - The Y translate value with units to animate to. Defaults to `'0px'`.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
@@ -30,9 +32,11 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   exitDelay = delay,
   fromX = '0px',
   fromY = '20px',
+  toX = '0px',
+  toY = '0px',
   animateOpacity = true,
 }: SlideParams) => {
-  const enterAtoms = [slideAtom({ direction: 'enter', duration, easing, delay, fromX, fromY })];
+  const enterAtoms = [slideAtom({ direction: 'enter', duration, easing, delay, fromX, fromY, toX, toY })];
   const exitAtoms = [
     slideAtom({
       direction: 'exit',
@@ -41,6 +45,8 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
       delay: exitDelay,
       fromX,
       fromY,
+      toX,
+      toY,
     }),
   ];
 

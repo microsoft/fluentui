@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import {
   ILineChartPoints,
@@ -14,25 +14,12 @@ import { mergeStyles, DefaultPalette } from '@fluentui/react';
 export default {
   title: 'react-charting/LineChart',
 
-  decorators: [
-    TestWrapperDecorator,
-    (story, context) => {
-      const steps =
-        context.name.startsWith('Basic') && !context.name.includes('RTL')
-          ? new Steps()
-              .snapshot('default', { cropTo: '.testWrapper' })
-              // Selector to select a point on the line, to capture the callout
-              .executeScript(
-                // eslint-disable-next-line @fluentui/max-len
-                `document.querySelectorAll('line[id^="line"]')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true}))`,
-              )
-              .snapshot('hover', { cropTo: '.testWrapper' })
-              .end()
-          : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
-
-      return <StoryWright steps={steps}>{story()}</StoryWright>;
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
     },
-  ],
+  } satisfies StoryParameters,
 } satisfies Meta<typeof LineChart>;
 
 export const Basic = () => {
@@ -165,8 +152,22 @@ export const Basic = () => {
     </div>
   );
 };
+Basic.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      // Selector to select a point on the line, to capture the callout
+      .executeScript(
+        // eslint-disable-next-line @fluentui/max-len
+        `document.querySelectorAll('line[id^="line"]')[3].dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true}))`,
+      )
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .end(),
+  },
+} satisfies StoryParameters;
 
 export const BasicRTL = getStoryVariant(Basic, RTL);
+BasicRTL.parameters.storyWright = undefined;
 
 export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
