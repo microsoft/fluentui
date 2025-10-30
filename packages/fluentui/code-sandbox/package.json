@@ -1,11 +1,11 @@
 {
   "name": "@fluentui/code-sandbox",
   "description": "Fluent UI tools for CodeSandbox.",
-  "version": "0.68.2",
+  "version": "0.69.1",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@fluentui/docs-components": "^0.68.2",
+    "@fluentui/docs-components": "^0.69.1",
     "lodash": "^4.17.15"
   },
   "devDependencies": {

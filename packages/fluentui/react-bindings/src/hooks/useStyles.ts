@@ -6,6 +6,7 @@ import cx from 'classnames';
 import { useFluentContext } from '../context';
 import { ComponentDesignProp, ComponentSlotClasses, PrimitiveProps } from '../styles/types';
 import { getStyles } from '../styles/getStyles';
+import { useInsertPendingRules } from './useInsertPendingRules';
 
 type UseStylesOptions<StyleProps extends PrimitiveProps> = {
   /** A classname that will be added by default to all instances of a component on the `root` slot. */
@@ -65,9 +66,12 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
   // Stores debug information for component.
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
 
+  useInsertPendingRules(context.renderer);
+
   if (options.unstyled) {
     const componentClassName = options.composeOptions?.className || options.className;
     const classNameProp = options.mapPropsToInlineStyles?.().className;
+
     return { classes: { root: cx(componentClassName, classNameProp) }, styles: {} };
   }
 

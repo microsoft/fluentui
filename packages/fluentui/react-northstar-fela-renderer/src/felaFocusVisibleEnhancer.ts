@@ -1,5 +1,5 @@
 import { RULE_TYPE } from 'fela-utils';
-import { FelaRenderer, FelaRendererChange } from './types';
+import type { FelaRenderer, FelaRendererChange } from './types';
 
 /**
  * A Fela enhancer that allows to use `:focus-visible`. Uses `what-input` library and its global

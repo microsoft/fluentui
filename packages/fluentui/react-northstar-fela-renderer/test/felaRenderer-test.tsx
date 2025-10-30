@@ -1,38 +1,51 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
+import { render } from '@testing-library/react';
 import { renderToString } from 'fela-tools';
 import { format } from 'prettier';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { FelaComponent, RendererProvider, ThemeProvider } from 'react-fela';
+
 import { createFelaRenderer } from '../src/createFelaRenderer';
+import { insertChange } from '../src/dom/insertChange';
+import type { FelaRenderer } from '../src/types';
 
 const felaRenderer = (createFelaRenderer()() as any).getOriginalRenderer();
 
+function InsertChangesInTests(props: { children: React.ReactElement; renderer: FelaRenderer }) {
+  React.useEffect(() => {
+    props.renderer._pendingChanges.forEach(change => {
+      insertChange(felaRenderer, document, change);
+    });
+  });
+
+  return props.children;
+}
+
 function createSnapshot(component: JSX.Element, theme = {}) {
-  const div = document.createElement('div');
-
-  // reset renderer to have a clean setup
-  felaRenderer.clear();
-
-  ReactDOM.render(
-    <RendererProvider renderer={felaRenderer}>
-      <ThemeProvider theme={{ direction: 'ltr', ...theme }}>{component}</ThemeProvider>
-    </RendererProvider>,
-    div,
+  const { container } = render(
+    <InsertChangesInTests renderer={felaRenderer}>
+      <RendererProvider renderer={felaRenderer}>
+        <ThemeProvider theme={{ direction: 'ltr', ...theme }}>{component}</ThemeProvider>
+      </RendererProvider>
+    </InsertChangesInTests>,
   );
 
   // jest-react-fela used htmltojsx to format the HTML, but that no longer works with React 17
   // due to importing a removed module. Various alternatives are available, but in this case,
   // all the things to be serialized are simple enough that we can just use innerHTML directly.
-  const innerHTML = div.innerHTML;
-  ReactDOM.unmountComponentAtNode(div);
-
+  const innerHTML = container.innerHTML;
   const css = renderToString(felaRenderer);
   const formattedCss = format(css, { parser: 'css', useTabs: false, tabWidth: 2 });
+
   return `${formattedCss}\n\n${innerHTML}`;
 }
 
 describe('felaRenderer', () => {
+  beforeEach(() => {
+    // reset renderer to have a clean setup
+    felaRenderer.clear();
+  });
+
   test('basic styles are rendered', () => {
     const snapshot = createSnapshot(<FelaComponent style={{ color: 'red' }} />);
     expect(snapshot).toMatchSnapshot();

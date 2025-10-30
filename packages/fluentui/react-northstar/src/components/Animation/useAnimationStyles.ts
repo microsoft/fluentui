@@ -3,6 +3,7 @@ import {
   unstable_getStyles as getStyles,
   unstable_createAnimationStyles as createAnimationStyles,
   useFluentContext,
+  useInsertPendingRules,
 } from '@fluentui/react-bindings';
 import { ThemePrepared } from '@fluentui/styles';
 
@@ -20,6 +21,8 @@ export const animationClassName = 'ui-animation';
 
 export const useAnimationStyles = (displayName: string, props: AnimationProps): UseAnimationStylesResult => {
   const { theme, rtl, disableAnimations, renderer, performance } = useFluentContext();
+
+  useInsertPendingRules(renderer);
 
   if (disableAnimations) {
     return {
