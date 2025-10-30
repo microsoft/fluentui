@@ -156,7 +156,13 @@ export const Sort = (): JSXElement => {
   );
 
   return (
-    <DataGrid items={items} columns={columns} sortable defaultSortState={defaultSortState} style={{ minWidth: '500px' }}>
+    <DataGrid
+      items={items}
+      columns={columns}
+      sortable
+      defaultSortState={defaultSortState}
+      style={{ minWidth: '500px' }}
+    >
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
