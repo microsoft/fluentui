@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecoratorTall } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorTall } from '../utilities';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
 
 const items: ICommandBarItemProps[] = [
@@ -67,10 +69,10 @@ const farItems: ICommandBarItemProps[] = [
 export default {
   title: 'CommandBar',
 
-  decorators: [
-    TestWrapperDecoratorTall,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecoratorTall],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-CommandBarItem-link')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -78,9 +80,9 @@ export default {
         .hover('.ms-CommandBarItem-link')
         .snapshot('click', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof CommandBar>;
 
 export const Root = () => <CommandBar items={items} farItems={farItems} />;
 

@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps, Keys } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { TagPicker, Fabric, ITag } from '@fluentui/react';
 
 const testTags: ITag[] = [
@@ -27,10 +29,10 @@ const getList = () => testTags;
 
 export default {
   title: 'TagPicker',
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
         .setValue('.ms-BasePicker-input', 'a')
@@ -39,9 +41,9 @@ export default {
         .snapshot('Suggestion Menu Item Hover', { cropTo: '.testWrapper' })
         .keys('.ms-BasePicker-input', Keys.upArrow)
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof TagPicker>;
 
 export const Root = () => (
   <TagPicker

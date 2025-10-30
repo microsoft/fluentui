@@ -1,19 +1,20 @@
 import * as React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Breadcrumb } from '@fluentui/react';
 
-import { TestWrapperDecoratorTall, StoryWrightDecorator } from '../../utilities';
+import { TestWrapperDecoratorTall } from '../../utilities';
 
 const noOp = () => undefined;
 
 export default {
   title: 'Breadcrumb',
 
-  decorators: [
-    TestWrapperDecoratorTall,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecoratorTall],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .hover('.ms-Breadcrumb-list li:nth-child(2)')
         .snapshot('actionable hover', { cropTo: '.testWrapper' })
         .hover('.ms-Breadcrumb-list li:nth-child(3)')
@@ -26,8 +27,8 @@ export default {
         .hover('.ms-ContextualMenu-list li:nth-child(3)')
         .snapshot('non-actionable overflow hover', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Breadcrumb>;
 
 type Story = StoryFn<typeof Breadcrumb>;

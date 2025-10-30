@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../../utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -197,10 +199,10 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): React.ReactElement {
 export default {
   title: 'ScrollablePane Details List',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 2",
@@ -217,9 +219,9 @@ export default {
         )
         .snapshot('scroll up to the top', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof ScrollablePaneDetailsListStory>;
 
 export const ScrollablePaneDetailsListWithStickyHeaderFooter = () => (
   <ScrollablePaneDetailsListStory />

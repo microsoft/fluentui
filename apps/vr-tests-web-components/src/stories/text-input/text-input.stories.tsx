@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
 import { TextInputDefinition, LabelDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { tokens } from '@fluentui/tokens';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
@@ -13,14 +13,13 @@ export default {
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-          <div className="testWrapper" style={{ width: '320px' }}>
-            {story()}
-          </div>
-        </StoryWright>
+        <div className="testWrapper" style={{ width: '320px' }}>
+          {story()}
+        </div>
       );
     },
   ],
+  parameters: { storyWright: { steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() } },
 };
 const Person20Regular = `<svg
   fill="currentColor"

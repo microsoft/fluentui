@@ -1,24 +1,26 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Checkbox } from '@fluentui/react';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import { TestWrapperDecorator } from '../../utilities';
 
 export default {
   title: 'Checkbox Indeterminate',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Checkbox')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Checkbox')
         .snapshot('clicked', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Checkbox>;
 
 export const UncontrolledIndeterminateCheckbox = () => (
   <Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate />
