@@ -854,7 +854,7 @@ const convertPlotlyAnnotation = (
   const encodedText = encodeHtmlEntities(rawText);
 
   const chartAnnotation: IChartAnnotation = {
-    id: createAnnotationId(rawText, index),
+    id: createAnnotationId(encodedText, index),
     text: encodedText,
     coordinates,
   };
