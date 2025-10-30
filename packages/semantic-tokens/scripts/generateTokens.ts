@@ -37,8 +37,7 @@ const propertyTypes = {
 
 const generateGenericTokenName = ({
   variant,
-  scale,
-  partName,
+  emphasis,
   property,
   state,
 }: {
@@ -46,11 +45,12 @@ const generateGenericTokenName = ({
   groupName?: string;
   variant?: string;
   scale?: string;
+  emphasis?: string;
   partName?: string;
   property?: string;
   state?: string;
 }) => {
-  return [property, variant, state].filter(Boolean).join(joiner);
+  return [property, variant, emphasis, state].filter(Boolean).join(joiner);
 };
 
 const generateGroupTokenName = ({
@@ -121,19 +121,45 @@ export function generateGenericTokens() {
 
   for (const property of Object.keys(generics)) {
     for (const variant of generics[property].variants) {
-      const states = generics[property].states || [''];
-      for (const state of states) {
-        const propertyToken = {
-          name: generateGenericTokenName({ property, variant, state }),
-          // Figma alias is the same on generic tokens (property first)
-          figmaAlias: generateGenericTokenName({ property, variant, state }),
-          type: generics[property].type || 'dimension',
-          property,
-          variant,
-          state,
-        };
+      for (const emphasis of generics[property].emphasis || []) {
+        const states = generics[property].states || [''];
+        for (const state of states) {
+          const propertyToken = {
+            name: generateGenericTokenName({ property, emphasis, variant, state }),
+            // Figma alias is the same on generic tokens (property first)
+            figmaAlias: generateGenericTokenName({ property, emphasis, variant, state }),
+            type: generics[property].type || 'dimension',
+            property,
+            emphasis,
+            variant,
+            state,
+          };
 
-        result.push(propertyToken);
+          result.push(propertyToken);
+        }
+      }
+    }
+
+    const exceptions = generics[property].exceptions || [];
+    for (const exception of exceptions) {
+      for (const variant of exception.variants) {
+        for (const emphasis of exception.emphasis || []) {
+          const states = exception.states || [''];
+          for (const state of states) {
+            const propertyToken = {
+              name: generateGenericTokenName({ property, emphasis, variant, state }),
+              // Figma alias is the same on generic tokens (property first)
+              figmaAlias: generateGenericTokenName({ property, emphasis, variant, state }),
+              type: exception.type || 'dimension',
+              property,
+              emphasis,
+              variant,
+              state,
+            };
+
+            result.push(propertyToken);
+          }
+        }
       }
     }
   }

@@ -6,19 +6,12 @@ export const buttonGroup: GroupPart = {
    * Core properties for the button group
    * These cover simple overrides, or interfaces for complex CSS management
    */
-  coreProperties: [
-    'corner',
-    'strokewidth',
-    'fontfamily',
-    'shadow',
-    'padding.horizontal',
-    'padding.top',
-    'padding.bottom',
-    'gap',
-    'minwidth',
-  ],
+  coreProperties: ['corner', 'strokewidth', 'fontfamily', 'shadow'],
   variants: ['neutral', 'primary', 'outline', 'subtle'],
+  variantProperties: [],
   variantStateProperties: ['background', 'stroke', 'foreground'],
+  scales: ['small', 'medium', 'large'],
+  scaleProperties: ['padding.horizontal', 'padding.top', 'padding.bottom', 'gap', 'minwidth'],
   states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected', 'disabled'],
   components: ['button', 'splitbutton', 'togglebutton', 'menubutton', 'compoundbutton'],
   exceptions: [
@@ -37,28 +30,19 @@ export const buttonGroup: GroupPart = {
   ],
   parts: {
     icononly: {
-      coreProperties: ['padding'],
+      scaleProperties: ['padding'],
+      scales: ['small', 'medium', 'large'],
     },
     icon: {
       states: ['', 'hover', 'pressed', 'disabled', 'selected'],
-      coreProperties: ['size'],
+      scales: ['small', 'medium', 'large'],
+      scaleProperties: ['size'],
       variants: ['neutral', 'primary', 'outline', 'subtle'],
       variantStateProperties: ['foreground'],
     },
-    // divider: {
-    //   coreProperties: ['strokewidth', 'margin.vertical'],
-    //   variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
-    //   variantProperties: ['stroke'],
-    // },
-    // chevron: {
-    //   variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
-    //   states: ['', 'hover', 'pressed', 'selected', 'disabled'],
-    //   variantStateProperties: ['foreground'],
-    //   scales: ['small', 'medium', 'large'],
-    //   scaleProperties: ['size'],
-    // },
     text: {
-      coreProperties: ['padding.horizontal', 'fontsize', 'lineheight', 'fontweight'],
+      scales: ['small', 'medium', 'large'],
+      scaleProperties: ['padding.horizontal', 'fontsize', 'lineheight', 'fontweight'],
     },
   },
 };

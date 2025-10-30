@@ -1,28 +1,64 @@
-// Each group of components will have these properties at default
-// These properties have NO states and NO variants
-export const coreProperties = ['fontfamily'];
-
-// Each variant of a component will have these properties at default
-// States will be appended here, i.e. rest, hover, pressed, disabled
-export const variantStateProperties = ['background', 'foreground'];
-
-// Scales affect different properties than variants
-// These properties will be appended to the scale, i.e. small, medium, large
-export const scaleProperties = ['fontsize', 'lineheight', 'padding', 'gap', 'corner', 'size', 'strokewidth'];
-
-// Properties are generic tokens
 export type GenericTypes = {
-  [key: string]: {
-    type: 'color' | 'dimension' | 'weight' | 'string';
-    variants: string[];
-    states?: string[];
-    styles?: string[];
-  };
+  [key: string]: GenericType;
+};
+
+export type GenericType = {
+  type: 'color' | 'dimension' | 'weight' | 'string';
+  variants: string[];
+  states?: string[];
+  emphasis?: string[];
+  styles?: string[];
+  exceptions?: GenericType[];
 };
 
 export const generics: GenericTypes = {
   corner: {
     type: 'dimension',
     variants: ['circular', 'square'],
+  },
+  background: {
+    type: 'color',
+    variants: ['neutral', 'brand', 'danger', 'warning', 'success', 'disabled'],
+    emphasis: ['loud', 'soft', 'subtle'],
+    states: ['rest', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+    exceptions: [
+      {
+        // Neutral also has a heavy and transparent emphasis
+        type: 'color',
+        variants: ['neutral'],
+        emphasis: ['heavy', 'transparent'],
+        states: ['rest', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+      },
+    ],
+  },
+  stroke: {
+    type: 'color',
+    variants: ['neutral', 'brand', 'danger', 'warning', 'success', 'disabled'],
+    emphasis: ['loud', 'subtle', 'onloud'],
+    states: ['rest', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+    exceptions: [
+      {
+        // Neutral also has a soft and transparent emphasis
+        type: 'color',
+        variants: ['neutral'],
+        emphasis: ['soft', 'transparent'],
+        states: ['rest', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+      },
+    ],
+  },
+  foreground: {
+    type: 'color',
+    variants: ['brand', 'danger', 'warning', 'success', 'disabled'],
+    emphasis: ['primary', 'onloud'],
+    states: ['rest', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+    exceptions: [
+      {
+        // Neutral also has secondary and onNeutral emphasis, but no onLoud
+        type: 'color',
+        variants: ['neutral'],
+        emphasis: ['primary', 'secondary', 'onneutral'],
+        states: ['rest', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+      },
+    ],
   },
 };
