@@ -2,7 +2,7 @@ export { childrenExist } from '@fluentui/react-bindings';
 
 export { rtlTextContainer } from './rtlTextContainer';
 export { stringLiteralsArray } from './stringLiteralsArray';
-export { getOrGenerateIdFromShorthand } from './getOrGenerateIdFromShorthand';
+export { useId, useIdOrFromShorthand } from './useIdOrFromShorthand';
 
 export * from './factories';
 export { mergeProviderContexts } from './mergeProviderContexts';

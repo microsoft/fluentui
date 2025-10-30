@@ -20,6 +20,7 @@ export { useFirstMount } from './hooks/useFirstMount';
 export { useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
 export { useMergedRefs } from './hooks/useMergedRefs';
 export * from './hooks/useStyles';
+export { useInsertPendingRules } from './hooks/useInsertPendingRules';
 export { useTriggerElement } from './hooks/useTriggerElement';
 export { useUnhandledProps } from './hooks/useUnhandledProps';
 export { usePrevious } from './hooks/usePrevious';

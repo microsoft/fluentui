@@ -8,7 +8,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
-  getOrGenerateIdFromShorthand,
+  useIdOrFromShorthand,
 } from '../../utils';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Text, TextProps } from '../Text/Text';
@@ -94,17 +94,16 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(FormField.handledProps, props);
-  const messageId = React.useRef<string>();
-  messageId.current = getOrGenerateIdFromShorthand('error-message-', message || errorMessage, messageId.current);
-  const labelId = React.useRef<string>();
-  labelId.current = getOrGenerateIdFromShorthand('form-label-', id, labelId.current);
+
+  const messageId = useIdOrFromShorthand(message || errorMessage);
+  const labelId = useIdOrFromShorthand(label);
 
   const getA11yProps = useAccessibility<FormFieldBehaviorProps>(props.accessibility ?? formFieldBehavior, {
     debugName: FormField.displayName,
     mapPropsToBehavior: () => ({
       hasErrorMessage: !!errorMessage,
-      messageId: messageId.current,
-      labelId: labelId.current,
+      messageId,
+      labelId,
     }),
     rtl: context.rtl,
   });
@@ -131,7 +130,7 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
       getA11yProps('label', {
         as: 'label',
         htmlFor: id,
-        id: labelId.current,
+        id: labelId,
         styles: resolvedStyles.label,
       }),
   });
@@ -140,7 +139,7 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
     defaultProps: () =>
       getA11yProps('message', {
         className: formFieldMessageClassName,
-        id: messageId.current,
+        id: messageId,
         styles: resolvedStyles.message,
       }),
   });

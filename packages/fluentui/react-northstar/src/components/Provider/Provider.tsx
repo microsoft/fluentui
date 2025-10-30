@@ -12,6 +12,7 @@ import {
   unstable_getStyles,
   useIsomorphicLayoutEffect,
   Unstable_FluentContextProvider,
+  useInsertPendingRules,
 } from '@fluentui/react-bindings';
 import { ThemeInput } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
@@ -103,12 +104,15 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
       });
 
   const portalContextValue = React.useMemo<PortalContextValue>(() => ({ className: classes.root }), [classes.root]);
-  const RenderProvider = outgoingContext.renderer.Provider;
 
   useIsomorphicLayoutEffect(() => {
     if (props.target) {
       setUpWhatInput(props.target);
     }
+
+    // The part related to renderer there is not a good fit for Strict Mode lifecycle, but as only `.nodes` property
+    // is being cleared - it's acceptable. If a renderer instance will be used again, it will pick up existing
+    // style elements on a page.
 
     outgoingContext.renderer.registerUsage();
 
@@ -119,31 +123,29 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
 
       outgoingContext.renderer.unregisterUsage();
     };
-  }, []);
+  }, [outgoingContext.renderer, props.target]);
+
+  useInsertPendingRules(outgoingContext.renderer);
 
   // If a Fragment is rendered:
   // - do not spread anything to an element - React.Fragment can only have `key` and `children` props
   // - as we don't apply styles "PortalContext.Provider" should not be rendered
   if (rendersReactFragment) {
     return (
-      <RenderProvider target={outgoingContext.target}>
-        <Unstable_FluentContextProvider value={outgoingContext}>
-          <>{children}</>
-        </Unstable_FluentContextProvider>
-      </RenderProvider>
+      <Unstable_FluentContextProvider value={outgoingContext}>
+        <>{children}</>
+      </Unstable_FluentContextProvider>
     );
   }
 
   return (
-    <RenderProvider target={outgoingContext.target}>
-      <Unstable_FluentContextProvider value={outgoingContext}>
-        <PortalContext.Provider value={portalContextValue}>
-          <ElementType className={classes.root} {...rtlProps} {...unhandledProps}>
-            {children}
-          </ElementType>
-        </PortalContext.Provider>
-      </Unstable_FluentContextProvider>
-    </RenderProvider>
+    <Unstable_FluentContextProvider value={outgoingContext}>
+      <PortalContext.Provider value={portalContextValue}>
+        <ElementType className={classes.root} {...rtlProps} {...unhandledProps}>
+          {children}
+        </ElementType>
+      </PortalContext.Provider>
+    </Unstable_FluentContextProvider>
   );
 };
 

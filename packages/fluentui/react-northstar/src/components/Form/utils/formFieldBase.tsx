@@ -2,7 +2,7 @@ import { Accessibility, FormFieldBehaviorProps, formFieldBehavior } from '@fluen
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { UIComponentProps, commonPropTypes, getOrGenerateIdFromShorthand, createShorthand } from '../../../utils';
+import { UIComponentProps, commonPropTypes, useIdOrFromShorthand, createShorthand } from '../../../utils';
 import { ShorthandValue } from '../../../types';
 import { Box, BoxProps } from '../../Box/Box';
 import {
@@ -54,10 +54,9 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
     const slotProps = composeOptions.resolveSlotProps<FormFieldBaseProps>(props);
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-    const messageId = React.useRef<string>();
-    messageId.current = getOrGenerateIdFromShorthand('error-message-', errorMessage || message, messageId.current);
-    const labelId = React.useRef<string>();
-    labelId.current = getOrGenerateIdFromShorthand('form-label-', label, labelId.current);
+
+    const messageId = useIdOrFromShorthand(errorMessage || message);
+    const labelId = useIdOrFromShorthand(label);
 
     const { classes } = useStyles<FormFieldBaseStylesProps>(_FormFieldBase.displayName, {
       className: composeOptions.className,
@@ -76,20 +75,13 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
       debugName: composeOptions.displayName,
       mapPropsToBehavior: () => ({
         hasErrorMessage: !!errorMessage,
-        messageId: messageId.current,
-        labelId: labelId.current,
+        messageId,
+        labelId,
       }),
       rtl: context.rtl,
     });
 
-    const childProps: FormFieldBaseValue = React.useMemo(
-      () => ({
-        labelId: labelId.current,
-      }),
-      // TODO: create hooks for id to avoid disbaling esling for accessing the value of refs
-      // eslint-disable-next-line
-      [labelId.current],
-    );
+    const childProps: FormFieldBaseValue = React.useMemo(() => ({ labelId }), [labelId]);
 
     const element = (
       <ElementType
@@ -100,7 +92,7 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
         {createShorthand(composeOptions.slots.label, label, {
           defaultProps: () =>
             getA11yProps('label', {
-              id: labelId.current,
+              id: labelId,
               inline,
               ...slotProps.label,
             }),
@@ -124,7 +116,7 @@ export const _FormFieldBase = compose<'div', FormFieldBaseProps, {}, {}, {}>(
         {createShorthand(composeOptions.slots.message, errorMessage || message, {
           defaultProps: () =>
             getA11yProps('message', {
-              id: messageId.current,
+              id: messageId,
               ...slotProps.message,
             }),
         })}

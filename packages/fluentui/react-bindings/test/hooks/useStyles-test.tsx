@@ -1,4 +1,5 @@
 import { ComponentSlotStyle, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
+import { noopRenderer } from '@fluentui/react-northstar-fela-renderer';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
 
@@ -66,7 +67,7 @@ describe('useStyles', () => {
       const styles = jest.fn();
       mount(<TestComponent unstyled={true} color="green" />, {
         wrappingComponent: Unstable_FluentContextProvider,
-        wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles) } },
+        wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles), renderer: noopRenderer } },
       });
 
       expect(styles).not.toHaveBeenCalled();
@@ -78,7 +79,7 @@ describe('useStyles', () => {
       const styles = jest.fn();
       mount(<TestComponent color="green" />, {
         wrappingComponent: Unstable_FluentContextProvider,
-        wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles) } },
+        wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles), renderer: noopRenderer } },
       });
 
       expect(styles).toHaveBeenCalledWith(

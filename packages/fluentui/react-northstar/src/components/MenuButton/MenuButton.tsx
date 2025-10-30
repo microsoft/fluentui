@@ -5,7 +5,7 @@ import { Accessibility, menuButtonBehavior, MenuButtonBehaviorProps } from '@flu
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 
-import { commonPropTypes, StyledComponentProps, getOrGenerateIdFromShorthand } from '../../utils';
+import { commonPropTypes, StyledComponentProps, useIdOrFromShorthand } from '../../utils';
 import { ShorthandValue, ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 
 import { createShorthandFactory } from '../../utils/factories';
@@ -152,10 +152,8 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
     });
   });
 
-  const menuId = React.useRef<string>();
-  menuId.current = getOrGenerateIdFromShorthand('menubutton-menu-', menu, menuId.current);
-  const triggerId = React.useRef<string>();
-  triggerId.current = getOrGenerateIdFromShorthand('menubutton-trigger-', trigger, triggerId.current);
+  const menuId = useIdOrFromShorthand(menu);
+  const triggerId = useIdOrFromShorthand(trigger);
 
   const triggerRef = React.useRef<HTMLElement>();
   const menuRef = React.useRef<HTMLElement>();
@@ -171,8 +169,8 @@ export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((pro
       openAndFocusLast: e => openAndFocus(e, 'last'),
     },
     mapPropsToBehavior: () => ({
-      menuId: menuId.current,
-      triggerId: triggerId.current,
+      menuId,
+      triggerId,
       open,
       trigger: props.trigger,
       contextMenu,

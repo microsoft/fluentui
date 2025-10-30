@@ -19,7 +19,7 @@ describe('Dialog', () => {
       const wrapper = mountWithProvider(<Dialog defaultOpen trigger={<Button />} content="Welcome" />);
       const content = findIntrinsicElement(wrapper, `.${dialogSlotClassNames.content}`);
 
-      expect(content.prop('id')).toMatch(/dialog-content-\d+/);
+      expect(content.prop('id')).toMatch(/^:r/);
     });
   });
 
@@ -37,7 +37,7 @@ describe('Dialog', () => {
       const wrapper = mountWithProvider(<Dialog defaultOpen trigger={<Button />} header="Welcome" />);
       const header = findIntrinsicElement(wrapper, `.${dialogSlotClassNames.header}`);
 
-      expect(header.prop('id')).toMatch(/dialog-header-\d+/);
+      expect(header.prop('id')).toMatch(/^:r/);
     });
 
     it('uses "id" if "header" is React Element with "id" is passed', () => {

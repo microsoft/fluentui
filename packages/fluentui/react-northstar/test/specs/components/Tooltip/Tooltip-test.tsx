@@ -35,7 +35,7 @@ describe('Tooltip', () => {
       const wrapper = mountWithProvider(<Tooltip defaultOpen trigger={<Button />} content="Welcome" />);
       const content = findIntrinsicElement(wrapper, `.${tooltipContentClassName}`);
 
-      expect(content.prop('id')).toMatch(/tooltip-content-\d+/);
+      expect(content.prop('id')).toMatch(/^:r/);
     });
   });
 
