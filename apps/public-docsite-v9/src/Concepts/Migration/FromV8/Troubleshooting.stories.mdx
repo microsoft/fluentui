@@ -11,16 +11,16 @@ We recommend placing the `FluentProvider` at the root of your app so that everyt
 
 ```jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOMClient from 'react-dom/client';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 
 import App from './App';
 
-ReactDOM.render(
+const root = ReactDOMClient.createRoot(document.getElementById('root'));
+root.render(
   <FluentProvider theme={webLightTheme}>
     <App />
   </FluentProvider>,
-  document.getElementById('root'),
 );
 ```
 

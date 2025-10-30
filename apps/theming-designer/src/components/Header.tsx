@@ -89,7 +89,8 @@ const Content = () => {
       </ThemeProvider>
     );
 }
-ReactDOM.render(<Content />,document.getElementById('content'));`;
+
+ReactDOM.createRoot(document.getElementById('content')).render(<Content />);`;
 
 export class Header extends React.Component<IHeaderProps, IHeaderState> {
   constructor(props: any) {
