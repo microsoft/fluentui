@@ -44,6 +44,9 @@ const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianCh
 const ChartHoverCard = React.lazy(() =>
   import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
 );
+const HORIZONTAL_MARGIN_FOR_YAXIS_TITLE = 24;
+const VERTICAL_MARGIN_FOR_XAXIS_TITLE = 20;
+const AXIS_TITLE_PADDING = 8;
 
 export interface ICartesianChartState {
   containerWidth: number;
@@ -76,7 +79,6 @@ export class CartesianChartBase
   private _reqID: number;
   private _isRtl: boolean = getRTL();
   private _tickValues: (string | number)[];
-  private titleMargin: number;
   private _isFirstRender: boolean = true;
   /* Used for when WrapXAxisLabels props appeared.
    * To display the total word (space separated words), Need to have more space than usual.
@@ -102,7 +104,6 @@ export class CartesianChartBase
       startFromX: 0,
     };
     this.idForGraph = getId('chart_');
-    this.titleMargin = 8;
     this.idForDefaultTabbableElement = getId('defaultTabbableElement_');
     this._tooltipId = getId('tooltip_');
   }
@@ -445,7 +446,7 @@ export class CartesianChartBase
     );
 
     const plotRect = {
-      x: this._isRtl ? this.margins.left! : this.margins.left!,
+      x: this.margins.left!,
       y: this.margins.top!,
       width: plotWidth,
       height: plotHeight,
@@ -473,13 +474,20 @@ export class CartesianChartBase
       focusDirection = FocusZoneDirection.horizontal;
     }
 
-    const xAxisTitleMaximumAllowedWidth = svgDimensions.width - this.margins.left! - this.margins.right!;
-    const yAxisTitleMaximumAllowedHeight =
+    const xAxisTitleMaxWidth = svgDimensions.width - this.margins.left! - this.margins.right! - AXIS_TITLE_PADDING * 2;
+    const yAxisTitleMaxHeight =
       svgDimensions.height -
       this.margins.bottom! -
       this.margins.top! -
       this._removalValueForTextTuncate -
-      this.titleMargin;
+      AXIS_TITLE_PADDING * 2;
+    const yAxisTitleCenterY = this.margins.top! + AXIS_TITLE_PADDING + yAxisTitleMaxHeight / 2;
+    const yAxisTitleCenterX = this._isRtl
+      ? svgDimensions.width - AXIS_TITLE_PADDING
+      : HORIZONTAL_MARGIN_FOR_YAXIS_TITLE - AXIS_TITLE_PADDING;
+    const secondaryYAxisTitleCenterX = this._isRtl
+      ? HORIZONTAL_MARGIN_FOR_YAXIS_TITLE - AXIS_TITLE_PADDING
+      : svgDimensions.width - AXIS_TITLE_PADDING;
 
     const commonSvgToolTipProps: ISVGTooltipTextProps = {
       wrapContent,
@@ -546,13 +554,13 @@ export class CartesianChartBase
               <SVGTooltipText
                 content={this.props.xAxisTitle}
                 textProps={{
-                  x: this.margins.left! + xAxisTitleMaximumAllowedWidth / 2,
-                  y: svgDimensions.height - this.titleMargin,
+                  x: this.margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2,
+                  y: svgDimensions.height - AXIS_TITLE_PADDING,
                   className: this._classNames.axisTitle!,
                   textAnchor: 'middle',
                   'aria-hidden': true,
                 }}
-                maxWidth={xAxisTitleMaximumAllowedWidth}
+                maxWidth={xAxisTitleMaxWidth}
                 {...commonSvgToolTipProps}
               />
             )}
@@ -560,13 +568,13 @@ export class CartesianChartBase
               <SVGTooltipText
                 content={this.props.xAxisAnnotation}
                 textProps={{
-                  x: this.margins.left! + xAxisTitleMaximumAllowedWidth / 2,
-                  y: this.titleMargin + 3,
+                  x: this.margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2,
+                  y: VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
                   className: this._classNames.axisAnnotation!,
                   textAnchor: 'middle',
                   'aria-hidden': true,
                 }}
-                maxWidth={xAxisTitleMaximumAllowedWidth}
+                maxWidth={xAxisTitleMaxWidth}
                 {...commonSvgToolTipProps}
               />
             )}
@@ -596,19 +604,14 @@ export class CartesianChartBase
                   <SVGTooltipText
                     content={this.props.secondaryYAxistitle}
                     textProps={{
-                      x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
-                      y: this._isRtl ? -this.titleMargin : svgDimensions.width - this.margins.right!,
+                      x: secondaryYAxisTitleCenterX,
+                      y: yAxisTitleCenterY,
                       textAnchor: 'middle',
-                      transform: `translate(${
-                        this._isRtl
-                          ? this.margins.right! / 2 - this.titleMargin
-                          : this.margins.right! / 2 + this.titleMargin
-                      },
-                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                      transform: `rotate(-90, ${secondaryYAxisTitleCenterX}, ${yAxisTitleCenterY})`,
                       className: this._classNames.axisTitle!,
                       'aria-hidden': true,
                     }}
-                    maxWidth={yAxisTitleMaximumAllowedHeight}
+                    maxWidth={yAxisTitleMaxHeight}
                     {...commonSvgToolTipProps}
                   />
                 )}
@@ -619,17 +622,14 @@ export class CartesianChartBase
               <SVGTooltipText
                 content={this.props.yAxisTitle}
                 textProps={{
-                  x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
-                  y: this._isRtl
-                    ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
-                    : this.margins.left! / 2 - this.titleMargin,
+                  x: yAxisTitleCenterX,
+                  y: yAxisTitleCenterY,
                   textAnchor: 'middle',
-                  transform: `translate(0,
-                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                  transform: `rotate(-90, ${yAxisTitleCenterX}, ${yAxisTitleCenterY})`,
                   className: this._classNames.axisTitle!,
                   'aria-hidden': true,
                 }}
-                maxWidth={yAxisTitleMaximumAllowedHeight}
+                maxWidth={yAxisTitleMaxHeight}
                 {...commonSvgToolTipProps}
               />
             )}
@@ -639,19 +639,14 @@ export class CartesianChartBase
                 <SVGTooltipText
                   content={this.props.yAxisAnnotation}
                   textProps={{
-                    x: (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 + this._removalValueForTextTuncate,
-                    y: this._isRtl ? -this.titleMargin : svgDimensions.width - this.margins.right!,
+                    x: secondaryYAxisTitleCenterX,
+                    y: yAxisTitleCenterY,
                     textAnchor: 'middle',
-                    transform: `translate(${
-                      this._isRtl
-                        ? this.margins.right! / 2 - this.titleMargin
-                        : this.margins.right! / 2 + this.titleMargin
-                    },
-                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                    transform: `rotate(-90, ${secondaryYAxisTitleCenterX}, ${yAxisTitleCenterY})`,
                     className: this._classNames.axisAnnotation!,
                     'aria-hidden': true,
                   }}
-                  maxWidth={yAxisTitleMaximumAllowedHeight}
+                  maxWidth={yAxisTitleMaxHeight}
                   {...commonSvgToolTipProps}
                 />
               )}
@@ -1067,27 +1062,24 @@ export class CartesianChartBase
       right: this.props.secondaryYScaleOptions ? 40 : 20,
     };
 
-    const TITLE_MARGIN_HORIZONTAL = 24;
-    const TITLE_MARGIN_VERTICAL = 20;
-
     if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
-      margins.bottom! += TITLE_MARGIN_VERTICAL;
+      margins.bottom! += VERTICAL_MARGIN_FOR_XAXIS_TITLE;
     }
     if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
-      margins.left! += TITLE_MARGIN_HORIZONTAL;
+      margins.left! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
     }
     if (this.props.secondaryYAxistitle !== undefined && this.props.secondaryYAxistitle !== '') {
-      margins.right! += TITLE_MARGIN_HORIZONTAL;
+      margins.right! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
     }
     if (this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '') {
-      margins.top! += TITLE_MARGIN_VERTICAL;
+      margins.top! += VERTICAL_MARGIN_FOR_XAXIS_TITLE;
     }
     if (
       this.props.yAxisAnnotation !== undefined &&
       this.props.yAxisAnnotation !== '' &&
       (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '')
     ) {
-      margins.right! += TITLE_MARGIN_HORIZONTAL;
+      margins.right! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
     }
 
     if (this._isRtl) {
