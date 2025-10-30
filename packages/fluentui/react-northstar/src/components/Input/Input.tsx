@@ -302,7 +302,10 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       const input = inputRef.current;
 
       return () => {
-        if (input) {
+        // StrictMode-aware cleanup: only clear timeout if element has no parent (real unmount)
+        const isRealUnmount = !input.isConnected;
+
+        if (input && isRealUnmount) {
           /*
            * Remove the reference to the parent to prevent leaking the DOM tree.
            */
