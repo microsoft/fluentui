@@ -1,5 +1,5 @@
 import { generics } from './definitions/generics';
-import { primitives } from './definitions/primitives';
+// import { primitives } from './definitions/primitives';
 import { groups } from './definitions/groups';
 import { GroupPart } from './definitions/groups.types';
 import { controls } from './definitions/controls';
@@ -97,24 +97,24 @@ const generateFigmaName = ({
   return [property, collectionName, groupName, variant, scale, partName, state].filter(Boolean).join(joiner);
 };
 
-export function generatePrimitiveTokens() {
-  let result = [];
+// export function generatePrimitiveTokens() {
+//   let result = [];
 
-  for (const prim of Object.keys(primitives)) {
-    for (const style of primitives[prim].styles) {
-      for (const state of primitives[prim].states) {
-        let tokenParts = [prim, style, state];
+//   for (const prim of Object.keys(primitives)) {
+//     for (const style of primitives[prim].styles) {
+//       for (const state of primitives[prim].states) {
+//         let tokenParts = [prim, style, state];
 
-        result.push({
-          name: tokenParts.filter(Boolean).join(joiner),
-          type: primitives[prim].type || 'color',
-          property: null,
-        });
-      }
-    }
-  }
-  return result;
-}
+//         result.push({
+//           name: tokenParts.filter(Boolean).join(joiner),
+//           type: primitives[prim].type || 'color',
+//           property: null,
+//         });
+//       }
+//     }
+//   }
+//   return result;
+// }
 
 export function generateGenericTokens() {
   let result: Array<Token> = [];

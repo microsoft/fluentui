@@ -5,9 +5,9 @@
 // minWidth
 // minHeight
 
-import { compoundButtonGroup } from './components/button';
+// import { compoundButtonGroup } from './components/button';
 import { Groups } from './groups.types';
 
 export const controls: Groups = {
-  compoundbutton: compoundButtonGroup,
+  // compoundbutton: compoundButtonGroup,
 };

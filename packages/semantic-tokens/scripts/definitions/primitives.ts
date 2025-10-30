@@ -1,18 +1,17 @@
-export const primitiveStyles = ['loud', 'tint', 'subtle', 'transparent'];
-export const states = ['rest', 'hover', 'pressed'];
-
 export type PrimitiveTypes = {
-  [key: string]: {
-    type: 'color' | 'dimension' | 'weight';
-    states: string[];
-    styles: string[];
-  };
+  [key: string]: PrimitiveType;
 };
 
-export const primitives: PrimitiveTypes = {
-  brand: {
-    styles: primitiveStyles,
-    states: [...states, 'selected'],
+export type PrimitiveType = {
+  type: 'color' | 'dimension' | 'weight';
+  states: string[];
+  styles: string[];
+};
+
+export const colorPrimitives: PrimitiveTypes = {
+  neutral: {
+    states: ['rest', 'hover', 'pressed'],
+    styles: ['1', '2', '3', '4', '5', '6'],
     type: 'color',
   },
 };
