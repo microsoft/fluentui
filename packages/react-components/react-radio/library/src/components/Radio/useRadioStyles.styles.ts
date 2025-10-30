@@ -142,7 +142,7 @@ const useInputStyles = makeStyles({
 
   // If the indicator has no children, use the ::after pseudo-element for the checked state
   defaultIndicator: {
-    [`~ .${radioClassNames.indicator}::after`]: {
+    [`&~ .${radioClassNames.indicator}::after`]: {
       transform: 'scale(0)',
     },
     [`:checked ~ .${radioClassNames.indicator}::after`]: {
