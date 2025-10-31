@@ -243,7 +243,7 @@ const MenuGridWithHeaderButtons: React.FC<MenuGridWithHeaderButtonsProps> = ({ c
       }
     });
 
-    const finalScrollTop = Math.max(0, targetTopInScrollCoords - collapseBudget);
+    const finalScrollTop = Math.max(0, targetTopInScrollCoords - collapseBudget - 1);
 
     container.scrollTo({
       top: finalScrollTop,
