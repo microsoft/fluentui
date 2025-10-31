@@ -1,7 +1,6 @@
 import { generics } from './definitions/generics';
 // import { primitives } from './definitions/primitives';
-import { groups } from './definitions/groups';
-import { GroupPart } from './definitions/groups.types';
+import { GroupPart, Groups } from './definitions/groups.types';
 import { controls } from './definitions/controls';
 
 const joiner = '.';
@@ -284,7 +283,7 @@ export function generateComponentGroupTokens(
   return result;
 }
 
-export function generateGroupTokens() {
+export function generateGroupTokens(groups: Groups) {
   let result: Token[] = [];
 
   // For each group, generate core property tokens

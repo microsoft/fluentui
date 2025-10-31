@@ -2,47 +2,55 @@ import { GroupPart } from '../groups.types';
 
 // Group button tokens
 export const buttonGroup: GroupPart = {
+  components: ['button', 'splitbutton', 'togglebutton', 'menubutton', 'compoundbutton'],
   /**
    * Core properties for the button group
    * These cover simple overrides, or interfaces for complex CSS management
    */
-  coreProperties: ['corner', 'strokewidth', 'fontfamily', 'shadow'],
+  coreProperties: [
+    'corner',
+    'strokewidth',
+    'fontfamily',
+    'shadow',
+    'padding.horizontal',
+    'padding.top',
+    'padding.bottom',
+    'gap',
+    'minwidth',
+    'fontsize',
+    'lineheight',
+    'fontweight',
+  ],
   variants: ['neutral', 'primary', 'outline', 'subtle'],
   variantProperties: [],
   variantStateProperties: ['background', 'stroke', 'foreground'],
-  scales: ['small', 'medium', 'large'],
-  scaleProperties: ['padding.horizontal', 'padding.top', 'padding.bottom', 'gap', 'minwidth'],
-  states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected', 'disabled'],
-  components: ['button', 'splitbutton', 'togglebutton', 'menubutton', 'compoundbutton'],
+  states: ['', 'selected', 'disabled'],
   exceptions: [
     {
-      // Outline buttons may modify strokeWidth based on state, as it is their main visual element
+      // Outline buttons may modify strokeWidth based on selected state, as it is their main visual element
       variants: ['outline'],
-      states: ['hover', 'pressed', 'selected'],
+      states: ['selected'],
       variantStateProperties: ['strokewidth'],
     },
     {
       // Transparent state only modifies foreground color on state changes
       variants: ['transparent'],
-      states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected', 'disabled'],
+      states: ['', 'selected', 'disabled'],
       variantStateProperties: ['foreground'],
     },
   ],
   parts: {
     icononly: {
-      scaleProperties: ['padding'],
-      scales: ['small', 'medium', 'large'],
+      coreProperties: ['padding'],
     },
     icon: {
-      states: ['', 'hover', 'pressed', 'disabled', 'selected'],
-      scales: ['small', 'medium', 'large'],
-      scaleProperties: ['size'],
+      coreProperties: ['size'],
+      states: ['', 'disabled', 'selected'],
       variants: ['neutral', 'primary', 'outline', 'subtle'],
       variantStateProperties: ['foreground'],
     },
     text: {
-      scales: ['small', 'medium', 'large'],
-      scaleProperties: ['padding.horizontal', 'fontsize', 'lineheight', 'fontweight'],
+      coreProperties: ['padding.horizontal'],
     },
   },
 };

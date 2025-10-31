@@ -1,5 +1,5 @@
 import {
-  generatePrimitiveTokens,
+  // generatePrimitiveTokens,
   generateGenericTokens,
   generateGroupTokens,
   generateControlTokens,
@@ -7,17 +7,22 @@ import {
 import fs from 'fs';
 import path from 'node:path';
 
+import { groups } from './definitions/groups';
+import { fluentExtensionGroups } from './definitions/groups';
+
 // Function to generate tokens and write to a JSON file
 export function generateTokenJSON() {
-  let primitiveTokens = generatePrimitiveTokens();
+  // let primitiveTokens = generatePrimitiveTokens();
   let genericTokens = generateGenericTokens();
-  let groupTokens = generateGroupTokens();
+  let groupTokens = generateGroupTokens(groups);
+  let fluentGroupTokens = generateGroupTokens(fluentExtensionGroups);
   let controlTokens = generateControlTokens();
 
   const results = {
-    primitives: primitiveTokens,
+    // primitives: primitiveTokens,
     generics: genericTokens,
     components: groupTokens,
+    fluentComponents: fluentGroupTokens,
     controls: controlTokens,
   };
 

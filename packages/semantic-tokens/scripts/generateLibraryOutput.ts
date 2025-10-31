@@ -4,6 +4,7 @@ import path from 'node:path';
 import { groupFallbacks } from './definitions/groupFallbacks';
 import { genericFallbacks } from './definitions/genericFallbacks';
 import { controlFallbacks } from './definitions/controlFallbacks';
+import { fluentExtensionGroups, groups } from './definitions/groups';
 
 function dotToCamelCase(str: string): string {
   return str
@@ -29,7 +30,8 @@ function dotToCSSVarName(str: string): string {
 function generateLibraryOutput() {
   // let primitiveTokens = generatePrimitiveTokens();
   let genericTokens = generateGenericTokens();
-  let groupTokens = generateGroupTokens();
+  let groupTokens = generateGroupTokens(groups);
+  let fluentGroupTokens = generateGroupTokens(fluentExtensionGroups);
   let controlTokens = generateControlTokens();
 
   // let primitiveTokenList = '';
@@ -122,6 +124,53 @@ function generateLibraryOutput() {
     });
   }
 
+  // Fluent extension tokens
+  const fluentGroupTokenList: { [key: string]: string } = {};
+  const fluentGroupExportList: { [key: string]: string } = {};
+  for (const token of fluentGroupTokens) {
+    const tokenGroup = token.group || 'ungrouped';
+    const groupName = tokenGroup.split('.')[0];
+    if (!fluentGroupTokenList[groupName]) {
+      fluentGroupTokenList[groupName] = '';
+    }
+
+    if (!fluentGroupExportList[groupName]) {
+      fluentGroupExportList[groupName] = 'export {\n';
+    }
+
+    const tokenName = dotToCamelCase(token.name);
+    const cssVarName = dotToCSSVarName(token.name);
+    const fluentFallback = groupFallbacks[tokenGroup][tokenName]?.fluent;
+
+    let exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
+    if (fluentFallback) {
+      exportToken = `export const ${tokenName} = 'var(${cssVarName}, ${fluentFallback})';`;
+    }
+
+    fluentGroupTokenList[groupName] += `${exportToken}\n`;
+    fluentGroupExportList[groupName] += `${tokenName},\n`;
+  }
+
+  for (const groupName of Object.keys(fluentGroupTokenList)) {
+    const tokens = fluentGroupTokenList[groupName];
+    const groupListPath = path.resolve(__dirname, `../src/fluent/groups/${groupName}/tokens.ts`);
+    fluentGroupExportList[groupName] += `} from './fluent/groups/${groupName}/tokens';\n`;
+    //Create directory if it doesn't exist
+    const dir = path.dirname(groupListPath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
+    // Write the JSON string to a file
+    fs.writeFile(groupListPath, tokens, err => {
+      if (err) {
+        console.error('Error writing to file:', err);
+      } else {
+        console.log('JSON data successfully written to tokens.json');
+      }
+    });
+  }
+
   // Control tokens
   const controlTokenList: { [key: string]: string } = {};
   const controlExportList: { [key: string]: string } = {};
@@ -171,7 +220,10 @@ function generateLibraryOutput() {
   // Write the JSON string to a file
   const indexPath = path.resolve(__dirname, `../src/index.ts`);
   const allExports =
-    genericIndexExport + Object.values(groupExportList).join('\n') + Object.values(controlExportList).join('\n');
+    genericIndexExport +
+    Object.values(fluentGroupExportList).join('\n') +
+    Object.values(groupExportList).join('\n') +
+    Object.values(controlExportList).join('\n');
   fs.writeFile(indexPath, allExports, err => {
     if (err) {
       console.error('Error writing to file:', err);
