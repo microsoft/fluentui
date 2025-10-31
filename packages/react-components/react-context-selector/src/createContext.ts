@@ -14,7 +14,7 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
     const versionRef = React.useRef(0);
 
     // A stable object, is used to avoid context updates via mutation of its values.
-    const contextValue = React.useRef<ContextValue<Value>>();
+    const contextValue = React.useRef<ContextValue<Value>>(null);
 
     if (!contextValue.current) {
       contextValue.current = {
