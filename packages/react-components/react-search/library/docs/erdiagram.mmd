@@ -1,0 +1,20 @@
+erDiagram
+    TypeaheadSearchbox ||--o| Searchbox : "child Component"
+    ResultList ||--o{ ResultItem : "list of"
+    TypeaheadSearchbox ||--o{ ResultList : "prop?"
+    TypeaheadSearchbox ||--o| Dropdown : "Child Component"
+    Dropdown ||--|| ResultList : "has Child components"
+    TypeaheadSearchbox {
+        hook onSearchBoxChange()
+        state isLoading
+
+    }
+    Searchbox {}
+    ResultList {}
+    ResultItem {
+        object resultComponent
+        object media
+        string textShown
+        bool disabled
+        func onClick()
+    }
