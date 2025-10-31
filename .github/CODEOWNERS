@@ -331,6 +331,8 @@ packages/react-components/component-selector-preview/library @microsoft/teams-pr
 packages/react-components/component-selector-preview/stories @microsoft/teams-prg
 packages/react-components/react-menu-grid-preview/library @microsoft/teams-prg
 packages/react-components/react-menu-grid-preview/stories @microsoft/teams-prg
+packages/react-components/react-range-slider-preview/library @microsoft/cxe-prg
+packages/react-components/react-range-slider-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 # Deprecated v9 packages - exposed as part of `/unstable` api
