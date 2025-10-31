@@ -10,14 +10,14 @@ SASS variables referencing react-theme design tokens injected to DOM by react-pr
 
 ```jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOMClient from 'react-dom/client';
 import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
 import App from './App';
-ReactDOM.render(
+
+ReactDOMClient.createRoot(document.getElementById('root')).render(
   <FluentProvider theme={teamsLightTheme}>
     <App />
   </FluentProvider>,
-  document.getElementById('root'),
 );
 ```
 
