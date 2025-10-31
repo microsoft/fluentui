@@ -38,13 +38,13 @@ import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabs
 export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps> = React.forwardRef<
   HTMLDivElement,
   ModifiedCartesianChartProps
->((props, forwardedRef) => {
-  const chartContainer = React.useRef<HTMLDivElement>();
+>(({ hideTickOverlap = true, ...props }, forwardedRef) => {
+  const chartContainer = React.useRef<HTMLDivElement | null>(null);
   let legendContainer: HTMLDivElement;
   const minLegendContainerHeight: number = 40;
-  const xAxisElement = React.useRef<SVGSVGElement>();
-  const yAxisElement = React.useRef<SVGSVGElement>();
-  const yAxisElementSecondary = React.useRef<SVGSVGElement>();
+  const xAxisElement = React.useRef<SVGSVGElement | null>(null);
+  const yAxisElement = React.useRef<SVGSVGElement | null>(null);
+  const yAxisElementSecondary = React.useRef<SVGSVGElement | null>(null);
   let margins: IMargins;
   const idForGraph: string = 'chart_';
   let _reqID: number | undefined;
@@ -268,7 +268,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       xAxisInnerPadding: props.xAxisInnerPadding,
       xAxisOuterPadding: props.xAxisOuterPadding,
       containerWidth: containerWidth,
-      hideTickOverlap: props.rotateXAxisLables ? false : props.hideTickOverlap,
+      hideTickOverlap: props.rotateXAxisLables ? false : hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
       ...props.xAxis,
     };
@@ -659,7 +659,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       id={idForGraph}
       className={classes.root}
       role={'presentation'}
-      ref={(rootElem: HTMLDivElement) => (chartContainer.current = rootElem)}
+      ref={(rootElem: HTMLDivElement) => {
+        chartContainer.current = rootElem;
+      }}
       onMouseLeave={_onChartLeave}
     >
       <div className={classes.chartWrapper} {...focusAttributes} {...arrowAttributes}>
@@ -789,7 +791,12 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       </div>
 
       {!props.hideLegend && (
-        <div ref={(e: HTMLDivElement) => (legendContainer = e)} className={classes.legendContainer}>
+        <div
+          ref={(e: HTMLDivElement) => {
+            legendContainer = e;
+          }}
+          className={classes.legendContainer}
+        >
           {props.legendBars}
         </div>
       )}
@@ -799,6 +806,3 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   );
 });
 CartesianChart.displayName = 'CartesianChart';
-CartesianChart.defaultProps = {
-  hideTickOverlap: true,
-};
