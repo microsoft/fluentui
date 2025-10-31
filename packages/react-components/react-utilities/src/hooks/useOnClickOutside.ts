@@ -163,7 +163,7 @@ const useIFrameFocus = (options: UseIFrameFocusOptions) => {
     pollDuration = 100,
     refs,
   } = options;
-  const timeoutRef = React.useRef<number>();
+  const timeoutRef = React.useRef<number | undefined>(undefined);
 
   const listener = useEventCallback((e: Event) => {
     const isOutside = refs.every(ref => !contains(ref.current || null, e.target as HTMLElement));
@@ -202,7 +202,7 @@ const useIFrameFocus = (options: UseIFrameFocusOptions) => {
     }, pollDuration);
 
     return () => {
-      targetDocument?.defaultView?.clearTimeout(timeoutRef.current);
+      targetDocument?.defaultView?.clearInterval(timeoutRef.current);
     };
   }, [targetDocument, disabled, pollDuration]);
 };
