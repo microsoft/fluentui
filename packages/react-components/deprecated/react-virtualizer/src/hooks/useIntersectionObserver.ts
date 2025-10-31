@@ -66,7 +66,7 @@ export const useIntersectionObserver = (
 
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
-  const observer = useRef<IntersectionObserver>();
+  const observer = useRef<IntersectionObserver>(undefined);
   const [observerList, setObserverList] = useState<Element[]>();
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;

@@ -19,7 +19,7 @@ export const useMutationObserver = (
 
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
-  const observer = useRef<MutationObserver>();
+  const observer = useRef<MutationObserver | undefined>(undefined);
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
 
