@@ -136,15 +136,30 @@ export const Appearance = () => {
         <TreeItem itemType="leaf">
           <TreeItemLayout>Subtle tree item</TreeItemLayout>
         </TreeItem>
+        <TreeItem itemType="leaf">
+          <TreeItemPersonaLayout media={<Avatar name="Test Name" color="colorful" />}>
+            Subtle tree persona item
+          </TreeItemPersonaLayout>
+        </TreeItem>
       </Tree>
       <Tree id="subtle-alpha-tree" appearance="subtle-alpha" aria-label="Tree">
         <TreeItem itemType="leaf">
           <TreeItemLayout>Subtle-alpha tree item</TreeItemLayout>
         </TreeItem>
+        <TreeItem itemType="leaf">
+          <TreeItemPersonaLayout media={<Avatar name="Test Name" color="colorful" />}>
+            Subtle-alpha tree persona item
+          </TreeItemPersonaLayout>
+        </TreeItem>
       </Tree>
       <Tree id="transparent-tree" appearance="transparent" aria-label="Tree">
         <TreeItem itemType="leaf">
           <TreeItemLayout>Transparent tree item</TreeItemLayout>
+        </TreeItem>
+        <TreeItem itemType="leaf">
+          <TreeItemPersonaLayout media={<Avatar name="Test Name" color="colorful" />}>
+            Transparent tree persona item
+          </TreeItemPersonaLayout>
         </TreeItem>
       </Tree>
     </>
@@ -194,6 +209,22 @@ export const Size = () => {
             </TreeItem>
           </Tree>
         </TreeItem>
+        <TreeItem value="2" itemType="branch">
+          <TreeItemPersonaLayout media={<Avatar name="Medium Tree" color="colorful" />}>
+            Medium size tree item
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout>level 2, item 1</TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout>level 2, item 2</TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout>level 2, item 3</TreeItemPersonaLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
       </Tree>
 
       <Tree defaultOpenItems="1" size="small" aria-label="Tree">
@@ -212,6 +243,22 @@ export const Size = () => {
           </Tree>
         </TreeItem>
       </Tree>
+      <TreeItem value="2" itemType="branch">
+        <TreeItemPersonaLayout media={<Avatar name="Small Tree" color="colorful" />}>
+          Small size tree item
+        </TreeItemPersonaLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemPersonaLayout>level 2, item 1</TreeItemPersonaLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemPersonaLayout>level 2, item 2</TreeItemPersonaLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemPersonaLayout>level 2, item 3</TreeItemPersonaLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
     </>
   );
 };
