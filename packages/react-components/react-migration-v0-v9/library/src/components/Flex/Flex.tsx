@@ -98,7 +98,7 @@ export const Flex = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLEl
     const isFlexItemElement: boolean = child?.type?.__isFlexItem;
 
     return isFlexItemElement
-      ? React.cloneElement(child as React.ReactElement, {
+      ? React.cloneElement(child as React.ReactElement<any>, {
           flexDirection: column ? 'column' : 'row',
         })
       : child;
