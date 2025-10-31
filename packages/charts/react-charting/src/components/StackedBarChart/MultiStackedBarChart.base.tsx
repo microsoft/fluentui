@@ -59,7 +59,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _longestBarTotalValue: number;
   private _isRTL: boolean = getRTL();
-  private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private barChartSvgRef: React.RefObject<SVGSVGElement | null>;
   private _emptyChartId: string;
   private _barId: string;
   private _barIdPlaceholderPartToWhole: string;
