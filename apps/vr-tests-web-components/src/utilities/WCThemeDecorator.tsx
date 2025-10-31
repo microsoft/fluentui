@@ -65,6 +65,7 @@ export const getStoryVariant = (story: () => string | JSX.Element | JSX.Element[
     render: story,
     storyName: `${getStoryName(story as StoryFn)} - ${variant}`,
     parameters: {
+      ...(story as StoryFn).parameters,
       ...(variant === DARK_MODE && { fluentTheme: 'teams-dark' }),
       ...(variant === RTL && { dir: 'rtl' }),
     },

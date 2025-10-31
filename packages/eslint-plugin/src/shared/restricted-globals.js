@@ -4,6 +4,7 @@ const restrictedGlobals = [
   'devicePixelRatio',
   'location',
   'navigator',
+  'Node',
   'performance',
 
   'cancelAnimationFrame',

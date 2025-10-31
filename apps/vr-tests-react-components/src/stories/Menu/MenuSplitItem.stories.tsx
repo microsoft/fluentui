@@ -3,14 +3,15 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem, MenuSplitGroup } from '@fluentui/react-menu';
 
-import { getStoryVariant, RTL, withStoryWrightSteps } from '../../utilities';
+import { getStoryVariant, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Menu Converged - split item',
 
-  decorators: [
-    story => withStoryWrightSteps({ story, steps: new Steps().click('#nestedTrigger').snapshot('submenu open').end() }),
-  ],
+  parameters: {
+    storyWright: { steps: new Steps().click('#nestedTrigger').snapshot('submenu open').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Menu>;
 
 export const Default = () => (

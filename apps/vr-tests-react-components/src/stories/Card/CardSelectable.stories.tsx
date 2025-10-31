@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Card } from '@fluentui/react-card';
 import { SampleCardContent } from './utils';
 import type { Meta } from '@storybook/react';
@@ -10,23 +11,24 @@ export default {
 
   decorators: [
     story => (
-      <StoryWright
-        steps={new Steps()
-          .snapshot('normal', { cropTo: '.testWrapper' })
-          .hover('[role="group"]')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .mouseDown('[role="group"]')
-          .snapshot('click', { cropTo: '.testWrapper' })
-          .mouseUp('[role="group"]')
-          .snapshot('selected', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        <div className="testWrapper" style={{ width: '300px' }}>
-          {story()}
-        </div>
-      </StoryWright>
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
     ),
   ],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
+        .hover('[role="group"]')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('[role="group"]')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .mouseUp('[role="group"]')
+        .snapshot('selected', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Card>;
 
 export const AppearanceSelectableFilled = () => (

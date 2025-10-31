@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Panel, PanelType, SearchBox } from '@fluentui/react';
 
 const defaultProps = {
@@ -11,13 +13,13 @@ const defaultProps = {
 export default {
   title: 'Panel',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps().snapshot('default').click('.ms-SearchBox-field').snapshot('click').end(),
-    ),
-  ],
-};
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default').click('.ms-SearchBox-field').snapshot('click').end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof SearchBoxAndRightPanel>;
 
 export const SearchBoxAndRightPanel = () => (
   <div>
