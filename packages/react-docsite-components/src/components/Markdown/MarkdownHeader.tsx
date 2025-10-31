@@ -7,7 +7,7 @@ import { FontSizes, NeutralColors } from '@fluentui/theme';
  * The component props.
  */
 export interface IMarkdownHeaderProps {
-  as?: keyof React.ReactHTML;
+  as?: keyof React.JSX.IntrinsicElements;
   children?: React.ReactNode;
   className?: string;
   id?: string;
