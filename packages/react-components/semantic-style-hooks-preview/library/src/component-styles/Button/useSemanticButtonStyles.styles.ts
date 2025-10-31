@@ -178,7 +178,7 @@ const useRootStyles = makeStyles({
     color: semanticTokens.groupButtonPrimaryForeground,
 
     [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonPrimaryIconForegroundPressed,
+      color: semanticTokens.groupButtonPrimaryIconForeground,
     },
 
     ':hover': {
@@ -348,7 +348,7 @@ const useRootStyles = makeStyles({
   small: {
     minWidth: semanticTokens.groupButtonSmallMinwidth,
     padding: `${semanticTokens.groupButtonSmallPaddingTop} ${paddingSmHorizontalNoIcon} ${semanticTokens.groupButtonSmallPaddingBottom} ${paddingSmHorizontalNoIcon}`, //3px
-    borderRadius: semanticTokens.groupButtonSmallCorner,
+    borderRadius: semanticTokens.groupButtonCorner,
 
     fontSize: semanticTokens.groupButtonSmallFontsize,
     fontWeight: semanticTokens.groupButtonSmallFontweight,
@@ -380,7 +380,7 @@ const useRootStyles = makeStyles({
   large: {
     minWidth: semanticTokens.groupButtonLargeMinwidth,
     padding: `${semanticTokens.groupButtonLargePaddingTop} ${paddingLgHorizontalNoIcon} ${semanticTokens.groupButtonLargePaddingBottom} ${paddingLgHorizontalNoIcon}`,
-    borderRadius: semanticTokens.groupButtonLargeCorner,
+    borderRadius: semanticTokens.groupButtonCorner,
     fontSize: semanticTokens.groupButtonLargeFontsize,
     fontWeight: semanticTokens.groupButtonLargeFontweight,
     lineHeight: semanticTokens.groupButtonLargeLineheight,
@@ -601,13 +601,13 @@ const useRootFocusStyles = makeStyles({
   },
   // Size variations
   small: createCustomFocusIndicatorStyle({
-    borderRadius: `calc(${semanticTokens.groupButtonSmallCorner} - ${semanticTokens.groupFocusOuterStrokewidth})`,
+    borderRadius: `calc(${semanticTokens.groupButtonCorner} - ${semanticTokens.groupFocusOuterStrokewidth})`,
   }),
   medium: {
     /* defined in base styles */
   },
   large: createCustomFocusIndicatorStyle({
-    borderRadius: `calc(${semanticTokens.groupButtonLargeCorner} + ${semanticTokens.groupFocusOuterStrokewidth})`,
+    borderRadius: `calc(${semanticTokens.groupButtonCorner} + ${semanticTokens.groupFocusOuterStrokewidth})`,
   }),
 });
 

@@ -10,14 +10,48 @@ import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
-const buttonSpacingTopSmallWithIcon = `max(1px, calc(${semanticTokens.groupButtonSmallPaddingTop} - 2px))`;
-const buttonSpacingBottomSmallWithIcon = `max(1px, calc(${semanticTokens.groupButtonSmallPaddingBottom} - 2px))`;
-const buttonSpacingLargeBottomWithIcon = `max(0px, calc(${semanticTokens.groupButtonLargePaddingBottom} - 1px))`;
-const buttonSpacingLargeTopWithIcon = `max(0px, calc(${semanticTokens.groupButtonLargePaddingTop} - 1px))`;
+/* ALGO TOKENS - These would be exported from the semantic-tokens library */
+const groupButtonSmallPaddingTop = `calc(${semanticTokens.groupButtonPaddingTop} / 5 * 3)`;
+const groupButtonSmallPaddingBottom = `calc(${semanticTokens.groupButtonPaddingBottom} / 5 * 3)`;
+const groupButtonLargePaddingTop = `calc(${semanticTokens.groupButtonPaddingTop} / 5 * 8)`;
+const groupButtonLargePaddingBottom = `calc(${semanticTokens.groupButtonPaddingBottom} / 5 * 8)`;
+const groupButtonSmallPaddingHorizontal = `calc(${semanticTokens.groupButtonPaddingHorizontal} / 12 * 8)`;
+const groupButtonLargePaddingHorizontal = `calc(${semanticTokens.groupButtonPaddingHorizontal} / 12 * 16)`;
+const groupButtonSmallMinwidth = `calc(${semanticTokens.groupButtonMinwidth} / 3 * 2)`;
+const groupButtonSmallFontsize = `calc(${semanticTokens.groupButtonFontsize} / 7 * 6)`;
+const groupButtonSmallFontweight = `calc(${semanticTokens.groupButtonFontweight} / 3 * 2)`;
+const groupButtonSmallLineheight = `calc(${semanticTokens.groupButtonLineheight} / 5 * 4)`;
+const groupButtonLargeFontsize = `calc(${semanticTokens.groupButtonFontsize} / 7 * 8)`;
+const groupButtonLargeLineheight = `calc(${semanticTokens.groupButtonLineheight} / 10 * 11)`;
+const groupButtonSmallIcononlyPadding = `calc(${semanticTokens.groupButtonIcononlyPadding} / 5)`;
+const groupButtonLargeIcononlyPadding = `calc(${semanticTokens.groupButtonIcononlyPadding} / 5 * 7)`;
+const groupButtonSmallGap = `calc(${semanticTokens.groupButtonGap} / 3 * 2)`;
+const groupButtonSmallTextPaddingHorizontal = `calc(${semanticTokens.groupButtonTextPaddingHorizontal} / 3 * 2)`;
+const groupButtonLargeIconSize = `calc(${semanticTokens.groupButtonIconSize} / 5 * 6)`;
 
-const paddingSmHorizontalNoIcon = `calc(${semanticTokens.groupButtonSmallPaddingHorizontal} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`;
-const paddingHorizontalNoIcon = `calc(${semanticTokens.groupButtonMediumPaddingHorizontal} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`;
-const paddingLgHorizontalNoIcon = `calc(${semanticTokens.groupButtonLargePaddingHorizontal} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`;
+// Color
+const groupButtonNeutralBackgroundHover = `hsl(from ${semanticTokens.groupButtonNeutralBackground} h s calc(l + ${semanticTokens.groupButtonLightnessHover}))`;
+const groupButtonNeutralBackgroundPressed = `hsl(from ${semanticTokens.groupButtonNeutralBackground} h s calc(l + ${semanticTokens.groupButtonLightnessPressed}))`;
+const groupButtonNeutralStrokeHover = `hsl(from ${semanticTokens.groupButtonNeutralStroke} h s calc(l + ${semanticTokens.groupButtonLightnessHover}))`;
+const groupButtonNeutralStrokePressed = `hsl(from ${semanticTokens.groupButtonNeutralStroke} h s calc(l + ${semanticTokens.groupButtonLightnessPressed}))`;
+const groupButtonOutlineStrokeHover = `hsl(from ${semanticTokens.groupButtonOutlineStroke} h s calc(l + ${semanticTokens.groupButtonLightnessHover}))`;
+const groupButtonOutlineStrokePressed = `hsl(from ${semanticTokens.groupButtonOutlineStroke} h s calc(l + ${semanticTokens.groupButtonLightnessPressed}))`;
+const groupButtonPrimaryBackgroundHover = `hsl(from ${semanticTokens.groupButtonPrimaryBackground} h s calc(l + ${semanticTokens.groupButtonLightnessHover}))`;
+const groupButtonPrimaryStrokeHover = `hsl(from ${semanticTokens.groupButtonPrimaryStroke} h s calc(l + ${semanticTokens.groupButtonLightnessHover}))`;
+const groupButtonPrimaryBackgroundPressed = `hsl(from ${semanticTokens.groupButtonPrimaryBackground} h s calc(l + ${semanticTokens.groupButtonLightnessPressed}))`;
+const groupButtonPrimaryStrokePressed = `hsl(from ${semanticTokens.groupButtonPrimaryStroke} h s calc(l + ${semanticTokens.groupButtonLightnessPressed}))`;
+const groupButtonSubtleForegroundPressed = `hsl(from ${semanticTokens.groupButtonSubtleForeground} h s calc(l + ${semanticTokens.groupButtonLightnessPressed}))`;
+const groupButtonTransparentForegroundPressed = `hsl(from ${semanticTokens.groupButtonTransparentForegroundSelected} h s calc(l + ${semanticTokens.groupButtonLightnessHover}))`;
+
+/* Local library nuance */
+const buttonSpacingTopSmallWithIcon = `max(1px, calc(${groupButtonSmallPaddingTop} - 2px))`;
+const buttonSpacingBottomSmallWithIcon = `max(1px, calc(${groupButtonSmallPaddingBottom} - 2px))`;
+const buttonSpacingLargeBottomWithIcon = `max(0px, calc(${groupButtonLargePaddingBottom} - 1px))`;
+const buttonSpacingLargeTopWithIcon = `max(0px, calc(${groupButtonLargePaddingTop} - 1px))`;
+
+const paddingSmHorizontalNoIcon = `calc(${groupButtonSmallPaddingHorizontal} + ${groupButtonSmallTextPaddingHorizontal})`;
+const paddingHorizontalNoIcon = `calc(${semanticTokens.groupButtonPaddingHorizontal} + ${semanticTokens.groupButtonTextPaddingHorizontal})`;
+const paddingLgHorizontalNoIcon = `calc(${groupButtonLargePaddingHorizontal} + ${semanticTokens.groupButtonTextPaddingHorizontal})`;
 
 /* Firefox has box shadow sizing issue at some zoom levels
  * this will ensure the inset boxShadow is always uniform
@@ -32,16 +66,17 @@ const useRootBaseClassName = makeResetStyles({
   justifyContent: 'center',
   textDecorationLine: 'none',
   verticalAlign: 'middle',
+  boxShadow: semanticTokens.groupButtonShadow,
 
   margin: 0,
   overflow: 'hidden',
 
   backgroundColor: semanticTokens.groupButtonNeutralBackground,
-  color: semanticTokens.groupButtonNeutralTextForeground,
+  color: semanticTokens.groupButtonNeutralForeground,
   border: `${semanticTokens.groupButtonStrokewidth} solid ${semanticTokens.groupButtonNeutralStroke}`,
-  borderRadius: semanticTokens.groupButtonMediumCorner,
+  borderRadius: semanticTokens.groupButtonCorner,
 
-  fontFamily: semanticTokens.groupButtonTextFontfamily,
+  fontFamily: semanticTokens.groupButtonFontfamily,
   outlineStyle: 'none',
 
   [`& .${buttonClassNames.icon}`]: {
@@ -49,34 +84,23 @@ const useRootBaseClassName = makeResetStyles({
   },
 
   ':hover': {
-    backgroundColor: semanticTokens.groupButtonNeutralBackgroundHover,
-    borderColor: semanticTokens.groupButtonNeutralStrokeHover,
-    color: semanticTokens.groupButtonNeutralTextForegroundHover,
+    backgroundColor: groupButtonNeutralBackgroundHover,
+    borderColor: groupButtonNeutralStrokeHover,
     cursor: 'pointer',
-    borderRadius: semanticTokens.groupButtonMediumCornerHover,
-    [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonNeutralIconForegroundHover,
-    },
   },
 
   ':hover:active': {
-    backgroundColor: semanticTokens.groupButtonNeutralBackgroundPressed,
-    borderColor: semanticTokens.groupButtonNeutralStrokePressed,
-    color: semanticTokens.groupButtonNeutralTextForegroundPressed,
-    borderRadius: semanticTokens.groupButtonMediumCornerPressed,
+    backgroundColor: groupButtonNeutralBackgroundPressed,
+    borderColor: groupButtonNeutralStrokePressed,
     outlineStyle: 'none',
-    [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonNeutralIconForegroundPressed,
-    },
   },
 
-  padding: `${semanticTokens.groupButtonMediumPaddingTop} ${paddingHorizontalNoIcon} ${semanticTokens.groupButtonMediumPaddingBottom} ${paddingHorizontalNoIcon}`,
-  minWidth: semanticTokens.groupButtonMediumMinwidth,
-  minHeight: semanticTokens.groupButtonMediumMinheight,
+  padding: `${semanticTokens.groupButtonPaddingTop} ${paddingHorizontalNoIcon} ${semanticTokens.groupButtonPaddingBottom} ${paddingHorizontalNoIcon}`,
+  minWidth: semanticTokens.groupButtonMinwidth,
 
-  fontSize: semanticTokens.groupButtonMediumTextFontsize,
-  fontWeight: semanticTokens.groupButtonMediumTextFontweight,
-  lineHeight: semanticTokens.groupButtonMediumTextLineheight,
+  fontSize: semanticTokens.groupButtonFontsize,
+  fontWeight: semanticTokens.groupButtonFontweight,
+  lineHeight: semanticTokens.groupButtonLineheight,
 
   // Transition styles
   // TODO: Motion semantic tokens are still in definition phase, refactor these later
@@ -113,10 +137,10 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
   ...createCustomFocusIndicatorStyle({
     borderColor: semanticTokens.groupFocusInnerStroke,
-    borderRadius: semanticTokens.groupButtonMediumCorner,
+    borderRadius: semanticTokens.groupButtonCorner,
     borderWidth: '1px',
     outline: `${semanticTokens.groupFocusOuterStrokewidth} solid ${semanticTokens.groupFocusOuterStroke}`,
-    boxShadow: `0 0 0 ${semanticTokens.groupFocusInnerStrokewidth} ${semanticTokens.groupFocusInnerStroke}
+    boxShadow: `${semanticTokens.groupButtonShadow}, 0 0 0 ${semanticTokens.groupFocusInnerStrokewidth} ${semanticTokens.groupFocusInnerStroke}
       inset
     `,
     zIndex: 1,
@@ -125,7 +149,7 @@ const useRootBaseClassName = makeResetStyles({
   // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
   '@supports (-moz-appearance:button)': {
     ...createCustomFocusIndicatorStyle({
-      boxShadow: `0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusInnerStroke}
+      boxShadow: `${semanticTokens.groupButtonShadow}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusInnerStroke}
       inset
     `,
     }),
@@ -137,11 +161,11 @@ const useIconBaseClassName = makeResetStyles({
   display: 'inline-flex',
   justifyContent: 'center',
 
-  fontSize: semanticTokens.groupButtonMediumIconSize,
-  height: semanticTokens.groupButtonMediumIconSize,
-  width: semanticTokens.groupButtonMediumIconSize,
+  fontSize: semanticTokens.groupButtonIconSize,
+  height: semanticTokens.groupButtonIconSize,
+  width: semanticTokens.groupButtonIconSize,
 
-  [iconSpacingVar]: `calc(${semanticTokens.groupButtonMediumGap} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`,
+  [iconSpacingVar]: `calc(${semanticTokens.groupButtonGap} + ${semanticTokens.groupButtonTextPaddingHorizontal})`,
 });
 
 const useRootStyles = makeStyles({
@@ -149,57 +173,38 @@ const useRootStyles = makeStyles({
   outline: {
     backgroundColor: semanticTokens.groupButtonOutlineBackground,
     border: `${semanticTokens.groupButtonStrokewidth} solid ${semanticTokens.groupButtonOutlineStroke}`,
-    color: semanticTokens.groupButtonOutlineTextForeground,
+    color: semanticTokens.groupButtonOutlineForeground,
 
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonOutlineIconForeground,
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonOutlineBackgroundHover,
-      border: `${semanticTokens.groupButtonStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokeHover}`,
-      color: semanticTokens.groupButtonOutlineTextForegroundHover,
-      [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonOutlineIconForegroundHover,
-      },
+      border: `${semanticTokens.groupButtonStrokewidth} solid ${groupButtonOutlineStrokeHover}`,
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonOutlineBackgroundPressed,
-      border: `${semanticTokens.groupButtonStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokePressed}`,
-      color: semanticTokens.groupButtonOutlineTextForegroundPressed,
-      [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonOutlineIconForegroundPressed,
-      },
+      border: `${semanticTokens.groupButtonStrokewidth} solid ${groupButtonOutlineStrokePressed}`,
     },
   },
 
   primary: {
     backgroundColor: semanticTokens.groupButtonPrimaryBackground,
     ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStroke),
-    color: semanticTokens.groupButtonPrimaryTextForeground,
-    boxShadow: semanticTokens.groupButtonPrimaryShadow,
+    color: semanticTokens.groupButtonPrimaryForeground,
 
     [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonPrimaryIconForegroundPressed,
+      color: semanticTokens.groupButtonPrimaryIconForeground,
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonPrimaryBackgroundHover,
-      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeHover),
-      color: semanticTokens.groupButtonPrimaryTextForegroundHover,
-      [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonPrimaryIconForegroundHover,
-      },
+      backgroundColor: groupButtonPrimaryBackgroundHover,
+      ...shorthands.borderColor(groupButtonPrimaryStrokeHover),
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonPrimaryBackgroundPressed,
-      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokePressed),
-      color: semanticTokens.groupButtonPrimaryTextForegroundPressed,
-      [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonPrimaryIconForegroundPressed,
-      },
+      backgroundColor: groupButtonPrimaryBackgroundPressed,
+      ...shorthands.borderColor(groupButtonPrimaryStrokePressed),
     },
 
     '@media (forced-colors: active)': {
@@ -222,22 +227,19 @@ const useRootStyles = makeStyles({
     },
   },
   secondary: {
-    boxShadow: semanticTokens.groupButtonNeutralShadow,
     /* Other than shadow, the secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     backgroundColor: semanticTokens.groupButtonSubtleBackground,
-    ...shorthands.borderColor(semanticTokens.groupButtonSubtleStroke),
-    color: semanticTokens.groupButtonSubtleTextForeground,
+    ...shorthands.borderColor('transparent'),
+    color: semanticTokens.groupButtonSubtleForeground,
 
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonSubtleIconForeground,
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonSubtleBackgroundHover,
-      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeHover),
-      color: semanticTokens.groupButtonSubtleTextForegroundHover,
+      backgroundColor: groupButtonNeutralBackgroundHover,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -245,14 +247,13 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonSubtleIconForegroundHover,
+        color: semanticTokens.groupButtonPrimaryBackground,
       },
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonSubtleBackgroundPressed,
-      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokePressed),
-      color: semanticTokens.groupButtonSubtleTextForegroundPressed,
+      backgroundColor: groupButtonNeutralBackgroundPressed,
+      color: groupButtonSubtleForegroundPressed,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -260,7 +261,7 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonSubtleIconForegroundPressed,
+        color: groupButtonPrimaryBackgroundHover,
       },
     },
 
@@ -282,18 +283,18 @@ const useRootStyles = makeStyles({
     },
   },
   transparent: {
-    backgroundColor: semanticTokens.groupButtonTransparentBackground,
-    ...shorthands.borderColor(semanticTokens.groupButtonTransparentStroke),
-    color: semanticTokens.groupButtonTransparentTextForeground,
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor('transparent'),
+    color: tokens.colorNeutralForeground2,
 
     [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonTransparentIconForeground,
+      color: tokens.colorNeutralForeground2,
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonTransparentBackgroundHover,
-      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeHover),
-      color: semanticTokens.groupButtonTransparentTextForegroundHover,
+      backgroundColor: tokens.colorTransparentBackground,
+      ...shorthands.borderColor('transparent'),
+      color: semanticTokens.groupButtonTransparentForegroundSelected,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -301,14 +302,14 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonTransparentIconForegroundHover,
+        color: semanticTokens.groupButtonTransparentForegroundSelected,
       },
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonTransparentBackgroundPressed,
-      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokePressed),
-      color: semanticTokens.groupButtonTransparentTextForegroundPressed,
+      backgroundColor: tokens.colorTransparentBackground,
+      ...shorthands.borderColor('transparent'),
+      color: groupButtonTransparentForegroundPressed,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -317,17 +318,17 @@ const useRootStyles = makeStyles({
       },
 
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonTransparentIconForegroundPressed,
+        color: groupButtonTransparentForegroundPressed,
       },
     },
 
     '@media (forced-colors: active)': {
       ':hover': {
-        backgroundColor: semanticTokens.groupButtonTransparentBackground,
+        backgroundColor: tokens.colorTransparentBackground,
         color: 'Highlight',
       },
       ':hover:active': {
-        backgroundColor: semanticTokens.groupButtonTransparentBackground,
+        backgroundColor: tokens.colorTransparentBackground,
         color: 'Highlight',
       },
     },
@@ -350,20 +351,12 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    minWidth: semanticTokens.groupButtonSmallMinwidth,
-    minHeight: semanticTokens.groupButtonSmallMinheight,
-    padding: `${semanticTokens.groupButtonSmallPaddingTop} ${paddingSmHorizontalNoIcon} ${semanticTokens.groupButtonSmallPaddingBottom} ${paddingSmHorizontalNoIcon}`, //3px
-    borderRadius: semanticTokens.groupButtonSmallCorner,
-    ':hover': {
-      borderRadius: semanticTokens.groupButtonSmallCornerHover,
-    },
-    ':hover:active': {
-      borderRadius: semanticTokens.groupButtonSmallCornerPressed,
-    },
+    minWidth: groupButtonSmallMinwidth,
+    padding: `${groupButtonSmallPaddingTop} ${paddingSmHorizontalNoIcon} ${groupButtonSmallPaddingBottom} ${paddingSmHorizontalNoIcon}`, //3px
 
-    fontSize: semanticTokens.groupButtonSmallTextFontsize,
-    fontWeight: semanticTokens.groupButtonSmallTextFontweight,
-    lineHeight: semanticTokens.groupButtonSmallTextLineheight,
+    fontSize: groupButtonSmallFontsize,
+    fontWeight: groupButtonSmallFontweight,
+    lineHeight: groupButtonSmallLineheight,
   },
   smallWithIcon: {
     paddingBottom: buttonSpacingBottomSmallWithIcon,
@@ -371,10 +364,10 @@ const useRootStyles = makeStyles({
   },
   smallWithIconBefore: {
     paddingRight: paddingSmHorizontalNoIcon,
-    paddingLeft: semanticTokens.groupButtonSmallPaddingHorizontal,
+    paddingLeft: groupButtonSmallPaddingHorizontal,
   },
   smallWithIconAfter: {
-    paddingRight: semanticTokens.groupButtonSmallPaddingHorizontal,
+    paddingRight: groupButtonSmallPaddingHorizontal,
     paddingLeft: paddingSmHorizontalNoIcon,
   },
   medium: {
@@ -382,27 +375,17 @@ const useRootStyles = makeStyles({
   },
   mediumWithIconBefore: {
     paddingRight: paddingHorizontalNoIcon,
-    paddingLeft: semanticTokens.groupButtonMediumPaddingHorizontal,
+    paddingLeft: semanticTokens.groupButtonPaddingHorizontal,
   },
   mediumWithIconAfter: {
-    paddingRight: semanticTokens.groupButtonMediumPaddingHorizontal,
+    paddingRight: semanticTokens.groupButtonPaddingHorizontal,
     paddingLeft: paddingHorizontalNoIcon,
   },
   large: {
-    minWidth: semanticTokens.groupButtonLargeMinwidth,
-    minHeight: semanticTokens.groupButtonLargeMinheight,
-    padding: `${semanticTokens.groupButtonLargePaddingTop} ${paddingLgHorizontalNoIcon} ${semanticTokens.groupButtonLargePaddingBottom} ${paddingLgHorizontalNoIcon}`,
-    borderRadius: semanticTokens.groupButtonLargeCorner,
-    ':hover': {
-      borderRadius: semanticTokens.groupButtonLargeCornerHover,
-    },
-    ':hover:active': {
-      borderRadius: semanticTokens.groupButtonLargeCornerPressed,
-    },
-
-    fontSize: semanticTokens.groupButtonLargeTextFontsize,
-    fontWeight: semanticTokens.groupButtonLargeTextFontweight,
-    lineHeight: semanticTokens.groupButtonLargeTextLineheight,
+    minWidth: semanticTokens.groupButtonMinwidth,
+    padding: `${groupButtonLargePaddingTop} ${paddingLgHorizontalNoIcon} ${groupButtonLargePaddingBottom} ${paddingLgHorizontalNoIcon}`,
+    fontSize: groupButtonLargeFontsize,
+    lineHeight: groupButtonLargeLineheight,
   },
   largeWithIcon: {
     paddingBottom: buttonSpacingLargeBottomWithIcon,
@@ -410,10 +393,10 @@ const useRootStyles = makeStyles({
   },
   largeWithIconBefore: {
     paddingRight: paddingLgHorizontalNoIcon,
-    paddingLeft: semanticTokens.groupButtonLargePaddingHorizontal,
+    paddingLeft: groupButtonLargePaddingHorizontal,
   },
   largeWithIconAfter: {
-    paddingRight: semanticTokens.groupButtonLargePaddingHorizontal,
+    paddingRight: groupButtonLargePaddingHorizontal,
     paddingLeft: paddingLgHorizontalNoIcon,
   },
 });
@@ -423,8 +406,7 @@ const useRootDisabledStyles = makeStyles({
   base: {
     backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
-    color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
-    borderRadius: semanticTokens.groupButtonMediumCornerDisabled,
+    color: semanticTokens.groupButtonNeutralForegroundDisabled,
     cursor: 'not-allowed',
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonNeutralIconForegroundDisabled,
@@ -433,8 +415,7 @@ const useRootDisabledStyles = makeStyles({
     ':hover': {
       backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
-      color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
-      borderRadius: semanticTokens.groupButtonMediumCornerDisabled,
+      color: semanticTokens.groupButtonNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
 
@@ -452,8 +433,7 @@ const useRootDisabledStyles = makeStyles({
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
-      color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
-      borderRadius: semanticTokens.groupButtonMediumCornerDisabled,
+      color: semanticTokens.groupButtonNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
 
@@ -509,7 +489,7 @@ const useRootDisabledStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
-    color: semanticTokens.groupButtonOutlineTextForegroundDisabled,
+    color: semanticTokens.groupButtonOutlineForegroundDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeDisabled),
 
     [`& .${buttonClassNames.icon}`]: {
@@ -517,7 +497,6 @@ const useRootDisabledStyles = makeStyles({
     },
     ':hover': {
       backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
-      ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthHover),
       [`& .${buttonClassNames.icon}`]: {
         color: semanticTokens.groupButtonOutlineIconForegroundDisabled,
       },
@@ -525,7 +504,6 @@ const useRootDisabledStyles = makeStyles({
 
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
-      ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthPressed),
       [`& .${buttonClassNames.icon}`]: {
         color: semanticTokens.groupButtonOutlineIconForegroundDisabled,
       },
@@ -533,8 +511,7 @@ const useRootDisabledStyles = makeStyles({
   },
   primary: {
     backgroundColor: semanticTokens.groupButtonPrimaryBackgroundDisabled,
-    color: semanticTokens.groupButtonPrimaryTextForegroundDisabled,
-    boxShadow: semanticTokens.groupButtonPrimaryShadowDisabled,
+    color: semanticTokens.groupButtonPrimaryForegroundDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeDisabled),
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonPrimaryIconForegroundDisabled,
@@ -549,15 +526,14 @@ const useRootDisabledStyles = makeStyles({
     },
   },
   secondary: {
-    color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
-    boxShadow: semanticTokens.groupButtonNeutralShadowDisabled,
+    color: semanticTokens.groupButtonNeutralForegroundDisabled,
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonNeutralIconForegroundDisabled,
     },
   },
   subtle: {
     backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
-    color: semanticTokens.groupButtonSubtleTextForegroundDisabled,
+    color: semanticTokens.groupButtonSubtleForegroundDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
 
     [`& .${buttonClassNames.icon}`]: {
@@ -575,41 +551,20 @@ const useRootDisabledStyles = makeStyles({
   },
   transparent: {
     [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonTransparentIconForegroundDisabled,
+      color: semanticTokens.groupButtonTransparentForegroundDisabled,
     },
-    color: semanticTokens.groupButtonTransparentTextForegroundDisabled,
-    backgroundColor: semanticTokens.groupButtonTransparentBackgroundDisabled,
-    ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
+    color: semanticTokens.groupButtonTransparentForegroundDisabled,
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonTransparentBackgroundDisabled,
-      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
+      backgroundColor: tokens.colorTransparentBackground,
+      ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonTransparentBackgroundDisabled,
-      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
-    },
-  },
-  small: {
-    borderRadius: semanticTokens.groupButtonSmallCornerDisabled,
-    ':hover': {
-      borderRadius: semanticTokens.groupButtonSmallCornerDisabled,
-    },
-    ':hover:active': {
-      borderRadius: semanticTokens.groupButtonSmallCornerDisabled,
-    },
-  },
-  medium: {
-    // Defined in base styles
-  },
-  large: {
-    borderRadius: semanticTokens.groupButtonLargeCornerDisabled,
-    ':hover': {
-      borderRadius: semanticTokens.groupButtonLargeCornerDisabled,
-    },
-    ':hover:active': {
-      borderRadius: semanticTokens.groupButtonLargeCornerDisabled,
+      backgroundColor: tokens.colorTransparentBackground,
+      ...shorthands.borderColor('transparent'),
     },
   },
 });
@@ -625,9 +580,9 @@ const useRootFocusStyles = makeStyles({
   primary: {
     ...createCustomFocusIndicatorStyle({
       ...shorthands.borderColor(semanticTokens.groupFocusInnerStroke),
-      boxShadow: `${semanticTokens.groupButtonPrimaryShadow}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.groupFocusInnerStrokewidth} ${semanticTokens.groupFocusInnerStroke} inset,  0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusOnbrandStroke} inset`,
+      boxShadow: `${semanticTokens.groupButtonShadow}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.groupFocusInnerStrokewidth} ${semanticTokens.groupFocusInnerStroke} inset,  0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusOnbrandStroke} inset`,
       ':hover': {
-        boxShadow: `${semanticTokens.groupButtonPrimaryShadow}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusInnerStroke} inset`,
+        boxShadow: `${semanticTokens.groupButtonShadow}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusInnerStroke} inset`,
         ...shorthands.borderColor(semanticTokens.groupFocusOnbrandStrokeHover),
       },
     }),
@@ -636,102 +591,42 @@ const useRootFocusStyles = makeStyles({
     '@supports (-moz-appearance:button)': {
       ...createCustomFocusIndicatorStyle({
         // TODO: Replace shadow2 with semantic shadow
-        boxShadow: `${semanticTokens.groupButtonPrimaryShadow}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusInnerStroke} inset,  0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusOnbrandStroke} inset`,
+        boxShadow: `${semanticTokens.groupButtonShadow}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusInnerStroke} inset,  0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusOnbrandStroke} inset`,
         ':hover': {
-          boxShadow: `${semanticTokens.groupButtonPrimaryShadow}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusOnbrandStrokeHover} inset`,
-        },
-      }),
-    },
-  },
-  primaryDisabled: {
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(semanticTokens.groupFocusInnerStroke),
-      boxShadow: `${semanticTokens.groupButtonPrimaryShadowDisabled}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.groupFocusInnerStrokewidth} ${semanticTokens.groupFocusInnerStroke} inset,  0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusOnbrandStroke} inset`,
-      ':hover': {
-        boxShadow: `${semanticTokens.groupButtonPrimaryShadowDisabled}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusInnerStroke} inset`,
-        ...shorthands.borderColor(semanticTokens.groupFocusOnbrandStrokeHover),
-      },
-    }),
-
-    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
-    '@supports (-moz-appearance:button)': {
-      ...createCustomFocusIndicatorStyle({
-        // TODO: Replace shadow2 with semantic shadow
-        boxShadow: `${semanticTokens.groupButtonPrimaryShadowDisabled}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusInnerStroke} inset,  0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusOnbrandStroke} inset`,
-        ':hover': {
-          boxShadow: `${semanticTokens.groupButtonPrimaryShadowDisabled}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusOnbrandStrokeHover} inset`,
+          boxShadow: `${semanticTokens.groupButtonShadow}, ${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusOnbrandStrokeHover} inset`,
         },
       }),
     },
   },
   secondary: {
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(semanticTokens.groupFocusInnerStroke),
-      borderRadius: semanticTokens.groupButtonMediumCorner,
-      ...shorthands.borderWidth('1px'),
-      outline: `${semanticTokens.groupFocusOuterStrokewidth} solid ${semanticTokens.groupFocusOuterStroke}`,
-      boxShadow: `${semanticTokens.groupButtonNeutralShadow}, 0 0 0 ${semanticTokens.groupFocusInnerStrokewidth} ${semanticTokens.groupFocusInnerStroke}
-      inset
-    `,
-      zIndex: 1,
-    }),
-
-    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
-    '@supports (-moz-appearance:button)': {
-      ...createCustomFocusIndicatorStyle({
-        boxShadow: `${semanticTokens.groupButtonNeutralShadow}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusInnerStroke}
-      inset
-    `,
-      }),
-    },
-  },
-  secondaryDisabled: {
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(semanticTokens.groupFocusInnerStroke),
-      borderRadius: semanticTokens.groupButtonMediumCorner,
-      ...shorthands.borderWidth('1px'),
-      outline: `${semanticTokens.groupFocusOuterStrokewidth} solid ${semanticTokens.groupFocusOuterStroke}`,
-      boxShadow: `${semanticTokens.groupButtonNeutralShadowDisabled}, 0 0 0 ${semanticTokens.groupFocusInnerStrokewidth} ${semanticTokens.groupFocusInnerStroke}
-      inset
-    `,
-      zIndex: 1,
-    }),
-
-    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
-    '@supports (-moz-appearance:button)': {
-      ...createCustomFocusIndicatorStyle({
-        boxShadow: `${semanticTokens.groupButtonNeutralShadowDisabled}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${semanticTokens.groupFocusInnerStroke}
-      inset
-    `,
-      }),
-    },
+    // The secondary focus styles are exactly the same as the base styles.
   },
   // Size variations
   small: createCustomFocusIndicatorStyle({
-    borderRadius: `calc(${semanticTokens.groupButtonSmallCorner} - ${semanticTokens.groupFocusOuterStrokewidth})`,
+    borderRadius: `calc(${semanticTokens.groupButtonCorner} - ${semanticTokens.groupFocusOuterStrokewidth})`,
   }),
   medium: {
     /* defined in base styles */
   },
   large: createCustomFocusIndicatorStyle({
-    borderRadius: `calc(${semanticTokens.groupButtonLargeCorner} + ${semanticTokens.groupFocusOuterStrokewidth})`,
+    borderRadius: `calc(${semanticTokens.groupButtonCorner} + ${semanticTokens.groupFocusOuterStrokewidth})`,
   }),
 });
 
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    padding: `${semanticTokens.groupButtonSmallIcononlyPadding}`,
+    padding: `${groupButtonSmallIcononlyPadding}`,
     minWidth: '24px',
     maxWidth: 'unset',
   },
   medium: {
-    padding: `${semanticTokens.groupButtonMediumIcononlyPadding}`,
+    padding: `${semanticTokens.groupButtonIcononlyPadding}`,
     minWidth: '32px',
     maxWidth: 'unset',
   },
   large: {
-    padding: `${semanticTokens.groupButtonLargeIcononlyPadding}`,
+    padding: `${groupButtonLargeIcononlyPadding}`,
     minWidth: '40px',
     maxWidth: 'unset',
   },
@@ -740,21 +635,21 @@ const useRootIconOnlyStyles = makeStyles({
 const useIconStyles = makeStyles({
   // Size variations
   small: {
-    fontSize: semanticTokens.groupButtonSmallIconSize,
-    height: semanticTokens.groupButtonSmallIconSize,
-    width: semanticTokens.groupButtonSmallIconSize,
+    fontSize: semanticTokens.groupButtonIconSize,
+    height: semanticTokens.groupButtonIconSize,
+    width: semanticTokens.groupButtonIconSize,
 
-    [iconSpacingVar]: `calc(${semanticTokens.groupButtonSmallGap} + ${semanticTokens.groupButtonSmallTextPaddingHorizontal})`,
+    [iconSpacingVar]: `calc(${groupButtonSmallGap} + ${groupButtonSmallTextPaddingHorizontal})`,
   },
   medium: {
     /* defined in base styles */
   },
   large: {
-    fontSize: semanticTokens.groupButtonLargeIconSize,
-    height: semanticTokens.groupButtonLargeIconSize,
-    width: semanticTokens.groupButtonLargeIconSize,
+    fontSize: groupButtonLargeIconSize,
+    height: groupButtonLargeIconSize,
+    width: groupButtonLargeIconSize,
     //spacingHorizontalSNudge
-    [iconSpacingVar]: `calc(${semanticTokens.groupButtonLargeGap} + ${semanticTokens.groupButtonLargeTextPaddingHorizontal})`,
+    [iconSpacingVar]: `calc(${semanticTokens.groupButtonGap} + ${semanticTokens.groupButtonTextPaddingHorizontal})`,
   },
 
   // Icon position variations
@@ -802,15 +697,12 @@ export const useOptimizedSemanticButtonStyles = (_state: unknown): ButtonState =
 
     // Disabled styles
     (disabled || disabledFocusable) && rootDisabledStyles.base,
-    (disabled || disabledFocusable) && rootDisabledStyles[size],
     (disabled || disabledFocusable) && rootDisabledStyles.highContrast,
     appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
     // Focus styles
     appearance === 'primary' && rootFocusStyles.primary,
     appearance === 'secondary' && rootFocusStyles.secondary,
-    (disabled || disabledFocusable) && appearance === 'primary' && rootFocusStyles.primaryDisabled,
-    (disabled || disabledFocusable) && appearance === 'secondary' && rootFocusStyles.secondaryDisabled,
     rootFocusStyles[size],
     rootFocusStyles[shape],
 

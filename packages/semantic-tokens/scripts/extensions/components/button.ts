@@ -20,7 +20,7 @@ export const fluentButtonGroup: GroupPart = {
    * Core properties for the button group
    * These cover simple overrides, or interfaces for complex CSS management
    */
-  variants: ['neutral', 'primary', 'outline', 'subtle'],
+  variants: ['neutral', 'primary', 'outline', 'subtle', 'corner'],
   variantProperties: [],
   variantStateProperties: ['background', 'stroke', 'foreground'],
   scales: ['small', 'large'],
@@ -33,7 +33,6 @@ export const fluentButtonGroup: GroupPart = {
     'fontsize',
     'lineheight',
     'fontweight',
-    'corner',
   ],
   states: ['hover', 'pressed', 'hover.selected', 'pressed.selected'],
   exceptions: [
