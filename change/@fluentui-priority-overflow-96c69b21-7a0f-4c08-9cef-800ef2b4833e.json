@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use numeric literals for Node constants to make SSR work",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "198982749+Copilot@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

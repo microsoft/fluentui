@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use numeric literal for DOCUMENT_FRAGMENT_NODE to make SSR work",
-  "packageName": "@fluentui/react-utilities",
-  "email": "198982749+Copilot@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

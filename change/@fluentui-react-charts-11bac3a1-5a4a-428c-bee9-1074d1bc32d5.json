@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update react version to react 19",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
