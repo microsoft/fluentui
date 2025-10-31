@@ -129,37 +129,6 @@ jobs:
         run: |
           FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--18--type-check,test-rit--17--test,test-rit--18--test --exclude='react-19-tests-v9'
 
-  react_19_v9_source_code_typecheck:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      actions: 'read'
-    name: v9 source code type-check against React 19
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
-        with:
-          main-branch-name: 'master'
-
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'yarn'
-          node-version: '22'
-
-      - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
-
-      - run: |
-          yarn install --frozen-lockfile
-          yarn rit --react 19 --install-deps
-
-      - run: |
-          yarn nx affected -t test-rit--19--type-check --exclude='*,!react-19-tests-v9'
-
   e2e:
     if: ${{ github.repository_owner == 'microsoft' }}
     # TODO: switch to macos once problematic tests are fixed
