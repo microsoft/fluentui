@@ -33,6 +33,7 @@ export const fluentButtonGroup: GroupPart = {
     'fontsize',
     'lineheight',
     'fontweight',
+    'corner',
   ],
   states: ['hover', 'pressed', 'hover.selected', 'pressed.selected'],
   exceptions: [

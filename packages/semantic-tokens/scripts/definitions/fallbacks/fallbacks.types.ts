@@ -9,3 +9,10 @@ export type GroupFallback = {
     primitive?: string | null;
   };
 };
+
+export type GenericFallback = {
+  [key: string]: {
+    fluent?: string | null;
+    primitive?: string | null;
+  };
+};

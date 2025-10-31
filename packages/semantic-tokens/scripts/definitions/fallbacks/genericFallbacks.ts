@@ -14,4 +14,10 @@ export const genericFallbacks: GenericFallbacks = {
   cornerSquare: {
     fluent: tokens.borderRadiusNone,
   },
+  lightnessHover: {
+    fluent: '-5',
+  },
+  lightnessPressed: {
+    fluent: '-10',
+  },
 };

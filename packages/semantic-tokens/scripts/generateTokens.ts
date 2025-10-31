@@ -120,7 +120,7 @@ export function generateGenericTokens() {
 
   for (const property of Object.keys(generics)) {
     for (const variant of generics[property].variants) {
-      for (const emphasis of generics[property].emphasis || []) {
+      for (const emphasis of generics[property].emphasis || ['']) {
         const states = generics[property].states || [''];
         for (const state of states) {
           const propertyToken = {
