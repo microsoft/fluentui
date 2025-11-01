@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Fri, 03 Oct 2025 14:19:04 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.12.0)
+
+Fri, 31 Oct 2025 16:22:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.11.0..@fluentui/react-motion-components-preview_v0.12.0)
+
+### Minor changes
+
+- feat(motion): standardize from/to parameters ([PR #35419](https://github.com/microsoft/fluentui/pull/35419) by robertpenner@microsoft.com)
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.11.0)
 
