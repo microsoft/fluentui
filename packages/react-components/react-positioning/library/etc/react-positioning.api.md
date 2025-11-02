@@ -130,6 +130,9 @@ export function resolvePositioningShorthand(shorthand: PositioningShorthand | un
 // @public (undocumented)
 export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | undefined | null) => void;
 
+// @public (undocumented)
+export const toAnchorInset: (align?: Alignment, position?: Position) => Record<string, string>;
+
 // @internal (undocumented)
 export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn;
 

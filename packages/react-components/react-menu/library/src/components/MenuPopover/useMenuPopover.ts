@@ -4,6 +4,7 @@ import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTimeout } from '@fluentui/react-utilities';
+import { resolvePositioningShorthand, toAnchorInset } from '@fluentui/react-positioning';
 import * as React from 'react';
 
 import { useMenuContext_unstable } from '../../contexts/menuContext';
@@ -28,6 +29,8 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const open = useMenuContext_unstable(context => context.open);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
+  const popoverId = useMenuContext_unstable(context => context.popoverId);
+  const positioning = useMenuContext_unstable(context => context.positioning);
 
   const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
@@ -63,13 +66,12 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     return () => clearThrottleTimeout();
   }, [clearThrottleTimeout]);
 
-  const inline = useMenuContext_unstable(context => context.inline) ?? false;
-  const mountNode = useMenuContext_unstable(context => context.mountNode);
-
   const rootProps = slot.always(
     getIntrinsicElementProps('div', {
       role: 'presentation',
       ...restoreFocusSourceAttributes,
+      id: popoverId,
+      popover: 'auto',
       ...props,
       // FIXME:
       // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
@@ -104,9 +106,19 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     onKeyDownOriginal?.(event);
   });
 
+  const { align, position } = resolvePositioningShorthand(positioning);
+
+  rootProps.style = React.useMemo(() => {
+    const anchorInset = toAnchorInset(align, position);
+    return {
+      positionAnchor: `--${popoverId}`,
+      margin: 0,
+      ...anchorInset,
+      ...props.style,
+    };
+  }, [popoverId, props.style, align, position]);
+
   return {
-    inline,
-    mountNode,
     safeZone,
     components: { root: 'div' },
     root: rootProps,

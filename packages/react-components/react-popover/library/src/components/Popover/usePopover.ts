@@ -8,6 +8,7 @@ import {
   useOnScrollOutside,
   elementContains,
   useTimeout,
+  useId,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
@@ -39,6 +40,8 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
+
+  const popoverId = useId('fui-popover-');
 
   if (process.env.NODE_ENV !== 'production') {
     if (children.length === 0) {
@@ -103,42 +106,42 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   });
 
   // only close on scroll for context, or when closeOnScroll is specified
-  const closeOnScroll = initialState.openOnContext || initialState.closeOnScroll;
-  useOnScrollOutside({
-    contains: elementContains,
-    element: targetDocument,
-    callback: ev => setOpen(ev, false),
-    refs: [positioningRefs.triggerRef, positioningRefs.contentRef],
-    disabled: !open || !closeOnScroll,
-  });
+  // const closeOnScroll = initialState.openOnContext || initialState.closeOnScroll;
+  // useOnScrollOutside({
+  //   contains: elementContains,
+  //   element: targetDocument,
+  //   callback: ev => setOpen(ev, false),
+  //   refs: [positioningRefs.triggerRef, positioningRefs.contentRef],
+  //   disabled: !open || !closeOnScroll,
+  // });
 
-  const { findFirstFocusable } = useFocusFinders();
-  const activateModal = useActivateModal();
+  // const { findFirstFocusable } = useFocusFinders();
+  // const activateModal = useActivateModal();
 
-  React.useEffect(() => {
-    if (props.unstable_disableAutoFocus) {
-      return;
-    }
+  // React.useEffect(() => {
+  //   if (props.unstable_disableAutoFocus) {
+  //     return;
+  //   }
 
-    const contentElement = positioningRefs.contentRef.current;
+  //   const contentElement = positioningRefs.contentRef.current;
 
-    if (open && contentElement) {
-      const shouldFocusContainer = !isNaN(contentElement.getAttribute('tabIndex') ?? undefined);
-      const firstFocusable = shouldFocusContainer ? contentElement : findFirstFocusable(contentElement);
+  //   if (open && contentElement) {
+  //     const shouldFocusContainer = !isNaN(contentElement.getAttribute('tabIndex') ?? undefined);
+  //     const firstFocusable = shouldFocusContainer ? contentElement : findFirstFocusable(contentElement);
 
-      firstFocusable?.focus();
+  //     firstFocusable?.focus();
 
-      if (shouldFocusContainer) {
-        // Modal activation happens automatically when something inside the modal is focused programmatically.
-        // When the container is focused, we need to activate the modal manually.
-        activateModal(contentElement);
-      }
-    }
-  }, [findFirstFocusable, activateModal, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
+  //     if (shouldFocusContainer) {
+  //       // Modal activation happens automatically when something inside the modal is focused programmatically.
+  //       // When the container is focused, we need to activate the modal manually.
+  //       activateModal(contentElement);
+  //     }
+  //   }
+  // }, [findFirstFocusable, activateModal, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
 
   return {
     ...initialState,
-    ...positioningRefs,
+    // ...positioningRefs,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     inertTrapFocus: props.inertTrapFocus ?? (props.legacyTrapFocus === undefined ? false : !props.legacyTrapFocus),
     popoverTrigger,
@@ -149,6 +152,8 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     setContextTarget,
     contextTarget,
     inline: props.inline ?? false,
+    positioning: props.positioning,
+    popoverId,
   };
 };
 

@@ -44,7 +44,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
 
   /**
    * Popovers are rendered out of DOM order on `document.body` by default, use this to render the popover in DOM order
-   *
+   * @deprecated all Popovers are inline now.
    * @default false
    */
   inline?: boolean;
@@ -158,6 +158,7 @@ export type PopoverState = Pick<
   | 'trapFocus'
   | 'withArrow'
   | 'inertTrapFocus'
+  | 'positioning'
 > &
   Required<Pick<PopoverProps, 'inline' | 'open'>> &
   Pick<PopoverProps, 'children'> & {
@@ -201,6 +202,8 @@ export type PopoverState = Pick<
      * Ref of the PopoverTrigger
      */
     triggerRef: React.MutableRefObject<HTMLElement | null>;
+
+    popoverId: string | undefined;
   };
 
 /**

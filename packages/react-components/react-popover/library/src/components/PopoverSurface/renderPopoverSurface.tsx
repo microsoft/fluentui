@@ -2,7 +2,6 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Portal } from '@fluentui/react-portal';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
@@ -18,9 +17,5 @@ export const renderPopoverSurface_unstable = (state: PopoverSurfaceState): JSXEl
     </state.root>
   );
 
-  if (state.inline) {
-    return surface;
-  }
-
-  return <Portal mountNode={state.mountNode}>{surface}</Portal>;
+  return surface;
 };

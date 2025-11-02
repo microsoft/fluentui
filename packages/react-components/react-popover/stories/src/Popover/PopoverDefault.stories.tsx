@@ -20,14 +20,17 @@ const ExampleContent = () => {
   );
 };
 
+// style={{ width: 1500, height: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 export const Default = (props: PopoverProps): JSXElement => (
-  <Popover {...props}>
-    <PopoverTrigger disableButtonEnhancement>
-      <Button>Popover trigger</Button>
-    </PopoverTrigger>
+  <div>
+    <Popover {...props} open={true}>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>Popover trigger</Button>
+      </PopoverTrigger>
 
-    <PopoverSurface tabIndex={-1}>
-      <ExampleContent />
-    </PopoverSurface>
-  </Popover>
+      <PopoverSurface>
+        <ExampleContent />
+      </PopoverSurface>
+    </Popover>
+  </div>
 );
