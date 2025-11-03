@@ -4,7 +4,9 @@ import * as React from 'react';
 import { getAccessibility } from '../accessibility/getAccessibility';
 import { AccessibilityActionHandlers, KeyboardEventHandler, ReactAccessibilityBehavior } from '../accessibility/types';
 import { FocusZone } from '../FocusZone/FocusZone';
-import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+import { mergeCallbacks } from '../utils/mergeCallbacks';
+import { useEventCallback } from './useEventCallback';
+import * as _ from 'lodash';
 
 type UseAccessibilityOptions<Props> = {
   actionHandlers?: AccessibilityActionHandlers;
@@ -29,47 +31,63 @@ type MergedProps<SlotProps extends Record<string, any> = any> = SlotProps &
   Partial<AccessibilityAttributesBySlot> &
   UserProps;
 
+// ---
+
+function useIdFallback() {
+  return _.uniqueId();
+}
+
+// We don't have types for React 18 yet. Also adds a fallback
+// eslint-disable-next-line no-useless-concat
+export const useId = ((React as any)['use' + 'Id'] as (() => string) | undefined) ?? useIdFallback;
+
+// --
+
 export const useAccessibility = <Props extends {}>(
   behavior: Accessibility<Props>,
   options: UseAccessibilityOptions<Props> = {},
 ) => {
   const { actionHandlers, debugName = 'Undefined', mapPropsToBehavior = () => ({}), rtl = false } = options;
-
   const definition = getAccessibility(debugName, behavior, mapPropsToBehavior(), rtl, actionHandlers);
 
-  const latestDefinition = React.useRef<ReactAccessibilityBehavior>();
-  const slotHandlers = React.useRef<Record<string, KeyboardEventHandler>>({});
-  const slotProps = React.useRef<Record<string, UserProps>>({});
+  // Heads up!
+  // Attr should be unique per hook call to avoid collisions when multiple components use useAccessibility in the same tree.
+  const slotAttr = `data-slot-name${useId()}`;
 
-  useIsomorphicLayoutEffect(() => {
-    latestDefinition.current = definition;
+  const handleKeyDown = useEventCallback((e: React.KeyboardEvent) => {
+    const slotName = (e.currentTarget as HTMLElement)?.getAttribute(slotAttr) || 'root';
+    const accessibilityHandler = definition.keyHandlers[slotName]?.onKeyDown;
+
+    accessibilityHandler?.(e);
   });
 
   const getA11yProps: UseAccessibilityResult = (slotName, userProps) => {
-    const hasKeyDownHandlers = Boolean(definition.keyHandlers[slotName] || userProps.onKeyDown);
+    const hasBehaviorKeyHandler = !!definition.keyHandlers[slotName];
+    const hasUserKeyHandler = !!userProps.onKeyDown;
+
     const childBehavior = definition.childBehaviors ? definition.childBehaviors[slotName] : undefined;
-    slotProps.current[slotName] = userProps;
-
-    // We want to avoid adding event handlers until it's really needed
-    if (hasKeyDownHandlers) {
-      if (!slotHandlers.current[slotName]) {
-        slotHandlers.current[slotName] = (e, ...args) => {
-          const accessibilityHandler = latestDefinition.current?.keyHandlers[slotName]?.onKeyDown;
-          const userHandler = slotProps.current[slotName].onKeyDown;
-
-          if (accessibilityHandler) accessibilityHandler(e);
-          if (userHandler) userHandler(e, ...args);
-        };
-      }
-    } else {
-      delete slotHandlers.current[slotName];
-    }
-
     const finalProps: MergedProps = {
       ...(childBehavior && { accessibility: childBehavior }),
+
       ...definition.attributes[slotName],
       ...userProps,
-      onKeyDown: slotHandlers.current[slotName],
+
+      [slotAttr]: slotName,
+
+      // Heads up!
+      // `getA11yProps` is a function, not a hook, so we can't use `useEventCallback` here.
+      // Below we are trying to avoid creating a new function on each render unless it's necessary.
+      // - If there is only behavior key handler, we use it directly.
+      // - If there is only user key handler, we use it directly.
+      // - If both are defined, we create a new function that calls them both (⚠️unstable reference).
+
+      ...(hasBehaviorKeyHandler && { onKeyDown: handleKeyDown }),
+      ...(hasUserKeyHandler && { onKeyDown: userProps.onKeyDown }),
+
+      ...(hasBehaviorKeyHandler &&
+        hasUserKeyHandler && {
+          onKeyDown: mergeCallbacks(handleKeyDown, userProps.onKeyDown),
+        }),
     };
 
     return finalProps;
