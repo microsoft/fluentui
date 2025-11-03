@@ -141,6 +141,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                     data-annotation-key="annotation-1"
                   >
                     <div
+                      aria-label="Test Annotation 1"
                       class=
 
                           {
@@ -201,6 +202,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                     style="background-color: rgba(255, 255, 255, 0.8);"
                   >
                     <div
+                      aria-label="Test Annotation 2"
                       class=
 
                           {
@@ -451,6 +453,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                     data-annotation-key="annotation-1"
                   >
                     <div
+                      aria-label="Test Annotation 1"
                       class=
 
                           {
@@ -511,6 +514,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                     style="background-color: rgba(255, 255, 255, 0.8);"
                   >
                     <div
+                      aria-label="Test Annotation 2"
                       class=
 
                           {
