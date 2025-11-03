@@ -7,7 +7,6 @@ const useClasses = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    // flexWrap: 'wrap',
     alignItems: 'flex-start',
     gap: tokens.spacingHorizontalXL,
     overflow: 'hidden',
@@ -29,39 +28,25 @@ const useClasses = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
     width: '100%',
     height: '100%',
-    // marginTop: '50px',
     padding: '50px',
   },
   item: {
     position: 'absolute',
 
-    // top: '100px',
-    // display: 'flex',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: tokens.colorNeutralBackgroundStatic,
     fontWeight: 'bold',
     fontSize: '100px',
-    // Keep the fill color (white inverted foreground) and add a blue glow via text-shadow
-    // color: tokens.colorNeutralForegroundInverted,
-    // color: 'white',
     color: 'transparent',
     margin: tokens.spacingHorizontalXXS,
-    WebkitTextStroke: '4px rgba(180, 214, 250, 0.7)', // colorBrandStroke2 = #b4d6fa
+    // Prefer a CSS variable if available, fallback to the token value.
+    // If your theme exposes a CSS var like --tokens-colorBrandStroke2 you can
+    // control it there; otherwise the token is used.
+    WebkitTextStroke: `4px var(--tokens-colorBrandStroke2, ${tokens.colorBrandStroke2})`,
     WebkitFilter: 'blur(1.2px)',
     filter: 'blur(1.2px)',
-    // Blue glow effect (primary visible glow + softer outer glows)
-    // textShadow: '0 0 8px rgba(0,120,212,0.95), 0 0 20px rgba(0,120,212,0.6), 0 0 30px rgba(0,120,212,0.35)',
-    // width: '100%',
-    // height: '100%',
   },
 });
-
-// const ZoomTransition = createPresenceComponent({})
 
 export const Text = (): JSXElement => {
   const classes = useClasses();
