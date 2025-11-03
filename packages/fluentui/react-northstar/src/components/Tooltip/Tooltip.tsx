@@ -20,7 +20,7 @@ import {
   commonPropTypes,
   isFromKeyboard,
   setWhatInputSource,
-  getOrGenerateIdFromShorthand,
+  useIdOrFromShorthand,
   createShorthandFactory,
 } from '../../utils';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
@@ -157,9 +157,8 @@ export const Tooltip: React.FC<TooltipProps> &
 
   const closeTimeoutId = React.useRef<number>();
   const openTimeoutId = React.useRef<number>();
-  // TODO: Consider `getOrGenerateIdFromShorthand()` as hook and make it SSR safe
-  const contentId = React.useRef<string>();
-  contentId.current = getOrGenerateIdFromShorthand('tooltip-content-', content, contentId.current);
+
+  const contentId = useIdOrFromShorthand(content);
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
@@ -173,7 +172,7 @@ export const Tooltip: React.FC<TooltipProps> &
       'aria-describedby': props['aria-describedby'],
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
-      contentId: contentId.current,
+      contentId,
       triggerAriaLabel: trigger && trigger.props['aria-label'],
       open,
     }),

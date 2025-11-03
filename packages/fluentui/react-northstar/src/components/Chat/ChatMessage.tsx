@@ -40,7 +40,7 @@ import {
   ContentComponentProps,
   createShorthand,
   createShorthandFactory,
-  getOrGenerateIdFromShorthand,
+  useIdOrFromShorthand,
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
@@ -298,8 +298,7 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
   const hasActionMenu = !_.isNil(actionMenu);
   const hasHeaderReactionGroup = !!reactionGroup && reactionGroupPosition === 'start';
 
-  const actionMenuId = React.useRef<string>();
-  actionMenuId.current = getOrGenerateIdFromShorthand(`${chatMessageClassName}-`, actionMenu, actionMenuId.current);
+  const actionMenuId = useIdOrFromShorthand(actionMenu);
 
   const modifiers = React.useCallback<PopperModifiersFn>(
     (target, container) => {
@@ -358,7 +357,7 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
     mapPropsToBehavior: () => ({
       hasActionMenu,
       inlineActionMenu,
-      actionMenuId: actionMenuId.current,
+      actionMenuId,
     }),
     rtl: context.rtl,
   });
@@ -432,7 +431,7 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((p
         styles: resolvedStyles.actionMenu,
       }),
       overrideProps: {
-        id: actionMenuId.current,
+        id: actionMenuId,
       },
     });
 

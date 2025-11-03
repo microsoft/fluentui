@@ -67,7 +67,7 @@ describe('MenuButton', () => {
         const menu = menuButton.find('ul');
         const triggerId = button.prop('id');
 
-        expect(triggerId).toMatch(/menubutton-trigger-\d+/);
+        expect(triggerId).toMatch(/^:r/);
         expect(menu.prop('aria-labelledby')).toEqual(triggerId);
       });
 
@@ -85,7 +85,7 @@ describe('MenuButton', () => {
         menuButton.find('button').simulate('click');
         const menuId = menuButton.find('ul').prop('id');
 
-        expect(menuId).toMatch(/menubutton-menu-\d+/);
+        expect(menuId).toMatch(/^:r/);
         expect(menuButton.find('button').prop('aria-controls')).toEqual(menuId);
       });
     });

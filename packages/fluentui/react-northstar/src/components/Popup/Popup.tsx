@@ -49,7 +49,6 @@ import { PopupContent, PopupContentProps } from './PopupContent';
 import { createShorthandFactory } from '../../utils/factories';
 import { isRightClick } from '../../utils/isRightClick';
 import { PortalInner } from '../Portal/PortalInner';
-import { Animation } from '../Animation/Animation';
 
 export type PopupEvents = 'click' | 'hover' | 'focus' | 'context';
 export type RestrictedClickEvents = 'click' | 'focus';
@@ -430,69 +429,66 @@ export const Popup: React.FC<PopupProps> &
     return relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
-  const renderPopperChildren =
-    classes =>
-    ({ placement, scheduleUpdate }: PopperChildrenProps) => {
-      const content = renderContent ? renderContent(scheduleUpdate) : props.content;
-      const popupContent = Popup.Content.create(content || {}, {
-        defaultProps: () =>
-          getA11yProps('popup', {
-            ...getContentProps(),
-            placement,
-            pointing,
-            pointerRef: pointerTargetRef,
-            trapFocus,
-            autoFocus,
-            autoSize,
-            className: classes,
-          }),
-        overrideProps: getContentProps,
-      });
+  const renderPopperChildren = ({ placement, scheduleUpdate }: PopperChildrenProps) => {
+    const content = renderContent ? renderContent(scheduleUpdate) : props.content;
+    const popupContent = Popup.Content.create(content || {}, {
+      defaultProps: () =>
+        getA11yProps('popup', {
+          ...getContentProps(),
+          placement,
+          pointing,
+          pointerRef: pointerTargetRef,
+          trapFocus,
+          autoFocus,
+          autoSize,
+        }),
+      overrideProps: getContentProps,
+    });
 
-      return (
-        <Unstable_NestingAuto>
-          {(getRefs, nestingRef) => (
-            <>
-              <Ref
-                innerRef={domElement => {
-                  popupContentRef.current = domElement;
-                  handleRef(contentRef, domElement);
-                  nestingRef.current = domElement;
-                }}
-              >
-                {popupContent}
-              </Ref>
+    return (
+      <Unstable_NestingAuto>
+        {(getRefs, nestingRef) => (
+          <>
+            <Ref
+              innerRef={domElement => {
+                popupContentRef.current = domElement;
+                handleRef(contentRef, domElement);
+                nestingRef.current = domElement;
+              }}
+            >
+              {popupContent}
+            </Ref>
 
-              {context.target && (
-                <>
-                  <EventListener listener={handleMouseDown} target={context.target} type="mousedown" />
-                  <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
-                  <EventListener
-                    listener={handleDocumentClick(getRefs)}
-                    target={context.target}
-                    type="contextmenu"
-                    capture
-                  />
-                  <EventListener
-                    listener={handleDocumentKeyDown(getRefs)}
-                    target={context.target}
-                    type="keydown"
-                    capture
-                  />
+            {context.target && (
+              <>
+                <EventListener listener={handleMouseDown} target={context.target} type="mousedown" />
+                <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
+                <EventListener
+                  listener={handleDocumentClick(getRefs)}
+                  target={context.target}
+                  type="contextmenu"
+                  capture
+                />
+                <EventListener
+                  listener={handleDocumentKeyDown(getRefs)}
+                  target={context.target}
+                  type="keydown"
+                  capture
+                />
 
-                  {(isOpenedByRightClick || closeOnScroll) && (
-                    <>
-                      <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
-                      <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
-                    </>
-                  )}
-                </>
-              )}
-            </>
-          )}
-        </Unstable_NestingAuto>
-      );
-    };
+                {(isOpenedByRightClick || closeOnScroll) && (
+                  <>
+                    <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
+                    <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                  </>
+                )}
+              </>
+            )}
+          </>
+        )}
+      </Unstable_NestingAuto>
+    );
+  };
 
   const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
     // we only need to dismiss if the scroll happens outside the popup
@@ -597,30 +593,28 @@ export const Popup: React.FC<PopupProps> &
   }, [open]);
 
   const contentElement = (
-    <Animation mountOnEnter unmountOnExit visible={open} name={open ? 'popup-show' : 'popup-hide'}>
-      {({ classes }) => {
-        const content = (
-          <Popper
-            pointerTargetRef={pointerTargetRef}
-            align={align}
-            flipBoundary={flipBoundary}
-            popperRef={popperRef}
-            position={position}
-            positionFixed={positionFixed}
-            offset={offset}
-            overflowBoundary={overflowBoundary}
-            rtl={context.rtl}
-            unstable_disableTether={unstable_disableTether}
-            unstable_pinned={unstable_pinned}
-            autoSize={autoSize}
-            targetRef={rightClickReferenceObject.current || target || triggerRef}
-          >
-            {renderPopperChildren(classes)}
-          </Popper>
-        );
-        return inline ? content : <PortalInner mountNode={mountNode}>{content}</PortalInner>;
-      }}
-    </Animation>
+    <Popper
+      pointerTargetRef={pointerTargetRef}
+      align={align}
+      flipBoundary={flipBoundary}
+      popperRef={popperRef}
+      position={position}
+      positionFixed={positionFixed}
+      offset={offset}
+      overflowBoundary={overflowBoundary}
+      rtl={context.rtl}
+      unstable_disableTether={unstable_disableTether}
+      unstable_pinned={unstable_pinned}
+      autoSize={autoSize}
+      targetRef={rightClickReferenceObject.current || target || triggerRef}
+    >
+      {renderPopperChildren}
+    </Popper>
+  );
+  const wrappedContentElement = inline ? (
+    contentElement
+  ) : (
+    <PortalInner mountNode={mountNode}>{contentElement}</PortalInner>
   );
 
   const triggerElement = triggerNode && (
@@ -629,14 +623,12 @@ export const Popup: React.FC<PopupProps> &
     </Ref>
   );
 
-  const element = (
+  return (
     <>
       {triggerElement}
-      {contentElement}
+      {open && wrappedContentElement}
     </>
   );
-
-  return element;
 };
 
 Popup.displayName = 'Popup';
