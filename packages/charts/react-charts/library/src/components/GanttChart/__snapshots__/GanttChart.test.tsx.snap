@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`GanttChart interaction and accessibility tests should render custom callout content using onRenderCalloutPerDataPoint when a bar is hovered 1`] = `
 <div>
@@ -14,7 +14,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
       <svg
         aria-label="Gantt chart with 8 data points. "
         class="fui-cart__chart"
-        height="0"
+        height="NaN"
         style="display: block;"
         width="600"
       >
@@ -25,7 +25,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, -35)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -39,13 +39,13 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jan 2017
             </text>
@@ -57,13 +57,13 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Feb 2017
             </text>
@@ -75,13 +75,13 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Mar 2017
             </text>
@@ -93,13 +93,13 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Apr 2017
             </text>
@@ -111,13 +111,13 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               May 2017
             </text>
@@ -129,13 +129,13 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jun 2017
             </text>
@@ -147,13 +147,13 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jul 2017
             </text>
@@ -170,13 +170,13 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
         >
           <path
             class="domain"
-            d="M-6,-42.5H0.5V28.5H-6"
+            d="M-6,NaNH0.5V28.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-31.16666666666667)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -193,7 +193,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-15.388888888888891)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -210,7 +210,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,0.3888888888888875)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -227,7 +227,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,16.166666666666664)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -246,98 +246,98 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
             x="40"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             fill="#f7630c"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
             x="78.78453038674033"
-            y="-19.333333333333336"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="-35.111111111111114"
+            y="NaN"
           />
         </g>
       </svg>
@@ -367,7 +367,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
             />
             <div
               class="fui-legend__text"
@@ -386,7 +386,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
             />
             <div
               class="fui-legend__text"
@@ -405,7 +405,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
             />
             <div
               class="fui-legend__text"
@@ -427,7 +427,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
         data-popper-reference-hidden=""
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
-        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: -10px; width: -10px; overflow-x: auto; max-height: -20px; height: -20px; overflow-y: auto; transform: translate(0px, 0px);"
+        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: -10px; overflow-x: auto; max-height: -20px; overflow-y: auto; transform: translate(0px, 0px);"
       >
         <div
           class="fui-cart__calloutContentRoot"
@@ -456,7 +456,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: rgb(16, 124, 16);"
+                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
               >
                 01/01/2017 - 02/02/2017
               </div>
@@ -483,7 +483,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
       <svg
         aria-label="Gantt chart with 8 data points. "
         class="fui-cart__chart"
-        height="0"
+        height="NaN"
         style="display: block;"
         width="600"
       >
@@ -494,7 +494,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, -35)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -508,13 +508,13 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               May 01
             </text>
@@ -526,13 +526,13 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jun 01
             </text>
@@ -544,13 +544,13 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jul 01
             </text>
@@ -567,13 +567,13 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
         >
           <path
             class="domain"
-            d="M-6,-42.5H0.5V28.5H-6"
+            d="M-6,NaNH0.5V28.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-36.735294117647065)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -590,7 +590,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-28.382352941176475)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -607,7 +607,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-20.029411764705884)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -624,7 +624,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-11.676470588235295)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -641,7 +641,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-3.323529411764708)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -658,7 +658,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,5.029411764705879)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -675,7 +675,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,13.382352941176473)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -692,7 +692,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,21.73529411764706)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -711,98 +711,98 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <rect
             aria-label="Site Preparation. No, May 01 - May 07."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="35.604395604395606"
             x="57.802197802197796"
-            y="19.647058823529413"
+            y="NaN"
           />
           <rect
             aria-label="Foundation Work. No, May 08 - May 21."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="77.14285714285715"
             x="99.34065934065934"
-            y="11.294117647058826"
+            y="NaN"
           />
           <rect
             aria-label="Framing. No, May 22 - Jun 02."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="65.27472527472528"
             x="182.41758241758242"
-            y="2.941176470588232"
+            y="NaN"
           />
           <rect
             aria-label="Roof Installation. No, Jun 03 - Jun 09."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="35.60439560439562"
             x="253.6263736263736"
-            y="-5.411764705882355"
+            y="NaN"
           />
           <rect
             aria-label="Plumbing/Electrical. No, Jun 10 - Jun 23."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
             x="295.16483516483515"
-            y="-13.764705882352942"
+            y="NaN"
           />
           <rect
             aria-label="Exterior Finishing. No, Jul 08 - Jul 17."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="53.4065934065934"
             x="461.31868131868134"
-            y="-22.117647058823533"
+            y="NaN"
           />
           <rect
             aria-label="Interior Finishing. Yes (Phase 1), Jun 24 - Jul 07."
             fill="#f7630cff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
             x="378.24175824175825"
-            y="-30.470588235294123"
+            y="NaN"
           />
           <rect
             aria-label="Final Inspections. Yes (Phase 2), Jul 18 - Jul 24."
             fill="#57811bff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="35.60439560439568"
             x="520.6593406593406"
-            y="-38.82352941176471"
+            y="NaN"
           />
         </g>
       </svg>
@@ -832,7 +832,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(99, 124, 239, 1); border-color: #637cefff; --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
+              style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
             />
             <div
               class="fui-legend__text"
@@ -851,7 +851,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(247, 99, 12, 1); border-color: #f7630cff; --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
             />
             <div
               class="fui-legend__text"
@@ -870,7 +870,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(87, 129, 27, 1); border-color: #57811bff; --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
+              style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
             />
             <div
               class="fui-legend__text"
@@ -899,7 +899,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       <svg
         aria-label="Gantt chart with 8 data points. "
         class="fui-cart__chart"
-        height="0"
+        height="NaN"
         style="display: block;"
         width="600"
       >
@@ -910,7 +910,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, -35)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -924,13 +924,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jan 2017
             </text>
@@ -942,13 +942,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Feb 2017
             </text>
@@ -960,13 +960,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Mar 2017
             </text>
@@ -978,13 +978,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Apr 2017
             </text>
@@ -996,13 +996,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               May 2017
             </text>
@@ -1014,13 +1014,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jun 2017
             </text>
@@ -1032,13 +1032,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jul 2017
             </text>
@@ -1055,13 +1055,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         >
           <path
             class="domain"
-            d="M-6,-42.5H0.5V28.5H-6"
+            d="M-6,NaNH0.5V28.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-31.16666666666667)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -1078,7 +1078,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-15.388888888888891)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -1095,7 +1095,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,0.3888888888888875)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -1112,7 +1112,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,16.166666666666664)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -1131,98 +1131,98 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
             x="40"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             fill="#f7630c"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
             x="78.78453038674033"
-            y="-19.333333333333336"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="-35.111111111111114"
+            y="NaN"
           />
         </g>
       </svg>
@@ -1252,7 +1252,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
             />
             <div
               class="fui-legend__text"
@@ -1271,7 +1271,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
             />
             <div
               class="fui-legend__text"
@@ -1290,7 +1290,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
             />
             <div
               class="fui-legend__text"
@@ -1323,7 +1323,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         <svg
           aria-label="Gantt chart with 8 data points. "
           class="fui-cart__chart"
-          height="0"
+          height="NaN"
           style="display: block;"
           width="600"
         >
@@ -1334,7 +1334,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, -35)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -1348,13 +1348,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <line
                 stroke="currentColor"
-                y2="20"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                y="30"
+                y="NaN"
               >
                 Jan 2017
               </text>
@@ -1366,13 +1366,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <line
                 stroke="currentColor"
-                y2="20"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                y="30"
+                y="NaN"
               >
                 Feb 2017
               </text>
@@ -1384,13 +1384,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <line
                 stroke="currentColor"
-                y2="20"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                y="30"
+                y="NaN"
               >
                 Mar 2017
               </text>
@@ -1402,13 +1402,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <line
                 stroke="currentColor"
-                y2="20"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                y="30"
+                y="NaN"
               >
                 Apr 2017
               </text>
@@ -1420,13 +1420,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <line
                 stroke="currentColor"
-                y2="20"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                y="30"
+                y="NaN"
               >
                 May 2017
               </text>
@@ -1438,13 +1438,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <line
                 stroke="currentColor"
-                y2="20"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                y="30"
+                y="NaN"
               >
                 Jun 2017
               </text>
@@ -1456,13 +1456,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <line
                 stroke="currentColor"
-                y2="20"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
-                y="30"
+                y="NaN"
               >
                 Jul 2017
               </text>
@@ -1479,13 +1479,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <path
               class="domain"
-              d="M-6,-42.5H0.5V28.5H-6"
+              d="M-6,NaNH0.5V28.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,-31.16666666666667)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1502,7 +1502,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,-15.388888888888891)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1519,7 +1519,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,0.3888888888888875)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1536,7 +1536,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,16.166666666666664)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1555,98 +1555,98 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <rect
               aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
               fill="#107c10"
-              height="7.888888888888889"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="95.4696132596685"
               x="40"
-              y="12.222222222222221"
+              y="NaN"
             />
             <rect
               aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
               fill="#f7630c"
-              height="7.888888888888889"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="83.53591160220995"
               x="174.25414364640883"
-              y="12.222222222222221"
+              y="NaN"
             />
             <rect
               aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
               fill="#107c10"
-              height="7.888888888888889"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="92.48618784530387"
               x="87.73480662983425"
-              y="-3.555555555555557"
+              y="NaN"
             />
             <rect
               aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
               fill="#c50f1f"
-              height="7.888888888888889"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="92.48618784530387"
               x="87.73480662983425"
-              y="-3.555555555555557"
+              y="NaN"
             />
             <rect
               aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
               fill="#107c10"
-              height="7.888888888888889"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="176.0220994475138"
               x="78.78453038674033"
-              y="-19.333333333333336"
+              y="NaN"
             />
             <rect
               aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
               fill="#c50f1f"
-              height="7.888888888888889"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="29.834254143646376"
               x="242.8729281767956"
-              y="-35.111111111111114"
+              y="NaN"
             />
             <rect
               aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
               fill="#c50f1f"
-              height="7.888888888888889"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="56.685082872928206"
               x="308.50828729281767"
-              y="-35.111111111111114"
+              y="NaN"
             />
             <rect
               aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
               fill="#c50f1f"
-              height="7.888888888888889"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="92.48618784530385"
               x="448.7292817679558"
-              y="-35.111111111111114"
+              y="NaN"
             />
           </g>
         </svg>
@@ -1676,7 +1676,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
               />
               <div
                 class="fui-legend__text"
@@ -1695,7 +1695,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
               />
               <div
                 class="fui-legend__text"
@@ -1714,7 +1714,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
               />
               <div
                 class="fui-legend__text"
@@ -1750,7 +1750,7 @@ Object {
             <svg
               aria-label="Gantt chart with 8 data points. "
               class="fui-cart__chart"
-              height="0"
+              height="NaN"
               style="display: block;"
               width="600"
             >
@@ -1761,7 +1761,7 @@ Object {
                 font-size="10"
                 id="xAxisGElementchart_"
                 text-anchor="middle"
-                transform="translate(0, -35)"
+                transform="translate(0, NaN)"
               >
                 <path
                   class="domain"
@@ -1775,13 +1775,13 @@ Object {
                 >
                   <line
                     stroke="currentColor"
-                    y2="20"
+                    y2="NaN"
                   />
                   <text
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
-                    y="30"
+                    y="NaN"
                   >
                     Jan 2017
                   </text>
@@ -1793,13 +1793,13 @@ Object {
                 >
                   <line
                     stroke="currentColor"
-                    y2="20"
+                    y2="NaN"
                   />
                   <text
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
-                    y="30"
+                    y="NaN"
                   >
                     Feb 2017
                   </text>
@@ -1811,13 +1811,13 @@ Object {
                 >
                   <line
                     stroke="currentColor"
-                    y2="20"
+                    y2="NaN"
                   />
                   <text
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
-                    y="30"
+                    y="NaN"
                   >
                     Mar 2017
                   </text>
@@ -1829,13 +1829,13 @@ Object {
                 >
                   <line
                     stroke="currentColor"
-                    y2="20"
+                    y2="NaN"
                   />
                   <text
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
-                    y="30"
+                    y="NaN"
                   >
                     Apr 2017
                   </text>
@@ -1847,13 +1847,13 @@ Object {
                 >
                   <line
                     stroke="currentColor"
-                    y2="20"
+                    y2="NaN"
                   />
                   <text
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
-                    y="30"
+                    y="NaN"
                   >
                     May 2017
                   </text>
@@ -1865,13 +1865,13 @@ Object {
                 >
                   <line
                     stroke="currentColor"
-                    y2="20"
+                    y2="NaN"
                   />
                   <text
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
-                    y="30"
+                    y="NaN"
                   >
                     Jun 2017
                   </text>
@@ -1883,13 +1883,13 @@ Object {
                 >
                   <line
                     stroke="currentColor"
-                    y2="20"
+                    y2="NaN"
                   />
                   <text
                     aria-hidden="true"
                     dy="0.71em"
                     fill="currentColor"
-                    y="30"
+                    y="NaN"
                   >
                     Jul 2017
                   </text>
@@ -1906,13 +1906,13 @@ Object {
               >
                 <path
                   class="domain"
-                  d="M-6,-42.5H0.5V28.5H-6"
+                  d="M-6,NaNH0.5V28.5H-6"
                   stroke="currentColor"
                 />
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,-31.16666666666667)"
+                  transform="translate(0,NaN)"
                 >
                   <line
                     stroke="currentColor"
@@ -1929,7 +1929,7 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,-15.388888888888891)"
+                  transform="translate(0,NaN)"
                 >
                   <line
                     stroke="currentColor"
@@ -1946,7 +1946,7 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,0.3888888888888875)"
+                  transform="translate(0,NaN)"
                 >
                   <line
                     stroke="currentColor"
@@ -1963,7 +1963,7 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,16.166666666666664)"
+                  transform="translate(0,NaN)"
                 >
                   <line
                     stroke="currentColor"
@@ -1982,98 +1982,98 @@ Object {
                 <rect
                   aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
                   fill="#107c10"
-                  height="7.888888888888889"
+                  height="NaN"
                   opacity="1"
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="95.4696132596685"
                   x="40"
-                  y="12.222222222222221"
+                  y="NaN"
                 />
                 <rect
                   aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
                   fill="#f7630c"
-                  height="7.888888888888889"
+                  height="NaN"
                   opacity="1"
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="83.53591160220995"
                   x="174.25414364640883"
-                  y="12.222222222222221"
+                  y="NaN"
                 />
                 <rect
                   aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
                   fill="#107c10"
-                  height="7.888888888888889"
+                  height="NaN"
                   opacity="1"
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="92.48618784530387"
                   x="87.73480662983425"
-                  y="-3.555555555555557"
+                  y="NaN"
                 />
                 <rect
                   aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
                   fill="#c50f1f"
-                  height="7.888888888888889"
+                  height="NaN"
                   opacity="1"
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="92.48618784530387"
                   x="87.73480662983425"
-                  y="-3.555555555555557"
+                  y="NaN"
                 />
                 <rect
                   aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
                   fill="#107c10"
-                  height="7.888888888888889"
+                  height="NaN"
                   opacity="1"
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="176.0220994475138"
                   x="78.78453038674033"
-                  y="-19.333333333333336"
+                  y="NaN"
                 />
                 <rect
                   aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
                   fill="#c50f1f"
-                  height="7.888888888888889"
+                  height="NaN"
                   opacity="1"
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="29.834254143646376"
                   x="242.8729281767956"
-                  y="-35.111111111111114"
+                  y="NaN"
                 />
                 <rect
                   aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
                   fill="#c50f1f"
-                  height="7.888888888888889"
+                  height="NaN"
                   opacity="1"
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="56.685082872928206"
                   x="308.50828729281767"
-                  y="-35.111111111111114"
+                  y="NaN"
                 />
                 <rect
                   aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
                   fill="#c50f1f"
-                  height="7.888888888888889"
+                  height="NaN"
                   opacity="1"
                   role="img"
                   rx="0"
                   tabindex="0"
                   width="92.48618784530385"
                   x="448.7292817679558"
-                  y="-35.111111111111114"
+                  y="NaN"
                 />
               </g>
             </svg>
@@ -2103,7 +2103,7 @@ Object {
                 >
                   <div
                     class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                    style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
                   />
                   <div
                     class="fui-legend__text"
@@ -2122,7 +2122,7 @@ Object {
                 >
                   <div
                     class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                    style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
                   />
                   <div
                     class="fui-legend__text"
@@ -2141,7 +2141,7 @@ Object {
                 >
                   <div
                     class="fui-legend__rect"
-                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                    style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
                   />
                   <div
                     class="fui-legend__text"
@@ -2172,7 +2172,7 @@ Object {
           <svg
             aria-label="Gantt chart with 8 data points. "
             class="fui-cart__chart"
-            height="0"
+            height="NaN"
             style="display: block;"
             width="600"
           >
@@ -2183,7 +2183,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, -35)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -2197,13 +2197,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="20"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  y="30"
+                  y="NaN"
                 >
                   Jan 2017
                 </text>
@@ -2215,13 +2215,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="20"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  y="30"
+                  y="NaN"
                 >
                   Feb 2017
                 </text>
@@ -2233,13 +2233,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="20"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  y="30"
+                  y="NaN"
                 >
                   Mar 2017
                 </text>
@@ -2251,13 +2251,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="20"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  y="30"
+                  y="NaN"
                 >
                   Apr 2017
                 </text>
@@ -2269,13 +2269,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="20"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  y="30"
+                  y="NaN"
                 >
                   May 2017
                 </text>
@@ -2287,13 +2287,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="20"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  y="30"
+                  y="NaN"
                 >
                   Jun 2017
                 </text>
@@ -2305,13 +2305,13 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="20"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
-                  y="30"
+                  y="NaN"
                 >
                   Jul 2017
                 </text>
@@ -2328,13 +2328,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,-42.5H0.5V28.5H-6"
+                d="M-6,NaNH0.5V28.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,-31.16666666666667)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2351,7 +2351,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,-15.388888888888891)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2368,7 +2368,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,0.3888888888888875)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2385,7 +2385,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,16.166666666666664)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2404,98 +2404,98 @@ Object {
               <rect
                 aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
                 fill="#107c10"
-                height="7.888888888888889"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="95.4696132596685"
                 x="40"
-                y="12.222222222222221"
+                y="NaN"
               />
               <rect
                 aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
                 fill="#f7630c"
-                height="7.888888888888889"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="83.53591160220995"
                 x="174.25414364640883"
-                y="12.222222222222221"
+                y="NaN"
               />
               <rect
                 aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
                 fill="#107c10"
-                height="7.888888888888889"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="92.48618784530387"
                 x="87.73480662983425"
-                y="-3.555555555555557"
+                y="NaN"
               />
               <rect
                 aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
                 fill="#c50f1f"
-                height="7.888888888888889"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="92.48618784530387"
                 x="87.73480662983425"
-                y="-3.555555555555557"
+                y="NaN"
               />
               <rect
                 aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
                 fill="#107c10"
-                height="7.888888888888889"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="176.0220994475138"
                 x="78.78453038674033"
-                y="-19.333333333333336"
+                y="NaN"
               />
               <rect
                 aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
                 fill="#c50f1f"
-                height="7.888888888888889"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="29.834254143646376"
                 x="242.8729281767956"
-                y="-35.111111111111114"
+                y="NaN"
               />
               <rect
                 aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
                 fill="#c50f1f"
-                height="7.888888888888889"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="56.685082872928206"
                 x="308.50828729281767"
-                y="-35.111111111111114"
+                y="NaN"
               />
               <rect
                 aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
                 fill="#c50f1f"
-                height="7.888888888888889"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="92.48618784530385"
                 x="448.7292817679558"
-                y="-35.111111111111114"
+                y="NaN"
               />
             </g>
           </svg>
@@ -2525,7 +2525,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2544,7 +2544,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2563,7 +2563,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2645,7 +2645,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
       <svg
         aria-label="Gantt chart with 6 data points. "
         class="fui-cart__chart"
-        height="0"
+        height="NaN"
         style="display: block;"
         width="600"
       >
@@ -2656,7 +2656,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, -35)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -2670,13 +2670,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jan 2021
             </text>
@@ -2688,13 +2688,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Apr 2021
             </text>
@@ -2706,13 +2706,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jul 2021
             </text>
@@ -2724,13 +2724,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Oct 2021
             </text>
@@ -2742,13 +2742,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jan 2022
             </text>
@@ -2760,13 +2760,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Apr 2022
             </text>
@@ -2783,13 +2783,13 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
         >
           <path
             class="domain"
-            d="M-6,-43H0.5V29H-6"
+            d="M-6,NaNH0.5VNaNH-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-43)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -2807,7 +2807,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-19.000000000000004)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -2825,7 +2825,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,4.999999999999998)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -2843,7 +2843,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,29)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -2863,74 +2863,74 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <rect
             aria-label="6. Legal, 03/05/2022 - 03/15/2022."
             fill="#3a96ddff"
-            height="1"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="11.868131868131854"
             x="547.9560439560439"
-            y="28"
+            y="NaN"
           />
           <rect
             aria-label="5. Customer Support, 03/01/2022 - 03/10/2022."
             fill="#ca5010ff"
-            height="1"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="10.681318681318658"
             x="543.2087912087912"
-            y="16"
+            y="NaN"
           />
           <rect
             aria-label="4. Operations, 02/10/2022 - 02/20/2022."
             fill="#9373c0ff"
-            height="1"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="11.868131868131854"
             x="520.6593406593406"
-            y="3.9999999999999982"
+            y="NaN"
           />
           <rect
             aria-label="3. IT, 02/01/2022 - 02/08/2022."
             fill="#57811bff"
-            height="1"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="8.307692307692207"
             x="509.978021978022"
-            y="-8"
+            y="NaN"
           />
           <rect
             aria-label="2. Finance, 01/15/2022 - 01/20/2022."
             fill="#f7630cff"
-            height="1"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="5.934065934065984"
             x="489.8021978021978"
-            y="-20.000000000000004"
+            y="NaN"
           />
           <rect
             aria-label="1. HR, 01/01/2021 - 01/10/2022."
             fill="#637cefff"
-            height="1"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="443.86813186813185"
             x="40"
-            y="-32"
+            y="NaN"
           />
         </g>
       </svg>
@@ -2960,7 +2960,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(99, 124, 239, 1); border-color: #637cefff; --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
+              style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
             />
             <div
               class="fui-legend__text"
@@ -2979,7 +2979,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(247, 99, 12, 1); border-color: #f7630cff; --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
             />
             <div
               class="fui-legend__text"
@@ -2998,7 +2998,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(87, 129, 27, 1); border-color: #57811bff; --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
+              style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
             />
             <div
               class="fui-legend__text"
@@ -3017,7 +3017,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(147, 115, 192, 1); border-color: #9373c0ff; --rect-content-high-contrast: linear-gradient(to right, #9373c0ff, #9373c0ff);"
+              style="height: 12px; background-color: rgb(147, 115, 192); border-color: rgb(147, 115, 192); --rect-content-high-contrast: linear-gradient(to right, #9373c0ff, #9373c0ff);"
             />
             <div
               class="fui-legend__text"
@@ -3036,7 +3036,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(202, 80, 16, 1); border-color: #ca5010ff; --rect-content-high-contrast: linear-gradient(to right, #ca5010ff, #ca5010ff);"
+              style="height: 12px; background-color: rgb(202, 80, 16); border-color: rgb(202, 80, 16); --rect-content-high-contrast: linear-gradient(to right, #ca5010ff, #ca5010ff);"
             />
             <div
               class="fui-legend__text"
@@ -3055,7 +3055,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(58, 150, 221, 1); border-color: #3a96ddff; --rect-content-high-contrast: linear-gradient(to right, #3a96ddff, #3a96ddff);"
+              style="height: 12px; background-color: rgb(58, 150, 221); border-color: rgb(58, 150, 221); --rect-content-high-contrast: linear-gradient(to right, #3a96ddff, #3a96ddff);"
             />
             <div
               class="fui-legend__text"
@@ -3084,7 +3084,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
       <svg
         aria-label="Gantt chart with 8 data points. "
         class="fui-cart__chart"
-        height="0"
+        height="NaN"
         style="display: block;"
         width="600"
       >
@@ -3095,7 +3095,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, -35)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -3109,13 +3109,13 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jan 2017
             </text>
@@ -3127,13 +3127,13 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Feb 2017
             </text>
@@ -3145,13 +3145,13 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Mar 2017
             </text>
@@ -3163,13 +3163,13 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Apr 2017
             </text>
@@ -3181,13 +3181,13 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               May 2017
             </text>
@@ -3199,13 +3199,13 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jun 2017
             </text>
@@ -3217,13 +3217,13 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jul 2017
             </text>
@@ -3240,13 +3240,13 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
         >
           <path
             class="domain"
-            d="M-6,-42.5H0.5V28.5H-6"
+            d="M-6,NaNH0.5V28.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-31.16666666666667)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -3263,7 +3263,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-15.388888888888891)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -3280,7 +3280,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,0.3888888888888875)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -3297,7 +3297,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,16.166666666666664)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -3354,98 +3354,98 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="url(#gantt_legend_r_m__0_gradient)"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
             x="40"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             fill="url(#gantt_legend_r_m__1_gradient)"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             fill="url(#gantt_legend_r_m__0_gradient)"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             fill="url(#gantt_legend_r_m__2_gradient)"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
             fill="url(#gantt_legend_r_m__0_gradient)"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
             x="78.78453038674033"
-            y="-19.333333333333336"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
             fill="url(#gantt_legend_r_m__2_gradient)"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             fill="url(#gantt_legend_r_m__2_gradient)"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             fill="url(#gantt_legend_r_m__2_gradient)"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="-35.111111111111114"
+            y="NaN"
           />
         </g>
       </svg>
@@ -3475,7 +3475,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(12, 94, 12); border-color: #0c5e0c; --rect-content-high-contrast: linear-gradient(to right, #0C5E0C, #0C5E0C);"
+              style="height: 12px; background-color: rgb(12, 94, 12); border-color: rgb(12, 94, 12); --rect-content-high-contrast: linear-gradient(to right, #0C5E0C, #0C5E0C);"
             />
             <div
               class="fui-legend__text"
@@ -3494,7 +3494,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(222, 89, 11); border-color: #de590b; --rect-content-high-contrast: linear-gradient(to right, #DE590B, #DE590B);"
+              style="height: 12px; background-color: rgb(222, 89, 11); border-color: rgb(222, 89, 11); --rect-content-high-contrast: linear-gradient(to right, #DE590B, #DE590B);"
             />
             <div
               class="fui-legend__text"
@@ -3513,7 +3513,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(177, 14, 28); border-color: #b10e1c; --rect-content-high-contrast: linear-gradient(to right, #B10E1C, #B10E1C);"
+              style="height: 12px; background-color: rgb(177, 14, 28); border-color: rgb(177, 14, 28); --rect-content-high-contrast: linear-gradient(to right, #B10E1C, #B10E1C);"
             />
             <div
               class="fui-legend__text"
@@ -3542,7 +3542,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
       <svg
         aria-label="Gantt chart with 8 data points. "
         class="fui-cart__chart"
-        height="0"
+        height="NaN"
         style="display: block;"
         width="600"
       >
@@ -3553,7 +3553,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, -35)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -3567,13 +3567,13 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jan 2017
             </text>
@@ -3585,13 +3585,13 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Feb 2017
             </text>
@@ -3603,13 +3603,13 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Mar 2017
             </text>
@@ -3621,13 +3621,13 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Apr 2017
             </text>
@@ -3639,13 +3639,13 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               May 2017
             </text>
@@ -3657,13 +3657,13 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jun 2017
             </text>
@@ -3675,13 +3675,13 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jul 2017
             </text>
@@ -3698,13 +3698,13 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
         >
           <path
             class="domain"
-            d="M-6,-42.5H0.5V28.5H-6"
+            d="M-6,NaNH0.5V28.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-31.16666666666667)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -3721,7 +3721,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-15.388888888888891)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -3738,7 +3738,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,0.3888888888888875)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -3755,7 +3755,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,16.166666666666664)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -3774,98 +3774,98 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="95.4696132596685"
             x="40"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             fill="#f7630c"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="176.0220994475138"
             x="78.78453038674033"
-            y="-19.333333333333336"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="-35.111111111111114"
+            y="NaN"
           />
         </g>
       </svg>
@@ -3895,7 +3895,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
             />
             <div
               class="fui-legend__text"
@@ -3914,7 +3914,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
             />
             <div
               class="fui-legend__text"
@@ -3933,7 +3933,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
             />
             <div
               class="fui-legend__text"
@@ -3962,7 +3962,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
       <svg
         aria-label="Gantt chart with 8 data points. "
         class="fui-cart__chart"
-        height="0"
+        height="NaN"
         style="display: block;"
         width="600"
       >
@@ -3973,7 +3973,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, -35)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -3987,13 +3987,13 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jan 2017
             </text>
@@ -4005,13 +4005,13 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Feb 2017
             </text>
@@ -4023,13 +4023,13 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Mar 2017
             </text>
@@ -4041,13 +4041,13 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Apr 2017
             </text>
@@ -4059,13 +4059,13 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               May 2017
             </text>
@@ -4077,13 +4077,13 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jun 2017
             </text>
@@ -4095,13 +4095,13 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jul 2017
             </text>
@@ -4118,13 +4118,13 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
         >
           <path
             class="domain"
-            d="M-6,-42.5H0.5V28.5H-6"
+            d="M-6,NaNH0.5V28.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-31.16666666666667)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4141,7 +4141,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-15.388888888888891)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4158,7 +4158,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,0.3888888888888875)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4175,7 +4175,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,16.166666666666664)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4194,98 +4194,98 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="95.4696132596685"
             x="40"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
             fill="#f7630c"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="83.53591160220995"
             x="174.25414364640883"
-            y="12.222222222222221"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530387"
             x="87.73480662983425"
-            y="-3.555555555555557"
+            y="NaN"
           />
           <rect
             aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
             fill="#107c10"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="176.0220994475138"
             x="78.78453038674033"
-            y="-19.333333333333336"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="29.834254143646376"
             x="242.8729281767956"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="56.685082872928206"
             x="308.50828729281767"
-            y="-35.111111111111114"
+            y="NaN"
           />
           <rect
             aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
             fill="#c50f1f"
-            height="7.888888888888889"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="92.48618784530385"
             x="448.7292817679558"
-            y="-35.111111111111114"
+            y="NaN"
           />
         </g>
       </svg>
@@ -4315,7 +4315,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+              style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
             />
             <div
               class="fui-legend__text"
@@ -4334,7 +4334,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
             />
             <div
               class="fui-legend__text"
@@ -4353,7 +4353,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
+              style="height: 12px; background-color: rgb(197, 15, 31); border-color: rgb(197, 15, 31); --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
             />
             <div
               class="fui-legend__text"
@@ -4375,7 +4375,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
         data-popper-reference-hidden=""
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
-        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: -10px; width: -10px; overflow-x: auto; max-height: -20px; height: -20px; overflow-y: auto; transform: translate(0px, 0px);"
+        style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: -10px; overflow-x: auto; max-height: -20px; overflow-y: auto; transform: translate(0px, 0px);"
       >
         <div
           class="fui-cart__calloutContentRoot"
@@ -4404,7 +4404,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: rgb(16, 124, 16);"
+                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
               >
                 01/01/2017 - 02/02/2017
               </div>
@@ -4431,7 +4431,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
       <svg
         aria-label="Gantt chart with 8 data points. "
         class="fui-cart__chart"
-        height="0"
+        height="NaN"
         style="display: block;"
         width="600"
       >
@@ -4442,7 +4442,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, -35)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -4456,13 +4456,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               May 01
             </text>
@@ -4474,13 +4474,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jun 01
             </text>
@@ -4492,13 +4492,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           >
             <line
               stroke="currentColor"
-              y2="20"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
-              y="30"
+              y="NaN"
             >
               Jul 01
             </text>
@@ -4515,13 +4515,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
         >
           <path
             class="domain"
-            d="M-6,-42.5H0.5V28.5H-6"
+            d="M-6,NaNH0.5V28.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-36.735294117647065)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4551,7 +4551,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-28.382352941176475)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4581,7 +4581,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-20.029411764705884)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4611,7 +4611,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-11.676470588235295)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4641,7 +4641,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,-3.323529411764708)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4671,7 +4671,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,5.029411764705879)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4701,7 +4701,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,13.382352941176473)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4731,7 +4731,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,21.73529411764706)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4763,98 +4763,98 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <rect
             aria-label="Site Preparation. No, May 01 - May 07."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="35.604395604395606"
             x="57.802197802197796"
-            y="19.647058823529413"
+            y="NaN"
           />
           <rect
             aria-label="Foundation Work. No, May 08 - May 21."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="77.14285714285715"
             x="99.34065934065934"
-            y="11.294117647058826"
+            y="NaN"
           />
           <rect
             aria-label="Framing. No, May 22 - Jun 02."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="65.27472527472528"
             x="182.41758241758242"
-            y="2.941176470588232"
+            y="NaN"
           />
           <rect
             aria-label="Roof Installation. No, Jun 03 - Jun 09."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="35.60439560439562"
             x="253.6263736263736"
-            y="-5.411764705882355"
+            y="NaN"
           />
           <rect
             aria-label="Plumbing/Electrical. No, Jun 10 - Jun 23."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
             x="295.16483516483515"
-            y="-13.764705882352942"
+            y="NaN"
           />
           <rect
             aria-label="Exterior Finishing. No, Jul 08 - Jul 17."
             fill="#637cefff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="53.4065934065934"
             x="461.31868131868134"
-            y="-22.117647058823533"
+            y="NaN"
           />
           <rect
             aria-label="Interior Finishing. Yes (Phase 1), Jun 24 - Jul 07."
             fill="#f7630cff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="77.14285714285717"
             x="378.24175824175825"
-            y="-30.470588235294123"
+            y="NaN"
           />
           <rect
             aria-label="Final Inspections. Yes (Phase 2), Jul 18 - Jul 24."
             fill="#57811bff"
-            height="4.176470588235294"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="35.60439560439568"
             x="520.6593406593406"
-            y="-38.82352941176471"
+            y="NaN"
           />
         </g>
       </svg>
@@ -4884,7 +4884,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(99, 124, 239, 1); border-color: #637cefff; --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
+              style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cefff, #637cefff);"
             />
             <div
               class="fui-legend__text"
@@ -4903,7 +4903,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(247, 99, 12, 1); border-color: #f7630cff; --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
+              style="height: 12px; background-color: rgb(247, 99, 12); border-color: rgb(247, 99, 12); --rect-content-high-contrast: linear-gradient(to right, #f7630cff, #f7630cff);"
             />
             <div
               class="fui-legend__text"
@@ -4922,7 +4922,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgba(87, 129, 27, 1); border-color: #57811bff; --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
+              style="height: 12px; background-color: rgb(87, 129, 27); border-color: rgb(87, 129, 27); --rect-content-high-contrast: linear-gradient(to right, #57811bff, #57811bff);"
             />
             <div
               class="fui-legend__text"

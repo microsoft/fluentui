@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
 Object {
@@ -19,7 +19,7 @@ Object {
           <svg
             aria-label="Heat map chart with 4 data points. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -30,7 +30,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -87,13 +87,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M0.5,265.5V20.5"
+                d="M0.5,NaNV20.5"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,203.14356435643566)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -110,7 +110,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.85643564356437)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -130,11 +130,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -142,7 +142,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -153,11 +153,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -165,7 +165,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -175,11 +175,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -187,7 +187,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -198,11 +198,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -210,7 +210,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -288,7 +288,7 @@ Object {
         <svg
           aria-label="Heat map chart with 4 data points. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -299,7 +299,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -356,13 +356,13 @@ Object {
           >
             <path
               class="domain"
-              d="M0.5,265.5V20.5"
+              d="M0.5,NaNV20.5"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,203.14356435643566)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -379,7 +379,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.85643564356437)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -399,11 +399,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
+            transform="translate(45.8415841584158, NaN)"
           >
             <rect
               fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -411,7 +411,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               50
             </text>
@@ -422,11 +422,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
+            transform="translate(337.9207920792079, NaN)"
           >
             <rect
               fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -434,7 +434,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               25
             </text>
@@ -444,11 +444,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
+            transform="translate(45.8415841584158, NaN)"
           >
             <rect
               fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -456,7 +456,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               50
             </text>
@@ -467,11 +467,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
+            transform="translate(337.9207920792079, NaN)"
           >
             <rect
               fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -479,7 +479,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               25
             </text>
@@ -616,7 +616,7 @@ Object {
           <svg
             aria-label="Heat map chart with 4 data points. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -627,7 +627,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -684,13 +684,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M0.5,265.5V20.5"
+                d="M0.5,NaNV20.5"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,203.14356435643566)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -707,7 +707,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.85643564356437)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -727,11 +727,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(255, 197, 186)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -739,7 +739,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -749,11 +749,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(255, 200, 178)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -761,7 +761,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 75
               </text>
@@ -771,11 +771,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(255, 203, 169)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -783,7 +783,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 100
               </text>
@@ -793,11 +793,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(255, 195, 195)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -805,7 +805,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -883,7 +883,7 @@ Object {
         <svg
           aria-label="Heat map chart with 4 data points. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -894,7 +894,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -951,13 +951,13 @@ Object {
           >
             <path
               class="domain"
-              d="M0.5,265.5V20.5"
+              d="M0.5,NaNV20.5"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,203.14356435643566)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -974,7 +974,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.85643564356437)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -994,11 +994,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
+            transform="translate(45.8415841584158, NaN)"
           >
             <rect
               fill="rgb(255, 197, 186)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -1006,7 +1006,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               50
             </text>
@@ -1016,11 +1016,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
+            transform="translate(337.9207920792079, NaN)"
           >
             <rect
               fill="rgb(255, 200, 178)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -1028,7 +1028,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               75
             </text>
@@ -1038,11 +1038,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
+            transform="translate(45.8415841584158, NaN)"
           >
             <rect
               fill="rgb(255, 203, 169)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -1050,7 +1050,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               100
             </text>
@@ -1060,11 +1060,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
+            transform="translate(337.9207920792079, NaN)"
           >
             <rect
               fill="rgb(255, 195, 195)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -1072,7 +1072,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               25
             </text>
@@ -1696,7 +1696,7 @@ Object {
           <svg
             aria-label="Heat map chart with 4 data points. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -1707,7 +1707,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -1764,13 +1764,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M0.5,265.5V20.5"
+                d="M0.5,NaNV20.5"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,203.14356435643566)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -1787,7 +1787,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.85643564356437)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -1807,11 +1807,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -1819,7 +1819,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -1830,11 +1830,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -1842,7 +1842,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -1852,11 +1852,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -1864,7 +1864,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -1875,11 +1875,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -1887,7 +1887,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -1965,7 +1965,7 @@ Object {
         <svg
           aria-label="Heat map chart with 4 data points. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -1976,7 +1976,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -2033,13 +2033,13 @@ Object {
           >
             <path
               class="domain"
-              d="M0.5,265.5V20.5"
+              d="M0.5,NaNV20.5"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,203.14356435643566)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2056,7 +2056,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.85643564356437)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2076,11 +2076,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
+            transform="translate(45.8415841584158, NaN)"
           >
             <rect
               fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -2088,7 +2088,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               50
             </text>
@@ -2099,11 +2099,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
+            transform="translate(337.9207920792079, NaN)"
           >
             <rect
               fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -2111,7 +2111,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               25
             </text>
@@ -2121,11 +2121,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
+            transform="translate(45.8415841584158, NaN)"
           >
             <rect
               fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -2133,7 +2133,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               50
             </text>
@@ -2144,11 +2144,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
+            transform="translate(337.9207920792079, NaN)"
           >
             <rect
               fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -2156,7 +2156,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               25
             </text>
@@ -2293,7 +2293,7 @@ Object {
           <svg
             aria-label="Heat map chart with 4 data points. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -2304,7 +2304,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -2361,13 +2361,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M0.5,265.5V20.5"
+                d="M0.5,NaNV20.5"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,203.14356435643566)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2384,7 +2384,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.85643564356437)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2404,11 +2404,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -2416,7 +2416,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -2427,11 +2427,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -2439,7 +2439,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -2449,11 +2449,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -2461,7 +2461,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -2472,11 +2472,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -2484,7 +2484,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -2562,7 +2562,7 @@ Object {
         <svg
           aria-label="Heat map chart with 4 data points. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -2573,7 +2573,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -2630,13 +2630,13 @@ Object {
           >
             <path
               class="domain"
-              d="M0.5,265.5V20.5"
+              d="M0.5,NaNV20.5"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,203.14356435643566)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2653,7 +2653,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,81.85643564356437)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2673,11 +2673,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(45.8415841584158, 22.42574257425744)"
+            transform="translate(45.8415841584158, NaN)"
           >
             <rect
               fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -2685,7 +2685,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               50
             </text>
@@ -2696,11 +2696,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(337.9207920792079, 22.42574257425744)"
+            transform="translate(337.9207920792079, NaN)"
           >
             <rect
               fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -2708,7 +2708,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               25
             </text>
@@ -2718,11 +2718,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(45.8415841584158, 143.71287128712873)"
+            transform="translate(45.8415841584158, NaN)"
           >
             <rect
               fill="rgb(159, 198, 222)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -2730,7 +2730,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               50
             </text>
@@ -2741,11 +2741,11 @@ Object {
             fill-opacity="1"
             role="img"
             tabindex="0"
-            transform="translate(337.9207920792079, 143.71287128712873)"
+            transform="translate(337.9207920792079, NaN)"
           >
             <rect
               fill="rgb(166, 207, 226)"
-              height="118.86138613861385"
+              height="NaN"
               width="286.23762376237624"
             />
             <text
@@ -2753,7 +2753,7 @@ Object {
               dominant-baseline="middle"
               fill="var(--colorNeutralForeground1)"
               text-anchor="middle"
-              transform="translate(143.11881188118812, 59.430693069306926)"
+              transform="translate(143.11881188118812, NaN)"
             >
               25
             </text>
@@ -2894,7 +2894,7 @@ Object {
             <svg
               aria-label="Heat map chart with 4 data points. "
               class="fui-cart__chart"
-              height="300"
+              height="NaN"
               style="display: block;"
               width="650"
             >
@@ -2905,7 +2905,7 @@ Object {
                 font-size="10"
                 id="xAxisGElementchart_"
                 text-anchor="middle"
-                transform="translate(0, 265)"
+                transform="translate(0, NaN)"
               >
                 <path
                   class="domain"
@@ -2962,13 +2962,13 @@ Object {
               >
                 <path
                   class="domain"
-                  d="M0.5,265.5V20.5"
+                  d="M0.5,NaNV20.5"
                   stroke="currentColor"
                 />
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,203.14356435643566)"
+                  transform="translate(0,NaN)"
                 >
                   <line
                     stroke="currentColor"
@@ -2985,7 +2985,7 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,81.85643564356437)"
+                  transform="translate(0,NaN)"
                 >
                   <line
                     stroke="currentColor"
@@ -3005,11 +3005,11 @@ Object {
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
-                transform="translate(45.8415841584158, 22.42574257425744)"
+                transform="translate(45.8415841584158, NaN)"
               >
                 <rect
                   fill="rgb(159, 198, 222)"
-                  height="118.86138613861385"
+                  height="NaN"
                   width="286.23762376237624"
                 />
                 <text
@@ -3017,7 +3017,7 @@ Object {
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  transform="translate(143.11881188118812, NaN)"
                 >
                   50
                 </text>
@@ -3028,11 +3028,11 @@ Object {
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
-                transform="translate(337.9207920792079, 22.42574257425744)"
+                transform="translate(337.9207920792079, NaN)"
               >
                 <rect
                   fill="rgb(166, 207, 226)"
-                  height="118.86138613861385"
+                  height="NaN"
                   width="286.23762376237624"
                 />
                 <text
@@ -3040,7 +3040,7 @@ Object {
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  transform="translate(143.11881188118812, NaN)"
                 >
                   25
                 </text>
@@ -3050,11 +3050,11 @@ Object {
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
-                transform="translate(45.8415841584158, 143.71287128712873)"
+                transform="translate(45.8415841584158, NaN)"
               >
                 <rect
                   fill="rgb(159, 198, 222)"
-                  height="118.86138613861385"
+                  height="NaN"
                   width="286.23762376237624"
                 />
                 <text
@@ -3062,7 +3062,7 @@ Object {
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  transform="translate(143.11881188118812, NaN)"
                 >
                   50
                 </text>
@@ -3073,11 +3073,11 @@ Object {
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
-                transform="translate(337.9207920792079, 143.71287128712873)"
+                transform="translate(337.9207920792079, NaN)"
               >
                 <rect
                   fill="rgb(166, 207, 226)"
-                  height="118.86138613861385"
+                  height="NaN"
                   width="286.23762376237624"
                 />
                 <text
@@ -3085,7 +3085,7 @@ Object {
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  transform="translate(143.11881188118812, NaN)"
                 >
                   25
                 </text>
@@ -3168,7 +3168,7 @@ Object {
           <svg
             aria-label="Heat map chart with 4 data points. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -3179,7 +3179,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -3236,13 +3236,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M0.5,265.5V20.5"
+                d="M0.5,NaNV20.5"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,203.14356435643566)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3259,7 +3259,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.85643564356437)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3279,11 +3279,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -3291,7 +3291,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -3302,11 +3302,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -3314,7 +3314,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -3324,11 +3324,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -3336,7 +3336,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -3347,11 +3347,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -3359,7 +3359,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -3500,7 +3500,7 @@ Object {
             <svg
               aria-label="Heat map chart with 4 data points. "
               class="fui-cart__chart"
-              height="300"
+              height="NaN"
               style="display: block;"
               width="650"
             >
@@ -3511,7 +3511,7 @@ Object {
                 font-size="10"
                 id="xAxisGElementchart_"
                 text-anchor="middle"
-                transform="translate(0, 265)"
+                transform="translate(0, NaN)"
               >
                 <path
                   class="domain"
@@ -3568,13 +3568,13 @@ Object {
               >
                 <path
                   class="domain"
-                  d="M0.5,265.5V20.5"
+                  d="M0.5,NaNV20.5"
                   stroke="currentColor"
                 />
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,203.14356435643566)"
+                  transform="translate(0,NaN)"
                 >
                   <line
                     stroke="currentColor"
@@ -3591,7 +3591,7 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(0,81.85643564356437)"
+                  transform="translate(0,NaN)"
                 >
                   <line
                     stroke="currentColor"
@@ -3611,11 +3611,11 @@ Object {
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
-                transform="translate(45.8415841584158, 22.42574257425744)"
+                transform="translate(45.8415841584158, NaN)"
               >
                 <rect
                   fill="rgb(159, 198, 222)"
-                  height="118.86138613861385"
+                  height="NaN"
                   width="286.23762376237624"
                 />
                 <text
@@ -3623,7 +3623,7 @@ Object {
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  transform="translate(143.11881188118812, NaN)"
                 >
                   50
                 </text>
@@ -3634,11 +3634,11 @@ Object {
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
-                transform="translate(337.9207920792079, 22.42574257425744)"
+                transform="translate(337.9207920792079, NaN)"
               >
                 <rect
                   fill="rgb(166, 207, 226)"
-                  height="118.86138613861385"
+                  height="NaN"
                   width="286.23762376237624"
                 />
                 <text
@@ -3646,7 +3646,7 @@ Object {
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  transform="translate(143.11881188118812, NaN)"
                 >
                   25
                 </text>
@@ -3656,11 +3656,11 @@ Object {
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
-                transform="translate(45.8415841584158, 143.71287128712873)"
+                transform="translate(45.8415841584158, NaN)"
               >
                 <rect
                   fill="rgb(159, 198, 222)"
-                  height="118.86138613861385"
+                  height="NaN"
                   width="286.23762376237624"
                 />
                 <text
@@ -3668,7 +3668,7 @@ Object {
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  transform="translate(143.11881188118812, NaN)"
                 >
                   50
                 </text>
@@ -3679,11 +3679,11 @@ Object {
                 fill-opacity="1"
                 role="img"
                 tabindex="0"
-                transform="translate(337.9207920792079, 143.71287128712873)"
+                transform="translate(337.9207920792079, NaN)"
               >
                 <rect
                   fill="rgb(166, 207, 226)"
-                  height="118.86138613861385"
+                  height="NaN"
                   width="286.23762376237624"
                 />
                 <text
@@ -3691,7 +3691,7 @@ Object {
                   dominant-baseline="middle"
                   fill="var(--colorNeutralForeground1)"
                   text-anchor="middle"
-                  transform="translate(143.11881188118812, 59.430693069306926)"
+                  transform="translate(143.11881188118812, NaN)"
                 >
                   25
                 </text>
@@ -3773,7 +3773,7 @@ Object {
           <svg
             aria-label="Heat map chart with 4 data points. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -3784,7 +3784,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -3841,13 +3841,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M0.5,265.5V20.5"
+                d="M0.5,NaNV20.5"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,203.14356435643566)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3864,7 +3864,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,81.85643564356437)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3884,11 +3884,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 22.42574257425744)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -3896,7 +3896,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -3907,11 +3907,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 22.42574257425744)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -3919,7 +3919,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -3929,11 +3929,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(45.8415841584158, 143.71287128712873)"
+              transform="translate(45.8415841584158, NaN)"
             >
               <rect
                 fill="rgb(159, 198, 222)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -3941,7 +3941,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 50
               </text>
@@ -3952,11 +3952,11 @@ Object {
               fill-opacity="1"
               role="img"
               tabindex="0"
-              transform="translate(337.9207920792079, 143.71287128712873)"
+              transform="translate(337.9207920792079, NaN)"
             >
               <rect
                 fill="rgb(166, 207, 226)"
-                height="118.86138613861385"
+                height="NaN"
                 width="286.23762376237624"
               />
               <text
@@ -3964,7 +3964,7 @@ Object {
                 dominant-baseline="middle"
                 fill="var(--colorNeutralForeground1)"
                 text-anchor="middle"
-                transform="translate(143.11881188118812, 59.430693069306926)"
+                transform="translate(143.11881188118812, NaN)"
               >
                 25
               </text>
@@ -4097,7 +4097,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
       <svg
         aria-label="Heat map chart with 4 data points. "
         class="fui-cart__chart"
-        height="300"
+        height="NaN"
         style="display: block;"
         width="650"
       >
@@ -4108,7 +4108,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, 265)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -4165,13 +4165,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
         >
           <path
             class="domain"
-            d="M0.5,265.5V20.5"
+            d="M0.5,NaNV20.5"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,203.14356435643566)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4188,7 +4188,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,81.85643564356437)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4208,11 +4208,11 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(45.8415841584158, 22.42574257425744)"
+          transform="translate(45.8415841584158, NaN)"
         >
           <rect
             fill="rgb(151, 189, 219)"
-            height="118.86138613861385"
+            height="NaN"
             width="286.23762376237624"
           />
           <text
@@ -4220,7 +4220,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             dominant-baseline="middle"
             fill="var(--colorNeutralForeground1)"
             text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            transform="translate(143.11881188118812, NaN)"
           />
         </g>
         <g
@@ -4228,11 +4228,11 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(337.9207920792079, 22.42574257425744)"
+          transform="translate(337.9207920792079, NaN)"
         >
           <rect
             fill="rgb(166, 207, 226)"
-            height="118.86138613861385"
+            height="NaN"
             width="286.23762376237624"
           />
           <text
@@ -4240,7 +4240,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             dominant-baseline="middle"
             fill="var(--colorNeutralForeground1)"
             text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            transform="translate(143.11881188118812, NaN)"
           />
         </g>
         <g
@@ -4248,11 +4248,11 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(45.8415841584158, 143.71287128712873)"
+          transform="translate(45.8415841584158, NaN)"
         >
           <rect
             fill="rgb(159, 198, 222)"
-            height="118.86138613861385"
+            height="NaN"
             width="286.23762376237624"
           />
           <text
@@ -4260,7 +4260,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             dominant-baseline="middle"
             fill="var(--colorNeutralForeground1)"
             text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            transform="translate(143.11881188118812, NaN)"
           />
         </g>
         <g
@@ -4268,11 +4268,11 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(337.9207920792079, 143.71287128712873)"
+          transform="translate(337.9207920792079, NaN)"
         >
           <rect
             fill="rgb(144, 180, 215)"
-            height="118.86138613861385"
+            height="NaN"
             width="286.23762376237624"
           />
           <text
@@ -4280,7 +4280,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             dominant-baseline="middle"
             fill="var(--colorNeutralForeground1)"
             text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            transform="translate(143.11881188118812, NaN)"
           />
         </g>
       </svg>
@@ -4358,7 +4358,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
       <svg
         aria-label="Heat map chart with 4 data points. "
         class="fui-cart__chart"
-        height="300"
+        height="NaN"
         style="display: block;"
         width="650"
       >
@@ -4369,7 +4369,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, 265)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -4426,13 +4426,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
         >
           <path
             class="domain"
-            d="M0.5,265.5V20.5"
+            d="M0.5,NaNV20.5"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,203.14356435643566)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4449,7 +4449,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,81.85643564356437)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -4469,11 +4469,11 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(45.8415841584158, 22.42574257425744)"
+          transform="translate(45.8415841584158, NaN)"
         >
           <rect
             fill="rgb(159, 198, 222)"
-            height="118.86138613861385"
+            height="NaN"
             width="286.23762376237624"
           />
           <text
@@ -4481,7 +4481,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             dominant-baseline="middle"
             fill="var(--colorNeutralForeground1)"
             text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            transform="translate(143.11881188118812, NaN)"
           >
             50
           </text>
@@ -4491,11 +4491,11 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(337.9207920792079, 22.42574257425744)"
+          transform="translate(337.9207920792079, NaN)"
         >
           <rect
             fill="rgb(151, 189, 219)"
-            height="118.86138613861385"
+            height="NaN"
             width="286.23762376237624"
           />
           <text
@@ -4503,7 +4503,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             dominant-baseline="middle"
             fill="var(--colorNeutralForeground1)"
             text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            transform="translate(143.11881188118812, NaN)"
           >
             75
           </text>
@@ -4513,11 +4513,11 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(45.8415841584158, 143.71287128712873)"
+          transform="translate(45.8415841584158, NaN)"
         >
           <rect
             fill="rgb(144, 180, 215)"
-            height="118.86138613861385"
+            height="NaN"
             width="286.23762376237624"
           />
           <text
@@ -4525,7 +4525,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             dominant-baseline="middle"
             fill="var(--colorNeutralForeground1)"
             text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            transform="translate(143.11881188118812, NaN)"
           >
             100
           </text>
@@ -4535,11 +4535,11 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(337.9207920792079, 143.71287128712873)"
+          transform="translate(337.9207920792079, NaN)"
         >
           <rect
             fill="rgb(166, 207, 226)"
-            height="118.86138613861385"
+            height="NaN"
             width="286.23762376237624"
           />
           <text
@@ -4547,7 +4547,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             dominant-baseline="middle"
             fill="var(--colorNeutralForeground1)"
             text-anchor="middle"
-            transform="translate(143.11881188118812, 59.430693069306926)"
+            transform="translate(143.11881188118812, NaN)"
           >
             25
           </text>

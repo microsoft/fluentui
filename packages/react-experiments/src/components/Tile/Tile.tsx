@@ -213,13 +213,13 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           </span>
         ) : null}
         {onRenderBackground({
-          background,
+          background: background as JSXElement | null,
           hideBackground,
           ...tileLayout,
           isSelected,
         })}
         {onRenderForeground({
-          foreground,
+          foreground: foreground as JSXElement | null,
           hideForeground,
           ...tileLayout,
           isSelected,

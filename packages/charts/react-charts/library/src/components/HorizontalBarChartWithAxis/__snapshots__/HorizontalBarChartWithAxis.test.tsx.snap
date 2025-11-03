@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Horizontal bar chart with axis rendering Should render the Horizontal bar chart with axis with numaric yaxis data 1`] = `
 <div>
@@ -14,7 +14,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       <svg
         aria-label="Horizontal bar chart with 4 bars. "
         class="fui-cart__chart"
-        height="300"
+        height="NaN"
         style="display: block;"
         width="650"
       >
@@ -25,7 +25,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, 265)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -39,14 +39,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               0
             </text>
@@ -58,14 +58,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               5000
             </text>
@@ -77,14 +77,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               10,000
             </text>
@@ -96,14 +96,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               15,000
             </text>
@@ -115,14 +115,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               20,000
             </text>
@@ -134,14 +134,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               25,000
             </text>
@@ -153,14 +153,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               30,000
             </text>
@@ -172,14 +172,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               35,000
             </text>
@@ -191,14 +191,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               40,000
             </text>
@@ -215,13 +215,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         >
           <path
             class="domain"
-            d="M-6,249.5H0.5V36.5H-6"
+            d="M-6,NaNH0.5VNaNH-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,249.5)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -239,7 +239,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,206.9)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -257,7 +257,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,164.3)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -275,7 +275,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,121.7)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -293,7 +293,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,79.1)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -311,7 +311,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,36.5)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -333,56 +333,56 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             aria-labelledby="toolTipcallout_r_0_"
             data-is-focusable="true"
             fill="#0078d4"
-            height="16"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="147.5"
             x="40"
-            y="219.7"
+            y="NaN"
           />
           <rect
             aria-label="88%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
             data-is-focusable="true"
             fill="#002050"
-            height="16"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="590"
             x="40"
-            y="185.62"
+            y="NaN"
           />
           <rect
             aria-label="37%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
             data-is-focusable="true"
             fill="#00188f"
-            height="16"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="368.75"
             x="40"
-            y="113.2"
+            y="NaN"
           />
           <rect
             aria-label="20%. 2020/04/30."
             aria-labelledby="toolTipcallout_r_0_"
             data-is-focusable="true"
             fill="#00bcf2"
-            height="16"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="295"
             x="40"
-            y="28"
+            y="NaN"
           />
         </g>
       </svg>
@@ -412,7 +412,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+              style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -431,7 +431,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
             />
             <div
               class="fui-legend__text"
@@ -450,7 +450,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -469,7 +469,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -498,7 +498,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       <svg
         aria-label="Horizontal bar chart with 4 bars. "
         class="fui-cart__chart"
-        height="300"
+        height="NaN"
         style="display: block;"
         width="650"
       >
@@ -509,7 +509,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, 265)"
+          transform="translate(0, NaN)"
         >
           <path
             class="domain"
@@ -523,14 +523,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               0
             </text>
@@ -542,14 +542,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               500
             </text>
@@ -561,14 +561,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               1000
             </text>
@@ -580,14 +580,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               1500
             </text>
@@ -599,14 +599,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               2000
             </text>
@@ -618,14 +618,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               2500
             </text>
@@ -637,14 +637,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               3000
             </text>
@@ -656,14 +656,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               3500
             </text>
@@ -675,14 +675,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               4000
             </text>
@@ -694,14 +694,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               4500
             </text>
@@ -713,14 +713,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <line
               stroke="currentColor"
-              y2="-280"
+              y2="NaN"
             />
             <text
               aria-hidden="true"
               dy="0.71em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate;"
-              y="10"
+              y="NaN"
             >
               5000
             </text>
@@ -737,13 +737,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V28.5H-6"
+            d="M-6,NaNH0.5V28.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,218.83333333333334)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -760,7 +760,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,167.94444444444446)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -777,7 +777,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,117.05555555555557)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -794,7 +794,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,66.16666666666669)"
+            transform="translate(0,NaN)"
           >
             <line
               stroke="currentColor"
@@ -815,60 +815,60 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             aria-labelledby="toolTipcallout_r_4_"
             data-is-focusable="true"
             fill="#0078d4"
-            height="32.714285714285715"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            transform="translate(0,-3.634920634920636)"
+            transform="translate(0,NaN)"
             width="118"
             x="40"
-            y="206.11111111111111"
+            y="NaN"
           />
           <rect
             aria-label="5000. String Two."
             aria-labelledby="toolTipcallout_r_4_"
             data-is-focusable="true"
             fill="#00bcf2"
-            height="32.714285714285715"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            transform="translate(0,-3.634920634920636)"
+            transform="translate(0,NaN)"
             width="590"
             x="40"
-            y="155.22222222222223"
+            y="NaN"
           />
           <rect
             aria-label="3000. String Three."
             aria-labelledby="toolTipcallout_r_4_"
             data-is-focusable="true"
             fill="#00188f"
-            height="32.714285714285715"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            transform="translate(0,-3.634920634920636)"
+            transform="translate(0,NaN)"
             width="354"
             x="40"
-            y="104.33333333333334"
+            y="NaN"
           />
           <rect
             aria-label="2000. String Four."
             aria-labelledby="toolTipcallout_r_4_"
             data-is-focusable="true"
             fill="#002050"
-            height="32.714285714285715"
+            height="NaN"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
-            transform="translate(0,-3.634920634920636)"
+            transform="translate(0,NaN)"
             width="236"
             x="40"
-            y="53.44444444444446"
+            y="NaN"
           />
         </g>
       </svg>
@@ -898,7 +898,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -937,7 +937,7 @@ Object {
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -948,7 +948,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -962,14 +962,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   0
                 </text>
@@ -981,14 +981,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   5000
                 </text>
@@ -1000,14 +1000,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   10,000
                 </text>
@@ -1019,14 +1019,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   15,000
                 </text>
@@ -1038,14 +1038,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   20,000
                 </text>
@@ -1057,14 +1057,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   25,000
                 </text>
@@ -1076,14 +1076,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   30,000
                 </text>
@@ -1095,14 +1095,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   35,000
                 </text>
@@ -1114,14 +1114,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   40,000
                 </text>
@@ -1138,13 +1138,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,249.5H0.5V36.5H-6"
+                d="M-6,NaNH0.5VNaNH-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,249.5)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -1162,7 +1162,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,206.9)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -1180,7 +1180,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,164.3)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -1198,7 +1198,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,121.7)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -1216,7 +1216,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,79.1)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -1234,7 +1234,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,36.5)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -1256,56 +1256,56 @@ Object {
                 aria-labelledby="toolTipcallout_r_2e_"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="147.5"
                 x="40"
-                y="219.7"
+                y="NaN"
               />
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
                 data-is-focusable="true"
                 fill="#002050"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="590"
                 x="40"
-                y="185.62"
+                y="NaN"
               />
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
                 data-is-focusable="true"
                 fill="#00188f"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="368.75"
                 x="40"
-                y="113.2"
+                y="NaN"
               />
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2e_"
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="295"
                 x="40"
-                y="28"
+                y="NaN"
               />
             </g>
           </svg>
@@ -1335,7 +1335,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1354,7 +1354,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1373,7 +1373,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1392,7 +1392,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -1419,7 +1419,7 @@ Object {
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -1430,7 +1430,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -1444,14 +1444,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 0
               </text>
@@ -1463,14 +1463,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 5000
               </text>
@@ -1482,14 +1482,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 10,000
               </text>
@@ -1501,14 +1501,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 15,000
               </text>
@@ -1520,14 +1520,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 20,000
               </text>
@@ -1539,14 +1539,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 25,000
               </text>
@@ -1558,14 +1558,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 30,000
               </text>
@@ -1577,14 +1577,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 35,000
               </text>
@@ -1596,14 +1596,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 40,000
               </text>
@@ -1620,13 +1620,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,249.5H0.5V36.5H-6"
+              d="M-6,NaNH0.5VNaNH-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,249.5)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1644,7 +1644,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,206.9)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1662,7 +1662,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,164.3)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1680,7 +1680,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,121.7)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1698,7 +1698,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,79.1)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1716,7 +1716,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,36.5)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -1738,56 +1738,56 @@ Object {
               aria-labelledby="toolTipcallout_r_2e_"
               data-is-focusable="true"
               fill="#0078d4"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="147.5"
               x="40"
-              y="219.7"
+              y="NaN"
             />
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
               data-is-focusable="true"
               fill="#002050"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="590"
               x="40"
-              y="185.62"
+              y="NaN"
             />
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
               data-is-focusable="true"
               fill="#00188f"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="368.75"
               x="40"
-              y="113.2"
+              y="NaN"
             />
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2e_"
               data-is-focusable="true"
               fill="#00bcf2"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="295"
               x="40"
-              y="28"
+              y="NaN"
             />
           </g>
         </svg>
@@ -1817,7 +1817,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
               />
               <div
                 class="fui-legend__text"
@@ -1836,7 +1836,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
               />
               <div
                 class="fui-legend__text"
@@ -1855,7 +1855,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
               />
               <div
                 class="fui-legend__text"
@@ -1874,7 +1874,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"
@@ -1965,7 +1965,7 @@ Object {
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -1976,7 +1976,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -1990,14 +1990,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   0
                 </text>
@@ -2009,14 +2009,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   5000
                 </text>
@@ -2028,14 +2028,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   10,000
                 </text>
@@ -2047,14 +2047,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   15,000
                 </text>
@@ -2066,14 +2066,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   20,000
                 </text>
@@ -2085,14 +2085,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   25,000
                 </text>
@@ -2104,14 +2104,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   30,000
                 </text>
@@ -2123,14 +2123,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   35,000
                 </text>
@@ -2142,14 +2142,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   40,000
                 </text>
@@ -2166,13 +2166,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,249.5H0.5V36.5H-6"
+                d="M-6,NaNH0.5VNaNH-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,249.5)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2190,7 +2190,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,206.9)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2208,7 +2208,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,164.3)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2226,7 +2226,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,121.7)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2244,7 +2244,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,79.1)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2262,7 +2262,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,36.5)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -2284,56 +2284,56 @@ Object {
                 aria-labelledby="toolTipcallout_r_2i_"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="3"
                 tabindex="0"
                 width="147.5"
                 x="40"
-                y="219.7"
+                y="NaN"
               />
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
                 data-is-focusable="true"
                 fill="#002050"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="3"
                 tabindex="0"
                 width="590"
                 x="40"
-                y="185.62"
+                y="NaN"
               />
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
                 data-is-focusable="true"
                 fill="#00188f"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="3"
                 tabindex="0"
                 width="368.75"
                 x="40"
-                y="113.2"
+                y="NaN"
               />
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_2i_"
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="3"
                 tabindex="0"
                 width="295"
                 x="40"
-                y="28"
+                y="NaN"
               />
             </g>
           </svg>
@@ -2363,7 +2363,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2382,7 +2382,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2401,7 +2401,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2420,7 +2420,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -2447,7 +2447,7 @@ Object {
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -2458,7 +2458,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -2472,14 +2472,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 0
               </text>
@@ -2491,14 +2491,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 5000
               </text>
@@ -2510,14 +2510,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 10,000
               </text>
@@ -2529,14 +2529,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 15,000
               </text>
@@ -2548,14 +2548,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 20,000
               </text>
@@ -2567,14 +2567,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 25,000
               </text>
@@ -2586,14 +2586,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 30,000
               </text>
@@ -2605,14 +2605,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 35,000
               </text>
@@ -2624,14 +2624,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 40,000
               </text>
@@ -2648,13 +2648,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,249.5H0.5V36.5H-6"
+              d="M-6,NaNH0.5VNaNH-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,249.5)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2672,7 +2672,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,206.9)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2690,7 +2690,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,164.3)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2708,7 +2708,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,121.7)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2726,7 +2726,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,79.1)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2744,7 +2744,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,36.5)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2766,56 +2766,56 @@ Object {
               aria-labelledby="toolTipcallout_r_2i_"
               data-is-focusable="true"
               fill="#0078d4"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="3"
               tabindex="0"
               width="147.5"
               x="40"
-              y="219.7"
+              y="NaN"
             />
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
               data-is-focusable="true"
               fill="#002050"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="3"
               tabindex="0"
               width="590"
               x="40"
-              y="185.62"
+              y="NaN"
             />
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
               data-is-focusable="true"
               fill="#00188f"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="3"
               tabindex="0"
               width="368.75"
               x="40"
-              y="113.2"
+              y="NaN"
             />
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_2i_"
               data-is-focusable="true"
               fill="#00bcf2"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="3"
               tabindex="0"
               width="295"
               x="40"
-              y="28"
+              y="NaN"
             />
           </g>
         </svg>
@@ -2845,7 +2845,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
               />
               <div
                 class="fui-legend__text"
@@ -2864,7 +2864,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
               />
               <div
                 class="fui-legend__text"
@@ -2883,7 +2883,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
               />
               <div
                 class="fui-legend__text"
@@ -2902,7 +2902,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"
@@ -2988,7 +2988,7 @@ Object {
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -2999,7 +2999,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -3013,14 +3013,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   0
                 </text>
@@ -3032,14 +3032,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   5000
                 </text>
@@ -3051,14 +3051,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   10,000
                 </text>
@@ -3070,14 +3070,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   15,000
                 </text>
@@ -3089,14 +3089,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   20,000
                 </text>
@@ -3108,14 +3108,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   25,000
                 </text>
@@ -3127,14 +3127,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   30,000
                 </text>
@@ -3146,14 +3146,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   35,000
                 </text>
@@ -3165,14 +3165,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   40,000
                 </text>
@@ -3189,13 +3189,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,249.5H0.5V36.5H-6"
+                d="M-6,NaNH0.5VNaNH-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,249.5)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3213,7 +3213,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,206.9)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3231,7 +3231,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,164.3)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3249,7 +3249,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,121.7)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3267,7 +3267,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,79.1)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3285,7 +3285,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,36.5)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -3307,56 +3307,56 @@ Object {
                 aria-labelledby="toolTipcallout_r_1r_"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="147.5"
                 x="40"
-                y="219.7"
+                y="NaN"
               />
               <rect
                 aria-label="88%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
                 data-is-focusable="true"
                 fill="#002050"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="590"
                 x="40"
-                y="185.62"
+                y="NaN"
               />
               <rect
                 aria-label="37%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
                 data-is-focusable="true"
                 fill="#00188f"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="368.75"
                 x="40"
-                y="113.2"
+                y="NaN"
               />
               <rect
                 aria-label="20%. 2020/04/30."
                 aria-labelledby="toolTipcallout_r_1r_"
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="16"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="295"
                 x="40"
-                y="28"
+                y="NaN"
               />
             </g>
           </svg>
@@ -3386,7 +3386,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -3405,7 +3405,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                  style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
                 />
                 <div
                   class="fui-legend__text"
@@ -3424,7 +3424,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                  style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
                 />
                 <div
                   class="fui-legend__text"
@@ -3443,7 +3443,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -3470,7 +3470,7 @@ Object {
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -3481,7 +3481,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -3495,14 +3495,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 0
               </text>
@@ -3514,14 +3514,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 5000
               </text>
@@ -3533,14 +3533,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 10,000
               </text>
@@ -3552,14 +3552,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 15,000
               </text>
@@ -3571,14 +3571,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 20,000
               </text>
@@ -3590,14 +3590,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 25,000
               </text>
@@ -3609,14 +3609,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 30,000
               </text>
@@ -3628,14 +3628,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 35,000
               </text>
@@ -3647,14 +3647,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 40,000
               </text>
@@ -3671,13 +3671,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,249.5H0.5V36.5H-6"
+              d="M-6,NaNH0.5VNaNH-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,249.5)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -3695,7 +3695,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,206.9)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -3713,7 +3713,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,164.3)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -3731,7 +3731,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,121.7)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -3749,7 +3749,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,79.1)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -3767,7 +3767,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,36.5)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -3789,56 +3789,56 @@ Object {
               aria-labelledby="toolTipcallout_r_1r_"
               data-is-focusable="true"
               fill="#0078d4"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="147.5"
               x="40"
-              y="219.7"
+              y="NaN"
             />
             <rect
               aria-label="88%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
               data-is-focusable="true"
               fill="#002050"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="590"
               x="40"
-              y="185.62"
+              y="NaN"
             />
             <rect
               aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
               data-is-focusable="true"
               fill="#00188f"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="368.75"
               x="40"
-              y="113.2"
+              y="NaN"
             />
             <rect
               aria-label="20%. 2020/04/30."
               aria-labelledby="toolTipcallout_r_1r_"
               data-is-focusable="true"
               fill="#00bcf2"
-              height="16"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="295"
               x="40"
-              y="28"
+              y="NaN"
             />
           </g>
         </svg>
@@ -3868,7 +3868,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
               />
               <div
                 class="fui-legend__text"
@@ -3887,7 +3887,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+                style="height: 12px; background-color: rgb(0, 188, 242); border-color: rgb(0, 188, 242); --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
               />
               <div
                 class="fui-legend__text"
@@ -3906,7 +3906,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+                style="height: 12px; background-color: rgb(0, 24, 143); border-color: rgb(0, 24, 143); --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
               />
               <div
                 class="fui-legend__text"
@@ -3925,7 +3925,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"
@@ -4011,7 +4011,7 @@ Object {
           <svg
             aria-label="Horizontal bar chart with 9 bars. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -4022,7 +4022,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -4036,14 +4036,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   -8000
                 </text>
@@ -4055,14 +4055,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   -6000
                 </text>
@@ -4074,14 +4074,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   -4000
                 </text>
@@ -4093,14 +4093,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   -2000
                 </text>
@@ -4112,14 +4112,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   0
                 </text>
@@ -4131,14 +4131,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   2000
                 </text>
@@ -4150,14 +4150,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   4000
                 </text>
@@ -4169,14 +4169,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   6000
                 </text>
@@ -4188,14 +4188,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   8000
                 </text>
@@ -4207,14 +4207,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   10,000
                 </text>
@@ -4226,14 +4226,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   12,000
                 </text>
@@ -4245,14 +4245,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   14,000
                 </text>
@@ -4264,14 +4264,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   16,000
                 </text>
@@ -4283,14 +4283,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   18,000
                 </text>
@@ -4302,14 +4302,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   20,000
                 </text>
@@ -4326,13 +4326,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,257.5H0.5V28.5H-6"
+                d="M-6,NaNH0.5V28.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,207.92857142857142)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -4349,7 +4349,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,142.5)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -4366,7 +4366,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,77.07142857142857)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -4387,135 +4387,135 @@ Object {
                 aria-labelledby="toolTipcallout_r_1v_"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="45.8"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-6.542857142857141)"
+                transform="translate(0,NaN)"
                 width="208.71428571428575"
                 x="208.57142857142858"
-                y="191.57142857142856"
+                y="NaN"
               />
               <rect
                 aria-label="-5K. Q1."
                 aria-labelledby="toolTipcallout_r_1v_"
                 data-is-focusable="true"
                 fill="#ff8c00"
-                height="45.8"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-6.542857142857141)"
+                transform="translate(0,NaN)"
                 width="103.35714285714286"
                 x="103.21428571428572"
-                y="191.57142857142856"
+                y="NaN"
               />
               <rect
                 aria-label="8K. Q1."
                 aria-labelledby="toolTipcallout_r_1v_"
                 data-is-focusable="true"
                 fill="#107c10"
-                height="45.8"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-6.542857142857141)"
+                transform="translate(0,NaN)"
                 width="168.57142857142858"
                 x="419.28571428571433"
-                y="191.57142857142856"
+                y="NaN"
               />
               <rect
                 aria-label="-7K. Q2."
                 aria-labelledby="toolTipcallout_r_1v_"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="45.8"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-6.542857142857141)"
+                transform="translate(0,NaN)"
                 width="145.5"
                 x="61.07142857142857"
-                y="126.14285714285714"
+                y="NaN"
               />
               <rect
                 aria-label="12K. Q2."
                 aria-labelledby="toolTipcallout_r_1v_"
                 data-is-focusable="true"
                 fill="#ff8c00"
-                height="45.8"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-6.542857142857141)"
+                transform="translate(0,NaN)"
                 width="250.85714285714286"
                 x="208.57142857142858"
-                y="126.14285714285714"
+                y="NaN"
               />
               <rect
                 aria-label="3K. Q2."
                 aria-labelledby="toolTipcallout_r_1v_"
                 data-is-focusable="true"
                 fill="#107c10"
-                height="45.8"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-6.542857142857141)"
+                transform="translate(0,NaN)"
                 width="63.214285714285694"
                 x="461.42857142857144"
-                y="126.14285714285714"
+                y="NaN"
               />
               <rect
                 aria-label="15K. Q3."
                 aria-labelledby="toolTipcallout_r_1v_"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="45.8"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-6.542857142857141)"
+                transform="translate(0,NaN)"
                 width="314.07142857142856"
                 x="208.57142857142858"
-                y="60.71428571428571"
+                y="NaN"
               />
               <rect
                 aria-label="-4K. Q3."
                 aria-labelledby="toolTipcallout_r_1v_"
                 data-is-focusable="true"
                 fill="#ff8c00"
-                height="45.8"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-6.542857142857141)"
+                transform="translate(0,NaN)"
                 width="82.28571428571429"
                 x="124.28571428571429"
-                y="60.71428571428571"
+                y="NaN"
               />
               <rect
                 aria-label="5K. Q3."
                 aria-labelledby="toolTipcallout_r_1v_"
                 data-is-focusable="true"
                 fill="#107c10"
-                height="45.8"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-6.542857142857141)"
+                transform="translate(0,NaN)"
                 width="105.35714285714286"
                 x="524.6428571428571"
-                y="60.71428571428571"
+                y="NaN"
               />
             </g>
           </svg>
@@ -4545,7 +4545,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                  style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
                 />
                 <div
                   class="fui-legend__text"
@@ -4564,7 +4564,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(255, 140, 0); border-color: #ff8c00; --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
+                  style="height: 12px; background-color: rgb(255, 140, 0); border-color: rgb(255, 140, 0); --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
                 />
                 <div
                   class="fui-legend__text"
@@ -4583,7 +4583,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
                 />
                 <div
                   class="fui-legend__text"
@@ -4610,7 +4610,7 @@ Object {
         <svg
           aria-label="Horizontal bar chart with 9 bars. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -4621,7 +4621,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -4635,14 +4635,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 -8000
               </text>
@@ -4654,14 +4654,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 -6000
               </text>
@@ -4673,14 +4673,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 -4000
               </text>
@@ -4692,14 +4692,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 -2000
               </text>
@@ -4711,14 +4711,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 0
               </text>
@@ -4730,14 +4730,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 2000
               </text>
@@ -4749,14 +4749,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 4000
               </text>
@@ -4768,14 +4768,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 6000
               </text>
@@ -4787,14 +4787,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 8000
               </text>
@@ -4806,14 +4806,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 10,000
               </text>
@@ -4825,14 +4825,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 12,000
               </text>
@@ -4844,14 +4844,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 14,000
               </text>
@@ -4863,14 +4863,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 16,000
               </text>
@@ -4882,14 +4882,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 18,000
               </text>
@@ -4901,14 +4901,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 20,000
               </text>
@@ -4925,13 +4925,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V28.5H-6"
+              d="M-6,NaNH0.5V28.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,207.92857142857142)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -4948,7 +4948,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,142.5)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -4965,7 +4965,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,77.07142857142857)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -4986,135 +4986,135 @@ Object {
               aria-labelledby="toolTipcallout_r_1v_"
               data-is-focusable="true"
               fill="#0078d4"
-              height="45.8"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-6.542857142857141)"
+              transform="translate(0,NaN)"
               width="208.71428571428575"
               x="208.57142857142858"
-              y="191.57142857142856"
+              y="NaN"
             />
             <rect
               aria-label="-5K. Q1."
               aria-labelledby="toolTipcallout_r_1v_"
               data-is-focusable="true"
               fill="#ff8c00"
-              height="45.8"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-6.542857142857141)"
+              transform="translate(0,NaN)"
               width="103.35714285714286"
               x="103.21428571428572"
-              y="191.57142857142856"
+              y="NaN"
             />
             <rect
               aria-label="8K. Q1."
               aria-labelledby="toolTipcallout_r_1v_"
               data-is-focusable="true"
               fill="#107c10"
-              height="45.8"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-6.542857142857141)"
+              transform="translate(0,NaN)"
               width="168.57142857142858"
               x="419.28571428571433"
-              y="191.57142857142856"
+              y="NaN"
             />
             <rect
               aria-label="-7K. Q2."
               aria-labelledby="toolTipcallout_r_1v_"
               data-is-focusable="true"
               fill="#0078d4"
-              height="45.8"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-6.542857142857141)"
+              transform="translate(0,NaN)"
               width="145.5"
               x="61.07142857142857"
-              y="126.14285714285714"
+              y="NaN"
             />
             <rect
               aria-label="12K. Q2."
               aria-labelledby="toolTipcallout_r_1v_"
               data-is-focusable="true"
               fill="#ff8c00"
-              height="45.8"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-6.542857142857141)"
+              transform="translate(0,NaN)"
               width="250.85714285714286"
               x="208.57142857142858"
-              y="126.14285714285714"
+              y="NaN"
             />
             <rect
               aria-label="3K. Q2."
               aria-labelledby="toolTipcallout_r_1v_"
               data-is-focusable="true"
               fill="#107c10"
-              height="45.8"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-6.542857142857141)"
+              transform="translate(0,NaN)"
               width="63.214285714285694"
               x="461.42857142857144"
-              y="126.14285714285714"
+              y="NaN"
             />
             <rect
               aria-label="15K. Q3."
               aria-labelledby="toolTipcallout_r_1v_"
               data-is-focusable="true"
               fill="#0078d4"
-              height="45.8"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-6.542857142857141)"
+              transform="translate(0,NaN)"
               width="314.07142857142856"
               x="208.57142857142858"
-              y="60.71428571428571"
+              y="NaN"
             />
             <rect
               aria-label="-4K. Q3."
               aria-labelledby="toolTipcallout_r_1v_"
               data-is-focusable="true"
               fill="#ff8c00"
-              height="45.8"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-6.542857142857141)"
+              transform="translate(0,NaN)"
               width="82.28571428571429"
               x="124.28571428571429"
-              y="60.71428571428571"
+              y="NaN"
             />
             <rect
               aria-label="5K. Q3."
               aria-labelledby="toolTipcallout_r_1v_"
               data-is-focusable="true"
               fill="#107c10"
-              height="45.8"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-6.542857142857141)"
+              transform="translate(0,NaN)"
               width="105.35714285714286"
               x="524.6428571428571"
-              y="60.71428571428571"
+              y="NaN"
             />
           </g>
         </svg>
@@ -5144,7 +5144,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+                style="height: 12px; background-color: rgb(0, 120, 212); border-color: rgb(0, 120, 212); --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
               />
               <div
                 class="fui-legend__text"
@@ -5163,7 +5163,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(255, 140, 0); border-color: #ff8c00; --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
+                style="height: 12px; background-color: rgb(255, 140, 0); border-color: rgb(255, 140, 0); --rect-content-high-contrast: linear-gradient(to right, #ff8c00, #ff8c00);"
               />
               <div
                 class="fui-legend__text"
@@ -5182,7 +5182,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
+                style="height: 12px; background-color: rgb(16, 124, 16); border-color: rgb(16, 124, 16); --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
               />
               <div
                 class="fui-legend__text"
@@ -6105,7 +6105,7 @@ Object {
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -6116,7 +6116,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -6130,14 +6130,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   0
                 </text>
@@ -6149,14 +6149,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   500
                 </text>
@@ -6168,14 +6168,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   1000
                 </text>
@@ -6187,14 +6187,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   1500
                 </text>
@@ -6206,14 +6206,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   2000
                 </text>
@@ -6225,14 +6225,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   2500
                 </text>
@@ -6244,14 +6244,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   3000
                 </text>
@@ -6263,14 +6263,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   3500
                 </text>
@@ -6282,14 +6282,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   4000
                 </text>
@@ -6301,14 +6301,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   4500
                 </text>
@@ -6320,14 +6320,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   5000
                 </text>
@@ -6344,13 +6344,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,257.5H0.5V28.5H-6"
+                d="M-6,NaNH0.5V28.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,218.83333333333334)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -6380,7 +6380,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,167.94444444444446)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -6410,7 +6410,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,117.05555555555557)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -6440,7 +6440,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,66.16666666666669)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -6474,60 +6474,60 @@ Object {
                 aria-labelledby="toolTipcallout_r_26_"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="32.714285714285715"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-3.634920634920636)"
+                transform="translate(0,NaN)"
                 width="118"
                 x="40"
-                y="206.11111111111111"
+                y="NaN"
               />
               <rect
                 aria-label="5000. String Two."
                 aria-labelledby="toolTipcallout_r_26_"
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="32.714285714285715"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-3.634920634920636)"
+                transform="translate(0,NaN)"
                 width="590"
                 x="40"
-                y="155.22222222222223"
+                y="NaN"
               />
               <rect
                 aria-label="3000. String Three."
                 aria-labelledby="toolTipcallout_r_26_"
                 data-is-focusable="true"
                 fill="#00188f"
-                height="32.714285714285715"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-3.634920634920636)"
+                transform="translate(0,NaN)"
                 width="354"
                 x="40"
-                y="104.33333333333334"
+                y="NaN"
               />
               <rect
                 aria-label="2000. String Four."
                 aria-labelledby="toolTipcallout_r_26_"
                 data-is-focusable="true"
                 fill="#002050"
-                height="32.714285714285715"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-3.634920634920636)"
+                transform="translate(0,NaN)"
                 width="236"
                 x="40"
-                y="53.44444444444446"
+                y="NaN"
               />
             </g>
           </svg>
@@ -6557,7 +6557,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -6589,7 +6589,7 @@ Object {
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -6600,7 +6600,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -6614,14 +6614,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 0
               </text>
@@ -6633,14 +6633,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 500
               </text>
@@ -6652,14 +6652,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 1000
               </text>
@@ -6671,14 +6671,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 1500
               </text>
@@ -6690,14 +6690,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 2000
               </text>
@@ -6709,14 +6709,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 2500
               </text>
@@ -6728,14 +6728,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 3000
               </text>
@@ -6747,14 +6747,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 3500
               </text>
@@ -6766,14 +6766,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 4000
               </text>
@@ -6785,14 +6785,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 4500
               </text>
@@ -6804,14 +6804,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 5000
               </text>
@@ -6828,13 +6828,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V28.5H-6"
+              d="M-6,NaNH0.5V28.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,218.83333333333334)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -6864,7 +6864,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,167.94444444444446)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -6894,7 +6894,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,117.05555555555557)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -6924,7 +6924,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,66.16666666666669)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -6958,60 +6958,60 @@ Object {
               aria-labelledby="toolTipcallout_r_26_"
               data-is-focusable="true"
               fill="#0078d4"
-              height="32.714285714285715"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-3.634920634920636)"
+              transform="translate(0,NaN)"
               width="118"
               x="40"
-              y="206.11111111111111"
+              y="NaN"
             />
             <rect
               aria-label="5000. String Two."
               aria-labelledby="toolTipcallout_r_26_"
               data-is-focusable="true"
               fill="#00bcf2"
-              height="32.714285714285715"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-3.634920634920636)"
+              transform="translate(0,NaN)"
               width="590"
               x="40"
-              y="155.22222222222223"
+              y="NaN"
             />
             <rect
               aria-label="3000. String Three."
               aria-labelledby="toolTipcallout_r_26_"
               data-is-focusable="true"
               fill="#00188f"
-              height="32.714285714285715"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-3.634920634920636)"
+              transform="translate(0,NaN)"
               width="354"
               x="40"
-              y="104.33333333333334"
+              y="NaN"
             />
             <rect
               aria-label="2000. String Four."
               aria-labelledby="toolTipcallout_r_26_"
               data-is-focusable="true"
               fill="#002050"
-              height="32.714285714285715"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-3.634920634920636)"
+              transform="translate(0,NaN)"
               width="236"
               x="40"
-              y="53.44444444444446"
+              y="NaN"
             />
           </g>
         </svg>
@@ -7041,7 +7041,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"
@@ -7132,7 +7132,7 @@ Object {
           <svg
             aria-label="Horizontal bar chart with 4 bars. "
             class="fui-cart__chart"
-            height="300"
+            height="NaN"
             style="display: block;"
             width="650"
           >
@@ -7143,7 +7143,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, 265)"
+              transform="translate(0, NaN)"
             >
               <path
                 class="domain"
@@ -7157,14 +7157,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   0
                 </text>
@@ -7176,14 +7176,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   500
                 </text>
@@ -7195,14 +7195,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   1000
                 </text>
@@ -7214,14 +7214,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   1500
                 </text>
@@ -7233,14 +7233,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   2000
                 </text>
@@ -7252,14 +7252,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   2500
                 </text>
@@ -7271,14 +7271,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   3000
                 </text>
@@ -7290,14 +7290,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   3500
                 </text>
@@ -7309,14 +7309,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   4000
                 </text>
@@ -7328,14 +7328,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   4500
                 </text>
@@ -7347,14 +7347,14 @@ Object {
               >
                 <line
                   stroke="currentColor"
-                  y2="-280"
+                  y2="NaN"
                 />
                 <text
                   aria-hidden="true"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
-                  y="10"
+                  y="NaN"
                 >
                   5000
                 </text>
@@ -7371,13 +7371,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,257.5H0.5V28.5H-6"
+                d="M-6,NaNH0.5V28.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,218.83333333333334)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -7394,7 +7394,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,167.94444444444446)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -7411,7 +7411,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,117.05555555555557)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -7428,7 +7428,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,66.16666666666669)"
+                transform="translate(0,NaN)"
               >
                 <line
                   stroke="currentColor"
@@ -7449,60 +7449,60 @@ Object {
                 aria-labelledby="toolTipcallout_r_2a_"
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="32.714285714285715"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-3.634920634920636)"
+                transform="translate(0,NaN)"
                 width="118"
                 x="40"
-                y="206.11111111111111"
+                y="NaN"
               />
               <rect
                 aria-label="5000. String Two."
                 aria-labelledby="toolTipcallout_r_2a_"
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="32.714285714285715"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-3.634920634920636)"
+                transform="translate(0,NaN)"
                 width="590"
                 x="40"
-                y="155.22222222222223"
+                y="NaN"
               />
               <rect
                 aria-label="3000. String Three."
                 aria-labelledby="toolTipcallout_r_2a_"
                 data-is-focusable="true"
                 fill="#00188f"
-                height="32.714285714285715"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-3.634920634920636)"
+                transform="translate(0,NaN)"
                 width="354"
                 x="40"
-                y="104.33333333333334"
+                y="NaN"
               />
               <rect
                 aria-label="2000. String Four."
                 aria-labelledby="toolTipcallout_r_2a_"
                 data-is-focusable="true"
                 fill="#002050"
-                height="32.714285714285715"
+                height="NaN"
                 opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
-                transform="translate(0,-3.634920634920636)"
+                transform="translate(0,NaN)"
                 width="236"
                 x="40"
-                y="53.44444444444446"
+                y="NaN"
               />
             </g>
           </svg>
@@ -7532,7 +7532,7 @@ Object {
               >
                 <div
                   class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                  style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
                 />
                 <div
                   class="fui-legend__text"
@@ -7559,7 +7559,7 @@ Object {
         <svg
           aria-label="Horizontal bar chart with 4 bars. "
           class="fui-cart__chart"
-          height="300"
+          height="NaN"
           style="display: block;"
           width="650"
         >
@@ -7570,7 +7570,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, 265)"
+            transform="translate(0, NaN)"
           >
             <path
               class="domain"
@@ -7584,14 +7584,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 0
               </text>
@@ -7603,14 +7603,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 500
               </text>
@@ -7622,14 +7622,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 1000
               </text>
@@ -7641,14 +7641,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 1500
               </text>
@@ -7660,14 +7660,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 2000
               </text>
@@ -7679,14 +7679,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 2500
               </text>
@@ -7698,14 +7698,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 3000
               </text>
@@ -7717,14 +7717,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 3500
               </text>
@@ -7736,14 +7736,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 4000
               </text>
@@ -7755,14 +7755,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 4500
               </text>
@@ -7774,14 +7774,14 @@ Object {
             >
               <line
                 stroke="currentColor"
-                y2="-280"
+                y2="NaN"
               />
               <text
                 aria-hidden="true"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
-                y="10"
+                y="NaN"
               >
                 5000
               </text>
@@ -7798,13 +7798,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V28.5H-6"
+              d="M-6,NaNH0.5V28.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,218.83333333333334)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -7821,7 +7821,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,167.94444444444446)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -7838,7 +7838,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,117.05555555555557)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -7855,7 +7855,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,66.16666666666669)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -7876,60 +7876,60 @@ Object {
               aria-labelledby="toolTipcallout_r_2a_"
               data-is-focusable="true"
               fill="#0078d4"
-              height="32.714285714285715"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-3.634920634920636)"
+              transform="translate(0,NaN)"
               width="118"
               x="40"
-              y="206.11111111111111"
+              y="NaN"
             />
             <rect
               aria-label="5000. String Two."
               aria-labelledby="toolTipcallout_r_2a_"
               data-is-focusable="true"
               fill="#00bcf2"
-              height="32.714285714285715"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-3.634920634920636)"
+              transform="translate(0,NaN)"
               width="590"
               x="40"
-              y="155.22222222222223"
+              y="NaN"
             />
             <rect
               aria-label="3000. String Three."
               aria-labelledby="toolTipcallout_r_2a_"
               data-is-focusable="true"
               fill="#00188f"
-              height="32.714285714285715"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-3.634920634920636)"
+              transform="translate(0,NaN)"
               width="354"
               x="40"
-              y="104.33333333333334"
+              y="NaN"
             />
             <rect
               aria-label="2000. String Four."
               aria-labelledby="toolTipcallout_r_2a_"
               data-is-focusable="true"
               fill="#002050"
-              height="32.714285714285715"
+              height="NaN"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
-              transform="translate(0,-3.634920634920636)"
+              transform="translate(0,NaN)"
               width="236"
               x="40"
-              y="53.44444444444446"
+              y="NaN"
             />
           </g>
         </svg>
@@ -7959,7 +7959,7 @@ Object {
             >
               <div
                 class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
+                style="height: 12px; background-color: rgb(0, 32, 80); border-color: rgb(0, 32, 80); --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
               />
               <div
                 class="fui-legend__text"
