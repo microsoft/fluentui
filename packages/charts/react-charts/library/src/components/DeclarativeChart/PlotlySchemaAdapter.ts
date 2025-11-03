@@ -724,6 +724,14 @@ export const transformPlotlyJsonToVSBCProps = (
     .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
       const resolveX = (val: Datum) => {
+        if (shape.xref === 'x domain') {
+          if (val === 0) {
+            return xCategories[0];
+          }
+          if (val === 1) {
+            return xCategories[xCategories.length - 1];
+          }
+        }
         if (typeof val === 'number' && Array.isArray(xCategories)) {
           if (xCategories[val] !== undefined) {
             return xCategories[val];
