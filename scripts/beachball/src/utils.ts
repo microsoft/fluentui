@@ -76,7 +76,7 @@ function getPackagePaths() {
 
   for (const project of Object.values(allProjects)) {
     const metadata = { project: project.projectConfig, packageJson: project.packageJson };
-    if (isConvergedPackage(metadata)) {
+    if (isConvergedPackage(metadata) && !isToolsPackage(metadata)) {
       vNextPaths.push(project.packagePath);
     }
     if (isWebComponentPackage(metadata)) {

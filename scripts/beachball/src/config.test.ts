@@ -101,6 +101,9 @@ describe(`beachball configs`, () => {
         include: includeScopes,
       },
     ]);
+
+    // Ensure that vNext config does not include "tools" packages
+    expect(vNextConfig.scope).not.toEqual(expect.arrayContaining(toolsConfig.scope));
   });
 
   it(`should generate web-components release config`, () => {
