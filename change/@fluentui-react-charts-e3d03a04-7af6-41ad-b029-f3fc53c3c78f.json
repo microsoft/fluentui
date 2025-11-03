@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix dark mode styles of chart table",
+  "comment": "fix reference lines bug",
   "packageName": "@fluentui/react-charts",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"

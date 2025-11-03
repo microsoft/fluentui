@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: update docs to use createRoot",
-  "packageName": "@fluentui/react-theme-sass",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
