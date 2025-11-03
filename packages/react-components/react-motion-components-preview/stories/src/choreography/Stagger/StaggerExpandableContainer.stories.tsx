@@ -62,7 +62,6 @@ const useClasses = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    // padding: tokens.spacingVerticalL,
     gap: tokens.spacingVerticalL,
     maxWidth: '300px',
   },
@@ -76,7 +75,6 @@ const useClasses = makeStyles({
     flexDirection: 'row',
     alignItems: 'center',
     gap: tokens.spacingVerticalS,
-    // marginBottom: tokens.spacingVerticalM,
   },
   sliderLabel: {
     fontSize: tokens.fontSizeBase200,
@@ -101,9 +99,6 @@ const useClasses = makeStyles({
   item: {
     display: 'flex',
     alignItems: 'center',
-    // padding: tokens.spacingVerticalS,
-    // backgroundColor: tokens.colorNeutralBackground2,
-    // border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
     borderRadius: tokens.borderRadiusSmall,
     minHeight: ITEM_HEIGHT,
     justifyContent: 'flex-start',
@@ -115,7 +110,7 @@ export const ExpandableContainer = (): JSXElement => {
   const [expanded, setExpanded] = React.useState(false);
   const [staggerVisible, setStaggerVisible] = React.useState(false);
   const [totalItems, setTotalItems] = React.useState(8);
-  const [isDraggingSlider, setIsDraggingSlider] = React.useState(false); // Commented out to test Option C fix
+  const [isDraggingSlider, setIsDraggingSlider] = React.useState(false);
 
   const itemData = React.useMemo(
     () =>
@@ -126,9 +121,17 @@ export const ExpandableContainer = (): JSXElement => {
     [totalItems],
   );
 
-  // Always show first 3 items (2 fully visible + 1 partially visible for affordance), additional items animate via Stagger
   const staticItems = itemData.slice(0, VISIBLE_ITEMS_COUNT);
   const staggerItems = itemData.slice(VISIBLE_ITEMS_COUNT);
+
+  const avatarFor = (useImage?: boolean, image?: string): any =>
+    useImage
+      ? {
+          image: {
+            src: `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/${image}`,
+          },
+        }
+      : { color: 'colorful' };
 
   const handleToggle = () => {
     if (!expanded) {
@@ -160,10 +163,9 @@ export const ExpandableContainer = (): JSXElement => {
           step={1}
           value={totalItems}
           onChange={(_, data) => setTotalItems(data.value)}
-          onMouseDown={() => setIsDraggingSlider(true)}
-          onMouseUp={() => setIsDraggingSlider(false)}
-          onTouchStart={() => setIsDraggingSlider(true)}
-          onTouchEnd={() => setIsDraggingSlider(false)}
+          onPointerDown={() => setIsDraggingSlider(true)}
+          onPointerUp={() => setIsDraggingSlider(false)}
+          onPointerCancel={() => setIsDraggingSlider(false)}
         />
       </div>
 
@@ -189,15 +191,7 @@ export const ExpandableContainer = (): JSXElement => {
                   name={item.name}
                   secondaryText={item.secondaryText}
                   presence={{ status: item.status }}
-                  avatar={
-                    item.useImage
-                      ? {
-                          image: {
-                            src: `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/${item.image}`,
-                          },
-                        }
-                      : { color: 'colorful' }
-                  }
+                  avatar={avatarFor(item.useImage, item.image)}
                 />
               </div>
             ))}
@@ -220,15 +214,7 @@ export const ExpandableContainer = (): JSXElement => {
                       name={item.name}
                       secondaryText={item.secondaryText}
                       presence={{ status: item.status }}
-                      avatar={
-                        item.useImage
-                          ? {
-                              image: {
-                                src: `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/${item.image}`,
-                              },
-                            }
-                          : { color: 'colorful' }
-                      }
+                      avatar={avatarFor(item.useImage, item.image)}
                     />
                   </div>
                 </Slide>
