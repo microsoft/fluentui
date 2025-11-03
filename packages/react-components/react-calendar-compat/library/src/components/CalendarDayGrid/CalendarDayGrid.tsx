@@ -133,7 +133,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     showWeekNumbers,
     labelledBy,
     lightenDaysOutsideNavigatedMonth,
-    animationDirection = AnimationDirection.Horizontal,
+    animationDirection = AnimationDirection.Vertical,
   } = props;
 
   const classNames = useCalendarDayGridStyles_unstable({

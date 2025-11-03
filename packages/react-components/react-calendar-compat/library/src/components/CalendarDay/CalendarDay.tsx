@@ -41,7 +41,7 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
     onNavigateDate,
     showWeekNumbers,
     dateRangeType,
-    animationDirection = AnimationDirection.Horizontal,
+    animationDirection = AnimationDirection.Vertical,
   } = props;
 
   const classNames = useCalendarDayStyles_unstable({

@@ -74,7 +74,7 @@ function useFocusLogic({ componentRef }: { componentRef: CalendarMonthProps['com
 export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props => {
   const {
     allFocusable,
-    animationDirection = AnimationDirection.Horizontal,
+    animationDirection = AnimationDirection.Vertical,
     className,
     componentRef,
     dateTimeFormatter = DEFAULT_DATE_FORMATTING,

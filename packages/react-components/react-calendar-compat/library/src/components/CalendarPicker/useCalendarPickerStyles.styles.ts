@@ -304,7 +304,7 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
 
   const {
     animateBackwards,
-    animationDirection = AnimationDirection.Horizontal,
+    animationDirection = AnimationDirection.Vertical,
     className,
     hasHeaderClickCallback,
     highlightCurrent,
