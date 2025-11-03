@@ -366,7 +366,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   // Create a stable key for the chart schema to track changes
   const schemaKey = React.useMemo(() => JSON.stringify(plotlyInputWithValidData.data), [plotlyInputWithValidData.data]);
   const colorMap = useColorMapping(schemaKey);
-  console.log('colormap', colorMap);
+  //console.log('colormap', colorMap);
   const isDarkTheme = useIsDarkTheme();
   const chartRef = React.useRef<Chart>(null);
   const isMultiPlot = React.useRef(false);
