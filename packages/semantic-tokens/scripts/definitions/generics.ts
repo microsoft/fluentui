@@ -22,18 +22,24 @@ export const generics: GenericTypes = {
     type: 'dimension',
     variants: ['circular', 'square'],
   },
+  surface: {
+    type: 'color',
+    variants: ['neutral'],
+    emphasis: ['default', 'subtle'],
+    states: [''],
+  },
   background: {
     type: 'color',
     variants: ['neutral', 'brand', 'danger', 'warning', 'success'],
     emphasis: ['loud', 'soft', 'subtle'],
-    states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+    states: [''],
     exceptions: [
       {
         // Neutral also has a heavy and transparent emphasis
         type: 'color',
         variants: ['neutral'],
         emphasis: ['heavy', 'transparent'],
-        states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+        states: [''],
       },
       {
         // Disabled only has a single generic state
@@ -48,14 +54,14 @@ export const generics: GenericTypes = {
     type: 'color',
     variants: ['neutral', 'brand', 'danger', 'warning', 'success'],
     emphasis: ['loud', 'subtle', 'onloud'],
-    states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+    states: [''],
     exceptions: [
       {
         // Neutral also has a soft and transparent emphasis
         type: 'color',
         variants: ['neutral'],
         emphasis: ['soft', 'transparent'],
-        states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+        states: [''],
       },
       {
         // Disabled only has a single generic state
@@ -70,14 +76,14 @@ export const generics: GenericTypes = {
     type: 'color',
     variants: ['brand', 'danger', 'warning', 'success'],
     emphasis: ['primary', 'onloud'],
-    states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+    states: [''],
     exceptions: [
       {
         // Neutral also has secondary and onNeutral emphasis, but no onLoud
         type: 'color',
         variants: ['neutral'],
         emphasis: ['primary', 'secondary', 'onneutral'],
-        states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected'],
+        states: [''],
       },
       {
         // Disabled only has a single generic state

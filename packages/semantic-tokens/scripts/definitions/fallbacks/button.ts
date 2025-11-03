@@ -554,7 +554,7 @@ export const buttonFallbacks: GroupFallback = {
   },
   groupButtonTransparentForegroundSelected: {
     fluent: tokens.colorNeutralForeground2BrandSelected,
-    generic: 'foregroundBrandPrimarySelected',
+    generic: 'foregroundBrandPrimary',
   },
   groupButtonTransparentForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
