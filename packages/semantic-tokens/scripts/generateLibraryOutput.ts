@@ -54,35 +54,13 @@ function splitCamelCase(name: string) {
 }
 
 function generateLibraryOutput() {
-  // let primitiveTokens = generatePrimitiveTokens();
   let genericTokens = generateGenericTokens();
   let groupTokens = generateGroupTokens(groups);
   let controlTokens = generateControlTokens();
 
-  // let primitiveTokenList = '';
-  // let primitiveIndexExport = 'export {\n';
-  // for (const token of primitiveTokens) {
-  //   const tokenName = '_' + dotToCamelCase(token.name);
-  //   const cssVarName = dotToCSSVarName(token.name);
-  //   const exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
-  //   primitiveTokenList += `${exportToken}\n`;
-  //   primitiveIndexExport += `${tokenName},\n`;
-  // }
-  // primitiveIndexExport += `} from './primitives/tokens';\n`;
-
-  // const primitiveListPath = path.resolve(__dirname, `../src/primitives/tokens.ts`);
-  // // Write the JSON string to a file
-  // fs.writeFile(primitiveListPath, primitiveTokenList, err => {
-  //   if (err) {
-  //     console.error('Error writing to file:', err);
-  //   } else {
-  //     console.log('JSON data successfully written to tokens.json');
-  //   }
-  // });
-
+  // Generic tokens
   let genericTokenList = '';
   let genericIndexExport = 'export {\n';
-  // To do: Generate primitive fallbacks for generic tokens
   for (const token of genericTokens) {
     const tokenName = dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
@@ -108,6 +86,7 @@ function generateLibraryOutput() {
     }
   });
 
+  // Group tokens
   const groupTokenList: { [key: string]: string } = {};
   const groupExportList: { [key: string]: string } = {};
   for (const token of groupTokens) {
@@ -204,7 +183,7 @@ function generateLibraryOutput() {
     });
   }
 
-  // Export algo tokens (manually created)
+  // Add algo tokens to export (manually created per design system)
   const algoTokenExports = path.resolve(__dirname, `../src/fluent/index.ts`);
   fs.readFile(algoTokenExports, 'utf8', (err, algoTokensData) => {
     if (err) {
