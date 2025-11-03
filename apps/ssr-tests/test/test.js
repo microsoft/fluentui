@@ -61,7 +61,7 @@ describe('Utilities', () => {
 /**
  *
  * @param {string} componentName
- * @param {React.ComponentClass | (() => JSX.Element)} component
+ * @param {React.ComponentClass | (() => React.ReactElement)} component
  */
 function testRender(componentName, component) {
   it(`${componentName} can render in a server environment`, done => {
