@@ -7,8 +7,9 @@ const semver = require('semver');
 function isConvergedPackage(metadata) {
   const { packageJson, project } = metadata;
   const hasVNextTag = Boolean(project.tags?.includes('vNext'));
+  const isPrivate = Boolean(packageJson.private);
 
-  return semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version) || hasVNextTag;
+  return !isPrivate && (semver.major(packageJson.version) >= 9 || isNightlyVersion(packageJson.version) || hasVNextTag);
 }
 
 /**

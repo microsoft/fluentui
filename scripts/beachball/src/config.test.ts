@@ -81,13 +81,7 @@ describe(`beachball configs`, () => {
   });
 
   it(`should generate vNext release config`, () => {
-    expect(vNextConfig.scope).toEqual(
-      expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
-        'apps/perf-test-react-components',
-        'apps/vr-tests-react-components',
-      ]),
-    );
+    expect(vNextConfig.scope).toEqual(expect.arrayContaining(excludedPackagesFromReleaseProcess));
 
     expect(vNextConfig.scope.some(scope => scope.startsWith('packages/react-'))).toBe(true);
 
