@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeProps, divProperties, inputProperties } from './properties';
+import { getNativeProps, divProperties, inputProperties, anchorProperties } from './properties';
 
 describe('getNativeProps', () => {
   it('can pass through data tags', () => {
@@ -88,5 +88,29 @@ describe('getNativeProps', () => {
 
     expect(result.a).toBeDefined();
     expect(result.b).toBeUndefined();
+  });
+
+  it('can pass through anchor props including referrerPolicy', () => {
+    const result = getNativeProps<React.AnchorHTMLAttributes<HTMLAnchorElement>>(
+      {
+        href: 'https://www.bing.com',
+        target: '_blank',
+        referrerPolicy: 'no-referrer',
+        download: 'file.txt',
+        // Non-anchor property
+        foobar: 1,
+      },
+      anchorProperties,
+    );
+
+    expect(result).toMatchObject({
+      href: 'https://www.bing.com',
+      target: '_blank',
+      referrerPolicy: 'no-referrer',
+      download: 'file.txt',
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect((result as any).foobar).toBeUndefined();
   });
 });
