@@ -97,7 +97,7 @@ describe(`beachball configs`, () => {
     ]);
 
     // Ensure that vNext config does not include "tools" packages
-    expect(vNextConfig.scope.some(scope => !scope.startsWith('!') && toolsConfig.scope.includes(scope))).toBe(false);
+    expect(vNextConfig.scope.some(scope => toolsConfig.scope.includes(scope))).toBe(false);
   });
 
   it(`should generate web-components release config`, () => {
@@ -115,7 +115,6 @@ describe(`beachball configs`, () => {
   it(`should generate tools release config`, () => {
     expect(toolsConfig.scope).toEqual(
       expect.arrayContaining([
-        ...excludedPackagesFromReleaseProcess,
         'packages/react-components/babel-preset-storybook-full-source',
         'packages/react-components/eslint-plugin-react-components',
         'packages/react-components/react-conformance-griffel',
