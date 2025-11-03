@@ -110,7 +110,6 @@ describe('getNativeProps', () => {
       download: 'file.txt',
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect((result as any).foobar).toBeUndefined();
+    expect(result).not.toHaveProperty('foobar');
   });
 });
