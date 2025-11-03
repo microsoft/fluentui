@@ -15,7 +15,8 @@ export type UseOnClickOrScrollOutsideOptions = {
   /**
    * Refs to elements that check if the click is outside
    */
-  refs: React.MutableRefObject<HTMLElement | undefined | null>[];
+  refs: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  React.MutableRefObject<HTMLElement | undefined | null>[];
 
   /**
    * By default uses element.contains, but custom contain function can be provided
