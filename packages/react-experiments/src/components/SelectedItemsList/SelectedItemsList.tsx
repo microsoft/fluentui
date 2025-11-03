@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 /* eslint-disable react-hooks/rules-of-hooks */
 

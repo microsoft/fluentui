@@ -106,6 +106,7 @@ function tryMapFluentDataViz(
 
 export const getColor = (
   legendLabel: string,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   templateColorway: PlotlyColorway,
   isDarkTheme?: boolean,
@@ -134,6 +135,7 @@ export const getColor = (
 export const getSchemaColors = (
   colorway: string[] | undefined,
   colors: PieColors | Color | Color[] | string | null | undefined,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
   isDonut?: boolean,
@@ -170,6 +172,7 @@ export const extractColor = (
   colorway: string[] | undefined,
   colorwayType: ColorwayType,
   colors: PieColors | Color | Color[] | string | null | undefined,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
   isDonut?: boolean,
@@ -183,6 +186,7 @@ export const resolveColor = (
   extractedColors: string[] | string | null | undefined,
   index: number,
   legend: string,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorway: string[] | undefined,
   isDarkTheme?: boolean,

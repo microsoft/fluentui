@@ -74,7 +74,11 @@ export const FormFieldShim = React.forwardRef<HTMLInputElement, CustomInputField
 
     // Use the Field's child render function to pass the field control props to the child
     fieldProps.children = fieldControlProps =>
-      React.cloneElement(child, { ...fieldControlProps, ...(child.props as any) });
+      React.cloneElement(child, {
+        ...fieldControlProps,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ...(child.props as any),
+      });
   } else {
     fieldProps.children = children;
   }

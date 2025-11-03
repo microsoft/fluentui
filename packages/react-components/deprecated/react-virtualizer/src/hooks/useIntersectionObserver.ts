@@ -60,6 +60,7 @@ export const useIntersectionObserver = (
   setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   observer: React.MutableRefObject<IntersectionObserver | undefined>;
 } => {
   'use no memo';

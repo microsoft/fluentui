@@ -31,6 +31,7 @@ export type RefCallback<T> = ((value: T | null) => void) & React.RefObject<T | n
  */
 export function useRefEffect<T>(callback: (value: T) => (() => void) | void, initial: T | null = null): RefCallback<T> {
   type RefData = {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     ref: ((value: T | null) => void) & React.MutableRefObject<T | null>;
     callback: (value: T) => (() => void) | void;
     cleanup?: (() => void) | void;

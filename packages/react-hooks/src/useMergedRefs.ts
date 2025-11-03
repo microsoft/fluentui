@@ -16,6 +16,7 @@ export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObje
   const mergedCallback: RefObjectFunction<T> = React.useCallback(
     (value: T) => {
       // Update the "current" prop hanging on the function.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       (mergedCallback as unknown as React.MutableRefObject<T>).current = value;
 
       for (const ref of refs) {
@@ -23,6 +24,7 @@ export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObje
           ref(value);
         } else if (ref) {
           // work around the immutability of the React.Ref type
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           (ref as unknown as React.MutableRefObject<T>).current = value;
         }
       }
