@@ -518,13 +518,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           };
 
           const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
-          let chartType: ChartType;
-
-          if (chart.type === 'fallback' || chart.type === 'groupedverticalbar') {
-            chartType = chart.type as ChartType;
-          } else {
-            chartType = (filteredTracesInfo[0]?.type ?? chart.type) as ChartType;
-          }
+          let chartType =
+            chart.type === 'fallback' || chart.type === 'groupedverticalbar'
+              ? chart.type
+              : filteredTracesInfo[0]?.type ?? chart.type;
 
           if (
             validTracesFilteredIndex.some(trace => trace.type === 'line') &&
