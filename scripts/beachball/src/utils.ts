@@ -75,8 +75,9 @@ function getPackagePaths() {
   const toolsPaths: string[] = [];
 
   for (const project of Object.values(allProjects)) {
+    const isPrivate = Boolean(project.packageJson.private);
     const metadata = { project: project.projectConfig, packageJson: project.packageJson };
-    if (isConvergedPackage(metadata) && !isToolsPackage(metadata)) {
+    if (isConvergedPackage(metadata) && !isToolsPackage(metadata) && !isPrivate) {
       vNextPaths.push(project.packagePath);
     }
     if (isWebComponentPackage(metadata)) {
