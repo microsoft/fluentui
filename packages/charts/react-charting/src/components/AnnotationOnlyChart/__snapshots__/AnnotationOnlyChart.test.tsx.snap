@@ -253,7 +253,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                     }
                 data-annotation-key="annotation-1"
                 data-chart-annotation-measurement="true"
-                style="left: 210px; top: 170px; pointer-events: none;"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
               >
                 <div
                   class=
@@ -303,7 +303,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                     }
                 data-annotation-key="annotation-2"
                 data-chart-annotation-measurement="true"
-                style="left: 90px; top: 250px; pointer-events: none; background-color: rgba(255, 255, 255, 0.8);"
+                style="position: absolute; left: 90px; top: 250px; pointer-events: none; visibility: hidden; background-color: rgba(255, 255, 255, 0.8);"
               >
                 <div
                   class=
@@ -563,7 +563,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                     }
                 data-annotation-key="annotation-1"
                 data-chart-annotation-measurement="true"
-                style="left: 210px; top: 170px; pointer-events: none;"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
               >
                 <div
                   class=
@@ -613,7 +613,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                     }
                 data-annotation-key="annotation-2"
                 data-chart-annotation-measurement="true"
-                style="left: 90px; top: 250px; pointer-events: none; background-color: rgba(255, 255, 255, 0.8);"
+                style="position: absolute; left: 90px; top: 250px; pointer-events: none; visibility: hidden; background-color: rgba(255, 255, 255, 0.8);"
               >
                 <div
                   class=

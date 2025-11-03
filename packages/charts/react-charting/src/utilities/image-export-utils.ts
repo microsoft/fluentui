@@ -161,6 +161,33 @@ function toSVG(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   clonedSvgElements = null as any;
 
+  const originalForeignObjects = svg.querySelectorAll('foreignObject');
+  const clonedForeignObjects = clonedSvg.node()!.querySelectorAll('foreignObject');
+
+  originalForeignObjects.forEach((originalFo, index) => {
+    const clonedFo = clonedForeignObjects[index];
+    if (!clonedFo) {
+      return;
+    }
+
+    const originalRoot = originalFo.firstElementChild as HTMLElement | null;
+    const clonedRoot = clonedFo.firstElementChild as HTMLElement | null;
+
+    if (originalRoot && clonedRoot) {
+      copyStyle(ANNOTATION_HTML_STYLE_PROPERTIES, originalRoot, clonedRoot);
+    }
+
+    const originalHtmlElements = originalFo.querySelectorAll<HTMLElement>('*');
+    const clonedHtmlElements = clonedFo.querySelectorAll<HTMLElement>('*');
+
+    originalHtmlElements.forEach((originalEl, elementIndex) => {
+      const clonedEl = clonedHtmlElements[elementIndex];
+      if (clonedEl) {
+        copyStyle(ANNOTATION_HTML_STYLE_PROPERTIES, originalEl, clonedEl);
+      }
+    });
+  });
+
   const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
   const legendGroup =
     typeof legendsToSvgCallback === 'function'
@@ -223,6 +250,7 @@ function toSVG(
     .attr('direction', isRTL ? 'rtl' : 'ltr');
 
   if (annotationClone) {
+    clonedSvg.selectAll('[data-chart-annotation-layer="true"]').remove();
     d3Select(annotationClone).attr('x', 0).attr('y', 0).attr('width', svgWidth).attr('height', svgHeight);
     clonedSvg.append(() => annotationClone as SVGSVGElement);
   }

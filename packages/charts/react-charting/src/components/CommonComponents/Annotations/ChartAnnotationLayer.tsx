@@ -359,9 +359,11 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
     }
 
     const measurementStyle: React.CSSProperties = {
+      position: 'absolute',
       left: topLeftX,
       top: topLeftY,
       pointerEvents: 'none',
+      visibility: 'hidden',
       ...containerStyle,
     };
 
