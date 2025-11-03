@@ -134,16 +134,13 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
 
   const svgHeight = Math.max(Math.ceil(contentHeight || 0), resolvedHeight);
 
-  const context = React.useMemo<IChartAnnotationContext>(
-    () => ({
-      plotRect: { x: 0, y: 0, width: resolvedWidth, height: resolvedHeight },
-      svgRect: { width: resolvedWidth, height: resolvedHeight },
-      isRtl: theme?.rtl,
-    }),
-    [resolvedHeight, resolvedWidth, theme?.rtl],
-  );
+  const context: IChartAnnotationContext = {
+    plotRect: { x: 0, y: 0, width: resolvedWidth, height: resolvedHeight },
+    svgRect: { width: resolvedWidth, height: resolvedHeight },
+    isRtl: theme?.rtl,
+  };
 
-  const padding = React.useMemo(() => buildPadding(margin), [margin]);
+  const padding = buildPadding(margin);
 
   const rootClassName = React.useMemo(
     () =>
@@ -176,10 +173,10 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
 
   const titleClassName = React.useMemo(
     () =>
-      mergeStyles(theme.fonts.large, {
+      mergeStyles({
         textAlign: 'center',
       }),
-    [theme.fonts.large],
+    [],
   );
 
   const resolvedAnnotations = annotations ?? [];

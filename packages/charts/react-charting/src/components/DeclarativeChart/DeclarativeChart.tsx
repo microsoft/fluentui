@@ -374,9 +374,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     selectedLegends: activeLegends,
   };
 
-  const commonProps = {
-    legendProps: multiSelectLegendProps,
+  const baseCommonProps = {
     componentRef: chartRef,
+  };
+
+  const interactiveCommonProps = {
+    ...baseCommonProps,
+    legendProps: multiSelectLegendProps,
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
@@ -538,15 +542,21 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                 : plotlyInputForGroup;
               const cellProperties = gridProperties.layout[xAxisKey];
 
+              const resolvedCommonProps = (
+                chartType === 'annotation'
+                  ? baseCommonProps
+                  : {
+                      ...interactiveCommonProps,
+                      xAxisAnnotation: cellProperties?.xAnnotation,
+                      yAxisAnnotation: cellProperties?.yAnnotation,
+                    }
+              ) as Partial<ReturnType<typeof transformer>>;
+
               return renderChart<ReturnType<typeof transformer>>(
                 renderer,
                 transformer,
                 [transformedInput, isMultiPlot.current, colorMap, props.colorwayType, isDarkTheme],
-                {
-                  ...commonProps,
-                  xAxisAnnotation: cellProperties?.xAnnotation,
-                  yAxisAnnotation: cellProperties?.yAnnotation,
-                },
+                resolvedCommonProps,
                 cellProperties?.row ?? 1,
                 cellProperties?.column ?? 1,
               );

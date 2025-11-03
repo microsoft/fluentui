@@ -45,11 +45,6 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
             class=
 
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 18px;
-                  font-weight: 400;
                   text-align: center;
                 }
           >
@@ -680,11 +675,6 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with empty annotations 1
             class=
 
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 18px;
-                  font-weight: 400;
                   text-align: center;
                 }
           >

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { IChartAnnotation } from '../../types/IChartAnnotation';
-import type { ILegendsProps } from '../Legends/index';
 import type { IChart } from '../../types/index';
 import type { Margin } from '@fluentui/chart-utilities';
 
@@ -30,15 +29,6 @@ export interface IAnnotationOnlyChartProps {
   fontFamily?: string;
   /** Layout margin converted to padding for the outer wrapper. */
   margin?: Partial<Margin>;
-  /** X axis annotation text (used when rendering within grid layouts). */
-  xAxisAnnotation?: string;
-  /** Y axis annotation text (used when rendering within grid layouts). */
-  yAxisAnnotation?: string;
-  /** Legend props - accepted for API symmetry though unused. */
-  legendProps?: Partial<ILegendsProps>;
   /** Component ref propagated by the DeclarativeChart surface. */
   componentRef?: React.RefObject<IChart>;
-  /** Callout props propagated by the DeclarativeChart surface. */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  calloutProps?: any;
 }

@@ -297,20 +297,16 @@ export interface IAccessibilityProps {
 // @public
 export interface IAnnotationOnlyChartProps {
     annotations: ChartAnnotation[];
-    calloutProps?: any;
     chartTitle?: string;
     componentRef?: React_2.RefObject<IChart>;
     description?: string;
     fontColor?: string;
     fontFamily?: string;
     height?: number;
-    legendProps?: Partial<ILegendsProps>;
     margin?: Partial<Margin>;
     paperBackgroundColor?: string;
     plotBackgroundColor?: string;
     width?: number;
-    xAxisAnnotation?: string;
-    yAxisAnnotation?: string;
 }
 
 // @public

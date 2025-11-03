@@ -493,11 +493,11 @@ export const mapFluentChart = (input: any): OutputChartType => {
     const hasAnnotations = hasAnnotationContent(validSchema?.layout?.annotations);
     const hasTraces = isArrayOrTypedArray(validSchema.data) && validSchema.data.length > 0;
 
+    const validTraces = hasTraces ? getValidTraces(validSchema.data, validSchema.layout) : [];
+
     if (!hasTraces && hasAnnotations) {
       return { isValid: true, type: 'annotation', validTracesInfo: [] };
     }
-
-    const validTraces = getValidTraces(validSchema.data, validSchema.layout);
     let foundScatterGantt = false;
     let mappedTraces = validTraces.map(trace => {
       const traceIndex = trace[0];
