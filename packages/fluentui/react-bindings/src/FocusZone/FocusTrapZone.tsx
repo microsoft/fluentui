@@ -1,6 +1,6 @@
 import { EventListener } from '@fluentui/react-component-event-listener';
+import { Ref, handleRef } from '@fluentui/react-component-ref';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
@@ -16,7 +16,6 @@ import {
   HIDDEN_FROM_ACC_TREE,
 } from './focusUtilities';
 import { FocusTrapZoneProps } from './FocusTrapZone.types';
-import { handleRef } from '@fluentui/react-component-ref';
 
 interface FocusTrapZonePropsWithTabster extends FocusTrapZoneProps {
   'data-tabster': string;
@@ -37,14 +36,7 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
   _lastBumper = React.createRef<HTMLDivElement>();
   _hasFocus: boolean = false;
 
-  windowRef = React.createRef<Window>() as React.MutableRefObject<Window>;
-
-  // @ts-ignore
-  createRef = elem => {
-    this._root.current = ReactDOM.findDOMNode(elem) as HTMLElement;
-    // @ts-ignore
-    this.windowRef.current = getWindow(this._root.current);
-  };
+  windowRef = React.createRef<Window | null>() as React.MutableRefObject<Window | null>;
 
   shouldHandleOutsideClick = () => !this.props.isClickableOutsideFocusTrap || !this.props.focusTriggerOnOutsideClick;
 
@@ -130,7 +122,9 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
   }
 
   handleRef = (element: HTMLElement) => {
-    this.createRef(element);
+    this._root.current = element;
+    this.windowRef.current = getWindow(this._root.current) || null;
+
     handleRef(this.props.innerRef, element);
   };
 
@@ -151,20 +145,21 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
 
     return (
       <>
-        <ElementType
-          {...unhandledProps}
-          className={className}
-          ref={this.handleRef}
-          aria-labelledby={ariaLabelledBy}
-          onKeyDown={this._onKeyboardHandler}
-          onFocusCapture={this._onFocusCapture}
-          onFocus={this._onRootFocus}
-          onBlur={this._onRootBlur}
-        >
-          <div {...bumperProps} ref={this._firstBumper} onFocus={this._onFirstBumperFocus} />
-          {this.props.children}
-          <div {...bumperProps} ref={this._lastBumper} onFocus={this._onLastBumperFocus} />
-        </ElementType>
+        <Ref innerRef={this.handleRef}>
+          <ElementType
+            {...unhandledProps}
+            className={className}
+            aria-labelledby={ariaLabelledBy}
+            onKeyDown={this._onKeyboardHandler}
+            onFocusCapture={this._onFocusCapture}
+            onFocus={this._onRootFocus}
+            onBlur={this._onRootBlur}
+          >
+            <div {...bumperProps} ref={this._firstBumper} onFocus={this._onFirstBumperFocus} />
+            {this.props.children}
+            <div {...bumperProps} ref={this._lastBumper} onFocus={this._onLastBumperFocus} />
+          </ElementType>
+        </Ref>
 
         {forceFocusInsideTrapOnOutsideFocus && (
           <EventListener capture listener={this._handleOutsideFocus} targetRef={this.windowRef} type="focus" />
