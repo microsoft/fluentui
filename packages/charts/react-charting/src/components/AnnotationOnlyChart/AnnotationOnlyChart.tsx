@@ -7,7 +7,7 @@ import type { IAnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
 import type { IChart, IImageExportOptions } from '../../types/index';
 import type { IChartAnnotationContext } from '../CommonComponents/Annotations/ChartAnnotationLayer.types';
 
-const DEFAULT_HEIGHT = 240;
+const DEFAULT_HEIGHT = 650;
 const FALLBACK_WIDTH = 400;
 
 const buildPadding = (margin: IAnnotationOnlyChartProps['margin']): string | undefined => {

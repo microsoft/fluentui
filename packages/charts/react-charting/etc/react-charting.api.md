@@ -118,6 +118,7 @@ export interface ChartAnnotationStyleProps {
     fontWeight?: React_2.CSSProperties['fontWeight'];
     opacity?: number;
     padding?: string;
+    rotation?: number;
     textColor?: string;
 }
 

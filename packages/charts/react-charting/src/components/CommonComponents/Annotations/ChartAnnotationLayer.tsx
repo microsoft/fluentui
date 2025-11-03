@@ -282,6 +282,11 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
       opacity: 1,
     };
 
+    if (typeof annotation.style?.rotation === 'number' && !Number.isNaN(annotation.style.rotation)) {
+      containerStyle.transform = `rotate(${annotation.style.rotation}deg)`;
+      containerStyle.transformOrigin = '50% 50%';
+    }
+
     const measurementSignature = createMeasurementSignature(
       annotationHtml,
       containerStyle,

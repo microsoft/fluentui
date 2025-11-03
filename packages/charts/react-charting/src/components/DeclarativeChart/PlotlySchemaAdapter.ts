@@ -975,6 +975,16 @@ const convertPlotlyAnnotation = (
     }
   }
 
+  const textAngle = (annotation as { textangle?: number | string })?.textangle;
+  if (typeof textAngle === 'number' && !Number.isNaN(textAngle)) {
+    styleProps.rotation = textAngle;
+  } else if (typeof textAngle === 'string' && textAngle.toLowerCase() !== 'auto') {
+    const parsedAngle = Number(textAngle);
+    if (!Number.isNaN(parsedAngle)) {
+      styleProps.rotation = parsedAngle;
+    }
+  }
+
   if (Object.keys(layoutProps).length > 0) {
     chartAnnotation.layout = layoutProps;
   }

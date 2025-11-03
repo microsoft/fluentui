@@ -523,6 +523,34 @@ describe('transform Plotly Json To chart Props', () => {
       });
     });
 
+    describe('Annotation Mapping', () => {
+      test('preserves textangle as rotation on annotation style', () => {
+        const input: PlotlySchema = {
+          data: [],
+          layout: {
+            annotations: [
+              {
+                text: 'Rotated label',
+                x: 0.5,
+                y: 0.5,
+                xref: 'x',
+                yref: 'y',
+                textangle: 45,
+                showarrow: false,
+              },
+            ],
+            xaxis: { range: [0, 1] },
+            yaxis: { range: [0, 1] },
+          },
+        };
+
+        const result = transformPlotlyJsonToAnnotationChartProps(input, false, mockColorMap, 'default');
+
+        expect(result.annotations).toHaveLength(1);
+        expect(result.annotations?.[0].style?.rotation).toBe(45);
+      });
+    });
+
     describe('Dimension Extraction', () => {
       test('extracts width from layout', () => {
         const input: PlotlySchema = {

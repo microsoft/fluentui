@@ -231,19 +231,29 @@ describe('AnnotationOnlyChart', () => {
       delete props.width;
       const { container } = render(<AnnotationOnlyChart {...props} />);
 
-      const root = container.querySelector('[data-chart-annotation-only="true"]');
-      expect(root).toBeInTheDocument();
-      expect(mockObserve).toHaveBeenCalled();
+      const annotationContainer = container.querySelector('[data-chart-annotation-container="true"]');
+      const annotationRoot = container.querySelector('[data-chart-annotation-only="true"]');
+
+      expect(annotationRoot).toBeInTheDocument();
+      expect(annotationContainer).toBeInTheDocument();
+
+      const observedNodes = mockObserve.mock.calls.map(call => call[0]);
+      expect(observedNodes).toContain(annotationContainer);
     });
 
-    it('does not set up ResizeObserver when explicit width is provided', () => {
+    it('does not observe the container when explicit width is provided', () => {
       mockObserve.mockClear();
       const { container } = render(<AnnotationOnlyChart {...defaultProps} width={600} />);
 
-      const root = container.querySelector('[data-chart-annotation-only="true"]');
-      expect(root).toBeInTheDocument();
-      // Observer not created when width is explicit
-      expect(mockObserve).not.toHaveBeenCalled();
+      const annotationContainer = container.querySelector('[data-chart-annotation-container="true"]');
+      const annotationRoot = container.querySelector('[data-chart-annotation-only="true"]');
+
+      expect(annotationRoot).toBeInTheDocument();
+      expect(annotationContainer).toBeInTheDocument();
+
+      const observedNodes = mockObserve.mock.calls.map(call => call[0]);
+      expect(observedNodes).not.toContain(annotationContainer);
+      expect(observedNodes).toContain(annotationRoot);
     });
 
     it('disconnects ResizeObserver on unmount', () => {
