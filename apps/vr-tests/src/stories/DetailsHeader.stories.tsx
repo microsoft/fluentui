@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../utilities';
 import {
   IColumn,
   DetailsListLayoutMode,
@@ -115,10 +117,10 @@ const _columnReorderProps = {
 export default {
   title: 'DetailsHeader',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.ms-DetailsHeader' })
         .hover('[data-item-key=a]')
         .snapshot('hoverFrozenFirst', { cropTo: '.ms-DetailsHeader' })
@@ -138,9 +140,9 @@ export default {
         .executeScript(`DndSimulator.simulate('[draggable="true"]', '[data-item-key="d"]', true)`)
         .snapshot('dropHint')
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof DetailsHeader>;
 
 export const Root = () => (
   <DetailsHeader

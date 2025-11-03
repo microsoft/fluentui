@@ -2,6 +2,29 @@
   "name": "@fluentui/test-utilities",
   "entries": [
     {
+      "date": "Thu, 23 Oct 2025 10:23:22 GMT",
+      "tag": "@fluentui/test-utilities_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "6b3885cb0c984861ea8342fea64e95a2c9668125",
+            "comment": "feat: bump react range to support React 19"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "f502c0ef511c53d14da722d281cad40c8a4c6d2d",
+            "comment": "fix: add deprecations and runtime assert on non supporter react majors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Jul 2025 07:19:56 GMT",
       "tag": "@fluentui/test-utilities_v8.4.0",
       "version": "8.4.0",

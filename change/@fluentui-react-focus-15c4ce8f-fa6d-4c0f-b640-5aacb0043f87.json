@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: bump react range to support React 19",
-  "packageName": "@fluentui/react-focus",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

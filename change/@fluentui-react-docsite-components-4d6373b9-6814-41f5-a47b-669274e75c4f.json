@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: bump react range to support React 19",
+  "comment": "feat: use react-dom/client ",
   "packageName": "@fluentui/react-docsite-components",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "patch"

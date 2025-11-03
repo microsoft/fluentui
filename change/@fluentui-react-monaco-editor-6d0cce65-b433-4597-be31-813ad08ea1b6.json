@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "chore: enable RIT and update npm scripts to use inferred targets",
+  "comment": "chore: use r18+ createRoot",
   "packageName": "@fluentui/react-monaco-editor",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "none"

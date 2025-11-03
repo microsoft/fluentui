@@ -4,13 +4,14 @@ import type { Meta } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
 import { InvertedBackground, steps } from './utils';
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
 export default {
   title: 'Link Converged - Rendered as button',
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof Link>;
 
 export const StandAlone = () => <ButtonLink>Stand-alone link</ButtonLink>;

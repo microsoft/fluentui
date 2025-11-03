@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "chore: enable RIT and update npm scripts to use inferred targets",
+  "comment": "docs: update docs to use createRoot",
   "packageName": "@fluentui/react-icon-provider",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "none"

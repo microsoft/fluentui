@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: enable RIT and update npm scripts to use inferred targets",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

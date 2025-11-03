@@ -175,20 +175,19 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
     Object.entries(props).forEach(([key, argType]) => {
       const value: string = argType?.type?.name;
 
-      // If DocGen was already transformed, skip the transformation but set hasArgAsSlot to true so that we can show the info message
+      const match = value.match(slotRegex);
+
+      // Transformation for Slot with `AlternateAs` specified (mutates DocGen Object reference)
+      if (match) {
+        props[key].type.name = `Slot<\"${match[1]}\">`;
+      }
+      // Transformation for Slot with `WithSlotShorthandValue` (mutates DocGen Object reference)
+      else if (value.includes('WithSlotShorthandValue')) {
+        props[key].type.name = `Slot`;
+      }
+
       if (value.includes('Slot')) {
         hasArgAsSlot = true;
-        return;
-      }
-      // Initial Render Transformation for shorthand slot values (mutates DocGen Object reference)
-      if (value.includes('WithSlotShorthandValue')) {
-        hasArgAsSlot = true;
-        const match = value.match(slotRegex);
-        if (match) {
-          props[key].type.name = `Slot<\"${match[1]}\">`;
-        } else {
-          props[key].type.name = `Slot`;
-        }
       }
     });
   };

@@ -8,8 +8,9 @@ import {
   SharedSignal,
 } from '@fluentui/react-experiments';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import { TestWrapperDecorator } from '../utilities';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
@@ -45,11 +46,13 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
 export default {
   title: 'FolderCover',
 
-  decorators: [
-    story => <Fabric>{story()}</Fabric>,
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [story => <Fabric>{story()}</Fabric>, TestWrapperDecorator],
+
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof FolderCoverWithImage>;
 
 export const LargeDefaultCover = () => (

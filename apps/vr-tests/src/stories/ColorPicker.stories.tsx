@@ -1,16 +1,20 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { ColorPicker, Fabric } from '@fluentui/react';
 
 export default {
   title: 'ColorPicker',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
-};
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof ColorPicker>;
 
 export const Root = () => (
   <Fabric>
