@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { DatePicker as DatePickerBase } from '@fluentui/react-datepicker-compat';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
 import { DateRangeType } from '@fluentui/react-calendar-compat';
@@ -23,15 +24,16 @@ export default {
   component: DatePicker,
   decorators: [
     story => (
-      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-        <div style={{ display: 'flex' }}>
-          <div className="testWrapper" style={{ overflow: 'hidden' }}>
-            {story()}
-          </div>
+      <div style={{ display: 'flex' }}>
+        <div className="testWrapper" style={{ overflow: 'hidden' }}>
+          {story()}
         </div>
-      </StoryWright>
+      </div>
     ),
   ],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof DatePicker>;
 
 export const DateRangeDay = () => <DatePicker calendar={{ dateRangeType: DateRangeType.Day }} defaultOpen={true} />;

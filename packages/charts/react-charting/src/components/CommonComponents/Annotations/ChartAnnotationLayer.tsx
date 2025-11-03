@@ -30,48 +30,220 @@ const DEFAULT_FOREIGN_OBJECT_HEIGHT = 60;
 const MIN_ARROW_SIZE = 6;
 const MAX_ARROW_SIZE = 24;
 const ARROW_SIZE_SCALE = 0.35;
+const MAX_SIMPLE_MARKUP_DEPTH = 5;
+const CHAR_CODE_LESS_THAN = '<'.codePointAt(0)!;
+const CHAR_CODE_GREATER_THAN = '>'.codePointAt(0)!;
 const getAnnotationKey = (annotation: IChartAnnotation, index: number) =>
   annotation.id ??
   (typeof annotation.text === 'string' || typeof annotation.text === 'number' ? String(annotation.text) : undefined) ??
   `annotation-${index}`;
 
-const decodeHtmlEntities = (html: string, documentRef: Document): string => {
-  if (!html || html.indexOf('&') === -1) {
-    return html;
-  }
+type SimpleMarkupNode =
+  | { type: 'text'; content: string }
+  | { type: 'br' }
+  | { type: 'element'; tag: 'b' | 'i'; children: SimpleMarkupNode[] };
 
-  if (!documentRef?.implementation?.createHTMLDocument) {
-    return html;
-  }
+type ElementMarkupNode = Extract<SimpleMarkupNode, { type: 'element' }>;
 
-  const workingDocument = documentRef.implementation.createHTMLDocument('');
-  workingDocument.body.innerHTML = html;
-  return workingDocument.body.textContent ?? '';
+type StackFrame = {
+  node: ElementMarkupNode | null;
 };
 
-const sanitizeAnnotationHtml = (html: string): string => {
-  if (!html) {
-    return '';
-  }
+const decodeSimpleMarkupInput = (input: string): string => {
+  const namedEntities: Record<string, string> = {
+    amp: '&',
+    quot: '"',
+    apos: "'",
+    nbsp: '\u00a0',
+  };
 
-  if (typeof window === 'undefined' || !window.document?.implementation?.createHTMLDocument) {
-    return html;
-  }
-
-  const workingDocument = window.document.implementation.createHTMLDocument('');
-  workingDocument.body.innerHTML = decodeHtmlEntities(html, window.document);
-
-  workingDocument.body.querySelectorAll('script, iframe, object, embed, link').forEach(node => node.remove());
-
-  workingDocument.body.querySelectorAll('*').forEach(node => {
-    Array.from(node.attributes).forEach(attr => {
-      if (/^on/i.test(attr.name)) {
-        node.removeAttribute(attr.name);
+  const withBasicEntitiesDecoded = input.replace(/&(#x?[0-9a-f]+|#\d+|[a-z][\w-]*);/gi, (match, entity) => {
+    const lower = entity.toLowerCase();
+    if (lower === 'lt' || lower === 'gt') {
+      return `&${lower};`;
+    }
+    if (lower.startsWith('#')) {
+      const isHex = lower[1] === 'x';
+      const digits = lower.slice(isHex ? 2 : 1);
+      const codePoint = Number.parseInt(digits, isHex ? 16 : 10);
+      if (Number.isNaN(codePoint)) {
+        return match;
       }
-    });
+      if (codePoint === CHAR_CODE_LESS_THAN) {
+        return '&lt;';
+      }
+      if (codePoint === CHAR_CODE_GREATER_THAN) {
+        return '&gt;';
+      }
+      return String.fromCodePoint(codePoint);
+    }
+    return namedEntities[lower] ?? match;
   });
 
-  return workingDocument.body.innerHTML;
+  return withBasicEntitiesDecoded.replace(/&lt;([^;]+)&gt;/gi, (match, inner) => {
+    const normalized = inner.trim().replace(/\s+/g, ' ');
+    const lower = normalized.toLowerCase();
+
+    switch (lower) {
+      case 'b':
+        return '<b>';
+      case '/b':
+        return '</b>';
+      case 'i':
+        return '<i>';
+      case '/i':
+        return '</i>';
+      case 'br':
+      case 'br/':
+      case 'br /':
+        return '<br />';
+      default:
+        return match;
+    }
+  });
+};
+
+const appendTextNode = (nodes: SimpleMarkupNode[], text: string) => {
+  if (text.length === 0) {
+    return;
+  }
+
+  const last = nodes[nodes.length - 1];
+  if (last && last.type === 'text') {
+    last.content += text;
+  } else {
+    nodes.push({ type: 'text', content: text });
+  }
+};
+
+const serializeSimpleMarkup = (nodes: SimpleMarkupNode[]): string =>
+  nodes
+    .map(node => {
+      if (node.type === 'text') {
+        return node.content;
+      }
+      if (node.type === 'br') {
+        return '<br />';
+      }
+      return `<${node.tag}>${serializeSimpleMarkup(node.children)}</${node.tag}>`;
+    })
+    .join('');
+
+const parseSimpleMarkup = (input: string): SimpleMarkupNode[] => {
+  if (!input) {
+    return [];
+  }
+
+  const decodedInput = decodeSimpleMarkupInput(input);
+  const rootChildren: SimpleMarkupNode[] = [];
+  const stack: StackFrame[] = [{ node: null }];
+  const currentChildren = () => stack[stack.length - 1].node?.children ?? rootChildren;
+  const tagRegex = /<\/?([a-z]+)\s*\/?\s*>/gi;
+  let lastIndex = 0;
+
+  let match: RegExpExecArray | null;
+  while ((match = tagRegex.exec(decodedInput)) !== null) {
+    const [fullMatch, rawTagName] = match;
+    const tagName = rawTagName.toLowerCase();
+    const isClosing = fullMatch.startsWith('</');
+    const isSelfClosing = /\/\s*>$/.test(fullMatch);
+
+    appendTextNode(currentChildren(), decodedInput.slice(lastIndex, match.index));
+    lastIndex = match.index + fullMatch.length;
+
+    if (tagName === 'br' && !isClosing) {
+      currentChildren().push({ type: 'br' });
+      continue;
+    }
+
+    if ((tagName === 'b' || tagName === 'i') && !isSelfClosing) {
+      if (isClosing) {
+        const top = stack[stack.length - 1].node;
+        if (stack.length > 1 && top?.tag === tagName) {
+          stack.pop();
+        } else {
+          appendTextNode(currentChildren(), fullMatch);
+        }
+      } else {
+        if (stack.length - 1 >= MAX_SIMPLE_MARKUP_DEPTH) {
+          appendTextNode(currentChildren(), fullMatch);
+          continue;
+        }
+        const elementNode: ElementMarkupNode = {
+          type: 'element',
+          tag: tagName as 'b' | 'i',
+          children: [],
+        };
+        currentChildren().push(elementNode);
+        stack.push({ node: elementNode });
+      }
+      continue;
+    }
+
+    appendTextNode(currentChildren(), fullMatch);
+  }
+
+  appendTextNode(currentChildren(), decodedInput.slice(lastIndex));
+
+  while (stack.length > 1) {
+    const unclosed = stack.pop()!;
+    const elementNode = unclosed.node;
+    if (!elementNode) {
+      continue;
+    }
+
+    const parentChildren = stack[stack.length - 1].node?.children ?? rootChildren;
+    const lastChild = parentChildren[parentChildren.length - 1];
+    if (lastChild === elementNode) {
+      parentChildren.pop();
+    } else {
+      const nodeIndex = parentChildren.indexOf(elementNode);
+      if (nodeIndex !== -1) {
+        parentChildren.splice(nodeIndex, 1);
+      }
+    }
+
+    appendTextNode(
+      parentChildren,
+      `<${elementNode.tag}>${serializeSimpleMarkup(elementNode.children)}</${elementNode.tag}>`,
+    );
+  }
+
+  return rootChildren;
+};
+
+const simpleMarkupNodesToPlainText = (nodes: SimpleMarkupNode[]): string =>
+  nodes
+    .map(node => {
+      if (node.type === 'text') {
+        return node.content;
+      }
+      if (node.type === 'br') {
+        return '\n';
+      }
+      return simpleMarkupNodesToPlainText(node.children);
+    })
+    .join('');
+
+const renderSimpleMarkupNodeList = (nodes: SimpleMarkupNode[], keyPrefix: string): React.ReactNode[] =>
+  nodes.map((node, index) => {
+    const key = `${keyPrefix}-${index}`;
+
+    if (node.type === 'text') {
+      return <React.Fragment key={key}>{node.content}</React.Fragment>;
+    }
+
+    if (node.type === 'br') {
+      return <br key={key} />;
+    }
+
+    const Tag = node.tag === 'b' ? 'strong' : 'em';
+    return React.createElement(Tag, { key }, ...renderSimpleMarkupNodeList(node.children, key));
+  });
+
+const renderSimpleMarkup = (nodes: SimpleMarkupNode[], keyPrefix: string): React.ReactNode => {
+  const rendered = renderSimpleMarkupNodeList(nodes, keyPrefix);
+  return rendered.length <= 1 ? rendered[0] ?? null : rendered;
 };
 
 const normalizeBandOffset = (
@@ -91,14 +263,14 @@ const normalizeBandOffset = (
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
 const createMeasurementSignature = (
-  annotationHtml: string,
+  annotationContentSignature: string,
   containerStyle: React.CSSProperties,
   contentStyle: React.CSSProperties,
   layoutClassName?: string,
   styleClassName?: string,
 ) =>
   JSON.stringify({
-    annotationHtml,
+    annotationContentSignature,
     containerStyle,
     contentStyle,
     layoutClassName: layoutClassName ?? '',
@@ -253,7 +425,10 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
       return;
     }
 
-    const annotationHtml = sanitizeAnnotationHtml(annotation.text ?? '');
+    const rawAnnotationText = annotation.text === undefined || annotation.text === null ? '' : String(annotation.text);
+    const annotationMarkupNodes = parseSimpleMarkup(rawAnnotationText);
+    const annotationMarkupSignature = JSON.stringify(annotationMarkupNodes);
+    const annotationPlainText = simpleMarkupNodesToPlainText(annotationMarkupNodes);
 
     const layout = annotation.layout;
     const horizontalAlign = layout?.align ?? DEFAULT_HORIZONTAL_ALIGN;
@@ -284,7 +459,7 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
     };
 
     const measurementSignature = createMeasurementSignature(
-      annotationHtml,
+      annotationMarkupSignature,
       containerStyle,
       contentStyle,
       layout?.className,
@@ -379,12 +554,12 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
           data-annotation-key={key}
           data-chart-annotation-measurement="true"
         >
-          {/* eslint-disable-next-line react/no-danger -- content sanitized via sanitizeAnnotationHtml */}
           <div
             className={css(classNames.annotationContent, layout?.className, annotation.style?.className)}
             style={contentStyle}
-            dangerouslySetInnerHTML={{ __html: annotationHtml }}
-          />
+          >
+            {renderSimpleMarkup(annotationMarkupNodes, `${key}-measurement`)}
+          </div>
         </div>,
       );
     }
@@ -404,17 +579,17 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
           style={containerStyle}
           data-annotation-key={key}
         >
-          {/* eslint-disable-next-line react/no-danger -- content sanitized via sanitizeAnnotationHtml */}
           <div
             className={css(classNames.annotationContent, annotation.style?.className)}
             style={contentStyle}
             role={annotation.accessibility?.role ?? 'note'}
-            aria-label={annotation.accessibility?.ariaLabel}
+            aria-label={annotation.accessibility?.ariaLabel ?? (annotationPlainText ? annotationPlainText : undefined)}
             aria-describedby={annotation.accessibility?.ariaDescribedBy}
             data-chart-annotation="true"
             data-annotation-key={key}
-            dangerouslySetInnerHTML={{ __html: annotationHtml }}
-          />
+          >
+            {renderSimpleMarkup(annotationMarkupNodes, `${key}-content`)}
+          </div>
         </div>
       </foreignObject>,
     );

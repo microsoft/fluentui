@@ -8,10 +8,10 @@ The SVG icon components are primarily intended to be used directly, rather than 
 
 ```tsx
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { ChevronDownIcon } from '@fluentui/react-icons-mdl2';
 
-ReactDOM.render(<ChevronDownIcon />, document.body.firstChild);
+ReactDOMClient.createRoot(document.body.firstChild).render(<ChevronDownIcon />);
 ```
 
 If you do need to make SVG icons available to reference by name (for example, in Fluent UI React components which take `iconProps`), this can be done using `registerIcons` as follows:

@@ -3,15 +3,15 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
 
-import { withStoryWrightSteps } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Menu nested within a MenuTrigger',
 
-  decorators: [
+  parameters: {
     // https://github.com/microsoft/fluentui/issues/19782
-    story => withStoryWrightSteps({ story, steps: new Steps().click('#nestedTrigger').snapshot('submenu open').end() }),
-  ],
+    storyWright: { steps: new Steps().click('#nestedTrigger').snapshot('submenu open').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Menu>;
 
 const ContextMenuArea = React.forwardRef<HTMLDivElement>((props, ref) => {

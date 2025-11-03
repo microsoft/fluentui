@@ -3,15 +3,14 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
 import { CutRegular, EditRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
-import { getStoryVariant, RTL, withStoryWrightSteps } from '../../utilities';
+import { getStoryVariant, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Menu Converged - basic',
-
-  decorators: [
-    story =>
-      withStoryWrightSteps({ story, steps: new Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end() }),
-  ],
+  parameters: {
+    storyWright: { steps: new Steps().hover('[role="menuitem"]').snapshot('hover menuitem').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Menu>;
 
 export const Default = () => (

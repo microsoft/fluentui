@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Fri, 31 Oct 2025 16:22:05 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "54f4a26b54e74d96af223a54a3eb90cda29a2060",
+            "comment": "feat(motion): standardize from/to parameters"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Oct 2025 14:19:04 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.11.0",
       "version": "0.11.0",

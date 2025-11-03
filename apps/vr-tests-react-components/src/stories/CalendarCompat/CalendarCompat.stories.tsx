@@ -2,13 +2,13 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Calendar } from '@fluentui/react-calendar-compat';
 import { SampleCalendarCompatMultiDayView } from './utils';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities';
 
 export default {
   title: 'CalendarCompat',
-  decorators: [story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default').end() })],
+  parameters: { storyWright: { steps: new Steps().snapshot('default').end() } } satisfies StoryParameters,
 } satisfies Meta<typeof Calendar>;
 
 export const CalendarCompatMultiDayView = () => <SampleCalendarCompatMultiDayView daysToSelectInDayView={5} />;

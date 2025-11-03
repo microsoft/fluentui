@@ -6,7 +6,7 @@ export type RotateParams = BasePresenceParams &
   AnimateOpacity & {
     /**
      * The axis of rotation: 'x', 'y', or 'z'.
-     * Defaults to 'y'.
+     * Defaults to 'z'.
      */
     axis?: Axis3D;
 
@@ -14,11 +14,11 @@ export type RotateParams = BasePresenceParams &
      * The starting rotation angle in degrees.
      * Defaults to -90.
      */
-    angle?: number;
+    fromAngle?: number;
 
     /**
      * The ending rotation angle in degrees.
-     * Defaults to the negation of `angle`.
+     * Defaults to 0.
      */
-    exitAngle?: number;
+    toAngle?: number;
   };
