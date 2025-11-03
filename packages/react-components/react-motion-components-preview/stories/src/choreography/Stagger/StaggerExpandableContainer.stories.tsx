@@ -9,6 +9,7 @@ import {
   Slider,
   Label,
   JSXElement,
+  type PersonaProps,
 } from '@fluentui/react-components';
 import { Stagger, Slide, Collapse } from '@fluentui/react-motion-components-preview';
 // Timing constants for coordinated Collapse + Stagger choreography:
@@ -124,7 +125,7 @@ export const ExpandableContainer = (): JSXElement => {
   const staticItems = itemData.slice(0, VISIBLE_ITEMS_COUNT);
   const staggerItems = itemData.slice(VISIBLE_ITEMS_COUNT);
 
-  const avatarFor = (useImage?: boolean, image?: string): any =>
+  const avatarFor = (useImage?: boolean, image?: string): PersonaProps['avatar'] =>
     useImage
       ? {
           image: {
