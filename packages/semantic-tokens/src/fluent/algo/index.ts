@@ -212,4 +212,5 @@ export {
   groupButtonPrimaryStrokePressed,
   groupButtonSubtleForegroundPressed,
   groupButtonTransparentForegroundPressed,
+  groupButtonTransparentForegroundHover,
 } from './button/tokens';

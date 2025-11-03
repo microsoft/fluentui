@@ -2,7 +2,6 @@
 import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import {
   useSemanticButtonStyles,
-  useOptimizedSemanticButtonStyles,
   // useSemanticCompoundButtonStyles,
   // useSemanticMenuButtonStyles,
   // useSemanticSplitButtonStyles,
@@ -16,10 +15,4 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // useSplitButtonStyles_unstable: useSemanticSplitButtonStyles,
   // useMenuButtonStyles_unstable: useSemanticMenuButtonStyles,
   // useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,
-};
-
-// Optimized reduced token set version
-export const OPTIMIZED_SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
-  // Button styles
-  useButtonStyles_unstable: useOptimizedSemanticButtonStyles,
 };

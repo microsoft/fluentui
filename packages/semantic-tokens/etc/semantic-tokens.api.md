@@ -5,844 +5,394 @@
 ```ts
 
 // @public (undocumented)
+export const backgroundBrandLoud = "var(--smtc-background-brand-loud, var(--smtc-color-brand-2))";
+
+// @public (undocumented)
+export const backgroundBrandSoft = "var(--smtc-background-brand-soft, var(--smtc-color-brand-5))";
+
+// @public (undocumented)
+export const backgroundBrandSubtle = "var(--smtc-background-brand-subtle, var(--smtc-color-brand-6))";
+
+// @public (undocumented)
+export const backgroundDangerLoud = "var(--smtc-background-danger-loud, var(--smtc-color-danger-2))";
+
+// @public (undocumented)
+export const backgroundDangerSoft = "var(--smtc-background-danger-soft, var(--smtc-color-danger-5))";
+
+// @public (undocumented)
+export const backgroundDangerSubtle = "var(--smtc-background-danger-subtle, var(--smtc-color-danger-6))";
+
+// @public (undocumented)
+export const backgroundDisabled = "var(--smtc-background-disabled, var(--smtc-color-neutral-5))";
+
+// @public (undocumented)
+export const backgroundNeutralHeavy = "var(--smtc-background-neutral-heavy, var(--smtc-color-neutral-0))";
+
+// @public (undocumented)
+export const backgroundNeutralLoud = "var(--smtc-background-neutral-loud, var(--smtc-color-neutral-2))";
+
+// @public (undocumented)
+export const backgroundNeutralSoft = "var(--smtc-background-neutral-soft, var(--smtc-color-neutral-5))";
+
+// @public (undocumented)
+export const backgroundNeutralSubtle = "var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6))";
+
+// @public (undocumented)
+export const backgroundNeutralTransparent = "var(--smtc-background-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorTransparentBackground)))";
+
+// @public (undocumented)
+export const backgroundSuccessLoud = "var(--smtc-background-success-loud, var(--smtc-color-success-2))";
+
+// @public (undocumented)
+export const backgroundSuccessSoft = "var(--smtc-background-success-soft, var(--smtc-color-success-5))";
+
+// @public (undocumented)
+export const backgroundSuccessSubtle = "var(--smtc-background-success-subtle, var(--smtc-color-success-6))";
+
+// @public (undocumented)
+export const backgroundWarningLoud = "var(--smtc-background-warning-loud, var(--smtc-color-warning-2))";
+
+// @public (undocumented)
+export const backgroundWarningSoft = "var(--smtc-background-warning-soft, var(--smtc-color-warning-5))";
+
+// @public (undocumented)
+export const backgroundWarningSubtle = "var(--smtc-background-warning-subtle, var(--smtc-color-warning-6))";
+
+// @public (undocumented)
 export const cornerCircular = "var(--smtc-corner-circular, var(--borderRadiusCircular))";
 
 // @public (undocumented)
 export const cornerSquare = "var(--smtc-corner-square, var(--borderRadiusNone))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonGap = "var(--smtc-ctrl-compoundbutton-gap, var(--spacingHorizontalM))";
+export const foregroundBrandOnloud = "var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonIconSize = "var(--smtc-ctrl-compoundbutton-icon-size, 40px)";
+export const foregroundBrandPrimary = "var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonLargeIcononlyPadding = "var(--smtc-ctrl-compoundbutton-large-icononly-padding, var(--spacingHorizontalS))";
+export const foregroundDangerOnloud = "var(--smtc-foreground-danger-onloud, var(--smtc-color-neutral-8))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonLargeMinheight = "var(--smtc-ctrl-compoundbutton-large-minheight)";
+export const foregroundDangerPrimary = "var(--smtc-foreground-danger-primary, var(--smtc-color-danger-1))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonLargeMinwidth = "var(--smtc-ctrl-compoundbutton-large-minwidth)";
+export const foregroundDisabled = "var(--smtc-foreground-disabled, var(--smtc-color-neutral-3))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonLargePaddingBottom = "var(--smtc-ctrl-compoundbutton-large-padding-bottom, var(--spacingHorizontalXL))";
+export const foregroundNeutralOnneutral = "var(--smtc-foreground-neutral-onneutral, var(--smtc-color-neutral-0))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonLargePaddingHorizontal = "var(--smtc-ctrl-compoundbutton-large-padding-horizontal, var(--spacingHorizontalL))";
+export const foregroundNeutralPrimary = "var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonLargePaddingTop = "var(--smtc-ctrl-compoundbutton-large-padding-top, 18px)";
+export const foregroundNeutralSecondary = "var(--smtc-foreground-neutral-secondary, var(--smtc-color-neutral-1))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonMediumIcononlyPadding = "var(--smtc-ctrl-compoundbutton-medium-icononly-padding, var(--spacingHorizontalSNudge))";
+export const foregroundSuccessOnloud = "var(--smtc-foreground-success-onloud, var(--smtc-color-neutral-8))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonMediumMinheight = "var(--smtc-ctrl-compoundbutton-medium-minheight)";
+export const foregroundSuccessPrimary = "var(--smtc-foreground-success-primary, var(--smtc-color-success-1))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonMediumMinwidth = "var(--smtc-ctrl-compoundbutton-medium-minwidth)";
+export const foregroundWarningOnloud = "var(--smtc-foreground-warning-onloud, var(--smtc-color-neutral-8))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonMediumPaddingBottom = "var(--smtc-ctrl-compoundbutton-medium-padding-bottom, var(--spacingHorizontalL))";
+export const foregroundWarningPrimary = "var(--smtc-foreground-warning-primary, var(--smtc-color-warning-1))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonMediumPaddingHorizontal = "var(--smtc-ctrl-compoundbutton-medium-padding-horizontal, var(--spacingHorizontalM))";
+export const groupButtonCorner = "var(--smtc-group-button-corner, var(--borderRadiusMedium))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonMediumPaddingTop = "var(--smtc-ctrl-compoundbutton-medium-padding-top, 14px)";
+export const groupButtonFontfamily = "var(--smtc-group-button-fontfamily, var(--fontFamilyBase))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonSmallIcononlyPadding = "var(--smtc-ctrl-compoundbutton-small-icononly-padding, var(--spacingHorizontalXS))";
+export const groupButtonFontsize = "var(--smtc-group-button-fontsize, var(--fontSizeBase300))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonSmallMinheight = "var(--smtc-ctrl-compoundbutton-small-minheight)";
+export const groupButtonFontweight = "var(--smtc-group-button-fontweight, var(--fontWeightSemibold))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonSmallMinwidth = "var(--smtc-ctrl-compoundbutton-small-minwidth)";
+export const groupButtonGap = "var(--smtc-group-button-gap, var(--spacingHorizontalSNudge))";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonSmallPaddingBottom = "var(--smtc-ctrl-compoundbutton-small-padding-bottom, var(--spacingHorizontalMNudge))";
+export const groupButtonIcononlyPadding = "var(--smtc-group-button-icononly-padding, 5px)";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonSmallPaddingHorizontal = "var(--smtc-ctrl-compoundbutton-small-padding-horizontal, var(--spacingHorizontalS))";
+export const groupButtonIconSize = "var(--smtc-group-button-icon-size, 20px)";
 
 // @public (undocumented)
-export const ctrlCompoundbuttonSmallPaddingTop = "var(--smtc-ctrl-compoundbutton-small-padding-top, var(--spacingHorizontalS))";
+export const groupButtonLargeFontsize = "calc(var(--smtc-group-button-fontsize, var(--fontSizeBase300)) / 7 * 8)";
 
 // @public (undocumented)
-export const groupButtonDividerMarginVertical = "var(--smtc-group-button-divider-margin-vertical, 0px)";
+export const groupButtonLargeIcononlyPadding = "calc(var(--smtc-group-button-icononly-padding, 5px) / 5 * 7)";
 
 // @public (undocumented)
-export const groupButtonDividerStrokewidth = "var(--smtc-group-button-divider-strokewidth, var(--strokeWidthThin))";
+export const groupButtonLargeIconSize = "calc(var(--smtc-group-button-icon-size, 20px) / 5 * 6)";
 
 // @public (undocumented)
-export const groupButtonLargeChevronSize = "var(--smtc-group-button-large-chevron-size)";
+export const groupButtonLargeLineheight = "calc(var(--smtc-group-button-lineheight, var(--lineHeightBase300)) / 10 * 11)";
 
 // @public (undocumented)
-export const groupButtonLargeCorner = "var(--smtc-group-button-large-corner, var(--borderRadiusMedium))";
+export const groupButtonLargePaddingBottom = "calc(var(--smtc-group-button-padding-bottom, 5px) / 5 * 8)";
 
 // @public (undocumented)
-export const groupButtonLargeCornerDisabled = "var(--smtc-group-button-large-corner-disabled, var(--borderRadiusMedium))";
+export const groupButtonLargePaddingHorizontal = "calc(var(--smtc-group-button-padding-horizontal, var(--spacingHorizontalM)) / 12 * 16)";
 
 // @public (undocumented)
-export const groupButtonLargeCornerHover = "var(--smtc-group-button-large-corner-hover, var(--borderRadiusMedium))";
+export const groupButtonLargePaddingTop = "calc(var(--smtc-group-button-padding-top, 5px) / 5 * 8)";
 
 // @public (undocumented)
-export const groupButtonLargeCornerHoverSelected = "var(--smtc-group-button-large-corner-hover-selected, var(--borderRadiusMedium))";
+export const groupButtonLightnessHover = "var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))";
 
 // @public (undocumented)
-export const groupButtonLargeCornerPressed = "var(--smtc-group-button-large-corner-pressed, var(--borderRadiusMedium))";
+export const groupButtonLightnessPressed = "var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))";
 
 // @public (undocumented)
-export const groupButtonLargeCornerPressedSelected = "var(--smtc-group-button-large-corner-pressed-selected, var(--borderRadiusMedium))";
+export const groupButtonLineheight = "var(--smtc-group-button-lineheight, var(--lineHeightBase300))";
 
 // @public (undocumented)
-export const groupButtonLargeCornerSelected = "var(--smtc-group-button-large-corner-selected, var(--borderRadiusMedium))";
+export const groupButtonMinwidth = "var(--smtc-group-button-minwidth, 96px)";
 
 // @public (undocumented)
-export const groupButtonLargeGap = "var(--smtc-group-button-large-gap, var(--spacingHorizontalSNudge))";
+export const groupButtonNeutralBackground = "var(--smtc-group-button-neutral-background, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorNeutralBackground1))))";
 
 // @public (undocumented)
-export const groupButtonLargeIcononlyPadding = "var(--smtc-group-button-large-icononly-padding, 7px)";
+export const groupButtonNeutralBackgroundDisabled = "var(--smtc-group-button-neutral-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorNeutralBackgroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonLargeIconSize = "var(--smtc-group-button-large-icon-size, 24px)";
+export const groupButtonNeutralBackgroundHover = "hsl(from var(--smtc-group-button-neutral-background, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorNeutralBackground1)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
 
 // @public (undocumented)
-export const groupButtonLargeMinheight = "var(--smtc-group-button-large-minheight)";
+export const groupButtonNeutralBackgroundPressed = "hsl(from var(--smtc-group-button-neutral-background, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorNeutralBackground1)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
 
 // @public (undocumented)
-export const groupButtonLargeMinwidth = "var(--smtc-group-button-large-minwidth, 96px)";
+export const groupButtonNeutralBackgroundSelected = "var(--smtc-group-button-neutral-background-selected, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorNeutralBackground1Selected))))";
 
 // @public (undocumented)
-export const groupButtonLargePaddingBottom = "var(--smtc-group-button-large-padding-bottom, var(--spacingVerticalS))";
+export const groupButtonNeutralForeground = "var(--smtc-group-button-neutral-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground1))))";
 
 // @public (undocumented)
-export const groupButtonLargePaddingHorizontal = "var(--smtc-group-button-large-padding-horizontal, var(--spacingHorizontalL))";
+export const groupButtonNeutralForegroundDisabled = "var(--smtc-group-button-neutral-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonLargePaddingTop = "var(--smtc-group-button-large-padding-top, var(--spacingVerticalS))";
+export const groupButtonNeutralForegroundSelected = "var(--smtc-group-button-neutral-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground1Selected))))";
 
 // @public (undocumented)
-export const groupButtonLargeTextFontsize = "var(--smtc-group-button-large-text-fontsize, var(--fontSizeBase400))";
+export const groupButtonNeutralIconForeground = "var(--smtc-group-button-neutral-icon-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground1))))";
 
 // @public (undocumented)
-export const groupButtonLargeTextFontweight = "var(--smtc-group-button-large-text-fontweight, var(--fontWeightSemibold))";
+export const groupButtonNeutralIconForegroundDisabled = "var(--smtc-group-button-neutral-icon-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonLargeTextFontweightSelected = "var(--smtc-group-button-large-text-fontweight-selected)";
+export const groupButtonNeutralIconForegroundSelected = "var(--smtc-group-button-neutral-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground1Selected))))";
 
 // @public (undocumented)
-export const groupButtonLargeTextLineheight = "var(--smtc-group-button-large-text-lineheight, var(--lineHeightBase400))";
+export const groupButtonNeutralStroke = "var(--smtc-group-button-neutral-stroke, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorNeutralStroke1))))";
 
 // @public (undocumented)
-export const groupButtonLargeTextPaddingHorizontal = "var(--smtc-group-button-large-text-padding-horizontal, 0px)";
+export const groupButtonNeutralStrokeDisabled = "var(--smtc-group-button-neutral-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, var(--colorNeutralStrokeDisabled))))";
 
 // @public (undocumented)
-export const groupButtonLargeTextSecondaryFontsize = "var(--smtc-group-button-large-text-secondary-fontsize, var(--fontSizeBase300))";
+export const groupButtonNeutralStrokeHover = "hsl(from var(--smtc-group-button-neutral-stroke, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
 
 // @public (undocumented)
-export const groupButtonLargeTextSecondaryFontweight = "var(--smtc-group-button-large-text-secondary-fontweight, var(--fontWeightRegular))";
+export const groupButtonNeutralStrokePressed = "hsl(from var(--smtc-group-button-neutral-stroke, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
 
 // @public (undocumented)
-export const groupButtonLargeTextSecondaryLineheight = "var(--smtc-group-button-large-text-secondary-lineheight, 100%)";
+export const groupButtonNeutralStrokeSelected = "var(--smtc-group-button-neutral-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, var(--colorNeutralStroke1Selected))))";
 
 // @public (undocumented)
-export const groupButtonMediumChevronSize = "var(--smtc-group-button-medium-chevron-size)";
+export const groupButtonOutlineBackground = "var(--smtc-group-button-outline-background, var(--smtc-background-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorTransparentBackground))))";
 
 // @public (undocumented)
-export const groupButtonMediumCorner = "var(--smtc-group-button-medium-corner, var(--borderRadiusMedium))";
+export const groupButtonOutlineBackgroundDisabled = "var(--smtc-group-button-outline-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorTransparentBackground))))";
 
 // @public (undocumented)
-export const groupButtonMediumCornerDisabled = "var(--smtc-group-button-medium-corner-disabled, var(--borderRadiusMedium))";
+export const groupButtonOutlineBackgroundSelected = "var(--smtc-group-button-outline-background-selected, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorTransparentBackgroundSelected))))";
 
 // @public (undocumented)
-export const groupButtonMediumCornerHover = "var(--smtc-group-button-medium-corner-hover, var(--borderRadiusMedium))";
+export const groupButtonOutlineForeground = "var(--smtc-group-button-outline-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground1))))";
 
 // @public (undocumented)
-export const groupButtonMediumCornerHoverSelected = "var(--smtc-group-button-medium-corner-hover-selected, var(--borderRadiusMedium))";
+export const groupButtonOutlineForegroundDisabled = "var(--smtc-group-button-outline-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonMediumCornerPressed = "var(--smtc-group-button-medium-corner-pressed, var(--borderRadiusMedium))";
+export const groupButtonOutlineForegroundSelected = "var(--smtc-group-button-outline-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground1Selected))))";
 
 // @public (undocumented)
-export const groupButtonMediumCornerPressedSelected = "var(--smtc-group-button-medium-corner-pressed-selected, var(--borderRadiusMedium))";
+export const groupButtonOutlineIconForeground = "var(--smtc-group-button-outline-icon-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground1))))";
 
 // @public (undocumented)
-export const groupButtonMediumCornerSelected = "var(--smtc-group-button-medium-corner-selected, var(--borderRadiusMedium))";
+export const groupButtonOutlineIconForegroundDisabled = "var(--smtc-group-button-outline-icon-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonMediumGap = "var(--smtc-group-button-medium-gap, var(--spacingHorizontalSNudge))";
+export const groupButtonOutlineIconForegroundSelected = "var(--smtc-group-button-outline-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground1Selected))))";
 
 // @public (undocumented)
-export const groupButtonMediumIcononlyPadding = "var(--smtc-group-button-medium-icononly-padding, 5px)";
+export const groupButtonOutlineStroke = "var(--smtc-group-button-outline-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, var(--colorNeutralStroke1))))";
 
 // @public (undocumented)
-export const groupButtonMediumIconSize = "var(--smtc-group-button-medium-icon-size, 20px)";
+export const groupButtonOutlineStrokeDisabled = "var(--smtc-group-button-outline-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, var(--colorNeutralStrokeDisabled))))";
 
 // @public (undocumented)
-export const groupButtonMediumMinheight = "var(--smtc-group-button-medium-minheight)";
+export const groupButtonOutlineStrokeHover = "hsl(from var(--smtc-group-button-outline-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
 
 // @public (undocumented)
-export const groupButtonMediumMinwidth = "var(--smtc-group-button-medium-minwidth, 96px)";
+export const groupButtonOutlineStrokePressed = "hsl(from var(--smtc-group-button-outline-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
 
 // @public (undocumented)
-export const groupButtonMediumPaddingBottom = "var(--smtc-group-button-medium-padding-bottom, 5px)";
-
-// @public (undocumented)
-export const groupButtonMediumPaddingHorizontal = "var(--smtc-group-button-medium-padding-horizontal, var(--spacingHorizontalM))";
-
-// @public (undocumented)
-export const groupButtonMediumPaddingTop = "var(--smtc-group-button-medium-padding-top, 5px)";
-
-// @public (undocumented)
-export const groupButtonMediumTextFontsize = "var(--smtc-group-button-medium-text-fontsize, var(--fontSizeBase300))";
-
-// @public (undocumented)
-export const groupButtonMediumTextFontweight = "var(--smtc-group-button-medium-text-fontweight, var(--fontWeightSemibold))";
-
-// @public (undocumented)
-export const groupButtonMediumTextFontweightSelected = "var(--smtc-group-button-medium-text-fontweight-selected)";
-
-// @public (undocumented)
-export const groupButtonMediumTextLineheight = "var(--smtc-group-button-medium-text-lineheight, var(--lineHeightBase300))";
-
-// @public (undocumented)
-export const groupButtonMediumTextPaddingHorizontal = "var(--smtc-group-button-medium-text-padding-horizontal, 0px)";
-
-// @public (undocumented)
-export const groupButtonMediumTextSecondaryFontsize = "var(--smtc-group-button-medium-text-secondary-fontsize, var(--fontSizeBase200))";
-
-// @public (undocumented)
-export const groupButtonMediumTextSecondaryFontweight = "var(--smtc-group-button-medium-text-secondary-fontweight, var(--fontWeightRegular))";
-
-// @public (undocumented)
-export const groupButtonMediumTextSecondaryLineheight = "var(--smtc-group-button-medium-text-secondary-lineheight, 100%)";
-
-// @public (undocumented)
-export const groupButtonNeutralBackground = "var(--smtc-group-button-neutral-background, var(--colorNeutralBackground1))";
-
-// @public (undocumented)
-export const groupButtonNeutralBackgroundDisabled = "var(--smtc-group-button-neutral-background-disabled, var(--colorNeutralBackgroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonNeutralBackgroundHover = "var(--smtc-group-button-neutral-background-hover, var(--colorNeutralBackground1Hover))";
-
-// @public (undocumented)
-export const groupButtonNeutralBackgroundHoverSelected = "var(--smtc-group-button-neutral-background-hover-selected, var(--colorNeutralBackground1Hover))";
-
-// @public (undocumented)
-export const groupButtonNeutralBackgroundPressed = "var(--smtc-group-button-neutral-background-pressed, var(--colorNeutralBackground1Pressed))";
-
-// @public (undocumented)
-export const groupButtonNeutralBackgroundPressedSelected = "var(--smtc-group-button-neutral-background-pressed-selected, var(--colorNeutralBackground1Pressed))";
-
-// @public (undocumented)
-export const groupButtonNeutralBackgroundSelected = "var(--smtc-group-button-neutral-background-selected, var(--colorNeutralBackground1Selected))";
-
-// @public (undocumented)
-export const groupButtonNeutralChevronForeground = "var(--smtc-group-button-neutral-chevron-foreground)";
-
-// @public (undocumented)
-export const groupButtonNeutralChevronForegroundDisabled = "var(--smtc-group-button-neutral-chevron-foreground-disabled)";
-
-// @public (undocumented)
-export const groupButtonNeutralChevronForegroundHover = "var(--smtc-group-button-neutral-chevron-foreground-hover)";
-
-// @public (undocumented)
-export const groupButtonNeutralChevronForegroundPressed = "var(--smtc-group-button-neutral-chevron-foreground-pressed)";
-
-// @public (undocumented)
-export const groupButtonNeutralChevronForegroundSelected = "var(--smtc-group-button-neutral-chevron-foreground-selected)";
-
-// @public (undocumented)
-export const groupButtonNeutralDividerStroke = "var(--smtc-group-button-neutral-divider-stroke, var(--colorNeutralStroke1))";
-
-// @public (undocumented)
-export const groupButtonNeutralIconForeground = "var(--smtc-group-button-neutral-icon-foreground, var(--colorNeutralForeground1))";
-
-// @public (undocumented)
-export const groupButtonNeutralIconForegroundDisabled = "var(--smtc-group-button-neutral-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonNeutralIconForegroundHover = "var(--smtc-group-button-neutral-icon-foreground-hover, var(--colorNeutralForeground1Hover))";
-
-// @public (undocumented)
-export const groupButtonNeutralIconForegroundPressed = "var(--smtc-group-button-neutral-icon-foreground-pressed, var(--colorNeutralForeground1Pressed))";
-
-// @public (undocumented)
-export const groupButtonNeutralIconForegroundSelected = "var(--smtc-group-button-neutral-icon-foreground-selected, var(--colorNeutralForeground1Selected))";
-
-// @public (undocumented)
-export const groupButtonNeutralShadow = "var(--smtc-group-button-neutral-shadow, 0 0 0 transparent)";
-
-// @public (undocumented)
-export const groupButtonNeutralShadowDisabled = "var(--smtc-group-button-neutral-shadow-disabled, 0 0 0 transparent)";
-
-// @public (undocumented)
-export const groupButtonNeutralShadowDisabledSelected = "var(--smtc-group-button-neutral-shadow-disabled-selected)";
-
-// @public (undocumented)
-export const groupButtonNeutralShadowSelected = "var(--smtc-group-button-neutral-shadow-selected, 0 0 0 transparent)";
-
-// @public (undocumented)
-export const groupButtonNeutralStroke = "var(--smtc-group-button-neutral-stroke, var(--colorNeutralStroke1))";
-
-// @public (undocumented)
-export const groupButtonNeutralStrokeDisabled = "var(--smtc-group-button-neutral-stroke-disabled, var(--colorNeutralStrokeDisabled))";
-
-// @public (undocumented)
-export const groupButtonNeutralStrokeHover = "var(--smtc-group-button-neutral-stroke-hover, var(--colorNeutralStroke1Hover))";
-
-// @public (undocumented)
-export const groupButtonNeutralStrokeHoverSelected = "var(--smtc-group-button-neutral-stroke-hover-selected, var(--colorNeutralStroke1Hover))";
-
-// @public (undocumented)
-export const groupButtonNeutralStrokePressed = "var(--smtc-group-button-neutral-stroke-pressed, var(--colorNeutralStroke1Pressed))";
-
-// @public (undocumented)
-export const groupButtonNeutralStrokePressedSelected = "var(--smtc-group-button-neutral-stroke-pressed-selected, var(--colorNeutralStroke1Pressed))";
-
-// @public (undocumented)
-export const groupButtonNeutralStrokeSelected = "var(--smtc-group-button-neutral-stroke-selected, var(--colorNeutralStroke1Selected))";
-
-// @public (undocumented)
-export const groupButtonNeutralTextForeground = "var(--smtc-group-button-neutral-text-foreground, var(--colorNeutralForeground1))";
-
-// @public (undocumented)
-export const groupButtonNeutralTextForegroundDisabled = "var(--smtc-group-button-neutral-text-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonNeutralTextForegroundHover = "var(--smtc-group-button-neutral-text-foreground-hover, var(--colorNeutralForeground1Hover))";
-
-// @public (undocumented)
-export const groupButtonNeutralTextForegroundPressed = "var(--smtc-group-button-neutral-text-foreground-pressed, var(--colorNeutralForeground1Pressed))";
-
-// @public (undocumented)
-export const groupButtonNeutralTextForegroundSelected = "var(--smtc-group-button-neutral-text-foreground-selected, var(--colorNeutralForeground1Selected))";
-
-// @public (undocumented)
-export const groupButtonNeutralTextSecondaryForeground = "var(--smtc-group-button-neutral-text-secondary-foreground, var(--colorNeutralForeground2))";
-
-// @public (undocumented)
-export const groupButtonNeutralTextSecondaryForegroundDisabled = "var(--smtc-group-button-neutral-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonNeutralTextSecondaryForegroundHover = "var(--smtc-group-button-neutral-text-secondary-foreground-hover, var(--colorNeutralForeground2Hover))";
-
-// @public (undocumented)
-export const groupButtonNeutralTextSecondaryForegroundPressed = "var(--smtc-group-button-neutral-text-secondary-foreground-pressed, var(--colorNeutralForeground2Pressed))";
-
-// @public (undocumented)
-export const groupButtonOutlineBackground = "var(--smtc-group-button-outline-background, var(--colorTransparentBackground))";
-
-// @public (undocumented)
-export const groupButtonOutlineBackgroundDisabled = "var(--smtc-group-button-outline-background-disabled, var(--colorTransparentBackground))";
-
-// @public (undocumented)
-export const groupButtonOutlineBackgroundHover = "var(--smtc-group-button-outline-background-hover, var(--colorTransparentBackgroundHover))";
-
-// @public (undocumented)
-export const groupButtonOutlineBackgroundHoverSelected = "var(--smtc-group-button-outline-background-hover-selected, var(--colorTransparentBackgroundHover))";
-
-// @public (undocumented)
-export const groupButtonOutlineBackgroundPressed = "var(--smtc-group-button-outline-background-pressed, var(--colorTransparentBackgroundPressed))";
-
-// @public (undocumented)
-export const groupButtonOutlineBackgroundPressedSelected = "var(--smtc-group-button-outline-background-pressed-selected, var(--colorTransparentBackgroundPressed))";
-
-// @public (undocumented)
-export const groupButtonOutlineBackgroundSelected = "var(--smtc-group-button-outline-background-selected, var(--colorTransparentBackgroundSelected))";
-
-// @public (undocumented)
-export const groupButtonOutlineChevronForeground = "var(--smtc-group-button-outline-chevron-foreground)";
-
-// @public (undocumented)
-export const groupButtonOutlineChevronForegroundDisabled = "var(--smtc-group-button-outline-chevron-foreground-disabled)";
-
-// @public (undocumented)
-export const groupButtonOutlineChevronForegroundHover = "var(--smtc-group-button-outline-chevron-foreground-hover)";
-
-// @public (undocumented)
-export const groupButtonOutlineChevronForegroundPressed = "var(--smtc-group-button-outline-chevron-foreground-pressed)";
-
-// @public (undocumented)
-export const groupButtonOutlineChevronForegroundSelected = "var(--smtc-group-button-outline-chevron-foreground-selected)";
-
-// @public (undocumented)
-export const groupButtonOutlineDividerStroke = "var(--smtc-group-button-outline-divider-stroke, var(--colorNeutralStroke1))";
-
-// @public (undocumented)
-export const groupButtonOutlineIconForeground = "var(--smtc-group-button-outline-icon-foreground, var(--colorNeutralForeground1))";
-
-// @public (undocumented)
-export const groupButtonOutlineIconForegroundDisabled = "var(--smtc-group-button-outline-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonOutlineIconForegroundHover = "var(--smtc-group-button-outline-icon-foreground-hover, var(--colorNeutralForeground1Hover))";
-
-// @public (undocumented)
-export const groupButtonOutlineIconForegroundPressed = "var(--smtc-group-button-outline-icon-foreground-pressed, var(--colorNeutralForeground1Pressed))";
-
-// @public (undocumented)
-export const groupButtonOutlineIconForegroundSelected = "var(--smtc-group-button-outline-icon-foreground-selected, var(--colorNeutralForeground1Selected))";
-
-// @public (undocumented)
-export const groupButtonOutlineStroke = "var(--smtc-group-button-outline-stroke, var(--colorNeutralStroke1))";
-
-// @public (undocumented)
-export const groupButtonOutlineStrokeDisabled = "var(--smtc-group-button-outline-stroke-disabled, var(--colorNeutralStrokeDisabled))";
-
-// @public (undocumented)
-export const groupButtonOutlineStrokeHover = "var(--smtc-group-button-outline-stroke-hover, var(--colorNeutralStroke1Hover))";
-
-// @public (undocumented)
-export const groupButtonOutlineStrokeHoverSelected = "var(--smtc-group-button-outline-stroke-hover-selected, var(--colorNeutralStroke1Selected))";
-
-// @public (undocumented)
-export const groupButtonOutlineStrokePressed = "var(--smtc-group-button-outline-stroke-pressed, var(--colorNeutralStroke1Pressed))";
-
-// @public (undocumented)
-export const groupButtonOutlineStrokePressedSelected = "var(--smtc-group-button-outline-stroke-pressed-selected, var(--colorNeutralStroke1Selected))";
-
-// @public (undocumented)
-export const groupButtonOutlineStrokeSelected = "var(--smtc-group-button-outline-stroke-selected, var(--colorNeutralStroke1))";
-
-// @public (undocumented)
-export const groupButtonOutlineStrokewidth = "var(--smtc-group-button-outline-strokewidth)";
-
-// @public (undocumented)
-export const groupButtonOutlineStrokewidthHover = "var(--smtc-group-button-outline-strokewidth-hover, var(--strokeWidthThin))";
-
-// @public (undocumented)
-export const groupButtonOutlineStrokewidthPressed = "var(--smtc-group-button-outline-strokewidth-pressed, var(--strokeWidthThin))";
+export const groupButtonOutlineStrokeSelected = "var(--smtc-group-button-outline-stroke-selected, var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0, var(--colorNeutralStroke1))))";
 
 // @public (undocumented)
 export const groupButtonOutlineStrokewidthSelected = "var(--smtc-group-button-outline-strokewidth-selected, var(--strokeWidthThicker))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextForeground = "var(--smtc-group-button-outline-text-foreground, var(--colorNeutralForeground1))";
+export const groupButtonPaddingBottom = "var(--smtc-group-button-padding-bottom, 5px)";
 
 // @public (undocumented)
-export const groupButtonOutlineTextForegroundDisabled = "var(--smtc-group-button-outline-text-foreground-disabled, var(--colorNeutralForegroundDisabled))";
+export const groupButtonPaddingHorizontal = "var(--smtc-group-button-padding-horizontal, var(--spacingHorizontalM))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextForegroundHover = "var(--smtc-group-button-outline-text-foreground-hover, var(--colorNeutralForeground1Hover))";
+export const groupButtonPaddingTop = "var(--smtc-group-button-padding-top, 5px)";
 
 // @public (undocumented)
-export const groupButtonOutlineTextForegroundPressed = "var(--smtc-group-button-outline-text-foreground-pressed, var(--colorNeutralForeground1Pressed))";
+export const groupButtonPrimaryBackground = "var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground))))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextForegroundSelected = "var(--smtc-group-button-outline-text-foreground-selected, var(--colorNeutralForeground1Selected))";
+export const groupButtonPrimaryBackgroundDisabled = "var(--smtc-group-button-primary-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorNeutralBackgroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextSecondaryForeground = "var(--smtc-group-button-outline-text-secondary-foreground, var(--colorNeutralForeground2))";
+export const groupButtonPrimaryBackgroundHover = "hsl(from var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextSecondaryForegroundDisabled = "var(--smtc-group-button-outline-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))";
+export const groupButtonPrimaryBackgroundPressed = "hsl(from var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextSecondaryForegroundHover = "var(--smtc-group-button-outline-text-secondary-foreground-hover, var(--colorNeutralForeground2Hover))";
+export const groupButtonPrimaryBackgroundSelected = "var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-loud-selected, var(--colorBrandBackgroundSelected)))";
 
 // @public (undocumented)
-export const groupButtonOutlineTextSecondaryForegroundPressed = "var(--smtc-group-button-outline-text-secondary-foreground-pressed, var(--colorNeutralForeground2Pressed))";
+export const groupButtonPrimaryForeground = "var(--smtc-group-button-primary-foreground, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForegroundOnBrand))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackground = "var(--smtc-group-button-primary-background, var(--colorBrandBackground))";
+export const groupButtonPrimaryForegroundDisabled = "var(--smtc-group-button-primary-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundDisabled = "var(--smtc-group-button-primary-background-disabled, var(--colorNeutralBackgroundDisabled))";
+export const groupButtonPrimaryForegroundSelected = "var(--smtc-group-button-primary-foreground-selected, var(--smtc-stroke-brand-onloud-selected, var(--colorNeutralForegroundOnBrand)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundHover = "var(--smtc-group-button-primary-background-hover, var(--colorBrandBackgroundHover))";
+export const groupButtonPrimaryIconForeground = "var(--smtc-group-button-primary-icon-foreground, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForegroundOnBrand))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundHoverSelected = "var(--smtc-group-button-primary-background-hover-selected, var(--colorBrandBackgroundHover))";
+export const groupButtonPrimaryIconForegroundDisabled = "var(--smtc-group-button-primary-icon-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundPressed = "var(--smtc-group-button-primary-background-pressed, var(--colorBrandBackgroundPressed))";
+export const groupButtonPrimaryIconForegroundSelected = "var(--smtc-group-button-primary-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForegroundOnBrand))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundPressedSelected = "var(--smtc-group-button-primary-background-pressed-selected, var(--colorBrandBackgroundPressed))";
+export const groupButtonPrimaryStroke = "var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundSelected = "var(--smtc-group-button-primary-background-selected, var(--colorBrandBackgroundSelected))";
+export const groupButtonPrimaryStrokeDisabled = "var(--smtc-group-button-primary-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, transparent)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryChevronForeground = "var(--smtc-group-button-primary-chevron-foreground)";
+export const groupButtonPrimaryStrokeHover = "hsl(from var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryChevronForegroundDisabled = "var(--smtc-group-button-primary-chevron-foreground-disabled)";
+export const groupButtonPrimaryStrokePressed = "hsl(from var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryChevronForegroundHover = "var(--smtc-group-button-primary-chevron-foreground-hover)";
+export const groupButtonPrimaryStrokeSelected = "var(--smtc-group-button-primary-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryChevronForegroundPressed = "var(--smtc-group-button-primary-chevron-foreground-pressed)";
+export const groupButtonShadow = "var(--smtc-group-button-shadow, 0 0 0 transparent)";
 
 // @public (undocumented)
-export const groupButtonPrimaryChevronForegroundSelected = "var(--smtc-group-button-primary-chevron-foreground-selected)";
+export const groupButtonSmallFontsize = "calc(var(--smtc-group-button-fontsize, var(--fontSizeBase300)) / 7 * 6)";
 
 // @public (undocumented)
-export const groupButtonPrimaryDividerStroke = "var(--smtc-group-button-primary-divider-stroke, var(--colorNeutralStrokeOnBrand))";
+export const groupButtonSmallFontweight = "calc(var(--smtc-group-button-fontweight, var(--fontWeightSemibold)) / 3 * 2)";
 
 // @public (undocumented)
-export const groupButtonPrimaryIconForeground = "var(--smtc-group-button-primary-icon-foreground, var(--colorNeutralForegroundOnBrand))";
+export const groupButtonSmallGap = "calc(var(--smtc-group-button-gap, var(--spacingHorizontalSNudge)) / 3 * 2)";
 
 // @public (undocumented)
-export const groupButtonPrimaryIconForegroundDisabled = "var(--smtc-group-button-primary-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))";
+export const groupButtonSmallIcononlyPadding = "calc(var(--smtc-group-button-icononly-padding, 5px) / 5)";
 
 // @public (undocumented)
-export const groupButtonPrimaryIconForegroundHover = "var(--smtc-group-button-primary-icon-foreground-hover, var(--colorNeutralForegroundOnBrand))";
+export const groupButtonSmallLineheight = "calc(var(--smtc-group-button-lineheight, var(--lineHeightBase300)) / 5 * 4)";
 
 // @public (undocumented)
-export const groupButtonPrimaryIconForegroundPressed = "var(--smtc-group-button-primary-icon-foreground-pressed, var(--colorNeutralForegroundOnBrand))";
+export const groupButtonSmallMinwidth = "calc(var(--smtc-group-button-minwidth, 96px) / 3 * 2)";
 
 // @public (undocumented)
-export const groupButtonPrimaryIconForegroundSelected = "var(--smtc-group-button-primary-icon-foreground-selected, var(--colorNeutralForegroundOnBrand))";
+export const groupButtonSmallPaddingBottom = "calc(var(--smtc-group-button-padding-bottom, 5px) / 5 * 3)";
 
 // @public (undocumented)
-export const groupButtonPrimaryShadow = "var(--smtc-group-button-primary-shadow, 0 0 0 transparent)";
+export const groupButtonSmallPaddingHorizontal = "calc(var(--smtc-group-button-padding-horizontal, var(--spacingHorizontalM)) / 12 * 8)";
 
 // @public (undocumented)
-export const groupButtonPrimaryShadowDisabled = "var(--smtc-group-button-primary-shadow-disabled, 0 0 0 transparent)";
+export const groupButtonSmallPaddingTop = "calc(var(--smtc-group-button-padding-top, 5px) / 5 * 3)";
 
 // @public (undocumented)
-export const groupButtonPrimaryShadowDisabledSelected = "var(--smtc-group-button-primary-shadow-disabled-selected)";
-
-// @public (undocumented)
-export const groupButtonPrimaryShadowSelected = "var(--smtc-group-button-primary-shadow-selected, 0 0 0 transparent)";
-
-// @public (undocumented)
-export const groupButtonPrimaryStroke = "var(--smtc-group-button-primary-stroke, transparent)";
-
-// @public (undocumented)
-export const groupButtonPrimaryStrokeDisabled = "var(--smtc-group-button-primary-stroke-disabled, transparent)";
-
-// @public (undocumented)
-export const groupButtonPrimaryStrokeHover = "var(--smtc-group-button-primary-stroke-hover, transparent)";
-
-// @public (undocumented)
-export const groupButtonPrimaryStrokeHoverSelected = "var(--smtc-group-button-primary-stroke-hover-selected, transparent)";
-
-// @public (undocumented)
-export const groupButtonPrimaryStrokePressed = "var(--smtc-group-button-primary-stroke-pressed, transparent)";
-
-// @public (undocumented)
-export const groupButtonPrimaryStrokePressedSelected = "var(--smtc-group-button-primary-stroke-pressed-selected, transparent)";
-
-// @public (undocumented)
-export const groupButtonPrimaryStrokeSelected = "var(--smtc-group-button-primary-stroke-selected, transparent)";
-
-// @public (undocumented)
-export const groupButtonPrimaryTextForeground = "var(--smtc-group-button-primary-text-foreground, var(--colorNeutralForegroundOnBrand))";
-
-// @public (undocumented)
-export const groupButtonPrimaryTextForegroundDisabled = "var(--smtc-group-button-primary-text-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonPrimaryTextForegroundHover = "var(--smtc-group-button-primary-text-foreground-hover, var(--colorNeutralForegroundOnBrand))";
-
-// @public (undocumented)
-export const groupButtonPrimaryTextForegroundPressed = "var(--smtc-group-button-primary-text-foreground-pressed, var(--colorNeutralForegroundOnBrand))";
-
-// @public (undocumented)
-export const groupButtonPrimaryTextForegroundSelected = "var(--smtc-group-button-primary-text-foreground-selected, var(--colorNeutralForegroundOnBrand))";
-
-// @public (undocumented)
-export const groupButtonPrimaryTextSecondaryForeground = "var(--smtc-group-button-primary-text-secondary-foreground, var(--colorNeutralForegroundOnBrand))";
-
-// @public (undocumented)
-export const groupButtonPrimaryTextSecondaryForegroundDisabled = "var(--smtc-group-button-primary-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonPrimaryTextSecondaryForegroundHover = "var(--smtc-group-button-primary-text-secondary-foreground-hover, var(--colorNeutralForegroundOnBrand))";
-
-// @public (undocumented)
-export const groupButtonPrimaryTextSecondaryForegroundPressed = "var(--smtc-group-button-primary-text-secondary-foreground-pressed, var(--colorNeutralForegroundOnBrand))";
-
-// @public (undocumented)
-export const groupButtonSmallChevronSize = "var(--smtc-group-button-small-chevron-size)";
-
-// @public (undocumented)
-export const groupButtonSmallCorner = "var(--smtc-group-button-small-corner, var(--borderRadiusMedium))";
-
-// @public (undocumented)
-export const groupButtonSmallCornerDisabled = "var(--smtc-group-button-small-corner-disabled, var(--borderRadiusMedium))";
-
-// @public (undocumented)
-export const groupButtonSmallCornerHover = "var(--smtc-group-button-small-corner-hover, var(--borderRadiusMedium))";
-
-// @public (undocumented)
-export const groupButtonSmallCornerHoverSelected = "var(--smtc-group-button-small-corner-hover-selected, var(--borderRadiusMedium))";
-
-// @public (undocumented)
-export const groupButtonSmallCornerPressed = "var(--smtc-group-button-small-corner-pressed, var(--borderRadiusMedium))";
-
-// @public (undocumented)
-export const groupButtonSmallCornerPressedSelected = "var(--smtc-group-button-small-corner-pressed-selected, var(--borderRadiusMedium))";
-
-// @public (undocumented)
-export const groupButtonSmallCornerSelected = "var(--smtc-group-button-small-corner-selected, var(--borderRadiusMedium))";
-
-// @public (undocumented)
-export const groupButtonSmallGap = "var(--smtc-group-button-small-gap, var(--spacingHorizontalXS))";
-
-// @public (undocumented)
-export const groupButtonSmallIcononlyPadding = "var(--smtc-group-button-small-icononly-padding, 1px)";
-
-// @public (undocumented)
-export const groupButtonSmallIconSize = "var(--smtc-group-button-small-icon-size, 20px)";
-
-// @public (undocumented)
-export const groupButtonSmallMinheight = "var(--smtc-group-button-small-minheight)";
-
-// @public (undocumented)
-export const groupButtonSmallMinwidth = "var(--smtc-group-button-small-minwidth, 64px)";
-
-// @public (undocumented)
-export const groupButtonSmallPaddingBottom = "var(--smtc-group-button-small-padding-bottom, 3px)";
-
-// @public (undocumented)
-export const groupButtonSmallPaddingHorizontal = "var(--smtc-group-button-small-padding-horizontal, var(--spacingHorizontalS))";
-
-// @public (undocumented)
-export const groupButtonSmallPaddingTop = "var(--smtc-group-button-small-padding-top, 3px)";
-
-// @public (undocumented)
-export const groupButtonSmallTextFontsize = "var(--smtc-group-button-small-text-fontsize, var(--fontSizeBase200))";
-
-// @public (undocumented)
-export const groupButtonSmallTextFontweight = "var(--smtc-group-button-small-text-fontweight, var(--fontWeightRegular))";
-
-// @public (undocumented)
-export const groupButtonSmallTextFontweightSelected = "var(--smtc-group-button-small-text-fontweight-selected)";
-
-// @public (undocumented)
-export const groupButtonSmallTextLineheight = "var(--smtc-group-button-small-text-lineheight, var(--lineHeightBase200))";
-
-// @public (undocumented)
-export const groupButtonSmallTextPaddingHorizontal = "var(--smtc-group-button-small-text-padding-horizontal, 0px)";
-
-// @public (undocumented)
-export const groupButtonSmallTextSecondaryFontsize = "var(--smtc-group-button-small-text-secondary-fontsize, var(--fontSizeBase200))";
-
-// @public (undocumented)
-export const groupButtonSmallTextSecondaryFontweight = "var(--smtc-group-button-small-text-secondary-fontweight, var(--fontWeightRegular))";
-
-// @public (undocumented)
-export const groupButtonSmallTextSecondaryLineheight = "var(--smtc-group-button-small-text-secondary-lineheight, 100%)";
+export const groupButtonSmallTextPaddingHorizontal = "calc(var(--smtc-group-button-text-padding-horizontal, 0px) / 3 * 2)";
 
 // @public (undocumented)
 export const groupButtonStrokewidth = "var(--smtc-group-button-strokewidth, var(--strokeWidthThin))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackground = "var(--smtc-group-button-subtle-background, var(--colorSubtleBackground))";
+export const groupButtonSubtleBackground = "var(--smtc-group-button-subtle-background, var(--smtc-background-brand-transparent, var(--colorSubtleBackground)))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundDisabled = "var(--smtc-group-button-subtle-background-disabled, var(--colorTransparentBackground))";
+export const groupButtonSubtleBackgroundDisabled = "var(--smtc-group-button-subtle-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorTransparentBackground))))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundHover = "var(--smtc-group-button-subtle-background-hover, var(--colorSubtleBackgroundHover))";
+export const groupButtonSubtleBackgroundSelected = "var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorSubtleBackgroundSelected))))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundHoverSelected = "var(--smtc-group-button-subtle-background-hover-selected, var(--colorSubtleBackgroundHover))";
+export const groupButtonSubtleForeground = "var(--smtc-group-button-subtle-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground2))))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundPressed = "var(--smtc-group-button-subtle-background-pressed, var(--colorSubtleBackgroundPressed))";
+export const groupButtonSubtleForegroundDisabled = "var(--smtc-group-button-subtle-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundPressedSelected = "var(--smtc-group-button-subtle-background-pressed-selected, var(--colorSubtleBackgroundPressed))";
+export const groupButtonSubtleForegroundPressed = "hsl(from var(--smtc-group-button-subtle-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground2)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundSelected = "var(--smtc-group-button-subtle-background-selected, var(--colorSubtleBackgroundSelected))";
+export const groupButtonSubtleForegroundSelected = "var(--smtc-group-button-subtle-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground2Selected))))";
 
 // @public (undocumented)
-export const groupButtonSubtleChevronForeground = "var(--smtc-group-button-subtle-chevron-foreground)";
+export const groupButtonSubtleIconForeground = "var(--smtc-group-button-subtle-icon-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground2))))";
 
 // @public (undocumented)
-export const groupButtonSubtleChevronForegroundDisabled = "var(--smtc-group-button-subtle-chevron-foreground-disabled)";
+export const groupButtonSubtleIconForegroundDisabled = "var(--smtc-group-button-subtle-icon-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonSubtleChevronForegroundHover = "var(--smtc-group-button-subtle-chevron-foreground-hover)";
+export const groupButtonSubtleIconForegroundSelected = "var(--smtc-group-button-subtle-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground2BrandSelected))))";
 
 // @public (undocumented)
-export const groupButtonSubtleChevronForegroundPressed = "var(--smtc-group-button-subtle-chevron-foreground-pressed)";
+export const groupButtonSubtleStroke = "var(--smtc-group-button-subtle-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, transparent)))";
 
 // @public (undocumented)
-export const groupButtonSubtleChevronForegroundSelected = "var(--smtc-group-button-subtle-chevron-foreground-selected)";
+export const groupButtonSubtleStrokeDisabled = "var(--smtc-group-button-subtle-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, transparent)))";
 
 // @public (undocumented)
-export const groupButtonSubtleDividerStroke = "var(--smtc-group-button-subtle-divider-stroke, transparent)";
+export const groupButtonSubtleStrokeSelected = "var(--smtc-group-button-subtle-stroke-selected, var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0, transparent)))";
 
 // @public (undocumented)
-export const groupButtonSubtleIconForeground = "var(--smtc-group-button-subtle-icon-foreground, var(--colorNeutralForeground2))";
+export const groupButtonTextPaddingHorizontal = "var(--smtc-group-button-text-padding-horizontal, 0px)";
 
 // @public (undocumented)
-export const groupButtonSubtleIconForegroundDisabled = "var(--smtc-group-button-subtle-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))";
+export const groupButtonTransparentForeground = "var(--smtc-group-button-transparent-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground2))))";
 
 // @public (undocumented)
-export const groupButtonSubtleIconForegroundHover = "var(--smtc-group-button-subtle-icon-foreground-hover, var(--colorNeutralForeground2BrandHover))";
+export const groupButtonTransparentForegroundDisabled = "var(--smtc-group-button-transparent-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonSubtleIconForegroundPressed = "var(--smtc-group-button-subtle-icon-foreground-pressed, var(--colorNeutralForeground2BrandPressed))";
+export const groupButtonTransparentForegroundPressed = "hsl(from var(--smtc-group-button-transparent-foreground-selected, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandSelected)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
 
 // @public (undocumented)
-export const groupButtonSubtleIconForegroundSelected = "var(--smtc-group-button-subtle-icon-foreground-selected, var(--colorNeutralForeground2BrandSelected))";
-
-// @public (undocumented)
-export const groupButtonSubtleStroke = "var(--smtc-group-button-subtle-stroke, transparent)";
-
-// @public (undocumented)
-export const groupButtonSubtleStrokeDisabled = "var(--smtc-group-button-subtle-stroke-disabled, transparent)";
-
-// @public (undocumented)
-export const groupButtonSubtleStrokeHover = "var(--smtc-group-button-subtle-stroke-hover, transparent)";
-
-// @public (undocumented)
-export const groupButtonSubtleStrokeHoverSelected = "var(--smtc-group-button-subtle-stroke-hover-selected, transparent)";
-
-// @public (undocumented)
-export const groupButtonSubtleStrokePressed = "var(--smtc-group-button-subtle-stroke-pressed, transparent)";
-
-// @public (undocumented)
-export const groupButtonSubtleStrokePressedSelected = "var(--smtc-group-button-subtle-stroke-pressed-selected, transparent)";
-
-// @public (undocumented)
-export const groupButtonSubtleStrokeSelected = "var(--smtc-group-button-subtle-stroke-selected, transparent)";
-
-// @public (undocumented)
-export const groupButtonSubtleTextForeground = "var(--smtc-group-button-subtle-text-foreground, var(--colorNeutralForeground2))";
-
-// @public (undocumented)
-export const groupButtonSubtleTextForegroundDisabled = "var(--smtc-group-button-subtle-text-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonSubtleTextForegroundHover = "var(--smtc-group-button-subtle-text-foreground-hover, var(--colorNeutralForeground2Hover))";
-
-// @public (undocumented)
-export const groupButtonSubtleTextForegroundPressed = "var(--smtc-group-button-subtle-text-foreground-pressed, var(--colorNeutralForeground2Pressed))";
-
-// @public (undocumented)
-export const groupButtonSubtleTextForegroundSelected = "var(--smtc-group-button-subtle-text-foreground-selected, var(--colorNeutralForeground2Selected))";
-
-// @public (undocumented)
-export const groupButtonSubtleTextSecondaryForeground = "var(--smtc-group-button-subtle-text-secondary-foreground, var(--colorNeutralForeground2))";
-
-// @public (undocumented)
-export const groupButtonSubtleTextSecondaryForegroundDisabled = "var(--smtc-group-button-subtle-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonSubtleTextSecondaryForegroundHover = "var(--smtc-group-button-subtle-text-secondary-foreground-hover, var(--colorNeutralForeground2Hover))";
-
-// @public (undocumented)
-export const groupButtonSubtleTextSecondaryForegroundPressed = "var(--smtc-group-button-subtle-text-secondary-foreground-pressed, var(--colorNeutralForeground2Pressed))";
-
-// @public (undocumented)
-export const groupButtonTextFontfamily = "var(--smtc-group-button-text-fontfamily, var(--fontFamilyBase))";
-
-// @public (undocumented)
-export const groupButtonTransparentBackground = "var(--smtc-group-button-transparent-background, var(--colorTransparentBackground))";
-
-// @public (undocumented)
-export const groupButtonTransparentBackgroundDisabled = "var(--smtc-group-button-transparent-background-disabled, var(--colorTransparentBackground))";
-
-// @public (undocumented)
-export const groupButtonTransparentBackgroundHover = "var(--smtc-group-button-transparent-background-hover, var(--colorTransparentBackgroundHover))";
-
-// @public (undocumented)
-export const groupButtonTransparentBackgroundHoverSelected = "var(--smtc-group-button-transparent-background-hover-selected, var(--colorTransparentBackgroundHover))";
-
-// @public (undocumented)
-export const groupButtonTransparentBackgroundPressed = "var(--smtc-group-button-transparent-background-pressed, var(--colorTransparentBackgroundPressed))";
-
-// @public (undocumented)
-export const groupButtonTransparentBackgroundPressedSelected = "var(--smtc-group-button-transparent-background-pressed-selected, var(--colorTransparentBackgroundPressed))";
-
-// @public (undocumented)
-export const groupButtonTransparentBackgroundSelected = "var(--smtc-group-button-transparent-background-selected, var(--colorTransparentBackgroundSelected))";
-
-// @public (undocumented)
-export const groupButtonTransparentChevronForeground = "var(--smtc-group-button-transparent-chevron-foreground)";
-
-// @public (undocumented)
-export const groupButtonTransparentChevronForegroundDisabled = "var(--smtc-group-button-transparent-chevron-foreground-disabled)";
-
-// @public (undocumented)
-export const groupButtonTransparentChevronForegroundHover = "var(--smtc-group-button-transparent-chevron-foreground-hover)";
-
-// @public (undocumented)
-export const groupButtonTransparentChevronForegroundPressed = "var(--smtc-group-button-transparent-chevron-foreground-pressed)";
-
-// @public (undocumented)
-export const groupButtonTransparentChevronForegroundSelected = "var(--smtc-group-button-transparent-chevron-foreground-selected)";
-
-// @public (undocumented)
-export const groupButtonTransparentDividerStroke = "var(--smtc-group-button-transparent-divider-stroke, transparent)";
-
-// @public (undocumented)
-export const groupButtonTransparentIconForeground = "var(--smtc-group-button-transparent-icon-foreground, var(--colorNeutralForeground2))";
-
-// @public (undocumented)
-export const groupButtonTransparentIconForegroundDisabled = "var(--smtc-group-button-transparent-icon-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonTransparentIconForegroundHover = "var(--smtc-group-button-transparent-icon-foreground-hover, var(--colorNeutralForeground2BrandHover))";
-
-// @public (undocumented)
-export const groupButtonTransparentIconForegroundPressed = "var(--smtc-group-button-transparent-icon-foreground-pressed, var(--colorNeutralForeground2BrandPressed))";
-
-// @public (undocumented)
-export const groupButtonTransparentIconForegroundSelected = "var(--smtc-group-button-transparent-icon-foreground-selected, var(--colorNeutralForeground2BrandSelected))";
-
-// @public (undocumented)
-export const groupButtonTransparentStroke = "var(--smtc-group-button-transparent-stroke, transparent)";
-
-// @public (undocumented)
-export const groupButtonTransparentStrokeDisabled = "var(--smtc-group-button-transparent-stroke-disabled, transparent)";
-
-// @public (undocumented)
-export const groupButtonTransparentStrokeHover = "var(--smtc-group-button-transparent-stroke-hover, transparent)";
-
-// @public (undocumented)
-export const groupButtonTransparentStrokeHoverSelected = "var(--smtc-group-button-transparent-stroke-hover-selected, transparent)";
-
-// @public (undocumented)
-export const groupButtonTransparentStrokePressed = "var(--smtc-group-button-transparent-stroke-pressed, transparent)";
-
-// @public (undocumented)
-export const groupButtonTransparentStrokePressedSelected = "var(--smtc-group-button-transparent-stroke-pressed-selected, transparent)";
-
-// @public (undocumented)
-export const groupButtonTransparentStrokeSelected = "var(--smtc-group-button-transparent-stroke-selected, transparent)";
-
-// @public (undocumented)
-export const groupButtonTransparentTextForeground = "var(--smtc-group-button-transparent-text-foreground, var(--colorNeutralForeground2))";
-
-// @public (undocumented)
-export const groupButtonTransparentTextForegroundDisabled = "var(--smtc-group-button-transparent-text-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonTransparentTextForegroundHover = "var(--smtc-group-button-transparent-text-foreground-hover, var(--colorNeutralForeground2BrandHover))";
-
-// @public (undocumented)
-export const groupButtonTransparentTextForegroundPressed = "var(--smtc-group-button-transparent-text-foreground-pressed, var(--colorNeutralForeground2BrandPressed))";
-
-// @public (undocumented)
-export const groupButtonTransparentTextForegroundSelected = "var(--smtc-group-button-transparent-text-foreground-selected, var(--colorNeutralForeground2BrandSelected))";
-
-// @public (undocumented)
-export const groupButtonTransparentTextSecondaryForeground = "var(--smtc-group-button-transparent-text-secondary-foreground, var(--colorNeutralForeground2))";
-
-// @public (undocumented)
-export const groupButtonTransparentTextSecondaryForegroundDisabled = "var(--smtc-group-button-transparent-text-secondary-foreground-disabled, var(--colorNeutralForegroundDisabled))";
-
-// @public (undocumented)
-export const groupButtonTransparentTextSecondaryForegroundHover = "var(--smtc-group-button-transparent-text-secondary-foreground-hover, var(--colorNeutralForeground2BrandHover))";
-
-// @public (undocumented)
-export const groupButtonTransparentTextSecondaryForegroundPressed = "var(--smtc-group-button-transparent-text-secondary-foreground-pressed, var(--colorNeutralForeground2BrandPressed))";
+export const groupButtonTransparentForegroundSelected = "var(--smtc-group-button-transparent-foreground-selected, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandSelected))))";
 
 // @public (undocumented)
 export const groupFocusInnerStroke = "var(--smtc-group-focus-inner-stroke, var(--colorStrokeFocus2))";
@@ -861,6 +411,72 @@ export const groupFocusOuterStroke = "var(--smtc-group-focus-outer-stroke, var(-
 
 // @public (undocumented)
 export const groupFocusOuterStrokewidth = "var(--smtc-group-focus-outer-strokewidth, var(--strokeWidthThick))";
+
+// @public (undocumented)
+export const lightnessHover = "var(--smtc-lightness-hover, -5)";
+
+// @public (undocumented)
+export const lightnessPressed = "var(--smtc-lightness-pressed, -10)";
+
+// @public (undocumented)
+export const strokeBrandLoud = "var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2))";
+
+// @public (undocumented)
+export const strokeBrandOnloud = "var(--smtc-stroke-brand-onloud, var(--smtc-color-neutral-8))";
+
+// @public (undocumented)
+export const strokeBrandSubtle = "var(--smtc-stroke-brand-subtle, var(--smtc-color-brand-4))";
+
+// @public (undocumented)
+export const strokeDangerLoud = "var(--smtc-stroke-danger-loud, var(--smtc-color-danger-2))";
+
+// @public (undocumented)
+export const strokeDangerOnloud = "var(--smtc-stroke-danger-onloud, var(--smtc-color-danger-8))";
+
+// @public (undocumented)
+export const strokeDangerSubtle = "var(--smtc-stroke-danger-subtle, var(--smtc-color-danger-4))";
+
+// @public (undocumented)
+export const strokeDisabled = "var(--smtc-stroke-disabled, var(--smtc-color-neutral-4))";
+
+// @public (undocumented)
+export const strokeNeutralLoud = "var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0))";
+
+// @public (undocumented)
+export const strokeNeutralOnloud = "var(--smtc-stroke-neutral-onloud, var(--smtc-color-neutral-8))";
+
+// @public (undocumented)
+export const strokeNeutralSoft = "var(--smtc-stroke-neutral-soft, var(--smtc-color-neutral-3))";
+
+// @public (undocumented)
+export const strokeNeutralSubtle = "var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4))";
+
+// @public (undocumented)
+export const strokeNeutralTransparent = "var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha))";
+
+// @public (undocumented)
+export const strokeSuccessLoud = "var(--smtc-stroke-success-loud, var(--smtc-color-success-2))";
+
+// @public (undocumented)
+export const strokeSuccessOnloud = "var(--smtc-stroke-success-onloud, var(--smtc-color-neutral-8))";
+
+// @public (undocumented)
+export const strokeSuccessSubtle = "var(--smtc-stroke-success-subtle, var(--smtc-color-success-4))";
+
+// @public (undocumented)
+export const strokeWarningLoud = "var(--smtc-stroke-warning-loud, var(--smtc-color-warning-2))";
+
+// @public (undocumented)
+export const strokeWarningOnloud = "var(--smtc-stroke-warning-onloud, var(--smtc-color-neutral-8))";
+
+// @public (undocumented)
+export const strokeWarningSubtle = "var(--smtc-stroke-warning-subtle, var(--smtc-color-warning-4))";
+
+// @public (undocumented)
+export const surfaceNeutralDefault = "var(--smtc-surface-neutral-default, var(--smtc-color-neutral-8))";
+
+// @public (undocumented)
+export const surfaceNeutralSubtle = "var(--smtc-surface-neutral-subtle, var(--smtc-color-neutral-7))";
 
 // (No @packageDocumentation comment for this package)
 

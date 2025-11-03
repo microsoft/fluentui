@@ -52,4 +52,5 @@ export const groupButtonPrimaryStrokeHover = `hsl(from ${groupButtonPrimaryStrok
 export const groupButtonPrimaryBackgroundPressed = `hsl(from ${groupButtonPrimaryBackground} h s calc(l + ${groupButtonLightnessPressed}))`;
 export const groupButtonPrimaryStrokePressed = `hsl(from ${groupButtonPrimaryStroke} h s calc(l + ${groupButtonLightnessPressed}))`;
 export const groupButtonSubtleForegroundPressed = `hsl(from ${groupButtonSubtleForeground} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonTransparentForegroundPressed = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+export const groupButtonTransparentForegroundPressed = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
+export const groupButtonTransparentForegroundHover = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;

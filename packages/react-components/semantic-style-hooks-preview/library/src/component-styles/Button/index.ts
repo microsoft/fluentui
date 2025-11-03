@@ -3,6 +3,3 @@ export { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';
 // export { useSemanticSplitButtonStyles } from './useSemanticSplitButtonStyles.styles';
 // export { useSemanticMenuButtonStyles } from './useSemanticMenuButtonStyles.styles';
 // export { useSemanticCompoundButtonStyles } from './useSemanticCompoundButtonStyles.styles';
-
-// Optimized instead
-export { useOptimizedSemanticButtonStyles } from './useOptimizedSemanticButtonStyles.styles';
