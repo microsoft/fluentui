@@ -18,6 +18,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.71.0 ]------------------------------- -->
+## [v0.71.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.71.0) (03-11-2025)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.70.0..@fluentui/react-northstar_v0.71.0)
+
+### BREAKING CHANGES
+- Animations removed from `Popup` component https://github.com/microsoft/fluentui/pull/35408
+
+### Fixes
+- `FocusTrapZone` uses `Ref` https://github.com/microsoft/fluentui/pull/35432
+- `useAccessibility()` refactored to be safe for Concurrent Mode https://github.com/microsoft/fluentui/pull/35427
+- `React.useId()` is used for IDs generation https://github.com/microsoft/fluentui/pull/35407
+- `Input` works in Strict Mode https://github.com/microsoft/fluentui/pull/35409
+
 <!--------------------------------[ v0.70.0 ]------------------------------- -->
 ## [v0.70.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.70.0) (30-10-2025)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.69.1..@fluentui/react-northstar_v0.70.0)

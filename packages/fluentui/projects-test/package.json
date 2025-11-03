@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/projects-test",
-  "version": "0.70.0",
+  "version": "0.71.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
