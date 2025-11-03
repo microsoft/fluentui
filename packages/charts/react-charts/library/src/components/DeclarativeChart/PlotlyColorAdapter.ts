@@ -88,6 +88,7 @@ function tryMapFluentDataViz(
   isDarkTheme?: boolean,
   isDonut?: boolean,
 ): string {
+  console.log('hiiiii templ', templateColorway);
   if (templateColorway !== 'plotly') {
     return hexColor;
   }
@@ -139,6 +140,7 @@ export const getSchemaColors = (
   isDonut?: boolean,
 ): string[] | string | undefined => {
   const hexColors: string[] = [];
+  console.log('colors', colors);
   if (!colors) {
     return undefined;
   }
@@ -147,15 +149,21 @@ export const getSchemaColors = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (colors as any[]).forEach((element, index) => {
       const colorString = element?.toString().trim();
+      console.log('colorstring', colorString);
       const nextFluentColor = getColor(`Label_${index}`, colorMap, templateColorway, isDarkTheme, isDonut);
-      if (colorString) {
-        const parsedColor = d3Color(colorString);
-        hexColors.push(
-          parsedColor ? tryMapFluentDataViz(parsedColor.formatHex(), templateColorway, isDarkTheme) : nextFluentColor,
-        );
-      } else {
-        hexColors.push(nextFluentColor);
+      console.log('next fluent color', nextFluentColor);
+      //  if (colorString) {
+      const parsedColor = d3Color(colorString);
+      console.log('parsed color', parsedColor);
+      if (parsedColor) {
+        console.log('fluentdataxviz', tryMapFluentDataViz(parsedColor.formatHex(), templateColorway, isDarkTheme));
       }
+      hexColors.push(
+        parsedColor ? tryMapFluentDataViz(parsedColor.formatHex(), templateColorway, isDarkTheme) : nextFluentColor,
+      );
+      //  } else {
+      //   hexColors.push(nextFluentColor);
+      //  }
     });
   } else if (typeof colors === 'string') {
     const parsedColor = d3Color(colors);
@@ -163,6 +171,7 @@ export const getSchemaColors = (
       ? tryMapFluentDataViz(parsedColor.formatHex(), templateColorway, isDarkTheme)
       : getColor('Label_0', colorMap, templateColorway, isDarkTheme, isDonut);
   }
+  console.log('hexColors', hexColors);
   return hexColors;
 };
 
@@ -189,7 +198,9 @@ export const resolveColor = (
   isDonut?: boolean,
 ): string => {
   let color = '';
+  console.log('colorway', colorway);
   const templateColorway = getPlotlyColorway(colorway, isDonut);
+  console.log('hello templatecolorway', templateColorway);
   if (extractedColors && isArrayOrTypedArray(extractedColors) && extractedColors.length > 0) {
     color = extractedColors[index % extractedColors.length];
   } else if (typeof extractedColors === 'string') {
@@ -197,6 +208,7 @@ export const resolveColor = (
   } else {
     color = getColor(legend, colorMap, templateColorway, isDarkTheme, isDonut);
   }
+  console.log('color', color);
   return color;
 };
 
