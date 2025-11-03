@@ -67,7 +67,7 @@ function customColumnDivider(
 }
 
 describe('DetailsList', () => {
-  let spy: jest.SpyInstance;
+  let spy: jest.Spied<typeof window.scrollTo>;
   beforeEach(() => {
     /* eslint-disable-next-line @typescript-eslint/no-empty-function */
     spy = jest.spyOn(window, 'scrollTo').mockImplementation(() => {});

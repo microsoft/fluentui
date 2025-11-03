@@ -28,7 +28,7 @@ jest.mock('node:child_process', () => {
 const spawnSyncMock = spawnSync as jest.MockedFunction<typeof spawnSync>;
 
 describe('VerifyPackaging Executor', () => {
-  let loggerErrorSpy: jest.SpyInstance;
+  let loggerErrorSpy: jest.Spied<typeof logger.error>;
 
   beforeEach(() => {
     loggerErrorSpy = jest.spyOn(logger, 'error').mockImplementation(() => {

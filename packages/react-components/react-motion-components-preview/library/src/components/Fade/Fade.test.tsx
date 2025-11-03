@@ -6,7 +6,7 @@ import { mockAnimation } from '../../testing/testUtils';
 
 describe('Fade motion component', () => {
   let originalAnimate: typeof HTMLElement.prototype.animate;
-  let animateSpy: jest.SpyInstance;
+  let animateSpy: jest.Spied<typeof HTMLElement.prototype.animate>;
   const testElement = <div data-testid="fade-content">Test</div>;
 
   // JSDOM does not support the Web Animations API, so create a mock animate() before spying on it

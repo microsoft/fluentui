@@ -1,13 +1,20 @@
+// Mock modules before imports to avoid module initialization issues in Jest 30
+// NOTE: In Jest 30, jest.mock() must come before imports to avoid module initialization issues
+jest.mock('node:child_process', () => ({
+  execSync: jest.fn(),
+}));
+
+// Mock @fluentui/scripts-monorepo to avoid @nx/devkit initialization issues
+jest.mock('@fluentui/scripts-monorepo', () => ({
+  ...jest.requireActual('@fluentui/scripts-monorepo'),
+  workspaceRoot: '/mock/workspace',
+}));
+
 import { execSync } from 'node:child_process';
 
 import type { AllPackageInfo } from '@fluentui/scripts-monorepo';
 
 import { deprecateReactComponentsPreviewPackages } from './deprecate-react-components-preview-packages';
-
-// Mock the `execSync` function, as we don't want to actually run the `npm deprecate` command
-jest.mock('node:child_process', () => ({
-  execSync: jest.fn(),
-}));
 
 const mockExecSync = execSync as jest.MockedFunction<typeof execSync>;
 

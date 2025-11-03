@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and xAxisCalloutData in IST timezone 1`] = `"Jan 1, 2022. Legend 1, 10."`;
 

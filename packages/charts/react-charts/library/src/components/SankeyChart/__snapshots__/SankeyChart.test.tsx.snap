@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Sankey Chart snapShot testing number formatting renders Sankey correctly by formatting large numbers 1`] = `
 Object {
@@ -11086,7 +11086,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               />
               <div
                 class="fui-cart__calloutContentY"
-                style="color: rgb(135, 100, 184);"
+                style="color: rgb(135, 100, 184); font-size: var(--fontSizeHero700);"
               >
                 14
               </div>

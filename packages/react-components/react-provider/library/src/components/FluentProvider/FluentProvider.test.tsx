@@ -15,7 +15,7 @@ jest.mock('@fluentui/react-utilities', () => ({
 describe('FluentProvider', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
-  let logErrorSpy: jest.SpyInstance;
+  let logErrorSpy: jest.Spied<typeof console.error>;
 
   beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation(noop);
