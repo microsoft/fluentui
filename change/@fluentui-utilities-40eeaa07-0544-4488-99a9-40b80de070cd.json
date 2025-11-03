@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "GetNativeProps: guard against non-truthy values",
+  "packageName": "@fluentui/utilities",
+  "email": "acenassri@microsoft.com",
+  "dependentChangeType": "patch"
+}
