@@ -51,6 +51,7 @@ const createConfig = (customConfig = {}) => {
       '\\.(scss)$': path.resolve(__dirname, './v8/jest-style-mock.js'),
       KeyCodes: path.resolve(__dirname, './v8/jest-mock.js'),
       enzyme: path.resolve(__dirname, './v8/jest-mock.js'),
+      // explicitly needed as R17 doesn't have this API and if not declared explicitly our integration jest config wouldn't be able to override this
       '^@testing-library/react-hooks$': path.join(repoRoot, 'node_modules/@testing-library/react'),
       ...jestAliases(),
     },
