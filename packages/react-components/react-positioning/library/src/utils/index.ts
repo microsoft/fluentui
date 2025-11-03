@@ -15,3 +15,4 @@ export { hasAutofocusFilter } from './hasAutoFocusFilter';
 export { writeArrowUpdates } from './writeArrowUpdates';
 export { writeContainerUpdates } from './writeContainerupdates';
 export { normalizeAutoSize } from './normalizeAutoSize';
+export { toAnchorInset } from './anchorPositioning/toAnchorInset';

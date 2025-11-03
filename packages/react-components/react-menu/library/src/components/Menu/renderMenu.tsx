@@ -10,7 +10,7 @@ export const renderMenu_unstable = (state: MenuState, contextValues: MenuContext
   return (
     <MenuProvider value={contextValues.menu}>
       {state.menuTrigger}
-      {state.open && state.menuPopover}
+      {state.menuPopover}
     </MenuProvider>
   );
 };
