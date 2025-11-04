@@ -108,7 +108,7 @@ describe('customizable', () => {
   });
 
   it('will apply component style function when no global styles are present', () => {
-    const componentStyles = { root: { color: 'red', background: 'green' } };
+    const componentStyles = { root: { color: 'rgb(255, 0, 0)', background: 'rgb(0, 128, 0)' } };
     const componentStylesFn: IStyleFunction<IComponentProps, IComponentStyles> = _props => {
       return componentStyles;
     };
