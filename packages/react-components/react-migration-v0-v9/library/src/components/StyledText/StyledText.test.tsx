@@ -81,8 +81,8 @@ describe('StyledText', () => {
 
   it.each`
     atMention | color
-    ${true}   | ${'theme.colorBrandForegroundLink'}
-    ${'me'}   | ${'theme.colorPalettePumpkinBorderActive'}
+    ${true}   | ${'var(--colorBrandForegroundLink)'}
+    ${'me'}   | ${'var(--colorPalettePumpkinBorderActive)'}
   `(`applies the correct atMention styles`, ({ atMention, color }) => {
     const { getByText } = render(<StyledText atMention={atMention}>Test</StyledText>);
     const textElement = getByText('Test');
@@ -96,7 +96,7 @@ describe('StyledText', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      color: theme.colorNeutralForegroundDisabled;
+      color: var(--colorNeutralForegroundDisabled);
     `);
   });
 
@@ -105,7 +105,7 @@ describe('StyledText', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      color: theme.colorPaletteRedBorderActive;
+      color: var(--colorPaletteRedForeground3);
     `);
   });
 
@@ -114,7 +114,7 @@ describe('StyledText', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      color: theme.colorPaletteRedBorderActive;
+      color: var(--colorPaletteDarkOrangeForeground3);
       font-weight: 700;
     `);
   });
@@ -124,7 +124,7 @@ describe('StyledText', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      color: theme.colorPaletteGreenForeground3;
+      color: var(--colorPaletteGreenForeground3);
     `);
   });
 
@@ -142,7 +142,7 @@ describe('StyledText', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-    color: theme.colorNeutralForeground2;
+    color: var(--colorNeutralForeground3);
     `);
   });
 });
