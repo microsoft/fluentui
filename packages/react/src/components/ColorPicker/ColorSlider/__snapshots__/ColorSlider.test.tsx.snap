@@ -42,6 +42,7 @@ exports[`ColorSlider renders alpha slider correctly 1`] = `
           right: 0px;
           top: 0px;
         }
+    style="background: linear-gradient(to right, transparent, #ff0000);"
   />
   <div
     class=
@@ -157,6 +158,7 @@ exports[`ColorSlider renders transparency slider correctly 1`] = `
           right: 0px;
           top: 0px;
         }
+    style="background: linear-gradient(to right, #ff0000, transparent);"
   />
   <div
     class=
