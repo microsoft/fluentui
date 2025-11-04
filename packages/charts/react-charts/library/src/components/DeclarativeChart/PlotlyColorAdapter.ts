@@ -150,7 +150,7 @@ export const getSchemaColors = (
     (colors as any[]).forEach((element, index) => {
       const colorString = element?.toString().trim();
       //console.log('colorstring', colorString);
-      const nextFluentColor = getColor(`Label_${index}`, colorMap, templateColorway, isDarkTheme, isDonut);
+      //const nextFluentColor = getColor(`Label_${index}`, colorMap, templateColorway, isDarkTheme, isDonut);
       //console.log('next fluent color', nextFluentColor);
       //  if (colorString) {
       const parsedColor = d3Color(colorString);
@@ -158,9 +158,7 @@ export const getSchemaColors = (
       if (parsedColor) {
         //console.log('fluentdataxviz', tryMapFluentDataViz(parsedColor.formatHex(), templateColorway, isDarkTheme));
       }
-      hexColors.push(
-        parsedColor ? tryMapFluentDataViz(parsedColor.formatHex(), templateColorway, isDarkTheme) : nextFluentColor,
-      );
+      hexColors.push(tryMapFluentDataViz(parsedColor!.formatHex(), templateColorway, isDarkTheme));
       //  } else {
       //   hexColors.push(nextFluentColor);
       //  }
@@ -177,7 +175,7 @@ export const getSchemaColors = (
 
 export const extractColor = (
   colorway: string[] | undefined,
-  colorwayType: ColorwayType,
+  colorwayType: ColorwayType = 'default',
   colors: PieColors | Color | Color[] | string | null | undefined,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
