@@ -10,13 +10,5 @@
     "../../../node_modules/@nx/react/typings/image.d.ts"
   ],
   "exclude": ["../**/*.spec.ts", "../**/*.spec.js", "../**/*.spec.tsx", "../**/*.spec.jsx"],
-  "include": [
-    "../stories/**/*.stories.ts",
-    "../stories/**/*.stories.js",
-    "../stories/**/*.stories.jsx",
-    "../stories/**/*.stories.tsx",
-    "../stories/**/*.mdx",
-    "*.ts",
-    "*.js"
-  ]
+  "include": ["*.tsx", "*.ts", "*.jsx", "*.js"]
 }

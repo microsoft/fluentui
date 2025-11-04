@@ -36,6 +36,7 @@
   "peerDependencies": {
     "@storybook/addon-docs": "^8.6.14",
     "@storybook/components": "^8.6.14",
+    "@storybook/core": "^8.6.14",
     "@storybook/core-events": "^8.6.14",
     "@storybook/icons": "^1.3.2",
     "@storybook/preview-api": "^8.6.14",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: storybook 8 support",
-  "packageName": "@fluentui/storybook-llms-extractor",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

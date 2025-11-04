@@ -20,6 +20,7 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-links',
+    // https://storybook.js.org/docs/writing-docs/mdx#markdown-tables-arent-rendering-correctly
     '@storybook/addon-mdx-gfm',
 
     // internal monorepo custom addons
@@ -39,7 +40,7 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
       },
     }),
   ],
-  webpackFinal(config) {
+  webpackFinal: config => {
     registerRules({ config, rules: [rules.swcRule] });
     registerTsPaths({ config, configFile: tsConfigPath });
 
@@ -68,7 +69,6 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
   previewHead: head => head + previewHeadTemplate,
 
   typescript: {
-    check: false,
     reactDocgen: 'react-docgen-typescript',
   },
 });

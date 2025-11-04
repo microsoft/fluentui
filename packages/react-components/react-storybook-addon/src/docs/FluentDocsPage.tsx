@@ -10,7 +10,7 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
-import type { PreparedStory, Renderer, SBEnumType } from '@storybook/types';
+import type { PreparedStory, Renderer, SBEnumType } from '@storybook/core/types';
 
 import { tokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
@@ -334,11 +334,8 @@ export const FluentDocsPage = (): JSXElement => {
         <Title />
         <Subtitle />
         <Description />
-        <RenderPrimaryStory
-          primaryStory={primaryStory as unknown as PrimaryStory}
-          skipPrimaryStory={skipPrimaryStory}
-        />
-        <RenderArgsTable story={primaryStory as unknown as PrimaryStory} hideArgsTable={hideArgsTable} />
+        <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+        <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
         <Stories />
       </div>
     );
