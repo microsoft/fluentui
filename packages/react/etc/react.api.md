@@ -1836,7 +1836,7 @@ export { getFocusOutlineStyle }
 export { getFocusStyle }
 
 // @public
-export const getFontIcon: (iconName: string, className?: string, ariaLabel?: string) => React_2.ReactNode | Promise<React_2.ReactNode>;
+export const getFontIcon: (iconName: string, className?: string, ariaLabel?: string) => React_2.ReactNode;
 
 // @public
 export function getFullColorString(color: IColor): string;
