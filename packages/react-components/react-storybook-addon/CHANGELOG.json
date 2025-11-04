@@ -2,6 +2,21 @@
   "name": "@fluentui/react-storybook-addon",
   "entries": [
     {
+      "date": "Tue, 04 Nov 2025 14:47:00 GMT",
+      "tag": "@fluentui/react-storybook-addon_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "196f2aa216c1f849a3322b7f0197a214f0f75d42",
+            "comment": "fix: force release"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Oct 2025 16:22:00 GMT",
       "tag": "@fluentui/react-storybook-addon_v0.5.0",
       "version": "0.5.0",

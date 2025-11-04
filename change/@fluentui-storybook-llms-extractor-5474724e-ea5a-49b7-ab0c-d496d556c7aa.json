@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: now properly uses correct story store for SB 8 compatibility.",
-  "packageName": "@fluentui/storybook-llms-extractor",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

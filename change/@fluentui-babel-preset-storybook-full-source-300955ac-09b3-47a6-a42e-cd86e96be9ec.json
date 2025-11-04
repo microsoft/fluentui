@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: force release",
-  "packageName": "@fluentui/babel-preset-storybook-full-source",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
