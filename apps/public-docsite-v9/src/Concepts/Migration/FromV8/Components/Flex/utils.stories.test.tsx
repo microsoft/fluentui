@@ -1,8 +1,21 @@
-/* eslint-disable react/jsx-key */
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import * as React from 'react';
-import { Source } from '@storybook/addon-docs';
-import { createRenderer } from 'react-test-renderer/shallow';
+import { render } from '@testing-library/react';
+
 import { CodeExample } from './utils.stories';
+
+// Mock the Source component to verify it receives correct props
+const mockSource = jest.fn(({ code, language }: { code: string; language: string }) => (
+  <pre data-testid="source" data-language={language}>
+    <code>{code}</code>
+  </pre>
+));
+
+// `Source` wont be available in the test environment, so we need to mock it to test the code output
+jest.mock('@storybook/addon-docs', () => ({
+  Source: (props: { code: string; language: string }) => mockSource(props),
+}));
 
 function mockMDXSourceCodeBlock(source: string) {
   return {
@@ -16,23 +29,22 @@ function mockMDXSourceCodeBlock(source: string) {
   } as React.ReactElement;
 }
 
+beforeEach(() => {
+  mockSource.mockClear();
+});
+
 test('renders children', () => {
-  const renderer = createRenderer();
-  renderer.render(
+  const { container } = render(
     <CodeExample>
       <span>Child</span>
     </CodeExample>,
   );
-  const result = renderer.getRenderOutput();
 
-  expect(result.props).toEqual({
-    children: 'Child',
-  });
+  expect(container.textContent).toBe('Child');
 });
 
 test('renders Markdown source blocks', () => {
-  const renderer = createRenderer();
-  renderer.render(
+  const { getByRole, getByTestId } = render(
     <CodeExample>
       {mockMDXSourceCodeBlock(`\`\`\`js
         function test() {
@@ -41,43 +53,51 @@ test('renders Markdown source blocks', () => {
       \`\`\``)}
     </CodeExample>,
   );
-  const result = renderer.getRenderOutput();
 
-  expect(result.props).toEqual({
-    children: [
-      <h3>JavaScript</h3>,
-      <Source
-        code={`function test() {
+  // Test that CodeExample correctly parses and renders the header
+  const heading = getByRole('heading', { level: 3 });
+  expect(heading.textContent).toBe('JavaScript');
+
+  // Verify Source component was called with correct props
+  expect(mockSource).toHaveBeenCalledWith(
+    expect.objectContaining({
+      code: `function test() {
           console.log("test");
-        }`}
-        language="jsextra"
-      />,
-    ],
-  });
+        }`,
+      language: 'js',
+    }),
+  );
+
+  // Verify Source component rendered correctly
+  const sourceElement = getByTestId('source');
+  expect(sourceElement.getAttribute('data-language')).toBe('js');
+  expect(sourceElement.textContent).toContain('function test()');
 });
 
 test('uses JSX for no header JSX source code blocks', () => {
-  const renderer = createRenderer();
-  renderer.render(
+  const { getByRole, getByTestId } = render(
     <CodeExample>
       {mockMDXSourceCodeBlock(`<div>
         <Test title={"Example"} />
       </div>`)}
     </CodeExample>,
   );
-  const result = renderer.getRenderOutput();
 
-  expect(result.props).toEqual({
-    children: [
-      <h3>React</h3>,
-      <Source
-        code={`<div>
+  const heading = getByRole('heading', { level: 3 });
+  expect(heading.textContent).toBe('React');
+
+  // Verify Source component was called with JSX language
+  expect(mockSource).toHaveBeenCalledWith(
+    expect.objectContaining({
+      code: `<div>
         <Test title={"Example"} />
-      </div>`}
-        language="jsx"
-      />,
-    ],
-  });
+      </div>`,
+      language: 'jsx',
+    }),
+  );
+
+  const sourceElement = getByTestId('source');
+  expect(sourceElement.getAttribute('data-language')).toBe('jsx');
 });
 
 test.each([
@@ -85,9 +105,8 @@ test.each([
   ['css', 'CSS'],
   ['js', 'JavaScript'],
   ['jsx', 'React'],
-] as const)('for language %s uses the header %s', (language, expectedHeader) => {
-  const renderer = createRenderer();
-  renderer.render(
+])('for language %s uses the header %s', (language, expectedHeader) => {
+  const { getByRole, getByTestId } = render(
     <CodeExample>
       {mockMDXSourceCodeBlock(`
                 \`\`\`${language}
@@ -96,16 +115,25 @@ test.each([
                 `)}
     </CodeExample>,
   );
-  const result = renderer.getRenderOutput();
 
-  expect(result.props).toEqual({
-    children: [<h3>{expectedHeader}</h3>, <Source code={`Code`} language={language === 'js' ? 'jsextra' : language} />],
-  });
+  const heading = getByRole('heading', { level: 3 });
+  expect(heading.textContent).toBe(expectedHeader);
+
+  // Verify Source component was called with correct language
+  expect(mockSource).toHaveBeenCalledWith(
+    expect.objectContaining({
+      code: 'Code',
+      language,
+    }),
+  );
+
+  const sourceElement = getByTestId('source');
+  expect(sourceElement.getAttribute('data-language')).toBe(language);
+  expect(sourceElement.textContent).toBe('Code');
 });
 
 test('overrides the default title', () => {
-  const renderer = createRenderer();
-  renderer.render(
+  const { getByRole, getByTestId } = render(
     <CodeExample title="Custom title">
       {mockMDXSourceCodeBlock(`
                 \`\`\`js
@@ -114,9 +142,18 @@ test('overrides the default title', () => {
                 `)}
     </CodeExample>,
   );
-  const result = renderer.getRenderOutput();
 
-  expect(result.props).toEqual({
-    children: [<h3>Custom title</h3>, <Source code={`Code`} language="jsextra" />],
-  });
+  const heading = getByRole('heading', { level: 3 });
+  expect(heading.textContent).toBe('Custom title');
+
+  // Verify Source component still receives correct code and language
+  expect(mockSource).toHaveBeenCalledWith(
+    expect.objectContaining({
+      code: 'Code',
+      language: 'js',
+    }),
+  );
+
+  const sourceElement = getByTestId('source');
+  expect(sourceElement.getAttribute('data-language')).toBe('js');
 });
