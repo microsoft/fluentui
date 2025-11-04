@@ -313,7 +313,7 @@ export {
   foregroundNeutralOnneutralHoverSelected,
   foregroundNeutralOnneutralPressedSelected,
 
-  // Scale algo tokens for Button
+  // Button - Density
   groupButtonSmallPaddingTop,
   groupButtonSmallPaddingBottom,
   groupButtonLargePaddingTop,
@@ -332,7 +332,7 @@ export {
   groupButtonSmallTextPaddingHorizontal,
   groupButtonLargeIconSize,
 
-  // Color algo tokens for Button
+  // Button - Color
   groupButtonNeutralBackgroundHover,
   groupButtonNeutralBackgroundPressed,
   groupButtonNeutralStrokeHover,
@@ -346,4 +346,18 @@ export {
   groupButtonSubtleForegroundPressed,
   groupButtonTransparentForegroundPressed,
   groupButtonTransparentForegroundHover,
+
+  // Color - Selected Color
+  groupButtonNeutralBackgroundHoverSelected,
+  groupButtonNeutralBackgroundPressedSelected,
+  groupButtonNeutralStrokeHoverSelected,
+  groupButtonNeutralStrokePressedSelected,
+  groupButtonOutlineStrokeHoverSelected,
+  groupButtonOutlineStrokePressedSelected,
+  groupButtonPrimaryBackgroundHoverSelected,
+  groupButtonPrimaryBackgroundPressedSelected,
+  groupButtonPrimaryStrokeHoverSelected,
+  groupButtonPrimaryStrokePressedSelected,
+  groupButtonSubtleBackgroundHoverSelected,
+  groupButtonSubtleBackgroundPressedSelected,
 } from './fluent/algo/index';

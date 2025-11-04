@@ -48,6 +48,7 @@ export const withFluentProvider = (StoryFn: () => JSXElement, context: FluentSto
 
   return (
     <FluentProvider theme={theme} dir={dir} customStyleHooks_unstable={SEMANTIC_STYLE_HOOKS}>
+      {/* <FluentProvider theme={theme} dir={dir} > */}
       {isVrTest ? StoryFn() : <FluentExampleContainer theme={theme}>{StoryFn()}</FluentExampleContainer>}
     </FluentProvider>
   );

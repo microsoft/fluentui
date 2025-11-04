@@ -19,6 +19,12 @@ import {
   groupButtonSubtleForeground,
   groupButtonTextPaddingHorizontal,
   groupButtonTransparentForegroundSelected,
+  groupButtonNeutralBackgroundSelected,
+  groupButtonNeutralStrokeSelected,
+  groupButtonOutlineStrokeSelected,
+  groupButtonPrimaryBackgroundSelected,
+  groupButtonPrimaryStrokeSelected,
+  groupButtonSubtleBackgroundSelected,
 } from '../../../groups/button/tokens';
 
 // Density
@@ -54,3 +60,16 @@ export const groupButtonPrimaryStrokePressed = `hsl(from ${groupButtonPrimaryStr
 export const groupButtonSubtleForegroundPressed = `hsl(from ${groupButtonSubtleForeground} h s calc(l + ${groupButtonLightnessPressed}))`;
 export const groupButtonTransparentForegroundPressed = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
 export const groupButtonTransparentForegroundHover = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+
+export const groupButtonNeutralBackgroundHoverSelected = `hsl(from ${groupButtonNeutralBackgroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+export const groupButtonNeutralBackgroundPressedSelected = `hsl(from ${groupButtonNeutralBackgroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
+export const groupButtonNeutralStrokeHoverSelected = `hsl(from ${groupButtonNeutralStrokeSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+export const groupButtonNeutralStrokePressedSelected = `hsl(from ${groupButtonNeutralStrokeSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
+export const groupButtonOutlineStrokeHoverSelected = `hsl(from ${groupButtonOutlineStrokeSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+export const groupButtonOutlineStrokePressedSelected = `hsl(from ${groupButtonOutlineStrokeSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
+export const groupButtonPrimaryBackgroundHoverSelected = `hsl(from ${groupButtonPrimaryBackgroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+export const groupButtonPrimaryBackgroundPressedSelected = `hsl(from ${groupButtonPrimaryBackgroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
+export const groupButtonPrimaryStrokeHoverSelected = `hsl(from ${groupButtonPrimaryStrokeSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+export const groupButtonPrimaryStrokePressedSelected = `hsl(from ${groupButtonPrimaryStrokeSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
+export const groupButtonSubtleBackgroundHoverSelected = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+export const groupButtonSubtleBackgroundPressedSelected = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;

@@ -213,4 +213,18 @@ export {
   groupButtonSubtleForegroundPressed,
   groupButtonTransparentForegroundPressed,
   groupButtonTransparentForegroundHover,
+
+  // Color - selected
+  groupButtonNeutralBackgroundHoverSelected,
+  groupButtonNeutralBackgroundPressedSelected,
+  groupButtonNeutralStrokeHoverSelected,
+  groupButtonNeutralStrokePressedSelected,
+  groupButtonOutlineStrokeHoverSelected,
+  groupButtonOutlineStrokePressedSelected,
+  groupButtonPrimaryBackgroundHoverSelected,
+  groupButtonPrimaryBackgroundPressedSelected,
+  groupButtonPrimaryStrokeHoverSelected,
+  groupButtonPrimaryStrokePressedSelected,
+  groupButtonSubtleBackgroundHoverSelected,
+  groupButtonSubtleBackgroundPressedSelected,
 } from './button/tokens';
