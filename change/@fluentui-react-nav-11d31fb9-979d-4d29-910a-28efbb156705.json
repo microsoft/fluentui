@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(react-nav): use Rotate component for icon motion",
+  "packageName": "@fluentui/react-nav",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

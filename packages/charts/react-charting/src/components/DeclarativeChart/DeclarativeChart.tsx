@@ -319,7 +319,7 @@ const chartMap: ChartTypeMap = {
 export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = React.forwardRef<
   HTMLDivElement,
   DeclarativeChartProps
->((props, forwardedRef) => {
+>(({ colorwayType = 'default', ...props }, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {
@@ -495,7 +495,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const allupLegendsProps = getAllupLegendsProps(
     plotlyInputWithValidData,
     colorMap,
-    props.colorwayType,
+    colorwayType,
     chart.validTracesInfo!,
     isDarkTheme,
   );
@@ -552,8 +552,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
               return renderChart<ReturnType<typeof transformer>>(
                 renderer,
                 transformer,
-                [transformedInput, isMultiPlot.current, colorMap, props.colorwayType, isDarkTheme],
-                resolvedCommonProps,
+                [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme],
+                {
+                  ...resolvedCommonProps,
+                  xAxisAnnotation: cellProperties?.xAnnotation,
+                  yAxisAnnotation: cellProperties?.yAnnotation,
+                },
                 cellProperties?.row ?? 1,
                 cellProperties?.column ?? 1,
               );
@@ -569,7 +573,3 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-DeclarativeChart.defaultProps = {
-  colorwayType: 'default',
-};
