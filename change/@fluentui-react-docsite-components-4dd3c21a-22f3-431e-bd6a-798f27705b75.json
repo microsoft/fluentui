@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: bump react-syntax-highlighter to v15.6.6 to fix security vulnerabilities",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
