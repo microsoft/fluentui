@@ -263,6 +263,7 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: semanticTokens.backgroundNeutralTransparent,
       ...shorthands.borderColor('transparent'),
+      // Transparent button uses the 'base' selected color for hover state
       color: semanticTokens.groupButtonTransparentForegroundSelected,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
@@ -271,6 +272,7 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
+        // Transparent button uses the 'base' selected color for hover state
         color: semanticTokens.groupButtonTransparentForegroundSelected,
       },
     },

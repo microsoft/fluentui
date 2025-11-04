@@ -11,13 +11,11 @@ import { groups } from './definitions/groups';
 
 // Function to generate tokens and write to a JSON file
 export function generateTokenJSON() {
-  // let primitiveTokens = generatePrimitiveTokens();
   let genericTokens = generateGenericTokens();
   let groupTokens = generateGroupTokens(groups);
   let controlTokens = generateControlTokens();
 
   const results = {
-    // primitives: primitiveTokens,
     generics: genericTokens,
     components: groupTokens,
     controls: controlTokens,
