@@ -2065,7 +2065,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
                 text-align: center;
               }
           data-icon-name="More"
-          style="font-family: \\"FabricMDL2Icons\\";"
+          style="font-family: \\"FabricMDL2Icons\\"; color: inherit;"
         >
           
         </i>
