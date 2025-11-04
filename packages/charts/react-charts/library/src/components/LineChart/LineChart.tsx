@@ -29,7 +29,7 @@ import {
   YValueHover,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { tokens } from '@fluentui/react-theme';
+import * as tokens from '@fluentui/react-theme';
 import {
   calloutData,
   ChartTypes,

@@ -54,7 +54,7 @@ import {
   ChildProps,
 } from '../../index';
 import { toImage } from '../../utilities/image-export-utils';
-import { tokens } from '@fluentui/react-theme';
+import * as tokens from '@fluentui/react-theme';
 
 type NumericScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;

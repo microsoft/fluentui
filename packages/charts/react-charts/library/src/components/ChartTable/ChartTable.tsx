@@ -6,7 +6,7 @@ import { useChartTableStyles } from './useChartTableStyles.styles';
 import { useRtl } from '../../utilities/utilities';
 import { ImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
-import { tokens } from '@fluentui/react-theme';
+import * as tokens from '@fluentui/react-theme';
 import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { resolveCSSVariables } from '../../utilities/utilities';

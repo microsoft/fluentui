@@ -4,7 +4,7 @@ import * as React from 'react';
 import { EventAnnotation } from '../../../types/EventAnnotation';
 import { Textbox } from './Textbox';
 import { getColorFromToken } from '../../../utilities/colors';
-import { tokens } from '@fluentui/react-theme';
+import * as tokens from '@fluentui/react-theme';
 
 export interface LineDef extends EventAnnotation {
   x: number;

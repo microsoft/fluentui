@@ -42,7 +42,7 @@ import {
   ScatterChartPoints,
   YValueHover,
 } from '../../index';
-import { tokens } from '@fluentui/react-theme';
+import * as tokens from '@fluentui/react-theme';
 import {
   calloutData,
   ChartTypes,

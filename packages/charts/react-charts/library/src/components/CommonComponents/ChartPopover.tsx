@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { mergeClasses } from '@griffel/react';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
-import { tokens } from '@fluentui/react-theme';
+import * as tokens from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';

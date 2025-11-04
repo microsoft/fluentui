@@ -1,7 +1,7 @@
 'use client';
 
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import * as tokens from '@fluentui/react-theme';
 import { LineChartProps, LineChartStyles } from './LineChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { HighContrastSelector } from '../../utilities/index';
