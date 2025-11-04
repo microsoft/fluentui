@@ -60,6 +60,7 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
         size,
         dir,
         visible: open,
+        unmountOnClose,
         appear: unmountOnClose,
         unmountOnExit: unmountOnClose,
       },
