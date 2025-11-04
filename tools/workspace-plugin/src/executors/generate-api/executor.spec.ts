@@ -19,6 +19,7 @@ const fixturesRootDir = join(__dirname, '__fixtures__');
 
 jest.mock('node:child_process', () => {
   return {
+    ...jest.requireActual('node:child_process'),
     execSync: jest.fn(),
   };
 });
