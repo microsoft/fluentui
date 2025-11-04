@@ -474,7 +474,7 @@ function getImportPaths(tree: Tree, filePath: string) {
   const requireNodes = tsquery.match(
     ast,
     'CallExpression[expression.name="require"]',
-  ) as import('typescript').CallExpression[];
+  ) as unknown as import('typescript').CallExpression[];
   const requirePaths = requireNodes.map(node => (node.arguments[0] as import('typescript').StringLiteral).text);
 
   return [...importPaths, ...requirePaths];

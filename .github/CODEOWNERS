@@ -126,9 +126,8 @@ apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
-apps/react-17-tests-v9 @microsoft/fluentui-react-build
-apps/react-18-tests-v8 @microsoft/fluentui-react-build
-apps/react-18-tests-v9 @microsoft/fluentui-react-build
+apps/rit-tests-v8 @microsoft/fluentui-react-build
+apps/rit-tests-v9 @microsoft/fluentui-react-build
 apps/react-19-tests-v9 @microsoft/fluentui-react-build
 apps/chart-docsite @microsoft/charting-team
 
@@ -333,6 +332,11 @@ packages/react-components/component-selector-preview/stories @microsoft/teams-pr
 packages/react-components/react-menu-grid-preview/library @microsoft/teams-prg
 packages/react-components/react-menu-grid-preview/stories @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
+
+# Deprecated v9 packages - exposed as part of `/unstable` api
+packages/react-components/deprecated/react-alert @microsoft/cxe-prg
+packages/react-components/deprecated/react-virtualizer @microsoft/cxe-prg
+packages/react-components/deprecated/react-infobutton @microsoft/cxe-prg
 
 ## Components
 packages/react @microsoft/cxe-red

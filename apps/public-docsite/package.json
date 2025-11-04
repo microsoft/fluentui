@@ -18,7 +18,8 @@
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev"
+    "start": "just-scripts dev",
+    "type-check": "tsc -p . --noEmit --baseUrl ."
   },
   "license": "MIT",
   "devDependencies": {

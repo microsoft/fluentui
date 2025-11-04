@@ -4,8 +4,11 @@
 const config = {
   react: {
     17: {
-      commands: {
-        test: 'jest --passWithNoTests -u --testPathIgnorePatterns components/FluentProvider/FluentProvider-hydrate.test.tsx',
+      runConfig: {
+        test: {
+          command:
+            'jest --passWithNoTests -u --testPathIgnorePatterns components/FluentProvider/FluentProvider-hydrate.test.tsx',
+        },
       },
     },
   },

@@ -3544,6 +3544,14 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
 </div>
 `;
 
+exports[`Area chart rendering with duplicate values Should return the correct dataset for duplicate values 1`] = `null`;
+
+exports[`Area chart rendering with duplicate values Should return the correct dataset for duplicate values 2`] = `null`;
+
+exports[`Area chart rendering with duplicate values Should return the correct dataset for duplicate values 3`] = `null`;
+
+exports[`Area chart rendering with duplicate values Should return the correct dataset for duplicate values 4`] = `null`;
+
 exports[`AreaChart - mouse events Should render callout correctly on mouseover 1`] = `
 Object {
   "asFragment": [Function],
@@ -23461,7 +23469,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  0.0
                 </text>
               </g>
               <g
@@ -23480,7 +23488,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  37.0
                 </text>
               </g>
               <g
@@ -23499,7 +23507,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  74.0
                 </text>
               </g>
               <g
@@ -23518,7 +23526,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  111.0
                 </text>
               </g>
               <g
@@ -23537,7 +23545,7 @@ Object {
                   style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                   x="-10"
                 >
-                  /%d
+                  148.0
                 </text>
               </g>
             </g>
@@ -24317,7 +24325,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                0.0
               </text>
             </g>
             <g
@@ -24336,7 +24344,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                37.0
               </text>
             </g>
             <g
@@ -24355,7 +24363,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                74.0
               </text>
             </g>
             <g
@@ -24374,7 +24382,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                111.0
               </text>
             </g>
             <g
@@ -24393,7 +24401,7 @@ Object {
                 style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
                 x="-10"
               >
-                /%d
+                148.0
               </text>
             </g>
           </g>

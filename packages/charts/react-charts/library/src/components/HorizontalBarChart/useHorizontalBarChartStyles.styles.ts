@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { HorizontalBarChartProps, HorizontalBarChartStyles, HorizontalBarChartVariant } from './index';
@@ -31,6 +33,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     width: '100%', // Support custom width
+    textAlign: 'left',
   },
   items10pMargin: {
     marginBottom: tokens.spacingVerticalMNudge,

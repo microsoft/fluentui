@@ -2,6 +2,948 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 31 Oct 2025 16:21:59 GMT",
+      "tag": "@fluentui/react-components_v9.72.4",
+      "version": "9.72.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "043eb8a34e09aab0e18a3e2d4ec296fd9dd7a3a5",
+            "comment": "fix: replace Node.ELEMENT_NODE with hardcoded value for SSR compatibility"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "c16125427e4d796ae4a1143f482baa0da962bac1",
+            "comment": "fix: Tooltip does not prevent rendering with aria-expanded unless aria-haspopup is also set"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c05974fa247cb9516119071e0466ee160a95f0bf",
+            "comment": "fix: use numeric literal for DOCUMENT_FRAGMENT_NODE to make SSR work"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "9dd14c69601fc5018bfd53f14567a69f5fb762e1",
+            "comment": "chore: update ts-eslint to 8.46.2"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "c05974fa247cb9516119071e0466ee160a95f0bf",
+            "comment": "fix: use numeric literals for Node constants to make SSR work"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e708e6f6a0dcef9f831bdc01bec4d26c004e6300",
+            "comment": "fix chart crash issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7",
+            "comment": "update react version to react 19"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "702b5e6a23d12e92396d643de83ba543d03c8263",
+            "comment": "fix dark mode styles of chart table"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6e9ecf53ed328a32fc962c03e0db3b09040e5848",
+            "comment": "fix chart exceptions"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "83942b2faa689b1ab6b9e0f0b56fdbd625ac7631",
+            "comment": "feat: map deprecated plotly create_gantt() scatter traces to gantt chart"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "03ba470c7c6e56625fab6982c5552b75ac4a0e02",
+            "comment": "fix: add fit-content to max-width"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44",
+            "comment": "fix: update scheduler dependency to remove upper version limit"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "9dab740ab7f6b198c81739d41ba4a4daa24fad99",
+            "comment": "feat: add styles for MenuGridRow"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "83b5ecf318a3ded91b78b3476b7375ed9c456833",
+            "comment": "feat: add Copy as Markdown button to FluentDocsPage"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "71001d8bd93b7586ccfc35c8f79c391ab42afd5c",
+            "comment": "feat: add support to keep Dialog mounter on close"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "54f4a26b54e74d96af223a54a3eb90cda29a2060",
+            "comment": "feat(motion): standardize from/to parameters"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "3326f9334123af1649ed51cbb7012c9434b8de9c",
+            "comment": "docs: update docs to use createRoot"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9dd14c69601fc5018bfd53f14567a69f5fb762e1",
+            "comment": "chore: fix ts issues"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "3326f9334123af1649ed51cbb7012c9434b8de9c",
+            "comment": "docs: update docs to use createRoot"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Oct 2025 14:16:55 GMT",
+      "tag": "@fluentui/react-components_v9.72.3",
+      "version": "9.72.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3e97366b95a16e99be07349ef6e28d4e1cb1e099",
+            "comment": "fix: callout not appearing on scatter chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5b64175cd4af4a9728a1159bcee44f12a878ced3",
+            "comment": "fix place value formatting bug in donut chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "7fb5e43ae16073e8fb90dc9993ff14c9c21f294e",
+            "comment": "add missing code in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d9c729c7f8535c9820a4f507fe754ac4a7080a7f",
+            "comment": "fix: resolve data points based on axis type + replace invalid values with 0 for valid coordinates"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "51e3f058a0da2f5984716bd87f8b518876972fbc",
+            "comment": "support reference lines in line chart and VBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5092cdf44b11370f0711eff15093faf7aa495f03",
+            "comment": "fix legend shape bug"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "64f118dac00919f9d5af2bbb27c2a9927eed5dc1",
+            "comment": "feat: add support for lines in GVBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689",
+            "comment": "fix donut colors and segment orders"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "abca12004c5d866f753fe677f83ca39d4a2b88bf",
+            "comment": "add fill for scatter polar chart"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "64cf912b18554bbd759c01b48bf664c92916b644",
+            "comment": "fix(react-charts): Show markers only when mode has markers for large data"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "99c58da79ec6c96af26295319ec5329997dd4e6e",
+            "comment": "fix popover positioning issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "002f3d9ca75a903654557218aedee7a198edc804",
+            "comment": "fix chart exception issue"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e86e8451823a023326b86f430f3ae78e2010e702",
+            "comment": "fix: update drawer scroll state when content changes"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "43a35d07a33feba827e20e2929dd412597b5c9b1",
+            "comment": "Fix selection becoming broken after re-enabling"
+          }
+        ],
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "2b65850802f79fb369197c59b33714b79417d1d5",
+            "comment": "feat: implement custom JSX namespace instead of @ts-ignore workaround"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Oct 2025 12:04:51 GMT",
+      "tag": "@fluentui/react-components_v9.72.2",
+      "version": "9.72.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "3a3e9a5db8239273f4afe337359e72e569d99f05",
+            "comment": "feat: add react 19 support"
+          }
+        ],
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "38ef2e7719b277bb3331c32097adf4d4a2e689e0",
+            "comment": "fix(react-nav): Make NavDrawerBody focus attributes overridable by props"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "de104fff5f19e87dc00c19e41ec1dda0d80140bf",
+            "comment": "fix: In StrictMode, Tooltip now shows correctly on elements that are focused when created"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "85e89e8402deff8f1a24141b6838034f3d52cda0",
+            "comment": "refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Oct 2025 15:01:58 GMT",
+      "tag": "@fluentui/react-components_v9.72.1",
+      "version": "9.72.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "7a5cadd878c193a1e5f7f98eabff6eede8175af3",
+            "comment": "feat: enable wrapping of string x-axis labels in scatterchart"
+          }
+        ],
+        "minor": [
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f211d64cdb6ec016188351a3f4d55ab5b7515c6f",
+            "comment": "added return type to useTreeNavigation hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Oct 2025 14:19:03 GMT",
+      "tag": "@fluentui/react-components_v9.72.0",
+      "version": "9.72.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "cb0b930b884b233f36b73f32255c575da6f72bbf",
+            "comment": "exports useTreeNavigation hook"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "d159ec44c1da054228531e0916b61c487e3ca508",
+            "comment": "refactor(Collapse): simplify parameter types"
+          }
+        ],
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "668467e9f41cf97977776495bf56fa63f0dfb5cd",
+            "comment": "fix(Collapse): make size animation work with delay"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Oct 2025 15:12:05 GMT",
+      "tag": "@fluentui/react-components_v9.71.0",
+      "version": "9.71.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "11701a6d6a9d4b089ca04bae962a6f46db0ce2b9",
+            "comment": "fix: Update ToastBody lineheight"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "cfdc7e1f6c2ca016843fd8464ff8f96af6e4adaf",
+            "comment": "fix: fix useTypingAnnounce React 19 type-check issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "3399d8e61f66ae4131910b588711b4e241084a95",
+            "comment": "feat: added reverse Date selection"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "4d8f87ae607d8501804f2383dd624703a02cae18",
+            "comment": "fix v9 chart bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "40df94fd35c9f7f2bce78a39539b227739c9979b",
+            "comment": "fix v9 bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "19d880d95e84b3498fe5f43496e121c449d9a02b",
+            "comment": "fix chart bugs"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "6cc506eb2e76abc19f462df46b31c98a6c6d5e0a",
+            "comment": "fix date format and multi selection of legends in donut chart"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e07b2b9254f0434c16258080a5302cd81946d3c3",
+            "comment": "simple bug fixes"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "cb0e73c4485c9839ecdd19a27dc6adb91ae7ae34",
+            "comment": "fix styling in chart table"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "551b944b846fec389ad237ca889f06056144ef2f",
+            "comment": "remove default culture in v9 charts"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a7484f93b0f8489a0e3b5655720f1c22f461995b",
+            "comment": "fix chart table bugs in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c8b4bddcd00cf9225d4abcf78477145cec3ccf2e",
+            "comment": "handled negative sign in RTL mode"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9be0f1dccd847ad555038bea3a1df08faef94993",
+            "comment": "fix dashed line bug in line chart"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "4a918f6595f1d0c7f265b730f7cab872ff7380fb",
+            "comment": "fix: apply fit fill styles only if height and width are not provided"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-list",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "98ed0fcba30feb2412ff2d0226322a359cadf1a0",
+            "comment": "fix: useValidateNesting ref type React 19 issue"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "2d517e0aefb8ec4fb37a43fedbd69225c3b8efca",
+            "comment": "Allow navigation in MenuGrid submenu of MenuList"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "e5a32c9eef6015e6485b4e33d9fe9b267cd90d50",
+            "comment": "Merge onKeyDown handlers for MenuGrid component"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "98ed0fcba30feb2412ff2d0226322a359cadf1a0",
+            "comment": "fix: useValidateNesting ref type React 19 issue"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "6247036a0aad33acd25798ba5bfa2cbfcd9101e1",
+            "comment": "refactor(react-message-bar): migrate slide & fade to motion components"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "549c71a0bc3087fcddd2e1f0fceef7560dd82928",
+            "comment": "fix: NavHeader is not included in the arrow nav region"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "ae71d5d3b142874cf9e66566073f215f0e39358b",
+            "comment": "fix: render portal only when popover is defined to prevent hydration mismatch"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          }
+        ],
+        "minor": [
+          {
+            "author": "patrycja.fogelman@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376",
+            "comment": "exported 'useTreeNavigation' hook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b28a229858076a9371a476701662dff99aa0493f",
+            "comment": "feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "c7c1715f7db1a3960854219ceea2ed595674d875",
+            "comment": "fix: overflowMenuSize is included in occupiedSize"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "2cdbbe9092edb3b28d9fffecf9c068fcd1e85391",
+            "comment": "feat(motion): add createMotionComponentVariant factory"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "b28a229858076a9371a476701662dff99aa0493f",
+            "comment": "feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application"
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "01ec25b3210efaa4e06bb47832e7ac7b216beaf5",
+            "comment": "Add correct nesting validation for Menu and MenuGridcomponents and subcomponents"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "01ec25b3210efaa4e06bb47832e7ac7b216beaf5",
+            "comment": "Feat(react-menu-grid-preview): Detect invalid MenuGrid nesting"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "2cdbbe9092edb3b28d9fffecf9c068fcd1e85391",
+            "comment": "feat(motion): add createMotionComponentVariant factory"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "c7c1715f7db1a3960854219ceea2ed595674d875",
+            "comment": "feat: add hasHiddenItems option"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "4dffdf2597decff63f06f9499f8091068764f38f",
+            "comment": "feat: DataGrid header cells can contain interactive controls"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "9663adfe708113931936939ef692c6f65ed1ce30",
+            "comment": "chore: bump typescript-eslint/utils "
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "6a2064f68ba27adea8b7842bb910cb8d4bc76343",
+            "comment": "chore: override dependsOn for test-rit targets to have v8 libs build before run"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Sep 2025 12:50:28 GMT",
       "tag": "@fluentui/react-components_v9.70.0",
       "version": "9.70.0",

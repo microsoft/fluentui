@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { isHTMLElement, useEventCallback, useForceUpdate } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';

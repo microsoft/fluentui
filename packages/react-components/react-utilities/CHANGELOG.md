@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 08 Sep 2025 12:50:53 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.2)
+
+Fri, 31 Oct 2025 16:22:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.25.1..@fluentui/react-utilities_v9.25.2)
+
+### Patches
+
+- fix: use numeric literal for DOCUMENT_FRAGMENT_NODE to make SSR work ([PR #35357](https://github.com/microsoft/fluentui/pull/35357) by 198982749+Copilot@users.noreply.github.com)
+
+## [9.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.1)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.25.0..@fluentui/react-utilities_v9.25.1)
+
+### Patches
+
+- refactor: derive JSXIntrinsicElementKeys type for React instead of using generated type ([PR #35290](https://github.com/microsoft/fluentui/pull/35290) by dmytrokirpa@microsoft.com)
+
+## [9.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.0)
+
+Thu, 02 Oct 2025 15:12:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.24.1..@fluentui/react-utilities_v9.25.0)
+
+### Minor changes
+
+- feat: add the useApplyScrollbarWidth hook for SSR-safe scrollbar width application ([PR #35191](https://github.com/microsoft/fluentui/pull/35191) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.2 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
 
 ## [9.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.24.1)
 

@@ -4,7 +4,7 @@ export const Virtualization = (): JSXElement => {
   return (
     <iframe
       style={{ width: '100%', height: 500, border: 'none' }}
-      src="https://microsoft.github.io/fluentui-contrib/react-data-grid-react-window/iframe.html?id=datagrid--virtualized-data-grid&viewMode=story"
+      src="https://microsoft.github.io/fluentui-contrib/react-data-grid-react-window/iframe.html?id=packages-react-data-grid-react-window--virtualized-data-grid&viewMode=story"
     />
   );
 };

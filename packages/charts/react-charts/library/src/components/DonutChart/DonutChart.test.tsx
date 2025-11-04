@@ -5,7 +5,6 @@ import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import * as utils from '../../utilities/utilities';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import * as renderer from 'react-test-renderer';
 import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
 
 expect.extend(toHaveNoViolations);
@@ -226,62 +225,52 @@ describe('Donut Chart - axe-core', () => {
 
 describe('DonutChart snapShot testing', () => {
   it('renders DonutChart correctly', () => {
-    let component = renderer.create(<DonutChart data={chartPointsDC} innerRadius={55} />);
-
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders DonutChart correctly without color points', () => {
     const chartPointColor = pointsDC[0].color;
     delete pointsDC[0].color;
 
-    let component = renderer.create(<DonutChart data={noColorsChartPoints} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DonutChart data={noColorsChartPoints} />);
+    expect(container.firstChild).toMatchSnapshot();
     pointsDC[0].color = chartPointColor;
   });
 
   it('renders hideLegend correctly', () => {
-    let component = renderer.create(<DonutChart data={chartPointsDC} hideLegend={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DonutChart data={chartPointsDC} hideLegend={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', () => {
-    let component = renderer.create(<DonutChart data={chartPointsDC} hideTooltip={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DonutChart data={chartPointsDC} hideTooltip={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', () => {
-    let component = renderer.create(<DonutChart data={chartPointsDC} legendProps={{ enabledWrapLines: true }} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DonutChart data={chartPointsDC} legendProps={{ enabledWrapLines: true }} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders value inside onf the pie', () => {
-    let component = renderer.create(<DonutChart data={chartPointsDC} valueInsideDonut={1000} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DonutChart data={chartPointsDC} valueInsideDonut={1000} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('Should render arc labels', () => {
-    let component = renderer.create(<DonutChart data={chartPointsDC} hideLabels={false} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DonutChart data={chartPointsDC} hideLabels={false} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('Should render arc labels in percentage format', () => {
-    let component = renderer.create(<DonutChart data={chartPointsDC} hideLabels={false} showLabelsInPercent={true} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DonutChart data={chartPointsDC} hideLabels={false} showLabelsInPercent={true} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('Should elevate all smaller values to minimums', () => {
-    let component = renderer.create(<DonutChart data={chartPointsDCElevateMinimums} />);
-    const tree = component!.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<DonutChart data={chartPointsDCElevateMinimums} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
   /* eslint-enable @typescript-eslint/no-deprecated */
 });

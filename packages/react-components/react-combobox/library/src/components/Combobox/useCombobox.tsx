@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useActiveDescendant } from '@fluentui/react-aria';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';

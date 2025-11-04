@@ -3912,6 +3912,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -4782,6 +4783,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -5654,6 +5656,7 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -6654,6 +6657,7 @@ exports[`Line chart rendering should render the line chart with all negative y v
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -7524,6 +7528,7 @@ exports[`Line chart rendering should render the line chart with negative y value
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -8412,6 +8417,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -9282,6 +9288,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           }
           {
             overflow: auto;
+            position: relative;
           }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
@@ -10165,6 +10172,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             }
             {
               overflow: auto;
+              position: relative;
             }
         data-focuszone-id="FocusZone15"
         data-tabster="{\\"uncontrolled\\": {}}"

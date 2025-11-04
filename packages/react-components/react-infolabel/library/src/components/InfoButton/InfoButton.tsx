@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { ForwardRefComponent } from '@fluentui/react-utilities';

@@ -341,6 +341,7 @@ Object {
   "hideTickOverlap": true,
   "mode": "tonexty",
   "optimizeLargeData": false,
+  "shouldWrapLabels": false,
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
@@ -3344,6 +3345,7 @@ Object {
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToLineChartProps - Should return line chart props 1`] = `
 Object {
   "chartTitle": "",
+  "colorFillBars": Array [],
   "data": Object {
     "lineChartData": Array [
       Object {
@@ -4890,6 +4892,7 @@ Object {
   "hideTickOverlap": true,
   "optimizeLargeData": false,
   "roundedTicks": true,
+  "shouldWrapLabels": false,
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
@@ -6586,6 +6589,7 @@ Object {
   "hideTickOverlap": true,
   "optimizeLargeData": false,
   "roundedTicks": true,
+  "shouldWrapLabels": false,
   "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "useUTC": false,

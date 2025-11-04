@@ -28,6 +28,7 @@ import {
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 type NumberScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -231,7 +232,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   );
 
   const _getCustomizedCallout = React.useCallback(() => {
-    const defaultRender = (point?: IGanttChartDataPoint): React.JSX.Element | null => {
+    const defaultRender = (point?: IGanttChartDataPoint): JSXElement | null => {
       return point ? (
         <ChartHoverCard
           XValue={point.yAxisCalloutData || point.y.toString()}
@@ -381,13 +382,13 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     }: {
       xScale: DateScale | NumberScale;
       yScalePrimary: NumberScale | StringScale;
-    }): React.JSX.Element => {
+    }): JSXElement => {
       const getGradientId = (legend: string | undefined) => {
         const legendId = _legendMap.current[`${legend}`].id;
         return `${legendId}_gradient`;
       };
 
-      const gradientDefs: React.JSX.Element[] = [];
+      const gradientDefs: JSXElement[] = [];
       if (props.enableGradient) {
         Object.keys(_legendMap.current).forEach((legend: string, index: number) => {
           const { startColor, endColor } = _legendMap.current[legend];
@@ -480,7 +481,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     [props.legendProps],
   );
 
-  const _getLegendData = React.useCallback((): React.JSX.Element => {
+  const _getLegendData = React.useCallback((): JSXElement => {
     const actions: ILegend[] = [];
 
     Object.keys(_legendMap.current).forEach((legendTitle: string) => {

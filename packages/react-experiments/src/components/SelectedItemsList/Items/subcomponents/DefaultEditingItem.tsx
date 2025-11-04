@@ -10,6 +10,7 @@ import type {
 } from '../../../FloatingSuggestionsComposite/FloatingSuggestions.types';
 import type { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import type { EditingItemComponentProps } from '../EditableItem';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttributes<any> {
   /**
@@ -86,7 +87,7 @@ export type EditingItemInnerFloatingPickerProps<T> = Pick<
 export const DefaultEditingItemInner = <TItem extends any>(
   props: IDefaultEditingItemInnerProps<TItem>,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-): JSX.Element => {
+): JSXElement => {
   const editingInput = React.useRef<any>();
   const editingFloatingPicker = React.createRef<any>();
   const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
@@ -132,7 +133,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
   }, []); // We only want to run this once
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const _renderEditingSuggestions = (): JSX.Element => {
+  const _renderEditingSuggestions = (): JSXElement => {
     const FloatingPicker = props.onRenderFloatingPicker;
     if (!FloatingPicker) {
       return <></>;
@@ -280,6 +281,6 @@ type EditingItemProps<T> = Pick<
 >;
 
 export const DefaultEditingItem =
-  <T extends any>(outerProps: EditingItemProps<T>) =>
-  (innerProps: EditingItemComponentProps<T>) =>
+  <T extends any>(outerProps: EditingItemProps<T>): ((innerProps: EditingItemComponentProps<T>) => JSXElement) =>
+  (innerProps: EditingItemComponentProps<T>): JSXElement =>
     <DefaultEditingItemInner {...outerProps} {...innerProps} />;

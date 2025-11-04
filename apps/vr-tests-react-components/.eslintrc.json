@@ -10,6 +10,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }],
     "@nx/workspace-no-restricted-globals": "off",
-    "@typescript-eslint/no-deprecated": "off"
+    "@typescript-eslint/no-deprecated": "off",
+    "@nx/workspace-enforce-use-client": "off"
   }
 }

@@ -64,6 +64,7 @@ import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -195,15 +196,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private margins: IMargins;
   private eventLabelHeight: number = 36;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private lines: JSX.Element[];
+  private lines: JSXElement[];
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderedColorFillBars: JSX.Element[];
+  private _renderedColorFillBars: JSXElement[];
   private _colorFillBars: IColorFillBarsProps[];
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
+  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSXElement;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
@@ -284,7 +285,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
 
@@ -563,7 +564,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
+  private _createLegends(data: LineChartDataWithIndex[]): JSXElement {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const mapLegendToPoints: Record<string, LineChartDataWithIndex[]> = {};
@@ -716,9 +717,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   };
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
+  private _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const lines: JSX.Element[] = [];
+    const lines: JSXElement[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
@@ -736,11 +737,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     for (let i = this._points.length - 1; i >= 0; i--) {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const linesForLine: JSX.Element[] = [];
+      const linesForLine: JSXElement[] = [];
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const bordersForLine: JSX.Element[] = [];
+      const bordersForLine: JSXElement[] = [];
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const pointsForLine: JSX.Element[] = [];
+      const pointsForLine: JSXElement[] = [];
 
       const legendVal: string = this._points[i].legend;
       const lineColor: string = this._points[i].color!;
@@ -959,11 +960,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         );
 
         // Add individual markers if mode includes 'markers'
-        const showMarkers = lineMode?.includes('markers') || !lineMode; // Show markers by default if no mode specified
+        const showMarkers = !!lineMode?.includes('markers');
         if (showMarkers) {
           for (let k = 0; k < this._points[i].data.length; k++) {
             const { x, y } = this._points[i].data[k];
-            const xPoint = this._xAxisScale(x instanceof Date ? x.getTime() : x);
+            const xPoint = this._xAxisScale(x);
             const yPoint = yScale(y);
 
             if (isPlottable(xPoint, yPoint)) {
@@ -1410,6 +1411,38 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         }
       }
 
+      // Add filled area for scatterpolar charts
+      const fillMode = this._points[i].lineOptions?.fill;
+      const isLegendSelected: boolean =
+        this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
+      if (fillMode === 'toself' && this._points[i].data.length >= 3 && isLegendSelected && this._isScatterPolar) {
+        const getScaledXValue = (dataPoint: ILineChartDataPoint) =>
+          this._xAxisScale(dataPoint.x instanceof Date ? dataPoint.x : (dataPoint.x as number));
+
+        const fillPathGenerator = d3Line<ILineChartDataPoint>()
+          .x(dataPoint => getScaledXValue(dataPoint))
+          .y(dataPoint => yScale(dataPoint.y))
+          .curve(getCurveFactory(lineCurve))
+          .defined(dataPoint => isPlottable(getScaledXValue(dataPoint), yScale(dataPoint.y)));
+
+        const fillPath = fillPathGenerator(this._points[i].data);
+
+        if (fillPath) {
+          linesForLine.push(
+            <path
+              key={`scatterpolar_fill_${i}`}
+              d={`${fillPath}Z`}
+              fill={lineColor}
+              fillOpacity={0.5}
+              stroke={lineColor}
+              strokeWidth={2}
+              strokeOpacity={0.8}
+              pointerEvents="none"
+            />,
+          );
+        }
+      }
+
       if (this._isScatterPolar) {
         pointsForLine.push(
           ...renderScatterPolarCategoryLabels({
@@ -1461,7 +1494,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _createColorFillBars = (containerHeight: number) => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const colorFillBars: JSX.Element[] = [];
+    const colorFillBars: JSXElement[] = [];
     if (this.state.isSelectedLegend) {
       this._colorFillBars = this.state.selectedColorBarLegend;
     } else {

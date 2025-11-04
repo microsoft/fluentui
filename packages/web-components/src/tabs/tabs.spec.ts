@@ -327,6 +327,8 @@ test.describe('Tabs', () => {
       node.disabled = true;
     });
 
+    await expect(secondTab).toBeDisabled();
+
     // eslint-disable-next-line playwright/no-force-option
     await secondTab.click({ force: true });
 

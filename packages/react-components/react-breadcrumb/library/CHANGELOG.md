@@ -1,8 +1,64 @@
 # Change Log - @fluentui/react-breadcrumb
 
-This log was last generated on Mon, 08 Sep 2025 12:51:24 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.3.10)
+
+Fri, 31 Oct 2025 16:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb_v9.3.9..@fluentui/react-breadcrumb_v9.3.10)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.4 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-button to v9.6.10 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-link to v9.6.9 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-tabster to v9.26.8 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-utilities to v9.25.2 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.1 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+
+## [9.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.3.9)
+
+Tue, 21 Oct 2025 14:16:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb_v9.3.8..@fluentui/react-breadcrumb_v9.3.9)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.3 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-button to v9.6.9 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-link to v9.6.8 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.0 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+
+## [9.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.3.8)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb_v9.3.7..@fluentui/react-breadcrumb_v9.3.8)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-button to v9.6.8 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-link to v9.6.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-tabster to v9.26.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.3.7)
+
+Thu, 02 Oct 2025 15:12:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb_v9.3.6..@fluentui/react-breadcrumb_v9.3.7)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.1 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-button to v9.6.7 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-link to v9.6.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.2 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-tabster to v9.26.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.1 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
 
 ## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.3.6)
 

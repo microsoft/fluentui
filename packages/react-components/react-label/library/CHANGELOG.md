@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Mon, 08 Sep 2025 12:51:02 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.3.9)
+
+Fri, 31 Oct 2025 16:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.3.8..@fluentui/react-label_v9.3.9)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.25.2 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.1 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+
+## [9.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.3.8)
+
+Tue, 21 Oct 2025 14:16:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.3.7..@fluentui/react-label_v9.3.8)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.3.0 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.3.7)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.3.6..@fluentui/react-label_v9.3.7)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+
+## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.3.6)
+
+Thu, 02 Oct 2025 15:12:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.3.5..@fluentui/react-label_v9.3.6)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.25.2 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.1 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
 
 ## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.3.5)
 

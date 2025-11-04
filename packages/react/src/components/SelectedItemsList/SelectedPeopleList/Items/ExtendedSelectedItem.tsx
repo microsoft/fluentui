@@ -5,6 +5,8 @@ import { Persona, PersonaSize } from '../../../../Persona';
 import * as stylesImport from './ExtendedSelectedItem.scss';
 import type { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const styles: any = stylesImport;
 
 export interface IPeoplePickerItemState {
@@ -21,8 +23,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     this.state = { contextualMenuVisible: false };
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { item, onExpandItem, onRemoveItem, removeButtonAriaLabel, index, selected } = this.props;
     const itemId = getId();
     return (

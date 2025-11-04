@@ -1,21 +1,22 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecoratorTall } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorTall } from '../utilities';
 import { Slider } from '@fluentui/react';
 
 export default {
   title: 'Slider',
 
-  decorators: [
-    TestWrapperDecoratorTall,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecoratorTall],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Slider-line')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 };
 
 export const Root = () => (

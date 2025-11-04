@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses } from '@griffel/react';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';

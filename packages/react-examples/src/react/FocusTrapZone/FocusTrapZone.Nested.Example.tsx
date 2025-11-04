@@ -1,11 +1,12 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { useBoolean, useEventCallback } from '@fluentui/react-hooks';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getStackStyles = memoizeFunction(
   (isActive: boolean): Partial<IStackStyles> => ({
@@ -67,7 +68,7 @@ export const FocusTrapZoneNestedExample = () => (
   </div>
 );
 
-const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
+const IFrameWrapper = (props: { onClick: () => void }): JSXElement => {
   const onClick = useEventCallback(props.onClick);
 
   const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
@@ -77,10 +78,8 @@ const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
       const contentWindow = iframeRef.current.contentWindow;
 
       if (contentWindow) {
-        const root = contentWindow.document.createElement('div');
-        contentWindow.document.body.appendChild(root);
-
-        ReactDOM.render(<DefaultButton onClick={onClick}>Button in IFrame</DefaultButton>, root);
+        const root = ReactDOMClient.createRoot(contentWindow.document.body);
+        root.render(<DefaultButton onClick={onClick}>Button in IFrame</DefaultButton>);
       }
     }
   }, [onClick]);

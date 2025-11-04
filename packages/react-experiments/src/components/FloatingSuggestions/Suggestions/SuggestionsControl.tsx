@@ -8,6 +8,7 @@ import type {
   ISuggestionsControlProps,
   ISuggestionsHeaderFooterProps,
 } from './Suggestions.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 const styles: any = stylesImport;
 
@@ -31,7 +32,7 @@ export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHea
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { renderItem, onExecute, isSelected, id, className } = this.props;
     return onExecute ? (
       <div
@@ -93,7 +94,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
     this._suggestions.current?.deselectAllSuggestions();
   }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { className, headerItemsProps, footerItemsProps } = this.props;
 
     return (
@@ -208,7 +209,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderHeaderItems(): JSX.Element | null {
+  private _renderHeaderItems(): JSXElement | null {
     const { headerItemsProps, suggestionsHeaderContainerAriaLabel } = this.props;
     const { selectedHeaderIndex } = this.state;
 
@@ -243,7 +244,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
     ) : null;
   }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderFooterItems(): JSX.Element | null {
+  private _renderFooterItems(): JSXElement | null {
     const { footerItemsProps, suggestionsFooterContainerAriaLabel } = this.props;
     const { selectedFooterIndex } = this.state;
     return footerItemsProps ? (
@@ -278,7 +279,7 @@ export class SuggestionsControl<T extends {}> extends React.Component<
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderSuggestions(): JSX.Element {
+  private _renderSuggestions(): JSXElement {
     return <SuggestionsCore<T> ref={this._suggestions} {...this.props} suggestions={this.state.suggestions} />;
   }
 

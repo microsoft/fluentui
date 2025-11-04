@@ -54,7 +54,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     this._showOnlyExamples = showOnlyExamples();
   }
 
-  public render() {
+  public render(): React.ReactElement | undefined {
     const { componentName, className, otherSections, styles, theme } = this.props;
 
     const onlyExamples = this._showOnlyExamples;
@@ -81,7 +81,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     );
   }
 
-  private _getPageHeader(): JSX.Element | undefined {
+  private _getPageHeader(): React.ReactElement | undefined {
     const classNames = this._styles;
     if (this.props.isHeaderVisible) {
       return (
@@ -93,7 +93,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     }
   }
 
-  private _navigationLinks(): JSX.Element {
+  private _navigationLinks(): React.ReactElement {
     const classNames = this._styles;
     const props = this.props;
 
@@ -121,12 +121,12 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     );
   }
 
-  private _getNativePropsInfo(): JSX.Element | undefined {
+  private _getNativePropsInfo(): React.ReactElement | undefined {
     const { allowNativeProps, allowNativePropsForComponentName, nativePropsElement = 'div' } = this.props;
     if (allowNativeProps) {
       const nativePropsElems = Array.isArray(nativePropsElement) ? nativePropsElement : [nativePropsElement];
 
-      const elementsArr: (JSX.Element | string)[] = [];
+      const elementsArr: (React.ReactElement | string)[] = [];
       for (const elem of nativePropsElems) {
         elementsArr.push(<code key={elem}>{`<${elem}>`}</code>);
         elementsArr.push(' and ');
@@ -134,7 +134,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       elementsArr.pop(); // remove last ' and '
       elementsArr.push(` tag${nativePropsElems.length > 1 ? 's' : ''}`);
 
-      let componentNameJsx: JSX.Element | undefined;
+      let componentNameJsx: React.ReactElement | undefined;
       if (allowNativePropsForComponentName) {
         componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
       }
@@ -151,7 +151,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     }
   }
 
-  private _getPropertiesTable(): JSX.Element | undefined {
+  private _getPropertiesTable(): React.ReactElement | undefined {
     if (this.props.propertiesTables) {
       return this._getSection({
         title: 'Implementation',
@@ -167,7 +167,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     }
   }
 
-  private _getBestPractices(): JSX.Element | undefined {
+  private _getBestPractices(): React.ReactElement | undefined {
     const classNames = this._styles;
     const props = this.props;
     const { bestPractices, dos, donts, title } = props;
@@ -214,7 +214,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     );
   }
 
-  private _getVariants(): JSX.Element | undefined {
+  private _getVariants(): React.ReactElement | undefined {
     const { exampleCards } = this.props;
     // We want to show the "Variants" header if the header is present since it has a relative anchor to it
     // or we have more than one example JSX element to render.
@@ -228,7 +228,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     }
   }
 
-  private _getFeedback(): JSX.Element | undefined {
+  private _getFeedback(): React.ReactElement | undefined {
     if (this.props.isFeedbackVisible && this.props.feedback) {
       return this._getSection({
         title: 'Feedback',
@@ -238,7 +238,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     }
   }
 
-  private _getOverview(): JSX.Element | undefined {
+  private _getOverview(): React.ReactElement | undefined {
     const { overview, editOverviewUrl } = this.props;
     if (overview) {
       return this._getSection({
@@ -253,7 +253,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     return undefined;
   }
 
-  private _getAccessibility(): JSX.Element | undefined {
+  private _getAccessibility(): React.ReactElement | undefined {
     const { accessibility, editOverviewUrl } = this.props;
     if (accessibility) {
       return this._getSection({
@@ -266,7 +266,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     return undefined;
   }
 
-  private _getSection(section: IExtendedComponentPageSection): JSX.Element {
+  private _getSection(section: IExtendedComponentPageSection): React.ReactElement {
     const {
       title,
       section: sectionContent,

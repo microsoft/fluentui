@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { Link, MessageBar, MessageBarType } from '@fluentui/react';
 import { MessageBarButton } from '@fluentui/react/lib/Button';
 
@@ -13,10 +14,10 @@ const link = <Link href="www.bing.com">Visit our website</Link>;
 export default {
   title: 'MessageBar',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 };
 
 export const Root = () => <MessageBar>Info/default message bar. {link}</MessageBar>;

@@ -2,7 +2,7 @@
 
 exports[`Spinner renders Spinner correctly 1`] = `
 <div
-  className=
+  class=
       ms-Spinner
       {
         align-items: center;
@@ -12,7 +12,7 @@ exports[`Spinner renders Spinner correctly 1`] = `
       }
 >
   <div
-    className=
+    class=
         ms-Spinner-circle
         ms-Spinner--medium
         {
@@ -38,7 +38,7 @@ exports[`Spinner renders Spinner correctly 1`] = `
         }
   />
   <div
-    className=
+    class=
         ms-Spinner-label
         {
           -moz-osx-font-smoothing: grayscale;

@@ -3,7 +3,7 @@ import { mergeStyles } from '@fluentui/react';
 import { NeutralColors } from '@fluentui/theme';
 import { IBadgeProps } from './Badge.types';
 
-export const Badge = (props: IBadgeProps) => {
+export const Badge = (props: IBadgeProps): React.ReactElement => {
   const { children, className, as: RootType = 'div' } = props;
   const rootClass = mergeStyles(
     {

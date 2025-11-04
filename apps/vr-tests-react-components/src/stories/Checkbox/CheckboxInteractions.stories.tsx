@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import type { Meta } from '@storybook/react';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { getStoryVariant, RTL, TestWrapperDecoratorFixedWidth } from '../../utilities';
@@ -7,22 +8,18 @@ import { getStoryVariant, RTL, TestWrapperDecoratorFixedWidth } from '../../util
 export default {
   title: 'Checkbox Converged',
   component: Checkbox,
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => (
-      <StoryWright
-        steps={new Steps()
-          .snapshot('rest', { cropTo: '.testWrapper' })
-          .hover('input')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .mouseDown('input')
-          .snapshot('active', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        {story()}
-      </StoryWright>
-    ),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('rest', { cropTo: '.testWrapper' })
+        .hover('input')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('input')
+        .snapshot('active', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Checkbox>;
 
 export const Unchecked = () => <Checkbox label="Unchecked" />;

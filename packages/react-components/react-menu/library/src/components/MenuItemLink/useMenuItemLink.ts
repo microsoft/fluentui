@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ExtractSlotProps, Slot, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MenuItemLinkProps, MenuItemLinkState } from './MenuItemLink.types';

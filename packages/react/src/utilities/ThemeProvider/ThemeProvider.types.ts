@@ -41,7 +41,7 @@ export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement>
 export type ThemeProviderState = Omit<ThemeProviderProps, 'theme' | 'ref'> & {
   theme: Theme;
 
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
 
   customizerContext: ICustomizerContext;
 };

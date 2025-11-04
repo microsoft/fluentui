@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { MenuItemLinkSlots, MenuItemLinkState } from './MenuItemLink.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

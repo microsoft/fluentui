@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ToastBodySlots, ToastBodyState } from './ToastBody.types';

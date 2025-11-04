@@ -1,8 +1,81 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Mon, 08 Sep 2025 12:51:07 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.6.12)
+
+Fri, 31 Oct 2025 16:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.6.11..@fluentui/react-migration-v0-v9_v9.6.12)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.4 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-components to v9.72.4 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.10 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.1 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-tabster to v9.26.8 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-utilities to v9.25.2 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+
+## [9.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.6.11)
+
+Tue, 21 Oct 2025 14:16:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.6.10..@fluentui/react-migration-v0-v9_v9.6.11)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.3 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-components to v9.72.3 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.0 ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by beachball)
+
+## [9.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.6.10)
+
+Wed, 08 Oct 2025 12:04:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.6.9..@fluentui/react-migration-v0-v9_v9.6.10)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-components to v9.72.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.9 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.2 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-tabster to v9.26.7 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+- Bump @fluentui/react-utilities to v9.25.1 ([PR #35294](https://github.com/microsoft/fluentui/pull/35294) by beachball)
+
+## [9.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.6.9)
+
+Mon, 06 Oct 2025 15:01:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.6.8..@fluentui/react-migration-v0-v9_v9.6.9)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.72.1 ([PR #35283](https://github.com/microsoft/fluentui/pull/35283) by beachball)
+
+## [9.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.6.8)
+
+Fri, 03 Oct 2025 14:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.6.7..@fluentui/react-migration-v0-v9_v9.6.8)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.72.0 ([PR #35275](https://github.com/microsoft/fluentui/pull/35275) by beachball)
+
+## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.6.7)
+
+Thu, 02 Oct 2025 15:12:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.6.6..@fluentui/react-migration-v0-v9_v9.6.7)
+
+### Patches
+
+- feat: enforce usage of use client directive for files with client-only features ([PR #35173](https://github.com/microsoft/fluentui/pull/35173) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.1 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-components to v9.71.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.8 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.2.1 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.25.2 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-tabster to v9.26.6 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
+- Bump @fluentui/react-utilities to v9.25.0 ([PR #35133](https://github.com/microsoft/fluentui/pull/35133) by beachball)
 
 ## [9.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.6.6)
 

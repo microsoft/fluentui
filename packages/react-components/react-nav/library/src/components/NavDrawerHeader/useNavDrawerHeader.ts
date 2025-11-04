@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
 

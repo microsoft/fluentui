@@ -2,6 +2,168 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Fri, 31 Oct 2025 16:22:01 GMT",
+      "tag": "@fluentui/react-tooltip_v9.8.9",
+      "version": "9.8.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "c16125427e4d796ae4a1143f482baa0da962bac1",
+            "comment": "fix: Tooltip does not prevent rendering with aria-expanded unless aria-haspopup is also set"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.1",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.8.6",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.20.8",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-tabster to v9.26.8",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-utilities to v9.25.2",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Oct 2025 14:16:59 GMT",
+      "tag": "@fluentui/react-tooltip_v9.8.8",
+      "version": "9.8.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.0",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.8.5",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Oct 2025 12:04:52 GMT",
+      "tag": "@fluentui/react-tooltip_v9.8.7",
+      "version": "9.8.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "de104fff5f19e87dc00c19e41ec1dda0d80140bf",
+            "comment": "fix: In StrictMode, Tooltip now shows correctly on elements that are focused when created"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.2",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.8.4",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.20.7",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-tabster to v9.26.7",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-utilities to v9.25.1",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Oct 2025 15:12:08 GMT",
+      "tag": "@fluentui/react-tooltip_v9.8.6",
+      "version": "9.8.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.1",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.8.3",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.20.6",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.2",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-tabster to v9.26.6",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-utilities to v9.25.0",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Sep 2025 12:50:51 GMT",
       "tag": "@fluentui/react-tooltip_v9.8.5",
       "version": "9.8.5",

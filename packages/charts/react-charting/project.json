@@ -7,6 +7,7 @@
   "targets": {
     "test": {
       "dependsOn": ["^build"]
-    }
+    },
+    "type-check": { "command": "echo 'type-check is noop for v8 project which uses tsc for build'" }
   }
 }

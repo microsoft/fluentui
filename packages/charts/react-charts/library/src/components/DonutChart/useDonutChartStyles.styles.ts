@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { DonutChartProps, DonutChartStyles } from './index';
@@ -26,6 +28,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     width: '100%',
     height: '100%',
+    textAlign: 'left',
   },
   chart: {
     boxSizing: 'content-box',

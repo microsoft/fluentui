@@ -1,3 +1,5 @@
+'use client';
+
 import { type GriffelResetStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 

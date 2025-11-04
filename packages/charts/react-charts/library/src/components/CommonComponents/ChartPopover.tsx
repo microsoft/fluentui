@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { mergeClasses } from '@griffel/react';
@@ -30,6 +32,12 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
       height: 0,
     }),
   };
+  const target =
+    typeof props.positioning === 'object' && 'target' in props.positioning
+      ? props.positioning.target !== null
+        ? props.positioning.target
+        : virtualElement
+      : virtualElement;
   props = { ...props, ...props.customCallout?.customCalloutProps };
   const classes = usePopoverStyles_unstable(props);
   const legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
@@ -37,7 +45,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
   return (
     <div id={useId('callout')} ref={forwardedRef} className={classes.calloutContainer}>
       <Popover
-        positioning={{ target: virtualElement, autoSize: 'always', offset: 20, coverTarget: false }}
+        positioning={{ target: target, autoSize: 'always', offset: 20, coverTarget: false }}
         open={props.isPopoverOpen}
         inline
       >

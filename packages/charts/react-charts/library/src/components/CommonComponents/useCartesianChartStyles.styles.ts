@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
@@ -37,6 +39,7 @@ const useStyles = makeStyles({
     height: '100%',
     flexDirection: 'column',
     overflow: 'hidden',
+    textAlign: 'left',
   },
   chartWrapper: {
     overflow: 'auto',

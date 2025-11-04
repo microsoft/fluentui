@@ -2,6 +2,276 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Fri, 31 Oct 2025 16:22:06 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.7.10",
+      "version": "9.7.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.1",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.25.2",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-portal to v9.8.6",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.26.8",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-aria to v9.17.4",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-combobox to v9.16.10",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.7.10",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.10",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-positioning to v9.20.8",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-field to v9.4.9",
+            "commit": "9d7418b393fdb8d84f1a1398e9ea4ffcd2d026f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Oct 2025 14:16:59 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.7.9",
+      "version": "9.7.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.0",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-portal to v9.8.5",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-aria to v9.17.3",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-combobox to v9.16.9",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.7.9",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-field to v9.4.8",
+            "commit": "4fea513fa2962778a49b1293c8c01eb275dcda44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Oct 2025 12:04:53 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.7.8",
+      "version": "9.7.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.2",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.25.1",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-portal to v9.8.4",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.26.7",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-aria to v9.17.2",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-combobox to v9.16.8",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.7.8",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.9",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-positioning to v9.20.7",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-field to v9.4.7",
+            "commit": "d09f8eb01ed8aebeafcde8d0714b5e319067f7dd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Oct 2025 15:12:36 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.7.7",
+      "version": "9.7.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "79c5bd3604c36a153398c365c97c6baa1c36f62c",
+            "comment": "feat: enforce usage of use client directive for files with client-only features"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "ae71d5d3b142874cf9e66566073f215f0e39358b",
+            "comment": "fix: render portal only when popover is defined to prevent hydration mismatch"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.2.1",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.25.2",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.25.0",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-portal to v9.8.3",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.26.6",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-aria to v9.17.1",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-combobox to v9.16.7",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.7.7",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.8",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-positioning to v9.20.6",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-field to v9.4.6",
+            "commit": "cd5dfec245cd60ff7149e8a35ffbe7bb01d72376"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Sep 2025 12:50:43 GMT",
       "tag": "@fluentui/react-tag-picker_v9.7.6",
       "version": "9.7.6",

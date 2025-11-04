@@ -4,6 +4,7 @@ import type { IRefObject, IBaseProps, ISize } from '@fluentui/react/lib/Utilitie
 import type { IFocusZone } from '@fluentui/react/lib/FocusZone';
 import type { IListProps } from '@fluentui/react/lib/List';
 import type { IRenderFunction } from '@fluentui/utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface ITilesGridItemCellProps<TItem> {
   item: TItem;
@@ -18,13 +19,13 @@ export interface ITilesGridItemCellProps<TItem> {
 
 export interface ITilesListRowProps<TItem> {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  cellElements: JSX.Element[];
+  cellElements: JSXElement[];
   divProps: React.HTMLAttributes<HTMLDivElement>;
 }
 
 export interface ITilesListRootProps<TItem> {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  surfaceElement: JSX.Element | null;
+  surfaceElement: JSXElement | null;
   divProps: React.HTMLAttributes<HTMLDivElement>;
   rowCount: number;
   columnCount: number;
@@ -61,7 +62,7 @@ export interface ITilesGridItem<TItem> {
    * Preferred over `onRender`.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  onRenderCell?: (props: ITilesGridItemCellProps<TItem>) => JSX.Element | null;
+  onRenderCell?: (props: ITilesGridItemCellProps<TItem>) => JSXElement | null;
 }
 
 export enum TilesGridMode {

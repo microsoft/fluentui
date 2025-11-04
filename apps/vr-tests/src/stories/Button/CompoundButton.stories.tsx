@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { CompoundButton, IButtonProps } from '@fluentui/react/lib/Button';
 
 const baseProps: IButtonProps = {
@@ -14,19 +16,19 @@ const baseProps: IButtonProps = {
 export default {
   title: 'Button Compound (compat)',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('.ms-Button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof CompoundButton>;
 
 export const Root = () => <CompoundButton {...baseProps} />;
 
