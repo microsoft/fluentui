@@ -1,4 +1,4 @@
-import {tokens} from '@fluentui/tokens';
+import { tokens } from '@fluentui/tokens';
 
 console.log(tokens);
 

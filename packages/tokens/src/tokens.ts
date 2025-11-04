@@ -168,8 +168,8 @@ export const colorNeutralShadowKeyDarker = 'var(--colorNeutralShadowKeyDarker)';
 export const colorBrandShadowAmbient = 'var(--colorBrandShadowAmbient)';
 export const colorBrandShadowKey = 'var(--colorBrandShadowKey)';
 
-  // Color palette tokens
-  // Color palette red tokens
+// Color palette tokens
+// Color palette red tokens
 export const colorPaletteRedBackground1 = 'var(--colorPaletteRedBackground1)';
 export const colorPaletteRedBackground2 = 'var(--colorPaletteRedBackground2)';
 export const colorPaletteRedBackground3 = 'var(--colorPaletteRedBackground3)';
@@ -191,7 +191,7 @@ export const colorPaletteGreenForeground1 = 'var(--colorPaletteGreenForeground1)
 export const colorPaletteGreenForeground2 = 'var(--colorPaletteGreenForeground2)';
 export const colorPaletteGreenForeground3 = 'var(--colorPaletteGreenForeground3)';
 export const colorPaletteGreenForegroundInverted = 'var(--colorPaletteGreenForegroundInverted)';
-  // Color palette dark orange tokens
+// Color palette dark orange tokens
 export const colorPaletteDarkOrangeBackground1 = 'var(--colorPaletteDarkOrangeBackground1)';
 export const colorPaletteDarkOrangeBackground2 = 'var(--colorPaletteDarkOrangeBackground2)';
 export const colorPaletteDarkOrangeBackground3 = 'var(--colorPaletteDarkOrangeBackground3)';
@@ -212,7 +212,7 @@ export const colorPaletteYellowForeground1 = 'var(--colorPaletteYellowForeground
 export const colorPaletteYellowForeground2 = 'var(--colorPaletteYellowForeground2)';
 export const colorPaletteYellowForeground3 = 'var(--colorPaletteYellowForeground3)';
 export const colorPaletteYellowForegroundInverted = 'var(--colorPaletteYellowForegroundInverted)';
-  // Color palette berry tokens
+// Color palette berry tokens
 export const colorPaletteBerryBackground1 = 'var(--colorPaletteBerryBackground1)';
 export const colorPaletteBerryBackground2 = 'var(--colorPaletteBerryBackground2)';
 export const colorPaletteBerryBackground3 = 'var(--colorPaletteBerryBackground3)';
@@ -232,7 +232,7 @@ export const colorPaletteMarigoldBorder2 = 'var(--colorPaletteMarigoldBorder2)';
 export const colorPaletteMarigoldForeground1 = 'var(--colorPaletteMarigoldForeground1)';
 export const colorPaletteMarigoldForeground2 = 'var(--colorPaletteMarigoldForeground2)';
 export const colorPaletteMarigoldForeground3 = 'var(--colorPaletteMarigoldForeground3)';
-  // Color palette light green tokens
+// Color palette light green tokens
 export const colorPaletteLightGreenBackground1 = 'var(--colorPaletteLightGreenBackground1)';
 export const colorPaletteLightGreenBackground2 = 'var(--colorPaletteLightGreenBackground2)';
 export const colorPaletteLightGreenBackground3 = 'var(--colorPaletteLightGreenBackground3)';
@@ -246,7 +246,7 @@ export const colorPaletteLightGreenForeground3 = 'var(--colorPaletteLightGreenFo
 export const colorPaletteAnchorBackground2 = 'var(--colorPaletteAnchorBackground2)';
 export const colorPaletteAnchorBorderActive = 'var(--colorPaletteAnchorBorderActive)';
 export const colorPaletteAnchorForeground2 = 'var(--colorPaletteAnchorForeground2)';
-  // Color palette beige tokens
+// Color palette beige tokens
 export const colorPaletteBeigeBackground2 = 'var(--colorPaletteBeigeBackground2)';
 export const colorPaletteBeigeBorderActive = 'var(--colorPaletteBeigeBorderActive)';
 export const colorPaletteBeigeForeground2 = 'var(--colorPaletteBeigeForeground2)';
@@ -254,7 +254,7 @@ export const colorPaletteBeigeForeground2 = 'var(--colorPaletteBeigeForeground2)
 export const colorPaletteBlueBackground2 = 'var(--colorPaletteBlueBackground2)';
 export const colorPaletteBlueBorderActive = 'var(--colorPaletteBlueBorderActive)';
 export const colorPaletteBlueForeground2 = 'var(--colorPaletteBlueForeground2)';
-  // Color palette brass tokens
+// Color palette brass tokens
 export const colorPaletteBrassBackground2 = 'var(--colorPaletteBrassBackground2)';
 export const colorPaletteBrassBorderActive = 'var(--colorPaletteBrassBorderActive)';
 export const colorPaletteBrassForeground2 = 'var(--colorPaletteBrassForeground2)';
@@ -262,7 +262,7 @@ export const colorPaletteBrassForeground2 = 'var(--colorPaletteBrassForeground2)
 export const colorPaletteBrownBackground2 = 'var(--colorPaletteBrownBackground2)';
 export const colorPaletteBrownBorderActive = 'var(--colorPaletteBrownBorderActive)';
 export const colorPaletteBrownForeground2 = 'var(--colorPaletteBrownForeground2)';
-  // Color palette cornflower tokens
+// Color palette cornflower tokens
 export const colorPaletteCornflowerBackground2 = 'var(--colorPaletteCornflowerBackground2)';
 export const colorPaletteCornflowerBorderActive = 'var(--colorPaletteCornflowerBorderActive)';
 export const colorPaletteCornflowerForeground2 = 'var(--colorPaletteCornflowerForeground2)';
@@ -270,7 +270,7 @@ export const colorPaletteCornflowerForeground2 = 'var(--colorPaletteCornflowerFo
 export const colorPaletteCranberryBackground2 = 'var(--colorPaletteCranberryBackground2)';
 export const colorPaletteCranberryBorderActive = 'var(--colorPaletteCranberryBorderActive)';
 export const colorPaletteCranberryForeground2 = 'var(--colorPaletteCranberryForeground2)';
-  // Color palette dark green tokens
+// Color palette dark green tokens
 export const colorPaletteDarkGreenBackground2 = 'var(--colorPaletteDarkGreenBackground2)';
 export const colorPaletteDarkGreenBorderActive = 'var(--colorPaletteDarkGreenBorderActive)';
 export const colorPaletteDarkGreenForeground2 = 'var(--colorPaletteDarkGreenForeground2)';
@@ -278,7 +278,7 @@ export const colorPaletteDarkGreenForeground2 = 'var(--colorPaletteDarkGreenFore
 export const colorPaletteDarkRedBackground2 = 'var(--colorPaletteDarkRedBackground2)';
 export const colorPaletteDarkRedBorderActive = 'var(--colorPaletteDarkRedBorderActive)';
 export const colorPaletteDarkRedForeground2 = 'var(--colorPaletteDarkRedForeground2)';
-  // Color palette forest tokens
+// Color palette forest tokens
 export const colorPaletteForestBackground2 = 'var(--colorPaletteForestBackground2)';
 export const colorPaletteForestBorderActive = 'var(--colorPaletteForestBorderActive)';
 export const colorPaletteForestForeground2 = 'var(--colorPaletteForestForeground2)';
@@ -286,7 +286,7 @@ export const colorPaletteForestForeground2 = 'var(--colorPaletteForestForeground
 export const colorPaletteGoldBackground2 = 'var(--colorPaletteGoldBackground2)';
 export const colorPaletteGoldBorderActive = 'var(--colorPaletteGoldBorderActive)';
 export const colorPaletteGoldForeground2 = 'var(--colorPaletteGoldForeground2)';
-  // Color palette grape tokens
+// Color palette grape tokens
 export const colorPaletteGrapeBackground2 = 'var(--colorPaletteGrapeBackground2)';
 export const colorPaletteGrapeBorderActive = 'var(--colorPaletteGrapeBorderActive)';
 export const colorPaletteGrapeForeground2 = 'var(--colorPaletteGrapeForeground2)';
@@ -294,7 +294,7 @@ export const colorPaletteGrapeForeground2 = 'var(--colorPaletteGrapeForeground2)
 export const colorPaletteLavenderBackground2 = 'var(--colorPaletteLavenderBackground2)';
 export const colorPaletteLavenderBorderActive = 'var(--colorPaletteLavenderBorderActive)';
 export const colorPaletteLavenderForeground2 = 'var(--colorPaletteLavenderForeground2)';
-  // Color palette light teal tokens
+// Color palette light teal tokens
 export const colorPaletteLightTealBackground2 = 'var(--colorPaletteLightTealBackground2)';
 export const colorPaletteLightTealBorderActive = 'var(--colorPaletteLightTealBorderActive)';
 export const colorPaletteLightTealForeground2 = 'var(--colorPaletteLightTealForeground2)';
@@ -302,7 +302,7 @@ export const colorPaletteLightTealForeground2 = 'var(--colorPaletteLightTealFore
 export const colorPaletteLilacBackground2 = 'var(--colorPaletteLilacBackground2)';
 export const colorPaletteLilacBorderActive = 'var(--colorPaletteLilacBorderActive)';
 export const colorPaletteLilacForeground2 = 'var(--colorPaletteLilacForeground2)';
-  // Color palette magenta tokens
+// Color palette magenta tokens
 export const colorPaletteMagentaBackground2 = 'var(--colorPaletteMagentaBackground2)';
 export const colorPaletteMagentaBorderActive = 'var(--colorPaletteMagentaBorderActive)';
 export const colorPaletteMagentaForeground2 = 'var(--colorPaletteMagentaForeground2)';
@@ -310,7 +310,7 @@ export const colorPaletteMagentaForeground2 = 'var(--colorPaletteMagentaForegrou
 export const colorPaletteMinkBackground2 = 'var(--colorPaletteMinkBackground2)';
 export const colorPaletteMinkBorderActive = 'var(--colorPaletteMinkBorderActive)';
 export const colorPaletteMinkForeground2 = 'var(--colorPaletteMinkForeground2)';
-  // Color palette navy tokens
+// Color palette navy tokens
 export const colorPaletteNavyBackground2 = 'var(--colorPaletteNavyBackground2)';
 export const colorPaletteNavyBorderActive = 'var(--colorPaletteNavyBorderActive)';
 export const colorPaletteNavyForeground2 = 'var(--colorPaletteNavyForeground2)';
@@ -318,7 +318,7 @@ export const colorPaletteNavyForeground2 = 'var(--colorPaletteNavyForeground2)';
 export const colorPalettePeachBackground2 = 'var(--colorPalettePeachBackground2)';
 export const colorPalettePeachBorderActive = 'var(--colorPalettePeachBorderActive)';
 export const colorPalettePeachForeground2 = 'var(--colorPalettePeachForeground2)';
-  // Color palette pink tokens
+// Color palette pink tokens
 export const colorPalettePinkBackground2 = 'var(--colorPalettePinkBackground2)';
 export const colorPalettePinkBorderActive = 'var(--colorPalettePinkBorderActive)';
 export const colorPalettePinkForeground2 = 'var(--colorPalettePinkForeground2)';
@@ -326,7 +326,7 @@ export const colorPalettePinkForeground2 = 'var(--colorPalettePinkForeground2)';
 export const colorPalettePlatinumBackground2 = 'var(--colorPalettePlatinumBackground2)';
 export const colorPalettePlatinumBorderActive = 'var(--colorPalettePlatinumBorderActive)';
 export const colorPalettePlatinumForeground2 = 'var(--colorPalettePlatinumForeground2)';
-  // Color palette plum tokens
+// Color palette plum tokens
 export const colorPalettePlumBackground2 = 'var(--colorPalettePlumBackground2)';
 export const colorPalettePlumBorderActive = 'var(--colorPalettePlumBorderActive)';
 export const colorPalettePlumForeground2 = 'var(--colorPalettePlumForeground2)';
@@ -334,7 +334,7 @@ export const colorPalettePlumForeground2 = 'var(--colorPalettePlumForeground2)';
 export const colorPalettePumpkinBackground2 = 'var(--colorPalettePumpkinBackground2)';
 export const colorPalettePumpkinBorderActive = 'var(--colorPalettePumpkinBorderActive)';
 export const colorPalettePumpkinForeground2 = 'var(--colorPalettePumpkinForeground2)';
-  // Color palette purple tokens
+// Color palette purple tokens
 export const colorPalettePurpleBackground2 = 'var(--colorPalettePurpleBackground2)';
 export const colorPalettePurpleBorderActive = 'var(--colorPalettePurpleBorderActive)';
 export const colorPalettePurpleForeground2 = 'var(--colorPalettePurpleForeground2)';
@@ -342,7 +342,7 @@ export const colorPalettePurpleForeground2 = 'var(--colorPalettePurpleForeground
 export const colorPaletteRoyalBlueBackground2 = 'var(--colorPaletteRoyalBlueBackground2)';
 export const colorPaletteRoyalBlueBorderActive = 'var(--colorPaletteRoyalBlueBorderActive)';
 export const colorPaletteRoyalBlueForeground2 = 'var(--colorPaletteRoyalBlueForeground2)';
-  // Color palette seafoam tokens
+// Color palette seafoam tokens
 export const colorPaletteSeafoamBackground2 = 'var(--colorPaletteSeafoamBackground2)';
 export const colorPaletteSeafoamBorderActive = 'var(--colorPaletteSeafoamBorderActive)';
 export const colorPaletteSeafoamForeground2 = 'var(--colorPaletteSeafoamForeground2)';
@@ -350,7 +350,7 @@ export const colorPaletteSeafoamForeground2 = 'var(--colorPaletteSeafoamForegrou
 export const colorPaletteSteelBackground2 = 'var(--colorPaletteSteelBackground2)';
 export const colorPaletteSteelBorderActive = 'var(--colorPaletteSteelBorderActive)';
 export const colorPaletteSteelForeground2 = 'var(--colorPaletteSteelForeground2)';
-  // Color palette teal tokens
+// Color palette teal tokens
 export const colorPaletteTealBackground2 = 'var(--colorPaletteTealBackground2)';
 export const colorPaletteTealBorderActive = 'var(--colorPaletteTealBorderActive)';
 export const colorPaletteTealForeground2 = 'var(--colorPaletteTealForeground2)';
@@ -365,7 +365,7 @@ export const colorStatusSuccessForegroundInverted = 'var(--colorStatusSuccessFor
 export const colorStatusSuccessBorderActive = 'var(--colorStatusSuccessBorderActive)';
 export const colorStatusSuccessBorder1 = 'var(--colorStatusSuccessBorder1)';
 export const colorStatusSuccessBorder2 = 'var(--colorStatusSuccessBorder2)';
-  // Color status warning tokens
+// Color status warning tokens
 export const colorStatusWarningBackground1 = 'var(--colorStatusWarningBackground1)';
 export const colorStatusWarningBackground2 = 'var(--colorStatusWarningBackground2)';
 export const colorStatusWarningBackground3 = 'var(--colorStatusWarningBackground3)';
@@ -389,7 +389,7 @@ export const colorStatusDangerForegroundInverted = 'var(--colorStatusDangerForeg
 export const colorStatusDangerBorderActive = 'var(--colorStatusDangerBorderActive)';
 export const colorStatusDangerBorder1 = 'var(--colorStatusDangerBorder1)';
 export const colorStatusDangerBorder2 = 'var(--colorStatusDangerBorder2)';
-  // Border radius tokens
+// Border radius tokens
 export const borderRadiusNone = 'var(--borderRadiusNone)';
 export const borderRadiusSmall = 'var(--borderRadiusSmall)';
 export const borderRadiusMedium = 'var(--borderRadiusMedium)';
@@ -400,7 +400,7 @@ export const borderRadiusCircular = 'var(--borderRadiusCircular)';
 export const fontFamilyBase = 'var(--fontFamilyBase)';
 export const fontFamilyMonospace = 'var(--fontFamilyMonospace)';
 export const fontFamilyNumeric = 'var(--fontFamilyNumeric)';
-  // Font size tokens
+// Font size tokens
 export const fontSizeBase100 = 'var(--fontSizeBase100)';
 export const fontSizeBase200 = 'var(--fontSizeBase200)';
 export const fontSizeBase300 = 'var(--fontSizeBase300)';
@@ -416,7 +416,7 @@ export const fontWeightRegular = 'var(--fontWeightRegular)';
 export const fontWeightMedium = 'var(--fontWeightMedium)';
 export const fontWeightSemibold = 'var(--fontWeightSemibold)';
 export const fontWeightBold = 'var(--fontWeightBold)';
-  // Line height tokens
+// Line height tokens
 export const lineHeightBase100 = 'var(--lineHeightBase100)';
 export const lineHeightBase200 = 'var(--lineHeightBase200)';
 export const lineHeightBase300 = 'var(--lineHeightBase300)';
@@ -434,7 +434,7 @@ export const shadow8 = 'var(--shadow8)';
 export const shadow16 = 'var(--shadow16)';
 export const shadow28 = 'var(--shadow28)';
 export const shadow64 = 'var(--shadow64)';
-  // Shadow brand tokens
+// Shadow brand tokens
 export const shadow2Brand = 'var(--shadow2Brand)';
 export const shadow4Brand = 'var(--shadow4Brand)';
 export const shadow8Brand = 'var(--shadow8Brand)';
@@ -446,7 +446,7 @@ export const strokeWidthThin = 'var(--strokeWidthThin)';
 export const strokeWidthThick = 'var(--strokeWidthThick)';
 export const strokeWidthThicker = 'var(--strokeWidthThicker)';
 export const strokeWidthThickest = 'var(--strokeWidthThickest)';
-  // Spacings
+// Spacings
 export const spacingHorizontalNone = 'var(--spacingHorizontalNone)';
 export const spacingHorizontalXXS = 'var(--spacingHorizontalXXS)';
 export const spacingHorizontalXS = 'var(--spacingHorizontalXS)';
@@ -478,7 +478,7 @@ export const durationGentle = 'var(--durationGentle)';
 export const durationSlow = 'var(--durationSlow)';
 export const durationSlower = 'var(--durationSlower)';
 export const durationUltraSlow = 'var(--durationUltraSlow)';
-  // Curves
+// Curves
 export const curveAccelerateMax = 'var(--curveAccelerateMax)';
 export const curveAccelerateMid = 'var(--curveAccelerateMid)';
 export const curveAccelerateMin = 'var(--curveAccelerateMin)';
