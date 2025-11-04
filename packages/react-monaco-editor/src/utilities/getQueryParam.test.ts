@@ -1,18 +1,7 @@
 import { getQueryParam } from './getQueryParam';
+import * as Utilities from '@fluentui/react/lib/Utilities';
 
 describe('getQueryParam', () => {
-  const realLocation = window.location;
-
-  beforeAll(() => {
-    // Delete should only be called on optional props.
-    delete (window as { location?: unknown }).location;
-    window.location = {} as Location;
-  });
-
-  afterAll(() => {
-    window.location = realLocation;
-  });
-
   it('returns null if no query', () => {
     expect(getQueryParam('foo', 'http://whatever')).toBe(null);
     expect(getQueryParam('foo', 'http://whatever#foo=1')).toBe(null);
@@ -46,7 +35,14 @@ describe('getQueryParam', () => {
   });
 
   it('defaults to using window.location.href', () => {
-    window.location.href = 'http://whatever?foo=1';
+    // Mock getWindow to return a window with custom location
+    const mockWindow = {
+      location: { href: 'http://whatever?foo=1' },
+    } as Window;
+    jest.spyOn(Utilities, 'getWindow').mockReturnValue(mockWindow);
+
     expect(getQueryParam('foo')).toBe('1');
+
+    jest.restoreAllMocks();
   });
 });
