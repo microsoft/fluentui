@@ -213,7 +213,7 @@ const tickValues = [
   new Date('2020-03-09T00:00:00.000Z'),
 ];
 
-describe.skip('Line chart rendering', () => {
+describe('Line chart rendering', () => {
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -399,6 +399,7 @@ const eventAnnotationProps = {
   mergedLabel: (count: number) => `${count} events`,
 };
 
+// @FIXME: does not work with jest v30
 describe.skip('Line chart - Subcomponent line', () => {
   testWithoutWait(
     'Should render the lines with the specified colors',
@@ -425,6 +426,7 @@ describe.skip('Line chart - Subcomponent line', () => {
   );
 });
 
+// @FIXME: does not work with jest v30
 describe.skip('Line chart - Subcomponent legend', () => {
   testWithoutWait(
     'Should highlight the corresponding Line on mouse over on legends',
@@ -568,7 +570,7 @@ describe.skip('Line chart - Subcomponent legend', () => {
   );
 });
 
-// @FIXME: does not work with jest >= 30
+// @FIXME: does not work with jest v30
 describe.skip('Line chart - Subcomponent Time Range', () => {
   testWithWait(
     'Should render time range with sepcified data',
@@ -600,8 +602,7 @@ describe.skip('Line chart - Subcomponent Time Range', () => {
   );
 });
 
-// @FIXME: does not work with jest >= 30
-describe.skip('Line chart - Subcomponent xAxis Labels', () => {
+describe('Line chart - Subcomponent xAxis Labels', () => {
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     LineChart,
@@ -619,8 +620,7 @@ describe.skip('Line chart - Subcomponent xAxis Labels', () => {
   );
 });
 
-// @FIXME: does not work with jest >= 30
-describe.skip('Line chart - Subcomponent Event', () => {
+describe('Line chart - Subcomponent Event', () => {
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
   // Replace the original method with the mock implementation
   Object.defineProperty(
@@ -647,8 +647,7 @@ describe.skip('Line chart - Subcomponent Event', () => {
   );
 });
 
-// @FIXME: does not work with jest >= 30
-describe.skip('Screen resolution', () => {
+describe('Screen resolution', () => {
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -684,7 +683,7 @@ describe.skip('Screen resolution', () => {
   );
 });
 
-describe.skip('Theme and accessibility', () => {
+describe('Theme and accessibility', () => {
   afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
@@ -699,7 +698,7 @@ describe.skip('Theme and accessibility', () => {
   });
 });
 
-describe.skip('Line chart - Accessibility', () => {
+describe('Line chart - Accessibility', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<LineChart data={basicChartPoints} />);
     let axeResults;
@@ -710,7 +709,7 @@ describe.skip('Line chart - Accessibility', () => {
   });
 });
 
-describe.skip('LineChart snapShot testing', () => {
+describe('LineChart snapShot testing', () => {
   it('renders LineChart correctly', async () => {
     let wrapper = render(<LineChart data={basicChartPoints} />);
     expect(wrapper).toMatchSnapshot();
@@ -775,8 +774,7 @@ describe.skip('LineChart snapShot testing', () => {
   });
 });
 
-// @FIXME: does not work with jest >= 30
-describe.skip('LineChart - basic props', () => {
+describe('LineChart - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
@@ -804,8 +802,7 @@ describe.skip('LineChart - basic props', () => {
   });
 });
 
-// @FIXME: does not work with jest >= 30
-describe.skip('Render calling with respective to props', () => {
+describe('Render calling with respective to props', () => {
   it('No prop changes', () => {
     const props = {
       data: basicChartPoints,
@@ -835,8 +832,7 @@ describe.skip('Render calling with respective to props', () => {
   });
 });
 
-// @FIXME: does not work with jest >= 30
-describe.skip('Render empty chart aria label div when chart is empty', () => {
+describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
     let wrapper = render(<LineChart data={basicChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
@@ -854,7 +850,7 @@ describe.skip('Render empty chart aria label div when chart is empty', () => {
   });
 });
 
-// @FIXME: does not work with jest >= 30
+// @FIXME: failing with jest v30
 describe.skip('LineChart - mouse events', () => {
   let root: HTMLDivElement | null;
 
@@ -876,7 +872,6 @@ describe.skip('LineChart - mouse events', () => {
   it('Should render callout correctly on mouseover', () => {
     // Render the LineChart and simulate mouseover using React Testing Library
     const { container } = render(<LineChart data={basicChartPoints} />, { container: root! });
-    // Find the first line element by id pattern
     const line = container.querySelector('line[id^="lineID"]');
     expect(line).toBeDefined();
     act(() => {
