@@ -3267,14 +3267,13 @@ export const MessageBarStyles: ElementStyles;
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 
 // @public
-class ProgressBar_2 extends BaseProgressBar {
+export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
     thickness?: ProgressBarThickness;
 }
-export { ProgressBar_2 as ProgressBar }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar_2>;
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
 
 // @public
 export const ProgressBarShape: {
@@ -3291,7 +3290,7 @@ export const ProgressBarStyles: ElementStyles;
 // Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const ProgressBarTemplate: ElementViewTemplate<ProgressBar_2>;
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
 
 // @public
 export const ProgressBarThickness: {
