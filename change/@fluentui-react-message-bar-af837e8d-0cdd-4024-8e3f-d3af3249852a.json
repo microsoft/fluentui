@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(react-message-bar): use standard motion atoms for slide and fade",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}

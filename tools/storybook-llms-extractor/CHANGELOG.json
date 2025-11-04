@@ -2,6 +2,21 @@
   "name": "@fluentui/storybook-llms-extractor",
   "entries": [
     {
+      "date": "Tue, 04 Nov 2025 14:47:01 GMT",
+      "tag": "@fluentui/storybook-llms-extractor_v0.0.3",
+      "version": "0.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/storybook-llms-extractor",
+            "commit": "7bb11950265f2145fbf138fbc64963f605366c8f",
+            "comment": "fix: now properly uses correct story store for SB 8 compatibility."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 13 Aug 2025 14:06:48 GMT",
       "tag": "@fluentui/storybook-llms-extractor_v0.0.2",
       "version": "0.0.2",

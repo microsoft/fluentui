@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin-react-components
 
-This log was last generated on Fri, 31 Oct 2025 16:22:01 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Nov 2025 14:46:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin-react-components_v0.1.4)
+
+Tue, 04 Nov 2025 14:46:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin-react-components_v0.1.3..@fluentui/eslint-plugin-react-components_v0.1.4)
+
+### Patches
+
+- fix: force release ([PR #35445](https://github.com/microsoft/fluentui/pull/35445) by dmytrokirpa@microsoft.com)
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin-react-components_v0.1.3)
 

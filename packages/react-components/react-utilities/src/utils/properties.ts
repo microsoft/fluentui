@@ -208,6 +208,7 @@ export const anchorProperties = toObjectMap(htmlElementProperties, [
   'href', // a, area, base, link
   'hrefLang', // a, area, link
   'media', // a, area, link, source, style
+  'referrerPolicy', // a, area
   'rel', // a, area, link
   'target', // a, area, base, form
   'type', // a, button, input, link, menu, object, script, source, style

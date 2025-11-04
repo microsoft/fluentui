@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(react-drawer): use standard motion atom for fade",
+  "packageName": "@fluentui/react-drawer",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
