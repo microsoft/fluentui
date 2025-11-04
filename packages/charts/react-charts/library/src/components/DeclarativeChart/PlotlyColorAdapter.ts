@@ -158,7 +158,7 @@ export const getSchemaColors = (
       if (parsedColor) {
         //console.log('fluentdataxviz', tryMapFluentDataViz(parsedColor.formatHex(), templateColorway, isDarkTheme));
       }
-      hexColors.push(tryMapFluentDataViz(parsedColor!.formatHex(), templateColorway, isDarkTheme));
+      hexColors.push('#f7630c');
       //  } else {
       //   hexColors.push(nextFluentColor);
       //  }
