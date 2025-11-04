@@ -129,8 +129,16 @@ export interface IDeclarativeChart {
   exportAsImage: (opts?: ImageExportOptions) => Promise<string>;
 }
 
-const useColorMapping = () => {
+const useColorMapping = (chartSchemaKey: string) => {
   const colorMap = React.useRef(new Map<string, string>());
+  const prevSchemaKey = React.useRef<string>('');
+
+  // Clear color map when chart schema changes
+  if (prevSchemaKey.current !== chartSchemaKey) {
+    colorMap.current.clear();
+    prevSchemaKey.current = chartSchemaKey;
+  }
+
   return colorMap;
 };
 
@@ -331,7 +339,8 @@ const useIsDarkTheme = (): boolean => {
 export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = React.forwardRef<
   HTMLDivElement,
   DeclarativeChartProps
->((props, forwardedRef) => {
+>(({ colorwayType = 'default', ...restProps }, forwardedRef) => {
+  const props = { colorwayType, ...restProps };
   const { plotlySchema } = sanitizeJson(props.chartSchema);
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {
@@ -354,7 +363,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }));
 
   let { selectedLegends } = plotlySchema;
-  const colorMap = useColorMapping();
+  // Create a stable key for the chart schema to track changes
+  const schemaKey = React.useMemo(() => JSON.stringify(plotlyInputWithValidData.data), [plotlyInputWithValidData.data]);
+  const colorMap = useColorMapping(schemaKey);
+  //console.log('colormap', colorMap);
   const isDarkTheme = useIsDarkTheme();
   const chartRef = React.useRef<Chart>(null);
   const isMultiPlot = React.useRef(false);
@@ -557,6 +569,3 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
-DeclarativeChart.defaultProps = {
-  colorwayType: 'default',
-};
