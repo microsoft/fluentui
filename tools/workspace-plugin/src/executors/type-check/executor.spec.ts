@@ -50,7 +50,7 @@ jest.mock('@nx/devkit', () => {
 });
 
 describe('TypeCheck Executor', () => {
-  let loggerErrorSpy: jest.SpyInstance;
+  let loggerErrorSpy: jest.Spied<typeof logger.error>;
 
   beforeEach(() => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function

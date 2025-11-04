@@ -2,7 +2,7 @@ import { clamp } from './clamp';
 
 describe('SpinButton Clamp Util', () => {
   describe('clamp', () => {
-    let spy: jest.SpyInstance;
+    let spy: jest.Spied<typeof console.error>;
     beforeEach(() => {
       /**
        * clamp() logs errors when:
