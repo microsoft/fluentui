@@ -128,6 +128,11 @@ const useDisabledStyleStyles = makeStyles({
     '&, &:disabled, & button': {
       color: tokens.colorNeutralForegroundDisabled,
       pointerEvents: 'none',
+
+      // add this explicitly for aria-disabled buttons that don't get default forced-colors disabled styles
+      '@media (forced-colors: active)': {
+        color: 'GrayText',
+      },
     },
   },
 });
