@@ -5,7 +5,7 @@ export const buttonGroup: GroupPart = {
   components: ['button', 'splitbutton', 'togglebutton', 'menubutton', 'compoundbutton'],
   /**
    * Core properties for the button group
-   * These cover simple overrides, or interfaces for complex CSS management
+   * These cover singular overrides, or interfaces for complex CSS management
    */
   coreProperties: [
     'corner',
