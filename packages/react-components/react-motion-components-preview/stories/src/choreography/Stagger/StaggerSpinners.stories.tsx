@@ -98,6 +98,7 @@ const useClasses = makeStyles({
   },
   growingBar: {
     width: '6px',
+    height: '100%',
     backgroundColor: tokens.colorBrandBackground,
     borderRadius: tokens.borderRadiusSmall,
   },
@@ -115,7 +116,9 @@ const useClasses = makeStyles({
   },
 });
 
-// Motion components for continuous animations
+// Motion components for stagger spinners
+
+// NOTE: the delay prop needs to be explicitly defined for the custom motion component
 const SpinMotion = createMotionComponent<{ duration?: number; spins?: number; delay?: number }>(
   ({ duration = 4000, spins = 2, delay = 0 }) => [
     {
@@ -132,12 +135,21 @@ const SpinMotion = createMotionComponent<{ duration?: number; spins?: number; de
   ],
 );
 
-const ScaleMotion = createMotionComponent({
-  keyframes: [{ transform: 'scaleY(0.3)' }, { transform: 'scaleY(1)' }, { transform: 'scaleY(0.3)' }],
-  duration: motionTokens.durationSlow * 2, // 600ms
-  iterations: Infinity,
-  easing: motionTokens.curveEasyEase,
-});
+// NOTE: the delay prop needs to be explicitly defined for the custom motion component
+const ScaleMotion = createMotionComponent<{ duration?: number; easing?: string; delay?: number }>(
+  ({ duration = motionTokens.durationUltraSlow * 2, easing = motionTokens.curveEasyEase, delay = 0 }) => [
+    {
+      keyframes: [
+        { transform: 'scaleY(0.3)', easing },
+        { transform: 'scaleY(1)', easing },
+        { transform: 'scaleY(0.3)' },
+      ],
+      duration,
+      delay,
+      iterations: Infinity,
+    },
+  ],
+);
 
 const SlideMotion = createMotionComponent<{ delay?: number }>(({ delay = 0 }) => [
   {
@@ -189,9 +201,9 @@ export const StaggerSpinners = (): JSXElement => {
 
   return (
     <div className={classes.container}>
-      {/* Nested Arcs Spinner */}
+      {/* Arcs Spinner */}
       <div className={classes.spinnerSection}>
-        <h3 className={classes.spinnerTitle}>Nested Arcs Spinner</h3>
+        <h3 className={classes.spinnerTitle}>Arcs</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.arcSpinner}>
             <Stagger.In itemDelay={80}>
@@ -209,6 +221,22 @@ export const StaggerSpinners = (): JSXElement => {
         </div>
       </div>
 
+      {/* Bars Spinner */}
+      <div className={classes.spinnerSection} style={{ display: '' }}>
+        <h3 className={classes.spinnerTitle}>Bars</h3>
+        <div className={classes.spinnerContainer}>
+          <div className={classes.growingBarsSpinner}>
+            <Stagger.In itemDelay={motionTokens.durationUltraFast * 2}>
+              {Array.from({ length: 7 }, (_, i) => (
+                <ScaleMotion key={i}>
+                  <div className={classes.growingBar} />
+                </ScaleMotion>
+              ))}
+            </Stagger.In>
+          </div>
+        </div>
+      </div>
+
       {/* Dot Orbit Spinner */}
       <div className={classes.spinnerSection} style={{ display: '' }}>
         <h3 className={classes.spinnerTitle}>Dot Orbit Spinner</h3>
@@ -219,27 +247,6 @@ export const StaggerSpinners = (): JSXElement => {
                 <OrbitMotion key={i}>
                   <div className={classes.orbitDot} data-index={i} />
                 </OrbitMotion>
-              ))}
-            </Stagger.In>
-          </div>
-        </div>
-      </div>
-
-      {/* Growing Bars Spinner */}
-      <div className={classes.spinnerSection} style={{ display: '' }}>
-        <h3 className={classes.spinnerTitle}>Growing Bars Spinner</h3>
-        <div className={classes.spinnerContainer}>
-          <div className={classes.growingBarsSpinner}>
-            <Stagger.In itemDelay={motionTokens.durationFaster}>
-              {Array.from({ length: 7 }, (_, i) => (
-                <ScaleMotion key={i}>
-                  <div
-                    className={classes.growingBar}
-                    style={{
-                      height: `${20 + (i % 3) * 8}px`,
-                    }}
-                  />
-                </ScaleMotion>
               ))}
             </Stagger.In>
           </div>
