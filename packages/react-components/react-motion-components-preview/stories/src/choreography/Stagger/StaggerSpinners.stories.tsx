@@ -90,8 +90,8 @@ const useClasses = makeStyles({
 
   dotOrbitSpinner: {
     position: 'relative',
-    width: '140px', // increased so orbit looks larger
-    height: '140px',
+    width: '120px', // adjusted to be consistent with other spinners
+    height: '120px',
     display: 'inline-block',
   },
   orbitDot: {
@@ -104,7 +104,7 @@ const useClasses = makeStyles({
     backgroundColor: tokens.colorBrandBackground,
     // place dot at center then push it outwards on the X axis to set orbit radius
     // translate(-50%, -50%) keeps the dot centered on its own center
-    transform: 'translate(-50%, -50%) translateY(-30px)',
+    transform: 'translate(-50%, -50%) translateY(-22px)',
     transformOrigin: 'center center',
     willChange: 'transform',
   },
