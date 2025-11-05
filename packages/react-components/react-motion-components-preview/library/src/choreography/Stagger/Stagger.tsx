@@ -20,19 +20,19 @@ const detectStaggerModes = (
   options: {
     hideMode?: StaggerHideMode;
     delayMode?: StaggerDelayMode;
-    defaultHideMode?: StaggerHideMode;
+    fallbackHideMode?: StaggerHideMode;
   },
 ): { hideMode: StaggerHideMode; delayMode: StaggerDelayMode } => {
-  const { hideMode, delayMode, defaultHideMode = 'visibilityStyle' } = options;
+  const { hideMode, delayMode, fallbackHideMode = 'visibilityStyle' } = options;
 
   const childMapping = getStaggerChildMapping(children);
   const elements = Object.values(childMapping).map(item => item.element);
-  const hasVisibleSupport = elements.every(child => acceptsVisibleProp(child));
-  const hasDelaySupport = elements.every(child => acceptsDelayProps(child));
+  const hasVisiblePropSupport = elements.every(child => acceptsVisibleProp(child));
+  const hasDelayPropSupport = elements.every(child => acceptsDelayProps(child));
 
   return {
-    hideMode: hideMode ?? (hasVisibleSupport ? 'visibleProp' : defaultHideMode),
-    delayMode: delayMode ?? (hasDelaySupport ? 'delayProp' : 'timing'),
+    hideMode: hideMode ?? (hasVisiblePropSupport ? 'visibleProp' : fallbackHideMode),
+    delayMode: delayMode ?? (hasDelayPropSupport ? 'delayProp' : 'timing'),
   };
 };
 
@@ -118,7 +118,8 @@ const createStaggerDirection = (direction: 'enter' | 'exit') => {
     const { hideMode: resolvedHideMode, delayMode: resolvedDelayMode } = detectStaggerModes(children, {
       hideMode,
       delayMode,
-      defaultHideMode: 'unmount', // One-way staggers default to unmount
+      // One-way stagger falls back to visibilityStyle if it doesn't detect visibleProp support
+      fallbackHideMode: 'visibilityStyle',
     });
 
     return (
@@ -146,7 +147,8 @@ const StaggerMain: React.FC<StaggerProps> = props => {
   const { hideMode: resolvedHideMode, delayMode: resolvedDelayMode } = detectStaggerModes(children, {
     hideMode,
     delayMode,
-    defaultHideMode: 'visibilityStyle', // Bidirectional staggers default to visibilityStyle
+    // Bidirectional stagger falls back to visibilityStyle if it doesn't detect visibleProp support
+    fallbackHideMode: 'visibilityStyle',
   });
 
   const direction = visible ? 'enter' : 'exit';
