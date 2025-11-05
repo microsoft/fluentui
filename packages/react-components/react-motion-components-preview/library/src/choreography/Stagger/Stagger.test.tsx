@@ -16,7 +16,8 @@ jest.mock('./utils', () => ({
   DEFAULT_ITEM_DURATION: 200,
   acceptsVisibleProp: jest.requireActual('./utils').acceptsVisibleProp,
   acceptsDelayProps: jest.requireActual('./utils').acceptsDelayProps,
-  getChildMapping: jest.requireActual('./utils').getChildMapping,
+  // NOTE: because the utils folder is being mocked, we need to explicitly include getStaggerChildMapping here
+  getStaggerChildMapping: jest.requireActual('./utils').getStaggerChildMapping,
 }));
 
 // Import after mocking

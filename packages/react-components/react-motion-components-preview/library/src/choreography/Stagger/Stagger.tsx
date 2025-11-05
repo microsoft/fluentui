@@ -7,7 +7,7 @@ import {
   DEFAULT_ITEM_DELAY,
   acceptsVisibleProp,
   acceptsDelayProps,
-  getChildMapping,
+  getStaggerChildMapping,
 } from './utils';
 import { StaggerOneWayProps, StaggerProps, type StaggerHideMode, type StaggerDelayMode } from './stagger-types';
 
@@ -25,7 +25,7 @@ const detectStaggerModes = (
 ): { hideMode: StaggerHideMode; delayMode: StaggerDelayMode } => {
   const { hideMode, delayMode, defaultHideMode = 'visibilityStyle' } = options;
 
-  const childMapping = getChildMapping(children);
+  const childMapping = getStaggerChildMapping(children);
   const elements = Object.values(childMapping).map(item => item.element);
   const hasVisibleSupport = elements.every(child => acceptsVisibleProp(child));
   const hasDelaySupport = elements.every(child => acceptsDelayProps(child));
@@ -46,7 +46,7 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
   delayMode = 'timing',
   onMotionFinish,
 }) => {
-  const childMapping = React.useMemo(() => getChildMapping(children), [children]);
+  const childMapping = React.useMemo(() => getStaggerChildMapping(children), [children]);
 
   // Always call hooks at the top level, regardless of delayMode
   const { itemsVisibility } = useStaggerItemsVisibility({

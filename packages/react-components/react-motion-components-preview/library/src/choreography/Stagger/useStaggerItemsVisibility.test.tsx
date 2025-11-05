@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, act } from '@testing-library/react';
 import { useStaggerItemsVisibility } from './useStaggerItemsVisibility';
-import { getChildMapping, type StaggerChildMapping } from './utils';
+import { getStaggerChildMapping, type StaggerChildMapping } from './utils';
 
 // Mock the useAnimationFrame hook
 const mockRequestAnimationFrame = jest.fn();
@@ -14,7 +14,7 @@ jest.mock('@fluentui/react-utilities', () => ({
 // Helper to create a child mapping from a count
 const createChildMapping = (count: number): StaggerChildMapping => {
   const children = Array.from({ length: count }, (_, i) => React.createElement('div', { key: `item-${i}` }));
-  return getChildMapping(children);
+  return getStaggerChildMapping(children);
 };
 
 // Helper to convert Record<string, boolean> to boolean array for easier testing

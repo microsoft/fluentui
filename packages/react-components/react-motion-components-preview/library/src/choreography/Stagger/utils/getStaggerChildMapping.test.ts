@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { getChildMapping } from './getChildMapping';
+import { getStaggerChildMapping } from './getStaggerChildMapping';
 
-describe('getChildMapping', () => {
+describe('getStaggerChildMapping', () => {
   it('should map children to keys with element and index', () => {
     const children = [
       React.createElement('div', { key: 'a' }, 'First'),
@@ -9,7 +9,7 @@ describe('getChildMapping', () => {
       React.createElement('div', { key: 'c' }, 'Third'),
     ];
 
-    const mapping = getChildMapping(children);
+    const mapping = getStaggerChildMapping(children);
 
     // React.Children.toArray normalizes keys by adding .$ prefix
     expect(Object.keys(mapping)).toEqual(['.$a', '.$b', '.$c']);
@@ -26,7 +26,7 @@ describe('getChildMapping', () => {
       React.createElement('div', null, 'Third'),
     ];
 
-    const mapping = getChildMapping(children);
+    const mapping = getStaggerChildMapping(children);
 
     // React.Children.toArray auto-generates keys as .0, .1, .2
     expect(Object.keys(mapping)).toEqual(['.0', '.1', '.2']);
@@ -36,14 +36,14 @@ describe('getChildMapping', () => {
   });
 
   it('should handle empty children', () => {
-    expect(getChildMapping([])).toEqual({});
-    expect(getChildMapping(null)).toEqual({});
-    expect(getChildMapping(undefined)).toEqual({});
+    expect(getStaggerChildMapping([])).toEqual({});
+    expect(getStaggerChildMapping(null)).toEqual({});
+    expect(getStaggerChildMapping(undefined)).toEqual({});
   });
 
   it('should handle single child', () => {
     const child = React.createElement('div', { key: 'single' }, 'Single Item');
-    const mapping = getChildMapping(child);
+    const mapping = getStaggerChildMapping(child);
 
     expect(Object.keys(mapping)).toEqual(['.$single']);
     expect(mapping['.$single'].index).toBe(0);
@@ -58,8 +58,8 @@ describe('getChildMapping', () => {
       React.createElement('div', { key: 'c' }),
     ];
 
-    const mappingBefore = getChildMapping(childrenBefore);
-    const mappingAfter = getChildMapping(childrenAfter);
+    const mappingBefore = getStaggerChildMapping(childrenBefore);
+    const mappingAfter = getStaggerChildMapping(childrenAfter);
 
     expect(Object.keys(mappingBefore)).toEqual(['.$a', '.$b']);
     expect(Object.keys(mappingAfter)).toEqual(['.$a', '.$b', '.$c']);
@@ -75,8 +75,8 @@ describe('getChildMapping', () => {
 
     const childrenAfter = [React.createElement('div', { key: 'a' }), React.createElement('div', { key: 'c' })];
 
-    const mappingBefore = getChildMapping(childrenBefore);
-    const mappingAfter = getChildMapping(childrenAfter);
+    const mappingBefore = getStaggerChildMapping(childrenBefore);
+    const mappingAfter = getStaggerChildMapping(childrenAfter);
 
     expect(Object.keys(mappingBefore)).toEqual(['.$a', '.$b', '.$c']);
     expect(Object.keys(mappingAfter)).toEqual(['.$a', '.$c']);
@@ -96,8 +96,8 @@ describe('getChildMapping', () => {
       React.createElement('div', { key: 'b' }),
     ];
 
-    const mappingBefore = getChildMapping(childrenBefore);
-    const mappingAfter = getChildMapping(childrenAfter);
+    const mappingBefore = getStaggerChildMapping(childrenBefore);
+    const mappingAfter = getStaggerChildMapping(childrenAfter);
 
     // Keys remain the same
     expect(Object.keys(mappingBefore).sort()).toEqual(Object.keys(mappingAfter).sort());
@@ -122,8 +122,8 @@ describe('getChildMapping', () => {
       React.createElement('div', { key: 'c' }),
     ];
 
-    const mappingBefore = getChildMapping(childrenBefore);
-    const mappingAfter = getChildMapping(childrenAfter);
+    const mappingBefore = getStaggerChildMapping(childrenBefore);
+    const mappingAfter = getStaggerChildMapping(childrenAfter);
 
     // Count stays same (3 items)
     expect(Object.keys(mappingBefore).length).toBe(3);
