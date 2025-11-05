@@ -43,6 +43,18 @@ const useClasses = makeStyles({
     padding: tokens.spacingHorizontalL,
   },
 
+  // Grid to arrange spinner sections responsively
+  // Use 1 column by default and switch to 2 columns at a reasonable breakpoint
+  spinnerGrid: {
+    display: 'grid',
+    gap: tokens.spacingHorizontalL,
+    gridTemplateColumns: '1fr',
+    alignItems: 'start',
+    '@media (min-width: 640px)': {
+      gridTemplateColumns: '1fr 1fr',
+    },
+  },
+
   // Circular spinners
   arcSpinner: {
     display: 'flex',
@@ -236,70 +248,72 @@ export const StaggerSpinners = (): JSXElement => {
 
   return (
     <div className={classes.container}>
-      {/* Orbit Spinner */}
-      <div className={classes.spinnerSection} style={{ display: '' }}>
-        <h3 className={classes.spinnerTitle}>Orbit</h3>
-        <div className={classes.spinnerContainer}>
-          <div className={classes.dotOrbitSpinner}>
-            <Stagger.In itemDelay={motionTokens.durationFaster}>
-              {Array.from({ length: 6 }, (_, i) => (
-                <OrbitRotateMotion key={i}>
-                  <div className={classes.orbitDot} data-index={i} />
-                </OrbitRotateMotion>
-              ))}
-            </Stagger.In>
+      <div className={classes.spinnerGrid}>
+        {/* Orbit Spinner */}
+        <div className={classes.spinnerSection}>
+          <h3 className={classes.spinnerTitle}>Orbit</h3>
+          <div className={classes.spinnerContainer}>
+            <div className={classes.dotOrbitSpinner}>
+              <Stagger.In itemDelay={motionTokens.durationFaster}>
+                {Array.from({ length: 6 }, (_, i) => (
+                  <OrbitRotateMotion key={i}>
+                    <div className={classes.orbitDot} data-index={i} />
+                  </OrbitRotateMotion>
+                ))}
+              </Stagger.In>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Bars Spinner */}
-      <div className={classes.spinnerSection} style={{ display: '' }}>
-        <h3 className={classes.spinnerTitle}>Bars</h3>
-        <div className={classes.spinnerContainer}>
-          <div className={classes.growingBarsSpinner}>
-            <Stagger.In itemDelay={motionTokens.durationUltraFast * 2}>
-              {Array.from({ length: 7 }, (_, i) => (
-                <BarsScaleMotion key={i}>
-                  <div className={classes.growingBar} />
-                </BarsScaleMotion>
-              ))}
-            </Stagger.In>
+        {/* Bars Spinner */}
+        <div className={classes.spinnerSection}>
+          <h3 className={classes.spinnerTitle}>Bars</h3>
+          <div className={classes.spinnerContainer}>
+            <div className={classes.growingBarsSpinner}>
+              <Stagger.In itemDelay={motionTokens.durationUltraFast * 2}>
+                {Array.from({ length: 7 }, (_, i) => (
+                  <BarsScaleMotion key={i}>
+                    <div className={classes.growingBar} />
+                  </BarsScaleMotion>
+                ))}
+              </Stagger.In>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Arcs Spinner */}
-      <div className={classes.spinnerSection}>
-        <h3 className={classes.spinnerTitle}>Arcs</h3>
-        <div className={classes.spinnerContainer}>
-          <div className={classes.arcSpinner}>
-            <Stagger.In itemDelay={80}>
-              <ArcsSpinMotion key="1">
-                <div className={`${classes.arc} ${classes.arc3}`} />
-              </ArcsSpinMotion>
-              <ArcsSpinMotion key="2">
-                <div className={`${classes.arc} ${classes.arc2}`} />
-              </ArcsSpinMotion>
-              <ArcsSpinMotion key="3">
-                <div className={`${classes.arc} ${classes.arc1}`} />
-              </ArcsSpinMotion>
-            </Stagger.In>
+        {/* Arcs Spinner */}
+        <div className={classes.spinnerSection}>
+          <h3 className={classes.spinnerTitle}>Arcs</h3>
+          <div className={classes.spinnerContainer}>
+            <div className={classes.arcSpinner}>
+              <Stagger.In itemDelay={80}>
+                <ArcsSpinMotion key="1">
+                  <div className={`${classes.arc} ${classes.arc3}`} />
+                </ArcsSpinMotion>
+                <ArcsSpinMotion key="2">
+                  <div className={`${classes.arc} ${classes.arc2}`} />
+                </ArcsSpinMotion>
+                <ArcsSpinMotion key="3">
+                  <div className={`${classes.arc} ${classes.arc1}`} />
+                </ArcsSpinMotion>
+              </Stagger.In>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Blocks Spinner */}
-      <div className={classes.spinnerSection}>
-        <h3 className={classes.spinnerTitle}>Blocks</h3>
-        <div className={classes.spinnerContainer}>
-          <div className={classes.slidingBlocksSpinner}>
-            <Stagger.In itemDelay={motionTokens.durationFaster}>
-              {Array.from({ length: 5 }, (_, i) => (
-                <BlocksSlideMotion key={i}>
-                  <div className={classes.slidingBlock} />
-                </BlocksSlideMotion>
-              ))}
-            </Stagger.In>
+        {/* Blocks Spinner */}
+        <div className={classes.spinnerSection}>
+          <h3 className={classes.spinnerTitle}>Blocks</h3>
+          <div className={classes.spinnerContainer}>
+            <div className={classes.slidingBlocksSpinner}>
+              <Stagger.In itemDelay={motionTokens.durationFaster}>
+                {Array.from({ length: 5 }, (_, i) => (
+                  <BlocksSlideMotion key={i}>
+                    <div className={classes.slidingBlock} />
+                  </BlocksSlideMotion>
+                ))}
+              </Stagger.In>
+            </div>
           </div>
         </div>
       </div>
