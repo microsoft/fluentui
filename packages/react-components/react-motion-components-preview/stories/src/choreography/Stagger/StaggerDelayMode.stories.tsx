@@ -108,7 +108,7 @@ const curveOvershootFirmOut =
 
 export const DelayMode = (): JSXElement => {
   const classes = useClasses();
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = React.useState(true);
   const [reversed, setReversed] = React.useState(false);
   const itemDelay = 100;
 
