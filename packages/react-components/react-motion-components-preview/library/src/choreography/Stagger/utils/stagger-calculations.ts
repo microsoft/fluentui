@@ -2,15 +2,15 @@ import type { StaggerProps } from '../stagger-types';
 import { DEFAULT_ITEM_DELAY, DEFAULT_ITEM_DURATION } from './constants';
 
 /**
- * Calculate the total stagger duration—from the moment stagger begins
+ * Calculate the total stagger duration — from the moment the stagger begins
  * until the final item's animation completes.
  *
  * Uses the formula:
- *   max(0, delay * (count - 1) + itemDuration)
+ *   max(0, itemDelay * (itemCount - 1) + itemDuration)
  *
- * @param params.count        Total number of items to stagger
- * @param params.delay        Milliseconds between the start of each item
- * @param params.itemDuration Milliseconds each item's animation lasts (default 0)
+ * @param params.itemCount    Total number of items to stagger
+ * @param params.itemDelay    Milliseconds between the start of each item (default: DEFAULT_ITEM_DELAY)
+ * @param params.itemDuration Milliseconds each item's animation lasts (default: DEFAULT_ITEM_DURATION)
  * @returns                   Total duration in milliseconds (never negative)
  */
 export function getStaggerTotalDuration({
