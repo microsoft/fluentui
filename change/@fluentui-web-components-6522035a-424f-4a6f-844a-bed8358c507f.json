@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: upgrade storybook to v8",
+  "packageName": "@fluentui/web-components",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -51,8 +51,8 @@ import { Card, CardHeader, CardPreview } from '@fluentui/react-card/unstable';
 export const Component = () => {
   return (
     <Card size="small" orientation="horizontal">
-      <CardPreview logo={<img src="word_logo.svg" alt="Microsoft Word logo" />}>
-        <img src="doc_template.png" alt="Preview of a Word document " />
+      <CardPreview logo={<img className="sbdocs-img" src="word_logo.svg" alt="Microsoft Word logo" />}>
+        <img className="sbdocs-img" src="doc_template.png" alt="Preview of a Word document " />
       </CardPreview>
     </Card>
   );
@@ -110,17 +110,17 @@ export const Default = () => {
     <Card orientation="horizontal">
       <div>
         <div>
-          <img src="powerpoint_logo.svg" alt="Powerpoint logo" />
+          <img className="sbdocs-img" src="powerpoint_logo.svg" alt="Powerpoint logo" />
           <Text truncate>Revenue stream proposal fiscal year 2016 version02</Text>
         </div>
 
         <div>
-          <img src="powerpoint_logo.svg" alt="Powerpoint logo" />
+          <img className="sbdocs-img" src="powerpoint_logo.svg" alt="Powerpoint logo" />
           <Text truncate>New Contoso Collaboration for Conference Presentation Draft</Text>
         </div>
 
         <div>
-          <img src="powerpoint_logo.svg" alt="Powerpoint logo" />
+          <img className="sbdocs-img" src="powerpoint_logo.svg" alt="Powerpoint logo" />
           <Text truncate>Spec Sheet for design</Text>
         </div>
 
