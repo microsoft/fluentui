@@ -6,7 +6,7 @@ import { Button, makeStyles, Textarea, TextareaProps, RadioGroup, Radio } from '
 import { createBrandVariants } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 const useStyles = makeStyles({
   root: {

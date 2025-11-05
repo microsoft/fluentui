@@ -17,11 +17,9 @@ const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-hea
 module.exports = /** @type {import('./types').StorybookConfig} */ ({
   stories: [],
   addons: [
-    '@storybook/addon-essentials',
     '@storybook/addon-a11y',
+    '@storybook/addon-docs',
     '@storybook/addon-links',
-    // https://storybook.js.org/docs/writing-docs/mdx#markdown-tables-arent-rendering-correctly
-    '@storybook/addon-mdx-gfm',
 
     // internal monorepo custom addons
     /**  {@link file://./../packages/react-components/react-storybook-addon/package.json} */

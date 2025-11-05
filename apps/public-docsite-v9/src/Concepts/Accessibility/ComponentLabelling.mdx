@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 import {
   ActionAvoidBad,
   ActionAvoidGood,
@@ -28,10 +28,48 @@ To understand more right labelling please see examples below.
 
 ## Prefer reusing visible text for labels
 
-| Type of example | Code                                                                                                                                                                                                                                                                   | Screen reader narration (JAWS)                             | Example                  |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------------ |
-| Bad             | <code>aria-label="Remove Robert Tolbert"</code> applied on button                                                                                                                                                                                                      | "Remove Robert Tolbert Button To activate press spacebar." | <ReuseVisibleTextBad />  |
-| Good            | <ul><li>The <code> id="userNameId" </code> applied on the span element with user name.</li><li>The <code> id="removeButtonId"</code> applied on the "Remove" button.</li><li>The<code> aria-labelledby="removeButtonId userNameId"</code> applied on button.</li></ul> | "Remove Robert Tolbert Button To activate press spacebar." | <ReuseVisibleTextGood /> |
+<table>
+  <thead>
+    <tr>
+      <th>Type of example</th>
+      <th>Code</th>
+      <th>Screen reader narration (JAWS)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bad</td>
+      <td>
+        <code>aria-label="Remove Robert Tolbert"</code> applied on button
+      </td>
+      <td>"Remove Robert Tolbert Button To activate press spacebar."</td>
+      <td>
+        <ReuseVisibleTextBad />
+      </td>
+    </tr>
+    <tr>
+      <td>Good</td>
+      <td>
+        <ul>
+          <li>
+            The <code> id="userNameId" </code> applied on the span element with user name.
+          </li>
+          <li>
+            The <code> id="removeButtonId"</code> applied on the "Remove" button.
+          </li>
+          <li>
+            The<code> aria-labelledby="removeButtonId userNameId"</code> applied on button.
+          </li>
+        </ul>
+      </td>
+      <td>"Remove Robert Tolbert Button To activate press spacebar."</td>
+      <td>
+        <ReuseVisibleTextGood />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Explanation
 
@@ -53,10 +91,43 @@ Explanation
 
 ## Form fields labelling
 
-| Type of example | Code                                                                                                       | Screen reader narration (JAWS)                                                                                                                                                                                                                        | Example                |
-| --------------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Bad             | Each form field is not connected to its corresponding error message.                                       | Full name field with invalid content (type only mumbers): <br/> "Full name, Edit, Required, invalid entry, [field-content], Type in text."                                                                                                            | <FormErrorLabelBad />  |
-| Good            | The "aria-describedby" applied on each input field and references the corresponding error message element. | Full name field with invalid content (type only mumbers): <br/> "Full name, Edit, Required, invalid entry, [field-content], Full name is invalid. It must: Contain only lowercase or uppercase letters, spaces or hyphens. Start and end wit letter." | <FormErrorLabelGood /> |
+<table>
+  <thead>
+    <tr>
+      <th>Type of example</th>
+      <th>Code</th>
+      <th>Screen reader narration (JAWS)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bad</td>
+      <td>Each form field is not connected to its corresponding error message.</td>
+      <td>
+        Full name field with invalid content (type only mumbers): <br /> "Full name, Edit, Required, invalid entry,
+        [field-content], Type in text."
+      </td>
+      <td>
+        <FormErrorLabelBad />
+      </td>
+    </tr>
+    <tr>
+      <td>Good</td>
+      <td>
+        The "aria-describedby" applied on each input field and references the corresponding error message element.
+      </td>
+      <td>
+        Full name field with invalid content (type only mumbers): <br /> "Full name, Edit, Required, invalid entry,
+        [field-content], Full name is invalid. It must: Contain only lowercase or uppercase letters, spaces or hyphens.
+        Start and end wit letter."
+      </td>
+      <td>
+        <FormErrorLabelGood />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Explanation
 
@@ -69,10 +140,38 @@ Explanation
 
 ## Avoid action in accessibility name
 
-| Type of example | Code                                                     | Screen reader narration (JAWS)          | Example             |
-| --------------- | -------------------------------------------------------- | --------------------------------------- | ------------------- |
-| Bad             | <code>aria-label="**Click here** to send message"</code> | "**Click here** to send message button" | <ActionAvoidBad />  |
-| Good            | <code>aria-label="Send message "</code>                  | "Send message button"                   | <ActionAvoidGood /> |
+<table>
+  <thead>
+    <tr>
+      <th>Type of example</th>
+      <th>Code</th>
+      <th>Screen reader narration (JAWS)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bad</td>
+      <td>
+        <code>aria-label="**Click here** to send message"</code>
+      </td>
+      <td>"**Click here** to send message button"</td>
+      <td>
+        <ActionAvoidBad />
+      </td>
+    </tr>
+    <tr>
+      <td>Good</td>
+      <td>
+        <code>aria-label="Send message "</code>
+      </td>
+      <td>"Send message button"</td>
+      <td>
+        <ActionAvoidGood />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Explanation
 
@@ -90,10 +189,38 @@ Explanation
 
 ## Avoid component type in accessibility name
 
-| Type of example | Code                                                 | Screen reader narration (JAWS)      | Example                    |
-| --------------- | ---------------------------------------------------- | ----------------------------------- | -------------------------- |
-| Bad             | <code>aria-label="Mute microphone **button**"</code> | "Mute microphone **button** button" | <ComponentTypeAvoidBad />  |
-| Good            | <code>aria-label="Mute microphone"</code>            | "Mute microphone button"            | <ComponentTypeAvoidGood /> |
+<table>
+  <thead>
+    <tr>
+      <th>Type of example</th>
+      <th>Code</th>
+      <th>Screen reader narration (JAWS)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bad</td>
+      <td>
+        <code>aria-label="Mute microphone **button**"</code>
+      </td>
+      <td>"Mute microphone **button** button"</td>
+      <td>
+        <ComponentTypeAvoidBad />
+      </td>
+    </tr>
+    <tr>
+      <td>Good</td>
+      <td>
+        <code>aria-label="Mute microphone"</code>
+      </td>
+      <td>"Mute microphone button"</td>
+      <td>
+        <ComponentTypeAvoidGood />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Explanation
 
@@ -110,10 +237,36 @@ Explanation
 
 ## Avoid state in accessibility name
 
-| Type of example | Code                                                                         | Screen reader narration (JAWS)                | Example            |
-| --------------- | ---------------------------------------------------------------------------- | --------------------------------------------- | ------------------ |
-| Bad             | <code>aria-label="Files tab **is active**"</code> applied on the "Files" tab | "Files tab **is active** tab selected 2 of 3" | <StateAvoidBad />  |
-| Good            | no aria-label attribute is needed for the "Files" tab                        | "Files tab selected 2 of 3"                   | <StateAvoidGood /> |
+<table>
+  <thead>
+    <tr>
+      <th>Type of example</th>
+      <th>Code</th>
+      <th>Screen reader narration (JAWS)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bad</td>
+      <td>
+        <code>aria-label="Files tab **is active**"</code> applied on the "Files" tab
+      </td>
+      <td>"Files tab **is active** tab selected 2 of 3"</td>
+      <td>
+        <StateAvoidBad />
+      </td>
+    </tr>
+    <tr>
+      <td>Good</td>
+      <td>no aria-label attribute is needed for the "Files" tab</td>
+      <td>"Files tab selected 2 of 3"</td>
+      <td>
+        <StateAvoidGood />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Explanation
 
@@ -136,10 +289,57 @@ Explanation
 
 ## Avoid position in accessibility name
 
-| Type of example | Code                                                                                                                                                                                                                                           | Screen reader narration (JAWS)                                                                                                                                                                                                                                                | Example                     |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| Bad             | A custom "X of Y" position information is hard-coded manually as the part of each menu item's "aria-label" attribute value.                                                                                                                    | <ul><li>"Profile menu Account settings..., **first item of four.** To move through items press up or down arrow." </li> <li>"Change status message..., **second item of four**"</li><li>"Help, **third item of four**"</li> <li>"Sign out, **fourth item of four**"</li></ul> | <CustomPositionAvoidBad />  |
-| Good            | The "X of Y" position information is added automatically by the screen reader for each menu item because the correct ARIA role is used both for all individual menu item elements (role="menuitem") and the parent menu element (role="menu"). | <ul><li>"Profile menu Account settings..., 1 of 4. To move through items press up or down arrow." </li><li>"Change status message..., 2 of 4"</li><li>"Help, 3 of 4"</li><li>"Sign out, 4 of 4"</li></ul>                                                                     | <CustomPositionAvoidGood /> |
+<table>
+  <thead>
+    <tr>
+      <th>Type of example</th>
+      <th>Code</th>
+      <th>Screen reader narration (JAWS)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bad</td>
+      <td>
+        A custom "X of Y" position information is hard-coded manually as the part of each menu item's "aria-label"
+        attribute value.
+      </td>
+      <td>
+        <ul>
+          <li>
+            "Profile menu Account settings..., **first item of four.** To move through items press up or down
+            arrow."{' '}
+          </li>{' '}
+          <li>"Change status message..., **second item of four**"</li>
+          <li>"Help, **third item of four**"</li> <li>"Sign out, **fourth item of four**"</li>
+        </ul>
+      </td>
+      <td>
+        <CustomPositionAvoidBad />
+      </td>
+    </tr>
+    <tr>
+      <td>Good</td>
+      <td>
+        The "X of Y" position information is added automatically by the screen reader for each menu item because the
+        correct ARIA role is used both for all individual menu item elements (role="menuitem") and the parent menu
+        element (role="menu").
+      </td>
+      <td>
+        <ul>
+          <li>"Profile menu Account settings..., 1 of 4. To move through items press up or down arrow." </li>
+          <li>"Change status message..., 2 of 4"</li>
+          <li>"Help, 3 of 4"</li>
+          <li>"Sign out, 4 of 4"</li>
+        </ul>
+      </td>
+      <td>
+        <CustomPositionAvoidGood />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Explanation
 
@@ -159,10 +359,56 @@ Explanation
 
 ## Avoid repeating text for component inner items
 
-| Type of example | Code                                                                                                                                                         | Screen reader narration (JAWS)                                                                                                                                                                                                                | Example                 |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| Bad             | <code>aria-label="**Meeting participant** [user name]"</code> applied on each menu item element.                                                             | <ul><li>"Participants menu **Meeting participant** Robert Tolbert 1 of 3 To move through items press up or down arrow."</li><li>"**Meeting participant** Celeste Burton 2 of 3"</li><li>"**Meeting participant** Cecil Folk 3 of 3"</li></ul> | <TextRepeatAvoidBad />  |
-| Good            | <ul><li>No "aria-label" attribute is needed for each menu item element.</li><li>The aria-label="Meeting participants" applied on the menu element.</li></ul> | <ul><li>"Meeting participants menu Robert Tolbert 1 of 3 To move through items press up or down arrow."</li><li>"Celeste Burton 2 of 3"</li><li>"Cecil Folk 3 of 3"</li></ul>                                                                 | <TextRepeatAvoidGood /> |
+<table>
+  <thead>
+    <tr>
+      <th>Type of example</th>
+      <th>Code</th>
+      <th>Screen reader narration (JAWS)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bad</td>
+      <td>
+        <code>aria-label="**Meeting participant** [user name]"</code> applied on each menu item element.
+      </td>
+      <td>
+        <ul>
+          <li>
+            "Participants menu **Meeting participant** Robert Tolbert 1 of 3 To move through items press up or down
+            arrow."
+          </li>
+          <li>"**Meeting participant** Celeste Burton 2 of 3"</li>
+          <li>"**Meeting participant** Cecil Folk 3 of 3"</li>
+        </ul>
+      </td>
+      <td>
+        <TextRepeatAvoidBad />
+      </td>
+    </tr>
+    <tr>
+      <td>Good</td>
+      <td>
+        <ul>
+          <li>No "aria-label" attribute is needed for each menu item element.</li>
+          <li>The aria-label="Meeting participants" applied on the menu element.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>"Meeting participants menu Robert Tolbert 1 of 3 To move through items press up or down arrow."</li>
+          <li>"Celeste Burton 2 of 3"</li>
+          <li>"Cecil Folk 3 of 3"</li>
+        </ul>
+      </td>
+      <td>
+        <TextRepeatAvoidGood />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Explanation
 
@@ -177,10 +423,68 @@ Explanation
 
 ## Avoid making text focusable
 
-| Type of example | Code                                                                                                                                                                                                                                                                                                                                                                                                                     | Screen reader narration                                                                                                                                                                                                                                                                         | Example                |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Bad             | <code>tabindex="0"</code> applied on the text element. When the user presses the TAB key, the text receives focus.                                                                                                                                                                                                                                                                                                       | <ul><li>the text is focused: "With this option, notifications won’t be displayed anymore. You can miss information about latest news." </li> <li>the button is focused: "Submit Button To activate press Enter. "</li></ul>                                                                     | <FocusTextAvoidBad/>   |
-| Good            | <ul> <li>The text is not focusable anymore, because the "tabindex" attribute does not exist on the text element.</li> <strong>Example 1:</strong> <li>The text element has a unique id, like "notificationText".</li> <li>The `button` has the aria-describedby="notificationText" attribute.</li> <strong>Example 2:</strong> <li>`Button` is wrapped with the `div` element. It has role="group" and label.</li> </ul> | <ul><li> Example No. 1: "Submit Button <br /> Display notification check box not checked <br />With this option, notifications won’t be displayed anymore. You can miss information about latest news."<br /></li> <li>Example No. 2: "Summary of your order group <br /> Buy Button"</li></ul> | <FocusTextAvoidGood /> |
+<table>
+  <thead>
+    <tr>
+      <th>Type of example</th>
+      <th>Code</th>
+      <th>Screen reader narration</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bad</td>
+      <td>
+        <code>tabindex="0"</code> applied on the text element. When the user presses the TAB key, the text receives
+        focus.
+      </td>
+      <td>
+        <ul>
+          <li>
+            the text is focused: "With this option, notifications won’t be displayed anymore. You can miss information
+            about latest news."{' '}
+          </li>{' '}
+          <li>the button is focused: "Submit Button To activate press Enter. "</li>
+        </ul>
+      </td>
+      <td>
+        <FocusTextAvoidBad />
+      </td>
+    </tr>
+    <tr>
+      <td>Good</td>
+      <td>
+        <ul>
+          {' '}
+          <li>
+            The text is not focusable anymore, because the "tabindex" attribute does not exist on the text element.
+          </li> <strong>Example 1:</strong> <li>The text element has a unique id, like "notificationText".</li> <li>
+            The `button` has the aria-describedby="notificationText" attribute.
+          </li> <strong>Example 2:</strong> <li>
+            `Button` is wrapped with the `div` element. It has role="group" and label.
+          </li>{' '}
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>
+            {' '}
+            Example No. 1: "Submit Button <br /> Display notification check box not checked <br />
+            With this option, notifications won’t be displayed anymore. You can miss information about latest news."
+            <br />
+          </li>{' '}
+          <li>
+            Example No. 2: "Summary of your order group <br /> Buy Button"
+          </li>
+        </ul>
+      </td>
+      <td>
+        <FocusTextAvoidGood />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Explanation
 

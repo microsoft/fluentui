@@ -7,7 +7,7 @@ import {
   NewSignal,
   SharedSignal,
 } from '@fluentui/react-experiments';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';

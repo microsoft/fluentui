@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import { MenuButton } from '@fluentui/react-components';
 import descriptionMd from './MenuButtonDescription.md';
 import bestPracticesMd from '../Button/ButtonBestPractices.md';

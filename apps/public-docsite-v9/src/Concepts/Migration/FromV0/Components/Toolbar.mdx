@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v0/Components/Toolbar Migration" />
 
@@ -222,38 +222,150 @@ const Component = () => {
 
 ## How to migrate props:
 
-| `Toolbar` props           | migrate guide                                                                                                                                           |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| as, className             | keep it as is                                                                                                                                           |
-| variables, styles, design | see [Migrate style overrides](#migrate-style-overrides) in this document                                                                                |
-| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)                                                |
-| content                   | see [Migrate content prop](##migrate-content-prop) in this document                                                                                     |
-| ref, key                  | keep it as is                                                                                                                                           |
-| getOverflowItems          | REMOVED: Use @fluentui/react-overflow to render overflow items                                                                                          |
-| items                     | REMOVED: Only supports children API                                                                                                                     |
-| onOverflow                | use `isOverflowing` from `useOverflowMenu` from @fluentui/react-overflow. See [migrate overflow props](#migrate-%60overflow%60-props)                   |
-| onOverflowOpenChange      | REMOVED: handle the needed changes in the overflow component. See [migrate overflow props](#migrate-%60overflow%60-props)                               |
-| overflow                  | REMOVED: Use @fluentui/react-overflow                                                                                                                   |
-| overflowItem              | REMOVED: Should be implemented in the Overflow component that is using `useOverflowMenu`. See [migrate overflow props](#migrate-%60overflow%60-props)   |
-| overflowOpen              | REMOVED: Should be handled by the component that will be using `useOverflowMenu`                                                                        |
-| overflowSentinel          | REMOVED: Can be set as `padding` in the `Overflow` component from @fluentui/react-overflow. See [migrate overflow props](#migrate-%60overflow%60-props) |
+<table>
+  <thead>
+    <tr>
+      <th>`Toolbar` props</th>
+      <th>migrate guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>as, className</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>variables, styles, design</td>
+      <td>see [Migrate style overrides](#migrate-style-overrides) in this document</td>
+    </tr>
+    <tr>
+      <td>accessibility</td>
+      <td>see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>see [Migrate content prop](##migrate-content-prop) in this document</td>
+    </tr>
+    <tr>
+      <td>ref, key</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>getOverflowItems</td>
+      <td>REMOVED: Use @fluentui/react-overflow to render overflow items</td>
+    </tr>
+    <tr>
+      <td>items</td>
+      <td>REMOVED: Only supports children API</td>
+    </tr>
+    <tr>
+      <td>onOverflow</td>
+      <td>
+        use `isOverflowing` from `useOverflowMenu` from @fluentui/react-overflow. See [migrate overflow
+        props](#migrate-%60overflow%60-props)
+      </td>
+    </tr>
+    <tr>
+      <td>onOverflowOpenChange</td>
+      <td>
+        REMOVED: handle the needed changes in the overflow component. See [migrate overflow
+        props](#migrate-%60overflow%60-props)
+      </td>
+    </tr>
+    <tr>
+      <td>overflow</td>
+      <td>REMOVED: Use @fluentui/react-overflow</td>
+    </tr>
+    <tr>
+      <td>overflowItem</td>
+      <td>
+        REMOVED: Should be implemented in the Overflow component that is using `useOverflowMenu`. See [migrate overflow
+        props](#migrate-%60overflow%60-props)
+      </td>
+    </tr>
+    <tr>
+      <td>overflowOpen</td>
+      <td>REMOVED: Should be handled by the component that will be using `useOverflowMenu`</td>
+    </tr>
+    <tr>
+      <td>overflowSentinel</td>
+      <td>
+        REMOVED: Can be set as `padding` in the `Overflow` component from @fluentui/react-overflow. See [migrate
+        overflow props](#migrate-%60overflow%60-props)
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-| `ToolbarItem` props | migrate guide                                                                                                       |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| as, className       | keep it as is                                                                                                       |
-| content             | see [Migrate content prop](##migrate-content-prop) in this document                                                 |
-| variables, styles   | see [Migrate style overrides](#migrate-style-overrides) in this document                                            |
-| accessibility       | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)            |
-| circular            | replace with `shape="circular"`                                                                                     |
-| disabled            | keep it as is                                                                                                       |
-| disabledFocusable   | keep it as is                                                                                                       |
-| fluid               | replace with `block`                                                                                                |
-| icon                | keep it as is.                                                                                                      |
-| menu                | REMOVED: use `@fluentui/react-menu`                                                                                 |
-| menuOpen            | REMOVED: use `@fluentui/react-menu`                                                                                 |
-| onMenuOpenChange    | REMOVED: use `@fluentui/react-menu`                                                                                 |
-| popup               | REMOVED: use `@fluentui/react-popover`, [see example](?path=/docs/preview-components-toolbar--default#with-popover) |
-| wrapper             | REMOVED                                                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>`ToolbarItem` props</th>
+      <th>migrate guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>as, className</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>see [Migrate content prop](##migrate-content-prop) in this document</td>
+    </tr>
+    <tr>
+      <td>variables, styles</td>
+      <td>see [Migrate style overrides](#migrate-style-overrides) in this document</td>
+    </tr>
+    <tr>
+      <td>accessibility</td>
+      <td>see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)</td>
+    </tr>
+    <tr>
+      <td>circular</td>
+      <td>replace with `shape="circular"`</td>
+    </tr>
+    <tr>
+      <td>disabled</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>disabledFocusable</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>fluid</td>
+      <td>replace with `block`</td>
+    </tr>
+    <tr>
+      <td>icon</td>
+      <td>keep it as is.</td>
+    </tr>
+    <tr>
+      <td>menu</td>
+      <td>REMOVED: use `@fluentui/react-menu`</td>
+    </tr>
+    <tr>
+      <td>menuOpen</td>
+      <td>REMOVED: use `@fluentui/react-menu`</td>
+    </tr>
+    <tr>
+      <td>onMenuOpenChange</td>
+      <td>REMOVED: use `@fluentui/react-menu`</td>
+    </tr>
+    <tr>
+      <td>popup</td>
+      <td>
+        REMOVED: use `@fluentui/react-popover`, [see
+        example](?path=/docs/preview-components-toolbar--default#with-popover)
+      </td>
+    </tr>
+    <tr>
+      <td>wrapper</td>
+      <td>REMOVED</td>
+    </tr>
+  </tbody>
+</table>
 
 `ToolbarCustomItem` in V9 is replaced by direct adding the content as `Toolbar` children.
 
