@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useAnimationFrame } from '@fluentui/react-utilities';
+import { useAnimationFrame, useEventCallback } from '@fluentui/react-utilities';
 import type { StaggerProps } from './stagger-types';
 import {
   staggerItemsVisibilityAtTime,
@@ -54,6 +54,9 @@ export function useStaggerItemsVisibility({
   hideMode = 'visibleProp',
 }: UseStaggerItemsVisibilityParams): { itemsVisibility: Record<string, boolean> } {
   const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
+
+  // Stabilize the callback reference to avoid re-triggering effects on every render
+  const stableOnMotionFinish = useEventCallback(onMotionFinish ?? (() => {}));
 
   // Track animation state independently of child changes
   const [animationKey, setAnimationKey] = React.useState(0);
@@ -135,7 +138,7 @@ export function useStaggerItemsVisibility({
     if (isFirstRender.current) {
       isFirstRender.current = false;
       // Items are already in their final state from useState, no animation needed
-      onMotionFinish?.();
+      stableOnMotionFinish();
       return; // No cleanup needed for first render
     }
 
@@ -184,7 +187,7 @@ export function useStaggerItemsVisibility({
         frameRef.current = requestAnimationFrame(tick);
       } else if (!finishedRef.current) {
         finishedRef.current = true;
-        onMotionFinish?.();
+        stableOnMotionFinish();
       }
     };
 
@@ -195,7 +198,15 @@ export function useStaggerItemsVisibility({
         cancelAnimationFrame();
       }
     };
-  }, [animationKey, itemDelay, itemDuration, direction, onMotionFinish, requestAnimationFrame, cancelAnimationFrame]);
+  }, [
+    animationKey,
+    itemDelay,
+    itemDuration,
+    direction,
+    requestAnimationFrame,
+    cancelAnimationFrame,
+    stableOnMotionFinish,
+  ]);
 
   return { itemsVisibility };
 }
