@@ -34,6 +34,8 @@ import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabs
 const HORIZONTAL_MARGIN_FOR_YAXIS_TITLE = 24;
 const VERTICAL_MARGIN_FOR_XAXIS_TITLE = 20;
 const AXIS_TITLE_PADDING = 8;
+const DEFAULT_MARGIN_WITH_TICKS = 40;
+const DEFAULT_MARGIN_NO_TICKS = 20;
 
 /**
  * Cartesian Chart component
@@ -573,48 +575,68 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   }
 
   function _calcMargins(): IMargins {
-    /**
-     * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
-     * So that, in RTL, left margins becomes right margins and viceversa.
-     * As graph needs to be drawn perfecty, these values consider as default values.
-     * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
-     */
-    const _margins = {
-      top: 20,
-      bottom: 35,
-      left: Math.max(40, startFromX + 20),
-      right: props.secondaryYScaleOptions ? 40 : 20,
-    };
+    let _margins = _getDefaultMargins();
 
+    _margins = _applyTitleMargins(_margins);
+    _margins = _applyAnnotationMargins(_margins);
+
+    if (_useRtl) {
+      _margins = _swapRtlMargins(_margins);
+    }
+
+    return {
+      ..._margins,
+      ...props.margins,
+    };
+  }
+
+  function _getDefaultMargins(): IMargins {
+    return {
+      top: DEFAULT_MARGIN_NO_TICKS,
+      // Smaller than the default because it is based on the line height rather than
+      // the length of the tick labels.
+      bottom: DEFAULT_MARGIN_WITH_TICKS - 5,
+      // For the actual margin, add the tick size, tick padding, and some extra space to
+      // the width of the longest yaxis tick label (startFromX).
+      left: Math.max(DEFAULT_MARGIN_WITH_TICKS, startFromX + 20),
+      right: props.secondaryYScaleOptions ? DEFAULT_MARGIN_WITH_TICKS : DEFAULT_MARGIN_NO_TICKS,
+    };
+  }
+
+  function _applyTitleMargins(_margins: IMargins): IMargins {
+    const updated = { ..._margins };
     if (props.xAxisTitle !== undefined && props.xAxisTitle !== '') {
-      _margins.bottom! += VERTICAL_MARGIN_FOR_XAXIS_TITLE;
+      updated.bottom! += VERTICAL_MARGIN_FOR_XAXIS_TITLE;
     }
     if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
-      _margins.left! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
+      updated.left! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
     }
     if (props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '') {
-      _margins.right! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
+      updated.right! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
     }
+    return updated;
+  }
+
+  function _applyAnnotationMargins(_margins: IMargins): IMargins {
+    const updated = { ..._margins };
     if (props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '') {
-      _margins.top! += VERTICAL_MARGIN_FOR_XAXIS_TITLE;
+      updated.top! += VERTICAL_MARGIN_FOR_XAXIS_TITLE;
     }
     if (
       props.yAxisAnnotation !== undefined &&
       props.yAxisAnnotation !== '' &&
       (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '')
     ) {
-      _margins.right! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
+      updated.right! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
     }
+    return updated;
+  }
 
-    if (_useRtl) {
-      const leftMargin = _margins.left;
-      _margins.left = _margins.right;
-      _margins.right = leftMargin;
-    }
-
+  function _swapRtlMargins(_margins: IMargins): IMargins {
     return {
       ..._margins,
-      ...props.margins,
+      left: _margins.right,
+      right: _margins.left,
     };
   }
 
