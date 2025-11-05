@@ -15,6 +15,7 @@ export type StaggerChildMapping = Record<string, { element: React.ReactElement; 
  * @param children - React children to map
  * @returns Object mapping child keys to { element, index }
  */
+// TODO: consider unifying with getChildMapping from react-motion package by making it generic
 export function getStaggerChildMapping(children: React.ReactNode | undefined): StaggerChildMapping {
   const childMapping: StaggerChildMapping = {};
 
