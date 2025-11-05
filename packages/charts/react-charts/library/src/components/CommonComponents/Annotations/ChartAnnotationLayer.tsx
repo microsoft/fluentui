@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
 import { ChartAnnotation } from '../../../types/ChartAnnotation';
