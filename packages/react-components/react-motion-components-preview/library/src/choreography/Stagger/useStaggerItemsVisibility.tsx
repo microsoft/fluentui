@@ -5,11 +5,13 @@ import { useAnimationFrame } from '@fluentui/react-utilities';
 import type { StaggerProps } from './stagger-types';
 import { staggerItemsVisibilityAtTime, type StaggerItemsVisibilityAtTimeParams } from './utils/stagger-calculations';
 import { DEFAULT_ITEM_DURATION } from './utils/constants';
+import type { StaggerChildMapping } from './utils/getChildMapping';
 
 export interface UseStaggerItemsVisibilityParams
   extends Pick<StaggerProps, 'onMotionFinish'>,
-    Omit<StaggerItemsVisibilityAtTimeParams, 'elapsed'> {
+    Omit<StaggerItemsVisibilityAtTimeParams, 'elapsed' | 'itemCount'> {
   hideMode: StaggerProps['hideMode'];
+  childMapping: StaggerChildMapping;
 }
 
 /**
@@ -26,7 +28,13 @@ export interface UseStaggerItemsVisibilityParams
  *   - For 'enter', items start hidden and animate to visible; for 'exit', items start visible
  *     and animate to hidden.
  *
- * @param itemCount - Total number of items to stagger
+ * This hook uses child key mapping instead of item count to track individual items.
+ * This allows it to correctly handle:
+ * - Items being added and removed simultaneously (when count stays the same)
+ * - Items being reordered
+ * - Individual item identity across renders
+ *
+ * @param childMapping - Mapping of child keys to elements and indices
  * @param itemDelay - Milliseconds between the start of each item's animation
  * @param itemDuration - Milliseconds each item's animation lasts
  * @param direction - 'enter' (show items) or 'exit' (hide items)
@@ -34,24 +42,24 @@ export interface UseStaggerItemsVisibilityParams
  * @param onMotionFinish - Callback fired when the full stagger sequence completes
  * @param hideMode - How children's visibility is managed: 'visibleProp', 'visibilityStyle', or 'unmount'
  *
- * @returns An object with `itemsVisibility: boolean[]` indicating which items are currently visible
+ * @returns An object with `itemsVisibility: Record<string, boolean>` indicating which items are currently visible by key
  */
 export function useStaggerItemsVisibility({
-  itemCount,
+  childMapping,
   itemDelay,
   itemDuration = DEFAULT_ITEM_DURATION,
   direction,
   reversed = false,
   onMotionFinish,
   hideMode = 'visibleProp',
-}: UseStaggerItemsVisibilityParams): { itemsVisibility: boolean[] } {
+}: UseStaggerItemsVisibilityParams): { itemsVisibility: Record<string, boolean> } {
   const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
-  // Track animation state independently of item count
+  // Track animation state independently of child changes
   const [animationKey, setAnimationKey] = React.useState(0);
   const prevDirection = React.useRef(direction);
 
-  // Only trigger new animation when direction actually changes, not when itemCount changes
+  // Only trigger new animation when direction actually changes, not when children change
   React.useEffect(() => {
     if (prevDirection.current !== direction) {
       setAnimationKey(prev => prev + 1);
@@ -59,34 +67,41 @@ export function useStaggerItemsVisibility({
     }
   }, [direction]);
 
-  // State: visibility array for all items
-  const [itemsVisibility, setItemsVisibility] = React.useState<boolean[]>(() => {
+  // State: visibility mapping for all items by key
+  const [itemsVisibility, setItemsVisibility] = React.useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {};
     // For unmount mode, items should start hidden and appear by being added to the DOM
     // For visibleProp and visibilityStyle modes, items start in target state: visible for 'enter', hidden for 'exit'
-    if (hideMode === 'unmount') {
-      return Array(itemCount).fill(direction === 'exit');
-    } else {
-      return Array(itemCount).fill(direction === 'enter');
-    }
+    const initialState = hideMode === 'unmount' ? direction === 'exit' : direction === 'enter';
+    Object.keys(childMapping).forEach(key => {
+      initial[key] = initialState;
+    });
+    return initial;
   });
 
-  // Update array size when itemCount changes without triggering animation
+  // Update visibility mapping when childMapping changes
   React.useEffect(() => {
     setItemsVisibility(prev => {
-      if (itemCount === prev.length) {
-        return prev; // No change needed
-      }
+      const next: Record<string, boolean> = {};
+      const targetState = direction === 'enter';
 
-      if (itemCount > prev.length) {
-        // Add new items in their target state
-        const targetState = direction === 'enter';
-        return [...prev, ...Array(itemCount - prev.length).fill(targetState)];
-      } else {
-        // Remove items from the end
-        return prev.slice(0, itemCount);
-      }
+      // Add or update items from new mapping
+      Object.keys(childMapping).forEach(key => {
+        if (key in prev) {
+          // Existing item - preserve its visibility state
+          next[key] = prev[key];
+        } else {
+          // New item - set to target state
+          next[key] = targetState;
+        }
+      });
+
+      // Note: Items that were in prev but not in childMapping are automatically removed
+      // because we only iterate over keys in childMapping
+
+      return next;
     });
-  }, [itemCount, direction]);
+  }, [childMapping, direction]);
 
   // Refs: animation timing and control
   const startTimeRef = React.useRef<number | null>(null);
@@ -94,13 +109,13 @@ export function useStaggerItemsVisibility({
   const finishedRef = React.useRef(false);
   const isFirstRender = React.useRef(true);
 
-  // Use ref to avoid re-running the animation when item count changes
-  const itemCountRef = React.useRef(itemCount);
+  // Use ref to avoid re-running the animation when child mapping changes
+  const childMappingRef = React.useRef(childMapping);
 
-  // Update itemCount ref whenever it changes
+  // Update childMapping ref whenever it changes
   React.useEffect(() => {
-    itemCountRef.current = itemCount;
-  }, [itemCount]);
+    childMappingRef.current = childMapping;
+  }, [childMapping]);
 
   // ====== ANIMATION EFFECT ======
 
@@ -133,8 +148,12 @@ export function useStaggerItemsVisibility({
       // - Enter animation: start hidden (false), animate to visible (true)
       // - Exit animation: start visible (true), animate to hidden (false)
       const startState = direction === 'exit';
-      // Use itemCountRef.current to avoid adding itemCount to dependencies
-      setItemsVisibility(Array(itemCountRef.current).fill(startState));
+      // Use childMappingRef.current to avoid adding childMapping to dependencies
+      const initialVisibility: Record<string, boolean> = {};
+      Object.keys(childMappingRef.current).forEach(key => {
+        initialVisibility[key] = startState;
+      });
+      setItemsVisibility(initialVisibility);
     }
 
     // Animation loop: update visibility on each frame until complete
@@ -147,8 +166,11 @@ export function useStaggerItemsVisibility({
       }
       const elapsed = now - (startTimeRef.current as number);
 
+      const childKeys = Object.keys(childMappingRef.current);
+      const itemCount = childKeys.length;
+
       const result = staggerItemsVisibilityAtTime({
-        itemCount: itemCountRef.current,
+        itemCount,
         elapsed,
         itemDelay,
         itemDuration,
@@ -156,7 +178,13 @@ export function useStaggerItemsVisibility({
         reversed,
       });
 
-      setItemsVisibility(result.itemsVisibility);
+      // Convert boolean array to keyed object
+      const nextVisibility: Record<string, boolean> = {};
+      childKeys.forEach((key, idx) => {
+        nextVisibility[key] = result.itemsVisibility[idx];
+      });
+
+      setItemsVisibility(nextVisibility);
 
       if (elapsed < result.totalDuration) {
         frameRef.current = requestAnimationFrame(tick);

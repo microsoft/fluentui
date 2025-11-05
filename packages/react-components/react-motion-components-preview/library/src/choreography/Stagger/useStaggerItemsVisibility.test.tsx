@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { render, act } from '@testing-library/react';
 import { useStaggerItemsVisibility } from './useStaggerItemsVisibility';
+import { getChildMapping } from './utils/getChildMapping';
+import type { StaggerChildMapping } from './utils/getChildMapping';
 
 // Mock the useAnimationFrame hook
 const mockRequestAnimationFrame = jest.fn();
@@ -10,20 +12,34 @@ jest.mock('@fluentui/react-utilities', () => ({
   useAnimationFrame: () => [mockRequestAnimationFrame, mockCancelAnimationFrame],
 }));
 
+// Helper to create a child mapping from a count
+const createChildMapping = (count: number): StaggerChildMapping => {
+  const children = Array.from({ length: count }, (_, i) => React.createElement('div', { key: `item-${i}` }));
+  return getChildMapping(children);
+};
+
+// Helper to convert Record<string, boolean> to boolean array for easier testing
+const mappingToArray = (mapping: Record<string, boolean>, childMapping: StaggerChildMapping): boolean[] => {
+  return Object.keys(childMapping)
+    .sort()
+    .map(key => mapping[key]);
+};
+
 describe('useStaggerItemsVisibility', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('sets initial state to final state for enter direction', () => {
+    const childMapping = createChildMapping(3);
     const TestComponent = () => {
       const { itemsVisibility } = useStaggerItemsVisibility({
-        itemCount: 3,
+        childMapping,
         itemDelay: 100,
         direction: 'enter',
         hideMode: 'visibilityStyle',
       });
-      return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
+      return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
     };
 
     const { getByTestId } = render(<TestComponent />);
@@ -33,14 +49,15 @@ describe('useStaggerItemsVisibility', () => {
   });
 
   it('sets initial state to final state for exit direction', () => {
+    const childMapping = createChildMapping(3);
     const TestComponent = () => {
       const { itemsVisibility } = useStaggerItemsVisibility({
-        itemCount: 3,
+        childMapping,
         itemDelay: 100,
         direction: 'exit',
         hideMode: 'visibilityStyle',
       });
-      return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
+      return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
     };
 
     const { getByTestId } = render(<TestComponent />);
@@ -51,16 +68,17 @@ describe('useStaggerItemsVisibility', () => {
 
   it('calls onMotionFinish on first render', () => {
     const mockOnMotionFinish = jest.fn();
+    const childMapping = createChildMapping(2);
 
     const TestComponent = () => {
       const { itemsVisibility } = useStaggerItemsVisibility({
-        itemCount: 2,
+        childMapping,
         itemDelay: 100,
         direction: 'enter',
         hideMode: 'visibilityStyle',
         onMotionFinish: mockOnMotionFinish,
       });
-      return <div>{JSON.stringify(itemsVisibility)}</div>;
+      return <div>{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
     };
 
     render(<TestComponent />);
@@ -69,14 +87,15 @@ describe('useStaggerItemsVisibility', () => {
   });
 
   it('starts animation on parameter change', () => {
+    const childMapping = createChildMapping(2);
     const TestComponent = ({ itemDelay }: { itemDelay: number }) => {
       const { itemsVisibility } = useStaggerItemsVisibility({
-        itemCount: 2,
+        childMapping,
         itemDelay,
         direction: 'enter',
         hideMode: 'visibilityStyle',
       });
-      return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
+      return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
     };
 
     const { rerender } = render(<TestComponent itemDelay={100} />);
@@ -84,7 +103,7 @@ describe('useStaggerItemsVisibility', () => {
     // First render - no animation frame requested yet
     expect(mockRequestAnimationFrame).not.toHaveBeenCalled();
 
-    // Change parameters to trigger animation (using itemDelay instead of itemCount)
+    // Change parameters to trigger animation (using itemDelay instead of childMapping)
     act(() => {
       rerender(<TestComponent itemDelay={200} />);
     });
@@ -94,14 +113,15 @@ describe('useStaggerItemsVisibility', () => {
   });
 
   it('handles direction change correctly', () => {
+    const childMapping = createChildMapping(2);
     const TestComponent = ({ direction }: { direction: 'enter' | 'exit' }) => {
       const { itemsVisibility } = useStaggerItemsVisibility({
-        itemCount: 2,
+        childMapping,
         itemDelay: 100,
         direction,
         hideMode: 'visibilityStyle',
       });
-      return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
+      return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
     };
 
     const { getByTestId, rerender } = render(<TestComponent direction="enter" />);
@@ -119,35 +139,37 @@ describe('useStaggerItemsVisibility', () => {
     expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([true, true]);
   });
 
-  it('handles itemCount change correctly', () => {
-    const TestComponent = ({ itemCount }: { itemCount: number }) => {
+  it('handles childMapping change correctly', () => {
+    const TestComponent = ({ childMapping }: { childMapping: StaggerChildMapping }) => {
       const { itemsVisibility } = useStaggerItemsVisibility({
-        itemCount,
+        childMapping,
         itemDelay: 100,
         direction: 'enter',
         hideMode: 'visibilityStyle',
       });
-      return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
+      return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
     };
 
-    const { getByTestId, rerender } = render(<TestComponent itemCount={2} />);
+    const childMapping2 = createChildMapping(2);
+    const { getByTestId, rerender } = render(<TestComponent childMapping={childMapping2} />);
 
     // Initial state for 2 items
     expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([true, true]);
 
-    // Change to 3 items - should NOT start animation, just update array size
+    // Change to 3 items - should NOT start animation, just update mapping
+    const childMapping3 = createChildMapping(3);
     act(() => {
-      rerender(<TestComponent itemCount={3} />);
+      rerender(<TestComponent childMapping={childMapping3} />);
     });
 
     // Should maintain final state (visible for enter direction), not restart animation
     expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([true, true, true]);
   });
 
-  it('should not trigger animation when itemCount changes', () => {
-    const TestComponent = ({ itemCount }: { itemCount: number }) => {
+  it('should not trigger animation when childMapping changes', () => {
+    const TestComponent = ({ childMapping }: { childMapping: StaggerChildMapping }) => {
       useStaggerItemsVisibility({
-        itemCount,
+        childMapping,
         itemDelay: 100,
         direction: 'enter',
         hideMode: 'visibilityStyle',
@@ -155,17 +177,19 @@ describe('useStaggerItemsVisibility', () => {
       return <div>Test</div>;
     };
 
-    const { rerender } = render(<TestComponent itemCount={2} />);
+    const childMapping2 = createChildMapping(2);
+    const { rerender } = render(<TestComponent childMapping={childMapping2} />);
 
     // Clear any initial calls
     mockRequestAnimationFrame.mockClear();
 
-    // Change itemCount - should NOT trigger animation
+    // Change childMapping - should NOT trigger animation
+    const childMapping5 = createChildMapping(5);
     act(() => {
-      rerender(<TestComponent itemCount={5} />);
+      rerender(<TestComponent childMapping={childMapping5} />);
     });
 
-    // Should not request animation frame for itemCount change
+    // Should not request animation frame for childMapping change
     expect(mockRequestAnimationFrame).not.toHaveBeenCalled();
   });
 
@@ -216,16 +240,17 @@ describe('useStaggerItemsVisibility', () => {
   describe('First mount behavior in unmount mode', () => {
     it('should animate stagger-out on first mount when direction=exit in unmount mode', () => {
       const mockOnMotionFinish = jest.fn();
+      const childMapping = createChildMapping(3);
 
       const TestComponent = () => {
         const { itemsVisibility } = useStaggerItemsVisibility({
-          itemCount: 3,
+          childMapping,
           itemDelay: 100,
           direction: 'exit', // Want items to exit (end up hidden)
           hideMode: 'unmount',
           onMotionFinish: mockOnMotionFinish,
         });
-        return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
+        return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
       };
 
       const { getByTestId } = render(<TestComponent />);
@@ -242,16 +267,17 @@ describe('useStaggerItemsVisibility', () => {
 
     it('should animate on mount and allow direction changes on subsequent renders', () => {
       const mockOnMotionFinish = jest.fn();
+      const childMapping = createChildMapping(3);
 
       const TestComponent = ({ direction }: { direction: 'enter' | 'exit' }) => {
         const { itemsVisibility } = useStaggerItemsVisibility({
-          itemCount: 3,
+          childMapping,
           itemDelay: 100,
           direction,
           hideMode: 'unmount',
           onMotionFinish: mockOnMotionFinish,
         });
-        return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
+        return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
       };
 
       const { getByTestId, rerender } = render(<TestComponent direction="exit" />);
@@ -272,17 +298,18 @@ describe('useStaggerItemsVisibility', () => {
 
     it('should make unmount mode animate on first render for enter direction', () => {
       const mockOnMotionFinish = jest.fn();
+      const childMapping = createChildMapping(3);
 
       // Test unmount mode directly (not rerendering from presence mode)
       const TestComponent = () => {
         const { itemsVisibility } = useStaggerItemsVisibility({
-          itemCount: 3,
+          childMapping,
           itemDelay: 100,
           direction: 'enter',
           hideMode: 'unmount',
           onMotionFinish: mockOnMotionFinish,
         });
-        return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
+        return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
       };
 
       const { getByTestId } = render(<TestComponent />);
@@ -296,17 +323,18 @@ describe('useStaggerItemsVisibility', () => {
 
     it('should handle visibilityStyle mode like presence mode on first render', () => {
       const mockOnMotionFinish = jest.fn();
+      const childMapping = createChildMapping(3);
 
       // Test visibilityStyle mode behavior
       const TestComponent = () => {
         const { itemsVisibility } = useStaggerItemsVisibility({
-          itemCount: 3,
+          childMapping,
           itemDelay: 100,
           direction: 'enter',
           hideMode: 'visibilityStyle',
           onMotionFinish: mockOnMotionFinish,
         });
-        return <div data-testid="visibility">{JSON.stringify(itemsVisibility)}</div>;
+        return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
       };
 
       const { getByTestId } = render(<TestComponent />);

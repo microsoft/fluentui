@@ -3,12 +3,12 @@
 import * as React from 'react';
 import { useStaggerItemsVisibility } from './useStaggerItemsVisibility';
 import {
-  toElementArray,
   DEFAULT_ITEM_DURATION,
   DEFAULT_ITEM_DELAY,
   acceptsVisibleProp,
   acceptsDelayProps,
 } from './utils';
+import { getChildMapping } from './utils/getChildMapping';
 import { StaggerOneWayProps, StaggerProps, type StaggerHideMode, type StaggerDelayMode } from './stagger-types';
 
 /**
@@ -25,7 +25,8 @@ const detectStaggerModes = (
 ): { hideMode: StaggerHideMode; delayMode: StaggerDelayMode } => {
   const { hideMode, delayMode, defaultHideMode = 'visibilityStyle' } = options;
 
-  const elements = toElementArray(children);
+  const childMapping = getChildMapping(children);
+  const elements = Object.values(childMapping).map(item => item.element);
   const hasVisibleSupport = elements.every(child => acceptsVisibleProp(child));
   const hasDelaySupport = elements.every(child => acceptsDelayProps(child));
 
@@ -45,11 +46,11 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
   delayMode = 'timing',
   onMotionFinish,
 }) => {
-  const elements = toElementArray(children);
+  const childMapping = React.useMemo(() => getChildMapping(children), [children]);
 
   // Always call hooks at the top level, regardless of delayMode
   const { itemsVisibility } = useStaggerItemsVisibility({
-    itemCount: elements.length,
+    childMapping,
     itemDelay,
     itemDuration,
     direction,
@@ -62,9 +63,8 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
   if (delayMode === 'delayProp') {
     return (
       <>
-        {elements.map((child, idx) => {
-          const key = child.key ?? idx;
-          const staggerIndex = reversed ? elements.length - 1 - idx : idx;
+        {Object.entries(childMapping).map(([key, { element, index }]) => {
+          const staggerIndex = reversed ? Object.keys(childMapping).length - 1 - index : index;
           const delay = staggerIndex * itemDelay;
 
           // Clone element with delay prop (for enter direction) or exitDelay prop (for exit direction)
@@ -72,9 +72,9 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
 
           // Only set visible prop if the component supports it
           // Set visible based on direction: true for enter, false for exit
-          const visibleProp = acceptsVisibleProp(child) ? { visible: direction === 'enter' } : {};
+          const visibleProp = acceptsVisibleProp(element) ? { visible: direction === 'enter' } : {};
 
-          return React.cloneElement(child, {
+          return React.cloneElement(element, {
             key,
             ...visibleProp,
             ...delayProp,
@@ -88,22 +88,23 @@ const StaggerOneWay: React.FC<StaggerOneWayProps> = ({
 
   return (
     <>
-      {elements.map((child, idx) => {
-        const key = child.key ?? idx;
-
+      {Object.entries(childMapping).map(([key, { element }]) => {
         if (hideMode === 'visibleProp') {
           // Use a generic record type for props to avoid `any` while still allowing unknown prop shapes.
-          return React.cloneElement(child, { key, visible: itemsVisibility[idx] } as Partial<Record<string, unknown>>);
+          return React.cloneElement(element, {
+            key,
+            visible: itemsVisibility[key],
+          } as Partial<Record<string, unknown>>);
         } else if (hideMode === 'visibilityStyle') {
-          const childProps = child.props as Record<string, unknown> | undefined;
+          const childProps = element.props as Record<string, unknown> | undefined;
           const style = {
             ...(childProps?.style as Record<string, unknown> | undefined),
-            visibility: itemsVisibility[idx] ? 'visible' : 'hidden',
+            visibility: itemsVisibility[key] ? 'visible' : 'hidden',
           };
-          return React.cloneElement(child, { key, style } as Partial<Record<string, unknown>>);
+          return React.cloneElement(element, { key, style } as Partial<Record<string, unknown>>);
         } else {
           // unmount mode
-          return itemsVisibility[idx] ? React.cloneElement(child, { key }) : null;
+          return itemsVisibility[key] ? React.cloneElement(element, { key }) : null;
         }
       })}
     </>

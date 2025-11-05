@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 // Mock the hook and utilities separately
 jest.mock('./useStaggerItemsVisibility', () => ({
   useStaggerItemsVisibility: jest.fn(() => ({
-    itemsVisibility: [true, true, true], // All items visible for testing by default
+    itemsVisibility: { '.0': true, '.1': true, '.2': true }, // All items visible for testing by default
   })),
 }));
 
@@ -294,7 +294,7 @@ describe('Stagger', () => {
     it('should apply visibility:hidden style when item is not visible', () => {
       // Mock to return specific visibility state
       mockUseStaggerItemsVisibility.mockReturnValue({
-        itemsVisibility: [true, false, true], // Middle item hidden
+        itemsVisibility: { '.0': true, '.1': false, '.2': true }, // Middle item hidden
       });
 
       render(
@@ -324,7 +324,7 @@ describe('Stagger', () => {
 
     it('should preserve existing style properties when adding visibility', () => {
       mockUseStaggerItemsVisibility.mockReturnValue({
-        itemsVisibility: [false], // Item hidden
+        itemsVisibility: { '.0': false }, // Item hidden
       });
 
       render(
@@ -346,7 +346,7 @@ describe('Stagger', () => {
 
     it('should handle explicit visibilityStyle mode correctly', () => {
       mockUseStaggerItemsVisibility.mockReturnValue({
-        itemsVisibility: [true, true],
+        itemsVisibility: { '.0': true, '.1': true },
       });
 
       render(

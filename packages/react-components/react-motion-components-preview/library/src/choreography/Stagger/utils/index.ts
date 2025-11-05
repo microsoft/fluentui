@@ -3,3 +3,5 @@ export { toElementArray } from './react-children-utils';
 export { getStaggerTotalDuration, staggerItemsVisibilityAtTime } from './stagger-calculations';
 export type { StaggerItemsVisibilityAtTimeParams } from './stagger-calculations';
 export { acceptsVisibleProp, acceptsDelayProps } from './motionComponentDetection';
+export { getChildMapping } from './getChildMapping';
+export type { StaggerChildMapping } from './getChildMapping';
