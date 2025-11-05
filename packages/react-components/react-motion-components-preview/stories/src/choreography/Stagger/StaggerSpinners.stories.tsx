@@ -154,11 +154,13 @@ const ScaleMotion = createMotionComponent<{ duration?: number; easing?: string; 
       ],
       duration,
       delay,
+      fill: 'both',
       iterations: Infinity,
     },
   ],
 );
 
+// NOTE: the delay prop needs to be explicitly defined for the custom motion component
 const SlideMotion = createMotionComponent<{ delay?: number }>(({ delay = 0 }) => [
   {
     keyframes: [
@@ -183,9 +185,10 @@ const SlideMotion = createMotionComponent<{ delay?: number }>(({ delay = 0 }) =>
   },
 ]);
 
-// Orbital motion for dots
+// NOTE: the delay prop needs to be explicitly defined for the custom motion component
 const OrbitMotion = createMotionComponent<{ duration?: number; easing?: string; delay?: number }>(
-  ({ duration = motionTokens.durationUltraSlow * 6, easing = motionTokens.curveEasyEase, delay = 0 }) => {
+  ({ duration = motionTokens.durationUltraSlow * 8, easing = motionTokens.curveEasyEase, delay = 0 }) => {
+    const finalOffset = 0.8;
     const finalAngle = '740deg';
     return [
       // rotation atom
@@ -196,7 +199,7 @@ const OrbitMotion = createMotionComponent<{ duration?: number; easing?: string; 
             easing,
           },
           {
-            offset: 0.8,
+            offset: finalOffset,
             rotate: finalAngle,
           },
           {
@@ -211,9 +214,9 @@ const OrbitMotion = createMotionComponent<{ duration?: number; easing?: string; 
       // opacity atom
       {
         keyframes: [
-          { opacity: 0 },
-          { offset: 0.4, opacity: 1 },
-          { offset: 0.8, opacity: 0 },
+          { opacity: 0, easing: motionTokens.curveEasyEase },
+          { offset: 0.4, opacity: 1, easing: motionTokens.curveEasyEase },
+          { offset: finalOffset, opacity: 0 },
           { offset: 1, opacity: 0 },
         ],
         duration,
@@ -230,21 +233,17 @@ export const StaggerSpinners = (): JSXElement => {
 
   return (
     <div className={classes.container}>
-      {/* Arcs Spinner */}
-      <div className={classes.spinnerSection}>
-        <h3 className={classes.spinnerTitle}>Arcs</h3>
+      {/* Orbit Spinner */}
+      <div className={classes.spinnerSection} style={{ display: '' }}>
+        <h3 className={classes.spinnerTitle}>Orbit</h3>
         <div className={classes.spinnerContainer}>
-          <div className={classes.arcSpinner}>
-            <Stagger.In itemDelay={80}>
-              <SpinMotion key="1">
-                <div className={`${classes.arc} ${classes.arc3}`} />
-              </SpinMotion>
-              <SpinMotion key="2">
-                <div className={`${classes.arc} ${classes.arc2}`} />
-              </SpinMotion>
-              <SpinMotion key="3">
-                <div className={`${classes.arc} ${classes.arc1}`} />
-              </SpinMotion>
+          <div className={classes.dotOrbitSpinner}>
+            <Stagger.In itemDelay={motionTokens.durationFaster}>
+              {Array.from({ length: 6 }, (_, i) => (
+                <OrbitMotion key={i}>
+                  <div className={classes.orbitDot} data-index={i} />
+                </OrbitMotion>
+              ))}
             </Stagger.In>
           </div>
         </div>
@@ -266,25 +265,29 @@ export const StaggerSpinners = (): JSXElement => {
         </div>
       </div>
 
-      {/* Orbit Spinner */}
-      <div className={classes.spinnerSection} style={{ display: '' }}>
-        <h3 className={classes.spinnerTitle}>Orbit</h3>
+      {/* Arcs Spinner */}
+      <div className={classes.spinnerSection}>
+        <h3 className={classes.spinnerTitle}>Arcs</h3>
         <div className={classes.spinnerContainer}>
-          <div className={classes.dotOrbitSpinner}>
-            <Stagger.In itemDelay={motionTokens.durationFaster}>
-              {Array.from({ length: 6 }, (_, i) => (
-                <OrbitMotion key={i}>
-                  <div className={classes.orbitDot} data-index={i} />
-                </OrbitMotion>
-              ))}
+          <div className={classes.arcSpinner}>
+            <Stagger.In itemDelay={80}>
+              <SpinMotion key="1">
+                <div className={`${classes.arc} ${classes.arc3}`} />
+              </SpinMotion>
+              <SpinMotion key="2">
+                <div className={`${classes.arc} ${classes.arc2}`} />
+              </SpinMotion>
+              <SpinMotion key="3">
+                <div className={`${classes.arc} ${classes.arc1}`} />
+              </SpinMotion>
             </Stagger.In>
           </div>
         </div>
       </div>
 
-      {/* Sliding Blocks Spinner */}
+      {/* Blocks Spinner */}
       <div className={classes.spinnerSection}>
-        <h3 className={classes.spinnerTitle}>Sliding Blocks Spinner</h3>
+        <h3 className={classes.spinnerTitle}>Blocks</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.slidingBlocksSpinner}>
             <Stagger.In itemDelay={motionTokens.durationFaster}>
