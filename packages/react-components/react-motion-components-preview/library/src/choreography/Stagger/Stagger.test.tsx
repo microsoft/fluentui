@@ -8,18 +8,6 @@ jest.mock('./useStaggerItemsVisibility', () => ({
   })),
 }));
 
-jest.mock('./utils', () => ({
-  toElementArray: (children: React.ReactNode) => {
-    return React.Children.toArray(children).filter(React.isValidElement);
-  },
-  DEFAULT_ITEM_DELAY: 100,
-  DEFAULT_ITEM_DURATION: 200,
-  acceptsVisibleProp: jest.requireActual('./utils').acceptsVisibleProp,
-  acceptsDelayProps: jest.requireActual('./utils').acceptsDelayProps,
-  // NOTE: because the utils folder is being mocked, we need to explicitly include getStaggerChildMapping here
-  getStaggerChildMapping: jest.requireActual('./utils').getStaggerChildMapping,
-}));
-
 // Import after mocking
 import { Stagger } from './Stagger';
 import { Fade } from '../../components/Fade';
