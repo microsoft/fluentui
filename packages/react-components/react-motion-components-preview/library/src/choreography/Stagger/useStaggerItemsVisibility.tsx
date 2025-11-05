@@ -56,7 +56,12 @@ export function useStaggerItemsVisibility({
   const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   // Stabilize the callback reference to avoid re-triggering effects on every render
-  const stableOnMotionFinish = useEventCallback(onMotionFinish ?? (() => {}));
+  const stableOnMotionFinish = useEventCallback(
+    onMotionFinish ??
+      (() => {
+        return;
+      }),
+  );
 
   // Track animation state independently of child changes
   const [animationKey, setAnimationKey] = React.useState(0);

@@ -8,17 +8,18 @@ const mockRequestAnimationFrame = jest.fn();
 const mockCancelAnimationFrame = jest.fn();
 
 jest.mock('@fluentui/react-utilities', () => {
-  const React = require('react');
+  // const React = require('react');
 
   // Provide a simple but functional mock for useEventCallback that returns a
   // stable callback reference across renders. This mirrors the real utility's
   // behavior sufficiently for these tests.
-  function useEventCallback(cb: any) {
-    const cbRef = React.useRef(cb);
+  function useEventCallback<T extends (...args: unknown[]) => unknown>(cb: T): T {
+    const cbRef = React.useRef<T>(cb);
     React.useEffect(() => {
       cbRef.current = cb;
     });
-    return React.useCallback((...args: any[]) => cbRef.current?.(...args), []);
+    // Return a stable callback with the same signature as the input
+    return React.useCallback((...args: unknown[]) => cbRef.current?.(...args), []) as T;
   }
 
   return {
