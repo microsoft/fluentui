@@ -7,9 +7,25 @@ import { getStaggerChildMapping, type StaggerChildMapping } from './utils';
 const mockRequestAnimationFrame = jest.fn();
 const mockCancelAnimationFrame = jest.fn();
 
-jest.mock('@fluentui/react-utilities', () => ({
-  useAnimationFrame: () => [mockRequestAnimationFrame, mockCancelAnimationFrame],
-}));
+jest.mock('@fluentui/react-utilities', () => {
+  const React = require('react');
+
+  // Provide a simple but functional mock for useEventCallback that returns a
+  // stable callback reference across renders. This mirrors the real utility's
+  // behavior sufficiently for these tests.
+  function useEventCallback(cb: any) {
+    const cbRef = React.useRef(cb);
+    React.useEffect(() => {
+      cbRef.current = cb;
+    });
+    return React.useCallback((...args: any[]) => cbRef.current?.(...args), []);
+  }
+
+  return {
+    useAnimationFrame: () => [mockRequestAnimationFrame, mockCancelAnimationFrame],
+    useEventCallback,
+  };
+});
 
 // Helper to create a child mapping from a count
 const createChildMapping = (count: number): StaggerChildMapping => {
