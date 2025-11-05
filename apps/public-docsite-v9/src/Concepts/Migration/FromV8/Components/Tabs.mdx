@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v8/Components/Tabs (Pivot) Migration" />
 
@@ -73,37 +73,134 @@ const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
 
 ## Pivot -> TabList Props Mapping
 
-| v8                 | v9                             |
-| ------------------ | ------------------------------ |
-|                    | appearance                     |
-| componentRef       | ref                            |
-| className          | className                      |
-| defaultSelectedKey | defaultSelectedValue           |
-| focusZoneProps     | (removed)                      |
-| getTabId           | (removed)                      |
-| headersOnly        | (removed)                      |
-| linkFormat         | (removed)                      |
-| linkSize           | size                           |
-| onLinkClick        | onTabSelect                    |
-| overflowAriaLabel  | (removed)                      |
-| overflowBehavior   | (removed)                      |
-| selectedKey        | selectedValue                  |
-| styles             | (use makeStyles and className) |
-| theme              | (use FluentProvider)           |
-|                    | vertical                       |
+<table>
+  <thead>
+    <tr>
+      <th>v8</th>
+      <th>v9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>appearance</td>
+    </tr>
+    <tr>
+      <td>componentRef</td>
+      <td>ref</td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>className</td>
+    </tr>
+    <tr>
+      <td>defaultSelectedKey</td>
+      <td>defaultSelectedValue</td>
+    </tr>
+    <tr>
+      <td>focusZoneProps</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>getTabId</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>headersOnly</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>linkFormat</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>linkSize</td>
+      <td>size</td>
+    </tr>
+    <tr>
+      <td>onLinkClick</td>
+      <td>onTabSelect</td>
+    </tr>
+    <tr>
+      <td>overflowAriaLabel</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>overflowBehavior</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>selectedKey</td>
+      <td>selectedValue</td>
+    </tr>
+    <tr>
+      <td>styles</td>
+      <td>(use makeStyles and className)</td>
+    </tr>
+    <tr>
+      <td>theme</td>
+      <td>(use FluentProvider)</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>vertical</td>
+    </tr>
+  </tbody>
+</table>
 
 ## PivotItem -> Tab Props Mapping
 
-| v8                | v9             |
-| ----------------- | -------------- |
-| componentRef      | ref            |
-| linkText          | (removed)      |
-| headerText        | (use children) |
-| headerButtonProps | (removed)      |
-| itemKey           | value          |
-| ariaLabel         | aria-label     |
-| itemCount         | (removed)      |
-| itemIcon          | icon (slot)    |
-| onRenderItemLink  | (removed)      |
-| keytipProps       | (removed)      |
-| alwaysRender      | (removed)      |
+<table>
+  <thead>
+    <tr>
+      <th>v8</th>
+      <th>v9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>componentRef</td>
+      <td>ref</td>
+    </tr>
+    <tr>
+      <td>linkText</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>headerText</td>
+      <td>(use children)</td>
+    </tr>
+    <tr>
+      <td>headerButtonProps</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>itemKey</td>
+      <td>value</td>
+    </tr>
+    <tr>
+      <td>ariaLabel</td>
+      <td>aria-label</td>
+    </tr>
+    <tr>
+      <td>itemCount</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>itemIcon</td>
+      <td>icon (slot)</td>
+    </tr>
+    <tr>
+      <td>onRenderItemLink</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>keytipProps</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>alwaysRender</td>
+      <td>(removed)</td>
+    </tr>
+  </tbody>
+</table>

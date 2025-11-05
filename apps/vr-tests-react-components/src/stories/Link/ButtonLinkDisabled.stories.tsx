@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { Link, LinkProps } from '@fluentui/react-link';
 
 import { disabledUnfocusableSteps } from './utils';

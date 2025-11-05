@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v0/Components/Tooltip Migration" />
 
@@ -29,20 +29,70 @@ const Component = () => (
 
 ## How to migrate props:
 
-| Tooltip props              | migrate guide                                                                                                                                                                                                |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| className, mountNode       | keep it as is                                                                                                                                                                                                |
-| content                    | see Migrate content prop in this document                                                                                                                                                                    |
-| trigger                    | Move `trigger` to JSX children                                                                                                                                                                               |
-| accessibility              | see Migrate accessibility in this document                                                                                                                                                                   |
-| defaultOpen                | Use controlled `visible` prop with default value `true` ([codesandbox example](https://codesandbox.io/s/tooltip-migration-2gy8r1?file=/DefaultOpenExample.jsx:353-410))                                      |
-| open                       | Replace with `visible`                                                                                                                                                                                       |
-| onOpenChange               | Replace with `onVisibleChange`                                                                                                                                                                               |
-| mouseEnterDelay            | Replace with `showDelay`                                                                                                                                                                                     |
-| mouseLeaveDelay            | Replace with `hideDelay`                                                                                                                                                                                     |
-| pointing                   | Replace with `withArrow`                                                                                                                                                                                     |
-| subtle                     | Replace `subtle={false}` with `inverted`                                                                                                                                                                     |
-| dismissOnContentMouseEnter | Use controlled `visible` prop with custom `onMouseEnter` handler on `content` ([codesandbox example](https://codesandbox.io/s/tooltip-migration-2gy8r1?file=/DismissOnContentMouseEnterExample.jsx:246-279)) |
+<table>
+  <thead>
+    <tr>
+      <th>Tooltip props</th>
+      <th>migrate guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>className, mountNode</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>see Migrate content prop in this document</td>
+    </tr>
+    <tr>
+      <td>trigger</td>
+      <td>Move `trigger` to JSX children</td>
+    </tr>
+    <tr>
+      <td>accessibility</td>
+      <td>see Migrate accessibility in this document</td>
+    </tr>
+    <tr>
+      <td>defaultOpen</td>
+      <td>
+        Use controlled `visible` prop with default value `true` ([codesandbox
+        example](https://codesandbox.io/s/tooltip-migration-2gy8r1?file=/DefaultOpenExample.jsx:353-410))
+      </td>
+    </tr>
+    <tr>
+      <td>open</td>
+      <td>Replace with `visible`</td>
+    </tr>
+    <tr>
+      <td>onOpenChange</td>
+      <td>Replace with `onVisibleChange`</td>
+    </tr>
+    <tr>
+      <td>mouseEnterDelay</td>
+      <td>Replace with `showDelay`</td>
+    </tr>
+    <tr>
+      <td>mouseLeaveDelay</td>
+      <td>Replace with `hideDelay`</td>
+    </tr>
+    <tr>
+      <td>pointing</td>
+      <td>Replace with `withArrow`</td>
+    </tr>
+    <tr>
+      <td>subtle</td>
+      <td>Replace `subtle={false}` with `inverted`</td>
+    </tr>
+    <tr>
+      <td>dismissOnContentMouseEnter</td>
+      <td>
+        Use controlled `visible` prop with custom `onMouseEnter` handler on `content` ([codesandbox
+        example](https://codesandbox.io/s/tooltip-migration-2gy8r1?file=/DismissOnContentMouseEnterExample.jsx:246-279))
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Postioning props: `align`, `autoSize`, `flipBoundary`, `offset`,`overflowBoundary`,`popperRef`,`position`,`positionFixed`,`target`, `unstable_disableTether`, `unstable_pinned` are now attributes of the `positioning` prop.
 v9 positioning shorthand is recommended when only `positon` or/and `align` is used: `<Tooltip position="below" align="end" />` can be migrated to a string like `<Tooltip positioning="below-end" />`.

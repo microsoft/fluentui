@@ -1,4 +1,4 @@
-import { Meta, Source } from '@storybook/addon-docs';
+import { Meta, Source } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Developer/Unprocessed Styles" />
 
@@ -84,14 +84,59 @@ export default {
 
 ### Package Support Status
 
-| Package                      | Ships Processed Styles | Raw Modules Available | Version                                                                                                                                                                                                                                                                                                                       |
-| ---------------------------- | ---------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@fluentui/react-components` | ⚠️ Yes                 | ✅ Available          | [v9.67.0+](https://www.npmjs.com/package/@fluentui/react-components/v/9.67.0)                                                                                                                                                                                                                                                 |
-| `@fluentui-contrib/*`        | ✅ No                  | ✅ Not needed         | N/A                                                                                                                                                                                                                                                                                                                           |
-| `@fluentui-copilot/*`        | ⚠️ Yes                 | ✅ Available          | [v0.28.4+](https://www.npmjs.com/package/@fluentui-copilot/react-copilot/v/0.28.4), Older major version back-ports / [v0.26.2-hotfix.1](https://www.npmjs.com/package/@fluentui-copilot/react-copilot/v/0.26.2-hotfix.1), [v0.25.3-hotfix.1](https://www.npmjs.com/package/@fluentui-copilot/react-copilot/v/0.25.3-hotfix.1) |
-| `@fluentui/react-icons`      | ⚠️ Yes                 | ✅ Available          | [v2.0.307+](https://www.npmjs.com/package/@fluentui/react-icons/v/2.0.307)                                                                                                                                                                                                                                                    |
-| `@fluentui/react-charts`     | ⚠️ Yes                 | ✅ Available          | [v9.2.0+](https://www.npmjs.com/package/@fluentui/react-charts/v/9.2.0)                                                                                                                                                                                                                                                       |
-| MSFT Design react-icons      | ⚠️ Yes                 | ❌ Not planned        | -                                                                                                                                                                                                                                                                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Ships Processed Styles</th>
+      <th>Raw Modules Available</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`@fluentui/react-components`</td>
+      <td>⚠️ Yes</td>
+      <td>✅ Available</td>
+      <td>[v9.67.0+](https://www.npmjs.com/package/@fluentui/react-components/v/9.67.0)</td>
+    </tr>
+    <tr>
+      <td>`@fluentui-contrib/*`</td>
+      <td>✅ No</td>
+      <td>✅ Not needed</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>`@fluentui-copilot/*`</td>
+      <td>⚠️ Yes</td>
+      <td>✅ Available</td>
+      <td>
+        [v0.28.4+](https://www.npmjs.com/package/@fluentui-copilot/react-copilot/v/0.28.4), Older major version
+        back-ports /
+        [v0.26.2-hotfix.1](https://www.npmjs.com/package/@fluentui-copilot/react-copilot/v/0.26.2-hotfix.1),
+        [v0.25.3-hotfix.1](https://www.npmjs.com/package/@fluentui-copilot/react-copilot/v/0.25.3-hotfix.1)
+      </td>
+    </tr>
+    <tr>
+      <td>`@fluentui/react-icons`</td>
+      <td>⚠️ Yes</td>
+      <td>✅ Available</td>
+      <td>[v2.0.307+](https://www.npmjs.com/package/@fluentui/react-icons/v/2.0.307)</td>
+    </tr>
+    <tr>
+      <td>`@fluentui/react-charts`</td>
+      <td>⚠️ Yes</td>
+      <td>✅ Available</td>
+      <td>[v9.2.0+](https://www.npmjs.com/package/@fluentui/react-charts/v/9.2.0)</td>
+    </tr>
+    <tr>
+      <td>MSFT Design react-icons</td>
+      <td>⚠️ Yes</td>
+      <td>❌ Not planned</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Benefits
 

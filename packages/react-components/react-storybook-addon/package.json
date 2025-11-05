@@ -34,15 +34,10 @@
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@storybook/addon-docs": "^8.6.14",
-    "@storybook/components": "^8.6.14",
-    "@storybook/core": "^8.6.14",
-    "@storybook/core-events": "^8.6.14",
+    "@storybook/addon-docs": "^9.1.16",
+    "@storybook/core": "^9.1.16",
     "@storybook/icons": "^1.3.2",
-    "@storybook/preview-api": "^8.6.14",
-    "@storybook/manager-api": "^8.6.14",
-    "@storybook/react": "^8.6.14",
-    "@storybook/theming": "^8.6.14",
+    "@storybook/react": "^9.1.16",
     "@types/react-dom": ">=16.9.0 <20.0.0",
     "@types/react": ">=16.14.0 <20.0.0",
     "react-dom": ">=16.14.0 <20.0.0",

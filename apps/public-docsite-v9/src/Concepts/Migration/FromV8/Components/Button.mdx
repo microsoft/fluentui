@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v8/Components/Button Migration" />
 
@@ -12,61 +12,230 @@ To migrate a button replace the v8 usage with the corresponding v9 button varian
 
 ## Button Variant Mapping
 
-| v8 Button variant    | v9 Button variant               |
-| -------------------- | ------------------------------- |
-| DefaultButton        | Button                          |
-| ActionButton         | Button appearance="transparent" |
-| CommandButton        | Button                          |
-| CommandBarButton     | Button                          |
-| CompoundButton       | CompoundButton                  |
-| ContextualMenuButton | Menu / MenuButton               |
-| PrimaryButton        | Button appearance="primary"     |
-| Button split         | SplitButton                     |
-| Button toggle        | ToggleButton                    |
+<table>
+  <thead>
+    <tr>
+      <th>v8 Button variant</th>
+      <th>v9 Button variant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DefaultButton</td>
+      <td>Button</td>
+    </tr>
+    <tr>
+      <td>ActionButton</td>
+      <td>Button appearance="transparent"</td>
+    </tr>
+    <tr>
+      <td>CommandButton</td>
+      <td>Button</td>
+    </tr>
+    <tr>
+      <td>CommandBarButton</td>
+      <td>Button</td>
+    </tr>
+    <tr>
+      <td>CompoundButton</td>
+      <td>CompoundButton</td>
+    </tr>
+    <tr>
+      <td>ContextualMenuButton</td>
+      <td>Menu / MenuButton</td>
+    </tr>
+    <tr>
+      <td>PrimaryButton</td>
+      <td>Button appearance="primary"</td>
+    </tr>
+    <tr>
+      <td>Button split</td>
+      <td>SplitButton</td>
+    </tr>
+    <tr>
+      <td>Button toggle</td>
+      <td>ToggleButton</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Button Props Mapping
 
-| v8 IButtonProps          | v9 ButtonProps (replacements)              |
-| ------------------------ | ------------------------------------------ |
-| allowDisabledFocus       | disabledFocusable                          |
-| ariaLabel                | HTML aria-label                            |
-| ariaDescription          | (removed)                                  |
-| ariaHidden               | HTML aria-hidden                           |
-| checked                  | (use ToggleButton checked)                 |
-| className                | className                                  |
-| children                 | children                                   |
-| componentRef             | ref                                        |
-| data                     | (removed)                                  |
-| defaultRender            | (removed)                                  |
-| disabled                 | disabled                                   |
-| getClassNames            |                                            |
-| getSplitButtonClassNames | (use SplitButton)                          |
-| href                     | (use Link)                                 |
-| iconProps                | icon (slot)                                |
-| disabled                 | disabled                                   |
-| key                      | key                                        |
-| keyTipProps              |                                            |
-| menuAs                   | (use Menu and HTML as)                     |
-| menuIconProps            | (use MenuButton menuIcon slot)             |
-| menuProps                | (use Menu and MenuButton)                  |
-| menuTriggerKeyCode       |                                            |
-| onMenuClick              | HTML onClick                               |
-| onRenderAriaDescription  | (removed)                                  |
-| onRenderChildren         | children                                   |
-| onRenderDescription      | (use CompoundButton secondaryContent slot) |
-| onRenderIcon             | icon (slot)                                |
-| onRenderMenuIcon         | (use MenuButton icon)                      |
-| onRenderText             | children                                   |
-| persistMenu              | (use Menu)                                 |
-| primary                  | appearance=primary                         |
-| primaryActionButtonProps | (use SplitButton)                          |
-| primaryDisabled          | (use SplitButton)                          |
-| secondaryText            | (use CompoundButton secondaryContent)      |
-| split                    | (use SplitButton)                          |
-| splitButtonAriaLabel     | HTML aria-label                            |
-| splitButtonMenuProps     | (use Menu and SplitButton)                 |
-| styles                   | (use makeStyles and className)             |
-| text                     | children                                   |
-| theme                    | (use FluentProvider)                       |
-| toggle                   | (use ToggleButton)                         |
-| uniqueId                 | HTML key                                   |
+<table>
+  <thead>
+    <tr>
+      <th>v8 IButtonProps</th>
+      <th>v9 ButtonProps (replacements)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>allowDisabledFocus</td>
+      <td>disabledFocusable</td>
+    </tr>
+    <tr>
+      <td>ariaLabel</td>
+      <td>HTML aria-label</td>
+    </tr>
+    <tr>
+      <td>ariaDescription</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>ariaHidden</td>
+      <td>HTML aria-hidden</td>
+    </tr>
+    <tr>
+      <td>checked</td>
+      <td>(use ToggleButton checked)</td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>className</td>
+    </tr>
+    <tr>
+      <td>children</td>
+      <td>children</td>
+    </tr>
+    <tr>
+      <td>componentRef</td>
+      <td>ref</td>
+    </tr>
+    <tr>
+      <td>data</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>defaultRender</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>disabled</td>
+      <td>disabled</td>
+    </tr>
+    <tr>
+      <td>getClassNames</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>getSplitButtonClassNames</td>
+      <td>(use SplitButton)</td>
+    </tr>
+    <tr>
+      <td>href</td>
+      <td>(use Link)</td>
+    </tr>
+    <tr>
+      <td>iconProps</td>
+      <td>icon (slot)</td>
+    </tr>
+    <tr>
+      <td>disabled</td>
+      <td>disabled</td>
+    </tr>
+    <tr>
+      <td>key</td>
+      <td>key</td>
+    </tr>
+    <tr>
+      <td>keyTipProps</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>menuAs</td>
+      <td>(use Menu and HTML as)</td>
+    </tr>
+    <tr>
+      <td>menuIconProps</td>
+      <td>(use MenuButton menuIcon slot)</td>
+    </tr>
+    <tr>
+      <td>menuProps</td>
+      <td>(use Menu and MenuButton)</td>
+    </tr>
+    <tr>
+      <td>menuTriggerKeyCode</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>onMenuClick</td>
+      <td>HTML onClick</td>
+    </tr>
+    <tr>
+      <td>onRenderAriaDescription</td>
+      <td>(removed)</td>
+    </tr>
+    <tr>
+      <td>onRenderChildren</td>
+      <td>children</td>
+    </tr>
+    <tr>
+      <td>onRenderDescription</td>
+      <td>(use CompoundButton secondaryContent slot)</td>
+    </tr>
+    <tr>
+      <td>onRenderIcon</td>
+      <td>icon (slot)</td>
+    </tr>
+    <tr>
+      <td>onRenderMenuIcon</td>
+      <td>(use MenuButton icon)</td>
+    </tr>
+    <tr>
+      <td>onRenderText</td>
+      <td>children</td>
+    </tr>
+    <tr>
+      <td>persistMenu</td>
+      <td>(use Menu)</td>
+    </tr>
+    <tr>
+      <td>primary</td>
+      <td>appearance=primary</td>
+    </tr>
+    <tr>
+      <td>primaryActionButtonProps</td>
+      <td>(use SplitButton)</td>
+    </tr>
+    <tr>
+      <td>primaryDisabled</td>
+      <td>(use SplitButton)</td>
+    </tr>
+    <tr>
+      <td>secondaryText</td>
+      <td>(use CompoundButton secondaryContent)</td>
+    </tr>
+    <tr>
+      <td>split</td>
+      <td>(use SplitButton)</td>
+    </tr>
+    <tr>
+      <td>splitButtonAriaLabel</td>
+      <td>HTML aria-label</td>
+    </tr>
+    <tr>
+      <td>splitButtonMenuProps</td>
+      <td>(use Menu and SplitButton)</td>
+    </tr>
+    <tr>
+      <td>styles</td>
+      <td>(use makeStyles and className)</td>
+    </tr>
+    <tr>
+      <td>text</td>
+      <td>children</td>
+    </tr>
+    <tr>
+      <td>theme</td>
+      <td>(use FluentProvider)</td>
+    </tr>
+    <tr>
+      <td>toggle</td>
+      <td>(use ToggleButton)</td>
+    </tr>
+    <tr>
+      <td>uniqueId</td>
+      <td>HTML key</td>
+    </tr>
+  </tbody>
+</table>

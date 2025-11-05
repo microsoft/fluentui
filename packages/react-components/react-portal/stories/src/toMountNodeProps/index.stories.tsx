@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import descriptionMd from './toMountNodePropsDescription.md';
 
 export { Default } from './Default.stories';

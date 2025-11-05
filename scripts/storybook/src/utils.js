@@ -22,7 +22,6 @@ const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
  * ```js
  *  module.exports = {
  *    addons: [
-        '@storybook/addon-essentials',
         loadWorkspaceAddon('@fluentui/custom-storybook-addon',{ tsConfigPath: path.join(__dirname,'../tsconfig.base.json') }),
       ]
  *  }
@@ -344,8 +343,7 @@ function registerTsPaths(options) {
  */
 function registerRules(options) {
   const { config, rules } = options;
-  config.module = config.module ?? {};
-  config.module.rules = config.module.rules ?? [];
+  config.module = config.module ?? { rules: [] };
   config.module.rules.push(...rules);
 
   return config;
@@ -394,8 +392,7 @@ function processBabelLoaderOptions(loaderConfig) {
  */
 function overrideDefaultBabelLoader(options) {
   const { config } = options;
-  config.module = config.module ?? {};
-  config.module.rules = config.module.rules ?? [];
+  config.module = config.module ?? { rules: [] };
 
   const loader = getBabelLoader(/** @type {RuleSetRule[]}*/ (config.module.rules));
 

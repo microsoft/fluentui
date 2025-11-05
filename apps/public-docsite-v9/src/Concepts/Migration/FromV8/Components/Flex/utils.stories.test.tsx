@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { render } from '@testing-library/react';
-
 import { CodeExample } from './utils.stories';
 
 // Mock the Source component to verify it receives correct props

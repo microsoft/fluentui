@@ -287,7 +287,7 @@ Components with complex API require many long stories, both for documentation an
 ```tsx
 // @filename Button.stories.tsx
 import { Button, ButtonProps } from './Button'; // the component
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 export const Default = (props: ButtonProps) => <Button {...props}>Button</Button>;
 export const ButtonWithIcon = () => <Button icon={<CalendarIcon />}>Text</Button>;
@@ -303,7 +303,7 @@ export default {
 ```tsx
 // @filename Button.stories.tsx
 import { Button } from './Button'; // the component
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 // 💡 `Default` re-export needs to be always first !
 export * from 'ButtonDefault.stories';
