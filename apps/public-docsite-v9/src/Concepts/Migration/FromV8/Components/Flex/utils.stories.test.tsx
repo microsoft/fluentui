@@ -64,13 +64,13 @@ test('renders Markdown source blocks', () => {
       code: `function test() {
           console.log("test");
         }`,
-      language: 'js',
+      language: 'jsextra',
     }),
   );
 
   // Verify Source component rendered correctly
   const sourceElement = getByTestId('source');
-  expect(sourceElement.getAttribute('data-language')).toBe('js');
+  expect(sourceElement.getAttribute('data-language')).toBe('jsextra');
   expect(sourceElement.textContent).toContain('function test()');
 });
 
@@ -116,6 +116,8 @@ test.each([
     </CodeExample>,
   );
 
+  const resolvedLanguage = language === 'js' ? 'jsextra' : language;
+
   const heading = getByRole('heading', { level: 3 });
   expect(heading.textContent).toBe(expectedHeader);
 
@@ -123,12 +125,12 @@ test.each([
   expect(mockSource).toHaveBeenCalledWith(
     expect.objectContaining({
       code: 'Code',
-      language,
+      language: resolvedLanguage,
     }),
   );
 
   const sourceElement = getByTestId('source');
-  expect(sourceElement.getAttribute('data-language')).toBe(language);
+  expect(sourceElement.getAttribute('data-language')).toBe(resolvedLanguage);
   expect(sourceElement.textContent).toBe('Code');
 });
 
@@ -150,10 +152,10 @@ test('overrides the default title', () => {
   expect(mockSource).toHaveBeenCalledWith(
     expect.objectContaining({
       code: 'Code',
-      language: 'js',
+      language: 'jsextra',
     }),
   );
 
   const sourceElement = getByTestId('source');
-  expect(sourceElement.getAttribute('data-language')).toBe('js');
+  expect(sourceElement.getAttribute('data-language')).toBe('jsextra');
 });
