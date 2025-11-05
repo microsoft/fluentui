@@ -78,15 +78,23 @@ const useClasses = makeStyles({
 
   dotOrbitSpinner: {
     position: 'relative',
-    width: '70px',
-    height: '70px',
+    width: '140px', // increased so orbit looks larger
+    height: '140px',
+    display: 'inline-block',
   },
   orbitDot: {
     position: 'absolute',
-    width: '10px',
-    height: '10px',
+    left: '50%',
+    top: '50%',
+    width: '12px',
+    height: '12px',
     borderRadius: '50%',
     backgroundColor: tokens.colorBrandBackground,
+    // place dot at center then push it outwards on the X axis to set orbit radius
+    // translate(-50%, -50%) keeps the dot centered on its own center
+    transform: 'translate(-50%, -50%) translateY(-30px)',
+    transformOrigin: 'center center',
+    willChange: 'transform',
   },
 
   // Linear spinners
@@ -176,25 +184,46 @@ const SlideMotion = createMotionComponent<{ delay?: number }>(({ delay = 0 }) =>
 ]);
 
 // Orbital motion for dots
-const OrbitMotion = createMotionComponent(({ element }) => {
-  const index = parseInt(element.dataset.index || '0', 10);
-  const angle = index * 60 - 90; // 6 dots, 60 degrees apart, start at top
-  const radius = 25;
-
-  return {
-    keyframes: [
+const OrbitMotion = createMotionComponent<{ duration?: number; easing?: string; delay?: number }>(
+  ({ duration = motionTokens.durationUltraSlow * 6, easing = motionTokens.curveEasyEase, delay = 0 }) => {
+    const finalAngle = '740deg';
+    return [
+      // rotation atom
       {
-        transform: `rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
+        keyframes: [
+          {
+            rotate: '0deg',
+            easing,
+          },
+          {
+            offset: 0.8,
+            rotate: finalAngle,
+          },
+          {
+            offset: 1,
+            rotate: finalAngle,
+          },
+        ],
+        duration,
+        delay,
+        iterations: Infinity,
       },
+      // opacity atom
       {
-        transform: `rotate(${angle + 360}deg) translateX(${radius}px) rotate(-${angle - 360}deg)`,
+        keyframes: [
+          { opacity: 0 },
+          { offset: 0.4, opacity: 1 },
+          { offset: 0.8, opacity: 0 },
+          { offset: 1, opacity: 0 },
+        ],
+        duration,
+        delay,
+        fill: 'both',
+        iterations: Infinity,
       },
-    ],
-    duration: motionTokens.durationUltraSlow * 6, // 3 seconds
-    iterations: Infinity,
-    easing: motionTokens.curveLinear,
-  };
-});
+    ];
+  },
+);
 
 export const StaggerSpinners = (): JSXElement => {
   const classes = useClasses();
@@ -237,9 +266,9 @@ export const StaggerSpinners = (): JSXElement => {
         </div>
       </div>
 
-      {/* Dot Orbit Spinner */}
+      {/* Orbit Spinner */}
       <div className={classes.spinnerSection} style={{ display: '' }}>
-        <h3 className={classes.spinnerTitle}>Dot Orbit Spinner</h3>
+        <h3 className={classes.spinnerTitle}>Orbit</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.dotOrbitSpinner}>
             <Stagger.In itemDelay={motionTokens.durationFaster}>
