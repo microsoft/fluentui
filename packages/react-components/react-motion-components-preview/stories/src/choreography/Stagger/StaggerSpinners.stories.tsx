@@ -164,11 +164,24 @@ const BarsScaleMotion = createMotionComponent<{ duration?: number; easing?: stri
   ({ duration = motionTokens.durationUltraSlow * 2, easing = motionTokens.curveEasyEase, delay = 0 }) => [
     {
       keyframes: [
-        { transform: 'scaleY(0.3)', easing },
+        { transform: 'scaleY(0.25)', easing },
         { transform: 'scaleY(1)', easing },
-        { transform: 'scaleY(0.3)' },
+        { transform: 'scaleY(0.25)' },
       ],
       duration,
+      delay,
+      fill: 'both',
+      iterations: Infinity,
+    },
+    // opacity atom oscillating at a different rate
+    {
+      keyframes: [
+        { offset: 0, opacity: 1, easing: motionTokens.curveAccelerateMin },
+        { offset: 0.15, opacity: 0.5 },
+        { offset: 0.4, opacity: 0.5, easing: motionTokens.curveDecelerateMin },
+        { offset: 0.6, opacity: 1 },
+      ],
+      duration: duration * 3,
       delay,
       fill: 'both',
       iterations: Infinity,
