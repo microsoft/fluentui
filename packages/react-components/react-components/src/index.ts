@@ -1917,6 +1917,7 @@ export type {
   AtomMotionFn,
   MotionComponentProps,
   MotionImperativeRef,
+  PresenceComponent,
   PresenceMotion,
   PresenceMotionFn,
   PresenceComponentProps,

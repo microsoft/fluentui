@@ -49,7 +49,7 @@ type FluentDocsConfig =
           };
     };
 
-export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void] {
+export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void, FluentGlobals, FluentGlobals] {
   return useStorybookGlobals();
 }
 

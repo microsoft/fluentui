@@ -46,14 +46,12 @@ export const FontSize = (): JSXElement => {
 
   return (
     <div className={styles.propGrid}>
-      {fontSizes.map(fontSize => (
-        <>
-          <div key={fontSize}>{fontSize}</div>
-          <div key={`${fontSize}-value`} style={{ fontSize: theme[fontSize], lineHeight: theme[fontSize] }}>
-            {fontSize}
-          </div>
-        </>
-      ))}
+      {fontSizes.map(fontSize => [
+        <div key={fontSize}>{fontSize}</div>,
+        <div key={`${fontSize}-value`} style={{ fontSize: theme[fontSize], lineHeight: theme[fontSize] }}>
+          {fontSize}
+        </div>,
+      ])}
     </div>
   );
 };

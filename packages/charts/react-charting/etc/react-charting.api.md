@@ -22,12 +22,16 @@ import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from '@fluentui/re
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { ITheme as ITheme_2 } from '@fluentui/react';
 import type { JSXElement } from '@fluentui/utilities';
+import type { Margin } from '@fluentui/chart-utilities';
 import * as React_2 from 'react';
 import { SankeyLink } from 'd3-sankey';
 import { SankeyNode } from 'd3-sankey';
 import { ScaleBand } from 'd3-scale';
 import { ScaleLinear } from 'd3-scale';
 import { TimeLocaleDefinition } from 'd3-time-format';
+
+// @public (undocumented)
+export const AnnotationOnlyChart: React_2.FC<IAnnotationOnlyChartProps>;
 
 // @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
@@ -114,6 +118,7 @@ export interface ChartAnnotationStyleProps {
     fontWeight?: React_2.CSSProperties['fontWeight'];
     opacity?: number;
     padding?: string;
+    rotation?: number;
     textColor?: string;
 }
 
@@ -287,6 +292,21 @@ export interface IAccessibilityProps {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
+}
+
+// @public
+export interface IAnnotationOnlyChartProps {
+    annotations: ChartAnnotation[];
+    chartTitle?: string;
+    componentRef?: React_2.RefObject<IChart>;
+    description?: string;
+    fontColor?: string;
+    fontFamily?: string;
+    height?: number;
+    margin?: Partial<Margin>;
+    paperBackgroundColor?: string;
+    plotBackgroundColor?: string;
+    width?: number;
 }
 
 // @public
