@@ -6,6 +6,7 @@ import {
   Chart,
   Margins,
   DataPoint,
+  ChartAnnotation,
   HorizontalBarChartWithAxisDataPoint,
   GroupedVerticalBarChartData,
   HeatMapChartDataPoint,
@@ -150,9 +151,19 @@ export interface CartesianChartStyles {
   chartWrapper?: string;
 
   /**
+   * Styles for the element wrapping the svg and overlays for annotation
+   */
+  plotContainer?: string;
+
+  /**
    * Styles for the svg tooltip
    */
   svgTooltip?: string;
+
+  /**
+   * Styles applied to the annotation layer root element
+   */
+  annotationLayer?: string;
 
   /**
    * Styles for the chart svg element
@@ -285,6 +296,11 @@ export interface CartesianChartProps {
    * @default 10
    */
   xAxistickSize?: number;
+
+  /**
+   * Text annotations rendered on top of the chart area
+   */
+  annotations?: ChartAnnotation[];
 
   /**
    * defines the space between the tick line and the data label
@@ -628,6 +644,11 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    * prop to construct the y-axis
    */
   stringDatasetForYAxisDomain?: string[];
+
+  /**
+   * Annotations to render on top of the chart area.
+   */
+  annotations?: ChartAnnotation[];
 
   /**
    * The prop used to define the culture to localize the numbers and date

@@ -13,6 +13,7 @@ import { getAxisTitleStyle, getTooltipStyle } from '../../utilities/index';
 export const cartesianchartClassNames: SlotClassNames<CartesianChartStyles> = {
   root: 'fui-cart__root',
   chartWrapper: 'fui-cart__chartWrapper',
+  plotContainer: 'fui-cart__plotContainer',
   axisTitle: 'fui-cart__axisTitle',
   xAxis: 'fui-cart__xAxis',
   yAxis: 'fui-cart__yAxis',
@@ -26,6 +27,7 @@ export const cartesianchartClassNames: SlotClassNames<CartesianChartStyles> = {
   axisAnnotation: 'fui-cart__axisAnnotation',
   chartTitle: 'fui-cart__chartTitle',
   chart: 'fui-cart__chart',
+  annotationLayer: 'fui-cart__annotationLayer',
 };
 
 /**
@@ -42,7 +44,13 @@ const useStyles = makeStyles({
     textAlign: 'left',
   },
   chartWrapper: {
+    position: 'relative',
     overflow: 'auto',
+  },
+  plotContainer: {
+    position: 'relative',
+    width: '100%',
+    height: '100%',
   },
   axisTitle: getAxisTitleStyle() as GriffelStyle,
   axisAnnotation: getAxisTitleStyle() as GriffelStyle,
@@ -97,6 +105,9 @@ const useStyles = makeStyles({
       fill: 'Canvas',
     },
   },
+  annotationLayer: {
+    pointerEvents: 'none',
+  },
   tooltip: getTooltipStyle() as GriffelStyle,
 });
 /**
@@ -112,6 +123,10 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
       cartesianchartClassNames.chartWrapper,
       props.reflowProps?.mode === 'min-width' ? baseStyles.chartWrapper : '',
       props.styles?.chartWrapper,
+    ),
+    plotContainer: mergeClasses(
+      cartesianchartClassNames.plotContainer,
+      baseStyles.plotContainer /*props.styles?.plotContainer*/,
     ),
     axisTitle: mergeClasses(cartesianchartClassNames.axisTitle, baseStyles.axisTitle /*props.styles?.axisTitle*/),
     xAxis: mergeClasses(cartesianchartClassNames.xAxis, baseStyles.xAxis /*props.styles?.xAxis*/),
@@ -129,6 +144,10 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
       baseStyles.legendContainer /*props.styles?.legendContainer*/,
     ),
     svgTooltip: mergeClasses(cartesianchartClassNames.svgTooltip, baseStyles.svgTooltip, props.styles?.svgTooltip),
+    annotationLayer: mergeClasses(
+      cartesianchartClassNames.annotationLayer,
+      baseStyles.annotationLayer /*props.styles?.annotationLayer*/,
+    ),
     tooltip: mergeClasses(cartesianchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
     axisAnnotation: mergeClasses(
       cartesianchartClassNames.axisAnnotation,
