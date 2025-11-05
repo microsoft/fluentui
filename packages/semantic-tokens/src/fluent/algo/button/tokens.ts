@@ -25,6 +25,7 @@ import {
   groupButtonPrimaryBackgroundSelected,
   groupButtonPrimaryStrokeSelected,
   groupButtonSubtleBackgroundSelected,
+  groupButtonSubtleIconForegroundSelected,
 } from '../../../groups/button/tokens';
 
 // Density
@@ -73,3 +74,5 @@ export const groupButtonPrimaryStrokeHoverSelected = `hsl(from ${groupButtonPrim
 export const groupButtonPrimaryStrokePressedSelected = `hsl(from ${groupButtonPrimaryStrokeSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
 export const groupButtonSubtleBackgroundHoverSelected = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
 export const groupButtonSubtleBackgroundPressedSelected = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
+export const groupButtonSubtleIconForegroundHoverSelected = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+export const groupButtonSubtleIconForegroundPressedSelected = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;

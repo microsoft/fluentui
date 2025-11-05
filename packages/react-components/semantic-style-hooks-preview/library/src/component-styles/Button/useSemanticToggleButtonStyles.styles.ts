@@ -103,6 +103,18 @@ const useRootCheckedStyles = makeStyles({
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonSubtleIconForegroundSelected,
     },
+
+    ':hover': {
+      [`& .${buttonClassNames.icon}`]: {
+        color: semanticTokens.groupButtonSubtleIconForegroundHoverSelected,
+      },
+    },
+
+    ':hover:active': {
+      [`& .${buttonClassNames.icon}`]: {
+        color: semanticTokens.groupButtonSubtleIconForegroundPressedSelected,
+      },
+    },
   },
   transparent: {
     color: semanticTokens.groupButtonTransparentForegroundSelected,

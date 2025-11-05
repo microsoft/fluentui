@@ -227,4 +227,6 @@ export {
   groupButtonPrimaryStrokePressedSelected,
   groupButtonSubtleBackgroundHoverSelected,
   groupButtonSubtleBackgroundPressedSelected,
+  groupButtonSubtleIconForegroundHoverSelected,
+  groupButtonSubtleIconForegroundPressedSelected,
 } from './button/tokens';

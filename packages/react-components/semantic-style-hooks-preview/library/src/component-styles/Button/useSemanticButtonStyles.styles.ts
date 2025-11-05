@@ -215,7 +215,8 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonPrimaryBackground,
+        // Subtle shares hover state with selected state
+        color: semanticTokens.groupButtonSubtleIconForegroundHoverSelected,
       },
     },
 
@@ -230,7 +231,8 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonPrimaryBackgroundHover,
+        // Subtle shares pressed state with selected state
+        color: semanticTokens.groupButtonSubtleIconForegroundPressedSelected,
       },
     },
 
@@ -651,7 +653,7 @@ export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
   const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = mergeClasses(
-    // state.root.className,
+    state.root.className,
     buttonClassNames.root,
     rootBaseClassName,
 
@@ -687,7 +689,7 @@ export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
 
   if (state.icon) {
     state.icon.className = mergeClasses(
-      // state.icon.className,
+      state.icon.className,
       buttonClassNames.icon,
       iconBaseClassName,
       !!state.root.children && iconStyles[iconPosition],

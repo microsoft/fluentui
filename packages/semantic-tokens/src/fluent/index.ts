@@ -224,4 +224,6 @@ export {
   groupButtonPrimaryStrokePressedSelected,
   groupButtonSubtleBackgroundHoverSelected,
   groupButtonSubtleBackgroundPressedSelected,
+  groupButtonSubtleIconForegroundHoverSelected,
+  groupButtonSubtleIconForegroundPressedSelected,
 } from './algo/index';

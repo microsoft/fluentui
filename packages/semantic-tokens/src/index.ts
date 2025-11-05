@@ -360,4 +360,6 @@ export {
   groupButtonPrimaryStrokePressedSelected,
   groupButtonSubtleBackgroundHoverSelected,
   groupButtonSubtleBackgroundPressedSelected,
+  groupButtonSubtleIconForegroundHoverSelected,
+  groupButtonSubtleIconForegroundPressedSelected,
 } from './fluent/algo/index';
