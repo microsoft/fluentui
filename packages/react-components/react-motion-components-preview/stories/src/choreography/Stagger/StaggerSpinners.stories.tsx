@@ -1,5 +1,4 @@
 import * as React from 'react';
-import StaggerSpinnersDescription from './StaggerSpinners.stories.md';
 import { makeStyles, tokens, motionTokens, createMotionComponent, JSXElement } from '@fluentui/react-components';
 import { Stagger } from '@fluentui/react-motion-components-preview';
 
@@ -175,11 +174,7 @@ const OrbitRotateMotion = createMotionComponent<{ duration?: number; easing?: st
 const BarsScaleMotion = createMotionComponent<{ duration?: number; easing?: string; delay?: number }>(
   ({ duration = motionTokens.durationUltraSlow * 2, easing = motionTokens.curveEasyEase, delay = 0 }) => [
     {
-      keyframes: [
-        { transform: 'scaleY(0.25)', easing },
-        { transform: 'scaleY(1)', easing },
-        { transform: 'scaleY(0.25)' },
-      ],
+      keyframes: [{ scale: '1 0.25', easing }, { scale: '1 1', easing }, { scale: '1 0.25' }],
       duration,
       delay,
       fill: 'both',
@@ -221,10 +216,10 @@ const BlocksSlideMotion = createMotionComponent<{ delay?: number }>(({ delay = 0
   // horizontal slide atom
   {
     keyframes: [
-      { offset: 0, transform: 'translateX(0px)', easing: motionTokens.curveEasyEase },
-      { offset: 0.5, transform: 'translateX(-30px)', easing: motionTokens.curveEasyEaseMax },
-      { offset: 0.85, transform: 'translateX(0px)' },
-      { offset: 1, transform: 'translateX(0px)' },
+      { offset: 0, translate: '0px', easing: motionTokens.curveEasyEase },
+      { offset: 0.5, translate: '-30px', easing: motionTokens.curveEasyEaseMax },
+      { offset: 0.85, translate: '0px' },
+      { offset: 1, translate: '0px' },
     ],
     duration: 2000,
     delay,
