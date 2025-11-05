@@ -167,9 +167,12 @@ const StaggerMain: React.FC<StaggerProps> = props => {
  * Stagger can be interactively toggled between entrance and exit animations using the `visible` prop.
  *
  * @param children - React elements to animate. Elements are cloned with animation props.
- * @param visible - Controls animation direction: `true` for enter, `false` for exit. Defaults to `false`.
- * @param itemDelay - Milliseconds between each item's animation start. Defaults to 100ms.
- * @param itemDuration - Milliseconds each item's animation lasts. Only used with `delayMode="timing"`. Defaults to 200ms.
+ * @param visible - Controls animation direction. When `true`, the group is animating "enter" (items shown);
+ * when `false`, the group is animating "exit" (items hidden). Defaults to `false`.
+ * @param itemDelay - Milliseconds between each item's animation start.
+ * Defaults to the package's default delay (see `DEFAULT_ITEM_DELAY`).
+ * @param itemDuration - Milliseconds each item's animation lasts. Only used with `delayMode="timing"`.
+ * Defaults to the package's default item duration (see `DEFAULT_ITEM_DURATION`).
  * @param reversed - Whether to reverse the stagger sequence (last item animates first). Defaults to `false`.
  * @param hideMode - How children's visibility/mounting is managed. Auto-detects if not specified.
  * @param delayMode - How staggering timing is implemented. Auto-detects if not specified.
@@ -194,10 +197,12 @@ const StaggerMain: React.FC<StaggerProps> = props => {
  *
  * @example
  * ```tsx
+ * import { Stagger, Fade, Scale, Rotate } from '@fluentui/react-motion-components-preview';
+ *
  * // Auto-detects optimal modes for presence components (delayProp + visibleProp)
  * <Stagger visible={isVisible} itemDelay={150}>
- *   <Scale><div>Item 1</div></Scale>
  *   <Fade><div>Item 2</div></Fade>
+ *   <Scale><div>Item 1</div></Scale>
  *   <Rotate><div>Item 3</div></Rotate>
  * </Stagger>
  *

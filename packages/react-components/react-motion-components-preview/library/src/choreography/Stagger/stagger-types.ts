@@ -23,16 +23,25 @@ export interface StaggerProps {
   /** React elements to animate. Elements are cloned with animation props. */
   children: React.ReactNode;
 
-  /** Controls children animation direction: `true` for enter, `false` for exit. Defaults to `false`. */
+  /**
+   * Controls children animation direction. When `true`, the group is animating "enter" (items shown).
+   * When `false`, the group is animating "exit" (items hidden).
+   */
   visible?: PresenceComponentProps['visible'];
 
   /** Whether to reverse the stagger sequence (last item animates first). Defaults to `false`. */
   reversed?: boolean;
 
-  /** Milliseconds between each child's animation start. Defaults to 100ms. */
+  /**
+   * Milliseconds between each child's animation start.
+   * Defaults to the package's default delay (see `DEFAULT_ITEM_DELAY`).
+   */
   itemDelay?: number;
 
-  /** Milliseconds each child's animation lasts. Only used with `delayMode="timing"`. Defaults to 200ms. */
+  /**
+   * Milliseconds each child's animation lasts. Only used with `delayMode="timing"`.
+   * Defaults to the package's default duration (see `DEFAULT_ITEM_DURATION`).
+   */
   itemDuration?: number;
 
   /** How children's visibility/mounting is managed. Auto-detects if not specified. */
