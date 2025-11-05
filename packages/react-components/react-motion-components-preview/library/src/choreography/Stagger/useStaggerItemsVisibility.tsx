@@ -15,14 +15,16 @@ export interface UseStaggerItemsVisibilityParams
 /**
  * Hook that tracks the visibility of a staggered sequence of items as time progresses.
  *
- * **Behavior:**
- * - All modes start in final state: visible for 'enter', hidden for 'exit'
- * - All modes: No animation on first render (items already in final state)
- * - On subsequent renders: Items animate from start state to final state over time
- *
- * **States:**
- * - Enter direction: Items start visible (final state)
- * - Exit direction: Items start hidden (final state)
+ * Behavior summary:
+ * - hideMode 'visibleProp' or 'visibilityStyle':
+ *   - On the first render, items are placed in their final state (enter => visible, exit => hidden)
+ *     and no animation runs.
+ *   - On subsequent renders when direction changes, items animate from the opposite state
+ *     to the final state over the stagger timeline.
+ * - hideMode 'unmount':
+ *   - Items are mounted/unmounted and animations run on first render and on subsequent changes.
+ *   - For 'enter', items start hidden and animate to visible; for 'exit', items start visible
+ *     and animate to hidden.
  *
  * @param itemCount - Total number of items to stagger
  * @param itemDelay - Milliseconds between the start of each item's animation
@@ -32,7 +34,7 @@ export interface UseStaggerItemsVisibilityParams
  * @param onMotionFinish - Callback fired when the full stagger sequence completes
  * @param hideMode - How children's visibility is managed: 'visibleProp', 'visibilityStyle', or 'unmount'
  *
- * @returns An `itemsVisibility` array of booleans indicating which items are currently visible
+ * @returns An object with `itemsVisibility: boolean[]` indicating which items are currently visible
  */
 export function useStaggerItemsVisibility({
   itemCount,
