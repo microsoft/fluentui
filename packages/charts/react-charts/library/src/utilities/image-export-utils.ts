@@ -1,6 +1,7 @@
 'use client';
 
 import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
+import { isHTMLElement } from '@fluentui/react-utilities';
 import { copyStyle, createMeasurementSpan, resolveCSSVariables } from './index';
 import { ImageExportOptions } from '../types/index';
 import { Legend, LegendContainer } from '../Legends';
@@ -163,7 +164,7 @@ function toSVG(
       const tag = original.tagName.toLowerCase();
       const isSvgElement = original instanceof SVGElement;
       const isTextElement = tag === 'text';
-      const isHtmlElement = original instanceof HTMLElement;
+      const isHtmlElement = isHTMLElement(original);
 
       if (isSvgElement) {
         if (isTextElement) {
