@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
@@ -10,7 +10,7 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
-import type { PreparedStory, Renderer, SBEnumType } from '@storybook/types';
+import type { PreparedStory, Renderer, SBEnumType } from '@storybook/core/types';
 
 import { tokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
@@ -199,7 +199,7 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
     }
   };
 
-  const component = story.component as InternalComponentApi;
+  const component = story.moduleExport as InternalComponentApi;
   const subcomponents = story.subcomponents as Record<string, InternalComponentApi>;
 
   if (options.slotsApi) {
@@ -281,7 +281,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgsTable of={component} />
+      <ArgTypes of={component} />
     </>
   );
 };
@@ -379,9 +379,12 @@ export const FluentDocsPage = (): JSXElement => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+          <RenderPrimaryStory
+            primaryStory={primaryStory as unknown as PrimaryStory}
+            skipPrimaryStory={skipPrimaryStory}
+          />
           <RenderArgsTable
-            story={primaryStory}
+            story={primaryStory as unknown as PrimaryStory}
             hideArgsTable={hideArgsTable}
             showSlotsApi={argTable.slotsApi}
             showNativePropsApi={argTable.nativePropsApi}
