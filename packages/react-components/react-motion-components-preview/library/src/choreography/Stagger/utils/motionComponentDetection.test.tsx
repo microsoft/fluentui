@@ -118,7 +118,7 @@ describe('Motion Component Detection', () => {
   });
 
   describe('isMotionComponent', () => {
-    it('should detect motion components via "Atom" function name', () => {
+    it('should detect motion components via MOTION_DEFINITION symbol', () => {
       const CustomMotion = createMotionComponent({ keyframes: [{ opacity: 0 }, { opacity: 1 }], duration: 300 });
       const customMotionElement = (
         <CustomMotion>

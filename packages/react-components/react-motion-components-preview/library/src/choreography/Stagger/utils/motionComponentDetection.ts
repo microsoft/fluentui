@@ -25,10 +25,10 @@ export function hasExplicitProps(element: React.ReactElement, props: string[]): 
 
 /**
  * Checks if a React element is a motion component created by createMotionComponent.
- * Motion components have the function name "Atom".
+ * Motion components are detected by the presence of the MOTION_DEFINITION symbol on the component.
  *
  * @param element - React element to inspect
- * @returns true when the element type is a function named "Atom"
+ * @returns true when the element's type contains the MOTION_DEFINITION symbol
  *
  * **Note:** This is a heuristic detection. Motion components may or may not support
  * specific props like `delay` or `visible` depending on their implementation.
@@ -36,7 +36,13 @@ export function hasExplicitProps(element: React.ReactElement, props: string[]): 
  * @internal - Exported for testing purposes
  */
 export function isMotionComponent(element: React.ReactElement): boolean {
-  return typeof element.type === 'function' && element.type.name === 'Atom';
+  if (!element?.type || typeof element.type !== 'function') {
+    return false;
+  }
+
+  // Check if the component has the MOTION_DEFINITION symbol (internal to createMotionComponent)
+  const symbols = Object.getOwnPropertySymbols(element.type);
+  return symbols.some(sym => sym.description === 'MOTION_DEFINITION');
 }
 
 /**
