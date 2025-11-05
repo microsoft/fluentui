@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { render, act } from '@testing-library/react';
 import { useStaggerItemsVisibility } from './useStaggerItemsVisibility';
-import { getChildMapping } from './utils/getChildMapping';
-import type { StaggerChildMapping } from './utils/getChildMapping';
+import { getChildMapping, type StaggerChildMapping } from './utils/getChildMapping';
 
 // Mock the useAnimationFrame hook
 const mockRequestAnimationFrame = jest.fn();

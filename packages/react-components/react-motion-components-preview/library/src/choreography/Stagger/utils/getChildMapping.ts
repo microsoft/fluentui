@@ -6,6 +6,12 @@ export type StaggerChildMapping = Record<string, { element: React.ReactElement; 
  * Given `children`, return an object mapping key to child element and its index.
  * This allows tracking individual items by identity (via React keys) rather than by position.
  *
+ * Uses React.Children.toArray() which:
+ * - Automatically provides stable indices (0, 1, 2, ...)
+ * - Handles key normalization (e.g., 'a' → '.$a') consistently
+ * - Flattens fragments automatically
+ * - Generates keys for elements without explicit keys (e.g., '.0', '.1', '.2')
+ *
  * @param children - React children to map
  * @returns Object mapping child keys to { element, index }
  */
@@ -13,15 +19,12 @@ export function getChildMapping(children: React.ReactNode | undefined): StaggerC
   const childMapping: StaggerChildMapping = {};
 
   if (children) {
-    let index = 0;
-    React.Children.forEach(children, child => {
+    React.Children.toArray(children).forEach((child, index) => {
       if (React.isValidElement(child)) {
-        const key = child.key ?? `.${index}`;
-        childMapping[key] = {
+        childMapping[child.key ?? ''] = {
           element: child,
           index,
         };
-        index++;
       }
     });
   }

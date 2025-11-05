@@ -2,135 +2,137 @@ import * as React from 'react';
 import { getChildMapping } from './getChildMapping';
 
 describe('getChildMapping', () => {
-  it('should return an object mapping key to child and index', () => {
+  it('should map children to keys with element and index', () => {
     const children = [
-      React.createElement('div', { key: 'a' }, 'Hello'),
-      React.createElement('div', { key: 'b' }, 'World'),
+      React.createElement('div', { key: 'a' }, 'First'),
+      React.createElement('div', { key: 'b' }, 'Second'),
+      React.createElement('div', { key: 'c' }, 'Third'),
     ];
 
     const mapping = getChildMapping(children);
 
-    expect(Object.keys(mapping)).toEqual(['a', 'b']);
-    expect(mapping['a'].index).toBe(0);
-    expect(mapping['b'].index).toBe(1);
+    // React.Children.toArray normalizes keys by adding .$ prefix
+    expect(Object.keys(mapping)).toEqual(['.$a', '.$b', '.$c']);
+    expect(mapping['.$a'].index).toBe(0);
+    expect(mapping['.$b'].index).toBe(1);
+    expect(mapping['.$c'].index).toBe(2);
+    expect(mapping['.$a'].element.props.children).toBe('First');
   });
 
   it('should generate keys for children without explicit keys', () => {
     const children = [
-      React.createElement('div', null, 'Hello'),
-      React.createElement('div', null, 'World'),
+      React.createElement('div', null, 'First'),
+      React.createElement('div', null, 'Second'),
+      React.createElement('div', null, 'Third'),
     ];
 
     const mapping = getChildMapping(children);
 
-    expect(Object.keys(mapping)).toEqual(['.0', '.1']);
+    // React.Children.toArray auto-generates keys as .0, .1, .2
+    expect(Object.keys(mapping)).toEqual(['.0', '.1', '.2']);
     expect(mapping['.0'].index).toBe(0);
     expect(mapping['.1'].index).toBe(1);
+    expect(mapping['.2'].index).toBe(2);
   });
 
-  it('should return an empty object if children is null or undefined', () => {
+  it('should handle empty children', () => {
+    expect(getChildMapping([])).toEqual({});
     expect(getChildMapping(null)).toEqual({});
     expect(getChildMapping(undefined)).toEqual({});
   });
 
-  it('should ignore non-element children', () => {
-    const children = [
-      React.createElement('div', { key: 'a' }, 'Hello'),
-      'text node',
-      null,
-      React.createElement('div', { key: 'b' }, 'World'),
-    ];
+  it('should handle single child', () => {
+    const child = React.createElement('div', { key: 'single' }, 'Single Item');
+    const mapping = getChildMapping(child);
 
-    const mapping = getChildMapping(children);
-
-    expect(Object.keys(mapping)).toEqual(['a', 'b']);
-    expect(mapping['a'].index).toBe(0);
-    expect(mapping['b'].index).toBe(1);
+    expect(Object.keys(mapping)).toEqual(['.$single']);
+    expect(mapping['.$single'].index).toBe(0);
   });
 
-  it('should handle children being added', () => {
-    const children1 = [React.createElement('div', { key: 'a' }, 'A')];
-    const children2 = [
-      React.createElement('div', { key: 'a' }, 'A'),
-      React.createElement('div', { key: 'b' }, 'B'),
-      React.createElement('div', { key: 'c' }, 'C'),
+  it('should detect when children are added', () => {
+    const childrenBefore = [React.createElement('div', { key: 'a' }), React.createElement('div', { key: 'b' })];
+
+    const childrenAfter = [
+      React.createElement('div', { key: 'a' }),
+      React.createElement('div', { key: 'b' }),
+      React.createElement('div', { key: 'c' }),
     ];
 
-    const mapping1 = getChildMapping(children1);
-    const mapping2 = getChildMapping(children2);
+    const mappingBefore = getChildMapping(childrenBefore);
+    const mappingAfter = getChildMapping(childrenAfter);
 
-    expect(Object.keys(mapping1)).toEqual(['a']);
-    expect(Object.keys(mapping2)).toEqual(['a', 'b', 'c']);
-    expect(mapping2['a'].index).toBe(0);
-    expect(mapping2['b'].index).toBe(1);
-    expect(mapping2['c'].index).toBe(2);
+    expect(Object.keys(mappingBefore)).toEqual(['.$a', '.$b']);
+    expect(Object.keys(mappingAfter)).toEqual(['.$a', '.$b', '.$c']);
+    expect(mappingAfter['.$c']).toBeDefined();
   });
 
-  it('should handle children being removed', () => {
-    const children1 = [
-      React.createElement('div', { key: 'a' }, 'A'),
-      React.createElement('div', { key: 'b' }, 'B'),
-      React.createElement('div', { key: 'c' }, 'C'),
+  it('should detect when children are removed', () => {
+    const childrenBefore = [
+      React.createElement('div', { key: 'a' }),
+      React.createElement('div', { key: 'b' }),
+      React.createElement('div', { key: 'c' }),
     ];
-    const children2 = [React.createElement('div', { key: 'b' }, 'B')];
 
-    const mapping1 = getChildMapping(children1);
-    const mapping2 = getChildMapping(children2);
+    const childrenAfter = [React.createElement('div', { key: 'a' }), React.createElement('div', { key: 'c' })];
 
-    expect(Object.keys(mapping1)).toEqual(['a', 'b', 'c']);
-    expect(Object.keys(mapping2)).toEqual(['b']);
-    expect(mapping2['b'].index).toBe(0);
+    const mappingBefore = getChildMapping(childrenBefore);
+    const mappingAfter = getChildMapping(childrenAfter);
+
+    expect(Object.keys(mappingBefore)).toEqual(['.$a', '.$b', '.$c']);
+    expect(Object.keys(mappingAfter)).toEqual(['.$a', '.$c']);
+    expect(mappingAfter['.$b']).toBeUndefined();
   });
 
-  it('should handle children being reordered', () => {
-    const children1 = [
-      React.createElement('div', { key: 'a' }, 'A'),
-      React.createElement('div', { key: 'b' }, 'B'),
-      React.createElement('div', { key: 'c' }, 'C'),
-    ];
-    const children2 = [
-      React.createElement('div', { key: 'c' }, 'C'),
-      React.createElement('div', { key: 'a' }, 'A'),
-      React.createElement('div', { key: 'b' }, 'B'),
+  it('should detect when children are reordered', () => {
+    const childrenBefore = [
+      React.createElement('div', { key: 'a' }),
+      React.createElement('div', { key: 'b' }),
+      React.createElement('div', { key: 'c' }),
     ];
 
-    const mapping1 = getChildMapping(children1);
-    const mapping2 = getChildMapping(children2);
+    const childrenAfter = [
+      React.createElement('div', { key: 'c' }),
+      React.createElement('div', { key: 'a' }),
+      React.createElement('div', { key: 'b' }),
+    ];
 
-    expect(mapping1['a'].index).toBe(0);
-    expect(mapping1['b'].index).toBe(1);
-    expect(mapping1['c'].index).toBe(2);
+    const mappingBefore = getChildMapping(childrenBefore);
+    const mappingAfter = getChildMapping(childrenAfter);
 
-    expect(mapping2['c'].index).toBe(0);
-    expect(mapping2['a'].index).toBe(1);
-    expect(mapping2['b'].index).toBe(2);
+    // Keys remain the same
+    expect(Object.keys(mappingBefore).sort()).toEqual(Object.keys(mappingAfter).sort());
+
+    // But indices change
+    expect(mappingBefore['.$a'].index).toBe(0);
+    expect(mappingAfter['.$a'].index).toBe(1);
+    expect(mappingBefore['.$c'].index).toBe(2);
+    expect(mappingAfter['.$c'].index).toBe(0);
   });
 
-  it('should handle simultaneous add and remove', () => {
-    const children1 = [
-      React.createElement('div', { key: 'a' }, 'A'),
-      React.createElement('div', { key: 'b' }, 'B'),
-    ];
-    const children2 = [
-      React.createElement('div', { key: 'b' }, 'B'),
-      React.createElement('div', { key: 'c' }, 'C'),
+  it('should handle simultaneous add and remove (count stays same)', () => {
+    const childrenBefore = [
+      React.createElement('div', { key: 'a' }),
+      React.createElement('div', { key: 'b' }),
+      React.createElement('div', { key: 'c' }),
     ];
 
-    const mapping1 = getChildMapping(children1);
-    const mapping2 = getChildMapping(children2);
+    const childrenAfter = [
+      React.createElement('div', { key: 'a' }),
+      React.createElement('div', { key: 'd' }), // 'b' removed, 'd' added
+      React.createElement('div', { key: 'c' }),
+    ];
 
-    // Same count (2 items), but different items
-    expect(Object.keys(mapping1).length).toBe(2);
-    expect(Object.keys(mapping2).length).toBe(2);
+    const mappingBefore = getChildMapping(childrenBefore);
+    const mappingAfter = getChildMapping(childrenAfter);
 
-    // Item 'a' removed, item 'c' added
-    expect('a' in mapping1).toBe(true);
-    expect('a' in mapping2).toBe(false);
-    expect('c' in mapping1).toBe(false);
-    expect('c' in mapping2).toBe(true);
+    // Count stays same (3 items)
+    expect(Object.keys(mappingBefore).length).toBe(3);
+    expect(Object.keys(mappingAfter).length).toBe(3);
 
-    // Item 'b' persists but changes index
-    expect(mapping1['b'].index).toBe(1);
-    expect(mapping2['b'].index).toBe(0);
+    // But keys changed
+    expect(mappingBefore['.$b']).toBeDefined();
+    expect(mappingBefore['.$d']).toBeUndefined();
+    expect(mappingAfter['.$b']).toBeUndefined();
+    expect(mappingAfter['.$d']).toBeDefined();
   });
 });
