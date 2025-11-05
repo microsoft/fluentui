@@ -50,7 +50,7 @@ const useClasses = makeStyles({
 
 export const Text = (): JSXElement => {
   const classes = useClasses();
-  const [visible, setVisible] = React.useState<boolean>(!false);
+  const [visible, setVisible] = React.useState<boolean>(true);
   const fromScale = visible ? 3 : 0;
 
   return (

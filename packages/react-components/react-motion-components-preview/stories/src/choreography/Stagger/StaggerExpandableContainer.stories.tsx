@@ -12,17 +12,19 @@ import {
   type PersonaProps,
 } from '@fluentui/react-components';
 import { Stagger, Slide, Collapse } from '@fluentui/react-motion-components-preview';
+
 // Timing constants for coordinated Collapse + Stagger choreography:
-// - COLLAPSE_EXPAND_DELAY: Time to wait for container expansion before stagger items appear
-// - STAGGER_EXIT_DELAY: Time to wait for stagger items to exit before container collapses
-// - STAGGER_ITEM_DELAY: Time between each staggered item animation
-const VISIBLE_ITEMS_COUNT = 3;
+// Time to wait for container expansion before stagger items appear
 const COLLAPSE_EXPAND_DELAY = 200;
+// Time to wait for stagger items to exit before container collapses
 const STAGGER_EXIT_DELAY = 250;
+// Time between each staggered item animation
+const STAGGER_ITEM_DELAY = 100;
+
+const VISIBLE_ITEMS_COUNT = 3;
 const COLLAPSE_DURATION = 600;
 const COLLAPSED_HEIGHT = '175px';
 const ITEM_HEIGHT = '36px';
-const STAGGER_ITEM_DELAY = 100;
 
 const personaData = [
   {

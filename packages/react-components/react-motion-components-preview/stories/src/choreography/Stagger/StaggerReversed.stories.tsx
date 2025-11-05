@@ -7,7 +7,6 @@ const useClasses = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    // flexWrap: 'wrap',
     alignItems: 'flex-start',
     gap: tokens.spacingHorizontalXL,
   },

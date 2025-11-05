@@ -12,6 +12,10 @@ const avatarData = [
   { initials: 'MA', color: 'marigold', name: 'marigold avatar' },
 ] as const;
 
+// Overshoots the end point, then settles back to it.
+const curveOvershootFirmOut =
+  'linear(0, 0.453 7.8%, 0.803 16.1%, 1.048 24.9%, 1.132 29.5%, 1.194 34.4%, 1.227 38.4%, 1.245 42.5%, 1.25 46.9%, 1.242 51.7%, 1.2 60.5%, 1.038 84.9%, 1.009 92.5%, 1)';
+
 const renderAvatarsWithTransition = () => {
   return avatarData.map(avatar => (
     <Scale
@@ -101,10 +105,6 @@ const useClasses = makeStyles({
   },
   // performanceBadge removed — keep layout simple and avoid collisions
 });
-
-// Overshoots the end point, then settles back to it.
-const curveOvershootFirmOut =
-  'linear(0, 0.453 7.8%, 0.803 16.1%, 1.048 24.9%, 1.132 29.5%, 1.194 34.4%, 1.227 38.4%, 1.245 42.5%, 1.25 46.9%, 1.242 51.7%, 1.2 60.5%, 1.038 84.9%, 1.009 92.5%, 1)';
 
 export const DelayMode = (): JSXElement => {
   const classes = useClasses();

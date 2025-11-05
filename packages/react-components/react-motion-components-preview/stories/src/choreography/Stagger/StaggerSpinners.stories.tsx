@@ -68,14 +68,12 @@ const useClasses = makeStyles({
     height: '45px',
     border: '4px solid transparent',
     borderTopColor: tokens.colorBrandBackground,
-    // borderTopColor: tokens.colorBrandBackground2,
   },
   arc3: {
     width: '30px',
     height: '30px',
     border: '4px solid transparent',
     borderTopColor: tokens.colorBrandBackground,
-    // borderTopColor: tokens.colorBrandBackgroundPressed,
   },
 
   dotOrbitSpinner: {
@@ -130,27 +128,7 @@ const SpinMotion = createMotionComponent<{ duration?: number; spins?: number; de
       duration,
       delay,
       iterations: Infinity,
-      // direction: 'alternate',
-      // composite: 'add',
     },
-    // {
-    //   keyframes: [
-    //     { offset: 0.2, borderWidth: '4px', easing: motionTokens.curveEasyEase },
-    //     { offset: 0.55, borderWidth: '6px', easing: motionTokens.curveEasyEase },
-    //     { offset: 0.9, borderWidth: '4px' },
-    //   ],
-    //   duration,
-    //   iterations: Infinity,
-    // },
-    // {
-    //   keyframes: [
-    //     { offset: 0.2, scale: 1, easing: motionTokens.curveEasyEase },
-    //     { offset: 0.55, scale: 0.8, easing: motionTokens.curveEasyEase },
-    //     { offset: 0.9, scale: 1 },
-    //   ],
-    //   duration,
-    //   iterations: Infinity,
-    // },
   ],
 );
 
@@ -232,7 +210,7 @@ export const StaggerSpinners = (): JSXElement => {
       </div>
 
       {/* Dot Orbit Spinner */}
-      <div className={classes.spinnerSection} style={{ display: 'none' }}>
+      <div className={classes.spinnerSection} style={{ display: '' }}>
         <h3 className={classes.spinnerTitle}>Dot Orbit Spinner</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.dotOrbitSpinner}>
@@ -248,7 +226,7 @@ export const StaggerSpinners = (): JSXElement => {
       </div>
 
       {/* Growing Bars Spinner */}
-      <div className={classes.spinnerSection} style={{ display: 'none' }}>
+      <div className={classes.spinnerSection} style={{ display: '' }}>
         <h3 className={classes.spinnerTitle}>Growing Bars Spinner</h3>
         <div className={classes.spinnerContainer}>
           <div className={classes.growingBarsSpinner}>
@@ -285,12 +263,4 @@ export const StaggerSpinners = (): JSXElement => {
       </div>
     </div>
   );
-};
-
-StaggerSpinners.parameters = {
-  docs: {
-    description: {
-      story: StaggerSpinnersDescription,
-    },
-  },
 };
