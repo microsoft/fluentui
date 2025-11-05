@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update scheduler dependency to remove upper version limit",
-  "packageName": "@fluentui/react-context-selector",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

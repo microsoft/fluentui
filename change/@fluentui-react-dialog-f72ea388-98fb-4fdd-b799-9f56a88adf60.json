@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add support to keep Dialog mounter on close",
-  "packageName": "@fluentui/react-dialog",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

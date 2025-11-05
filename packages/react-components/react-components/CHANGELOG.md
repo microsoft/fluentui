@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 21 Oct 2025 14:16:55 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:21:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.4)
+
+Fri, 31 Oct 2025 16:21:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.3..@fluentui/react-components_v9.72.4)
+
+### Minor changes
+
+- `@fluentui/react-storybook-addon`
+  - feat: add Copy as Markdown button to FluentDocsPage ([PR #35255](https://github.com/microsoft/fluentui/pull/35255) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-dialog`
+  - feat: add support to keep Dialog mounter on close ([PR #35211](https://github.com/microsoft/fluentui/pull/35211) by marcosvmmoura@gmail.com)
+- `@fluentui/react-motion-components-preview`
+  - feat(motion): standardize from/to parameters ([PR #35419](https://github.com/microsoft/fluentui/pull/35419) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-portal`
+  - fix: replace Node.ELEMENT_NODE with hardcoded value for SSR compatibility ([PR #35350](https://github.com/microsoft/fluentui/pull/35350) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: Tooltip does not prevent rendering with aria-expanded unless aria-haspopup is also set ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by sarah.higley@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: use numeric literal for DOCUMENT_FRAGMENT_NODE to make SSR work ([PR #35357](https://github.com/microsoft/fluentui/pull/35357) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/eslint-plugin-react-components`
+  - chore: update ts-eslint to 8.46.2 ([PR #35378](https://github.com/microsoft/fluentui/pull/35378) by vgenaev@gmail.com)
+- `@fluentui/priority-overflow`
+  - fix: use numeric literals for Node constants to make SSR work ([PR #35357](https://github.com/microsoft/fluentui/pull/35357) by 198982749+Copilot@users.noreply.github.com)
+- `@fluentui/react-charts`
+  - fix chart crash issue ([PR #35399](https://github.com/microsoft/fluentui/pull/35399) by anushgupta@microsoft.com)
+  - update react version to react 19 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by anushgupta@microsoft.com)
+  - fix dark mode styles of chart table ([PR #35377](https://github.com/microsoft/fluentui/pull/35377) by anushgupta@microsoft.com)
+  - fix chart exceptions ([PR #35393](https://github.com/microsoft/fluentui/pull/35393) by anushgupta@microsoft.com)
+  - feat: map deprecated plotly create_gantt() scatter traces to gantt chart ([PR #35334](https://github.com/microsoft/fluentui/pull/35334) by kumarkshitij@microsoft.com)
+- `@fluentui/react-checkbox`
+  - fix: add fit-content to max-width ([PR #35361](https://github.com/microsoft/fluentui/pull/35361) by vgenaev@gmail.com)
+- `@fluentui/react-context-selector`
+  - fix: update scheduler dependency to remove upper version limit ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - feat: add styles for MenuGridRow ([PR #34948](https://github.com/microsoft/fluentui/pull/34948) by jukapsia@microsoft.com)
 
 ## [9.72.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.3)
 

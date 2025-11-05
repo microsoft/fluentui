@@ -10,7 +10,7 @@ const { scope } = getConfig({ version: 'tools' });
  */
 const config = {
   ...sharedConfig,
-  scope: [...sharedConfig.scope, ...scope],
+  scope,
 };
 
 module.exports = config;

@@ -53,7 +53,7 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
   return (
     <div>
       <h3>{title ?? codeLanguages[language]}</h3>
-      <Source language={language} code={code} />
+      <Source language={language === 'js' ? 'jsextra' : language} code={code} />
     </div>
   );
 };

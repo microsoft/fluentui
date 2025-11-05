@@ -1,0 +1,38 @@
+diff --git a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
+index 84d6ced..4512f06 100644
+--- a/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
++++ b/node_modules/@typescript-eslint/eslint-plugin/dist/rules/no-deprecated.js
+@@ -90,19 +90,26 @@ exports.default = (0, util_1.createRule)({
+                     ? getJsDocDeprecation(symbol)
+                     : undefined;
+             }
++            const seen = new Set();
+             const targetSymbol = checker.getAliasedSymbol(symbol);
+-            while (tsutils.isSymbolFlagSet(symbol, ts.SymbolFlags.Alias)) {
+-                const reason = getJsDocDeprecation(symbol);
++            let current = symbol;
++            while (tsutils.isSymbolFlagSet(current, ts.SymbolFlags.Alias)) {
++                if (seen.has(current)) {
++                    break;
++                }
++                seen.add(current);
++                const reason = getJsDocDeprecation(current);
+                 if (reason != null) {
+                     return reason;
+                 }
+-                const immediateAliasedSymbol = symbol.getDeclarations() && checker.getImmediateAliasedSymbol(symbol);
+-                if (!immediateAliasedSymbol) {
++                const nextAlias = current.getDeclarations() &&
++                    checker.getImmediateAliasedSymbol(current);
++                if (!nextAlias) {
+                     break;
+                 }
+-                symbol = immediateAliasedSymbol;
+-                if (checkDeprecationsOfAliasedSymbol && symbol === targetSymbol) {
+-                    return getJsDocDeprecation(symbol);
++                current = nextAlias;
++                if (checkDeprecationsOfAliasedSymbol && current === targetSymbol) {
++                    return getJsDocDeprecation(current);
+                 }
+             }
+             return undefined;

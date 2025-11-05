@@ -38,7 +38,7 @@ export const TokensFilterButton = (props: FilterButtonInterface): JSXElement => 
         </MenuTrigger>
         <MenuPopover>
           {Object.entries(tokensUseCase).map(([key, useCases]) => (
-            <>
+            <React.Fragment key={key}>
               <MenuGroupHeader>{key.charAt(0).toUpperCase() + key.slice(1)}</MenuGroupHeader>
               <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
                 {useCases.map((useCase, index) => (
@@ -47,7 +47,7 @@ export const TokensFilterButton = (props: FilterButtonInterface): JSXElement => 
                   </MenuItemRadio>
                 ))}
               </MenuList>
-            </>
+            </React.Fragment>
           ))}
         </MenuPopover>
       </Menu>

@@ -280,7 +280,7 @@ export const ExportLink = (): JSXElement => {
   const indexHtmlContent = '<div id="root"></div>';
 
   const createIndexContent = dedent`
-  import * as ReactDOM from 'react-dom';
+  import * as ReactDOMClient from 'react-dom/client';
   import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
 
   import type { BrandVariants, Theme } from '@fluentui/react-components';
@@ -297,14 +297,13 @@ export const ExportLink = (): JSXElement => {
   darkTheme.colorBrandForeground1 = ${themeName}[110]; // use brand[110] instead of brand[100]
   darkTheme.colorBrandForeground2 = ${themeName}[120]; // use brand[120] instead of brand[110]
 
-  ReactDOM.render(
+  ReactDOMClient.createRoot(document.getElementById('root')).render(
     <Example lightTheme={lightTheme} darkTheme={darkTheme} />,
-    document.getElementById('root'),
   );
   `;
 
   const packageContent = dedent`
-  {"dependencies":{"@fluentui/react-components":"^9","react":"^17","react-dom":"^17","react-scripts":"latest"}}
+  {"dependencies":{"@fluentui/react-components":"^9","react":"^18","react-dom":"^18","react-scripts":"latest"}}
   `;
 
   const link = React.useMemo(() => {

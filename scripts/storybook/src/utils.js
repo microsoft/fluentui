@@ -256,7 +256,7 @@ function getPackageStoriesGlob(options) {
       return acc;
     }
 
-    const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
+    const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.mdx)';
 
     // if defined package(project) has stories sibling project, that means we need to look for stories in sibling project as the original project doesn't have stories anymore
     // @see https://github.com/microsoft/fluentui/issues/30516

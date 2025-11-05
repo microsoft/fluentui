@@ -17,3 +17,5 @@ export default /** @type {import('@storybook/react').Preview} */ ({
     }),
   },
 });
+
+export const tags = ['autodocs'];

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { IAppLink, IAppLinkGroup, IAppProps, IAppDefinition, App as AppBase } from '../index';
 import { Router, Route } from './router/index';
 import { Fabric, initializeIcons, mergeStyles } from '@fluentui/react';
@@ -18,6 +18,7 @@ mergeStyles({
 
 export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent): void {
   let rootElement: HTMLElement | null;
+  let root: ReactDOMClient.Root | null = null;
 
   function _scrollAnchorLink(): void {
     jumpToAnchor();
@@ -26,12 +27,13 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
   function _onLoad(): void {
     rootElement = rootElement || document.getElementById('content');
 
-    ReactDOM.render(
+    root = ReactDOMClient.createRoot(rootElement!);
+
+    root.render(
       <Fabric>
         {/* eslint-disable-next-line react/jsx-no-bind */}
         <Router onNewRouteLoaded={_scrollAnchorLink}>{_getRoutes()}</Router>
       </Fabric>,
-      rootElement,
     );
   }
 
@@ -78,8 +80,9 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
   }
 
   function _onUnload(): void {
-    if (rootElement) {
-      ReactDOM.unmountComponentAtNode(rootElement);
+    if (root) {
+      root.unmount();
+      root = null;
     }
   }
 

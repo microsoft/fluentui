@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction, css, getId } from '@fluentui/react/lib/Utilities';
-import { IChartAnnotation } from '../../../types/IChartAnnotation';
-import {
+import type { IChartAnnotation } from '../../../types/IChartAnnotation';
+import type {
   IAnnotationPoint,
   IChartAnnotationContext,
   IChartAnnotationLayerProps,
@@ -17,9 +17,8 @@ import {
   DEFAULT_CONNECTOR_STROKE_WIDTH,
   getDefaultConnectorStrokeColor,
   getStyles,
-  IChartAnnotationLayerStyleProps,
-  IChartAnnotationLayerStyles,
 } from './ChartAnnotationLayer.styles';
+import type { IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles } from './ChartAnnotationLayer.styles';
 
 const getClassNames = classNamesFunction<IChartAnnotationLayerStyleProps, IChartAnnotationLayerStyles>();
 
@@ -458,6 +457,11 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
       opacity: 1,
     };
 
+    if (typeof annotation.style?.rotation === 'number' && !Number.isNaN(annotation.style.rotation)) {
+      containerStyle.transform = `rotate(${annotation.style.rotation}deg)`;
+      containerStyle.transformOrigin = '50% 50%';
+    }
+
     const measurementSignature = createMeasurementSignature(
       annotationMarkupSignature,
       containerStyle,
@@ -530,9 +534,11 @@ export const ChartAnnotationLayer: React.FC<IChartAnnotationLayerProps> = React.
     }
 
     const measurementStyle: React.CSSProperties = {
+      position: 'absolute',
       left: topLeftX,
       top: topLeftY,
       pointerEvents: 'none',
+      visibility: 'hidden',
       ...containerStyle,
     };
 

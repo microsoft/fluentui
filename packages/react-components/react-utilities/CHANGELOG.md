@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 08 Oct 2025 12:04:53 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.2)
+
+Fri, 31 Oct 2025 16:22:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.25.1..@fluentui/react-utilities_v9.25.2)
+
+### Patches
+
+- fix: use numeric literal for DOCUMENT_FRAGMENT_NODE to make SSR work ([PR #35357](https://github.com/microsoft/fluentui/pull/35357) by 198982749+Copilot@users.noreply.github.com)
 
 ## [9.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.1)
 

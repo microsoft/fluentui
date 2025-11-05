@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { flushSync } from 'react-dom';
 
 import type { Scenarios } from './types';
 
@@ -22,37 +23,43 @@ export function render(scenarios: Scenarios) {
 
   const PerfTestScenario = scenarios[scenario];
 
+  let root = createRoot(div);
+
   if (PerfTestScenario) {
     const PerfTestDecorator = PerfTestScenario.decorator || 'div';
 
     if (renderType === 'virtual-rerender' || renderType === 'virtual-rerender-with-unmount') {
       for (let i = 0; i < iterations - 1; i++) {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        ReactDOM.render(<PerfTestScenario />, div);
+        flushSync(() => {
+          root.render(<PerfTestScenario />);
+        });
         if (renderType === 'virtual-rerender-with-unmount') {
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          ReactDOM.unmountComponentAtNode(div);
+          root.unmount();
+          // Need to recreate the root after unmounting
+          root = createRoot(div);
         }
       }
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      ReactDOM.render(<PerfTestScenario />, div, () => div.appendChild(renderFinishedMarker));
+      flushSync(() => {
+        root.render(<PerfTestScenario />);
+      });
+      div.appendChild(renderFinishedMarker);
     } else {
       // TODO: This seems to increase React (unstable_runWithPriority) render consumption from 4% to 72%!
       // const ScenarioContent = Array.from({ length: iterations }, () => scenarios[scenario]);
 
       // TODO: Using React Fragments increases React (unstable_runWithPriority) render consumption from 4% to 26%.
       // It'd be interesting to root cause why at some point.
-      // ReactDOM.render(<>{Array.from({ length: iterations }, () => (scenarios[scenario]))}</>, div);
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      ReactDOM.render(
-        <PerfTestDecorator>
-          {Array.from({ length: iterations }, () => (
-            <PerfTestScenario />
-          ))}
-        </PerfTestDecorator>,
-        div,
-        () => div.appendChild(renderFinishedMarker),
-      );
+      // root.render(<>{Array.from({ length: iterations }, () => (scenarios[scenario]))}</>, div);
+      flushSync(() => {
+        root.render(
+          <PerfTestDecorator>
+            {Array.from({ length: iterations }, () => (
+              <PerfTestScenario />
+            ))}
+          </PerfTestDecorator>,
+        );
+      });
+      div.appendChild(renderFinishedMarker);
     }
   } else {
     // No PerfTest scenario to render -> done

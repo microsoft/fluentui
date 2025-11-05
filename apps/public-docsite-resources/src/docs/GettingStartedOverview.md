@@ -20,7 +20,7 @@ The library includes commonjs entry points under the `lib-commonjs` folder. To u
 
 ```tsx
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { Fabric, DefaultButton } from '@fluentui/react';
 
 const MyPage = () => (
@@ -29,7 +29,7 @@ const MyPage = () => (
   </Fabric>
 );
 
-ReactDOM.render(<MyPage />, document.body.firstChild);
+ReactDOMClient.createRoot(document.body.firstChild).render(<MyPage />);
 ```
 
 ## Notes on module vs path-based imports

@@ -5,6 +5,7 @@
     "outDir": "lib",
     "module": "commonjs",
     "jsx": "react",
+    "lib": ["ES2019", "dom"],
     "declaration": true,
     "noEmit": true,
     "experimentalDecorators": true,

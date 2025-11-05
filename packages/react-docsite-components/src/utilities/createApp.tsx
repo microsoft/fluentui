@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { App, IAppDefinition, IAppLink } from '../components/App/index';
 import { Router, Route } from './router/index';
 import { Fabric } from '@fluentui/react/lib/Fabric';
@@ -20,6 +20,7 @@ export function createApp(
   headerLinks?: IAppLink[],
 ): void {
   let rootElement: HTMLElement | null;
+  let root: ReactDOMClient.Root | null;
   const groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
   function _onLoad(): void {
@@ -47,7 +48,9 @@ export function createApp(
 
     const renderApp = (props: {}) => <App appDefinition={appDefinition} {...props} />;
 
-    ReactDOM.render(
+    root = ReactDOMClient.createRoot(rootElement!);
+
+    root.render(
       <Fabric>
         <Router>
           <Route key="minimal" path="?minimal" component={_getComponent}>
@@ -59,13 +62,13 @@ export function createApp(
           </Route>
         </Router>
       </Fabric>,
-      rootElement,
     );
   }
 
   function _onUnload(): void {
-    if (rootElement) {
-      ReactDOM.unmountComponentAtNode(rootElement);
+    if (root && rootElement) {
+      root.unmount();
+      root = null;
       rootElement = null;
     }
   }

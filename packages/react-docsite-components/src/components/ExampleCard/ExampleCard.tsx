@@ -185,7 +185,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     );
   }
 
-  private _getDosAndDonts(): React.ReactElement | void {
+  private _getDosAndDonts(): React.ReactElement | undefined {
     const classNames = this._classNames;
     if (this.props.dos && this.props.donts) {
       return (

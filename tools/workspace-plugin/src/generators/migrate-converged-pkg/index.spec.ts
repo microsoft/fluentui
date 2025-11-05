@@ -589,7 +589,7 @@ describe('migrate-converged-pkg generator', () => {
             ...rootMain,
             stories: [
               ...rootMain.stories,
-              '../stories/**/*.stories.mdx',
+              '../stories/**/*.mdx',
               '../stories/**/index.stories.@(ts|tsx)',
             ],
             addons: [...rootMain.addons],

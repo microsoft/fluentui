@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Wed, 08 Oct 2025 12:04:53 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.8.6)
+
+Fri, 31 Oct 2025 16:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.8.4..@fluentui/react-portal_v9.8.6)
+
+### Patches
+
+- fix: replace Node.ELEMENT_NODE with hardcoded value for SSR compatibility ([PR #35350](https://github.com/microsoft/fluentui/pull/35350) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-tabster to v9.26.8 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-utilities to v9.25.2 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
 
 ## [9.8.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.8.4)
 

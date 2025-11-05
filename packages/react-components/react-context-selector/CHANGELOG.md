@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Wed, 08 Oct 2025 12:04:53 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.10)
+
+Fri, 31 Oct 2025 16:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.2.9..@fluentui/react-context-selector_v9.2.10)
+
+### Patches
+
+- fix: update scheduler dependency to remove upper version limit ([PR #35343](https://github.com/microsoft/fluentui/pull/35343) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-utilities to v9.25.2 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
 
 ## [9.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.9)
 

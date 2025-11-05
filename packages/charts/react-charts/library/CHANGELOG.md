@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Tue, 21 Oct 2025 14:16:55 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.4)
+
+Fri, 31 Oct 2025 16:22:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.3..@fluentui/react-charts_v9.3.4)
+
+### Patches
+
+- fix chart crash issue ([PR #35399](https://github.com/microsoft/fluentui/pull/35399) by anushgupta@microsoft.com)
+- update react version to react 19 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by anushgupta@microsoft.com)
+- fix dark mode styles of chart table ([PR #35377](https://github.com/microsoft/fluentui/pull/35377) by anushgupta@microsoft.com)
+- fix chart exceptions ([PR #35393](https://github.com/microsoft/fluentui/pull/35393) by anushgupta@microsoft.com)
+- feat: map deprecated plotly create_gantt() scatter traces to gantt chart ([PR #35334](https://github.com/microsoft/fluentui/pull/35334) by kumarkshitij@microsoft.com)
+- Bump @fluentui/react-button to v9.6.10 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.1 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-overflow to v9.6.3 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-popover to v9.12.10 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-tabster to v9.26.8 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-tooltip to v9.8.9 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
+- Bump @fluentui/react-utilities to v9.25.2 ([PR #35402](https://github.com/microsoft/fluentui/pull/35402) by beachball)
 
 ## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.3)
 

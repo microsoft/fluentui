@@ -23,24 +23,24 @@ Once you've initialized the icons, you can use the Icon component in your app li
 
 ```tsx
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { Icon } from '@fluentui/react/lib/Icon';
 
 const MyIcon = () => <Icon iconName="CompassNW" />;
 
-ReactDOM.render(<MyIcon />, document.body.firstChild);
+ReactDOMClient.createRoot(document.body.firstChild).render(<MyIcon />);
 ```
 
 Some components also include baked-in support for Icon via `iconProps`, which you can use to configure how the icon renders. Here's an example using IconButton:
 
 ```tsx
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { IconButton } from '@fluentui/react/lib/Button';
 
 const MyIconButton = () => <IconButton iconProps={{ iconName: 'Add' }} title="Add" ariaLabel="Add" />;
 
-ReactDOM.render(<MyIconButton />, document.body.firstChild);
+ReactDOMClient.createRoot(document.body.firstChild).render(<MyIconButton />);
 ```
 
 ### Fabric Core

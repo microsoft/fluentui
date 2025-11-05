@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add Copy as Markdown button to FluentDocsPage",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

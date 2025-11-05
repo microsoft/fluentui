@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(motion): standardize from/to parameters",
-  "packageName": "@fluentui/react-motion-components-preview",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}
