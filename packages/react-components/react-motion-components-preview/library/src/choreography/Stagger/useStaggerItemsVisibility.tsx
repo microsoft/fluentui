@@ -3,9 +3,12 @@
 import * as React from 'react';
 import { useAnimationFrame } from '@fluentui/react-utilities';
 import type { StaggerProps } from './stagger-types';
-import { staggerItemsVisibilityAtTime, type StaggerItemsVisibilityAtTimeParams } from './utils/stagger-calculations';
-import { DEFAULT_ITEM_DURATION } from './utils/constants';
-import type { StaggerChildMapping } from './utils/getChildMapping';
+import {
+  staggerItemsVisibilityAtTime,
+  type StaggerItemsVisibilityAtTimeParams,
+  DEFAULT_ITEM_DURATION,
+  type StaggerChildMapping,
+} from './utils';
 
 export interface UseStaggerItemsVisibilityParams
   extends Pick<StaggerProps, 'onMotionFinish'>,
