@@ -3,6 +3,9 @@ import * as React from 'react';
 /**
  * Flattens ReactNode (including Fragments) to an array of valid ReactElements,
  * filtering out strings, numbers, null, etc.
+ *
+ * @param children - React children to flatten
+ * @returns Array of valid React elements (filters out non-elements)
  */
 // export const toElementArray = (children: React.ReactNode): React.ReactElement[] =>
 // React.Children.toArray(children).filter(React.isValidElement) as React.ReactElement[];

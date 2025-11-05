@@ -1,11 +1,11 @@
 /**
- * Default timing constants for stagger animations
+ * Default timing constants for stagger animations (milliseconds).
  */
 
 import { motionTokens } from '@fluentui/react-motion';
 
-/** Default milliseconds between each item's animation start */
+/** Default delay in milliseconds between each item's animation start */
 export const DEFAULT_ITEM_DELAY = motionTokens.durationFaster;
 
-/** Default milliseconds each item's animation lasts */
+/** Default duration in milliseconds for each item's animation */
 export const DEFAULT_ITEM_DURATION = motionTokens.durationNormal;
