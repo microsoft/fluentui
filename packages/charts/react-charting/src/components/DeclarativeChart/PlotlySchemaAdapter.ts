@@ -1124,6 +1124,7 @@ export const normalizeObjectArrayForGVBC = (
 export const transformPlotlyJsonToAnnotationChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   _colorMap: React.MutableRefObject<Map<string, string>>,
   _colorwayType: ColorwayType,
   _isDarkTheme?: boolean,
