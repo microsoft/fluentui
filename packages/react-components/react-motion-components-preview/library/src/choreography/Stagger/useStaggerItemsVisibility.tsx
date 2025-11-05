@@ -20,16 +20,13 @@ export interface UseStaggerItemsVisibilityParams
 /**
  * Hook that tracks the visibility of a staggered sequence of items as time progresses.
  *
- * Behavior summary:
- * - hideMode 'visibleProp' or 'visibilityStyle':
- *   - On the first render, items are placed in their final state (enter => visible, exit => hidden)
- *     and no animation runs.
- *   - On subsequent renders when direction changes, items animate from the opposite state
- *     to the final state over the stagger timeline.
- * - hideMode 'unmount':
- *   - Items are mounted/unmounted and animations run on first render and on subsequent changes.
- *   - For 'enter', items start hidden and animate to visible; for 'exit', items start visible
- *     and animate to hidden.
+ * Behavior summary for all hide modes:
+ * - On the first render, items are placed in their final state (enter => visible, exit => hidden)
+ *   and no animation runs.
+ * - On subsequent renders when direction changes, items animate from the opposite state
+ *   to the final state over the stagger timeline.
+ * - Changes to the `reversed` prop do not trigger re-animation; they only affect the order
+ *   during the next direction change animation.
  *
  * This hook uses child key mapping instead of item count to track individual items.
  * This allows it to correctly handle:
@@ -73,9 +70,8 @@ export function useStaggerItemsVisibility({
   // State: visibility mapping for all items by key
   const [itemsVisibility, setItemsVisibility] = React.useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
-    // For unmount mode, items should start hidden and appear by being added to the DOM
-    // For visibleProp and visibilityStyle modes, items start in target state: visible for 'enter', hidden for 'exit'
-    const initialState = hideMode === 'unmount' ? direction === 'exit' : direction === 'enter';
+    // All hide modes start in final state: visible for 'enter', hidden for 'exit'
+    const initialState = direction === 'enter';
     Object.keys(childMapping).forEach(key => {
       initial[key] = initialState;
     });
@@ -120,6 +116,14 @@ export function useStaggerItemsVisibility({
     childMappingRef.current = childMapping;
   }, [childMapping]);
 
+  // Use ref for reversed to avoid re-running animation when it changes
+  const reversedRef = React.useRef(reversed);
+
+  // Update reversed ref whenever it changes
+  React.useEffect(() => {
+    reversedRef.current = reversed;
+  }, [reversed]);
+
   // ====== ANIMATION EFFECT ======
 
   React.useEffect(() => {
@@ -127,37 +131,24 @@ export function useStaggerItemsVisibility({
     startTimeRef.current = null;
     finishedRef.current = false;
 
-    // Unmount mode should always animate, visibleProp and visibilityStyle modes only animate after first render
-    // - Stagger.In (enter + unmount): DOM elements get added and animate from hidden to visible
-    // - Stagger.Out (exit + unmount): DOM elements start visible and animate out before removal
-    if ((hideMode === 'visibleProp' || hideMode === 'visibilityStyle') && isFirstRender.current) {
+    // All hide modes skip animation on first render - items are already in their final state
+    if (isFirstRender.current) {
       isFirstRender.current = false;
       // Items are already in their final state from useState, no animation needed
       onMotionFinish?.();
       return; // No cleanup needed for first render
     }
 
-    // Mark first render as complete
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-    }
-
-    // For unmount mode, we start with the initial state and animate to the final state
-    // For visibleProp and visibilityStyle mode animations after first render, we start from the opposite state
-    if (hideMode === 'unmount') {
-      // Unmount mode: already initialized correctly, start animation
-    } else {
-      // VisibleProp and visibilityStyle modes: start from the opposite of the final state
-      // - Enter animation: start hidden (false), animate to visible (true)
-      // - Exit animation: start visible (true), animate to hidden (false)
-      const startState = direction === 'exit';
-      // Use childMappingRef.current to avoid adding childMapping to dependencies
-      const initialVisibility: Record<string, boolean> = {};
-      Object.keys(childMappingRef.current).forEach(key => {
-        initialVisibility[key] = startState;
-      });
-      setItemsVisibility(initialVisibility);
-    }
+    // For animations after first render, start from the opposite of the final state
+    // - Enter animation: start hidden (false), animate to visible (true)
+    // - Exit animation: start visible (true), animate to hidden (false)
+    const startState = direction === 'exit';
+    // Use childMappingRef.current to avoid adding childMapping to dependencies
+    const initialVisibility: Record<string, boolean> = {};
+    Object.keys(childMappingRef.current).forEach(key => {
+      initialVisibility[key] = startState;
+    });
+    setItemsVisibility(initialVisibility);
 
     // Animation loop: update visibility on each frame until complete
     const tick = (now: number) => {
@@ -178,7 +169,7 @@ export function useStaggerItemsVisibility({
         itemDelay,
         itemDuration,
         direction,
-        reversed,
+        reversed: reversedRef.current,
       });
 
       // Convert boolean array to keyed object
@@ -204,17 +195,7 @@ export function useStaggerItemsVisibility({
         cancelAnimationFrame();
       }
     };
-  }, [
-    animationKey,
-    itemDelay,
-    itemDuration,
-    direction,
-    reversed,
-    onMotionFinish,
-    requestAnimationFrame,
-    cancelAnimationFrame,
-    hideMode,
-  ]);
+  }, [animationKey, itemDelay, itemDuration, direction, onMotionFinish, requestAnimationFrame, cancelAnimationFrame]);
 
   return { itemsVisibility };
 }

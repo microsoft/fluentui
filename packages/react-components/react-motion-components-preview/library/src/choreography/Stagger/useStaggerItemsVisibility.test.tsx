@@ -192,10 +192,42 @@ describe('useStaggerItemsVisibility', () => {
     expect(mockRequestAnimationFrame).not.toHaveBeenCalled();
   });
 
+  it('should not trigger animation when reversed prop changes', () => {
+    const childMapping = createChildMapping(3);
+    const TestComponent = ({ reversed }: { reversed: boolean }) => {
+      const { itemsVisibility } = useStaggerItemsVisibility({
+        childMapping,
+        itemDelay: 100,
+        direction: 'enter',
+        reversed,
+        hideMode: 'visibilityStyle',
+      });
+      return <div data-testid="visibility">{JSON.stringify(mappingToArray(itemsVisibility, childMapping))}</div>;
+    };
+
+    const { getByTestId, rerender } = render(<TestComponent reversed={false} />);
+
+    // Initial state - all visible for enter direction
+    expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([true, true, true]);
+
+    // Clear any initial calls
+    mockRequestAnimationFrame.mockClear();
+
+    // Change reversed prop - should NOT trigger animation
+    act(() => {
+      rerender(<TestComponent reversed={true} />);
+    });
+
+    // Should not request animation frame for reversed change
+    expect(mockRequestAnimationFrame).not.toHaveBeenCalled();
+    // Items should remain in their current state
+    expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([true, true, true]);
+  });
+
   describe('Mode-based initial state logic (from Node test analysis)', () => {
-    it('should understand the critical difference between presence, visibilityStyle, and unmount modes', () => {
-      // This captures the key insight from test-stagger-fix.tsx:
-      // The critical fix was in the useState initialization logic
+    it('should have consistent initial state across all hide modes', () => {
+      // All hide modes now use the same initialization logic:
+      // Items start in their final state (visible for enter, hidden for exit)
 
       const testScenarios = [
         { mode: 'visibleProp', direction: 'enter', expectedInitial: true },
@@ -214,30 +246,34 @@ describe('useStaggerItemsVisibility', () => {
       });
     });
 
-    it('should validate the problem we solved', () => {
-      // The original problem: non-presence items appeared simultaneously
-      // Root cause: they were initialized in final state instead of start state
+    it('should validate the consistent behavior across modes', () => {
+      // All modes now behave consistently:
+      // - On first render: items are in final state, no animation
+      // - On direction change: items animate from opposite state to final state
+      // - On reversed change: no animation, only affects next direction change
 
-      const problemBehavior = {
-        beforeFix: 'All items initialized in final state',
-        afterFix: 'Presence and visibilityStyle items in final state, mount items in start state',
-        keyInsight: 'Different component types need different initial states',
+      const currentBehavior = {
+        allModes: 'All items initialized in final state',
+        firstRender: 'No animation on first render for any hide mode',
+        directionChange: 'Animation runs when direction changes',
+        reversedChange: 'No animation when reversed prop changes',
+        keyInsight: 'All hide modes now have consistent behavior',
       };
 
-      // Test the core behavioral difference
+      // Test the core behavioral consistency
       const presenceInitialState = true; // Final state for enter direction
       const visibilityStyleInitialState = true; // Final state for enter direction (same as presence)
-      const mountInitialState = false; // Start state for enter direction
+      const mountInitialState = true; // Also final state for enter direction (now consistent!)
 
       expect(presenceInitialState).toBe(visibilityStyleInitialState);
-      expect(presenceInitialState).not.toBe(mountInitialState);
-      expect(problemBehavior.keyInsight).toBe('Different component types need different initial states');
+      expect(presenceInitialState).toBe(mountInitialState);
+      expect(currentBehavior.keyInsight).toBe('All hide modes now have consistent behavior');
     });
   });
 
   // Add this test to demonstrate unmount mode behavior
   describe('First mount behavior in unmount mode', () => {
-    it('should animate stagger-out on first mount when direction=exit in unmount mode', () => {
+    it('should not animate on first mount when direction=exit in unmount mode', () => {
       const mockOnMotionFinish = jest.fn();
       const childMapping = createChildMapping(3);
 
@@ -254,17 +290,17 @@ describe('useStaggerItemsVisibility', () => {
 
       const { getByTestId } = render(<TestComponent />);
 
-      // On first render with exit direction, items should start visible and animate to hidden
-      expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([true, true, true]);
+      // On first render with exit direction, items should be in final state (hidden)
+      expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([false, false, false]);
 
-      // Should start animation, not finish immediately
-      expect(mockOnMotionFinish).not.toHaveBeenCalled();
+      // Should finish immediately without animation
+      expect(mockOnMotionFinish).toHaveBeenCalled();
 
-      // Should request animation frame to start animation
-      expect(mockRequestAnimationFrame).toHaveBeenCalled();
+      // Should not request animation frame on first render
+      expect(mockRequestAnimationFrame).not.toHaveBeenCalled();
     });
 
-    it('should animate on mount and allow direction changes on subsequent renders', () => {
+    it('should not animate on first mount but animate on direction changes', () => {
       const mockOnMotionFinish = jest.fn();
       const childMapping = createChildMapping(3);
 
@@ -281,9 +317,9 @@ describe('useStaggerItemsVisibility', () => {
 
       const { getByTestId, rerender } = render(<TestComponent direction="exit" />);
 
-      // First render - items should start visible and animate to hidden
-      expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([true, true, true]);
-      expect(mockRequestAnimationFrame).toHaveBeenCalled();
+      // First render - items should be in final state (hidden) with no animation
+      expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([false, false, false]);
+      expect(mockRequestAnimationFrame).not.toHaveBeenCalled();
 
       // Change to enter direction - should animate in
       mockRequestAnimationFrame.mockClear();
@@ -295,7 +331,7 @@ describe('useStaggerItemsVisibility', () => {
       expect(mockRequestAnimationFrame).toHaveBeenCalled();
     });
 
-    it('should make unmount mode animate on first render for enter direction', () => {
+    it('should not animate on first render for enter direction in unmount mode', () => {
       const mockOnMotionFinish = jest.fn();
       const childMapping = createChildMapping(3);
 
@@ -313,11 +349,11 @@ describe('useStaggerItemsVisibility', () => {
 
       const { getByTestId } = render(<TestComponent />);
 
-      // Mount mode should start in opposite state and animate to final state
-      // For enter direction, start hidden and animate to visible
-      expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([false, false, false]);
-      expect(mockOnMotionFinish).not.toHaveBeenCalled(); // Animation should start, not finish immediately
-      expect(mockRequestAnimationFrame).toHaveBeenCalled(); // Should start animation
+      // Should start in final state (visible) without animation
+      // For enter direction, items should be visible immediately
+      expect(JSON.parse(getByTestId('visibility').textContent!)).toEqual([true, true, true]);
+      expect(mockOnMotionFinish).toHaveBeenCalled(); // Animation should finish immediately
+      expect(mockRequestAnimationFrame).not.toHaveBeenCalled(); // Should not start animation
     });
 
     it('should handle visibilityStyle mode like presence mode on first render', () => {
