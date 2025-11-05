@@ -7,8 +7,8 @@ import {
   DEFAULT_ITEM_DELAY,
   acceptsVisibleProp,
   acceptsDelayProps,
+  getChildMapping,
 } from './utils';
-import { getChildMapping } from './utils/getChildMapping';
 import { StaggerOneWayProps, StaggerProps, type StaggerHideMode, type StaggerDelayMode } from './stagger-types';
 
 /**
