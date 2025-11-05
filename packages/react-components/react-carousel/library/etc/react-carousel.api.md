@@ -101,7 +101,7 @@ export const carouselContextDefaultValue: CarouselContextValue;
 // @public (undocumented)
 export type CarouselContextValue = {
     activeIndex: number;
-    appearance: CarouselAppearance;
+    appearance?: CarouselAppearance;
     circular: boolean;
     selectPageByElement: (event: React_2.FocusEvent, element: HTMLElement, jump?: boolean) => number;
     selectPageByDirection: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, direction: 'next' | 'prev') => number;

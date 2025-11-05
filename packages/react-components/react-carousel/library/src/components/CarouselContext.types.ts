@@ -19,7 +19,7 @@ export type CarouselIndexChangeData = (
 
 export type CarouselContextValue = {
   activeIndex: number;
-  appearance: CarouselAppearance;
+  appearance?: CarouselAppearance;
   circular: boolean;
   selectPageByElement: (event: React.FocusEvent, element: HTMLElement, jump?: boolean) => number;
   selectPageByDirection: (

@@ -1,15 +1,19 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Button, Image, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
 import {
+  Button,
   Carousel,
+  CarouselAnnouncerFunction,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
   CarouselNavContainer,
-  CarouselViewport,
-  CarouselAnnouncerFunction,
   CarouselSlider,
+  CarouselViewport,
+  Image,
+  makeStyles,
+  tokens,
+  typographyStyles,
 } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
