@@ -192,7 +192,7 @@ export const renderAccordionItem_unstable: (state: AccordionItemState, contextVa
 export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSXElement;
 
 // @public
-export const useAccordion_unstable: <Value = unknown>(props: AccordionProps<Value>, ref: React_2.Ref<HTMLElement>) => AccordionState<Value>;
+export const useAccordion_unstable: <Value = AccordionItemValue>(props: AccordionProps<Value>, ref: React_2.Ref<HTMLElement>) => AccordionState<Value>;
 
 // @public (undocumented)
 export const useAccordionContext_unstable: <T>(selector: ContextSelector<AccordionContextValue, T>) => T;
