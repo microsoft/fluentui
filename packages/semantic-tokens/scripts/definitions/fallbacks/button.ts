@@ -65,17 +65,17 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonNeutralBackgroundSelected: {
     fluent: tokens.colorNeutralBackground1Selected,
     // TODO: Review generic mapping
-    generic: 'backgroundBrandLoud',
+    generic: 'backgroundNeutralHeavy',
   },
   groupButtonNeutralBackgroundHoverSelected: {
     fluent: tokens.colorNeutralBackground1Hover,
     // TODO: Review generic mapping
-    generic: 'backgroundBrandLoudHover',
+    generic: 'backgroundNeutralHeavyHover',
   },
   groupButtonNeutralBackgroundPressedSelected: {
     fluent: tokens.colorNeutralBackground1Pressed,
     // TODO: Review generic mapping
-    generic: 'backgroundBrandLoudPressed',
+    generic: 'backgroundNeutralHeavyPressed',
   },
   groupButtonNeutralBackgroundDisabled: {
     fluent: tokens.colorNeutralBackgroundDisabled,
@@ -96,15 +96,15 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonPrimaryBackgroundSelected: {
     fluent: tokens.colorBrandBackgroundSelected,
     // TODO: Review generic mapping
-    generic: 'backgroundBrandLoudSelected',
+    generic: 'backgroundBrandHeavy',
   },
   groupButtonPrimaryBackgroundHoverSelected: {
     fluent: tokens.colorBrandBackgroundHover,
-    generic: 'backgroundBrandLoudHoverSelected',
+    generic: 'backgroundBrandHeavyHover',
   },
   groupButtonPrimaryBackgroundPressedSelected: {
     fluent: tokens.colorBrandBackgroundPressed,
-    generic: 'backgroundBrandLoudPressedSelected',
+    generic: 'backgroundBrandHeavyPressed',
   },
   groupButtonPrimaryBackgroundDisabled: {
     fluent: tokens.colorNeutralBackgroundDisabled,
