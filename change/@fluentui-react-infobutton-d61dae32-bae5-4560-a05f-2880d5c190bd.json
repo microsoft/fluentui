@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: mitigate native popover prop dts clash from public API exposed by React 19",
+  "packageName": "@fluentui/react-infobutton",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
