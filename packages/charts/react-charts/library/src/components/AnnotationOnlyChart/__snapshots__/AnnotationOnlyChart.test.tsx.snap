@@ -21,18 +21,20 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
       >
         <div
           aria-label="A complete chart with all props"
-          class="css-125"
+          class=""
           data-chart-annotation-only="true"
+          style="width: 600px; min-height: 400px; background-color: rgb(245, 245, 245); color: rgb(51, 51, 51); font-family: Arial, sans-serif; padding: 10px 15px 20px 25px;"
         >
           <span
             aria-hidden="true"
-            class="css-111"
+            class=""
           >
             Complete Chart
           </span>
           <div
-            class="css-126"
+            class=""
             role="presentation"
+            style="background-color: rgb(255, 255, 255);"
           >
             <div
               class="fui-chartAnnotationLayer__root"
@@ -152,11 +154,12 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
         y="0"
       >
         <div
-          class="css-109"
+          class=""
           data-chart-annotation-only="true"
+          style="width: 600px; min-height: 400px;"
         >
           <div
-            class="css-110"
+            class=""
             role="presentation"
           >
             <div
@@ -277,17 +280,18 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with empty annotations 1
         y="0"
       >
         <div
-          class="css-112"
+          class=""
           data-chart-annotation-only="true"
+          style="width: 100%; min-height: 650px;"
         >
           <span
             aria-hidden="true"
-            class="css-111"
+            class=""
           >
             Empty Chart
           </span>
           <div
-            class="css-110"
+            class=""
             role="presentation"
           />
         </div>

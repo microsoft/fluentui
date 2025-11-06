@@ -1,14 +1,37 @@
 import * as React from 'react';
-import { useTheme } from '@fluentui/react';
-import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { makeStyles } from '@griffel/react';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
 import { toImage as exportToImage } from '../../utilities/image-export-utils';
+import { useRtl } from '../../utilities';
 import type { AnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
 import type { Chart, ImageExportOptions } from '../../types/index';
 import type { ChartAnnotationContext } from '../CommonComponents/Annotations/ChartAnnotationLayer.types';
 
 const DEFAULT_HEIGHT = 650;
 const FALLBACK_WIDTH = 400;
+
+const useStyles = makeStyles({
+  root: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '8px',
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
+    fontFamily: typographyStyles.body1.fontFamily,
+  },
+  content: {
+    position: 'relative',
+    flexGrow: 1,
+    backgroundColor: 'transparent',
+    borderRadius: tokens.borderRadiusMedium,
+    boxSizing: 'border-box',
+  },
+  title: {
+    textAlign: 'center',
+  },
+});
 
 const buildPadding = (margin: AnnotationOnlyChartProps['margin']): string | undefined => {
   if (!margin) {
@@ -42,7 +65,8 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
     componentRef,
   } = props;
 
-  const theme = useTheme();
+  const isRtl = useRtl();
+  const classes = useStyles();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const contentRef = React.useRef<HTMLDivElement | null>(null);
   const [measuredWidth, setMeasuredWidth] = React.useState<number>(width ?? 0);
@@ -129,7 +153,6 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
     paperBackgroundColor,
     fontColor,
     fontFamily,
-    theme,
   ]);
 
   const svgHeight = Math.max(Math.ceil(contentHeight || 0), resolvedHeight);
@@ -137,46 +160,29 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
   const context: ChartAnnotationContext = {
     plotRect: { x: 0, y: 0, width: resolvedWidth, height: resolvedHeight },
     svgRect: { width: resolvedWidth, height: resolvedHeight },
-    isRtl: theme?.rtl,
+    isRtl,
   };
 
   const padding = buildPadding(margin);
 
-  const rootClassName = React.useMemo(
-    () =>
-      mergeStyles({
-        position: 'relative',
-        width: width ? `${width}px` : '100%',
-        minHeight: resolvedHeight,
-        backgroundColor: paperBackgroundColor ?? theme.semanticColors.bodyBackground,
-        color: fontColor ?? theme.semanticColors.bodyText,
-        fontFamily: fontFamily ?? theme.fonts.medium.fontFamily,
-        padding,
-        display: 'flex',
-        flexDirection: 'column',
-        rowGap: '8px',
-      }),
-    [fontColor, fontFamily, paperBackgroundColor, padding, resolvedHeight, theme, width],
+  // Inline styles for dynamic values that can't be in makeStyles
+  const rootStyle: React.CSSProperties = React.useMemo(
+    () => ({
+      width: width ? `${width}px` : '100%',
+      minHeight: resolvedHeight,
+      ...(paperBackgroundColor && { backgroundColor: paperBackgroundColor }),
+      ...(fontColor && { color: fontColor }),
+      ...(fontFamily && { fontFamily }),
+      ...(padding && { padding }),
+    }),
+    [fontColor, fontFamily, paperBackgroundColor, padding, resolvedHeight, width],
   );
 
-  const contentClassName = React.useMemo(
-    () =>
-      mergeStyles({
-        position: 'relative',
-        flexGrow: 1,
-        backgroundColor: plotBackgroundColor ?? 'transparent',
-        borderRadius: theme.effects.roundedCorner2 ?? 4,
-        boxSizing: 'border-box',
-      }),
-    [plotBackgroundColor, theme.effects.roundedCorner2],
-  );
-
-  const titleClassName = React.useMemo(
-    () =>
-      mergeStyles({
-        textAlign: 'center',
-      }),
-    [],
+  const contentStyle: React.CSSProperties = React.useMemo(
+    () => ({
+      ...(plotBackgroundColor && { backgroundColor: plotBackgroundColor }),
+    }),
+    [plotBackgroundColor],
   );
 
   const resolvedAnnotations = annotations ?? [];
@@ -193,13 +199,13 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
             return Promise.reject(new Error('Chart container is not defined'));
           }
 
-          return exportToImage(containerRef.current, undefined, !!theme?.rtl, opts);
+          return exportToImage(containerRef.current, undefined, isRtl, opts);
         },
       };
 
       return chartHandle;
     },
-    [theme?.rtl],
+    [isRtl],
   );
 
   return (
@@ -213,13 +219,19 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
         aria-label={ariaLabel}
       >
         <foreignObject x={0} y={0} width={resolvedWidth} height={svgHeight}>
-          <div ref={contentRef} className={rootClassName} data-chart-annotation-only="true" aria-label={ariaLabel}>
+          <div
+            ref={contentRef}
+            className={classes.root}
+            style={rootStyle}
+            data-chart-annotation-only="true"
+            aria-label={ariaLabel}
+          >
             {chartTitle && (
-              <span className={titleClassName} aria-hidden="true">
+              <span className={classes.title} aria-hidden="true">
                 {chartTitle}
               </span>
             )}
-            <div className={contentClassName} role="presentation">
+            <div className={classes.content} style={contentStyle} role="presentation">
               {hasAnnotations ? <ChartAnnotationLayer annotations={resolvedAnnotations} context={context} /> : null}
             </div>
           </div>
