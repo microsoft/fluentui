@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toast",
   "entries": [
     {
+      "date": "Thu, 06 Nov 2025 17:24:17 GMT",
+      "tag": "@fluentui/react-toast_v9.7.8",
+      "version": "9.7.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.14.0",
+            "commit": "ead2f2739c6ad522edc7a8b180026dc87e47fbd0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Nov 2025 15:01:25 GMT",
       "tag": "@fluentui/react-toast_v9.7.7",
       "version": "9.7.7",

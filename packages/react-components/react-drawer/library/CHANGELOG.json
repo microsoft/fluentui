@@ -2,6 +2,27 @@
   "name": "@fluentui/react-drawer",
   "entries": [
     {
+      "date": "Thu, 06 Nov 2025 17:24:17 GMT",
+      "tag": "@fluentui/react-drawer_v9.10.8",
+      "version": "9.10.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.16.2",
+            "commit": "ead2f2739c6ad522edc7a8b180026dc87e47fbd0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.14.0",
+            "commit": "ead2f2739c6ad522edc7a8b180026dc87e47fbd0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Nov 2025 15:01:20 GMT",
       "tag": "@fluentui/react-drawer_v9.10.7",
       "version": "9.10.7",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Thu, 06 Nov 2025 15:01:23 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Nov 2025 17:24:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.14.0)
+
+Thu, 06 Nov 2025 17:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.13.0..@fluentui/react-motion-components-preview_v0.14.0)
+
+### Minor changes
+
+- feat(motion): Add Stagger choreography component ([PR #34705](https://github.com/microsoft/fluentui/pull/34705) by robertpenner@microsoft.com)
 
 ## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.13.0)
 
