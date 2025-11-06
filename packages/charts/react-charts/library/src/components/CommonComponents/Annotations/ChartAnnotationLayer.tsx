@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
-import { ChartAnnotation } from '../../../types/ChartAnnotation';
-import {
+import type { ChartAnnotation } from '../../../types/ChartAnnotation';
+import type {
   AnnotationPoint,
   ChartAnnotationContext,
   ChartAnnotationLayerProps,
@@ -461,6 +461,11 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
       opacity: 1,
     };
 
+    if (typeof annotation.style?.rotation === 'number' && !Number.isNaN(annotation.style.rotation)) {
+      containerStyle.transform = `rotate(${annotation.style.rotation}deg)`;
+      containerStyle.transformOrigin = '50% 50%';
+    }
+
     const measurementSignature = createMeasurementSignature(
       annotationMarkupSignature,
       containerStyle,
@@ -533,9 +538,11 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
     }
 
     const measurementStyle: React.CSSProperties = {
+      position: 'absolute',
       left: topLeftX,
       top: topLeftY,
       pointerEvents: 'none',
+      visibility: 'hidden',
       ...containerStyle,
     };
 

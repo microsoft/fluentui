@@ -6,6 +6,7 @@
 
 import { CurveFactory } from 'd3-shape';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { Margin } from '@fluentui/chart-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { RefObject } from 'react';
@@ -27,6 +28,24 @@ export interface AccessibilityProps {
 
 // @public
 export function adjustPadding(sankey: SankeyLayoutGenerator, height: number, nodesInColumn: NodesInColumns): void;
+
+// @public (undocumented)
+export const AnnotationOnlyChart: React_2.FC<AnnotationOnlyChartProps>;
+
+// @public
+export interface AnnotationOnlyChartProps {
+    annotations: ChartAnnotation[];
+    chartTitle?: string;
+    componentRef?: React_2.RefObject<Chart>;
+    description?: string;
+    fontColor?: string;
+    fontFamily?: string;
+    height?: number;
+    margin?: Partial<Margin>;
+    paperBackgroundColor?: string;
+    plotBackgroundColor?: string;
+    width?: number;
+}
 
 // @public (undocumented)
 export interface AnnotationPlotRect {
@@ -373,6 +392,7 @@ export interface ChartAnnotationStyleProps {
     fontWeight?: React_2.CSSProperties['fontWeight'];
     opacity?: number;
     padding?: string;
+    rotation?: number;
     textColor?: string;
 }
 
