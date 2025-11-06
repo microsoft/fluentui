@@ -189,14 +189,16 @@ export function useStaggerItemsVisibility({
       setItemsVisibility(nextVisibility);
 
       if (elapsed < result.totalDuration) {
-        frameRef.current = requestAnimationFrame(tick);
+        // TODO: remove casting after types for requestAnimationFrame are updated
+        frameRef.current = requestAnimationFrame(tick as () => void);
       } else if (!finishedRef.current) {
         finishedRef.current = true;
         handleMotionFinish();
       }
     };
 
-    frameRef.current = requestAnimationFrame(tick);
+    // TODO: remove casting after types for requestAnimationFrame are updated
+    frameRef.current = requestAnimationFrame(tick as () => void);
     return () => {
       cancelled = true;
       if (frameRef.current) {
