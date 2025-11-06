@@ -2079,7 +2079,7 @@
     "@griffel/core" "^1.16.0"
     tslib "^2.1.0"
 
-"@griffel/style-types@^1.1.0", "@griffel/style-types@^1.3.0":
+"@griffel/style-types@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@griffel/style-types/-/style-types-1.3.0.tgz#42b4f1902a0221a9a8334fda12a2fe88f13d65ee"
   integrity sha512-bHwD3sUE84Xwv4dH011gOKe1jul77M1S6ZFN9Tnq8pvZ48UMdY//vtES6fv7GRS5wXYT4iqxQPBluAiYAfkpmw==
