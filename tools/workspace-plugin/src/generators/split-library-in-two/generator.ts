@@ -302,7 +302,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
       \`\`\`js
       module.exports = {
-        stories: ['../${newProjectSourceRoot}/**/*.stories.mdx', '../${newProjectSourceRoot}/**/index.stories.@(ts|tsx)'],
+        stories: ['../${newProjectSourceRoot}/**/*.mdx', '../${newProjectSourceRoot}/**/index.stories.@(ts|tsx)'],
       }
       \`\`\`
 

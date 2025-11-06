@@ -2,7 +2,7 @@
 /* remove unnecessary padding now that theme switcher is not taking up space */
 #storybook-docs .sbdocs-wrapper {
   background: transparent !important;
-  padding-top: 0;
+  padding: 0 48px;
 }
 
 /* sb-show-main is missing during page transitions causing a page shift */
@@ -18,6 +18,7 @@
 .sb-preparing-story,
 .sb-preparing-docs,
 .sb-nopreview,
-.sb-errordisplay {
+.sb-errordisplay,
+.sidebar-container .search-field + div {
   display: none !important;
 }
