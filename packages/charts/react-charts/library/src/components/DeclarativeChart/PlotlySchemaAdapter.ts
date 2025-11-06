@@ -329,7 +329,7 @@ export const _getGaugeAxisColor = (
   colorway: string[] | undefined,
   colorwayType: ColorwayType,
   color: Color | undefined,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): string => {
   const extractedColors = extractColor(colorway, colorwayType, color, colorMap, isDarkTheme);
@@ -1124,7 +1124,7 @@ export const normalizeObjectArrayForGVBC = (
 export const transformPlotlyJsonToAnnotationChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  _colorMap: React.MutableRefObject<Map<string, string>>,
+  _colorMap: React.RefObject<Map<string, string>>,
   _colorwayType: ColorwayType,
   _isDarkTheme?: boolean,
 ): AnnotationOnlyChartProps => {
@@ -1161,7 +1161,7 @@ export const transformPlotlyJsonToAnnotationChartProps = (
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): DonutChartProps => {
@@ -1181,7 +1181,7 @@ export const transformPlotlyJsonToDonutProps = (
   const mapLegendToDataPoint: Record<string, ChartDataPoint> = {};
   // clear colorMap for donut chart to reassign colors as the colorMap initially gets assigned by
   // getAllupLegendsProps function without sorting labels by value
-  colorMap.current.clear();
+  colorMap.current!.clear();
 
   // Sort labels by value descending before mapping
   if (firstData.labels && firstData.values) {
@@ -1266,7 +1266,7 @@ export const transformPlotlyJsonToDonutProps = (
 export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
   fallbackVSBC?: boolean,
@@ -1485,7 +1485,7 @@ export const transformPlotlyJsonToVSBCProps = (
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): GroupedVerticalBarChartProps => {
@@ -1658,7 +1658,7 @@ export const transformPlotlyJsonToGVBCProps = (
 export const transformPlotlyJsonToVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): VerticalBarChartProps => {
@@ -1764,7 +1764,7 @@ export const transformPlotlyJsonToVBCProps = (
 export const transformPlotlyJsonToAreaChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): AreaChartProps => {
@@ -1781,7 +1781,7 @@ export const transformPlotlyJsonToAreaChartProps = (
 export const transformPlotlyJsonToLineChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): LineChartProps => {
@@ -1798,7 +1798,7 @@ export const transformPlotlyJsonToLineChartProps = (
 export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): LineChartProps => {
@@ -1836,7 +1836,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
   chartType: ScatterChartTypes,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): LineChartProps | AreaChartProps | ScatterChartProps => {
@@ -2064,7 +2064,7 @@ const transformPlotlyJsonToScatterTraceProps = (
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): HorizontalBarChartWithAxisProps => {
@@ -2143,7 +2143,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 export const transformPlotlyJsonToGanttChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): GanttChartProps => {
@@ -2244,7 +2244,7 @@ export const transformPlotlyJsonToGanttChartProps = (
 export const transformPlotlyJsonToHeatmapProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): HeatMapChartProps => {
@@ -2407,7 +2407,7 @@ export const transformPlotlyJsonToHeatmapProps = (
 export const transformPlotlyJsonToSankeyProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): SankeyChartProps => {
@@ -2482,7 +2482,7 @@ export const transformPlotlyJsonToSankeyProps = (
 export const transformPlotlyJsonToGaugeProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): GaugeChartProps => {
@@ -2672,7 +2672,7 @@ function mergeCells(tableCells?: TableData['cells'], templateCells?: TableData['
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): ChartTableProps => {
@@ -2820,7 +2820,7 @@ function getCategoriesAndValues(series: Partial<PlotData>): {
 export const transformPlotlyJsonToFunnelChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): FunnelChartProps => {
@@ -3290,7 +3290,7 @@ const getLegendShape = (series: Partial<PlotData>): Legend['shape'] => {
 
 export const getAllupLegendsProps = (
   input: PlotlySchema,
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   traceInfo: TraceInfo[],
   isDarkTheme?: boolean,

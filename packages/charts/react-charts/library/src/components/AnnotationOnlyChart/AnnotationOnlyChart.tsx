@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
 import { toImage as exportToImage } from '../../utilities/image-export-utils';
