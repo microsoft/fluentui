@@ -9,19 +9,6 @@ import * as React from 'react';
  *
  * @internal - Exported for testing purposes
  */
-export function hasExplicitProps(element: React.ReactElement, props: string[]): boolean {
-  if (!element.props || typeof element.props !== 'object') {
-    return false;
-  }
-
-  for (const prop of props) {
-    if (!(prop in element.props)) {
-      return false;
-    }
-  }
-
-  return true;
-}
 
 /**
  * Checks if a React element is a motion component created by createMotionComponent.
@@ -84,9 +71,7 @@ export function isPresenceComponent(element: React.ReactElement): boolean {
  * @internal - Exported for testing purposes
  */
 export function acceptsDelayProps(element: React.ReactElement): boolean {
-  return (
-    isPresenceComponent(element) || isMotionComponent(element) || hasExplicitProps(element, ['delay', 'exitDelay'])
-  );
+  return isPresenceComponent(element) || isMotionComponent(element);
 }
 
 /**
@@ -106,5 +91,5 @@ export function acceptsDelayProps(element: React.ReactElement): boolean {
  * @internal - Exported for testing purposes
  */
 export function acceptsVisibleProp(element: React.ReactElement): boolean {
-  return isPresenceComponent(element) || hasExplicitProps(element, ['visible']);
+  return isPresenceComponent(element);
 }
