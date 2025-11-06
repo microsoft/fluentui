@@ -22,7 +22,9 @@
             "react-text",
             "react-theme",
             "react-toast",
-            "react-utilities"
+            "react-utilities",
+            // TODO: Remove before merging to main
+            "semantic-style-hooks-preview"
           ],
           "target": "build"
         }
