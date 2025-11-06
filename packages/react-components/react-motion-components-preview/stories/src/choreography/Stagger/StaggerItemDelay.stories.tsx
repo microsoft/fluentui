@@ -49,7 +49,7 @@ const useClasses = makeStyles({
 export const ItemDelay = (): JSXElement => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
-  const [itemDelay, setItemDelay] = React.useState<number>(100);
+  const [itemDelay, setItemDelay] = React.useState<number>(25);
 
   return (
     <div className={classes.container}>
