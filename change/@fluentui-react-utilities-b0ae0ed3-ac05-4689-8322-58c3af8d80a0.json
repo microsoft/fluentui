@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor(react-utilities): improve types for useAnimationFrame",
+  "packageName": "@fluentui/react-utilities",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
