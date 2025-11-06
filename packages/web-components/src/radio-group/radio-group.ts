@@ -562,19 +562,48 @@ export class RadioGroup extends FASTElement {
    * @param anchor - Optional anchor to use for the validation message.
    *
    * @internal
+   * @remarks
+   * RadioGroup validation is reported through the individual Radio elements rather than the RadioGroup itself.
+   * This is necessary because:
+   * 1. Each Radio is form-associated (extends BaseCheckbox which has `formAssociated = true`)
+   * 2. Browser validation UIs and screen readers announce validation against individual form controls
+   * 3. For groups like RadioGroup, the browser needs to report the error on a specific member of the group
+   * 4. We anchor the error to the first Radio so it receives focus and announcement
+   *
+   * When the group is invalid (required but no selection):
+   * - Only the first Radio gets the invalid state with the validation message
+   * - Other Radios are kept valid since selecting any of them would satisfy the requirement
+   *
+   * When the group becomes valid (user selects any Radio):
+   * - All Radios are cleared back to valid state
+   * - This allows form submission to proceed
    */
   public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
     if (this.$fastController.isConnected) {
-      if (this.disabled || !this.required) {
-        this.elementInternals.setValidity({});
+      // Always check if still required and has no value
+      const isInvalid = this.required && !this.value && !this.disabled;
+
+      if (!isInvalid) {
+        // Clear validity on all radios when group is valid
+        this.enabledRadios?.forEach(radio => {
+          radio.elementInternals.setValidity({});
+        });
         return;
       }
 
-      this.elementInternals.setValidity(
-        { valueMissing: this.required && !this.value, ...flags },
-        message ?? this.validationMessage,
-        anchor ?? this.enabledRadios[0],
-      );
+      // Group is invalid - set error only on first enabled radio for announcement
+      const validationFlags = { valueMissing: true, ...flags };
+      const validationMessage = message ?? this.validationMessage;
+
+      this.enabledRadios?.forEach((radio, index) => {
+        if (index === 0) {
+          // Only the first radio shows the validation error for screen reader announcement
+          radio.elementInternals.setValidity(validationFlags, validationMessage, radio);
+        } else {
+          // Other radios are valid (they're just not selected yet)
+          radio.elementInternals.setValidity({});
+        }
+      });
     }
   }
 
