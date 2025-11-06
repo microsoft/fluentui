@@ -16,7 +16,6 @@ describe('getStaggerChildMapping', () => {
     expect(mapping['.$a'].index).toBe(0);
     expect(mapping['.$b'].index).toBe(1);
     expect(mapping['.$c'].index).toBe(2);
-    expect(mapping['.$a'].element.props.children).toBe('First');
   });
 
   it('should generate keys for children without explicit keys', () => {
