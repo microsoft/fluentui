@@ -4,7 +4,7 @@ exports[`Menu renders a default state 1`] = `
 <div>
   <button
     aria-haspopup="menu"
-    id="menur1"
+    id="menu_r_1_"
   >
     Menu trigger
   </button>

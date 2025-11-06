@@ -13,13 +13,14 @@ export const useMutationObserver = (
   callback: MutationCallback,
   options?: MutationObserverInit,
 ): {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   observer: React.MutableRefObject<MutationObserver | undefined>;
 } => {
   'use no memo';
 
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
-  const observer = useRef<MutationObserver>();
+  const observer = useRef<MutationObserver | undefined>(undefined);
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
 

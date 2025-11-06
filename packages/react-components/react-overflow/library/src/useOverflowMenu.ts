@@ -7,6 +7,7 @@ import { useOverflowCount } from './useOverflowCount';
 
 export function useOverflowMenu<TElement extends HTMLElement>(
   id?: string,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): { ref: React.MutableRefObject<TElement | null>; overflowCount: number; isOverflowing: boolean } {
   const elementId = useId('overflow-menu', id);
   const overflowCount = useOverflowCount();

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import type * as ReactTestUtils from 'react-dom/test-utils';
 import { render } from '@testing-library/react';
 
 // v2 - avoiding usage of enzyme
@@ -37,7 +36,7 @@ export function renderIntoDocument(element: React.ReactElement<any>): HTMLElemen
   return renderedDOM as HTMLElement;
 }
 
-export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
+export function mockEvent(targetValue: string = '') {
   const target: EventTarget = { value: targetValue } as HTMLInputElement;
   return { target };
 }
