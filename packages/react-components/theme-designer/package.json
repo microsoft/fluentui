@@ -23,7 +23,7 @@
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.3",
     "@fluentui/react-theme": "^9.2.0",
     "@fluentui/react-utilities": "^9.25.3",
-    "@griffel/react": "^1.5.22",
+    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
     "dedent": "^1.2.0",
     "codesandbox-import-utils": "^2.2.3"

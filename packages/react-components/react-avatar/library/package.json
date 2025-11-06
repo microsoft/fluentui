@@ -31,7 +31,7 @@
     "@fluentui/react-tooltip": "^9.8.10",
     "@fluentui/react-utilities": "^9.25.3",
     "@fluentui/react-jsx-runtime": "^9.3.2",
-    "@griffel/react": "^1.5.22",
+    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

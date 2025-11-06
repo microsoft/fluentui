@@ -42,7 +42,7 @@
     "@fluentui/react-positioning": "^9.20.9",
     "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-field": "^9.4.10",
-    "@griffel/react": "^1.5.22",
+    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
