@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/chart-web-components",
   "description": "A library of Fluent Chart Web Components",
-  "version": "0.0.55",
+  "version": "0.0.56",
   "author": {
     "name": "Microsoft"
   },
@@ -64,14 +64,14 @@
     "@microsoft/fast-element": "2.0.0",
     "@fluentui/scripts-api-extractor": "*",
     "@tensile-perf/web-components": "~0.2.2",
-    "@storybook/html": "7.6.20",
-    "@storybook/html-webpack5": "7.6.20",
+    "@storybook/html": "8.6.14",
+    "@storybook/html-webpack5": "8.6.14",
     "chromedriver": "^125.0.0"
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "^1.0.0-alpha.22",
-    "@fluentui/web-components": "^3.0.0-beta.130",
+    "@fluentui/web-components": "^3.0.0-beta.131",
     "@types/d3-selection": "^3.0.0",
     "@types/d3-shape": "^3.0.0",
     "d3-selection": "^3.0.0",

@@ -4,10 +4,15 @@
 
 ```ts
 
+import { AtomMotion } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
+import type { PresenceDirection } from '@fluentui/react-motion';
 
 // @public
 export const Blur: PresenceComponent<BlurParams>;
+
+// @public
+export const blurAtom: ({ direction, duration, easing, delay, fromRadius, toRadius, }: BlurAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type BlurParams = BasePresenceParams & AnimateOpacity & {
@@ -46,6 +51,9 @@ export const CollapseSnappy: PresenceComponent<CollapseParams>;
 // @public
 export const Fade: PresenceComponent<FadeParams>;
 
+// @public
+export const fadeAtom: ({ direction, duration, easing, delay, fromOpacity, toOpacity, }: FadeAtomParams) => AtomMotion;
+
 // @public (undocumented)
 export type FadeParams = BasePresenceParams & {
     fromOpacity?: number;
@@ -61,6 +69,9 @@ export const FadeSnappy: PresenceComponent<FadeParams>;
 // @public (undocumented)
 export const Rotate: PresenceComponent<RotateParams>;
 
+// @public
+export const rotateAtom: ({ direction, duration, easing, delay, axis, fromAngle, toAngle, }: RotateAtomParams) => AtomMotion;
+
 // @public (undocumented)
 export type RotateParams = BasePresenceParams & AnimateOpacity & {
     axis?: Axis3D;
@@ -70,6 +81,9 @@ export type RotateParams = BasePresenceParams & AnimateOpacity & {
 
 // @public
 export const Scale: PresenceComponent<ScaleParams>;
+
+// @public
+export const scaleAtom: ({ direction, duration, easing, delay, fromScale, toScale, }: ScaleAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type ScaleParams = BasePresenceParams & AnimateOpacity & {
@@ -85,6 +99,9 @@ export const ScaleSnappy: PresenceComponent<ScaleParams>;
 
 // @public
 export const Slide: PresenceComponent<SlideParams>;
+
+// @public
+export const slideAtom: ({ direction, duration, easing, delay, fromX, fromY, toX, toY, }: SlideAtomParams) => AtomMotion;
 
 // @public (undocumented)
 export type SlideParams = BasePresenceParams & AnimateOpacity & {

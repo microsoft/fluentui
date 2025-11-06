@@ -53,7 +53,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const yAxisElementSecondary = React.useRef<SVGSVGElement>();
   let margins: IMargins;
   const idForGraph: string = 'chart_';
-  let _reqID: number;
+  let _reqID: number | undefined;
   const _useRtl: boolean = useRtl();
   let _tickValues: (string | number)[];
   const _isFirstRender = React.useRef<boolean>(true);
@@ -95,7 +95,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       setStartFromX(0);
     }
     return () => {
-      cancelAnimationFrame(_reqID);
+      if (_reqID !== undefined) {
+        cancelAnimationFrame(_reqID);
+      }
     };
   }, [props]);
 

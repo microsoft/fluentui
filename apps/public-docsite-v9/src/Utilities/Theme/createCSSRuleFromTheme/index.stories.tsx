@@ -13,6 +13,7 @@ export default {
       description: {
         component: [descriptionMd, bestPracticesMd].join('\n'),
       },
+      hideArgsTable: true,
     },
   },
 } as Meta;

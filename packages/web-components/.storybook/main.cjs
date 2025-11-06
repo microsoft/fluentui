@@ -18,7 +18,7 @@ module.exports =
     },
     // helpers.stories.ts is a file that contains helper functions for stories,
     // and should not be treated as a story itself.
-    stories: ['../src/**/!(helpers)*.stories.@(ts|mdx)'],
+    stories: ['../src/**/!(helpers)*.@(stories.ts|mdx)'],
     staticDirs: ['../public'],
     core: {
       disableTelemetry: true,

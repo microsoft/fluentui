@@ -331,7 +331,7 @@ const useIsDarkTheme = (): boolean => {
 export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = React.forwardRef<
   HTMLDivElement,
   DeclarativeChartProps
->((props, forwardedRef) => {
+>(({ colorwayType = 'default', ...props }, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {
@@ -491,7 +491,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const allupLegendsProps = getAllupLegendsProps(
     plotlyInputWithValidData,
     colorMap,
-    props.colorwayType,
+    colorwayType,
     chart.validTracesInfo!,
     isDarkTheme,
   );
@@ -536,7 +536,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
               return renderChart<ReturnType<typeof transformer>>(
                 renderer,
                 transformer,
-                [transformedInput, isMultiPlot.current, colorMap, props.colorwayType, isDarkTheme],
+                [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme],
                 {
                   ...commonProps,
                   xAxisAnnotation: cellProperties?.xAnnotation,
@@ -557,6 +557,3 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
-DeclarativeChart.defaultProps = {
-  colorwayType: 'default',
-};

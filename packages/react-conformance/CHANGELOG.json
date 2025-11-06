@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Tue, 04 Nov 2025 14:47:00 GMT",
+      "tag": "@fluentui/react-conformance_v0.20.1",
+      "version": "0.20.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "196f2aa216c1f849a3322b7f0197a214f0f75d42",
+            "comment": "fix: force release"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 May 2025 13:28:52 GMT",
       "tag": "@fluentui/react-conformance_v0.20.0",
       "version": "0.20.0",
