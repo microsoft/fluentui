@@ -56,7 +56,7 @@ export function useStaggerItemsVisibility({
   const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   // Stabilize the callback reference to avoid re-triggering effects on every render
-  const stableOnMotionFinish = useEventCallback(
+  const handleMotionFinish = useEventCallback(
     onMotionFinish ??
       (() => {
         return;
@@ -143,7 +143,7 @@ export function useStaggerItemsVisibility({
     if (isFirstRender.current) {
       isFirstRender.current = false;
       // Items are already in their final state from useState, no animation needed
-      stableOnMotionFinish();
+      handleMotionFinish();
       return; // No cleanup needed for first render
     }
 
@@ -192,7 +192,7 @@ export function useStaggerItemsVisibility({
         frameRef.current = requestAnimationFrame(tick);
       } else if (!finishedRef.current) {
         finishedRef.current = true;
-        stableOnMotionFinish();
+        handleMotionFinish();
       }
     };
 
@@ -210,7 +210,7 @@ export function useStaggerItemsVisibility({
     direction,
     requestAnimationFrame,
     cancelAnimationFrame,
-    stableOnMotionFinish,
+    handleMotionFinish,
   ]);
 
   return { itemsVisibility };
