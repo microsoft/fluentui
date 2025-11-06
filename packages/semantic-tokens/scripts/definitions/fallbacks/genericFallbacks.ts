@@ -88,6 +88,7 @@ export const genericFallbacks: GenericFallbacks = {
     primitive: 'colorNeutral4',
   },
   strokeNeutralOnloud: {
+    fluent: tokens.colorNeutralStrokeOnBrand,
     primitive: 'colorNeutral8',
   },
   strokeBrandLoud: {
@@ -131,6 +132,7 @@ export const genericFallbacks: GenericFallbacks = {
   },
   strokeNeutralTransparent: {
     primitive: 'colorNeutralAlpha',
+    fluent: tokens.colorTransparentBackground,
   },
   strokeDisabled: {
     primitive: 'colorNeutral4',
@@ -164,6 +166,7 @@ export const genericFallbacks: GenericFallbacks = {
   },
   foregroundNeutralSecondary: {
     primitive: 'colorNeutral1',
+    fluent: tokens.colorNeutralForeground2,
   },
   foregroundNeutralOnneutral: {
     primitive: 'colorNeutral0',

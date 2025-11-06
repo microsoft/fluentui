@@ -653,7 +653,6 @@ export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
   const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = mergeClasses(
-    state.root.className,
     buttonClassNames.root,
     rootBaseClassName,
 
@@ -689,7 +688,6 @@ export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
 
   if (state.icon) {
     state.icon.className = mergeClasses(
-      state.icon.className,
       buttonClassNames.icon,
       iconBaseClassName,
       !!state.root.children && iconStyles[iconPosition],

@@ -226,4 +226,19 @@ export {
   groupButtonSubtleBackgroundPressedSelected,
   groupButtonSubtleIconForegroundHoverSelected,
   groupButtonSubtleIconForegroundPressedSelected,
+
+  // Compound Button - scale
+  ctrlCompoundbuttonSmallIcononlyPadding,
+  ctrlCompoundbuttonIcononlyPadding,
+  ctrlCompoundbuttonLargeIcononlyPadding,
+  ctrlCompoundbuttonIconSize,
+  ctrlCompoundbuttonGap,
+  ctrlCompoundbuttonPaddingTop,
+  ctrlCompoundbuttonPaddingBottom,
+  ctrlCompoundbuttonSmallPaddingTop,
+  ctrlCompoundbuttonSmallPaddingBottom,
+  ctrlCompoundbuttonSmallPaddingHorizontal,
+  ctrlCompoundbuttonLargePaddingTop,
+  ctrlCompoundbuttonLargePaddingBottom,
+  ctrlCompoundbuttonLargePaddingHorizontal,
 } from './algo/index';

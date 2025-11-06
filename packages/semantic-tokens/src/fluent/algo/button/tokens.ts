@@ -76,3 +76,18 @@ export const groupButtonSubtleBackgroundHoverSelected = `hsl(from ${groupButtonS
 export const groupButtonSubtleBackgroundPressedSelected = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
 export const groupButtonSubtleIconForegroundHoverSelected = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
 export const groupButtonSubtleIconForegroundPressedSelected = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
+
+// Compound button tokens
+export const ctrlCompoundbuttonSmallIcononlyPadding = `calc(${groupButtonIcononlyPadding} / 5 * 4)`;
+export const ctrlCompoundbuttonIcononlyPadding = `calc(${groupButtonIcononlyPadding} / 5 * 6)`;
+export const ctrlCompoundbuttonLargeIcononlyPadding = `calc(${groupButtonIcononlyPadding} / 5 * 8)`;
+export const ctrlCompoundbuttonIconSize = `calc(${groupButtonIconSize} * 2)`;
+export const ctrlCompoundbuttonGap = `calc(${groupButtonGap} * 2)`;
+export const ctrlCompoundbuttonPaddingTop = `calc(${groupButtonPaddingTop} / 5 * 14)`;
+export const ctrlCompoundbuttonPaddingBottom = `calc(${groupButtonPaddingBottom} / 5 * 16)`;
+export const ctrlCompoundbuttonSmallPaddingTop = `calc(${groupButtonPaddingTop} / 5 * 8)`;
+export const ctrlCompoundbuttonSmallPaddingBottom = `calc(${groupButtonPaddingBottom} / 5 * 10)`;
+export const ctrlCompoundbuttonSmallPaddingHorizontal = `calc(${groupButtonPaddingHorizontal} / 12 * 8)`;
+export const ctrlCompoundbuttonLargePaddingTop = `calc(${groupButtonPaddingTop} / 5 * 18)`;
+export const ctrlCompoundbuttonLargePaddingBottom = `calc(${groupButtonPaddingBottom} / 5 * 20)`;
+export const ctrlCompoundbuttonLargePaddingHorizontal = `calc(${groupButtonPaddingHorizontal} / 12 * 16)`;
