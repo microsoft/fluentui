@@ -1,6 +1,6 @@
 'use client';
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { ButtonSlots, useButtonStyles_unstable } from '@fluentui/react-button';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { HamburgerState } from './Hamburger.types';
