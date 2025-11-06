@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Fri, 31 Oct 2025 16:22:05 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Nov 2025 15:01:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.13.0)
+
+Thu, 06 Nov 2025 15:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.12.0..@fluentui/react-motion-components-preview_v0.13.0)
+
+### Minor changes
+
+- feat(motion): export standard motion atoms ([PR #35421](https://github.com/microsoft/fluentui/pull/35421) by robertpenner@microsoft.com)
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.12.0)
 

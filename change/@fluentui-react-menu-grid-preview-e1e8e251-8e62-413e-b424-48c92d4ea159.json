@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update styles and rename menuGridGroupHeaderClassNames to camel case",
-  "packageName": "@fluentui/react-menu-grid-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,219 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 06 Nov 2025 15:01:14 GMT",
+      "tag": "@fluentui/react-components_v9.72.5",
+      "version": "9.72.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "68eec6fa5d5946453856d411634aeb9f7bea809a",
+            "comment": "fix: Add referrerPolicy to anchor element property whitelist"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8fd7910fdfc3892c3e802e09fdedf8de249c0733",
+            "comment": "refactor(react-utilities): improve types for useAnimationFrame"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "b7b0b5f5eec9d1ef0310a393653b6e19ab94b7bc",
+            "comment": "fix: disabled Calendar buttons get disabled color styles in high contrast mode"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5863b2accfe7e02beb2af3459c1ee0c79cc1ee30",
+            "comment": "fix plotly color issue"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a645475a61559f20abcc826b25bbe9c22e181084",
+            "comment": "fix reference lines bug"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "155784131+cperezruiz-microsoft@users.noreply.github.com",
+            "package": "@fluentui/react-components",
+            "commit": "16a0c91c2729123c82886084ce8f263d316d2272",
+            "comment": "added export for presenceComponent"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "60123376d329582d3eb0e33298452027b6b11706",
+            "comment": "refactor(react-drawer): use standard motion atom for fade"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu-grid-preview",
+            "commit": "ffb949d4324820a74158ff84c71c39a96de19ed9",
+            "comment": "Update styles and rename menuGridGroupHeaderClassNames to camel case"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "60123376d329582d3eb0e33298452027b6b11706",
+            "comment": "refactor(react-message-bar): use standard motion atoms for slide and fade"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "77df4fe3220557c4f72d6ce8492b0d198cc1119d",
+            "comment": "refactor(react-nav): use Rotate component for icon motion"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "fix: mitigate native popover prop dts clash from public API exposed by React 19"
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "60123376d329582d3eb0e33298452027b6b11706",
+            "comment": "feat(motion): export standard motion atoms"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Oct 2025 16:21:59 GMT",
       "tag": "@fluentui/react-components_v9.72.4",
       "version": "9.72.4",

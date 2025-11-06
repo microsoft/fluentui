@@ -1,8 +1,80 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 31 Oct 2025 16:21:59 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Nov 2025 15:01:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.5)
+
+Thu, 06 Nov 2025 15:01:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.4..@fluentui/react-components_v9.72.5)
+
+### Minor changes
+
+- `@fluentui/react-motion-components-preview`
+  - feat(motion): export standard motion atoms ([PR #35421](https://github.com/microsoft/fluentui/pull/35421) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tabster`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: Add referrerPolicy to anchor element property whitelist ([PR #35447](https://github.com/microsoft/fluentui/pull/35447) by 198982749+Copilot@users.noreply.github.com)
+  - refactor(react-utilities): improve types for useAnimationFrame ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by robertpenner@microsoft.com)
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+  - fix: disabled Calendar buttons get disabled color styles in high contrast mode ([PR #35450](https://github.com/microsoft/fluentui/pull/35450) by sarah.higley@microsoft.com)
+- `@fluentui/react-charts`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+  - fix plotly color issue ([PR #35451](https://github.com/microsoft/fluentui/pull/35451) by anushgupta@microsoft.com)
+  - fix reference lines bug ([PR #35406](https://github.com/microsoft/fluentui/pull/35406) by anushgupta@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - added export for presenceComponent ([PR #35455](https://github.com/microsoft/fluentui/pull/35455) by 155784131+cperezruiz-microsoft@users.noreply.github.com)
+- `@fluentui/react-context-selector`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - refactor(react-drawer): use standard motion atom for fade ([PR #35421](https://github.com/microsoft/fluentui/pull/35421) by robertpenner@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - Update styles and rename menuGridGroupHeaderClassNames to camel case ([PR #35463](https://github.com/microsoft/fluentui/pull/35463) by yuanboxue@microsoft.com)
+- `@fluentui/react-message-bar`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+  - refactor(react-message-bar): use standard motion atoms for slide and fade ([PR #35421](https://github.com/microsoft/fluentui/pull/35421) by robertpenner@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-nav`
+  - refactor(react-nav): use Rotate component for icon motion ([PR #35433](https://github.com/microsoft/fluentui/pull/35433) by robertpenner@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - fix: mitigate native popover prop dts clash from public API exposed by React 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
 
 ## [9.72.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.4)
 
