@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { AnnotationOnlyChart } from './AnnotationOnlyChart';
-import { IAnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
+import { AnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
 import { ChartAnnotation } from '../../types/ChartAnnotation';
 
 // Mock ResizeObserver
@@ -34,7 +34,7 @@ const mockAnnotations: ChartAnnotation[] = [
   },
 ];
 
-const defaultProps: IAnnotationOnlyChartProps = {
+const defaultProps: AnnotationOnlyChartProps = {
   annotations: mockAnnotations,
   width: 600,
   height: 400,

@@ -1,37 +1,14 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
 import { toImage as exportToImage } from '../../utilities/image-export-utils';
 import { useRtl } from '../../utilities';
+import { useAnnotationOnlyChartStyles } from './useAnnotationOnlyChartStyles.styles';
 import type { AnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
 import type { Chart, ImageExportOptions } from '../../types/index';
 import type { ChartAnnotationContext } from '../CommonComponents/Annotations/ChartAnnotationLayer.types';
 
 const DEFAULT_HEIGHT = 650;
 const FALLBACK_WIDTH = 400;
-
-const useStyles = makeStyles({
-  root: {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '8px',
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
-    fontFamily: typographyStyles.body1.fontFamily,
-  },
-  content: {
-    position: 'relative',
-    flexGrow: 1,
-    backgroundColor: 'transparent',
-    borderRadius: tokens.borderRadiusMedium,
-    boxSizing: 'border-box',
-  },
-  title: {
-    textAlign: 'center',
-  },
-});
 
 const buildPadding = (margin: AnnotationOnlyChartProps['margin']): string | undefined => {
   if (!margin) {
@@ -66,7 +43,7 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
   } = props;
 
   const isRtl = useRtl();
-  const classes = useStyles();
+  const classes = useAnnotationOnlyChartStyles();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const contentRef = React.useRef<HTMLDivElement | null>(null);
   const [measuredWidth, setMeasuredWidth] = React.useState<number>(width ?? 0);
