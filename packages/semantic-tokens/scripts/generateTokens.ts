@@ -1,7 +1,6 @@
 import { generics } from './definitions/generics';
-import { primitives } from './definitions/primitives';
-import { groups } from './definitions/groups';
-import { GroupPart } from './definitions/groups.types';
+// import { primitives } from './definitions/primitives';
+import { GroupPart, Groups } from './definitions/groups.types';
 import { controls } from './definitions/controls';
 
 const joiner = '.';
@@ -37,8 +36,7 @@ const propertyTypes = {
 
 const generateGenericTokenName = ({
   variant,
-  scale,
-  partName,
+  emphasis,
   property,
   state,
 }: {
@@ -46,11 +44,12 @@ const generateGenericTokenName = ({
   groupName?: string;
   variant?: string;
   scale?: string;
+  emphasis?: string;
   partName?: string;
   property?: string;
   state?: string;
 }) => {
-  return [property, variant, state].filter(Boolean).join(joiner);
+  return [property, variant, emphasis, state].filter(Boolean).join(joiner);
 };
 
 const generateGroupTokenName = ({
@@ -97,43 +96,69 @@ const generateFigmaName = ({
   return [property, collectionName, groupName, variant, scale, partName, state].filter(Boolean).join(joiner);
 };
 
-export function generatePrimitiveTokens() {
-  let result = [];
+// export function generatePrimitiveTokens() {
+//   let result = [];
 
-  for (const prim of Object.keys(primitives)) {
-    for (const style of primitives[prim].styles) {
-      for (const state of primitives[prim].states) {
-        let tokenParts = [prim, style, state];
+//   for (const prim of Object.keys(primitives)) {
+//     for (const style of primitives[prim].styles) {
+//       for (const state of primitives[prim].states) {
+//         let tokenParts = [prim, style, state];
 
-        result.push({
-          name: tokenParts.filter(Boolean).join(joiner),
-          type: primitives[prim].type || 'color',
-          property: null,
-        });
-      }
-    }
-  }
-  return result;
-}
+//         result.push({
+//           name: tokenParts.filter(Boolean).join(joiner),
+//           type: primitives[prim].type || 'color',
+//           property: null,
+//         });
+//       }
+//     }
+//   }
+//   return result;
+// }
 
 export function generateGenericTokens() {
   let result: Array<Token> = [];
 
   for (const property of Object.keys(generics)) {
     for (const variant of generics[property].variants) {
-      const states = generics[property].states || [''];
-      for (const state of states) {
-        const propertyToken = {
-          name: generateGenericTokenName({ property, variant, state }),
-          // Figma alias is the same on generic tokens (property first)
-          figmaAlias: generateGenericTokenName({ property, variant, state }),
-          type: generics[property].type || 'dimension',
-          property,
-          variant,
-          state,
-        };
+      for (const emphasis of generics[property].emphasis || ['']) {
+        const states = generics[property].states || [''];
+        for (const state of states) {
+          const propertyToken = {
+            name: generateGenericTokenName({ property, emphasis, variant, state }),
+            // Figma alias is the same on generic tokens (property first)
+            figmaAlias: generateGenericTokenName({ property, emphasis, variant, state }),
+            type: generics[property].type || 'dimension',
+            property,
+            emphasis,
+            variant,
+            state,
+          };
 
-        result.push(propertyToken);
+          result.push(propertyToken);
+        }
+      }
+    }
+
+    const exceptions = generics[property].exceptions || [];
+    for (const exception of exceptions) {
+      for (const variant of exception.variants) {
+        for (const emphasis of exception.emphasis || []) {
+          const states = exception.states || [''];
+          for (const state of states) {
+            const propertyToken = {
+              name: generateGenericTokenName({ property, emphasis, variant, state }),
+              // Figma alias is the same on generic tokens (property first)
+              figmaAlias: generateGenericTokenName({ property, emphasis, variant, state }),
+              type: exception.type || 'dimension',
+              property,
+              emphasis,
+              variant,
+              state,
+            };
+
+            result.push(propertyToken);
+          }
+        }
       }
     }
   }
@@ -258,7 +283,7 @@ export function generateComponentGroupTokens(
   return result;
 }
 
-export function generateGroupTokens() {
+export function generateGroupTokens(groups: Groups) {
   let result: Token[] = [];
 
   // For each group, generate core property tokens

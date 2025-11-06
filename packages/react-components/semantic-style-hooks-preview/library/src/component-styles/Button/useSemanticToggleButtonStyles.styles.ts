@@ -13,7 +13,7 @@ const useRootCheckedStyles = makeStyles({
   base: {
     backgroundColor: semanticTokens.groupButtonNeutralBackgroundSelected,
     ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeSelected),
-    color: semanticTokens.groupButtonNeutralTextForegroundSelected,
+    color: semanticTokens.groupButtonNeutralForegroundSelected,
     ...shorthands.borderWidth(semanticTokens.groupButtonStrokewidth),
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonNeutralIconForegroundSelected,
@@ -24,18 +24,6 @@ const useRootCheckedStyles = makeStyles({
     },
     [`& .${iconRegularClassName}`]: {
       display: 'none',
-    },
-
-    ':hover': {
-      backgroundColor: semanticTokens.groupButtonNeutralBackgroundHoverSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeHoverSelected),
-      color: semanticTokens.groupButtonNeutralTextForegroundHover,
-    },
-
-    ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonNeutralBackgroundPressedSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokePressedSelected),
-      color: semanticTokens.groupButtonNeutralTextForegroundPressed,
     },
   },
 
@@ -68,7 +56,7 @@ const useRootCheckedStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: semanticTokens.groupButtonOutlineBackgroundSelected,
-    color: semanticTokens.groupButtonOutlineTextForegroundSelected,
+    color: semanticTokens.groupButtonOutlineForegroundSelected,
     ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeSelected),
     ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
     [`& .${buttonClassNames.icon}`]: {
@@ -76,14 +64,10 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonOutlineBackgroundHoverSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeHoverSelected),
       ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonOutlineBackgroundPressedSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokePressedSelected),
       ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
     },
 
@@ -94,68 +78,60 @@ const useRootCheckedStyles = makeStyles({
   primary: {
     backgroundColor: semanticTokens.groupButtonPrimaryBackgroundSelected,
     ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeSelected),
-    color: semanticTokens.groupButtonPrimaryTextForegroundSelected,
-    boxShadow: semanticTokens.groupButtonPrimaryShadowSelected,
-
-    [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonPrimaryIconForegroundSelected,
-    },
+    color: semanticTokens.groupButtonPrimaryForegroundSelected,
 
     ':hover': {
       backgroundColor: semanticTokens.groupButtonPrimaryBackgroundHoverSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeHoverSelected),
-      color: semanticTokens.groupButtonPrimaryTextForegroundSelected,
     },
 
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonPrimaryBackgroundPressedSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokePressedSelected),
-      color: semanticTokens.groupButtonPrimaryTextForegroundSelected,
+    },
+
+    [`& .${buttonClassNames.icon}`]: {
+      color: semanticTokens.groupButtonPrimaryIconForegroundSelected,
     },
   },
   secondary: {
-    boxShadow: semanticTokens.groupButtonNeutralShadowSelected,
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     backgroundColor: semanticTokens.groupButtonSubtleBackgroundSelected,
     ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeSelected),
-    color: semanticTokens.groupButtonSubtleTextForegroundSelected,
+    color: semanticTokens.groupButtonSubtleForegroundSelected,
 
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonSubtleIconForegroundSelected,
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonSubtleBackgroundHoverSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeHoverSelected),
-      color: semanticTokens.groupButtonSubtleTextForegroundHover,
+      [`& .${buttonClassNames.icon}`]: {
+        color: semanticTokens.groupButtonSubtleIconForegroundHoverSelected,
+      },
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonSubtleBackgroundPressedSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokePressedSelected),
-      color: semanticTokens.groupButtonSubtleTextForegroundPressed,
+      [`& .${buttonClassNames.icon}`]: {
+        color: semanticTokens.groupButtonSubtleIconForegroundPressedSelected,
+      },
     },
   },
   transparent: {
-    backgroundColor: semanticTokens.groupButtonTransparentBackgroundSelected,
-    ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeSelected),
-    color: semanticTokens.groupButtonTransparentTextForegroundSelected,
+    color: semanticTokens.groupButtonTransparentForegroundSelected,
+    ...shorthands.borderColor('transparent'),
+    backgroundColor: semanticTokens.backgroundNeutralTransparent,
     [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonTransparentIconForegroundSelected,
+      color: semanticTokens.groupButtonTransparentForegroundSelected,
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonTransparentBackgroundHoverSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeHoverSelected),
-      color: semanticTokens.groupButtonTransparentTextForegroundHover,
+      ...shorthands.borderColor('transparent'),
+      backgroundColor: semanticTokens.backgroundNeutralTransparentHoverSelected,
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonTransparentBackgroundPressedSelected,
-      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokePressedSelected),
-      color: semanticTokens.groupButtonTransparentTextForegroundPressed,
+      ...shorthands.borderColor('transparent'),
+      backgroundColor: semanticTokens.backgroundNeutralTransparentPressedSelected,
     },
   },
 });
@@ -165,18 +141,18 @@ const useRootDisabledStyles = makeStyles({
   base: {
     backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
-    color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
+    color: semanticTokens.groupButtonNeutralForegroundDisabled,
 
     ':hover': {
       backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
-      color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
+      color: semanticTokens.groupButtonNeutralForegroundDisabled,
     },
 
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
-      color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
+      color: semanticTokens.groupButtonNeutralForegroundDisabled,
     },
   },
 
@@ -184,35 +160,29 @@ const useRootDisabledStyles = makeStyles({
   outline: {
     backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeDisabled),
-    color: semanticTokens.groupButtonOutlineTextForegroundDisabled,
 
     ':hover': {
       backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeDisabled),
-      color: semanticTokens.groupButtonOutlineTextForegroundDisabled,
     },
 
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeDisabled),
-      color: semanticTokens.groupButtonOutlineTextForegroundDisabled,
     },
   },
   primary: {
     backgroundColor: semanticTokens.groupButtonPrimaryBackgroundDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeDisabled),
-    color: semanticTokens.groupButtonPrimaryTextForegroundDisabled,
 
     ':hover': {
       backgroundColor: semanticTokens.groupButtonPrimaryBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeDisabled),
-      color: semanticTokens.groupButtonPrimaryTextForegroundDisabled,
     },
 
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonPrimaryBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeDisabled),
-      color: semanticTokens.groupButtonPrimaryTextForegroundDisabled,
     },
   },
   secondary: {
@@ -221,35 +191,29 @@ const useRootDisabledStyles = makeStyles({
   subtle: {
     backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
-    color: semanticTokens.groupButtonSubtleTextForegroundDisabled,
 
     ':hover': {
       backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
-      color: semanticTokens.groupButtonSubtleTextForegroundDisabled,
     },
 
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
-      color: semanticTokens.groupButtonSubtleTextForegroundDisabled,
     },
   },
   transparent: {
-    backgroundColor: semanticTokens.groupButtonTransparentBackgroundDisabled,
-    ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
-    color: semanticTokens.groupButtonTransparentTextForegroundDisabled,
+    backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
+    ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonTransparentBackgroundDisabled,
-      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
-      color: semanticTokens.groupButtonTransparentTextForegroundDisabled,
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonTransparentBackgroundDisabled,
-      ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
-      color: semanticTokens.groupButtonTransparentTextForegroundDisabled,
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeDisabled),
     },
   },
 });

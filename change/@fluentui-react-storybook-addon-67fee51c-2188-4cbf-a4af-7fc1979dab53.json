@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add semantic style hooks (for now) must REMOVE before merging to main",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "99835933+Mitch-At-Work@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

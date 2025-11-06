@@ -21,20 +21,20 @@ const useRootExpandedStyles = makeStyles({
   outline: {
     ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeSelected),
     ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
-    color: semanticTokens.groupButtonOutlineTextForegroundSelected,
+    color: semanticTokens.groupButtonOutlineForegroundSelected,
 
     // Ensure state is retained over base hover
     ':hover': {
       ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeSelected),
       ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
-      color: semanticTokens.groupButtonOutlineTextForegroundSelected,
+      color: semanticTokens.groupButtonOutlineForegroundSelected,
     },
 
     // Ensure state is retained over base hover active
     ':hover:active': {
       ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeSelected),
       ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
-      color: semanticTokens.groupButtonOutlineTextForegroundSelected,
+      color: semanticTokens.groupButtonOutlineForegroundSelected,
     },
   },
   primary: {
@@ -43,15 +43,14 @@ const useRootExpandedStyles = makeStyles({
   secondary: {
     backgroundColor: semanticTokens.groupButtonNeutralBackgroundSelected,
     ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeSelected),
-    color: semanticTokens.groupButtonNeutralTextForegroundSelected,
+    color: semanticTokens.groupButtonNeutralForegroundSelected,
   },
   subtle: {
     backgroundColor: semanticTokens.groupButtonSubtleBackgroundSelected,
-    color: semanticTokens.groupButtonSubtleTextForegroundSelected,
+    color: semanticTokens.groupButtonNeutralForegroundSelected,
   },
   transparent: {
-    backgroundColor: semanticTokens.groupButtonTransparentBackgroundSelected,
-    color: semanticTokens.groupButtonTransparentTextForegroundSelected,
+    color: semanticTokens.groupButtonNeutralForegroundSelected,
   },
 });
 
@@ -70,7 +69,7 @@ const useIconExpandedStyles = makeStyles({
     color: semanticTokens.groupButtonSubtleIconForegroundSelected,
   },
   transparent: {
-    color: semanticTokens.groupButtonTransparentIconForegroundSelected,
+    color: semanticTokens.groupButtonTransparentForegroundSelected,
   },
   highContrast: {
     // High contrast styles
@@ -89,23 +88,23 @@ const useMenuIconStyles = makeStyles({
 
   // Size appearance
   small: {
-    fontSize: semanticTokens.groupButtonSmallTextFontsize,
-    height: semanticTokens.groupButtonSmallTextFontsize,
-    lineHeight: semanticTokens.groupButtonSmallTextLineheight,
-    width: semanticTokens.groupButtonSmallTextFontsize,
+    fontSize: semanticTokens.groupButtonSmallFontsize,
+    height: semanticTokens.groupButtonSmallFontsize,
+    lineHeight: semanticTokens.groupButtonSmallLineheight,
+    width: semanticTokens.groupButtonSmallFontsize,
   },
   medium: {
     // Medium uses small font size for icon
-    fontSize: semanticTokens.groupButtonSmallTextFontsize,
-    height: semanticTokens.groupButtonSmallTextFontsize,
-    lineHeight: semanticTokens.groupButtonSmallTextLineheight,
-    width: semanticTokens.groupButtonSmallTextFontsize,
+    fontSize: semanticTokens.groupButtonSmallFontsize,
+    height: semanticTokens.groupButtonSmallFontsize,
+    lineHeight: semanticTokens.groupButtonSmallLineheight,
+    width: semanticTokens.groupButtonSmallFontsize,
   },
   large: {
-    fontSize: semanticTokens.groupButtonLargeTextFontsize,
-    height: semanticTokens.groupButtonLargeTextFontsize,
-    lineHeight: semanticTokens.groupButtonLargeTextLineheight,
-    width: semanticTokens.groupButtonLargeTextFontsize,
+    fontSize: semanticTokens.groupButtonLargeFontsize,
+    height: semanticTokens.groupButtonLargeFontsize,
+    lineHeight: semanticTokens.groupButtonLargeLineheight,
+    width: semanticTokens.groupButtonLargeFontsize,
   },
 
   // Not-icon only

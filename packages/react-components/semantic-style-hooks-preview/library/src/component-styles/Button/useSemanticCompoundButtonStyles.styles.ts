@@ -5,6 +5,7 @@ import { mergeClasses, makeStyles } from '@griffel/react';
 import { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';
 import { compoundButtonClassNames, type CompoundButtonState } from '@fluentui/react-button';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 const useRootStyles = makeStyles({
@@ -13,18 +14,19 @@ const useRootStyles = makeStyles({
     height: 'auto',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonNeutralTextSecondaryForeground,
+      color: semanticTokens.foregroundNeutralSecondary,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonNeutralTextSecondaryForegroundHover,
+        color: semanticTokens.foregroundNeutralSecondaryHover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonNeutralTextSecondaryForegroundPressed,
+        // Secondary doesn't change color in pressed state, using hover color
+        color: semanticTokens.foregroundNeutralSecondaryHover,
       },
     },
   },
@@ -48,34 +50,22 @@ const useRootStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonOutlineTextSecondaryForeground,
-    },
-    ':hover': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundHover,
-      },
-    },
-    ':hover:active': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundPressed,
-      },
-    },
+    // Same as base
   },
   primary: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonPrimaryTextSecondaryForeground,
+      color: semanticTokens.groupButtonPrimaryForeground,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundHover,
+        color: semanticTokens.groupButtonPrimaryForeground,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundPressed,
+        color: semanticTokens.groupButtonPrimaryForeground,
       },
     },
 
@@ -90,19 +80,7 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonSubtleTextSecondaryForeground,
-    },
-
-    ':hover': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonSubtleTextSecondaryForegroundHover,
-      },
-    },
-
-    ':hover:active': {
-      [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonSubtleTextSecondaryForegroundPressed,
-      },
+      color: semanticTokens.groupButtonSubtleForeground,
     },
 
     '@media (forced-colors: active)': {
@@ -120,18 +98,20 @@ const useRootStyles = makeStyles({
   },
   transparent: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonTransparentTextSecondaryForeground,
+      color: semanticTokens.groupButtonTransparentForeground,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonTransparentTextSecondaryForegroundHover,
+        // Transparent button uses the 'base' selected color for hover state
+        color: semanticTokens.groupButtonTransparentForegroundSelected,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonTransparentTextSecondaryForegroundPressed,
+        // Transparent button uses the 'hover' lightness for pressed state
+        color: semanticTokens.groupButtonTransparentForegroundHover,
       },
     },
   },
@@ -144,17 +124,17 @@ const useRootStyles = makeStyles({
     ${semanticTokens.ctrlCompoundbuttonSmallPaddingHorizontal}`,
 
     // Small compound button uses medium text styles
-    fontSize: semanticTokens.groupButtonMediumTextFontsize,
-    lineHeight: semanticTokens.groupButtonMediumTextLineheight,
+    fontSize: semanticTokens.groupButtonFontsize,
+    lineHeight: semanticTokens.groupButtonLineheight,
   },
   medium: {
-    padding: `${semanticTokens.ctrlCompoundbuttonMediumPaddingTop}
-    ${semanticTokens.ctrlCompoundbuttonMediumPaddingHorizontal}
-    ${semanticTokens.ctrlCompoundbuttonMediumPaddingBottom}
-    ${semanticTokens.ctrlCompoundbuttonMediumPaddingHorizontal}`,
+    padding: `${semanticTokens.ctrlCompoundbuttonPaddingTop}
+    ${semanticTokens.groupButtonPaddingHorizontal}
+    ${semanticTokens.ctrlCompoundbuttonPaddingBottom}
+    ${semanticTokens.groupButtonPaddingHorizontal}`,
 
-    fontSize: semanticTokens.groupButtonMediumTextFontsize,
-    lineHeight: semanticTokens.groupButtonMediumTextLineheight,
+    fontSize: semanticTokens.groupButtonFontsize,
+    lineHeight: semanticTokens.groupButtonLineheight,
   },
   large: {
     padding: `${semanticTokens.ctrlCompoundbuttonLargePaddingTop}
@@ -162,8 +142,8 @@ const useRootStyles = makeStyles({
     ${semanticTokens.ctrlCompoundbuttonLargePaddingBottom}
     ${semanticTokens.ctrlCompoundbuttonLargePaddingHorizontal}`,
 
-    fontSize: semanticTokens.groupButtonLargeTextFontsize,
-    lineHeight: semanticTokens.groupButtonLargeTextLineheight,
+    fontSize: semanticTokens.groupButtonLargeFontsize,
+    lineHeight: semanticTokens.groupButtonLargeLineheight,
   },
 
   // Disabled high contrast styles
@@ -191,18 +171,18 @@ const useRootStyles = makeStyles({
 const useDisabledStyles = makeStyles({
   base: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonNeutralTextSecondaryForegroundDisabled,
+      color: semanticTokens.groupButtonNeutralForegroundDisabled,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonNeutralTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonNeutralForegroundDisabled,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonNeutralTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonNeutralForegroundDisabled,
       },
     },
   },
@@ -211,67 +191,67 @@ const useDisabledStyles = makeStyles({
   },
   outline: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonOutlineTextSecondaryForegroundDisabled,
+      color: semanticTokens.groupButtonOutlineForegroundDisabled,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonOutlineForegroundDisabled,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonOutlineTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonOutlineForegroundDisabled,
       },
     },
   },
   transparent: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonTransparentTextSecondaryForegroundDisabled,
+      color: semanticTokens.groupButtonTransparentForegroundDisabled,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonTransparentTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonTransparentForegroundDisabled,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonTransparentTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonTransparentForegroundDisabled,
       },
     },
   },
   primary: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundDisabled,
+      color: semanticTokens.groupButtonPrimaryForegroundDisabled,
     },
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonPrimaryForegroundDisabled,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonPrimaryTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonPrimaryForegroundDisabled,
       },
     },
   },
   subtle: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
-      color: semanticTokens.groupButtonSubtleTextSecondaryForegroundDisabled,
+      color: semanticTokens.groupButtonSubtleForegroundDisabled,
     },
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonSubtleTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonSubtleForegroundDisabled,
       },
     },
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: semanticTokens.groupButtonSubtleTextSecondaryForegroundDisabled,
+        color: semanticTokens.groupButtonSubtleForegroundDisabled,
       },
     },
   },
@@ -286,7 +266,7 @@ const useRootIconOnlyStyles = makeStyles({
     minWidth: '48px',
   },
   medium: {
-    padding: semanticTokens.ctrlCompoundbuttonMediumIcononlyPadding,
+    padding: semanticTokens.ctrlCompoundbuttonIcononlyPadding,
 
     maxWidth: 'unset',
     minWidth: '52px',
@@ -321,24 +301,21 @@ const useContentContainerStyles = makeStyles({
 const useSecondaryContentStyles = makeStyles({
   // Base styles
   base: {
-    fontSize: semanticTokens.groupButtonMediumTextSecondaryFontsize,
-    lineHeight: semanticTokens.groupButtonMediumTextSecondaryLineheight,
-    fontWeight: semanticTokens.groupButtonMediumTextSecondaryFontweight,
+    lineHeight: '100%',
+    // Todo: Replace with semantic generic fontweight?
+    fontWeight: semanticTokens.groupButtonSmallFontweight,
   },
 
   // Size variations
+  // Todo: Replace with semantic font styles
   small: {
-    fontSize: semanticTokens.groupButtonSmallTextSecondaryFontsize,
-    lineHeight: semanticTokens.groupButtonSmallTextSecondaryLineheight,
-    fontWeight: semanticTokens.groupButtonSmallTextSecondaryFontweight,
+    fontSize: tokens.fontSizeBase200,
   },
   medium: {
-    // Covered by base
+    fontSize: tokens.fontSizeBase200,
   },
   large: {
-    fontSize: semanticTokens.groupButtonLargeTextSecondaryFontsize,
-    lineHeight: semanticTokens.groupButtonLargeTextSecondaryLineheight,
-    fontWeight: semanticTokens.groupButtonLargeTextSecondaryFontweight,
+    fontSize: tokens.fontSizeBase300,
   },
 });
 

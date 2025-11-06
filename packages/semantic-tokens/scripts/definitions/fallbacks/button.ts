@@ -11,7 +11,7 @@ export const compoundButtonFallbacks: GroupFallback = {
   ctrlCompoundbuttonSmallIcononlyPadding: {
     fluent: tokens.spacingHorizontalXS,
   },
-  ctrlCompoundbuttonMediumIcononlyPadding: {
+  ctrlCompoundbuttonIcononlyPadding: {
     fluent: tokens.spacingHorizontalSNudge,
   },
   ctrlCompoundbuttonLargeIcononlyPadding: {
@@ -26,13 +26,13 @@ export const compoundButtonFallbacks: GroupFallback = {
   ctrlCompoundbuttonSmallPaddingBottom: {
     fluent: tokens.spacingHorizontalMNudge,
   },
-  ctrlCompoundbuttonMediumPaddingHorizontal: {
+  ctrlCompoundbuttonPaddingHorizontal: {
     fluent: tokens.spacingHorizontalM,
   },
-  ctrlCompoundbuttonMediumPaddingTop: {
+  ctrlCompoundbuttonPaddingTop: {
     fluent: '14px',
   },
-  ctrlCompoundbuttonMediumPaddingBottom: {
+  ctrlCompoundbuttonPaddingBottom: {
     fluent: tokens.spacingHorizontalL,
   },
   ctrlCompoundbuttonLargePaddingHorizontal: {
@@ -47,223 +47,241 @@ export const compoundButtonFallbacks: GroupFallback = {
 };
 
 export const buttonFallbacks: GroupFallback = {
-  groupButtonTextFontfamily: {
+  groupButtonFontfamily: {
     fluent: tokens.fontFamilyBase,
   },
   groupButtonNeutralBackground: {
     fluent: tokens.colorNeutralBackground1,
+    generic: 'backgroundNeutralSubtle',
   },
   groupButtonNeutralBackgroundHover: {
     fluent: tokens.colorNeutralBackground1Hover,
+    generic: 'backgroundNeutralSubtleHover',
   },
   groupButtonNeutralBackgroundPressed: {
     fluent: tokens.colorNeutralBackground1Pressed,
+    generic: 'backgroundNeutralSubtlePressed',
   },
   groupButtonNeutralBackgroundSelected: {
     fluent: tokens.colorNeutralBackground1Selected,
+    // TODO: Review generic mapping
+    generic: 'backgroundNeutralHeavy',
   },
   groupButtonNeutralBackgroundHoverSelected: {
     fluent: tokens.colorNeutralBackground1Hover,
+    // TODO: Review generic mapping
+    generic: 'backgroundNeutralHeavyHover',
   },
   groupButtonNeutralBackgroundPressedSelected: {
     fluent: tokens.colorNeutralBackground1Pressed,
+    // TODO: Review generic mapping
+    generic: 'backgroundNeutralHeavyPressed',
   },
   groupButtonNeutralBackgroundDisabled: {
     fluent: tokens.colorNeutralBackgroundDisabled,
+    generic: 'backgroundDisabled',
   },
   groupButtonPrimaryBackground: {
     fluent: tokens.colorBrandBackground,
+    generic: 'backgroundBrandLoud',
   },
   groupButtonPrimaryBackgroundHover: {
     fluent: tokens.colorBrandBackgroundHover,
+    generic: 'backgroundBrandLoudHover',
   },
   groupButtonPrimaryBackgroundPressed: {
     fluent: tokens.colorBrandBackgroundPressed,
+    generic: 'backgroundBrandLoudPressed',
   },
   groupButtonPrimaryBackgroundSelected: {
     fluent: tokens.colorBrandBackgroundSelected,
+    // TODO: Review generic mapping
+    generic: 'backgroundBrandHeavy',
   },
   groupButtonPrimaryBackgroundHoverSelected: {
     fluent: tokens.colorBrandBackgroundHover,
+    generic: 'backgroundBrandHeavyHover',
   },
   groupButtonPrimaryBackgroundPressedSelected: {
     fluent: tokens.colorBrandBackgroundPressed,
+    generic: 'backgroundBrandHeavyPressed',
   },
   groupButtonPrimaryBackgroundDisabled: {
     fluent: tokens.colorNeutralBackgroundDisabled,
+    generic: 'backgroundDisabled',
   },
   groupButtonOutlineBackground: {
     fluent: tokens.colorTransparentBackground,
+    generic: 'backgroundNeutralTransparent',
   },
   groupButtonOutlineBackgroundHover: {
     fluent: tokens.colorTransparentBackgroundHover,
+    generic: 'backgroundNeutralTransparentHover',
   },
   groupButtonOutlineBackgroundPressed: {
     fluent: tokens.colorTransparentBackgroundPressed,
+    generic: 'backgroundNeutralTransparentPressed',
   },
   groupButtonOutlineBackgroundSelected: {
     fluent: tokens.colorTransparentBackgroundSelected,
+    generic: 'backgroundBrandLoud',
   },
   groupButtonOutlineBackgroundHoverSelected: {
     fluent: tokens.colorTransparentBackgroundHover,
+    generic: 'backgroundBrandLoudHover',
   },
   groupButtonOutlineBackgroundPressedSelected: {
     fluent: tokens.colorTransparentBackgroundPressed,
+    generic: 'backgroundBrandLoudPressed',
   },
   groupButtonOutlineBackgroundDisabled: {
     fluent: tokens.colorTransparentBackground,
+    generic: 'backgroundDisabled',
   },
   groupButtonSubtleBackground: {
     fluent: tokens.colorSubtleBackground,
+    generic: 'backgroundBrandTransparent',
   },
   groupButtonSubtleBackgroundHover: {
     fluent: tokens.colorSubtleBackgroundHover,
+    generic: 'backgroundBrandTransparentHover',
   },
   groupButtonSubtleBackgroundPressed: {
     fluent: tokens.colorSubtleBackgroundPressed,
+    generic: 'backgroundBrandTransparentPressed',
   },
   groupButtonSubtleBackgroundSelected: {
     fluent: tokens.colorSubtleBackgroundSelected,
+    generic: 'backgroundNeutralSubtle',
   },
   groupButtonSubtleBackgroundHoverSelected: {
     fluent: tokens.colorSubtleBackgroundHover,
+    generic: 'backgroundNeutralSubtleHover',
   },
   groupButtonSubtleBackgroundPressedSelected: {
     fluent: tokens.colorSubtleBackgroundPressed,
+    generic: 'backgroundNeutralSubtlePressed',
   },
   groupButtonSubtleBackgroundDisabled: {
     fluent: tokens.colorTransparentBackground,
-  },
-  groupButtonTransparentBackground: {
-    fluent: tokens.colorTransparentBackground,
-  },
-  groupButtonTransparentBackgroundHover: {
-    fluent: tokens.colorTransparentBackgroundHover,
-  },
-  groupButtonTransparentBackgroundPressed: {
-    fluent: tokens.colorTransparentBackgroundPressed,
-  },
-  groupButtonTransparentBackgroundSelected: {
-    fluent: tokens.colorTransparentBackgroundSelected,
-  },
-  groupButtonTransparentBackgroundHoverSelected: {
-    fluent: tokens.colorTransparentBackgroundHover,
-  },
-  groupButtonTransparentBackgroundPressedSelected: {
-    fluent: tokens.colorTransparentBackgroundPressed,
-  },
-  groupButtonTransparentBackgroundDisabled: {
-    fluent: tokens.colorTransparentBackground,
+    generic: 'backgroundDisabled',
   },
   groupButtonNeutralStroke: {
     fluent: tokens.colorNeutralStroke1,
+    generic: 'strokeNeutralTransparent',
   },
   groupButtonNeutralStrokeHover: {
     fluent: tokens.colorNeutralStroke1Hover,
+    generic: 'strokeNeutralTransparentHover',
   },
   groupButtonNeutralStrokePressed: {
     fluent: tokens.colorNeutralStroke1Pressed,
+    generic: 'strokeNeutralTransparentPressed',
   },
   groupButtonNeutralStrokeSelected: {
     fluent: tokens.colorNeutralStroke1Selected,
+    generic: 'strokeBrandLoud',
   },
   groupButtonNeutralStrokeHoverSelected: {
     fluent: tokens.colorNeutralStroke1Hover,
+    generic: 'strokeBrandLoudHover',
   },
   groupButtonNeutralStrokePressedSelected: {
     fluent: tokens.colorNeutralStroke1Pressed,
+    generic: 'strokeBrandLoudPressed',
   },
   groupButtonNeutralStrokeDisabled: {
     fluent: tokens.colorNeutralStrokeDisabled,
+    generic: 'strokeDisabled',
   },
   groupButtonPrimaryStroke: {
     fluent: 'transparent',
+    generic: 'strokeBrandLoud',
   },
   groupButtonPrimaryStrokeHover: {
     fluent: 'transparent',
+    generic: 'strokeBrandLoudHover',
   },
   groupButtonPrimaryStrokePressed: {
     fluent: 'transparent',
+    generic: 'strokeBrandLoudPressed',
   },
   groupButtonPrimaryStrokeSelected: {
     fluent: 'transparent',
+    generic: 'strokeBrandLoud',
   },
   groupButtonPrimaryStrokeHoverSelected: {
     fluent: 'transparent',
+    generic: 'strokeBrandLoudHover',
   },
   groupButtonPrimaryStrokePressedSelected: {
     fluent: 'transparent',
+    generic: 'strokeBrandLoudPressed',
   },
   groupButtonPrimaryStrokeDisabled: {
     fluent: 'transparent',
+    generic: 'strokeDisabled',
   },
   groupButtonOutlineStroke: {
     fluent: tokens.colorNeutralStroke1,
+    generic: 'strokeNeutralSubtle',
   },
   groupButtonOutlineStrokeHover: {
     fluent: tokens.colorNeutralStroke1Hover,
+    generic: 'strokeNeutralSubtleHover',
   },
   groupButtonOutlineStrokePressed: {
     fluent: tokens.colorNeutralStroke1Pressed,
+    generic: 'strokeNeutralSubtlePressed',
   },
   groupButtonOutlineStrokeSelected: {
     fluent: tokens.colorNeutralStroke1,
+    generic: 'strokeNeutralLoud',
   },
   groupButtonOutlineStrokeHoverSelected: {
     fluent: tokens.colorNeutralStroke1Selected,
+    generic: 'strokeNeutralLoudHover',
   },
   groupButtonOutlineStrokePressedSelected: {
     fluent: tokens.colorNeutralStroke1Selected,
+    generic: 'strokeNeutralLoudPressed',
   },
   groupButtonOutlineStrokeDisabled: {
     fluent: tokens.colorNeutralStrokeDisabled,
+    generic: 'strokeDisabled',
   },
   groupButtonSubtleStroke: {
     fluent: 'transparent',
+    generic: 'strokeNeutralSubtle',
   },
   groupButtonSubtleStrokeHover: {
     fluent: 'transparent',
+    generic: 'strokeNeutralSubtleHover',
   },
   groupButtonSubtleStrokePressed: {
     fluent: 'transparent',
+    generic: 'strokeNeutralSubtlePressed',
   },
   groupButtonSubtleStrokeSelected: {
     fluent: 'transparent',
+    generic: 'strokeNeutralLoud',
   },
   groupButtonSubtleStrokeHoverSelected: {
     fluent: 'transparent',
+    generic: 'strokeNeutralLoudHover',
   },
   groupButtonSubtleStrokePressedSelected: {
     fluent: 'transparent',
+    generic: 'strokeNeutralLoudPressed',
   },
   groupButtonSubtleStrokeDisabled: {
     fluent: 'transparent',
+    generic: 'strokeDisabled',
   },
-  groupButtonTransparentStroke: {
-    fluent: 'transparent',
-  },
-  groupButtonTransparentStrokeHover: {
-    fluent: 'transparent',
-  },
-  groupButtonTransparentStrokePressed: {
-    fluent: 'transparent',
-  },
-  groupButtonTransparentStrokeSelected: {
-    fluent: 'transparent',
-  },
-  groupButtonTransparentStrokeHoverSelected: {
-    fluent: 'transparent',
-  },
-  groupButtonTransparentStrokePressedSelected: {
-    fluent: 'transparent',
-  },
-  groupButtonTransparentStrokeDisabled: {
-    fluent: 'transparent',
-  },
-  groupButtonSmallTextFontsize: {
+  groupButtonSmallFontsize: {
     fluent: tokens.fontSizeBase200,
   },
-  groupButtonSmallTextLineheight: {
+  groupButtonSmallLineheight: {
     fluent: tokens.lineHeightBase200,
   },
   groupButtonSmallPaddingHorizontal: {
@@ -275,7 +293,7 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonSmallPaddingBottom: {
     fluent: '3px',
   },
-  groupButtonMediumTextPaddingHorizontal: { fluent: '0px' },
+  groupButtonTextPaddingHorizontal: { fluent: '0px' },
   groupButtonLargeTextPaddingHorizontal: { fluent: '0px' },
   groupButtonSmallTextPaddingHorizontal: { fluent: '0px' },
   groupButtonSmallGap: {
@@ -308,58 +326,58 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonStrokewidth: {
     fluent: tokens.strokeWidthThin,
   },
-  groupButtonSmallTextFontweight: {
+  groupButtonSmallFontweight: {
     fluent: tokens.fontWeightRegular,
   },
-  groupButtonMediumTextFontsize: {
+  groupButtonFontsize: {
     fluent: tokens.fontSizeBase300,
   },
-  groupButtonMediumTextLineheight: {
+  groupButtonLineheight: {
     fluent: tokens.lineHeightBase300,
   },
-  groupButtonMediumPaddingHorizontal: {
+  groupButtonPaddingHorizontal: {
     fluent: tokens.spacingHorizontalM,
   },
-  groupButtonMediumPaddingTop: {
+  groupButtonPaddingTop: {
     fluent: '5px',
   },
-  groupButtonMediumPaddingBottom: {
+  groupButtonPaddingBottom: {
     fluent: '5px',
   },
-  groupButtonMediumGap: {
+  groupButtonGap: {
     fluent: tokens.spacingHorizontalSNudge,
   },
-  groupButtonMediumCorner: {
+  groupButtonCorner: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonMediumCornerPressed: {
+  groupButtonCornerPressed: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonMediumCornerPressedSelected: {
+  groupButtonCornerPressedSelected: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonMediumCornerHover: {
+  groupButtonCornerHover: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonMediumCornerHoverSelected: {
+  groupButtonCornerHoverSelected: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonMediumCornerDisabled: {
+  groupButtonCornerDisabled: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonMediumCornerSelected: {
+  groupButtonCornerSelected: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonMediumMinwidth: {
+  groupButtonMinwidth: {
     fluent: '96px',
   },
-  groupButtonMediumTextFontweight: {
+  groupButtonFontweight: {
     fluent: tokens.fontWeightSemibold,
   },
-  groupButtonLargeTextFontsize: {
+  groupButtonLargeFontsize: {
     fluent: tokens.fontSizeBase400,
   },
-  groupButtonLargeTextLineheight: {
+  groupButtonLargeLineheight: {
     fluent: tokens.lineHeightBase400,
   },
   groupButtonLargePaddingHorizontal: {
@@ -398,260 +416,230 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonLargeMinwidth: {
     fluent: '96px',
   },
-  groupButtonLargeTextFontweight: {
+  groupButtonLargeFontweight: {
     fluent: tokens.fontWeightSemibold,
   },
   groupButtonSmallIconSize: {
     fluent: '20px',
   },
-  groupButtonMediumIconSize: {
+  groupButtonIconSize: {
     fluent: '20px',
   },
   groupButtonLargeIconSize: {
     fluent: '24px',
   },
-  groupButtonNeutralTextForeground: {
+  groupButtonNeutralForeground: {
     fluent: tokens.colorNeutralForeground1,
+    generic: 'foregroundNeutralPrimary',
   },
-  groupButtonNeutralTextForegroundHover: {
+  groupButtonNeutralForegroundHover: {
     fluent: tokens.colorNeutralForeground1Hover,
+    generic: 'foregroundNeutralPrimaryHover',
   },
-  groupButtonNeutralTextForegroundPressed: {
+  groupButtonNeutralForegroundPressed: {
     fluent: tokens.colorNeutralForeground1Pressed,
+    generic: 'foregroundNeutralPrimaryPressed',
   },
-  groupButtonNeutralTextForegroundSelected: {
+  groupButtonNeutralForegroundSelected: {
     fluent: tokens.colorNeutralForeground1Selected,
+    generic: 'foregroundBrandOnloud',
   },
-  groupButtonNeutralTextForegroundDisabled: {
+  groupButtonNeutralForegroundHoverSelected: {
+    fluent: tokens.colorNeutralForeground1Hover,
+    generic: 'foregroundBrandOnloudHover',
+  },
+  groupButtonNeutralForegroundPressedSelected: {
+    fluent: tokens.colorNeutralForeground1Pressed,
+    generic: 'foregroundBrandOnloudPressed',
+  },
+  groupButtonNeutralForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
+    generic: 'foregroundDisabled',
   },
-  groupButtonPrimaryTextForeground: {
+  groupButtonPrimaryForeground: {
     fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'foregroundBrandOnloud',
   },
-  groupButtonPrimaryTextForegroundHover: {
+  groupButtonPrimaryForegroundHover: {
     fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'foregroundBrandOnloudHover',
   },
-  groupButtonPrimaryTextForegroundPressed: {
+  groupButtonPrimaryForegroundPressed: {
     fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'foregroundBrandOnloudPressed',
   },
-  groupButtonPrimaryTextForegroundSelected: {
+  groupButtonPrimaryForegroundSelected: {
     fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'strokeBrandOnloudSelected',
   },
-  groupButtonPrimaryTextForegroundDisabled: {
+  groupButtonPrimaryForegroundHoverSelected: {
+    fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'foregroundBrandOnloudHoverSelected',
+  },
+  groupButtonPrimaryForegroundPressedSelected: {
+    fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'foregroundBrandOnloudPressedSelected',
+  },
+  groupButtonPrimaryForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
+    generic: 'foregroundDisabled',
   },
-  groupButtonOutlineTextForeground: {
+  groupButtonOutlineForeground: {
     fluent: tokens.colorNeutralForeground1,
+    generic: 'foregroundNeutralPrimary',
   },
-  groupButtonOutlineTextForegroundHover: {
+  groupButtonOutlineForegroundHover: {
     fluent: tokens.colorNeutralForeground1Hover,
+    generic: 'foregroundNeutralPrimaryHover',
   },
-  groupButtonOutlineTextForegroundPressed: {
+  groupButtonOutlineForegroundPressed: {
     fluent: tokens.colorNeutralForeground1Pressed,
+    generic: 'foregroundNeutralPrimaryPressed',
   },
-  groupButtonOutlineTextForegroundSelected: {
+  groupButtonOutlineForegroundSelected: {
     fluent: tokens.colorNeutralForeground1Selected,
+    generic: 'foregroundBrandOnloud',
   },
-  groupButtonOutlineTextForegroundDisabled: {
+  groupButtonOutlineForegroundHoverSelected: {
+    fluent: tokens.colorNeutralForeground1Selected,
+    generic: 'foregroundBrandOnloudHover',
+  },
+  groupButtonOutlineForegroundPressedSelected: {
+    fluent: tokens.colorNeutralForeground1Selected,
+    generic: 'foregroundBrandOnloudPressed',
+  },
+  groupButtonOutlineForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
+    generic: 'foregroundDisabled',
   },
-  groupButtonSubtleTextForeground: {
+  groupButtonSubtleForeground: {
     fluent: tokens.colorNeutralForeground2,
+    generic: 'foregroundNeutralPrimary',
   },
-  groupButtonSubtleTextForegroundHover: {
+  groupButtonSubtleForegroundHover: {
     fluent: tokens.colorNeutralForeground2Hover,
+    generic: 'foregroundNeutralPrimaryHover',
   },
-  groupButtonSubtleTextForegroundPressed: {
+  groupButtonSubtleForegroundPressed: {
     fluent: tokens.colorNeutralForeground2Pressed,
+    generic: 'foregroundNeutralPrimaryPressed',
   },
-  groupButtonSubtleTextForegroundSelected: {
+  groupButtonSubtleForegroundSelected: {
     fluent: tokens.colorNeutralForeground2Selected,
+    generic: 'foregroundBrandOnloud',
   },
-  groupButtonSubtleTextForegroundDisabled: {
+  groupButtonSubtleForegroundHoverSelected: {
+    fluent: tokens.colorNeutralForeground2Selected,
+    generic: 'foregroundBrandOnloudHover',
+  },
+  groupButtonSubtleForegroundPressedSelected: {
+    fluent: tokens.colorNeutralForeground2Selected,
+    generic: 'foregroundBrandOnloudPressed',
+  },
+  groupButtonSubtleForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
+    generic: 'foregroundDisabled',
   },
-  groupButtonTransparentTextForeground: {
+  groupButtonTransparentForeground: {
     fluent: tokens.colorNeutralForeground2,
+    generic: 'foregroundNeutralPrimary',
   },
-  groupButtonTransparentTextForegroundHover: {
+  groupButtonTransparentForegroundHover: {
     fluent: tokens.colorNeutralForeground2BrandHover,
+    generic: 'foregroundBrandPrimaryHover',
   },
-  groupButtonTransparentTextForegroundPressed: {
+  groupButtonTransparentForegroundPressed: {
     fluent: tokens.colorNeutralForeground2BrandPressed,
+    generic: 'foregroundBrandPrimaryPressed',
   },
-  groupButtonTransparentTextForegroundSelected: {
+  groupButtonTransparentForegroundSelected: {
     fluent: tokens.colorNeutralForeground2BrandSelected,
+    generic: 'foregroundBrandPrimary',
   },
-  groupButtonTransparentTextForegroundDisabled: {
+  groupButtonTransparentForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
-  },
-  groupButtonNeutralTextSecondaryForeground: {
-    fluent: tokens.colorNeutralForeground2,
-  },
-  groupButtonNeutralTextSecondaryForegroundHover: {
-    fluent: tokens.colorNeutralForeground2Hover,
-  },
-  groupButtonNeutralTextSecondaryForegroundPressed: {
-    fluent: tokens.colorNeutralForeground2Pressed,
-  },
-  groupButtonSmallTextSecondaryFontsize: {
-    fluent: tokens.fontSizeBase200,
-  },
-  groupButtonSmallTextSecondaryLineheight: {
-    fluent: '100%',
-  },
-  groupButtonSmallTextSecondaryFontweight: {
-    fluent: tokens.fontWeightRegular,
-  },
-  groupButtonMediumTextSecondaryFontsize: {
-    fluent: tokens.fontSizeBase200,
-  },
-  groupButtonMediumTextSecondaryLineheight: {
-    fluent: '100%',
-  },
-  groupButtonMediumTextSecondaryFontweight: {
-    fluent: tokens.fontWeightRegular,
-  },
-  groupButtonLargeTextSecondaryFontsize: {
-    fluent: tokens.fontSizeBase300,
-  },
-  groupButtonLargeTextSecondaryLineheight: {
-    fluent: '100%',
-  },
-  groupButtonLargeTextSecondaryFontweight: {
-    fluent: tokens.fontWeightRegular,
-  },
-  groupButtonNeutralTextSecondaryForegroundDisabled: {
-    fluent: tokens.colorNeutralForegroundDisabled,
-  },
-  groupButtonPrimaryTextSecondaryForeground: {
-    fluent: tokens.colorNeutralForegroundOnBrand,
-  },
-  groupButtonPrimaryTextSecondaryForegroundHover: {
-    fluent: tokens.colorNeutralForegroundOnBrand,
-  },
-  groupButtonPrimaryTextSecondaryForegroundPressed: {
-    fluent: tokens.colorNeutralForegroundOnBrand,
-  },
-  groupButtonPrimaryTextSecondaryForegroundSelected: {
-    fluent: null,
-  },
-  groupButtonPrimaryTextSecondaryForegroundHoverSelected: {
-    fluent: null,
-  },
-  groupButtonPrimaryTextSecondaryForegroundPressedSelected: {
-    fluent: null,
-  },
-  groupButtonPrimaryTextSecondaryForegroundDisabled: {
-    fluent: tokens.colorNeutralForegroundDisabled,
-  },
-  groupButtonOutlineTextSecondaryForeground: {
-    fluent: tokens.colorNeutralForeground2,
-  },
-  groupButtonOutlineTextSecondaryForegroundHover: {
-    fluent: tokens.colorNeutralForeground2Hover,
-  },
-  groupButtonOutlineTextSecondaryForegroundPressed: {
-    fluent: tokens.colorNeutralForeground2Pressed,
-  },
-  groupButtonOutlineTextSecondaryForegroundSelected: {
-    fluent: null,
-  },
-  groupButtonOutlineTextSecondaryForegroundHoverSelected: {
-    fluent: null,
-  },
-  groupButtonOutlineTextSecondaryForegroundPressedSelected: {
-    fluent: null,
-  },
-  groupButtonOutlineTextSecondaryForegroundDisabled: {
-    fluent: tokens.colorNeutralForegroundDisabled,
-  },
-  groupButtonSubtleTextSecondaryForeground: {
-    fluent: tokens.colorNeutralForeground2,
-  },
-  groupButtonSubtleTextSecondaryForegroundHover: {
-    fluent: tokens.colorNeutralForeground2Hover,
-  },
-  groupButtonSubtleTextSecondaryForegroundPressed: {
-    fluent: tokens.colorNeutralForeground2Pressed,
-  },
-  groupButtonSubtleTextSecondaryForegroundSelected: {
-    fluent: null,
-  },
-  groupButtonSubtleTextSecondaryForegroundHoverSelected: {
-    fluent: null,
-  },
-  groupButtonSubtleTextSecondaryForegroundPressedSelected: {
-    fluent: null,
-  },
-  groupButtonSubtleTextSecondaryForegroundDisabled: {
-    fluent: tokens.colorNeutralForegroundDisabled,
-  },
-  groupButtonTransparentTextSecondaryForeground: {
-    fluent: tokens.colorNeutralForeground2,
-  },
-  groupButtonTransparentTextSecondaryForegroundHover: {
-    fluent: tokens.colorNeutralForeground2BrandHover,
-  },
-  groupButtonTransparentTextSecondaryForegroundPressed: {
-    fluent: tokens.colorNeutralForeground2BrandPressed,
-  },
-  groupButtonTransparentTextSecondaryForegroundSelected: {
-    fluent: null,
-  },
-  groupButtonTransparentTextSecondaryForegroundHoverSelected: {
-    fluent: null,
-  },
-  groupButtonTransparentTextSecondaryForegroundPressedSelected: {
-    fluent: null,
-  },
-  groupButtonTransparentTextSecondaryForegroundDisabled: {
-    fluent: tokens.colorNeutralForegroundDisabled,
+    generic: 'foregroundDisabled',
   },
   groupButtonNeutralIconForeground: {
     fluent: tokens.colorNeutralForeground1,
+    generic: 'foregroundNeutralPrimary',
   },
   groupButtonNeutralIconForegroundHover: {
     fluent: tokens.colorNeutralForeground1Hover,
+    generic: 'foregroundNeutralPrimaryHover',
   },
   groupButtonNeutralIconForegroundPressed: {
     fluent: tokens.colorNeutralForeground1Pressed,
+    generic: 'foregroundNeutralPrimaryPressed',
   },
   groupButtonNeutralIconForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
+    generic: 'foregroundDisabled',
+  },
+  groupButtonNeutralIconForegroundSelected: {
+    fluent: tokens.colorNeutralForeground1Selected,
+    generic: 'foregroundBrandOnloud',
   },
   groupButtonPrimaryIconForeground: {
     fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'foregroundBrandOnloud',
   },
   groupButtonPrimaryIconForegroundHover: {
     fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'foregroundBrandOnloudHover',
   },
   groupButtonPrimaryIconForegroundPressed: {
     fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'foregroundBrandOnloudPressed',
   },
   groupButtonPrimaryIconForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
+    generic: 'foregroundDisabled',
+  },
+  groupButtonPrimaryIconForegroundSelected: {
+    fluent: tokens.colorNeutralForegroundOnBrand,
+    generic: 'foregroundBrandOnloud',
   },
   groupButtonOutlineIconForeground: {
     fluent: tokens.colorNeutralForeground1,
+    generic: 'foregroundNeutralPrimary',
   },
   groupButtonOutlineIconForegroundHover: {
     fluent: tokens.colorNeutralForeground1Hover,
+    generic: 'foregroundNeutralPrimaryHover',
   },
   groupButtonOutlineIconForegroundPressed: {
     fluent: tokens.colorNeutralForeground1Pressed,
+    generic: 'foregroundNeutralPrimaryPressed',
   },
   groupButtonOutlineIconForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
+    generic: 'foregroundDisabled',
   },
-  groupButtonSubtleIconForeground: { fluent: tokens.colorNeutralForeground2 },
-  groupButtonSubtleIconForegroundHover: { fluent: tokens.colorNeutralForeground2BrandHover },
-  groupButtonSubtleIconForegroundPressed: { fluent: tokens.colorNeutralForeground2BrandPressed },
-  groupButtonSubtleIconForegroundDisabled: { fluent: tokens.colorNeutralForegroundDisabled },
-  groupButtonTransparentIconForeground: { fluent: tokens.colorNeutralForeground2 },
-  groupButtonTransparentIconForegroundHover: { fluent: tokens.colorNeutralForeground2BrandHover },
-  groupButtonTransparentIconForegroundPressed: { fluent: tokens.colorNeutralForeground2BrandPressed },
-  groupButtonTransparentIconForegroundDisabled: { fluent: tokens.colorNeutralForegroundDisabled },
+  groupButtonOutlineIconForegroundSelected: {
+    fluent: tokens.colorNeutralForeground1Selected,
+    generic: 'foregroundBrandOnloud',
+  },
+  groupButtonSubtleIconForeground: {
+    fluent: tokens.colorNeutralForeground2,
+    generic: 'foregroundNeutralPrimary',
+  },
+  groupButtonSubtleIconForegroundHover: {
+    fluent: tokens.colorNeutralForeground2BrandHover,
+    generic: 'foregroundBrandPrimaryHover',
+  },
+  groupButtonSubtleIconForegroundPressed: {
+    fluent: tokens.colorNeutralForeground2BrandPressed,
+    generic: 'foregroundBrandPrimaryPressed',
+  },
+  groupButtonSubtleIconForegroundDisabled: {
+    fluent: tokens.colorNeutralForegroundDisabled,
+    generic: 'foregroundDisabled',
+  },
+  groupButtonSubtleIconForegroundSelected: {
+    fluent: tokens.colorNeutralForeground2BrandSelected,
+    generic: 'foregroundBrandOnloud',
+  },
   groupButtonOutlineStrokewidthHover: {
     fluent: tokens.strokeWidthThin,
   },
@@ -664,26 +652,11 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonSmallIcononlyPadding: {
     fluent: '1px',
   },
-  groupButtonMediumIcononlyPadding: {
+  groupButtonIcononlyPadding: {
     fluent: '5px',
   },
   groupButtonLargeIcononlyPadding: {
     fluent: '7px',
-  },
-  groupButtonSubtleIconForegroundSelected: {
-    fluent: tokens.colorNeutralForeground2BrandSelected,
-  },
-  groupButtonPrimaryIconForegroundSelected: {
-    fluent: tokens.colorNeutralForegroundOnBrand,
-  },
-  groupButtonOutlineIconForegroundSelected: {
-    fluent: tokens.colorNeutralForeground1Selected,
-  },
-  groupButtonNeutralIconForegroundSelected: {
-    fluent: tokens.colorNeutralForeground1Selected,
-  },
-  groupButtonTransparentIconForegroundSelected: {
-    fluent: tokens.colorNeutralForeground2BrandSelected,
   },
   groupButtonNeutralDividerStroke: {
     fluent: tokens.colorNeutralStroke1,
@@ -706,28 +679,16 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonDividerMarginVertical: {
     fluent: '0px',
   },
-  groupButtonPrimaryShadow: {
+  groupButtonShadow: {
     // Shadow needs to be null-populated to work with combinations for focus
     fluent: '0 0 0 transparent',
   },
-  groupButtonNeutralShadow: {
-    // Shadow needs to be null-populated to work with combinations for focus
-    fluent: '0 0 0 transparent',
+  groupButtonLightnessHover: {
+    fluent: '-5',
+    generic: 'lightnessHover',
   },
-  groupButtonPrimaryShadowDisabled: {
-    // Shadow needs to be null-populated to work with combinations for focus
-    fluent: '0 0 0 transparent',
-  },
-  groupButtonNeutralShadowDisabled: {
-    // Shadow needs to be null-populated to work with combinations for focus
-    fluent: '0 0 0 transparent',
-  },
-  groupButtonPrimaryShadowSelected: {
-    // Shadow needs to be null-populated to work with combinations for focus
-    fluent: '0 0 0 transparent',
-  },
-  groupButtonNeutralShadowSelected: {
-    // Shadow needs to be null-populated to work with combinations for focus
-    fluent: '0 0 0 transparent',
+  groupButtonLightnessPressed: {
+    fluent: '-10',
+    generic: 'lightnessPressed',
   },
 };

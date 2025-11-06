@@ -34,19 +34,19 @@ const useRootStyles = makeStyles({
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
-      borderRightWidth: semanticTokens.groupButtonDividerStrokewidth,
-      borderRightColor: semanticTokens.groupButtonNeutralDividerStroke,
+      borderRightWidth: semanticTokens.groupButtonStrokewidth,
+      borderRightColor: semanticTokens.groupButtonNeutralStroke,
       ':hover': {
         borderTopRightRadius: 0,
         borderBottomRightRadius: 0,
-        borderRightWidth: semanticTokens.groupButtonDividerStrokewidth,
-        borderRightColor: semanticTokens.groupButtonNeutralDividerStroke,
+        borderRightWidth: semanticTokens.groupButtonStrokewidth,
+        borderRightColor: semanticTokens.groupButtonNeutralStrokeHover,
       },
       ':hover:active': {
         borderTopRightRadius: 0,
         borderBottomRightRadius: 0,
-        borderRightWidth: semanticTokens.groupButtonDividerStrokewidth,
-        borderRightColor: semanticTokens.groupButtonNeutralDividerStroke,
+        borderRightWidth: semanticTokens.groupButtonStrokewidth,
+        borderRightColor: semanticTokens.groupButtonNeutralStrokePressed,
       },
     },
 
@@ -69,12 +69,12 @@ const useRootStyles = makeStyles({
   // Appearance variations
   outline: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.groupButtonOutlineDividerStroke,
+      borderRightColor: semanticTokens.groupButtonOutlineStroke,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonOutlineDividerStroke,
+        borderRightColor: semanticTokens.groupButtonOutlineStrokeHover,
       },
 
       [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
@@ -82,25 +82,25 @@ const useRootStyles = makeStyles({
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonOutlineDividerStroke,
+        borderRightColor: semanticTokens.groupButtonOutlineStrokePressed,
       },
       [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
     },
   },
   primary: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.groupButtonPrimaryDividerStroke,
+      borderRightColor: semanticTokens.strokeNeutralOnloud,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonPrimaryDividerStroke,
+        borderRightColor: semanticTokens.strokeNeutralOnloud,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonPrimaryDividerStroke,
+        borderRightColor: semanticTokens.strokeNeutralOnloud,
       },
     },
 
@@ -127,35 +127,35 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.groupButtonSubtleDividerStroke,
+      borderRightColor: semanticTokens.groupButtonSubtleStroke,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonSubtleDividerStroke,
+        borderRightColor: semanticTokens.groupButtonSubtleStroke,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonSubtleDividerStroke,
+        borderRightColor: semanticTokens.groupButtonSubtleStroke,
       },
     },
   },
   transparent: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: semanticTokens.groupButtonTransparentDividerStroke,
+      borderRightColor: semanticTokens.strokeNeutralTransparent,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonTransparentDividerStroke,
+        borderRightColor: semanticTokens.strokeNeutralTransparent,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: semanticTokens.groupButtonTransparentDividerStroke,
+        borderRightColor: semanticTokens.strokeNeutralTransparent,
       },
     },
   },
