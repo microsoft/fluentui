@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "added export for presenceComponent",
-  "packageName": "@fluentui/react-components",
-  "email": "155784131+cperezruiz-microsoft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

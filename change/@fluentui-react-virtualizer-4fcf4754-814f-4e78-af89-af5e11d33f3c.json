@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate source to react 19",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

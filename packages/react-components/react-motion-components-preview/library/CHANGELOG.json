@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Thu, 06 Nov 2025 15:01:23 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "60123376d329582d3eb0e33298452027b6b11706",
+            "comment": "feat(motion): export standard motion atoms"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Oct 2025 16:22:05 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.12.0",
       "version": "0.12.0",
