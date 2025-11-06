@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   root: {
     textDecorationLine: 'none',
     backgroundColor: navItemTokens.backgroundColor,
-    ...shorthands.border('none'),
+    border: 'none',
     ':hover': {
       backgroundColor: navItemTokens.backgroundColorHover,
     },
