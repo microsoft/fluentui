@@ -5,7 +5,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { MenuGridGroupHeaderSlots, MenuGridGroupHeaderState } from './MenuGridGroupHeader.types';
 import { tokens } from '@fluentui/react-theme';
 
-export const MenuGridGroupHeaderClassNames: SlotClassNames<MenuGridGroupHeaderSlots> = {
+export const menuGridGroupHeaderClassNames: SlotClassNames<MenuGridGroupHeaderSlots> = {
   root: 'fui-MenuGridGroupHeader',
 };
 
@@ -26,7 +26,7 @@ export const useMenuGridGroupHeaderStyles_unstable = (state: MenuGridGroupHeader
   'use no memo';
 
   const styles = useStyles();
-  state.root.className = mergeClasses(MenuGridGroupHeaderClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(menuGridGroupHeaderClassNames.root, styles.root, state.root.className);
 
   return state;
 };
