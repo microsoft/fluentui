@@ -76,6 +76,8 @@ export interface ChartAnnotationStyleProps {
   opacity?: number;
   /** Optional class name applied to the annotation element */
   className?: string;
+  /** Rotation, in degrees, applied to the annotation container */
+  rotation?: number;
 }
 
 export interface ChartAnnotationAccessibilityProps {

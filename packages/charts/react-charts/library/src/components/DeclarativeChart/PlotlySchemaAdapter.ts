@@ -41,6 +41,7 @@ import { GroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { ChartTableProps } from '../ChartTable/index';
 import { GanttChartProps } from '../GanttChart/index';
+import type { AnnotationOnlyChartProps } from '../AnnotationOnlyChart/AnnotationOnlyChart.types';
 import {
   DEFAULT_DATE_STRING,
   findNumericMinMaxOfY,
@@ -328,8 +329,7 @@ export const _getGaugeAxisColor = (
   colorway: string[] | undefined,
   colorwayType: ColorwayType,
   color: Color | undefined,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): string => {
   const extractedColors = extractColor(colorway, colorwayType, color, colorMap, isDarkTheme);
@@ -985,6 +985,15 @@ const convertPlotlyAnnotation = (
     }
   }
 
+  const textAngle = (annotation as { textangle?: number | string })?.textangle;
+  if (typeof textAngle === 'number' && !Number.isNaN(textAngle)) {
+    styleProps.rotation = textAngle;
+  } else if (typeof textAngle === 'string' && textAngle.toLowerCase() !== 'auto') {
+    const parsedAngle = Number(textAngle);
+    if (!Number.isNaN(parsedAngle)) {
+      styleProps.rotation = parsedAngle;
+    }
+  }
   if (Object.keys(layoutProps).length > 0) {
     chartAnnotation.layout = layoutProps;
   }
@@ -1111,11 +1120,47 @@ export const normalizeObjectArrayForGVBC = (
   return { traces, x };
 };
 
+export const transformPlotlyJsonToAnnotationChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  _colorMap: React.RefObject<Map<string, string>>,
+  _colorwayType: ColorwayType,
+  _isDarkTheme?: boolean,
+): AnnotationOnlyChartProps => {
+  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot) ?? [];
+  const titles = getTitles(input.layout);
+  const layoutTitle = titles.chartTitle || undefined;
+
+  const layoutWithMeta = input.layout as Partial<Layout> & { meta?: { description?: string } };
+  const description =
+    typeof layoutWithMeta?.meta?.description === 'string' ? layoutWithMeta.meta.description : undefined;
+
+  const width = typeof input.layout?.width === 'number' ? input.layout.width : undefined;
+  const height = typeof input.layout?.height === 'number' ? input.layout.height : undefined;
+  const paperBackgroundColor = typeof input.layout?.paper_bgcolor === 'string' ? input.layout.paper_bgcolor : undefined;
+  const plotBackgroundColor = typeof input.layout?.plot_bgcolor === 'string' ? input.layout.plot_bgcolor : undefined;
+  const fontColor = typeof input.layout?.font?.color === 'string' ? input.layout.font.color : undefined;
+  const fontFamily = typeof input.layout?.font?.family === 'string' ? input.layout.font.family : undefined;
+  const margin = input.layout?.margin;
+
+  return {
+    annotations,
+    chartTitle: layoutTitle,
+    description,
+    width,
+    height,
+    paperBackgroundColor,
+    plotBackgroundColor,
+    fontColor,
+    fontFamily,
+    margin,
+  };
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): DonutChartProps => {
@@ -1135,7 +1180,7 @@ export const transformPlotlyJsonToDonutProps = (
   const mapLegendToDataPoint: Record<string, ChartDataPoint> = {};
   // clear colorMap for donut chart to reassign colors as the colorMap initially gets assigned by
   // getAllupLegendsProps function without sorting labels by value
-  colorMap.current.clear();
+  colorMap.current!.clear();
 
   // Sort labels by value descending before mapping
   if (firstData.labels && firstData.values) {
@@ -1220,8 +1265,7 @@ export const transformPlotlyJsonToDonutProps = (
 export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
   fallbackVSBC?: boolean,
@@ -1440,8 +1484,7 @@ export const transformPlotlyJsonToVSBCProps = (
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): GroupedVerticalBarChartProps => {
@@ -1614,8 +1657,7 @@ export const transformPlotlyJsonToGVBCProps = (
 export const transformPlotlyJsonToVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): VerticalBarChartProps => {
@@ -1721,8 +1763,7 @@ export const transformPlotlyJsonToVBCProps = (
 export const transformPlotlyJsonToAreaChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): AreaChartProps => {
@@ -1739,8 +1780,7 @@ export const transformPlotlyJsonToAreaChartProps = (
 export const transformPlotlyJsonToLineChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): LineChartProps => {
@@ -1757,8 +1797,7 @@ export const transformPlotlyJsonToLineChartProps = (
 export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): LineChartProps => {
@@ -1796,8 +1835,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
   chartType: ScatterChartTypes,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): LineChartProps | AreaChartProps | ScatterChartProps => {
@@ -1985,7 +2023,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideTickOverlap: true,
     hideLegend,
     useUTC: false,
-    wrapXAxisLables: shouldWrapLabels,
+    wrapXAxisLabels: shouldWrapLabels,
     optimizeLargeData: numDataPoints > 1000,
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
@@ -2025,8 +2063,7 @@ const transformPlotlyJsonToScatterTraceProps = (
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): HorizontalBarChartWithAxisProps => {
@@ -2105,8 +2142,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 export const transformPlotlyJsonToGanttChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): GanttChartProps => {
@@ -2207,8 +2243,7 @@ export const transformPlotlyJsonToGanttChartProps = (
 export const transformPlotlyJsonToHeatmapProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): HeatMapChartProps => {
@@ -2371,8 +2406,7 @@ export const transformPlotlyJsonToHeatmapProps = (
 export const transformPlotlyJsonToSankeyProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): SankeyChartProps => {
@@ -2447,8 +2481,7 @@ export const transformPlotlyJsonToSankeyProps = (
 export const transformPlotlyJsonToGaugeProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): GaugeChartProps => {
@@ -2638,8 +2671,7 @@ function mergeCells(tableCells?: TableData['cells'], templateCells?: TableData['
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): ChartTableProps => {
@@ -2787,8 +2819,7 @@ function getCategoriesAndValues(series: Partial<PlotData>): {
 export const transformPlotlyJsonToFunnelChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): FunnelChartProps => {
@@ -3258,8 +3289,7 @@ const getLegendShape = (series: Partial<PlotData>): Legend['shape'] => {
 
 export const getAllupLegendsProps = (
   input: PlotlySchema,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   traceInfo: TraceInfo[],
   isDarkTheme?: boolean,
@@ -3404,7 +3434,7 @@ const getIndexFromKey = (key: string, pattern: string): number => {
 };
 
 export const isNonPlotType = (chartType: string): boolean => {
-  return ['donut', 'sankey', 'pie'].includes(chartType);
+  return ['donut', 'sankey', 'pie', 'annotation'].includes(chartType);
 };
 
 export const getGridProperties = (

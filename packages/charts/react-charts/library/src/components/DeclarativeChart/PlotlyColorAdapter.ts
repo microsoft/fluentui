@@ -106,37 +106,35 @@ function tryMapFluentDataViz(
 
 export const getColor = (
   legendLabel: string,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   templateColorway: PlotlyColorway,
   isDarkTheme?: boolean,
   isDonut?: boolean,
 ): string => {
-  if (!colorMap.current.has(legendLabel)) {
+  if (!colorMap.current!.has(legendLabel)) {
     let nextColor: string;
     const defaultColorMapping = isDonut
       ? templateColorway === 'plotly'
         ? PLOTLY_FLUENTVIZ_COLORWAY_MAPPING
         : D3_FLUENTVIZ_COLORWAY_MAPPING
       : PLOTLY_FLUENTVIZ_COLORWAY_MAPPING;
-    if (colorMap.current.size < defaultColorMapping.length) {
+    if (colorMap.current!.size < defaultColorMapping.length) {
       // Get first 10 colors from plotly-fluentviz colorway mapping
-      nextColor = getColorFromToken(defaultColorMapping[colorMap.current.size], isDarkTheme);
+      nextColor = getColorFromToken(defaultColorMapping[colorMap.current!.size], isDarkTheme);
     } else {
-      nextColor = getNextColor(colorMap.current.size, 0, isDarkTheme);
+      nextColor = getNextColor(colorMap.current!.size, 0, isDarkTheme);
     }
-    colorMap.current.set(legendLabel, nextColor);
+    colorMap.current!.set(legendLabel, nextColor);
     return nextColor;
   }
 
-  return colorMap.current.get(legendLabel) as string;
+  return colorMap.current!.get(legendLabel) as string;
 };
 
 export const getSchemaColors = (
   colorway: string[] | undefined,
   colors: PieColors | Color | Color[] | string | null | undefined,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   isDarkTheme?: boolean,
   isDonut?: boolean,
 ): string[] | string | undefined => {
@@ -172,8 +170,7 @@ export const extractColor = (
   colorway: string[] | undefined,
   colorwayType: ColorwayType,
   colors: PieColors | Color | Color[] | string | null | undefined,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   isDarkTheme?: boolean,
   isDonut?: boolean,
 ): string | string[] | undefined => {
@@ -186,8 +183,7 @@ export const resolveColor = (
   extractedColors: string[] | string | null | undefined,
   index: number,
   legend: string,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorMap: React.RefObject<Map<string, string>>,
   colorway: string[] | undefined,
   isDarkTheme?: boolean,
   isDonut?: boolean,
