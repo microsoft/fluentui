@@ -62,6 +62,7 @@ const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>()
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithResponsiveModeState {
   hoisted: {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     rootRef: React.MutableRefObject<HTMLDivElement | null>;
     selectedIndices: number[];
     setSelectedIndices: React.Dispatch<React.SetStateAction<number[]>>;

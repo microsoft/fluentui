@@ -40,7 +40,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string;
-  private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private barChartSvgRef: React.RefObject<SVGSVGElement | null>;
   private _isRTL = getRTL();
 
   public constructor(props: IStackedBarChartProps) {

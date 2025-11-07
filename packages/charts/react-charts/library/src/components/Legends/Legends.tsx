@@ -119,7 +119,9 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-multiselectable': canSelectMultipleLegends,
           })}
           className={classes.root}
-          ref={el => (_rootElem.current = el)}
+          ref={el => {
+            _rootElem.current = el;
+          }}
         >
           <Overflow>
             <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>

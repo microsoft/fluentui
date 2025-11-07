@@ -106,7 +106,7 @@ interface IPageSpecificationCache<TItem> {
  */
 export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, ITilesListState<TItem>> {
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
-  private listRef: React.RefObject<List>;
+  private listRef: React.RefObject<List | null>;
 
   constructor(props: ITilesListProps<TItem>, context?: any) {
     // eslint-disable-next-line @typescript-eslint/no-deprecated

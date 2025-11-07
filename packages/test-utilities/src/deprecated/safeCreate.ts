@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
@@ -17,11 +18,9 @@ export function safeCreate<TProps>(
   options?: renderer.TestRendererOptions,
 ): void {
   let wrapper: renderer.ReactTestRenderer;
-  /* eslint-disable @typescript-eslint/no-deprecated */
   renderer.act(() => {
     wrapper = renderer.create(content, options);
   });
-  /* eslint-enable @typescript-eslint/no-deprecated */
 
   try {
     callback(wrapper!);

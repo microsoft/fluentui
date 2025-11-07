@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-This log was last generated on Fri, 31 Oct 2025 16:22:05 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Nov 2025 15:01:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.4)
+
+Thu, 06 Nov 2025 15:01:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.2.3..@fluentui/react-menu-grid-preview_v0.2.4)
+
+### Patches
+
+- Update styles and rename menuGridGroupHeaderClassNames to camel case ([PR #35463](https://github.com/microsoft/fluentui/pull/35463) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-menu to v9.20.4 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-table to v9.19.4 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-tabster to v9.26.9 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.2 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-utilities to v9.25.3 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
 
 ## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.2.3)
 

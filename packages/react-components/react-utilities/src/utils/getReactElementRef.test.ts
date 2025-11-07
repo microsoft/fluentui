@@ -55,7 +55,7 @@ describe('getReactElementRef', () => {
       });
 
       it('handles function refs in pre-React 19', () => {
-        const mockFunctionRef = jest.fn(() => null) as React.RefCallback<HTMLDivElement>;
+        const mockFunctionRef = jest.fn() as React.RefCallback<HTMLDivElement>;
         const element = createReactElementWithRef(mockFunctionRef);
 
         expect(getReactElementRef(element)).toBe(mockFunctionRef);

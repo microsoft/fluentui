@@ -19,6 +19,7 @@ describe(`v8 preset`, () => {
           '\\.(scss)$': `${workspaceRoot}/scripts/jest/src/v8/jest-style-mock.js`,
           '^@fluentui/scripts-jest$': '<rootDir>/src/',
           '^@fluentui/scripts-jest/lib/(.*)$': '<rootDir>/src/$1',
+          '^@testing-library/react-hooks$': `${workspaceRoot}/node_modules/@testing-library/react`,
           enzyme: `${workspaceRoot}/scripts/jest/src/v8/jest-mock.js`,
         },
         reporters: [`${workspaceRoot}/scripts/jest/src/v8/jest-reporter.js`],

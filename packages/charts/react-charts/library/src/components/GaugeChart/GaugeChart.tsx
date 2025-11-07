@@ -588,7 +588,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const { arcs } = _processProps();
     const focusAttributes = useFocusableGroup();
     return (
-      <div className={classes.root} ref={el => (_rootElem.current = el)}>
+      <div
+        className={classes.root}
+        ref={el => {
+          _rootElem.current = el;
+        }}
+      >
         <div className={classes.chartWrapper} {...focusAttributes}>
           <svg
             className={classes.chart}

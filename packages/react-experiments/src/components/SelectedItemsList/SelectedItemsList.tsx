@@ -1,12 +1,13 @@
 import * as React from 'react';
 import type { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
+import type { JSXElement } from '@fluentui/utilities';
 
 /* eslint-disable react-hooks/rules-of-hooks */
 
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
-  ref: React.Ref<ISelectedItemsList<TItem>>,
-) => {
+  _ref?: React.Ref<ISelectedItemsList<TItem>>,
+): JSXElement => {
   const { dragDropEvents, dragDropHelper, selectedItems, defaultSelectedItems, replaceItem } = props;
   const [items, setItems] = React.useState(selectedItems || defaultSelectedItems || []);
 

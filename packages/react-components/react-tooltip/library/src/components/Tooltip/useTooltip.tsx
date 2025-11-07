@@ -98,8 +98,11 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     containerRef,
     arrowRef,
   }: {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     targetRef: React.MutableRefObject<unknown>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     containerRef: React.MutableRefObject<HTMLDivElement>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     arrowRef: React.MutableRefObject<HTMLDivElement>;
   } = usePositioning(positioningOptions);
 

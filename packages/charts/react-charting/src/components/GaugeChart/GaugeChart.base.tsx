@@ -135,7 +135,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   private _rootElem: HTMLDivElement | null;
   private _margins: { left: number; right: number; top: number; bottom: number };
   private _legendsHeight: number;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   constructor(props: IGaugeChartProps) {
     super(props);
@@ -203,7 +203,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     });
 
     return (
-      <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
+      <div
+        className={this._classNames.root}
+        ref={el => {
+          this._rootElem = el;
+        }}
+      >
         <FocusZone direction={FocusZoneDirection.horizontal} className={this._classNames.chartWrapper}>
           <svg
             className={this._classNames.chart}

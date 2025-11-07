@@ -96,6 +96,11 @@ describe('useTableColumnSizing', () => {
           data-tabster="{\\"focusable\\":{\\"ignoreKeydown\\":{\\"ArrowLeft\\":true,\\"ArrowRight\\":true}}}"
           onBlur={[Function]}
           onKeyDown={[Function]}
+          ref={
+            Object {
+              "current": null,
+            }
+          }
           role="separator"
         />,
         "style": Object {

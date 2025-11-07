@@ -100,7 +100,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _renderLinkList = (pages: INavPage[], isSubMenu: boolean): React.ReactElement => {
+  private _renderLinkList = (pages: INavPage[], isSubMenu: boolean): React.ReactElement<any> => {
     const { searchablePageTitle } = this.props;
     const { sortState } = this.state;
 

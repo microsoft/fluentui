@@ -61,8 +61,8 @@ exports[`Dropdown renders an open listbox 1`] = `
     class="fui-Dropdown"
   >
     <button
-      aria-activedescendant="fluent-optionre"
-      aria-controls="fluent-listboxrd"
+      aria-activedescendant="fluent-option_r_e_"
+      aria-controls="fluent-listbox_r_d_"
       aria-expanded="true"
       class="fui-Dropdown__button"
       role="combobox"
@@ -110,7 +110,7 @@ exports[`Dropdown renders an open listbox 1`] = `
     </button>
     <div
       class="fui-Listbox fui-Dropdown__listbox"
-      id="fluent-listboxrd"
+      id="fluent-listbox_r_d_"
       role="listbox"
       style="position: fixed; left: 0px; top: 0px; margin: 0px;"
     >
@@ -118,7 +118,7 @@ exports[`Dropdown renders an open listbox 1`] = `
         aria-selected="false"
         class="fui-Option"
         data-activedescendant=""
-        id="fluent-optionre"
+        id="fluent-option_r_e_"
         role="option"
       >
         <span
@@ -145,7 +145,7 @@ exports[`Dropdown renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-optionrf"
+        id="fluent-option_r_f_"
         role="option"
       >
         <span
@@ -172,7 +172,7 @@ exports[`Dropdown renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-optionrg"
+        id="fluent-option_r_g_"
         role="option"
       >
         <span

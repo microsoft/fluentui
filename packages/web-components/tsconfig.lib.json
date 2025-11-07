@@ -1,10 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "declaration": true,
     "outDir": "dist/esm",
-    "importHelpers": true
+    "importHelpers": true,
+    "types": []
   },
   "include": ["src"],
   "exclude": ["**/*.stories.*", "**/*.spec.*"]

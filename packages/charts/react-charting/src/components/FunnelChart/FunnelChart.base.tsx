@@ -28,7 +28,7 @@ const getClassNames = classNamesFunction<IFunnelChartStyleProps, IFunnelChartSty
 export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React.forwardRef<
   HTMLDivElement,
   IFunnelChartProps
->((props, forwardedRef) => {
+>(({ orientation = 'vertical', ...props }, forwardedRef) => {
   const _tooltipId: string = getId('FunnelChartTooltipId_');
   const _emptyChartId: string = getId('_FunnelChart_empty');
   const isRTL = getRTL();
@@ -248,7 +248,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
     return data.map((d, i) => {
       const geometryProps =
-        props.orientation === 'vertical'
+        orientation === 'vertical'
           ? getVerticalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL })
           : getHorizontalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL });
 
@@ -302,7 +302,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     }));
 
     const geom =
-      props.orientation === 'vertical'
+      orientation === 'vertical'
         ? getStackedVerticalFunnelSegmentGeometry({
             ...geometryParams,
             stages: stagesWithSubValues,
@@ -493,7 +493,3 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
   );
 });
 FunnelChartBase.displayName = 'FunnelChart';
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-FunnelChartBase.defaultProps = {
-  orientation: 'vertical',
-};

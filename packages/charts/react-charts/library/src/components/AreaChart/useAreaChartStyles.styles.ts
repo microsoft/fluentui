@@ -21,6 +21,8 @@ export const areaChartClassNames: SlotClassNames<AreaChartStyles> = {
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 const useStyles = makeStyles({

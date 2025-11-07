@@ -138,7 +138,7 @@ describe('Pickers', () => {
 
     it('force resolves to the first suggestion', () => {
       jest.useFakeTimers();
-      const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
+      const pickerRef: React.RefObject<TypedBaseExtendedPicker | null> = React.createRef();
       create(
         <BaseExtendedPickerWithType
           ref={pickerRef}
@@ -201,7 +201,7 @@ describe('Pickers', () => {
 
     it('Can hide and show picker', () => {
       jest.useFakeTimers();
-      const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
+      const pickerRef: React.RefObject<TypedBaseExtendedPicker | null> = React.createRef();
       create(
         <BaseExtendedPickerWithType
           ref={pickerRef}
@@ -241,7 +241,7 @@ describe('Pickers', () => {
 
     it('Completes the suggestion', () => {
       jest.useFakeTimers();
-      const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
+      const pickerRef: React.RefObject<TypedBaseExtendedPicker | null> = React.createRef();
       create(
         <BaseExtendedPickerWithType
           ref={pickerRef}

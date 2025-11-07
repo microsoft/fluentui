@@ -18,5 +18,5 @@
     "**/*.cy.ts",
     "**/*.cy.tsx"
   ],
-  "include": ["src/index.ts", "./src/react-18/", "./src/shared/**/*.ts", "./src/shared/**/*.tsx"]
+  "include": ["src/index.ts", "./src/react-19/", "./src/shared/**/*.ts", "./src/shared/**/*.tsx"]
 }

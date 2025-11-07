@@ -43,6 +43,7 @@ describe('OverflowItem', () => {
       const triggerRef = jest.fn();
 
       const menuContextValue: Partial<MenuContextValue> = {
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         triggerRef: triggerRef as unknown as React.MutableRefObject<HTMLElement>,
       };
 

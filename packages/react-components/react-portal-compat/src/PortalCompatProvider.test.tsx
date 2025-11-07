@@ -41,7 +41,7 @@ describe('useProviderThemeClasses', () => {
 
     expect(result.current).toMatchInlineSnapshot(`
       Array [
-        "fui-FluentProviderr0",
+        "fui-FluentProvider_r_0_",
       ]
     `);
   });
@@ -53,8 +53,8 @@ describe('useProviderThemeClasses', () => {
 
     expect(result.current).toMatchInlineSnapshot(`
       Array [
-        "fui-FluentProviderr2",
-        "fui-FluentProviderr1",
+        "fui-FluentProvider_r_2_",
+        "fui-FluentProvider_r_1_",
       ]
     `);
   });
@@ -72,7 +72,7 @@ describe('useProviderThemeClasses', () => {
 
     expect(result.current).toMatchInlineSnapshot(`
       Array [
-        "custom1-fui-FluentProviderr3",
+        "custom1-fui-FluentProvider_r_3_",
       ]
     `);
   });
@@ -143,7 +143,7 @@ describe('PortalCompatProvider', () => {
     expect(result.current(element)).toBeInstanceOf(Function);
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
-        "0": "fui-FluentProviderr4",
+        "0": "fui-FluentProvider_r_4_",
       }
     `);
   });
@@ -157,8 +157,8 @@ describe('PortalCompatProvider', () => {
     expect(result.current(element)).toBeInstanceOf(Function);
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
-        "0": "fui-FluentProviderr6",
-        "1": "fui-FluentProviderr5",
+        "0": "fui-FluentProvider_r_6_",
+        "1": "fui-FluentProvider_r_5_",
       }
     `);
   });
@@ -177,7 +177,7 @@ describe('PortalCompatProvider', () => {
 
     expect(element.classList).toMatchInlineSnapshot(`
       DOMTokenList {
-        "0": "fui-FluentProviderr7",
+        "0": "fui-FluentProvider_r_7_",
       }
     `);
     expect(unregister).toBeInstanceOf(Function);

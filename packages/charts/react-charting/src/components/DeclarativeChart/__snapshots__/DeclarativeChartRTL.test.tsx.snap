@@ -20425,14 +20425,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     }
               >
                 <g
-                  id="nodeGElement69"
+                  id="nodeGElement38"
                 >
                   <rect
                     aria-label="node Remain+No – 28 with weight 28"
                     data-is-focusable="true"
                     fill="#f27420"
                     height="68.62745098039218"
-                    id="nodeBar68"
+                    id="nodeBar37"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -20465,7 +20465,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         fill="#FFFFFF"
                         font-size="10"
                         font-weight="regular"
-                        id="nodeBar68-name"
+                        id="nodeBar37-name"
                         text-anchor="start"
                         x="48"
                         y="36"
@@ -20500,14 +20500,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     }
               >
                 <g
-                  id="nodeGElement71"
+                  id="nodeGElement40"
                 >
                   <rect
                     aria-label="node Leave+No – 16 with weight 16"
                     data-is-focusable="true"
                     fill="#4994ce"
                     height="39.21568627450981"
-                    id="nodeBar70"
+                    id="nodeBar39"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -20540,7 +20540,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         fill="#FFFFFF"
                         font-size="10"
                         font-weight="regular"
-                        id="nodeBar70-name"
+                        id="nodeBar39-name"
                         text-anchor="start"
                         x="48"
                         y="112.62745098039218"
@@ -20575,14 +20575,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     }
               >
                 <g
-                  id="nodeGElement73"
+                  id="nodeGElement42"
                 >
                   <rect
                     aria-label="node Remain+Yes – 21 with weight 22"
                     data-is-focusable="true"
                     fill="#fabc13"
                     height="53.92156862745094"
-                    id="nodeBar72"
+                    id="nodeBar41"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -20615,7 +20615,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         fill="#FFFFFF"
                         font-size="10"
                         font-weight="regular"
-                        id="nodeBar72-name"
+                        id="nodeBar41-name"
                         text-anchor="start"
                         x="48"
                         y="159.843137254902"
@@ -20650,14 +20650,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     }
               >
                 <g
-                  id="nodeGElement75"
+                  id="nodeGElement44"
                 >
                   <rect
                     aria-label="node Leave+Yes – 14 with weight 14"
                     data-is-focusable="true"
                     fill="#7fc241"
                     height="34.31372549019608"
-                    id="nodeBar74"
+                    id="nodeBar43"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -20690,7 +20690,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         fill="#FFFFFF"
                         font-size="10"
                         font-weight="regular"
-                        id="nodeBar74-name"
+                        id="nodeBar43-name"
                         text-anchor="start"
                         x="48"
                         y="221.76470588235293"
@@ -20725,14 +20725,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     }
               >
                 <g
-                  id="nodeGElement77"
+                  id="nodeGElement46"
                 >
                   <rect
                     aria-label="node Didn’t vote in at least one referendum – 21 with weight 22"
                     data-is-focusable="true"
                     fill="#d3d3d3"
                     height="53.921568627450995"
-                    id="nodeBar76"
+                    id="nodeBar45"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -20765,7 +20765,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         fill="#FFFFFF"
                         font-size="10"
                         font-weight="regular"
-                        id="nodeBar76-name"
+                        id="nodeBar45-name"
                         text-anchor="start"
                         x="48"
                         y="264.078431372549"
@@ -20826,7 +20826,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,36C300,36,300,47.527,428,47.527L428,96.546C300,96.546,300,85.02,172,85.02Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link84"
+                    id="link53"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -20872,7 +20872,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,85.02C300,85.02,300,165.821,428,165.821L428,173.174C300,173.174,300,92.373,172,92.373Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link85"
+                    id="link54"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -20918,7 +20918,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,92.373C300,92.373,300,269.409,428,269.409L428,281.664C300,281.664,300,104.627,172,104.627Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link86"
+                    id="link55"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -20964,7 +20964,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,112.627C300,112.627,300,96.546,428,96.546L428,130.86C300,130.86,300,146.941,172,146.941Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link87"
+                    id="link56"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21010,7 +21010,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,146.941C300,146.941,300,173.174,428,173.174L428,175.625C300,175.625,300,149.392,172,149.392Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link88"
+                    id="link57"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21056,7 +21056,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,149.392C300,149.392,300,281.664,428,281.664L428,284.115C300,284.115,300,151.843,172,151.843Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link89"
+                    id="link58"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21102,7 +21102,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,159.843C300,159.843,300,130.86,428,130.86L428,138.213C300,138.213,300,167.196,172,167.196Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link90"
+                    id="link59"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21148,7 +21148,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,167.196C300,167.196,300,175.625,428,175.625L428,217.291C300,217.291,300,208.863,172,208.863Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link91"
+                    id="link60"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21194,7 +21194,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,208.863C300,208.863,300,284.115,428,284.115L428,289.017C300,289.017,300,213.765,172,213.765Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link92"
+                    id="link61"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21240,7 +21240,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,221.765C300,221.765,300,138.213,428,138.213L428,145.566C300,145.566,300,229.118,172,229.118Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link93"
+                    id="link62"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21286,7 +21286,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,229.118C300,229.118,300,217.291,428,217.291L428,239.35C300,239.35,300,251.176,172,251.176Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link94"
+                    id="link63"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21332,7 +21332,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,251.176C300,251.176,300,289.017,428,289.017L428,293.919C300,293.919,300,256.078,172,256.078Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link95"
+                    id="link64"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21378,7 +21378,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,264.078C300,264.078,300,145.566,428,145.566L428,157.821C300,157.821,300,276.333,172,276.333Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link96"
+                    id="link65"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21424,7 +21424,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,276.333C300,276.333,300,239.35,428,239.35L428,261.409C300,261.409,300,298.392,172,298.392Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link97"
+                    id="link66"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21470,7 +21470,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     d="M172,298.392C300,298.392,300,293.919,428,293.919L428,313.527C300,313.527,300,318,172,318Z"
                     data-is-focusable="true"
                     fill-opacity="1"
-                    id="link98"
+                    id="link67"
                     role="img"
                     stroke="#757575"
                     stroke-opacity="1"
@@ -21490,14 +21490,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     }
               >
                 <g
-                  id="nodeGElement79"
+                  id="nodeGElement48"
                 >
                   <rect
                     aria-label="node 46 – No with weight 45"
                     data-is-focusable="true"
                     fill="#8a5988"
                     height="110.29411764705881"
-                    id="nodeBar78"
+                    id="nodeBar47"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -21530,7 +21530,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         fill="#FFFFFF"
                         font-size="10"
                         font-weight="regular"
-                        id="nodeBar78-name"
+                        id="nodeBar47-name"
                         text-anchor="start"
                         x="428"
                         y="47.52666244739552"
@@ -21565,14 +21565,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     }
               >
                 <g
-                  id="nodeGElement81"
+                  id="nodeGElement50"
                 >
                   <rect
                     aria-label="node 39 – Yes with weight 39"
                     data-is-focusable="true"
                     fill="#449e9e"
                     height="95.58823529411762"
-                    id="nodeBar80"
+                    id="nodeBar49"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -21605,7 +21605,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         fill="#FFFFFF"
                         font-size="10"
                         font-weight="regular"
-                        id="nodeBar80-name"
+                        id="nodeBar49-name"
                         text-anchor="start"
                         x="428"
                         y="165.82078009445434"
@@ -21640,14 +21640,14 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                     }
               >
                 <g
-                  id="nodeGElement83"
+                  id="nodeGElement52"
                 >
                   <rect
                     aria-label="node 14 – Don’t know / would not vote with weight 18"
                     data-is-focusable="true"
                     fill="#d3d3d3"
                     height="44.117647058823536"
-                    id="nodeBar82"
+                    id="nodeBar51"
                     opacity="1"
                     role="img"
                     stroke="#757575"
@@ -21680,7 +21680,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                         fill="#FFFFFF"
                         font-size="10"
                         font-weight="regular"
-                        id="nodeBar82-name"
+                        id="nodeBar51-name"
                         text-anchor="start"
                         x="428"
                         y="269.40901538857196"

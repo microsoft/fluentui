@@ -9,7 +9,7 @@ import { applyFocusWithinPolyfill } from '../focus/focusWithinPolyfill';
  * like `:focus-visible` https://github.com/WICG/focus-visible/issues/151
  * @returns ref to the element that uses `:focus-within` styles
  */
-export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React.RefObject<TElement> {
+export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React.RefObject<TElement | null> {
   const { targetDocument } = useFluent();
   const elementRef = React.useRef<TElement>(null);
 

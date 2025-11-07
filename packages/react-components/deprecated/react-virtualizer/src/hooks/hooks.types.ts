@@ -83,6 +83,7 @@ export interface ResizeCallbackWithRef {
     // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
     observer: ResizeObserver,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     scrollRef?: React.MutableRefObject<HTMLElement | null>,
   ): void;
 }

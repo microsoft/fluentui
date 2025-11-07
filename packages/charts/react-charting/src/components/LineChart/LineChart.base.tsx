@@ -208,8 +208,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
   private _yScaleSecondary: ScaleLinear<number, number> | undefined;
   private _hasMarkersMode: boolean = false;
   private _isXAxisDateType: boolean = false;

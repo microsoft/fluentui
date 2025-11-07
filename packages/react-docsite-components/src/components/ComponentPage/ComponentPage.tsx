@@ -218,7 +218,9 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     const { exampleCards } = this.props;
     // We want to show the "Variants" header if the header is present since it has a relative anchor to it
     // or we have more than one example JSX element to render.
-    const hasVariants = this.props.isHeaderVisible || (exampleCards && !!exampleCards.props.children.length);
+    const hasVariants =
+      this.props.isHeaderVisible ||
+      (exampleCards && !!(exampleCards.props as { children: React.ReactNode[] }).children.length);
 
     // If only one variant then use its title as the header text, otherwise use "Variants".
     const headerText = hasVariants ? 'Variants' : this.props.title;

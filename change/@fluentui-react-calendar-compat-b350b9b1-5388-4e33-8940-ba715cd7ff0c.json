@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: disabled Calendar buttons get disabled color styles in high contrast mode",
-  "packageName": "@fluentui/react-calendar-compat",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

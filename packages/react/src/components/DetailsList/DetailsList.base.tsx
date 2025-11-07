@@ -92,11 +92,17 @@ type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
   IDetailsListState & {
     selection: ISelection;
     dragDropHelper: DragDropHelper | undefined;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     rootRef: React.MutableRefObject<HTMLDivElement | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     listRef: React.MutableRefObject<List | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     groupedListRef: React.MutableRefObject<IGroupedList | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     focusZoneRef: React.MutableRefObject<IFocusZone | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     headerRef: React.MutableRefObject<IDetailsHeader | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     selectionZoneRef: React.MutableRefObject<SelectionZone | null>;
     onGroupExpandStateChanged: (isSomeGroupExpanded: boolean) => void;
     onColumnIsSizingChanged: (column: IColumn, isSizing: boolean) => void;

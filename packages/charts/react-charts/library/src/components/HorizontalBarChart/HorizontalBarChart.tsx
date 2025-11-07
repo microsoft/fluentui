@@ -27,7 +27,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const _uniqLineText: string = useId('_HorizontalLine_');
   const _refArray: RefArrayData[] = [];
   const _isRTL: boolean = useRtl();
-  const barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
+  const barChartSvgRef: React.RefObject<SVGSVGElement | null> = React.createRef<SVGSVGElement>();
   const _emptyChartId: string = useId('_HBC_empty');
   let _barHeight: number;
   let _calloutAnchorPoint: ChartDataPoint | null;
@@ -478,7 +478,12 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         isCartesian={false}
       />
       {!isSingleBar && (
-        <div ref={(e: HTMLDivElement) => (legendContainer.current = e)} className={classes.legendContainer}>
+        <div
+          ref={(e: HTMLDivElement) => {
+            legendContainer.current = e;
+          }}
+          className={classes.legendContainer}
+        >
           {legendButtons}
         </div>
       )}

@@ -16,7 +16,7 @@ interface TextboxProps {
 }
 
 export const Textbox: React.FunctionComponent<TextboxProps> = props => {
-  const textElementRef: React.RefObject<SVGTextElement> = React.useRef(null);
+  const textElementRef: React.RefObject<SVGTextElement | null> = React.useRef(null);
 
   const wrapWords = () => {
     if (!textElementRef.current) {

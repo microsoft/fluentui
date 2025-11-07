@@ -1488,16 +1488,16 @@ export const useFocusFinders: () => {
 export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => Types.ObservedElementAsyncRequest<boolean>;
 
 // @public (undocumented)
-export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement>;
+export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement | null>;
 
 // @public
-export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
+export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement | null>;
 
 // @public
 export function useIsNavigatingWithKeyboard(): () => boolean;
 
 // @public
-export function useKeyboardNavAttribute<E extends HTMLElement>(): React_2.RefObject<E>;
+export function useKeyboardNavAttribute<E extends HTMLElement>(): React_2.RefObject<E | null>;
 
 // @internal
 export const useMergedTabsterAttributes_unstable: (...attributes: (Partial<Types.TabsterDOMAttribute> | null | undefined)[]) => Types.TabsterDOMAttribute;
