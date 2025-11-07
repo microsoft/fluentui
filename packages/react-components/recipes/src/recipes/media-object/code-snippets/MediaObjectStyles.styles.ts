@@ -1,4 +1,4 @@
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 
 export const useExampleStyles = makeStyles({
   multiExample: {
@@ -21,7 +21,7 @@ export const useSkeletonStyles = makeStyles({
     flexDirection: 'column-reverse',
     rowGap: '10px',
     columnGap: '10px',
-    ...shorthands.padding('4px'),
+    padding: `4px`,
   },
   legend: {
     display: 'flex',
@@ -49,7 +49,7 @@ export const useMediaObjectStyles = makeStyles({
     columnGap: '4px',
   },
   emptyMedia: {
-    ...shorthands.padding('20px', '20px', '20px', '80px'),
+    padding: `20px 20px 20px 80px`,
   },
   emptyText: {
     width: '100px',
