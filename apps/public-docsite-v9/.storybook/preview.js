@@ -2,7 +2,7 @@ import * as rootPreview from '../../../.storybook/preview';
 
 import './docs-root-v9.css';
 
-/** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
+/** @type {NonNullable<import('@storybook/react').Decorator[]>} */
 export const decorators = rootPreview.decorators;
 
 /** @type {import("@fluentui/react-storybook-addon").FluentParameters & typeof rootPreview.parameters} */
@@ -56,3 +56,5 @@ export const parameters = {
     docs: true,
   },
 };
+
+export const tags = ['autodocs'];

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add referrerPolicy to anchor element property whitelist",
-  "packageName": "@fluentui/react-utilities",
-  "email": "198982749+Copilot@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -24,7 +24,7 @@ export type InfoButtonSlots = {
  *
  * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
-export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled' | 'popover'> & {
   /**
    * Size of the InfoButton.
    *
@@ -38,6 +38,11 @@ export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'di
    * @default true
    */
   inline?: boolean;
+
+  /**
+   * The Popover element that wraps the info and root slots. Use this slot to pass props to the Popover.
+   */
+  popover?: InfoButtonSlots['popover'];
 };
 
 /**

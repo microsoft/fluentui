@@ -60,7 +60,7 @@ function _processStackChildren(
     enableScopedSelectors,
     doNotRenderFalsyValues,
   }: { disableShrink: boolean; enableScopedSelectors: boolean; doNotRenderFalsyValues: boolean },
-): (React.ReactElement<any> | number | string | Iterable<React.ReactNode> | React.ReactPortal)[] {
+): React.ReactNode[] {
   let childrenArray = React.Children.toArray(children);
 
   childrenArray = React.Children.map(childrenArray, child => {
@@ -75,8 +75,13 @@ function _processStackChildren(
     }
 
     if (child.type === React.Fragment) {
-      return child.props.children
-        ? _processStackChildren(child.props.children, { disableShrink, enableScopedSelectors, doNotRenderFalsyValues })
+      const fragmentChild = child as React.ReactElement<{ children?: React.ReactNode }>;
+      return fragmentChild.props.children
+        ? _processStackChildren(fragmentChild.props.children, {
+            disableShrink,
+            enableScopedSelectors,
+            doNotRenderFalsyValues,
+          })
         : null;
     }
 

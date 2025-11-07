@@ -2,6 +2,51 @@
   "name": "@fluentui/react-infobutton",
   "entries": [
     {
+      "date": "Thu, 06 Nov 2025 15:01:20 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.106",
+      "version": "9.0.0-beta.106",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "fix: mitigate native popover prop dts clash from public API exposed by React 19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-label to v9.3.10",
+            "commit": "8fd7910fdfc3892c3e802e09fdedf8de249c0733"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.12.11",
+            "commit": "8fd7910fdfc3892c3e802e09fdedf8de249c0733"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-tabster to v9.26.9",
+            "commit": "8fd7910fdfc3892c3e802e09fdedf8de249c0733"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-utilities to v9.25.3",
+            "commit": "8fd7910fdfc3892c3e802e09fdedf8de249c0733"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.2",
+            "commit": "8fd7910fdfc3892c3e802e09fdedf8de249c0733"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Oct 2025 16:22:06 GMT",
       "tag": "@fluentui/react-infobutton_v9.0.0-beta.105",
       "version": "9.0.0-beta.105",

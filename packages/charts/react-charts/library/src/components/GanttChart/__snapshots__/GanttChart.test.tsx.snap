@@ -418,7 +418,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr2p"
+      id="callout_r_2p_"
     >
       <div
         class="fui-PopoverSurface"
@@ -1308,7 +1308,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
 exports[`GanttChart rendering and behavior tests should render GanttChart correctly in dark theme 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProviderr4"
+    class="fui-FluentProvider fui-FluentProvider_r_4_"
     dir="ltr"
   >
     <div
@@ -3315,7 +3315,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
         <g>
           <defs>
             <lineargradient
-              id="gantt_legendrm_0_gradient"
+              id="gantt_legend_r_m__0_gradient"
             >
               <stop
                 offset="0"
@@ -3327,7 +3327,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               />
             </lineargradient>
             <lineargradient
-              id="gantt_legendrm_1_gradient"
+              id="gantt_legend_r_m__1_gradient"
             >
               <stop
                 offset="0"
@@ -3339,7 +3339,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               />
             </lineargradient>
             <lineargradient
-              id="gantt_legendrm_2_gradient"
+              id="gantt_legend_r_m__2_gradient"
             >
               <stop
                 offset="0"
@@ -3353,7 +3353,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           </defs>
           <rect
             aria-label="Job-1. Complete, 01/01/2017 - 02/02/2017."
-            fill="url(#gantt_legendrm_0_gradient)"
+            fill="url(#gantt_legend_r_m__0_gradient)"
             height="7.888888888888889"
             opacity="1"
             role="img"
@@ -3365,7 +3365,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           />
           <rect
             aria-label="Job-1. Incomplete, 02/15/2017 - 03/15/2017."
-            fill="url(#gantt_legendrm_1_gradient)"
+            fill="url(#gantt_legend_r_m__1_gradient)"
             height="7.888888888888889"
             opacity="1"
             role="img"
@@ -3377,7 +3377,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           />
           <rect
             aria-label="Job-2. Complete, 01/17/2017 - 02/17/2017."
-            fill="url(#gantt_legendrm_0_gradient)"
+            fill="url(#gantt_legend_r_m__0_gradient)"
             height="7.888888888888889"
             opacity="1"
             role="img"
@@ -3389,7 +3389,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           />
           <rect
             aria-label="Job-2. Not Started, 01/17/2017 - 02/17/2017."
-            fill="url(#gantt_legendrm_2_gradient)"
+            fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
             role="img"
@@ -3401,7 +3401,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           />
           <rect
             aria-label="Job-4. Complete, 01/14/2017 - 03/14/2017."
-            fill="url(#gantt_legendrm_0_gradient)"
+            fill="url(#gantt_legend_r_m__0_gradient)"
             height="7.888888888888889"
             opacity="1"
             role="img"
@@ -3413,7 +3413,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           />
           <rect
             aria-label="Job-3. Not Started, 03/10/2017 - 03/20/2017."
-            fill="url(#gantt_legendrm_2_gradient)"
+            fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
             role="img"
@@ -3425,7 +3425,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           />
           <rect
             aria-label="Job-3. Not Started, 04/01/2017 - 04/20/2017."
-            fill="url(#gantt_legendrm_2_gradient)"
+            fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
             role="img"
@@ -3437,7 +3437,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           />
           <rect
             aria-label="Job-3. Not Started, 05/18/2017 - 06/18/2017."
-            fill="url(#gantt_legendrm_2_gradient)"
+            fill="url(#gantt_legend_r_m__2_gradient)"
             height="7.888888888888889"
             opacity="1"
             role="img"
@@ -4366,7 +4366,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutr15"
+      id="callout_r_15_"
     >
       <div
         class="fui-PopoverSurface"

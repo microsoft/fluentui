@@ -994,7 +994,6 @@ const convertPlotlyAnnotation = (
       styleProps.rotation = parsedAngle;
     }
   }
-
   if (Object.keys(layoutProps).length > 0) {
     chartAnnotation.layout = layoutProps;
   }

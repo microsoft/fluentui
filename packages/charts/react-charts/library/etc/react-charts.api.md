@@ -194,7 +194,7 @@ export interface CartesianChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: any) => ChartPopoverProps;
     className?: string;
-    componentRef?: React_2.RefObject<Chart>;
+    componentRef?: React_2.RefObject<Chart | null>;
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
@@ -1237,7 +1237,7 @@ export interface LegendsProps {
     defaultSelectedLegend?: string;
     defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
-    legendRef?: React_2.RefObject<LegendContainer>;
+    legendRef?: React_2.RefObject<LegendContainer | null>;
     legends: Legend[];
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;

@@ -818,7 +818,7 @@ describe('prepare-initial-release generator', () => {
 
           \\\\\`\\\\\`\\\\\`js
           module.exports = {
-          stories: ['../packages/react-components/react-one/stories/src/**/*.stories.mdx', '../packages/react-components/react-one/stories/src/**/index.stories.@(ts|tsx)'],
+          stories: ['../packages/react-components/react-one/stories/src/**/*.mdx', '../packages/react-components/react-one/stories/src/**/index.stories.@(ts|tsx)'],
           }
           \\\\\`\\\\\`\\\\\`
           "
@@ -920,7 +920,7 @@ function createSplitProject(
 
         \`\`\`js
         module.exports = {
-        stories: ['../packages/react-components/${projectName}/stories/src/**/*.stories.mdx', '../packages/react-components/${projectName}/stories/src/**/index.stories.@(ts|tsx)'],
+        stories: ['../packages/react-components/${projectName}/stories/src/**/*.mdx', '../packages/react-components/${projectName}/stories/src/**/index.stories.@(ts|tsx)'],
         }
         \`\`\`
     `,

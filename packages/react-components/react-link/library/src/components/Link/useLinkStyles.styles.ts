@@ -59,16 +59,16 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link appears subtle.
   subtle: {
-    color: tokens.colorNeutralForeground2,
+    color: tokens.colorNeutralForeground2Link,
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Hover,
+      color: tokens.colorNeutralForeground2LinkHover,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Pressed,
+      color: tokens.colorNeutralForeground2LinkPressed,
     },
   },
   // Overrides when the Link is rendered inline within text.
