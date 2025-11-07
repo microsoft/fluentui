@@ -28,6 +28,8 @@ import {
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { SVGTooltipText, SVGTooltipTextProps } from '../../utilities/SVGTooltipText';
+import { ChartAnnotationLayer } from './Annotations/ChartAnnotationLayer';
+import { ChartAnnotationContext } from './Annotations/ChartAnnotationLayer.types';
 import { ChartPopover } from './ChartPopover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 
@@ -240,6 +242,11 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
 
   let callout: JSXElement | null = null;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let yScalePrimary: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let yScaleSecondary: any;
+
   let children = null;
   if ((props.enableFirstRenderOptimization && chartContainer.current) || !props.enableFirstRenderOptimization) {
     _isFirstRender.current = false;
@@ -359,10 +366,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
      * 2. To draw the graph.
      * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let yScalePrimary: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let yScaleSecondary: any;
     const axisData: IAxisData = { yAxisDomainValues: [] };
     if (props.yAxisType && props.yAxisType === YAxisType.StringAxis) {
       yScalePrimary = props.createStringYAxis(
@@ -491,6 +494,30 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     width: containerWidth,
     height: containerHeight,
   };
+
+  const _startFromX = startFromX || 0;
+  const plotWidth = Math.max(0, svgDimensions.width - margins.left! - margins.right! - _startFromX);
+  const plotHeight = Math.max(0, svgDimensions.height - margins.top! - margins.bottom! - _removalValueForTextTuncate);
+
+  const plotRect = {
+    x: _useRtl ? margins.left! : margins.left! + _startFromX,
+    y: margins.top!,
+    width: plotWidth,
+    height: plotHeight,
+  };
+
+  const annotations = props.annotations ?? [];
+  const hasAnnotations = annotations.length > 0;
+  const annotationContext: ChartAnnotationContext | undefined = hasAnnotations
+    ? {
+        plotRect,
+        svgRect: svgDimensions,
+        isRtl: _useRtl,
+        xScale: _xScale,
+        yScalePrimary,
+        yScaleSecondary,
+      }
+    : undefined;
 
   const xAxisTitleMaximumAllowedWidth = svgDimensions.width - margins.left! - margins.right! - startFromX!;
   const yAxisTitleMaximumAllowedHeight =
@@ -793,6 +820,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               />
             )}
         </svg>
+        {hasAnnotations && annotationContext && (
+          <ChartAnnotationLayer
+            annotations={annotations}
+            context={annotationContext}
+            className={classes.annotationLayer}
+          />
+        )}
       </div>
 
       {!props.hideLegend && (

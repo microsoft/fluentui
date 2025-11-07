@@ -29,6 +29,26 @@ export interface AccessibilityProps {
 export function adjustPadding(sankey: SankeyLayoutGenerator, height: number, nodesInColumn: NodesInColumns): void;
 
 // @public (undocumented)
+export interface AnnotationPlotRect {
+    // (undocumented)
+    height: number;
+    // (undocumented)
+    width: number;
+    // (undocumented)
+    x: number;
+    // (undocumented)
+    y: number;
+}
+
+// @public (undocumented)
+export interface AnnotationPoint {
+    // (undocumented)
+    x: number;
+    // (undocumented)
+    y: number;
+}
+
+// @public (undocumented)
 export const ARC_PADDING = 2;
 
 // @public (undocumented)
@@ -151,6 +171,7 @@ export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartPro
 
 // @public
 export interface CartesianChartProps {
+    annotations?: ChartAnnotation[];
     calloutProps?: Partial<ChartPopoverProps>;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: any) => ChartPopoverProps;
     className?: string;
@@ -232,6 +253,7 @@ export interface CartesianChartStyleProps {
 
 // @public
 export interface CartesianChartStyles {
+    annotationLayer?: string;
     axisAnnotation?: string;
     axisTitle?: string;
     chart?: string;
@@ -241,6 +263,7 @@ export interface CartesianChartStyles {
     hover?: string;
     legendContainer?: string;
     opacityChangeOnHover?: string;
+    plotContainer?: string;
     root?: string;
     shapeStyles?: string;
     svgTooltip?: string;
@@ -256,6 +279,105 @@ export interface Chart {
     // (undocumented)
     toImage?: (opts?: ImageExportOptions) => Promise<string>;
 }
+
+// @public (undocumented)
+export interface ChartAnnotation {
+    accessibility?: ChartAnnotationAccessibilityProps;
+    connector?: ChartAnnotationConnectorProps;
+    coordinates: ChartAnnotationCoordinate;
+    data?: Record<string, unknown>;
+    id?: string;
+    layout?: ChartAnnotationLayoutProps;
+    style?: ChartAnnotationStyleProps;
+    text: string;
+}
+
+// @public (undocumented)
+export interface ChartAnnotationAccessibilityProps {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    role?: string;
+}
+
+// @public (undocumented)
+export type ChartAnnotationArrowHead = 'none' | 'start' | 'end' | 'both';
+
+// @public (undocumented)
+export interface ChartAnnotationConnectorProps {
+    arrow?: ChartAnnotationArrowHead;
+    dashArray?: string;
+    endPadding?: number;
+    startPadding?: number;
+    strokeColor?: string;
+    strokeWidth?: number;
+}
+
+// @public (undocumented)
+export interface ChartAnnotationContext {
+    isRtl?: boolean;
+    plotRect: AnnotationPlotRect;
+    svgRect: {
+        width: number;
+        height: number;
+    };
+    xScale?: (value: any) => number;
+    yScalePrimary?: (value: any) => number;
+    yScaleSecondary?: (value: any) => number;
+}
+
+// @public (undocumented)
+export type ChartAnnotationCoordinate = {
+    type: 'data' | 'relative' | 'pixel';
+    x: number | string | Date;
+    y: number | string | Date;
+    yAxis?: 'primary' | 'secondary';
+};
+
+// @public (undocumented)
+export type ChartAnnotationHorizontalAlign = 'start' | 'center' | 'end';
+
+// @public (undocumented)
+export const ChartAnnotationLayer: React_2.FC<ChartAnnotationLayerProps>;
+
+// @public (undocumented)
+export interface ChartAnnotationLayerProps {
+    // (undocumented)
+    annotations?: ChartAnnotation[];
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    context: ChartAnnotationContext;
+}
+
+// @public (undocumented)
+export interface ChartAnnotationLayoutProps {
+    align?: ChartAnnotationHorizontalAlign;
+    className?: string;
+    clipToBounds?: boolean;
+    maxWidth?: number;
+    offsetX?: number;
+    offsetY?: number;
+    verticalAlign?: ChartAnnotationVerticalAlign;
+}
+
+// @public (undocumented)
+export interface ChartAnnotationStyleProps {
+    backgroundColor?: string;
+    borderColor?: string;
+    borderRadius?: number;
+    borderStyle?: React_2.CSSProperties['borderStyle'];
+    borderWidth?: number;
+    boxShadow?: string;
+    className?: string;
+    fontSize?: string;
+    fontWeight?: React_2.CSSProperties['fontWeight'];
+    opacity?: number;
+    padding?: string;
+    textColor?: string;
+}
+
+// @public (undocumented)
+export type ChartAnnotationVerticalAlign = 'top' | 'middle' | 'bottom';
 
 // @public
 export type ChartDataMode = 'default' | 'fraction' | 'percentage' | 'hidden';
@@ -411,6 +533,19 @@ export interface ColorFillBarsProps {
     // (undocumented)
     onLegendClick?: (selectedLegend: string | string[] | null) => void | undefined;
 }
+
+// @public (undocumented)
+export type ConnectorRenderData = {
+    key: string;
+    start: AnnotationPoint;
+    end: AnnotationPoint;
+    strokeColor: string;
+    strokeWidth: number;
+    dashArray?: string;
+    arrow: ChartAnnotationArrowHead;
+    markerSize: number;
+    markerStrokeWidth: number;
+};
 
 // @public
 export interface CustomizedCalloutData {
@@ -1349,6 +1484,12 @@ export interface RefArrayData {
     index?: string;
     // (undocumented)
     refElement?: SVGGElement;
+}
+
+// @public (undocumented)
+export interface ResolvedAnnotationPosition {
+    anchor: AnnotationPoint;
+    point: AnnotationPoint;
 }
 
 // @public
