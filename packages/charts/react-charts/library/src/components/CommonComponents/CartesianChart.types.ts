@@ -646,11 +646,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   stringDatasetForYAxisDomain?: string[];
 
   /**
-   * Annotations to render on top of the chart area.
-   */
-  annotations?: ChartAnnotation[];
-
-  /**
    * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;

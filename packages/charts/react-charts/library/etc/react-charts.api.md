@@ -1414,7 +1414,6 @@ export interface Margins {
 
 // @public (undocumented)
 export interface ModifiedCartesianChartProps extends CartesianChartProps {
-    annotations?: ChartAnnotation[];
     barwidth?: number;
     calloutProps?: ChartPopoverProps;
     chartTitle?: string;
