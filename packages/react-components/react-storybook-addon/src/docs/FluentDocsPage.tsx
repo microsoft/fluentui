@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
@@ -10,7 +10,7 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
-import type { PreparedStory, Renderer, SBEnumType } from '@storybook/types';
+import type { PreparedStory, Renderer, SBEnumType } from '@storybook/core/types';
 
 import { tokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
@@ -26,6 +26,7 @@ import { getDocsPageConfig } from './utils';
 import { DirSwitch } from './DirSwitch';
 import { ThemePicker } from './ThemePicker';
 import { Toc, nameToHash } from './Toc';
+import { CopyAsMarkdownButton } from './CopyAsMarkdownButton';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -174,20 +175,19 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
     Object.entries(props).forEach(([key, argType]) => {
       const value: string = argType?.type?.name;
 
-      // If DocGen was already transformed, skip the transformation but set hasArgAsSlot to true so that we can show the info message
+      const match = value.match(slotRegex);
+
+      // Transformation for Slot with `AlternateAs` specified (mutates DocGen Object reference)
+      if (match) {
+        props[key].type.name = `Slot<\"${match[1]}\">`;
+      }
+      // Transformation for Slot with `WithSlotShorthandValue` (mutates DocGen Object reference)
+      else if (value.includes('WithSlotShorthandValue')) {
+        props[key].type.name = `Slot`;
+      }
+
       if (value.includes('Slot')) {
         hasArgAsSlot = true;
-        return;
-      }
-      // Initial Render Transformation for shorthand slot values (mutates DocGen Object reference)
-      if (value.includes('WithSlotShorthandValue')) {
-        hasArgAsSlot = true;
-        const match = value.match(slotRegex);
-        if (match) {
-          props[key].type.name = `Slot<\"${match[1]}\">`;
-        } else {
-          props[key].type.name = `Slot`;
-        }
       }
     });
   };
@@ -199,7 +199,7 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
     }
   };
 
-  const component = story.component as InternalComponentApi;
+  const component = story.moduleExport as InternalComponentApi;
   const subcomponents = story.subcomponents as Record<string, InternalComponentApi>;
 
   if (options.slotsApi) {
@@ -281,7 +281,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgsTable of={component} />
+      <ArgTypes of={component} />
     </>
   );
 };
@@ -346,6 +346,7 @@ export const FluentDocsPage = (): JSXElement => {
     tableOfContents: showTableOfContents,
     dirSwitcher: showDirSwitcher,
     themePicker: showThemePicker,
+    copyAsMarkdown: showCopyAsMarkdown,
     argTable,
   } = docsPageConfig;
 
@@ -366,10 +367,11 @@ export const FluentDocsPage = (): JSXElement => {
       <Title />
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          {(showThemePicker || showDirSwitcher) && (
+          {(showThemePicker || showDirSwitcher || showCopyAsMarkdown) && (
             <div className={styles.globalTogglesContainer}>
               {showThemePicker && <ThemePicker selectedThemeId={selectedTheme?.id} />}
               {showDirSwitcher && <DirSwitch dir={dir} />}
+              {showCopyAsMarkdown && <CopyAsMarkdownButton storyId={primaryStory.id} />}
             </div>
           )}
           <Subtitle />
@@ -377,9 +379,12 @@ export const FluentDocsPage = (): JSXElement => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+          <RenderPrimaryStory
+            primaryStory={primaryStory as unknown as PrimaryStory}
+            skipPrimaryStory={skipPrimaryStory}
+          />
           <RenderArgsTable
-            story={primaryStory}
+            story={primaryStory as unknown as PrimaryStory}
             hideArgsTable={hideArgsTable}
             showSlotsApi={argTable.slotsApi}
             showNativePropsApi={argTable.nativePropsApi}

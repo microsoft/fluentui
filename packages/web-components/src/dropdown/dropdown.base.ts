@@ -650,7 +650,7 @@ export class BaseDropdown extends FASTElement {
 
     this.focus();
 
-    if (target === this.control && !this.isCombobox) {
+    if ((target === this.control || e.composedPath().includes(this.indicator)) && !this.isCombobox) {
       this.listbox.togglePopover();
       return true;
     }

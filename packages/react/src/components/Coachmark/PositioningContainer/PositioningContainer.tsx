@@ -265,7 +265,7 @@ function useAutoDismissEvents(
 export function useHeightOffset(
   { finalHeight }: IPositioningContainerProps,
   contentHost: React.RefObject<HTMLDivElement | null>,
-) {
+): number {
   /**
    * Tracks the current height offset and updates during
    * the height animation when props.finalHeight is specified.

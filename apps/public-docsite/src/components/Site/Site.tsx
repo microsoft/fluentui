@@ -246,12 +246,12 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     };
   }
 
-  private _renderMessageBar(): JSX.Element | null {
+  private _renderMessageBar(): React.ReactElement | null {
     const { pagePath } = this.state;
     const { siteDefinition } = this.props;
     const { messageBars } = siteDefinition;
 
-    let _messageBar: JSX.Element | null = null;
+    let _messageBar: React.ReactElement | null = null;
 
     if (messageBars && pagePath) {
       for (const messageBar of messageBars) {
@@ -277,7 +277,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     return _messageBar;
   }
 
-  private _renderPageNav(): JSX.Element | null {
+  private _renderPageNav(): React.ReactElement | null {
     const { activePages, searchablePageTitle, isContentFullBleed } = this.state;
 
     if (!isContentFullBleed && activePages) {
@@ -315,7 +315,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     return 'default' as TPlatforms;
   };
 
-  private _renderTopNav = (): JSX.Element | undefined => {
+  private _renderTopNav = (): React.ReactElement | undefined => {
     const { platform } = this.state;
     const { siteDefinition, hasUHF } = this.props;
 
@@ -333,11 +333,11 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     }
   };
 
-  private _renderTopBanner = (): JSX.Element | undefined => {
+  private _renderTopBanner = (): React.ReactElement | undefined => {
     return <TopBanner cdnUrl={cdnUrl} />;
   };
 
-  private _renderPlatformPicker = (): JSX.Element | null => {
+  private _renderPlatformPicker = (): React.ReactElement | null => {
     const { siteDefinition } = this.props;
     const { hasPlatformPicker, platform, pagePlatforms } = this.state;
 
@@ -354,7 +354,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     return null;
   };
 
-  private _renderPlatformBar = (): JSX.Element | null => {
+  private _renderPlatformBar = (): React.ReactElement | null => {
     const { siteDefinition } = this.props;
     const { platform, pagePlatforms, hasPlatformPicker } = this.state;
 

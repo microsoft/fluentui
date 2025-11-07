@@ -1,29 +1,30 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
 import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
 export default {
   title: 'Accordion Converged',
-
   decorators: [
     story => (
-      <StoryWright
-        steps={new Steps()
-          .snapshot('normal', { cropTo: '.testWrapper' })
-          .focus('#opened-btn')
-          .snapshot('focus opened', { cropTo: '.testWrapper' })
-          .focus('#closed-btn')
-          .snapshot('focus closed', { cropTo: '.testWrapper' })
-          .end()}
-      >
-        <div className="testWrapper" style={{ width: '300px' }}>
-          {story()}
-        </div>
-      </StoryWright>
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
     ),
   ],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
+        .focus('#opened-btn')
+        .snapshot('focus opened', { cropTo: '.testWrapper' })
+        .focus('#closed-btn')
+        .snapshot('focus closed', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Accordion>;
 
 export const VisibilityFocus = () => (

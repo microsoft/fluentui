@@ -4,15 +4,16 @@ import { Steps } from 'storywright';
 import { Textarea } from '@fluentui/react-textarea';
 import { FluentProvider } from '@fluentui/react-provider';
 
-import { withStoryWrightSteps, TestWrapperDecoratorFixedWidth } from '../../utilities';
+import { TestWrapperDecoratorFixedWidth } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Textarea Converged',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Textarea>;
 
 export const SizeSmall = () => <Textarea size="small" placeholder="Placeholder" />;

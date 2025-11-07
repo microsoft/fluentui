@@ -30,7 +30,7 @@ const codeLanguages = {
   js: 'JavaScript',
   jsx: 'React',
 };
-export const CodeExample = (props: { title?: string; children: React.ReactElement }) => {
+export const CodeExample = (props: { title?: string; children?: React.ReactElement<any> }) => {
   const { title, children } = props;
   // Access the raw values from the markdown source code block
   const markdownCodeBlockValue: string | undefined = children?.props?.children?.props?.children;
@@ -53,7 +53,7 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
   return (
     <div>
       <h3>{title ?? codeLanguages[language]}</h3>
-      <Source language={language} code={code} />
+      <Source language={language === 'js' ? 'jsextra' : language} code={code} />
     </div>
   );
 };

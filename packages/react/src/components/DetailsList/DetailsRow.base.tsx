@@ -108,7 +108,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     }
   }
 
-  public componentDidUpdate(previousProps: IDetailsRowBaseProps) {
+  public componentDidUpdate(previousProps: IDetailsRowBaseProps): void {
     const state = this.state;
     const { item, onDidMount } = this.props;
     const { columnMeasureInfo } = state;

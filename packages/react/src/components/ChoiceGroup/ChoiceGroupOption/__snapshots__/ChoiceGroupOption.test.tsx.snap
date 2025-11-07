@@ -3,7 +3,7 @@
 exports[`ChoiceGroupOption custom renders correctly 1`] = `
 <div>
   <div
-    className=
+    class=
         ms-ChoiceField
         {
           -moz-osx-font-smoothing: grayscale;
@@ -26,10 +26,10 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      class="ms-ChoiceField-wrapper"
     >
       <input
-        className=
+        class=
             ms-ChoiceField-input
             {
               height: 100%;
@@ -43,13 +43,10 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             {
               cursor: pointer;
@@ -130,7 +127,7 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         {
           -moz-osx-font-smoothing: grayscale;
@@ -153,10 +150,10 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      class="ms-ChoiceField-wrapper"
     >
       <input
-        className=
+        class=
             ms-ChoiceField-input
             {
               height: 100%;
@@ -170,13 +167,10 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             {
               cursor: pointer;
@@ -251,7 +245,7 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
             }
       >
         <span
-          className="ms-ChoiceFieldLabel"
+          class="ms-ChoiceFieldLabel"
         >
           Option B
         </span>
@@ -259,7 +253,7 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         {
           -moz-osx-font-smoothing: grayscale;
@@ -282,10 +276,10 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      class="ms-ChoiceField-wrapper"
     >
       <input
-        className=
+        class=
             ms-ChoiceField-input
             {
               height: 100%;
@@ -299,13 +293,10 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             {
               cursor: pointer;
@@ -380,10 +371,10 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
             }
       >
         <div
-          className="customWrapper"
+          class="customWrapper"
         >
           <span
-            className="ms-ChoiceFieldLabel"
+            class="ms-ChoiceFieldLabel"
           >
             Option C
           </span>
@@ -397,7 +388,7 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
 exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 <div>
   <div
-    className=
+    class=
         ms-ChoiceField
         {
           -moz-osx-font-smoothing: grayscale;
@@ -420,10 +411,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      class="ms-ChoiceField-wrapper"
     >
       <input
-        className=
+        class=
             ms-ChoiceField-input
             {
               height: 100%;
@@ -437,13 +428,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             {
               cursor: pointer;
@@ -518,7 +506,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
       >
         <span
-          className="ms-ChoiceFieldLabel"
+          class="ms-ChoiceFieldLabel"
         >
           Option A
         </span>
@@ -526,7 +514,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         {
           -moz-osx-font-smoothing: grayscale;
@@ -549,7 +537,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-ChoiceField-wrapper
           is-inFocus
           .ms-Fabric--isFocusVisible & {
@@ -596,7 +584,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        className=
+        class=
             ms-ChoiceField-input
             {
               height: 100%;
@@ -610,13 +598,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             {
               cursor: pointer;
@@ -691,7 +676,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
       >
         <span
-          className="ms-ChoiceFieldLabel"
+          class="ms-ChoiceFieldLabel"
         >
           Option B
         </span>
@@ -699,7 +684,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         {
           -moz-osx-font-smoothing: grayscale;
@@ -722,7 +707,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-ChoiceField-wrapper
           is-inFocus
           .ms-Fabric--isFocusVisible & {
@@ -769,8 +754,8 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        checked={true}
-        className=
+        checked=""
+        class=
             ms-ChoiceField-input
             {
               height: 100%;
@@ -784,13 +769,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             is-checked
             {
@@ -871,7 +853,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
       >
         <span
-          className="ms-ChoiceFieldLabel"
+          class="ms-ChoiceFieldLabel"
         >
           Option C
         </span>
@@ -879,7 +861,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         {
           -moz-osx-font-smoothing: grayscale;
@@ -902,10 +884,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      class="ms-ChoiceField-wrapper"
     >
       <input
-        className=
+        class=
             ms-ChoiceField-input
             is-disabled
             {
@@ -920,14 +902,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        disabled={true}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
+        disabled=""
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             {
               cursor: default;
@@ -986,7 +965,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
       >
         <span
-          className="ms-ChoiceFieldLabel"
+          class="ms-ChoiceFieldLabel"
         >
           Option D
         </span>
@@ -994,7 +973,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         {
           -moz-osx-font-smoothing: grayscale;
@@ -1017,11 +996,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      class="ms-ChoiceField-wrapper"
     >
       <input
-        checked={true}
-        className=
+        checked=""
+        class=
             ms-ChoiceField-input
             is-disabled
             {
@@ -1036,14 +1015,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        disabled={true}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
+        disabled=""
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             is-checked
             {
@@ -1113,7 +1089,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
       >
         <span
-          className="ms-ChoiceFieldLabel"
+          class="ms-ChoiceFieldLabel"
         >
           Option E
         </span>
@@ -1121,7 +1097,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         ms-ChoiceField--icon
         {
@@ -1150,10 +1126,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      class="ms-ChoiceField-wrapper"
     >
       <input
-        className=
+        class=
             ms-ChoiceField-input
             {
               height: 100%;
@@ -1167,13 +1143,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             ms-ChoiceField--icon
             {
@@ -1254,7 +1227,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
       >
         <div
-          className=
+          class=
               ms-ChoiceField-innerField
               {
                 display: inline-block;
@@ -1264,7 +1237,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
         >
           <div
-            className=
+            class=
                 ms-ChoiceField-iconWrapper
                 {
                   font-size: 32px;
@@ -1273,8 +1246,8 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
-              aria-hidden={true}
-              className=
+              aria-hidden="true"
+              class=
 
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -1293,7 +1266,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           </div>
         </div>
         <div
-          className=
+          class=
               ms-ChoiceField-labelWrapper
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1315,7 +1288,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
         >
           <span
-            className="ms-ChoiceFieldLabel"
+            class="ms-ChoiceFieldLabel"
           >
             Option F
           </span>
@@ -1324,7 +1297,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         ms-ChoiceField--icon
         {
@@ -1353,7 +1326,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-ChoiceField-wrapper
           is-inFocus
           .ms-Fabric--isFocusVisible & {
@@ -1400,7 +1373,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        className=
+        class=
             ms-ChoiceField-input
             {
               height: 100%;
@@ -1414,13 +1387,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             ms-ChoiceField--icon
             {
@@ -1501,7 +1471,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
       >
         <div
-          className=
+          class=
               ms-ChoiceField-innerField
               {
                 display: inline-block;
@@ -1511,7 +1481,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
         >
           <div
-            className=
+            class=
                 ms-ChoiceField-iconWrapper
                 {
                   font-size: 32px;
@@ -1520,8 +1490,8 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
-              aria-hidden={true}
-              className=
+              aria-hidden="true"
+              class=
 
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -1540,7 +1510,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           </div>
         </div>
         <div
-          className=
+          class=
               ms-ChoiceField-labelWrapper
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1562,7 +1532,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
         >
           <span
-            className="ms-ChoiceFieldLabel"
+            class="ms-ChoiceFieldLabel"
           >
             Option G
           </span>
@@ -1571,7 +1541,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         ms-ChoiceField--icon
         {
@@ -1600,11 +1570,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      class="ms-ChoiceField-wrapper"
     >
       <input
-        checked={true}
-        className=
+        checked=""
+        class=
             ms-ChoiceField-input
             {
               height: 100%;
@@ -1618,13 +1588,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             is-checked
             ms-ChoiceField--icon
@@ -1729,7 +1696,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
       >
         <div
-          className=
+          class=
               ms-ChoiceField-innerField
               {
                 display: inline-block;
@@ -1739,7 +1706,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
         >
           <div
-            className=
+            class=
                 ms-ChoiceField-iconWrapper
                 {
                   font-size: 32px;
@@ -1748,8 +1715,8 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
-              aria-hidden={true}
-              className=
+              aria-hidden="true"
+              class=
 
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -1768,7 +1735,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           </div>
         </div>
         <div
-          className=
+          class=
               ms-ChoiceField-labelWrapper
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1790,7 +1757,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
         >
           <span
-            className="ms-ChoiceFieldLabel"
+            class="ms-ChoiceFieldLabel"
           >
             Option H
           </span>
@@ -1799,7 +1766,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     </div>
   </div>
   <div
-    className=
+    class=
         ms-ChoiceField
         ms-ChoiceField--icon
         {
@@ -1828,10 +1795,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      class="ms-ChoiceField-wrapper"
     >
       <input
-        className=
+        class=
             ms-ChoiceField-input
             is-disabled
             {
@@ -1846,14 +1813,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        disabled={true}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
+        disabled=""
         type="radio"
       />
       <label
-        className=
+        class=
             ms-ChoiceField-field
             ms-ChoiceField--icon
             {
@@ -1928,7 +1892,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
       >
         <div
-          className=
+          class=
               ms-ChoiceField-innerField
               {
                 display: inline-block;
@@ -1943,7 +1907,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
         >
           <div
-            className=
+            class=
                 ms-ChoiceField-iconWrapper
                 {
                   font-size: 32px;
@@ -1952,8 +1916,8 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
-              aria-hidden={true}
-              className=
+              aria-hidden="true"
+              class=
 
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -1972,7 +1936,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           </div>
         </div>
         <div
-          className=
+          class=
               ms-ChoiceField-labelWrapper
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1994,7 +1958,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               }
         >
           <span
-            className="ms-ChoiceFieldLabel"
+            class="ms-ChoiceFieldLabel"
           >
             Option I
           </span>

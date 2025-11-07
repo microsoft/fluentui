@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { render, fireEvent, act, screen } from '@testing-library/react';
-import * as renderer from 'react-test-renderer';
 import { resetIds } from '@fluentui/utilities';
 import { people } from '@fluentui/example-data';
 import { NormalPeoplePicker } from './PeoplePicker';
@@ -18,17 +17,15 @@ describe('PeoplePicker', () => {
   });
 
   it('renders correctly', () => {
-    const component = renderer.create(<NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with preselected items', () => {
-    const component = renderer.create(
+    const { container } = render(
       <NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={people.splice(0, 1)} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('can search for, select people and remove them', () => {

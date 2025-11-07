@@ -191,12 +191,12 @@ async function extractAllStoriesFromStorybook(context: BrowserContext, distPath:
         throw new Error('Unable to find Storybook preview');
       }
 
-      if ('storyStore' in preview && preview.storyStore) {
-        return preview.storyStore;
-      }
-
       if ('storyStoreValue' in preview && preview.storyStoreValue) {
         return preview.storyStoreValue;
+      }
+
+      if ('storyStore' in preview && preview.storyStore) {
+        return preview.storyStore;
       }
 
       throw new Error('Unable to find Storybook story store');

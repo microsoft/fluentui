@@ -1,15 +1,14 @@
 import * as React from 'react';
-import type * as ReactTestUtils from 'react-dom/test-utils';
 import { render } from '@testing-library/react';
 
 // v2 - avoiding usage of enzyme
 
 // Helper function to find all elements with a specific class name that are not React components
 
-export function getBySelector(container: HTMLElement | Element, selector: string) {
+export function getBySelector(container: HTMLElement | Element, selector: string): Element | null {
   return container.querySelector(selector);
 }
-export function getByAllSelector(container: HTMLElement | Element, selector: string) {
+export function getByAllSelector(container: HTMLElement | Element, selector: string): NodeListOf<Element> {
   return container.querySelectorAll(selector);
 }
 export function findNodesV2(container: HTMLElement, selector: string): HTMLElement[] {
@@ -37,7 +36,7 @@ export function renderIntoDocument(element: React.ReactElement<any>): HTMLElemen
   return renderedDOM as HTMLElement;
 }
 
-export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
+export function mockEvent(targetValue: string = '') {
   const target: EventTarget = { value: targetValue } as HTMLInputElement;
   return { target };
 }
@@ -46,14 +45,14 @@ export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEve
  * Hack for forcing Jest to run pending promises
  * https://github.com/facebook/jest/issues/2157#issuecomment-897935688
  */
-export function flushPromises() {
+export function flushPromises(): Promise<void> {
   return new Promise<void>(jest.requireActual('timers').setImmediate);
 }
 
 /**
  * Verify that the given element and its parents do NOT have `aria-hidden` set.
  */
-export function expectNoHiddenParents(element: HTMLElement) {
+export function expectNoHiddenParents(element: HTMLElement): void {
   let el: HTMLElement | null = element;
   while (el) {
     expect(el.getAttribute('aria-hidden')).not.toBe('true');

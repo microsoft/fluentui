@@ -5,7 +5,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { DetailsList } from './DetailsList';
 import { TooltipHost } from '../../Tooltip';
 import { resetIds } from '../../Utilities';
-import * as renderer from 'react-test-renderer';
 import type { IColumn, IDetailsHeaderProps } from './DetailsList.types';
 import type { IRenderFunction } from '../../Utilities';
 import type { ITooltipHostProps } from '../../Tooltip';
@@ -270,7 +269,7 @@ describe('DetailsColumn', () => {
 
     const columns = [column];
 
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList
         items={[]}
         setKey={'key1'}
@@ -281,6 +280,6 @@ describe('DetailsColumn', () => {
       />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import { EditorError } from './EditorError';
 import type { ITransformedExample } from '../interfaces/index';
 
@@ -30,11 +31,11 @@ export class EditorErrorBoundary extends React.Component<
   private _lastGoodChildren: React.ReactNode;
   private _lastErrorTime: number | undefined;
 
-  public static getDerivedStateFromError(error: Error) {
+  public static getDerivedStateFromError(error: Error): { caughtError: string } {
     return { caughtError: `Error while rendering component: ${error.message || error}` };
   }
 
-  public componentDidUpdate(prevProps: IEditorErrorBoundaryProps, prevState: IEditorErrorBoundaryState) {
+  public componentDidUpdate(prevProps: IEditorErrorBoundaryProps, prevState: IEditorErrorBoundaryState): void {
     const { props, state } = this;
     // remove the caught error state if:
     // - the error state is not new (present in both curr/prev state)
@@ -74,7 +75,7 @@ export class EditorErrorBoundary extends React.Component<
     this._lastErrorTime = errorTime;
   }
 
-  public render() {
+  public render(): JSXElement {
     const caughtError = this.state.caughtError;
     const error = caughtError || this.props.transformResult.error;
     return (

@@ -62,7 +62,7 @@ export class ColorRectangleBase
   ): void {
     // if props changed (as opposed to a state update), set the value
     // TODO: switch to strict controlled pattern instead
-    if (prevProps !== this.props && this.props.color) {
+    if (prevProps.color !== this.props.color && this.props.color) {
       this.setState({ color: this.props.color });
     }
   }
@@ -75,7 +75,7 @@ export class ColorRectangleBase
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._root.current) {
       this._root.current.removeEventListener('touchstart', this._onTouchStart);
       this._root.current.removeEventListener('touchmove', this._onTouchMove);

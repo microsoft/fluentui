@@ -22,7 +22,7 @@ export enum ExampleStatus {
 export interface IAppLink extends INavLink {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getComponent?: (cb: (obj: any) => void) => any;
-  component?: React.ComponentClass | (() => JSX.Element);
+  component?: React.ComponentClass | (() => React.ReactElement);
 }
 
 export interface IAppLinkGroup extends INavLinkGroup {

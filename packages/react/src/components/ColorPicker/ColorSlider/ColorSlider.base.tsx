@@ -60,7 +60,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   public componentDidUpdate(prevProps: Readonly<IColorSliderProps>, prevState: Readonly<IColorSliderState>): void {
     // if props changed (as opposed to a state update), set the value
     // TODO: switch to strict controlled pattern instead
-    if (prevProps !== this.props && this.props.value !== undefined) {
+    if (prevProps.value !== this.props.value && this.props.value !== undefined) {
       this.setState({ currentValue: this.props.value });
     }
   }
@@ -73,7 +73,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._root.current) {
       this._root.current.removeEventListener('touchstart', this._onTouchStart);
       this._root.current.removeEventListener('touchmove', this._onTouchMove);

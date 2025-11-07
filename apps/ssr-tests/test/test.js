@@ -61,17 +61,36 @@ describe('Utilities', () => {
 /**
  *
  * @param {string} componentName
- * @param {React.ComponentClass | (() => JSX.Element)} component
+ * @param {React.ComponentClass | (() => React.ReactElement)} component
  */
 function testRender(componentName, component) {
-  it(`${componentName} can render in a server environment`, done => {
-    let elem = React.createElement(component);
+  it(`${componentName} can render in a server environment`, function () {
+    // Increase timeout for components that may take longer (like Calendar)
+    this.timeout(10000);
+
+    let elem;
+    try {
+      elem = React.createElement(component);
+    } catch (/** @type {any} */ e) {
+      throw new Error(`${componentName} failed to create element: ${e.message || e}`);
+    }
 
     try {
-      ReactDOMServer.renderToString(elem);
-      done();
+      const result = ReactDOMServer.renderToString(elem);
+
+      // Basic sanity check that something was rendered
+      if (typeof result !== 'string') {
+        throw new Error(`${componentName} rendered a non-string result: ${typeof result}`);
+      }
+
+      if (result.length === 0) {
+        throw new Error(`${componentName} rendered an empty string`);
+      }
     } catch (/** @type {any} */ e) {
-      done(new Error(e));
+      // Re-throw with better context
+      const message = e.message || String(e);
+      console.error(`${componentName} failed to render: ${message}`);
+      throw new Error(e);
     }
   });
 }

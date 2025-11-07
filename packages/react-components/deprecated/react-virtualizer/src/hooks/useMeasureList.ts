@@ -25,9 +25,12 @@ export function useMeasureList<
   totalLength: number,
   defaultItemSize: number,
 ): {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   widthArray: React.MutableRefObject<number[]>;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   heightArray: React.MutableRefObject<number[]>;
   createIndexedRef: (index: number) => (el: TElement | null) => void;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   refArray: React.MutableRefObject<Array<TElement | undefined | null>>;
   sizeUpdateCount: number;
 } {

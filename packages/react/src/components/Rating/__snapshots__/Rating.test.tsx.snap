@@ -2,7 +2,7 @@
 
 exports[`Rating renders correctly 1`] = `
 <div
-  className=
+  class=
       ms-Rating-star
       ms-RatingStar-root
       ms-RatingStar-root--small
@@ -26,7 +26,7 @@ exports[`Rating renders correctly 1`] = `
   role="radiogroup"
 >
   <div
-    className=
+    class=
         ms-FocusZone
         ms-Rating-focuszone
         ms-RatingStar-root--small
@@ -68,13 +68,10 @@ exports[`Rating renders correctly 1`] = `
         }
     data-focuszone-id="FocusZone2"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <button
-      aria-checked={true}
-      className=
+      aria-checked="true"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -147,16 +144,14 @@ exports[`Rating renders correctly 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      data-is-current={true}
-      disabled={false}
+      data-is-current="true"
       id="Rating0-star-0"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="0"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -177,7 +172,7 @@ exports[`Rating renders correctly 1`] = `
         id="RatingLabel1-1"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -186,8 +181,8 @@ exports[`Rating renders correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -206,8 +201,8 @@ exports[`Rating renders correctly 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -231,19 +226,15 @@ exports[`Rating renders correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
-          style={
-            Object {
-              "width": "100%",
-            }
-          }
+          style="width: 100%;"
         >
           
         </i>
       </div>
     </button>
     <button
-      aria-checked={false}
-      className=
+      aria-checked="false"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -316,15 +307,13 @@ exports[`Rating renders correctly 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      disabled={false}
       id="Rating0-star-1"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -345,7 +334,7 @@ exports[`Rating renders correctly 1`] = `
         id="RatingLabel1-2"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -354,8 +343,8 @@ exports[`Rating renders correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -374,8 +363,8 @@ exports[`Rating renders correctly 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -399,19 +388,15 @@ exports[`Rating renders correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
+          style="width: 0%;"
         >
           
         </i>
       </div>
     </button>
     <button
-      aria-checked={false}
-      className=
+      aria-checked="false"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -484,15 +469,13 @@ exports[`Rating renders correctly 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      disabled={false}
       id="Rating0-star-2"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -513,7 +496,7 @@ exports[`Rating renders correctly 1`] = `
         id="RatingLabel1-3"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -522,8 +505,8 @@ exports[`Rating renders correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -542,8 +525,8 @@ exports[`Rating renders correctly 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -567,19 +550,15 @@ exports[`Rating renders correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
+          style="width: 0%;"
         >
           
         </i>
       </div>
     </button>
     <button
-      aria-checked={false}
-      className=
+      aria-checked="false"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -652,15 +631,13 @@ exports[`Rating renders correctly 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      disabled={false}
       id="Rating0-star-3"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -681,7 +658,7 @@ exports[`Rating renders correctly 1`] = `
         id="RatingLabel1-4"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -690,8 +667,8 @@ exports[`Rating renders correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -710,8 +687,8 @@ exports[`Rating renders correctly 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -735,19 +712,15 @@ exports[`Rating renders correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
+          style="width: 0%;"
         >
           
         </i>
       </div>
     </button>
     <button
-      aria-checked={false}
-      className=
+      aria-checked="false"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -820,15 +793,13 @@ exports[`Rating renders correctly 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      disabled={false}
       id="Rating0-star-4"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -849,7 +820,7 @@ exports[`Rating renders correctly 1`] = `
         id="RatingLabel1-5"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -858,8 +829,8 @@ exports[`Rating renders correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -878,8 +849,8 @@ exports[`Rating renders correctly 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -903,11 +874,7 @@ exports[`Rating renders correctly 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
+          style="width: 0%;"
         >
           
         </i>
@@ -919,7 +886,7 @@ exports[`Rating renders correctly 1`] = `
 
 exports[`Rating renders correctly with half star 1`] = `
 <div
-  className=
+  class=
       ms-Rating-star
       ms-RatingStar-root
       ms-RatingStar-root--small
@@ -943,7 +910,7 @@ exports[`Rating renders correctly with half star 1`] = `
   role="radiogroup"
 >
   <div
-    className=
+    class=
         ms-FocusZone
         ms-Rating-focuszone
         ms-RatingStar-root--small
@@ -985,13 +952,10 @@ exports[`Rating renders correctly with half star 1`] = `
         }
     data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
   >
     <button
-      aria-checked={false}
-      className=
+      aria-checked="false"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -1064,15 +1028,13 @@ exports[`Rating renders correctly with half star 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      disabled={false}
       id="Rating3-star-0"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="0"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -1093,7 +1055,7 @@ exports[`Rating renders correctly with half star 1`] = `
         id="RatingLabel4-1"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -1102,8 +1064,8 @@ exports[`Rating renders correctly with half star 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1122,8 +1084,8 @@ exports[`Rating renders correctly with half star 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1147,19 +1109,15 @@ exports[`Rating renders correctly with half star 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
-          style={
-            Object {
-              "width": "100%",
-            }
-          }
+          style="width: 100%;"
         >
           
         </i>
       </div>
     </button>
     <button
-      aria-checked={false}
-      className=
+      aria-checked="false"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -1232,15 +1190,13 @@ exports[`Rating renders correctly with half star 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      disabled={false}
       id="Rating3-star-1"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -1261,7 +1217,7 @@ exports[`Rating renders correctly with half star 1`] = `
         id="RatingLabel4-2"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -1270,8 +1226,8 @@ exports[`Rating renders correctly with half star 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1290,8 +1246,8 @@ exports[`Rating renders correctly with half star 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1315,19 +1271,15 @@ exports[`Rating renders correctly with half star 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
-          style={
-            Object {
-              "width": "100%",
-            }
-          }
+          style="width: 100%;"
         >
           
         </i>
       </div>
     </button>
     <button
-      aria-checked={true}
-      className=
+      aria-checked="true"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -1400,16 +1352,14 @@ exports[`Rating renders correctly with half star 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      data-is-current={true}
-      disabled={false}
+      data-is-current="true"
       id="Rating3-star-2"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -1430,7 +1380,7 @@ exports[`Rating renders correctly with half star 1`] = `
         id="RatingLabel4-3"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -1439,8 +1389,8 @@ exports[`Rating renders correctly with half star 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1459,8 +1409,8 @@ exports[`Rating renders correctly with half star 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1484,19 +1434,15 @@ exports[`Rating renders correctly with half star 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
-          style={
-            Object {
-              "width": "50%",
-            }
-          }
+          style="width: 50%;"
         >
           
         </i>
       </div>
     </button>
     <button
-      aria-checked={false}
-      className=
+      aria-checked="false"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -1569,15 +1515,13 @@ exports[`Rating renders correctly with half star 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      disabled={false}
       id="Rating3-star-3"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -1598,7 +1542,7 @@ exports[`Rating renders correctly with half star 1`] = `
         id="RatingLabel4-4"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -1607,8 +1551,8 @@ exports[`Rating renders correctly with half star 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1627,8 +1571,8 @@ exports[`Rating renders correctly with half star 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1652,19 +1596,15 @@ exports[`Rating renders correctly with half star 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
+          style="width: 0%;"
         >
           
         </i>
       </div>
     </button>
     <button
-      aria-checked={false}
-      className=
+      aria-checked="false"
+      class=
           ms-Rating-button
           ms-Rating--small
           {
@@ -1737,15 +1677,13 @@ exports[`Rating renders correctly with half star 1`] = `
             height: 16px;
             line-height: 16px;
           }
-      disabled={false}
       id="Rating3-star-4"
-      onClick={[Function]}
-      onKeyDown={[Function]}
       role="radio"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Rating-labelText
             {
               border: 0px;
@@ -1766,7 +1704,7 @@ exports[`Rating renders correctly with half star 1`] = `
         id="RatingLabel4-5"
       />
       <div
-        className=
+        class=
             ms-RatingStar-container
             {
               display: inline-block;
@@ -1775,8 +1713,8 @@ exports[`Rating renders correctly with half star 1`] = `
             }
       >
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1795,8 +1733,8 @@ exports[`Rating renders correctly with half star 1`] = `
           
         </i>
         <i
-          aria-hidden={true}
-          className=
+          aria-hidden="true"
+          class=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1820,11 +1758,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
+          style="width: 0%;"
         >
           
         </i>

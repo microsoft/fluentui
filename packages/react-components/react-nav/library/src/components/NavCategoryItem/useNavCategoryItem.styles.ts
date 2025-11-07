@@ -25,9 +25,6 @@ const useExpandIconStyles = makeStyles({
     marginInlineStart: 'auto',
     height: '20px',
   },
-  open: {
-    transform: 'rotate(90deg)',
-  },
   selected: typographyStyles.body1Strong,
 });
 
@@ -69,7 +66,6 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
   state.expandIcon.className = mergeClasses(
     navCategoryItemClassNames.expandIcon,
     expandIconStyles.base,
-    state.open && expandIconStyles.open,
     state.expandIcon.className,
   );
 

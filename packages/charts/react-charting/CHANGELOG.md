@@ -1,8 +1,61 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 10 Oct 2025 07:20:53 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Oct 2025 12:37:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.1)
+
+Thu, 30 Oct 2025 12:37:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.25.0..@fluentui/react-charting_v5.25.1)
+
+### Patches
+
+- fix(react-charting):Updated annotation layer to remove inner html ([PR #35410](https://github.com/microsoft/fluentui/pull/35410) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.25.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.0)
+
+Thu, 23 Oct 2025 10:23:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.39..@fluentui/react-charting_v5.25.0)
+
+### Minor changes
+
+- feat: bump react range to support React 19 ([PR #35362](https://github.com/microsoft/fluentui/pull/35362) by martinhochel@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.35 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/react-focus to v8.10.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/theme-samples to v8.7.219 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+- Bump @fluentui/react to v8.125.0 ([PR #35364](https://github.com/microsoft/fluentui/pull/35364) by beachball)
+
+### Patches
+
+- feat: map deprecated plotly create_gantt() scatter traces to gantt chart ([PR #35334](https://github.com/microsoft/fluentui/pull/35334) by kumarkshitij@microsoft.com)
+- fix chart exception issue ([PR #35342](https://github.com/microsoft/fluentui/pull/35342) by anushgupta@microsoft.com)
+- feat(react-charting): Annotations ([PR #35324](https://github.com/microsoft/fluentui/pull/35324) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.24.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.39)
+
+Thu, 16 Oct 2025 07:21:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.38..@fluentui/react-charting_v5.24.39)
+
+### Patches
+
+- fix: resolve React 19 incompatible types ([PR #35303](https://github.com/microsoft/fluentui/pull/35303) by martinhochel@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.34 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/react-focus to v8.9.29 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/theme-samples to v8.7.218 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+- Bump @fluentui/react to v8.124.2 ([commit](https://github.com/microsoft/fluentui/commit/36be47512933fadd0418d11cdc1e3530c13f0575) by beachball)
+
+## [5.24.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.38)
+
+Tue, 14 Oct 2025 07:21:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.37..@fluentui/react-charting_v5.24.38)
+
+### Patches
+
+- fix(react-charting): Show markers only when mode has markers for large data ([PR #35311](https://github.com/microsoft/fluentui/pull/35311) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/react-focus to v8.9.28 ([PR #35316](https://github.com/microsoft/fluentui/pull/35316) by beachball)
+- Bump @fluentui/theme-samples to v8.7.217 ([PR #35316](https://github.com/microsoft/fluentui/pull/35316) by beachball)
+- Bump @fluentui/react to v8.124.1 ([PR #35316](https://github.com/microsoft/fluentui/pull/35316) by beachball)
 
 ## [5.24.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.37)
 

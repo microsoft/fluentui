@@ -2,7 +2,7 @@
 
 exports[`DocumentCard renders DocumentCard correctly 1`] = `
 <div
-  className=
+  class=
       ms-DocumentCard
       {
         -webkit-font-smoothing: antialiased;
@@ -56,7 +56,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
   role="group"
 >
   <div
-    className=
+    class=
         ms-DocumentCardPreview
         {
           -moz-osx-font-smoothing: grayscale;
@@ -71,7 +71,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         }
   />
   <div
-    className=
+    class=
         ms-DocumentCardTitle
         {
           -moz-osx-font-smoothing: grayscale;
@@ -131,7 +131,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
     title=""
   />
   <div
-    className=
+    class=
         ms-DocumentCardActivity
         {
           padding-bottom: 8px;
@@ -142,7 +142,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         }
   >
     <div
-      className=
+      class=
           ms-DocumentCardActivity-avatars
           {
             height: 32px;
@@ -150,7 +150,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
           }
     >
       <div
-        className=
+        class=
             ms-DocumentCardActivity-avatar
             {
               display: inline-block;
@@ -172,7 +172,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
             }
       >
         <div
-          className=
+          class=
               ms-Persona-coin
               ms-Persona--size32
               {
@@ -185,7 +185,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-Persona-imageArea
                 {
                   flex: 0 0 auto;
@@ -198,7 +198,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
           >
             <div
               aria-hidden="true"
-              className=
+              class=
                   ms-Persona-initials
                   {
                     background-color: #0078D4;
@@ -222,8 +222,8 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                   }
             >
               <i
-                aria-hidden={true}
-                className=
+                aria-hidden="true"
+                class=
 
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -245,7 +245,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
       </div>
     </div>
     <div
-      className=
+      class=
           ms-DocumentCardActivity-details
           {
             height: 32px;
@@ -256,7 +256,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
           }
     >
       <span
-        className=
+        class=
             ms-DocumentCardActivity-name
             {
               color: #323130;
@@ -271,7 +271,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
             }
       />
       <span
-        className=
+        class=
             ms-DocumentCardActivity-activity
             {
               color: #605e5c;

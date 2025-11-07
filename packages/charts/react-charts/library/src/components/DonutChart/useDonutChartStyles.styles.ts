@@ -28,6 +28,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     width: '100%',
     height: '100%',
+    textAlign: 'left',
   },
   chart: {
     boxSizing: 'content-box',

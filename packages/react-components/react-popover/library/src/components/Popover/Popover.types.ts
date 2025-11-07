@@ -164,11 +164,13 @@ export type PopoverState = Pick<
     /**
      * Ref of the pointing arrow
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     arrowRef: React.MutableRefObject<HTMLDivElement | null>;
 
     /**
      * Ref of the PopoverSurface
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     contentRef: React.MutableRefObject<HTMLElement | null>;
 
     /**
@@ -200,6 +202,7 @@ export type PopoverState = Pick<
     /**
      * Ref of the PopoverTrigger
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     triggerRef: React.MutableRefObject<HTMLElement | null>;
   };
 

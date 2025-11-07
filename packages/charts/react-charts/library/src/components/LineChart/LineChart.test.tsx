@@ -749,7 +749,7 @@ describe('LineChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    let wrapper = render(<LineChart data={basicChartPoints} yAxisTickFormat={'/%d'} />);
+    let wrapper = render(<LineChart data={basicChartPoints} yAxisTickFormat={'.1f'} />);
     expect(wrapper).toMatchSnapshot();
   });
 

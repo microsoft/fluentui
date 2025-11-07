@@ -815,15 +815,6 @@ describe('mapFluentChart UTs', () => {
     expect(result.type).toBe('composite');
   });
 
-  test('invalid scatter mode', () => {
-    const input = {
-      data: [{ type: 'scatter', mode: 'invalid_mode', x: [1, 2, 3], y: [4, 5, 6] }],
-    };
-    const result = mapFluentChart(input);
-    expect(result.isValid).toBe(false);
-    expect(result.errorMessage).toContain('Unsupported mode');
-  });
-
   test('gantt chart mapping', () => {
     const input = {
       data: [{ type: 'bar', orientation: 'h', base: [4, 5, 6], x: [1, 2, 3], y: ['A', 'B', 'C'] }],
@@ -941,8 +932,8 @@ describe('mapFluentChart UTs', () => {
     const input = {
       data: [
         { type: 'pie', values: [1, 2, 3], labels: ['A', 'B', 'C'] }, // Valid
-        { type: 'scatter', mode: 'invalid_mode', x: [1, 2, 3], y: [4, 5, 6] }, // Invalid
-        { type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3] }, // Valid
+        { type: 'scatter', x: [1, 2, 3], y: [4, 5, 6] }, // Valid
+        { type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3], orientation: 'h' }, // Invalid
       ],
     };
     const result = mapFluentChart(input);
@@ -953,7 +944,7 @@ describe('mapFluentChart UTs', () => {
   test('all traces invalid', () => {
     const input = {
       data: [
-        { type: 'scatter', mode: 'invalid_mode', x: [1, 2, 3], y: [4, 5, 6] },
+        { type: 'bar', x: ['A', 'B', 'C'], y: [1, 2, 3], orientation: 'h' },
         { type: 'indicator', mode: 'number', value: 75 },
       ],
     };

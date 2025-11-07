@@ -95,4 +95,4 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
  */
 export const getFontIcon = memoizeFunction((iconName: string, className?: string, ariaLabel?: string) => {
   return FontIcon({ iconName, className, 'aria-label': ariaLabel });
-});
+}) as (iconName: string, className?: string, ariaLabel?: string) => React.ReactNode;

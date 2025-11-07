@@ -3,7 +3,7 @@
 exports[`Pivot renders link Pivot correctly 1`] = `
 <div>
   <div
-    className=
+    class=
         ms-FocusZone
         ms-Pivot
         &:focus {
@@ -31,14 +31,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         }
     data-focuszone-id="FocusZone1"
     data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
     role="tablist"
   >
     <button
-      aria-selected={true}
-      className=
+      aria-selected="true"
+      class=
           ms-Button
           ms-Button--action
           ms-Button--command
@@ -178,20 +175,15 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             right: 0px;
           }
       data-content="Test Link 1"
-      data-is-focusable={true}
+      data-is-focusable="true"
       id="Pivot0-Tab0"
       name="Test Link 1"
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
       role="tab"
+      tabindex="0"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Button-flexContainer
             {
               align-items: center;
@@ -203,7 +195,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className=
+          class=
               ms-Pivot-linkContent
               {
                 flex: 0 1 100%;
@@ -216,7 +208,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               }
         >
           <span
-            className=
+            class=
                 ms-Pivot-text
                 {
                   display: inline-block;
@@ -230,8 +222,8 @@ exports[`Pivot renders link Pivot correctly 1`] = `
       </span>
     </button>
     <button
-      aria-selected={false}
-      className=
+      aria-selected="false"
+      class=
           ms-Button
           ms-Button--action
           ms-Button--command
@@ -362,20 +354,15 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             display: none;
           }
       data-content=""
-      data-is-focusable={true}
+      data-is-focusable="true"
       id="Pivot0-Tab1"
       name=""
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
       role="tab"
+      tabindex="-1"
       type="button"
     >
       <span
-        className=
+        class=
             ms-Button-flexContainer
             {
               align-items: center;
@@ -387,7 +374,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         data-automationid="splitbuttonprimary"
       >
         <span
-          className=
+          class=
               ms-Pivot-linkContent
               {
                 flex: 0 1 100%;
@@ -400,7 +387,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               }
         >
           <span
-            className=
+            class=
                 ms-Pivot-text
                 {
                   display: inline-block;
@@ -414,14 +401,13 @@ exports[`Pivot renders link Pivot correctly 1`] = `
     </button>
   </div>
   <div
-    aria-hidden={false}
+    aria-hidden="false"
     aria-labelledby="Pivot0-Tab0"
-    className=
+    class=
 
         &[hidden] {
           display: none;
         }
-    hidden={false}
     role="tabpanel"
   >
     <div />

@@ -32,10 +32,7 @@ describe('useFocusVisible', () => {
         </Provider_unstable>
       );
 
-      const { result, rerender } = renderHook<
-        { targetDocument: Document | undefined },
-        React.MutableRefObject<HTMLElement | null>
-      >(() => useFocusVisible(), { wrapper: Wrapper });
+      const { result, rerender } = renderHook(() => useFocusVisible(), { wrapper: Wrapper });
 
       result.current.current = element;
       wrapperTargetDocument = targetDocument;
@@ -55,7 +52,7 @@ describe('useFocusVisible', () => {
 
       const { result, rerender } = renderHook<
         { targetDocument: Document | undefined },
-        React.MutableRefObject<HTMLElement | null>
+        React.RefObject<HTMLElement | null>
       >(props => useFocusVisible({ targetDocument: props.targetDocument }), {
         wrapper: Wrapper,
         initialProps: { targetDocument: undefined },

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Shimmer, ShimmerElementType as ElemType, ShimmerElementsGroup } from '@fluentui/react';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 
-import { getStoryVariant, RTL, StoryWrightDecorator } from '../utilities';
+import { getStoryVariant, RTL } from '../utilities';
 
 const wrapperClassName = mergeStyles({
   width: 400,
@@ -31,8 +32,12 @@ export default {
         </div>
       </div>
     ),
-    StoryWrightDecorator(new Steps().snapshot('default').end()),
   ],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default').end(),
+    } satisfies StoryParameters,
+  },
 } satisfies Meta<typeof Shimmer>;
 
 export const Basic = () => <Shimmer />;

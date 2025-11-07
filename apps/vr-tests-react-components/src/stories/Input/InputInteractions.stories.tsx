@@ -3,26 +3,25 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Input } from '@fluentui/react-input';
 
-import { withStoryWrightSteps, TestWrapperDecoratorFixedWidth } from '../../utilities';
+import { TestWrapperDecoratorFixedWidth } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Input Converged',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps()
-          .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('input')
-          .snapshot('hover', { cropTo: '.testWrapper' })
-          .click('input')
-          .wait(250) // let focus border animation finish
-          .snapshot('focused', { cropTo: '.testWrapper' })
-          .end(),
-      }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('input')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('input')
+        .wait(250)
+        .snapshot('focused', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Input>;
 
 export const AppearanceOutlineDefault = () => <Input placeholder="Placeholder" />;

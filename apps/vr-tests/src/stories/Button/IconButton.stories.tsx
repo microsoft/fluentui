@@ -1,22 +1,24 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../../utilities';
 import { IconButton } from '@fluentui/react/lib/Button';
 
 export default {
   title: 'IconButton Scenarios (compat)',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('icon', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
         .snapshot('hover icon', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof IconButton>;
 
 export const NormalIconButton = () => (
   <div>

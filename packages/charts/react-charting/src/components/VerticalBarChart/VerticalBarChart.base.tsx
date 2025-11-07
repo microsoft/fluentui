@@ -62,6 +62,7 @@ import {
 import { IChart, IImageExportOptions } from '../../types/index';
 import { ILegendContainer } from '../Legends/index';
 import { toImage } from '../../utilities/image-export-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -105,7 +106,7 @@ export class VerticalBarChartBase
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _bars: JSX.Element[];
+  private _bars: JSXElement[];
   private _xAxisLabels: string[];
   private _yMax: number;
   private _yMin: number;
@@ -117,8 +118,8 @@ export class VerticalBarChartBase
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -158,7 +159,7 @@ export class VerticalBarChartBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     this._adjustProps();
     this._xAxisLabels = this._getOrderedXAxisLabels();
     this._yMax = Math.max(
@@ -170,7 +171,7 @@ export class VerticalBarChartBase
       this.props.yMinValue || 0,
     );
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
+    const legendBars: JSXElement = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       legendColor: this.state.color,
@@ -320,7 +321,7 @@ export class VerticalBarChartBase
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const line: JSX.Element[] = [];
+    const line: JSXElement[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
@@ -405,7 +406,9 @@ export class VerticalBarChartBase
             // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
             // and avoid conveying duplicate info, make these line points non-focusable.
             data-is-focusable={this._legendHighlighted(lineLegendText!)}
-            ref={e => (circleRef.refElement = e)}
+            ref={e => {
+              circleRef.refElement = e;
+            }}
             onFocus={this._lineFocus.bind(this, item.point, circleRef)}
             onBlur={this._handleChartMouseLeave}
           />
@@ -475,10 +478,10 @@ export class VerticalBarChartBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderContentForBothLineAndBars = (point: IVerticalBarChartDataPoint): JSX.Element => {
+  private _renderContentForBothLineAndBars = (point: IVerticalBarChartDataPoint): JSXElement => {
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const content: JSX.Element[] = YValueHover.map((item: IYValueHover, index: number) => {
+    const content: JSXElement[] = YValueHover.map((item: IYValueHover, index: number) => {
       return (
         <ChartHoverCard
           key={index}
@@ -493,7 +496,7 @@ export class VerticalBarChartBase
     return <>{content}</>;
   };
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderContentForOnlyBars = (props: IVerticalBarChartDataPoint): JSX.Element => {
+  private _renderContentForOnlyBars = (props: IVerticalBarChartDataPoint): JSXElement => {
     const { useSingleColor = false } = this.props;
     return (
       <>
@@ -509,7 +512,7 @@ export class VerticalBarChartBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderCallout = (props?: IVerticalBarChartDataPoint): JSX.Element | null => {
+  private _renderCallout = (props?: IVerticalBarChartDataPoint): JSXElement | null => {
     return props
       ? this._isHavingLine
         ? this._renderContentForBothLineAndBars(props)
@@ -781,7 +784,7 @@ export class VerticalBarChartBase
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
@@ -892,7 +895,7 @@ export class VerticalBarChartBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
@@ -1009,7 +1012,7 @@ export class VerticalBarChartBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
@@ -1138,7 +1141,7 @@ export class VerticalBarChartBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSX.Element => {
+  private _getLegendData = (data: IVerticalBarChartDataPoint[], palette: IPalette): JSXElement => {
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const actions: ILegend[] = [];

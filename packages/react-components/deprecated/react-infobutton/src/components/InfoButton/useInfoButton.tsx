@@ -41,7 +41,7 @@ const popoverSizeMap = {
  * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
-  const { size = 'medium', inline = true } = props;
+  const { size = 'medium', inline = true, popover, info, ...rest } = props;
 
   const state: InfoButtonState = {
     inline,
@@ -58,7 +58,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         children: infoButtonIconMap[size],
         type: 'button',
         'aria-label': 'information',
-        ...props,
+        ...rest,
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLButtonElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
@@ -66,7 +66,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       }),
       { elementType: 'button' },
     ),
-    popover: slot.always(props.popover, {
+    popover: slot.always(popover, {
       defaultProps: {
         inline,
         positioning: 'above-start',
@@ -75,7 +75,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       },
       elementType: Popover as React.FC<Partial<Omit<PopoverProps, 'openOnHover'>>>,
     }),
-    info: slot.always(props.info, {
+    info: slot.always(info, {
       defaultProps: {
         role: 'note',
         tabIndex: -1,

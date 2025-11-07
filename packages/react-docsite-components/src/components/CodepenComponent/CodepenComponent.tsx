@@ -57,8 +57,8 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
       .filter(line => !!line)
       .join('\n');
 
-    const headContent = `${script('react@16/umd/react.development.js')}\n${script(
-      'react-dom@16/umd/react-dom.development.js',
+    const headContent = `${script('react@18/umd/react.development.js')}\n${script(
+      'react-dom@18/umd/react-dom.development.js',
     )}`;
 
     const valueData: ICodepenPrefill = {

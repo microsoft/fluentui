@@ -73,7 +73,7 @@ export const styles = css`
     appearance: none;
     background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
-    border: none;
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
     box-shadow: inset 0 0 0 ${strokeWidthThin} var(--control-border-color);
     box-sizing: border-box;
     color: inherit;
@@ -251,4 +251,12 @@ export const styles = css`
       --margin-offset: calc(${lineHeightBase400} + (${spacingVerticalS} * 2) + ${strokeWidthThin});
     }
   }
+
+  @media (forced-colors: active) {
+    :host(:disabled) .control {
+      border-color: GrayText;
+    }
+    :host(:disabled) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
+      color: GrayText;
+    }
 `;

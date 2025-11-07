@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove aria-hidden from field labels to zoom text accessibility works, remove field text-input and text-area examples from storybook",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

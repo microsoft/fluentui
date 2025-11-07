@@ -24,6 +24,7 @@ const useStyles = makeStyles({
     height: '100%',
     flexDirection: 'column',
     overflow: 'hidden',
+    textAlign: 'left',
   },
   links: {
     fill: tokens.colorNeutralBackground1,

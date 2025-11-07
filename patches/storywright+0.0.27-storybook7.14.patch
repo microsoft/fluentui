@@ -1,0 +1,166 @@
+diff --git a/node_modules/storywright/lib/StoryWrightProcessor/GetStoriesV2.js b/node_modules/storywright/lib/StoryWrightProcessor/GetStoriesV2.js
+index f2ef153..db8ca6b 100644
+--- a/node_modules/storywright/lib/StoryWrightProcessor/GetStoriesV2.js
++++ b/node_modules/storywright/lib/StoryWrightProcessor/GetStoriesV2.js
+@@ -2,7 +2,7 @@
+ getStoriesWithSteps();
+ function getStoriesWithSteps() {
+     return getPageStories().then(function (stories) {
+-        var _a;
++        var _a, _b;
+         /**
+          * @type {Array<import('../utils').Story>}
+          */
+@@ -11,10 +11,10 @@ function getStoriesWithSteps() {
+          * @type {string[]} story ids that failed while processing parameters
+          */
+         var errors = [];
+-        for (var _i = 0, _b = Object.values(stories); _i < _b.length; _i++) {
+-            var story = _b[_i];
++        for (var _i = 0, _c = Object.values(stories); _i < _c.length; _i++) {
++            var story = _c[_i];
+             try {
+-                var steps = (_a = story.parameters) === null || _a === void 0 ? void 0 : _a.storyWright.steps;
++                var steps = (_b = (_a = story.parameters) === null || _a === void 0 ? void 0 : _a.storyWright) === null || _b === void 0 ? void 0 : _b.steps;
+                 if (Array.isArray(steps)) {
+                     story.steps = steps;
+                 }
+diff --git a/node_modules/storywright/lib/StoryWrightProcessor/GetStoriesV2.js.map b/node_modules/storywright/lib/StoryWrightProcessor/GetStoriesV2.js.map
+index 0fcde0c..42ce76c 100644
+--- a/node_modules/storywright/lib/StoryWrightProcessor/GetStoriesV2.js.map
++++ b/node_modules/storywright/lib/StoryWrightProcessor/GetStoriesV2.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"GetStoriesV2.js","sourceRoot":"","sources":["../../src/StoryWrightProcessor/GetStoriesV2.js"],"names":[],"mappings":"AAAA,YAAY;AAEZ,mBAAmB,EAAE,CAAC;AAEtB,SAAS,mBAAmB;IAC1B,OAAO,cAAc,EAAE,CAAC,IAAI,CAAC,UAAC,OAAO;;QACnC;;WAEG;QACH,IAAM,gBAAgB,GAAG,EAAE,CAAC;QAC5B;;WAEG;QACH,IAAM,MAAM,GAAG,EAAE,CAAC;QAClB,KAAkB,UAAsB,EAAtB,KAAA,MAAM,CAAC,MAAM,CAAC,OAAO,CAAC,EAAtB,cAAsB,EAAtB,IAAsB,EAAE;YAArC,IAAI,KAAK,SAAA;YACZ,IAAI;gBACF,IAAM,KAAK,SAAG,KAAK,CAAC,UAAU,0CAAE,WAAW,CAAC,KAAK,CAAC;gBAClD,IAAI,KAAK,CAAC,OAAO,CAAC,KAAK,CAAC,EAAE;oBACxB,KAAK,CAAC,KAAK,GAAG,KAAK,CAAC;iBACrB;aACF;YAAC,OAAO,EAAE,EAAE;gBACX,MAAM,CAAC,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,CAAC,CAAC;gBACzB,OAAO,CAAC,KAAK,CAAC,oCAAoC,GAAG,KAAK,CAAC,IAAI,CAAC,CAAC,CAAC;gBAClE,OAAO,CAAC,KAAK,CAAC,EAAE,CAAC,CAAC;aACnB;YAED,gBAAgB,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC;SAC9B;QAED,OAAO,EAAE,gBAAgB,kBAAA,EAAE,MAAM,QAAA,EAAE,CAAC;IACtC,CAAC,CAAC,CAAC;AACL,CAAC;AAED;;;GAGG;AACH,SAAS,cAAc;IACrB,OAAO,MAAM,CAAC,uBAAuB,CAAC,CAAC,OAAO,EAAE,CAAC;AACnD,CAAC"}
+\ No newline at end of file
++{"version":3,"file":"GetStoriesV2.js","sourceRoot":"","sources":["../../src/StoryWrightProcessor/GetStoriesV2.js"],"names":[],"mappings":"AAAA,YAAY;AAEZ,mBAAmB,EAAE,CAAC;AAEtB,SAAS,mBAAmB;IAC1B,OAAO,cAAc,EAAE,CAAC,IAAI,CAAC,UAAC,OAAO;;QACnC;;WAEG;QACH,IAAM,gBAAgB,GAAG,EAAE,CAAC;QAC5B;;WAEG;QACH,IAAM,MAAM,GAAG,EAAE,CAAC;QAClB,KAAkB,UAAsB,EAAtB,KAAA,MAAM,CAAC,MAAM,CAAC,OAAO,CAAC,EAAtB,cAAsB,EAAtB,IAAsB,EAAE;YAArC,IAAI,KAAK,SAAA;YACZ,IAAI;gBACF,IAAM,KAAK,eAAG,KAAK,CAAC,UAAU,0CAAE,WAAW,0CAAE,KAAK,CAAC;gBACnD,IAAI,KAAK,CAAC,OAAO,CAAC,KAAK,CAAC,EAAE;oBACxB,KAAK,CAAC,KAAK,GAAG,KAAK,CAAC;iBACrB;aACF;YAAC,OAAO,EAAE,EAAE;gBACX,MAAM,CAAC,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,CAAC,CAAC;gBACzB,OAAO,CAAC,KAAK,CAAC,oCAAoC,GAAG,KAAK,CAAC,IAAI,CAAC,CAAC,CAAC;gBAClE,OAAO,CAAC,KAAK,CAAC,EAAE,CAAC,CAAC;aACnB;YAED,gBAAgB,CAAC,IAAI,CAAC,KAAK,CAAC,CAAC;SAC9B;QAED,OAAO,EAAE,gBAAgB,kBAAA,EAAE,MAAM,QAAA,EAAE,CAAC;IACtC,CAAC,CAAC,CAAC;AACL,CAAC;AAED;;;GAGG;AACH,SAAS,cAAc;IACrB,OAAO,MAAM,CAAC,uBAAuB,CAAC,CAAC,OAAO,EAAE,CAAC;AACnD,CAAC"}
+\ No newline at end of file
+diff --git a/node_modules/storywright/lib/StoryWrightProcessor/StoryWrightProcessor.js b/node_modules/storywright/lib/StoryWrightProcessor/StoryWrightProcessor.js
+index fe2ab31..03bc510 100644
+--- a/node_modules/storywright/lib/StoryWrightProcessor/StoryWrightProcessor.js
++++ b/node_modules/storywright/lib/StoryWrightProcessor/StoryWrightProcessor.js
+@@ -75,7 +75,7 @@ var StoryWrightProcessor = /** @class */ (function () {
+                             return __generator(this, function (_b) {
+                                 switch (_b.label) {
+                                     case 0:
+-                                        _b.trys.push([0, 14, 15, 18]);
++                                        _b.trys.push([0, 16, 17, 20]);
+                                         console.log("Starting browser test for " + browserName);
+                                         return [4 /*yield*/, BrowserUtils_1.BrowserUtils.getBrowserInstance(browserName, options.headless)];
+                                     case 1:
+@@ -110,15 +110,26 @@ var StoryWrightProcessor = /** @class */ (function () {
+                                         _b.sent();
+                                         _b.label = 6;
+                                     case 6:
+-                                        _b.trys.push([6, 8, , 9]);
++                                        _b.trys.push([6, 10, , 11]);
+                                         scriptKind = {
+                                             component: path_1.join(__dirname, "GetStories.js"),
+                                             parameters: path_1.join(__dirname, "GetStoriesV2.js")
+                                         };
+                                         getStoriesScriptPath = scriptKind[options.stepsApi];
+                                         getStoriesScript = fs_1.readFileSync(getStoriesScriptPath, "utf8");
+-                                        return [4 /*yield*/, page.evaluate(getStoriesScript)];
++                                        if (!(options.stepsApi === "parameters")) return [3 /*break*/, 8];
++                                        // Wait for Storybook Preview API to be available
++                                        // it's used in GetStoriesV2.js to access story parameters
++                                        return [4 /*yield*/, page.waitForFunction(function () {
++                                                return window["__STORYBOOK_PREVIEW__"];
++                                            })];
+                                     case 7:
++                                        // Wait for Storybook Preview API to be available
++                                        // it's used in GetStoriesV2.js to access story parameters
++                                        _b.sent();
++                                        _b.label = 8;
++                                    case 8: return [4 /*yield*/, page.evaluate(getStoriesScript)];
++                                    case 9:
+                                         _a = _b.sent(), storiesWithSteps = _a.storiesWithSteps, errors = _a.errors;
+                                         stories_1 = storiesWithSteps;
+                                         if (errors.length) {
+@@ -130,8 +141,8 @@ var StoryWrightProcessor = /** @class */ (function () {
+                                                 process.exit(1);
+                                             }
+                                         }
+-                                        return [3 /*break*/, 9];
+-                                    case 8:
++                                        return [3 /*break*/, 11];
++                                    case 10:
+                                         err_1 = _b.sent();
+                                         storiesJsonPath = path_1.resolve(options.url, "stories.json");
+                                         if (!fs_1.existsSync(storiesJsonPath)) {
+@@ -142,21 +153,21 @@ var StoryWrightProcessor = /** @class */ (function () {
+                                         stories_1 = Object.values((_a = rawStoriesObject.stories) !== null && _a !== void 0 ? _a : {});
+                                         console.log(stories_1.length + " stories found");
+                                         console.warn("NOTE: stories Steps will not be processed");
+-                                        return [3 /*break*/, 9];
+-                                    case 9:
++                                        return [3 /*break*/, 11];
++                                    case 11:
+                                         if (options.totalPartitions > 1) {
+                                             console.log("Starting partitioning with ", "Total partitions -", options.totalPartitions, "&", "Partition index to select -", options.partitionIndex, "&", "Total Stories length -", stories_1.length);
+                                             stories_1 = utils_1.partitionArray(stories_1, options.partitionIndex, options.totalPartitions);
+                                         }
+                                         return [4 /*yield*/, page.close()];
+-                                    case 10:
++                                    case 12:
+                                         _b.sent();
+                                         console.log(stories_1.length + " stories found");
+                                         storyIndex_1 = 0;
+                                         position = 0;
+-                                        _b.label = 11;
+-                                    case 11:
+-                                        if (!(position < stories_1.length)) return [3 /*break*/, 13];
++                                        _b.label = 13;
++                                    case 13:
++                                        if (!(position < stories_1.length)) return [3 /*break*/, 15];
+                                         itemsForBatch = stories_1.slice(position, position + options.concurrency);
+                                         return [4 /*yield*/, Promise.all(itemsForBatch.map(function (story) { return __awaiter(_this, void 0, void 0, function () {
+                                                 var id, tags, ssNamePrefix, _i, _a, excludePattern, regex, context, page_1, STORY_URL_2, playWrightExecutor, err_3;
+@@ -269,28 +280,28 @@ var StoryWrightProcessor = /** @class */ (function () {
+                                             }); }))["catch"](function (reason) {
+                                                 console.log("**ERROR** " + reason);
+                                             })];
+-                                    case 12:
++                                    case 14:
+                                         _b.sent();
+                                         position += options.concurrency;
+-                                        return [3 /*break*/, 11];
+-                                    case 13: return [3 /*break*/, 18];
+-                                    case 14:
++                                        return [3 /*break*/, 13];
++                                    case 15: return [3 /*break*/, 20];
++                                    case 16:
+                                         err_2 = _b.sent();
+                                         console.log("** ERROR ** " + err_2);
+-                                        return [3 /*break*/, 18];
+-                                    case 15:
++                                        return [3 /*break*/, 20];
++                                    case 17:
+                                         console.log("Closing process !!");
+-                                        if (!(browser != null && browser.isConnected())) return [3 /*break*/, 17];
++                                        if (!(browser != null && browser.isConnected())) return [3 /*break*/, 19];
+                                         return [4 /*yield*/, browser.close()];
+-                                    case 16:
++                                    case 18:
+                                         _b.sent();
+-                                        _b.label = 17;
+-                                    case 17:
++                                        _b.label = 19;
++                                    case 19:
+                                         endTime = Date.now();
+                                         console.log("StoryWright took ", Math.round((endTime - startTime) / 1000), "secs to complete.");
+                                         console.log("StoryWright processor completed @ ", new Date());
+                                         return [7 /*endfinally*/];
+-                                    case 18: return [2 /*return*/];
++                                    case 20: return [2 /*return*/];
+                                 }
+                             });
+                         };
+diff --git a/node_modules/storywright/lib/StoryWrightProcessor/StoryWrightProcessor.js.map b/node_modules/storywright/lib/StoryWrightProcessor/StoryWrightProcessor.js.map
+index a489c9f..034bd4f 100644
+--- a/node_modules/storywright/lib/StoryWrightProcessor/StoryWrightProcessor.js.map
++++ b/node_modules/storywright/lib/StoryWrightProcessor/StoryWrightProcessor.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"StoryWrightProcessor.js","sourceRoot":"","sources":["../../src/StoryWrightProcessor/StoryWrightProcessor.ts"],"names":[],"mappings":"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"}
+\ No newline at end of file
++{"version":3,"file":"StoryWrightProcessor.js","sourceRoot":"","sources":["../../src/StoryWrightProcessor/StoryWrightProcessor.ts"],"names":[],"mappings":"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"}
+\ No newline at end of file

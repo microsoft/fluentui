@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
-import * as renderer from 'react-test-renderer';
 
 import { Nav } from './Nav';
 import { NavBase } from './Nav.base';
@@ -25,7 +24,7 @@ const linkTwo: INavLink = {
 
 describe('Nav', () => {
   it('renders Nav correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Nav
         groups={[
           {
@@ -39,8 +38,7 @@ describe('Nav', () => {
         ]}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -91,11 +89,11 @@ describe('Nav', () => {
       },
     ];
 
-    const component = renderer.create(
+    const { container } = render(
       <Nav groups={groups} onRenderGroupHeader={onRenderGroupHeader} onRenderLink={onRenderNavLink} linkAs={LinkAs} />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('calls onClick() correctly', () => {

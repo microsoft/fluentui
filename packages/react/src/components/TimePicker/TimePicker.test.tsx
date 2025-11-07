@@ -4,7 +4,6 @@ import * as React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { setWarningCallback, resetIds } from '@fluentui/utilities';
-import { create } from '@fluentui/test-utilities';
 import { TimePicker } from './TimePicker';
 import type { ITimeRange, TimePickerValidationResultData } from './TimePicker.types';
 import type { IComboBox } from '../ComboBox/ComboBox.types';
@@ -34,11 +33,10 @@ describe('TimePicker', () => {
       start: 0,
       end: 5,
     };
-    const component = create(
+    const { container } = render(
       <TimePicker label="I am a TimePicker" timeRange={timeRange} placeholder="Select a time" />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('generates the formatted option', () => {

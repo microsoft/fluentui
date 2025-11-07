@@ -729,10 +729,7 @@ export interface IRenderComponent<TProps> {
 }
 
 // @public
-export interface IRenderFunction<P> {
-    // (undocumented)
-    (props?: P, defaultRender?: (props?: P) => JSXElement | null): JSXElement | null;
-}
+export type IRenderFunction<P> = (props?: P, defaultRender?: (props?: P) => JSXElement | null) => JSXElement | null;
 
 // @public
 export function isControlled<P>(props: P, valueProp: keyof P): boolean;
@@ -1186,7 +1183,7 @@ export function resetMemoizations(): void;
 export const safeRequestAnimationFrame: (component: React_2.Component) => ((cb: Function) => void);
 
 // @public
-export const safeSetTimeout: (component: React_2.Component) => (cb: Function, duration: number) => void;
+export const safeSetTimeout: (component: React_2.Component) => ((cb: Function, duration: number) => void);
 
 // @public (undocumented)
 class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
@@ -1375,8 +1372,8 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 
 // @public (undocumented)
 export const useMergeStylesHooks: () => {
-    useAdoptedStylesheet: AdoptedStylesheetHook;
     useAdoptedStylesheetEx: AdoptedStylesheetExHook;
+    useAdoptedStylesheet: AdoptedStylesheetHook;
     useShadowConfig: ShadowConfigHook;
     useMergeStylesShadowRootContext: MergeStylesShadowRootContextHook;
     useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;

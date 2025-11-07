@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, fireEvent, act } from '@testing-library/react';
 import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
 import { SelectionMode, Selection } from '../../Selection';
@@ -8,8 +7,6 @@ import { DetailsHeader } from './DetailsHeader';
 import { DetailsList } from './DetailsList';
 import { DetailsListBase } from './DetailsList.base';
 import { CheckboxVisibility, DetailsListLayoutMode, IDetailsGroupRenderProps } from './DetailsList.types';
-import { DetailsRow } from './DetailsRow';
-import { DetailsRowCheck } from './DetailsRowCheck';
 import type { IDragDropEvents } from '../../DragDrop';
 import type { IGroup } from '../../GroupedList';
 import type { IRenderFunction } from '../../Utilities';
@@ -101,7 +98,7 @@ describe('DetailsListV2', () => {
   });
 
   it('renders List correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         onRenderRow={() => null}
@@ -110,12 +107,11 @@ describe('DetailsListV2', () => {
         groupProps={groupProps}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders List correctly with onRenderDivider props', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         columns={mockData(5, true)}
@@ -125,12 +121,11 @@ describe('DetailsListV2', () => {
         groupProps={groupProps}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders List with custom icon as column divider', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         columns={mockData(5, true, true)}
@@ -140,12 +135,11 @@ describe('DetailsListV2', () => {
         groupProps={groupProps}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders List in fixed constrained layout correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         onRenderRow={() => null}
@@ -155,8 +149,7 @@ describe('DetailsListV2', () => {
         groupProps={groupProps}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a single proportional column with correct width', () => {
@@ -320,7 +313,7 @@ describe('DetailsListV2', () => {
   });
 
   it('renders List in compact mode correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         onRenderRow={() => null}
@@ -330,12 +323,11 @@ describe('DetailsListV2', () => {
         groupProps={groupProps}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders List with hidden checkboxes correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         skipViewportMeasures={true}
@@ -358,8 +350,7 @@ describe('DetailsListV2', () => {
         groupProps={groupProps}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('focuses row by index', () => {
@@ -979,7 +970,7 @@ describe('DetailsListV2', () => {
       return <div>{groupDividerProps.group?.name}</div>;
     };
 
-    const component = renderer.create(
+    const { container, rerender } = render(
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
@@ -991,11 +982,11 @@ describe('DetailsListV2', () => {
       />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
 
     // New items, same groups
 
-    component.update(
+    rerender(
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
@@ -1007,11 +998,11 @@ describe('DetailsListV2', () => {
       />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
 
     // Same items, new groups
 
-    component.update(
+    rerender(
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
@@ -1023,11 +1014,11 @@ describe('DetailsListV2', () => {
       />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
 
     // New items, same groups
 
-    component.update(
+    rerender(
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
@@ -1039,7 +1030,7 @@ describe('DetailsListV2', () => {
       />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('handles paged updates to items within groups', () => {
@@ -1086,7 +1077,7 @@ describe('DetailsListV2', () => {
       return <div>{groupDividerProps.group?.name}</div>;
     };
 
-    const component = renderer.create(
+    const { container, rerender } = render(
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
@@ -1099,11 +1090,11 @@ describe('DetailsListV2', () => {
       />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
 
     // New items, same groups
 
-    component.update(
+    rerender(
       <DetailsList
         onRenderDetailsHeader={onRenderDetailsHeader}
         onRenderRow={onRenderRow}
@@ -1116,7 +1107,7 @@ describe('DetailsListV2', () => {
       />,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('returns an element with the correct text based on the second id passed in aria-labelledby', () => {
@@ -1152,7 +1143,7 @@ describe('DetailsListV2', () => {
   });
 
   it('has an aria-labelledby checkboxId that matches the id of the checkbox', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         columns={mockData(5, true)}
@@ -1163,11 +1154,11 @@ describe('DetailsListV2', () => {
       />,
     );
 
-    const detailsRowSource = component.root.findAllByType(DetailsRow)[0];
-    const detailsRowCheckSource = detailsRowSource.findByType(DetailsRowCheck).props;
-    const checkboxId = detailsRowCheckSource.id;
+    const detailsRowSource = container.querySelector('[data-automationid="DetailsRow"]');
+    const detailsRowCheckSource = detailsRowSource?.querySelector('[data-automationid="DetailsRowCheck"]');
+    const checkboxId = detailsRowCheckSource?.id;
 
-    expect(checkboxId).toEqual(detailsRowCheckSource[`aria-labelledby`].split(' ')[0]);
+    expect(checkboxId).toEqual(detailsRowCheckSource?.getAttribute(`aria-labelledby`)?.split(' ')[0]);
   });
 
   it('names group header checkboxes based on checkButtonGroupAriaLabel', () => {

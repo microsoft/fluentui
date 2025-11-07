@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
 import { Image } from './Image';
 import { ImageBase } from './Image.base';
 import { ImageFit, ImageCoverStyle } from './Image.types';
@@ -29,9 +28,8 @@ describe('Image', () => {
   });
 
   it('renders Image correctly', () => {
-    const component = create(<Image src={testImage1x1} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Image src={testImage1x1} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -115,13 +113,15 @@ describe('Image', () => {
   });
 
   it('renders ImageFit.centerContain correctly', () => {
-    const component = create(<Image src={testImage1x1} imageFit={ImageFit.centerContain} width={50} height={100} />);
-    expect(component.toJSON()).toMatchSnapshot();
+    const { container } = render(
+      <Image src={testImage1x1} imageFit={ImageFit.centerContain} width={50} height={100} />,
+    );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders ImageFit.centerCover correctly', () => {
-    const component = create(<Image src={testImage1x1} imageFit={ImageFit.centerCover} width={50} height={100} />);
-    expect(component.toJSON()).toMatchSnapshot();
+    const { container } = render(<Image src={testImage1x1} imageFit={ImageFit.centerCover} width={50} height={100} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('allows onError events to be attached', done => {

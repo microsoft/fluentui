@@ -1,25 +1,18 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { AirplaneFilled } from '@fluentui/react-icons';
 import { Radio, RadioGroup } from '@fluentui/react-radio';
 
-import {
-  DARK_MODE,
-  getStoryVariant,
-  HIGH_CONTRAST,
-  RTL,
-  TestWrapperDecoratorFixedWidth,
-  withStoryWrightSteps,
-} from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecoratorFixedWidth } from '../../utilities';
 
 export default {
   title: 'Radio Converged',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Radio>;
 
 export const DisabledChecked = () => <Radio disabled checked label="Disabled checked" />;

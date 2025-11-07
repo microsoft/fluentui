@@ -1,7 +1,8 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../utilities';
 import { DelayedRender, Keytip } from '@fluentui/react';
 
 export default {
@@ -15,8 +16,13 @@ export default {
       </div>
     ),
     TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
   ],
+
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    } satisfies StoryParameters,
+  },
 } satisfies Meta<typeof Keytip>;
 
 export const Root = () => (

@@ -14,7 +14,7 @@ export function getReactElementRef<T>(element: React.ReactElement | null | undef
   }
 
   if (IS_REACT_19_OR_HIGHER) {
-    return element.props.ref;
+    return (element as React.ReactElement<{ ref?: React.Ref<T> }>).props.ref;
   }
 
   return (element as React.ReactElement & { ref: React.Ref<T> | undefined }).ref;

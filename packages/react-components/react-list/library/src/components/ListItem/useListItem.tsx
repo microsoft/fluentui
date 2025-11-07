@@ -53,7 +53,7 @@ export const useListItem_unstable = (
   const { navigationMode, listItemRole } = useListSynchronousContext();
 
   const isSelectionModeEnabled = useListContext_unstable(ctx => !!ctx.selection);
-  const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
+  const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value)) ?? false;
   const validateListItem = useListContext_unstable(ctx => ctx.validateListItem);
 
   const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;

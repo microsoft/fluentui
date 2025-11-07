@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import { resetIds, setWarningCallback } from '../../Utilities';
 import { DialogBase } from './Dialog.base';
@@ -32,42 +32,38 @@ describe('Dialog deprecated props', () => {
   });
 
   it('renders Dialog with className', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DialogBase
         className="Dialog"
         isOpen
         dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Dialog with containerClassName', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DialogBase
         containerClassName="Container"
         isOpen
         dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Dialog with isBlocking set to true', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DialogBase isBlocking isOpen dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Dialog with isDarkOverlay set to true', () => {
-    const component = renderer.create(
+    const { container } = render(
       <DialogBase isDarkOverlay isOpen dialogContentProps={{ title: 'Sample title', subText: 'Sample subtext' }} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

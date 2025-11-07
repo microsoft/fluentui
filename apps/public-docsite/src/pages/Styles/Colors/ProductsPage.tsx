@@ -29,7 +29,7 @@ const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-d
 
 export interface IColorsProductsPageState {
   activeAppColorPalette?: IColorPaletteTheme;
-  activeAppDetails?: JSX.Element;
+  activeAppDetails?: React.ReactElement;
 }
 
 export class ColorsProductsPage extends React.Component<IStylesPageProps, IColorsProductsPageState> {
@@ -99,7 +99,7 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
     }
 
     // Show a custom view for the active app (optional).
-    let appDetails: JSX.Element | null = null;
+    let appDetails: React.ReactElement | null = null;
 
     switch (color.name) {
       case 'Excel':

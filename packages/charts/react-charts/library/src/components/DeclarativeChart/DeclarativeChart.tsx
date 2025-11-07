@@ -38,8 +38,10 @@ import {
   SINGLE_REPEAT,
   transformPlotlyJsonToFunnelChartProps,
   transformPlotlyJsonToGanttChartProps,
+  transformPlotlyJsonToAnnotationChartProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
+import { AnnotationOnlyChart } from '../AnnotationOnlyChart/AnnotationOnlyChart';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
 import { LineChart } from '../LineChart/index';
@@ -78,7 +80,6 @@ const ResponsiveGanttChart = withResponsiveContainer(GanttChart);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
 const DEFAULT_XAXIS = 'x';
-const FALLBACK_TYPE = 'fallback';
 
 /**
  * DeclarativeChart schema.
@@ -180,6 +181,10 @@ const LineAreaPreTransformOp = (plotlyInput: PlotlySchema) => {
 };
 
 type ChartTypeMap = {
+  annotation: {
+    transformer: typeof transformPlotlyJsonToAnnotationChartProps;
+    renderer: typeof AnnotationOnlyChart;
+  } & PreTransformHooks;
   donut: {
     transformer: typeof transformPlotlyJsonToDonutProps;
     renderer: typeof ResponsiveDonutChart;
@@ -243,6 +248,10 @@ type ChartTypeMap = {
 };
 
 const chartMap: ChartTypeMap = {
+  annotation: {
+    transformer: transformPlotlyJsonToAnnotationChartProps,
+    renderer: AnnotationOnlyChart,
+  },
   // PieData category charts
   donut: {
     transformer: transformPlotlyJsonToDonutProps,
@@ -332,7 +341,7 @@ const useIsDarkTheme = (): boolean => {
 export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = React.forwardRef<
   HTMLDivElement,
   DeclarativeChartProps
->((props, forwardedRef) => {
+>(({ colorwayType = 'default', ...props }, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {
@@ -386,9 +395,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     selectedLegends: activeLegends,
   };
 
-  const commonProps = {
-    legendProps: multiSelectLegendProps,
+  const baseCommonProps = {
     componentRef: chartRef,
+  };
+
+  const interactiveCommonProps = {
+    ...baseCommonProps,
+    legendProps: multiSelectLegendProps,
   };
 
   function createLegends(legendProps: LegendsProps): JSXElement {
@@ -444,19 +457,25 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
   const groupedTraces: Record<string, number[]> = {};
   let nonCartesianTraceCount = 0;
-  plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
-    let traceKey = '';
-    if (isNonPlotType(chart.validTracesInfo![index].type)) {
-      traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
-      nonCartesianTraceCount++;
-    } else {
-      traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
-    }
-    if (!groupedTraces[traceKey]) {
-      groupedTraces[traceKey] = [];
-    }
-    groupedTraces[traceKey].push(index);
-  });
+
+  // For annotation-only charts, create a single group entry
+  if (chart.type === 'annotation') {
+    groupedTraces[DEFAULT_XAXIS] = [];
+  } else {
+    plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
+      let traceKey = '';
+      if (isNonPlotType(chart.validTracesInfo![index].type)) {
+        traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
+        nonCartesianTraceCount++;
+      } else {
+        traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
+      }
+      if (!groupedTraces[traceKey]) {
+        groupedTraces[traceKey] = [];
+      }
+      groupedTraces[traceKey].push(index);
+    });
+  }
 
   isMultiPlot.current = Object.keys(groupedTraces).length > 1;
   const gridProperties: GridProperties = getGridProperties(
@@ -471,18 +490,28 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     gridProperties.templateRows === SINGLE_REPEAT &&
     gridProperties.templateColumns === SINGLE_REPEAT
   ) {
-    Object.keys(groupedTraces).forEach((key, index) => {
-      if (index > 0) {
-        delete groupedTraces[key];
-      }
-    });
+    if (chart.type === 'donut') {
+      // If there are multiple data traces for donut/pie, picking the last one similar to plotly
+      const keys = Object.keys(groupedTraces);
+      keys.forEach((key, index) => {
+        if (index < keys.length - 1) {
+          delete groupedTraces[key];
+        }
+      });
+    } else {
+      Object.keys(groupedTraces).forEach((key, index) => {
+        if (index > 0) {
+          delete groupedTraces[key];
+        }
+      });
+    }
     isMultiPlot.current = false;
   }
 
   const allupLegendsProps = getAllupLegendsProps(
     plotlyInputWithValidData,
     colorMap,
-    props.colorwayType,
+    colorwayType,
     chart.validTracesInfo!,
     isDarkTheme,
   );
@@ -506,9 +535,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
           const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
           let chartType =
-            validTracesFilteredIndex.some(trace => trace.type === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
-              ? FALLBACK_TYPE
-              : filteredTracesInfo[0].type;
+            chart.type === 'fallback' || chart.type === 'groupedverticalbar'
+              ? chart.type
+              : filteredTracesInfo[0]?.type ?? chart.type;
 
           if (
             validTracesFilteredIndex.some(trace => trace.type === 'line') &&
@@ -526,12 +555,22 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                 : plotlyInputForGroup;
               const cellProperties = gridProperties.layout[xAxisKey];
 
+              const resolvedCommonProps = (
+                chartType === 'annotation'
+                  ? baseCommonProps
+                  : {
+                      ...interactiveCommonProps,
+                      xAxisAnnotation: cellProperties?.xAnnotation,
+                      yAxisAnnotation: cellProperties?.yAnnotation,
+                    }
+              ) as Partial<ReturnType<typeof transformer>>;
+
               return renderChart<ReturnType<typeof transformer>>(
                 renderer,
                 transformer,
-                [transformedInput, isMultiPlot.current, colorMap, props.colorwayType, isDarkTheme],
+                [transformedInput, isMultiPlot.current, colorMap, colorwayType, isDarkTheme],
                 {
-                  ...commonProps,
+                  ...resolvedCommonProps,
                   xAxisAnnotation: cellProperties?.xAnnotation,
                   yAxisAnnotation: cellProperties?.yAnnotation,
                 },
@@ -550,6 +589,3 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
-DeclarativeChart.defaultProps = {
-  colorwayType: 'default',
-};

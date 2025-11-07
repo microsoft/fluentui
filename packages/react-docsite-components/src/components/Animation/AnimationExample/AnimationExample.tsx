@@ -73,7 +73,7 @@ export class AnimationExample extends React.Component<IAnimationExampleProps, IA
     isAnimating: false,
   };
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const { animation } = this.props;
     const { isAnimating } = this.state;
 
@@ -135,7 +135,7 @@ export class AnimationExample extends React.Component<IAnimationExampleProps, IA
     );
   }
 
-  public play = () => {
+  public play = (): void => {
     // Hide the play overlay.
     this.setState({
       isReadyToPlay: false,

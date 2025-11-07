@@ -5,6 +5,7 @@ const tseslint = require('typescript-eslint');
 const reactConfig = require('./config');
 const reactCompilerPlugin = require('eslint-plugin-react-compiler');
 const { __internal } = require('../../internal-flat');
+const { createReactCrossVersionRules } = require('../../shared/react-cross-version-rules');
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
@@ -49,6 +50,16 @@ module.exports = tseslint.config(
         },
       ],
       'react-compiler/react-compiler': ['error'],
+      ...createReactCrossVersionRules({
+        crossCompatTypePackage: '@fluentui/react-utilities',
+        extraTypeRestrictions: {
+          'React.RefAttributes': {
+            message:
+              '`React.RefAttributes` is leaking string starting @types/react@18.2.61 creating invalid type contracts. Use `RefAttributes` from @fluentui/react-utilities instead',
+            fixWith: 'RefAttributes',
+          },
+        },
+      }),
       ...typeAwareRules,
     },
   },

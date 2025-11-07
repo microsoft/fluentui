@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { Shimmer } from './Shimmer';
 import { ShimmerElementType as ElemType } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
@@ -22,7 +21,7 @@ describe('Shimmer', () => {
   });
 
   it('renders Shimmer correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Shimmer
         width={'50%'}
         shimmerElements={[
@@ -32,8 +31,7 @@ describe('Shimmer', () => {
         ]}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Shimmer with custom elements correctly', () => {
@@ -56,9 +54,8 @@ describe('Shimmer', () => {
       </div>
     );
 
-    const component = renderer.create(<Shimmer customElementsGroup={customElements} width={350} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Shimmer customElementsGroup={customElements} width={350} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

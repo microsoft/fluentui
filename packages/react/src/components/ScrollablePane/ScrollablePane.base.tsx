@@ -80,7 +80,7 @@ export class ScrollablePaneBase
     return this._contentContainer.current;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const win = getWindowEx(this.context);
     const { initialScrollPosition } = this.props;
     this._async = new Async(this);
@@ -151,7 +151,7 @@ export class ScrollablePaneBase
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._events.dispose();
     this._async.dispose();
 
@@ -173,7 +173,7 @@ export class ScrollablePaneBase
     );
   }
 
-  public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState) {
+  public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState): void {
     const initialScrollPosition = this.props.initialScrollPosition;
     if (
       this.contentContainer &&
@@ -258,7 +258,7 @@ export class ScrollablePaneBase
     }
   }
 
-  public forceLayoutUpdate() {
+  public forceLayoutUpdate(): void {
     this._onWindowResize();
   }
 

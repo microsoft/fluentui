@@ -26,7 +26,9 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
   protected root: HTMLElement;
   private _defaultSelection: Selection;
 
-  public static getDerivedStateFromProps(newProps: IBaseSelectedItemsListProps<any>) {
+  public static getDerivedStateFromProps(
+    newProps: IBaseSelectedItemsListProps<any>,
+  ): IBaseSelectedItemsListState<any> | null {
     if (newProps.selectedItems) {
       return { items: newProps.selectedItems };
     }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { render, fireEvent, act } from '@testing-library/react';
 import { resetIds, KeyCodes } from '@fluentui/utilities';
 
@@ -80,19 +79,18 @@ describe('BasePicker', () => {
     });
 
   it('renders correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <BasePickerWithType
         onResolveSuggestions={onResolveSuggestions}
         onRenderItem={onRenderItem}
         onRenderSuggestionsItem={basicSuggestionRenderer}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders with inputProps supply classnames correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <BasePickerWithType
         inputProps={{
           placeholder: 'Bitte einen Benutzer angeben...',
@@ -104,8 +102,7 @@ describe('BasePicker', () => {
         onRenderSuggestionsItem={basicSuggestionRenderer}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

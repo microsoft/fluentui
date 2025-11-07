@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-preset-storybook-full-source",
   "entries": [
     {
+      "date": "Tue, 04 Nov 2025 14:46:59 GMT",
+      "tag": "@fluentui/babel-preset-storybook-full-source_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/babel-preset-storybook-full-source",
+            "commit": "196f2aa216c1f849a3322b7f0197a214f0f75d42",
+            "comment": "fix: force release"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Apr 2025 15:20:47 GMT",
       "tag": "@fluentui/babel-preset-storybook-full-source_v0.0.1",
       "version": "0.0.1",

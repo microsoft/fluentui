@@ -8,8 +8,9 @@ export const Default = (props: Partial<AvatarProps>): JSXElement => <Avatar aria
 
 const argTypes: ArgTypes = {
   initials: {
-    control: 'text',
-    type: 'string',
+    control: {
+      type: 'text',
+    },
   },
   badge: {
     control: {
@@ -25,8 +26,7 @@ const argTypes: ArgTypes = {
   },
   name: {
     control: {
-      control: 'text',
-      type: 'string',
+      type: 'text',
     },
   },
 };

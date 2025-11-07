@@ -74,7 +74,7 @@ export type MenuGridGroupContextValues = {
 export const MenuGridGroupHeader: ForwardRefComponent<MenuGridGroupHeaderProps>;
 
 // @public (undocumented)
-export const MenuGridGroupHeaderClassNames: SlotClassNames<MenuGridGroupHeaderSlots>;
+export const menuGridGroupHeaderClassNames: SlotClassNames<MenuGridGroupHeaderSlots>;
 
 // @public (undocumented)
 export type MenuGridGroupHeaderProps = ComponentProps<MenuGridGroupHeaderSlots>;

@@ -1,0 +1,160 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Slider Migration" />
+
+# Slider Migration
+
+Fluent UI V8 provides the `Slider` control to represents an input that allows user to choose a value from within a specific range.
+Fluent UI v9 provides a `Slider` control with a different API.
+
+## Examples
+
+### Basic Migration
+
+Basic usage of `Slider` V8
+
+```tsx
+import { Slider } from '@fluentui/react/lib/Slider';
+import * as React from 'react';
+
+export const V8BasicExample = () => <Slider label="Basic v8 example" />;
+
+export const V8SnappingExample = () => (
+  <Slider label="Snapping slider v8 example" min={0} max={50} step={10} defaultValue={20} snapToStep />
+);
+
+export const V8ControlledExample = () => {
+  const [sliderValue, setSliderValue] = React.useState(0);
+  const sliderOnChange = (value: number) => setSliderValue(value);
+  return <Slider label="Controlled v8 example" max={10} value={sliderValue} onChange={sliderOnChange} />;
+};
+
+export const V8FormattedValueExample = () => {
+  const sliderAriaValueText = (value: number) => value + ' percent';
+  const sliderValueFormat = (value: number) => value + '%';
+  return (
+    <Slider
+      label="v8 Example with formatted value"
+      max={100}
+      ariaValueText={sliderAriaValueText}
+      valueFormat={sliderValueFormat}
+      showValue
+    />
+  );
+};
+```
+
+An equivalent `Slider` in v9 is
+
+```tsx
+import * as React from 'react';
+import { Slider, SliderProps, Label, useId, makeStyles, tokens } from '@fluentui/react-components';
+
+export const V9BasicExample = () => {
+  const basicId = useId();
+  return (
+    <>
+      <Label htmlFor={basicId}>Basic V9 example</Label>
+      <Slider id={basicId} />
+    </>
+  );
+};
+
+export const V9SnappingExample = () => {
+  const snappingId = useId();
+  return (
+    <>
+      <Label htmlFor={snappingId}>Snapping slider V9 example</Label>
+      <Slider id={snappingId} min={0} max={50} step={10} defaultValue={20} />
+    </>
+  );
+};
+
+export const V9ControlledExample = () => {
+  const [sliderValue, setSliderValue] = React.useState(0);
+  const sliderOnChange: SliderProps['onChange'] = (ev, data) => setSliderValue(data.value);
+  const controlledId = useId();
+  return (
+    <>
+      <Label htmlFor={controlledId}>Controlled V9 example</Label>
+      <Slider id={controlledId} min={0} max={10} value={sliderValue} onChange={sliderOnChange} />
+    </>
+  );
+};
+
+const useGetFormattedExampleStyles = makeStyles({
+  wrapper: {
+    display: 'grid',
+    alignItems: 'center',
+    gridTemplateColumns: '1fr auto',
+    columnGap: tokens.spacingHorizontalL,
+  },
+});
+
+export const V9FormattedValueExample = () => {
+  const styles = useGetFormattedExampleStyles();
+  const [sliderValue, setSliderValue] = React.useState(0);
+  const sliderOnChange: SliderProps['onChange'] = (ev, data) => setSliderValue(data.value);
+  const formattedId = useId();
+  const sliderAriaValueText = `${sliderValue} percent`;
+  const sliderValueFormat = `${sliderValue}%`;
+  return (
+    <>
+      <Label htmlFor={formattedId}>V9 Example with formatted value</Label>
+      <div className={styles.wrapper}>
+        <Slider
+          id={formattedId}
+          max={100}
+          aria-valuetext={sliderAriaValueText}
+          value={sliderValue}
+          onChange={sliderOnChange}
+        />
+        <span>{sliderValueFormat}</span>
+      </div>
+    </>
+  );
+};
+```
+
+## Props Mapping
+
+## Migration from v8
+
+- `ariaLabel` => use `aria-label` instead
+- `ariaValueText` => explicitly set `aria-valuetext`
+- `buttonProps` => Slider props, other than className and id, are passed to `input` element
+- `componentRef` => use `ref` instead.
+- `inline` => use css, or wrap in flex parent
+- `label` => Use `Label` control with `htmlFor` and `id`
+- `onChanged` => use onChange and onMouse events
+- `origin` => no longer supported
+- `originFromZero` => no longer supported
+- `ranged`, `defaultLowerValue` and `lowerValue` => Not supported. Multi value slider will be future work in separate control.
+- `showValue` and `valueFormat` => use explicitly rendered value instead
+- `snapToStep` => use `step` instead
+- `styles` => pass classNames to individual slots
+- `theme` => use `FluentProvider` HOC instead
+
+## Property mapping
+
+| v8 `Slider`         | v9 `Slider`      |
+| ------------------- | ---------------- |
+|                     |                  |
+| `ariaLabel`         | `aria-label`     |
+| `ariaValueText`     | `aria-valuetext` |
+| `buttonProps`       |                  |
+| `componentRef`      | `ref`            |
+| `defaultLowerValue` |                  |
+| `inline`            |                  |
+| `input`             | `input`          |
+| `label`             |                  |
+| `lowerValue`        |                  |
+| `onChanged`         | `onChange`       |
+| `origin`            |                  |
+| `originFromZero`    |                  |
+| `ranged`            |                  |
+| `showValue`         |                  |
+| `snapToStep`        | `step`           |
+| `styles`            | `className`      |
+| `theme`             |                  |
+| `valueFormat`       |                  |

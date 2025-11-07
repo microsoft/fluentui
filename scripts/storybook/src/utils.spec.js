@@ -227,7 +227,7 @@ describe(`utils`, () => {
 
       const expected = [
         expect.stringContaining('../../packages/react-'),
-        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.stories.mdx)'),
+        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.mdx)'),
       ];
 
       expect(actual).toEqual(expect.arrayContaining(expected));
@@ -235,7 +235,7 @@ describe(`utils`, () => {
       const first = actual[0];
       expect(first.startsWith('../../packages/react-')).toBeTruthy();
 
-      expect(first.endsWith('**/@(index.stories.@(ts|tsx)|*.stories.mdx)')).toBeTruthy();
+      expect(first.endsWith('**/@(index.stories.@(ts|tsx)|*.mdx)')).toBeTruthy();
     });
 
     it(`should generate storybook stories string array of glob based on package.json#dependencies field without packages specified within 'excludeStoriesInsertionFromPackages'`, () => {
@@ -258,18 +258,16 @@ describe(`utils`, () => {
 
       const expected = [
         expect.stringContaining('../../packages/react-'),
-        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.stories.mdx)'),
+        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.mdx)'),
       ];
 
       expect(actual).toEqual(expect.arrayContaining(expected));
 
       // package without any stories
-      expect(actual).toContain(
-        '../../packages/react-components/keyboard-keys/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
-      );
+      expect(actual).toContain('../../packages/react-components/keyboard-keys/src/**/@(index.stories.@(ts|tsx)|*.mdx)');
       // package with stories ( `*-stories` project adjacent project )
       expect(actual).toContain(
-        '../../packages/react-components/react-theme/stories/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
+        '../../packages/react-components/react-theme/stories/src/**/@(index.stories.@(ts|tsx)|*.mdx)',
       );
     });
   });

@@ -24,6 +24,7 @@ jobs:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     name: Generate screenshots
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,7 +38,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
-          node-version: '20'
+          node-version: '22'
 
       - run: yarn install --frozen-lockfile
       - run: yarn playwright install --with-deps

@@ -5,7 +5,7 @@ import { makeStyles, shorthands } from '@griffel/react';
 import { PositioningProps } from '@fluentui/react-positioning';
 import { Steps } from 'storywright';
 
-import { withStoryWrightSteps } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const useStyles = makeStyles({
   wrapper: { display: 'flex' },
@@ -81,7 +81,7 @@ const Example = () => {
 export default {
   title: 'Menu',
 
-  decorators: [story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default').end() })],
+  parameters: { storyWright: { steps: new Steps().snapshot('default').end() } } satisfies StoryParameters,
 } satisfies Meta<typeof Menu>;
 
 export const ScrollableMenuSmallViewport = () => <Example />;

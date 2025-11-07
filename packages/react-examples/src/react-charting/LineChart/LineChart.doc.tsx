@@ -13,11 +13,14 @@ import { LineChartNegativeExample } from './LineChart.Negative.Example';
 import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
 import { LineChartSecondaryYAxisExample } from './LineChart.SecondaryYAxis.Example';
 import { LineChartLogAxisExample } from './LineChart.LogAxis.Example';
+import { LineChartAnnotationsExample } from './LineChart.Annotations.Example';
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
 const LineChartStyledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
+const LineChartAnnotationsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Annotations.Example.tsx') as string;
 const MultipleLineChartExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Multiple.Example.tsx') as string;
 const LineChartEventsExampleCode =
@@ -52,6 +55,11 @@ export const LineChartPageProps: IDocPageProps = {
       title: 'LineChart styled',
       code: LineChartStyledExampleCode,
       view: <LineChartStyledExample />,
+    },
+    {
+      title: 'LineChart with annotations',
+      code: LineChartAnnotationsExampleCode,
+      view: <LineChartAnnotationsExample />,
     },
     {
       title: 'Multiple Line chart',

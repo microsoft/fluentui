@@ -56,6 +56,7 @@ async function performTest() {
   try {
     await shEcho(`yarn tsc --noEmit`, tempPaths.testApp);
     logger(`✔️ Example project was successfully built with typescript@${tsVersion}`);
+    process.exit(0);
   } catch (e) {
     console.error(e);
 

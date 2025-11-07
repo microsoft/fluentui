@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 import { wrapPersona } from '../test-utils';
@@ -21,47 +21,41 @@ describe('PersonaCoin', () => {
   });
 
   it('renders correctly', () => {
-    const component = create(<PersonaCoin />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with text', () => {
-    const component = create(<PersonaCoin text="Kat Larrson" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="Kat Larrson" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with provided initials', () => {
-    const component = create(<PersonaCoin imageInitials="JG" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin imageInitials="JG" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with image', () => {
-    const component = create(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders the initials before the image is loaded', () => {
-    const component = create(
+    const { container } = render(
       <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={true} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('does not render the initials when showInitialsUntilImageLoads is false', () => {
-    const component = create(
+    const { container } = render(
       <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={false} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with onRender callback', () => {
-    const component = create(
+    const { container } = render(
       <PersonaCoin
         {...coinProp}
         // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -69,7 +63,6 @@ describe('PersonaCoin', () => {
         onRenderInitials={wrapPersona(coinProp)}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

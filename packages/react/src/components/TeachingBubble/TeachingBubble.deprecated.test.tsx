@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { resetIds } from '../../Utilities';
 
@@ -13,7 +13,7 @@ describe('TeachingBubble', () => {
   });
 
   it('renders renders with hasCloseIcon which is deprecated', () => {
-    const componentContent = renderer.create(
+    const { container } = render(
       <TeachingBubbleContent
         headline="Test Title"
         hasCloseIcon={true}
@@ -23,7 +23,6 @@ describe('TeachingBubble', () => {
         Content
       </TeachingBubbleContent>,
     );
-    const treeContent = componentContent.toJSON();
-    expect(treeContent).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
 import { setRTL, setWarningCallback } from '@fluentui/utilities';
 import { Persona } from './Persona';
 import { render, screen } from '@testing-library/react';
@@ -33,21 +32,18 @@ describe('Persona', () => {
   });
 
   it('renders Persona correctly with no props', () => {
-    const component = create(<Persona />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Persona />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Persona correctly with initials', () => {
-    const component = create(<Persona primaryText="Kat Larrson" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Persona primaryText="Kat Larrson" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders Persona correctly with image', () => {
-    const component = create(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   describe('initials and colors', () => {

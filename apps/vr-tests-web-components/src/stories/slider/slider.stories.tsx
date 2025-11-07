@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright, Keys } from 'storywright';
+import { Steps, Keys, type StoryParameters } from 'storywright';
 import { SliderDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
@@ -9,23 +9,22 @@ SliderDefinition.define(FluentDesignSystem.registry);
 export default {
   title: 'Slider',
   decorators: [
-    (story: () => React.ReactElement) => {
-      return (
-        <StoryWright
-          steps={new Steps()
-            .snapshot('normal', { cropTo: '.testWrapper' })
-            .focus('[role="slider"]')
-            .keys('[role="slider"]', Keys.rightArrow)
-            .snapshot('rightArrow', { cropTo: '.testWrapper' })
-            .end()}
-        >
-          <div className="testWrapper" style={{ width: '300px' }}>
-            {story()}
-          </div>
-        </StoryWright>
-      );
-    },
+    (story: () => React.ReactElement) => (
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
+    ),
   ],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
+        .focus('[role="slider"]')
+        .keys('[role="slider"]', Keys.rightArrow)
+        .snapshot('rightArrow', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
 };
 
 export const Default = () =>

@@ -3,36 +3,19 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import { ChevronDown20Regular } from '@fluentui/react-icons';
-import { createPresenceComponent, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
+import { createPresenceComponentVariant, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
 
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 import { useNavContext_unstable } from '../NavContext';
+import { Rotate } from '@fluentui/react-motion-components-preview';
 
-const ExpandIconMotion = createPresenceComponent(() => {
-  const keyframes: Keyframe[] = [
-    {
-      transform: 'rotate(0deg) translate3D(0, 0, 0)',
-    },
-    {
-      transform: 'rotate(180deg) translate3D(0, 0, 0)',
-    },
-  ];
-  const duration = motionTokens.durationFast;
-  const easing = motionTokens.curveEasyEase;
-
-  return {
-    enter: {
-      keyframes,
-      duration,
-      easing,
-    },
-    exit: {
-      keyframes: [...keyframes].reverse(),
-      duration,
-      easing,
-    },
-  };
+const ExpandIconMotion = createPresenceComponentVariant(Rotate, {
+  duration: motionTokens.durationFast,
+  easing: motionTokens.curveEasyEase,
+  animateOpacity: false, // Don't fade out the icon
+  fromAngle: 0,
+  toAngle: 180,
 });
 
 /**

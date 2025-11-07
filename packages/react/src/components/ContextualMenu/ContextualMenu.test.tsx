@@ -1,9 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as renderer from 'react-test-renderer';
 import { act, render, fireEvent } from '@testing-library/react';
 import { resetIds } from '@fluentui/utilities';
-import { createTestContainer } from '@fluentui/test-utilities';
 import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu } from './ContextualMenu';
@@ -619,14 +616,13 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    const testContainer = createTestContainer();
-
     act(() => {
-      render(<ContextualMenu items={items} />, { container: testContainer });
+      render(<ContextualMenu items={items} />);
     });
 
     const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
     expect(menuItems.length).toEqual(3);
+    expect(menuItems).toHaveLength(3);
 
     menuItems[0].focus();
     expect(document.activeElement!.textContent).toEqual('TestText 1');
@@ -937,10 +933,8 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    const testContainer = createTestContainer();
-
     act(() => {
-      render(<ContextualMenu items={items} />, { container: testContainer });
+      render(<ContextualMenu items={items} />);
     });
 
     act(() => {
@@ -1055,44 +1049,43 @@ describe('ContextualMenu', () => {
 
   describe('ContextualMenu snapshot', () => {
     it('ContextualMenu should be present in DOM when hidden (snapshot)', () => {
-      // Mock createPortal to capture its component hierarchy in snapshot output.
-
-      const createPortalMock = (children => {
-        return children;
-      }) as typeof ReactDOM.createPortal;
-
-      jest.spyOn(ReactDOM, 'createPortal').mockImplementation(createPortalMock);
-
       const buttonRef = React.createRef<IButton>();
-      const component = renderer.create(
-        <DefaultButton
-          persistMenu={true}
-          componentRef={buttonRef}
-          menuProps={{
-            items: [
-              {
-                text: 'Test1',
-                key: 'Test1',
-                subMenuProps: {
-                  items: [
-                    {
-                      text: 'Test2',
-                      key: 'Test2',
-                      className: 'SubMenuClass',
-                    },
-                  ],
-                },
-              },
-            ],
-            hidden: false,
-          }}
-        />,
-      );
-      buttonRef.current!.openMenu();
-      buttonRef.current!.dismissMenu();
-      const tree = component.toJSON();
 
-      expect(tree).toMatchSnapshot();
+      act(() => {
+        render(
+          <DefaultButton
+            persistMenu={true}
+            componentRef={buttonRef}
+            menuProps={{
+              items: [
+                {
+                  text: 'Test1',
+                  key: 'Test1',
+                  subMenuProps: {
+                    items: [
+                      {
+                        text: 'Test2',
+                        key: 'Test2',
+                        className: 'SubMenuClass',
+                      },
+                    ],
+                  },
+                },
+              ],
+              hidden: false,
+            }}
+          />,
+        );
+      });
+
+      act(() => {
+        buttonRef.current!.openMenu();
+        buttonRef.current!.dismissMenu();
+      });
+
+      // Snapshot the document body so that portal content mounted into the
+      // body (the Callout and its children) is included in the snapshot.
+      expect(document.body).toMatchSnapshot();
 
       jest.resetAllMocks();
     });
@@ -1196,14 +1189,14 @@ describe('ContextualMenu', () => {
     });
 
     it('Menu should correctly return focus to previously focused element when dismissed and document has focus', () => {
-      const testContainer = createTestContainer();
+      let component: ReturnType<typeof render> | undefined;
 
       act(() => {
-        render(<DefaultButton menuProps={{ items: menu }} text="but" id="btn" />, { container: testContainer });
+        component = render(<DefaultButton menuProps={{ items: menu }} text="but" id="btn" />);
       });
 
       // Get and make sure that the button is the active element
-      const btn = testContainer.querySelector('#btn')! as HTMLElement;
+      const btn = component?.container.querySelector('#btn')! as HTMLElement;
       expect(btn).not.toEqual(null);
       btn.focus();
       expect(document.activeElement).toEqual(btn);

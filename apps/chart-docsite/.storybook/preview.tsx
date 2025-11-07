@@ -19,4 +19,6 @@ const preview: Preview & { parameters: import('@fluentui/react-storybook-addon')
   },
 };
 
+export const tags = ['autodocs'];
+
 export default preview;

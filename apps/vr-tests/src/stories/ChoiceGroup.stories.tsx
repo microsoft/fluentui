@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
 import { TestImages } from '@fluentui/example-data';
 
@@ -13,10 +15,10 @@ const options: IChoiceGroupOption[] = [
 export default {
   title: 'ChoiceGroup',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('div.ms-ChoiceField:nth-of-type(1)')
         .snapshot('hover unselected', { cropTo: '.testWrapper' })
@@ -26,9 +28,9 @@ export default {
         .hover('div.ms-ChoiceField:nth-of-type(1)')
         .snapshot('hover selected', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof ChoiceGroup>;
 
 export const Root = () => <ChoiceGroup options={options} label="Pick one" />;
 

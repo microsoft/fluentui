@@ -14,15 +14,14 @@ import {
 } from '@fluentui/react-menu';
 import { CutRegular, EditRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
 
-import { getStoryVariant, RTL, withStoryWrightSteps } from '../../utilities';
+import { getStoryVariant, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Menu Converged - selection groups',
-
-  decorators: [
-    story =>
-      withStoryWrightSteps({ story, steps: new Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end() }),
-  ],
+  parameters: {
+    storyWright: { steps: new Steps().click('[role="menuitemcheckbox"]').snapshot('selected').end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Menu>;
 
 export const Default = () => (

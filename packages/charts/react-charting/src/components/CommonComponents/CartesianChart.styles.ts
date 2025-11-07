@@ -30,7 +30,13 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       className,
     ],
     chartWrapper: {
+      position: 'relative',
       ...(enableReflow ? { overflow: 'auto' } : {}),
+    },
+    plotContainer: {
+      position: 'relative',
+      width: '100%',
+      height: '100%',
     },
     axisTitle: getAxisTitleStyle(theme!, theme.fonts.xSmall),
     axisAnnotation: getAxisTitleStyle(theme!, theme.fonts.small),
@@ -197,6 +203,9 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       [HighContrastSelector]: {
         fill: 'Canvas',
       },
+    },
+    annotationLayer: {
+      pointerEvents: 'none',
     },
   };
 };

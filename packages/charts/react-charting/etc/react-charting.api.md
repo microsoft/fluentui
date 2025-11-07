@@ -21,12 +21,17 @@ import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from '@fluentui/react';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { ITheme as ITheme_2 } from '@fluentui/react';
+import type { JSXElement } from '@fluentui/utilities';
+import type { Margin } from '@fluentui/chart-utilities';
 import * as React_2 from 'react';
 import { SankeyLink } from 'd3-sankey';
 import { SankeyNode } from 'd3-sankey';
 import { ScaleBand } from 'd3-scale';
 import { ScaleLinear } from 'd3-scale';
 import { TimeLocaleDefinition } from 'd3-time-format';
+
+// @public (undocumented)
+export const AnnotationOnlyChart: React_2.FC<IAnnotationOnlyChartProps>;
 
 // @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
@@ -38,6 +43,7 @@ export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascend
 export type AxisProps = {
     tickStep?: number | string;
     tick0?: number | Date;
+    tickText?: string[];
 };
 
 // @public
@@ -45,6 +51,76 @@ export type AxisScaleType = 'default' | 'log';
 
 // @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
+
+// @public (undocumented)
+export interface ChartAnnotation {
+    accessibility?: ChartAnnotationAccessibilityProps;
+    connector?: ChartAnnotationConnectorProps;
+    coordinates: ChartAnnotationCoordinate;
+    data?: Record<string, unknown>;
+    id?: string;
+    layout?: ChartAnnotationLayoutProps;
+    style?: ChartAnnotationStyleProps;
+    text: string;
+}
+
+// @public (undocumented)
+export interface ChartAnnotationAccessibilityProps {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    role?: string;
+}
+
+// @public (undocumented)
+export type ChartAnnotationArrowHead = 'none' | 'start' | 'end' | 'both';
+
+// @public (undocumented)
+export interface ChartAnnotationConnectorProps {
+    arrow?: ChartAnnotationArrowHead;
+    dashArray?: string;
+    endPadding?: number;
+    startPadding?: number;
+    strokeColor?: string;
+    strokeWidth?: number;
+}
+
+// @public (undocumented)
+export type ChartAnnotationCoordinate = {
+    type: 'data' | 'relative' | 'pixel';
+    x: number | string | Date;
+    y: number | string | Date;
+    yAxis?: 'primary' | 'secondary';
+};
+
+// @public (undocumented)
+export interface ChartAnnotationLayoutProps {
+    // Warning: (ae-forgotten-export) The symbol "ChartAnnotationHorizontalAlign" needs to be exported by the entry point index.d.ts
+    align?: ChartAnnotationHorizontalAlign;
+    className?: string;
+    clipToBounds?: boolean;
+    maxWidth?: number;
+    offsetX?: number;
+    offsetY?: number;
+    // Warning: (ae-forgotten-export) The symbol "ChartAnnotationVerticalAlign" needs to be exported by the entry point index.d.ts
+    verticalAlign?: ChartAnnotationVerticalAlign;
+}
+
+// @public (undocumented)
+export interface ChartAnnotationStyleProps {
+    backgroundColor?: string;
+    borderColor?: string;
+    borderRadius?: number;
+    borderStyle?: React_2.CSSProperties['borderStyle'];
+    borderWidth?: number;
+    boxShadow?: string;
+    className?: string;
+    fontSize?: string;
+    fontWeight?: React_2.CSSProperties['fontWeight'];
+    opacity?: number;
+    padding?: string;
+    rotation?: number;
+    textColor?: string;
+}
 
 // @public
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
@@ -219,6 +295,21 @@ export interface IAccessibilityProps {
 }
 
 // @public
+export interface IAnnotationOnlyChartProps {
+    annotations: ChartAnnotation[];
+    chartTitle?: string;
+    componentRef?: React_2.RefObject<IChart>;
+    description?: string;
+    fontColor?: string;
+    fontFamily?: string;
+    height?: number;
+    margin?: Partial<Margin>;
+    paperBackgroundColor?: string;
+    plotBackgroundColor?: string;
+    width?: number;
+}
+
+// @public
 export interface IAreaChartProps extends ICartesianChartProps {
     culture?: string;
     data: IChartProps;
@@ -312,6 +403,7 @@ export interface IBasestate {
 
 // @public
 export interface ICartesianChartProps {
+    annotations?: ChartAnnotation[];
     calloutProps?: Partial<ICalloutProps>;
     // @deprecated
     chartLabel?: string;
@@ -394,6 +486,7 @@ export interface ICartesianChartStyleProps {
 
 // @public
 export interface ICartesianChartStyles {
+    annotationLayer?: IStyle;
     axisAnnotation?: IStyle;
     axisTitle?: IStyle;
     calloutBlockContainer?: IStyle;
@@ -410,6 +503,7 @@ export interface ICartesianChartStyles {
     hover?: IStyle;
     legendContainer?: IStyle;
     opacityChangeOnHover?: IStyle;
+    plotContainer?: IStyle;
     root?: IStyle;
     shapeStyles?: IStyle;
     svgTooltip?: IStyle;
@@ -1285,6 +1379,7 @@ export interface IMargins {
 
 // @public (undocumented)
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
+    annotations?: ChartAnnotation[];
     barwidth?: number;
     calloutProps: Partial<ICalloutProps> & {
         isCalloutVisible: boolean;
@@ -1324,7 +1419,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     };
     getYDomainMargins?: (containerHeight: number) => IMargins;
     isCalloutForStack?: boolean;
-    legendBars: JSX.Element | null;
+    legendBars: JSXElement | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;

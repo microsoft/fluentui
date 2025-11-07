@@ -79,7 +79,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     }
   }
 
-  public render(): JSX.Element | null {
+  public render(): React.ReactElement | null {
     const { pages, searchablePageTitle } = this.props;
     const { sortState } = this.state;
     if (!pages) {
@@ -100,7 +100,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _renderLinkList = (pages: INavPage[], isSubMenu: boolean): JSX.Element => {
+  private _renderLinkList = (pages: INavPage[], isSubMenu: boolean): React.ReactElement<any> => {
     const { searchablePageTitle } = this.props;
     const { sortState } = this.state;
 
@@ -127,7 +127,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   };
 
-  private _renderLink = (page: INavPage, linkIndex: number): JSX.Element => {
+  private _renderLink = (page: INavPage, linkIndex: number): React.ReactElement => {
     const searchQuery = this.state.searchQuery.toLowerCase();
     const childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
     const text = page.title;

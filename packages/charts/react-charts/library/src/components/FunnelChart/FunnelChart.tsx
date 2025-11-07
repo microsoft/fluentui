@@ -24,7 +24,8 @@ import { toImage } from '../../utilities/image-export-utils';
 export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forwardRef<
   HTMLDivElement,
   FunnelChartProps
->((props, forwardedRef) => {
+>(({ orientation = 'vertical', ...restProps }, forwardedRef) => {
+  const props = { orientation, ...restProps };
   const _emptyChartId: string = useId('_FunnelChart_empty');
   const isRTL = useRtl();
 
@@ -496,7 +497,3 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   );
 });
 FunnelChart.displayName = 'FunnelChart';
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-FunnelChart.defaultProps = {
-  orientation: 'vertical',
-};

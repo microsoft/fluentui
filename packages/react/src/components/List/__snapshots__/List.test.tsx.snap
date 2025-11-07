@@ -2,10 +2,10 @@
 
 exports[`List by default renders List correctly when \`renderEarly={true}\` 1`] = `
 <div
-  className="ms-List"
+  class="ms-List"
 >
   <div
-    className="ms-List-surface"
+    class="ms-List-surface"
     role="presentation"
   />
 </div>
@@ -13,10 +13,10 @@ exports[`List by default renders List correctly when \`renderEarly={true}\` 1`] 
 
 exports[`List renders List correctly 1`] = `
 <div
-  className="ms-List"
+  class="ms-List"
 >
   <div
-    className="ms-List-surface"
+    class="ms-List-surface"
     role="presentation"
   />
 </div>

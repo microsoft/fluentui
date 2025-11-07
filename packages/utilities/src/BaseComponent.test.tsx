@@ -6,7 +6,6 @@ import type { JSXElement } from './jsx';
 
 describe('BaseComponent', () => {
   it('can resolve refs', () => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     class Foo extends BaseComponent<{}, {}> {
       public root!: HTMLElement;
 
@@ -14,10 +13,7 @@ describe('BaseComponent', () => {
         return (
           <div
             // @ts-expect-error - react 18 types issue
-            ref={
-              // eslint-disable-next-line @typescript-eslint/no-deprecated
-              this._resolveRef('root')
-            }
+            ref={this._resolveRef('root')}
           />
         );
       }

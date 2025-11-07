@@ -12,9 +12,10 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Virtualizer ScrollView
  * @deprecated migrated to \@fluentui\-contrib/react\-virtualizer for stable release.
  */
-export const VirtualizerScrollViewDynamic: React.FC<VirtualizerScrollViewDynamicProps> = (
+export const VirtualizerScrollViewDynamic = ((
   props: VirtualizerScrollViewDynamicProps,
-  context: React.Context<VirtualizerContextProps>,
+  // NOTE: this second context parameter doesn't exists in React 19
+  _context: React.Context<VirtualizerContextProps>,
 ) => {
   const state = useVirtualizerScrollViewDynamic_unstable(props);
 
@@ -22,6 +23,7 @@ export const VirtualizerScrollViewDynamic: React.FC<VirtualizerScrollViewDynamic
   useCustomStyleHook_unstable('useVirtualizerScrollViewDynamicStyles_unstable')(state);
 
   return renderVirtualizerScrollViewDynamic_unstable(state);
-};
+  // NOTE: we need to assert the type to satisfy tsc (React 19 FC doesn't have 2nd context parameter anymore)
+}) as React.FC<VirtualizerScrollViewDynamicProps>;
 
 VirtualizerScrollViewDynamic.displayName = 'VirtualizerScrollViewDynamic';

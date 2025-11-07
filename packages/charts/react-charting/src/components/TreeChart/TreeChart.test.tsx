@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { ITreeChartDataPoint, TreeChart } from './index';
 import { resetIds } from '@fluentui/react/lib/Utilities';
 import { act, render } from '@testing-library/react';
@@ -107,33 +106,6 @@ const threeLayerChart: ITreeChartDataPoint = {
   ],
 };
 
-function findNodesWithClassName(
-  node: renderer.ReactTestRendererJSON | renderer.ReactTestRendererJSON[] | null,
-  className: string,
-): renderer.ReactTestRendererJSON[] {
-  let result: renderer.ReactTestRendererJSON[] = [];
-  if (!node) {
-    return result;
-  }
-  if (Array.isArray(node)) {
-    node.forEach(child => {
-      result = result.concat(findNodesWithClassName(child, className));
-    });
-  } else {
-    if (node.props && typeof node.props.className === 'string' && node.props.className.split(' ').includes(className)) {
-      result.push(node);
-    }
-    if (node.children) {
-      node.children.forEach(child => {
-        if (typeof child === 'object' && child !== null) {
-          result = result.concat(findNodesWithClassName(child as renderer.ReactTestRendererJSON, className));
-        }
-      });
-    }
-  }
-  return result;
-}
-
 function sharedBeforeEach() {
   resetIds();
 }
@@ -151,24 +123,20 @@ describe('TreeChart snapshot testing', () => {
   beforeEach(sharedBeforeEach);
 
   it('renders treechart two layer correctly', () => {
-    const component = renderer.create(<TreeChart treeData={twoLayerChart} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<TreeChart treeData={twoLayerChart} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
   it('renders treechart three layer long composition correctly', () => {
-    const component = renderer.create(<TreeChart treeData={threeLayerChart} composition={1} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<TreeChart treeData={threeLayerChart} composition={1} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
   it('renders treechart three layer compact composition correctly', () => {
-    const component = renderer.create(<TreeChart treeData={threeLayerChart} composition={0} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<TreeChart treeData={threeLayerChart} composition={0} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
   it('renders treechart three layer without composition correctly', () => {
-    const component = renderer.create(<TreeChart treeData={threeLayerChart} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<TreeChart treeData={threeLayerChart} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
 
@@ -176,16 +144,14 @@ describe('TreeChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   it('svgNode innerHTML should not be null ', () => {
-    const component = renderer.create(<TreeChart treeData={threeLayerChart} composition={0} />);
-    const tree = component.toJSON();
-    const svgNode = findNodesWithClassName(tree, 'svgNode');
+    const { container } = render(<TreeChart treeData={threeLayerChart} composition={0} />);
+    const svgNode = container.querySelectorAll('.svgNode');
     expect(svgNode.length).toBe(1);
   });
 
   it('svgLink innerHTML should not be null ', () => {
-    const component = renderer.create(<TreeChart treeData={twoLayerChart} />);
-    const tree = component.toJSON();
-    const svgNode = findNodesWithClassName(tree, 'svgLink');
+    const { container } = render(<TreeChart treeData={twoLayerChart} />);
+    const svgNode = container.querySelectorAll('.svgLink');
     expect(svgNode.length).toBe(1);
   });
 });
@@ -200,24 +166,28 @@ describe('Render calling with respective to props', () => {
       height: 700,
       margin: { top: 30, right: 20, bottom: 30, left: 50 },
     };
-    const component = renderer.create(<TreeChart {...props} />);
-    const htmlBefore = component!.toJSON();
-    component.update(<TreeChart {...props} />);
-    const htmlAfter = component!.toJSON();
-    expect(htmlAfter).not.toBe(htmlBefore);
+    const { container, rerender } = render(<TreeChart {...props} />);
+    const nodesBefore = container.querySelectorAll('.svgNode').length;
+    rerender(<TreeChart {...props} />);
+    const nodesAfter = container.querySelectorAll('.svgNode').length;
+    // Should have the same number of nodes
+    expect(nodesAfter).toBe(nodesBefore);
   });
   it('prop changes', () => {
     const props = {
       treeData: threeLayerChart,
       composition: 0,
       height: 700,
+      width: 1000,
       margin: { top: 30, right: 20, bottom: 30, left: 50 },
     };
-    const component = renderer.create(<TreeChart {...props} />);
-    const htmlBefore = component!.toJSON();
-    component.update(<TreeChart {...props} width={600} />);
-    const htmlAfter = component!.toJSON();
-    expect(htmlAfter).not.toBe(htmlBefore);
+    const { container, rerender } = render(<TreeChart {...props} />);
+    const nodesBefore = container.querySelectorAll('.svgNode').length;
+    rerender(<TreeChart {...props} width={600} />);
+    const nodesAfter = container.querySelectorAll('.svgNode').length;
+    // Should still have nodes after width change
+    expect(nodesAfter).toBeGreaterThan(0);
+    expect(nodesAfter).toBe(nodesBefore);
   });
 });
 

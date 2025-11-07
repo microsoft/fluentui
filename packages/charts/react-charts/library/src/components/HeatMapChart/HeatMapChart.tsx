@@ -67,13 +67,13 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     const _stringYAxisDataPoints = React.useRef<string[]>([]);
     const _dataSet = React.useRef<RectanglesGraphData>({});
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const _colorScale = React.useRef<any>();
+    const _colorScale = React.useRef<any>(undefined);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const _xAxisScale = React.useRef<any>();
+    const _xAxisScale = React.useRef<any>(undefined);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const _yAxisScale = React.useRef<any>();
-    const _xAxisType = React.useRef<XAxisTypes>();
-    const _yAxisType = React.useRef<YAxisType>();
+    const _yAxisScale = React.useRef<any>(undefined);
+    const _xAxisType = React.useRef<XAxisTypes | undefined>(undefined);
+    const _yAxisType = React.useRef<YAxisType | undefined>(undefined);
     const _calloutAnchorPoint = React.useRef<FlattenData | null>(null);
     const _emptyChartId = useId('_HeatMap_empty');
     const _margins = React.useRef<Margins>({});

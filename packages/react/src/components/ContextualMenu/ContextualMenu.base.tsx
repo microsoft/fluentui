@@ -525,10 +525,13 @@ function useSubmenuEnterTimer({ subMenuHoverDelay = NavigationIdleDelay }: ICont
 
 function useMouseHandlers(
   props: IContextualMenuProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   isScrollIdle: React.MutableRefObject<boolean>,
   subMenuEntryTimer: React.RefObject<number | undefined | null>,
   targetWindow: Window | undefined,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   shouldUpdateFocusOnMouseEvent: React.MutableRefObject<boolean>,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   gotMouseMove: React.MutableRefObject<boolean>,
   expandedMenuItemKey: string | undefined,
   hostElement: React.RefObject<HTMLDivElement | null>,

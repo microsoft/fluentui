@@ -26,7 +26,7 @@ exports[`ThemeProvider can apply body theme to body 1`] = `
 
 exports[`ThemeProvider can apply body theme to body 2`] = `
 <div
-  className="foo"
+  class="foo"
 >
   app
 </div>
@@ -34,7 +34,7 @@ exports[`ThemeProvider can apply body theme to body 2`] = `
 
 exports[`ThemeProvider can apply body theme to none 1`] = `
 <div
-  className="foo"
+  class="foo"
 >
   app
 </div>
@@ -42,7 +42,7 @@ exports[`ThemeProvider can apply body theme to none 1`] = `
 
 exports[`ThemeProvider can handle a partial theme 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -60,7 +60,7 @@ exports[`ThemeProvider can handle a partial theme 1`] = `
 
 exports[`ThemeProvider renders a div 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -78,7 +78,7 @@ exports[`ThemeProvider renders a div 1`] = `
 
 exports[`ThemeProvider renders a div with styling 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -96,7 +96,7 @@ exports[`ThemeProvider renders a div with styling 1`] = `
 
 exports[`ThemeProvider renders nested themes 1`] = `
 <div
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -112,7 +112,7 @@ exports[`ThemeProvider renders nested themes 1`] = `
     Light theme
   </div>
   <div
-    className=
+    class=
 
         {
           -moz-osx-font-smoothing: grayscale;

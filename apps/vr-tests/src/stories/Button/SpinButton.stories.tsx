@@ -1,11 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  TestWrapperDecoratorFixedWidth,
-  StoryWrightDecorator,
-  getStoryVariant,
-  RTL,
-} from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecoratorFixedWidth, getStoryVariant, RTL } from '../../utilities';
 import { Fabric, SpinButton, ISpinButtonProps } from '@fluentui/react';
 
 const props: ISpinButtonProps = {
@@ -21,10 +18,10 @@ const iconProps = { iconName: 'IncreaseIndentLegacy' };
 export default {
   title: 'SpinButton',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-spinButton-input')
         .snapshot('hover input', { cropTo: '.testWrapper' })
@@ -36,9 +33,9 @@ export default {
         .mouseDown('.ms-Button-flexContainer')
         .snapshot('mouseDown arrow', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof SpinButton>;
 
 export const Root = () => (
   <Fabric>

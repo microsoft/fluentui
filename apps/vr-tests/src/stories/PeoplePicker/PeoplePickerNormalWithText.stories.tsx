@@ -1,23 +1,25 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../../utilities';
 import { Fabric, NormalPeoplePicker } from '@fluentui/react';
 
 import { getPeople, getTextFromItem, suggestionProps } from './utils';
 
 export default {
   title: 'PeoplePicker',
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .setValue('.ms-BasePicker-input', 'a')
         .snapshot('suggestion: a')
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof NormalPeoplePicker>;
 
 export const NormalWithText = () => (
   <Fabric>

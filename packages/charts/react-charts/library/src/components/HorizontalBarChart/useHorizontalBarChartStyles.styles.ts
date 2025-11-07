@@ -33,6 +33,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     width: '100%', // Support custom width
+    textAlign: 'left',
   },
   items10pMargin: {
     marginBottom: tokens.spacingVerticalMNudge,

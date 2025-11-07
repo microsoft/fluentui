@@ -35,7 +35,10 @@ import {
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText, ISVGTooltipTextProps } from '../../utilities/SVGTooltipText';
+import { ChartAnnotationLayer } from './Annotations/ChartAnnotationLayer';
+import { IChartAnnotationContext } from './Annotations/ChartAnnotationLayer.types';
 import { IChart } from '../../types/index';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
@@ -233,7 +236,7 @@ export class CartesianChartBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const {
       calloutProps,
       points,
@@ -272,7 +275,12 @@ export class CartesianChartBase
     });
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    let callout: JSX.Element | null = null;
+    let callout: JSXElement | null = null;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let yScalePrimary: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let yScaleSecondary: any;
 
     let children = null;
     if (
@@ -312,8 +320,7 @@ export class CartesianChartBase
         containerWidth: this.state.containerWidth,
         hideTickOverlap: this.props.hideTickOverlap,
         calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
-        tickStep: this.props.xAxis?.tickStep,
-        tick0: this.props.xAxis?.tick0,
+        ...this.props.xAxis,
       };
 
       /**
@@ -386,8 +393,7 @@ export class CartesianChartBase
         // http://using-d3js.com/04_07_ordinal_scales.html
         yAxisPadding: this.props.yAxisPadding || 0,
         tickValues: this.props.yAxisTickValues,
-        tickStep: this.props.yAxis?.tickStep,
-        tick0: this.props.yAxis?.tick0,
+        ...this.props.yAxis,
       };
 
       /**
@@ -396,10 +402,6 @@ export class CartesianChartBase
        * 2. To draw the graph.
        * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
        */
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      let yScalePrimary: any;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      let yScaleSecondary: any;
       const axisData: IAxisData = { yAxisDomainValues: [] };
       if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
         yScalePrimary = this.props.createStringYAxis(
@@ -513,6 +515,33 @@ export class CartesianChartBase
       height: this.state.containerHeight,
     };
 
+    const startFromX = this.state.startFromX || 0;
+    const plotWidth = Math.max(0, svgDimensions.width - this.margins.left! - this.margins.right! - startFromX);
+    const plotHeight = Math.max(
+      0,
+      svgDimensions.height - this.margins.top! - this.margins.bottom! - this._removalValueForTextTuncate,
+    );
+
+    const plotRect = {
+      x: this._isRtl ? this.margins.left! : this.margins.left! + startFromX,
+      y: this.margins.top!,
+      width: plotWidth,
+      height: plotHeight,
+    };
+
+    const annotations = this.props.annotations ?? [];
+    const hasAnnotations = annotations.length > 0;
+    const annotationContext: IChartAnnotationContext | undefined = hasAnnotations
+      ? {
+          plotRect,
+          svgRect: svgDimensions,
+          isRtl: this._isRtl,
+          xScale: this._xScale,
+          yScalePrimary,
+          yScaleSecondary,
+        }
+      : undefined;
+
     let focusDirection;
     if (this.props.focusZoneDirection === FocusZoneDirection.vertical) {
       focusDirection = this.props.focusZoneDirection;
@@ -561,7 +590,9 @@ export class CartesianChartBase
       <div
         id={this.idForGraph}
         className={this._classNames.root}
-        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+        ref={(rootElem: HTMLDivElement) => {
+          this.chartContainer = rootElem;
+        }}
         onMouseLeave={this._onChartLeave}
       >
         {!this._isFirstRender && <div id={this.idForDefaultTabbableElement} />}
@@ -714,10 +745,23 @@ export class CartesianChartBase
                 />
               )}
           </svg>
+          {hasAnnotations && annotationContext && (
+            <ChartAnnotationLayer
+              annotations={annotations}
+              context={annotationContext}
+              theme={this.props.theme!}
+              className={this._classNames.annotationLayer}
+            />
+          )}
         </FocusZone>
 
         {!this.props.hideLegend && (
-          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+          <div
+            ref={(e: HTMLDivElement) => {
+              this.legendContainer = e;
+            }}
+            className={this._classNames.legendContainer}
+          >
             {this.props.legendBars}
           </div>
         )}
@@ -735,7 +779,7 @@ export class CartesianChartBase
    * @returns
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
-  private _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
+  private _generateCallout(calloutProps: any, chartHoverProps: any): JSXElement {
     return (
       <Callout
         hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}

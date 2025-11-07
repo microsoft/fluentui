@@ -65,8 +65,8 @@ export function createOverflowManager(): OverflowManager {
       return lte.priority > rte.priority ? 1 : -1;
     }
 
-    const positionStatusBit =
-      options.overflowDirection === 'end' ? Node.DOCUMENT_POSITION_FOLLOWING : Node.DOCUMENT_POSITION_PRECEDING;
+    // Node.DOCUMENT_POSITION_FOLLOWING = 4, Node.DOCUMENT_POSITION_PRECEDING = 2
+    const positionStatusBit = options.overflowDirection === 'end' ? 4 : 2;
 
     // eslint-disable-next-line no-bitwise
     return lte.element.compareDocumentPosition(rte.element) & positionStatusBit ? 1 : -1;

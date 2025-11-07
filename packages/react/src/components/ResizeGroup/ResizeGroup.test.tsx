@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
 import { ResizeGroup } from './ResizeGroup';
 import { getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 import { getBySelector } from '../../common/testUtilities';
 import type { IResizeGroupState } from './ResizeGroup.base';
@@ -38,16 +37,14 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
     expect(
-      renderer
-        .create(
-          <ResizeGroup
-            data={initialData}
-            onReduceData={onReduceScalingData}
-            onRenderData={onRenderData}
-            className={'TestClassName'}
-          />,
-        )
-        .toJSON(),
+      render(
+        <ResizeGroup
+          data={initialData}
+          onReduceData={onReduceScalingData}
+          onRenderData={onRenderData}
+          className={'TestClassName'}
+        />,
+      ).container.firstChild,
     ).toMatchSnapshot();
   });
 

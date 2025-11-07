@@ -1,21 +1,18 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Divider } from '@fluentui/react-divider';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 
 import { TestWrapperDecorator } from '../../utilities';
 
 export default {
   title: 'Divider Converged - Vertical',
 
-  decorators: [
-    TestWrapperDecorator,
-    story => (
-      <div style={{ height: '200px' }}>
-        <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-      </div>
-    ),
-  ],
+  decorators: [TestWrapperDecorator, story => <div style={{ height: '200px' }}>{story()}</div>],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Divider>;
 
 export const CenterAligned = () => <Divider vertical>Today</Divider>;

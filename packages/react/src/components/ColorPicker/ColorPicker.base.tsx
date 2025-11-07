@@ -165,7 +165,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 
   public componentDidUpdate(prevProps: Readonly<IColorPickerProps>, prevState: Readonly<IColorPickerState>): void {
     // if props changed (as opposed to a state update), update the color
-    if (prevProps !== this.props) {
+    if (prevProps.color !== this.props.color) {
       const color = _getColorFromProps(this.props);
       if (color) {
         this._updateColor(undefined, color);

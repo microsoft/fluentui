@@ -20,12 +20,9 @@
         }
       ]
     },
-    "build-storybook:react": {
+    "build-storybook:docsite": {
       "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
       "outputs": ["{projectRoot}/dist/react"],
-      "dependsOn": ["build-storybook"]
-    },
-    "build-storybook:docsite": {
       "executor": "nx:noop",
       "dependsOn": [
         "build-storybook",

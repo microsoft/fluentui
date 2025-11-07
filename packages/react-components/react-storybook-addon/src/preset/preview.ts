@@ -1,4 +1,4 @@
-import type { Renderer, ProjectAnnotations } from '@storybook/types';
+import type { Preview } from '@storybook/react';
 
 import { withFluentProvider } from '../decorators/withFluentProvider';
 import { withReactStrictMode } from '../decorators/withReactStrictMode';
@@ -7,16 +7,13 @@ import { FluentDocsContainer, FluentDocsPage } from '../docs';
 
 import { DIR_ID, STRICT_MODE_ID, THEME_ID } from '../constants';
 
-export const decorators = [
-  withFluentProvider,
-  withAriaLive,
-  withReactStrictMode,
-] as ProjectAnnotations<Renderer>['decorators'];
-export const globals = { [THEME_ID]: undefined, [DIR_ID]: undefined, [STRICT_MODE_ID]: undefined }; // allow theme to be set by URL query param
+export const decorators = [withFluentProvider, withAriaLive, withReactStrictMode] as Preview['decorators'];
 
-const preview: ProjectAnnotations<Renderer> = {
+export const initialGlobals = { [THEME_ID]: undefined, [DIR_ID]: undefined, [STRICT_MODE_ID]: undefined }; // allow theme to be set by URL query param
+
+const preview: Preview = {
   decorators,
-  globals,
+  initialGlobals,
   parameters: {
     docs: {
       container: FluentDocsContainer,

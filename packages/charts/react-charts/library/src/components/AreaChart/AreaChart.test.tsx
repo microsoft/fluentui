@@ -691,7 +691,7 @@ describe('AreaChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    let wrapper = render(<AreaChart data={chartData} yAxisTickFormat={'/%d'} />);
+    let wrapper = render(<AreaChart data={chartData} yAxisTickFormat={'.1f'} />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -912,4 +912,36 @@ describe('Render empty chart aria label div when chart is empty', () => {
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });
+});
+
+describe('Area chart rendering with duplicate values', () => {
+  testWithoutWait(
+    'Should return the correct dataset for duplicate values',
+    AreaChart,
+    {
+      data: {
+        chartTitle: 'Area chart duplicate values example',
+        lineChartData: [
+          {
+            legend: 'Legend 1',
+            data: [
+              { x: 1, y: 10 },
+              { x: 2, y: 20 },
+              { x: 2, y: 30 },
+              { x: 3, y: 40 },
+            ],
+          },
+        ],
+      },
+    },
+    container => {
+      const points = getById(container, /circle/i);
+      expect(points).toHaveLength(4);
+      console.log(points);
+      expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
+      expect(points[1].getAttribute('aria-label')).toMatchSnapshot();
+      expect(points[2].getAttribute('aria-label')).toMatchSnapshot();
+      expect(points[3].getAttribute('aria-label')).toMatchSnapshot();
+    },
+  );
 });
