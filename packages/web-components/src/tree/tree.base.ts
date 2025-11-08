@@ -10,8 +10,8 @@ import {
   keyHome,
   keySpace,
 } from '@microsoft/fast-web-utilities';
-import type { BaseTreeItem } from '../tree-item/tree-item.base';
-import { isTreeItem } from '../tree-item/tree-item.options';
+import type { BaseTreeItem } from '../tree-item/tree-item.base.js';
+import { isTreeItem } from '../tree-item/tree-item.options.js';
 
 export class BaseTree extends FASTElement {
   /**

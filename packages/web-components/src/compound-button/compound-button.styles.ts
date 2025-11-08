@@ -18,7 +18,7 @@ import {
   spacingHorizontalSNudge,
   spacingHorizontalXS,
 } from '../theme/design-tokens.js';
-import { forcedColorsStylesheetBehavior } from '../utils/index';
+import { forcedColorsStylesheetBehavior } from '../utils/index.js';
 
 // Need to support icon hover styles
 export const styles = css`
