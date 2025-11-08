@@ -344,7 +344,7 @@ function registerTsPaths(options) {
 function registerRules(options) {
   const { config, rules } = options;
   config.module = config.module ?? { rules: [] };
-  config.module.rules.push(...rules);
+  config.module.rules?.push(...rules);
 
   return config;
 }
