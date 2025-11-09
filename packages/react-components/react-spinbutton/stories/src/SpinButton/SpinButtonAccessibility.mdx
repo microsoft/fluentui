@@ -21,27 +21,93 @@ This section documents accessibility-related behaviors of spin buttons.
 
 #### Keyboard State Diagram
 
-| Starting state                              | Transition                              | Resulting state                             |
-| ------------------------------------------- | --------------------------------------- | ------------------------------------------- |
-| Content before spin button                  | Tab                                     | Rest                                        |
-| Rest                                        | Tab                                     | Content after spin button                   |
-| Editing                                     | Tab                                     | Content after spin button (Value committed) |
-| Editing                                     | Enter                                   | Rest (Value committed)                      |
-| Rest                                        | Any Edit Key (that results in a change) | Editing                                     |
-| Editing                                     | Any Edit Key                            | Editing                                     |
-| Content after spin button (Value committed) | Shift + Tab                             | Rest                                        |
+<table>
+  <thead>
+    <tr>
+      <th>Starting state</th>
+      <th>Transition</th>
+      <th>Resulting state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content before spin button</td>
+      <td>Tab</td>
+      <td>Rest</td>
+    </tr>
+    <tr>
+      <td>Rest</td>
+      <td>Tab</td>
+      <td>Content after spin button</td>
+    </tr>
+    <tr>
+      <td>Editing</td>
+      <td>Tab</td>
+      <td>Content after spin button (Value committed)</td>
+    </tr>
+    <tr>
+      <td>Editing</td>
+      <td>Enter</td>
+      <td>Rest (Value committed)</td>
+    </tr>
+    <tr>
+      <td>Rest</td>
+      <td>Any Edit Key (that results in a change)</td>
+      <td>Editing</td>
+    </tr>
+    <tr>
+      <td>Editing</td>
+      <td>Any Edit Key</td>
+      <td>Editing</td>
+    </tr>
+    <tr>
+      <td>Content after spin button (Value committed)</td>
+      <td>Shift + Tab</td>
+      <td>Rest</td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Edit keys
 
-| Edit Key           | Result                                                                |
-| ------------------ | --------------------------------------------------------------------- |
-| Home               | First item in defined range                                           |
-| End                | Last item in defined range                                            |
-| Up arrow           | Increments value higher, based on the step prop (defaulting to 1)     |
-| Down arrow         | Increments value lower, based on the step prop (defaulting to 1)      |
-| Page up            | Increments value higher, based on the stepPage prop (defaulting to 1) |
-| Page down          | Increments value lower, based on the stepPage prop (defaulting to 1)  |
-| Typing valid value | Valid value                                                           |
+<table>
+  <thead>
+    <tr>
+      <th>Edit Key</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Home</td>
+      <td>First item in defined range</td>
+    </tr>
+    <tr>
+      <td>End</td>
+      <td>Last item in defined range</td>
+    </tr>
+    <tr>
+      <td>Up arrow</td>
+      <td>Increments value higher, based on the step prop (defaulting to 1)</td>
+    </tr>
+    <tr>
+      <td>Down arrow</td>
+      <td>Increments value lower, based on the step prop (defaulting to 1)</td>
+    </tr>
+    <tr>
+      <td>Page up</td>
+      <td>Increments value higher, based on the stepPage prop (defaulting to 1)</td>
+    </tr>
+    <tr>
+      <td>Page down</td>
+      <td>Increments value lower, based on the stepPage prop (defaulting to 1)</td>
+    </tr>
+    <tr>
+      <td>Typing valid value</td>
+      <td>Valid value</td>
+    </tr>
+  </tbody>
+</table>
 
 ### High contrast mode
 
