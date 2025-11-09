@@ -24,12 +24,35 @@ const Component = () => <CardHeader header="Lorem ipsum" />;
 
 ## How to migrate props:
 
-| CardHeader props  | migration guide                                                                                                                             |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| as, className     | keep it as is                                                                                                                               |
-| variables, styles | see Migrate `style` overrides in this document                                                                                              |
-| accessibility     | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs). Also check the focusMode new prop |
-| fitted            | REMOVED: by default, all headers are fitted                                                                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>CardHeader props</th>
+      <th>migration guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>as, className</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>variables, styles</td>
+      <td>see Migrate `style` overrides in this document</td>
+    </tr>
+    <tr>
+      <td>accessibility</td>
+      <td>
+        see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs). Also
+        check the focusMode new prop
+      </td>
+    </tr>
+    <tr>
+      <td>fitted</td>
+      <td>REMOVED: by default, all headers are fitted</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Migrate style overrides
 

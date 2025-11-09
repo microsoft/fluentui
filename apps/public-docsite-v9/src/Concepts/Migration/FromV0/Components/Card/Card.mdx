@@ -22,20 +22,67 @@ const Component = () => <Card>Lorem ipsum, dolor sit amet consectetur adipisicin
 
 ## How to migrate props:
 
-| Card props        | migration guide                                                                                                                             |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| as, className     | keep it as is                                                                                                                               |
-| variables, styles | see Migrate `style` overrides in this document                                                                                              |
-| accessibility     | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs). Also check the focusMode new prop |
-| centered          | REMOVED: see Migrate `centered` prop in this document                                                                                       |
-| compact           | use `size="small"`                                                                                                                          |
-| disabled          | REMOVED: No equivalent functionality. Can be created by overriding the styles.                                                              |
-| elevated          | REMOVED: All cards are now elevated by default. To change that, use the `appearance` property.                                              |
-| expandable        | REMOVED: No equivalent functionality.                                                                                                       |
-| fluid             | REMOVED: see Migrate `fluid` prop in this document                                                                                          |
-| ghost             | use `appearance="subtle"`                                                                                                                   |
-| inverted          | use `appearance="filled-alternative"`                                                                                                       |
-| size              | keep it as is. Values: `small`, `medium`(default) and `large`                                                                               |
+<table>
+  <thead>
+    <tr>
+      <th>Card props</th>
+      <th>migration guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>as, className</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>variables, styles</td>
+      <td>see Migrate `style` overrides in this document</td>
+    </tr>
+    <tr>
+      <td>accessibility</td>
+      <td>
+        see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs). Also
+        check the focusMode new prop
+      </td>
+    </tr>
+    <tr>
+      <td>centered</td>
+      <td>REMOVED: see Migrate `centered` prop in this document</td>
+    </tr>
+    <tr>
+      <td>compact</td>
+      <td>use `size=&quot;small&quot;`</td>
+    </tr>
+    <tr>
+      <td>disabled</td>
+      <td>REMOVED: No equivalent functionality. Can be created by overriding the styles.</td>
+    </tr>
+    <tr>
+      <td>elevated</td>
+      <td>REMOVED: All cards are now elevated by default. To change that, use the `appearance` property.</td>
+    </tr>
+    <tr>
+      <td>expandable</td>
+      <td>REMOVED: No equivalent functionality.</td>
+    </tr>
+    <tr>
+      <td>fluid</td>
+      <td>REMOVED: see Migrate `fluid` prop in this document</td>
+    </tr>
+    <tr>
+      <td>ghost</td>
+      <td>use `appearance=&quot;subtle&quot;`</td>
+    </tr>
+    <tr>
+      <td>inverted</td>
+      <td>use `appearance=&quot;filled-alternative&quot;`</td>
+    </tr>
+    <tr>
+      <td>size</td>
+      <td>keep it as is. Values: `small`, `medium`(default) and `large`</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Migrate style overrides
 
