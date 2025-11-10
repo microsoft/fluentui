@@ -24,7 +24,7 @@
     "@fluentui/react-tabster": "^9.26.9",
     "@fluentui/react-theme": "^9.2.0",
     "@fluentui/react-utilities": "^9.25.3",
-    "@griffel/react": "^1.5.22",
+    "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
