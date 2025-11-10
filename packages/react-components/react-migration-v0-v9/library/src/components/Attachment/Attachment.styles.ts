@@ -25,7 +25,7 @@ export const useAttachmentBaseStyles = makeResetStyles({
   width: '100%',
   maxWidth: '424px',
   minHeight: '32px',
-  padding: `7px 3px 7px 11px`,
+  padding: '7px 3px 7px 11px',
   marginBottom: '2px',
   marginRight: '2px',
   backgroundColor: tokens.colorNeutralBackground6,
