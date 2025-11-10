@@ -64,12 +64,12 @@ describe('Ref', () => {
       const innerRef = jest.fn();
       const wrapper = mount(
         <Ref innerRef={innerRef}>
-          <div />
+          <DOMFunction />
         </Ref>,
       );
 
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
-      wrapper.setProps({ children: <button /> });
+      wrapper.setProps({ children: <DOMFunction isButton /> });
 
       expect(innerRef).toHaveBeenCalledTimes(2);
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'BUTTON' }));
@@ -95,7 +95,7 @@ describe('Ref', () => {
       const updatedRef = jest.fn();
       const wrapper = mount(
         <Ref innerRef={initialRef}>
-          <div />
+          <DOMFunction />
         </Ref>,
       );
 
@@ -114,7 +114,7 @@ describe('Ref', () => {
       const updatedRef = jest.fn();
       const wrapper = mount(
         <Ref innerRef={initialRef}>
-          <div />
+          <DOMFunction />
         </Ref>,
       );
 
@@ -122,7 +122,7 @@ describe('Ref', () => {
       expect(updatedRef).not.toHaveBeenCalled();
 
       jest.resetAllMocks();
-      wrapper.setProps({ children: <span />, innerRef: updatedRef });
+      wrapper.setProps({ children: <DOMFunction isButton />, innerRef: updatedRef });
 
       expect(initialRef).not.toHaveBeenCalled();
       expect(updatedRef).toHaveBeenCalledTimes(1);
@@ -144,6 +144,10 @@ describe('Ref', () => {
   });
 
   describe('kind="forward"', () => {
+    it('returns node from a primitive element', () => {
+      testInnerRef('div');
+    });
+
     it('works with "forwardRef" API', () => {
       const forwardedRef = React.createRef<HTMLButtonElement>();
       const innerRef = React.createRef<HTMLDivElement>();

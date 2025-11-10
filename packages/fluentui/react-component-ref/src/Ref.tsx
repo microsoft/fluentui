@@ -62,7 +62,7 @@ export class Ref extends React.Component<RefProps, RefState> {
       return { kind: 'self' };
     }
 
-    if (ReactIs.isForwardRef(child)) {
+    if (ReactIs.isForwardRef(child) || typeof (child as React.ReactElement).type === 'string') {
       return { kind: 'forward' };
     }
 
