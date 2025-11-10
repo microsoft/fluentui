@@ -12,7 +12,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IImageExportOptions } from '../../types/index';
-import { toImage as convertToImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { getContrastTextColor } from '../../utilities/utilities';
 import {
   getHorizontalFunnelSegmentGeometry,
@@ -53,10 +53,15 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     () => ({
       chartContainer: chartContainerRef ?? null,
       toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return convertToImage(chartContainerRef.current, legendsRef.current?.toSVG, getRTL(), opts);
+        return exportChartsAsImage(
+          [{ container: chartContainerRef.current }],
+          props.hideLegend ? undefined : legendsRef.current?.toSVG,
+          getRTL(),
+          opts,
+        );
       },
     }),
-    [],
+    [props.hideLegend],
   );
 
   function _handleHover(data: IFunnelChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {

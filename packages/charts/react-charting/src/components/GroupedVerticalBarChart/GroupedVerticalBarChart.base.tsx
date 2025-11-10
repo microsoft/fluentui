@@ -56,7 +56,7 @@ import {
   IYValueHover,
 } from '../../index';
 import { IChart, IImageExportOptions, IBarSeries, ILineSeries } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
 import type { JSXElement } from '@fluentui/utilities';
@@ -288,7 +288,12 @@ export class GroupedVerticalBarChartBase
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRtl,
+      opts,
+    );
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

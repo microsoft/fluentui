@@ -303,7 +303,7 @@ export interface ILegendContainer {
     svgWidth: number,
     isRTL?: boolean,
   ) => {
-    node: SVGGElement | null;
+    node: SVGSVGElement | null;
     width: number;
     height: number;
   };

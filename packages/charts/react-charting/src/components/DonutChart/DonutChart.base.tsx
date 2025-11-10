@@ -17,7 +17,7 @@ import {
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import type { JSXElement } from '@fluentui/utilities';
 
@@ -234,7 +234,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._rootElem, this._legendsRef.current?.toSVG, getRTL(), opts);
+    return exportChartsAsImage(
+      [{ container: this._rootElem }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      getRTL(),
+      opts,
+    );
   };
 
   private _closeCallout = () => {

@@ -26,7 +26,7 @@ import {
   getScalePadding,
   getDateFormatLevel,
 } from '../../utilities/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/utilities';
 
@@ -73,10 +73,15 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     () => ({
       chartContainer: _cartesianChartRef.current?.chartContainer ?? null,
       toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return toImage(_cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, getRTL(), opts);
+        return exportChartsAsImage(
+          [{ container: _cartesianChartRef.current?.chartContainer }],
+          props.hideLegend ? undefined : _legendsRef.current?.toSVG,
+          getRTL(),
+          opts,
+        );
       },
     }),
-    [],
+    [props.hideLegend],
   );
 
   const _points = React.useMemo(() => {

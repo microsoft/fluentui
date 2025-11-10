@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { useTheme } from '@fluentui/react';
-import { IRefObject } from '@fluentui/react/lib/Utilities';
+import { getRTL, IRefObject } from '@fluentui/react/lib/Utilities';
 import { AnnotationOnlyChart } from '../AnnotationOnlyChart/AnnotationOnlyChart';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
@@ -49,8 +49,10 @@ import { ScatterChart } from '../ScatterChart/index';
 import { ChartTable } from '../ChartTable/index';
 import { FunnelChart } from '../FunnelChart/FunnelChart';
 import { GanttChart } from '../GanttChart/index';
-import { ILegendsProps, Legends } from '../Legends/index';
+import { ILegendContainer, ILegendsProps, Legends } from '../Legends/index';
 import type { JSXElement } from '@fluentui/utilities';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
+import { resolveCSSVariables } from '../../utilities/utilities';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -345,8 +347,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const colorMap = useColorMapping();
   const theme = useTheme();
   const isDarkTheme = theme?.isInverted ?? false;
-  const chartRef = React.useRef<IChart>(null);
+  const chartRefs = React.useRef<{ compRef: IChart | null; row: number; col: number }[]>([]);
   const isMultiPlot = React.useRef(false);
+  const legendsRef = React.useRef<ILegendContainer>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   if (!isArrayOrTypedArray(selectedLegends)) {
     selectedLegends = [];
@@ -374,12 +378,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     selectedLegends: activeLegends,
   };
 
-  const baseCommonProps = {
-    componentRef: chartRef,
-  };
-
   const interactiveCommonProps = {
-    ...baseCommonProps,
     legendProps: multiSelectLegendProps,
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
@@ -387,28 +386,45 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   function createLegends(legendProps: ILegendsProps): JSXElement {
     // eslint-disable-next-line react/jsx-no-bind
-    return <Legends {...legendProps} selectedLegends={activeLegends} onChange={onActiveLegendsChange} />;
+    return (
+      <Legends {...legendProps} selectedLegends={activeLegends} onChange={onActiveLegendsChange} ref={legendsRef} />
+    );
   }
 
   const exportAsImage = React.useCallback(
-    (opts?: IImageExportOptions): Promise<string> => {
-      return new Promise((resolve, reject) => {
-        if (isMultiPlot.current) {
-          return reject(Error('Exporting multi plot charts as image is not supported'));
-        }
-        if (!chartRef.current || typeof chartRef.current.toImage !== 'function') {
-          return reject(Error('Chart cannot be exported as image'));
+    async (opts?: IImageExportOptions) => {
+      if (!containerRef.current) {
+        throw new Error('Container reference is null');
+      }
+
+      const imgExpOpts = {
+        background: resolveCSSVariables(containerRef.current, theme.semanticColors.bodyBackground),
+        scale: 5,
+        ...opts,
+      };
+
+      if (!isMultiPlot.current) {
+        if (!chartRefs.current[0]?.compRef?.toImage) {
+          throw new Error('Chart cannot be exported as image');
         }
 
-        chartRef.current
-          .toImage({
-            background: theme.semanticColors.bodyBackground,
-            scale: 5,
-            ...opts,
-          })
-          .then(resolve)
-          .catch(reject);
-      });
+        return chartRefs.current[0].compRef.toImage(imgExpOpts);
+      }
+
+      return exportChartsAsImage(
+        chartRefs.current.map(chart => ({
+          container: chart.compRef?.chartContainer,
+          row: chart.row,
+          col: chart.col,
+        })),
+        legendsRef.current?.toSVG,
+        getRTL(),
+        {
+          background: resolveCSSVariables(containerRef.current, theme.semanticColors.bodyBackground),
+          scale: 5,
+          ...opts,
+        },
+      );
     },
     [theme],
   );
@@ -510,8 +526,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           gridTemplateRows: gridProperties.templateRows,
           gridTemplateColumns: gridProperties.templateColumns,
         }}
+        ref={containerRef}
       >
-        {Object.entries(groupedTraces).map(([xAxisKey, index]) => {
+        {Object.entries(groupedTraces).map(([xAxisKey, index], chartIdx) => {
           const plotlyInputForGroup: PlotlySchema = {
             ...plotlyInputWithValidData,
             data: index.map(idx => plotlyInputWithValidData.data[idx]),
@@ -541,7 +558,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
               const resolvedCommonProps = (
                 chartType === 'annotation'
-                  ? baseCommonProps
+                  ? {}
                   : {
                       ...interactiveCommonProps,
                       xAxisAnnotation: cellProperties?.xAnnotation,
@@ -557,6 +574,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                   ...resolvedCommonProps,
                   xAxisAnnotation: cellProperties?.xAnnotation,
                   yAxisAnnotation: cellProperties?.yAnnotation,
+                  componentRef: (ref: IChart | null) => {
+                    chartRefs.current[chartIdx] = {
+                      compRef: ref,
+                      row: cellProperties?.row ?? 1,
+                      col: cellProperties?.column ?? 1,
+                    };
+                  },
                 },
                 cellProperties?.row ?? 1,
                 cellProperties?.column ?? 1,
