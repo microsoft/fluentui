@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const { findRepoDeps } = require('@fluentui/scripts-monorepo');
+const { findRepoDeps, findGitRoot } = require('@fluentui/scripts-monorepo');
 const { findConfig, merge } = require('@fluentui/scripts-utils');
 
 const { workersConfig } = require('./shared');
 
 const packageJsonPath = findConfig('package.json') ?? '';
 const packageRoot = path.dirname(packageJsonPath);
+const repoRoot = findGitRoot();
 
 const jestAliases = () => {
   // Get deps of the current package within the repo
@@ -50,6 +51,8 @@ const createConfig = (customConfig = {}) => {
       '\\.(scss)$': path.resolve(__dirname, './v8/jest-style-mock.js'),
       KeyCodes: path.resolve(__dirname, './v8/jest-mock.js'),
       enzyme: path.resolve(__dirname, './v8/jest-mock.js'),
+      // explicitly needed as R17 doesn't have this API and if not declared explicitly our integration jest config wouldn't be able to override this
+      '^@testing-library/react-hooks$': path.join(repoRoot, 'node_modules/@testing-library/react'),
       ...jestAliases(),
     },
 

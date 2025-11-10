@@ -20,6 +20,7 @@ const valueMutationOptions = {
 
 interface TypingAnnounceReturn<TInputElement extends HTMLElement = HTMLElement> {
   typingAnnounce: AriaLiveAnnounceFn;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   inputRef: React.MutableRefObject<TInputElement | null>;
 }
 

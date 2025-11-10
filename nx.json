@@ -149,7 +149,7 @@
         },
         "reactIntegrationTesting": {
           "targetName": "test-rit",
-          "reactVersions": ["17", "19"],
+          "reactVersions": ["17", "18"],
           "exclude": [
             "react-theme-sass",
             "babel-preset-global-context",

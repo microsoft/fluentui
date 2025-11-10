@@ -843,7 +843,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         <div
           className={classNames.root}
           role={'presentation'}
-          ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+          ref={(rootElem: HTMLDivElement) => {
+            this.chartContainer = rootElem;
+          }}
           onMouseLeave={this._onCloseCallout}
         >
           {/*

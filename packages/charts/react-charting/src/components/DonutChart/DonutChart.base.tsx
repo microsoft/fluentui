@@ -54,7 +54,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -141,7 +141,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
-        ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
+        ref={(rootElem: HTMLElement | null) => {
+          this._rootElem = rootElem;
+        }}
         onMouseLeave={this._handleChartMouseLeave}
       >
         {this.props.xAxisAnnotation && (

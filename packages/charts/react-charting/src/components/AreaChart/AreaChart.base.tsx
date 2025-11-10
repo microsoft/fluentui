@@ -147,8 +147,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _enableComputationOptimization: boolean;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
   private _containsSecondaryYAxis = false;
   private _hasDuplicateXValues = false;
   private _hasMissingXValues = false;
