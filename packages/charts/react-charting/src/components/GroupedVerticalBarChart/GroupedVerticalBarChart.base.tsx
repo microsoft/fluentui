@@ -126,11 +126,11 @@ export class GroupedVerticalBarChartBase
   private _groupWidth: number;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
   private _legendColorMap: Record<string, [string, string]> = {};
   private readonly Y_ORIGIN: number = 0;
-  private _rectRef: React.RefObject<SVGRectElement>;
+  private _rectRef: React.RefObject<SVGRectElement | null>;
   private _uniqDotId = getId('gvbc_dot_');
 
   public constructor(props: IGroupedVerticalBarChartProps) {
@@ -315,7 +315,6 @@ export class GroupedVerticalBarChartBase
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {

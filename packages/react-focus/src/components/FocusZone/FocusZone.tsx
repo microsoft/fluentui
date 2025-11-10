@@ -130,7 +130,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   public context: any;
 
-  private _root: React.RefObject<HTMLElement> = React.createRef();
+  private _root: React.RefObject<HTMLElement | null> = React.createRef();
   private _mergedRef = createMergedRef<HTMLElement>();
 
   private _id: string;

@@ -51,6 +51,7 @@ function useAnimateBackwards(weeks: DayInfo[][]): boolean | undefined {
 export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = props => {
   const navigatedDayRef = React.useRef<HTMLTableCellElement>(
     null,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ) as React.MutableRefObject<HTMLTableCellElement | null>;
 
   const activeDescendantId = useId();

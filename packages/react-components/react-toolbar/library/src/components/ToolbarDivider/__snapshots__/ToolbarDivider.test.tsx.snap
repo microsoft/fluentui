@@ -3,14 +3,14 @@
 exports[`ToolbarDivider renders a default state 1`] = `
 <div>
   <div
-    aria-labelledby="divider-r6"
+    aria-labelledby="divider-_r_6_"
     aria-orientation="vertical"
     class="fui-Divider"
     role="separator"
   >
     <div
       class="fui-Divider__wrapper"
-      id="divider-r6"
+      id="divider-_r_6_"
     >
       Default ToolbarDivider
     </div>

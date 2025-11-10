@@ -136,8 +136,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _calloutAnchorPoint: FlattenData | null;
   private _emptyChartId: string;
   private margins: IMargins;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public constructor(props: IHeatMapChartProps) {
     super(props);
@@ -298,7 +298,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {

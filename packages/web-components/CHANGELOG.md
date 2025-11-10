@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 03 Nov 2025 04:07:38 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Nov 2025 04:12:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.132](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.132)
+
+Fri, 07 Nov 2025 04:12:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.131..@fluentui/web-components_v3.0.0-beta.132)
+
+### Changes
+
+- fix: avoid global type leaks into production assets compilation ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
 
 ## [3.0.0-beta.131](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.131)
 

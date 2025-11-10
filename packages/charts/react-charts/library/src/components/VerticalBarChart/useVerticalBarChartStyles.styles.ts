@@ -25,6 +25,8 @@ export const verticalbarchartClassNames: SlotClassNames<VerticalBarChartStyles> 
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 const useStyles = makeStyles({
   opacityChangeOnHover: {},

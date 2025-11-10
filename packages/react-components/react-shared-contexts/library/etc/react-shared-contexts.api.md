@@ -28,7 +28,7 @@ export { AnnounceProvider }
 export { AnnounceProvider as AnnounceProvider_unstable }
 
 // @internal (undocumented)
-export type BackgroundAppearanceContextValue = 'inverted' | undefined;
+export type BackgroundAppearanceContextValue = 'inverted' | 'brand' | undefined;
 
 // @internal (undocumented)
 export const BackgroundAppearanceProvider: React_2.Provider<BackgroundAppearanceContextValue>;

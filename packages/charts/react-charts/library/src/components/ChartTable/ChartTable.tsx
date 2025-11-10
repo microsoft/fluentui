@@ -103,7 +103,9 @@ export const ChartTable: React.FunctionComponent<ChartTableProps> = React.forwar
 
     return (
       <div
-        ref={el => (_rootElem.current = el)}
+        ref={el => {
+          _rootElem.current = el;
+        }}
         className={classes.root as string}
         style={{ height: height ? `${height}px` : '650px', overflow: 'hidden' }}
       >

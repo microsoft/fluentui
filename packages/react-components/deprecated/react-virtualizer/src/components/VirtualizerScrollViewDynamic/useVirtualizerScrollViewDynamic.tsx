@@ -161,7 +161,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
       if (React.isValidElement(child)) {
         virtualizerState.virtualizedChildren[index] = (
           <child.type
-            {...child.props}
+            {...(child.props as Record<string, unknown>)}
             key={child.key}
             ref={(element: HTMLElement & IndexedResizeCallbackElement) => {
               if (child.hasOwnProperty('ref')) {

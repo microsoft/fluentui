@@ -59,16 +59,16 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link appears subtle.
   subtle: {
-    color: tokens.colorNeutralForeground2,
+    color: tokens.colorNeutralForeground2Link,
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Hover,
+      color: tokens.colorNeutralForeground2LinkHover,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Pressed,
+      color: tokens.colorNeutralForeground2LinkPressed,
     },
   },
   // Overrides when the Link is rendered inline within text.
@@ -91,8 +91,16 @@ const useStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
-
   inverted: {
+    color: tokens.colorNeutralForegroundInverted2,
+    ':hover': {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+    ':active': {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+  },
+  brand: {
     color: tokens.colorNeutralForegroundInvertedLink,
     ':hover': {
       color: tokens.colorNeutralForegroundInvertedLinkHover,
@@ -117,6 +125,7 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
     root.as === 'button' && styles.button,
     appearance === 'subtle' && styles.subtle,
     backgroundAppearance === 'inverted' && styles.inverted,
+    backgroundAppearance === 'brand' && styles.brand,
     inline && styles.inline,
     disabled && styles.disabled,
     state.root.className,

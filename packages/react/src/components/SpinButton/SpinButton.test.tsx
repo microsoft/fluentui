@@ -9,7 +9,7 @@ import { isConformant } from '../../common/isConformant';
 import type { ISpinButton } from './SpinButton.types';
 
 describe('SpinButton', () => {
-  let ref: React.RefObject<ISpinButton>;
+  let ref: React.RefObject<ISpinButton | null>;
 
   /**
    * Verify the value of the input field and related properties.
@@ -95,7 +95,7 @@ describe('SpinButton', () => {
   }
 
   beforeEach(() => {
-    ref = React.createRef<ISpinButton>();
+    ref = React.createRef<ISpinButton | null>();
     resetIds();
   });
 

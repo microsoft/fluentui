@@ -1,4 +1,3 @@
-/*  eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import type * as Types from './types';
 
@@ -58,10 +57,14 @@ describe(`types`, () => {
 
       //
       // v9 ForwardRefComponent + RefAttributes with React 18.2.61 types issue
+      // NOTE: in React 19 this was reverted and LegacyRef was removed again ! for those reasons this test will fail with React 19 -> Commenting Out
       //
+
+      /**
 
       // @types/react@18.2.61 introduced a change in the `RefAttributes` type to include `LegacyRef<T>`
       interface RefAttributesAfterTypesReact18_2_61<T> extends React.Attributes {
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         ref?: React.LegacyRef<T>;
       }
 
@@ -96,6 +99,7 @@ describe(`types`, () => {
         return React.createElement(React.Fragment, null, wrong, correct);
       });
       console.log(Example);
+      */
     });
   });
 });

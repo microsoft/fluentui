@@ -20,6 +20,8 @@ export const ganttClassNames: SlotClassNames<GanttChartStyles> = {
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 /**

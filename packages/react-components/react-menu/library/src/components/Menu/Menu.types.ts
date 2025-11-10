@@ -127,6 +127,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * The ref for the popup
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     menuPopoverRef: React.MutableRefObject<HTMLElement | null>;
 
     /**
@@ -152,6 +153,7 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * The ref for the MenuTrigger, used for popup positioning
      */
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     triggerRef: React.MutableRefObject<HTMLElement | null>;
 
     /**

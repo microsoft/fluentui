@@ -16,6 +16,7 @@ type BrowserTimerSetter =
  * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
  */
 export function useTooltipTimeout(
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   triggerElementRef: React.MutableRefObject<HTMLElement>,
 ): readonly [(fn: () => void, delay?: number) => number, () => void] {
   const { targetDocument } = useFluent();

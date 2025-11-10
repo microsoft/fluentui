@@ -558,7 +558,7 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    floatingPicker: React_2.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
+    floatingPicker: React_2.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null>;
     // (undocumented)
     protected get floatingPickerProps(): IBaseFloatingPickerProps<T>;
     // (undocumented)
@@ -566,7 +566,7 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
     // (undocumented)
     get highlightedItems(): T[];
     // (undocumented)
-    protected input: React_2.RefObject<Autofill>;
+    protected input: React_2.RefObject<Autofill | null>;
     // (undocumented)
     get inputElement(): HTMLInputElement | null;
     // (undocumented)
@@ -596,9 +596,9 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
     // (undocumented)
     protected renderSelectedItemsList(): JSXElement;
     // (undocumented)
-    protected root: React_2.RefObject<HTMLDivElement>;
+    protected root: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
-    selectedItemsList: React_2.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
+    selectedItemsList: React_2.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>> | null>;
     // (undocumented)
     protected get selectedItemsListProps(): IBaseSelectedItemsListProps<T>;
     // (undocumented)
@@ -651,7 +651,7 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
     // (undocumented)
     protected renderSuggestions(): JSXElement | null;
     // (undocumented)
-    protected root: React_2.RefObject<HTMLDivElement>;
+    protected root: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
     protected selection: Selection;
     // (undocumented)
@@ -659,7 +659,7 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
     // (undocumented)
     get suggestions(): any[];
     // (undocumented)
-    protected suggestionsControl: React_2.RefObject<SuggestionsControl<T>>;
+    protected suggestionsControl: React_2.RefObject<SuggestionsControl<T> | null>;
     // (undocumented)
     protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
     // (undocumented)
@@ -724,7 +724,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // @deprecated (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSXElement | undefined;
     // (undocumented)
-    protected input: React_2.RefObject<IAutofill>;
+    protected input: React_2.RefObject<IAutofill | null>;
     // (undocumented)
     get items(): T[];
     // (undocumented)
@@ -781,13 +781,13 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected resolveNewValue(updatedValue: string, suggestions: T[]): void;
     // (undocumented)
-    protected root: React_2.RefObject<HTMLDivElement>;
+    protected root: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
     protected selection: Selection_2;
     // @deprecated (undocumented)
     protected _shouldFocusZoneEnterInnerZone: (ev: React_2.KeyboardEvent<HTMLElement>) => boolean;
     // (undocumented)
-    protected suggestionElement: React_2.RefObject<ISuggestions<T>>;
+    protected suggestionElement: React_2.RefObject<ISuggestions<T> | null>;
     // @deprecated (undocumented)
     protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
     // (undocumented)
@@ -1593,7 +1593,7 @@ export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
 export class ExtendedSelectedItem extends React_2.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
     constructor(props: ISelectedPeopleItemProps);
     // (undocumented)
-    protected persona: React_2.RefObject<HTMLDivElement>;
+    protected persona: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
     render(): JSXElement;
 }
@@ -11090,7 +11090,7 @@ export class Suggestions<T> extends React_2.Component<ISuggestionsProps<T>, ISug
     // (undocumented)
     focusSearchForMoreButton(): void;
     // (undocumented)
-    protected _forceResolveButton: React_2.RefObject<IButton>;
+    protected _forceResolveButton: React_2.RefObject<IButton | null>;
     // (undocumented)
     hasSuggestedAction(): boolean;
     // (undocumented)
@@ -11098,13 +11098,13 @@ export class Suggestions<T> extends React_2.Component<ISuggestionsProps<T>, ISug
     // (undocumented)
     render(): JSXElement;
     // (undocumented)
-    protected _scrollContainer: React_2.RefObject<HTMLDivElement>;
+    protected _scrollContainer: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
     scrollSelected(): void;
     // (undocumented)
-    protected _searchForMoreButton: React_2.RefObject<IButton>;
+    protected _searchForMoreButton: React_2.RefObject<IButton | null>;
     // (undocumented)
-    protected _selectedElement: React_2.RefObject<HTMLDivElement>;
+    protected _selectedElement: React_2.RefObject<HTMLDivElement | null>;
     tryHandleKeyDown: (keyCode: number, currentSuggestionIndex: number) => boolean;
 }
 
@@ -11148,13 +11148,13 @@ export class SuggestionsControl<T extends {}> extends React_2.Component<ISuggest
     // (undocumented)
     get selectedElement(): HTMLDivElement | undefined;
     // (undocumented)
-    protected _selectedElement: React_2.RefObject<HTMLDivElement>;
+    protected _selectedElement: React_2.RefObject<HTMLDivElement | null>;
     protected selectFirstItem(): void;
     protected selectLastItem(): void;
     protected selectNextItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
-    protected _suggestions: React_2.RefObject<SuggestionsCore<T>>;
+    protected _suggestions: React_2.RefObject<SuggestionsCore<T> | null>;
 }
 
 // @public (undocumented)
@@ -11218,7 +11218,7 @@ export class SuggestionsCore<T extends {}> extends React_2.Component<ISuggestion
     // (undocumented)
     get selectedElement(): HTMLDivElement | undefined;
     // (undocumented)
-    protected _selectedElement: React_2.RefObject<HTMLDivElement>;
+    protected _selectedElement: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
     setSelectedSuggestion(index: number): void;
 }

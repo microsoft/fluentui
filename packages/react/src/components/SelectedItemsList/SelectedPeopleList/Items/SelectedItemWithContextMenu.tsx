@@ -22,7 +22,7 @@ export class SelectedItemWithContextMenu extends React.Component<
   ISelectedItemWithContextMenuProps,
   IPeoplePickerItemState
 > {
-  protected itemElement: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
+  protected itemElement: React.RefObject<HTMLDivElement | null> = React.createRef<HTMLDivElement>();
 
   constructor(props: ISelectedItemWithContextMenuProps) {
     super(props);

@@ -5,7 +5,7 @@ export type {
 } from './components/MenuGridGroupHeader/index';
 export {
   MenuGridGroupHeader,
-  MenuGridGroupHeaderClassNames,
+  menuGridGroupHeaderClassNames,
   renderMenuGridGroupHeader_unstable,
   useMenuGridGroupHeaderStyles_unstable,
   useMenuGridGroupHeader_unstable,

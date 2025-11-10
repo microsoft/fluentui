@@ -110,20 +110,9 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
   culture?: string;
 
   /**
-   *@default false
-   *Used for showing complete y axis lables   */
-  showYAxisLables?: boolean;
-
-  /**
    * @default alphabetical
    * The prop used to decide order of string axis labels */
   sortOrder?: 'none' | 'alphabetical';
-
-  /**
-   *@default false
-   *Used for to elipse y axis labes and show tooltip on x axis labels
-   */
-  showYAxisLablesTooltip?: boolean;
 }
 
 /**

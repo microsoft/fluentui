@@ -17,12 +17,12 @@ const cancelAnimationFrameNoop = (handle: number) => handle;
  *
  * @returns A pair of [requestAnimationFrame, cancelAnimationFrame] that are stable between renders.
  */
-export function useAnimationFrame(): readonly [(fn: () => void, delay?: number) => number, () => void] {
+export function useAnimationFrame(): readonly [(fn: FrameRequestCallback) => number, () => void] {
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
 
   const setAnimationFrame = win ? win.requestAnimationFrame : setAnimationFrameNoop;
   const clearAnimationFrame = win ? win.cancelAnimationFrame : cancelAnimationFrameNoop;
 
-  return useBrowserTimer(setAnimationFrame, clearAnimationFrame);
+  return useBrowserTimer(setAnimationFrame, clearAnimationFrame) as [(fn: FrameRequestCallback) => number, () => void];
 }

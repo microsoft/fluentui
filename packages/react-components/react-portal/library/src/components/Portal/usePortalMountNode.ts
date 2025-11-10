@@ -26,6 +26,7 @@ type UseElementFactoryOptions = {
   className: string;
   dir: string;
   disabled: boolean | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   focusVisibleRef: React.MutableRefObject<HTMLElement | null>;
   targetNode: HTMLElement | ShadowRoot | undefined;
 };
@@ -235,11 +236,12 @@ const useElementFactory = useInsertionEffect ? useModernElementFactory : useLega
  * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
-  'use no memo';
+  ('use no memo');
 
   const { targetDocument, dir } = useFluent();
   const mountNode = usePortalMountNodeContext();
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
   const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();

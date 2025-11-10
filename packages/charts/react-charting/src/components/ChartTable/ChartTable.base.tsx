@@ -111,7 +111,9 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
 
     return (
       <div
-        ref={el => (this._rootElem = el)}
+        ref={el => {
+          this._rootElem = el;
+        }}
         className={classNames.root}
         style={{ height: height ? `${height}px` : '650px', overflow: 'hidden' }}
       >

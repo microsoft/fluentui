@@ -29,11 +29,11 @@ export interface UsePositioningReturn {
   // (allows a more general type to be passed rather than a more specific one)
   // However, Typescript currently can't infer that fact for refs
   // See https://github.com/microsoft/TypeScript/issues/30748 for more information
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
   targetRef: React.MutableRefObject<any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
   containerRef: React.MutableRefObject<any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-deprecated
   arrowRef: React.MutableRefObject<any>;
 }
 

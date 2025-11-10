@@ -88,7 +88,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
   props: IDefaultEditingItemInnerProps<TItem>,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSXElement => {
-  const editingInput = React.useRef<any>();
+  const editingInput = React.useRef<any>(null);
   const editingFloatingPicker = React.createRef<any>();
   const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
   const [inputValue, setInputValue] = React.useState<string>('');

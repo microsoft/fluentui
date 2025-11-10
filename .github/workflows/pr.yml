@@ -104,17 +104,17 @@ jobs:
       - run: |
           yarn install --frozen-lockfile
           yarn rit --react 17 --install-deps
-          yarn rit --react 19 --install-deps
+          yarn rit --react 18 --install-deps
 
-      - name: Verify Cypress installs from RIT temp workspaces (React 17 -> v13, React 19 -> v14)
+      - name: Verify Cypress installs from RIT temp workspaces (React 17 -> v13, React 18 -> v14)
         run: |
           "$GITHUB_WORKSPACE"/tmp/rit/react-17/node_modules/.bin/cypress verify
-          "$GITHUB_WORKSPACE"/tmp/rit/react-19/node_modules/.bin/cypress verify
+          "$GITHUB_WORKSPACE"/tmp/rit/react-18/node_modules/.bin/cypress verify
 
-      - name: React Versions Integration Tests (17,19) - E2E
+      - name: React Versions Integration Tests (17,18) - E2E
         id: e2e
         run: |
-          yarn nx affected -t test-rit--17--e2e,test-rit--19--e2e --exclude='react-19-tests-v9,react-charting,react'
+          yarn nx affected -t test-rit--17--e2e,test-rit--18--e2e --exclude='react-19-tests-v9,react-charting,react'
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@v4
@@ -125,40 +125,9 @@ jobs:
             tmp/rit/**/cypress/screenshots/**/*.png
           retention-days: 1
 
-      - name: React Versions Integration Tests (17,19) - Type-check & Test
+      - name: React Versions Integration Tests (17,18) - Type-check & Test
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--19--type-check,test-rit--17--test,test-rit--19--test --exclude='react-19-tests-v9'
-
-  react_19_v9_source_code_typecheck:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      actions: 'read'
-    name: v9 source code type-check against React 19
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
-        with:
-          main-branch-name: 'master'
-
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'yarn'
-          node-version: '22'
-
-      - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
-
-      - run: |
-          yarn install --frozen-lockfile
-          yarn rit --react 19 --install-deps
-
-      - run: |
-          yarn nx affected -t test-rit--19--type-check --exclude='*,!react-19-tests-v9'
+          FLUENT_JEST_WORKER=2 yarn nx affected -t test-rit--17--type-check,test-rit--18--type-check,test-rit--17--test,test-rit--18--test --exclude='react-19-tests-v9'
 
   e2e:
     if: ${{ github.repository_owner == 'microsoft' }}

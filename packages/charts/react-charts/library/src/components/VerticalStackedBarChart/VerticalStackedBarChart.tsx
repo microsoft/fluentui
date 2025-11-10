@@ -526,7 +526,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -685,7 +684,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             // For more information, see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
             opacity={_getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).opacity}
             transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
-            ref={e => (circleRef.refElement = e)}
+            ref={e => {
+              circleRef.refElement = e;
+            }}
             {...(noBarsAndLinesActive
               ? {
                   tabIndex: !props.hideTooltip ? 0 : undefined,
@@ -1132,7 +1133,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                 `}
                 fill={startColor}
                 rx={props.roundCorners ? 3 : 0}
-                ref={e => (ref.refElement = e)}
+                ref={e => {
+                  ref.refElement = e;
+                }}
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
                 cursor={props.href ? 'pointer' : 'default'}
                 {...rectFocusProps}
@@ -1155,7 +1158,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               opacity={shouldHighlight ? 1 : 0.1}
               cursor={props.href ? 'pointer' : 'default'}
               rx={props.roundCorners ? 3 : 0}
-              ref={e => (ref.refElement = e)}
+              ref={e => {
+                ref.refElement = e;
+              }}
               {...rectFocusProps}
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             />
@@ -1198,7 +1203,13 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
-          <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
+          <g
+            id={`${indexNumber}-singleBar`}
+            ref={e => {
+              groupRef.refElement = e;
+            }}
+            {...stackFocusProps}
+          >
             {singleBar}
           </g>
           {/*

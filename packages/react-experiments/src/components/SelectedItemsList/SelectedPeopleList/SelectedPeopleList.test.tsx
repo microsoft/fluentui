@@ -6,13 +6,13 @@ import type { ISelectedPeopleList, ItemCanDispatchTrigger } from '../index';
 
 describe('SelectedPeopleList', () => {
   it('renders nothing if nothing is provided', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
+    const pickerRef: React.RefObject<ISelectedPeopleList | null> = React.createRef();
     const { container } = render(<SelectedPeopleList ref={pickerRef} />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders personas that are passed in', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
+    const pickerRef: React.RefObject<ISelectedPeopleList | null> = React.createRef();
     const { container, getAllByText } = render(
       <SelectedPeopleList selectedItems={[{ text: 'Person A' }, { text: 'Person B' }]} ref={pickerRef} />,
     );
@@ -24,7 +24,7 @@ describe('SelectedPeopleList', () => {
   });
 
   it('renders personas that are passed in as default', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
+    const pickerRef: React.RefObject<ISelectedPeopleList | null> = React.createRef();
     const { container, getAllByText } = render(
       <SelectedPeopleList defaultSelectedItems={[{ text: 'Person A' }, { text: 'Person B' }]} ref={pickerRef} />,
     );
