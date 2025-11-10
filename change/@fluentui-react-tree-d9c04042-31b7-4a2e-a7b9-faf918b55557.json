@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Matching behavior for tree item layout components for when there are flex boxes as child components",
+  "packageName": "@fluentui/react-tree",
+  "email": "7254163+mindlessroman@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
