@@ -14,7 +14,7 @@ const useInvertedBackgroundStyles = makeStyles({
 const useBrandBackgroundStyles = makeStyles({
   root: {
     ...shorthands.padding('14px'),
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: tokens.colorBrandBackgroundStatic,
   },
 });
 
