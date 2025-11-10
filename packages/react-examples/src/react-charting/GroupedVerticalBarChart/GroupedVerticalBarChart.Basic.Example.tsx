@@ -96,9 +96,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color3),
             legend: '2022',
             xAxisCalloutData: '2022/04/30',
-            yAxisCalloutData: '21%',
+            yAxisCalloutData: '29%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 1 of 2 2022, x value 2022/04/30, y value 21%',
+              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 1 of 2 2022, x value 2022/04/30, y value 29%',
             },
           },
           {
@@ -107,9 +107,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color4),
             legend: '2023',
             xAxisCalloutData: '2023/04/30',
-            yAxisCalloutData: '28%',
+            yAxisCalloutData: '44%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 2 of 2 2023, x value 2023/04/30, y value 28%',
+              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 2 of 2 2023, x value 2023/04/30, y value 44%',
             },
           },
           {
@@ -118,9 +118,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color5),
             legend: '2024',
             xAxisCalloutData: '2024/04/30',
-            yAxisCalloutData: '35%',
+            yAxisCalloutData: '42%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 3 of 4 2022, x value 2024/04/30, y value 35%',
+              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 3 of 4 2022, x value 2024/04/30, y value 42%',
             },
           },
           {
@@ -129,9 +129,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color6),
             legend: '2021',
             xAxisCalloutData: '2021/04/30',
-            yAxisCalloutData: '16%',
+            yAxisCalloutData: '39%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 4 of 4 2021, x value 2021/04/30, y value 16%',
+              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 4 of 4 2021, x value 2021/04/30, y value 39%',
             },
           },
         ],
@@ -145,9 +145,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color3),
             legend: '2022',
             xAxisCalloutData: '2022/05/30',
-            yAxisCalloutData: '58%',
+            yAxisCalloutData: '29%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 1 of 2 2022, x value 2022/05/30, y value 58%',
+              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 1 of 2 2022, x value 2022/05/30, y value 29%',
             },
           },
           {
@@ -156,9 +156,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color4),
             legend: '2023',
             xAxisCalloutData: '2023/05/30',
-            yAxisCalloutData: '5%',
+            yAxisCalloutData: '3%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 2 of 2 2023, x value 2023/05/30, y value 5%',
+              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 2 of 2 2023, x value 2023/05/30, y value 3%',
             },
           },
           {
@@ -167,9 +167,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color5),
             legend: '2024',
             xAxisCalloutData: '2024/05/30',
-            yAxisCalloutData: '16%',
+            yAxisCalloutData: '7%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 3 of 4 2024, x value 2024/05/30, y value 16%',
+              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 3 of 4 2024, x value 2024/05/30, y value 7%',
             },
           },
           {
@@ -178,9 +178,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color6),
             legend: '2021',
             xAxisCalloutData: '2021/05/30',
-            yAxisCalloutData: '21%',
+            yAxisCalloutData: '20%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 4 of 4 2021, x value 2021/05/30, y value 21%',
+              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 4 of 4 2021, x value 2021/05/30, y value 20%',
             },
           },
         ],
@@ -195,9 +195,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color3),
             legend: '2022',
             xAxisCalloutData: '2022/06/30',
-            yAxisCalloutData: '11%',
+            yAxisCalloutData: '13%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 1 of 2 2022, x value 2022/06/30, y value 11%',
+              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 1 of 2 2022, x value 2022/06/30, y value 13%',
             },
           },
           {
@@ -206,9 +206,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color4),
             legend: '2023',
             xAxisCalloutData: '2023/06/30',
-            yAxisCalloutData: '37%',
+            yAxisCalloutData: '50%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 2 of 2 2023, x value 2023/06/30, y value 37%',
+              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 2 of 2 2023, x value 2023/06/30, y value 50%',
             },
           },
           {
@@ -217,9 +217,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color5),
             legend: '2024',
             xAxisCalloutData: '2024/06/30',
-            yAxisCalloutData: '45%',
+            yAxisCalloutData: '47%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 3 of 4 2024, x value 2024/06/30, y value 45%',
+              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 3 of 4 2024, x value 2024/06/30, y value 47%',
             },
           },
           {
@@ -228,9 +228,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color6),
             legend: '2021',
             xAxisCalloutData: '2021/06/30',
-            yAxisCalloutData: '7%',
+            yAxisCalloutData: '16%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 4 of 4 2021, x value 2021/06/30, y value 7%',
+              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 4 of 4 2021, x value 2021/06/30, y value 16%',
             },
           },
         ],
@@ -244,9 +244,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color3),
             legend: '2022',
             xAxisCalloutData: '2022/07/30',
-            yAxisCalloutData: '58%',
+            yAxisCalloutData: '29%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 1 of 2 2022, x value 2022/07/30, y value 58%',
+              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 1 of 2 2022, x value 2022/07/30, y value 29%',
             },
           },
           {
@@ -255,9 +255,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color4),
             legend: '2023',
             xAxisCalloutData: '2023/07/30',
-            yAxisCalloutData: '5%',
+            yAxisCalloutData: '3%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 2 of 2 2023, x value 2023/07/30, y value 5%',
+              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 2 of 2 2023, x value 2023/07/30, y value 3%',
             },
           },
           {
@@ -266,9 +266,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color5),
             legend: '2024',
             xAxisCalloutData: '2024/07/30',
-            yAxisCalloutData: '11%',
+            yAxisCalloutData: '4%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 3 of 4 2024, x value 2024/07/30, y value 11%',
+              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 3 of 4 2024, x value 2024/07/30, y value 4%',
             },
           },
           {
@@ -277,9 +277,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             color: getColorFromToken(DataVizPalette.color6),
             legend: '2021',
             xAxisCalloutData: '2021/07/30',
-            yAxisCalloutData: '26%',
+            yAxisCalloutData: '25%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 4 of 4 2021, x value 2021/07/30, y value 26%',
+              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 4 of 4 2021, x value 2021/07/30, y value 25%',
             },
           },
         ],
