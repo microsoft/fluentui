@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-import { InvertedBackground, steps } from './utils';
+import { InvertedBackground, BrandBackground, steps } from './utils';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities';
 import type { StoryParameters } from 'storywright';
 
@@ -69,6 +69,15 @@ export const InvertedDisabled = () => (
   </InvertedBackground>
 );
 InvertedDisabled.storyName = 'Inverted disabled';
+
+export const Brand = () => (
+  <BrandBackground>
+    <AnchorLink>Link on brand background</AnchorLink>
+  </BrandBackground>
+);
+
+export const BrandDarkMode = getStoryVariant(Brand, DARK_MODE);
+export const BrandHighContrast = getStoryVariant(Brand, HIGH_CONTRAST);
 
 export const InvertedDisabledHighContrast = getStoryVariant(InvertedDisabled, HIGH_CONTRAST);
 
