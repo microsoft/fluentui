@@ -5,6 +5,21 @@
 ```ts
 
 // @public (undocumented)
+export const borderRadiusCircular = "var(--borderRadiusCircular)";
+
+// @public (undocumented)
+export const borderRadiusLarge = "var(--borderRadiusLarge)";
+
+// @public (undocumented)
+export const borderRadiusMedium = "var(--borderRadiusMedium)";
+
+// @public (undocumented)
+export const borderRadiusNone = "var(--borderRadiusNone)";
+
+// @public (undocumented)
+export const borderRadiusSmall = "var(--borderRadiusSmall)";
+
+// @public (undocumented)
 export type BorderRadiusTokens = {
     borderRadiusNone: string;
     borderRadiusSmall: string;
@@ -15,118 +30,1144 @@ export type BorderRadiusTokens = {
 };
 
 // @public (undocumented)
+export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
+
+// @public (undocumented)
 export type Brands = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160;
 
 // @public (undocumented)
 export type BrandVariants = Record<Brands, string>;
 
 // @public (undocumented)
+export const colorBackgroundOverlay = "var(--colorBackgroundOverlay)";
+
+// @public (undocumented)
+export const colorBrandBackground = "var(--colorBrandBackground)";
+
+// @public (undocumented)
+export const colorBrandBackground2 = "var(--colorBrandBackground2)";
+
+// @public (undocumented)
+export const colorBrandBackground2Hover = "var(--colorBrandBackground2Hover)";
+
+// @public (undocumented)
+export const colorBrandBackground2Pressed = "var(--colorBrandBackground2Pressed)";
+
+// @public (undocumented)
+export const colorBrandBackground3Static = "var(--colorBrandBackground3Static)";
+
+// @public (undocumented)
+export const colorBrandBackground4Static = "var(--colorBrandBackground4Static)";
+
+// @public (undocumented)
+export const colorBrandBackgroundHover = "var(--colorBrandBackgroundHover)";
+
+// @public (undocumented)
+export const colorBrandBackgroundInverted = "var(--colorBrandBackgroundInverted)";
+
+// @public (undocumented)
+export const colorBrandBackgroundInvertedHover = "var(--colorBrandBackgroundInvertedHover)";
+
+// @public (undocumented)
+export const colorBrandBackgroundInvertedPressed = "var(--colorBrandBackgroundInvertedPressed)";
+
+// @public (undocumented)
+export const colorBrandBackgroundInvertedSelected = "var(--colorBrandBackgroundInvertedSelected)";
+
+// @public (undocumented)
+export const colorBrandBackgroundPressed = "var(--colorBrandBackgroundPressed)";
+
+// @public (undocumented)
+export const colorBrandBackgroundSelected = "var(--colorBrandBackgroundSelected)";
+
+// @public (undocumented)
+export const colorBrandBackgroundStatic = "var(--colorBrandBackgroundStatic)";
+
+// @public (undocumented)
+export const colorBrandForeground1 = "var(--colorBrandForeground1)";
+
+// @public (undocumented)
+export const colorBrandForeground2 = "var(--colorBrandForeground2)";
+
+// @public (undocumented)
+export const colorBrandForeground2Hover = "var(--colorBrandForeground2Hover)";
+
+// @public (undocumented)
+export const colorBrandForeground2Pressed = "var(--colorBrandForeground2Pressed)";
+
+// @public (undocumented)
+export const colorBrandForegroundInverted = "var(--colorBrandForegroundInverted)";
+
+// @public (undocumented)
+export const colorBrandForegroundInvertedHover = "var(--colorBrandForegroundInvertedHover)";
+
+// @public (undocumented)
+export const colorBrandForegroundInvertedPressed = "var(--colorBrandForegroundInvertedPressed)";
+
+// @public (undocumented)
+export const colorBrandForegroundLink = "var(--colorBrandForegroundLink)";
+
+// @public (undocumented)
+export const colorBrandForegroundLinkHover = "var(--colorBrandForegroundLinkHover)";
+
+// @public (undocumented)
+export const colorBrandForegroundLinkPressed = "var(--colorBrandForegroundLinkPressed)";
+
+// @public (undocumented)
+export const colorBrandForegroundLinkSelected = "var(--colorBrandForegroundLinkSelected)";
+
+// @public (undocumented)
+export const colorBrandForegroundOnLight = "var(--colorBrandForegroundOnLight)";
+
+// @public (undocumented)
+export const colorBrandForegroundOnLightHover = "var(--colorBrandForegroundOnLightHover)";
+
+// @public (undocumented)
+export const colorBrandForegroundOnLightPressed = "var(--colorBrandForegroundOnLightPressed)";
+
+// @public (undocumented)
+export const colorBrandForegroundOnLightSelected = "var(--colorBrandForegroundOnLightSelected)";
+
+// @public (undocumented)
+export const colorBrandShadowAmbient = "var(--colorBrandShadowAmbient)";
+
+// @public (undocumented)
+export const colorBrandShadowKey = "var(--colorBrandShadowKey)";
+
+// @public (undocumented)
+export const colorBrandStroke1 = "var(--colorBrandStroke1)";
+
+// @public (undocumented)
+export const colorBrandStroke2 = "var(--colorBrandStroke2)";
+
+// @public (undocumented)
+export const colorBrandStroke2Contrast = "var(--colorBrandStroke2Contrast)";
+
+// @public (undocumented)
+export const colorBrandStroke2Hover = "var(--colorBrandStroke2Hover)";
+
+// @public (undocumented)
+export const colorBrandStroke2Pressed = "var(--colorBrandStroke2Pressed)";
+
+// @public (undocumented)
+export const colorCompoundBrandBackground = "var(--colorCompoundBrandBackground)";
+
+// @public (undocumented)
+export const colorCompoundBrandBackgroundHover = "var(--colorCompoundBrandBackgroundHover)";
+
+// @public (undocumented)
+export const colorCompoundBrandBackgroundPressed = "var(--colorCompoundBrandBackgroundPressed)";
+
+// @public (undocumented)
+export const colorCompoundBrandForeground1 = "var(--colorCompoundBrandForeground1)";
+
+// @public (undocumented)
+export const colorCompoundBrandForeground1Hover = "var(--colorCompoundBrandForeground1Hover)";
+
+// @public (undocumented)
+export const colorCompoundBrandForeground1Pressed = "var(--colorCompoundBrandForeground1Pressed)";
+
+// @public (undocumented)
+export const colorCompoundBrandStroke = "var(--colorCompoundBrandStroke)";
+
+// @public (undocumented)
+export const colorCompoundBrandStrokeHover = "var(--colorCompoundBrandStrokeHover)";
+
+// @public (undocumented)
+export const colorCompoundBrandStrokePressed = "var(--colorCompoundBrandStrokePressed)";
+
+// @public (undocumented)
+export const colorNeutralBackground1 = "var(--colorNeutralBackground1)";
+
+// @public (undocumented)
+export const colorNeutralBackground1Hover = "var(--colorNeutralBackground1Hover)";
+
+// @public (undocumented)
+export const colorNeutralBackground1Pressed = "var(--colorNeutralBackground1Pressed)";
+
+// @public (undocumented)
+export const colorNeutralBackground1Selected = "var(--colorNeutralBackground1Selected)";
+
+// @public (undocumented)
+export const colorNeutralBackground2 = "var(--colorNeutralBackground2)";
+
+// @public (undocumented)
+export const colorNeutralBackground2Hover = "var(--colorNeutralBackground2Hover)";
+
+// @public (undocumented)
+export const colorNeutralBackground2Pressed = "var(--colorNeutralBackground2Pressed)";
+
+// @public (undocumented)
+export const colorNeutralBackground2Selected = "var(--colorNeutralBackground2Selected)";
+
+// @public (undocumented)
+export const colorNeutralBackground3 = "var(--colorNeutralBackground3)";
+
+// @public (undocumented)
+export const colorNeutralBackground3Hover = "var(--colorNeutralBackground3Hover)";
+
+// @public (undocumented)
+export const colorNeutralBackground3Pressed = "var(--colorNeutralBackground3Pressed)";
+
+// @public (undocumented)
+export const colorNeutralBackground3Selected = "var(--colorNeutralBackground3Selected)";
+
+// @public (undocumented)
+export const colorNeutralBackground4 = "var(--colorNeutralBackground4)";
+
+// @public (undocumented)
+export const colorNeutralBackground4Hover = "var(--colorNeutralBackground4Hover)";
+
+// @public (undocumented)
+export const colorNeutralBackground4Pressed = "var(--colorNeutralBackground4Pressed)";
+
+// @public (undocumented)
+export const colorNeutralBackground4Selected = "var(--colorNeutralBackground4Selected)";
+
+// @public (undocumented)
+export const colorNeutralBackground5 = "var(--colorNeutralBackground5)";
+
+// @public (undocumented)
+export const colorNeutralBackground5Hover = "var(--colorNeutralBackground5Hover)";
+
+// @public (undocumented)
+export const colorNeutralBackground5Pressed = "var(--colorNeutralBackground5Pressed)";
+
+// @public (undocumented)
+export const colorNeutralBackground5Selected = "var(--colorNeutralBackground5Selected)";
+
+// @public (undocumented)
+export const colorNeutralBackground6 = "var(--colorNeutralBackground6)";
+
+// @public (undocumented)
+export const colorNeutralBackgroundAlpha = "var(--colorNeutralBackgroundAlpha)";
+
+// @public (undocumented)
+export const colorNeutralBackgroundAlpha2 = "var(--colorNeutralBackgroundAlpha2)";
+
+// @public (undocumented)
+export const colorNeutralBackgroundDisabled = "var(--colorNeutralBackgroundDisabled)";
+
+// @public (undocumented)
+export const colorNeutralBackgroundInverted = "var(--colorNeutralBackgroundInverted)";
+
+// @public (undocumented)
+export const colorNeutralBackgroundInvertedDisabled = "var(--colorNeutralBackgroundInvertedDisabled)";
+
+// @public (undocumented)
+export const colorNeutralBackgroundStatic = "var(--colorNeutralBackgroundStatic)";
+
+// @public (undocumented)
+export const colorNeutralCardBackground = "var(--colorNeutralCardBackground)";
+
+// @public (undocumented)
+export const colorNeutralCardBackgroundDisabled = "var(--colorNeutralCardBackgroundDisabled)";
+
+// @public (undocumented)
+export const colorNeutralCardBackgroundHover = "var(--colorNeutralCardBackgroundHover)";
+
+// @public (undocumented)
+export const colorNeutralCardBackgroundPressed = "var(--colorNeutralCardBackgroundPressed)";
+
+// @public (undocumented)
+export const colorNeutralCardBackgroundSelected = "var(--colorNeutralCardBackgroundSelected)";
+
+// @public (undocumented)
+export const colorNeutralForeground1 = "var(--colorNeutralForeground1)";
+
+// @public (undocumented)
+export const colorNeutralForeground1Hover = "var(--colorNeutralForeground1Hover)";
+
+// @public (undocumented)
+export const colorNeutralForeground1Pressed = "var(--colorNeutralForeground1Pressed)";
+
+// @public (undocumented)
+export const colorNeutralForeground1Selected = "var(--colorNeutralForeground1Selected)";
+
+// @public (undocumented)
+export const colorNeutralForeground1Static = "var(--colorNeutralForeground1Static)";
+
+// @public (undocumented)
+export const colorNeutralForeground2 = "var(--colorNeutralForeground2)";
+
+// @public (undocumented)
+export const colorNeutralForeground2BrandHover = "var(--colorNeutralForeground2BrandHover)";
+
+// @public (undocumented)
+export const colorNeutralForeground2BrandPressed = "var(--colorNeutralForeground2BrandPressed)";
+
+// @public (undocumented)
+export const colorNeutralForeground2BrandSelected = "var(--colorNeutralForeground2BrandSelected)";
+
+// @public (undocumented)
+export const colorNeutralForeground2Hover = "var(--colorNeutralForeground2Hover)";
+
+// @public (undocumented)
+export const colorNeutralForeground2Link = "var(--colorNeutralForeground2Link)";
+
+// @public (undocumented)
+export const colorNeutralForeground2LinkHover = "var(--colorNeutralForeground2LinkHover)";
+
+// @public (undocumented)
+export const colorNeutralForeground2LinkPressed = "var(--colorNeutralForeground2LinkPressed)";
+
+// @public (undocumented)
+export const colorNeutralForeground2LinkSelected = "var(--colorNeutralForeground2LinkSelected)";
+
+// @public (undocumented)
+export const colorNeutralForeground2Pressed = "var(--colorNeutralForeground2Pressed)";
+
+// @public (undocumented)
+export const colorNeutralForeground2Selected = "var(--colorNeutralForeground2Selected)";
+
+// @public (undocumented)
+export const colorNeutralForeground3 = "var(--colorNeutralForeground3)";
+
+// @public (undocumented)
+export const colorNeutralForeground3BrandHover = "var(--colorNeutralForeground3BrandHover)";
+
+// @public (undocumented)
+export const colorNeutralForeground3BrandPressed = "var(--colorNeutralForeground3BrandPressed)";
+
+// @public (undocumented)
+export const colorNeutralForeground3BrandSelected = "var(--colorNeutralForeground3BrandSelected)";
+
+// @public (undocumented)
+export const colorNeutralForeground3Hover = "var(--colorNeutralForeground3Hover)";
+
+// @public (undocumented)
+export const colorNeutralForeground3Pressed = "var(--colorNeutralForeground3Pressed)";
+
+// @public (undocumented)
+export const colorNeutralForeground3Selected = "var(--colorNeutralForeground3Selected)";
+
+// @public (undocumented)
+export const colorNeutralForeground4 = "var(--colorNeutralForeground4)";
+
+// @public (undocumented)
+export const colorNeutralForegroundDisabled = "var(--colorNeutralForegroundDisabled)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInverted = "var(--colorNeutralForegroundInverted)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInverted2 = "var(--colorNeutralForegroundInverted2)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedDisabled = "var(--colorNeutralForegroundInvertedDisabled)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedHover = "var(--colorNeutralForegroundInvertedHover)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedLink = "var(--colorNeutralForegroundInvertedLink)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedLinkHover = "var(--colorNeutralForegroundInvertedLinkHover)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedLinkPressed = "var(--colorNeutralForegroundInvertedLinkPressed)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedLinkSelected = "var(--colorNeutralForegroundInvertedLinkSelected)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedPressed = "var(--colorNeutralForegroundInvertedPressed)";
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedSelected = "var(--colorNeutralForegroundInvertedSelected)";
+
+// @public (undocumented)
+export const colorNeutralForegroundOnBrand = "var(--colorNeutralForegroundOnBrand)";
+
+// @public (undocumented)
+export const colorNeutralForegroundStaticInverted = "var(--colorNeutralForegroundStaticInverted)";
+
+// @public (undocumented)
+export const colorNeutralShadowAmbient = "var(--colorNeutralShadowAmbient)";
+
+// @public (undocumented)
+export const colorNeutralShadowAmbientDarker = "var(--colorNeutralShadowAmbientDarker)";
+
+// @public (undocumented)
+export const colorNeutralShadowAmbientLighter = "var(--colorNeutralShadowAmbientLighter)";
+
+// @public (undocumented)
+export const colorNeutralShadowKey = "var(--colorNeutralShadowKey)";
+
+// @public (undocumented)
+export const colorNeutralShadowKeyDarker = "var(--colorNeutralShadowKeyDarker)";
+
+// @public (undocumented)
+export const colorNeutralShadowKeyLighter = "var(--colorNeutralShadowKeyLighter)";
+
+// @public (undocumented)
+export const colorNeutralStencil1 = "var(--colorNeutralStencil1)";
+
+// @public (undocumented)
+export const colorNeutralStencil1Alpha = "var(--colorNeutralStencil1Alpha)";
+
+// @public (undocumented)
+export const colorNeutralStencil2 = "var(--colorNeutralStencil2)";
+
+// @public (undocumented)
+export const colorNeutralStencil2Alpha = "var(--colorNeutralStencil2Alpha)";
+
+// @public (undocumented)
+export const colorNeutralStroke1 = "var(--colorNeutralStroke1)";
+
+// @public (undocumented)
+export const colorNeutralStroke1Hover = "var(--colorNeutralStroke1Hover)";
+
+// @public (undocumented)
+export const colorNeutralStroke1Pressed = "var(--colorNeutralStroke1Pressed)";
+
+// @public (undocumented)
+export const colorNeutralStroke1Selected = "var(--colorNeutralStroke1Selected)";
+
+// @public (undocumented)
+export const colorNeutralStroke2 = "var(--colorNeutralStroke2)";
+
+// @public (undocumented)
+export const colorNeutralStroke3 = "var(--colorNeutralStroke3)";
+
+// @public (undocumented)
+export const colorNeutralStrokeAccessible = "var(--colorNeutralStrokeAccessible)";
+
+// @public (undocumented)
+export const colorNeutralStrokeAccessibleHover = "var(--colorNeutralStrokeAccessibleHover)";
+
+// @public (undocumented)
+export const colorNeutralStrokeAccessiblePressed = "var(--colorNeutralStrokeAccessiblePressed)";
+
+// @public (undocumented)
+export const colorNeutralStrokeAccessibleSelected = "var(--colorNeutralStrokeAccessibleSelected)";
+
+// @public (undocumented)
+export const colorNeutralStrokeAlpha = "var(--colorNeutralStrokeAlpha)";
+
+// @public (undocumented)
+export const colorNeutralStrokeAlpha2 = "var(--colorNeutralStrokeAlpha2)";
+
+// @public (undocumented)
+export const colorNeutralStrokeDisabled = "var(--colorNeutralStrokeDisabled)";
+
+// @public (undocumented)
+export const colorNeutralStrokeInvertedDisabled = "var(--colorNeutralStrokeInvertedDisabled)";
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand = "var(--colorNeutralStrokeOnBrand)";
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand2 = "var(--colorNeutralStrokeOnBrand2)";
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand2Hover = "var(--colorNeutralStrokeOnBrand2Hover)";
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand2Pressed = "var(--colorNeutralStrokeOnBrand2Pressed)";
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand2Selected = "var(--colorNeutralStrokeOnBrand2Selected)";
+
+// @public (undocumented)
+export const colorNeutralStrokeSubtle = "var(--colorNeutralStrokeSubtle)";
+
+// @public (undocumented)
 export type ColorPaletteAnchor = 'colorPaletteAnchorBackground2' | 'colorPaletteAnchorForeground2' | 'colorPaletteAnchorBorderActive';
+
+// @public (undocumented)
+export const colorPaletteAnchorBackground2 = "var(--colorPaletteAnchorBackground2)";
+
+// @public (undocumented)
+export const colorPaletteAnchorBorderActive = "var(--colorPaletteAnchorBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteAnchorForeground2 = "var(--colorPaletteAnchorForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteBeige = 'colorPaletteBeigeBackground2' | 'colorPaletteBeigeForeground2' | 'colorPaletteBeigeBorderActive';
 
 // @public (undocumented)
+export const colorPaletteBeigeBackground2 = "var(--colorPaletteBeigeBackground2)";
+
+// @public (undocumented)
+export const colorPaletteBeigeBorderActive = "var(--colorPaletteBeigeBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteBeigeForeground2 = "var(--colorPaletteBeigeForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteBerry = 'colorPaletteBerryBackground1' | 'colorPaletteBerryBackground2' | 'colorPaletteBerryBackground3' | 'colorPaletteBerryForeground1' | 'colorPaletteBerryForeground2' | 'colorPaletteBerryForeground3' | 'colorPaletteBerryBorderActive' | 'colorPaletteBerryBorder1' | 'colorPaletteBerryBorder2';
+
+// @public (undocumented)
+export const colorPaletteBerryBackground1 = "var(--colorPaletteBerryBackground1)";
+
+// @public (undocumented)
+export const colorPaletteBerryBackground2 = "var(--colorPaletteBerryBackground2)";
+
+// @public (undocumented)
+export const colorPaletteBerryBackground3 = "var(--colorPaletteBerryBackground3)";
+
+// @public (undocumented)
+export const colorPaletteBerryBorder1 = "var(--colorPaletteBerryBorder1)";
+
+// @public (undocumented)
+export const colorPaletteBerryBorder2 = "var(--colorPaletteBerryBorder2)";
+
+// @public (undocumented)
+export const colorPaletteBerryBorderActive = "var(--colorPaletteBerryBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteBerryForeground1 = "var(--colorPaletteBerryForeground1)";
+
+// @public (undocumented)
+export const colorPaletteBerryForeground2 = "var(--colorPaletteBerryForeground2)";
+
+// @public (undocumented)
+export const colorPaletteBerryForeground3 = "var(--colorPaletteBerryForeground3)";
 
 // @public (undocumented)
 export type ColorPaletteBlue = 'colorPaletteBlueBackground2' | 'colorPaletteBlueForeground2' | 'colorPaletteBlueBorderActive';
 
 // @public (undocumented)
+export const colorPaletteBlueBackground2 = "var(--colorPaletteBlueBackground2)";
+
+// @public (undocumented)
+export const colorPaletteBlueBorderActive = "var(--colorPaletteBlueBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteBlueForeground2 = "var(--colorPaletteBlueForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteBrass = 'colorPaletteBrassBackground2' | 'colorPaletteBrassForeground2' | 'colorPaletteBrassBorderActive';
+
+// @public (undocumented)
+export const colorPaletteBrassBackground2 = "var(--colorPaletteBrassBackground2)";
+
+// @public (undocumented)
+export const colorPaletteBrassBorderActive = "var(--colorPaletteBrassBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteBrassForeground2 = "var(--colorPaletteBrassForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteBrown = 'colorPaletteBrownBackground2' | 'colorPaletteBrownForeground2' | 'colorPaletteBrownBorderActive';
 
 // @public (undocumented)
+export const colorPaletteBrownBackground2 = "var(--colorPaletteBrownBackground2)";
+
+// @public (undocumented)
+export const colorPaletteBrownBorderActive = "var(--colorPaletteBrownBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteBrownForeground2 = "var(--colorPaletteBrownForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteCornflower = 'colorPaletteCornflowerBackground2' | 'colorPaletteCornflowerForeground2' | 'colorPaletteCornflowerBorderActive';
+
+// @public (undocumented)
+export const colorPaletteCornflowerBackground2 = "var(--colorPaletteCornflowerBackground2)";
+
+// @public (undocumented)
+export const colorPaletteCornflowerBorderActive = "var(--colorPaletteCornflowerBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteCornflowerForeground2 = "var(--colorPaletteCornflowerForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteCranberry = 'colorPaletteCranberryBackground2' | 'colorPaletteCranberryForeground2' | 'colorPaletteCranberryBorderActive';
 
 // @public (undocumented)
+export const colorPaletteCranberryBackground2 = "var(--colorPaletteCranberryBackground2)";
+
+// @public (undocumented)
+export const colorPaletteCranberryBorderActive = "var(--colorPaletteCranberryBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteCranberryForeground2 = "var(--colorPaletteCranberryForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteDarkGreen = 'colorPaletteDarkGreenBackground2' | 'colorPaletteDarkGreenForeground2' | 'colorPaletteDarkGreenBorderActive';
+
+// @public (undocumented)
+export const colorPaletteDarkGreenBackground2 = "var(--colorPaletteDarkGreenBackground2)";
+
+// @public (undocumented)
+export const colorPaletteDarkGreenBorderActive = "var(--colorPaletteDarkGreenBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteDarkGreenForeground2 = "var(--colorPaletteDarkGreenForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteDarkOrange = 'colorPaletteDarkOrangeBackground1' | 'colorPaletteDarkOrangeBackground2' | 'colorPaletteDarkOrangeBackground3' | 'colorPaletteDarkOrangeForeground1' | 'colorPaletteDarkOrangeForeground2' | 'colorPaletteDarkOrangeForeground3' | 'colorPaletteDarkOrangeBorderActive' | 'colorPaletteDarkOrangeBorder1' | 'colorPaletteDarkOrangeBorder2';
 
 // @public (undocumented)
+export const colorPaletteDarkOrangeBackground1 = "var(--colorPaletteDarkOrangeBackground1)";
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBackground2 = "var(--colorPaletteDarkOrangeBackground2)";
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBackground3 = "var(--colorPaletteDarkOrangeBackground3)";
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBorder1 = "var(--colorPaletteDarkOrangeBorder1)";
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBorder2 = "var(--colorPaletteDarkOrangeBorder2)";
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBorderActive = "var(--colorPaletteDarkOrangeBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeForeground1 = "var(--colorPaletteDarkOrangeForeground1)";
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeForeground2 = "var(--colorPaletteDarkOrangeForeground2)";
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeForeground3 = "var(--colorPaletteDarkOrangeForeground3)";
+
+// @public (undocumented)
 export type ColorPaletteDarkRed = 'colorPaletteDarkRedBackground2' | 'colorPaletteDarkRedForeground2' | 'colorPaletteDarkRedBorderActive';
+
+// @public (undocumented)
+export const colorPaletteDarkRedBackground2 = "var(--colorPaletteDarkRedBackground2)";
+
+// @public (undocumented)
+export const colorPaletteDarkRedBorderActive = "var(--colorPaletteDarkRedBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteDarkRedForeground2 = "var(--colorPaletteDarkRedForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteForest = 'colorPaletteForestBackground2' | 'colorPaletteForestForeground2' | 'colorPaletteForestBorderActive';
 
 // @public (undocumented)
+export const colorPaletteForestBackground2 = "var(--colorPaletteForestBackground2)";
+
+// @public (undocumented)
+export const colorPaletteForestBorderActive = "var(--colorPaletteForestBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteForestForeground2 = "var(--colorPaletteForestForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteGold = 'colorPaletteGoldBackground2' | 'colorPaletteGoldForeground2' | 'colorPaletteGoldBorderActive';
+
+// @public (undocumented)
+export const colorPaletteGoldBackground2 = "var(--colorPaletteGoldBackground2)";
+
+// @public (undocumented)
+export const colorPaletteGoldBorderActive = "var(--colorPaletteGoldBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteGoldForeground2 = "var(--colorPaletteGoldForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteGrape = 'colorPaletteGrapeBackground2' | 'colorPaletteGrapeForeground2' | 'colorPaletteGrapeBorderActive';
 
 // @public (undocumented)
+export const colorPaletteGrapeBackground2 = "var(--colorPaletteGrapeBackground2)";
+
+// @public (undocumented)
+export const colorPaletteGrapeBorderActive = "var(--colorPaletteGrapeBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteGrapeForeground2 = "var(--colorPaletteGrapeForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteGreen = 'colorPaletteGreenBackground1' | 'colorPaletteGreenBackground2' | 'colorPaletteGreenBackground3' | 'colorPaletteGreenForeground1' | 'colorPaletteGreenForeground2' | 'colorPaletteGreenForeground3' | 'colorPaletteGreenForegroundInverted' | 'colorPaletteGreenBorderActive' | 'colorPaletteGreenBorder1' | 'colorPaletteGreenBorder2';
+
+// @public (undocumented)
+export const colorPaletteGreenBackground1 = "var(--colorPaletteGreenBackground1)";
+
+// @public (undocumented)
+export const colorPaletteGreenBackground2 = "var(--colorPaletteGreenBackground2)";
+
+// @public (undocumented)
+export const colorPaletteGreenBackground3 = "var(--colorPaletteGreenBackground3)";
+
+// @public (undocumented)
+export const colorPaletteGreenBorder1 = "var(--colorPaletteGreenBorder1)";
+
+// @public (undocumented)
+export const colorPaletteGreenBorder2 = "var(--colorPaletteGreenBorder2)";
+
+// @public (undocumented)
+export const colorPaletteGreenBorderActive = "var(--colorPaletteGreenBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteGreenForeground1 = "var(--colorPaletteGreenForeground1)";
+
+// @public (undocumented)
+export const colorPaletteGreenForeground2 = "var(--colorPaletteGreenForeground2)";
+
+// @public (undocumented)
+export const colorPaletteGreenForeground3 = "var(--colorPaletteGreenForeground3)";
+
+// @public (undocumented)
+export const colorPaletteGreenForegroundInverted = "var(--colorPaletteGreenForegroundInverted)";
 
 // @public (undocumented)
 export type ColorPaletteLavender = 'colorPaletteLavenderBackground2' | 'colorPaletteLavenderForeground2' | 'colorPaletteLavenderBorderActive';
 
 // @public (undocumented)
+export const colorPaletteLavenderBackground2 = "var(--colorPaletteLavenderBackground2)";
+
+// @public (undocumented)
+export const colorPaletteLavenderBorderActive = "var(--colorPaletteLavenderBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteLavenderForeground2 = "var(--colorPaletteLavenderForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteLightGreen = 'colorPaletteLightGreenBackground1' | 'colorPaletteLightGreenBackground2' | 'colorPaletteLightGreenBackground3' | 'colorPaletteLightGreenForeground1' | 'colorPaletteLightGreenForeground2' | 'colorPaletteLightGreenForeground3' | 'colorPaletteLightGreenBorderActive' | 'colorPaletteLightGreenBorder1' | 'colorPaletteLightGreenBorder2';
+
+// @public (undocumented)
+export const colorPaletteLightGreenBackground1 = "var(--colorPaletteLightGreenBackground1)";
+
+// @public (undocumented)
+export const colorPaletteLightGreenBackground2 = "var(--colorPaletteLightGreenBackground2)";
+
+// @public (undocumented)
+export const colorPaletteLightGreenBackground3 = "var(--colorPaletteLightGreenBackground3)";
+
+// @public (undocumented)
+export const colorPaletteLightGreenBorder1 = "var(--colorPaletteLightGreenBorder1)";
+
+// @public (undocumented)
+export const colorPaletteLightGreenBorder2 = "var(--colorPaletteLightGreenBorder2)";
+
+// @public (undocumented)
+export const colorPaletteLightGreenBorderActive = "var(--colorPaletteLightGreenBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteLightGreenForeground1 = "var(--colorPaletteLightGreenForeground1)";
+
+// @public (undocumented)
+export const colorPaletteLightGreenForeground2 = "var(--colorPaletteLightGreenForeground2)";
+
+// @public (undocumented)
+export const colorPaletteLightGreenForeground3 = "var(--colorPaletteLightGreenForeground3)";
 
 // @public (undocumented)
 export type ColorPaletteLightTeal = 'colorPaletteLightTealBackground2' | 'colorPaletteLightTealForeground2' | 'colorPaletteLightTealBorderActive';
 
 // @public (undocumented)
+export const colorPaletteLightTealBackground2 = "var(--colorPaletteLightTealBackground2)";
+
+// @public (undocumented)
+export const colorPaletteLightTealBorderActive = "var(--colorPaletteLightTealBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteLightTealForeground2 = "var(--colorPaletteLightTealForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteLilac = 'colorPaletteLilacBackground2' | 'colorPaletteLilacForeground2' | 'colorPaletteLilacBorderActive';
+
+// @public (undocumented)
+export const colorPaletteLilacBackground2 = "var(--colorPaletteLilacBackground2)";
+
+// @public (undocumented)
+export const colorPaletteLilacBorderActive = "var(--colorPaletteLilacBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteLilacForeground2 = "var(--colorPaletteLilacForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteMagenta = 'colorPaletteMagentaBackground2' | 'colorPaletteMagentaForeground2' | 'colorPaletteMagentaBorderActive';
 
 // @public (undocumented)
+export const colorPaletteMagentaBackground2 = "var(--colorPaletteMagentaBackground2)";
+
+// @public (undocumented)
+export const colorPaletteMagentaBorderActive = "var(--colorPaletteMagentaBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteMagentaForeground2 = "var(--colorPaletteMagentaForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteMarigold = 'colorPaletteMarigoldBackground1' | 'colorPaletteMarigoldBackground2' | 'colorPaletteMarigoldBackground3' | 'colorPaletteMarigoldForeground1' | 'colorPaletteMarigoldForeground2' | 'colorPaletteMarigoldForeground3' | 'colorPaletteMarigoldBorderActive' | 'colorPaletteMarigoldBorder1' | 'colorPaletteMarigoldBorder2';
+
+// @public (undocumented)
+export const colorPaletteMarigoldBackground1 = "var(--colorPaletteMarigoldBackground1)";
+
+// @public (undocumented)
+export const colorPaletteMarigoldBackground2 = "var(--colorPaletteMarigoldBackground2)";
+
+// @public (undocumented)
+export const colorPaletteMarigoldBackground3 = "var(--colorPaletteMarigoldBackground3)";
+
+// @public (undocumented)
+export const colorPaletteMarigoldBorder1 = "var(--colorPaletteMarigoldBorder1)";
+
+// @public (undocumented)
+export const colorPaletteMarigoldBorder2 = "var(--colorPaletteMarigoldBorder2)";
+
+// @public (undocumented)
+export const colorPaletteMarigoldBorderActive = "var(--colorPaletteMarigoldBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteMarigoldForeground1 = "var(--colorPaletteMarigoldForeground1)";
+
+// @public (undocumented)
+export const colorPaletteMarigoldForeground2 = "var(--colorPaletteMarigoldForeground2)";
+
+// @public (undocumented)
+export const colorPaletteMarigoldForeground3 = "var(--colorPaletteMarigoldForeground3)";
 
 // @public (undocumented)
 export type ColorPaletteMink = 'colorPaletteMinkBackground2' | 'colorPaletteMinkForeground2' | 'colorPaletteMinkBorderActive';
 
 // @public (undocumented)
+export const colorPaletteMinkBackground2 = "var(--colorPaletteMinkBackground2)";
+
+// @public (undocumented)
+export const colorPaletteMinkBorderActive = "var(--colorPaletteMinkBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteMinkForeground2 = "var(--colorPaletteMinkForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteNavy = 'colorPaletteNavyBackground2' | 'colorPaletteNavyForeground2' | 'colorPaletteNavyBorderActive';
+
+// @public (undocumented)
+export const colorPaletteNavyBackground2 = "var(--colorPaletteNavyBackground2)";
+
+// @public (undocumented)
+export const colorPaletteNavyBorderActive = "var(--colorPaletteNavyBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteNavyForeground2 = "var(--colorPaletteNavyForeground2)";
 
 // @public (undocumented)
 export type ColorPalettePeach = 'colorPalettePeachBackground2' | 'colorPalettePeachForeground2' | 'colorPalettePeachBorderActive';
 
 // @public (undocumented)
+export const colorPalettePeachBackground2 = "var(--colorPalettePeachBackground2)";
+
+// @public (undocumented)
+export const colorPalettePeachBorderActive = "var(--colorPalettePeachBorderActive)";
+
+// @public (undocumented)
+export const colorPalettePeachForeground2 = "var(--colorPalettePeachForeground2)";
+
+// @public (undocumented)
 export type ColorPalettePink = 'colorPalettePinkBackground2' | 'colorPalettePinkForeground2' | 'colorPalettePinkBorderActive';
+
+// @public (undocumented)
+export const colorPalettePinkBackground2 = "var(--colorPalettePinkBackground2)";
+
+// @public (undocumented)
+export const colorPalettePinkBorderActive = "var(--colorPalettePinkBorderActive)";
+
+// @public (undocumented)
+export const colorPalettePinkForeground2 = "var(--colorPalettePinkForeground2)";
 
 // @public (undocumented)
 export type ColorPalettePlatinum = 'colorPalettePlatinumBackground2' | 'colorPalettePlatinumForeground2' | 'colorPalettePlatinumBorderActive';
 
 // @public (undocumented)
+export const colorPalettePlatinumBackground2 = "var(--colorPalettePlatinumBackground2)";
+
+// @public (undocumented)
+export const colorPalettePlatinumBorderActive = "var(--colorPalettePlatinumBorderActive)";
+
+// @public (undocumented)
+export const colorPalettePlatinumForeground2 = "var(--colorPalettePlatinumForeground2)";
+
+// @public (undocumented)
 export type ColorPalettePlum = 'colorPalettePlumBackground2' | 'colorPalettePlumForeground2' | 'colorPalettePlumBorderActive';
+
+// @public (undocumented)
+export const colorPalettePlumBackground2 = "var(--colorPalettePlumBackground2)";
+
+// @public (undocumented)
+export const colorPalettePlumBorderActive = "var(--colorPalettePlumBorderActive)";
+
+// @public (undocumented)
+export const colorPalettePlumForeground2 = "var(--colorPalettePlumForeground2)";
 
 // @public (undocumented)
 export type ColorPalettePumpkin = 'colorPalettePumpkinBackground2' | 'colorPalettePumpkinForeground2' | 'colorPalettePumpkinBorderActive';
 
 // @public (undocumented)
+export const colorPalettePumpkinBackground2 = "var(--colorPalettePumpkinBackground2)";
+
+// @public (undocumented)
+export const colorPalettePumpkinBorderActive = "var(--colorPalettePumpkinBorderActive)";
+
+// @public (undocumented)
+export const colorPalettePumpkinForeground2 = "var(--colorPalettePumpkinForeground2)";
+
+// @public (undocumented)
 export type ColorPalettePurple = 'colorPalettePurpleBackground2' | 'colorPalettePurpleForeground2' | 'colorPalettePurpleBorderActive';
+
+// @public (undocumented)
+export const colorPalettePurpleBackground2 = "var(--colorPalettePurpleBackground2)";
+
+// @public (undocumented)
+export const colorPalettePurpleBorderActive = "var(--colorPalettePurpleBorderActive)";
+
+// @public (undocumented)
+export const colorPalettePurpleForeground2 = "var(--colorPalettePurpleForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteRed = 'colorPaletteRedBackground1' | 'colorPaletteRedBackground2' | 'colorPaletteRedBackground3' | 'colorPaletteRedForeground1' | 'colorPaletteRedForeground2' | 'colorPaletteRedForeground3' | 'colorPaletteRedForegroundInverted' | 'colorPaletteRedBorderActive' | 'colorPaletteRedBorder1' | 'colorPaletteRedBorder2';
 
 // @public (undocumented)
+export const colorPaletteRedBackground1 = "var(--colorPaletteRedBackground1)";
+
+// @public (undocumented)
+export const colorPaletteRedBackground2 = "var(--colorPaletteRedBackground2)";
+
+// @public (undocumented)
+export const colorPaletteRedBackground3 = "var(--colorPaletteRedBackground3)";
+
+// @public (undocumented)
+export const colorPaletteRedBorder1 = "var(--colorPaletteRedBorder1)";
+
+// @public (undocumented)
+export const colorPaletteRedBorder2 = "var(--colorPaletteRedBorder2)";
+
+// @public (undocumented)
+export const colorPaletteRedBorderActive = "var(--colorPaletteRedBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteRedForeground1 = "var(--colorPaletteRedForeground1)";
+
+// @public (undocumented)
+export const colorPaletteRedForeground2 = "var(--colorPaletteRedForeground2)";
+
+// @public (undocumented)
+export const colorPaletteRedForeground3 = "var(--colorPaletteRedForeground3)";
+
+// @public (undocumented)
+export const colorPaletteRedForegroundInverted = "var(--colorPaletteRedForegroundInverted)";
+
+// @public (undocumented)
 export type ColorPaletteRoyalBlue = 'colorPaletteRoyalBlueBackground2' | 'colorPaletteRoyalBlueForeground2' | 'colorPaletteRoyalBlueBorderActive';
+
+// @public (undocumented)
+export const colorPaletteRoyalBlueBackground2 = "var(--colorPaletteRoyalBlueBackground2)";
+
+// @public (undocumented)
+export const colorPaletteRoyalBlueBorderActive = "var(--colorPaletteRoyalBlueBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteRoyalBlueForeground2 = "var(--colorPaletteRoyalBlueForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteSeafoam = 'colorPaletteSeafoamBackground2' | 'colorPaletteSeafoamForeground2' | 'colorPaletteSeafoamBorderActive';
 
 // @public (undocumented)
+export const colorPaletteSeafoamBackground2 = "var(--colorPaletteSeafoamBackground2)";
+
+// @public (undocumented)
+export const colorPaletteSeafoamBorderActive = "var(--colorPaletteSeafoamBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteSeafoamForeground2 = "var(--colorPaletteSeafoamForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteSteel = 'colorPaletteSteelBackground2' | 'colorPaletteSteelForeground2' | 'colorPaletteSteelBorderActive';
 
 // @public (undocumented)
+export const colorPaletteSteelBackground2 = "var(--colorPaletteSteelBackground2)";
+
+// @public (undocumented)
+export const colorPaletteSteelBorderActive = "var(--colorPaletteSteelBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteSteelForeground2 = "var(--colorPaletteSteelForeground2)";
+
+// @public (undocumented)
 export type ColorPaletteTeal = 'colorPaletteTealBackground2' | 'colorPaletteTealForeground2' | 'colorPaletteTealBorderActive';
+
+// @public (undocumented)
+export const colorPaletteTealBackground2 = "var(--colorPaletteTealBackground2)";
+
+// @public (undocumented)
+export const colorPaletteTealBorderActive = "var(--colorPaletteTealBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteTealForeground2 = "var(--colorPaletteTealForeground2)";
 
 // @public (undocumented)
 export type ColorPaletteTokens = StatusColorPaletteTokens & PersonaColorPaletteTokens;
 
 // @public (undocumented)
 export type ColorPaletteYellow = 'colorPaletteYellowBackground1' | 'colorPaletteYellowBackground2' | 'colorPaletteYellowBackground3' | 'colorPaletteYellowForeground1' | 'colorPaletteYellowForeground2' | 'colorPaletteYellowForeground3' | 'colorPaletteYellowForegroundInverted' | 'colorPaletteYellowBorderActive' | 'colorPaletteYellowBorder1' | 'colorPaletteYellowBorder2';
+
+// @public (undocumented)
+export const colorPaletteYellowBackground1 = "var(--colorPaletteYellowBackground1)";
+
+// @public (undocumented)
+export const colorPaletteYellowBackground2 = "var(--colorPaletteYellowBackground2)";
+
+// @public (undocumented)
+export const colorPaletteYellowBackground3 = "var(--colorPaletteYellowBackground3)";
+
+// @public (undocumented)
+export const colorPaletteYellowBorder1 = "var(--colorPaletteYellowBorder1)";
+
+// @public (undocumented)
+export const colorPaletteYellowBorder2 = "var(--colorPaletteYellowBorder2)";
+
+// @public (undocumented)
+export const colorPaletteYellowBorderActive = "var(--colorPaletteYellowBorderActive)";
+
+// @public (undocumented)
+export const colorPaletteYellowForeground1 = "var(--colorPaletteYellowForeground1)";
+
+// @public (undocumented)
+export const colorPaletteYellowForeground2 = "var(--colorPaletteYellowForeground2)";
+
+// @public (undocumented)
+export const colorPaletteYellowForeground3 = "var(--colorPaletteYellowForeground3)";
+
+// @public (undocumented)
+export const colorPaletteYellowForegroundInverted = "var(--colorPaletteYellowForegroundInverted)";
+
+// @public (undocumented)
+export const colorScrollbarOverlay = "var(--colorScrollbarOverlay)";
+
+// @public (undocumented)
+export const colorStatusDangerBackground1 = "var(--colorStatusDangerBackground1)";
+
+// @public (undocumented)
+export const colorStatusDangerBackground2 = "var(--colorStatusDangerBackground2)";
+
+// @public (undocumented)
+export const colorStatusDangerBackground3 = "var(--colorStatusDangerBackground3)";
+
+// @public (undocumented)
+export const colorStatusDangerBackground3Hover = "var(--colorStatusDangerBackground3Hover)";
+
+// @public (undocumented)
+export const colorStatusDangerBackground3Pressed = "var(--colorStatusDangerBackground3Pressed)";
+
+// @public (undocumented)
+export const colorStatusDangerBorder1 = "var(--colorStatusDangerBorder1)";
+
+// @public (undocumented)
+export const colorStatusDangerBorder2 = "var(--colorStatusDangerBorder2)";
+
+// @public (undocumented)
+export const colorStatusDangerBorderActive = "var(--colorStatusDangerBorderActive)";
+
+// @public (undocumented)
+export const colorStatusDangerForeground1 = "var(--colorStatusDangerForeground1)";
+
+// @public (undocumented)
+export const colorStatusDangerForeground2 = "var(--colorStatusDangerForeground2)";
+
+// @public (undocumented)
+export const colorStatusDangerForeground3 = "var(--colorStatusDangerForeground3)";
+
+// @public (undocumented)
+export const colorStatusDangerForegroundInverted = "var(--colorStatusDangerForegroundInverted)";
+
+// @public (undocumented)
+export const colorStatusSuccessBackground1 = "var(--colorStatusSuccessBackground1)";
+
+// @public (undocumented)
+export const colorStatusSuccessBackground2 = "var(--colorStatusSuccessBackground2)";
+
+// @public (undocumented)
+export const colorStatusSuccessBackground3 = "var(--colorStatusSuccessBackground3)";
+
+// @public (undocumented)
+export const colorStatusSuccessBorder1 = "var(--colorStatusSuccessBorder1)";
+
+// @public (undocumented)
+export const colorStatusSuccessBorder2 = "var(--colorStatusSuccessBorder2)";
+
+// @public (undocumented)
+export const colorStatusSuccessBorderActive = "var(--colorStatusSuccessBorderActive)";
+
+// @public (undocumented)
+export const colorStatusSuccessForeground1 = "var(--colorStatusSuccessForeground1)";
+
+// @public (undocumented)
+export const colorStatusSuccessForeground2 = "var(--colorStatusSuccessForeground2)";
+
+// @public (undocumented)
+export const colorStatusSuccessForeground3 = "var(--colorStatusSuccessForeground3)";
+
+// @public (undocumented)
+export const colorStatusSuccessForegroundInverted = "var(--colorStatusSuccessForegroundInverted)";
+
+// @public (undocumented)
+export const colorStatusWarningBackground1 = "var(--colorStatusWarningBackground1)";
+
+// @public (undocumented)
+export const colorStatusWarningBackground2 = "var(--colorStatusWarningBackground2)";
+
+// @public (undocumented)
+export const colorStatusWarningBackground3 = "var(--colorStatusWarningBackground3)";
+
+// @public (undocumented)
+export const colorStatusWarningBorder1 = "var(--colorStatusWarningBorder1)";
+
+// @public (undocumented)
+export const colorStatusWarningBorder2 = "var(--colorStatusWarningBorder2)";
+
+// @public (undocumented)
+export const colorStatusWarningBorderActive = "var(--colorStatusWarningBorderActive)";
+
+// @public (undocumented)
+export const colorStatusWarningForeground1 = "var(--colorStatusWarningForeground1)";
+
+// @public (undocumented)
+export const colorStatusWarningForeground2 = "var(--colorStatusWarningForeground2)";
+
+// @public (undocumented)
+export const colorStatusWarningForeground3 = "var(--colorStatusWarningForeground3)";
+
+// @public (undocumented)
+export const colorStatusWarningForegroundInverted = "var(--colorStatusWarningForegroundInverted)";
+
+// @public (undocumented)
+export const colorStrokeFocus1 = "var(--colorStrokeFocus1)";
+
+// @public (undocumented)
+export const colorStrokeFocus2 = "var(--colorStrokeFocus2)";
+
+// @public (undocumented)
+export const colorSubtleBackground = "var(--colorSubtleBackground)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundHover = "var(--colorSubtleBackgroundHover)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundInverted = "var(--colorSubtleBackgroundInverted)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundInvertedHover = "var(--colorSubtleBackgroundInvertedHover)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundInvertedPressed = "var(--colorSubtleBackgroundInvertedPressed)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundInvertedSelected = "var(--colorSubtleBackgroundInvertedSelected)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundLightAlphaHover = "var(--colorSubtleBackgroundLightAlphaHover)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundLightAlphaPressed = "var(--colorSubtleBackgroundLightAlphaPressed)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundLightAlphaSelected = "var(--colorSubtleBackgroundLightAlphaSelected)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundPressed = "var(--colorSubtleBackgroundPressed)";
+
+// @public (undocumented)
+export const colorSubtleBackgroundSelected = "var(--colorSubtleBackgroundSelected)";
 
 // @public
 export type ColorTokens = {
@@ -299,6 +1340,27 @@ export type ColorTokens = {
 };
 
 // @public (undocumented)
+export const colorTransparentBackground = "var(--colorTransparentBackground)";
+
+// @public (undocumented)
+export const colorTransparentBackgroundHover = "var(--colorTransparentBackgroundHover)";
+
+// @public (undocumented)
+export const colorTransparentBackgroundPressed = "var(--colorTransparentBackgroundPressed)";
+
+// @public (undocumented)
+export const colorTransparentBackgroundSelected = "var(--colorTransparentBackgroundSelected)";
+
+// @public (undocumented)
+export const colorTransparentStroke = "var(--colorTransparentStroke)";
+
+// @public (undocumented)
+export const colorTransparentStrokeDisabled = "var(--colorTransparentStrokeDisabled)";
+
+// @public (undocumented)
+export const colorTransparentStrokeInteractive = "var(--colorTransparentStrokeInteractive)";
+
+// @public (undocumented)
 export const createDarkTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
@@ -309,6 +1371,33 @@ export const createLightTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme;
+
+// @public (undocumented)
+export const curveAccelerateMax = "var(--curveAccelerateMax)";
+
+// @public (undocumented)
+export const curveAccelerateMid = "var(--curveAccelerateMid)";
+
+// @public (undocumented)
+export const curveAccelerateMin = "var(--curveAccelerateMin)";
+
+// @public (undocumented)
+export const curveDecelerateMax = "var(--curveDecelerateMax)";
+
+// @public (undocumented)
+export const curveDecelerateMid = "var(--curveDecelerateMid)";
+
+// @public (undocumented)
+export const curveDecelerateMin = "var(--curveDecelerateMin)";
+
+// @public (undocumented)
+export const curveEasyEase = "var(--curveEasyEase)";
+
+// @public (undocumented)
+export const curveEasyEaseMax = "var(--curveEasyEaseMax)";
+
+// @public (undocumented)
+export const curveLinear = "var(--curveLinear)";
 
 // @public (undocumented)
 export type CurveTokens = {
@@ -324,6 +1413,24 @@ export type CurveTokens = {
 };
 
 // @public (undocumented)
+export const durationFast = "var(--durationFast)";
+
+// @public (undocumented)
+export const durationFaster = "var(--durationFaster)";
+
+// @public (undocumented)
+export const durationGentle = "var(--durationGentle)";
+
+// @public (undocumented)
+export const durationNormal = "var(--durationNormal)";
+
+// @public (undocumented)
+export const durationSlow = "var(--durationSlow)";
+
+// @public (undocumented)
+export const durationSlower = "var(--durationSlower)";
+
+// @public (undocumented)
 export type DurationTokens = {
     durationUltraFast: string;
     durationFaster: string;
@@ -336,11 +1443,56 @@ export type DurationTokens = {
 };
 
 // @public (undocumented)
+export const durationUltraFast = "var(--durationUltraFast)";
+
+// @public (undocumented)
+export const durationUltraSlow = "var(--durationUltraSlow)";
+
+// @public (undocumented)
+export const fontFamilyBase = "var(--fontFamilyBase)";
+
+// @public (undocumented)
+export const fontFamilyMonospace = "var(--fontFamilyMonospace)";
+
+// @public (undocumented)
+export const fontFamilyNumeric = "var(--fontFamilyNumeric)";
+
+// @public (undocumented)
 export type FontFamilyTokens = {
     fontFamilyBase: string;
     fontFamilyMonospace: string;
     fontFamilyNumeric: string;
 };
+
+// @public (undocumented)
+export const fontSizeBase100 = "var(--fontSizeBase100)";
+
+// @public (undocumented)
+export const fontSizeBase200 = "var(--fontSizeBase200)";
+
+// @public (undocumented)
+export const fontSizeBase300 = "var(--fontSizeBase300)";
+
+// @public (undocumented)
+export const fontSizeBase400 = "var(--fontSizeBase400)";
+
+// @public (undocumented)
+export const fontSizeBase500 = "var(--fontSizeBase500)";
+
+// @public (undocumented)
+export const fontSizeBase600 = "var(--fontSizeBase600)";
+
+// @public (undocumented)
+export const fontSizeHero1000 = "var(--fontSizeHero1000)";
+
+// @public (undocumented)
+export const fontSizeHero700 = "var(--fontSizeHero700)";
+
+// @public (undocumented)
+export const fontSizeHero800 = "var(--fontSizeHero800)";
+
+// @public (undocumented)
+export const fontSizeHero900 = "var(--fontSizeHero900)";
 
 // @public (undocumented)
 export type FontSizeTokens = {
@@ -355,6 +1507,18 @@ export type FontSizeTokens = {
     fontSizeHero900: string;
     fontSizeHero1000: string;
 };
+
+// @public (undocumented)
+export const fontWeightBold = "var(--fontWeightBold)";
+
+// @public (undocumented)
+export const fontWeightMedium = "var(--fontWeightMedium)";
+
+// @public (undocumented)
+export const fontWeightRegular = "var(--fontWeightRegular)";
+
+// @public (undocumented)
+export const fontWeightSemibold = "var(--fontWeightSemibold)";
 
 // @public (undocumented)
 export type FontWeightTokens = {
@@ -380,6 +1544,36 @@ export type HorizontalSpacingTokens = {
 };
 
 // @public (undocumented)
+export const lineHeightBase100 = "var(--lineHeightBase100)";
+
+// @public (undocumented)
+export const lineHeightBase200 = "var(--lineHeightBase200)";
+
+// @public (undocumented)
+export const lineHeightBase300 = "var(--lineHeightBase300)";
+
+// @public (undocumented)
+export const lineHeightBase400 = "var(--lineHeightBase400)";
+
+// @public (undocumented)
+export const lineHeightBase500 = "var(--lineHeightBase500)";
+
+// @public (undocumented)
+export const lineHeightBase600 = "var(--lineHeightBase600)";
+
+// @public (undocumented)
+export const lineHeightHero1000 = "var(--lineHeightHero1000)";
+
+// @public (undocumented)
+export const lineHeightHero700 = "var(--lineHeightHero700)";
+
+// @public (undocumented)
+export const lineHeightHero800 = "var(--lineHeightHero800)";
+
+// @public (undocumented)
+export const lineHeightHero900 = "var(--lineHeightHero900)";
+
+// @public (undocumented)
 export type LineHeightTokens = {
     lineHeightBase100: string;
     lineHeightBase200: string;
@@ -395,6 +1589,42 @@ export type LineHeightTokens = {
 
 // @public (undocumented)
 export type PartialTheme = Partial<Theme>;
+
+// @public (undocumented)
+export const shadow16 = "var(--shadow16)";
+
+// @public (undocumented)
+export const shadow16Brand = "var(--shadow16Brand)";
+
+// @public (undocumented)
+export const shadow2 = "var(--shadow2)";
+
+// @public (undocumented)
+export const shadow28 = "var(--shadow28)";
+
+// @public (undocumented)
+export const shadow28Brand = "var(--shadow28Brand)";
+
+// @public (undocumented)
+export const shadow2Brand = "var(--shadow2Brand)";
+
+// @public (undocumented)
+export const shadow4 = "var(--shadow4)";
+
+// @public (undocumented)
+export const shadow4Brand = "var(--shadow4Brand)";
+
+// @public (undocumented)
+export const shadow64 = "var(--shadow64)";
+
+// @public (undocumented)
+export const shadow64Brand = "var(--shadow64Brand)";
+
+// @public (undocumented)
+export const shadow8 = "var(--shadow8)";
+
+// @public (undocumented)
+export const shadow8Brand = "var(--shadow8Brand)";
 
 // @public (undocumented)
 export type ShadowBrandTokens = {
@@ -417,6 +1647,39 @@ export type ShadowTokens = {
 };
 
 // @public (undocumented)
+export const spacingHorizontalL = "var(--spacingHorizontalL)";
+
+// @public (undocumented)
+export const spacingHorizontalM = "var(--spacingHorizontalM)";
+
+// @public (undocumented)
+export const spacingHorizontalMNudge = "var(--spacingHorizontalMNudge)";
+
+// @public (undocumented)
+export const spacingHorizontalNone = "var(--spacingHorizontalNone)";
+
+// @public (undocumented)
+export const spacingHorizontalS = "var(--spacingHorizontalS)";
+
+// @public (undocumented)
+export const spacingHorizontalSNudge = "var(--spacingHorizontalSNudge)";
+
+// @public (undocumented)
+export const spacingHorizontalXL = "var(--spacingHorizontalXL)";
+
+// @public (undocumented)
+export const spacingHorizontalXS = "var(--spacingHorizontalXS)";
+
+// @public (undocumented)
+export const spacingHorizontalXXL = "var(--spacingHorizontalXXL)";
+
+// @public (undocumented)
+export const spacingHorizontalXXS = "var(--spacingHorizontalXXS)";
+
+// @public (undocumented)
+export const spacingHorizontalXXXL = "var(--spacingHorizontalXXXL)";
+
+// @public (undocumented)
 export type SpacingTokens = {
     none: string;
     xxs: string;
@@ -430,6 +1693,51 @@ export type SpacingTokens = {
     xxl: string;
     xxxl: string;
 };
+
+// @public (undocumented)
+export const spacingVerticalL = "var(--spacingVerticalL)";
+
+// @public (undocumented)
+export const spacingVerticalM = "var(--spacingVerticalM)";
+
+// @public (undocumented)
+export const spacingVerticalMNudge = "var(--spacingVerticalMNudge)";
+
+// @public (undocumented)
+export const spacingVerticalNone = "var(--spacingVerticalNone)";
+
+// @public (undocumented)
+export const spacingVerticalS = "var(--spacingVerticalS)";
+
+// @public (undocumented)
+export const spacingVerticalSNudge = "var(--spacingVerticalSNudge)";
+
+// @public (undocumented)
+export const spacingVerticalXL = "var(--spacingVerticalXL)";
+
+// @public (undocumented)
+export const spacingVerticalXS = "var(--spacingVerticalXS)";
+
+// @public (undocumented)
+export const spacingVerticalXXL = "var(--spacingVerticalXXL)";
+
+// @public (undocumented)
+export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
+
+// @public (undocumented)
+export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
+
+// @public (undocumented)
+export const strokeWidthThick = "var(--strokeWidthThick)";
+
+// @public (undocumented)
+export const strokeWidthThicker = "var(--strokeWidthThicker)";
+
+// @public (undocumented)
+export const strokeWidthThickest = "var(--strokeWidthThickest)";
+
+// @public (undocumented)
+export const strokeWidthThin = "var(--strokeWidthThin)";
 
 // @public (undocumented)
 export type StrokeWidthTokens = {
@@ -515,6 +1823,30 @@ export const webDarkTheme: Theme;
 
 // @public (undocumented)
 export const webLightTheme: Theme;
+
+// @public (undocumented)
+export const zIndexBackground = "var(--zIndexBackground, 0)";
+
+// @public (undocumented)
+export const zIndexContent = "var(--zIndexContent, 1)";
+
+// @public (undocumented)
+export const zIndexDebug = "var(--zIndexDebug, 6000)";
+
+// @public (undocumented)
+export const zIndexFloating = "var(--zIndexFloating, 4000)";
+
+// @public (undocumented)
+export const zIndexMessages = "var(--zIndexMessages, 3000)";
+
+// @public (undocumented)
+export const zIndexOverlay = "var(--zIndexOverlay, 1000)";
+
+// @public (undocumented)
+export const zIndexPopup = "var(--zIndexPopup, 2000)";
+
+// @public (undocumented)
+export const zIndexPriority = "var(--zIndexPriority, 5000)";
 
 // @public
 export type ZIndexTokens = {

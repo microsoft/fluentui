@@ -10,7 +10,7 @@ import { useLegendStyles } from './useLegendsStyles.styles';
 import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
-import { tokens } from '@fluentui/react-theme';
+import * as tokens from '@fluentui/react-theme';
 import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
 import { mergeClasses } from '@griffel/react';
 

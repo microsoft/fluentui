@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScaleTime } from 'd3-scale';
-import { tokens } from '@fluentui/react-theme';
+import * as tokens from '@fluentui/react-theme';
 import { findIndex } from '../../../utilities/index';
 import { LineDef, LabelLink, LabelDef } from './LabelLink';
 import { EventsAnnotationProps } from '../LineChart.types';

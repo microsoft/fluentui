@@ -4,61 +4,497 @@
 
 ```ts
 
+import { borderRadiusCircular } from '@fluentui/tokens';
+import { borderRadiusLarge } from '@fluentui/tokens';
+import { borderRadiusMedium } from '@fluentui/tokens';
+import { borderRadiusNone } from '@fluentui/tokens';
+import { borderRadiusSmall } from '@fluentui/tokens';
 import { BorderRadiusTokens } from '@fluentui/tokens';
+import { borderRadiusXLarge } from '@fluentui/tokens';
 import { Brands } from '@fluentui/tokens';
 import { BrandVariants } from '@fluentui/tokens';
+import { colorBackgroundOverlay } from '@fluentui/tokens';
+import { colorBrandBackground } from '@fluentui/tokens';
+import { colorBrandBackground2 } from '@fluentui/tokens';
+import { colorBrandBackground2Hover } from '@fluentui/tokens';
+import { colorBrandBackground2Pressed } from '@fluentui/tokens';
+import { colorBrandBackground3Static } from '@fluentui/tokens';
+import { colorBrandBackground4Static } from '@fluentui/tokens';
+import { colorBrandBackgroundHover } from '@fluentui/tokens';
+import { colorBrandBackgroundInverted } from '@fluentui/tokens';
+import { colorBrandBackgroundInvertedHover } from '@fluentui/tokens';
+import { colorBrandBackgroundInvertedPressed } from '@fluentui/tokens';
+import { colorBrandBackgroundInvertedSelected } from '@fluentui/tokens';
+import { colorBrandBackgroundPressed } from '@fluentui/tokens';
+import { colorBrandBackgroundSelected } from '@fluentui/tokens';
+import { colorBrandBackgroundStatic } from '@fluentui/tokens';
+import { colorBrandForeground1 } from '@fluentui/tokens';
+import { colorBrandForeground2 } from '@fluentui/tokens';
+import { colorBrandForeground2Hover } from '@fluentui/tokens';
+import { colorBrandForeground2Pressed } from '@fluentui/tokens';
+import { colorBrandForegroundInverted } from '@fluentui/tokens';
+import { colorBrandForegroundInvertedHover } from '@fluentui/tokens';
+import { colorBrandForegroundInvertedPressed } from '@fluentui/tokens';
+import { colorBrandForegroundLink } from '@fluentui/tokens';
+import { colorBrandForegroundLinkHover } from '@fluentui/tokens';
+import { colorBrandForegroundLinkPressed } from '@fluentui/tokens';
+import { colorBrandForegroundLinkSelected } from '@fluentui/tokens';
+import { colorBrandForegroundOnLight } from '@fluentui/tokens';
+import { colorBrandForegroundOnLightHover } from '@fluentui/tokens';
+import { colorBrandForegroundOnLightPressed } from '@fluentui/tokens';
+import { colorBrandForegroundOnLightSelected } from '@fluentui/tokens';
+import { colorBrandShadowAmbient } from '@fluentui/tokens';
+import { colorBrandShadowKey } from '@fluentui/tokens';
+import { colorBrandStroke1 } from '@fluentui/tokens';
+import { colorBrandStroke2 } from '@fluentui/tokens';
+import { colorBrandStroke2Contrast } from '@fluentui/tokens';
+import { colorBrandStroke2Hover } from '@fluentui/tokens';
+import { colorBrandStroke2Pressed } from '@fluentui/tokens';
+import { colorCompoundBrandBackground } from '@fluentui/tokens';
+import { colorCompoundBrandBackgroundHover } from '@fluentui/tokens';
+import { colorCompoundBrandBackgroundPressed } from '@fluentui/tokens';
+import { colorCompoundBrandForeground1 } from '@fluentui/tokens';
+import { colorCompoundBrandForeground1Hover } from '@fluentui/tokens';
+import { colorCompoundBrandForeground1Pressed } from '@fluentui/tokens';
+import { colorCompoundBrandStroke } from '@fluentui/tokens';
+import { colorCompoundBrandStrokeHover } from '@fluentui/tokens';
+import { colorCompoundBrandStrokePressed } from '@fluentui/tokens';
+import { colorNeutralBackground1 } from '@fluentui/tokens';
+import { colorNeutralBackground1Hover } from '@fluentui/tokens';
+import { colorNeutralBackground1Pressed } from '@fluentui/tokens';
+import { colorNeutralBackground1Selected } from '@fluentui/tokens';
+import { colorNeutralBackground2 } from '@fluentui/tokens';
+import { colorNeutralBackground2Hover } from '@fluentui/tokens';
+import { colorNeutralBackground2Pressed } from '@fluentui/tokens';
+import { colorNeutralBackground2Selected } from '@fluentui/tokens';
+import { colorNeutralBackground3 } from '@fluentui/tokens';
+import { colorNeutralBackground3Hover } from '@fluentui/tokens';
+import { colorNeutralBackground3Pressed } from '@fluentui/tokens';
+import { colorNeutralBackground3Selected } from '@fluentui/tokens';
+import { colorNeutralBackground4 } from '@fluentui/tokens';
+import { colorNeutralBackground4Hover } from '@fluentui/tokens';
+import { colorNeutralBackground4Pressed } from '@fluentui/tokens';
+import { colorNeutralBackground4Selected } from '@fluentui/tokens';
+import { colorNeutralBackground5 } from '@fluentui/tokens';
+import { colorNeutralBackground5Hover } from '@fluentui/tokens';
+import { colorNeutralBackground5Pressed } from '@fluentui/tokens';
+import { colorNeutralBackground5Selected } from '@fluentui/tokens';
+import { colorNeutralBackground6 } from '@fluentui/tokens';
+import { colorNeutralBackgroundAlpha } from '@fluentui/tokens';
+import { colorNeutralBackgroundAlpha2 } from '@fluentui/tokens';
+import { colorNeutralBackgroundDisabled } from '@fluentui/tokens';
+import { colorNeutralBackgroundInverted } from '@fluentui/tokens';
+import { colorNeutralBackgroundInvertedDisabled } from '@fluentui/tokens';
+import { colorNeutralBackgroundStatic } from '@fluentui/tokens';
+import { colorNeutralCardBackground } from '@fluentui/tokens';
+import { colorNeutralCardBackgroundDisabled } from '@fluentui/tokens';
+import { colorNeutralCardBackgroundHover } from '@fluentui/tokens';
+import { colorNeutralCardBackgroundPressed } from '@fluentui/tokens';
+import { colorNeutralCardBackgroundSelected } from '@fluentui/tokens';
+import { colorNeutralForeground1 } from '@fluentui/tokens';
+import { colorNeutralForeground1Hover } from '@fluentui/tokens';
+import { colorNeutralForeground1Pressed } from '@fluentui/tokens';
+import { colorNeutralForeground1Selected } from '@fluentui/tokens';
+import { colorNeutralForeground1Static } from '@fluentui/tokens';
+import { colorNeutralForeground2 } from '@fluentui/tokens';
+import { colorNeutralForeground2BrandHover } from '@fluentui/tokens';
+import { colorNeutralForeground2BrandPressed } from '@fluentui/tokens';
+import { colorNeutralForeground2BrandSelected } from '@fluentui/tokens';
+import { colorNeutralForeground2Hover } from '@fluentui/tokens';
+import { colorNeutralForeground2Link } from '@fluentui/tokens';
+import { colorNeutralForeground2LinkHover } from '@fluentui/tokens';
+import { colorNeutralForeground2LinkPressed } from '@fluentui/tokens';
+import { colorNeutralForeground2LinkSelected } from '@fluentui/tokens';
+import { colorNeutralForeground2Pressed } from '@fluentui/tokens';
+import { colorNeutralForeground2Selected } from '@fluentui/tokens';
+import { colorNeutralForeground3 } from '@fluentui/tokens';
+import { colorNeutralForeground3BrandHover } from '@fluentui/tokens';
+import { colorNeutralForeground3BrandPressed } from '@fluentui/tokens';
+import { colorNeutralForeground3BrandSelected } from '@fluentui/tokens';
+import { colorNeutralForeground3Hover } from '@fluentui/tokens';
+import { colorNeutralForeground3Pressed } from '@fluentui/tokens';
+import { colorNeutralForeground3Selected } from '@fluentui/tokens';
+import { colorNeutralForeground4 } from '@fluentui/tokens';
+import { colorNeutralForegroundDisabled } from '@fluentui/tokens';
+import { colorNeutralForegroundInverted } from '@fluentui/tokens';
+import { colorNeutralForegroundInverted2 } from '@fluentui/tokens';
+import { colorNeutralForegroundInvertedDisabled } from '@fluentui/tokens';
+import { colorNeutralForegroundInvertedHover } from '@fluentui/tokens';
+import { colorNeutralForegroundInvertedLink } from '@fluentui/tokens';
+import { colorNeutralForegroundInvertedLinkHover } from '@fluentui/tokens';
+import { colorNeutralForegroundInvertedLinkPressed } from '@fluentui/tokens';
+import { colorNeutralForegroundInvertedLinkSelected } from '@fluentui/tokens';
+import { colorNeutralForegroundInvertedPressed } from '@fluentui/tokens';
+import { colorNeutralForegroundInvertedSelected } from '@fluentui/tokens';
+import { colorNeutralForegroundOnBrand } from '@fluentui/tokens';
+import { colorNeutralForegroundStaticInverted } from '@fluentui/tokens';
+import { colorNeutralShadowAmbient } from '@fluentui/tokens';
+import { colorNeutralShadowAmbientDarker } from '@fluentui/tokens';
+import { colorNeutralShadowAmbientLighter } from '@fluentui/tokens';
+import { colorNeutralShadowKey } from '@fluentui/tokens';
+import { colorNeutralShadowKeyDarker } from '@fluentui/tokens';
+import { colorNeutralShadowKeyLighter } from '@fluentui/tokens';
+import { colorNeutralStencil1 } from '@fluentui/tokens';
+import { colorNeutralStencil1Alpha } from '@fluentui/tokens';
+import { colorNeutralStencil2 } from '@fluentui/tokens';
+import { colorNeutralStencil2Alpha } from '@fluentui/tokens';
+import { colorNeutralStroke1 } from '@fluentui/tokens';
+import { colorNeutralStroke1Hover } from '@fluentui/tokens';
+import { colorNeutralStroke1Pressed } from '@fluentui/tokens';
+import { colorNeutralStroke1Selected } from '@fluentui/tokens';
+import { colorNeutralStroke2 } from '@fluentui/tokens';
+import { colorNeutralStroke3 } from '@fluentui/tokens';
+import { colorNeutralStrokeAccessible } from '@fluentui/tokens';
+import { colorNeutralStrokeAccessibleHover } from '@fluentui/tokens';
+import { colorNeutralStrokeAccessiblePressed } from '@fluentui/tokens';
+import { colorNeutralStrokeAccessibleSelected } from '@fluentui/tokens';
+import { colorNeutralStrokeAlpha } from '@fluentui/tokens';
+import { colorNeutralStrokeAlpha2 } from '@fluentui/tokens';
+import { colorNeutralStrokeDisabled } from '@fluentui/tokens';
+import { colorNeutralStrokeInvertedDisabled } from '@fluentui/tokens';
+import { colorNeutralStrokeOnBrand } from '@fluentui/tokens';
+import { colorNeutralStrokeOnBrand2 } from '@fluentui/tokens';
+import { colorNeutralStrokeOnBrand2Hover } from '@fluentui/tokens';
+import { colorNeutralStrokeOnBrand2Pressed } from '@fluentui/tokens';
+import { colorNeutralStrokeOnBrand2Selected } from '@fluentui/tokens';
+import { colorNeutralStrokeSubtle } from '@fluentui/tokens';
 import { ColorPaletteAnchor } from '@fluentui/tokens';
+import { colorPaletteAnchorBackground2 } from '@fluentui/tokens';
+import { colorPaletteAnchorBorderActive } from '@fluentui/tokens';
+import { colorPaletteAnchorForeground2 } from '@fluentui/tokens';
 import { ColorPaletteBeige } from '@fluentui/tokens';
+import { colorPaletteBeigeBackground2 } from '@fluentui/tokens';
+import { colorPaletteBeigeBorderActive } from '@fluentui/tokens';
+import { colorPaletteBeigeForeground2 } from '@fluentui/tokens';
 import { ColorPaletteBerry } from '@fluentui/tokens';
+import { colorPaletteBerryBackground1 } from '@fluentui/tokens';
+import { colorPaletteBerryBackground2 } from '@fluentui/tokens';
+import { colorPaletteBerryBackground3 } from '@fluentui/tokens';
+import { colorPaletteBerryBorder1 } from '@fluentui/tokens';
+import { colorPaletteBerryBorder2 } from '@fluentui/tokens';
+import { colorPaletteBerryBorderActive } from '@fluentui/tokens';
+import { colorPaletteBerryForeground1 } from '@fluentui/tokens';
+import { colorPaletteBerryForeground2 } from '@fluentui/tokens';
+import { colorPaletteBerryForeground3 } from '@fluentui/tokens';
 import { ColorPaletteBlue } from '@fluentui/tokens';
+import { colorPaletteBlueBackground2 } from '@fluentui/tokens';
+import { colorPaletteBlueBorderActive } from '@fluentui/tokens';
+import { colorPaletteBlueForeground2 } from '@fluentui/tokens';
 import { ColorPaletteBrass } from '@fluentui/tokens';
+import { colorPaletteBrassBackground2 } from '@fluentui/tokens';
+import { colorPaletteBrassBorderActive } from '@fluentui/tokens';
+import { colorPaletteBrassForeground2 } from '@fluentui/tokens';
 import { ColorPaletteBrown } from '@fluentui/tokens';
+import { colorPaletteBrownBackground2 } from '@fluentui/tokens';
+import { colorPaletteBrownBorderActive } from '@fluentui/tokens';
+import { colorPaletteBrownForeground2 } from '@fluentui/tokens';
 import { ColorPaletteCornflower } from '@fluentui/tokens';
+import { colorPaletteCornflowerBackground2 } from '@fluentui/tokens';
+import { colorPaletteCornflowerBorderActive } from '@fluentui/tokens';
+import { colorPaletteCornflowerForeground2 } from '@fluentui/tokens';
 import { ColorPaletteCranberry } from '@fluentui/tokens';
+import { colorPaletteCranberryBackground2 } from '@fluentui/tokens';
+import { colorPaletteCranberryBorderActive } from '@fluentui/tokens';
+import { colorPaletteCranberryForeground2 } from '@fluentui/tokens';
 import { ColorPaletteDarkGreen } from '@fluentui/tokens';
+import { colorPaletteDarkGreenBackground2 } from '@fluentui/tokens';
+import { colorPaletteDarkGreenBorderActive } from '@fluentui/tokens';
+import { colorPaletteDarkGreenForeground2 } from '@fluentui/tokens';
 import { ColorPaletteDarkOrange } from '@fluentui/tokens';
+import { colorPaletteDarkOrangeBackground1 } from '@fluentui/tokens';
+import { colorPaletteDarkOrangeBackground2 } from '@fluentui/tokens';
+import { colorPaletteDarkOrangeBackground3 } from '@fluentui/tokens';
+import { colorPaletteDarkOrangeBorder1 } from '@fluentui/tokens';
+import { colorPaletteDarkOrangeBorder2 } from '@fluentui/tokens';
+import { colorPaletteDarkOrangeBorderActive } from '@fluentui/tokens';
+import { colorPaletteDarkOrangeForeground1 } from '@fluentui/tokens';
+import { colorPaletteDarkOrangeForeground2 } from '@fluentui/tokens';
+import { colorPaletteDarkOrangeForeground3 } from '@fluentui/tokens';
 import { ColorPaletteDarkRed } from '@fluentui/tokens';
+import { colorPaletteDarkRedBackground2 } from '@fluentui/tokens';
+import { colorPaletteDarkRedBorderActive } from '@fluentui/tokens';
+import { colorPaletteDarkRedForeground2 } from '@fluentui/tokens';
 import { ColorPaletteForest } from '@fluentui/tokens';
+import { colorPaletteForestBackground2 } from '@fluentui/tokens';
+import { colorPaletteForestBorderActive } from '@fluentui/tokens';
+import { colorPaletteForestForeground2 } from '@fluentui/tokens';
 import { ColorPaletteGold } from '@fluentui/tokens';
+import { colorPaletteGoldBackground2 } from '@fluentui/tokens';
+import { colorPaletteGoldBorderActive } from '@fluentui/tokens';
+import { colorPaletteGoldForeground2 } from '@fluentui/tokens';
 import { ColorPaletteGrape } from '@fluentui/tokens';
+import { colorPaletteGrapeBackground2 } from '@fluentui/tokens';
+import { colorPaletteGrapeBorderActive } from '@fluentui/tokens';
+import { colorPaletteGrapeForeground2 } from '@fluentui/tokens';
 import { ColorPaletteGreen } from '@fluentui/tokens';
+import { colorPaletteGreenBackground1 } from '@fluentui/tokens';
+import { colorPaletteGreenBackground2 } from '@fluentui/tokens';
+import { colorPaletteGreenBackground3 } from '@fluentui/tokens';
+import { colorPaletteGreenBorder1 } from '@fluentui/tokens';
+import { colorPaletteGreenBorder2 } from '@fluentui/tokens';
+import { colorPaletteGreenBorderActive } from '@fluentui/tokens';
+import { colorPaletteGreenForeground1 } from '@fluentui/tokens';
+import { colorPaletteGreenForeground2 } from '@fluentui/tokens';
+import { colorPaletteGreenForeground3 } from '@fluentui/tokens';
+import { colorPaletteGreenForegroundInverted } from '@fluentui/tokens';
 import { ColorPaletteLavender } from '@fluentui/tokens';
+import { colorPaletteLavenderBackground2 } from '@fluentui/tokens';
+import { colorPaletteLavenderBorderActive } from '@fluentui/tokens';
+import { colorPaletteLavenderForeground2 } from '@fluentui/tokens';
 import { ColorPaletteLightGreen } from '@fluentui/tokens';
+import { colorPaletteLightGreenBackground1 } from '@fluentui/tokens';
+import { colorPaletteLightGreenBackground2 } from '@fluentui/tokens';
+import { colorPaletteLightGreenBackground3 } from '@fluentui/tokens';
+import { colorPaletteLightGreenBorder1 } from '@fluentui/tokens';
+import { colorPaletteLightGreenBorder2 } from '@fluentui/tokens';
+import { colorPaletteLightGreenBorderActive } from '@fluentui/tokens';
+import { colorPaletteLightGreenForeground1 } from '@fluentui/tokens';
+import { colorPaletteLightGreenForeground2 } from '@fluentui/tokens';
+import { colorPaletteLightGreenForeground3 } from '@fluentui/tokens';
 import { ColorPaletteLightTeal } from '@fluentui/tokens';
+import { colorPaletteLightTealBackground2 } from '@fluentui/tokens';
+import { colorPaletteLightTealBorderActive } from '@fluentui/tokens';
+import { colorPaletteLightTealForeground2 } from '@fluentui/tokens';
 import { ColorPaletteLilac } from '@fluentui/tokens';
+import { colorPaletteLilacBackground2 } from '@fluentui/tokens';
+import { colorPaletteLilacBorderActive } from '@fluentui/tokens';
+import { colorPaletteLilacForeground2 } from '@fluentui/tokens';
 import { ColorPaletteMagenta } from '@fluentui/tokens';
+import { colorPaletteMagentaBackground2 } from '@fluentui/tokens';
+import { colorPaletteMagentaBorderActive } from '@fluentui/tokens';
+import { colorPaletteMagentaForeground2 } from '@fluentui/tokens';
 import { ColorPaletteMarigold } from '@fluentui/tokens';
+import { colorPaletteMarigoldBackground1 } from '@fluentui/tokens';
+import { colorPaletteMarigoldBackground2 } from '@fluentui/tokens';
+import { colorPaletteMarigoldBackground3 } from '@fluentui/tokens';
+import { colorPaletteMarigoldBorder1 } from '@fluentui/tokens';
+import { colorPaletteMarigoldBorder2 } from '@fluentui/tokens';
+import { colorPaletteMarigoldBorderActive } from '@fluentui/tokens';
+import { colorPaletteMarigoldForeground1 } from '@fluentui/tokens';
+import { colorPaletteMarigoldForeground2 } from '@fluentui/tokens';
+import { colorPaletteMarigoldForeground3 } from '@fluentui/tokens';
 import { ColorPaletteMink } from '@fluentui/tokens';
+import { colorPaletteMinkBackground2 } from '@fluentui/tokens';
+import { colorPaletteMinkBorderActive } from '@fluentui/tokens';
+import { colorPaletteMinkForeground2 } from '@fluentui/tokens';
 import { ColorPaletteNavy } from '@fluentui/tokens';
+import { colorPaletteNavyBackground2 } from '@fluentui/tokens';
+import { colorPaletteNavyBorderActive } from '@fluentui/tokens';
+import { colorPaletteNavyForeground2 } from '@fluentui/tokens';
 import { ColorPalettePeach } from '@fluentui/tokens';
+import { colorPalettePeachBackground2 } from '@fluentui/tokens';
+import { colorPalettePeachBorderActive } from '@fluentui/tokens';
+import { colorPalettePeachForeground2 } from '@fluentui/tokens';
 import { ColorPalettePink } from '@fluentui/tokens';
+import { colorPalettePinkBackground2 } from '@fluentui/tokens';
+import { colorPalettePinkBorderActive } from '@fluentui/tokens';
+import { colorPalettePinkForeground2 } from '@fluentui/tokens';
 import { ColorPalettePlatinum } from '@fluentui/tokens';
+import { colorPalettePlatinumBackground2 } from '@fluentui/tokens';
+import { colorPalettePlatinumBorderActive } from '@fluentui/tokens';
+import { colorPalettePlatinumForeground2 } from '@fluentui/tokens';
 import { ColorPalettePlum } from '@fluentui/tokens';
+import { colorPalettePlumBackground2 } from '@fluentui/tokens';
+import { colorPalettePlumBorderActive } from '@fluentui/tokens';
+import { colorPalettePlumForeground2 } from '@fluentui/tokens';
 import { ColorPalettePumpkin } from '@fluentui/tokens';
+import { colorPalettePumpkinBackground2 } from '@fluentui/tokens';
+import { colorPalettePumpkinBorderActive } from '@fluentui/tokens';
+import { colorPalettePumpkinForeground2 } from '@fluentui/tokens';
 import { ColorPalettePurple } from '@fluentui/tokens';
+import { colorPalettePurpleBackground2 } from '@fluentui/tokens';
+import { colorPalettePurpleBorderActive } from '@fluentui/tokens';
+import { colorPalettePurpleForeground2 } from '@fluentui/tokens';
 import { ColorPaletteRed } from '@fluentui/tokens';
+import { colorPaletteRedBackground1 } from '@fluentui/tokens';
+import { colorPaletteRedBackground2 } from '@fluentui/tokens';
+import { colorPaletteRedBackground3 } from '@fluentui/tokens';
+import { colorPaletteRedBorder1 } from '@fluentui/tokens';
+import { colorPaletteRedBorder2 } from '@fluentui/tokens';
+import { colorPaletteRedBorderActive } from '@fluentui/tokens';
+import { colorPaletteRedForeground1 } from '@fluentui/tokens';
+import { colorPaletteRedForeground2 } from '@fluentui/tokens';
+import { colorPaletteRedForeground3 } from '@fluentui/tokens';
+import { colorPaletteRedForegroundInverted } from '@fluentui/tokens';
 import { ColorPaletteRoyalBlue } from '@fluentui/tokens';
+import { colorPaletteRoyalBlueBackground2 } from '@fluentui/tokens';
+import { colorPaletteRoyalBlueBorderActive } from '@fluentui/tokens';
+import { colorPaletteRoyalBlueForeground2 } from '@fluentui/tokens';
 import { ColorPaletteSeafoam } from '@fluentui/tokens';
+import { colorPaletteSeafoamBackground2 } from '@fluentui/tokens';
+import { colorPaletteSeafoamBorderActive } from '@fluentui/tokens';
+import { colorPaletteSeafoamForeground2 } from '@fluentui/tokens';
 import { ColorPaletteSteel } from '@fluentui/tokens';
+import { colorPaletteSteelBackground2 } from '@fluentui/tokens';
+import { colorPaletteSteelBorderActive } from '@fluentui/tokens';
+import { colorPaletteSteelForeground2 } from '@fluentui/tokens';
 import { ColorPaletteTeal } from '@fluentui/tokens';
+import { colorPaletteTealBackground2 } from '@fluentui/tokens';
+import { colorPaletteTealBorderActive } from '@fluentui/tokens';
+import { colorPaletteTealForeground2 } from '@fluentui/tokens';
 import { ColorPaletteTokens } from '@fluentui/tokens';
 import { ColorPaletteYellow } from '@fluentui/tokens';
+import { colorPaletteYellowBackground1 } from '@fluentui/tokens';
+import { colorPaletteYellowBackground2 } from '@fluentui/tokens';
+import { colorPaletteYellowBackground3 } from '@fluentui/tokens';
+import { colorPaletteYellowBorder1 } from '@fluentui/tokens';
+import { colorPaletteYellowBorder2 } from '@fluentui/tokens';
+import { colorPaletteYellowBorderActive } from '@fluentui/tokens';
+import { colorPaletteYellowForeground1 } from '@fluentui/tokens';
+import { colorPaletteYellowForeground2 } from '@fluentui/tokens';
+import { colorPaletteYellowForeground3 } from '@fluentui/tokens';
+import { colorPaletteYellowForegroundInverted } from '@fluentui/tokens';
+import { colorScrollbarOverlay } from '@fluentui/tokens';
+import { colorStatusDangerBackground1 } from '@fluentui/tokens';
+import { colorStatusDangerBackground2 } from '@fluentui/tokens';
+import { colorStatusDangerBackground3 } from '@fluentui/tokens';
+import { colorStatusDangerBackground3Hover } from '@fluentui/tokens';
+import { colorStatusDangerBackground3Pressed } from '@fluentui/tokens';
+import { colorStatusDangerBorder1 } from '@fluentui/tokens';
+import { colorStatusDangerBorder2 } from '@fluentui/tokens';
+import { colorStatusDangerBorderActive } from '@fluentui/tokens';
+import { colorStatusDangerForeground1 } from '@fluentui/tokens';
+import { colorStatusDangerForeground2 } from '@fluentui/tokens';
+import { colorStatusDangerForeground3 } from '@fluentui/tokens';
+import { colorStatusDangerForegroundInverted } from '@fluentui/tokens';
+import { colorStatusSuccessBackground1 } from '@fluentui/tokens';
+import { colorStatusSuccessBackground2 } from '@fluentui/tokens';
+import { colorStatusSuccessBackground3 } from '@fluentui/tokens';
+import { colorStatusSuccessBorder1 } from '@fluentui/tokens';
+import { colorStatusSuccessBorder2 } from '@fluentui/tokens';
+import { colorStatusSuccessBorderActive } from '@fluentui/tokens';
+import { colorStatusSuccessForeground1 } from '@fluentui/tokens';
+import { colorStatusSuccessForeground2 } from '@fluentui/tokens';
+import { colorStatusSuccessForeground3 } from '@fluentui/tokens';
+import { colorStatusSuccessForegroundInverted } from '@fluentui/tokens';
+import { colorStatusWarningBackground1 } from '@fluentui/tokens';
+import { colorStatusWarningBackground2 } from '@fluentui/tokens';
+import { colorStatusWarningBackground3 } from '@fluentui/tokens';
+import { colorStatusWarningBorder1 } from '@fluentui/tokens';
+import { colorStatusWarningBorder2 } from '@fluentui/tokens';
+import { colorStatusWarningBorderActive } from '@fluentui/tokens';
+import { colorStatusWarningForeground1 } from '@fluentui/tokens';
+import { colorStatusWarningForeground2 } from '@fluentui/tokens';
+import { colorStatusWarningForeground3 } from '@fluentui/tokens';
+import { colorStatusWarningForegroundInverted } from '@fluentui/tokens';
+import { colorStrokeFocus1 } from '@fluentui/tokens';
+import { colorStrokeFocus2 } from '@fluentui/tokens';
+import { colorSubtleBackground } from '@fluentui/tokens';
+import { colorSubtleBackgroundHover } from '@fluentui/tokens';
+import { colorSubtleBackgroundInverted } from '@fluentui/tokens';
+import { colorSubtleBackgroundInvertedHover } from '@fluentui/tokens';
+import { colorSubtleBackgroundInvertedPressed } from '@fluentui/tokens';
+import { colorSubtleBackgroundInvertedSelected } from '@fluentui/tokens';
+import { colorSubtleBackgroundLightAlphaHover } from '@fluentui/tokens';
+import { colorSubtleBackgroundLightAlphaPressed } from '@fluentui/tokens';
+import { colorSubtleBackgroundLightAlphaSelected } from '@fluentui/tokens';
+import { colorSubtleBackgroundPressed } from '@fluentui/tokens';
+import { colorSubtleBackgroundSelected } from '@fluentui/tokens';
 import { ColorTokens } from '@fluentui/tokens';
+import { colorTransparentBackground } from '@fluentui/tokens';
+import { colorTransparentBackgroundHover } from '@fluentui/tokens';
+import { colorTransparentBackgroundPressed } from '@fluentui/tokens';
+import { colorTransparentBackgroundSelected } from '@fluentui/tokens';
+import { colorTransparentStroke } from '@fluentui/tokens';
+import { colorTransparentStrokeDisabled } from '@fluentui/tokens';
+import { colorTransparentStrokeInteractive } from '@fluentui/tokens';
 import { createDarkTheme } from '@fluentui/tokens';
 import { createHighContrastTheme } from '@fluentui/tokens';
 import { createLightTheme } from '@fluentui/tokens';
 import { createTeamsDarkTheme } from '@fluentui/tokens';
+import { curveAccelerateMax } from '@fluentui/tokens';
+import { curveAccelerateMid } from '@fluentui/tokens';
+import { curveAccelerateMin } from '@fluentui/tokens';
+import { curveDecelerateMax } from '@fluentui/tokens';
+import { curveDecelerateMid } from '@fluentui/tokens';
+import { curveDecelerateMin } from '@fluentui/tokens';
+import { curveEasyEase } from '@fluentui/tokens';
+import { curveEasyEaseMax } from '@fluentui/tokens';
+import { curveLinear } from '@fluentui/tokens';
 import { CurveTokens } from '@fluentui/tokens';
+import { durationFast } from '@fluentui/tokens';
+import { durationFaster } from '@fluentui/tokens';
+import { durationGentle } from '@fluentui/tokens';
+import { durationNormal } from '@fluentui/tokens';
+import { durationSlow } from '@fluentui/tokens';
+import { durationSlower } from '@fluentui/tokens';
 import { DurationTokens } from '@fluentui/tokens';
+import { durationUltraFast } from '@fluentui/tokens';
+import { durationUltraSlow } from '@fluentui/tokens';
+import { fontFamilyBase } from '@fluentui/tokens';
+import { fontFamilyMonospace } from '@fluentui/tokens';
+import { fontFamilyNumeric } from '@fluentui/tokens';
 import { FontFamilyTokens } from '@fluentui/tokens';
+import { fontSizeBase100 } from '@fluentui/tokens';
+import { fontSizeBase200 } from '@fluentui/tokens';
+import { fontSizeBase300 } from '@fluentui/tokens';
+import { fontSizeBase400 } from '@fluentui/tokens';
+import { fontSizeBase500 } from '@fluentui/tokens';
+import { fontSizeBase600 } from '@fluentui/tokens';
+import { fontSizeHero1000 } from '@fluentui/tokens';
+import { fontSizeHero700 } from '@fluentui/tokens';
+import { fontSizeHero800 } from '@fluentui/tokens';
+import { fontSizeHero900 } from '@fluentui/tokens';
 import { FontSizeTokens } from '@fluentui/tokens';
+import { fontWeightBold } from '@fluentui/tokens';
+import { fontWeightMedium } from '@fluentui/tokens';
+import { fontWeightRegular } from '@fluentui/tokens';
+import { fontWeightSemibold } from '@fluentui/tokens';
 import { FontWeightTokens } from '@fluentui/tokens';
 import { HorizontalSpacingTokens } from '@fluentui/tokens';
+import { lineHeightBase100 } from '@fluentui/tokens';
+import { lineHeightBase200 } from '@fluentui/tokens';
+import { lineHeightBase300 } from '@fluentui/tokens';
+import { lineHeightBase400 } from '@fluentui/tokens';
+import { lineHeightBase500 } from '@fluentui/tokens';
+import { lineHeightBase600 } from '@fluentui/tokens';
+import { lineHeightHero1000 } from '@fluentui/tokens';
+import { lineHeightHero700 } from '@fluentui/tokens';
+import { lineHeightHero800 } from '@fluentui/tokens';
+import { lineHeightHero900 } from '@fluentui/tokens';
 import { LineHeightTokens } from '@fluentui/tokens';
 import { PartialTheme } from '@fluentui/tokens';
+import { shadow16 } from '@fluentui/tokens';
+import { shadow16Brand } from '@fluentui/tokens';
+import { shadow2 } from '@fluentui/tokens';
+import { shadow28 } from '@fluentui/tokens';
+import { shadow28Brand } from '@fluentui/tokens';
+import { shadow2Brand } from '@fluentui/tokens';
+import { shadow4 } from '@fluentui/tokens';
+import { shadow4Brand } from '@fluentui/tokens';
+import { shadow64 } from '@fluentui/tokens';
+import { shadow64Brand } from '@fluentui/tokens';
+import { shadow8 } from '@fluentui/tokens';
+import { shadow8Brand } from '@fluentui/tokens';
 import { ShadowBrandTokens } from '@fluentui/tokens';
 import { ShadowTokens } from '@fluentui/tokens';
+import { spacingHorizontalL } from '@fluentui/tokens';
+import { spacingHorizontalM } from '@fluentui/tokens';
+import { spacingHorizontalMNudge } from '@fluentui/tokens';
+import { spacingHorizontalNone } from '@fluentui/tokens';
+import { spacingHorizontalS } from '@fluentui/tokens';
+import { spacingHorizontalSNudge } from '@fluentui/tokens';
+import { spacingHorizontalXL } from '@fluentui/tokens';
+import { spacingHorizontalXS } from '@fluentui/tokens';
+import { spacingHorizontalXXL } from '@fluentui/tokens';
+import { spacingHorizontalXXS } from '@fluentui/tokens';
+import { spacingHorizontalXXXL } from '@fluentui/tokens';
 import { SpacingTokens } from '@fluentui/tokens';
+import { spacingVerticalL } from '@fluentui/tokens';
+import { spacingVerticalM } from '@fluentui/tokens';
+import { spacingVerticalMNudge } from '@fluentui/tokens';
+import { spacingVerticalNone } from '@fluentui/tokens';
+import { spacingVerticalS } from '@fluentui/tokens';
+import { spacingVerticalSNudge } from '@fluentui/tokens';
+import { spacingVerticalXL } from '@fluentui/tokens';
+import { spacingVerticalXS } from '@fluentui/tokens';
+import { spacingVerticalXXL } from '@fluentui/tokens';
+import { spacingVerticalXXS } from '@fluentui/tokens';
+import { spacingVerticalXXXL } from '@fluentui/tokens';
+import { strokeWidthThick } from '@fluentui/tokens';
+import { strokeWidthThicker } from '@fluentui/tokens';
+import { strokeWidthThickest } from '@fluentui/tokens';
+import { strokeWidthThin } from '@fluentui/tokens';
 import { StrokeWidthTokens } from '@fluentui/tokens';
 import { teamsDarkTheme } from '@fluentui/tokens';
 import { teamsDarkV21Theme } from '@fluentui/tokens';
@@ -74,86 +510,802 @@ import { typographyStyles } from '@fluentui/tokens';
 import { VerticalSpacingTokens } from '@fluentui/tokens';
 import { webDarkTheme } from '@fluentui/tokens';
 import { webLightTheme } from '@fluentui/tokens';
+import { zIndexBackground } from '@fluentui/tokens';
+import { zIndexContent } from '@fluentui/tokens';
+import { zIndexDebug } from '@fluentui/tokens';
+import { zIndexFloating } from '@fluentui/tokens';
+import { zIndexMessages } from '@fluentui/tokens';
+import { zIndexOverlay } from '@fluentui/tokens';
+import { zIndexPopup } from '@fluentui/tokens';
+import { zIndexPriority } from '@fluentui/tokens';
+
+export { borderRadiusCircular }
+
+export { borderRadiusLarge }
+
+export { borderRadiusMedium }
+
+export { borderRadiusNone }
+
+export { borderRadiusSmall }
 
 export { BorderRadiusTokens }
+
+export { borderRadiusXLarge }
 
 export { Brands }
 
 export { BrandVariants }
 
+export { colorBackgroundOverlay }
+
+export { colorBrandBackground }
+
+export { colorBrandBackground2 }
+
+export { colorBrandBackground2Hover }
+
+export { colorBrandBackground2Pressed }
+
+export { colorBrandBackground3Static }
+
+export { colorBrandBackground4Static }
+
+export { colorBrandBackgroundHover }
+
+export { colorBrandBackgroundInverted }
+
+export { colorBrandBackgroundInvertedHover }
+
+export { colorBrandBackgroundInvertedPressed }
+
+export { colorBrandBackgroundInvertedSelected }
+
+export { colorBrandBackgroundPressed }
+
+export { colorBrandBackgroundSelected }
+
+export { colorBrandBackgroundStatic }
+
+export { colorBrandForeground1 }
+
+export { colorBrandForeground2 }
+
+export { colorBrandForeground2Hover }
+
+export { colorBrandForeground2Pressed }
+
+export { colorBrandForegroundInverted }
+
+export { colorBrandForegroundInvertedHover }
+
+export { colorBrandForegroundInvertedPressed }
+
+export { colorBrandForegroundLink }
+
+export { colorBrandForegroundLinkHover }
+
+export { colorBrandForegroundLinkPressed }
+
+export { colorBrandForegroundLinkSelected }
+
+export { colorBrandForegroundOnLight }
+
+export { colorBrandForegroundOnLightHover }
+
+export { colorBrandForegroundOnLightPressed }
+
+export { colorBrandForegroundOnLightSelected }
+
+export { colorBrandShadowAmbient }
+
+export { colorBrandShadowKey }
+
+export { colorBrandStroke1 }
+
+export { colorBrandStroke2 }
+
+export { colorBrandStroke2Contrast }
+
+export { colorBrandStroke2Hover }
+
+export { colorBrandStroke2Pressed }
+
+export { colorCompoundBrandBackground }
+
+export { colorCompoundBrandBackgroundHover }
+
+export { colorCompoundBrandBackgroundPressed }
+
+export { colorCompoundBrandForeground1 }
+
+export { colorCompoundBrandForeground1Hover }
+
+export { colorCompoundBrandForeground1Pressed }
+
+export { colorCompoundBrandStroke }
+
+export { colorCompoundBrandStrokeHover }
+
+export { colorCompoundBrandStrokePressed }
+
+export { colorNeutralBackground1 }
+
+export { colorNeutralBackground1Hover }
+
+export { colorNeutralBackground1Pressed }
+
+export { colorNeutralBackground1Selected }
+
+export { colorNeutralBackground2 }
+
+export { colorNeutralBackground2Hover }
+
+export { colorNeutralBackground2Pressed }
+
+export { colorNeutralBackground2Selected }
+
+export { colorNeutralBackground3 }
+
+export { colorNeutralBackground3Hover }
+
+export { colorNeutralBackground3Pressed }
+
+export { colorNeutralBackground3Selected }
+
+export { colorNeutralBackground4 }
+
+export { colorNeutralBackground4Hover }
+
+export { colorNeutralBackground4Pressed }
+
+export { colorNeutralBackground4Selected }
+
+export { colorNeutralBackground5 }
+
+export { colorNeutralBackground5Hover }
+
+export { colorNeutralBackground5Pressed }
+
+export { colorNeutralBackground5Selected }
+
+export { colorNeutralBackground6 }
+
+export { colorNeutralBackgroundAlpha }
+
+export { colorNeutralBackgroundAlpha2 }
+
+export { colorNeutralBackgroundDisabled }
+
+export { colorNeutralBackgroundInverted }
+
+export { colorNeutralBackgroundInvertedDisabled }
+
+export { colorNeutralBackgroundStatic }
+
+export { colorNeutralCardBackground }
+
+export { colorNeutralCardBackgroundDisabled }
+
+export { colorNeutralCardBackgroundHover }
+
+export { colorNeutralCardBackgroundPressed }
+
+export { colorNeutralCardBackgroundSelected }
+
+export { colorNeutralForeground1 }
+
+export { colorNeutralForeground1Hover }
+
+export { colorNeutralForeground1Pressed }
+
+export { colorNeutralForeground1Selected }
+
+export { colorNeutralForeground1Static }
+
+export { colorNeutralForeground2 }
+
+export { colorNeutralForeground2BrandHover }
+
+export { colorNeutralForeground2BrandPressed }
+
+export { colorNeutralForeground2BrandSelected }
+
+export { colorNeutralForeground2Hover }
+
+export { colorNeutralForeground2Link }
+
+export { colorNeutralForeground2LinkHover }
+
+export { colorNeutralForeground2LinkPressed }
+
+export { colorNeutralForeground2LinkSelected }
+
+export { colorNeutralForeground2Pressed }
+
+export { colorNeutralForeground2Selected }
+
+export { colorNeutralForeground3 }
+
+export { colorNeutralForeground3BrandHover }
+
+export { colorNeutralForeground3BrandPressed }
+
+export { colorNeutralForeground3BrandSelected }
+
+export { colorNeutralForeground3Hover }
+
+export { colorNeutralForeground3Pressed }
+
+export { colorNeutralForeground3Selected }
+
+export { colorNeutralForeground4 }
+
+export { colorNeutralForegroundDisabled }
+
+export { colorNeutralForegroundInverted }
+
+export { colorNeutralForegroundInverted2 }
+
+export { colorNeutralForegroundInvertedDisabled }
+
+export { colorNeutralForegroundInvertedHover }
+
+export { colorNeutralForegroundInvertedLink }
+
+export { colorNeutralForegroundInvertedLinkHover }
+
+export { colorNeutralForegroundInvertedLinkPressed }
+
+export { colorNeutralForegroundInvertedLinkSelected }
+
+export { colorNeutralForegroundInvertedPressed }
+
+export { colorNeutralForegroundInvertedSelected }
+
+export { colorNeutralForegroundOnBrand }
+
+export { colorNeutralForegroundStaticInverted }
+
+export { colorNeutralShadowAmbient }
+
+export { colorNeutralShadowAmbientDarker }
+
+export { colorNeutralShadowAmbientLighter }
+
+export { colorNeutralShadowKey }
+
+export { colorNeutralShadowKeyDarker }
+
+export { colorNeutralShadowKeyLighter }
+
+export { colorNeutralStencil1 }
+
+export { colorNeutralStencil1Alpha }
+
+export { colorNeutralStencil2 }
+
+export { colorNeutralStencil2Alpha }
+
+export { colorNeutralStroke1 }
+
+export { colorNeutralStroke1Hover }
+
+export { colorNeutralStroke1Pressed }
+
+export { colorNeutralStroke1Selected }
+
+export { colorNeutralStroke2 }
+
+export { colorNeutralStroke3 }
+
+export { colorNeutralStrokeAccessible }
+
+export { colorNeutralStrokeAccessibleHover }
+
+export { colorNeutralStrokeAccessiblePressed }
+
+export { colorNeutralStrokeAccessibleSelected }
+
+export { colorNeutralStrokeAlpha }
+
+export { colorNeutralStrokeAlpha2 }
+
+export { colorNeutralStrokeDisabled }
+
+export { colorNeutralStrokeInvertedDisabled }
+
+export { colorNeutralStrokeOnBrand }
+
+export { colorNeutralStrokeOnBrand2 }
+
+export { colorNeutralStrokeOnBrand2Hover }
+
+export { colorNeutralStrokeOnBrand2Pressed }
+
+export { colorNeutralStrokeOnBrand2Selected }
+
+export { colorNeutralStrokeSubtle }
+
 export { ColorPaletteAnchor }
+
+export { colorPaletteAnchorBackground2 }
+
+export { colorPaletteAnchorBorderActive }
+
+export { colorPaletteAnchorForeground2 }
 
 export { ColorPaletteBeige }
 
+export { colorPaletteBeigeBackground2 }
+
+export { colorPaletteBeigeBorderActive }
+
+export { colorPaletteBeigeForeground2 }
+
 export { ColorPaletteBerry }
+
+export { colorPaletteBerryBackground1 }
+
+export { colorPaletteBerryBackground2 }
+
+export { colorPaletteBerryBackground3 }
+
+export { colorPaletteBerryBorder1 }
+
+export { colorPaletteBerryBorder2 }
+
+export { colorPaletteBerryBorderActive }
+
+export { colorPaletteBerryForeground1 }
+
+export { colorPaletteBerryForeground2 }
+
+export { colorPaletteBerryForeground3 }
 
 export { ColorPaletteBlue }
 
+export { colorPaletteBlueBackground2 }
+
+export { colorPaletteBlueBorderActive }
+
+export { colorPaletteBlueForeground2 }
+
 export { ColorPaletteBrass }
+
+export { colorPaletteBrassBackground2 }
+
+export { colorPaletteBrassBorderActive }
+
+export { colorPaletteBrassForeground2 }
 
 export { ColorPaletteBrown }
 
+export { colorPaletteBrownBackground2 }
+
+export { colorPaletteBrownBorderActive }
+
+export { colorPaletteBrownForeground2 }
+
 export { ColorPaletteCornflower }
+
+export { colorPaletteCornflowerBackground2 }
+
+export { colorPaletteCornflowerBorderActive }
+
+export { colorPaletteCornflowerForeground2 }
 
 export { ColorPaletteCranberry }
 
+export { colorPaletteCranberryBackground2 }
+
+export { colorPaletteCranberryBorderActive }
+
+export { colorPaletteCranberryForeground2 }
+
 export { ColorPaletteDarkGreen }
+
+export { colorPaletteDarkGreenBackground2 }
+
+export { colorPaletteDarkGreenBorderActive }
+
+export { colorPaletteDarkGreenForeground2 }
 
 export { ColorPaletteDarkOrange }
 
+export { colorPaletteDarkOrangeBackground1 }
+
+export { colorPaletteDarkOrangeBackground2 }
+
+export { colorPaletteDarkOrangeBackground3 }
+
+export { colorPaletteDarkOrangeBorder1 }
+
+export { colorPaletteDarkOrangeBorder2 }
+
+export { colorPaletteDarkOrangeBorderActive }
+
+export { colorPaletteDarkOrangeForeground1 }
+
+export { colorPaletteDarkOrangeForeground2 }
+
+export { colorPaletteDarkOrangeForeground3 }
+
 export { ColorPaletteDarkRed }
+
+export { colorPaletteDarkRedBackground2 }
+
+export { colorPaletteDarkRedBorderActive }
+
+export { colorPaletteDarkRedForeground2 }
 
 export { ColorPaletteForest }
 
+export { colorPaletteForestBackground2 }
+
+export { colorPaletteForestBorderActive }
+
+export { colorPaletteForestForeground2 }
+
 export { ColorPaletteGold }
+
+export { colorPaletteGoldBackground2 }
+
+export { colorPaletteGoldBorderActive }
+
+export { colorPaletteGoldForeground2 }
 
 export { ColorPaletteGrape }
 
+export { colorPaletteGrapeBackground2 }
+
+export { colorPaletteGrapeBorderActive }
+
+export { colorPaletteGrapeForeground2 }
+
 export { ColorPaletteGreen }
+
+export { colorPaletteGreenBackground1 }
+
+export { colorPaletteGreenBackground2 }
+
+export { colorPaletteGreenBackground3 }
+
+export { colorPaletteGreenBorder1 }
+
+export { colorPaletteGreenBorder2 }
+
+export { colorPaletteGreenBorderActive }
+
+export { colorPaletteGreenForeground1 }
+
+export { colorPaletteGreenForeground2 }
+
+export { colorPaletteGreenForeground3 }
+
+export { colorPaletteGreenForegroundInverted }
 
 export { ColorPaletteLavender }
 
+export { colorPaletteLavenderBackground2 }
+
+export { colorPaletteLavenderBorderActive }
+
+export { colorPaletteLavenderForeground2 }
+
 export { ColorPaletteLightGreen }
+
+export { colorPaletteLightGreenBackground1 }
+
+export { colorPaletteLightGreenBackground2 }
+
+export { colorPaletteLightGreenBackground3 }
+
+export { colorPaletteLightGreenBorder1 }
+
+export { colorPaletteLightGreenBorder2 }
+
+export { colorPaletteLightGreenBorderActive }
+
+export { colorPaletteLightGreenForeground1 }
+
+export { colorPaletteLightGreenForeground2 }
+
+export { colorPaletteLightGreenForeground3 }
 
 export { ColorPaletteLightTeal }
 
+export { colorPaletteLightTealBackground2 }
+
+export { colorPaletteLightTealBorderActive }
+
+export { colorPaletteLightTealForeground2 }
+
 export { ColorPaletteLilac }
+
+export { colorPaletteLilacBackground2 }
+
+export { colorPaletteLilacBorderActive }
+
+export { colorPaletteLilacForeground2 }
 
 export { ColorPaletteMagenta }
 
+export { colorPaletteMagentaBackground2 }
+
+export { colorPaletteMagentaBorderActive }
+
+export { colorPaletteMagentaForeground2 }
+
 export { ColorPaletteMarigold }
+
+export { colorPaletteMarigoldBackground1 }
+
+export { colorPaletteMarigoldBackground2 }
+
+export { colorPaletteMarigoldBackground3 }
+
+export { colorPaletteMarigoldBorder1 }
+
+export { colorPaletteMarigoldBorder2 }
+
+export { colorPaletteMarigoldBorderActive }
+
+export { colorPaletteMarigoldForeground1 }
+
+export { colorPaletteMarigoldForeground2 }
+
+export { colorPaletteMarigoldForeground3 }
 
 export { ColorPaletteMink }
 
+export { colorPaletteMinkBackground2 }
+
+export { colorPaletteMinkBorderActive }
+
+export { colorPaletteMinkForeground2 }
+
 export { ColorPaletteNavy }
+
+export { colorPaletteNavyBackground2 }
+
+export { colorPaletteNavyBorderActive }
+
+export { colorPaletteNavyForeground2 }
 
 export { ColorPalettePeach }
 
+export { colorPalettePeachBackground2 }
+
+export { colorPalettePeachBorderActive }
+
+export { colorPalettePeachForeground2 }
+
 export { ColorPalettePink }
+
+export { colorPalettePinkBackground2 }
+
+export { colorPalettePinkBorderActive }
+
+export { colorPalettePinkForeground2 }
 
 export { ColorPalettePlatinum }
 
+export { colorPalettePlatinumBackground2 }
+
+export { colorPalettePlatinumBorderActive }
+
+export { colorPalettePlatinumForeground2 }
+
 export { ColorPalettePlum }
+
+export { colorPalettePlumBackground2 }
+
+export { colorPalettePlumBorderActive }
+
+export { colorPalettePlumForeground2 }
 
 export { ColorPalettePumpkin }
 
+export { colorPalettePumpkinBackground2 }
+
+export { colorPalettePumpkinBorderActive }
+
+export { colorPalettePumpkinForeground2 }
+
 export { ColorPalettePurple }
+
+export { colorPalettePurpleBackground2 }
+
+export { colorPalettePurpleBorderActive }
+
+export { colorPalettePurpleForeground2 }
 
 export { ColorPaletteRed }
 
+export { colorPaletteRedBackground1 }
+
+export { colorPaletteRedBackground2 }
+
+export { colorPaletteRedBackground3 }
+
+export { colorPaletteRedBorder1 }
+
+export { colorPaletteRedBorder2 }
+
+export { colorPaletteRedBorderActive }
+
+export { colorPaletteRedForeground1 }
+
+export { colorPaletteRedForeground2 }
+
+export { colorPaletteRedForeground3 }
+
+export { colorPaletteRedForegroundInverted }
+
 export { ColorPaletteRoyalBlue }
+
+export { colorPaletteRoyalBlueBackground2 }
+
+export { colorPaletteRoyalBlueBorderActive }
+
+export { colorPaletteRoyalBlueForeground2 }
 
 export { ColorPaletteSeafoam }
 
+export { colorPaletteSeafoamBackground2 }
+
+export { colorPaletteSeafoamBorderActive }
+
+export { colorPaletteSeafoamForeground2 }
+
 export { ColorPaletteSteel }
 
+export { colorPaletteSteelBackground2 }
+
+export { colorPaletteSteelBorderActive }
+
+export { colorPaletteSteelForeground2 }
+
 export { ColorPaletteTeal }
+
+export { colorPaletteTealBackground2 }
+
+export { colorPaletteTealBorderActive }
+
+export { colorPaletteTealForeground2 }
 
 export { ColorPaletteTokens }
 
 export { ColorPaletteYellow }
 
+export { colorPaletteYellowBackground1 }
+
+export { colorPaletteYellowBackground2 }
+
+export { colorPaletteYellowBackground3 }
+
+export { colorPaletteYellowBorder1 }
+
+export { colorPaletteYellowBorder2 }
+
+export { colorPaletteYellowBorderActive }
+
+export { colorPaletteYellowForeground1 }
+
+export { colorPaletteYellowForeground2 }
+
+export { colorPaletteYellowForeground3 }
+
+export { colorPaletteYellowForegroundInverted }
+
+export { colorScrollbarOverlay }
+
+export { colorStatusDangerBackground1 }
+
+export { colorStatusDangerBackground2 }
+
+export { colorStatusDangerBackground3 }
+
+export { colorStatusDangerBackground3Hover }
+
+export { colorStatusDangerBackground3Pressed }
+
+export { colorStatusDangerBorder1 }
+
+export { colorStatusDangerBorder2 }
+
+export { colorStatusDangerBorderActive }
+
+export { colorStatusDangerForeground1 }
+
+export { colorStatusDangerForeground2 }
+
+export { colorStatusDangerForeground3 }
+
+export { colorStatusDangerForegroundInverted }
+
+export { colorStatusSuccessBackground1 }
+
+export { colorStatusSuccessBackground2 }
+
+export { colorStatusSuccessBackground3 }
+
+export { colorStatusSuccessBorder1 }
+
+export { colorStatusSuccessBorder2 }
+
+export { colorStatusSuccessBorderActive }
+
+export { colorStatusSuccessForeground1 }
+
+export { colorStatusSuccessForeground2 }
+
+export { colorStatusSuccessForeground3 }
+
+export { colorStatusSuccessForegroundInverted }
+
+export { colorStatusWarningBackground1 }
+
+export { colorStatusWarningBackground2 }
+
+export { colorStatusWarningBackground3 }
+
+export { colorStatusWarningBorder1 }
+
+export { colorStatusWarningBorder2 }
+
+export { colorStatusWarningBorderActive }
+
+export { colorStatusWarningForeground1 }
+
+export { colorStatusWarningForeground2 }
+
+export { colorStatusWarningForeground3 }
+
+export { colorStatusWarningForegroundInverted }
+
+export { colorStrokeFocus1 }
+
+export { colorStrokeFocus2 }
+
+export { colorSubtleBackground }
+
+export { colorSubtleBackgroundHover }
+
+export { colorSubtleBackgroundInverted }
+
+export { colorSubtleBackgroundInvertedHover }
+
+export { colorSubtleBackgroundInvertedPressed }
+
+export { colorSubtleBackgroundInvertedSelected }
+
+export { colorSubtleBackgroundLightAlphaHover }
+
+export { colorSubtleBackgroundLightAlphaPressed }
+
+export { colorSubtleBackgroundLightAlphaSelected }
+
+export { colorSubtleBackgroundPressed }
+
+export { colorSubtleBackgroundSelected }
+
 export { ColorTokens }
+
+export { colorTransparentBackground }
+
+export { colorTransparentBackgroundHover }
+
+export { colorTransparentBackgroundPressed }
+
+export { colorTransparentBackgroundSelected }
+
+export { colorTransparentStroke }
+
+export { colorTransparentStrokeDisabled }
+
+export { colorTransparentStrokeInteractive }
 
 export { createDarkTheme }
 
@@ -163,27 +1315,191 @@ export { createLightTheme }
 
 export { createTeamsDarkTheme }
 
+export { curveAccelerateMax }
+
+export { curveAccelerateMid }
+
+export { curveAccelerateMin }
+
+export { curveDecelerateMax }
+
+export { curveDecelerateMid }
+
+export { curveDecelerateMin }
+
+export { curveEasyEase }
+
+export { curveEasyEaseMax }
+
+export { curveLinear }
+
 export { CurveTokens }
+
+export { durationFast }
+
+export { durationFaster }
+
+export { durationGentle }
+
+export { durationNormal }
+
+export { durationSlow }
+
+export { durationSlower }
 
 export { DurationTokens }
 
+export { durationUltraFast }
+
+export { durationUltraSlow }
+
+export { fontFamilyBase }
+
+export { fontFamilyMonospace }
+
+export { fontFamilyNumeric }
+
 export { FontFamilyTokens }
 
+export { fontSizeBase100 }
+
+export { fontSizeBase200 }
+
+export { fontSizeBase300 }
+
+export { fontSizeBase400 }
+
+export { fontSizeBase500 }
+
+export { fontSizeBase600 }
+
+export { fontSizeHero1000 }
+
+export { fontSizeHero700 }
+
+export { fontSizeHero800 }
+
+export { fontSizeHero900 }
+
 export { FontSizeTokens }
+
+export { fontWeightBold }
+
+export { fontWeightMedium }
+
+export { fontWeightRegular }
+
+export { fontWeightSemibold }
 
 export { FontWeightTokens }
 
 export { HorizontalSpacingTokens }
 
+export { lineHeightBase100 }
+
+export { lineHeightBase200 }
+
+export { lineHeightBase300 }
+
+export { lineHeightBase400 }
+
+export { lineHeightBase500 }
+
+export { lineHeightBase600 }
+
+export { lineHeightHero1000 }
+
+export { lineHeightHero700 }
+
+export { lineHeightHero800 }
+
+export { lineHeightHero900 }
+
 export { LineHeightTokens }
 
 export { PartialTheme }
+
+export { shadow16 }
+
+export { shadow16Brand }
+
+export { shadow2 }
+
+export { shadow28 }
+
+export { shadow28Brand }
+
+export { shadow2Brand }
+
+export { shadow4 }
+
+export { shadow4Brand }
+
+export { shadow64 }
+
+export { shadow64Brand }
+
+export { shadow8 }
+
+export { shadow8Brand }
 
 export { ShadowBrandTokens }
 
 export { ShadowTokens }
 
+export { spacingHorizontalL }
+
+export { spacingHorizontalM }
+
+export { spacingHorizontalMNudge }
+
+export { spacingHorizontalNone }
+
+export { spacingHorizontalS }
+
+export { spacingHorizontalSNudge }
+
+export { spacingHorizontalXL }
+
+export { spacingHorizontalXS }
+
+export { spacingHorizontalXXL }
+
+export { spacingHorizontalXXS }
+
+export { spacingHorizontalXXXL }
+
 export { SpacingTokens }
+
+export { spacingVerticalL }
+
+export { spacingVerticalM }
+
+export { spacingVerticalMNudge }
+
+export { spacingVerticalNone }
+
+export { spacingVerticalS }
+
+export { spacingVerticalSNudge }
+
+export { spacingVerticalXL }
+
+export { spacingVerticalXS }
+
+export { spacingVerticalXXL }
+
+export { spacingVerticalXXS }
+
+export { spacingVerticalXXXL }
+
+export { strokeWidthThick }
+
+export { strokeWidthThicker }
+
+export { strokeWidthThickest }
+
+export { strokeWidthThin }
 
 export { StrokeWidthTokens }
 
@@ -214,6 +1530,22 @@ export { VerticalSpacingTokens }
 export { webDarkTheme }
 
 export { webLightTheme }
+
+export { zIndexBackground }
+
+export { zIndexContent }
+
+export { zIndexDebug }
+
+export { zIndexFloating }
+
+export { zIndexMessages }
+
+export { zIndexOverlay }
+
+export { zIndexPopup }
+
+export { zIndexPriority }
 
 // (No @packageDocumentation comment for this package)
 
