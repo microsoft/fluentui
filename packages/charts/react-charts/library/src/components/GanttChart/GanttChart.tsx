@@ -182,7 +182,6 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
         xAxisType: XAxisTypes,
         barWidth: number,
         tickValues: Date[] | number[] | undefined,
-        shiftX: number,
       ): IDomainNRange => {
         const xValues: (Date | number)[] = [];
         points.forEach(point => {
@@ -195,8 +194,8 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
         return {
           dStartValue: isRTL ? xMax : xMin,
           dEndValue: isRTL ? xMin : xMax,
-          rStartValue: margins.left! + (isRTL ? 0 : shiftX),
-          rEndValue: containerWidth - margins.right! - (isRTL ? shiftX : 0),
+          rStartValue: margins.left!,
+          rEndValue: containerWidth - margins.right!,
         };
       },
       [],
