@@ -321,7 +321,7 @@ const chartMap: ChartTypeMap = {
 export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = React.forwardRef<
   HTMLDivElement,
   DeclarativeChartProps
->(({ colorwayType = 'default', ...props }, forwardedRef) => {
+>(({ colorwayType = 'default', onSchemaChange, ...props }, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {
@@ -357,12 +357,15 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
 
   const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
-  const onActiveLegendsChange = (keys: string[]) => {
-    setActiveLegends(keys);
-    if (props.onSchemaChange) {
-      props.onSchemaChange({ plotlySchema: { plotlyInput, selectedLegends: keys } });
-    }
-  };
+  const onActiveLegendsChange = React.useCallback(
+    (keys: string[]) => {
+      setActiveLegends(keys);
+      if (onSchemaChange) {
+        onSchemaChange({ plotlySchema: { plotlyInput, selectedLegends: keys } });
+      }
+    },
+    [onSchemaChange, plotlyInput],
+  );
 
   React.useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -412,10 +415,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       }
 
       return exportChartsAsImage(
-        chartRefs.current.map(chart => ({
-          container: chart.compRef?.chartContainer,
-          row: chart.row,
-          col: chart.col,
+        chartRefs.current.map(item => ({
+          container: item.compRef?.chartContainer,
+          row: item.row,
+          col: item.col,
         })),
         legendsRef.current?.toSVG,
         getRTL(),
