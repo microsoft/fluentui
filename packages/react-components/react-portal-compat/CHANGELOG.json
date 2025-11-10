@@ -2,6 +2,42 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Thu, 06 Nov 2025 17:24:17 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.2.24",
+      "version": "9.2.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.72.6",
+            "commit": "ead2f2739c6ad522edc7a8b180026dc87e47fbd0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Nov 2025 15:01:25 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.2.23",
+      "version": "9.2.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.26.9",
+            "commit": "8fd7910fdfc3892c3e802e09fdedf8de249c0733"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.72.5",
+            "commit": "8fd7910fdfc3892c3e802e09fdedf8de249c0733"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Oct 2025 16:22:06 GMT",
       "tag": "@fluentui/react-portal-compat_v9.2.22",
       "version": "9.2.22",

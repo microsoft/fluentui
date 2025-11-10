@@ -24,7 +24,7 @@ describe('InteractionTag', () => {
       </InteractionTag>,
     );
     expect(getByTestId('secondary').getAttribute('aria-labelledby')).toMatchInlineSnapshot(
-      `"fui-InteractionTagPrimary-rf fui-InteractionTagSecondary-rg"`,
+      `"fui-InteractionTagPrimary-_r_f_ fui-InteractionTagSecondary-_r_g_"`,
     );
   });
 });

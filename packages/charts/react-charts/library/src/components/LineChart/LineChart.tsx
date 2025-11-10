@@ -144,7 +144,8 @@ type LineChartDataWithIndex = LineChartPoints & { index: number };
  * {@docCategory LineChart}
  */
 export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardRef<HTMLDivElement, LineChartProps>(
-  (props, forwardedRef) => {
+  ({ isCalloutForStack = true, ...restProps }, forwardedRef) => {
+    const props = { isCalloutForStack, ...restProps };
     let _hasMarkersMode: boolean = false;
     let _isXAxisDateType: boolean = false;
     let _isScatterPolar: boolean = false;
@@ -1909,6 +1910,3 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
   },
 );
 LineChart.displayName = 'LineChart';
-LineChart.defaultProps = {
-  isCalloutForStack: true,
-};

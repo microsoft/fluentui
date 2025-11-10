@@ -276,7 +276,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
             // and avoid conveying duplicate info, make these line points non-focusable.
             data-is-focusable={_legendHighlighted(lineLegendText!)}
-            ref={e => (circleRef.refElement = e)}
+            ref={e => {
+              circleRef.refElement = e;
+            }}
             onFocus={event => _lineFocus(event, item.point, circleRef)}
             onBlur={_handleChartMouseLeave}
             tabIndex={_legendHighlighted(lineLegendText!) ? 0 : undefined}

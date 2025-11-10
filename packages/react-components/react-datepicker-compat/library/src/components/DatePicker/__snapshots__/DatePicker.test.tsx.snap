@@ -12,7 +12,7 @@ Object {
           aria-expanded="false"
           aria-haspopup="dialog"
           class="fui-Input__input"
-          id="datePicker-inputrm"
+          id="datePicker-input_r_m_"
           readonly=""
           role="combobox"
           type="text"
@@ -20,7 +20,7 @@ Object {
         />
         <span
           aria-expanded="false"
-          aria-labelledby="datePicker-inputrm"
+          aria-labelledby="datePicker-input_r_m_"
           class="fui-Input__contentAfter"
           role="button"
         >
@@ -50,7 +50,7 @@ Object {
         aria-expanded="false"
         aria-haspopup="dialog"
         class="fui-Input__input"
-        id="datePicker-inputrm"
+        id="datePicker-input_r_m_"
         readonly=""
         role="combobox"
         type="text"
@@ -58,7 +58,7 @@ Object {
       />
       <span
         aria-expanded="false"
-        aria-labelledby="datePicker-inputrm"
+        aria-labelledby="datePicker-input_r_m_"
         class="fui-Input__contentAfter"
         role="button"
       >

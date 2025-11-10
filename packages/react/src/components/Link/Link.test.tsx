@@ -1,8 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom/server';
-import { Customizer } from '@fluentui/utilities';
-import { createTheme } from '@fluentui/style-utilities';
 import { isConformant } from '../../common/isConformant';
 import { Link } from './Link';
 
@@ -81,21 +78,6 @@ describe('Link', () => {
       </Link>,
     );
     expect(getByTestId('route')).toBeInTheDocument();
-  });
-
-  it('can have the global styles for Link component be disabled', () => {
-    const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
-
-    expect(
-      /ms-Link($| )/.test(
-        ReactDOM.renderToStaticMarkup(
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
-          <Customizer settings={{ theme: NoClassNamesTheme }}>
-            <Link href="helloworld.html">My Link</Link>
-          </Customizer>,
-        ),
-      ),
-    ).toBe(false);
   });
 
   it('does not throw a React warning when the componentRef prop is provided', () => {

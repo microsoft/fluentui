@@ -521,7 +521,9 @@ export class CartesianChartBase
       <div
         id={this.idForGraph}
         className={this._classNames.root}
-        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+        ref={(rootElem: HTMLDivElement) => {
+          this.chartContainer = rootElem;
+        }}
         onMouseLeave={this._onChartLeave}
       >
         {!this._isFirstRender && <div id={this.idForDefaultTabbableElement} />}
@@ -664,7 +666,12 @@ export class CartesianChartBase
         </FocusZone>
 
         {!this.props.hideLegend && (
-          <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
+          <div
+            ref={(e: HTMLDivElement) => {
+              this.legendContainer = e;
+            }}
+            className={this._classNames.legendContainer}
+          >
             {this.props.legendBars}
           </div>
         )}

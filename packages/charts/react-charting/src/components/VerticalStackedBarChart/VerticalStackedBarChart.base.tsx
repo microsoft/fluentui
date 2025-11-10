@@ -141,8 +141,8 @@ export class VerticalStackedBarChartBase
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
   private readonly Y_ORIGIN: number = 0;
   private _yAxisType: YAxisType;
   private _yAxisLabels: string[] = [];
@@ -515,7 +515,9 @@ export class VerticalStackedBarChartBase
             // For more information, see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
             opacity={this._getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).opacity}
             transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
-            ref={e => (circleRef.refElement = e)}
+            ref={e => {
+              circleRef.refElement = e;
+            }}
             {...(noBarsActive && (this._noLegendHighlighted() || this._isLegendHighlighted(item))
               ? {
                   'data-is-focusable': !this.props.hideTooltip,
@@ -1085,7 +1087,9 @@ export class VerticalStackedBarChartBase
                 `}
                 fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
                 rx={this.props.roundCorners ? 3 : 0}
-                ref={e => (ref.refElement = e)}
+                ref={e => {
+                  ref.refElement = e;
+                }}
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
                 {...rectFocusProps}
               />
@@ -1113,7 +1117,9 @@ export class VerticalStackedBarChartBase
               height={barHeight}
               fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
               rx={this.props.roundCorners ? 3 : 0}
-              ref={e => (ref.refElement = e)}
+              ref={e => {
+                ref.refElement = e;
+              }}
               {...rectFocusProps}
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             />
@@ -1157,7 +1163,13 @@ export class VerticalStackedBarChartBase
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
-          <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
+          <g
+            id={`${indexNumber}-singleBar`}
+            ref={e => {
+              groupRef.refElement = e;
+            }}
+            {...stackFocusProps}
+          >
             {singleBar}
           </g>
           {/*

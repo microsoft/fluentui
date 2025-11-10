@@ -118,8 +118,8 @@ export class VerticalBarChartBase
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -405,7 +405,9 @@ export class VerticalBarChartBase
             // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
             // and avoid conveying duplicate info, make these line points non-focusable.
             data-is-focusable={this._legendHighlighted(lineLegendText!)}
-            ref={e => (circleRef.refElement = e)}
+            ref={e => {
+              circleRef.refElement = e;
+            }}
             onFocus={this._lineFocus.bind(this, item.point, circleRef)}
             onBlur={this._handleChartMouseLeave}
           />

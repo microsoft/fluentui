@@ -11,7 +11,9 @@ export const mockUseMenuContext = (options: Partial<MenuContextValue> = {}): voi
   const mockContext: MenuContextValue = {
     open: false,
     setOpen: () => null,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
     mountNode: null,
     openOnContext: false,

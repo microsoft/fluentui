@@ -11,7 +11,7 @@ type UseFocusVisibleOptions = {
 
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(
   options: UseFocusVisibleOptions = {},
-): React.RefObject<TElement> {
+): React.RefObject<TElement | null> {
   const contextValue = useFluent();
   const scopeRef = React.useRef<TElement>(null);
 

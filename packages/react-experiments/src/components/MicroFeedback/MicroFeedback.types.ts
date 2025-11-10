@@ -164,12 +164,12 @@ export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
   /**
    * Defines a reference for the Like button.
    */
-  likeRef: React.RefObject<HTMLDivElement>;
+  likeRef: React.RefObject<HTMLDivElement | null>;
 
   /**
    * Defines a reference for the Dislike button.
    */
-  dislikeRef: React.RefObject<HTMLDivElement>;
+  dislikeRef: React.RefObject<HTMLDivElement | null>;
 
   /**
    * Defines a callback that is called when the Callout is dismissed.
