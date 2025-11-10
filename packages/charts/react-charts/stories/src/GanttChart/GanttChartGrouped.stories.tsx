@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { DataVizPalette, GanttChart, GanttChartDataPoint } from '@fluentui/react-charts';
-import { Switch, makeStyles, shorthands } from '@fluentui/react-components';
+import { Switch, makeStyles } from '@fluentui/react-components';
 
 const data: GanttChartDataPoint[] = [
   {
@@ -88,7 +88,7 @@ const data: GanttChartDataPoint[] = [
 
 const useStyles = makeStyles({
   container: {
-    ...shorthands.padding('16px'),
+    padding: '16px',
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
