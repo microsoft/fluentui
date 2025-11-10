@@ -261,10 +261,37 @@ function* HeadlessTreeVisibleItemsGenerator<Props extends HeadlessTreeItemProps>
   virtualTreeItems: HeadlessTree<Props>,
 ): Generator<HeadlessTreeItem<Props>, void, void> {
   let index = 0;
-  for (const item of HeadlessTreeSubtreeGenerator(virtualTreeItems.root.value, virtualTreeItems)) {
-    if (isItemVisible(item, openItems, virtualTreeItems)) {
-      item.index = index++;
-      yield item;
+  for (const item of recursiveVisibleItems(virtualTreeItems.root.value, openItems, virtualTreeItems)) {
+    item.index = index++;
+    yield item;
+  }
+}
+
+function* recursiveVisibleItems<Props extends HeadlessTreeItemProps>(
+  parentValue: TreeItemValue,
+  openItems: ImmutableSet<TreeItemValue>,
+  virtualTreeItems: HeadlessTree<Props>,
+): Generator<HeadlessTreeItem<Props>, void, void> {
+  const parent = virtualTreeItems.get(parentValue);
+  if (!parent || parent.childrenValues.length === 0) {
+    return;
+  }
+
+  for (const childValue of parent.childrenValues) {
+    const child = virtualTreeItems.get(childValue);
+    if (!child) {
+      continue;
+    }
+
+    if (isItemVisible(child, openItems, virtualTreeItems)) {
+      yield child;
+
+      // Process children only as long as their parents are open.
+      // This makes it possible to have large trees with good performance as
+      // long as most branches are not expanded.
+      if (openItems.has(childValue)) {
+        yield* recursiveVisibleItems(childValue, openItems, virtualTreeItems);
+      }
     }
   }
 }

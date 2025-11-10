@@ -60,17 +60,6 @@ export interface HorizontalBarChartWithAxisProps extends CartesianChartProps {
   yAxisPadding?: number;
 
   /**
-   *@default false
-   *Used for to elipse y axis labes and show tooltip on x axis labels
-   */
-  showYAxisLablesTooltip?: boolean;
-
-  /**
-   *@default false
-   *Used for showing complete y axis lables   */
-  showYAxisLables?: boolean;
-
-  /**
    * @default false
    * The prop used to enable gradient fill color for the chart.
    */

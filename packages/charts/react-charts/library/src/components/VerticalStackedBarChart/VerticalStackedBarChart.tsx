@@ -526,7 +526,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
