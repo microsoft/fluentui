@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 06 Nov 2025 15:01:15 GMT",
+      "tag": "@fluentui/react-tabster_v9.26.9",
+      "version": "9.26.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.25.3",
+            "commit": "8fd7910fdfc3892c3e802e09fdedf8de249c0733"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Oct 2025 16:22:06 GMT",
       "tag": "@fluentui/react-tabster_v9.26.8",
       "version": "9.26.8",

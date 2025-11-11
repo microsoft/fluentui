@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 31 Oct 2025 16:22:06 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Nov 2025 15:01:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.20.4)
+
+Thu, 06 Nov 2025 15:01:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.20.3..@fluentui/react-menu_v9.20.4)
+
+### Patches
+
+- chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.17.5 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.11 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-portal to v9.8.7 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-positioning to v9.20.9 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-tabster to v9.26.9 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-utilities to v9.25.3 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.2 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
 
 ## [9.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.20.3)
 

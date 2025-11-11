@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useTheme } from '@fluentui/react';
+import { getRTL, useTheme } from '@fluentui/react';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
-import { toImage as exportToImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import type { IAnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
 import type { IChart, IImageExportOptions } from '../../types/index';
 import type { IChartAnnotationContext } from '../CommonComponents/Annotations/ChartAnnotationLayer.types';
@@ -189,17 +189,13 @@ export const AnnotationOnlyChart: React.FC<IAnnotationOnlyChartProps> = props =>
       const chartHandle: IChart = {
         chartContainer: containerRef.current,
         toImage: (opts?: IImageExportOptions) => {
-          if (!containerRef.current) {
-            return Promise.reject(new Error('Chart container is not defined'));
-          }
-
-          return exportToImage(containerRef.current, undefined, !!theme?.rtl, opts);
+          return exportChartsAsImage([{ container: containerRef.current }], undefined, getRTL(), opts);
         },
       };
 
       return chartHandle;
     },
-    [theme?.rtl],
+    [],
   );
 
   return (

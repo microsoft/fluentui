@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Thu, 23 Oct 2025 10:23:14 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 10:09:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.36](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.36)
+
+Tue, 11 Nov 2025 10:09:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.35..@fluentui/chart-utilities_v1.1.36)
+
+### Patches
+
+- feat(chart-utilities): Adding annotation only chart ([PR #35390](https://github.com/microsoft/fluentui/pull/35390) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.35)
 

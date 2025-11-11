@@ -28,6 +28,8 @@ export const linechartClassNames: SlotClassNames<LineChartStyles> = {
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 /**

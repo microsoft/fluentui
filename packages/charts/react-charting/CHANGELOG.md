@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 30 Oct 2025 12:37:12 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 10:09:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.25.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.2)
+
+Tue, 11 Nov 2025 10:09:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.25.1..@fluentui/react-charting_v5.25.2)
+
+### Patches
+
+- fix chart 983 crash ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by anushgupta@microsoft.com)
+- feat: enable multiplot image export ([PR #35472](https://github.com/microsoft/fluentui/pull/35472) by kumarkshitij@microsoft.com)
+- fix: adjust chart margin for continuous y-axis tick labels ([PR #35376](https://github.com/microsoft/fluentui/pull/35376) by kumarkshitij@microsoft.com)
+- fix plotly color issue ([PR #35451](https://github.com/microsoft/fluentui/pull/35451) by anushgupta@microsoft.com)
+- feat(react-charting): Adding annotation only chart ([PR #35390](https://github.com/microsoft/fluentui/pull/35390) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.36 ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by beachball)
+- Bump @fluentui/react-focus to v8.10.1 ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by beachball)
+- Bump @fluentui/theme-samples to v8.7.220 ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by beachball)
+- Bump @fluentui/react to v8.125.1 ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by beachball)
 
 ## [5.25.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.1)
 

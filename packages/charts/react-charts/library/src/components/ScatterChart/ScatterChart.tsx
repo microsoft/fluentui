@@ -217,7 +217,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {

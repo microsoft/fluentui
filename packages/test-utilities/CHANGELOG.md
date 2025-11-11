@@ -1,8 +1,17 @@
 # Change Log - @fluentui/test-utilities
 
-This log was last generated on Thu, 23 Oct 2025 10:23:22 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 10:09:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.5.1)
+
+Tue, 11 Nov 2025 10:09:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.5.0..@fluentui/test-utilities_v8.5.1)
+
+### Patches
+
+- chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
 
 ## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.5.0)
 

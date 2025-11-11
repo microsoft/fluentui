@@ -61,7 +61,7 @@ import {
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { ILegendContainer } from '../Legends/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import type { JSXElement } from '@fluentui/utilities';
 
 enum CircleVisbility {
@@ -270,7 +270,12 @@ export class VerticalBarChartBase
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRtl,
+      opts,
+    );
   };
 
   private _getDomainNRangeValues = (
@@ -282,7 +287,6 @@ export class VerticalBarChartBase
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
