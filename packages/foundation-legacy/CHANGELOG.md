@@ -1,8 +1,18 @@
 # Change Log - @fluentui/foundation-legacy
 
-This log was last generated on Thu, 23 Oct 2025 10:23:14 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 10:09:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.6.1)
+
+Tue, 11 Nov 2025 10:09:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.6.0..@fluentui/foundation-legacy_v8.6.1)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.13.4 ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by beachball)
+- Bump @fluentui/utilities to v8.17.1 ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by beachball)
 
 ## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.6.0)
 
