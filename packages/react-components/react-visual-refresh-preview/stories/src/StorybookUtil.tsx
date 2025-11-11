@@ -18,6 +18,7 @@ export const VisualRefreshExamples = ({ examples }: { examples: VisualRefreshExa
     <FluentProvider>
       <div className={styles.table}>
         <div className={styles.row}>
+          <div style={{ fontWeight: 800 }}>Example</div>
           <div style={{ fontWeight: 800 }}>Current</div>
           <div style={{ fontWeight: 800 }}>Visual Refresh (Teams)</div>
           <div style={{ fontWeight: 800 }}>Visual Refresh (OneDrive)</div>
@@ -26,6 +27,7 @@ export const VisualRefreshExamples = ({ examples }: { examples: VisualRefreshExa
         {examples.map(example => {
           return (
             <div className={styles.row}>
+              <div>{example.title}</div>
               <div>{renderExample(example, 'v9')}</div>
               <div>
                 <CAPThemeProvider theme={{ ...teamsLightV21Theme, ...CAP_THEME_TEAMS }}>

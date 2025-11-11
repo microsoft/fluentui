@@ -8,21 +8,41 @@ export interface TokenSchema {
   type: TokenType;
 }
 
+const ColorTokenSchema = { type: 'color' } as const satisfies TokenSchema;
+
+const BadgeTokens = {} as const satisfies Record<string, TokenSchema>;
+
 const ButtonTokens = {
-  buttonPrimaryBackgroundColor: { type: 'color' },
-  buttonPrimaryBackgroundColorHover: { type: 'color' },
-  buttonSecondaryBackgroundColor: { type: 'color' },
-  buttonSecondaryBackgroundColorHover: { type: 'color' },
-  buttonSubtleBackgroundColor: { type: 'color' },
-  buttonSubtleBackgroundColorHover: { type: 'color' },
-  buttonOutlineBackgroundColor: { type: 'color' },
-  buttonOutlineBackgroundColorHover: { type: 'color' },
-  buttonTintBackgroundColor: { type: 'color' },
-  buttonTintBackgroundColorHover: { type: 'color' },
+  buttonPrimaryBackgroundColor: ColorTokenSchema,
+  buttonPrimaryBackgroundColorHover: ColorTokenSchema,
+  buttonSecondaryBackgroundColor: ColorTokenSchema,
+  buttonSecondaryBackgroundColorHover: ColorTokenSchema,
+  buttonSubtleBackgroundColor: ColorTokenSchema,
+  buttonSubtleBackgroundColorHover: ColorTokenSchema,
+  buttonOutlineBackgroundColor: ColorTokenSchema,
+  buttonOutlineBackgroundColorHover: ColorTokenSchema,
+  buttonTintBackgroundColor: ColorTokenSchema,
+  buttonTintBackgroundColorHover: ColorTokenSchema,
 } as const satisfies Record<string, TokenSchema>;
 
+const CardTokens = {} as const satisfies Record<string, TokenSchema>;
+
+const DialogTokens = {} as const satisfies Record<string, TokenSchema>;
+
+const InputTokens = {} as const satisfies Record<string, TokenSchema>;
+
+const MenuTokens = {} as const satisfies Record<string, TokenSchema>;
+
+const TooltipTokens = {} as const satisfies Record<string, TokenSchema>;
+
 export const CAPTokensSchema = {
+  ...BadgeTokens,
   ...ButtonTokens,
+  ...CardTokens,
+  ...DialogTokens,
+  ...InputTokens,
+  ...MenuTokens,
+  ...TooltipTokens,
 } as const satisfies { [key: string]: TokenSchema };
 
 export const CAPTokens = {
