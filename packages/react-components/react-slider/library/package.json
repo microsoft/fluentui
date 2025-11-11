@@ -54,8 +54,5 @@
     "dist/*.d.ts",
     "lib",
     "lib-commonjs"
-  ],
-  "scripts": {
-    "lint": "eslint ."
-  }
+  ]
 }

@@ -49,8 +49,5 @@
       "major",
       "prerelease"
     ]
-  },
-  "scripts": {
-    "lint": "eslint ."
   }
 }

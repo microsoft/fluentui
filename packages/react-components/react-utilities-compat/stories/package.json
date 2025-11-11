@@ -7,8 +7,5 @@
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/scripts-storybook": "*",
     "@fluentui/eslint-plugin": "*"
-  },
-  "scripts": {
-    "lint": "eslint ."
   }
 }
