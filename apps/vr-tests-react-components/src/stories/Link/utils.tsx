@@ -11,11 +11,27 @@ const useInvertedBackgroundStyles = makeStyles({
   },
 });
 
+const useBrandBackgroundStyles = makeStyles({
+  root: {
+    ...shorthands.padding('14px'),
+    backgroundColor: tokens.colorBrandBackgroundStatic,
+  },
+});
+
 export const InvertedBackground: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const styles = useInvertedBackgroundStyles();
   return (
     <div className={styles.root}>
       <BackgroundAppearanceProvider value="inverted">{children}</BackgroundAppearanceProvider>
+    </div>
+  );
+};
+
+export const BrandBackground: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const styles = useBrandBackgroundStyles();
+  return (
+    <div className={styles.root}>
+      <BackgroundAppearanceProvider value="brand">{children}</BackgroundAppearanceProvider>
     </div>
   );
 };

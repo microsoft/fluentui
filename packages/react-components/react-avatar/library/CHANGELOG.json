@@ -2,6 +2,69 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Tue, 11 Nov 2025 19:18:16 GMT",
+      "tag": "@fluentui/react-avatar_v9.9.12",
+      "version": "9.9.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "430e23b560d11c778254921d10365777a2728ec4",
+            "comment": "chore: Bump @griffel/react package."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.4.11",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.12",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.12.12",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.0",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tabster to v9.26.10",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.8.11",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-utilities to v9.25.4",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.3.3",
+            "commit": "f20aef7551513ff905c97a5ab703f79118316295"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Nov 2025 15:01:25 GMT",
       "tag": "@fluentui/react-avatar_v9.9.11",
       "version": "9.9.11",

@@ -790,18 +790,10 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(
-        points,
-        margins,
-        width,
-        isRTL,
-        shiftX,
-        X_ORIGIN,
-      );
+      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, X_ORIGIN);
     } else {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }

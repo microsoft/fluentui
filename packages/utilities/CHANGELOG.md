@@ -1,8 +1,18 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 23 Oct 2025 10:23:23 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 10:09:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.17.1)
+
+Tue, 11 Nov 2025 10:09:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.17.0..@fluentui/utilities_v8.17.1)
+
+### Patches
+
+- chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+- Bump @fluentui/react-window-provider to v2.3.1 ([PR #35474](https://github.com/microsoft/fluentui/pull/35474) by beachball)
 
 ## [8.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.17.0)
 

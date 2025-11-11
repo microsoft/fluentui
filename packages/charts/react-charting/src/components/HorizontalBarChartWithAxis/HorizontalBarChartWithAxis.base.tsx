@@ -46,7 +46,7 @@ import {
   MIN_DOMAIN_MARGIN,
   sortAxisCategories,
 } from '../../utilities/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
 import type { JSXElement } from '@fluentui/utilities';
 
@@ -222,7 +222,12 @@ export class HorizontalBarChartWithAxisBase
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRtl,
+      opts,
+    );
   };
 
   private _getDomainNRangeValues = (
@@ -234,7 +239,6 @@ export class HorizontalBarChartWithAxisBase
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -243,7 +247,6 @@ export class HorizontalBarChartWithAxisBase
         margins,
         width,
         isRTL,
-        shiftX,
         this.X_ORIGIN,
       );
     } else {

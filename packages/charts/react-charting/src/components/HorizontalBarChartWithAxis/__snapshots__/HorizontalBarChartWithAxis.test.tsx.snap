@@ -2132,13 +2132,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
       >
         <path
           class="domain"
-          d="M52.5,6V0.5H-19.5V6"
+          d="M40.5,6V0.5H-19.5V6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(52.5,0)"
+          transform="translate(40.5,0)"
         >
           <line
             stroke="currentColor"
@@ -2156,7 +2156,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         <g
           class="tick"
           opacity="1"
-          transform="translate(38.1,0)"
+          transform="translate(28.5,0)"
         >
           <line
             stroke="currentColor"
@@ -2174,7 +2174,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         <g
           class="tick"
           opacity="1"
-          transform="translate(23.7,0)"
+          transform="translate(16.5,0)"
         >
           <line
             stroke="currentColor"
@@ -2192,7 +2192,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         <g
           class="tick"
           opacity="1"
-          transform="translate(9.3,0)"
+          transform="translate(4.5,0)"
         >
           <line
             stroke="currentColor"
@@ -2210,7 +2210,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         <g
           class="tick"
           opacity="1"
-          transform="translate(-5.100000000000001,0)"
+          transform="translate(-7.500000000000002,0)"
         >
           <line
             stroke="currentColor"
@@ -2274,7 +2274,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         font-size="10"
         id="yAxisGElementchart_1"
         text-anchor="end"
-        transform="translate(52, 0)"
+        transform="translate(40, 0)"
       >
         <path
           class="domain"

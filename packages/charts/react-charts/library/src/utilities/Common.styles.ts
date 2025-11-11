@@ -1,13 +1,13 @@
 import { HighContrastSelector } from '../utilities/utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { shorthands, type GriffelStyle } from '@griffel/react';
+import { type GriffelStyle } from '@griffel/react';
 
 export const getTooltipStyle = (): GriffelStyle => {
   return {
     ...typographyStyles.body1,
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.padding(tokens.spacingHorizontalS),
+    padding: tokens.spacingHorizontalS,
     position: 'absolute',
     textAlign: 'center',
     top: tokens.spacingVerticalNone,

@@ -70,7 +70,7 @@
     "@fluentui/react-toolbar": "*",
     "@fluentui/react-tree": "*",
     "@fluentui/react-utilities": "*",
-    "@griffel/react": "^1.5.22",
+    "@griffel/react": "^1.5.32",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "tslib": "^2.1.0",
