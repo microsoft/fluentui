@@ -42,7 +42,7 @@ import {
 import { classNamesFunction, DirectionalHint, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
 import { ILineChartPoints } from '../../types/IDataPoint';
-import { toImage as convertToImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 import type { JSXElement } from '@fluentui/utilities';
@@ -120,10 +120,15 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
       toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return convertToImage(cartesianChartRef.current?.chartContainer, legendsRef.current?.toSVG, getRTL(), opts);
+        return exportChartsAsImage(
+          [{ container: cartesianChartRef.current?.chartContainer }],
+          props.hideLegend ? undefined : legendsRef.current?.toSVG,
+          getRTL(),
+          opts,
+        );
       },
     }),
-    [],
+    [props.hideLegend],
   );
 
   const _xAxisType: XAxisTypes =
@@ -223,6 +228,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
     return (
       <Legends
+        ref={legendsRef}
         legends={[...legendDataItems]}
         enabledWrapLines={props.enabledLegendsWrapLines}
         overflowProps={props.legendsOverflowProps}

@@ -49,7 +49,7 @@ import {
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
 import type { JSXElement } from '@fluentui/utilities';
 
@@ -305,7 +305,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, getRTL(), opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      getRTL(),
+      opts,
+    );
   };
 
   private _getMinMaxOfYAxis = (points: ILineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) =>
