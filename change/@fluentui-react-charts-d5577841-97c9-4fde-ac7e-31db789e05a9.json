@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: adjust chart margin for continuous y-axis tick labels",
-  "packageName": "@fluentui/react-charts",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
