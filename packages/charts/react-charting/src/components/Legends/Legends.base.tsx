@@ -133,7 +133,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     svgWidth: number,
     isRTL: boolean = false,
   ): {
-    node: SVGGElement | null;
+    node: SVGSVGElement | null;
     width: number;
     height: number;
   } => {
