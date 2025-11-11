@@ -180,17 +180,17 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
 
   const transformArgTypeNameWithSlotShorthand = (typeName: string) => {
     const match = typeName.match(slotRegex);
-    
+
     if (match) {
       hasArgAsSlot = true;
       return `Slot<\"${match[1]}\">`;
     }
-    
+
     if (typeName.includes('WithSlotShorthandValue')) {
       hasArgAsSlot = true;
       return `Slot`;
     }
-    
+
     return typeName;
   };
 
