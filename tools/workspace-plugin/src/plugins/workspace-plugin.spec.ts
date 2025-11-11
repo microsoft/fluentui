@@ -63,11 +63,11 @@ describe(`workspace-plugin`, () => {
     expect(targets?.lint).toMatchInlineSnapshot(`
       Object {
         "cache": true,
-        "command": "yarn eslint src",
         "inputs": Array [
           "default",
           "{projectRoot}/.eslintrc.json",
           "{projectRoot}/.eslintrc.js",
+          "{projectRoot}/eslint.config.js",
           "{workspaceRoot}/.eslintrc.json",
           "{workspaceRoot}/.eslintignore",
           "{workspaceRoot}/eslint.config.js",
@@ -92,6 +92,7 @@ describe(`workspace-plugin`, () => {
           ],
         },
         "options": Object {
+          "command": "yarn cross-env ESLINT_USE_FLAT_CONFIG=false eslint src",
           "cwd": "proj",
         },
         "outputs": Array [
