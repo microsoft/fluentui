@@ -26,6 +26,7 @@ import {
   ISankeyChartData,
   ILineChartLineOptions,
   IGanttChartDataPoint,
+  IScatterChartPoints,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -1955,12 +1956,41 @@ const transformPlotlyJsonToScatterTraceProps = (
   const xMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.x;
   const yMinValue = chartData[0]?.data[0]?.y;
   const yMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.y;
-  const lineShape: ILineChartPoints[] = (input.layout?.shapes ?? [])
+  const xCategories = Array.from(
+    new Set(
+      (input.data ?? [])
+        .flatMap(trace => {
+          const xData = (trace as Partial<PlotData>).x;
+          if (!xData) {
+            return [];
+          }
+          if (Array.isArray(xData)) {
+            return xData.flat().map(x => {
+              return x;
+            });
+          }
+          return [];
+        })
+        .filter(x => x !== undefined && x !== null),
+    ),
+  );
+  console.log('x categories', xCategories);
+  const lineShape: ILineChartPoints[] | IScatterChartPoints[] = (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
     .map((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
 
       const resolveX = (val: Datum) => {
+        console.log('value', val);
+        if (typeof val === 'number' && Array.isArray(xCategories)) {
+          console.log('hello');
+          if (xCategories[val] !== undefined) {
+            return xCategories[val];
+          } else {
+            console.log('here', xCategories[shapeIdx]);
+            return xCategories[shapeIdx];
+          }
+        }
         if (shape.xref === 'paper') {
           if (val === 0) {
             return xMinValue;
@@ -1994,13 +2024,13 @@ const transformPlotlyJsonToScatterTraceProps = (
       return {
         legend: `Reference_${shapeIdx}`,
         data: [
-          { x: resolveX(shape.x0!), y: resolveY(shape.y0!) },
-          { x: resolveX(shape.x1!), y: resolveY(shape.y1!) },
+          { x: resolveXValue(resolveX(shape.x0!)), y: resolveY(shape.y0!) },
+          { x: resolveXValue(resolveX(shape.x1!)), y: resolveY(shape.y1!) },
         ],
         color: rgb(lineColor!).formatHex8() ?? lineColor,
         lineOptions: getLineOptions(shape.line),
         useSecondaryYScale: false,
-      } as ILineChartPoints;
+      } as ILineChartPoints | IScatterChartPoints;
     });
 
   const yMinMax = getYMinMaxValues(input.data[0], input.layout);
@@ -2011,14 +2041,17 @@ const transformPlotlyJsonToScatterTraceProps = (
   }
 
   const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
+  console.log('final points', lineShape);
 
   const chartProps: IChartProps = {
-    lineChartData: [...chartData, ...lineShape],
+    lineChartData: [...chartData, ...(lineShape as ILineChartPoints[])],
   };
 
   const scatterChartProps: IChartProps = {
-    scatterChartData: chartData,
+    scatterChartData: [...chartData, ...(lineShape as IScatterChartPoints[])],
   };
+
+  console.log('chart data', chartData);
 
   const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
 
