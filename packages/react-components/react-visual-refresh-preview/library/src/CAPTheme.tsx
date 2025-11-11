@@ -4,13 +4,8 @@ const TOKEN_TYPES = ['color', 'length'] as const;
 
 type TokenType = (typeof TOKEN_TYPES)[number];
 
-export interface Token {
+export interface TokenSchema {
   type: TokenType;
-}
-
-export interface ControlSchema {
-  name: string;
-  tokens: Record<string, Token>;
 }
 
 const ButtonTokens = {
@@ -24,11 +19,11 @@ const ButtonTokens = {
   buttonOutlineBackgroundColorHover: { type: 'color' },
   buttonTintBackgroundColor: { type: 'color' },
   buttonTintBackgroundColorHover: { type: 'color' },
-} as const satisfies Record<string, Token>;
+} as const satisfies Record<string, TokenSchema>;
 
 export const CAPTokensSchema = {
   ...ButtonTokens,
-} as const satisfies { [key: string]: Token };
+} as const satisfies { [key: string]: TokenSchema };
 
 export const CAPTokens = {
   ...(Object.keys(CAPTokensSchema).reduce((acc: any, key) => {
