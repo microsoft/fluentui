@@ -70,7 +70,7 @@ export const Sparkline: React.FunctionComponent<SparklineProps> = React.forwardR
 
         setPoints(_points as LineChartDataPoint[]);
       }
-    }, [width, height, props.data]); // Add dependencies so scales update when dimensions change
+    }, []);
 
     const { data } = props;
     function _isChartEmpty(): boolean {
