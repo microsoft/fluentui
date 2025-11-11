@@ -1974,20 +1974,16 @@ const transformPlotlyJsonToScatterTraceProps = (
         .filter(x => x !== undefined && x !== null),
     ),
   );
-  console.log('x categories', xCategories);
   const lineShape: ILineChartPoints[] | IScatterChartPoints[] = (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
     .map((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
 
       const resolveX = (val: Datum) => {
-        console.log('value', val);
         if (typeof val === 'number' && Array.isArray(xCategories)) {
-          console.log('hello');
           if (xCategories[val] !== undefined) {
             return xCategories[val];
           } else {
-            console.log('here', xCategories[shapeIdx]);
             return xCategories[shapeIdx];
           }
         }
@@ -2041,7 +2037,6 @@ const transformPlotlyJsonToScatterTraceProps = (
   }
 
   const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
-  console.log('final points', lineShape);
 
   const chartProps: IChartProps = {
     lineChartData: [...chartData, ...(lineShape as ILineChartPoints[])],
@@ -2050,8 +2045,6 @@ const transformPlotlyJsonToScatterTraceProps = (
   const scatterChartProps: IChartProps = {
     scatterChartData: [...chartData, ...(lineShape as IScatterChartPoints[])],
   };
-
-  console.log('chart data', chartData);
 
   const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
 
