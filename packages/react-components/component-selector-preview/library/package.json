@@ -25,10 +25,10 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.3.2",
-    "@fluentui/react-shared-contexts": "^9.25.2",
+    "@fluentui/react-jsx-runtime": "^9.3.3",
+    "@fluentui/react-shared-contexts": "^9.26.0",
     "@fluentui/react-theme": "^9.2.0",
-    "@fluentui/react-utilities": "^9.25.3",
+    "@fluentui/react-utilities": "^9.25.4",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },
