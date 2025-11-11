@@ -63,6 +63,7 @@ describe(`workspace-plugin`, () => {
     expect(targets?.lint).toMatchInlineSnapshot(`
       Object {
         "cache": true,
+        "executor": "nx:run-commands",
         "inputs": Array [
           "default",
           "{projectRoot}/.eslintrc.json",
