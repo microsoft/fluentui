@@ -364,6 +364,32 @@ export const resolveXAxisPoint = (
 };
 
 /**
+ * Extracts unique X-axis categories from Plotly data traces
+ * @param data Array of Plotly data traces
+ * @returns Array of unique x values
+ */
+const extractXCategories = (data: Data[] | undefined): Datum[] => {
+  return Array.from(
+    new Set(
+      (data ?? [])
+        .flatMap(trace => {
+          const xData = (trace as Partial<PlotData>).x;
+          if (!xData) {
+            return [];
+          }
+          if (Array.isArray(xData)) {
+            return xData.flat().map(x => {
+              return x;
+            });
+          }
+          return [];
+        })
+        .filter(x => x !== undefined && x !== null),
+    ),
+  );
+};
+
+/**
  * Checks if a key should be ignored during normalization
  * @param key The key to check
  * @returns true if the key should be ignored
@@ -1373,24 +1399,7 @@ export const transformPlotlyJsonToVSBCProps = (
     });
   });
 
-  const xCategories = Array.from(
-    new Set(
-      (input.data ?? [])
-        .flatMap(trace => {
-          const xData = (trace as Partial<PlotData>).x;
-          if (!xData) {
-            return [];
-          }
-          if (Array.isArray(xData)) {
-            return xData.flat().map(x => {
-              return x;
-            });
-          }
-          return [];
-        })
-        .filter(x => x !== undefined && x !== null),
-    ),
-  );
+  const xCategories = extractXCategories(input.data);
 
   (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
@@ -1435,20 +1444,25 @@ export const transformPlotlyJsonToVSBCProps = (
 
       const y0Val = resolveY(shape.y0!);
       const y1Val = resolveY(shape.y1!);
-      mapXToDataPoints[x0Key as string].lineData!.push({
-        legend: `Reference_${shapeIdx}`,
-        y: y0Val as string,
-        color: rgb(lineColor!).formatHex8() ?? lineColor,
-        lineOptions: getLineOptions(shape.line),
-        useSecondaryYScale: false,
-      });
-      mapXToDataPoints[x1Key as string].lineData!.push({
-        legend: `Reference_${shapeIdx}`,
-        y: y1Val as string,
-        color: rgb(lineColor!).formatHex8() ?? lineColor,
-        lineOptions: getLineOptions(shape.line),
-        useSecondaryYScale: false,
-      });
+      if (mapXToDataPoints[x0Key as string]) {
+        mapXToDataPoints[x0Key as string].lineData!.push({
+          legend: `Reference_${shapeIdx}`,
+          y: y0Val as string,
+          color: rgb(lineColor!).formatHex8() ?? lineColor,
+          lineOptions: getLineOptions(shape.line),
+          useSecondaryYScale: false,
+        });
+      }
+
+      if (mapXToDataPoints[x1Key as string]) {
+        mapXToDataPoints[x1Key as string].lineData!.push({
+          legend: `Reference_${shapeIdx}`,
+          y: y1Val as string,
+          color: rgb(lineColor!).formatHex8() ?? lineColor,
+          lineOptions: getLineOptions(shape.line),
+          useSecondaryYScale: false,
+        });
+      }
     });
 
   const vsbcData = Object.values(mapXToDataPoints);
@@ -1951,24 +1965,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   const xMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.x;
   const yMinValue = chartData[0]?.data[0]?.y;
   const yMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.y;
-  const xCategories = Array.from(
-    new Set(
-      (input.data ?? [])
-        .flatMap(trace => {
-          const xData = (trace as Partial<PlotData>).x;
-          if (!xData) {
-            return [];
-          }
-          if (Array.isArray(xData)) {
-            return xData.flat().map(x => {
-              return x;
-            });
-          }
-          return [];
-        })
-        .filter(x => x !== undefined && x !== null),
-    ),
-  );
+  const xCategories = extractXCategories(input.data);
   const lineShape: LineChartPoints[] | ScatterChartPoints[] = (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
     .map((shape, shapeIdx) => {
