@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix chart 983 crash",
+  "packageName": "@fluentui/react-charting",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
