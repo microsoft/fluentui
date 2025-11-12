@@ -81,7 +81,7 @@ const useSecondaryTextBaseClassName = makeResetStyles({
 
 const useSecondaryTextStyles = makeStyles({
   error: {
-    color: tokens.colorPaletteRedForeground1,
+    color: tokens.colorStatusDangerForeground1,
   },
 
   withIcon: {
@@ -104,13 +104,13 @@ const useValidationMessageIconBaseClassName = makeResetStyles({
 
 const useValidationMessageIconStyles = makeStyles({
   error: {
-    color: tokens.colorPaletteRedForeground1,
+    color: tokens.colorStatusDangerForeground1,
   },
   warning: {
-    color: tokens.colorPaletteDarkOrangeForeground1,
+    color: tokens.colorStatusWarningForeground3,
   },
   success: {
-    color: tokens.colorPaletteGreenForeground1,
+    color: tokens.colorStatusSuccessForeground1,
   },
 });
 
