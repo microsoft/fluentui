@@ -12,6 +12,7 @@ export { Slide, SlideSnappy, SlideRelaxed, type SlideParams } from './components
 export { Blur, type BlurParams } from './components/Blur';
 export { Rotate, type RotateParams } from './components/Rotate';
 export { Stagger, type StaggerProps } from './choreography/Stagger';
+export { Series, Hold, Scene, type SeriesProps, type HoldProps } from './choreography/Series';
 
 // Motion Atoms
 export { blurAtom } from './atoms/blur-atom';

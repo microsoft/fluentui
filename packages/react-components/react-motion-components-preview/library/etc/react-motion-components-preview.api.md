@@ -68,6 +68,16 @@ export const FadeRelaxed: PresenceComponent<FadeParams>;
 // @public (undocumented)
 export const FadeSnappy: PresenceComponent<FadeParams>;
 
+// @public
+export const Hold: React_2.FC<HoldProps>;
+
+// @public
+export interface HoldProps {
+    children?: React_2.ReactNode;
+    duration: number;
+    onMotionFinish?: () => void;
+}
+
 // @public (undocumented)
 export const Rotate: PresenceComponent<RotateParams>;
 
@@ -98,6 +108,20 @@ export const ScaleRelaxed: PresenceComponent<ScaleParams>;
 
 // @public (undocumented)
 export const ScaleSnappy: PresenceComponent<ScaleParams>;
+
+// @public
+export const Scene: React_2.FC<HoldProps>;
+
+// @public
+export const Series: React_2.FC<SeriesProps>;
+
+// @public
+export interface SeriesProps {
+    children: React_2.ReactNode;
+    commonProps?: Record<string, unknown>;
+    iterations?: number | 'infinite';
+    onMotionFinish?: () => void;
+}
 
 // @public
 export const Slide: PresenceComponent<SlideParams>;
