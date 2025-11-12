@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "@swc/helpers": "^0.5.1",
-    "playwright": "^1.49.1",
+    "playwright": "^1.56.1",
     "turndown": "^7.2.0",
     "turndown-plugin-gfm": "^1.0.2",
     "yargs": "^17.7.2"
