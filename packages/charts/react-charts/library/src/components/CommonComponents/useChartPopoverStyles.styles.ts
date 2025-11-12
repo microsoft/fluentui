@@ -33,8 +33,6 @@ const useStyles = makeStyles({
   calloutContentRoot: {
     display: 'grid',
     overflow: 'hidden',
-    // TODO: Confirm this style is needed. Shorthands are not used correctly, therefore this style has no effect.
-    // ...shorthands.padding('11px 16px 10px 16px'),
     backgroundColor: tokens.colorNeutralBackground1,
     backgroundBlendMode: 'normal, luminosity',
   },
