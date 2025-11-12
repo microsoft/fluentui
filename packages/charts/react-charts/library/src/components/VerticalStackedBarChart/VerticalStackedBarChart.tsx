@@ -224,7 +224,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         legendsOfLine.push(legend);
       });
     }
-    const totalLegends: Legend[] = legendsOfLine.concat(actions);
+    const totalLegends: Legend[] = actions.concat(legendsOfLine);
     return (
       <Legends
         legends={totalLegends}
