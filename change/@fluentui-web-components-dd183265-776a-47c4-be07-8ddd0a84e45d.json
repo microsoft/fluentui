@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: ensure required radio error message is announced by assistive technology",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
