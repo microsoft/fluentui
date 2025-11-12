@@ -1,7 +1,0 @@
-{
-  "extends": ["plugin:@fluentui/eslint-plugin/node"],
-  "root": true,
-  "rules": {
-    "@nx/workspace-enforce-use-client": "off"
-  }
-}

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: migrate to eslint flat config",
+  "packageName": "@fluentui/react-breadcrumb",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

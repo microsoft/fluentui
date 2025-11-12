@@ -322,18 +322,27 @@ function buildLintTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(projectRoot, '.eslintrc.json')) && !existsSync(join(projectRoot, '.eslintrc.js'))) {
+  const hasFlatConfig = existsSync(join(projectRoot, 'eslint.config.js'));
+  const hasLegacyConfig =
+    existsSync(join(projectRoot, '.eslintrc.json')) || existsSync(join(projectRoot, '.eslintrc.js'));
+
+  if (!hasFlatConfig && !hasLegacyConfig) {
     return null;
   }
 
+  const command = hasFlatConfig
+    ? `${config.pmc.exec} eslint src`
+    : `${config.pmc.exec} cross-env ESLINT_USE_FLAT_CONFIG=false eslint src`;
+
   return {
+    executor: 'nx:run-commands',
     cache: true,
-    command: `${config.pmc.exec} eslint src`,
-    options: { cwd: projectRoot },
+    options: { cwd: projectRoot, command },
     inputs: [
       'default',
       '{projectRoot}/.eslintrc.json',
       '{projectRoot}/.eslintrc.js',
+      '{projectRoot}/eslint.config.js',
       '{workspaceRoot}/.eslintrc.json',
       '{workspaceRoot}/.eslintignore',
       '{workspaceRoot}/eslint.config.js',
