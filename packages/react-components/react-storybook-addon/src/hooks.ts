@@ -1,7 +1,7 @@
 import { useGlobals as useStorybookGlobals } from '@storybook/manager-api';
 import { Args as StorybookArgs, StoryContext as StorybookContext, Parameters } from '@storybook/react';
 
-import { DIR_ID, STRICT_MODE_ID, THEME_ID } from './constants';
+import { DIR_ID, STRICT_MODE_ID, THEME_ID, VISUAL_UPDATE_ID } from './constants';
 import type { ThemeIds } from './theme';
 
 export interface FluentStoryContext extends StorybookContext {
@@ -16,6 +16,7 @@ export interface FluentGlobals extends StorybookArgs {
   [DIR_ID]?: 'ltr' | 'rtl';
   [THEME_ID]?: ThemeIds;
   [STRICT_MODE_ID]?: boolean;
+  [VISUAL_UPDATE_ID]?: boolean;
 }
 
 /**
@@ -26,7 +27,7 @@ export interface FluentParameters extends Parameters {
   fluentTheme?: ThemeIds;
   mode?: 'default' | 'vr-test';
   reactStorybookAddon?: {
-    disabledDecorators?: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
+    disabledDecorators?: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode' | 'VisualUpdate'];
     docs?: FluentDocsConfig;
   };
 }

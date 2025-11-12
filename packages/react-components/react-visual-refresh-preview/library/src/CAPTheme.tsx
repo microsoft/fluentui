@@ -64,7 +64,7 @@ export const CAP_THEME = {
   buttonSubtleBackgroundColorHover: tokens.colorBrandBackground,
   buttonOutlineBackgroundColor: tokens.colorTransparentBackground,
   buttonOutlineBackgroundColorHover: tokens.colorTransparentBackground,
-  buttonTintBackgroundColor: '',
+  buttonTintBackgroundColor: 'red',
   buttonTintBackgroundColorHover: '',
 } as const satisfies CAPTheme;
 
