@@ -16,9 +16,12 @@ import { defaultTheme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
-import { SEMANTIC_STYLE_HOOKS } from '@fluentui/semantic-style-hooks-preview';
+import { SEMANTIC_STYLE_HOOKS, bebopSemanticTokens } from '@fluentui/semantic-style-hooks-preview';
 
-const themes: Record<ThemeIds, Theme> = {
+// TODO: Remove this when merging Semantic tokens to master
+const bebopCustomTheme = { ...webLightTheme, ...bebopSemanticTokens };
+
+const themes: Record<ThemeIds | 'bebop-light', Theme> = {
   'web-light': webLightTheme,
   'web-dark': webDarkTheme,
   'teams-light': teamsLightTheme,
@@ -26,9 +29,10 @@ const themes: Record<ThemeIds, Theme> = {
   'teams-high-contrast': teamsHighContrastTheme,
   'teams-light-v21': teamsLightV21Theme,
   'teams-dark-v21': teamsDarkV21Theme,
+  'bebop-light': bebopCustomTheme,
 } as const;
 
-const findTheme = (themeId?: ThemeIds) => {
+const findTheme = (themeId?: ThemeIds | 'bebop-light') => {
   return themeId ? themes[themeId] : null;
 };
 
