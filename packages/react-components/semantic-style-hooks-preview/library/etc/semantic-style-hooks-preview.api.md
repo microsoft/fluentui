@@ -11,6 +11,67 @@ import { MenuButtonState } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
 
+// @public
+export const bebopSemanticTokens: {
+    'smtc-color-neutral-0': string;
+    'smtc-color-neutral-1': string;
+    'smtc-color-neutral-2': string;
+    'smtc-color-neutral-3': string;
+    'smtc-color-neutral-4': string;
+    'smtc-color-neutral-5': string;
+    'smtc-color-neutral-6': string;
+    'smtc-color-neutral-7': string;
+    'smtc-color-neutral-8': string;
+    'smtc-color-neutral-alpha': string;
+    'smtc-color-brand-1': string;
+    'smtc-color-brand-2': string;
+    'smtc-color-brand-3': string;
+    'smtc-color-brand-4': string;
+    'smtc-color-brand-5': string;
+    'smtc-color-brand-6': string;
+    'smtc-color-brand-alpha': string;
+    'smtc-color-danger-1': string;
+    'smtc-color-danger-2': string;
+    'smtc-color-danger-3': string;
+    'smtc-color-danger-4': string;
+    'smtc-color-danger-5': string;
+    'smtc-color-danger-6': string;
+    'smtc-color-warning-1': string;
+    'smtc-color-warning-2': string;
+    'smtc-color-warning-3': string;
+    'smtc-color-warning-4': string;
+    'smtc-color-warning-5': string;
+    'smtc-color-warning-6': string;
+    'smtc-color-success-1': string;
+    'smtc-color-success-2': string;
+    'smtc-color-success-3': string;
+    'smtc-color-success-4': string;
+    'smtc-color-success-5': string;
+    'smtc-color-success-6': string;
+    'smtc-lightness-selected-hover': string;
+    'smtc-lightness-selected-pressed': string;
+    'smtc-lightness-hover': string;
+    'smtc-lightness-pressed': string;
+    'smtc-group-button-primary-lightness-hover': string;
+    'smtc-group-button-primary-lightness-pressed': string;
+    'smtc-group-button-outline-strokewidth-selected': string;
+    'smtc-group-button-primary-background': string;
+    'smtc-group-button-primary-background-selected': string;
+    'smtc-group-button-outline-background-selected': string;
+    'smtc-group-button-outline-stroke-selected': string;
+    'smtc-group-button-subtle-background-selected': string;
+    'smtc-group-button-subtle-foreground-selected': string;
+    'smtc-group-button-subtle-icon-foreground-selected': string;
+    'smtc-group-button-transparent-foreground-selected': string;
+    'smtc-group-button-primary-stroke': string;
+    'smtc-group-button-primary-stroke-selected': string;
+    'smtc-group-button-neutral-stroke': string;
+    'smtc-group-button-neutral-stroke-selected': string;
+    'smtc-group-button-subtle-icon-foreground-hover': string;
+    'smtc-group-button-fontweight': string;
+    'smtc-group-button-fontweight-selected': string;
+};
+
 // @public (undocumented)
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks;
 
