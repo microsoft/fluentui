@@ -69,8 +69,10 @@ export async function exportChartsAsImage(
     });
 
     const svg = legendsToSvg(totalWidth, isRTL);
-    const svgDataUrl = svgToBase64(svg.node);
-    grid.push([{ dataUrl: svgDataUrl, width: svg.width, height: svg.height }]);
+    if (svg.node) {
+      const svgDataUrl = svgToBase64(svg.node);
+      grid.push([{ dataUrl: svgDataUrl, width: svg.width, height: svg.height }]);
+    }
   }
 
   return svgToPng(grid, opts);
