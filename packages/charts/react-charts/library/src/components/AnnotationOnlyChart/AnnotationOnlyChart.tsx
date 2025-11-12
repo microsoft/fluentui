@@ -2,12 +2,11 @@
 
 import * as React from 'react';
 import { ChartAnnotationLayer } from '../CommonComponents/Annotations/ChartAnnotationLayer';
-import { toImage as exportToImage } from '../../utilities/image-export-utils';
 import { useRtl } from '../../utilities';
 import { useAnnotationOnlyChartStyles } from './useAnnotationOnlyChartStyles.styles';
 import type { AnnotationOnlyChartProps } from './AnnotationOnlyChart.types';
-import type { Chart, ImageExportOptions } from '../../types/index';
 import type { ChartAnnotationContext } from '../CommonComponents/Annotations/ChartAnnotationLayer.types';
+import { useImageExport } from '../../utilities/hooks';
 
 const DEFAULT_HEIGHT = 650;
 const FALLBACK_WIDTH = 400;
@@ -46,7 +45,7 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
 
   const isRtl = useRtl();
   const classes = useAnnotationOnlyChartStyles();
-  const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const { chartContainerRef: containerRef } = useImageExport(componentRef, true, false);
   const contentRef = React.useRef<HTMLDivElement | null>(null);
   const [measuredWidth, setMeasuredWidth] = React.useState<number>(width ?? 0);
   const [contentHeight, setContentHeight] = React.useState<number>(height ?? DEFAULT_HEIGHT);
@@ -167,25 +166,6 @@ export const AnnotationOnlyChart: React.FC<AnnotationOnlyChartProps> = props => 
   const resolvedAnnotations = annotations ?? [];
   const hasAnnotations = resolvedAnnotations.length > 0;
   const ariaLabel = hasAnnotations ? description ?? chartTitle : undefined;
-
-  React.useImperativeHandle(
-    componentRef,
-    () => {
-      const chartHandle: Chart = {
-        chartContainer: containerRef.current,
-        toImage: (opts?: ImageExportOptions) => {
-          if (!containerRef.current) {
-            return Promise.reject(new Error('Chart container is not defined'));
-          }
-
-          return exportToImage(containerRef.current, undefined, isRtl, opts);
-        },
-      };
-
-      return chartHandle;
-    },
-    [isRtl],
-  );
 
   return (
     <div ref={containerRef} data-chart-annotation-container="true">
