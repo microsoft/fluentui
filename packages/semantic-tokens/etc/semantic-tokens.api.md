@@ -665,7 +665,7 @@ export const groupButtonPrimaryBackgroundHover = "hsl(from var(--smtc-group-butt
 export const groupButtonPrimaryBackgroundHoverSelected = "hsl(from var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--smtc-color-brand-1, var(--colorBrandBackgroundSelected)))) h s calc(l + var(--smtc-lightness-selected-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundPressed = "hsl(from var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground)))) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
+export const groupButtonPrimaryBackgroundPressed = "hsl(from var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground)))) h s calc(l + var(--smtc-group-button-primary-lightness-pressed, var(--smtc-lightness-pressed, -20))))";
 
 // @public (undocumented)
 export const groupButtonPrimaryBackgroundPressedSelected = "hsl(from var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--smtc-color-brand-1, var(--colorBrandBackgroundSelected)))) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
@@ -704,7 +704,7 @@ export const groupButtonPrimaryStroke = "var(--smtc-group-button-primary-stroke,
 export const groupButtonPrimaryStrokeDisabled = "var(--smtc-group-button-primary-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, transparent)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryStrokeHover = "hsl(from var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-group-button-primary-lightness-pressed, var(--smtc-lightness-pressed, -20))))";
+export const groupButtonPrimaryStrokeHover = "hsl(from var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
 export const groupButtonPrimaryStrokeHoverSelected = "hsl(from var(--smtc-group-button-primary-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-lightness-selected-hover, -5)))";

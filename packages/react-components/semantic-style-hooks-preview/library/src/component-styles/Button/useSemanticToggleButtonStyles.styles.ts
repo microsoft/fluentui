@@ -117,7 +117,6 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonSubtleBackgroundHoverSelected,
       ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeSelected),
       color: semanticTokens.groupButtonSubtleForegroundSelected,
       [`& .${buttonClassNames.icon}`]: {
@@ -126,7 +125,6 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonSubtleBackgroundPressedSelected,
       ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeSelected),
       color: semanticTokens.groupButtonSubtleForegroundSelected,
       [`& .${buttonClassNames.icon}`]: {
