@@ -4,7 +4,7 @@ import path from 'node:path';
 import { groupFallbacks } from './definitions/groupFallbacks';
 import { genericFallbacks } from './definitions/fallbacks/genericFallbacks';
 import { controlFallbacks } from './definitions/controlFallbacks';
-import { groups } from './definitions/groups';
+import { extensionGroups, groups } from './definitions/groups';
 
 function dotToCamelCase(str: string): string {
   return str
@@ -56,6 +56,7 @@ function splitCamelCase(name: string) {
 function generateLibraryOutput() {
   let genericTokens = generateGenericTokens();
   let groupTokens = generateGroupTokens(groups);
+  let extensionGroupTokens = generateGroupTokens(extensionGroups);
   let controlTokens = generateControlTokens();
 
   // Generic tokens
@@ -137,6 +138,57 @@ function generateLibraryOutput() {
     });
   }
 
+  // Group tokens
+  const extensionGroupTokenList: { [key: string]: string } = {};
+  const extensionGroupExportList: { [key: string]: string } = {};
+  for (const token of extensionGroupTokens) {
+    const tokenGroup = token.group || 'ungrouped';
+    const groupName = tokenGroup.split('.')[0];
+    if (!extensionGroupTokenList[groupName]) {
+      extensionGroupTokenList[groupName] = '';
+    }
+
+    if (!extensionGroupExportList[groupName]) {
+      extensionGroupExportList[groupName] = 'export {\n';
+    }
+
+    const tokenName = dotToCamelCase(token.name);
+    const cssVarName = dotToCSSVarName(token.name);
+    const fluentFallback = groupFallbacks[tokenGroup][tokenName]?.fluent;
+    const genericFallbackName = groupFallbacks[tokenGroup][tokenName]?.generic;
+    const genericFallback = genericFallbackName ? '--smtc-' + splitCamelCase(genericFallbackName) : undefined;
+    const primitiveFallbackName = genericFallbackName ? genericFallbacks[genericFallbackName]?.primitive : undefined;
+    const primitiveFallback = primitiveFallbackName ? '--smtc-' + splitCamelCase(primitiveFallbackName) : undefined;
+    const fallbackChain = [cssVarName, genericFallback, primitiveFallback].filter(
+      (v): v is string => typeof v === 'string',
+    );
+    const tokenString = makeTokenFallback(fallbackChain, fluentFallback);
+    const exportToken = `export const ${tokenName} = '${tokenString}';`;
+
+    extensionGroupTokenList[groupName] += `${exportToken}\n`;
+    extensionGroupExportList[groupName] += `${tokenName},\n`;
+  }
+
+  for (const groupName of Object.keys(extensionGroupTokenList)) {
+    const tokens = extensionGroupTokenList[groupName];
+    const groupListPath = path.resolve(__dirname, `../src/groups/extension/${groupName}/tokens.ts`);
+    extensionGroupExportList[groupName] += `} from './groups/extension/${groupName}/tokens';\n`;
+    //Create directory if it doesn't exist
+    const dir = path.dirname(groupListPath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
+    // Write the JSON string to a file
+    fs.writeFile(groupListPath, tokens, err => {
+      if (err) {
+        console.error('Error writing to file:', err);
+      } else {
+        console.log('JSON data successfully written to tokens.json');
+      }
+    });
+  }
+
   // Control tokens
   const controlTokenList: { [key: string]: string } = {};
   const controlExportList: { [key: string]: string } = {};
@@ -198,6 +250,7 @@ function generateLibraryOutput() {
     const allExports =
       genericIndexExport +
       Object.values(groupExportList).join('\n') +
+      Object.values(extensionGroupExportList).join('\n') +
       Object.values(controlExportList).join('\n') +
       algoTokensData;
 

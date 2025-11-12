@@ -1,5 +1,7 @@
 export const lightnessHover = 'var(--smtc-lightness-hover, -5)';
 export const lightnessPressed = 'var(--smtc-lightness-pressed, -10)';
+export const lightnessSelectedHover = 'var(--smtc-lightness-selected-hover, -5)';
+export const lightnessSelectedPressed = 'var(--smtc-lightness-selected-pressed, -10)';
 export const cornerCircular = 'var(--smtc-corner-circular, var(--borderRadiusCircular))';
 export const cornerSquare = 'var(--smtc-corner-square, var(--borderRadiusNone))';
 export const surfaceNeutralDefault = 'var(--smtc-surface-neutral-default, var(--smtc-color-neutral-8))';
@@ -19,6 +21,9 @@ export const backgroundWarningSubtle = 'var(--smtc-background-warning-subtle, va
 export const backgroundSuccessLoud = 'var(--smtc-background-success-loud, var(--smtc-color-success-2))';
 export const backgroundSuccessSoft = 'var(--smtc-background-success-soft, var(--smtc-color-success-5))';
 export const backgroundSuccessSubtle = 'var(--smtc-background-success-subtle, var(--smtc-color-success-6))';
+export const backgroundBrandHeavy = 'var(--smtc-background-brand-heavy, var(--smtc-color-brand-1))';
+export const backgroundBrandTransparent =
+  'var(--smtc-background-brand-transparent, var(--smtc-color-brand-alpha, var(--colorTransparentBackground)))';
 export const backgroundNeutralHeavy = 'var(--smtc-background-neutral-heavy, var(--smtc-color-neutral-0))';
 export const backgroundNeutralTransparent =
   'var(--smtc-background-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorTransparentBackground)))';

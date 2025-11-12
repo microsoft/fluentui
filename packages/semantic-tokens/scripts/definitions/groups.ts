@@ -1,5 +1,6 @@
 import { focusGroup } from './application/focus';
 import { buttonGroup } from './components/button';
+import { fluentButtonGroup } from './extensions/button';
 import { Groups } from './groups.types';
 
 export const groups: Groups = {
@@ -7,4 +8,9 @@ export const groups: Groups = {
   focus: focusGroup,
   // Components
   button: buttonGroup,
+};
+
+export const extensionGroups: Groups = {
+  // Components
+  button: fluentButtonGroup,
 };

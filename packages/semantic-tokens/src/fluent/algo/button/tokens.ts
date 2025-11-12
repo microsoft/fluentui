@@ -7,8 +7,6 @@ import {
   groupButtonGap,
   groupButtonIcononlyPadding,
   groupButtonIconSize,
-  groupButtonLightnessHover,
-  groupButtonLightnessPressed,
   groupButtonLineheight,
   groupButtonMinwidth,
   groupButtonNeutralBackground,
@@ -26,7 +24,20 @@ import {
   groupButtonPrimaryStrokeSelected,
   groupButtonSubtleBackgroundSelected,
   groupButtonSubtleIconForegroundSelected,
+  groupButtonOutlineBackgroundSelected,
 } from '../../../groups/button/tokens';
+
+import {
+  lightnessHover,
+  lightnessPressed,
+  lightnessSelectedHover,
+  lightnessSelectedPressed,
+} from '../../../generics/tokens';
+import {
+  groupButtonPrimaryLightnessHover,
+  groupButtonPrimaryLightnessPressed,
+  groupButtonSubtleIconForegroundHover,
+} from '../../../groups/extension/button/tokens';
 
 // Density
 export const groupButtonSmallPaddingTop = `calc(${groupButtonPaddingTop} / 5 * 3)`;
@@ -48,34 +59,36 @@ export const groupButtonSmallTextPaddingHorizontal = `calc(${groupButtonTextPadd
 export const groupButtonLargeIconSize = `calc(${groupButtonIconSize} / 5 * 6)`;
 
 // Color
-export const groupButtonNeutralBackgroundHover = `hsl(from ${groupButtonNeutralBackground} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonNeutralBackgroundPressed = `hsl(from ${groupButtonNeutralBackground} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonNeutralStrokeHover = `hsl(from ${groupButtonNeutralStroke} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonNeutralStrokePressed = `hsl(from ${groupButtonNeutralStroke} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonOutlineStrokeHover = `hsl(from ${groupButtonOutlineStroke} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonOutlineStrokePressed = `hsl(from ${groupButtonOutlineStroke} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonPrimaryBackgroundHover = `hsl(from ${groupButtonPrimaryBackground} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonPrimaryStrokeHover = `hsl(from ${groupButtonPrimaryStroke} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonPrimaryBackgroundPressed = `hsl(from ${groupButtonPrimaryBackground} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonPrimaryStrokePressed = `hsl(from ${groupButtonPrimaryStroke} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonSubtleForegroundPressed = `hsl(from ${groupButtonSubtleForeground} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonTransparentForegroundPressed = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonTransparentForegroundHover = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
+export const groupButtonNeutralBackgroundHover = `hsl(from ${groupButtonNeutralBackground} h s calc(l + ${lightnessHover}))`;
+export const groupButtonNeutralBackgroundPressed = `hsl(from ${groupButtonNeutralBackground} h s calc(l + ${lightnessPressed}))`;
+export const groupButtonNeutralStrokeHover = `hsl(from ${groupButtonNeutralStroke} h s calc(l + ${lightnessHover}))`;
+export const groupButtonNeutralStrokePressed = `hsl(from ${groupButtonNeutralStroke} h s calc(l + ${lightnessPressed}))`;
+export const groupButtonOutlineStrokeHover = `hsl(from ${groupButtonOutlineStroke} h s calc(l + ${lightnessHover}))`;
+export const groupButtonOutlineStrokePressed = `hsl(from ${groupButtonOutlineStroke} h s calc(l + ${lightnessPressed}))`;
+export const groupButtonPrimaryBackgroundHover = `hsl(from ${groupButtonPrimaryBackground} h s calc(l + ${groupButtonPrimaryLightnessHover}))`;
+export const groupButtonPrimaryStrokeHover = `hsl(from ${groupButtonPrimaryStroke} h s calc(l + ${groupButtonPrimaryLightnessPressed}))`;
+export const groupButtonPrimaryBackgroundPressed = `hsl(from ${groupButtonPrimaryBackground} h s calc(l + ${lightnessSelectedPressed}))`;
+export const groupButtonPrimaryStrokePressed = `hsl(from ${groupButtonPrimaryStroke} h s calc(l + ${lightnessSelectedPressed}))`;
+export const groupButtonSubtleForegroundPressed = `hsl(from ${groupButtonSubtleForeground} h s calc(l + ${lightnessPressed}))`;
+export const groupButtonTransparentForegroundPressed = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${lightnessPressed}))`;
+export const groupButtonTransparentForegroundHover = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${lightnessHover}))`;
 
-export const groupButtonNeutralBackgroundHoverSelected = `hsl(from ${groupButtonNeutralBackgroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonNeutralBackgroundPressedSelected = `hsl(from ${groupButtonNeutralBackgroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonNeutralStrokeHoverSelected = `hsl(from ${groupButtonNeutralStrokeSelected} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonNeutralStrokePressedSelected = `hsl(from ${groupButtonNeutralStrokeSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonOutlineStrokeHoverSelected = `hsl(from ${groupButtonOutlineStrokeSelected} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonOutlineStrokePressedSelected = `hsl(from ${groupButtonOutlineStrokeSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonPrimaryBackgroundHoverSelected = `hsl(from ${groupButtonPrimaryBackgroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonPrimaryBackgroundPressedSelected = `hsl(from ${groupButtonPrimaryBackgroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonPrimaryStrokeHoverSelected = `hsl(from ${groupButtonPrimaryStrokeSelected} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonPrimaryStrokePressedSelected = `hsl(from ${groupButtonPrimaryStrokeSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonSubtleBackgroundHoverSelected = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonSubtleBackgroundPressedSelected = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
-export const groupButtonSubtleIconForegroundHoverSelected = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${groupButtonLightnessHover}))`;
-export const groupButtonSubtleIconForegroundPressedSelected = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${groupButtonLightnessPressed}))`;
+export const groupButtonNeutralBackgroundHoverSelected = `hsl(from ${groupButtonNeutralBackgroundSelected} h s calc(l + ${lightnessSelectedHover}))`;
+export const groupButtonNeutralBackgroundPressedSelected = `hsl(from ${groupButtonNeutralBackgroundSelected} h s calc(l + ${lightnessSelectedPressed}))`;
+export const groupButtonNeutralStrokeHoverSelected = `hsl(from ${groupButtonNeutralStrokeSelected} h s calc(l + ${lightnessHover}))`;
+export const groupButtonNeutralStrokePressedSelected = `hsl(from ${groupButtonNeutralStrokeSelected} h s calc(l + ${lightnessPressed}))`;
+export const groupButtonOutlineStrokeHoverSelected = `hsl(from ${groupButtonOutlineStrokeSelected} h s calc(l + ${lightnessHover}))`;
+export const groupButtonOutlineStrokePressedSelected = `hsl(from ${groupButtonOutlineStrokeSelected} h s calc(l + ${lightnessPressed}))`;
+export const groupButtonOutlineBackgroundHoverSelected = `hsl(from ${groupButtonOutlineBackgroundSelected} h s calc(l + ${lightnessSelectedHover}))`;
+export const groupButtonOutlineBackgroundPressedSelected = `hsl(from ${groupButtonOutlineBackgroundSelected} h s calc(l + ${lightnessSelectedPressed}))`;
+export const groupButtonPrimaryBackgroundHoverSelected = `hsl(from ${groupButtonPrimaryBackgroundSelected} h s calc(l + ${lightnessSelectedHover}))`;
+export const groupButtonPrimaryBackgroundPressedSelected = `hsl(from ${groupButtonPrimaryBackgroundSelected} h s calc(l + ${lightnessSelectedPressed}))`;
+export const groupButtonPrimaryStrokeHoverSelected = `hsl(from ${groupButtonPrimaryStrokeSelected} h s calc(l + ${lightnessSelectedHover}))`;
+export const groupButtonPrimaryStrokePressedSelected = `hsl(from ${groupButtonPrimaryStrokeSelected} h s calc(l + ${lightnessSelectedPressed}))`;
+export const groupButtonSubtleBackgroundHoverSelected = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${lightnessSelectedHover}))`;
+export const groupButtonSubtleBackgroundPressedSelected = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${lightnessSelectedPressed}))`;
+export const groupButtonSubtleIconForegroundHoverSelected = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${lightnessHover}))`;
+export const groupButtonSubtleIconForegroundPressedSelected = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${lightnessPressed}))`;
 
 // Compound button tokens
 export const ctrlCompoundbuttonSmallIcononlyPadding = `calc(${groupButtonIcononlyPadding} / 5 * 4)`;
@@ -91,3 +104,6 @@ export const ctrlCompoundbuttonSmallPaddingHorizontal = `calc(${groupButtonPaddi
 export const ctrlCompoundbuttonLargePaddingTop = `calc(${groupButtonPaddingTop} / 5 * 18)`;
 export const ctrlCompoundbuttonLargePaddingBottom = `calc(${groupButtonPaddingBottom} / 5 * 20)`;
 export const ctrlCompoundbuttonLargePaddingHorizontal = `calc(${groupButtonPaddingHorizontal} / 12 * 16)`;
+
+// Extension algo tokens
+export const groupButtonSubtleIconForegroundPressed = `hsl(from ${groupButtonSubtleIconForegroundHover} h s calc(l + ${lightnessPressed} - ${lightnessHover}))`;

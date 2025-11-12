@@ -1,6 +1,7 @@
 // Definitions of component groups, their properties, variants, states, scales, and parts
 export interface GroupPart {
   coreProperties?: string[];
+  stateProperties?: string[];
   variantStateProperties?: string[];
   variantProperties?: string[];
   scales?: string[];

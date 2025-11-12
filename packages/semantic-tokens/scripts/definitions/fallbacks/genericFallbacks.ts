@@ -20,6 +20,12 @@ export const genericFallbacks: GenericFallbacks = {
   lightnessPressed: {
     fluent: '-10',
   },
+  lightnessSelectedHover: {
+    fluent: '-5',
+  },
+  lightnessSelectedPressed: {
+    fluent: '-10',
+  },
   surfaceNeutralDefault: {
     primitive: 'colorNeutral8',
   },
@@ -173,5 +179,12 @@ export const genericFallbacks: GenericFallbacks = {
   },
   foregroundDisabled: {
     primitive: 'colorNeutral3',
+  },
+  backgroundBrandHeavy: {
+    primitive: 'colorBrand1',
+  },
+  backgroundBrandTransparent: {
+    fluent: tokens.colorTransparentBackground,
+    primitive: 'colorBrandAlpha',
   },
 };

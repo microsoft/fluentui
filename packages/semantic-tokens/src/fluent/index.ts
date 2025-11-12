@@ -218,6 +218,8 @@ export {
   groupButtonNeutralStrokePressedSelected,
   groupButtonOutlineStrokeHoverSelected,
   groupButtonOutlineStrokePressedSelected,
+  groupButtonOutlineBackgroundHoverSelected,
+  groupButtonOutlineBackgroundPressedSelected,
   groupButtonPrimaryBackgroundHoverSelected,
   groupButtonPrimaryBackgroundPressedSelected,
   groupButtonPrimaryStrokeHoverSelected,
@@ -241,4 +243,7 @@ export {
   ctrlCompoundbuttonLargePaddingTop,
   ctrlCompoundbuttonLargePaddingBottom,
   ctrlCompoundbuttonLargePaddingHorizontal,
+
+  // Button - extension
+  groupButtonSubtleIconForegroundPressed,
 } from './algo/index';

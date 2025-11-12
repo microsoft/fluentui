@@ -14,8 +14,7 @@ export type GenericType = {
 export const generics: GenericTypes = {
   lightness: {
     type: 'percentage',
-    // For now, only hover and pressed variants (relative)
-    variants: [''],
+    variants: ['', 'selected'],
     states: ['hover', 'pressed'],
   },
   corner: {
@@ -34,6 +33,13 @@ export const generics: GenericTypes = {
     emphasis: ['loud', 'soft', 'subtle'],
     states: [''],
     exceptions: [
+      {
+        // Brand also has a heavy  emphasis
+        type: 'color',
+        variants: ['brand'],
+        emphasis: ['heavy', 'transparent'],
+        states: [''],
+      },
       {
         // Neutral also has a heavy and transparent emphasis
         type: 'color',

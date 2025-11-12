@@ -95,7 +95,6 @@ export const buttonFallbacks: GroupFallback = {
   },
   groupButtonPrimaryBackgroundSelected: {
     fluent: tokens.colorBrandBackgroundSelected,
-    // TODO: Review generic mapping
     generic: 'backgroundBrandHeavy',
   },
   groupButtonPrimaryBackgroundHoverSelected: {
@@ -252,27 +251,27 @@ export const buttonFallbacks: GroupFallback = {
   },
   groupButtonSubtleStroke: {
     fluent: 'transparent',
-    generic: 'strokeNeutralSubtle',
+    generic: 'strokeNeutralTransparent',
   },
   groupButtonSubtleStrokeHover: {
     fluent: 'transparent',
-    generic: 'strokeNeutralSubtleHover',
+    generic: 'strokeNeutralTransparentHover',
   },
   groupButtonSubtleStrokePressed: {
     fluent: 'transparent',
-    generic: 'strokeNeutralSubtlePressed',
+    generic: 'strokeNeutralTransparentPressed',
   },
   groupButtonSubtleStrokeSelected: {
     fluent: 'transparent',
-    generic: 'strokeNeutralLoud',
+    generic: 'strokeNeutralTransparent',
   },
   groupButtonSubtleStrokeHoverSelected: {
     fluent: 'transparent',
-    generic: 'strokeNeutralLoudHover',
+    generic: 'strokeNeutralTransparentHover',
   },
   groupButtonSubtleStrokePressedSelected: {
     fluent: 'transparent',
-    generic: 'strokeNeutralLoudPressed',
+    generic: 'strokeNeutralTransparentPressed',
   },
   groupButtonSubtleStrokeDisabled: {
     fluent: 'transparent',
@@ -626,7 +625,7 @@ export const buttonFallbacks: GroupFallback = {
   },
   groupButtonSubtleIconForegroundHover: {
     fluent: tokens.colorNeutralForeground2BrandHover,
-    generic: 'foregroundBrandPrimaryHover',
+    generic: 'foregroundBrandPrimary',
   },
   groupButtonSubtleIconForegroundPressed: {
     fluent: tokens.colorNeutralForeground2BrandPressed,
@@ -683,12 +682,15 @@ export const buttonFallbacks: GroupFallback = {
     // Shadow needs to be null-populated to work with combinations for focus
     fluent: '0 0 0 transparent',
   },
-  groupButtonLightnessHover: {
-    fluent: '-5',
+  groupButtonFontweightSelected: {
+    fluent: tokens.fontWeightSemibold,
+  },
+  groupButtonPrimaryLightnessHover: {
+    fluent: '-10',
     generic: 'lightnessHover',
   },
-  groupButtonLightnessPressed: {
-    fluent: '-10',
+  groupButtonPrimaryLightnessPressed: {
+    fluent: '-20',
     generic: 'lightnessPressed',
   },
 };

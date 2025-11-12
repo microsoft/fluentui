@@ -5,6 +5,9 @@
 ```ts
 
 // @public (undocumented)
+export const backgroundBrandHeavy = "var(--smtc-background-brand-heavy, var(--smtc-color-brand-1))";
+
+// @public (undocumented)
 export const backgroundBrandLoud = "var(--smtc-background-brand-loud, var(--smtc-color-brand-2))";
 
 // @public (undocumented)
@@ -48,6 +51,9 @@ export const backgroundBrandSubtlePressed = "hsl(from var(--smtc-background-bran
 
 // @public (undocumented)
 export const backgroundBrandSubtlePressedSelected = "hsl(from var(--smtc-background-brand-soft, var(--smtc-color-brand-5)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+
+// @public (undocumented)
+export const backgroundBrandTransparent = "var(--smtc-background-brand-transparent, var(--smtc-color-brand-alpha, var(--colorTransparentBackground)))";
 
 // @public (undocumented)
 export const backgroundDangerLoud = "var(--smtc-background-danger-loud, var(--smtc-color-danger-2))";
@@ -482,6 +488,9 @@ export const groupButtonFontsize = "var(--smtc-group-button-fontsize, var(--font
 export const groupButtonFontweight = "var(--smtc-group-button-fontweight, var(--fontWeightSemibold))";
 
 // @public (undocumented)
+export const groupButtonFontweightSelected = "var(--smtc-group-button-fontweight-selected, var(--fontWeightSemibold))";
+
+// @public (undocumented)
 export const groupButtonGap = "var(--smtc-group-button-gap, var(--spacingHorizontalSNudge))";
 
 // @public (undocumented)
@@ -512,12 +521,6 @@ export const groupButtonLargePaddingHorizontal = "calc(var(--smtc-group-button-p
 export const groupButtonLargePaddingTop = "calc(var(--smtc-group-button-padding-top, 5px) / 5 * 8)";
 
 // @public (undocumented)
-export const groupButtonLightnessHover = "var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))";
-
-// @public (undocumented)
-export const groupButtonLightnessPressed = "var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))";
-
-// @public (undocumented)
 export const groupButtonLineheight = "var(--smtc-group-button-lineheight, var(--lineHeightBase300))";
 
 // @public (undocumented)
@@ -530,16 +533,16 @@ export const groupButtonNeutralBackground = "var(--smtc-group-button-neutral-bac
 export const groupButtonNeutralBackgroundDisabled = "var(--smtc-group-button-neutral-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorNeutralBackgroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonNeutralBackgroundHover = "hsl(from var(--smtc-group-button-neutral-background, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorNeutralBackground1)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonNeutralBackgroundHover = "hsl(from var(--smtc-group-button-neutral-background, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorNeutralBackground1)))) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonNeutralBackgroundHoverSelected = "hsl(from var(--smtc-group-button-neutral-background-selected, var(--smtc-background-neutral-heavy, var(--smtc-color-neutral-0, var(--colorNeutralBackground1Selected)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonNeutralBackgroundHoverSelected = "hsl(from var(--smtc-group-button-neutral-background-selected, var(--smtc-background-neutral-heavy, var(--smtc-color-neutral-0, var(--colorNeutralBackground1Selected)))) h s calc(l + var(--smtc-lightness-selected-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonNeutralBackgroundPressed = "hsl(from var(--smtc-group-button-neutral-background, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorNeutralBackground1)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonNeutralBackgroundPressed = "hsl(from var(--smtc-group-button-neutral-background, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorNeutralBackground1)))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const groupButtonNeutralBackgroundPressedSelected = "hsl(from var(--smtc-group-button-neutral-background-selected, var(--smtc-background-neutral-heavy, var(--smtc-color-neutral-0, var(--colorNeutralBackground1Selected)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonNeutralBackgroundPressedSelected = "hsl(from var(--smtc-group-button-neutral-background-selected, var(--smtc-background-neutral-heavy, var(--smtc-color-neutral-0, var(--colorNeutralBackground1Selected)))) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonNeutralBackgroundSelected = "var(--smtc-group-button-neutral-background-selected, var(--smtc-background-neutral-heavy, var(--smtc-color-neutral-0, var(--colorNeutralBackground1Selected))))";
@@ -569,16 +572,16 @@ export const groupButtonNeutralStroke = "var(--smtc-group-button-neutral-stroke,
 export const groupButtonNeutralStrokeDisabled = "var(--smtc-group-button-neutral-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, var(--colorNeutralStrokeDisabled))))";
 
 // @public (undocumented)
-export const groupButtonNeutralStrokeHover = "hsl(from var(--smtc-group-button-neutral-stroke, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonNeutralStrokeHover = "hsl(from var(--smtc-group-button-neutral-stroke, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonNeutralStrokeHoverSelected = "hsl(from var(--smtc-group-button-neutral-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, var(--colorNeutralStroke1Selected)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonNeutralStrokeHoverSelected = "hsl(from var(--smtc-group-button-neutral-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, var(--colorNeutralStroke1Selected)))) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonNeutralStrokePressed = "hsl(from var(--smtc-group-button-neutral-stroke, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonNeutralStrokePressed = "hsl(from var(--smtc-group-button-neutral-stroke, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const groupButtonNeutralStrokePressedSelected = "hsl(from var(--smtc-group-button-neutral-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, var(--colorNeutralStroke1Selected)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonNeutralStrokePressedSelected = "hsl(from var(--smtc-group-button-neutral-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, var(--colorNeutralStroke1Selected)))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonNeutralStrokeSelected = "var(--smtc-group-button-neutral-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, var(--colorNeutralStroke1Selected))))";
@@ -588,6 +591,12 @@ export const groupButtonOutlineBackground = "var(--smtc-group-button-outline-bac
 
 // @public (undocumented)
 export const groupButtonOutlineBackgroundDisabled = "var(--smtc-group-button-outline-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorTransparentBackground))))";
+
+// @public (undocumented)
+export const groupButtonOutlineBackgroundHoverSelected = "hsl(from var(--smtc-group-button-outline-background-selected, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorTransparentBackgroundSelected)))) h s calc(l + var(--smtc-lightness-selected-hover, -5)))";
+
+// @public (undocumented)
+export const groupButtonOutlineBackgroundPressedSelected = "hsl(from var(--smtc-group-button-outline-background-selected, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorTransparentBackgroundSelected)))) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonOutlineBackgroundSelected = "var(--smtc-group-button-outline-background-selected, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorTransparentBackgroundSelected))))";
@@ -617,16 +626,16 @@ export const groupButtonOutlineStroke = "var(--smtc-group-button-outline-stroke,
 export const groupButtonOutlineStrokeDisabled = "var(--smtc-group-button-outline-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, var(--colorNeutralStrokeDisabled))))";
 
 // @public (undocumented)
-export const groupButtonOutlineStrokeHover = "hsl(from var(--smtc-group-button-outline-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonOutlineStrokeHover = "hsl(from var(--smtc-group-button-outline-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonOutlineStrokeHoverSelected = "hsl(from var(--smtc-group-button-outline-stroke-selected, var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonOutlineStrokeHoverSelected = "hsl(from var(--smtc-group-button-outline-stroke-selected, var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonOutlineStrokePressed = "hsl(from var(--smtc-group-button-outline-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonOutlineStrokePressed = "hsl(from var(--smtc-group-button-outline-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const groupButtonOutlineStrokePressedSelected = "hsl(from var(--smtc-group-button-outline-stroke-selected, var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonOutlineStrokePressedSelected = "hsl(from var(--smtc-group-button-outline-stroke-selected, var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0, var(--colorNeutralStroke1)))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonOutlineStrokeSelected = "var(--smtc-group-button-outline-stroke-selected, var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0, var(--colorNeutralStroke1))))";
@@ -650,19 +659,19 @@ export const groupButtonPrimaryBackground = "var(--smtc-group-button-primary-bac
 export const groupButtonPrimaryBackgroundDisabled = "var(--smtc-group-button-primary-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorNeutralBackgroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundHover = "hsl(from var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonPrimaryBackgroundHover = "hsl(from var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground)))) h s calc(l + var(--smtc-group-button-primary-lightness-hover, var(--smtc-lightness-hover, -10))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundHoverSelected = "hsl(from var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--colorBrandBackgroundSelected))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonPrimaryBackgroundHoverSelected = "hsl(from var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--smtc-color-brand-1, var(--colorBrandBackgroundSelected)))) h s calc(l + var(--smtc-lightness-selected-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundPressed = "hsl(from var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonPrimaryBackgroundPressed = "hsl(from var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground)))) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundPressedSelected = "hsl(from var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--colorBrandBackgroundSelected))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonPrimaryBackgroundPressedSelected = "hsl(from var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--smtc-color-brand-1, var(--colorBrandBackgroundSelected)))) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryBackgroundSelected = "var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--colorBrandBackgroundSelected)))";
+export const groupButtonPrimaryBackgroundSelected = "var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--smtc-color-brand-1, var(--colorBrandBackgroundSelected))))";
 
 // @public (undocumented)
 export const groupButtonPrimaryForeground = "var(--smtc-group-button-primary-foreground, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForegroundOnBrand))))";
@@ -683,22 +692,28 @@ export const groupButtonPrimaryIconForegroundDisabled = "var(--smtc-group-button
 export const groupButtonPrimaryIconForegroundSelected = "var(--smtc-group-button-primary-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForegroundOnBrand))))";
 
 // @public (undocumented)
+export const groupButtonPrimaryLightnessHover = "var(--smtc-group-button-primary-lightness-hover, var(--smtc-lightness-hover, -10))";
+
+// @public (undocumented)
+export const groupButtonPrimaryLightnessPressed = "var(--smtc-group-button-primary-lightness-pressed, var(--smtc-lightness-pressed, -20))";
+
+// @public (undocumented)
 export const groupButtonPrimaryStroke = "var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent)))";
 
 // @public (undocumented)
 export const groupButtonPrimaryStrokeDisabled = "var(--smtc-group-button-primary-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, transparent)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryStrokeHover = "hsl(from var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonPrimaryStrokeHover = "hsl(from var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-group-button-primary-lightness-pressed, var(--smtc-lightness-pressed, -20))))";
 
 // @public (undocumented)
-export const groupButtonPrimaryStrokeHoverSelected = "hsl(from var(--smtc-group-button-primary-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonPrimaryStrokeHoverSelected = "hsl(from var(--smtc-group-button-primary-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-lightness-selected-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryStrokePressed = "hsl(from var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonPrimaryStrokePressed = "hsl(from var(--smtc-group-button-primary-stroke, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
 
 // @public (undocumented)
-export const groupButtonPrimaryStrokePressedSelected = "hsl(from var(--smtc-group-button-primary-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonPrimaryStrokePressedSelected = "hsl(from var(--smtc-group-button-primary-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent))) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonPrimaryStrokeSelected = "var(--smtc-group-button-primary-stroke-selected, var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2, transparent)))";
@@ -740,16 +755,16 @@ export const groupButtonSmallTextPaddingHorizontal = "calc(var(--smtc-group-butt
 export const groupButtonStrokewidth = "var(--smtc-group-button-strokewidth, var(--strokeWidthThin))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackground = "var(--smtc-group-button-subtle-background, var(--smtc-background-brand-transparent, var(--colorSubtleBackground)))";
+export const groupButtonSubtleBackground = "var(--smtc-group-button-subtle-background, var(--smtc-background-brand-transparent, var(--smtc-color-brand-alpha, var(--colorSubtleBackground))))";
 
 // @public (undocumented)
 export const groupButtonSubtleBackgroundDisabled = "var(--smtc-group-button-subtle-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorTransparentBackground))))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundHoverSelected = "hsl(from var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorSubtleBackgroundSelected)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonSubtleBackgroundHoverSelected = "hsl(from var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorSubtleBackgroundSelected)))) h s calc(l + var(--smtc-lightness-selected-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundPressedSelected = "hsl(from var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorSubtleBackgroundSelected)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonSubtleBackgroundPressedSelected = "hsl(from var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorSubtleBackgroundSelected)))) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonSubtleBackgroundSelected = "var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorSubtleBackgroundSelected))))";
@@ -761,7 +776,7 @@ export const groupButtonSubtleForeground = "var(--smtc-group-button-subtle-foreg
 export const groupButtonSubtleForegroundDisabled = "var(--smtc-group-button-subtle-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonSubtleForegroundPressed = "hsl(from var(--smtc-group-button-subtle-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground2)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonSubtleForegroundPressed = "hsl(from var(--smtc-group-button-subtle-foreground, var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0, var(--colorNeutralForeground2)))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonSubtleForegroundSelected = "var(--smtc-group-button-subtle-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground2Selected))))";
@@ -773,22 +788,28 @@ export const groupButtonSubtleIconForeground = "var(--smtc-group-button-subtle-i
 export const groupButtonSubtleIconForegroundDisabled = "var(--smtc-group-button-subtle-icon-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonSubtleIconForegroundHoverSelected = "hsl(from var(--smtc-group-button-subtle-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground2BrandSelected)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonSubtleIconForegroundHover = "var(--smtc-group-button-subtle-icon-foreground-hover, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandHover))))";
 
 // @public (undocumented)
-export const groupButtonSubtleIconForegroundPressedSelected = "hsl(from var(--smtc-group-button-subtle-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground2BrandSelected)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonSubtleIconForegroundHoverSelected = "hsl(from var(--smtc-group-button-subtle-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground2BrandSelected)))) h s calc(l + var(--smtc-lightness-hover, -5)))";
+
+// @public (undocumented)
+export const groupButtonSubtleIconForegroundPressed = "hsl(from var(--smtc-group-button-subtle-icon-foreground-hover, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandHover)))) h s calc(l + var(--smtc-lightness-pressed, -10) - var(--smtc-lightness-hover, -5)))";
+
+// @public (undocumented)
+export const groupButtonSubtleIconForegroundPressedSelected = "hsl(from var(--smtc-group-button-subtle-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground2BrandSelected)))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonSubtleIconForegroundSelected = "var(--smtc-group-button-subtle-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground2BrandSelected))))";
 
 // @public (undocumented)
-export const groupButtonSubtleStroke = "var(--smtc-group-button-subtle-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, transparent)))";
+export const groupButtonSubtleStroke = "var(--smtc-group-button-subtle-stroke, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, transparent)))";
 
 // @public (undocumented)
 export const groupButtonSubtleStrokeDisabled = "var(--smtc-group-button-subtle-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, transparent)))";
 
 // @public (undocumented)
-export const groupButtonSubtleStrokeSelected = "var(--smtc-group-button-subtle-stroke-selected, var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0, transparent)))";
+export const groupButtonSubtleStrokeSelected = "var(--smtc-group-button-subtle-stroke-selected, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, transparent)))";
 
 // @public (undocumented)
 export const groupButtonTextPaddingHorizontal = "var(--smtc-group-button-text-padding-horizontal, 0px)";
@@ -800,10 +821,10 @@ export const groupButtonTransparentForeground = "var(--smtc-group-button-transpa
 export const groupButtonTransparentForegroundDisabled = "var(--smtc-group-button-transparent-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))";
 
 // @public (undocumented)
-export const groupButtonTransparentForegroundHover = "hsl(from var(--smtc-group-button-transparent-foreground-selected, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandSelected)))) h s calc(l + var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))))";
+export const groupButtonTransparentForegroundHover = "hsl(from var(--smtc-group-button-transparent-foreground-selected, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandSelected)))) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonTransparentForegroundPressed = "hsl(from var(--smtc-group-button-transparent-foreground-selected, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandSelected)))) h s calc(l + var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))))";
+export const groupButtonTransparentForegroundPressed = "hsl(from var(--smtc-group-button-transparent-foreground-selected, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandSelected)))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonTransparentForegroundSelected = "var(--smtc-group-button-transparent-foreground-selected, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandSelected))))";
@@ -831,6 +852,12 @@ export const lightnessHover = "var(--smtc-lightness-hover, -5)";
 
 // @public (undocumented)
 export const lightnessPressed = "var(--smtc-lightness-pressed, -10)";
+
+// @public (undocumented)
+export const lightnessSelectedHover = "var(--smtc-lightness-selected-hover, -5)";
+
+// @public (undocumented)
+export const lightnessSelectedPressed = "var(--smtc-lightness-selected-pressed, -10)";
 
 // @public (undocumented)
 export const strokeBrandLoud = "var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2))";

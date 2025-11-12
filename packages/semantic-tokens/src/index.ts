@@ -1,6 +1,8 @@
 export {
   lightnessHover,
   lightnessPressed,
+  lightnessSelectedHover,
+  lightnessSelectedPressed,
   cornerCircular,
   cornerSquare,
   surfaceNeutralDefault,
@@ -20,6 +22,8 @@ export {
   backgroundSuccessLoud,
   backgroundSuccessSoft,
   backgroundSuccessSubtle,
+  backgroundBrandHeavy,
+  backgroundBrandTransparent,
   backgroundNeutralHeavy,
   backgroundNeutralTransparent,
   backgroundDisabled,
@@ -112,12 +116,11 @@ export {
   groupButtonSubtleForeground,
   groupButtonSubtleForegroundSelected,
   groupButtonSubtleForegroundDisabled,
+  groupButtonFontweightSelected,
   groupButtonOutlineStrokewidthSelected,
   groupButtonTransparentForeground,
   groupButtonTransparentForegroundSelected,
   groupButtonTransparentForegroundDisabled,
-  groupButtonLightnessHover,
-  groupButtonLightnessPressed,
   groupButtonIcononlyPadding,
   groupButtonIconSize,
   groupButtonNeutralIconForeground,
@@ -134,6 +137,11 @@ export {
   groupButtonSubtleIconForegroundSelected,
   groupButtonTextPaddingHorizontal,
 } from './groups/button/tokens';
+export {
+  groupButtonPrimaryLightnessHover,
+  groupButtonPrimaryLightnessPressed,
+  groupButtonSubtleIconForegroundHover,
+} from './groups/extension/button/tokens';
 export {
   // Generic algo tokens
   backgroundNeutralLoudHover,
@@ -354,6 +362,8 @@ export {
   groupButtonNeutralStrokePressedSelected,
   groupButtonOutlineStrokeHoverSelected,
   groupButtonOutlineStrokePressedSelected,
+  groupButtonOutlineBackgroundHoverSelected,
+  groupButtonOutlineBackgroundPressedSelected,
   groupButtonPrimaryBackgroundHoverSelected,
   groupButtonPrimaryBackgroundPressedSelected,
   groupButtonPrimaryStrokeHoverSelected,
@@ -377,4 +387,7 @@ export {
   ctrlCompoundbuttonLargePaddingTop,
   ctrlCompoundbuttonLargePaddingBottom,
   ctrlCompoundbuttonLargePaddingHorizontal,
+
+  // Button - extension
+  groupButtonSubtleIconForegroundPressed,
 } from './fluent/algo/index';

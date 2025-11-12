@@ -215,8 +215,7 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        // Subtle shares hover state with selected state
-        color: semanticTokens.groupButtonSubtleIconForegroundHoverSelected,
+        color: semanticTokens.groupButtonSubtleIconForegroundHover,
       },
     },
 
@@ -231,8 +230,7 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        // Subtle shares pressed state with selected state
-        color: semanticTokens.groupButtonSubtleIconForegroundPressedSelected,
+        color: semanticTokens.groupButtonSubtleIconForegroundPressed,
       },
     },
 
@@ -545,14 +543,7 @@ const useRootDisabledStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
-  // Shape variations
-  circular: createCustomFocusIndicatorStyle({ borderRadius: semanticTokens.cornerCircular }),
-  rounded: {
-    /* The rounded styles are exactly the same as the base styles. */
-  },
-  square: createCustomFocusIndicatorStyle({ borderRadius: semanticTokens.cornerSquare }),
-  // Primary styles
-  primary: {
+  base: {
     ...createCustomFocusIndicatorStyle({
       ...shorthands.borderColor(semanticTokens.groupFocusInnerStroke),
       boxShadow: `${semanticTokens.groupButtonShadow}, ${tokens.shadow2}, 0 0 0 ${semanticTokens.groupFocusInnerStrokewidth} ${semanticTokens.groupFocusInnerStroke} inset,  0 0 0 ${semanticTokens.groupFocusOuterStrokewidth} ${semanticTokens.groupFocusOnbrandStroke} inset`,
@@ -573,6 +564,14 @@ const useRootFocusStyles = makeStyles({
       }),
     },
   },
+  // Shape variations
+  circular: createCustomFocusIndicatorStyle({ borderRadius: semanticTokens.cornerCircular }),
+  rounded: {
+    /* The rounded styles are exactly the same as the base styles. */
+  },
+  square: createCustomFocusIndicatorStyle({ borderRadius: semanticTokens.cornerSquare }),
+  // Primary styles
+  primary: {},
   secondary: {
     // The secondary focus styles are exactly the same as the base styles.
   },
@@ -675,8 +674,7 @@ export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
     appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
     // Focus styles
-    appearance === 'primary' && rootFocusStyles.primary,
-    appearance === 'secondary' && rootFocusStyles.secondary,
+    rootFocusStyles.base,
     rootFocusStyles[size],
     rootFocusStyles[shape],
 

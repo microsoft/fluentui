@@ -27,6 +27,11 @@ export const buttonGroup: GroupPart = {
   states: ['', 'selected', 'disabled'],
   exceptions: [
     {
+      // Some monochrome selected buttons rely on strokewidth to define selected state
+      states: ['selected'],
+      stateProperties: ['fontweight'],
+    },
+    {
       // Outline buttons may modify strokeWidth based on selected state, as it is their main visual element
       variants: ['outline'],
       states: ['selected'],
@@ -40,9 +45,6 @@ export const buttonGroup: GroupPart = {
     },
   ],
   parts: {
-    lightness: {
-      coreProperties: ['hover', 'pressed'],
-    },
     icononly: {
       coreProperties: ['padding'],
     },

@@ -19,7 +19,7 @@ export const groupButtonNeutralBackgroundDisabled =
 export const groupButtonPrimaryBackground =
   'var(--smtc-group-button-primary-background, var(--smtc-background-brand-loud, var(--smtc-color-brand-2, var(--colorBrandBackground))))';
 export const groupButtonPrimaryBackgroundSelected =
-  'var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--colorBrandBackgroundSelected)))';
+  'var(--smtc-group-button-primary-background-selected, var(--smtc-background-brand-heavy, var(--smtc-color-brand-1, var(--colorBrandBackgroundSelected))))';
 export const groupButtonPrimaryBackgroundDisabled =
   'var(--smtc-group-button-primary-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorNeutralBackgroundDisabled))))';
 export const groupButtonOutlineBackground =
@@ -29,7 +29,7 @@ export const groupButtonOutlineBackgroundSelected =
 export const groupButtonOutlineBackgroundDisabled =
   'var(--smtc-group-button-outline-background-disabled, var(--smtc-background-disabled, var(--smtc-color-neutral-5, var(--colorTransparentBackground))))';
 export const groupButtonSubtleBackground =
-  'var(--smtc-group-button-subtle-background, var(--smtc-background-brand-transparent, var(--colorSubtleBackground)))';
+  'var(--smtc-group-button-subtle-background, var(--smtc-background-brand-transparent, var(--smtc-color-brand-alpha, var(--colorSubtleBackground))))';
 export const groupButtonSubtleBackgroundSelected =
   'var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--smtc-color-neutral-6, var(--colorSubtleBackgroundSelected))))';
 export const groupButtonSubtleBackgroundDisabled =
@@ -53,9 +53,9 @@ export const groupButtonOutlineStrokeSelected =
 export const groupButtonOutlineStrokeDisabled =
   'var(--smtc-group-button-outline-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, var(--colorNeutralStrokeDisabled))))';
 export const groupButtonSubtleStroke =
-  'var(--smtc-group-button-subtle-stroke, var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4, transparent)))';
+  'var(--smtc-group-button-subtle-stroke, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, transparent)))';
 export const groupButtonSubtleStrokeSelected =
-  'var(--smtc-group-button-subtle-stroke-selected, var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0, transparent)))';
+  'var(--smtc-group-button-subtle-stroke-selected, var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, transparent)))';
 export const groupButtonSubtleStrokeDisabled =
   'var(--smtc-group-button-subtle-stroke-disabled, var(--smtc-stroke-disabled, var(--smtc-color-neutral-4, transparent)))';
 export const groupButtonNeutralForeground =
@@ -82,6 +82,7 @@ export const groupButtonSubtleForegroundSelected =
   'var(--smtc-group-button-subtle-foreground-selected, var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8, var(--colorNeutralForeground2Selected))))';
 export const groupButtonSubtleForegroundDisabled =
   'var(--smtc-group-button-subtle-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))';
+export const groupButtonFontweightSelected = 'var(--smtc-group-button-fontweight-selected, var(--fontWeightSemibold))';
 export const groupButtonOutlineStrokewidthSelected =
   'var(--smtc-group-button-outline-strokewidth-selected, var(--strokeWidthThicker))';
 export const groupButtonTransparentForeground =
@@ -90,9 +91,6 @@ export const groupButtonTransparentForegroundSelected =
   'var(--smtc-group-button-transparent-foreground-selected, var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1, var(--colorNeutralForeground2BrandSelected))))';
 export const groupButtonTransparentForegroundDisabled =
   'var(--smtc-group-button-transparent-foreground-disabled, var(--smtc-foreground-disabled, var(--smtc-color-neutral-3, var(--colorNeutralForegroundDisabled))))';
-export const groupButtonLightnessHover = 'var(--smtc-group-button-lightness-hover, var(--smtc-lightness-hover, -5))';
-export const groupButtonLightnessPressed =
-  'var(--smtc-group-button-lightness-pressed, var(--smtc-lightness-pressed, -10))';
 export const groupButtonIcononlyPadding = 'var(--smtc-group-button-icononly-padding, 5px)';
 export const groupButtonIconSize = 'var(--smtc-group-button-icon-size, 20px)';
 export const groupButtonNeutralIconForeground =

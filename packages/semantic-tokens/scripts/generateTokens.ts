@@ -96,25 +96,6 @@ const generateFigmaName = ({
   return [property, collectionName, groupName, variant, scale, partName, state].filter(Boolean).join(joiner);
 };
 
-// export function generatePrimitiveTokens() {
-//   let result = [];
-
-//   for (const prim of Object.keys(primitives)) {
-//     for (const style of primitives[prim].styles) {
-//       for (const state of primitives[prim].states) {
-//         let tokenParts = [prim, style, state];
-
-//         result.push({
-//           name: tokenParts.filter(Boolean).join(joiner),
-//           type: primitives[prim].type || 'color',
-//           property: null,
-//         });
-//       }
-//     }
-//   }
-//   return result;
-// }
-
 export function generateGenericTokens() {
   let result: Array<Token> = [];
 
@@ -189,12 +170,33 @@ export function generateComponentGroupTokens(
     }
   }
 
-  // For each group, generate property tokens for each variant and scale
+  // For each group, generate property tokens for each state
+  const groupStateProperties = group.stateProperties || [];
+  for (const property of groupStateProperties) {
+    const groupStates = group.states || [''];
+    for (let state of groupStates) {
+      let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
+
+      const groupToken = {
+        name: generateGroupTokenName({ collectionName, groupName, partName, property, state }),
+        figmaAlias: generateFigmaName({ collectionName, groupName, partName, property, state }),
+        type,
+        property: property,
+        group: groupName,
+      };
+
+      if (!result.find(r => r.name === groupToken.name)) {
+        result.push(groupToken);
+      }
+    }
+  }
+
+  // For each group, generate property tokens for each variant and state
   const groupVariantStateProperties = group.variantStateProperties || [];
   for (const property of groupVariantStateProperties) {
     const groupVariants = group.variants || [];
     for (let variant of groupVariants) {
-      const groupStates = group.states || ['rest'];
+      const groupStates = group.states || [''];
       for (let state of groupStates) {
         let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
@@ -235,7 +237,7 @@ export function generateComponentGroupTokens(
   }
 
   // Add tokens for scale properties
-  const groupScales = group.scales || ['default'];
+  const groupScales = group.scales || [''];
   for (const scale of groupScales) {
     const groupScaleProperties = group.scaleProperties || [];
     for (const property of groupScaleProperties) {
@@ -261,7 +263,7 @@ export function generateComponentGroupTokens(
   for (const property of groupScaleStateProperties) {
     const groupScales = group.scales || [];
     for (let scale of groupScales) {
-      const groupStates = group.states || ['rest'];
+      const groupStates = group.states || [''];
       for (let state of groupStates) {
         let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
