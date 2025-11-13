@@ -4639,76 +4639,91 @@ Object {
     "SankeyChartData": Object {
       "links": Array [
         Object {
+          "color": "#fde3d4",
           "source": 0,
           "target": 5,
           "value": 20,
         },
         Object {
+          "color": "#f27420",
           "source": 0,
           "target": 6,
           "value": 3,
         },
         Object {
+          "color": "#fde3d4",
           "source": 0,
           "target": 7,
           "value": 5,
         },
         Object {
+          "color": "#dbe9f6",
           "source": 1,
           "target": 5,
           "value": 14,
         },
         Object {
+          "color": "#4994ce",
           "source": 1,
           "target": 6,
           "value": 1,
         },
         Object {
+          "color": "#dbe9f6",
           "source": 1,
           "target": 7,
           "value": 1,
         },
         Object {
+          "color": "#fabc13",
           "source": 2,
           "target": 5,
           "value": 3,
         },
         Object {
+          "color": "#fabc13",
           "source": 2,
           "target": 6,
           "value": 17,
         },
         Object {
+          "color": "#fabc13",
           "source": 2,
           "target": 7,
           "value": 2,
         },
         Object {
+          "color": "#7fc241",
           "source": 3,
           "target": 5,
           "value": 3,
         },
         Object {
+          "color": "#7fc241",
           "source": 3,
           "target": 6,
           "value": 9,
         },
         Object {
+          "color": "#7fc241",
           "source": 3,
           "target": 7,
           "value": 2,
         },
         Object {
+          "color": "#d3d3d3",
           "source": 4,
           "target": 5,
           "value": 5,
         },
         Object {
+          "color": "#d3d3d3",
           "source": 4,
           "target": 6,
           "value": 9,
         },
         Object {
+          "color": "#d3d3d3",
           "source": 4,
           "target": 7,
           "value": 8,
