@@ -118,6 +118,9 @@ const useRootStyles = makeStyles({
   small: {
     minHeight: fieldHeights.small,
     ...typographyStyles.caption1,
+    // Todo: Font sizes will likely be moved to extension tokens
+    fontSize: `calc(${semanticTokens.groupInputFontsize} / 7 * 6)`,
+    lineHeight: `calc(${semanticTokens.groupInputLineheight} / 5 * 4)`,
   },
   medium: {
     // included in rootBaseStyles
@@ -125,6 +128,9 @@ const useRootStyles = makeStyles({
   large: {
     minHeight: fieldHeights.large,
     ...typographyStyles.body2,
+    // Todo: Font sizes will likely be moved to extension tokens
+    fontSize: `calc(${semanticTokens.groupInputFontsize} / 7 * 8)`,
+    lineHeight: `calc(${semanticTokens.groupInputLineheight} / 10 * 11)`,
     gap: `calc(${semanticTokens.groupInputGap} * 1.5)`,
   },
   outline: {
