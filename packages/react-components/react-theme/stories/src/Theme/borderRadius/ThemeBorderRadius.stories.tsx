@@ -5,8 +5,8 @@ import type { BorderRadiusTokens } from '@fluentui/react-components';
 
 const theme = teamsLightTheme;
 
-export const BorderRadii = (): JSXElement => {
-  const borderRadiiTokens = Object.keys(theme).filter(tokenName =>
+export const BorderRadius = (): JSXElement => {
+  const borderRadiusTokens = Object.keys(theme).filter(tokenName =>
     tokenName.startsWith('borderRadius'),
   ) as (keyof BorderRadiusTokens)[];
 
@@ -14,7 +14,7 @@ export const BorderRadii = (): JSXElement => {
     <div
       style={{ display: 'grid', gridTemplateColumns: 'repeat(3, auto) 1fr ', gap: '10px 20px', alignItems: 'center' }}
     >
-      {borderRadiiTokens.map(radius => [
+      {borderRadiusTokens.map(radius => [
         <div key={radius}>{radius}</div>,
         <div key={`${radius}-value`} style={{ textAlign: 'right' }}>
           {theme[radius]}

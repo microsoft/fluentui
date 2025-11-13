@@ -69,7 +69,7 @@ const useRootClassName = makeResetStyles({
     right: '-1px',
 
     // Maintaining the correct corner radius:
-    // Use the whole border-radius as the height and only put radii on the bottom corners.
+    // Use the whole border-radius as the height and only put radius on the bottom corners.
     // (Otherwise the radius would be automatically reduced to fit available space.)
     // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
     height: `max(2px, ${tokens.borderRadiusMedium})`,

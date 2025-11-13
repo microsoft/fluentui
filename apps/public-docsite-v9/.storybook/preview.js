@@ -41,7 +41,7 @@ export const parameters = {
           'Recipes',
         ],
         'Theme',
-        ['Border Radii', 'Colors', 'Fonts', 'Shadows', 'Spacing', 'Stroke Widths', 'Typography', 'Theme Designer'],
+        ['Border Radius', 'Colors', 'Fonts', 'Shadows', 'Spacing', 'Stroke Widths', 'Typography', 'Theme Designer'],
         'Components',
         'Compat Components',
         'Preview Components',

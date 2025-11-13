@@ -297,7 +297,7 @@ const mapFonts = (baseFonts: IFontStyles, theme: ThemeV9): IFontStyles => {
 };
 
 /**
- * Overlays v9 shadows and border radii on a base set of v8 effects.
+ * Overlays v9 shadows and border radius on a base set of v8 effects.
  */
 const mapEffects = (baseEffects: IEffects, theme: ThemeV9): IEffects => {
   return {

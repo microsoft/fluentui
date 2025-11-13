@@ -2973,7 +2973,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
     }
   }
 
-  // If there are negative radii, compute the shift
+  // If there are negative radius, compute the shift
   const radiusShift = minRadius < 0 ? -minRadius : 0;
 
   // Collect all unique theta values from all scatterpolar series for equal spacing
