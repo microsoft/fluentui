@@ -114,7 +114,7 @@ export interface DonutChartProps extends CartesianChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: React.RefObject<Chart>;
+  componentRef?: React.Ref<Chart>;
 
   /**
    * Prop to enable the round corners in the chart

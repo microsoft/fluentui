@@ -8,13 +8,13 @@ import { sum as d3Sum } from 'd3-array';
 import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
 import { Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
-import { Margins, SLink, SNode, ImageExportOptions } from '../../types/DataPoint';
+import { Margins, SLink, SNode } from '../../types/DataPoint';
 import { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
 import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
 import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { format } from '../../utilities/string';
-import { toImage } from '../../utilities/image-export-utils';
+import { useImageExport } from '../../utilities/hooks';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -541,7 +541,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   SankeyChartProps
 >((props, forwardedRef) => {
   const classes = useSankeyChartStyles(props);
-  const chartContainer = React.useRef<HTMLDivElement>(null);
+  const { chartContainerRef: chartContainer } = useImageExport(props.componentRef, true, false);
   const _reqID = React.useRef<number | undefined>(undefined);
   const _linkId = useId('link');
   const _chartId = useId('sankeyChart');
@@ -569,17 +569,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const [yCalloutValue, setYCalloutValue] = React.useState<string>();
   const [descriptionMessage, setDescriptionMessage] = React.useState<string>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: chartContainer.current,
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(chartContainer.current, undefined, _isRtl, opts);
-      },
-    }),
-    [],
-  );
 
   const _fitParentContainer = React.useCallback((): void => {
     _reqID.current = _window?.requestAnimationFrame(() => {
