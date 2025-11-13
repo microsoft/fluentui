@@ -5578,6 +5578,7 @@ Object {
   "mode": "plotly",
   "noOfCharsToTruncate": 20,
   "roundCorners": true,
+  "roundedTicks": true,
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": undefined,
