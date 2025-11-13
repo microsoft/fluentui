@@ -249,3 +249,11 @@ export {
   // Button - extension
   groupButtonSubtleIconForegroundPressed,
 } from './button/tokens';
+
+export {
+  groupInputUnderlineStrokePressedSelected,
+  groupInputStrokeHover,
+  groupInputStrokePressed,
+  groupInputUnderlineStrokePressed,
+  groupInputUnderlineStrokeHover,
+} from './input/tokens';

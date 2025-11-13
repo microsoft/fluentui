@@ -7,6 +7,7 @@ import {
   useSemanticSplitButtonStyles,
   useSemanticToggleButtonStyles,
 } from './Button';
+import { useSemanticInputStyles } from './Input/useSemanticInputStyles.styles';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Button styles
@@ -15,4 +16,6 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useSplitButtonStyles_unstable: useSemanticSplitButtonStyles,
   useMenuButtonStyles_unstable: useSemanticMenuButtonStyles,
   useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,
+  // Input styles
+  useInputStyles_unstable: useSemanticInputStyles,
 };

@@ -24,8 +24,7 @@ export const backgroundSuccessSubtle = 'var(--smtc-background-success-subtle)';
 export const backgroundBrandHeavy = 'var(--smtc-background-brand-heavy)';
 export const backgroundBrandTransparent = 'var(--smtc-background-brand-transparent, var(--colorTransparentBackground))';
 export const backgroundNeutralHeavy = 'var(--smtc-background-neutral-heavy)';
-export const backgroundNeutralTransparent =
-  'var(--smtc-background-neutral-transparent, var(--colorTransparentBackground))';
+export const backgroundNeutralTransparent = 'var(--smtc-background-neutral-transparent, var(--colorTransparentBackground))';
 export const backgroundDisabled = 'var(--smtc-background-disabled)';
 export const strokeNeutralLoud = 'var(--smtc-stroke-neutral-loud)';
 export const strokeNeutralSubtle = 'var(--smtc-stroke-neutral-subtle)';

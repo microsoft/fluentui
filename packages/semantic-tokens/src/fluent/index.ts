@@ -245,4 +245,11 @@ export {
 
   // Button - extension
   groupButtonSubtleIconForegroundPressed,
+
+  // Input - Color
+  groupInputUnderlineStrokePressedSelected,
+  groupInputStrokeHover,
+  groupInputStrokePressed,
+  groupInputUnderlineStrokePressed,
+  groupInputUnderlineStrokeHover,
 } from './algo/index';
