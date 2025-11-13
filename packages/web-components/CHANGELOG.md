@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 07 Nov 2025 04:12:08 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Nov 2025 04:07:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.133](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.133)
+
+Wed, 12 Nov 2025 04:07:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.132..@fluentui/web-components_v3.0.0-beta.133)
+
+### Changes
+
+- fix: ensure required radio error message is announced by assistive technology ([PR #35468](https://github.com/microsoft/fluentui/pull/35468) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.132](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.132)
 

@@ -16,7 +16,7 @@ const minDate = addMonths(today, -1);
 const maxDate = addYears(today, 1);
 
 const onFormatDate = (date?: Date): string => {
-  return !date ? '' : `${date?.getMonth() + 1}/${date?.getDate()}/${date?.getFullYear()}`;
+  return !date ? '' : `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 };
 
 export const ErrorHandling = (): JSXElement => {

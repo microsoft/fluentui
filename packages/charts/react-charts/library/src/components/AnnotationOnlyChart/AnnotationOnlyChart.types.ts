@@ -30,5 +30,5 @@ export interface AnnotationOnlyChartProps {
   /** Layout margin converted to padding for the outer wrapper. */
   margin?: Partial<Margin>;
   /** Component ref propagated by the DeclarativeChart surface. */
-  componentRef?: React.RefObject<Chart>;
+  componentRef?: React.Ref<Chart>;
 }
