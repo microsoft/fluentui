@@ -7,6 +7,7 @@
 import { ButtonState } from '@fluentui/react-button';
 import { CompoundButtonState } from '@fluentui/react-button';
 import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
+import type { InputState } from '@fluentui/react-input';
 import { MenuButtonState } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
@@ -22,6 +23,9 @@ export const useSemanticButtonStyles: (_state: unknown) => ButtonState;
 
 // @public (undocumented)
 export const useSemanticCompoundButtonStyles: (_state: unknown) => CompoundButtonState;
+
+// @public
+export const useSemanticInputStyles: (_state: unknown) => InputState;
 
 // @public (undocumented)
 export const useSemanticMenuButtonStyles: (_state: unknown) => MenuButtonState;

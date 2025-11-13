@@ -851,6 +851,93 @@ export const groupFocusOuterStroke = "var(--smtc-group-focus-outer-stroke, var(-
 export const groupFocusOuterStrokewidth = "var(--smtc-group-focus-outer-strokewidth, var(--strokeWidthThick))";
 
 // @public (undocumented)
+export const groupInputBackground = "var(--smtc-group-input-background, var(--colorNeutralBackground1))";
+
+// @public (undocumented)
+export const groupInputBackgroundDisabled = "var(--smtc-group-input-background-disabled, var(--smtc-background-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorTransparentBackground))))";
+
+// @public (undocumented)
+export const groupInputCorner = "var(--smtc-group-input-corner, var(--borderRadiusMedium))";
+
+// @public (undocumented)
+export const groupInputFilledDarkerBackground = "var(--smtc-group-input-filled-darker-background, var(--colorNeutralBackground3))";
+
+// @public (undocumented)
+export const groupInputFontfamily = "var(--smtc-group-input-fontfamily, var(--fontFamilyBase))";
+
+// @public (undocumented)
+export const groupInputFontsize = "var(--smtc-group-input-fontsize, var(--fontSizeBase300))";
+
+// @public (undocumented)
+export const groupInputFontweight = "var(--smtc-group-input-fontweight, var(--fontWeightRegular))";
+
+// @public (undocumented)
+export const groupInputForeground = "var(--smtc-group-input-foreground, var(--colorNeutralForeground1))";
+
+// @public (undocumented)
+export const groupInputForegroundDisabled = "var(--smtc-group-input-foreground-disabled, var(--colorNeutralForegroundDisabled))";
+
+// @public (undocumented)
+export const groupInputGap = "var(--smtc-group-input-gap, var(--spacingHorizontalXS))";
+
+// @public (undocumented)
+export const groupInputIconForeground = "var(--smtc-group-input-icon-foreground, var(--colorNeutralForeground3))";
+
+// @public (undocumented)
+export const groupInputIconSize = "var(--smtc-group-input-icon-size, 20px)";
+
+// @public (undocumented)
+export const groupInputLineheight = "var(--smtc-group-input-lineheight, var(--lineHeightBase300))";
+
+// @public (undocumented)
+export const groupInputMinheight = "var(--smtc-group-input-minheight, 32px)";
+
+// @public (undocumented)
+export const groupInputPaddingHorizontal = "var(--smtc-group-input-padding-horizontal, var(--spacingHorizontalM))";
+
+// @public (undocumented)
+export const groupInputPlaceholderForeground = "var(--smtc-group-input-placeholder-foreground, var(--colorNeutralForeground4))";
+
+// @public (undocumented)
+export const groupInputStroke = "var(--smtc-group-input-stroke, var(--colorNeutralStroke1))";
+
+// @public (undocumented)
+export const groupInputStrokeDisabled = "var(--smtc-group-input-stroke-disabled, var(--colorNeutralStrokeDisabled))";
+
+// @public (undocumented)
+export const groupInputStrokeHover = "hsl(from var(--smtc-group-input-stroke, var(--colorNeutralStroke1)) h s calc(l + var(--smtc-lightness-hover, -5)))";
+
+// @public (undocumented)
+export const groupInputStrokeInvalid = "var(--smtc-group-input-stroke-invalid, var(--colorPaletteRedBorder2))";
+
+// @public (undocumented)
+export const groupInputStrokePressed = "hsl(from var(--smtc-group-input-stroke, var(--colorNeutralStroke1)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+
+// @public (undocumented)
+export const groupInputStrokewidth = "var(--smtc-group-input-strokewidth, 1px)";
+
+// @public (undocumented)
+export const groupInputUnderlineStroke = "var(--smtc-group-input-underline-stroke, var(--colorNeutralStrokeAccessible))";
+
+// @public (undocumented)
+export const groupInputUnderlineStrokeHover = "hsl(from var(--smtc-group-input-underline-stroke, var(--colorNeutralStrokeAccessible)) h s calc(l + var(--smtc-lightness-hover, -5)))";
+
+// @public (undocumented)
+export const groupInputUnderlineStrokePressed = "hsl(from var(--smtc-group-input-underline-stroke, var(--colorNeutralStrokeAccessible)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+
+// @public (undocumented)
+export const groupInputUnderlineStrokePressedSelected = "hsl(from var(--smtc-group-input-underline-stroke-selected, var(--colorCompoundBrandStroke)) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
+
+// @public (undocumented)
+export const groupInputUnderlineStrokeSelected = "var(--smtc-group-input-underline-stroke-selected, var(--colorCompoundBrandStroke))";
+
+// @public (undocumented)
+export const groupInputUnderlineStrokewidth = "var(--smtc-group-input-underline-strokewidth)";
+
+// @public (undocumented)
+export const groupInputUnderlineStrokewidthSelected = "var(--smtc-group-input-underline-strokewidth-selected, 2px)";
+
+// @public (undocumented)
 export const lightnessHover = "var(--smtc-lightness-hover, -5)";
 
 // @public (undocumented)
