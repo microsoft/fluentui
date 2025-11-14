@@ -7,7 +7,7 @@ import {
   useSemanticSplitButtonStyles,
   useSemanticToggleButtonStyles,
 } from './Button';
-import { useSemanticInputStyles, useSemanticSearchBoxStyles } from './Input';
+import { useSemanticInputStyles, useSemanticSearchBoxStyles, useSemanticTextareaStyles } from './Input';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Button styles
@@ -19,4 +19,5 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Input styles
   useInputStyles_unstable: useSemanticInputStyles,
   useSearchBoxStyles_unstable: useSemanticSearchBoxStyles,
+  useTextareaStyles_unstable: useSemanticTextareaStyles,
 };

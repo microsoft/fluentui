@@ -139,7 +139,7 @@ export const genericFallbacks: GenericFallbacks = {
   },
   strokeNeutralTransparent: {
     primitive: 'colorNeutralAlpha',
-    fluent: tokens.colorTransparentBackground,
+    fluent: tokens.colorTransparentStroke,
   },
   strokeDisabled: {
     primitive: 'colorNeutral4',
