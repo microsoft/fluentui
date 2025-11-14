@@ -185,6 +185,9 @@
       "@fluentui/react-provider-stories": ["packages/react-components/react-provider/stories/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-components/react-radio/library/src/index.ts"],
       "@fluentui/react-radio-stories": ["packages/react-components/react-radio/stories/src/index.ts"],
+      "@fluentui/react-range-slider-preview": [
+        "packages/react-components/react-range-slider-preview/library/src/index.ts"
+      ],
       "@fluentui/react-rating": ["packages/react-components/react-rating/library/src/index.ts"],
       "@fluentui/react-rating-stories": ["packages/react-components/react-rating/stories/src/index.ts"],
       "@fluentui/react-search": ["packages/react-components/react-search/library/src/index.ts"],
@@ -254,7 +257,10 @@
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
+      "@fluentui/react-range-slider-preview-stories": [
+        "packages/react-components/react-range-slider-preview/stories/src/index.ts"
+      ]
     }
   }
 }
