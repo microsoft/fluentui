@@ -217,6 +217,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       containerWidth: containerWidth,
       hideTickOverlap: props.rotateXAxisLables ? false : hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
+      xMinValue: props.xMinValue || 0,
+      xMaxValue: props.xMaxValue || 0,
       ...props.xAxis,
     };
 
@@ -238,6 +240,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           culture,
           props.xScaleType,
           _useRtl,
+          props.roundedXTicks,
         ));
         break;
       case XAxisTypes.DateAxis:
@@ -269,6 +272,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           culture,
           props.xScaleType,
           _useRtl,
+          props.roundedXTicks,
         ));
     }
     _xScale = xScale;
@@ -339,7 +343,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           isIntegralDataset,
           chartType,
           true,
-          props.roundedTicks!,
+          props.roundedYTicks!,
           props.secondaryYScaleType,
           _useRtl,
         );
@@ -351,7 +355,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         isIntegralDataset,
         chartType,
         false,
-        props.roundedTicks!,
+        props.roundedYTicks!,
         props.yScaleType,
         _useRtl,
       );

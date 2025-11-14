@@ -176,6 +176,8 @@ export interface IXAxisParams extends AxisProps {
   containerWidth: number;
   hideTickOverlap?: boolean;
   calcMaxLabelWidth: (x: (string | number)[]) => number;
+  xMaxValue?: number;
+  xMinValue?: number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
@@ -246,6 +248,7 @@ export function createNumericXAxis(
   culture?: string,
   scaleType?: AxisScaleType,
   _useRtl?: boolean,
+  roundedXTicks: boolean = false,
 ): {
   xScale: ScaleLinear<number, number>;
   tickValues: string[];
@@ -263,8 +266,12 @@ export function createNumericXAxis(
     tick0,
     tickText,
   } = xAxisParams;
+  const dStartValue = typeof domainNRangeValues.dStartValue === 'number' ? domainNRangeValues.dStartValue : 0;
+  const dEndValue = typeof domainNRangeValues.dEndValue === 'number' ? domainNRangeValues.dEndValue : 0;
+  const finalXmin = xAxisParams.xMinValue !== undefined ? Math.min(dStartValue, xAxisParams.xMinValue) : dStartValue;
+  const finalXmax = xAxisParams.xMaxValue !== undefined ? Math.max(dEndValue, xAxisParams.xMaxValue) : dEndValue;
   const xAxisScale = createNumericScale(scaleType)
-    .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
+    .domain([dStartValue, dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
 
@@ -295,7 +302,9 @@ export function createNumericXAxis(
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
   let customTickValues: number[] | undefined;
-  if (tickParams.tickValues) {
+  if (roundedXTicks && scaleType !== 'log') {
+    customTickValues = prepareDatapoints(finalXmax, finalXmin, tickCount, true, roundedXTicks);
+  } else if (tickParams.tickValues) {
     customTickValues = tickParams.tickValues as number[];
   } else if (tickStep) {
     customTickValues = generateNumericTicks(scaleType, tickStep, tick0, xAxisScale.domain());
@@ -774,7 +783,7 @@ export function createNumericYAxis(
   isIntegralDataset: boolean,
   chartType: ChartTypes,
   useSecondaryYScale: boolean = false,
-  roundedTicks: boolean = false,
+  roundedYTicks: boolean = false,
   scaleType?: AxisScaleType,
   _useRtl?: boolean,
 ): ScaleLinear<number, number> {
@@ -802,7 +811,7 @@ export function createNumericYAxis(
   const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = Math.min(yMinMaxValues.startValue || 0, yMinValue || 0);
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedYTicks);
   let yMin = finalYmin;
   let yMax = domainValues[domainValues.length - 1];
   if (chartType === ChartTypes.ScatterChart) {
