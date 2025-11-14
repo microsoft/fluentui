@@ -944,7 +944,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
 
   const _fillStreamColors = (singleLink: SLink, gradientUrl: string): string | undefined => {
     if (selectedState && selectedLinks.has(singleLink.index!)) {
-      return singleLink ? singleLink.color : gradientUrl;
+      return singleLink ? singleLink.color : selectedNode ? selectedNode.color : gradientUrl;
     }
   };
 
