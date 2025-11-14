@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Grouped Vertical bar chart rendering Should render the grouped vertical bar chart with string x-axis data 1`] = `
 <div>

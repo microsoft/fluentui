@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Vertical Bar chart with data 1`] = `
 <div>

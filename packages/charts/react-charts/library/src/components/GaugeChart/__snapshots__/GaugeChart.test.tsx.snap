@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
 <div>
@@ -3936,8 +3936,7 @@ Object {
 }
 `;
 
-exports[`GaugeChart snapshot tests should render a placeholder segment when the total size of the segments is less than
-  the difference between maxValue and minValue props 1`] = `
+exports[`GaugeChart snapshot tests should render a placeholder segment when the total size of the segments is less than\\n  the difference between maxValue and minValue props 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body

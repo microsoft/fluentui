@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: remove unused import, add ES2015.Symbol.WellKnown to tsconfig lib for Symbol.iterator support",
+  "packageName": "@fluentui/merge-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

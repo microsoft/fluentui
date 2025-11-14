@@ -15,7 +15,7 @@
     "skipLibCheck": true,
     "noImplicitThis": true,
     "outDir": "lib",
-    "lib": ["es5", "dom", "es2015.promise"],
+    "lib": ["es5", "dom", "es2015.promise", "ES2015.Symbol.WellKnown"],
     "types": ["webpack-env", "jest"],
     "isolatedModules": true
   },
