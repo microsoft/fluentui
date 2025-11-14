@@ -11086,7 +11086,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               />
               <div
                 class="fui-cart__calloutContentY"
-                style="color: rgb(135, 100, 184); font-size: var(--fontSizeHero700);"
+                style="color: rgb(135, 100, 184);"
               >
                 14
               </div>

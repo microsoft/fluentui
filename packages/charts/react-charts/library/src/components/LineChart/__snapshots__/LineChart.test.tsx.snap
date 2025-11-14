@@ -14,7 +14,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
       <svg
         aria-label="LineChart"
         class="fui-cart__chart"
-        height="NaN"
+        height="310"
         style="display: block;"
         width="0"
       >
@@ -25,7 +25,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, NaN)"
+          transform="translate(0, 275)"
         >
           <path
             class="domain"
@@ -101,13 +101,13 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
         >
           <path
             class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
+            d="M-6,275.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,275.5)"
           >
             <line
               stroke="currentColor"
@@ -126,7 +126,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,211.75)"
           >
             <line
               stroke="currentColor"
@@ -145,7 +145,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,148)"
           >
             <line
               stroke="currentColor"
@@ -164,7 +164,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,84.25)"
           >
             <line
               stroke="currentColor"
@@ -183,7 +183,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,20.5)"
           >
             <line
               stroke="currentColor"
@@ -209,21 +209,183 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             x1="0"
             x2="0"
             y1="0"
-            y2="NaN"
+            y2="310"
           />
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_1__2_1"
+                opacity="1"
+                stroke="yellow"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="-20"
+                x2="16"
+                y1="191.84782608695653"
+                y2="53.2608695652174"
+              />
+              <path
+                aria-label="70. metaData3, 30."
+                d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                data-is-focusable="true"
+                fill="yellow"
+                id="circle_r_0__2_1"
+                opacity="1"
+                role="img"
+                stroke="yellow"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData3, 80."
+                d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                data-is-focusable="true"
+                fill="yellow"
+                id="circle_r_0__2_11L"
+                opacity="1"
+                role="img"
+                stroke="yellow"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="16"
+                cy="53.2608695652174"
+                focusable="false"
+                id="circle_r_0__2_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_1__1_1"
+                opacity="1"
+                stroke="green"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="28"
+                x2="4"
+                y1="108.69565217391303"
+                y2="25.543478260869563"
+              />
+              <path
+                aria-label="30. metaData2, 60."
+                d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                data-is-focusable="true"
+                fill="green"
+                id="circle_r_0__1_1"
+                opacity="1"
+                role="img"
+                stroke="green"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="50. metaData2, 90."
+                d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                data-is-focusable="true"
+                fill="green"
+                id="circle_r_0__1_11L"
+                opacity="1"
+                role="img"
+                stroke="green"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="4"
+                cy="25.543478260869563"
+                focusable="false"
+                id="circle_r_0__1_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_1__0_1"
+                opacity="1"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="40"
+                x2="16"
+                y1="136.41304347826087"
+                y2="53.2608695652174"
+              />
+              <path
+                aria-label="20. metaData1, 50."
+                d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                data-is-focusable="true"
+                fill="red"
+                id="circle_r_0__0_1"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData1, 80."
+                d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                data-is-focusable="true"
+                fill="red"
+                id="circle_r_0__0_11L"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="16"
+                cy="53.2608695652174"
+                focusable="false"
+                id="circle_r_0__0_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -320,7 +482,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
       <svg
         aria-label="LineChart"
         class="fui-cart__chart"
-        height="NaN"
+        height="310"
         style="display: block;"
         width="0"
       >
@@ -331,7 +493,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, NaN)"
+          transform="translate(0, 275)"
         >
           <path
             class="domain"
@@ -407,13 +569,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
         >
           <path
             class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
+            d="M-6,275.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,275.5)"
           >
             <line
               stroke="currentColor"
@@ -432,7 +594,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,211.75)"
           >
             <line
               stroke="currentColor"
@@ -451,7 +613,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,148)"
           >
             <line
               stroke="currentColor"
@@ -470,7 +632,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,84.25)"
           >
             <line
               stroke="currentColor"
@@ -489,7 +651,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,20.5)"
           >
             <line
               stroke="currentColor"
@@ -515,21 +677,179 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             x1="0"
             x2="0"
             y1="0"
-            y2="NaN"
+            y2="310"
           />
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_d__2_1"
+                opacity="1"
+                stroke="yellow"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="-20"
+                x2="16"
+                y1="191.84782608695653"
+                y2="53.2608695652174"
+              />
+              <path
+                aria-label="70. metaData3, 30."
+                d="M-25 188.96182608695653
+     H -15
+     L-20 197.62182608695653 Z"
+                data-is-focusable="true"
+                fill="yellow"
+                id="circle_r_c__2_1"
+                opacity="1"
+                role="img"
+                stroke="yellow"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData3, 80."
+                d="M11 50.374869565217395
+     H 21
+     L16 59.0348695652174 Z"
+                data-is-focusable="true"
+                fill="yellow"
+                id="circle_r_c__2_11L"
+                opacity="1"
+                role="img"
+                stroke="yellow"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="16"
+                cy="53.2608695652174"
+                focusable="false"
+                id="circle_r_c__2_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_d__1_1"
+                opacity="1"
+                stroke="green"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="28"
+                x2="4"
+                y1="108.69565217391303"
+                y2="25.543478260869563"
+              />
+              <path
+                aria-label="30. metaData2, 60."
+                d="M23 103.69565217391303
+     L33 103.69565217391303
+     L33 113.69565217391303
+     L23 113.69565217391303
+     Z"
+                data-is-focusable="true"
+                fill="green"
+                id="circle_r_c__1_1"
+                opacity="1"
+                role="img"
+                stroke="green"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="50. metaData2, 90."
+                d="M-1 20.543478260869563
+     L9 20.543478260869563
+     L9 30.543478260869563
+     L-1 30.543478260869563
+     Z"
+                data-is-focusable="true"
+                fill="green"
+                id="circle_r_c__1_11L"
+                opacity="1"
+                role="img"
+                stroke="green"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="4"
+                cy="25.543478260869563"
+                focusable="false"
+                id="circle_r_c__1_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_d__0_1"
+                opacity="1"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="40"
+                x2="16"
+                y1="136.41304347826087"
+                y2="53.2608695652174"
+              />
+              <path
+                aria-label="20. metaData1, 50."
+                d="M35 136.41304347826087
+     A5 5 0 1 0 45 136.41304347826087
+     M35 136.41304347826087
+     A 5 5 0 1 1 45 136.41304347826087
+     "
+                data-is-focusable="true"
+                fill="red"
+                id="circle_r_c__0_1"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData1, 80."
+                d="M11 53.2608695652174
+     A5 5 0 1 0 21 53.2608695652174
+     M11 53.2608695652174
+     A 5 5 0 1 1 21 53.2608695652174
+     "
+                data-is-focusable="true"
+                fill="red"
+                id="circle_r_c__0_11L"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="16"
+                cy="53.2608695652174"
+                focusable="false"
+                id="circle_r_c__0_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -1693,7 +2013,7 @@ Object {
           <svg
             aria-label="LineChart"
             class="fui-cart__chart"
-            height="NaN"
+            height="310"
             style="display: block;"
             width="0"
           >
@@ -1704,7 +2024,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -1780,13 +2100,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -1805,7 +2125,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -1824,7 +2144,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -1843,7 +2163,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -1862,7 +2182,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -1888,21 +2208,183 @@ Object {
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="NaN"
+                y2="310"
               />
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_4s__2_1"
+                    opacity="1"
+                    stroke="yellow"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="-20"
+                    x2="16"
+                    y1="191.84782608695653"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="70. metaData3, 30."
+                    d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_4r__2_1"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData3, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_4r__2_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_4r__2_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_4s__1_1"
+                    opacity="1"
+                    stroke="green"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="28"
+                    x2="4"
+                    y1="108.69565217391303"
+                    y2="25.543478260869563"
+                  />
+                  <path
+                    aria-label="30. metaData2, 60."
+                    d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_4r__1_1"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="50. metaData2, 90."
+                    d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_4r__1_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="4"
+                    cy="25.543478260869563"
+                    focusable="false"
+                    id="circle_r_4r__1_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_4s__0_1"
+                    opacity="1"
+                    stroke="red"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="40"
+                    x2="16"
+                    y1="136.41304347826087"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="20. metaData1, 50."
+                    d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_4r__0_1"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData1, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_4r__0_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_4r__0_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
               </g>
             </g>
           </svg>
@@ -1997,7 +2479,7 @@ Object {
         <svg
           aria-label="LineChart"
           class="fui-cart__chart"
-          height="NaN"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -2008,7 +2490,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, NaN)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -2084,13 +2566,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,NaNH0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -2109,7 +2591,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -2128,7 +2610,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -2147,7 +2629,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -2166,7 +2648,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,20.5)"
             >
               <line
                 stroke="currentColor"
@@ -2192,21 +2674,183 @@ Object {
               x1="0"
               x2="0"
               y1="0"
-              y2="NaN"
+              y2="310"
             />
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_4s__2_1"
+                  opacity="1"
+                  stroke="yellow"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="-20"
+                  x2="16"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="70. metaData3, 30."
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_4r__2_1"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData3, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_4r__2_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_4r__2_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_4s__1_1"
+                  opacity="1"
+                  stroke="green"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="28"
+                  x2="4"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
+                />
+                <path
+                  aria-label="30. metaData2, 60."
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_4r__1_1"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="50. metaData2, 90."
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_4r__1_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="4"
+                  cy="25.543478260869563"
+                  focusable="false"
+                  id="circle_r_4r__1_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_4s__0_1"
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="40"
+                  x2="16"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="20. metaData1, 50."
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_4r__0_1"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData1, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_4r__0_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_4r__0_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
             </g>
           </g>
         </svg>
@@ -2360,7 +3004,7 @@ Object {
           <svg
             aria-label="LineChart"
             class="fui-cart__chart"
-            height="NaN"
+            height="310"
             style="display: block;"
             width="0"
           >
@@ -2371,7 +3015,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -2447,13 +3091,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -2472,7 +3116,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -2491,7 +3135,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -2510,7 +3154,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -2529,7 +3173,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -2555,21 +3199,183 @@ Object {
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="NaN"
+                y2="310"
               />
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_2m__2_1"
+                    opacity="1"
+                    stroke="yellow"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="-20"
+                    x2="16"
+                    y1="191.84782608695653"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="70. metaData3, 30."
+                    d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_2l__2_1"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData3, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_2l__2_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_2l__2_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_2m__1_1"
+                    opacity="1"
+                    stroke="green"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="28"
+                    x2="4"
+                    y1="108.69565217391303"
+                    y2="25.543478260869563"
+                  />
+                  <path
+                    aria-label="30. metaData2, 60."
+                    d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_2l__1_1"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="50. metaData2, 90."
+                    d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_2l__1_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="4"
+                    cy="25.543478260869563"
+                    focusable="false"
+                    id="circle_r_2l__1_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_2m__0_1"
+                    opacity="1"
+                    stroke="red"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="40"
+                    x2="16"
+                    y1="136.41304347826087"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="20. metaData1, 50."
+                    d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_2l__0_1"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData1, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_2l__0_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_2l__0_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
               </g>
             </g>
           </svg>
@@ -2664,7 +3470,7 @@ Object {
         <svg
           aria-label="LineChart"
           class="fui-cart__chart"
-          height="NaN"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -2675,7 +3481,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, NaN)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -2751,13 +3557,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,NaNH0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -2776,7 +3582,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -2795,7 +3601,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -2814,7 +3620,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -2833,7 +3639,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,20.5)"
             >
               <line
                 stroke="currentColor"
@@ -2859,21 +3665,183 @@ Object {
               x1="0"
               x2="0"
               y1="0"
-              y2="NaN"
+              y2="310"
             />
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_2m__2_1"
+                  opacity="1"
+                  stroke="yellow"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="-20"
+                  x2="16"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="70. metaData3, 30."
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_2l__2_1"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData3, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_2l__2_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_2l__2_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_2m__1_1"
+                  opacity="1"
+                  stroke="green"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="28"
+                  x2="4"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
+                />
+                <path
+                  aria-label="30. metaData2, 60."
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_2l__1_1"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="50. metaData2, 90."
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_2l__1_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="4"
+                  cy="25.543478260869563"
+                  focusable="false"
+                  id="circle_r_2l__1_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_2m__0_1"
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="40"
+                  x2="16"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="20. metaData1, 50."
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_2l__0_1"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData1, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_2l__0_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_2l__0_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
             </g>
           </g>
         </svg>
@@ -3027,7 +3995,7 @@ Object {
           <svg
             aria-label="LineChart"
             class="fui-cart__chart"
-            height="NaN"
+            height="310"
             style="display: block;"
             width="0"
           >
@@ -3038,7 +4006,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -3114,13 +4082,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -3139,7 +4107,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -3158,7 +4126,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -3177,7 +4145,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -3196,7 +4164,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -3222,21 +4190,183 @@ Object {
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="NaN"
+                y2="310"
               />
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_3p__2_1"
+                    opacity="1"
+                    stroke="yellow"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="-20"
+                    x2="16"
+                    y1="191.84782608695653"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="70. metaData3, 30."
+                    d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_3o__2_1"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData3, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_3o__2_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_3o__2_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_3p__1_1"
+                    opacity="1"
+                    stroke="green"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="28"
+                    x2="4"
+                    y1="108.69565217391303"
+                    y2="25.543478260869563"
+                  />
+                  <path
+                    aria-label="30. metaData2, 60."
+                    d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_3o__1_1"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="50. metaData2, 90."
+                    d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_3o__1_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="4"
+                    cy="25.543478260869563"
+                    focusable="false"
+                    id="circle_r_3o__1_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_3p__0_1"
+                    opacity="1"
+                    stroke="red"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="40"
+                    x2="16"
+                    y1="136.41304347826087"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="20. metaData1, 50."
+                    d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_3o__0_1"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData1, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_3o__0_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_3o__0_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
               </g>
             </g>
           </svg>
@@ -3341,7 +4471,7 @@ Object {
         <svg
           aria-label="LineChart"
           class="fui-cart__chart"
-          height="NaN"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -3352,7 +4482,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, NaN)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -3428,13 +4558,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,NaNH0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -3453,7 +4583,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -3472,7 +4602,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -3491,7 +4621,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -3510,7 +4640,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,20.5)"
             >
               <line
                 stroke="currentColor"
@@ -3536,21 +4666,183 @@ Object {
               x1="0"
               x2="0"
               y1="0"
-              y2="NaN"
+              y2="310"
             />
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_3p__2_1"
+                  opacity="1"
+                  stroke="yellow"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="-20"
+                  x2="16"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="70. metaData3, 30."
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_3o__2_1"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData3, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_3o__2_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_3o__2_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_3p__1_1"
+                  opacity="1"
+                  stroke="green"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="28"
+                  x2="4"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
+                />
+                <path
+                  aria-label="30. metaData2, 60."
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_3o__1_1"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="50. metaData2, 90."
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_3o__1_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="4"
+                  cy="25.543478260869563"
+                  focusable="false"
+                  id="circle_r_3o__1_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_3p__0_1"
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="40"
+                  x2="16"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="20. metaData1, 50."
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_3o__0_1"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData1, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_3o__0_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_3o__0_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
             </g>
           </g>
         </svg>
@@ -4557,7 +5849,7 @@ Object {
           <svg
             aria-label="LineChart"
             class="fui-cart__chart"
-            height="NaN"
+            height="310"
             style="display: block;"
             width="0"
           >
@@ -4568,7 +5860,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -4644,13 +5936,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -4669,7 +5961,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -4688,7 +5980,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -4707,7 +5999,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -4726,7 +6018,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -4752,21 +6044,183 @@ Object {
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="NaN"
+                y2="310"
               />
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_3d__2_1"
+                    opacity="1"
+                    stroke="yellow"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="-20"
+                    x2="16"
+                    y1="191.84782608695653"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="70. metaData3, 30."
+                    d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_3c__2_1"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData3, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_3c__2_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_3c__2_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_3d__1_1"
+                    opacity="1"
+                    stroke="green"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="28"
+                    x2="4"
+                    y1="108.69565217391303"
+                    y2="25.543478260869563"
+                  />
+                  <path
+                    aria-label="30. metaData2, 60."
+                    d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_3c__1_1"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="50. metaData2, 90."
+                    d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_3c__1_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="4"
+                    cy="25.543478260869563"
+                    focusable="false"
+                    id="circle_r_3c__1_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_3d__0_1"
+                    opacity="1"
+                    stroke="red"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="40"
+                    x2="16"
+                    y1="136.41304347826087"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="20. metaData1, 50."
+                    d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_3c__0_1"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData1, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_3c__0_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_3c__0_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
               </g>
             </g>
           </svg>
@@ -4861,7 +6315,7 @@ Object {
         <svg
           aria-label="LineChart"
           class="fui-cart__chart"
-          height="NaN"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -4872,7 +6326,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, NaN)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -4948,13 +6402,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,NaNH0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -4973,7 +6427,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -4992,7 +6446,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -5011,7 +6465,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -5030,7 +6484,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,20.5)"
             >
               <line
                 stroke="currentColor"
@@ -5056,21 +6510,183 @@ Object {
               x1="0"
               x2="0"
               y1="0"
-              y2="NaN"
+              y2="310"
             />
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_3d__2_1"
+                  opacity="1"
+                  stroke="yellow"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="-20"
+                  x2="16"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="70. metaData3, 30."
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_3c__2_1"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData3, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_3c__2_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_3c__2_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_3d__1_1"
+                  opacity="1"
+                  stroke="green"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="28"
+                  x2="4"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
+                />
+                <path
+                  aria-label="30. metaData2, 60."
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_3c__1_1"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="50. metaData2, 90."
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_3c__1_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="4"
+                  cy="25.543478260869563"
+                  focusable="false"
+                  id="circle_r_3c__1_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_3d__0_1"
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="40"
+                  x2="16"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="20. metaData1, 50."
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_3c__0_1"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData1, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_3c__0_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_3c__0_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
             </g>
           </g>
         </svg>
@@ -5224,7 +6840,7 @@ Object {
           <svg
             aria-label="LineChart"
             class="fui-cart__chart"
-            height="NaN"
+            height="310"
             style="display: block;"
             width="0"
           >
@@ -5235,7 +6851,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -5353,13 +6969,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -5378,7 +6994,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -5397,7 +7013,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -5416,7 +7032,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -5435,7 +7051,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -5461,21 +7077,183 @@ Object {
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="NaN"
+                y2="310"
               />
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_44__2_1"
+                    opacity="1"
+                    stroke="yellow"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="-20"
+                    x2="16"
+                    y1="191.84782608695653"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="70. metaData3, 30."
+                    d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_43__2_1"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData3, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_43__2_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_43__2_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_44__1_1"
+                    opacity="1"
+                    stroke="green"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="28"
+                    x2="4"
+                    y1="108.69565217391303"
+                    y2="25.543478260869563"
+                  />
+                  <path
+                    aria-label="30. metaData2, 60."
+                    d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_43__1_1"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="50. metaData2, 90."
+                    d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_43__1_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="4"
+                    cy="25.543478260869563"
+                    focusable="false"
+                    id="circle_r_43__1_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_44__0_1"
+                    opacity="1"
+                    stroke="red"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="40"
+                    x2="16"
+                    y1="136.41304347826087"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="20. metaData1, 50."
+                    d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_43__0_1"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData1, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_43__0_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_43__0_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
               </g>
             </g>
           </svg>
@@ -5575,7 +7353,7 @@ Object {
         <svg
           aria-label="LineChart"
           class="fui-cart__chart"
-          height="NaN"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -5586,7 +7364,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, NaN)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -5704,13 +7482,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,NaNH0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -5729,7 +7507,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -5748,7 +7526,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -5767,7 +7545,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -5786,7 +7564,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,20.5)"
             >
               <line
                 stroke="currentColor"
@@ -5812,21 +7590,183 @@ Object {
               x1="0"
               x2="0"
               y1="0"
-              y2="NaN"
+              y2="310"
             />
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_44__2_1"
+                  opacity="1"
+                  stroke="yellow"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="-20"
+                  x2="16"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="70. metaData3, 30."
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_43__2_1"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData3, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_43__2_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_43__2_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_44__1_1"
+                  opacity="1"
+                  stroke="green"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="28"
+                  x2="4"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
+                />
+                <path
+                  aria-label="30. metaData2, 60."
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_43__1_1"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="50. metaData2, 90."
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_43__1_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="4"
+                  cy="25.543478260869563"
+                  focusable="false"
+                  id="circle_r_43__1_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_44__0_1"
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="40"
+                  x2="16"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="20. metaData1, 50."
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_43__0_1"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData1, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_43__0_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_43__0_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
             </g>
           </g>
         </svg>
@@ -5985,7 +7925,7 @@ Object {
           <svg
             aria-label="LineChart"
             class="fui-cart__chart"
-            height="NaN"
+            height="310"
             style="display: block;"
             width="0"
           >
@@ -5996,7 +7936,7 @@ Object {
               font-size="10"
               id="xAxisGElementchart_"
               text-anchor="middle"
-              transform="translate(0, NaN)"
+              transform="translate(0, 275)"
             >
               <path
                 class="domain"
@@ -6072,13 +8012,13 @@ Object {
             >
               <path
                 class="domain"
-                d="M-6,NaNH0.5V20.5H-6"
+                d="M-6,275.5H0.5V20.5H-6"
                 stroke="currentColor"
               />
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,275.5)"
               >
                 <line
                   stroke="currentColor"
@@ -6097,7 +8037,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,211.75)"
               >
                 <line
                   stroke="currentColor"
@@ -6116,7 +8056,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,148)"
               >
                 <line
                   stroke="currentColor"
@@ -6135,7 +8075,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,84.25)"
               >
                 <line
                   stroke="currentColor"
@@ -6154,7 +8094,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(0,NaN)"
+                transform="translate(0,20.5)"
               >
                 <line
                   stroke="currentColor"
@@ -6180,21 +8120,183 @@ Object {
                 x1="0"
                 x2="0"
                 y1="0"
-                y2="NaN"
+                y2="310"
               />
               <g>
                 <g
                   aria-label="metaData3, line 3 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_4g__2_1"
+                    opacity="1"
+                    stroke="yellow"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="-20"
+                    x2="16"
+                    y1="191.84782608695653"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="70. metaData3, 30."
+                    d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_4f__2_1"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData3, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="yellow"
+                    id="circle_r_4f__2_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="yellow"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_4f__2_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData2, line 2 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_4g__1_1"
+                    opacity="1"
+                    stroke="green"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="28"
+                    x2="4"
+                    y1="108.69565217391303"
+                    y2="25.543478260869563"
+                  />
+                  <path
+                    aria-label="30. metaData2, 60."
+                    d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_4f__1_1"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="50. metaData2, 90."
+                    d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                    data-is-focusable="true"
+                    fill="green"
+                    id="circle_r_4f__1_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="green"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="4"
+                    cy="25.543478260869563"
+                    focusable="false"
+                    id="circle_r_4f__1_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
                 <g
                   aria-label="metaData1, line 1 of 3 with 2 data points."
                   role="region"
-                />
+                >
+                  <line
+                    id="lineID_r_4g__0_1"
+                    opacity="1"
+                    stroke="red"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                    x1="40"
+                    x2="16"
+                    y1="136.41304347826087"
+                    y2="53.2608695652174"
+                  />
+                  <path
+                    aria-label="20. metaData1, 50."
+                    d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_4f__0_1"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <path
+                    aria-label="40. metaData1, 80."
+                    d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                    data-is-focusable="true"
+                    fill="red"
+                    id="circle_r_4f__0_11L"
+                    opacity="1"
+                    role="img"
+                    stroke="red"
+                    stroke-width="4"
+                    tabindex="0"
+                  />
+                  <circle
+                    cx="16"
+                    cy="53.2608695652174"
+                    focusable="false"
+                    id="circle_r_4f__0_11D"
+                    opacity="0"
+                    r="8"
+                    stroke-width="0"
+                    width="0"
+                  />
+                </g>
               </g>
             </g>
           </svg>
@@ -6289,7 +8391,7 @@ Object {
         <svg
           aria-label="LineChart"
           class="fui-cart__chart"
-          height="NaN"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -6300,7 +8402,7 @@ Object {
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, NaN)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -6376,13 +8478,13 @@ Object {
           >
             <path
               class="domain"
-              d="M-6,NaNH0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -6401,7 +8503,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -6420,7 +8522,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -6439,7 +8541,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -6458,7 +8560,7 @@ Object {
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,20.5)"
             >
               <line
                 stroke="currentColor"
@@ -6484,21 +8586,183 @@ Object {
               x1="0"
               x2="0"
               y1="0"
-              y2="NaN"
+              y2="310"
             />
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_4g__2_1"
+                  opacity="1"
+                  stroke="yellow"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="-20"
+                  x2="16"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="70. metaData3, 30."
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_4f__2_1"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData3, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_4f__2_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_4f__2_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_4g__1_1"
+                  opacity="1"
+                  stroke="green"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="28"
+                  x2="4"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
+                />
+                <path
+                  aria-label="30. metaData2, 60."
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_4f__1_1"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="50. metaData2, 90."
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_4f__1_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="4"
+                  cy="25.543478260869563"
+                  focusable="false"
+                  id="circle_r_4f__1_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_4g__0_1"
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="40"
+                  x2="16"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="20. metaData1, 50."
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_4f__0_1"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData1, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_4f__0_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_4f__0_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
             </g>
           </g>
         </svg>
@@ -6647,7 +8911,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       <svg
         aria-label="LineChart"
         class="fui-cart__chart"
-        height="NaN"
+        height="310"
         style="display: block;"
         width="0"
       >
@@ -6658,7 +8922,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, NaN)"
+          transform="translate(0, 275)"
         >
           <path
             class="domain"
@@ -6791,13 +9055,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         >
           <path
             class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
+            d="M-6,275.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,275.5)"
           >
             <line
               stroke="currentColor"
@@ -6816,7 +9080,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,211.75)"
           >
             <line
               stroke="currentColor"
@@ -6835,7 +9099,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,148)"
           >
             <line
               stroke="currentColor"
@@ -6854,7 +9118,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,84.25)"
           >
             <line
               stroke="currentColor"
@@ -6873,7 +9137,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,20.5)"
           >
             <line
               stroke="currentColor"
@@ -6899,21 +9163,183 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             x1="0"
             x2="0"
             y1="0"
-            y2="NaN"
+            y2="310"
           />
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_15__2_1"
+                opacity="1"
+                stroke="yellow"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="-20"
+                x2="16"
+                y1="191.84782608695653"
+                y2="53.2608695652174"
+              />
+              <path
+                aria-label="70. metaData3, 30."
+                d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                data-is-focusable="true"
+                fill="yellow"
+                id="circle_r_14__2_1"
+                opacity="1"
+                role="img"
+                stroke="yellow"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData3, 80."
+                d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                data-is-focusable="true"
+                fill="yellow"
+                id="circle_r_14__2_11L"
+                opacity="1"
+                role="img"
+                stroke="yellow"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="16"
+                cy="53.2608695652174"
+                focusable="false"
+                id="circle_r_14__2_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_15__1_1"
+                opacity="1"
+                stroke="green"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="28"
+                x2="4"
+                y1="108.69565217391303"
+                y2="25.543478260869563"
+              />
+              <path
+                aria-label="30. metaData2, 60."
+                d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                data-is-focusable="true"
+                fill="green"
+                id="circle_r_14__1_1"
+                opacity="1"
+                role="img"
+                stroke="green"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="50. metaData2, 90."
+                d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                data-is-focusable="true"
+                fill="green"
+                id="circle_r_14__1_11L"
+                opacity="1"
+                role="img"
+                stroke="green"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="4"
+                cy="25.543478260869563"
+                focusable="false"
+                id="circle_r_14__1_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_15__0_1"
+                opacity="1"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="40"
+                x2="16"
+                y1="136.41304347826087"
+                y2="53.2608695652174"
+              />
+              <path
+                aria-label="20. metaData1, 50."
+                d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                data-is-focusable="true"
+                fill="red"
+                id="circle_r_14__0_1"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData1, 80."
+                d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                data-is-focusable="true"
+                fill="red"
+                id="circle_r_14__0_11L"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="16"
+                cy="53.2608695652174"
+                focusable="false"
+                id="circle_r_14__0_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -7010,7 +9436,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       <svg
         aria-label="LineChart"
         class="fui-cart__chart"
-        height="NaN"
+        height="310"
         style="display: block;"
         width="0"
       >
@@ -7021,7 +9447,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, NaN)"
+          transform="translate(0, 275)"
         >
           <path
             class="domain"
@@ -7154,13 +9580,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         >
           <path
             class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
+            d="M-6,275.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,275.5)"
           >
             <line
               stroke="currentColor"
@@ -7179,7 +9605,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,211.75)"
           >
             <line
               stroke="currentColor"
@@ -7198,7 +9624,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,148)"
           >
             <line
               stroke="currentColor"
@@ -7217,7 +9643,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,84.25)"
           >
             <line
               stroke="currentColor"
@@ -7236,7 +9662,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,20.5)"
           >
             <line
               stroke="currentColor"
@@ -7262,21 +9688,183 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             x1="0"
             x2="0"
             y1="0"
-            y2="NaN"
+            y2="310"
           />
           <g>
             <g
               aria-label="metaData3, line 3 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_1h__2_1"
+                opacity="1"
+                stroke="yellow"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="-20"
+                x2="16"
+                y1="191.84782608695653"
+                y2="53.2608695652174"
+              />
+              <path
+                aria-label="70. metaData3, 30."
+                d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                data-is-focusable="true"
+                fill="yellow"
+                id="circle_r_1g__2_1"
+                opacity="1"
+                role="img"
+                stroke="yellow"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData3, 80."
+                d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                data-is-focusable="true"
+                fill="yellow"
+                id="circle_r_1g__2_11L"
+                opacity="1"
+                role="img"
+                stroke="yellow"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="16"
+                cy="53.2608695652174"
+                focusable="false"
+                id="circle_r_1g__2_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
             <g
               aria-label="metaData2, line 2 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_1h__1_1"
+                opacity="1"
+                stroke="green"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="28"
+                x2="4"
+                y1="108.69565217391303"
+                y2="25.543478260869563"
+              />
+              <path
+                aria-label="30. metaData2, 60."
+                d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                data-is-focusable="true"
+                fill="green"
+                id="circle_r_1g__1_1"
+                opacity="1"
+                role="img"
+                stroke="green"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="50. metaData2, 90."
+                d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                data-is-focusable="true"
+                fill="green"
+                id="circle_r_1g__1_11L"
+                opacity="1"
+                role="img"
+                stroke="green"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="4"
+                cy="25.543478260869563"
+                focusable="false"
+                id="circle_r_1g__1_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
             <g
               aria-label="metaData1, line 1 of 3 with 2 data points."
               role="region"
-            />
+            >
+              <line
+                id="lineID_r_1h__0_1"
+                opacity="1"
+                stroke="red"
+                stroke-linecap="round"
+                stroke-width="4"
+                x1="40"
+                x2="16"
+                y1="136.41304347826087"
+                y2="53.2608695652174"
+              />
+              <path
+                aria-label="20. metaData1, 50."
+                d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                data-is-focusable="true"
+                fill="red"
+                id="circle_r_1g__0_1"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <path
+                aria-label="40. metaData1, 80."
+                d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                data-is-focusable="true"
+                fill="red"
+                id="circle_r_1g__0_11L"
+                opacity="1"
+                role="img"
+                stroke="red"
+                stroke-width="4"
+                tabindex="0"
+              />
+              <circle
+                cx="16"
+                cy="53.2608695652174"
+                focusable="false"
+                id="circle_r_1g__0_11D"
+                opacity="0"
+                r="8"
+                stroke-width="0"
+                width="0"
+              />
+            </g>
           </g>
         </g>
       </svg>
@@ -7377,7 +9965,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
         <svg
           aria-label="LineChart"
           class="fui-cart__chart"
-          height="NaN"
+          height="310"
           style="display: block;"
           width="0"
         >
@@ -7388,7 +9976,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, NaN)"
+            transform="translate(0, 275)"
           >
             <path
               class="domain"
@@ -7464,13 +10052,13 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
           >
             <path
               class="domain"
-              d="M-6,NaNH0.5V20.5H-6"
+              d="M-6,275.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,275.5)"
             >
               <line
                 stroke="currentColor"
@@ -7489,7 +10077,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,211.75)"
             >
               <line
                 stroke="currentColor"
@@ -7508,7 +10096,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,148)"
             >
               <line
                 stroke="currentColor"
@@ -7527,7 +10115,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,84.25)"
             >
               <line
                 stroke="currentColor"
@@ -7546,7 +10134,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,20.5)"
             >
               <line
                 stroke="currentColor"
@@ -7572,21 +10160,183 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
               x1="0"
               x2="0"
               y1="0"
-              y2="NaN"
+              y2="310"
             />
             <g>
               <g
                 aria-label="metaData3, line 3 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_1u__2_1"
+                  opacity="1"
+                  stroke="yellow"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="-20"
+                  x2="16"
+                  y1="191.84782608695653"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="70. metaData3, 30."
+                  d="M-20.5 191.84782608695653
+     A0.5 0.5 0 1 0 -19.5 191.84782608695653
+     M-20.5 191.84782608695653
+     A 0.5 0.5 0 1 1 -19.5 191.84782608695653
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_1t__2_1"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData3, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="yellow"
+                  id="circle_r_1t__2_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="yellow"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_1t__2_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData2, line 2 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_1u__1_1"
+                  opacity="1"
+                  stroke="green"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="28"
+                  x2="4"
+                  y1="108.69565217391303"
+                  y2="25.543478260869563"
+                />
+                <path
+                  aria-label="30. metaData2, 60."
+                  d="M27.5 108.69565217391303
+     A0.5 0.5 0 1 0 28.5 108.69565217391303
+     M27.5 108.69565217391303
+     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_1t__1_1"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="50. metaData2, 90."
+                  d="M3.5 25.543478260869563
+     A0.5 0.5 0 1 0 4.5 25.543478260869563
+     M3.5 25.543478260869563
+     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+     "
+                  data-is-focusable="true"
+                  fill="green"
+                  id="circle_r_1t__1_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="green"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="4"
+                  cy="25.543478260869563"
+                  focusable="false"
+                  id="circle_r_1t__1_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
               <g
                 aria-label="metaData1, line 1 of 3 with 2 data points."
                 role="region"
-              />
+              >
+                <line
+                  id="lineID_r_1u__0_1"
+                  opacity="1"
+                  stroke="red"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  x1="40"
+                  x2="16"
+                  y1="136.41304347826087"
+                  y2="53.2608695652174"
+                />
+                <path
+                  aria-label="20. metaData1, 50."
+                  d="M39.5 136.41304347826087
+     A0.5 0.5 0 1 0 40.5 136.41304347826087
+     M39.5 136.41304347826087
+     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_1t__0_1"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <path
+                  aria-label="40. metaData1, 80."
+                  d="M15.5 53.2608695652174
+     A0.5 0.5 0 1 0 16.5 53.2608695652174
+     M15.5 53.2608695652174
+     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+     "
+                  data-is-focusable="true"
+                  fill="red"
+                  id="circle_r_1t__0_11L"
+                  opacity="1"
+                  role="img"
+                  stroke="red"
+                  stroke-width="4"
+                  tabindex="0"
+                />
+                <circle
+                  cx="16"
+                  cy="53.2608695652174"
+                  focusable="false"
+                  id="circle_r_1t__0_11D"
+                  opacity="0"
+                  r="8"
+                  stroke-width="0"
+                  width="0"
+                />
+              </g>
             </g>
           </g>
         </svg>
