@@ -17,7 +17,6 @@ export const groupInputStrokeInvalid = 'var(--smtc-group-input-stroke-invalid, v
 export const groupInputPlaceholderForeground = 'var(--smtc-group-input-placeholder-foreground, var(--colorNeutralForeground4))';
 export const groupInputUnderlineStroke = 'var(--smtc-group-input-underline-stroke, var(--colorNeutralStrokeAccessible))';
 export const groupInputUnderlineStrokeSelected = 'var(--smtc-group-input-underline-stroke-selected, var(--colorCompoundBrandStroke))';
-export const groupInputUnderlineStrokewidth = 'var(--smtc-group-input-underline-strokewidth)';
 export const groupInputUnderlineStrokewidthSelected = 'var(--smtc-group-input-underline-strokewidth-selected, 2px)';
 export const groupInputIconForeground = 'var(--smtc-group-input-icon-foreground, var(--colorNeutralForeground3))';
 export const groupInputIconSize = 'var(--smtc-group-input-icon-size, 20px)';

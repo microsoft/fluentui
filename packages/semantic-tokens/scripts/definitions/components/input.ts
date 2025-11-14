@@ -39,7 +39,14 @@ export const inputGroup: GroupPart = {
     },
     underline: {
       states: ['', 'selected'],
-      stateProperties: ['stroke', 'strokewidth'],
+      stateProperties: ['stroke'],
+      exceptions: [
+        {
+          // Underline stroke can deviate width from groupInput stroke
+          states: ['selected'],
+          stateProperties: ['strokewidth'],
+        },
+      ],
     },
     icon: {
       coreProperties: ['foreground', 'size'],

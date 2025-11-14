@@ -92,7 +92,6 @@ export type GroupTokens = {
   groupInputPlaceholderForeground: string;
   groupInputUnderlineStroke: string;
   groupInputUnderlineStrokeSelected: string;
-  groupInputUnderlineStrokewidth: string;
   groupInputUnderlineStrokewidthSelected: string;
   groupInputIconForeground: string;
   groupInputIconSize: string;
