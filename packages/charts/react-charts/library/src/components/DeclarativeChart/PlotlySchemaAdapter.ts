@@ -1485,6 +1485,7 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    roundedTicks: true,
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
@@ -2458,6 +2459,14 @@ export const transformPlotlyJsonToSankeyProps = (
     colorMap,
     isDarkTheme,
   );
+  const extractedLinkColors = extractColor(
+    input.layout?.template?.layout?.colorway,
+    colorwayType,
+    link?.color,
+    colorMap,
+    isDarkTheme,
+  );
+
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
       const color = resolveColor(
@@ -2477,8 +2486,17 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     links: validLinks.map((validLink: any, index: number) => {
+      const color = resolveColor(
+        extractedLinkColors,
+        index,
+        validLink.target,
+        colorMap,
+        input.layout?.template?.layout?.colorway,
+        isDarkTheme,
+      );
       return {
         ...validLink,
+        color,
       };
     }),
   } as SankeyChartData;
