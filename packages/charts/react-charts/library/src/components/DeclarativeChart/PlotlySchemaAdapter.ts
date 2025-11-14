@@ -2068,7 +2068,8 @@ const transformPlotlyJsonToScatterTraceProps = (
   } else {
     return {
       data: isScatterChart ? scatterChartProps : chartProps,
-      roundedTicks: true,
+      roundedYTicks: true,
+      roundedXTicks: true,
       ...commonProps,
       ...yMinMax,
       ...(isScatterChart

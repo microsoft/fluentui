@@ -273,7 +273,12 @@ export interface CartesianChartProps {
   yMaxValue?: number;
 
   /**
-   * maximum data value point in x-axis
+   * minimum data value point in x-axis (for numeric x-axis)
+   */
+  xMinValue?: number;
+
+  /**
+   * maximum data value point in x-axis (for numeric x-axis)
    */
   xMaxValue?: number;
 
@@ -433,7 +438,13 @@ export interface CartesianChartProps {
    * @default false
    * The prop used to decide rounded ticks on y axis
    */
-  roundedTicks?: boolean;
+  roundedYTicks?: boolean;
+
+  /**
+   * @default false
+   * The prop used to decide rounded ticks on x axis
+   */
+  roundedXTicks?: boolean;
 
   /**
    * Determines whether overlapping x-axis tick labels should be hidden.
@@ -723,7 +734,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     isIntegralDataset: boolean,
     chartType: ChartTypes,
     useSecondaryYScale?: boolean,
-    roundedTicks?: boolean,
+    roundedYTicks?: boolean,
     scaleType?: AxisScaleType,
     _useRtl?: boolean,
   ) => ScaleLinear<number, number, never>;
