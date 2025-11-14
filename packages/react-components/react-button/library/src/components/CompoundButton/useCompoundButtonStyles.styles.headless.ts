@@ -17,7 +17,7 @@ export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots> = {
 export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): CompoundButtonState => {
   'use no memo';
 
-  const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state as any;
+  const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = [
     compoundButtonClassNames.root,
