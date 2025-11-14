@@ -15,7 +15,7 @@ export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {
 export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButtonState => {
   'use no memo';
 
-  const { appearance, disabled, disabledFocusable, shape, size, iconOnly } = state as any;
+  const { appearance, disabled, disabledFocusable, shape, size, icon, iconOnly } = state;
   const expanded = !!state.root['aria-expanded'];
 
   state.root.className = [
@@ -31,14 +31,14 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
     shape && `${menuButtonClassNames.root}--${shape}`,
 
     // Disabled styles
-    (disabled || disabledFocusable) && `${menuButtonClassNames.root}--disabled`,
-    disabledFocusable && !disabled && `${menuButtonClassNames.root}--disabledFocusable`,
+    disabled && `${menuButtonClassNames.root}--disabled`,
+    disabledFocusable && `${menuButtonClassNames.root}--disabledFocusable`,
 
     // Expanded
     expanded && `${menuButtonClassNames.root}--expanded`,
 
     // Icons
-    iconOnly && `${menuButtonClassNames.root}--iconOnly`,
+    icon && iconOnly && `${menuButtonClassNames.root}--iconOnly`,
 
     // User provided class name
     state.root.className,
@@ -51,13 +51,7 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
   }
 
   if (state.menuIcon) {
-    state.menuIcon.className = [
-      menuButtonClassNames.menuIcon,
-      size && `${menuButtonClassNames.menuIcon}--${size}`,
-      state.menuIcon.className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+    state.menuIcon.className = [menuButtonClassNames.menuIcon, state.menuIcon.className].filter(Boolean).join(' ');
   }
 
   return state;

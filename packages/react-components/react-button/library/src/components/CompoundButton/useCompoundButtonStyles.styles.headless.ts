@@ -21,19 +21,24 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
 
   state.root.className = [
     compoundButtonClassNames.root,
+
     // Appearance
     appearance && `${compoundButtonClassNames.root}--${appearance}`,
+
     // Size
     size && `${compoundButtonClassNames.root}--${size}`,
+
     // Shape
     shape && `${compoundButtonClassNames.root}--${shape}`,
+
     // Disabled styles
-    (disabled || disabledFocusable) && `${compoundButtonClassNames.root}--disabled`,
-    disabledFocusable && !disabled && `${compoundButtonClassNames.root}--disabledFocusable`,
+    disabled && `${compoundButtonClassNames.root}--disabled`,
+    disabledFocusable && `${compoundButtonClassNames.root}--disabledFocusable`,
+
     // Icon styles
     icon && iconPosition === 'before' && `${compoundButtonClassNames.root}--iconBefore`,
     icon && iconPosition === 'after' && `${compoundButtonClassNames.root}--iconAfter`,
-    iconOnly && `${compoundButtonClassNames.root}--iconOnly`,
+    icon && iconOnly && `${compoundButtonClassNames.root}--iconOnly`,
 
     // User provided class name
     state.root.className,

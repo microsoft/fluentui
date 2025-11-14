@@ -15,7 +15,7 @@ export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
 export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitButtonState => {
   'use no memo';
 
-  const { appearance, disabled, disabledFocusable, shape, size } = state as any;
+  const { appearance, disabled, disabledFocusable, shape, size } = state;
 
   state.root.className = [
     splitButtonClassNames.root,
@@ -30,7 +30,7 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
     shape && `${splitButtonClassNames.root}--${shape}`,
 
     // Disabled styles
-    (disabled || disabledFocusable) && `${splitButtonClassNames.root}--disabled`,
+    disabled && `${splitButtonClassNames.root}--disabled`,
     disabledFocusable && !disabled && `${splitButtonClassNames.root}--disabledFocusable`,
 
     // User provided class name

@@ -15,7 +15,7 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
   'use no memo';
 
-  const { appearance, disabled, disabledFocusable, shape, size, checked, iconOnly } = state as any;
+  const { appearance, disabled, disabledFocusable, shape, size, checked, iconOnly } = state;
 
   state.root.className = [
     toggleButtonClassNames.root,
@@ -36,8 +36,8 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
     iconOnly && `${toggleButtonClassNames.root}--iconOnly`,
 
     // Disabled
-    (disabled || disabledFocusable) && `${toggleButtonClassNames.root}--disabled`,
-    disabledFocusable && !disabled && `${toggleButtonClassNames.root}--disabledFocusable`,
+    disabled && `${toggleButtonClassNames.root}--disabled`,
+    disabledFocusable && `${toggleButtonClassNames.root}--disabledFocusable`,
 
     // User provided class name
     state.root.className,
