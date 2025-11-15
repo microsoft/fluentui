@@ -12,7 +12,7 @@ const mockSource = jest.fn(({ code, language }: { code: string; language: string
   </pre>
 ));
 
-// `Source` wont be available in the test environment, so we need to mock it to test the code output
+// `Source` won't be available in the test environment, so we need to mock it to test the code output
 jest.mock('@storybook/addon-docs', () => ({
   Source: (props: { code: string; language: string }) => mockSource(props),
 }));
