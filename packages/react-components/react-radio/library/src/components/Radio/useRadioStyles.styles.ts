@@ -13,6 +13,8 @@ export const radioClassNames: SlotClassNames<RadioSlots> = {
   label: 'fui-Radio__label',
 };
 
+const overshootEasing = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
+
 // The indicator size is used by the indicator and label styles
 const indicatorSize = '16px';
 
@@ -140,8 +142,11 @@ const useInputStyles = makeStyles({
 
   // If the indicator has no children, use the ::after pseudo-element for the checked state
   defaultIndicator: {
+    [`&~ .${radioClassNames.indicator}::after`]: {
+      transform: 'scale(0)',
+    },
     [`:checked ~ .${radioClassNames.indicator}::after`]: {
-      content: '""',
+      transform: 'scale(0.625)',
     },
   },
 
@@ -173,14 +178,16 @@ const useIndicatorBaseClassName = makeResetStyles({
   pointerEvents: 'none',
 
   '::after': {
+    content: '""',
     position: 'absolute',
     width: indicatorSize,
     height: indicatorSize,
     borderRadius: tokens.borderRadiusCircular,
     // Use a transform to avoid pixel rounding errors at 125% DPI
     // https://github.com/microsoft/fluentui/issues/30025
-    transform: 'scale(0.625)',
     backgroundColor: 'currentColor',
+    transform: 'scale(0)',
+    transition: `transform ${tokens.durationNormal} ${overshootEasing}`,
   },
 });
 
