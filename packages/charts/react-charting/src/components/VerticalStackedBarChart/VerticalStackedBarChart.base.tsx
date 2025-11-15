@@ -573,7 +573,9 @@ export class VerticalStackedBarChartBase
     const { palette } = theme!;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
-    this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
+    this._xAxisType = this._points[0]
+      ? (getTypeOfAxis(this._points[0].xAxisPoint, true) as XAxisTypes)
+      : XAxisTypes.StringAxis;
     this._lineObject = this._getFormattedLineData(this.props.data);
     this._xAxisInnerPadding = getScalePadding(
       this.props.xAxisInnerPadding,

@@ -181,7 +181,8 @@ export class GroupedVerticalBarChartBase
 
   public render(): React.ReactNode {
     const { barData, lineData } = this._prepareChartData();
-    this._xAxisType = getTypeOfAxis(barData[0].name, true) as XAxisTypes;
+    const firstXValue = barData[0]?.name ?? lineData[0]?.data[0]?.x;
+    this._xAxisType = firstXValue ? (getTypeOfAxis(firstXValue, true) as XAxisTypes) : XAxisTypes.StringAxis;
     const { barLegends, lineLegends, xAxisLabels, datasetForBars } = this._createSet(barData, lineData);
     this._barLegends = barLegends;
     this._lineLegends = lineLegends;
