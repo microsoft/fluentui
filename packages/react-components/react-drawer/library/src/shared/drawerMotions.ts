@@ -7,7 +7,7 @@ import { drawerCSSVars } from './useDrawerBaseStyles.styles';
 import { fadeAtom } from '@fluentui/react-motion-components-preview';
 
 export type DrawerMotionParams = Required<
-  Pick<DrawerBaseProps, 'size' | 'position'> & Pick<FluentProviderContextValue, 'dir'>
+  Pick<DrawerBaseProps, 'size' | 'position' | 'unmountOnClose'> & Pick<FluentProviderContextValue, 'dir'>
 >;
 export type OverlayDrawerSurfaceMotionParams = Required<Pick<DrawerBaseProps, 'size'>>;
 
@@ -48,33 +48,64 @@ export function getPositionTransform(
 /**
  * @internal
  */
-export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({ position, size, dir }) => {
-  const keyframes: Keyframe[] = [
-    {
-      /**
-       * TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs
-       * The work will be done in the #32817
-       */
-      transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
-      opacity: 0,
-    },
-    { transform: 'translate3d(0, 0, 0)', opacity: 1 },
-  ];
-  const duration = durations[size];
+export function getPositionProperty(
+  position: DrawerBaseProps['position'],
+  dir: FluentProviderContextValue['dir'],
+): string {
+  if (position === 'start') {
+    return dir === 'ltr' ? 'marginLeft' : 'marginRight';
+  }
 
-  return {
-    enter: {
-      keyframes,
-      duration,
-      easing: motionTokens.curveDecelerateMid,
-    },
-    exit: {
-      keyframes: [...keyframes].reverse(),
-      duration,
-      easing: motionTokens.curveAccelerateMin,
-    },
-  };
-});
+  if (position === 'end') {
+    return dir === 'ltr' ? 'marginRight' : 'marginLeft';
+  }
+
+  if (position === 'bottom') {
+    return 'marginBottom';
+  }
+
+  return 'marginLeft';
+}
+
+/**
+ * @internal
+ */
+export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(
+  ({ position, size, dir, unmountOnClose }) => {
+    const keyframes: Keyframe[] = [
+      {
+        /**
+         * TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs
+         * The work will be done in the #32817
+         */
+        transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
+        opacity: 0,
+        ...(!unmountOnClose
+          ? { [getPositionProperty(position, dir)]: `calc(-1 * var(${drawerCSSVars.drawerSizeVar}))` }
+          : {}),
+      },
+      {
+        transform: 'translate3d(0, 0, 0)',
+        opacity: 1,
+        ...(!unmountOnClose ? { [getPositionProperty(position, dir)]: '0px' } : {}),
+      },
+    ];
+    const duration = durations[size];
+
+    return {
+      enter: {
+        keyframes,
+        duration,
+        easing: motionTokens.curveDecelerateMid,
+      },
+      exit: {
+        keyframes: [...keyframes].reverse(),
+        duration,
+        easing: motionTokens.curveAccelerateMin,
+      },
+    };
+  },
+);
 
 /**
  * @internal

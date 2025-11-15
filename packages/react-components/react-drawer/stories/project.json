@@ -4,5 +4,13 @@
   "projectType": "library",
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/react-drawer/stories/src",
-  "tags": ["vNext", "platform:web", "type:stories"]
+  "tags": ["vNext", "platform:web", "type:stories"],
+  "targets": {
+    "test-ssr": {
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn test-ssr \"./src/**/*.stories.tsx\" --exclude \"./src/Drawer/DrawerKeepRenderedInTheDOM.stories.tsx\""
+      }
+    }
+  }
 }
