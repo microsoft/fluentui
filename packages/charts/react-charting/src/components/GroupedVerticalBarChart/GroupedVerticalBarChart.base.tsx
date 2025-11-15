@@ -60,6 +60,7 @@ import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
 import type { JSXElement } from '@fluentui/utilities';
+import { isInvalidValue } from '@fluentui/chart-utilities';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -181,7 +182,10 @@ export class GroupedVerticalBarChartBase
 
   public render(): React.ReactNode {
     const { barData, lineData } = this._prepareChartData();
-    this._xAxisType = getTypeOfAxis(barData[0].name, true) as XAxisTypes;
+    const firstXValue = barData[0]?.name ?? lineData[0]?.data[0]?.x;
+    this._xAxisType = isInvalidValue(firstXValue)
+      ? XAxisTypes.StringAxis
+      : (getTypeOfAxis(firstXValue, true) as XAxisTypes);
     const { barLegends, lineLegends, xAxisLabels, datasetForBars } = this._createSet(barData, lineData);
     this._barLegends = barLegends;
     this._lineLegends = lineLegends;

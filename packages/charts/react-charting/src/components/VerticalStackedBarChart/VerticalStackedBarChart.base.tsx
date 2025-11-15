@@ -38,7 +38,7 @@ import {
   IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
-import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+import { formatDateToLocaleString, isInvalidValue } from '@fluentui/chart-utilities';
 import {
   ChartTypes,
   IAxisData,
@@ -573,7 +573,10 @@ export class VerticalStackedBarChartBase
     const { palette } = theme!;
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
-    this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
+    const firstXValue = this._points[0]?.xAxisPoint;
+    this._xAxisType = isInvalidValue(firstXValue)
+      ? XAxisTypes.StringAxis
+      : (getTypeOfAxis(firstXValue, true) as XAxisTypes);
     this._lineObject = this._getFormattedLineData(this.props.data);
     this._xAxisInnerPadding = getScalePadding(
       this.props.xAxisInnerPadding,
