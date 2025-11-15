@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { ColorPicker, ColorSlider, AlphaSlider } from '@fluentui/react-color-picker';
 import { SampleColorPicker } from './utils';
 import { Steps, type StoryParameters } from 'storywright';

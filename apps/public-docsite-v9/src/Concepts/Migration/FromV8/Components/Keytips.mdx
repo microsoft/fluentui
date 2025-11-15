@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v8/Components/Keytips Migration" />
 
@@ -13,46 +13,211 @@ However, the v9 version has changes in the API and is now part of [Fluent UI con
 
 This table maps v8 `KeytipLayer` component props to their v9 `Keytips` equivalents.
 
-| v8                     | v9                   | Notes                                                                                                                                                |
-| ---------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `keytipExitSequence`   | `exitSequence`       | Renamed. Type changed `IKeytipTransitionKey[]` to `string`. Specify single hotkey or combination separated by '+'.                                   |
-| `keytipStartSequence`  | `startSequence`      | Renamed. Type changed `IKeytipTransitionKey[]` to `string`. Specify single hotkey or combination separated by '+'.                                   |
-| `keytipReturnSequence` | `returnSequence`     | Renamed. Type changed `IKeytipTransitionKey[]` to `string`. Specify single hotkey or combination separated by '+'.                                   |
-| `onExitKeytipMode`     | `onExitKeytipsMode`  | Renamed. Type changed `(ev?: React.KeyboardEvent<HTMLElement>` `\| React.MouseEvent<HTMLElement>) => void` to `EventHandler<OnExitKeytipsModeData>`  |
-| `onEnterKeytipMode`    | `onEnterKeytipsMode` | Renamed. Type changed `(ev?: React.KeyboardEvent<HTMLElement>` `\| React.MouseEvent<HTMLElement>) => void` to `EventHandler<OnEnterKeytipsModeData>` |
-| `content`              | `content`            | Unchanged.                                                                                                                                           |
-| `styles`               | `not supported`      | The component holds only logic and does not require styles.                                                                                          |
-| `componentRef`         | `not supported`      |                                                                                                                                                      |
-| `no equivalent`        | `invokeEvent`        | New prop, specifies the event that triggers the keytips.                                                                                             |
-| `no equivalent`        | `startDelay`         | New prop, adds delay before entering keytip mode by holding start sequence.                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>v8</th>
+      <th>v9</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`keytipExitSequence`</td>
+      <td>`exitSequence`</td>
+      <td>Renamed. Type changed `IKeytipTransitionKey[]` to `string`. Specify single hotkey or combination separated by '+'.</td>
+    </tr>
+    <tr>
+      <td>`keytipStartSequence`</td>
+      <td>`startSequence`</td>
+      <td>Renamed. Type changed `IKeytipTransitionKey[]` to `string`. Specify single hotkey or combination separated by '+'.</td>
+    </tr>
+    <tr>
+      <td>`keytipReturnSequence`</td>
+      <td>`returnSequence`</td>
+      <td>Renamed. Type changed `IKeytipTransitionKey[]` to `string`. Specify single hotkey or combination separated by '+'.</td>
+    </tr>
+    <tr>
+      <td>`onExitKeytipMode`</td>
+      <td>`onExitKeytipsMode`</td>
+      <td>Renamed. Type changed `(ev?: React.KeyboardEvent<HTMLElement>` `\</td>
+      <td>React.MouseEvent<HTMLElement>) => void` to `EventHandler<OnExitKeytipsModeData>`</td>
+    </tr>
+    <tr>
+      <td>`onEnterKeytipMode`</td>
+      <td>`onEnterKeytipsMode`</td>
+      <td>Renamed. Type changed `(ev?: React.KeyboardEvent<HTMLElement>` `\</td>
+      <td>React.MouseEvent<HTMLElement>) => void` to `EventHandler<OnEnterKeytipsModeData>`</td>
+    </tr>
+    <tr>
+      <td>`content`</td>
+      <td>`content`</td>
+      <td>Unchanged.</td>
+    </tr>
+    <tr>
+      <td>`styles`</td>
+      <td>`not supported`</td>
+      <td>The component holds only logic and does not require styles.</td>
+    </tr>
+    <tr>
+      <td>`componentRef`</td>
+      <td>`not supported`</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>`no equivalent`</td>
+      <td>`invokeEvent`</td>
+      <td>New prop, specifies the event that triggers the keytips.</td>
+    </tr>
+    <tr>
+      <td>`no equivalent`</td>
+      <td>`startDelay`</td>
+      <td>New prop, adds delay before entering keytip mode by holding start sequence.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### IKeytipProps -> KeytipProps
 
 This table maps changes between `IKeytipProps` and `KeytipProps` type equivalent in v9.
 
-| v8                    | v9                 | v8 type                                                                       | v9 type                     | Notes                                                                                                                         |
-| --------------------- | ------------------ | ----------------------------------------------------------------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `content`             | `content`          | `string`                                                                      | `NonNullable<Slot<'div'>>`  | Unchanged.                                                                                                                    |
-| `visible`             | `visible`          | `boolean`                                                                     | `boolean`                   | Unchanged.                                                                                                                    |
-| `keySequences`        | `keySequences`     | `string[]`                                                                    | `string[]`                  | Unchanged.                                                                                                                    |
-| `hasMenu`             | `hasMenu`          | `boolean`                                                                     | `boolean`                   | Unchanged.                                                                                                                    |
-| `hasDynamicChildren`  | `dynamic`          | `boolean`                                                                     | `boolean`                   | Renamed.                                                                                                                      |
-| `hasOverflowSubMenu`  | `no equivalent`    | `boolean`                                                                     |                             | Use `hasMenu` instead.                                                                                                        |
-| `theme`               | `no equivalent`    |                                                                               |                             | Not supported.                                                                                                                |
-| `overflowSetSequence` | `overflowSequence` | `string[]`                                                                    | `string[]`                  |                                                                                                                               |
-| `disabled`            | `no equivalent`    | `boolean`                                                                     |                             | Not supported. v9 keytips do not appear for disabled elements.                                                                |
-| `callOutProps`        | `positioning`      | `ICalloutProps`                                                               | `PositioningProps`          | Read more about our [positioning API](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--docs) |
-| `styles`              | `no equivalent`    |                                                                               |                             |                                                                                                                               |
-| `onExecute`           | `onExecute`        | `(executeTarget: HTMLElement \| null`, `target: HTMLElement \| null) => void` | `ExecuteKeytipEventHandler` | Type changed to match v9 callback typings.                                                                                    |
-| `onReturn`            | `onReturn`         | `(executeTarget: HTMLElement \| null`, `target: HTMLElement \| null) => void` | `ReturnKeytipEventHandler`  | Type changed to match v9 callback typings.                                                                                    |
+<table>
+  <thead>
+    <tr>
+      <th>v8</th>
+      <th>v9</th>
+      <th>v8 type</th>
+      <th>v9 type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`content`</td>
+      <td>`content`</td>
+      <td>`string`</td>
+      <td>`NonNullable<Slot<'div'>>`</td>
+      <td>Unchanged.</td>
+    </tr>
+    <tr>
+      <td>`visible`</td>
+      <td>`visible`</td>
+      <td>`boolean`</td>
+      <td>`boolean`</td>
+      <td>Unchanged.</td>
+    </tr>
+    <tr>
+      <td>`keySequences`</td>
+      <td>`keySequences`</td>
+      <td>`string[]`</td>
+      <td>`string[]`</td>
+      <td>Unchanged.</td>
+    </tr>
+    <tr>
+      <td>`hasMenu`</td>
+      <td>`hasMenu`</td>
+      <td>`boolean`</td>
+      <td>`boolean`</td>
+      <td>Unchanged.</td>
+    </tr>
+    <tr>
+      <td>`hasDynamicChildren`</td>
+      <td>`dynamic`</td>
+      <td>`boolean`</td>
+      <td>`boolean`</td>
+      <td>Renamed.</td>
+    </tr>
+    <tr>
+      <td>`hasOverflowSubMenu`</td>
+      <td>`no equivalent`</td>
+      <td>`boolean`</td>
+      <td></td>
+      <td>Use `hasMenu` instead.</td>
+    </tr>
+    <tr>
+      <td>`theme`</td>
+      <td>`no equivalent`</td>
+      <td></td>
+      <td></td>
+      <td>Not supported.</td>
+    </tr>
+    <tr>
+      <td>`overflowSetSequence`</td>
+      <td>`overflowSequence`</td>
+      <td>`string[]`</td>
+      <td>`string[]`</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>`disabled`</td>
+      <td>`no equivalent`</td>
+      <td>`boolean`</td>
+      <td></td>
+      <td>Not supported. v9 keytips do not appear for disabled elements.</td>
+    </tr>
+    <tr>
+      <td>`callOutProps`</td>
+      <td>`positioning`</td>
+      <td>`ICalloutProps`</td>
+      <td>`PositioningProps`</td>
+      <td>Read more about our [positioning API](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--docs)</td>
+    </tr>
+    <tr>
+      <td>`styles`</td>
+      <td>`no equivalent`</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>`onExecute`</td>
+      <td>`onExecute`</td>
+      <td>`(executeTarget: HTMLElement \</td>
+      <td>null`, `target: HTMLElement \</td>
+      <td>null) => void`</td>
+      <td>`ExecuteKeytipEventHandler`</td>
+      <td>Type changed to match v9 callback typings.</td>
+    </tr>
+    <tr>
+      <td>`onReturn`</td>
+      <td>`onReturn`</td>
+      <td>`(executeTarget: HTMLElement \</td>
+      <td>null`, `target: HTMLElement \</td>
+      <td>null) => void`</td>
+      <td>`ReturnKeytipEventHandler`</td>
+      <td>Type changed to match v9 callback typings.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### useKeytipRef -> useKeytipRef
 
-| v8                | v9              | Notes                                                         |
-| ----------------- | --------------- | ------------------------------------------------------------- |
-| `keytipProps`     | `no equivalent` | Not supported. Use individual props (see `KeytipProps` type). |
-| `ariaDescribedBy` | `no equivalent` | Not supported.                                                |
-| `disabled`        | `no equivalent` | Not supported. Keytips are not shown for disabled elements.   |
+<table>
+  <thead>
+    <tr>
+      <th>v8</th>
+      <th>v9</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`keytipProps`</td>
+      <td>`no equivalent`</td>
+      <td>Not supported. Use individual props (see `KeytipProps` type).</td>
+    </tr>
+    <tr>
+      <td>`ariaDescribedBy`</td>
+      <td>`no equivalent`</td>
+      <td>Not supported.</td>
+    </tr>
+    <tr>
+      <td>`disabled`</td>
+      <td>`no equivalent`</td>
+      <td>Not supported. Keytips are not shown for disabled elements.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### KeytipData -> no equivalent
 

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v0/Components/Box Migration" />
 
@@ -24,12 +24,32 @@ const Component = () => <Primitive />;
 
 ## How to migrate props:
 
-| Box props                 | migrate guide                                                                                            |
-| ------------------------- | -------------------------------------------------------------------------------------------------------- |
-| as, className             | keep it as is                                                                                            |
-| content                   | see [Migrate content prop](##migrate-content-prop) in this document                                      |
-| variables, design, styles | see [Migrate style overrides](#migrate-style-overrides) in this document                                 |
-| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
+<table>
+  <thead>
+    <tr>
+      <th>Box props</th>
+      <th>migrate guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>as, className</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>see [Migrate content prop](##migrate-content-prop) in this document</td>
+    </tr>
+    <tr>
+      <td>variables, design, styles</td>
+      <td>see [Migrate style overrides](#migrate-style-overrides) in this document</td>
+    </tr>
+    <tr>
+      <td>accessibility</td>
+      <td>see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 

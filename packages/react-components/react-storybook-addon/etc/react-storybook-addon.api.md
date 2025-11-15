@@ -4,11 +4,11 @@
 
 ```ts
 
-import { Args } from '@storybook/react';
+import { Args } from '@storybook/react-webpack5';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Parameters as Parameters_2 } from '@storybook/react';
+import { Parameters as Parameters_2 } from '@storybook/react-webpack5';
 import * as React_2 from 'react';
-import { StoryContext } from '@storybook/react';
+import { StoryContext } from '@storybook/react-webpack5';
 
 // @public (undocumented)
 export const DIR_ID: "storybook_fluentui-react-addon_dir";

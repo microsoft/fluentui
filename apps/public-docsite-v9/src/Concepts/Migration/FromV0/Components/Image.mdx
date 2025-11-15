@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v0/Components/Image Migration" />
 
@@ -22,16 +22,51 @@ const Component = () => <Image />;
 
 ## How to migrate props:
 
-| Image props                    | migrate guide                                                                                                                                                                           |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| as, className                  | keep it as is                                                                                                                                                                           |
-| src, alt, aria-label, key, ref | keep it as is                                                                                                                                                                           |
-| aria-hidden                    | if `alt` property is empty and image is illustrative or not relevant for screen reader users, it's **required** to add `aria-hidden="true"` attribute (in v0 it was applied bt default) |
-| variables, design, styles      | see Migrate style overrides in this document                                                                                                                                            |
-| accessibility                  | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)                                                                                |
-| fluid                          | replace with `fit="contain"`                                                                                                                                                            |
-| circular                       | replace with `shape="circular"`                                                                                                                                                         |
-| avatar                         | see Migrate avatar prop in this document                                                                                                                                                |
+<table>
+  <thead>
+    <tr>
+      <th>Image props</th>
+      <th>migrate guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>as, className</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>src, alt, aria-label, key, ref</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>aria-hidden</td>
+      <td>
+        if `alt` property is empty and image is illustrative or not relevant for screen reader users, it's **required**
+        to add `aria-hidden="true"` attribute (in v0 it was applied bt default)
+      </td>
+    </tr>
+    <tr>
+      <td>variables, design, styles</td>
+      <td>see Migrate style overrides in this document</td>
+    </tr>
+    <tr>
+      <td>accessibility</td>
+      <td>see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)</td>
+    </tr>
+    <tr>
+      <td>fluid</td>
+      <td>replace with `fit="contain"`</td>
+    </tr>
+    <tr>
+      <td>circular</td>
+      <td>replace with `shape="circular"`</td>
+    </tr>
+    <tr>
+      <td>avatar</td>
+      <td>see Migrate avatar prop in this document</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 

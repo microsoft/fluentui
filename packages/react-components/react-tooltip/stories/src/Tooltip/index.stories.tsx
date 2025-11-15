@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import { Tooltip } from '@fluentui/react-components';
 import descriptionMd from './TooltipDescription.md';
 import accessibilityMd from './TooltipAccessibility.md';
