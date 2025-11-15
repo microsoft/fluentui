@@ -13,6 +13,8 @@ const config = {
     tableName: 'fluentuilatest',
   }),
   bundler: webpackBundler(config => {
+    config.resolve ??= {};
+    config.resolve.extensions = ['.headless.js', '.js', '.jsx', '.ts', '.tsx'];
     return config;
   }),
   reportResolvers: {
