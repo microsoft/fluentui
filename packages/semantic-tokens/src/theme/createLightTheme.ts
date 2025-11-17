@@ -26,7 +26,7 @@ export const createLightTheme = ({
 }: {
   themePrimitives?: Partial<ThemePrimitives>;
   themeTokens: Partial<GenericTokens & GroupTokens>;
-}) => {
+}): Record<string, string> => {
   const primitives: ThemePrimitives = {
     ...defaultLightPrimitives,
     ...themePrimitives,
