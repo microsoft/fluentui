@@ -359,19 +359,19 @@ export const foregroundDangerOnloudPressed = "hsl(from var(--smtc-foreground-dan
 export const foregroundDangerOnloudPressedSelected = "hsl(from var(--smtc-foreground-danger-onloud) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const foregroundDangerPrimary = "var(--smtc-foreground-danger-primary)";
+export const foregroundDangerPrimary = "var(--smtc-foreground-danger-primary, var(--colorPaletteRedForeground1))";
 
 // @public (undocumented)
-export const foregroundDangerPrimaryHover = "hsl(from var(--smtc-foreground-danger-primary) h s calc(l + var(--smtc-lightness-hover, -5)))";
+export const foregroundDangerPrimaryHover = "hsl(from var(--smtc-foreground-danger-primary, var(--colorPaletteRedForeground1)) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const foregroundDangerPrimaryHoverSelected = "hsl(from var(--smtc-foreground-danger-primary) h s calc(l + var(--smtc-lightness-hover, -5)))";
+export const foregroundDangerPrimaryHoverSelected = "hsl(from var(--smtc-foreground-danger-primary, var(--colorPaletteRedForeground1)) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const foregroundDangerPrimaryPressed = "hsl(from var(--smtc-foreground-danger-primary) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+export const foregroundDangerPrimaryPressed = "hsl(from var(--smtc-foreground-danger-primary, var(--colorPaletteRedForeground1)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const foregroundDangerPrimaryPressedSelected = "hsl(from var(--smtc-foreground-danger-primary) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+export const foregroundDangerPrimaryPressedSelected = "hsl(from var(--smtc-foreground-danger-primary, var(--colorPaletteRedForeground1)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const foregroundDisabled = "var(--smtc-foreground-disabled)";
@@ -437,19 +437,19 @@ export const foregroundSuccessOnloudPressed = "hsl(from var(--smtc-foreground-su
 export const foregroundSuccessOnloudPressedSelected = "hsl(from var(--smtc-foreground-success-onloud) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const foregroundSuccessPrimary = "var(--smtc-foreground-success-primary)";
+export const foregroundSuccessPrimary = "var(--smtc-foreground-success-primary, var(--colorPaletteGreenForeground1))";
 
 // @public (undocumented)
-export const foregroundSuccessPrimaryHover = "hsl(from var(--smtc-foreground-success-primary) h s calc(l + var(--smtc-lightness-hover, -5)))";
+export const foregroundSuccessPrimaryHover = "hsl(from var(--smtc-foreground-success-primary, var(--colorPaletteGreenForeground1)) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const foregroundSuccessPrimaryHoverSelected = "hsl(from var(--smtc-foreground-success-primary) h s calc(l + var(--smtc-lightness-hover, -5)))";
+export const foregroundSuccessPrimaryHoverSelected = "hsl(from var(--smtc-foreground-success-primary, var(--colorPaletteGreenForeground1)) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const foregroundSuccessPrimaryPressed = "hsl(from var(--smtc-foreground-success-primary) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+export const foregroundSuccessPrimaryPressed = "hsl(from var(--smtc-foreground-success-primary, var(--colorPaletteGreenForeground1)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const foregroundSuccessPrimaryPressedSelected = "hsl(from var(--smtc-foreground-success-primary) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+export const foregroundSuccessPrimaryPressedSelected = "hsl(from var(--smtc-foreground-success-primary, var(--colorPaletteGreenForeground1)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const foregroundWarningOnloud = "var(--smtc-foreground-warning-onloud)";
@@ -467,19 +467,19 @@ export const foregroundWarningOnloudPressed = "hsl(from var(--smtc-foreground-wa
 export const foregroundWarningOnloudPressedSelected = "hsl(from var(--smtc-foreground-warning-onloud) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const foregroundWarningPrimary = "var(--smtc-foreground-warning-primary)";
+export const foregroundWarningPrimary = "var(--smtc-foreground-warning-primary, var(--colorPaletteDarkOrangeForeground1))";
 
 // @public (undocumented)
-export const foregroundWarningPrimaryHover = "hsl(from var(--smtc-foreground-warning-primary) h s calc(l + var(--smtc-lightness-hover, -5)))";
+export const foregroundWarningPrimaryHover = "hsl(from var(--smtc-foreground-warning-primary, var(--colorPaletteDarkOrangeForeground1)) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const foregroundWarningPrimaryHoverSelected = "hsl(from var(--smtc-foreground-warning-primary) h s calc(l + var(--smtc-lightness-hover, -5)))";
+export const foregroundWarningPrimaryHoverSelected = "hsl(from var(--smtc-foreground-warning-primary, var(--colorPaletteDarkOrangeForeground1)) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const foregroundWarningPrimaryPressed = "hsl(from var(--smtc-foreground-warning-primary) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+export const foregroundWarningPrimaryPressed = "hsl(from var(--smtc-foreground-warning-primary, var(--colorPaletteDarkOrangeForeground1)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const foregroundWarningPrimaryPressedSelected = "hsl(from var(--smtc-foreground-warning-primary) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+export const foregroundWarningPrimaryPressedSelected = "hsl(from var(--smtc-foreground-warning-primary, var(--colorPaletteDarkOrangeForeground1)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonCorner = "var(--smtc-group-button-corner, var(--borderRadiusMedium))";
@@ -854,7 +854,7 @@ export const groupFocusOuterStrokewidth = "var(--smtc-group-focus-outer-strokewi
 export const groupInputBackground = "var(--smtc-group-input-background, var(--colorNeutralBackground1))";
 
 // @public (undocumented)
-export const groupInputBackgroundDisabled = "var(--smtc-group-input-background-disabled, var(--smtc-background-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorTransparentBackground))))";
+export const groupInputBackgroundDisabled = "var(--smtc-group-input-background-disabled, var(--smtc-background-neutral-transparent, var(--colorTransparentBackground)))";
 
 // @public (undocumented)
 export const groupInputCorner = "var(--smtc-group-input-corner, var(--borderRadiusMedium))";
@@ -930,9 +930,6 @@ export const groupInputUnderlineStrokePressedSelected = "hsl(from var(--smtc-gro
 
 // @public (undocumented)
 export const groupInputUnderlineStrokeSelected = "var(--smtc-group-input-underline-stroke-selected, var(--colorCompoundBrandStroke))";
-
-// @public (undocumented)
-export const groupInputUnderlineStrokewidth = "var(--smtc-group-input-underline-strokewidth)";
 
 // @public (undocumented)
 export const groupInputUnderlineStrokewidthSelected = "var(--smtc-group-input-underline-strokewidth-selected, 2px)";
@@ -1097,19 +1094,19 @@ export const strokeNeutralSubtlePressed = "hsl(from var(--smtc-stroke-neutral-su
 export const strokeNeutralSubtlePressedSelected = "hsl(from var(--smtc-stroke-neutral-subtle) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const strokeNeutralTransparent = "var(--smtc-stroke-neutral-transparent, var(--colorTransparentBackground))";
+export const strokeNeutralTransparent = "var(--smtc-stroke-neutral-transparent, var(--colorTransparentStroke))";
 
 // @public (undocumented)
-export const strokeNeutralTransparentHover = "hsl(from var(--smtc-stroke-neutral-transparent, var(--colorTransparentBackground)) h s calc(l + var(--smtc-lightness-hover, -5)))";
+export const strokeNeutralTransparentHover = "hsl(from var(--smtc-stroke-neutral-transparent, var(--colorTransparentStroke)) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const strokeNeutralTransparentHoverSelected = "hsl(from var(--smtc-stroke-neutral-transparent, var(--colorTransparentBackground)) h s calc(l + var(--smtc-lightness-hover, -5)))";
+export const strokeNeutralTransparentHoverSelected = "hsl(from var(--smtc-stroke-neutral-transparent, var(--colorTransparentStroke)) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const strokeNeutralTransparentPressed = "hsl(from var(--smtc-stroke-neutral-transparent, var(--colorTransparentBackground)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+export const strokeNeutralTransparentPressed = "hsl(from var(--smtc-stroke-neutral-transparent, var(--colorTransparentStroke)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const strokeNeutralTransparentPressedSelected = "hsl(from var(--smtc-stroke-neutral-transparent, var(--colorTransparentBackground)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+export const strokeNeutralTransparentPressedSelected = "hsl(from var(--smtc-stroke-neutral-transparent, var(--colorTransparentStroke)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const strokeSuccessLoud = "var(--smtc-stroke-success-loud)";

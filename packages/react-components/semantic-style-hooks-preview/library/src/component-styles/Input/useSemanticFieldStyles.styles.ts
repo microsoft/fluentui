@@ -79,13 +79,13 @@ const useLabelStyles = makeStyles({
 
 const useSecondaryTextBaseClassName = makeResetStyles({
   marginTop: tokens.spacingVerticalXXS,
-  color: tokens.colorNeutralForeground3,
+  color: semanticTokens.foregroundNeutralSecondary,
   ...typographyStyles.caption1,
 });
 
 const useSecondaryTextStyles = makeStyles({
   error: {
-    color: tokens.colorPaletteRedForeground1,
+    color: semanticTokens.foregroundDangerPrimary,
   },
 
   withIcon: {
