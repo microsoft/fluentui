@@ -7,7 +7,6 @@ import { inputClassNames } from '@fluentui/react-input';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 
-// TODO(sharing) should these be shared somewhere?
 const fieldHeights = {
   small: `calc(${semanticTokens.groupInputMinheight} * 0.75)`,
   medium: semanticTokens.groupInputMinheight,
