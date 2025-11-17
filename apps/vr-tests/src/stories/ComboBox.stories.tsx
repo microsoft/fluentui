@@ -50,7 +50,7 @@ export default {
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Button-flexContainer')
         .hover('.ms-Button-flexContainer')
-        .snapshot('click', { cropTo: '.ms-Layer' }) // Dropdown extends beyond testWrapper
+        .snapshot('click') // Dropdown extends beyond testWrapper
         .end(),
     },
   } satisfies StoryParameters,

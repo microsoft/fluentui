@@ -29,7 +29,7 @@ export default {
       steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-HoverCard-host')
-        .snapshot('fully expanded with test content', { cropTo: '.ms-Layer' })
+        .snapshot('fully expanded with test content')
         .end(),
     },
   } satisfies StoryParameters,

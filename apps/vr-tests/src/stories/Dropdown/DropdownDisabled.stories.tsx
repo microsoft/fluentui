@@ -17,7 +17,7 @@ export default {
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Dropdown')
         .hover('.ms-Dropdown')
-        .snapshot('click', { cropTo: '.ms-Layer' })
+        .snapshot('click')
         .end(),
     },
   } satisfies StoryParameters,
