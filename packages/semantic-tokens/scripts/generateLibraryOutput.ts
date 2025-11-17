@@ -53,9 +53,7 @@ function generateLibraryOutput() {
     const tokenName = dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
     const fluentFallback = genericFallbacks[tokenName]?.fluent;
-    const primitiveFallbackName = genericFallbacks[tokenName]?.primitive;
-    const primitiveFallback = primitiveFallbackName ? '--smtc-' + splitCamelCase(primitiveFallbackName) : undefined;
-    const fallbackChain = [cssVarName, primitiveFallback].filter((v): v is string => typeof v === 'string');
+    const fallbackChain = [cssVarName].filter((v): v is string => typeof v === 'string');
     const tokenString = makeTokenFallback(fallbackChain, fluentFallback);
     const exportToken = `export const ${tokenName} = '${tokenString}';`;
 
@@ -95,11 +93,7 @@ function generateLibraryOutput() {
     const fluentFallback = groupFallbacks[tokenGroup][tokenName]?.fluent;
     const genericFallbackName = groupFallbacks[tokenGroup][tokenName]?.generic;
     const genericFallback = genericFallbackName ? '--smtc-' + splitCamelCase(genericFallbackName) : undefined;
-    const primitiveFallbackName = genericFallbackName ? genericFallbacks[genericFallbackName]?.primitive : undefined;
-    const primitiveFallback = primitiveFallbackName ? '--smtc-' + splitCamelCase(primitiveFallbackName) : undefined;
-    const fallbackChain = [cssVarName, genericFallback, primitiveFallback].filter(
-      (v): v is string => typeof v === 'string',
-    );
+    const fallbackChain = [cssVarName, genericFallback].filter((v): v is string => typeof v === 'string');
     const tokenString = makeTokenFallback(fallbackChain, fluentFallback);
     const exportToken = `export const ${tokenName} = '${tokenString}';`;
 
@@ -147,11 +141,7 @@ function generateLibraryOutput() {
     const fluentFallback = groupFallbacks[tokenGroup][tokenName]?.fluent;
     const genericFallbackName = groupFallbacks[tokenGroup][tokenName]?.generic;
     const genericFallback = genericFallbackName ? '--smtc-' + splitCamelCase(genericFallbackName) : undefined;
-    const primitiveFallbackName = genericFallbackName ? genericFallbacks[genericFallbackName]?.primitive : undefined;
-    const primitiveFallback = primitiveFallbackName ? '--smtc-' + splitCamelCase(primitiveFallbackName) : undefined;
-    const fallbackChain = [cssVarName, genericFallback, primitiveFallback].filter(
-      (v): v is string => typeof v === 'string',
-    );
+    const fallbackChain = [cssVarName, genericFallback].filter((v): v is string => typeof v === 'string');
     const tokenString = makeTokenFallback(fallbackChain, fluentFallback);
     const exportToken = `export const ${tokenName} = '${tokenString}';`;
 

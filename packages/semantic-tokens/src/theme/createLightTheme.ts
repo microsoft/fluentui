@@ -1,7 +1,7 @@
 /* Todo: Move all of this logic into a separate theme package */
 
 import { defaultLightPrimitives, defaultLightGenerics } from './defaultLightTheme';
-import { ThemePrimitives } from './primitives.types';
+import { ThemePrimitives } from '../primitives/primitives.types';
 import { genericFallbacks } from '../../scripts/definitions/fallbacks/genericFallbacks';
 import { GroupTokens } from '../groups/groups.types';
 import { GenericTokens } from '../generics/generics.types';
