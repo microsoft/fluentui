@@ -22,22 +22,19 @@ export const backgroundSuccessLoud = 'var(--smtc-background-success-loud, var(--
 export const backgroundSuccessSoft = 'var(--smtc-background-success-soft, var(--smtc-color-success-5))';
 export const backgroundSuccessSubtle = 'var(--smtc-background-success-subtle, var(--smtc-color-success-6))';
 export const backgroundBrandHeavy = 'var(--smtc-background-brand-heavy, var(--smtc-color-brand-1))';
-export const backgroundBrandTransparent =
-  'var(--smtc-background-brand-transparent, var(--smtc-color-brand-alpha, var(--colorTransparentBackground)))';
+export const backgroundBrandTransparent = 'var(--smtc-background-brand-transparent, var(--smtc-color-brand-alpha, var(--colorTransparentBackground)))';
 export const backgroundNeutralHeavy = 'var(--smtc-background-neutral-heavy, var(--smtc-color-neutral-0))';
-export const backgroundNeutralTransparent =
-  'var(--smtc-background-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorTransparentBackground)))';
+export const backgroundNeutralTransparent = 'var(--smtc-background-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorTransparentBackground)))';
 export const backgroundDisabled = 'var(--smtc-background-disabled, var(--smtc-color-neutral-5))';
 export const strokeNeutralLoud = 'var(--smtc-stroke-neutral-loud, var(--smtc-color-neutral-0))';
 export const strokeNeutralSubtle = 'var(--smtc-stroke-neutral-subtle, var(--smtc-color-neutral-4))';
-export const strokeNeutralOnloud =
-  'var(--smtc-stroke-neutral-onloud, var(--smtc-color-neutral-8, var(--colorNeutralStrokeOnBrand)))';
+export const strokeNeutralOnloud = 'var(--smtc-stroke-neutral-onloud, var(--smtc-color-neutral-8, var(--colorNeutralStrokeOnBrand)))';
 export const strokeBrandLoud = 'var(--smtc-stroke-brand-loud, var(--smtc-color-brand-2))';
 export const strokeBrandSubtle = 'var(--smtc-stroke-brand-subtle, var(--smtc-color-brand-4))';
 export const strokeBrandOnloud = 'var(--smtc-stroke-brand-onloud, var(--smtc-color-neutral-8))';
 export const strokeDangerLoud = 'var(--smtc-stroke-danger-loud, var(--smtc-color-danger-2))';
 export const strokeDangerSubtle = 'var(--smtc-stroke-danger-subtle, var(--smtc-color-danger-4))';
-export const strokeDangerOnloud = 'var(--smtc-stroke-danger-onloud, var(--smtc-color-danger-8))';
+export const strokeDangerOnloud = 'var(--smtc-stroke-danger-onloud, var(--smtc-color-danger-6))';
 export const strokeWarningLoud = 'var(--smtc-stroke-warning-loud, var(--smtc-color-warning-2))';
 export const strokeWarningSubtle = 'var(--smtc-stroke-warning-subtle, var(--smtc-color-warning-4))';
 export const strokeWarningOnloud = 'var(--smtc-stroke-warning-onloud, var(--smtc-color-neutral-8))';
@@ -45,8 +42,7 @@ export const strokeSuccessLoud = 'var(--smtc-stroke-success-loud, var(--smtc-col
 export const strokeSuccessSubtle = 'var(--smtc-stroke-success-subtle, var(--smtc-color-success-4))';
 export const strokeSuccessOnloud = 'var(--smtc-stroke-success-onloud, var(--smtc-color-neutral-8))';
 export const strokeNeutralSoft = 'var(--smtc-stroke-neutral-soft, var(--smtc-color-neutral-3))';
-export const strokeNeutralTransparent =
-  'var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorTransparentBackground)))';
+export const strokeNeutralTransparent = 'var(--smtc-stroke-neutral-transparent, var(--smtc-color-neutral-alpha, var(--colorTransparentBackground)))';
 export const strokeDisabled = 'var(--smtc-stroke-disabled, var(--smtc-color-neutral-4))';
 export const foregroundBrandPrimary = 'var(--smtc-foreground-brand-primary, var(--smtc-color-brand-1))';
 export const foregroundBrandOnloud = 'var(--smtc-foreground-brand-onloud, var(--smtc-color-neutral-8))';
@@ -57,7 +53,6 @@ export const foregroundWarningOnloud = 'var(--smtc-foreground-warning-onloud, va
 export const foregroundSuccessPrimary = 'var(--smtc-foreground-success-primary, var(--smtc-color-success-1))';
 export const foregroundSuccessOnloud = 'var(--smtc-foreground-success-onloud, var(--smtc-color-neutral-8))';
 export const foregroundNeutralPrimary = 'var(--smtc-foreground-neutral-primary, var(--smtc-color-neutral-0))';
-export const foregroundNeutralSecondary =
-  'var(--smtc-foreground-neutral-secondary, var(--smtc-color-neutral-1, var(--colorNeutralForeground2)))';
+export const foregroundNeutralSecondary = 'var(--smtc-foreground-neutral-secondary, var(--smtc-color-neutral-1, var(--colorNeutralForeground2)))';
 export const foregroundNeutralOnneutral = 'var(--smtc-foreground-neutral-onneutral, var(--smtc-color-neutral-0))';
 export const foregroundDisabled = 'var(--smtc-foreground-disabled, var(--smtc-color-neutral-3))';
