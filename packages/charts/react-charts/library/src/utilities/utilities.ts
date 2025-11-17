@@ -268,8 +268,8 @@ export function createNumericXAxis(
   } = xAxisParams;
   const dStartValue = typeof domainNRangeValues.dStartValue === 'number' ? domainNRangeValues.dStartValue : 0;
   const dEndValue = typeof domainNRangeValues.dEndValue === 'number' ? domainNRangeValues.dEndValue : 0;
-  const finalXmin = xAxisParams.xMinValue !== undefined ? xAxisParams.xMinValue : dStartValue;
-  const finalXmax = xAxisParams.xMaxValue !== undefined ? xAxisParams.xMaxValue : dEndValue;
+  const finalXmin = xAxisParams.xMinValue !== undefined ? Math.min(dStartValue, xAxisParams.xMinValue) : dStartValue;
+  const finalXmax = xAxisParams.xMaxValue !== undefined ? Math.max(dEndValue, xAxisParams.xMaxValue) : dEndValue;
   const xAxisScale = createNumericScale(scaleType)
     .domain([finalXmin, finalXmax])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
@@ -2223,7 +2223,8 @@ export const getDomainPaddingForMarkers = (
     };
   }
 
-  const defaultPadding = (maxVal - minVal) * 0.1;
+  // don't add padding if the calculated padding is greater than minVal to avoid unnecessary extra tick value
+  const defaultPadding = (maxVal - minVal) * 0.1 > minVal ? 0 : (maxVal - minVal) * 0.1;
   return {
     start: defaultPadding,
     end: defaultPadding,

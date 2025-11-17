@@ -1485,7 +1485,10 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
-    roundedTicks: true,
+    roundedYTicks: true,
+    ...(input.layout?.xaxis?.range
+      ? { xMinValue: input.layout.xaxis.range[0], xMaxValue: input.layout.xaxis.range[1] }
+      : { roundedXTicks: true }),
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
@@ -2069,10 +2072,9 @@ const transformPlotlyJsonToScatterTraceProps = (
     return {
       data: isScatterChart ? scatterChartProps : chartProps,
       roundedYTicks: true,
-      roundedXTicks: true,
       ...(input.layout?.xaxis?.range
         ? { xMinValue: input.layout.xaxis.range[0], xMaxValue: input.layout.xaxis.range[1] }
-        : {}),
+        : { roundedXTicks: true }),
       ...commonProps,
       ...yMinMax,
       ...(isScatterChart
@@ -2162,6 +2164,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     showYAxisLablesTooltip: true,
     hideLegend,
     roundCorners: true,
+    ...(input.layout?.xaxis?.range
+      ? { xMinValue: input.layout.xaxis.range[0], xMaxValue: input.layout.xaxis.range[1] }
+      : { roundedXTicks: true }),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),

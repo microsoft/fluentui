@@ -3043,6 +3043,8 @@ Object {
   "width": 850,
   "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
+  "xMaxValue": 1830.6731869091736,
+  "xMinValue": -198.2562959184288,
   "yAxisCategoryOrder": Array [
     "Laravel",
     "Symfony2",
@@ -5595,7 +5597,8 @@ Object {
   "mode": "plotly",
   "noOfCharsToTruncate": 20,
   "roundCorners": true,
-  "roundedTicks": true,
+  "roundedXTicks": true,
+  "roundedYTicks": true,
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": undefined,
