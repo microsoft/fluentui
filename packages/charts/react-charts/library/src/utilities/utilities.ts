@@ -268,10 +268,10 @@ export function createNumericXAxis(
   } = xAxisParams;
   const dStartValue = typeof domainNRangeValues.dStartValue === 'number' ? domainNRangeValues.dStartValue : 0;
   const dEndValue = typeof domainNRangeValues.dEndValue === 'number' ? domainNRangeValues.dEndValue : 0;
-  const finalXmin = xAxisParams.xMinValue !== undefined ? Math.min(dStartValue, xAxisParams.xMinValue) : dStartValue;
-  const finalXmax = xAxisParams.xMaxValue !== undefined ? Math.max(dEndValue, xAxisParams.xMaxValue) : dEndValue;
+  const finalXmin = xAxisParams.xMinValue !== undefined ? xAxisParams.xMinValue : dStartValue;
+  const finalXmax = xAxisParams.xMaxValue !== undefined ? xAxisParams.xMaxValue : dEndValue;
   const xAxisScale = createNumericScale(scaleType)
-    .domain([dStartValue, dEndValue])
+    .domain([finalXmin, finalXmax])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
 

@@ -2069,6 +2069,9 @@ const transformPlotlyJsonToScatterTraceProps = (
       data: isScatterChart ? scatterChartProps : chartProps,
       roundedYTicks: true,
       roundedXTicks: true,
+      ...(input.layout?.xaxis?.range
+        ? { xMinValue: input.layout.xaxis.range[0], xMaxValue: input.layout.xaxis.range[1] }
+        : {}),
       ...commonProps,
       ...yMinMax,
       ...(isScatterChart
