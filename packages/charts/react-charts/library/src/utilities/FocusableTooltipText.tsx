@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable no-restricted-globals */
 import * as React from 'react';
 import { useCallback, useState, useEffect, useRef } from 'react';
@@ -26,7 +28,7 @@ export const FocusableTooltipText: React.FunctionComponent<IFocusableTooltipText
   const [textOverflow, setTextOverflow] = useState(false);
   const tooltipChild = useRef<HTMLSpanElement>(null);
   const async = useRef(new Async()).current;
-  const resizeObserver = useRef<ResizeObserver>();
+  const resizeObserver = useRef<ResizeObserver | undefined>(undefined);
 
   const getTargetElement = useCallback((): HTMLElement | undefined => {
     if (!tooltipChild.current || !tooltipChild.current.parentElement) {

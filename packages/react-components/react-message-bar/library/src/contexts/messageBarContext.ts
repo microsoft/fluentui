@@ -1,8 +1,12 @@
+'use client';
+
 import * as React from 'react';
 
 export type MessageBarContextValue = {
   layout: 'multiline' | 'singleline' | 'auto';
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   actionsRef: React.MutableRefObject<HTMLDivElement | null>;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   bodyRef: React.MutableRefObject<HTMLDivElement | null>;
   titleId: string;
 };

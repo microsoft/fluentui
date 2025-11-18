@@ -1,6 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecoratorFixedWidth } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecoratorFixedWidth } from '../../utilities';
 import { Fabric, Calendar, DateRangeType, DayOfWeek } from '@fluentui/react';
 
 const date = new Date(2010, 1, 12);
@@ -8,11 +10,13 @@ const date = new Date(2010, 1, 12);
 export default {
   title: 'Calendar - No Month Option',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
-};
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Calendar>;
 
 export const ShowMonthAsOverlayAndNoGoToToday = () => (
   <Fabric>

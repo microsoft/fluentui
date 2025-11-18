@@ -1,4 +1,6 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+'use client';
+
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ChartTableProps, ChartTableStyles } from './ChartTable.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -26,10 +28,10 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     fontWeight: tokens.fontWeightSemibold,
     backgroundColor: tokens.colorNeutralBackground3,
-    color: 'black',
-    ...shorthands.padding(tokens.spacingHorizontalS),
+    color: tokens.colorNeutralForeground1,
+    padding: tokens.spacingHorizontalS,
     textAlign: 'left',
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralStroke2),
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorNeutralStroke2}`,
     '@media (forced-colors: active)': {
       backgroundColor: 'Window',
       color: 'WindowText',
@@ -37,9 +39,9 @@ const useStyles = makeStyles({
   },
   bodyCell: {
     ...typographyStyles.caption1,
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralStroke2),
-    color: 'black',
+    padding: tokens.spacingHorizontalS,
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorNeutralStroke2}`,
+    color: tokens.colorNeutralForeground1,
     textAlign: 'left',
     '@media (forced-colors: active)': {
       color: 'WindowText',

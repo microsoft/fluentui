@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { HeatMapChartProps, HeatMapChartStyles } from './HeatMapChart.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -21,6 +23,8 @@ export const heatmapChartClassNames: SlotClassNames<HeatMapChartStyles> = {
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 const useStyles = makeStyles({
   root: {},

@@ -1,5 +1,7 @@
+'use client';
+
 import { ArcProps, ArcStyles } from './Arc.types';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { HighContrastSelector } from '../../../utilities/utilities';
@@ -23,7 +25,7 @@ const useStyles = makeStyles({
     stroke: tokens.colorNeutralBackground1,
     '& selectors': {
       '::-moz-focus-inner': {
-        ...shorthands.border('0'),
+        border: 0,
       },
     },
   },

@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -114,7 +116,6 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
     state.layout === 'multiline' && styles.rootMultiline,
     state.shape === 'square' && styles.square,
     rootIntentStyles[state.intent],
-    state.transitionClassName,
     state.root.className,
   );
 

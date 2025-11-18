@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 
 /**
@@ -5,9 +7,6 @@ import * as React from 'react';
  * current property, which will be updated as the ref is evaluated.
  */
 export type RefObjectFunction<T> = React.RefObject<T | null> & ((value: T | null) => void);
-
-/** @internal */
-type MutableRefObjectFunction<T> = React.MutableRefObject<T | null> & ((value: T | null) => void);
 
 /**
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
@@ -38,14 +37,13 @@ export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObje
         if (typeof ref === 'function') {
           ref(value);
         } else if (ref) {
-          // work around the immutability of the React.Ref type
-          (ref as React.MutableRefObject<T | null>).current = value;
+          ref.current = value;
         }
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps -- already exhaustive
     [...refs],
-  ) as MutableRefObjectFunction<T>;
+  ) as RefObjectFunction<T>;
 
   return mergedCallback;
 }

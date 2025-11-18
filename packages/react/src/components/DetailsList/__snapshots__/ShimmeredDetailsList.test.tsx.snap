@@ -2,16 +2,11 @@
 
 exports[`ShimmeredDetailsList renders List correctly 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-horizontalConstrained
         {
@@ -34,18 +29,17 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-busy={true}
-      aria-colcount={1}
-      aria-rowcount={0}
+      aria-busy="true"
+      aria-colcount="1"
+      aria-rowcount="0"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-FocusZone
               ms-DetailsHeader
               &:focus {
@@ -81,15 +75,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
           data-tabster="{\\"uncontrolled\\": {}}"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
-          onMouseMove={[Function]}
           role="row"
         >
           <div
             aria-labelledby="header1-checkTooltip"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
@@ -140,15 +130,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
-            onClick={[Function]}
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              class="ms-DetailsHeader-checkTooltip"
             >
               <div
-                aria-checked={false}
-                className=
+                aria-checked="false"
+                class=
                     ms-DetailsRow-check
                     ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
@@ -217,14 +206,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       z-index: 1;
                     }
                 data-automationid="DetailsRowCheck"
-                data-is-focusable={true}
-                data-selection-toggle={true}
+                data-is-focusable="true"
+                data-selection-toggle="true"
                 id="header1-check"
                 role="checkbox"
-                tabIndex={-1}
+                tabindex="0"
               >
                 <div
-                  className=
+                  class=
                       ms-Check
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -264,8 +253,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-circle
                         {
@@ -298,17 +287,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-check
                         {
@@ -346,11 +331,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
@@ -361,24 +342,15 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 &:focus {
                   outline: none;
@@ -390,13 +362,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                 }
             data-focuszone-id="FocusZone3"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
           >
             <div
-              className=
+              class=
                   ms-List
                   {
                     position: relative;
@@ -413,22 +381,21 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -441,7 +408,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -465,14 +432,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -497,14 +460,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -517,14 +476,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -545,16 +500,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -567,14 +517,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -595,12 +541,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>
@@ -608,13 +549,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -627,7 +568,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -651,14 +592,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -683,14 +620,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -703,14 +636,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -731,16 +660,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -753,14 +677,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -781,12 +701,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>
@@ -794,13 +709,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={2}
+                    data-list-index="2"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -813,7 +728,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -837,14 +752,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -869,14 +780,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -889,14 +796,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -917,16 +820,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -939,14 +837,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -967,12 +861,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>
@@ -980,13 +869,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={3}
+                    data-list-index="3"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -999,7 +888,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -1023,14 +912,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -1055,14 +940,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1075,14 +956,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1103,16 +980,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1125,14 +997,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1153,12 +1021,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>
@@ -1166,13 +1029,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={4}
+                    data-list-index="4"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1185,7 +1048,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -1209,14 +1072,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -1241,14 +1100,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1261,14 +1116,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1289,16 +1140,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1311,14 +1157,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1339,12 +1181,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>
@@ -1352,13 +1189,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={5}
+                    data-list-index="5"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1371,7 +1208,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -1395,14 +1232,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -1427,14 +1260,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1447,14 +1276,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1475,16 +1300,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1497,14 +1317,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1525,12 +1341,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>
@@ -1538,13 +1349,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={6}
+                    data-list-index="6"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1557,7 +1368,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -1581,14 +1392,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -1613,14 +1420,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1633,14 +1436,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1661,16 +1460,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1683,14 +1477,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1711,12 +1501,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>
@@ -1724,13 +1509,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={7}
+                    data-list-index="7"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1743,7 +1528,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -1767,14 +1552,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -1799,14 +1580,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1819,14 +1596,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1847,16 +1620,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1869,14 +1637,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -1897,12 +1661,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>
@@ -1910,13 +1669,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={8}
+                    data-list-index="8"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1929,7 +1688,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -1953,14 +1712,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -1985,14 +1740,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -2005,14 +1756,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -2033,16 +1780,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -2055,14 +1797,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -2083,12 +1821,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>
@@ -2096,13 +1829,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     </div>
                   </div>
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={9}
+                    data-list-index="9"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-Shimmer-container
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -2115,7 +1848,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           }
                     >
                       <div
-                        className=
+                        class=
                             ms-Shimmer-shimmerWrapper
                             {
                               background-color: #f3f2f1;
@@ -2139,14 +1872,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
+                        style="width: 100%;"
                       >
                         <div
-                          className=
+                          class=
                               ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
@@ -2171,14 +1900,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               }
                         />
                         <div
-                          style={
-                            Object {
-                              "display": "flex",
-                            }
-                          }
+                          style="display: flex;"
                         >
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -2191,14 +1916,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "auto",
-                              }
-                            }
+                            style="width: auto;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -2219,16 +1940,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "40px",
-                                }
-                              }
+                              style="width: 40px; min-width: auto;"
                             />
                           </div>
                           <div
-                            className=
+                            class=
                                 ms-ShimmerElementsGroup-root
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -2241,14 +1957,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   font-weight: 400;
                                   position: relative;
                                 }
-                            style={
-                              Object {
-                                "width": "100%",
-                              }
-                            }
+                            style="width: 100%;"
                           >
                             <div
-                              className=
+                              class=
                                   ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -2269,12 +1981,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     background-color: Window;
                                     border-color: Window;
                                   }
-                              style={
-                                Object {
-                                  "minWidth": "auto",
-                                  "width": "100%",
-                                }
-                              }
+                              style="width: 100%; min-width: auto;"
                             />
                           </div>
                         </div>

@@ -5,7 +5,9 @@ import { useMergedRefs } from './useMergedRefs';
 describe('useMergedRefs', () => {
   it('always returns the same ref (refs should be immutable)', () => {
     let lastMergedRef;
-    const refFunc = () => null;
+    const refFunc = () => {
+      // no-op
+    };
     const TestComponent: React.FunctionComponent = () => {
       lastMergedRef = useMergedRefs<boolean>(refFunc);
       return null;
@@ -23,7 +25,10 @@ describe('useMergedRefs', () => {
     let lastMergedRef;
 
     const TestComponent: React.FunctionComponent = () => {
-      lastMergedRef = useMergedRefs<boolean>(() => ({}));
+      lastMergedRef = useMergedRefs<boolean>((_instance: boolean | null): void => {
+        // no-op
+        return;
+      });
       return null;
     };
 
@@ -36,10 +41,12 @@ describe('useMergedRefs', () => {
   });
 
   it('updates all provided refs', () => {
-    const refObject: React.RefObject<boolean> = React.createRef<boolean>();
+    const refObject = React.createRef<boolean | null>();
     let refValue: boolean | null = null;
     const TestComponent: React.FunctionComponent = () => {
-      const mergedRef = useMergedRefs<boolean>(refObject, val => (refValue = val));
+      const mergedRef = useMergedRefs<boolean>(refObject, (val): void => {
+        refValue = val;
+      });
 
       mergedRef(true);
 
@@ -52,7 +59,7 @@ describe('useMergedRefs', () => {
   });
 
   it('updates the current property', () => {
-    let mergedRef: (React.RefObject<string> & ((val: string) => void)) | undefined = undefined;
+    let mergedRef: (React.RefObject<string | null> & ((val: string) => void)) | undefined = undefined;
 
     const TestComponent: React.FunctionComponent = () => {
       mergedRef = useMergedRefs(React.useRef<string>(''), React.useRef<string>(''));
@@ -69,11 +76,11 @@ describe('useMergedRefs', () => {
   });
 
   it('reuses the same ref callback if refs remain stable', () => {
-    const refObject: React.RefObject<boolean> = React.createRef<boolean>();
+    const refObject = React.createRef<boolean>();
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const refValueFunc = (val: boolean) => {};
-    let refCallback: React.RefObject<boolean> | undefined = undefined;
+    let refCallback: React.RefObject<boolean | null> | undefined = undefined;
 
     const TestComponent: React.FunctionComponent = () => {
       refCallback = useMergedRefs<boolean>(refObject, refValueFunc);
@@ -91,10 +98,12 @@ describe('useMergedRefs', () => {
   });
 
   it('handles changing ref callbacks', () => {
-    const refObject: React.RefObject<boolean> = React.createRef<boolean>();
+    const refObject = React.createRef<boolean>();
 
     let firstRefValue: boolean | null = null;
-    let refValueFunc = (val: boolean) => (firstRefValue = val);
+    let refValueFunc = (val: boolean): void => {
+      firstRefValue = val;
+    };
 
     const TestComponent: React.FunctionComponent<{ update?: boolean }> = () => {
       const mergedRef = useMergedRefs<boolean>(refObject, refValueFunc);
@@ -107,7 +116,9 @@ describe('useMergedRefs', () => {
     const { rerender } = render(<TestComponent />);
 
     let secondRefValue: boolean | null = null;
-    refValueFunc = (val: boolean) => (secondRefValue = val);
+    refValueFunc = (val: boolean): void => {
+      secondRefValue = val;
+    };
 
     // Re-render the component
     rerender(<TestComponent update={true} />);

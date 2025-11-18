@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { makeStyles, mergeClasses } from '@griffel/react';
@@ -34,6 +36,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     width: '100%',
     height: '100%',
+    textAlign: 'left',
   },
   chart: {
     display: 'block',

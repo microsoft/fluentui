@@ -2,23 +2,23 @@
 
 exports[`Suggestions renders a list properly 1`] = `
 <div
-  className="ms-Suggestions"
+  class="ms-Suggestions"
   role="listbox"
 >
   <div
     aria-live="polite"
-    className=""
+    class=""
     role="status"
   />
   <div
-    className="ms-Suggestions-container"
+    class="ms-Suggestions-container"
     role="presentation"
   >
     <div
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -54,8 +54,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={true}
-          className=
+          aria-selected="true"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -164,19 +164,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-0"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -200,7 +194,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -218,8 +212,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -322,19 +316,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-1"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -358,7 +346,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -376,8 +364,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -480,19 +468,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-2"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -516,7 +498,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -534,8 +516,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -638,19 +620,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-3"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -674,7 +650,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -692,8 +668,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -796,19 +772,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-4"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -832,7 +802,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -850,8 +820,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -954,19 +924,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-5"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -990,7 +954,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -1008,8 +972,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -1112,19 +1076,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-6"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -1148,7 +1106,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -1166,8 +1124,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -1270,19 +1228,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-7"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -1306,7 +1258,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -1324,8 +1276,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -1428,19 +1380,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-8"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -1464,7 +1410,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -1482,8 +1428,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -1586,19 +1532,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-9"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -1622,7 +1562,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -1640,8 +1580,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -1744,19 +1684,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-10"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -1780,7 +1714,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -1798,8 +1732,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -1902,19 +1836,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-11"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -1938,7 +1866,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -1956,8 +1884,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -2060,19 +1988,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-12"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -2096,7 +2018,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -2114,8 +2036,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -2218,19 +2140,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-13"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -2254,7 +2170,7 @@ exports[`Suggestions renders a list properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -2272,8 +2188,8 @@ exports[`Suggestions renders a list properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -2376,19 +2292,13 @@ exports[`Suggestions renders a list properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-14"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -2414,7 +2324,7 @@ exports[`Suggestions renders a list properly 1`] = `
 
 exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
 <div
-  className=
+  class=
       ms-Suggestions
       {
         display: flex;
@@ -2426,11 +2336,11 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
 >
   <div
     aria-live="polite"
-    className=""
+    class=""
     role="status"
   />
   <div
-    className=
+    class=
         ms-Suggestions-container
         {
           max-height: 300px;
@@ -2444,7 +2354,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -2480,8 +2390,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={true}
-          className=
+          aria-selected="true"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -2590,19 +2500,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-0"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -2626,7 +2530,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -2644,8 +2548,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -2748,19 +2652,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-1"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -2784,7 +2682,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -2802,8 +2700,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -2906,19 +2804,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-2"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -2942,7 +2834,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -2960,8 +2852,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -3064,19 +2956,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-3"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -3100,7 +2986,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -3118,8 +3004,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -3222,19 +3108,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-4"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -3258,7 +3138,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -3276,8 +3156,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -3380,19 +3260,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-5"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -3416,7 +3290,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -3434,8 +3308,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -3538,19 +3412,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-6"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -3574,7 +3442,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -3592,8 +3460,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -3696,19 +3564,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-7"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -3732,7 +3594,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -3750,8 +3612,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -3854,19 +3716,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-8"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -3890,7 +3746,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -3908,8 +3764,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -4012,19 +3868,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-9"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -4048,7 +3898,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -4066,8 +3916,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -4170,19 +4020,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-10"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -4206,7 +4050,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -4224,8 +4068,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -4328,19 +4172,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-11"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -4364,7 +4202,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -4382,8 +4220,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -4486,19 +4324,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-12"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -4522,7 +4354,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -4540,8 +4372,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -4644,19 +4476,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-13"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -4680,7 +4506,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -4698,8 +4524,8 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -4802,19 +4628,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-14"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -4840,23 +4660,23 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
 
 exports[`Suggestions scrolls to selected index properly 1`] = `
 <div
-  className="ms-Suggestions"
+  class="ms-Suggestions"
   role="listbox"
 >
   <div
     aria-live="polite"
-    className=""
+    class=""
     role="status"
   />
   <div
-    className="ms-Suggestions-container"
+    class="ms-Suggestions-container"
     role="presentation"
   >
     <div
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -4874,8 +4694,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -4978,19 +4798,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-0"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -5014,7 +4828,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -5032,8 +4846,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -5136,19 +4950,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-1"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -5172,7 +4980,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -5190,8 +4998,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -5294,19 +5102,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-2"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -5330,7 +5132,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -5348,8 +5150,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -5452,19 +5254,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-3"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -5488,7 +5284,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -5506,8 +5302,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -5610,19 +5406,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-4"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -5646,7 +5436,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -5664,8 +5454,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -5768,19 +5558,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-5"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -5804,7 +5588,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -5822,8 +5606,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -5926,19 +5710,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-6"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -5962,7 +5740,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -5980,8 +5758,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -6084,19 +5862,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-7"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -6120,7 +5892,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -6156,8 +5928,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={true}
-          className=
+          aria-selected="true"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -6266,19 +6038,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-8"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -6302,7 +6068,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -6320,8 +6086,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -6424,19 +6190,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-9"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -6460,7 +6220,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -6478,8 +6238,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -6582,19 +6342,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-10"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -6618,7 +6372,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -6636,8 +6390,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -6740,19 +6494,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-11"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -6776,7 +6524,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -6794,8 +6542,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -6898,19 +6646,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-12"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -6934,7 +6676,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -6952,8 +6694,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -7056,19 +6798,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-13"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;
@@ -7092,7 +6828,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="presentation"
     >
       <div
-        className=
+        class=
             ms-Suggestions-item
             {
               align-items: stretch;
@@ -7110,8 +6846,8 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         role="presentation"
       >
         <button
-          aria-selected={false}
-          className=
+          aria-selected="false"
+          class=
               ms-Button
               ms-Button--action
               ms-Button--command
@@ -7214,19 +6950,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               & .ms-Button-flexContainer {
                 width: 100%;
               }
-          data-is-focusable={true}
+          data-is-focusable="true"
           id="sug-14"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
           role="option"
           type="button"
         >
           <span
-            className=
+            class=
                 ms-Button-flexContainer
                 {
                   align-items: center;

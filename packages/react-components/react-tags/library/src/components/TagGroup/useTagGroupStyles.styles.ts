@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TagGroupSlots, TagGroupState } from './TagGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';

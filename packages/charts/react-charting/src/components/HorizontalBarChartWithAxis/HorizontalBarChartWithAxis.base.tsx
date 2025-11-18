@@ -46,8 +46,9 @@ import {
   MIN_DOMAIN_MARGIN,
   sortAxisCategories,
 } from '../../utilities/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
@@ -84,14 +85,14 @@ export class HorizontalBarChartWithAxisBase
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _bars: JSX.Element[];
+  private _bars: JSXElement[];
   private _yAxisLabels: string[];
   private _xMax: number;
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
   private _longestBarPositiveTotalValue: number;
   private _longestBarNegativeTotalValue: number;
   private readonly X_ORIGIN: number = 0;
@@ -145,7 +146,7 @@ export class HorizontalBarChartWithAxisBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     this._adjustProps();
     this._yAxisLabels = this._getOrderedYAxisLabels();
     this._xMax = Math.max(
@@ -153,7 +154,7 @@ export class HorizontalBarChartWithAxisBase
       this.props.xMaxValue || 0,
     );
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
+    const legendBars: JSXElement = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       legendColor: this.state.color,
@@ -221,7 +222,12 @@ export class HorizontalBarChartWithAxisBase
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRtl,
+      opts,
+    );
   };
 
   private _getDomainNRangeValues = (
@@ -233,7 +239,6 @@ export class HorizontalBarChartWithAxisBase
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -242,7 +247,6 @@ export class HorizontalBarChartWithAxisBase
         margins,
         width,
         isRTL,
-        shiftX,
         this.X_ORIGIN,
       );
     } else {
@@ -263,7 +267,7 @@ export class HorizontalBarChartWithAxisBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderContentForOnlyBars = (point: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
+  private _renderContentForOnlyBars = (point: IHorizontalBarChartWithAxisDataPoint): JSXElement => {
     const { useSingleColor = false, enableGradient = false } = this.props;
     let selectedPointIndex = 0;
     this.props.data!.forEach((yDataPoint: IHorizontalBarChartWithAxisDataPoint, index: number) => {
@@ -300,7 +304,7 @@ export class HorizontalBarChartWithAxisBase
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderCallout = (props?: IHorizontalBarChartWithAxisDataPoint): JSX.Element | null => {
+  private _renderCallout = (props?: IHorizontalBarChartWithAxisDataPoint): JSXElement | null => {
     return props ? this._renderContentForOnlyBars(props) : null;
   };
 
@@ -328,7 +332,7 @@ export class HorizontalBarChartWithAxisBase
         : this._getScales(containerHeight, containerWidth, false);
     const xRange = xBarScale.range();
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    let allBars: JSX.Element[] = [];
+    let allBars: JSXElement[] = [];
     // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
     if (xRange[0] < xRange[1]) {
       allBars = stackedChartData
@@ -548,7 +552,7 @@ export class HorizontalBarChartWithAxisBase
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element[] {
+  ): JSXElement[] {
     const { useSingleColor = false } = this.props;
     const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...singleBarData];
     sortedBars.sort((a, b) => {
@@ -755,7 +759,7 @@ export class HorizontalBarChartWithAxisBase
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element[] {
+  ): JSXElement[] {
     const { useSingleColor = false } = this.props;
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
@@ -906,7 +910,7 @@ export class HorizontalBarChartWithAxisBase
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
+  private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSXElement => {
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
     const mapLegendToColor: Record<string, string> = {};

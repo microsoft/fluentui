@@ -94,7 +94,7 @@ describe.skip('LineChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', async () => {
-    const { container } = render(<LineChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    const { container } = render(<LineChart data={chartPoints} yAxisTickFormat={'.1f'} />);
     await waitFor(() => expect(container).toBeInTheDocument());
     expect(container).toMatchSnapshot();
   });

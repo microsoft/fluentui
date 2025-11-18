@@ -2,21 +2,15 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { CircleFilled, SquareFilled } from '@fluentui/react-icons';
 import { RatingDisplay } from '@fluentui/react-rating';
-import {
-  getStoryVariant,
-  withStoryWrightSteps,
-  TestWrapperDecoratorFixedWidth,
-  HIGH_CONTRAST,
-  DARK_MODE,
-} from '../utilities';
-import { Steps } from 'storywright';
+import { getStoryVariant, TestWrapperDecoratorFixedWidth, HIGH_CONTRAST, DARK_MODE } from '../utilities';
+import { Steps, type StoryParameters } from 'storywright';
 
 export default {
   title: 'RatingDisplay Converged',
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof RatingDisplay>;
 
 export const NoValue = () => <RatingDisplay />;

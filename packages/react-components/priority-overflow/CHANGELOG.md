@@ -1,8 +1,26 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Mon, 08 Sep 2025 12:51:42 GMT and should not be manually modified.
+This log was last generated on Fri, 31 Oct 2025 16:22:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.2.1)
+
+Fri, 31 Oct 2025 16:22:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.2.0..@fluentui/priority-overflow_v9.2.1)
+
+### Patches
+
+- fix: use numeric literals for Node constants to make SSR work ([PR #35357](https://github.com/microsoft/fluentui/pull/35357) by 198982749+Copilot@users.noreply.github.com)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.2.0)
+
+Thu, 02 Oct 2025 15:12:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.16..@fluentui/priority-overflow_v9.2.0)
+
+### Minor changes
+
+- fix: overflowMenuSize is included in occupiedSize ([PR #35090](https://github.com/microsoft/fluentui/pull/35090) by vkozlova@microsoft.com)
 
 ## [9.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.16)
 

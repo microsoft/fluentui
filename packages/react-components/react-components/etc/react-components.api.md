@@ -826,6 +826,7 @@ import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import { presenceBlockedRegular } from '@fluentui/react-badge';
 import { presenceBusyFilled } from '@fluentui/react-badge';
+import { PresenceComponent } from '@fluentui/react-motion';
 import { PresenceComponentProps } from '@fluentui/react-motion';
 import { presenceDndFilled } from '@fluentui/react-badge';
 import { presenceDndRegular } from '@fluentui/react-badge';
@@ -1507,6 +1508,7 @@ import { TreeItemSlots } from '@fluentui/react-tree';
 import { TreeItemState } from '@fluentui/react-tree';
 import { TreeItemValue } from '@fluentui/react-tree';
 import { TreeNavigationData_unstable } from '@fluentui/react-tree';
+import { TreeNavigationDataParam } from '@fluentui/react-tree';
 import { TreeNavigationEvent_unstable } from '@fluentui/react-tree';
 import { TreeOpenChangeData } from '@fluentui/react-tree';
 import { TreeOpenChangeEvent } from '@fluentui/react-tree';
@@ -1543,6 +1545,7 @@ import { useAppItem_unstable } from '@fluentui/react-nav';
 import { useAppItemStatic_unstable } from '@fluentui/react-nav';
 import { useAppItemStaticStyles_unstable } from '@fluentui/react-nav';
 import { useAppItemStyles_unstable } from '@fluentui/react-nav';
+import { useApplyScrollbarWidth } from '@fluentui/react-utilities';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -2014,6 +2017,7 @@ import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
+import { useTreeNavigation } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { useTypingAnnounce } from '@fluentui/react-aria';
 import { useUncontrolledFocus } from '@fluentui/react-tabster';
@@ -3665,6 +3669,8 @@ export { presenceBlockedRegular }
 
 export { presenceBusyFilled }
 
+export { PresenceComponent }
+
 export { PresenceComponentProps }
 
 export { presenceDndFilled }
@@ -5027,6 +5033,8 @@ export { TreeItemValue }
 
 export { TreeNavigationData_unstable }
 
+export { TreeNavigationDataParam }
+
 export { TreeNavigationEvent_unstable }
 
 export { TreeOpenChangeData }
@@ -5098,6 +5106,8 @@ export { useAppItemStatic_unstable }
 export { useAppItemStaticStyles_unstable }
 
 export { useAppItemStyles_unstable }
+
+export { useApplyScrollbarWidth }
 
 export { useAriaLiveAnnouncer_unstable }
 
@@ -6040,6 +6050,8 @@ export { useTreeItemPersonaLayout_unstable }
 export { useTreeItemPersonaLayoutStyles_unstable }
 
 export { useTreeItemStyles_unstable }
+
+export { useTreeNavigation }
 
 export { useTreeStyles_unstable }
 

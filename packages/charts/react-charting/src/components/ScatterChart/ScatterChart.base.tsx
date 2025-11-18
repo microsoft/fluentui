@@ -42,9 +42,10 @@ import {
 import { classNamesFunction, DirectionalHint, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
 import { ILineChartPoints } from '../../types/IDataPoint';
-import { toImage as convertToImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -78,7 +79,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _refArray = React.useMemo(() => [], []);
   const margins = React.useRef<IMargins | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const renderSeries = React.useRef<JSX.Element[]>([]);
+  const renderSeries = React.useRef<JSXElement[]>([]);
   let _xAxisLabels: string[] = [];
   const _xAxisCalloutAccessibilityData: IAccessibilityProps = {};
   const _xBandwidth = React.useRef<number>(0);
@@ -119,10 +120,15 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
       toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return convertToImage(cartesianChartRef.current?.chartContainer, legendsRef.current?.toSVG, getRTL(), opts);
+        return exportChartsAsImage(
+          [{ container: cartesianChartRef.current?.chartContainer }],
+          props.hideLegend ? undefined : legendsRef.current?.toSVG,
+          getRTL(),
+          opts,
+        );
       },
     }),
-    [],
+    [props.hideLegend],
   );
 
   const _xAxisType: XAxisTypes =
@@ -188,7 +194,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  function _createLegends(data: ScatterChartDataWithIndex[]): JSX.Element {
+  function _createLegends(data: ScatterChartDataWithIndex[]): JSXElement {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const mapLegendToPoints: Record<string, ScatterChartDataWithIndex[]> = {};
@@ -222,6 +228,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
     return (
       <Legends
+        ref={legendsRef}
         legends={[...legendDataItems]}
         enabledWrapLines={props.enabledLegendsWrapLines}
         overflowProps={props.legendsOverflowProps}
@@ -462,9 +469,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
   const _createPlot = React.useCallback(
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    (xElement: SVGElement, containerHeight: number): JSX.Element[] => {
+    (xElement: SVGElement, containerHeight: number): JSXElement[] => {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const series: JSX.Element[] = [];
+      const series: JSXElement[] = [];
       if (isSelectedLegend) {
         _points.current = selectedLegendPoints;
       } else {
@@ -493,7 +500,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
       for (let i = _points.current?.length - 1; i >= 0; i--) {
         // eslint-disable-next-line @typescript-eslint/no-deprecated
-        const pointsForSeries: JSX.Element[] = [];
+        const pointsForSeries: JSXElement[] = [];
 
         const legendVal: string = _points.current?.[i]?.legend;
         const seriesColor: string = _points.current?.[i]?.color!;

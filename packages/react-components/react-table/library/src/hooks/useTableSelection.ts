@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { SelectionHookParams, useEventCallback, useSelection } from '@fluentui/react-utilities';
 import type { TableRowId, TableSelectionState, TableFeaturesState } from './types';

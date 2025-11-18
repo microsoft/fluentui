@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { resetIds } from '@fluentui/utilities';
@@ -30,9 +29,8 @@ describe('SwatchColorPicker', () => {
   });
 
   it('renders SwatchColorPicker correctly', () => {
-    const component = create(<SwatchColorPicker colorCells={DEFAULT_OPTIONS} columnCount={4} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<SwatchColorPicker colorCells={DEFAULT_OPTIONS} columnCount={4} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

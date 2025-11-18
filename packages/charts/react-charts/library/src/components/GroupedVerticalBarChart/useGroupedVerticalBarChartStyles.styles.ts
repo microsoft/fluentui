@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { GroupedVerticalBarChartProps, GroupedVerticalBarChartStyles } from '../../index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
@@ -20,6 +22,8 @@ export const groupedVerticalBarChartClassNames: SlotClassNames<GroupedVerticalBa
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 const useStyles = makeStyles({

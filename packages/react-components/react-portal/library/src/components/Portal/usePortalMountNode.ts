@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import {
   useThemeClassName_unstable as useThemeClassName,
@@ -24,6 +26,7 @@ type UseElementFactoryOptions = {
   className: string;
   dir: string;
   disabled: boolean | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   focusVisibleRef: React.MutableRefObject<HTMLElement | null>;
   targetNode: HTMLElement | ShadowRoot | undefined;
 };
@@ -132,7 +135,8 @@ const useModernElementFactory: UseElementFactory = options => {
         // before mounting the portal. We hardcode the value to `Node.ELEMENT_NODE` to pass this check and avoid
         // premature node creation
         if (property === 'nodeType') {
-          return Node.ELEMENT_NODE;
+          // Can't use the `Node.ELEMENT_NODE` as it's a browser API and  not available in all environments, e.g SSR
+          return 1; // `Node.ELEMENT_NODE`
         }
 
         // Heads up!
@@ -232,11 +236,12 @@ const useElementFactory = useInsertionEffect ? useModernElementFactory : useLega
  * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
-  'use no memo';
+  ('use no memo');
 
   const { targetDocument, dir } = useFluent();
   const mountNode = usePortalMountNodeContext();
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
   const classes = usePortalMountNodeStylesStyles();
   const themeClassName = useThemeClassName();

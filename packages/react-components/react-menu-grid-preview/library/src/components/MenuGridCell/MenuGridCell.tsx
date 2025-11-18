@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useMenuGridCell_unstable } from './useMenuGridCell';
 import { renderMenuGridCell_unstable } from './renderMenuGridCell';

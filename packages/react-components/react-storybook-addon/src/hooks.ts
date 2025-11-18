@@ -40,6 +40,7 @@ type FluentDocsConfig =
       tableOfContents?: boolean;
       dirSwitcher?: boolean;
       themePicker?: boolean;
+      copyAsMarkdown?: boolean;
       argTable?:
         | boolean
         | {
@@ -48,7 +49,7 @@ type FluentDocsConfig =
           };
     };
 
-export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void] {
+export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void, FluentGlobals, FluentGlobals] {
   return useStorybookGlobals();
 }
 

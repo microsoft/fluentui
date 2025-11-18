@@ -1,8 +1,90 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 18 Sep 2025 04:07:17 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Nov 2025 04:07:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.133](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.133)
+
+Wed, 12 Nov 2025 04:07:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.132..@fluentui/web-components_v3.0.0-beta.133)
+
+### Changes
+
+- fix: ensure required radio error message is announced by assistive technology ([PR #35468](https://github.com/microsoft/fluentui/pull/35468) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.132](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.132)
+
+Fri, 07 Nov 2025 04:12:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.131..@fluentui/web-components_v3.0.0-beta.132)
+
+### Changes
+
+- fix: avoid global type leaks into production assets compilation ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
+
+## [3.0.0-beta.131](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.131)
+
+Mon, 03 Nov 2025 04:07:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.130..@fluentui/web-components_v3.0.0-beta.131)
+
+### Changes
+
+- fix: hide dropdown indicator and support native collapse behavior on click ([PR #35439](https://github.com/microsoft/fluentui/pull/35439) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.130](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.130)
+
+Mon, 20 Oct 2025 04:08:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.129..@fluentui/web-components_v3.0.0-beta.130)
+
+### Changes
+
+- fix: update dropdown forced-colors mode states ([PR #35340](https://github.com/microsoft/fluentui/pull/35340) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.129](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.129)
+
+Thu, 16 Oct 2025 04:09:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.128..@fluentui/web-components_v3.0.0-beta.129)
+
+### Changes
+
+- fix(web-components): ensure menu initialization is queued ([PR #35328](https://github.com/microsoft/fluentui/pull/35328) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.128](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.128)
+
+Wed, 15 Oct 2025 04:07:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.127..@fluentui/web-components_v3.0.0-beta.128)
+
+### Changes
+
+- exclude node_modules and dist so CEM type parser maps types properly ([PR #35326](https://github.com/microsoft/fluentui/pull/35326) by jes@microsoft.com)
+
+## [3.0.0-beta.127](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.127)
+
+Tue, 14 Oct 2025 04:06:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.126..@fluentui/web-components_v3.0.0-beta.127)
+
+### Changes
+
+- remove aria-hidden from field labels to zoom text accessibility works, remove field text-input and text-area examples from storybook ([PR #35308](https://github.com/microsoft/fluentui/pull/35308) by jes@microsoft.com)
+- [chore]: bump min version of node from 20 to 22 ([PR #35286](https://github.com/microsoft/fluentui/pull/35286) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.126](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.126)
+
+Fri, 10 Oct 2025 04:08:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.125..@fluentui/web-components_v3.0.0-beta.126)
+
+### Changes
+
+- [fix]: voice over in navigation mode was not announcing tabs belonging to a disabled tablist as disabled ([PR #35299](https://github.com/microsoft/fluentui/pull/35299) by jes@microsoft.com)
+
+## [3.0.0-beta.125](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.125)
+
+Mon, 06 Oct 2025 04:08:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.124..@fluentui/web-components_v3.0.0-beta.125)
+
+### Changes
+
+- Fix Node version to be compaditible with CEM analyzer so parsedTypes get properly written. ([PR #35277](https://github.com/microsoft/fluentui/pull/35277) by jes@microsoft.com)
 
 ## [3.0.0-beta.124](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.124)
 

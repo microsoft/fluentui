@@ -1,5 +1,8 @@
+'use client';
+
 import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
-import { copyStyle, createMeasurementSpan, resolveCSSVariables } from './index';
+import { isHTMLElement } from '@fluentui/react-utilities';
+import { copyStyle, createMeasurementSpan } from './index';
 import { ImageExportOptions } from '../types/index';
 import { Legend, LegendContainer } from '../Legends';
 import {
@@ -13,48 +16,66 @@ import {
   INACTIVE_LEGEND_TEXT_OPACITY,
 } from '../components/Legends/useLegendsStyles.styles';
 
-export function toImage(
-  chartContainer: HTMLElement | null | undefined,
-  legendsToSvgCallback?: LegendContainer['toSVG'],
+export type GridChart = {
+  container: HTMLElement | null | undefined;
+  row?: number;
+  col?: number;
+};
+
+type SvgImage = {
+  dataUrl: string;
+  width: number;
+  height: number;
+};
+
+export async function exportChartsAsImage(
+  charts: GridChart[],
+  legendsToSvg?: LegendContainer['toSVG'],
   isRTL: boolean = false,
   opts: ImageExportOptions = {},
 ): Promise<string> {
-  return new Promise((resolve, reject) => {
-    if (!chartContainer) {
-      return reject(new Error('Chart container is not defined'));
+  if (charts.length === 0 && !legendsToSvg) {
+    throw new Error('No charts or legends to export');
+  }
+
+  const chartImages = await Promise.all(
+    charts.map(chart => {
+      return new Promise<SvgImage>(resolve => {
+        const svg = cloneStyledSVG(chart.container, isRTL);
+        const svgDataUrl = svgToBase64(svg.node);
+        resolve({ dataUrl: svgDataUrl, width: svg.width, height: svg.height });
+      });
+    }),
+  );
+
+  const grid: SvgImage[][] = []; // Sparse 2D array
+  charts.forEach((chart, i) => {
+    const row = chart.row || 0;
+    const col = chart.col || 0;
+    if (!grid[row]) {
+      grid[row] = [];
     }
-
-    try {
-      const background =
-        typeof opts.background === 'string' ? resolveCSSVariables(chartContainer, opts.background) : 'transparent';
-
-      const svg = toSVG(chartContainer, legendsToSvgCallback, isRTL, background);
-      if (!svg.node) {
-        return reject(new Error('SVG node is null'));
-      }
-
-      let svgData = new XMLSerializer().serializeToString(svg.node);
-      // This node is already detached from the DOM, so there's no need to call remove() on it.
-      // Just clear the reference.
-      svg.node = null;
-
-      let svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescapePonyfill(encodeURIComponent(svgData)));
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      svgData = null as any;
-
-      svgToPng(svgDataUrl, {
-        width: opts.width || svg.width,
-        height: opts.height || svg.height,
-        scale: opts.scale,
-      })
-        .then(resolve)
-        .catch(reject);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      svgDataUrl = null as any;
-    } catch (err) {
-      return reject(err);
-    }
+    grid[row][col] = chartImages[i];
   });
+
+  if (legendsToSvg) {
+    let totalWidth = 0;
+    grid.forEach(row => {
+      let rowWidth = 0;
+      row.forEach(item => {
+        rowWidth += item.width;
+      });
+      totalWidth = Math.max(totalWidth, rowWidth);
+    });
+
+    const svg = legendsToSvg(totalWidth, isRTL);
+    if (svg.node) {
+      const svgDataUrl = svgToBase64(svg.node);
+      grid.push([{ dataUrl: svgDataUrl, width: svg.width, height: svg.height }]);
+    }
+  }
+
+  return svgToPng(grid, opts);
 }
 
 const SVG_STYLE_PROPERTIES = [
@@ -79,12 +100,58 @@ const SVG_TEXT_STYLE_PROPERTIES = [
   'border',
 ];
 
-function toSVG(
-  chartContainer: HTMLElement,
-  legendsToSvgCallback: LegendContainer['toSVG'] | undefined,
-  isRTL: boolean,
-  background: string,
-) {
+const ANNOTATION_HTML_STYLE_PROPERTIES = [
+  'align-items',
+  'background',
+  'background-color',
+  'border',
+  'border-radius',
+  'box-shadow',
+  'box-sizing',
+  'color',
+  'column-gap',
+  'display',
+  'flex',
+  'flex-direction',
+  'font-family',
+  'font-size',
+  'font-style',
+  'font-weight',
+  'gap',
+  'height',
+  'justify-content',
+  'letter-spacing',
+  'line-height',
+  'margin',
+  'max-height',
+  'max-width',
+  'min-height',
+  'min-width',
+  'opacity',
+  'overflow',
+  'padding',
+  'pointer-events',
+  'position',
+  'row-gap',
+  'text-align',
+  'text-decoration',
+  'text-transform',
+  'top',
+  'right',
+  'bottom',
+  'left',
+  'visibility',
+  'white-space',
+  'width',
+  'z-index',
+];
+const ANNOTATION_FOREIGN_OBJECT_STYLE_PROPERTIES = ['overflow', 'pointer-events'];
+
+function cloneStyledSVG(chartContainer: HTMLElement | null | undefined, isRTL: boolean) {
+  if (!chartContainer) {
+    throw new Error('Chart container is not defined');
+  }
+
   const svg = chartContainer.querySelector<SVGSVGElement>('svg');
   if (!svg) {
     throw new Error('SVG not found');
@@ -115,35 +182,86 @@ function toSVG(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   clonedSvgElements = null as any;
 
-  const { width: svgWidth, height: svgHeight } = svg.getBoundingClientRect();
-  const legendGroup =
-    typeof legendsToSvgCallback === 'function'
-      ? legendsToSvgCallback(svgWidth, isRTL)
-      : { node: null, width: 0, height: 0 };
-  const w1 = Math.max(svgWidth, legendGroup.width);
-  const h1 = svgHeight + legendGroup.height;
+  const originalForeignObjects = svg.querySelectorAll('foreignObject');
+  const clonedForeignObjects = clonedSvg.node()!.querySelectorAll('foreignObject');
 
-  if (legendGroup.node) {
-    d3Select(legendGroup.node).attr('transform', `translate(0, ${svgHeight})`);
-    clonedSvg.append(() => legendGroup.node);
+  originalForeignObjects.forEach((originalFo, index) => {
+    const clonedFo = clonedForeignObjects[index];
+    if (!clonedFo) {
+      return;
+    }
+
+    const originalRoot = originalFo.firstElementChild as HTMLElement | null;
+    const clonedRoot = clonedFo.firstElementChild as HTMLElement | null;
+
+    if (originalRoot && clonedRoot) {
+      copyStyle(ANNOTATION_HTML_STYLE_PROPERTIES, originalRoot, clonedRoot);
+    }
+
+    const originalHtmlElements = originalFo.querySelectorAll<HTMLElement>('*');
+    const clonedHtmlElements = clonedFo.querySelectorAll<HTMLElement>('*');
+
+    originalHtmlElements.forEach((originalEl, elementIndex) => {
+      const clonedEl = clonedHtmlElements[elementIndex];
+      if (clonedEl) {
+        copyStyle(ANNOTATION_HTML_STYLE_PROPERTIES, originalEl, clonedEl);
+      }
+    });
+  });
+
+  const annotationSvg = chartContainer.querySelector<SVGSVGElement>('[data-chart-annotation-svg="true"]');
+  let annotationClone: SVGSVGElement | null = null;
+
+  if (annotationSvg) {
+    annotationClone = annotationSvg.cloneNode(true) as SVGSVGElement;
+    copyStyle(SVG_STYLE_PROPERTIES, annotationSvg, annotationClone);
+
+    const annotationElements = annotationSvg.getElementsByTagName('*');
+    const clonedAnnotationElements = annotationClone.getElementsByTagName('*');
+
+    for (let i = 0; i < annotationElements.length; i++) {
+      const original = annotationElements[i];
+      const cloned = clonedAnnotationElements[i];
+      const tag = original.tagName.toLowerCase();
+      const isSvgElement = original instanceof SVGElement;
+      const isTextElement = tag === 'text';
+      const isHtmlElement = isHTMLElement(original);
+
+      if (isSvgElement) {
+        if (isTextElement) {
+          copyStyle([...SVG_STYLE_PROPERTIES, ...SVG_TEXT_STYLE_PROPERTIES], original, cloned);
+        } else {
+          copyStyle(SVG_STYLE_PROPERTIES, original, cloned);
+        }
+      }
+
+      if (isHtmlElement) {
+        copyStyle(ANNOTATION_HTML_STYLE_PROPERTIES, original, cloned);
+      }
+
+      if (tag === 'foreignobject') {
+        copyStyle(ANNOTATION_FOREIGN_OBJECT_STYLE_PROPERTIES, original, cloned);
+      }
+    }
   }
+
+  const { width, height } = svg.getBoundingClientRect();
+
   clonedSvg
-    .insert('rect', ':first-child')
-    .attr('x', 0)
-    .attr('y', 0)
-    .attr('width', w1)
-    .attr('height', h1)
-    .attr('fill', background);
-  clonedSvg
-    .attr('width', w1)
-    .attr('height', h1)
-    .attr('viewBox', `0 0 ${w1} ${h1}`)
+    .attr('width', width)
+    .attr('height', height)
+    .attr('viewBox', `0 0 ${width} ${height}`)
     .attr('direction', isRTL ? 'rtl' : 'ltr');
 
+  if (annotationClone) {
+    clonedSvg.selectAll('[data-chart-annotation-layer="true"]').remove();
+    d3Select(annotationClone).attr('x', 0).attr('y', 0).attr('width', width).attr('height', height);
+    clonedSvg.append(() => annotationClone as SVGSVGElement);
+  }
   const result = {
     node: clonedSvg.node(),
-    width: w1,
-    height: h1,
+    width,
+    height,
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   clonedSvg = null as any;
@@ -169,7 +287,7 @@ export function cloneLegendsToSVG(
   },
   legendContainer?: HTMLElement | null,
 ): {
-  node: SVGGElement | null;
+  node: SVGSVGElement | null;
   width: number;
   height: number;
 } {
@@ -261,46 +379,92 @@ export function cloneLegendsToSVG(
     });
   }
 
+  const w1 = Math.max(svgWidth, ...legendLineWidths);
+  const h1 = legendY;
+  const svg = d3Create<SVGSVGElement>('svg').attr('width', w1).attr('height', h1).attr('viewBox', `0 0 ${w1} ${h1}`);
+  svg.append(() => legendGroup.node()!);
+
   return {
-    node: legendGroup.node(),
-    width: Math.max(...legendLineWidths),
-    height: legendY,
+    node: svg.node(),
+    width: w1,
+    height: h1,
   };
 }
 
-function svgToPng(svgDataUrl: string, opts: ImageExportOptions = {}): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const scale = opts.scale || 1;
-    const w0 = opts.width || 300;
-    const h0 = opts.height || 150;
-    const w1 = scale * w0;
-    const h1 = scale * h0;
+type PositionedImage = SvgImage & {
+  x: number;
+  y: number;
+};
 
-    const canvas = document.createElement('canvas');
-    const img = new Image();
+async function svgToPng(grid: SvgImage[][], opts: ImageExportOptions = {}): Promise<string> {
+  let totalWidth = 0;
+  let totalHeight = 0;
 
-    canvas.width = w1;
-    canvas.height = h1;
+  const positionedImages: PositionedImage[] = grid
+    .map(row => {
+      let rowWidth = 0;
+      let rowHeight = 0;
 
-    img.onload = function () {
-      const ctx = canvas.getContext('2d');
-      if (!ctx) {
-        return reject(new Error('Canvas context is null'));
-      }
+      const items = row.map(item => {
+        const positioned = { ...item, x: rowWidth, y: totalHeight };
+        rowWidth += item.width;
+        rowHeight = Math.max(rowHeight, item.height);
+        return positioned;
+      });
 
-      ctx.clearRect(0, 0, w1, h1);
-      ctx.drawImage(img, 0, 0, w1, h1);
+      totalWidth = Math.max(totalWidth, rowWidth);
+      totalHeight += rowHeight;
 
-      const imgData = canvas.toDataURL('image/png');
-      resolve(imgData);
-    };
+      return items;
+    })
+    .flat();
 
-    img.onerror = function (err) {
-      reject(err);
-    };
+  const scale = opts.scale || 1;
+  const w0 = opts.width || totalWidth;
+  const h0 = opts.height || totalHeight;
+  const scaleX = (scale * w0) / totalWidth;
+  const scaleY = (scale * h0) / totalHeight;
+  totalWidth = scaleX * totalWidth;
+  totalHeight = scaleY * totalHeight;
 
-    img.src = svgDataUrl;
-  });
+  const canvas = document.createElement('canvas');
+  canvas.width = totalWidth;
+  canvas.height = totalHeight;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    throw new Error('Canvas context is null');
+  }
+
+  ctx.fillStyle = opts.background || 'transparent';
+  ctx.fillRect(0, 0, totalWidth, totalHeight);
+
+  await Promise.all(
+    positionedImages.map(
+      item =>
+        new Promise<void>((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => {
+            ctx.drawImage(img, scaleX * item.x, scaleY * item.y, scaleX * item.width, scaleY * item.height);
+            resolve();
+          };
+          img.onerror = reject;
+          img.src = item.dataUrl;
+        }),
+    ),
+  );
+
+  return canvas.toDataURL('image/png');
+}
+
+function svgToBase64(svgNode: SVGSVGElement | null) {
+  if (!svgNode) {
+    throw new Error('SVG node is null');
+  }
+
+  const svgData = new XMLSerializer().serializeToString(svgNode);
+  const svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescapePonyfill(encodeURIComponent(svgData)));
+  return svgDataUrl;
 }
 
 const hex2 = /^[\da-f]{2}$/i;

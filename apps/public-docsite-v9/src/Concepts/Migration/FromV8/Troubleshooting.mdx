@@ -1,0 +1,83 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Troubleshooting" />
+
+## "I tried using the new components but there does not seem to be any styling applied to them. Am I doing something wrong?"
+
+Components in version 8 could be used in isolation and still retain their default styling.
+For components to be styled in version 9, they must be wrapped with `FluentProvider` with a theme passed to it.
+
+We recommend placing the `FluentProvider` at the root of your app so that everything gets styled appropriately. The theme to use if you are coming from version 8 is `webLightTheme`.
+
+```jsx
+import React from 'react';
+import ReactDOMClient from 'react-dom/client';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+import App from './App';
+
+const root = ReactDOMClient.createRoot(document.getElementById('root'));
+root.render(
+  <FluentProvider theme={webLightTheme}>
+    <App />
+  </FluentProvider>,
+);
+```
+
+## "I tried using the new components inside v8 Callouts, Panels, etc. but there does not seem to be any styling applied to them. Am I doing something wrong?"
+
+Components in version v9 use CSS variables for styling, v9 components that are using [React Portals](https://reactjs.org/docs/portals.html) handle this by default. Components like `Callout` & `Panel` in v8 don't do it, but this can be enabled with a compatibility package called `@fluentui/react-portal-compat`.
+
+`PortalCompatProvider` should be an inner child of FluentProvider, no additional configuration is required for `@fluentui/react`.
+
+```jsx
+import { FluentProvider } from '@fluentui/react-components';
+import { PortalCompatProvider } from '@fluentui/react-portal-compat';
+
+function App() {
+  return (
+    <FluentProvider>
+      <PortalCompatProvider>{/* your components */}</PortalCompatProvider>
+    </FluentProvider>
+  );
+}
+```
+
+## <a id="portal-compatibility"></a> "I tried using a layered v8 component like Callout in a layered v9 component like Dialog and my Callout appears beneath my Dialog. What's going on?"
+
+Both v9 and v8 layers set the same `z-index` value by default, which means the document order will resolve their z-positioning.
+This can lead to inconsistent behavior because z-positioning depends on the order in which elements appear in the DOM.
+Moreover, v8 `Layer` hosts have a tendency to linger in the DOM even after the element they are hosting is closed, which can add to this inconsistency.
+
+Use `PortalMountNodeProvider` to handle this issue.
+
+```jsx
+import { FluentProvider, PortalMountNodeProvider } from '@fluentui/react-components';
+
+function App() {
+  // Get a reference to the v8 layer host
+  const mountNode = document.getElementById('fluent-default-layer-host');
+
+  return (
+    <FluentProvider>
+      <PortalMountNodeProvider mountNode={mountNode}>{/* your components */}</PortalMountNodeProvider>
+    </FluentProvider>
+  );
+}
+```
+
+## "I managed to get the theme working but the components look different than they did previously, why is that?"
+
+We are modernizing our components in version 9 to adhere to the latest guidelines in the Fluent Design Language. That is the reason for any visual differences you might notice.
+
+## "What if I want to override a component's styles? Say, if I want to make them look like they did before? It seems like the styles prop does not exist anymore!"
+
+The styling story in version 9 is very different to what existed in version 8. For one, we are moving away from providing a `styles` prop and are mostly focusing of providing styling via the `className` prop (if you are worried about how could you style every piece of a component via `className`, do not fret and keep reading).
+
+We are also moving away from `mergeStyles` in favor of `makeStyles` from [`@griffel/react`](https://github.com/microsoft/griffel), a new in-house CSS-in-JS solution that allows for things like atomic classes and build-time optimization of styles.
+
+If you want to learn more, read our [guide on how to style components](?path=/story/concepts-developer-styling-components--docs).
+
+```
+
+```

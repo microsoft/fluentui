@@ -1,7 +1,9 @@
+'use client';
+
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
-import { Legend, LegendContainer } from '../../components/Legends/Legends.types';
+import { Legend } from '../../components/Legends/Legends.types';
 import { Legends } from '../../components/Legends/Legends';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -11,8 +13,6 @@ import {
   RefArrayData,
   Margins,
   ChartPopoverProps,
-  Chart,
-  ImageExportOptions,
 } from '../../index';
 import { ChildProps } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
@@ -43,7 +43,7 @@ import {
   sortAxisCategories,
 } from '../../utilities/index';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
-import { toImage } from '../../utilities/image-export-utils';
+import { useImageExport } from '../../utilities/hooks';
 type ColorScale = (_p?: number) => string;
 
 export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarChartWithAxisProps> = React.forwardRef<
@@ -75,9 +75,8 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let _longestBarNegativeTotalValue: number;
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
   let _yAxisPadding: number = props.yAxisPadding ?? 0.5;
-  const cartesianChartRef = React.useRef<Chart>(null);
+  const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const X_ORIGIN: number = 0;
-  const _legendsRef = React.useRef<LegendContainer>(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -105,17 +104,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     }
     prevPropsRef.current = props;
   }, [props]);
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
-      },
-    }),
-    [],
-  );
 
   function _adjustProps(): void {
     _points = props.data || [];
@@ -788,18 +776,10 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(
-        points,
-        margins,
-        width,
-        isRTL,
-        shiftX,
-        X_ORIGIN,
-      );
+      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, X_ORIGIN);
     } else {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }

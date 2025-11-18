@@ -3,7 +3,7 @@
 exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProviderr22"
+    class="fui-FluentProvider fui-FluentProvider_r_22_"
     dir="ltr"
   >
     <div
@@ -49,6 +49,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
+              id="gauge-chart-arc-0"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -60,6 +61,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
+              id="gauge-chart-arc-1"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -71,6 +73,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
+              id="gauge-chart-arc-2"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -90,6 +93,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
+                id="gauge-chart-needle"
                 role="img"
                 stroke-width="2"
                 transform="translate(80)"
@@ -97,11 +101,11 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             </g>
             <g>
               <text
-                aria-describedby="tooltip-r24"
+                aria-describedby="tooltip-_r_24_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-hostr23"
+                id="tooltip-host_r_23_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -261,7 +265,7 @@ Array [
     aria-haspopup="menu"
     class="fui-Button fui-MenuButton"
     data-overflow-menu=""
-    id="menur21"
+    id="menu_r_21_"
     type="button"
   >
     +3 more
@@ -332,6 +336,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -343,6 +348,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="0.1"
             role="img"
             stroke-width="0"
@@ -353,6 +359,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="0.1"
             role="img"
             stroke-width="0"
@@ -371,6 +378,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -378,11 +386,11 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           </g>
           <g>
             <text
-              aria-describedby="tooltip-r17"
+              aria-describedby="tooltip-_r_17_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostr16"
+              id="tooltip-host_r_16_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -521,6 +529,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -532,6 +541,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="0.1"
             role="img"
             stroke-width="0"
@@ -542,6 +552,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="0.1"
             role="img"
             stroke-width="0"
@@ -560,6 +571,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -567,11 +579,11 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           </g>
           <g>
             <text
-              aria-describedby="tooltip-r14"
+              aria-describedby="tooltip-_r_14_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostr13"
+              id="tooltip-host_r_13_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -710,6 +722,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -721,6 +734,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -732,6 +746,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -751,6 +766,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -758,11 +774,11 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-rl"
+              aria-describedby="tooltip-_r_l_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostrk"
+              id="tooltip-host_r_k_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -852,7 +868,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutrn"
+      id="callout_r_n_"
     >
       <div
         class="fui-PopoverSurface"
@@ -1006,6 +1022,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1017,6 +1034,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1028,6 +1046,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1047,6 +1066,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -1054,11 +1074,11 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-rl"
+              aria-describedby="tooltip-_r_l_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostrk"
+              id="tooltip-host_r_k_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -1195,6 +1215,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1206,6 +1227,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1217,6 +1239,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1236,6 +1259,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -1243,11 +1267,11 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           </g>
           <g>
             <text
-              aria-describedby="tooltip-ri"
+              aria-describedby="tooltip-_r_i_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostrh"
+              id="tooltip-host_r_h_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -1384,6 +1408,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="2"
@@ -1395,6 +1420,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1406,6 +1432,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1425,6 +1452,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -1432,11 +1460,11 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-rq"
+              aria-describedby="tooltip-_r_q_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostrp"
+              id="tooltip-host_r_p_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -1526,7 +1554,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutrs"
+      id="callout_r_s_"
     >
       <div
         class="fui-PopoverSurface"
@@ -1680,6 +1708,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1691,6 +1720,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1702,6 +1732,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1721,6 +1752,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -1728,11 +1760,11 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-rd"
+              aria-describedby="tooltip-_r_d_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostrc"
+              id="tooltip-host_r_c_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -1822,7 +1854,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="calloutrf"
+      id="callout_r_f_"
     >
       <div
         class="fui-PopoverSurface"
@@ -1985,6 +2017,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -1996,6 +2029,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2007,6 +2041,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2026,6 +2061,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(105)"
@@ -2033,11 +2069,11 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           </g>
           <g>
             <text
-              aria-describedby="tooltip-r7"
+              aria-describedby="tooltip-_r_7_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostr6"
+              id="tooltip-host_r_6_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -2174,6 +2210,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2185,6 +2222,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2196,6 +2234,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2215,6 +2254,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -2222,11 +2262,11 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           </g>
           <g>
             <text
-              aria-describedby="tooltip-r4"
+              aria-describedby="tooltip-_r_4_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostr3"
+              id="tooltip-host_r_3_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -2363,6 +2403,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2374,6 +2415,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2385,6 +2427,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2404,6 +2447,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -2411,11 +2455,11 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           </g>
           <g>
             <text
-              aria-describedby="tooltip-ra"
+              aria-describedby="tooltip-_r_a_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostr9"
+              id="tooltip-host_r_9_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -2552,6 +2596,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             d="M0,0Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2563,6 +2608,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             d="M0,0Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2574,6 +2620,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             d="M0,0Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -2593,6 +2640,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(80)"
@@ -2600,11 +2648,11 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           </g>
           <g>
             <text
-              aria-describedby="tooltip-r1"
+              aria-describedby="tooltip-_r_1_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="20"
-              id="tooltip-hostr0"
+              id="tooltip-host_r_0_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -2726,6 +2774,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
+                id="gauge-chart-arc-0"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -2737,6 +2786,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
+                id="gauge-chart-arc-1"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -2748,6 +2798,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
+                id="gauge-chart-arc-2"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -2767,6 +2818,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
+                  id="gauge-chart-needle"
                   role="img"
                   stroke-width="2"
                   transform="translate(80)"
@@ -2774,11 +2826,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-r2d"
+                  aria-describedby="tooltip-_r_2d_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-hostr2c"
+                  id="tooltip-host_r_2c_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -2875,7 +2927,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2d"
+        id="tooltip-_r_2d_"
         role="tooltip"
       >
         <div
@@ -2912,6 +2964,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
+              id="gauge-chart-arc-0"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -2923,6 +2976,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
+              id="gauge-chart-arc-1"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -2934,6 +2988,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
+              id="gauge-chart-arc-2"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -2953,6 +3008,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
+                id="gauge-chart-needle"
                 role="img"
                 stroke-width="2"
                 transform="translate(80)"
@@ -2960,11 +3016,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-r2d"
+                aria-describedby="tooltip-_r_2d_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-hostr2c"
+                id="tooltip-host_r_2c_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3158,6 +3214,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
+                id="gauge-chart-arc-0"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -3169,6 +3226,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
+                id="gauge-chart-arc-1"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -3180,6 +3238,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
+                id="gauge-chart-arc-2"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -3199,6 +3258,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
+                  id="gauge-chart-needle"
                   role="img"
                   stroke-width="2"
                   transform="translate(70)"
@@ -3206,11 +3266,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-r2o"
+                  aria-describedby="tooltip-_r_2o_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-hostr2n"
+                  id="tooltip-host_r_2n_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -3233,7 +3293,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2o"
+        id="tooltip-_r_2o_"
         role="tooltip"
       >
         <div
@@ -3290,6 +3350,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
+              id="gauge-chart-arc-0"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -3301,6 +3362,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
+              id="gauge-chart-arc-1"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -3312,6 +3374,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
+              id="gauge-chart-arc-2"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -3331,6 +3394,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
+                id="gauge-chart-needle"
                 role="img"
                 stroke-width="2"
                 transform="translate(70)"
@@ -3338,11 +3402,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-r2o"
+                aria-describedby="tooltip-_r_2o_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-hostr2n"
+                id="tooltip-host_r_2n_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3462,6 +3526,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
+                id="gauge-chart-arc-0"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -3473,6 +3538,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
+                id="gauge-chart-arc-1"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -3484,6 +3550,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
+                id="gauge-chart-arc-2"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -3503,6 +3570,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
+                  id="gauge-chart-needle"
                   role="img"
                   stroke-width="2"
                   transform="translate(80)"
@@ -3510,11 +3578,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-r2a"
+                  aria-describedby="tooltip-_r_2a_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-hostr29"
+                  id="tooltip-host_r_29_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -3611,7 +3679,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2a"
+        id="tooltip-_r_2a_"
         role="tooltip"
       >
         <div
@@ -3668,6 +3736,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
+              id="gauge-chart-arc-0"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -3679,6 +3748,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
+              id="gauge-chart-arc-1"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -3690,6 +3760,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
+              id="gauge-chart-arc-2"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -3709,6 +3780,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
+                id="gauge-chart-needle"
                 role="img"
                 stroke-width="2"
                 transform="translate(80)"
@@ -3716,11 +3788,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-r2a"
+                aria-describedby="tooltip-_r_2a_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-hostr29"
+                id="tooltip-host_r_29_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3915,6 +3987,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="blue"
+                id="gauge-chart-arc-0"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -3926,6 +3999,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="neutralLight"
+                id="gauge-chart-arc-1"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -3945,6 +4019,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
+                  id="gauge-chart-needle"
                   role="img"
                   stroke-width="2"
                   transform="translate(80)"
@@ -3952,11 +4027,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-r2t"
+                  aria-describedby="tooltip-_r_2t_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-hostr2s"
+                  id="tooltip-host_r_2s_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -4034,7 +4109,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2t"
+        id="tooltip-_r_2t_"
         role="tooltip"
       >
         <div
@@ -4091,6 +4166,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="blue"
+              id="gauge-chart-arc-0"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -4102,6 +4178,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="neutralLight"
+              id="gauge-chart-arc-1"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -4121,6 +4198,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
+                id="gauge-chart-needle"
                 role="img"
                 stroke-width="2"
                 transform="translate(80)"
@@ -4128,11 +4206,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-r2t"
+                aria-describedby="tooltip-_r_2t_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-hostr2s"
+                id="tooltip-host_r_2s_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4316,6 +4394,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
+                id="gauge-chart-arc-0"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -4327,6 +4406,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
+                id="gauge-chart-arc-1"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -4338,6 +4418,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
+                id="gauge-chart-arc-2"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -4357,6 +4438,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
+                  id="gauge-chart-needle"
                   role="img"
                   stroke-width="2"
                   transform="translate(105)"
@@ -4364,11 +4446,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-r2g"
+                  aria-describedby="tooltip-_r_2g_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-hostr2f"
+                  id="tooltip-host_r_2f_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -4465,7 +4547,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2g"
+        id="tooltip-_r_2g_"
         role="tooltip"
       >
         <div
@@ -4531,6 +4613,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
+              id="gauge-chart-arc-0"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -4542,6 +4625,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
+              id="gauge-chart-arc-1"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -4553,6 +4637,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
+              id="gauge-chart-arc-2"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -4572,6 +4657,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
+                id="gauge-chart-needle"
                 role="img"
                 stroke-width="2"
                 transform="translate(105)"
@@ -4579,11 +4665,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-r2g"
+                aria-describedby="tooltip-_r_2g_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-hostr2f"
+                id="tooltip-host_r_2f_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4777,6 +4863,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
+                id="gauge-chart-arc-0"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -4788,6 +4875,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
+                id="gauge-chart-arc-1"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -4799,6 +4887,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
+                id="gauge-chart-arc-2"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -4818,6 +4907,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
+                  id="gauge-chart-needle"
                   role="img"
                   stroke-width="2"
                   transform="translate(80)"
@@ -4825,11 +4915,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-r2q"
+                  aria-describedby="tooltip-_r_2q_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-hostr2p"
+                  id="tooltip-host_r_2p_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -4926,7 +5016,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2q"
+        id="tooltip-_r_2q_"
         role="tooltip"
       >
         <div
@@ -4983,6 +5073,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
+              id="gauge-chart-arc-0"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -4994,6 +5085,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
+              id="gauge-chart-arc-1"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -5005,6 +5097,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
+              id="gauge-chart-arc-2"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -5024,6 +5117,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
+                id="gauge-chart-needle"
                 role="img"
                 stroke-width="2"
                 transform="translate(80)"
@@ -5031,11 +5125,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-r2q"
+                aria-describedby="tooltip-_r_2q_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-hostr2p"
+                id="tooltip-host_r_2p_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5229,6 +5323,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#107c10"
+                id="gauge-chart-arc-0"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -5240,6 +5335,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#f7630c"
+                id="gauge-chart-arc-1"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -5251,6 +5347,7 @@ Object {
                 d="M0,0Z"
                 data-is-focusable="true"
                 fill="#c50f1f"
+                id="gauge-chart-arc-2"
                 opacity="1"
                 role="img"
                 stroke-width="0"
@@ -5270,6 +5367,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                   data-is-focusable="true"
+                  id="gauge-chart-needle"
                   role="img"
                   stroke-width="2"
                   transform="translate(100)"
@@ -5277,11 +5375,11 @@ Object {
               </g>
               <g>
                 <text
-                  aria-describedby="tooltip-r2j"
+                  aria-describedby="tooltip-_r_2j_"
                   aria-hidden="true"
                   class="fui-gc__chartValue"
                   font-size="20"
-                  id="tooltip-hostr2i"
+                  id="tooltip-host_r_2i_"
                   text-anchor="middle"
                   x="0"
                   y="0"
@@ -5293,10 +5391,10 @@ Object {
                 />
               </g>
               <text
-                aria-describedby="tooltip-r2l"
+                aria-describedby="tooltip-_r_2l_"
                 class="fui-gc__sublabel"
                 dominant-baseline="hanging"
-                id="tooltip-hostr2k"
+                id="tooltip-host_r_2k_"
                 text-anchor="middle"
                 x="0"
                 y="4"
@@ -5392,7 +5490,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2j"
+        id="tooltip-_r_2j_"
         role="tooltip"
       >
         <div
@@ -5411,7 +5509,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-r2l"
+        id="tooltip-_r_2l_"
         role="tooltip"
       >
         <div
@@ -5468,6 +5566,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#107c10"
+              id="gauge-chart-arc-0"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -5479,6 +5578,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#f7630c"
+              id="gauge-chart-arc-1"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -5490,6 +5590,7 @@ Object {
               d="M0,0Z"
               data-is-focusable="true"
               fill="#c50f1f"
+              id="gauge-chart-arc-2"
               opacity="1"
               role="img"
               stroke-width="0"
@@ -5509,6 +5610,7 @@ Object {
             A 4,4,0,0,0,0,-4
           "
                 data-is-focusable="true"
+                id="gauge-chart-needle"
                 role="img"
                 stroke-width="2"
                 transform="translate(100)"
@@ -5516,11 +5618,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-r2j"
+                aria-describedby="tooltip-_r_2j_"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="20"
-                id="tooltip-hostr2i"
+                id="tooltip-host_r_2i_"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5532,10 +5634,10 @@ Object {
               />
             </g>
             <text
-              aria-describedby="tooltip-r2l"
+              aria-describedby="tooltip-_r_2l_"
               class="fui-gc__sublabel"
               dominant-baseline="hanging"
-              id="tooltip-hostr2k"
+              id="tooltip-host_r_2k_"
               text-anchor="middle"
               x="0"
               y="4"
@@ -5723,6 +5825,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -5734,6 +5837,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -5745,6 +5849,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -5764,6 +5869,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(-72)"
@@ -5771,11 +5877,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-r1p"
+              aria-describedby="tooltip-_r_1p_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="32"
-              id="tooltip-hostr1o"
+              id="tooltip-host_r_1o_"
               text-anchor="middle"
               x="0"
               y="0"
@@ -5912,6 +6018,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
             data-is-focusable="true"
             fill="#107c10"
+            id="gauge-chart-arc-0"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -5923,6 +6030,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
             data-is-focusable="true"
             fill="#f7630c"
+            id="gauge-chart-arc-1"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -5934,6 +6042,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
             data-is-focusable="true"
             fill="#c50f1f"
+            id="gauge-chart-arc-2"
             opacity="1"
             role="img"
             stroke-width="0"
@@ -5953,6 +6062,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             A 4,4,0,0,0,0,-4
           "
               data-is-focusable="true"
+              id="gauge-chart-needle"
               role="img"
               stroke-width="2"
               transform="translate(-72)"
@@ -5960,11 +6070,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-r1s"
+              aria-describedby="tooltip-_r_1s_"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="32"
-              id="tooltip-hostr1r"
+              id="tooltip-host_r_1r_"
               text-anchor="middle"
               x="0"
               y="0"

@@ -34,7 +34,7 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
     };
   }
 
-  public render() {
+  public render(): React.ReactElement {
     const { viewClassName, ref, ...rest } = this.props;
 
     return (
@@ -63,7 +63,7 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
     this.setState({ scrollViewHovered: false });
   };
 
-  private _renderView = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
+  private _renderView = (props: React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
     return (
       <div {...props} className={this.props.viewClassName}>
         {this.props.children}
@@ -71,14 +71,14 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
     );
   };
 
-  private _renderScrollThumb = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
+  private _renderScrollThumb = (props: React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
     const thumbStyle = {
       borderRadius: this.props.size,
     };
     return <div {...props} style={{ ...(props.style || {}), ...thumbStyle }} className={styles.thumb} />;
   };
 
-  private _renderScrollTrackVertical = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
+  private _renderScrollTrackVertical = (props: React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
     const trackStyle = {
       width: this.props.size,
     };
@@ -91,7 +91,7 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
     );
   };
 
-  private _renderScrollTrackHorizontal = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
+  private _renderScrollTrackHorizontal = (props: React.HTMLAttributes<HTMLDivElement>): React.ReactElement => {
     const trackStyle = {
       height: this.props.size,
     };

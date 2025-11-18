@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTimeout } from '@fluentui/react-utilities';
 import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -18,6 +20,7 @@ const valueMutationOptions = {
 
 interface TypingAnnounceReturn<TInputElement extends HTMLElement = HTMLElement> {
   typingAnnounce: AriaLiveAnnounceFn;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   inputRef: React.MutableRefObject<TInputElement | null>;
 }
 

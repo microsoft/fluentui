@@ -453,7 +453,7 @@ include the header cells which can be sortable. They are covered above.
 #### cell
 
 This is the most accessible and screenreader friendly navigation mode. This is what is recommended by the
-[WAI APG examples](https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids). Navigation happsn only
+[WAI APG examples](https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/data-grids/). Navigation happsn only
 on the level of the cell in both directions.
 
 <img src="../etc/images/table-interactions/Slide6.PNG" width="700" />
@@ -498,7 +498,7 @@ The spec aims to use the accessibility section as little as possible and buildin
 The follow a11y resources were used in the drafting of this spec:
 
 - https://www.w3.org/WAI/ARIA/apg/patterns/grid/
-- https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids
+- https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/data-grids/
 - https://www.w3.org/WAI/ARIA/apg/example-index/table/sortable-table.html
 - https://www.w3.org/WAI/ARIA/apg/example-index/table/table
 - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/grid_role

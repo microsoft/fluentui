@@ -1,6 +1,6 @@
 const configHelpers = require('../utils/configHelpers');
 
-/** @type {import("eslint").Linter.Config} */
+/** @type {import("eslint").Linter.LegacyConfig} */
 module.exports = {
   plugins: ['jsx-a11y', 'react', 'react-hooks', '@griffel'],
   parserOptions: {

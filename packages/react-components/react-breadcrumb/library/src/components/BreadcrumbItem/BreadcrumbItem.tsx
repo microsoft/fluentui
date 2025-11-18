@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useBreadcrumbItem_unstable } from './useBreadcrumbItem';
 import { renderBreadcrumbItem_unstable } from './renderBreadcrumbItem';

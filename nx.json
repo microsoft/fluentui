@@ -65,6 +65,7 @@
       "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
     },
     "lint": {
+      "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "cache": true,
       "inputs": [
@@ -149,7 +150,7 @@
         },
         "reactIntegrationTesting": {
           "targetName": "test-rit",
-          "reactVersions": ["17", "19"],
+          "reactVersions": ["17", "18"],
           "exclude": [
             "react-theme-sass",
             "babel-preset-global-context",
@@ -160,13 +161,34 @@
         }
       },
       "include": [
+        "apps/rit-tests-v9/*",
+        "apps/rit-tests-v8/*",
+
         "tools/**/*",
         "scripts/**/*",
         "packages/eslint-plugin/**",
+
         "packages/tokens/**",
         "packages/react-conformance/**",
         "packages/react-components/**/*",
-        "packages/charts/react-charts/**/*"
+        "packages/charts/react-charts/**/*",
+
+        "packages/foundation-legacy/**",
+        "packages/jest-serializer-merge-styles/**",
+        "packages/react/**",
+        "packages/react-cards/**",
+        "packages/react-hooks/**",
+        "packages/react-focus/**",
+        "packages/react-examples/**",
+        "packages/react-experiments/**",
+        "packages/react-window-provider/**",
+        "packages/react-icon-provider/**",
+        "packages/charts/react-charting/**",
+        "packages/utilities/**",
+        "packages/react-icons-mdl2/**",
+        "packages/react-monaco-editor/**",
+        "packages/react-docsite-components/**",
+        "packages/react-file-type-icons/**"
       ]
     }
   ],

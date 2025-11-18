@@ -111,6 +111,13 @@ export type {
   IDataSeries,
   IBarSeries,
   ILineSeries,
+  IChartAnnotation as ChartAnnotation,
+  ChartAnnotationCoordinate,
+  IChartAnnotationConnectorProps as ChartAnnotationConnectorProps,
+  ChartAnnotationArrowHead,
+  IChartAnnotationLayoutProps as ChartAnnotationLayoutProps,
+  IChartAnnotationStyleProps as ChartAnnotationStyleProps,
+  IChartAnnotationAccessibilityProps as ChartAnnotationAccessibilityProps,
 } from './types/index';
 export type {
   IChartHoverCardProps,
@@ -155,6 +162,8 @@ export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaug
 export { GaugeChart, GaugeChartVariant, GaugeValueFormat } from './GaugeChart';
 export type { DeclarativeChartProps, Schema, IDeclarativeChart } from './DeclarativeChart';
 export { DeclarativeChart } from './DeclarativeChart';
+export type { IAnnotationOnlyChartProps } from './AnnotationOnlyChart';
+export { AnnotationOnlyChart } from './AnnotationOnlyChart';
 export type { IResponsiveContainerProps, IResponsiveChildProps } from './ResponsiveContainer';
 export { ResponsiveContainer, withResponsiveContainer } from './ResponsiveContainer';
 export type { IScatterChartProps, IScatterChartStyleProps, IScatterChartStyles } from './ScatterChart';

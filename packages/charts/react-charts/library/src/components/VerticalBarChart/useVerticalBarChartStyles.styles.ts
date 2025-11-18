@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { VerticalBarChartProps, VerticalBarChartStyles } from '../../index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
@@ -23,6 +25,8 @@ export const verticalbarchartClassNames: SlotClassNames<VerticalBarChartStyles> 
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 const useStyles = makeStyles({
   opacityChangeOnHover: {},

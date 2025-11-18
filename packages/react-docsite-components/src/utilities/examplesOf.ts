@@ -1,9 +1,10 @@
+import type * as React from 'react';
 import { getId } from '@fluentui/react/lib/Utilities';
 
 export interface IExample {
   key: string;
   title: string;
-  onRender?: () => JSX.Element;
+  onRender?: () => React.ReactElement;
 }
 
 export class ExampleGroup {
@@ -23,7 +24,7 @@ export class ExampleGroup {
     return this._examples;
   }
 
-  public add(title: string, onRender: () => JSX.Element): ExampleGroup {
+  public add(title: string, onRender: () => React.ReactElement): ExampleGroup {
     this._examples.push({
       key: getId(),
       title,

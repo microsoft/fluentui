@@ -1,3 +1,5 @@
+'use client';
+
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils/animations';
@@ -126,6 +128,11 @@ const useDisabledStyleStyles = makeStyles({
     '&, &:disabled, & button': {
       color: tokens.colorNeutralForegroundDisabled,
       pointerEvents: 'none',
+
+      // add this explicitly for aria-disabled buttons that don't get default forced-colors disabled styles
+      '@media (forced-colors: active)': {
+        color: 'GrayText',
+      },
     },
   },
 });

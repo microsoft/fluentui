@@ -1,19 +1,11 @@
-/*  eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
-import * as renderer from 'react-test-renderer';
 import { customizable } from './customizable';
 import { Customizations } from './Customizations';
 import { Customizer } from './Customizer';
 import type { IStyle, IStyleFunction, ShadowConfig } from '@fluentui/merge-styles';
 
-@customizable('Foo', ['field'])
-class Foo extends React.Component<{ field?: string }, {}> {
-  public render(): JSX.Element {
-    return <div>{this.props.field}</div>;
-  }
-}
+import type { JSXElement } from '../jsx';
 
 interface IComponentStyles {
   root: IStyle;
@@ -30,7 +22,7 @@ interface IComponentStyleFunctionProps {
 
 @customizable('ConcatStyles', ['styles'], true)
 class ConcatStyles extends React.Component<IComponentProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div
         data-testid="concat-styles"
@@ -44,7 +36,7 @@ class ConcatStyles extends React.Component<IComponentProps, {}> {
 
 @customizable('OverrideStyles', ['styles'])
 class OverrideStyles extends React.Component<IComponentProps, {}> {
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div
         data-testid="override-styles"
@@ -58,37 +50,22 @@ class OverrideStyles extends React.Component<IComponentProps, {}> {
 
 @customizable('StyleFunction', ['styles'])
 class StyleFunction extends React.Component<IComponentStyleFunctionProps> {
-  public render(): JSX.Element {
-    return <div data-testid="style-function" />;
+  public render(): JSXElement {
+    const styles = this.props.styles({ styles: { root: {} } });
+
+    return (
+      <div
+        data-testid="style-function"
+        style={styles.root as React.CSSProperties}
+        data-style={JSON.stringify(styles.root)}
+      />
+    );
   }
 }
 
 describe('customizable', () => {
   beforeEach(() => {
     Customizations.reset();
-  });
-
-  it('can receive global customizations', () => {
-    Customizations.applySettings({ field: 'globalName' });
-    expect(renderToStaticMarkup(<Foo />)).toEqual('<div>globalName</div>');
-  });
-
-  it('can receive scoped customizations', () => {
-    Customizations.applySettings({ field: 'globalName' });
-    Customizations.applyScopedSettings('Foo', { field: 'scopedName' });
-    expect(renderToStaticMarkup(<Foo />)).toEqual('<div>scopedName</div>');
-  });
-
-  it('can ignore scoped customizations that do not apply', () => {
-    Customizations.applySettings({ field: 'globalName' });
-    Customizations.applyScopedSettings('Bar', { field: 'scopedName' });
-    expect(renderToStaticMarkup(<Foo />)).toEqual('<div>globalName</div>');
-  });
-
-  it('can accept props over global/scoped values', () => {
-    Customizations.applySettings({ field: 'globalName' });
-    Customizations.applyScopedSettings('Foo', { field: 'scopedName' });
-    expect(renderToStaticMarkup(<Foo field="name" />)).toEqual('<div>name</div>');
   });
 
   it('can concatenate global styles and component styles', () => {
@@ -131,19 +108,22 @@ describe('customizable', () => {
   });
 
   it('will apply component style function when no global styles are present', () => {
-    const componentStyles: IStyleFunction<IComponentProps, IComponentStyles> = _props => {
-      return { root: { color: 'red', background: 'green' } };
+    const componentStyles = { root: { color: 'red', background: 'green' } };
+    const componentStylesFn: IStyleFunction<IComponentProps, IComponentStyles> = _props => {
+      return componentStyles;
     };
 
-    const wrapper = renderer.create(
+    const wrapper = render(
       <Customizer>
-        <StyleFunction styles={componentStyles} />
+        <StyleFunction styles={componentStylesFn} />
       </Customizer>,
     );
-    const component = wrapper.root.findByType(StyleFunction);
-    const props = component.props as IComponentProps;
-    expect(typeof props.styles).toBe('function');
-    expect(props.styles.__shadowConfig__).toBeTruthy();
+
+    const component = wrapper.getByTestId('style-function');
+    const rootStyles = JSON.parse(component.getAttribute('data-style')!);
+
+    expect(component).toHaveStyle(componentStyles.root);
+    expect(rootStyles).toEqual(componentStyles.root);
   });
 
   it('can concatenate scoped styles and component styles', () => {

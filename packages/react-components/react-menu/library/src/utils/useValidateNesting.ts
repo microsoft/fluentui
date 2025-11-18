@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -6,13 +8,13 @@ import { useMenuContext_unstable } from '../contexts/menuContext';
 
 type NestingComponentName = 'MenuList' | 'MenuItem' | 'MenuItemCheckbox' | 'MenuItemRadio';
 
-export const useValidateNesting = (componentName: NestingComponentName): React.RefObject<HTMLElement> => {
+export const useValidateNesting = (componentName: NestingComponentName): React.RefObject<HTMLElement | null> => {
   'use no memo';
 
   const { targetDocument } = useFluent();
   const triggerRef = useMenuContext_unstable((context: MenuContextValue) => context.triggerRef);
   const inline = useMenuContext_unstable((context: MenuContextValue) => context.inline);
-  const ref = React.useRef<HTMLElement>(null);
+  const ref = React.useRef<HTMLElement | null>(null);
 
   if (process.env.NODE_ENV !== 'production') {
     // This check should run only in development mode

@@ -33,8 +33,10 @@ const testFiles = [
   '**/*{.,-}{test,spec,e2e,cy}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
+  '**/testing/**',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
   './e2e/**',
+  '**/e2e/**',
 ];
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];

@@ -3,10 +3,12 @@ import { IChartTableProps } from './ChartTable.types';
 import { IChartTableStyleProps, IChartTableStyles } from '../../index';
 import { classNamesFunction, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import * as d3 from 'd3-color';
 import { getColorContrast } from '../../utilities/colors';
 import { ITheme } from '@fluentui/react';
+import { resolveCSSVariables } from '../../utilities/utilities';
+import type { JSXElement } from '@fluentui/utilities';
 
 function invertHexColor(hex: string, theme: ITheme): string {
   const color = d3.color(hex);
@@ -17,14 +19,26 @@ function invertHexColor(hex: string, theme: ITheme): string {
   return d3.rgb(255 - rgb.r, 255 - rgb.g, 255 - rgb.b).formatHex();
 }
 
-function getSafeBackgroundColor(theme: ITheme, foreground?: string, background?: string): string {
+function getSafeBackgroundColor(
+  theme: ITheme,
+  chartContainer: HTMLElement,
+  foreground?: string,
+  background?: string,
+): string {
   const fallbackFg = theme.semanticColors.bodyText;
   const fallbackBg = theme.semanticColors.bodyBackground;
-
-  const fg = d3.color(foreground || fallbackFg);
-  const bg = d3.color(background || fallbackBg);
-  if (!fg || !bg) {
+  if (!chartContainer) {
     return fallbackBg;
+  }
+
+  const resolvedFg = resolveCSSVariables(chartContainer, foreground || fallbackFg);
+  const resolvedBg = resolveCSSVariables(chartContainer, background || fallbackBg);
+
+  const fg = d3.color(resolvedFg);
+  const bg = d3.color(resolvedBg);
+
+  if (!fg || !bg) {
+    return resolvedBg;
   }
   const contrast = getColorContrast(fg.formatHex(), bg.formatHex());
   if (contrast >= 3) {
@@ -48,11 +62,11 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
     this._isRTL = getRTL(props.theme);
   }
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._rootElem, undefined, this._isRTL, opts);
+    return exportChartsAsImage([{ container: this._rootElem }], undefined, this._isRTL, opts);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { headers, rows, width, height, styles, theme } = this.props;
 
     const classNames = getClassNames(styles!, {
@@ -97,7 +111,9 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
 
     return (
       <div
-        ref={el => (this._rootElem = el)}
+        ref={el => {
+          this._rootElem = el;
+        }}
         className={classNames.root}
         style={{ height: height ? `${height}px` : '650px', overflow: 'hidden' }}
       >
@@ -126,7 +142,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
                       if (useSharedBackground) {
                         style.backgroundColor = sharedBackgroundColor;
                       } else if (fg || bg) {
-                        style.backgroundColor = getSafeBackgroundColor(theme!, fg, bg);
+                        style.backgroundColor = getSafeBackgroundColor(theme!, this._rootElem!, fg, bg);
                       }
                       return (
                         <th key={idx} className={classNames.headerCell} style={style}>
@@ -145,7 +161,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
                           const fg = style.color;
                           const bg = style.backgroundColor;
                           if (fg || bg) {
-                            style.backgroundColor = getSafeBackgroundColor(theme!, fg, bg);
+                            style.backgroundColor = getSafeBackgroundColor(theme!, this._rootElem!, fg, bg);
                           }
                           return (
                             <td key={colIdx} className={classNames.bodyCell} style={style}>

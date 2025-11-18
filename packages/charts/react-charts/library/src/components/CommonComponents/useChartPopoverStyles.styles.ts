@@ -1,4 +1,6 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+'use client';
+
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ChartPopoverProps, PopoverComponentStyles } from './ChartPopover.types';
@@ -31,7 +33,6 @@ const useStyles = makeStyles({
   calloutContentRoot: {
     display: 'grid',
     overflow: 'hidden',
-    ...shorthands.padding('11px 16px 10px 16px'),
     backgroundColor: tokens.colorNeutralBackground1,
     backgroundBlendMode: 'normal, luminosity',
   },
@@ -47,6 +48,7 @@ const useStyles = makeStyles({
   },
   calloutBlockContainer: {
     color: tokens.colorNeutralForeground2,
+    textAlign: 'left',
   },
   calloutBlockContainerCartesian: {
     ...typographyStyles.caption1,

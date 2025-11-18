@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTagPickerGroup_unstable } from './useTagPickerGroup';

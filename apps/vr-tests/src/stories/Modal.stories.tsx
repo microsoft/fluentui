@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../utilities';
 import { Modal } from '@fluentui/react/lib/Modal';
 
 export default {
   title: 'Modal',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.ms-Modal' }).end()),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.ms-Modal' }).end() },
+  } satisfies StoryParameters,
 };
 
 export const Root = () => (

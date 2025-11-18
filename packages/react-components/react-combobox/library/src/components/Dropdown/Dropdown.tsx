@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useDropdown_unstable } from './useDropdown';
 import { renderDropdown_unstable } from './renderDropdown';

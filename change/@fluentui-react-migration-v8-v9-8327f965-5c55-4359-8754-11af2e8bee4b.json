@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: migrate to eslint flat config",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

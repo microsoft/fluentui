@@ -11,8 +11,9 @@ describe('Top Level Component File Conformance', () => {
   const privateComponents = new Set<string>();
   privateComponents.add('ContextualMenuItemWrapper');
 
+  const componentsBarrelFilesGlob = path.resolve(__dirname, '../..', 'src/components/**/index.ts*');
   const components: string[] = glob
-    .sync(path.resolve(process.cwd(), 'src/components/**/index.ts*'))
+    .sync(componentsBarrelFilesGlob)
     .map(file => {
       const componentName = path.basename(path.dirname(file));
       return componentName[0] === componentName[0].toUpperCase() ? path.basename(path.dirname(file)) : '';

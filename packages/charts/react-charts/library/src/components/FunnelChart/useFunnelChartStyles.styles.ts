@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { FunnelChartProps, FunnelChartStyles } from './index';
@@ -25,6 +27,7 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightRegular,
     position: 'relative',
+    textAlign: 'left',
   },
   chart: {
     display: 'block',

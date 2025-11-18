@@ -1,3 +1,5 @@
+'use client';
+
 import { makeResetStyles, mergeClasses, makeStyles } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwatchPickerRowSlots, SwatchPickerRowState } from './SwatchPickerRow.types';

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useTag_unstable } from './useTag';
 import { renderTag_unstable } from './renderTag';

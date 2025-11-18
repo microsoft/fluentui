@@ -1,9 +1,12 @@
+'use client';
+
 import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { HTMLElementWalker, createHTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { treeItemFilter } from '../utils/treeItemFilter';
 
 export function useHTMLElementWalkerRef(): {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   walkerRef: React.MutableRefObject<HTMLElementWalker | undefined>;
   rootRef: React.Ref<HTMLElement>;
 } {

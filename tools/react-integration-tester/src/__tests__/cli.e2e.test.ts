@@ -43,6 +43,7 @@ function createProject(
   options?: {
     packageName?: string;
     tsInclude?: string[];
+    withTs?: boolean;
     withJest?: boolean;
     withCypress?: boolean;
   },
@@ -53,12 +54,15 @@ function createProject(
     mkdirSync(rootDir, { recursive: true });
   }
   writeFileSync(join(rootDir, 'package.json'), JSON.stringify({ name: pkgName }));
-  writeFileSync(join(rootDir, 'tsconfig.lib.json'), JSON.stringify({ include }));
+
+  if (options?.withTs) {
+    writeFileSync(join(rootDir, 'tsconfig.lib.json'), JSON.stringify({ include }));
+  }
   if (options?.withJest) {
     writeFileSync(join(rootDir, 'jest.config.js'), 'module.exports = {};');
   }
   if (options?.withCypress) {
-    writeFileSync(join(rootDir, 'cypress.config.js'), 'export default {};');
+    writeFileSync(join(rootDir, 'cypress.config.ts'), 'export default {};');
   }
 }
 
@@ -160,7 +164,7 @@ describe('rit CLI e2e', () => {
   test('--prepare-only --project-id generates project and keeps project, installs dependencies by default', () => {
     fs = new TempFs('rit-e2e-prepare-only');
     const projectRoot = join(fs.tempDir, 'proj');
-    createProject(projectRoot, { withJest: true, withCypress: true });
+    createProject(projectRoot, { withJest: true, withCypress: true, withTs: true });
 
     const cmdLog = join(fs.tempDir, 'cmd-log.json');
     const res = runCLI('--react 18 --prepare-only --project-id ci', {
@@ -219,6 +223,8 @@ describe('rit CLI e2e', () => {
           "../../../../proj/**/*.spec.tsx",
           "../../../../proj/**/*.test.tsx",
           "../../../../proj/**/src/testing/**",
+          "../../../../proj/**/*.cy.tsx",
+          "../../../../proj/**/*.cy.tsx",
         ],
         "extends": "../../../../proj/tsconfig.lib.json",
         "files": Array [
@@ -230,8 +236,14 @@ describe('rit CLI e2e', () => {
         "references": Array [],
       }
     `);
+
     // and jest config since origin had jest setup
-    expect(readFile(join(ritProjectPath, 'jest.config.js'))).toMatchInlineSnapshot(`
+    const jestConfigContent = readFile(join(ritProjectPath, 'jest.config.js'));
+    expect(jestConfigContent).toContain("const workspacePreset = require('../../../../jest.preset')");
+    expect(jestConfigContent).toContain("const baseConfig = require('../../../../proj/jest.config.js')");
+    expect(jestConfigContent).toContain('module.exports = config');
+    // check whole template
+    expect(jestConfigContent).toMatchInlineSnapshot(`
       "// @ts-check
       /* eslint-disable */
 
@@ -239,10 +251,7 @@ describe('rit CLI e2e', () => {
       const { pathsToModuleNameMapper } = require('ts-jest');
 
       const workspacePreset = require('../../../../jest.preset');
-      const baseConfig = require('../../../../proj/jest.config');
-
-      const {moduleNameMapper, transform, ...normalizedWorkspacePreset} = workspacePreset;
-      const {preset, ...normalizedBaseConfig} = baseConfig;
+      const baseConfig = require('../../../../proj/jest.config.js');
 
       // Resolve dependencies from the shared react-version root folder (injected by CLI)
       const usedNodeModulesPath = join(__dirname, '..', 'node_modules');
@@ -254,7 +263,6 @@ describe('rit CLI e2e', () => {
         rootDir: '../../../../proj',
         preset: null,
         moduleNameMapper: {
-          ...getTsPathAliases(),
           '^react$': join(usedNodeModulesPath, './react'),
           '^react/jsx-runtime$': join(usedNodeModulesPath, 'react/jsx-runtime'),
           '^react-dom$': join(usedNodeModulesPath, './react-dom'),
@@ -268,13 +276,18 @@ describe('rit CLI e2e', () => {
         ],
       }
 
-      const repoProjectConfig = merge(normalizedWorkspacePreset, normalizedBaseConfig)
+      const repoProjectConfig = createOriginProjectConfig(baseConfig, workspacePreset);
       const config = merge(repoProjectConfig, ritConfig);
 
       module.exports = config;
 
       // helpers
 
+      /**
+       * @param {Record<string,any>} obj1
+       * @param {Record<string,any>} obj2
+       * @returns
+       */
       function merge(obj1, obj2) {
         const merged = Object.assign({}, obj1);
 
@@ -308,19 +321,53 @@ describe('rit CLI e2e', () => {
 
         return tsPathAliases;
       }
+
+      /**
+       * @param {import('@jest/types').Config.InitialOptions} config - project origin provided config
+       * @param {import('@jest/types').Config.InitialOptions} workspaceConfig - workspace preset config
+       */
+      function createOriginProjectConfig(config, workspaceConfig) {
+        // no preset property, we will use configuration as is
+        if (!config.preset) {
+          return config;
+        }
+
+        // remove preset config
+        const { preset, ...normalizedBaseConfig } = config;
+        // remove moduleNameMapper, transform
+        const { moduleNameMapper, transform, ...normalizedWorkspacePreset } = workspaceConfig;
+
+        /** @type {import('@jest/types').Config.InitialOptions} */
+        const remappedTsPathAliases = {
+          moduleNameMapper: { ...getTsPathAliases() },
+        };
+        let repoProjectConfig = merge(normalizedWorkspacePreset, normalizedBaseConfig);
+        repoProjectConfig = merge(repoProjectConfig, remappedTsPathAliases);
+
+        return repoProjectConfig;
+      }
       "
     `);
 
-    expect(readFile(join(ritProjectPath, 'cypress.config.ts'))).toMatchInlineSnapshot(`
+    // and cypress config since origin had jest setup
+    const cypressConfigPath = join(ritProjectPath, 'cypress.config.ts');
+    expect(existsSync(cypressConfigPath)).toBe(true);
+
+    const cyContent = readFile(cypressConfigPath);
+    expect(cyContent).toContain("import baseConfig from '../../../../proj/cypress.config");
+    // check whole template
+    expect(cyContent).toMatchInlineSnapshot(`
       "import { join, resolve } from 'node:path';
-      import baseConfig from '../../../../proj/cypress.config';
+      import baseConfig from '../../../../proj/cypress.config.ts';
 
       // Resolve dependencies from the shared react-version root folder (injected by CLI)
       const usedNodeModulesPath = join(__dirname, '..', 'node_modules');
 
       const config = { ...baseConfig };
 
-      const specs = [resolve('../../../../proj/**/src/**/*.cy.{tsx,ts}')];
+      const specs = [
+        resolve('../../../../proj/**/src/**/*.{cy,e2e}.{tsx,ts}'),
+      ];
 
       config.component.specPattern = specs;
       config.component.devServer.webpackConfig.resolve ??= {};

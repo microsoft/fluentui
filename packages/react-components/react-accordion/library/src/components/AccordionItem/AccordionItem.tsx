@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useAccordionItem_unstable } from './useAccordionItem';
 import { useAccordionItemContextValues_unstable } from './useAccordionItemContextValues';

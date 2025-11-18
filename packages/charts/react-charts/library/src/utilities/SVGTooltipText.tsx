@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { usePortalMountNode } from '@fluentui/react-shared-contexts';
@@ -24,7 +26,8 @@ export interface SVGTooltipTextProps {
 export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = React.forwardRef<
   HTMLDivElement,
   SVGTooltipTextProps
->((props, forwardedRef) => {
+>(({ delay = 0, showBackground = false, ...restProps }, forwardedRef) => {
+  const props = { delay, showBackground, ...restProps };
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [textWidth, setTextWidth] = useState(0);
@@ -32,10 +35,10 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
 
   const tooltipHostRef = useRef<SVGTextElement>(null);
   const async = useRef(new Async()).current;
-  const dismissTimerId = useRef<number>();
-  const openTimerId = useRef<number>();
+  const dismissTimerId = useRef<number | undefined>(undefined);
+  const openTimerId = useRef<number | undefined>(undefined);
   const tooltipHostId = useRef(useId('tooltip-host')).current;
-  const ignoreNextFocusEvent = useRef(false);
+  const ignoreNextFocusEvent = useRef<boolean>(false);
   const portalMountNode = usePortalMountNode();
   const PADDING = 3;
 
@@ -203,8 +206,3 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
     </>
   );
 });
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-SVGTooltipText.defaultProps = {
-  delay: 0,
-  showBackground: false,
-};

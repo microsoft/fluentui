@@ -1,23 +1,19 @@
 import * as React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { Breadcrumb } from '@fluentui/react';
-import {
-  TestWrapperDecoratorTall,
-  StoryWrightDecorator,
-  getStoryVariant,
-  RTL,
-} from '../../utilities';
+import { TestWrapperDecoratorTall, getStoryVariant, RTL } from '../../utilities';
 
 const noOp = () => undefined;
 
 export default {
   title: 'Breadcrumb',
 
-  decorators: [
-    TestWrapperDecoratorTall,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecoratorTall],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -40,8 +36,8 @@ export default {
         .hover('.ms-Breadcrumb-list li:nth-child(3)')
         .snapshot('shortTitleHover', { cropTo: '.testWrapper' })
         .end(),
-    ),
-  ],
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Breadcrumb>;
 
 type Story = StoryFn<typeof Breadcrumb>;

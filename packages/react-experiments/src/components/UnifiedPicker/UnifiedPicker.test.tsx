@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { UnifiedPicker } from './UnifiedPicker';
 import { BaseFloatingSuggestions } from '../FloatingSuggestionsComposite';
-import { create } from 'react-test-renderer';
 import { fireEvent, render } from '@testing-library/react';
 import { SelectedItemsList } from '../SelectedItemsList';
 import type { ISelectedItemProps, ISelectedItemsListProps } from '../SelectedItemsList/SelectedItemsList.types';
@@ -66,7 +65,7 @@ let selectedItemsListProps = {
 
 describe('UnifiedPicker', () => {
   it('renders correctly with no items', () => {
-    const component = create(
+    const { container } = render(
       <UnifiedPicker
         floatingSuggestionProps={floatingPickerProps}
         selectedItemsListProps={selectedItemsListProps}
@@ -74,8 +73,7 @@ describe('UnifiedPicker', () => {
         onRenderSelectedItems={basicRenderSelectedItemsList}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders correctly with selected and suggested items', () => {
@@ -108,7 +106,7 @@ describe('UnifiedPicker', () => {
         },
       ],
     };
-    const component = create(
+    const { container } = render(
       <UnifiedPicker
         floatingSuggestionProps={floatingPickerProps}
         selectedItemsListProps={selectedItemsListProps}
@@ -116,8 +114,7 @@ describe('UnifiedPicker', () => {
         onRenderSelectedItems={basicRenderSelectedItemsList}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('force resolves to the first suggestion', () => {

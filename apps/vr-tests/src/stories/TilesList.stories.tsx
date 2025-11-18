@@ -1,11 +1,8 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  RTL,
-  StoryWrightDecorator,
-  TestWrapperDecoratorFixedWidth,
-} from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecoratorFixedWidth } from '../utilities';
 import {
   ITilesGridItem,
   ITilesGridSegment,
@@ -48,7 +45,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
     };
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const gridSegment: ITilesGridSegment<IBasicItem> = {
       items: this.state.items,
       key: 'grid',
@@ -61,7 +58,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
   }
 }
 
-function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
+function renderItem(item: IBasicItem, finalSize?: ITileSize): React.ReactElement {
   return (
     <div
       style={{
@@ -84,13 +81,14 @@ function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
 export default {
   title: 'TilesList',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
-
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
   excludeStories: ['IBasicItem', 'ITilesListBasicExampleState', 'TilesListBasicExample'],
-};
+} satisfies Meta<typeof TilesList>;
 
 export const Basic = () => <TilesListBasicExample />;
 

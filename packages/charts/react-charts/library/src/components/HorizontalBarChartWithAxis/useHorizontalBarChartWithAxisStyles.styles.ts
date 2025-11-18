@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { HorizontalBarChartWithAxisProps, HorizontalBarChartWithAxisStyles } from './index';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -25,6 +27,8 @@ export const hbcWithAxisClassNames: SlotClassNames<HorizontalBarChartWithAxisSty
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 const useStyles = makeStyles({

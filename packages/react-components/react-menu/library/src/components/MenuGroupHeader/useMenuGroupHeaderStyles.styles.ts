@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.types';

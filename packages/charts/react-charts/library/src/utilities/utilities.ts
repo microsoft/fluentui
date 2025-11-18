@@ -1,3 +1,5 @@
+'use client';
+
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import {
   max as d3Max,
@@ -68,6 +70,7 @@ import {
   HorizontalBarChartWithAxisDataPoint,
   LineChartLineOptions,
   AxisCategoryOrder,
+  YValueHover,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -125,6 +128,7 @@ export interface IRotateLabelProps {
 
 export interface IAxisData {
   yAxisDomainValues: number[];
+  yAxisTickText: string[];
 }
 
 export interface IMargins {
@@ -257,6 +261,7 @@ export function createNumericXAxis(
     calcMaxLabelWidth,
     tickStep,
     tick0,
+    tickText,
   } = xAxisParams;
   const xAxisScale = createNumericScale(scaleType)
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -265,6 +270,9 @@ export function createNumericXAxis(
 
   let tickCount = xAxisCount ?? 6;
   const tickFormat = (domainValue: NumberValue, _index: number, defaultFormat?: (val: NumberValue) => string) => {
+    if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
     if (tickParams.tickFormat) {
       return d3Format(tickParams.tickFormat)(domainValue);
     }
@@ -434,6 +442,7 @@ export function createDateXAxis(
     calcMaxLabelWidth,
     tickStep,
     tick0,
+    tickText,
   } = xAxisParams;
   const isUtcSet = useUTC === true || useUTC === 'utc';
   const xAxisScale = isUtcSet ? d3ScaleUtc() : d3ScaleTime();
@@ -470,6 +479,9 @@ export function createDateXAxis(
   );
 
   const tickFormat = (domainValue: Date, _index: number) => {
+    if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
     }
@@ -546,6 +558,7 @@ export function createStringXAxis(
     containerWidth,
     hideTickOverlap,
     calcMaxLabelWidth,
+    tickText,
   } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
@@ -555,7 +568,10 @@ export function createStringXAxis(
 
   let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
   const tickFormat = (domainValue: string, _index: number) => {
-    return formatToLocaleString(domainValue, culture) as string;
+    if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
+    return domainValue;
   };
   if (hideTickOverlap) {
     let nonOverlappingTickValues = [];
@@ -690,6 +706,7 @@ export function prepareDatapoints(
 export function createYAxisForHorizontalBarChartWithAxis(
   yAxisParams: IYAxisParams,
   isRtl: boolean,
+  axisData: IAxisData,
 ): ScaleLinear<number, number> {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -705,6 +722,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
     tickValues,
     tickStep,
     tick0,
+    tickText,
   } = yAxisParams;
 
   // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
@@ -716,7 +734,20 @@ export function createYAxisForHorizontalBarChartWithAxis(
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
+  const tickFormat = (domainValue: NumberValue, index: number) => {
+    if (tickValues && tickText && typeof tickText[index] !== 'undefined') {
+      return tickText[index];
+    }
+    if (typeof yAxisTickFormat === 'function') {
+      return yAxisTickFormat(domainValue, index);
+    }
+    if (typeof yAxisTickFormat === 'string') {
+      return d3Format(yAxisTickFormat)(domainValue);
+    }
+    const value = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
+    return defaultYAxisTickFormatter(value);
+  };
+  yAxis.tickFormat(tickFormat);
 
   let customTickValues: number[] | undefined;
   if (tickValues) {
@@ -729,6 +760,10 @@ export function createYAxisForHorizontalBarChartWithAxis(
   }
 
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+
+  axisData.yAxisDomainValues = yAxisScale.domain();
+  axisData.yAxisTickText = (yAxis.tickValues() ?? yAxisScale.ticks(yAxisTickCount)).map(yAxis.tickFormat()!);
+
   return yAxisScale;
 }
 
@@ -760,6 +795,7 @@ export function createNumericYAxis(
     tickValues,
     tickStep,
     tick0,
+    tickText,
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
@@ -803,22 +839,24 @@ export function createNumericYAxis(
   if (customTickValues) {
     yAxis.tickValues(customTickValues);
     axisData.yAxisDomainValues = customTickValues;
-  } else {
-    if (scaleType === 'log') {
-      axisData.yAxisDomainValues = yAxisScale.ticks();
-    } else {
-      yAxis.tickValues(domainValues);
-      axisData.yAxisDomainValues = domainValues;
-    }
+  } else if (scaleType !== 'log') {
+    yAxis.tickValues(domainValues);
   }
 
   const tickFormat = (domainValue: NumberValue, index: number, defaultFormat?: (val: NumberValue) => string) => {
+    if (tickValues && tickText && typeof tickText[index] !== 'undefined') {
+      return tickText[index];
+    }
+    if (typeof yAxisTickFormat === 'function') {
+      return yAxisTickFormat(domainValue, index);
+    }
+    if (typeof yAxisTickFormat === 'string') {
+      return d3Format(yAxisTickFormat)(domainValue);
+    }
     const value = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
     return defaultFormat?.(value) === '' ? '' : defaultYAxisTickFormatter(value);
   };
-  yAxisTickFormat
-    ? yAxis.tickFormat(yAxisTickFormat)
-    : yAxis.tickFormat((v, i) => tickFormat(v as NumberValue, i, yAxisScale.tickFormat(yAxisTickCount)));
+  yAxis.tickFormat((v, i) => tickFormat(v as NumberValue, i, yAxisScale.tickFormat(yAxisTickCount)));
   yAxisElement
     ? d3Select(yAxisElement)
         .call(yAxis)
@@ -828,6 +866,10 @@ export function createNumericYAxis(
         .style('unicode-bidi', 'isolate')
         .style('text-anchor', !useSecondaryYScale && (_useRtl ? 'start' : 'end'))
     : '';
+
+  axisData.yAxisDomainValues = yAxisScale.domain();
+  axisData.yAxisTickText = (yAxis.tickValues() ?? yAxisScale.ticks(yAxisTickCount)).map(yAxis.tickFormat()!);
+
   return yAxisScale;
 }
 
@@ -841,9 +883,19 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   yAxisParams: IYAxisParams,
   dataPoints: string[],
   isRtl: boolean,
+  axisData: IAxisData,
   barWidth: number,
 ): ScaleBand<string> => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding } = yAxisParams;
+  const {
+    containerHeight,
+    tickPadding = 12,
+    margins,
+    yAxisTickFormat,
+    yAxisElement,
+    yAxisPadding,
+    tickValues,
+    tickText,
+  } = yAxisParams;
 
   let yAxisPaddingValue = yAxisPadding ?? 0.5;
   yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
@@ -852,11 +904,21 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
     .range([containerHeight - margins.bottom!, margins.top!])
     .padding(yAxisPaddingValue);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis.tickPadding(tickPadding).ticks(dataPoints);
-  if (yAxisTickFormat) {
-    yAxis.tickFormat(yAxisTickFormat);
-  }
+  const customTickValues = (tickValues as string[] | undefined) ?? dataPoints;
+  const tickFormat = (domainValue: string, _index: number) => {
+    if (tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
+    if (typeof yAxisTickFormat === 'function') {
+      return yAxisTickFormat(domainValue, _index);
+    }
+    return domainValue;
+  };
+  const yAxis = axis.tickPadding(tickPadding).tickValues(customTickValues).tickFormat(tickFormat);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+
+  axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
+
   return yAxisScale;
 };
 
@@ -870,6 +932,7 @@ export const createStringYAxis = (
   yAxisParams: IYAxisParams,
   dataPoints: string[],
   isRtl: boolean,
+  axisData: IAxisData,
   barWidth?: number,
   chartType?: ChartTypes,
 ): ScaleBand<string> => {
@@ -881,6 +944,8 @@ export const createStringYAxis = (
     yAxisElement,
     yAxisPadding = 0,
     containerWidth,
+    tickValues,
+    tickText,
   } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
@@ -890,14 +955,24 @@ export const createStringYAxis = (
     yAxisScale.paddingInner(1).paddingOuter(0);
   }
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis.tickPadding(tickPadding).tickValues(dataPoints).tickSize(0);
+  const customTickValues = (tickValues as string[] | undefined) ?? dataPoints;
+  const tickFormat = (domainValue: string, _index: number) => {
+    if (tickValues && tickText && typeof tickText[_index] !== 'undefined') {
+      return tickText[_index];
+    }
+    if (typeof yAxisTickFormat === 'function') {
+      return yAxisTickFormat(domainValue, _index);
+    }
+    return domainValue;
+  };
+  const yAxis = axis.tickPadding(tickPadding).tickValues(customTickValues).tickFormat(tickFormat).tickSize(0);
   if (chartType === ChartTypes.VerticalStackedBarChart) {
     axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   }
-  if (yAxisTickFormat) {
-    yAxis.tickFormat(yAxisTickFormat);
-  }
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+
+  axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
+
   return yAxisScale;
 };
 
@@ -909,22 +984,9 @@ export const createStringYAxis = (
 
 // changing the type to any as it is used by multiple charts with different data types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function calloutData(values: ((LineChartPoints | ScatterChartPoints) & { index?: number })[]): {
-  x: string | number;
-  values: {
-    legend: string;
-    y: number;
-    color: string;
-    xAxisCalloutData?: string;
-    yAxisCalloutData?:
-      | string
-      | {
-          [id: string]: number;
-        };
-    callOutAccessibilityData?: AccessibilityProps;
-    index?: number;
-  }[];
-}[] {
+export function calloutData(
+  values: ((LineChartPoints | ScatterChartPoints) & { index?: number })[],
+): Record<string, YValueHover[]> {
   let combinedResult: ((LineChartDataPoint | ScatterChartDataPoint) & {
     legend: string;
     color?: string;
@@ -988,11 +1050,7 @@ export function calloutData(values: ((LineChartPoints | ScatterChartPoints) & { 
     }
   });
 
-  const result = Object.keys(xValToDataPoints).map(xValue => {
-    const originalXValue = isNaN(Number(xValue)) ? xValue : Number(xValue);
-    return { x: originalXValue, values: xValToDataPoints[xValue] };
-  });
-  return result;
+  return xValToDataPoints;
 }
 
 export function getUnique(
@@ -1388,14 +1446,13 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
-  shiftX: number,
   X_ORIGIN?: number,
 ): IDomainNRange {
   const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN!);
   const xMax = longestBars.longestPositiveBar;
   const xMin = longestBars.longestNegativeBar;
-  const rMin = isRTL ? margins.left! : margins.left! + shiftX;
-  const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
+  const rMin = margins.left!;
+  const rMax = containerWidth - margins.right!;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN!), rStartValue: rMin, rEndValue: rMax }
@@ -2395,3 +2452,21 @@ export function precisionRound(value: number, precision: number, base: number = 
   const exp = Math.pow(base, precision);
   return Math.round(value * exp) / exp;
 }
+
+export const findCalloutPoints = (
+  calloutPointsByX: Record<string, YValueHover[]>,
+  x: string | number | Date | null,
+): { x: string | number | Date; values: YValueHover[] } | undefined => {
+  if (x === null) {
+    return undefined;
+  }
+
+  const key = x instanceof Date ? x.getTime() : x;
+  if (!calloutPointsByX[key]) {
+    return undefined;
+  }
+  return {
+    x,
+    values: calloutPointsByX[key],
+  };
+};

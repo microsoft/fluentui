@@ -1,8 +1,11 @@
+'use client';
+
+import * as React from 'react';
+
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { presenceMotionSlot } from '@fluentui/react-motion';
 import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
-import * as React from 'react';
 
 import { useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
@@ -18,7 +21,9 @@ import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.ty
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false } = props;
+  const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false, unmountOnClose = true } = props;
+
+  const dialogTitleId = useId('dialog-title-');
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -38,7 +43,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     }
   });
 
-  const focusRef = useFocusFirstElement(open, modalType);
+  const dialogRef = useFocusFirstElement(open, modalType);
 
   const { modalAttributes, triggerAttributes } = useModalAttributes({
     trapFocus: modalType !== 'non-modal',
@@ -56,17 +61,18 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     content,
     trigger,
     requestOpenChange,
-    dialogTitleId: useId('dialog-title-'),
+    dialogTitleId,
     isNestedDialog,
-    dialogRef: focusRef,
+    unmountOnClose,
+    dialogRef,
     modalAttributes,
     triggerAttributes,
     surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
       elementType: DialogSurfaceMotion,
       defaultProps: {
-        appear: true,
         visible: open,
-        unmountOnExit: true,
+        appear: unmountOnClose,
+        unmountOnExit: unmountOnClose,
       },
     }),
   };

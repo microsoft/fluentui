@@ -154,9 +154,7 @@ export const input: {
 // @public (undocumented)
 export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots, "root"> & Omit<{
     as?: "div" | undefined;
-} & Omit<Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & {
-    ref?: ((instance: HTMLDivElement | null) => void | React_2.DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES[keyof React_2.DO_NOT_USE_OR_YOU_WILL_BE_FIRED_CALLBACK_REF_RETURN_VALUES]) | React_2.RefObject<HTMLDivElement> | null | undefined;
-}, "children"> & {
+} & Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "children"> & {
     children?: any;
 }, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 

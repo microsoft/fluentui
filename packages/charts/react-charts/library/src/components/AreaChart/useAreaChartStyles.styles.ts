@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { AreaChartProps, AreaChartStyles } from './index';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -19,6 +21,8 @@ export const areaChartClassNames: SlotClassNames<AreaChartStyles> = {
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 const useStyles = makeStyles({

@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModifiedCartesianChartProps } from '../../index';
@@ -26,8 +28,16 @@ import {
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { SVGTooltipText, SVGTooltipTextProps } from '../../utilities/SVGTooltipText';
+import { ChartAnnotationLayer } from './Annotations/ChartAnnotationLayer';
+import { ChartAnnotationContext } from './Annotations/ChartAnnotationLayer.types';
 import { ChartPopover } from './ChartPopover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
+
+const HORIZONTAL_MARGIN_FOR_YAXIS_TITLE = 24;
+const VERTICAL_MARGIN_FOR_XAXIS_TITLE = 20;
+const AXIS_TITLE_PADDING = 8;
+const DEFAULT_MARGIN_WITH_TICKS = 40;
+const DEFAULT_MARGIN_NO_TICKS = 20;
 
 /**
  * Cartesian Chart component
@@ -36,19 +46,18 @@ import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabs
 export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps> = React.forwardRef<
   HTMLDivElement,
   ModifiedCartesianChartProps
->((props, forwardedRef) => {
-  const chartContainer = React.useRef<HTMLDivElement>();
+>(({ hideTickOverlap = true, ...props }, forwardedRef) => {
+  const chartContainer = React.useRef<HTMLDivElement | null>(null);
   let legendContainer: HTMLDivElement;
   const minLegendContainerHeight: number = 40;
-  const xAxisElement = React.useRef<SVGSVGElement>();
-  const yAxisElement = React.useRef<SVGSVGElement>();
-  const yAxisElementSecondary = React.useRef<SVGSVGElement>();
+  const xAxisElement = React.useRef<SVGSVGElement | null>(null);
+  const yAxisElement = React.useRef<SVGSVGElement | null>(null);
+  const yAxisElementSecondary = React.useRef<SVGSVGElement | null>(null);
   let margins: IMargins;
   const idForGraph: string = 'chart_';
-  let _reqID: number;
+  let _reqID: number | undefined;
   const _useRtl: boolean = useRtl();
   let _tickValues: (string | number)[];
-  const titleMargin: number = 8;
   const _isFirstRender = React.useRef<boolean>(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
@@ -63,63 +72,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
    * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
    */
   let _removalValueForTextTuncate: number = 0;
+  const _yAxisTickText = React.useRef<string[]>([]);
 
   const [containerWidth, setContainerWidth] = React.useState<number>(0);
   const [containerHeight, setContainerHeight] = React.useState<number>(0);
   const [startFromX, setStartFromX] = React.useState<number>(0);
-  const [prevProps, setPrevProps] = React.useState<ModifiedCartesianChartProps | null>(null);
-
-  const chartTypesWithStringYAxis = [
-    ChartTypes.HorizontalBarChartWithAxis,
-    ChartTypes.HeatMapChart,
-    ChartTypes.VerticalStackedBarChart,
-    ChartTypes.GanttChart,
-    ChartTypes.ScatterChart,
-  ];
-  /**
-   * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
-   * So that, in RTL, left margins becomes right margins and viceversa.
-   * As graph needs to be drawn perfecty, these values consider as default values.
-   * Same margins using for all other cartesian charts. Can be accessible through 'getMargins' call back method.
-   */
-  // eslint-disable-next-line prefer-const
-  margins = {
-    top: props.margins?.top ?? 20,
-    bottom: props.margins?.bottom ?? 35,
-    right: _useRtl ? props.margins?.left ?? 40 : props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20,
-    left: _useRtl ? (props.margins?.right ?? props?.secondaryYScaleOptions ? 40 : 20) : props.margins?.left ?? 40,
-  };
-  const TITLE_MARGIN_HORIZONTAL = 24;
-  const TITLE_MARGIN_VERTICAL = 20;
-  if (props.xAxisTitle !== undefined && props.xAxisTitle !== '') {
-    margins.bottom! = props.margins?.bottom ?? margins.bottom! + TITLE_MARGIN_VERTICAL;
-  }
-  if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
-    margins.left! = _useRtl
-      ? props.margins?.right ?? props?.secondaryYAxistitle
-        ? margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
-        : margins.right! + TITLE_MARGIN_HORIZONTAL
-      : props.margins?.left ?? margins.left! + TITLE_MARGIN_HORIZONTAL;
-    margins.right! = _useRtl
-      ? props.margins?.left ?? margins.left! + TITLE_MARGIN_HORIZONTAL
-      : props.margins?.right ?? props?.secondaryYAxistitle
-      ? margins.right! + 2 * TITLE_MARGIN_HORIZONTAL
-      : margins.right! + TITLE_MARGIN_HORIZONTAL;
-  }
-  if (props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '') {
-    margins.top! = props.margins?.top ?? margins.top! + TITLE_MARGIN_VERTICAL;
-  }
-  if (
-    props.yAxisAnnotation !== undefined &&
-    props.yAxisAnnotation !== '' &&
-    (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '')
-  ) {
-    if (_useRtl) {
-      margins.left! = props.margins?.right ?? margins.right! + TITLE_MARGIN_HORIZONTAL;
-    } else {
-      margins.right! = props.margins?.right ?? margins.right! + TITLE_MARGIN_HORIZONTAL;
-    }
-  }
+  const prevWidthRef = React.useRef<number | undefined>(undefined);
+  const prevHeightRef = React.useRef<number | undefined>(undefined);
 
   const classes = useCartesianChartStyles(props);
   const focusAttributes = useFocusableGroup();
@@ -127,15 +86,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   // ComponentdidMount and Componentwillunmount logic
   React.useEffect(() => {
     _fitParentContainer();
-    if (props !== null) {
-      setPrevProps(props);
-    }
-    if (
-      chartTypesWithStringYAxis.includes(props.chartType) &&
-      props.showYAxisLables &&
-      yAxisElement &&
-      props.yAxisType === YAxisType.StringAxis
-    ) {
+    if (props.showYAxisLables) {
       const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
@@ -144,23 +95,27 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       setStartFromX(0);
     }
     return () => {
-      cancelAnimationFrame(_reqID);
+      if (_reqID !== undefined) {
+        cancelAnimationFrame(_reqID);
+      }
     };
   }, [props]);
 
   // ComponentDidUpdate logic
   React.useEffect(() => {
-    if (prevProps) {
-      if (prevProps.height !== props.height || prevProps.width !== props.width) {
-        _fitParentContainer();
-      }
-    }
+    // Check if height or width changed
     if (
-      chartTypesWithStringYAxis.includes(props.chartType) &&
-      props.showYAxisLables &&
-      yAxisElement &&
-      props.yAxisType === YAxisType.StringAxis
+      prevWidthRef.current !== undefined &&
+      prevHeightRef.current !== undefined &&
+      (prevWidthRef.current !== props.width || prevHeightRef.current !== props.height)
     ) {
+      _fitParentContainer();
+    }
+    // Update refs with current values
+    prevWidthRef.current = props.width;
+    prevHeightRef.current = props.height;
+
+    if (props.showYAxisLables) {
       const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
@@ -168,7 +123,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     } else if (startFromX !== 0) {
       setStartFromX(0);
     }
-  }, [props, prevProps]);
+  }, [props.width, props.height, props.chartType, props.showYAxisLables, props.yAxisType]);
 
   React.useImperativeHandle(
     props.componentRef,
@@ -199,7 +154,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       return str;
     };
     return calculateLongestLabelWidth(
-      props.stringDatasetForYAxisDomain!.map(label => formatTickLabel(label)),
+      _yAxisTickText.current.map(label => formatTickLabel(label)),
       `.${className} text`,
     );
   }
@@ -217,19 +172,17 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   if (props.parentRef) {
     _fitParentContainer();
   }
-  const margin = { ...margins };
-  // Note: This check is unnecessary since startFromX is only set for charts with string y-axis.
-  if (chartTypesWithStringYAxis.includes(props.chartType)) {
-    if (!_useRtl) {
-      margin.left! += startFromX;
-    } else {
-      margin.right! += startFromX;
-    }
-  }
+
+  margins = _calcMargins();
   // Callback for margins to the chart
-  props.getmargins && props.getmargins(margin);
+  props.getmargins && props.getmargins(margins);
 
   let callout: JSXElement | null = null;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let yScalePrimary: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let yScaleSecondary: any;
 
   let children = null;
   if ((props.enableFirstRenderOptimization && chartContainer.current) || !props.enableFirstRenderOptimization) {
@@ -244,8 +197,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         props.xAxisType,
         props.barwidth!,
         props.tickValues!,
-        // This is only used for Horizontal Bar Chart with Axis for y as string axis
-        startFromX,
       ),
       // FIXME: In XAxisParams, containerHeight is used by HBWA to generate vertical gridlines.
       // Since the x-axis in HBWA is numeric, it typically doesn't require transformation.
@@ -264,10 +215,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       xAxisInnerPadding: props.xAxisInnerPadding,
       xAxisOuterPadding: props.xAxisOuterPadding,
       containerWidth: containerWidth,
-      hideTickOverlap: props.rotateXAxisLables ? false : props.hideTickOverlap,
+      hideTickOverlap: props.rotateXAxisLables ? false : hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
-      tickStep: props.xAxis?.tickStep,
-      tick0: props.xAxis?.tick0,
+      ...props.xAxis,
     };
 
     /**
@@ -343,8 +293,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       // http://using-d3js.com/04_07_ordinal_scales.html
       yAxisPadding: props.yAxisPadding || 0,
       tickValues: props.yAxisTickValues,
-      tickStep: props.yAxis?.tickStep,
-      tick0: props.yAxis?.tick0,
+      ...props.yAxis,
     };
     /**
      * These scales used for 2 purposes.
@@ -352,16 +301,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
      * 2. To draw the graph.
      * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let yScalePrimary: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let yScaleSecondary: any;
-    const axisData: IAxisData = { yAxisDomainValues: [] };
+    const axisData: IAxisData = { yAxisDomainValues: [], yAxisTickText: [] };
     if (props.yAxisType && props.yAxisType === YAxisType.StringAxis) {
       yScalePrimary = props.createStringYAxis(
         YAxisParams,
         props.stringDatasetForYAxisDomain!,
         _useRtl,
+        axisData,
         props.barwidth,
         props.chartType,
       );
@@ -410,43 +356,43 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         _useRtl,
       );
     }
+    _yAxisTickText.current = axisData.yAxisTickText;
+    props.getAxisData && props.getAxisData(axisData);
 
-    if (chartTypesWithStringYAxis.includes(props.chartType) && props.yAxisType === YAxisType.StringAxis) {
-      // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
-      // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
-      // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
-      if (!props.showYAxisLablesTooltip) {
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          //eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
-      // Used to display tooltip at y axis labels.
-      if (props.showYAxisLablesTooltip) {
-        // To create y axis tick values by if specified truncating the rest of the text
-        // and showing elipsis or showing the whole string,
-        yScalePrimary &&
-          // Note: This function should be invoked within the showYAxisLablesTooltip check,
-          // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
-          createYAxisLabels(
-            yAxisElement.current!,
-            yScalePrimary,
-            props.noOfCharsToTruncate || 4,
-            props.showYAxisLablesTooltip || false,
-            _useRtl,
-          );
-        const _yAxisElement = d3Select(yAxisElement.current!).call(yScalePrimary);
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          //eslint-disable-next-line no-empty
-        } catch (e) {}
-        const ytooltipProps = {
-          tooltipCls: classes.tooltip!,
-          id: _tooltipId,
-          axis: _yAxisElement,
-        };
-        _yAxisElement && tooltipOfAxislabels(ytooltipProps);
-      }
+    // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
+    // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
+    // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
+    if (!props.showYAxisLablesTooltip) {
+      try {
+        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
+        //eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at y axis labels.
+    if (props.showYAxisLablesTooltip) {
+      // To create y axis tick values by if specified truncating the rest of the text
+      // and showing elipsis or showing the whole string,
+      yScalePrimary &&
+        // Note: This function should be invoked within the showYAxisLablesTooltip check,
+        // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
+        createYAxisLabels(
+          yAxisElement.current!,
+          yScalePrimary,
+          props.noOfCharsToTruncate || 4,
+          props.showYAxisLablesTooltip || false,
+          _useRtl,
+        );
+      const _yAxisElement = d3Select(yAxisElement.current!).call(yScalePrimary);
+      try {
+        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
+        //eslint-disable-next-line no-empty
+      } catch (e) {}
+      const ytooltipProps = {
+        tooltipCls: classes.tooltip!,
+        id: _tooltipId,
+        axis: _yAxisElement,
+      };
+      _yAxisElement && tooltipOfAxislabels(ytooltipProps);
     }
 
     // Call back to the chart.
@@ -464,7 +410,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         );
     };
 
-    props.getAxisData && props.getAxisData(axisData);
     // Callback function for chart, returns axis
     _getData(xScale, yScalePrimary, yScaleSecondary);
 
@@ -485,9 +430,39 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     height: containerHeight,
   };
 
-  const xAxisTitleMaximumAllowedWidth = svgDimensions.width - margins.left! - margins.right! - startFromX!;
-  const yAxisTitleMaximumAllowedHeight =
-    svgDimensions.height - margins.bottom! - margins.top! - _removalValueForTextTuncate! - titleMargin;
+  const plotWidth = Math.max(0, svgDimensions.width - margins.left! - margins.right!);
+  const plotHeight = Math.max(0, svgDimensions.height - margins.top! - margins.bottom! - _removalValueForTextTuncate);
+
+  const plotRect = {
+    x: margins.left!,
+    y: margins.top!,
+    width: plotWidth,
+    height: plotHeight,
+  };
+
+  const annotations = props.annotations ?? [];
+  const hasAnnotations = annotations.length > 0;
+  const annotationContext: ChartAnnotationContext | undefined = hasAnnotations
+    ? {
+        plotRect,
+        svgRect: svgDimensions,
+        isRtl: _useRtl,
+        xScale: _xScale,
+        yScalePrimary,
+        yScaleSecondary,
+      }
+    : undefined;
+
+  const xAxisTitleMaxWidth = svgDimensions.width - margins.left! - margins.right! - AXIS_TITLE_PADDING * 2;
+  const yAxisTitleMaxHeight =
+    svgDimensions.height - margins.bottom! - margins.top! - _removalValueForTextTuncate! - AXIS_TITLE_PADDING * 2;
+  const yAxisTitleCenterY = margins.top! + AXIS_TITLE_PADDING + yAxisTitleMaxHeight / 2;
+  const yAxisTitleCenterX = _useRtl
+    ? svgDimensions.width - AXIS_TITLE_PADDING
+    : HORIZONTAL_MARGIN_FOR_YAXIS_TITLE - AXIS_TITLE_PADDING;
+  const secondaryYAxisTitleCenterX = _useRtl
+    ? HORIZONTAL_MARGIN_FOR_YAXIS_TITLE - AXIS_TITLE_PADDING
+    : svgDimensions.width - AXIS_TITLE_PADDING;
 
   const commonSvgToolTipProps: SVGTooltipTextProps = {
     wrapContent,
@@ -632,6 +607,72 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     }
   }
 
+  function _calcMargins(): IMargins {
+    let _margins = _getDefaultMargins();
+
+    _margins = _applyTitleMargins(_margins);
+    _margins = _applyAnnotationMargins(_margins);
+
+    if (_useRtl) {
+      _margins = _swapRtlMargins(_margins);
+    }
+
+    return {
+      ..._margins,
+      ...props.margins,
+    };
+  }
+
+  function _getDefaultMargins(): IMargins {
+    return {
+      top: DEFAULT_MARGIN_NO_TICKS,
+      // Smaller than the default because it is based on the line height rather than
+      // the length of the tick labels.
+      bottom: DEFAULT_MARGIN_WITH_TICKS - 5,
+      // For the actual margin, add the tick size, tick padding, and some extra space to
+      // the width of the longest yaxis tick label (startFromX).
+      left: Math.max(DEFAULT_MARGIN_WITH_TICKS, startFromX + 20),
+      right: props.secondaryYScaleOptions ? DEFAULT_MARGIN_WITH_TICKS : DEFAULT_MARGIN_NO_TICKS,
+    };
+  }
+
+  function _applyTitleMargins(_margins: IMargins): IMargins {
+    const updated = { ..._margins };
+    if (props.xAxisTitle !== undefined && props.xAxisTitle !== '') {
+      updated.bottom! += VERTICAL_MARGIN_FOR_XAXIS_TITLE;
+    }
+    if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
+      updated.left! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
+    }
+    if (props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '') {
+      updated.right! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
+    }
+    return updated;
+  }
+
+  function _applyAnnotationMargins(_margins: IMargins): IMargins {
+    const updated = { ..._margins };
+    if (props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '') {
+      updated.top! += VERTICAL_MARGIN_FOR_XAXIS_TITLE;
+    }
+    if (
+      props.yAxisAnnotation !== undefined &&
+      props.yAxisAnnotation !== '' &&
+      (props.secondaryYAxistitle === undefined || props.secondaryYAxistitle === '')
+    ) {
+      updated.right! += HORIZONTAL_MARGIN_FOR_YAXIS_TITLE;
+    }
+    return updated;
+  }
+
+  function _swapRtlMargins(_margins: IMargins): IMargins {
+    return {
+      ..._margins,
+      left: _margins.right,
+      right: _margins.left,
+    };
+  }
+
   /**
    * We have use the {@link defaultTabbableElement } to fix
    * the Focus not landing on chart while tabbing, instead  goes to legend.
@@ -657,7 +698,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       id={idForGraph}
       className={classes.root}
       role={'presentation'}
-      ref={(rootElem: HTMLDivElement) => (chartContainer.current = rootElem)}
+      ref={(rootElem: HTMLDivElement) => {
+        chartContainer.current = rootElem;
+      }}
       onMouseLeave={_onChartLeave}
     >
       <div className={classes.chartWrapper} {...focusAttributes} {...arrowAttributes}>
@@ -684,12 +727,12 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               {...commonSvgToolTipProps}
               content={props.xAxisTitle}
               textProps={{
-                x: margins.left! + startFromX + xAxisTitleMaximumAllowedWidth / 2,
-                y: svgDimensions.height - titleMargin,
+                x: margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2,
+                y: svgDimensions.height - AXIS_TITLE_PADDING,
                 className: classes.axisTitle!,
                 textAnchor: 'middle',
               }}
-              maxWidth={xAxisTitleMaximumAllowedWidth}
+              maxWidth={xAxisTitleMaxWidth}
             />
           )}
           {props.xAxisAnnotation !== undefined && props.xAxisAnnotation !== '' && (
@@ -697,13 +740,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               {...commonSvgToolTipProps}
               content={props.xAxisAnnotation}
               textProps={{
-                x: margins.left! + startFromX + xAxisTitleMaximumAllowedWidth / 2,
-                y: titleMargin + 3,
+                x: margins.left! + AXIS_TITLE_PADDING + xAxisTitleMaxWidth / 2,
+                y: VERTICAL_MARGIN_FOR_XAXIS_TITLE - AXIS_TITLE_PADDING,
                 className: classes.axisAnnotation!,
                 textAnchor: 'middle',
                 'aria-hidden': true,
               }}
-              maxWidth={xAxisTitleMaximumAllowedWidth}
+              maxWidth={xAxisTitleMaxWidth}
             />
           )}
           <g
@@ -711,9 +754,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               yAxisElement.current = e!;
             }}
             id={`yAxisGElement${idForGraph}`}
-            transform={`translate(${
-              _useRtl ? svgDimensions.width - margins.right! - startFromX : margins.left! + startFromX
-            }, 0)`}
+            transform={`translate(${_useRtl ? svgDimensions.width - margins.right! : margins.left!}, 0)`}
             className={classes.yAxis}
           />
           {props.secondaryYScaleOptions && (
@@ -723,9 +764,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   yAxisElementSecondary.current = e!;
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}
-                transform={`translate(${
-                  _useRtl ? margins.left! + startFromX : svgDimensions.width - margins.right! - startFromX
-                }, 0)`}
+                transform={`translate(${_useRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}
                 className={classes.yAxis}
               />
               {props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '' && (
@@ -733,16 +772,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   {...commonSvgToolTipProps}
                   content={props.secondaryYAxistitle}
                   textProps={{
-                    x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
-                    y: _useRtl ? startFromX - titleMargin : svgDimensions.width - margins.right!,
+                    x: secondaryYAxisTitleCenterX,
+                    y: yAxisTitleCenterY,
                     textAnchor: 'middle',
-                    transform: `translate(${
-                      _useRtl ? margins.right! / 2 - titleMargin : margins.right! / 2 + titleMargin
-                    },
-                 ${svgDimensions.height - margins.bottom! - margins.top! - titleMargin})rotate(-90)`,
+                    transform: `rotate(-90, ${secondaryYAxisTitleCenterX}, ${yAxisTitleCenterY})`,
                     className: classes.axisTitle!,
                   }}
-                  maxWidth={yAxisTitleMaximumAllowedHeight}
+                  maxWidth={yAxisTitleMaxHeight}
                 />
               )}
             </g>
@@ -753,14 +789,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               {...commonSvgToolTipProps}
               content={props.yAxisTitle}
               textProps={{
-                x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
-                y: _useRtl ? svgDimensions.width - margins.right! / 2 + titleMargin : margins.left! / 2 - titleMargin,
+                x: yAxisTitleCenterX,
+                y: yAxisTitleCenterY,
                 textAnchor: 'middle',
-                transform: `translate(0,
-                 ${svgDimensions.height - margins.bottom! - margins.top! - titleMargin})rotate(-90)`,
+                transform: `rotate(-90, ${yAxisTitleCenterX}, ${yAxisTitleCenterY})`,
                 className: classes.axisTitle!,
               }}
-              maxWidth={yAxisTitleMaximumAllowedHeight}
+              maxWidth={yAxisTitleMaxHeight}
             />
           )}
           {props.yAxisAnnotation !== undefined &&
@@ -770,24 +805,33 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                 {...commonSvgToolTipProps}
                 content={props.yAxisAnnotation}
                 textProps={{
-                  x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + _removalValueForTextTuncate!,
-                  y: _useRtl ? startFromX - titleMargin : svgDimensions.width - margins.right!,
+                  x: secondaryYAxisTitleCenterX,
+                  y: yAxisTitleCenterY,
                   textAnchor: 'middle',
-                  transform: `translate(${
-                    _useRtl ? margins.right! / 2 - titleMargin : margins.right! / 2 + titleMargin
-                  },
-                   ${svgDimensions.height - margins.bottom! - margins.top! - titleMargin})rotate(-90)`,
+                  transform: `rotate(-90, ${secondaryYAxisTitleCenterX}, ${yAxisTitleCenterY})`,
                   className: classes.axisAnnotation!,
                   'aria-hidden': true,
                 }}
-                maxWidth={yAxisTitleMaximumAllowedHeight}
+                maxWidth={yAxisTitleMaxHeight}
               />
             )}
         </svg>
+        {hasAnnotations && annotationContext && (
+          <ChartAnnotationLayer
+            annotations={annotations}
+            context={annotationContext}
+            className={classes.annotationLayer}
+          />
+        )}
       </div>
 
       {!props.hideLegend && (
-        <div ref={(e: HTMLDivElement) => (legendContainer = e)} className={classes.legendContainer}>
+        <div
+          ref={(e: HTMLDivElement) => {
+            legendContainer = e;
+          }}
+          className={classes.legendContainer}
+        >
           {props.legendBars}
         </div>
       )}
@@ -797,6 +841,3 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   );
 });
 CartesianChart.displayName = 'CartesianChart';
-CartesianChart.defaultProps = {
-  hideTickOverlap: true,
-};

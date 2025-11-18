@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';

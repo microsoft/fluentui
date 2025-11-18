@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
@@ -13,7 +15,9 @@ const menuContextDefaultValue: MenuContextValue = {
   checkedValues: {},
   onCheckedValueChange: () => null,
   isSubmenu: false,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement | null>,
   mountNode: null,
   triggerId: '',

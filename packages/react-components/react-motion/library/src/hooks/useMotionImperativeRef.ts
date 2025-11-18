@@ -1,8 +1,11 @@
+'use client';
+
 import * as React from 'react';
 import type { AnimationHandle, MotionImperativeRef } from '../types';
 
 export function useMotionImperativeRef(
   imperativeRef: React.Ref<MotionImperativeRef | undefined> | undefined,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): React.MutableRefObject<AnimationHandle | undefined> {
   const animationRef = React.useRef<AnimationHandle | undefined>(undefined);
 

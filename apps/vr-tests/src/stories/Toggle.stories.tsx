@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import type { StoryParameters } from 'storywright';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 import { IToggleProps, Toggle } from '@fluentui/react';
+import { Meta } from '@storybook/react';
 
 const baseProps: IToggleProps = {
   label: 'Toggle label',
@@ -12,11 +14,13 @@ const baseProps: IToggleProps = {
 export default {
   title: 'Toggle',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
-};
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Toggle>;
 
 export const Checked = () => <Toggle {...baseProps} defaultChecked={true} />;
 

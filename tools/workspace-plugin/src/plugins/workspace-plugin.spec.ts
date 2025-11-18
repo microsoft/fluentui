@@ -55,6 +55,7 @@ describe(`workspace-plugin`, () => {
       'proj/package.json': serializeJson({}),
       'proj/.eslintrc.json': '{}',
       'proj/jest.config.js': 'module.exports = {}',
+      'proj/monosize.config.mjs': 'export default {}',
     });
     const results = await createNodesFunction(['proj/project.json'], options, context);
     const targets = getTargets(results);
@@ -62,11 +63,12 @@ describe(`workspace-plugin`, () => {
     expect(targets?.lint).toMatchInlineSnapshot(`
       Object {
         "cache": true,
-        "command": "yarn eslint src",
+        "executor": "nx:run-commands",
         "inputs": Array [
           "default",
           "{projectRoot}/.eslintrc.json",
           "{projectRoot}/.eslintrc.js",
+          "{projectRoot}/eslint.config.js",
           "{workspaceRoot}/.eslintrc.json",
           "{workspaceRoot}/.eslintignore",
           "{workspaceRoot}/eslint.config.js",
@@ -91,6 +93,7 @@ describe(`workspace-plugin`, () => {
           ],
         },
         "options": Object {
+          "command": "yarn cross-env ESLINT_USE_FLAT_CONFIG=false eslint src",
           "cwd": "proj",
         },
         "outputs": Array [
@@ -133,6 +136,41 @@ describe(`workspace-plugin`, () => {
         },
         "outputs": Array [
           "{projectRoot}/coverage",
+        ],
+      }
+    `);
+
+    // bundle-size target should be added when monosize config exists
+    expect(targets?.['bundle-size']).toMatchInlineSnapshot(`
+      Object {
+        "cache": true,
+        "command": "yarn monosize measure",
+        "inputs": Array [
+          "{workspaceRoot}/monosize.config.mjs",
+          "{projectRoot}/monosize.config.mjs",
+          "{projectRoot}/bundle-size",
+          "{projectRoot}/src/**/*.tsx?",
+          Object {
+            "externalDependencies": Array [
+              "monosize",
+              "monosize-bundler-webpack",
+            ],
+          },
+        ],
+        "metadata": Object {
+          "help": Object {
+            "command": "yarn monosize measure --help",
+            "example": Object {},
+          },
+          "technologies": Array [
+            "monosize",
+          ],
+        },
+        "options": Object {
+          "cwd": "proj",
+        },
+        "outputs": Array [
+          "{projectRoot}/dist/bundle-size",
         ],
       }
     `);
@@ -232,7 +270,7 @@ describe(`workspace-plugin`, () => {
               "production",
               "^production",
               "{workspaceRoot}/jest.preset.js",
-              "{workspaceRoot}/tools/react-integration-testing/**",
+              "{workspaceRoot}/tools/react-integration-tester/**",
             ],
             "metadata": Object {
               "description": "Run react integration tests against React 17",
@@ -260,7 +298,7 @@ describe(`workspace-plugin`, () => {
               "production",
               "^production",
               "{workspaceRoot}/jest.preset.js",
-              "{workspaceRoot}/tools/react-integration-testing/**",
+              "{workspaceRoot}/tools/react-integration-tester/**",
             ],
             "metadata": Object {
               "description": "Run react integration tests against React 17",
@@ -399,6 +437,57 @@ describe(`workspace-plugin`, () => {
 
         expect(getTargetsNames(results, 'proj/library')).toEqual(expect.arrayContaining(['rit', 'rit--17--test']));
       });
+    });
+
+    it('should prefer rit.config.js when determining available rit run options', async () => {
+      await tempFs.createFiles({
+        'proj/library/project.json': serializeJson({
+          root: 'proj',
+          name: 'proj',
+          projectType: 'library',
+          tags: ['vNext'],
+        } satisfies ProjectConfiguration),
+        'proj/library/package.json': serializeJson({
+          name: '@proj/proj',
+          private: true,
+        } satisfies Partial<PackageJson>),
+        // provide a rit.config.js that points type-check to tsconfig.baz.json
+        'proj/library/rit.config.js': `module.exports = {
+            react: {
+              17: {
+                runConfig: {
+                  'type-check': { configPath: 'tsconfig.baz.json' }
+                }
+              },
+              18: {
+                runConfig: {
+                  test: { configPath: 'jest-custom.config.js' }
+                }
+              }
+            }
+        }`,
+        // create the referenced tsconfig so the logic sees it as present
+        'proj/library/cypress.config.ts': 'export default {}',
+        'proj/library/tsconfig.baz.json': '{}',
+        // also create a jest.config.js to show that rit.config.js takes precedence
+        'proj/library/jest-custom.config.js': 'module.exports = {}',
+      });
+
+      const results = await createNodesFunction(['proj/library/project.json'], options, context);
+      const targets = getTargets(results, 'proj/library')!;
+
+      expect(targets['react-integration-testing--17--e2e']).toBeDefined();
+      // Because rit.config.js explicitly references tsconfig.baz.json for type-check
+      // the react-integration-testing--17--type-check target should be created.
+      expect(targets['react-integration-testing--17--type-check']).toBeDefined();
+      // Ensure 'test' is not added because jest.config.js does not exists
+      expect(targets['react-integration-testing--17--test']).toBeUndefined();
+
+      expect(targets['react-integration-testing--18--e2e']).toBeDefined();
+      // Ensure 'test' is  added because rit.config.js is present and defines  'jest-custom.config.js' which exists
+      expect(targets['react-integration-testing--18--test']).toBeDefined();
+      // Ensure 'test' is not added because tsconfig.lib.json does not exists
+      expect(targets['react-integration-testing--18--type-check']).toBeUndefined();
     });
 
     it('should create default nodes for v9 library project having stories project sibling', async () => {
@@ -588,7 +677,7 @@ describe(`workspace-plugin`, () => {
                         "production",
                         "^production",
                         "{workspaceRoot}/jest.preset.js",
-                        "{workspaceRoot}/tools/react-integration-testing/**",
+                        "{workspaceRoot}/tools/react-integration-tester/**",
                       ],
                       "metadata": Object {
                         "description": "Run react integration tests against React 17, 18",
@@ -636,7 +725,12 @@ describe(`workspace-plugin`, () => {
                       "inputs": Array [
                         "default",
                         "{projectRoot}/tsconfig.json",
-                        "{projectRoot}/tsconfig.*.json",
+                        "{projectRoot}/tsconfig*.json",
+                        Object {
+                          "externalDependencies": Array [
+                            "typescript",
+                          ],
+                        },
                       ],
                       "metadata": Object {
                         "description": "Type check code with TypeScript",

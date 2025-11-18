@@ -1,3 +1,5 @@
+'use client';
+
 import { GriffelStyle, makeStyles, mergeClasses } from '@griffel/react';
 import { ScatterChartProps, ScatterChartStyles } from './ScatterChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
@@ -23,6 +25,8 @@ export const scatterChartClassNames: SlotClassNames<ScatterChartStyles> = {
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 /**

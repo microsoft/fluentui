@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { Link } from '@fluentui/react/lib/Link';
@@ -9,6 +9,7 @@ import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggle } from '@fluentui/react/lib/Toggle';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { useBoolean, useEventCallback } from '@fluentui/react-hooks';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getStackStyles = memoizeFunction(
   (useTrapZone: boolean): Partial<IStackStyles> => ({
@@ -19,7 +20,7 @@ const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
 const stackTokens = { childrenGap: 8 };
 
 export const FocusTrapZoneBoxExample: React.FunctionComponent = () => {
-  const toggle = React.useRef<IToggle>(null);
+  const toggle = React.useRef<IToggle | null>(null);
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
 
   const [showIFrame, { toggle: toggleShowIFrame }] = useBoolean(false);
@@ -63,7 +64,7 @@ export const FocusTrapZoneBoxExample: React.FunctionComponent = () => {
   );
 };
 
-const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
+const IFrameWrapper = (props: { onClick: () => void }): JSXElement => {
   const onClick = useEventCallback(props.onClick);
 
   const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
@@ -73,10 +74,9 @@ const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
       const contentWindow = iframeRef.current.contentWindow;
 
       if (contentWindow) {
-        const root = contentWindow.document.createElement('div');
-        contentWindow.document.body.appendChild(root);
+        const root = ReactDOMClient.createRoot(contentWindow.document.body);
 
-        ReactDOM.render(<DefaultButton onClick={onClick}>Button in IFrame</DefaultButton>, root);
+        root.render(<DefaultButton onClick={onClick}>Button in IFrame</DefaultButton>);
       }
     }
   }, [onClick]);

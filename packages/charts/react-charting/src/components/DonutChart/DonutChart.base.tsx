@@ -17,8 +17,9 @@ import {
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
@@ -53,7 +54,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -117,7 +118,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { data, hideLegend = false } = this.props;
     const points = this._addDefaultColors(data?.chartData);
 
@@ -140,7 +141,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
-        ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
+        ref={(rootElem: HTMLElement | null) => {
+          this._rootElem = rootElem;
+        }}
         onMouseLeave={this._handleChartMouseLeave}
       >
         {this.props.xAxisAnnotation && (
@@ -233,7 +236,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._rootElem, this._legendsRef.current?.toSVG, getRTL(), opts);
+    return exportChartsAsImage(
+      [{ container: this._rootElem }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      getRTL(),
+      opts,
+    );
   };
 
   private _closeCallout = () => {
@@ -279,7 +287,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
+  private _createLegends(chartData: IChartDataPoint[]): JSXElement {
     if (this.props.order === 'sorted') {
       chartData.sort((a: IChartDataPoint, b: IChartDataPoint) => {
         return b.data! - a.data!;
