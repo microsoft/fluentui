@@ -25,19 +25,7 @@ export class ButtonPage extends React.Component<IButtonDemoPageProps, IButtonDem
     };
   }
 
-  private _onDisabledChanged = (ev: React.MouseEvent<HTMLElement>, disabled: boolean): void => {
-    this.setState({
-      areButtonsDisabled: disabled,
-    });
-  };
-
-  private _onToggledChanged = (ev: React.MouseEvent<HTMLElement>, toggled: boolean): void => {
-    this.setState({
-      areButtonsChecked: toggled,
-    });
-  };
-
-  renderKnobs() {
+  public renderKnobs() {
     const { areButtonsDisabled, areButtonsChecked } = this.state;
     return (
       <>
@@ -59,7 +47,7 @@ export class ButtonPage extends React.Component<IButtonDemoPageProps, IButtonDem
     );
   }
 
-  render() {
+  public render() {
     const { areButtonsDisabled, areButtonsChecked } = this.state;
 
     return (
@@ -73,4 +61,16 @@ export class ButtonPage extends React.Component<IButtonDemoPageProps, IButtonDem
       />
     );
   }
+
+  private _onDisabledChanged = (ev: React.MouseEvent<HTMLElement>, disabled: boolean): void => {
+    this.setState({
+      areButtonsDisabled: disabled,
+    });
+  };
+
+  private _onToggledChanged = (ev: React.MouseEvent<HTMLElement>, toggled: boolean): void => {
+    this.setState({
+      areButtonsChecked: toggled,
+    });
+  };
 }
