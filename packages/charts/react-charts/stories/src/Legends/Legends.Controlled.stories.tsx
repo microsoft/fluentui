@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-no-bind */
+ 
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Legends, Legend, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
@@ -61,7 +61,7 @@ export const LegendsControlled = (): JSXElement => {
           legends={legends}
           canSelectMultipleLegends
           selectedLegends={selectedLegends}
-          // eslint-disable-next-line react/jsx-no-bind
+           
           onChange={onChange}
         />
       </div>
