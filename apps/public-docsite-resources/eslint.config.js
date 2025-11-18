@@ -13,6 +13,8 @@ module.exports = [
       'no-restricted-globals': 'off',
       '@typescript-eslint/no-deprecated': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/explicit-member-accessibility': 'off',
+      '@typescript-eslint/member-ordering': 'off',
     },
   },
 ];
