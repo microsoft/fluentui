@@ -45,16 +45,13 @@ import {
   Legends,
   YValueHover,
   ChartPopoverProps,
-  Chart,
-  ImageExportOptions,
-  LegendContainer,
   LineSeries,
   getColorFromToken,
   BarSeries,
   ChildProps,
 } from '../../index';
-import { toImage } from '../../utilities/image-export-utils';
 import { tokens } from '@fluentui/react-theme';
+import { useImageExport } from '../../utilities/hooks';
 
 type NumericScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -102,9 +99,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _barLegends: string[] = [];
   let _lineLegends: string[] = [];
   let _legendColorMap: Record<string, [string, string]> = {};
-  const cartesianChartRef = React.useRef<Chart>(null);
+  const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const Y_ORIGIN: number = 0;
-  const _legendsRef = React.useRef<LegendContainer>(null);
   const _rectRef = React.useRef<SVGRectElement>(null);
   const _uniqDotId = useId('gvbc_dot_');
 
@@ -130,17 +126,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
   }, [props.legendProps?.selectedLegends]);
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _useRtl, opts);
-      },
-    }),
-    [],
-  );
 
   const _adjustProps = () => {
     _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);

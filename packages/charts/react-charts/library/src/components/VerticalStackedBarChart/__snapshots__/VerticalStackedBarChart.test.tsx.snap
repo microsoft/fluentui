@@ -432,25 +432,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           style="text-align: unset;"
         >
           <button
-            aria-label="Supported Builds"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Supported Builds
-            </div>
-          </button>
-          <button
             aria-label="Metadata1"
             aria-selected="false"
             class="fui-Button fui-legend__legend"
@@ -505,6 +486,25 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               class="fui-legend__text"
             >
               Metadata3
+            </div>
+          </button>
+          <button
+            aria-label="Supported Builds"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Supported Builds
             </div>
           </button>
         </div>
@@ -946,25 +946,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           style="text-align: unset;"
         >
           <button
-            aria-label="Supported Builds"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Supported Builds
-            </div>
-          </button>
-          <button
             aria-label="Metadata1"
             aria-selected="false"
             class="fui-Button fui-legend__legend"
@@ -1019,6 +1000,25 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               class="fui-legend__text"
             >
               Metadata3
+            </div>
+          </button>
+          <button
+            aria-label="Supported Builds"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Supported Builds
             </div>
           </button>
         </div>
@@ -3145,28 +3145,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             class="fui-legend__legendContainer"
           >
             <button
-              aria-label="Line1"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              role="option"
-              style="--rect-height: 4px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 4px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
-              />
-              <div
-                class="fui-legend__text"
-              >
-                Line1
-              </div>
-            </button>
-          </div>
-          <div
-            class="fui-legend__legendContainer"
-          >
-            <button
               aria-label="Metadata1"
               aria-selected="false"
               class="fui-Button fui-legend__legend"
@@ -3204,6 +3182,28 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 class="fui-legend__text"
               >
                 Metadata2
+              </div>
+            </button>
+          </div>
+          <div
+            class="fui-legend__legendContainer"
+          >
+            <button
+              aria-label="Line1"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              role="option"
+              style="--rect-height: 4px; --rect-backgroundColor: yellow; --rect-borderColor: yellow;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+                style="height: 4px; background-color: yellow; border-color: yellow; --rect-content-high-contrast: linear-gradient(to right, yellow, yellow);"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                Line1
               </div>
             </button>
           </div>

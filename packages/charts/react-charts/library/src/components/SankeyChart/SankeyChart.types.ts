@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import { Ref } from 'react';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { Chart, ChartProps } from '../../types/DataPoint';
 
@@ -84,7 +84,7 @@ export interface SankeyChartProps {
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: RefObject<Chart>;
+  componentRef?: Ref<Chart>;
 
   /**
    * props for the callout in the chart

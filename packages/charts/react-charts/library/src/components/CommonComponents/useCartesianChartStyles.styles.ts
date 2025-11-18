@@ -45,6 +45,8 @@ const useStyles = makeStyles({
   },
   chartWrapper: {
     position: 'relative',
+  },
+  chartWrapperMinWidth: {
     overflow: 'auto',
   },
   plotContainer: {
@@ -121,7 +123,8 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
     root: mergeClasses(cartesianchartClassNames.root, baseStyles.root, props.styles?.root),
     chartWrapper: mergeClasses(
       cartesianchartClassNames.chartWrapper,
-      props.reflowProps?.mode === 'min-width' ? baseStyles.chartWrapper : '',
+      baseStyles.chartWrapper,
+      props.reflowProps?.mode === 'min-width' ? baseStyles.chartWrapperMinWidth : undefined,
       props.styles?.chartWrapper,
     ),
     plotContainer: mergeClasses(

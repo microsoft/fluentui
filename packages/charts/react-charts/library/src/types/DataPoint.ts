@@ -905,6 +905,7 @@ interface SLinkExtra {
    */
   value: number;
   unnormalizedValue?: number;
+  color?: string;
 }
 
 export type SNode = SankeyNode<SNodeExtra, SLinkExtra>;

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: migrate to eslint flat config",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

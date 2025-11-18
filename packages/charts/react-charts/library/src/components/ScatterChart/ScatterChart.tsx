@@ -18,7 +18,6 @@ import {
   findNumericMinMaxOfY,
   IDomainNRange,
   YAxisType,
-  useRtl,
   isTextMode,
   isScatterPolarSeries,
   isPlottable,
@@ -36,9 +35,6 @@ import {
   Margins,
   RefArrayData,
   ScatterChartDataPoint,
-  Chart,
-  ImageExportOptions,
-  LegendContainer,
   ScatterChartPoints,
   YValueHover,
 } from '../../index';
@@ -53,9 +49,9 @@ import {
   getColorFromToken,
 } from '../../utilities/index';
 import { LineChartPoints } from '../../types/DataPoint';
-import { toImage } from '../../utilities/image-export-utils';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+import { useImageExport } from '../../utilities/hooks';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -88,10 +84,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let _xAxisLabels: string[] = [];
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
-  const cartesianChartRef = React.useRef<Chart>(null);
+  const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const classes = useScatterChartStyles(props);
-  const _legendsRef = React.useRef<LegendContainer>(null);
-  const _isRTL: boolean = useRtl();
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -117,17 +111,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     }
     prevSelectedLegendsRef.current = props.legendProps?.selectedLegends;
   }, [props.legendProps?.selectedLegends]);
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
-      },
-    }),
-    [],
-  );
 
   const _xAxisType: XAxisTypes =
     props.data.scatterChartData! &&

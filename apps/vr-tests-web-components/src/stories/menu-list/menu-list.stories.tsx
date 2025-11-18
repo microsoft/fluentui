@@ -175,14 +175,14 @@ export const RadioWithIconsRTL = getStoryVariant(RadioWithIcons, RTL);
 export const WithSubmenu = () =>
   parse(`
     <fluent-menu-list>
-      <fluent-menu-item>
+      <fluent-menu-item aria-haspopup="menu">
         Item 1
         <fluent-menu-list slot="submenu">
           <fluent-menu-item> Subitem 1.1 </fluent-menu-item>
           <fluent-menu-item> Subitem 1.2 </fluent-menu-item>
         </fluent-menu-list>
       </fluent-menu-item>
-      <fluent-menu-item>
+      <fluent-menu-item aria-haspopup="menu">
         Item 2
         <fluent-menu-list slot="submenu">
           <fluent-menu-item> Subitem 2.1 </fluent-menu-item>

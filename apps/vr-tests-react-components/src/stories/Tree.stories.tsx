@@ -176,6 +176,59 @@ export const AppearanceHighContrast = getStoryVariant(Appearance, HIGH_CONTRAST)
 
 export const AppearanceRTL = getStoryVariant(Appearance, RTL);
 
+export const AppearanceTreeItemPersonaLayout = () => {
+  return (
+    <>
+      <Tree id="subtle-tree" aria-label="Tree">
+        <TreeItem itemType="leaf">
+          <TreeItemPersonaLayout media={<Avatar name="Test Name" color="colorful" />}>
+            Subtle tree persona item
+          </TreeItemPersonaLayout>
+        </TreeItem>
+      </Tree>
+      <Tree id="subtle-alpha-tree" appearance="subtle-alpha" aria-label="Tree">
+        <TreeItem itemType="leaf">
+          <TreeItemPersonaLayout media={<Avatar name="Test Name" color="colorful" />}>
+            Subtle-alpha tree persona item
+          </TreeItemPersonaLayout>
+        </TreeItem>
+      </Tree>
+      <Tree id="transparent-tree" appearance="transparent" aria-label="Tree">
+        <TreeItem itemType="leaf">
+          <TreeItemPersonaLayout media={<Avatar name="Test Name" color="colorful" />}>
+            Transparent tree persona item
+          </TreeItemPersonaLayout>
+        </TreeItem>
+      </Tree>
+    </>
+  );
+};
+AppearanceTreeItemPersonaLayout.storyName = 'appearancePersona';
+AppearanceTreeItemPersonaLayout.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .hover('#subtle-tree')
+      .snapshot('Subtle tree hover')
+      .mouseDown('#subtle-tree')
+      .snapshot('Subtle tree mousedown')
+      .hover('#subtle-alpha-tree')
+      .snapshot('Subtle alpha tree hover')
+      .mouseDown('#subtle-alpha-tree')
+      .snapshot('Subtle alpha tree mousedown')
+      .hover('#transparent-tree')
+      .snapshot('Transparent tree hover')
+      .mouseDown('#transparent-tree')
+      .snapshot('Transparent tree mousedown')
+      .end(),
+  },
+} satisfies StoryParameters;
+
+export const AppearancePersonaLayoutDarkMode = getStoryVariant(AppearanceTreeItemPersonaLayout, DARK_MODE);
+
+export const AppearancePersonaLayoutHighContrast = getStoryVariant(AppearanceTreeItemPersonaLayout, HIGH_CONTRAST);
+
+export const AppearancePersonaLayoutRTL = getStoryVariant(AppearanceTreeItemPersonaLayout, RTL);
+
 export const Size = () => {
   return (
     <>
@@ -191,6 +244,22 @@ export const Size = () => {
             </TreeItem>
             <TreeItem itemType="leaf">
               <TreeItemLayout>level 2, item 3</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+        <TreeItem value="2" itemType="branch">
+          <TreeItemPersonaLayout media={<Avatar name="Medium Tree" color="colorful" />}>
+            Medium size tree item
+          </TreeItemPersonaLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout>level 2, item 1</TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout>level 2, item 2</TreeItemPersonaLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemPersonaLayout>level 2, item 3</TreeItemPersonaLayout>
             </TreeItem>
           </Tree>
         </TreeItem>
@@ -212,6 +281,22 @@ export const Size = () => {
           </Tree>
         </TreeItem>
       </Tree>
+      <TreeItem value="2" itemType="branch">
+        <TreeItemPersonaLayout media={<Avatar name="Small Tree" color="colorful" />}>
+          Small size tree item
+        </TreeItemPersonaLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemPersonaLayout>level 2, item 1</TreeItemPersonaLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemPersonaLayout>level 2, item 2</TreeItemPersonaLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemPersonaLayout>level 2, item 3</TreeItemPersonaLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
     </>
   );
 };

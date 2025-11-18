@@ -44,8 +44,6 @@ const useStyles = makeStyles({
     whiteSpace: 'nowrap',
     width: '100%',
     alignItems: 'center',
-    // TODO: Confirm this style is needed. Shorthands are not used correctly, therefore this style has no effect.
-    // ...shorthands.margin('-8px 0 0 -8px'),
   },
   legend: {
     // setting display to flex does not work

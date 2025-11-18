@@ -22,9 +22,9 @@ export default {
     storyWright: {
       steps: new Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
-        .click('[role="radio"]:first-child')
+        .click('fluent-radio:first-child')
         .snapshot('1st selected', { cropTo: '.testWrapper' })
-        .click('[role="radio"]:nth-child(2)')
+        .click('fluent-radio:nth-child(2)')
         .snapshot('2nd selected', { cropTo: '.testWrapper' })
         .end(),
     },

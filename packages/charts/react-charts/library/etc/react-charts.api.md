@@ -9,7 +9,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { Margin } from '@fluentui/chart-utilities';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
-import { RefObject } from 'react';
+import { Ref } from 'react';
 import { SankeyGraph } from 'd3-sankey';
 import { SankeyLayout } from 'd3-sankey';
 import { SankeyLink } from 'd3-sankey';
@@ -36,7 +36,7 @@ export const AnnotationOnlyChart: React_2.FC<AnnotationOnlyChartProps>;
 export interface AnnotationOnlyChartProps {
     annotations: ChartAnnotation[];
     chartTitle?: string;
-    componentRef?: React_2.RefObject<Chart>;
+    componentRef?: React_2.Ref<Chart>;
     description?: string;
     fontColor?: string;
     fontFamily?: string;
@@ -194,7 +194,7 @@ export interface CartesianChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: any) => ChartPopoverProps;
     className?: string;
-    componentRef?: React_2.RefObject<Chart | null>;
+    componentRef?: React_2.Ref<Chart>;
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
@@ -490,7 +490,7 @@ export const ChartTable: React_2.FunctionComponent<ChartTableProps>;
 // @public
 export interface ChartTableProps {
     className?: string;
-    componentRef?: React_2.RefObject<Chart>;
+    componentRef?: React_2.Ref<Chart>;
     headers: {
         value: string | number | boolean | null;
         style?: React_2.CSSProperties;
@@ -682,7 +682,7 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
     colorwayType?: ColorwayType;
-    componentRef?: React_2.RefObject<IDeclarativeChart | null>;
+    componentRef?: React_2.Ref<IDeclarativeChart>;
     onSchemaChange?: (eventData: Schema) => void;
 }
 
@@ -694,7 +694,7 @@ export interface DonutChartProps extends CartesianChartProps {
     calloutProps?: ChartPopoverProps;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     className?: string;
-    componentRef?: React_2.RefObject<Chart>;
+    componentRef?: React_2.Ref<Chart>;
     culture?: string;
     data?: ChartProps;
     height?: number;
@@ -786,7 +786,7 @@ export interface FunnelChartProps {
     calloutProps?: ChartPopoverProps;
     chartTitle?: string;
     className?: string;
-    componentRef?: React_2.RefObject<any>;
+    componentRef?: React_2.Ref<Chart>;
     culture?: string;
     data: FunnelChartDataPoint[];
     height?: number;
@@ -861,7 +861,7 @@ export interface GaugeChartProps {
     chartTitle?: string;
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
-    componentRef?: React.RefObject<Chart>;
+    componentRef?: React.Ref<Chart>;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
@@ -1206,7 +1206,7 @@ export interface Legend {
 export interface LegendContainer {
     // (undocumented)
     toSVG: (svgWidth: number, isRTL?: boolean) => {
-        node: SVGGElement | null;
+        node: SVGSVGElement | null;
         width: number;
         height: number;
     };
@@ -1233,7 +1233,7 @@ export interface LegendsProps {
     defaultSelectedLegend?: string;
     defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
-    legendRef?: React_2.RefObject<LegendContainer | null>;
+    legendRef?: React_2.Ref<LegendContainer>;
     legends: Legend[];
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
@@ -1570,7 +1570,7 @@ export interface SankeyChartProps {
     calloutProps?: ChartPopoverProps;
     className?: string;
     colorsForNodes?: string[];
-    componentRef?: RefObject<Chart>;
+    componentRef?: Ref<Chart>;
     culture?: string;
     data: ChartProps;
     // @deprecated

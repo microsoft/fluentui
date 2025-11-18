@@ -10405,7 +10405,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <path
               aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
               d="M172,311.726C283,311.726,283,320.523,394,320.523L394,343.537C283,343.537,283,334.74,172,334.74Z"
-              fill="#8764B8"
               fill-opacity="1"
               id="link_r_33_-3"
               role="img"
@@ -10834,7 +10833,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             <path
               aria-label="link from Junk Folder to  No further action  required with weight 60"
               d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
-              fill="#8764B8"
               fill-opacity="1"
               id="link_r_33_-10"
               role="img"
@@ -11422,7 +11420,6 @@ Object {
                 <path
                   aria-label="link from 172.152.48.13 to inbox with weight 50"
                   d="M172,175.507C283,175.507,283,169.194,394,169.194L394,251.386C283,251.386,283,257.699,172,257.699Z"
-                  fill="#8764B8"
                   fill-opacity="1"
                   id="link_r_2t_-1"
                   role="img"
@@ -11460,7 +11457,6 @@ Object {
                 <path
                   aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
                   d="M172,257.699C283,257.699,283,274.496,394,274.496L394,320.523C283,320.523,283,303.726,172,303.726Z"
-                  fill="#8764B8"
                   fill-opacity="1"
                   id="link_r_2t_-2"
                   role="img"
@@ -11853,7 +11849,6 @@ Object {
                 <path
                   aria-label="link from inbox to Clicked with weight 30"
                   d="M518,37.687C629,37.687,629,36,740,36L740,85.315C629,85.315,629,87.002,518,87.002Z"
-                  fill="#8764B8"
                   fill-opacity="1"
                   id="link_r_2t_-8"
                   role="img"
@@ -11891,7 +11886,6 @@ Object {
                 <path
                   aria-label="link from inbox to Opened with weight 55"
                   d="M518,87.002C629,87.002,629,93.315,740,93.315L740,183.726C629,183.726,629,177.413,518,177.413Z"
-                  fill="#8764B8"
                   fill-opacity="1"
                   id="link_r_2t_-9"
                   role="img"
@@ -11929,7 +11923,6 @@ Object {
                 <path
                   aria-label="link from Junk Folder to  No further action  required with weight 60"
                   d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
-                  fill="#8764B8"
                   fill-opacity="1"
                   id="link_r_2t_-10"
                   role="img"
@@ -12468,7 +12461,6 @@ Object {
               <path
                 aria-label="link from 172.152.48.13 to inbox with weight 50"
                 d="M172,175.507C283,175.507,283,169.194,394,169.194L394,251.386C283,251.386,283,257.699,172,257.699Z"
-                fill="#8764B8"
                 fill-opacity="1"
                 id="link_r_2t_-1"
                 role="img"
@@ -12506,7 +12498,6 @@ Object {
               <path
                 aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
                 d="M172,257.699C283,257.699,283,274.496,394,274.496L394,320.523C283,320.523,283,303.726,172,303.726Z"
-                fill="#8764B8"
                 fill-opacity="1"
                 id="link_r_2t_-2"
                 role="img"
@@ -12899,7 +12890,6 @@ Object {
               <path
                 aria-label="link from inbox to Clicked with weight 30"
                 d="M518,37.687C629,37.687,629,36,740,36L740,85.315C629,85.315,629,87.002,518,87.002Z"
-                fill="#8764B8"
                 fill-opacity="1"
                 id="link_r_2t_-8"
                 role="img"
@@ -12937,7 +12927,6 @@ Object {
               <path
                 aria-label="link from inbox to Opened with weight 55"
                 d="M518,87.002C629,87.002,629,93.315,740,93.315L740,183.726C629,183.726,629,177.413,518,177.413Z"
-                fill="#8764B8"
                 fill-opacity="1"
                 id="link_r_2t_-9"
                 role="img"
@@ -12975,7 +12964,6 @@ Object {
               <path
                 aria-label="link from Junk Folder to  No further action  required with weight 60"
                 d="M518,274.496C629,274.496,629,275.194,740,275.194L740,373.825C629,373.825,629,373.126,518,373.126Z"
-                fill="#8764B8"
                 fill-opacity="1"
                 id="link_r_2t_-10"
                 role="img"

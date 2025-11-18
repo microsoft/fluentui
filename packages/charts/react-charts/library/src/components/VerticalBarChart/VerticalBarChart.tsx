@@ -26,10 +26,7 @@ import {
   ChildProps,
   YValueHover,
   ChartPopover,
-  Chart,
   DataPoint,
-  ImageExportOptions,
-  LegendContainer,
 } from '../../index';
 import {
   ChartTypes,
@@ -59,7 +56,7 @@ import {
   calcRequiredWidth,
   sortAxisCategories,
 } from '../../utilities/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { useImageExport } from '../../utilities/hooks';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -104,8 +101,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
   type ColorScale = (_p?: number) => string;
-  const cartesianChartRef = React.useRef<Chart>(null);
-  const _legendsRef = React.useRef<LegendContainer>(null);
+  const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -122,17 +118,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const prevPropsRef = React.useRef<VerticalBarChartProps | null>(null);
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _useRtl, opts);
-      },
-    }),
-    [],
-  );
 
   React.useEffect(() => {
     if (prevPropsRef.current) {

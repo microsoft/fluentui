@@ -422,11 +422,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         })),
         legendsRef.current?.toSVG,
         getRTL(),
-        {
-          background: resolveCSSVariables(containerRef.current, theme.semanticColors.bodyBackground),
-          scale: 5,
-          ...opts,
-        },
+        imgExpOpts,
       );
     },
     [theme],

@@ -392,7 +392,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseOver(legends[0]);
+      fireEvent.mouseOver(legends[3]);
       // Assert
       expect(line[8].getAttribute('opacity')).toEqual('1');
       expect(bars[0]).toHaveAttribute('opacity', '0.1');
@@ -415,7 +415,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
-      fireEvent.mouseOver(legends![1]);
+      fireEvent.mouseOver(legends![0]);
 
       // Assert
       expect(line[8].getAttribute('opacity')).toEqual('0.1');

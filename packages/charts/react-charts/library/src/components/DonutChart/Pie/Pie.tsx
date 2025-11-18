@@ -92,13 +92,17 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     }
 
     const { data } = props;
-    const focusData = pieForFocusRing(data.map(d => d.data!));
+
+    // Filter out data points with value 0 to avoid gaps in the donut chart
+    const filteredData = data.filter((d: ChartDataPoint) => d.data !== 0);
+
+    const focusData = pieForFocusRing(filteredData.map(d => d.data!));
 
     const piechart = d3Pie<ChartDataPoint>()
       .sort(null)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .value((d: any) => d.data)
-      .padAngle(0.02)(data);
+      .padAngle(0.02)(filteredData);
     const translate = `translate(${props.width / 2}, ${props.height / 2})`;
 
     _totalValue = _computeTotalValue();

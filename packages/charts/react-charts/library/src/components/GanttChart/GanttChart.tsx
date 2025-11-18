@@ -5,12 +5,12 @@ import { max as d3Max, min as d3Min } from 'd3-array';
 import { ScaleLinear, ScaleBand, ScaleTime } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Legend, Legends, LegendContainer } from '../Legends/index';
+import { Legend, Legends } from '../Legends/index';
 import { Margins, GanttChartDataPoint } from '../../types/DataPoint';
 import { CartesianChart, ModifiedCartesianChartProps } from '../CommonComponents/index';
 import { GanttChartProps } from './GanttChart.types';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { ChartPopoverProps, ImageExportOptions, Chart } from '../../index';
+import { ChartPopoverProps } from '../../index';
 import {
   ChartTypes,
   YAxisType,
@@ -28,10 +28,9 @@ import {
   getColorFromToken,
   getScalePadding,
   getDateFormatLevel,
-  useRtl,
 } from '../../utilities/index';
 import { formatDateToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
-import { toImage } from '../../utilities/image-export-utils';
+import { useImageExport } from '../../utilities/hooks';
 
 type NumberScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -59,9 +58,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     const [calloutDataPoint, setCalloutDataPoint] = React.useState<GanttChartDataPoint>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
-    const cartesianChartRef = React.useRef<Chart>(null);
-    const _legendsRef = React.useRef<LegendContainer>(null);
-    const _isRTL = useRtl();
+    const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
 
     React.useEffect(() => {
       if (!areArraysEqual(_prevProps.current.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
@@ -69,17 +66,6 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
       }
       _prevProps.current = props;
     }, [props]);
-
-    React.useImperativeHandle(
-      props.componentRef,
-      () => ({
-        chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
-        },
-      }),
-      [],
-    );
 
     const _points = React.useMemo(() => {
       _legendMap.current = {};

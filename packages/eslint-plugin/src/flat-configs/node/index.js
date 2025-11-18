@@ -1,10 +1,9 @@
 // @ts-check
 const base = require('../base');
-const tseslint = require('typescript-eslint');
+const { defineConfig } = require('eslint/config');
 
-/** @type {import('typescript-eslint').ConfigArray} */
-
-module.exports = tseslint.config(base, {
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig(base, {
   files: ['**/*.{ts,js}'],
   rules: {
     'no-console': 'off',
