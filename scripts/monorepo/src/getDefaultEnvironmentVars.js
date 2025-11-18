@@ -35,7 +35,7 @@ const getVariables = options => {
  * environment variable name and value is the non-stringified value.
  */
 const getDefaultEnvironmentVars = (isProduction, otherValues) => ({
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+   
   'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : process.env.NODE_ENV || 'development'),
   ...(otherValues && getVariables(otherValues)),
 });

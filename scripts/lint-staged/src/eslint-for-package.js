@@ -24,7 +24,7 @@ async function run() {
   /** @type {{scripts?:Record<string,string>}} */
   const packageJson = JSON.parse(fs.readFileSync(path.join(packagePath, 'package.json'), 'utf-8'));
   const lintScript = packageJson.scripts?.lint ?? '';
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+   
   /** @type {ESLint} */
   let eslint;
   /** @type {string} */
@@ -36,14 +36,14 @@ async function run() {
     // segment here, the glob needs to start with the absolute package path in case someone has named
     // the directory containing all their git repos "src".)
     includePattern = path.join(packagePath, eslintConstants.directory, '**', `*{${eslintConstants.extensions}}`);
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+     
     eslint = new ESLint({ fix: true, cache: true });
   } else {
     // Otherwise, look for the --ext option to determine extensions
     const extensionsMatch = lintScript.match(/--ext (\S+)/);
     const extensions = extensionsMatch ? extensionsMatch[1] : '.js';
     includePattern = `**/${extensions.includes(',') ? `*{${extensions}}` : `*${extensions}`}`;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+     
     eslint = new ESLint({ fix: true, cache: lintScript.includes('--cache') });
   }
 
@@ -64,7 +64,7 @@ async function run() {
   const results = await eslint.lintFiles(filteredFiles);
   const hasSeverityError = results.some(lintResult => lintResult.errorCount > 0);
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+   
   await ESLint.outputFixes(results);
 
   // Format results
