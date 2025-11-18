@@ -240,7 +240,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           culture,
           props.xScaleType,
           _useRtl,
-          props.roundedXTicks,
         ));
         break;
       case XAxisTypes.DateAxis:
@@ -272,7 +271,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           culture,
           props.xScaleType,
           _useRtl,
-          props.roundedXTicks,
         ));
     }
     _xScale = xScale;
@@ -343,7 +341,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           isIntegralDataset,
           chartType,
           true,
-          props.roundedYTicks!,
+          props.roundedTicks!,
           props.secondaryYScaleType,
           _useRtl,
         );
@@ -355,7 +353,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         isIntegralDataset,
         chartType,
         false,
-        props.roundedYTicks!,
+        props.roundedTicks!,
         props.yScaleType,
         _useRtl,
       );

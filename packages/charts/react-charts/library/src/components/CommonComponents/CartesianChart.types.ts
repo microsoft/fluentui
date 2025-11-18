@@ -438,13 +438,7 @@ export interface CartesianChartProps {
    * @default false
    * The prop used to decide rounded ticks on y axis
    */
-  roundedYTicks?: boolean;
-
-  /**
-   * @default false
-   * The prop used to decide rounded ticks on x axis
-   */
-  roundedXTicks?: boolean;
+  roundedTicks?: boolean;
 
   /**
    * Determines whether overlapping x-axis tick labels should be hidden.

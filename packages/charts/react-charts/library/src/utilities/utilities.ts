@@ -248,7 +248,6 @@ export function createNumericXAxis(
   culture?: string,
   scaleType?: AxisScaleType,
   _useRtl?: boolean,
-  roundedXTicks: boolean = false,
 ): {
   xScale: ScaleLinear<number, number>;
   tickValues: string[];
@@ -302,9 +301,7 @@ export function createNumericXAxis(
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
   let customTickValues: number[] | undefined;
-  if (roundedXTicks && scaleType !== 'log') {
-    customTickValues = prepareDatapoints(finalXmax, finalXmin, tickCount, true, roundedXTicks);
-  } else if (tickParams.tickValues) {
+  if (tickParams.tickValues) {
     customTickValues = tickParams.tickValues as number[];
   } else if (tickStep) {
     customTickValues = generateNumericTicks(scaleType, tickStep, tick0, xAxisScale.domain());
@@ -2223,8 +2220,7 @@ export const getDomainPaddingForMarkers = (
     };
   }
 
-  // don't add padding if the calculated padding is greater than minVal to avoid unnecessary extra tick value
-  const defaultPadding = (maxVal - minVal) * 0.1 > minVal ? 0 : (maxVal - minVal) * 0.1;
+  const defaultPadding = (maxVal - minVal) * 0.1;
   return {
     start: defaultPadding,
     end: defaultPadding,
