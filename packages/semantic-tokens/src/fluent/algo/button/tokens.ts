@@ -14,7 +14,6 @@ import {
   groupButtonOutlineStroke,
   groupButtonPrimaryBackground,
   groupButtonPrimaryStroke,
-  groupButtonSubtleForeground,
   groupButtonTextPaddingHorizontal,
   groupButtonTransparentForegroundSelected,
   groupButtonNeutralBackgroundSelected,
@@ -69,7 +68,6 @@ export const groupButtonPrimaryBackgroundHover = `hsl(from ${groupButtonPrimaryB
 export const groupButtonPrimaryStrokeHover = `hsl(from ${groupButtonPrimaryStroke} h s calc(l + ${lightnessHover}))`;
 export const groupButtonPrimaryBackgroundPressed = `hsl(from ${groupButtonPrimaryBackground} h s calc(l + ${groupButtonPrimaryLightnessPressed}))`;
 export const groupButtonPrimaryStrokePressed = `hsl(from ${groupButtonPrimaryStroke} h s calc(l + ${lightnessSelectedPressed}))`;
-export const groupButtonSubtleForegroundPressed = `hsl(from ${groupButtonSubtleForeground} h s calc(l + ${lightnessPressed}))`;
 export const groupButtonTransparentForegroundPressed = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${lightnessPressed}))`;
 export const groupButtonTransparentForegroundHover = `hsl(from ${groupButtonTransparentForegroundSelected} h s calc(l + ${lightnessHover}))`;
 

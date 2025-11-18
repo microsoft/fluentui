@@ -351,7 +351,6 @@ export {
   groupButtonPrimaryStrokeHover,
   groupButtonPrimaryBackgroundPressed,
   groupButtonPrimaryStrokePressed,
-  groupButtonSubtleForegroundPressed,
   groupButtonTransparentForegroundPressed,
   groupButtonTransparentForegroundHover,
 
@@ -391,3 +390,5 @@ export {
   // Button - extension
   groupButtonSubtleIconForegroundPressed,
 } from './fluent/algo/index';
+
+export { createLightTheme } from './theme/index';

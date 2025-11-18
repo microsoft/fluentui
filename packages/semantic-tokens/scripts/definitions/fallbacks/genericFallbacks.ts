@@ -1,9 +1,10 @@
 import { tokens } from '@fluentui/tokens';
+import { ThemePrimitives } from '../../../src/primitives/primitives.types';
 
 export type GenericFallbacks = {
   [key: string]: {
     fluent?: string;
-    primitive?: string;
+    primitive?: keyof ThemePrimitives;
   };
 };
 
@@ -113,7 +114,7 @@ export const genericFallbacks: GenericFallbacks = {
     primitive: 'colorDanger4',
   },
   strokeDangerOnloud: {
-    primitive: 'colorDanger8',
+    primitive: 'colorDanger6',
   },
   strokeWarningLoud: {
     primitive: 'colorWarning2',

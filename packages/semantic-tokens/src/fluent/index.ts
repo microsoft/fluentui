@@ -207,7 +207,6 @@ export {
   groupButtonPrimaryStrokeHover,
   groupButtonPrimaryBackgroundPressed,
   groupButtonPrimaryStrokePressed,
-  groupButtonSubtleForegroundPressed,
   groupButtonTransparentForegroundPressed,
   groupButtonTransparentForegroundHover,
 

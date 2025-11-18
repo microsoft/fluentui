@@ -11,6 +11,9 @@ import { MenuButtonState } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
 
+// @public
+export const bebopSemanticTokens: Record<string, string>;
+
 // @public (undocumented)
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks;
 

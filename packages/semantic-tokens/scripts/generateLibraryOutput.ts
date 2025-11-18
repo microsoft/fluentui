@@ -5,6 +5,7 @@ import { groupFallbacks } from './definitions/groupFallbacks';
 import { genericFallbacks } from './definitions/fallbacks/genericFallbacks';
 import { controlFallbacks } from './definitions/controlFallbacks';
 import { extensionGroups, groups } from './definitions/groups';
+import { splitCamelCase } from '../utils/splitCamelCase';
 
 function dotToCamelCase(str: string): string {
   return str
@@ -38,21 +39,6 @@ function makeTokenFallback(tokenList: string[], defaultFallback?: string | null)
   return fallbackString ?? '';
 }
 
-function splitCamelCase(name: string) {
-  return (
-    name
-      // Handle acronym-to-word boundaries: "CSSButton" -> "CSS-Button"
-      .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
-      // Insert dash between lowercase/number and uppercase: "btnPrimary2D" -> "btn-Primary2-D"
-      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-      // Insert dash between letter and number: "Token2XL" -> "Token-2XL"
-      .replace(/([A-Za-z])([0-9])/g, '$1-$2')
-      // Insert dash between number and letter: "H2OLevel" -> "H-2-OLevel"
-      .replace(/([0-9])([A-Za-z])/g, '$1-$2')
-      .toLowerCase()
-  );
-}
-
 function generateLibraryOutput() {
   let genericTokens = generateGenericTokens();
   let groupTokens = generateGroupTokens(groups);
@@ -62,16 +48,16 @@ function generateLibraryOutput() {
   // Generic tokens
   let genericTokenList = '';
   let genericIndexExport = 'export {\n';
+  let genericTypeList = 'export type GenericTokens = {\n';
   for (const token of genericTokens) {
     const tokenName = dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
     const fluentFallback = genericFallbacks[tokenName]?.fluent;
-    const primitiveFallbackName = genericFallbacks[tokenName]?.primitive;
-    const primitiveFallback = primitiveFallbackName ? '--smtc-' + splitCamelCase(primitiveFallbackName) : undefined;
-    const fallbackChain = [cssVarName, primitiveFallback].filter((v): v is string => typeof v === 'string');
+    const fallbackChain = [cssVarName].filter((v): v is string => typeof v === 'string');
     const tokenString = makeTokenFallback(fallbackChain, fluentFallback);
     const exportToken = `export const ${tokenName} = '${tokenString}';`;
 
+    genericTypeList += `  ${tokenName}: string;\n`;
     genericTokenList += `${exportToken}\n`;
     genericIndexExport += `${tokenName},\n`;
   }
@@ -90,6 +76,7 @@ function generateLibraryOutput() {
   // Group tokens
   const groupTokenList: { [key: string]: string } = {};
   const groupExportList: { [key: string]: string } = {};
+  let groupTypeList = 'export type GroupTokens = {\n';
   for (const token of groupTokens) {
     const tokenGroup = token.group || 'ungrouped';
     const groupName = tokenGroup.split('.')[0];
@@ -106,14 +93,11 @@ function generateLibraryOutput() {
     const fluentFallback = groupFallbacks[tokenGroup][tokenName]?.fluent;
     const genericFallbackName = groupFallbacks[tokenGroup][tokenName]?.generic;
     const genericFallback = genericFallbackName ? '--smtc-' + splitCamelCase(genericFallbackName) : undefined;
-    const primitiveFallbackName = genericFallbackName ? genericFallbacks[genericFallbackName]?.primitive : undefined;
-    const primitiveFallback = primitiveFallbackName ? '--smtc-' + splitCamelCase(primitiveFallbackName) : undefined;
-    const fallbackChain = [cssVarName, genericFallback, primitiveFallback].filter(
-      (v): v is string => typeof v === 'string',
-    );
+    const fallbackChain = [cssVarName, genericFallback].filter((v): v is string => typeof v === 'string');
     const tokenString = makeTokenFallback(fallbackChain, fluentFallback);
     const exportToken = `export const ${tokenName} = '${tokenString}';`;
 
+    groupTypeList += `  ${tokenName}: string;\n`;
     groupTokenList[groupName] += `${exportToken}\n`;
     groupExportList[groupName] += `${tokenName},\n`;
   }
@@ -157,14 +141,11 @@ function generateLibraryOutput() {
     const fluentFallback = groupFallbacks[tokenGroup][tokenName]?.fluent;
     const genericFallbackName = groupFallbacks[tokenGroup][tokenName]?.generic;
     const genericFallback = genericFallbackName ? '--smtc-' + splitCamelCase(genericFallbackName) : undefined;
-    const primitiveFallbackName = genericFallbackName ? genericFallbacks[genericFallbackName]?.primitive : undefined;
-    const primitiveFallback = primitiveFallbackName ? '--smtc-' + splitCamelCase(primitiveFallbackName) : undefined;
-    const fallbackChain = [cssVarName, genericFallback, primitiveFallback].filter(
-      (v): v is string => typeof v === 'string',
-    );
+    const fallbackChain = [cssVarName, genericFallback].filter((v): v is string => typeof v === 'string');
     const tokenString = makeTokenFallback(fallbackChain, fluentFallback);
     const exportToken = `export const ${tokenName} = '${tokenString}';`;
 
+    groupTypeList += `  ${tokenName}: string;\n`;
     extensionGroupTokenList[groupName] += `${exportToken}\n`;
     extensionGroupExportList[groupName] += `${tokenName},\n`;
   }
@@ -245,6 +226,9 @@ function generateLibraryOutput() {
 
     algoTokensData = algoTokensData.replace('./algo/index', './fluent/algo/index');
 
+    // Todo: Migrate this to theme tooling package later
+    const themeExport = `export { createLightTheme } from './theme/index';\n`;
+
     // Write the JSON string to a file
     const indexPath = path.resolve(__dirname, `../src/index.ts`);
     const allExports =
@@ -252,7 +236,9 @@ function generateLibraryOutput() {
       Object.values(groupExportList).join('\n') +
       Object.values(extensionGroupExportList).join('\n') +
       Object.values(controlExportList).join('\n') +
-      algoTokensData;
+      algoTokensData +
+      '\n' +
+      themeExport;
 
     fs.writeFile(indexPath, allExports, err => {
       if (err) {
@@ -261,6 +247,26 @@ function generateLibraryOutput() {
         console.log('JSON data successfully written to tokens.json');
       }
     });
+  });
+
+  // Write generic tokens as types for modification in themes
+  const genericTypesFile = path.resolve(__dirname, `../src/generics/generics.types.ts`);
+  fs.writeFile(genericTypesFile, genericTypeList + '};\n', err => {
+    if (err) {
+      console.error('Error writing to file:', err);
+    } else {
+      console.log('JSON data successfully written to tokens.json');
+    }
+  });
+
+  // Write generic tokens as types for modification in themes
+  const groupTypesFile = path.resolve(__dirname, `../src/groups/groups.types.ts`);
+  fs.writeFile(groupTypesFile, groupTypeList + '};\n', err => {
+    if (err) {
+      console.error('Error writing to file:', err);
+    } else {
+      console.log('JSON data successfully written to tokens.json');
+    }
   });
 }
 

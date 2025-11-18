@@ -1,9 +1,4 @@
-import {
-  // generatePrimitiveTokens,
-  generateGenericTokens,
-  generateGroupTokens,
-  generateControlTokens,
-} from './generateTokens';
+import { generateGenericTokens, generateGroupTokens, generateControlTokens } from './generateTokens';
 import fs from 'fs';
 import path from 'node:path';
 
