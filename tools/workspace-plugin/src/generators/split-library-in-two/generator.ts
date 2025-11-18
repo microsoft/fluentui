@@ -380,7 +380,7 @@ module.exports = [
   });
   updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook/main.js'), content => {
     content = content
-      .replace(new RegExp('../stories/', 'g'), '../src/')
+      .replace(/\.\.\/stories\//g, '../src/')
       .replace(new RegExp(options.projectOffsetFromRoot.old, 'g'), options.projectOffsetFromRoot.updated);
 
     return content;
