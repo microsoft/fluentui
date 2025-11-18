@@ -1,7 +1,7 @@
 // TODO: move to react-docsite-components once Site moves
 
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { ThemeProvider } from '@fluentui/react';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import {
@@ -37,7 +37,8 @@ initializeIcons();
 // blog storage is now immutable, so new versions of fabric-core will be at a new url based on the build number
 addCSSToHeader(`${cdnUrl}/office-ui-fabric-core/11.1.0/css/fabric.min.css`);
 
-let rootElement: HTMLElement;
+let rootElement: HTMLElement | null;
+let root: ReactDOMClient.Root | null;
 
 type ComponentLike = React.ComponentProps<typeof Route>['component'];
 
@@ -56,8 +57,8 @@ export function createSite<TPlatforms extends string>(
     currentFabricBreakpoint();
   }
 
-  function _createRoutes(pages: INavPage<TPlatforms>[]): JSX.Element[] {
-    let routes: JSX.Element[] = [];
+  function _createRoutes(pages: INavPage<TPlatforms>[]): React.ReactElement[] {
+    let routes: React.ReactElement[] = [];
     pages.forEach((page: INavPage<TPlatforms>) => {
       // Create a route for each page and its children.
       // Categories don't have an actual corresponding URL but may have children.
@@ -80,7 +81,7 @@ export function createSite<TPlatforms extends string>(
   }
 
   function _getSiteRoutes() {
-    const routes: JSX.Element[] = _createRoutes(siteDefinition.pages);
+    const routes: React.ReactElement[] = _createRoutes(siteDefinition.pages);
 
     // Add the default route
     if (defaultRouteComponent) {
@@ -109,19 +110,21 @@ export function createSite<TPlatforms extends string>(
 
     const renderSite = (props: {}) => <Site siteDefinition={siteDefinition} hasUHF={hasUHF} {...props} />;
 
-    ReactDOM.render(
+    root = ReactDOMClient.createRoot(rootElement!);
+    root.render(
       <ThemeProvider>
         <Router>
           <Route component={renderSite}>{_getSiteRoutes()}</Route>
         </Router>
       </ThemeProvider>,
-      rootElement,
     );
   }
 
   function _onUnload() {
-    if (rootElement) {
-      ReactDOM.unmountComponentAtNode(rootElement);
+    if (root && rootElement) {
+      root.unmount();
+      root = null;
+      rootElement = null;
     }
   }
 }

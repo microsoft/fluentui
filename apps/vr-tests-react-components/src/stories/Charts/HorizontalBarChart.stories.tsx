@@ -1,29 +1,18 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
-import { Steps, StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { ChartProps, HorizontalBarChart, HorizontalBarChartVariant } from '@fluentui/react-charts';
 
 export default {
   title: 'Charts/HorizontalBarChart',
 
-  decorators: [
-    (story, context) => TestWrapperDecorator(story, context),
-    (story, context) => {
-      const steps =
-        context.name.includes('Basic') && !context.name.includes('RTL')
-          ? new Steps()
-              .snapshot('default', { cropTo: '.testWrapper' })
-              .executeScript(
-                // eslint-disable-next-line @fluentui/max-len
-                `document.querySelectorAll('g[id^="_HorizontalLine"]')[2].children[0].dispatchEvent(new MouseEvent('mouseover', { bubbles: true, cancelable: true }));`,
-              )
-              .snapshot('hover', { cropTo: '.testWrapper' })
-              .end()
-          : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
-      return <StoryWright steps={steps}>{story(context)}</StoryWright>;
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
     },
-  ],
+  } satisfies StoryParameters,
 } satisfies Meta<typeof HorizontalBarChart>;
 
 export const Basic = () => {
@@ -134,9 +123,23 @@ export const Basic = () => {
   );
 };
 
+Basic.parameters = {
+  storyWright: {
+    steps: new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .executeScript(
+        `document.querySelectorAll('g[id^="_HorizontalLine"]')[2].children[0].dispatchEvent(new MouseEvent('mouseover', { bubbles: true, cancelable: true }));`,
+      )
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .end(),
+  } satisfies StoryParameters,
+};
+
 export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
 export const BasicRTL = getStoryVariant(Basic, RTL);
+// Disable custom StoryWright steps for the story
+BasicRTL.parameters.storyWright = undefined;
 
 export const WithBenchmark = () => {
   const hideRatio: boolean[] = [true, false];

@@ -251,7 +251,7 @@ export interface LegendsProps {
   /**
    * Callback to access the public methods and properties of the component.
    */
-  legendRef?: React.RefObject<LegendContainer>;
+  legendRef?: React.Ref<LegendContainer>;
 }
 
 /**
@@ -271,7 +271,7 @@ export interface LegendContainer {
     svgWidth: number,
     isRTL?: boolean,
   ) => {
-    node: SVGGElement | null;
+    node: SVGSVGElement | null;
     width: number;
     height: number;
   };

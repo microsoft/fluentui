@@ -28,7 +28,9 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

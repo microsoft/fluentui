@@ -2,6 +2,177 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 12 Nov 2025 04:07:28 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.133",
+      "version": "3.0.0-beta.133",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f0d9d1c1237eac8c1891c0fbc25d5a0af02ad8c4",
+            "comment": "fix: ensure required radio error message is announced by assistive technology"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Nov 2025 04:12:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.132",
+      "version": "3.0.0-beta.132",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "fix: avoid global type leaks into production assets compilation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Nov 2025 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.131",
+      "version": "3.0.0-beta.131",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ab76553324dce1ae74096a21bf3215b1a2723f21",
+            "comment": "chore: upgrade storybook to v8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Nov 2025 04:07:38 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.131",
+      "version": "3.0.0-beta.131",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "71acfbdcbbe34f232ef20a86e76acdf0b6b6e606",
+            "comment": "fix: hide dropdown indicator and support native collapse behavior on click"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Oct 2025 04:08:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.130",
+      "version": "3.0.0-beta.130",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "befc6504a384565373985f97052ef1865c6320f9",
+            "comment": "fix: update dropdown forced-colors mode states"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Oct 2025 04:09:10 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.129",
+      "version": "3.0.0-beta.129",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "9420f34801bf2cc184ecb9e0b32c9cacb37fa929",
+            "comment": "fix(web-components): ensure menu initialization is queued"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Oct 2025 04:07:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.128",
+      "version": "3.0.0-beta.128",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f511e153749497a89f5dc5ae04a4965745f57ba4",
+            "comment": "exclude node_modules and dist so CEM type parser maps types properly"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Oct 2025 04:06:46 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.127",
+      "version": "3.0.0-beta.127",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e4dc9d0a2583ec18066c680daab1d1924225791d",
+            "comment": "remove aria-hidden from field labels to zoom text accessibility works, remove field text-input and text-area examples from storybook"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "45374db8331035d988a5b6e6a7781bafb854043a",
+            "comment": "[chore]: bump min version of node from 20 to 22"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Oct 2025 04:08:57 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.126",
+      "version": "3.0.0-beta.126",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c398142b3519b46bc7932df10129835caa0f96ef",
+            "comment": "[fix]: voice over in navigation mode was not announcing tabs belonging to a disabled tablist as disabled"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Oct 2025 04:08:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.125",
+      "version": "3.0.0-beta.125",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "75362a5de1634738b43f1b3c475fba554125107b",
+            "comment": "Fix Node version to be compaditible with CEM analyzer so parsedTypes get properly written."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Oct 2025 04:08:22 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.124",
+      "version": "3.0.0-beta.124",
+      "comments": {
+        "none": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8de99797140bb85df56cd9d246112fb5c5ef8b05",
+            "comment": "bump cem analyzer tool to fix name field bug"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Sep 2025 04:07:17 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.124",
       "version": "3.0.0-beta.124",

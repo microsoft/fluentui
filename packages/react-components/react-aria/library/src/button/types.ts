@@ -25,6 +25,7 @@ export type ARIAButtonElementIntersection<AlternateAs extends 'a' | 'div' = 'a' 
  * Props expected by `useARIAButtonProps` hooks
  */
 export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = DistributiveOmit<
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   React.PropsWithRef<JSXIntrinsicElement<Type>>,
   'children'
 > & {

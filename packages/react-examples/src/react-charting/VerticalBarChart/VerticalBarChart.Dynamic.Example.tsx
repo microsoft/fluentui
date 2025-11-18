@@ -9,6 +9,7 @@ import {
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import type { JSXElement } from '@fluentui/utilities';
 
 export interface IExampleState {
   dynamicData: IVerticalBarChartDataPoint[];
@@ -102,7 +103,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
     this._changeColors = this._changeColors.bind(this);
   }
 
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: '15 30' }}>

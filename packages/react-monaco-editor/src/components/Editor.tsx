@@ -23,12 +23,12 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
 
   // Hooks must be called unconditionally, so we have to create a backup ref here even if we
   // immediately throw it away to use the one passed in.
-  const backupModelRef = React.useRef<IMonacoTextModel>();
+  const backupModelRef = React.useRef<IMonacoTextModel | undefined>(undefined);
   const modelRef = props.modelRef || backupModelRef;
 
   // Store the latest onChange and debounceTime in a ref to ensure that we get the latest values
   // (if they change at all, which they ideally shouldn't) without needing to re-create the editor
-  const internalState = React.useRef<Pick<IEditorProps, 'onChange' | 'debounceTime'>>();
+  const internalState = React.useRef<Pick<IEditorProps, 'onChange' | 'debounceTime'> | undefined>(undefined);
   internalState.current = { onChange, debounceTime };
 
   const divRef = React.useRef<HTMLDivElement>(null);

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { Fabric } from '@fluentui/react/lib/Fabric';
+import { createRoot } from 'react-dom/client';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { ThemingDesigner } from './components/ThemingDesigner';
 
@@ -13,7 +12,7 @@ function start(): void {
     _rootDiv = document.createElement('div');
     document.body.appendChild(_rootDiv);
   }
-  ReactDOM.render(<ThemingDesigner />, _rootDiv);
+  createRoot(_rootDiv).render(<ThemingDesigner />);
 }
 
 // Start the application.

@@ -67,6 +67,36 @@ test.describe('Tablist', () => {
     await expect(element).toHaveAttribute('disabled');
   });
 
+  test('should set aria-disabled on individual tabs when tablist is disabled', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const tabs = element.locator('fluent-tab');
+
+    // Initially tabs should not have aria-disabled
+    await expect(tabs.nth(0)).not.toHaveAttribute('aria-disabled');
+    await expect(tabs.nth(1)).not.toHaveAttribute('aria-disabled');
+    await expect(tabs.nth(2)).not.toHaveAttribute('aria-disabled');
+
+    // Disable the tablist
+    await element.evaluate((node: Tablist) => {
+      node.disabled = true;
+    });
+
+    // All tabs should now have aria-disabled="true"
+    await expect(tabs.nth(0)).toHaveAttribute('aria-disabled', 'true');
+    await expect(tabs.nth(1)).toHaveAttribute('aria-disabled', 'true');
+    await expect(tabs.nth(2)).toHaveAttribute('aria-disabled', 'true');
+
+    // Re-enable the tablist
+    await element.evaluate((node: Tablist) => {
+      node.disabled = false;
+    });
+
+    // aria-disabled should be removed from all tabs
+    await expect(tabs.nth(0)).not.toHaveAttribute('aria-disabled');
+    await expect(tabs.nth(1)).not.toHaveAttribute('aria-disabled');
+    await expect(tabs.nth(2)).not.toHaveAttribute('aria-disabled');
+  });
+
   test('should have role of `tablist`', async ({ fastPage }) => {
     const { element } = fastPage;
 

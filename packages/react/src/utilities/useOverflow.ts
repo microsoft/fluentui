@@ -53,8 +53,8 @@ export type OverflowRefs = {
  * ```
  */
 export const useOverflow = ({ onOverflowItemsChanged, rtl, pinnedIndex }: OverflowParams): OverflowRefs => {
-  const updateOverflowRef = React.useRef<() => void>();
-  const containerWidthRef = React.useRef<number>();
+  const updateOverflowRef = React.useRef<() => void>(undefined);
+  const containerWidthRef = React.useRef<number>(undefined);
 
   // Attach a resize observer to the container
   const containerRef = useRefEffect<HTMLElement>(container => {

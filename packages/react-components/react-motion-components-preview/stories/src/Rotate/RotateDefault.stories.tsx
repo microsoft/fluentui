@@ -100,15 +100,15 @@ const LoremIpsum = () => (
 
 export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement => {
   const classes = useClasses();
-  const [visible, setVisible] = React.useState<boolean>(false);
+  const [visible, setVisible] = React.useState<boolean>(true);
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(motionTokens.durationUltraSlow); // 500ms
-  const [axis, setAxis] = React.useState<Axis3D>('y');
-  const [angle, setEnterAngle] = React.useState<number>(-90);
+  const [axis, setAxis] = React.useState<Axis3D>('z');
+  const [fromAngle, setFromAngle] = React.useState<number>(-90);
 
   const perspectiveSliderId = useId();
   const durationSliderId = useId();
-  const enterAngleSliderId = useId();
+  const fromAngleSliderId = useId();
 
   const perspectiveMin = 200;
   const perspectiveMax = 2000;
@@ -141,18 +141,18 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
 
           <Field className={classes.sliderField}>
             <div className={classes.sliderHeader}>
-              <Label htmlFor={enterAngleSliderId} className={classes.sliderLabel}>
-                Enter Angle
+              <Label htmlFor={fromAngleSliderId} className={classes.sliderLabel}>
+                From Angle
               </Label>
-              <span className={classes.valueDisplay}>{angle}°</span>
+              <span className={classes.valueDisplay}>{fromAngle}°</span>
             </div>
             <Slider
               min={angleMin}
               max={angleMax}
-              defaultValue={angle}
-              id={enterAngleSliderId}
+              defaultValue={fromAngle}
+              id={fromAngleSliderId}
               onChange={(_, data) => {
-                setEnterAngle(data.value);
+                setFromAngle(data.value);
               }}
             />
           </Field>
@@ -198,7 +198,7 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
         </div>
       </div>
 
-      <Rotate visible={visible} axis={axis} angle={angle} duration={duration}>
+      <Rotate visible={visible} axis={axis} fromAngle={fromAngle} duration={duration}>
         <div className={classes.card}>
           <LoremIpsum />
         </div>

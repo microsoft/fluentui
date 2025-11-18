@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: enforce usage of use client directive for files with client-only features",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -10,7 +10,7 @@ const legacy = {
   'react--legacy': require('./configs/react-legacy'),
 };
 
-/** @type {Record<string, import('typescript-eslint').ConfigArray>} */
+/** @type {Record<string, import('eslint').Linter.Config>} */
 const flat = {
   'flat/core': require('./flat-configs/core'),
   'flat/react': require('./flat-configs/react'),

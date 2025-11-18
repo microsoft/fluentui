@@ -267,3 +267,5 @@ export type {
   UseStyledHook,
   UseWindowHook,
 } from './shadowDom';
+
+export type { JSXElement, JSXIntrinsicElement, JSXIntrinsicElementKeys } from './jsx';

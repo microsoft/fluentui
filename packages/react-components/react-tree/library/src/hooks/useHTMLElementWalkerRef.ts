@@ -6,6 +6,7 @@ import { HTMLElementWalker, createHTMLElementWalker } from '../utils/createHTMLE
 import { treeItemFilter } from '../utils/treeItemFilter';
 
 export function useHTMLElementWalkerRef(): {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   walkerRef: React.MutableRefObject<HTMLElementWalker | undefined>;
   rootRef: React.Ref<HTMLElement>;
 } {

@@ -2,13 +2,14 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Button, Menu, MenuTrigger, MenuPopover } from '@fluentui/react-components';
 import { MenuGrid, MenuGridItem } from '@fluentui/react-menu-grid-preview';
+import { DeleteRegular, GlobePersonRegular } from '@fluentui/react-icons';
 
 const items = [
-  { name: 'Olivia Carter (owner)', cannotRemove: true },
-  { name: 'Liam Thompson', cannotRemove: false },
-  { name: 'Sophia Martinez (you)', cannotRemove: true },
-  { name: 'Noah Patel', cannotRemove: false },
-  { name: 'Emma Robinson', cannotRemove: false },
+  { name: 'Olivia Carter (owner)', removable: true },
+  { name: 'Liam Thompson', removable: false },
+  { name: 'Sophia Martinez (you)', removable: true },
+  { name: 'Noah Patel', removable: false },
+  { name: 'Emma Robinson', removable: false },
 ];
 
 export const Asymmetric = (): JSXElement => {
@@ -19,17 +20,29 @@ export const Asymmetric = (): JSXElement => {
       </MenuTrigger>
       <MenuPopover>
         <MenuGrid>
-          {items.map((item, index) => (
+          {items.map(item => (
             <MenuGridItem
-              key={index}
+              key={item.name}
               firstSubAction={
-                item.cannotRemove ? (
-                  { visuallyHidden: true }
+                item.removable ? (
+                  <Button
+                    size="small"
+                    appearance="transparent"
+                    icon={<DeleteRegular />}
+                    aria-label={`Remove ${item.name}`}
+                  />
                 ) : (
-                  <Button aria-label={`Remove ${item.name}`}>Remove</Button>
+                  { visuallyHidden: true }
                 )
               }
-              secondSubAction={<Button aria-label={`Profile card for ${item.name}`}>Avatar icon</Button>}
+              icon={
+                <Button
+                  size="small"
+                  appearance="transparent"
+                  icon={<GlobePersonRegular />}
+                  aria-label={`Profile card for ${item.name}`}
+                />
+              }
               aria-label={item.name}
             >
               {item.name}

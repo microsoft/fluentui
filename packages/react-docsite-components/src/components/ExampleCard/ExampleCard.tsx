@@ -34,6 +34,7 @@ const regionStyles: IStackComponent['styles'] = (props, theme) => ({
 });
 
 export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _monacoModelRef: React.MutableRefObject<IMonacoTextModel | undefined> = { current: undefined };
   /**
    * Transformed version of the initial `props.code` for editing and/or export to codepen,
@@ -74,7 +75,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement {
     const {
       title,
       titleAs: TitleAs = 'h3',
@@ -185,7 +186,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     );
   }
 
-  private _getDosAndDonts(): JSX.Element | void {
+  private _getDosAndDonts(): React.ReactElement | undefined {
     const classNames = this._classNames;
     if (this.props.dos && this.props.donts) {
       return (

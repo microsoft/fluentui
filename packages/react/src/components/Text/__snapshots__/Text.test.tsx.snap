@@ -2,7 +2,7 @@
 
 exports[`Text renders Text with {0} as its children correctly 1`] = `
 <span
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;
@@ -22,7 +22,7 @@ exports[`Text renders Text with {0} as its children correctly 1`] = `
 
 exports[`Text renders default Text correctly 1`] = `
 <span
-  className=
+  class=
 
       {
         -moz-osx-font-smoothing: grayscale;

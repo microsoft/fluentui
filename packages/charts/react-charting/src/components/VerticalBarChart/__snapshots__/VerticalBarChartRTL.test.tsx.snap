@@ -28,7 +28,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -824,7 +826,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1633,7 +1637,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-
+            {
+              position: relative;
+            }
         data-focuszone-id="FocusZone9"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -2441,7 +2447,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -10062,7 +10070,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -12340,7 +12350,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -13136,7 +13148,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -14062,7 +14076,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -14668,7 +14684,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

@@ -2,6 +2,127 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Tue, 11 Nov 2025 10:09:28 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.4.1",
+      "version": "1.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/react-icon-provider to v1.4.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.17.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Oct 2025 10:23:20 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.4.0",
+      "version": "1.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2",
+            "commit": "6b3885cb0c984861ea8342fea64e95a2c9668125",
+            "comment": "feat: bump react range to support React 19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/react-icon-provider to v1.4.0",
+            "commit": "c16125427e4d796ae4a1143f482baa0da962bac1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.17.0",
+            "commit": "c16125427e4d796ae4a1143f482baa0da962bac1"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2",
+            "commit": "000a4ab616180894dfa4a60a79379884645c5a8c",
+            "comment": "chore: enable RIT and update npm scripts to use inferred targets"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Oct 2025 07:22:00 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.3.92",
+      "version": "1.3.92",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2",
+            "commit": "6c4630f5f8aa3ac42ce4c45be7d39642899e1e85",
+            "comment": "style: resolve explicit-return tyle lint errors"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/react-icon-provider to v1.3.88",
+            "commit": "36be47512933fadd0418d11cdc1e3530c13f0575"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.16.1",
+            "commit": "36be47512933fadd0418d11cdc1e3530c13f0575"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Oct 2025 07:21:45 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.3.91",
+      "version": "1.3.91",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/react-icon-provider to v1.3.87",
+            "commit": "eb86e680ca4823f99cd5f7d4cd551714ffb88689"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Oct 2025 07:21:59 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.3.90",
+      "version": "1.3.90",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/react-icon-provider to v1.3.86",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.16.0",
+            "commit": "02dce6867432d0d155d2366ebb73f95d8f539684"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Oct 2025 07:20:40 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.3.89",
       "version": "1.3.89",

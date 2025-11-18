@@ -129,7 +129,9 @@ export class Menu extends FASTElement {
    */
   public connectedCallback() {
     super.connectedCallback();
-    Updates.enqueue(() => this.setComponent());
+    queueMicrotask(() => {
+      this.setComponent();
+    });
   }
 
   /**

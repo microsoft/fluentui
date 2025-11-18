@@ -2378,7 +2378,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  /%d
+                  p1
                 </text>
               </g>
               <g
@@ -2395,7 +2395,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  /%d
+                  p2
                 </text>
               </g>
             </g>
@@ -2647,7 +2647,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                /%d
+                p1
               </text>
             </g>
             <g
@@ -2664,7 +2664,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                /%d
+                p2
               </text>
             </g>
           </g>
@@ -2879,7 +2879,7 @@ Object {
   >
     <div>
       <div
-        class="fui-FluentProvider fui-FluentProviderr1h"
+        class="fui-FluentProvider fui-FluentProvider_r_1h_"
         dir="ltr"
       >
         <div
@@ -3153,7 +3153,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="fui-FluentProvider fui-FluentProviderr1h"
+      class="fui-FluentProvider fui-FluentProvider_r_1h_"
       dir="ltr"
     >
       <div

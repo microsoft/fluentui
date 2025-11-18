@@ -29,10 +29,7 @@ import {
   Legend,
   ChartPopover,
   Legends,
-  Chart,
   DataPoint,
-  ImageExportOptions,
-  LegendContainer,
 } from '../../index';
 import {
   ChartTypes,
@@ -64,8 +61,8 @@ import {
   calcRequiredWidth,
   sortAxisCategories,
 } from '../../utilities/index';
-import { toImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+import { useImageExport } from '../../utilities/hooks';
 
 type NumericScale = D3ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -122,9 +119,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
-  const cartesianChartRef = React.useRef<Chart>(null);
+  const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const Y_ORIGIN: number = 0;
-  const _legendsRef = React.useRef<LegendContainer>(null);
   let _yAxisType: YAxisType;
   let _yAxisLabels: string[] = [];
 
@@ -157,17 +153,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     }
     prevPropsRef.current = props;
   }, [props]);
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
-      },
-    }),
-    [],
-  );
 
   function _getLegendData(data: VerticalStackedChartProps[], lineLegends: LineLegends[]): JSXElement {
     if (props.hideLegend) {
@@ -224,7 +209,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         legendsOfLine.push(legend);
       });
     }
-    const totalLegends: Legend[] = legendsOfLine.concat(actions);
+    const totalLegends: Legend[] = actions.concat(legendsOfLine);
     return (
       <Legends
         legends={totalLegends}
@@ -526,7 +511,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -685,7 +669,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             // For more information, see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
             opacity={_getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).opacity}
             transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
-            ref={e => (circleRef.refElement = e)}
+            ref={e => {
+              circleRef.refElement = e;
+            }}
             {...(noBarsAndLinesActive
               ? {
                   tabIndex: !props.hideTooltip ? 0 : undefined,
@@ -1132,7 +1118,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                 `}
                 fill={startColor}
                 rx={props.roundCorners ? 3 : 0}
-                ref={e => (ref.refElement = e)}
+                ref={e => {
+                  ref.refElement = e;
+                }}
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
                 cursor={props.href ? 'pointer' : 'default'}
                 {...rectFocusProps}
@@ -1155,7 +1143,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               opacity={shouldHighlight ? 1 : 0.1}
               cursor={props.href ? 'pointer' : 'default'}
               rx={props.roundCorners ? 3 : 0}
-              ref={e => (ref.refElement = e)}
+              ref={e => {
+                ref.refElement = e;
+              }}
               {...rectFocusProps}
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             />
@@ -1198,7 +1188,13 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
-          <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
+          <g
+            id={`${indexNumber}-singleBar`}
+            ref={e => {
+              groupRef.refElement = e;
+            }}
+            {...stackFocusProps}
+          >
             {singleBar}
           </g>
           {/*

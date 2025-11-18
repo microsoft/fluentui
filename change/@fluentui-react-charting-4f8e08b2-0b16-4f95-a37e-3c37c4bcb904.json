@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "set reference line legends after the main chart legends",
+  "packageName": "@fluentui/react-charting",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

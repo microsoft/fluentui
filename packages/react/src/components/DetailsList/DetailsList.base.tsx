@@ -60,6 +60,8 @@ import type { IListProps } from '../../List';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx } from '../../utilities/dom';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 const COMPONENT_NAME = 'DetailsList';
 
@@ -90,12 +92,18 @@ type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
   IDetailsListState & {
     selection: ISelection;
     dragDropHelper: DragDropHelper | undefined;
-    rootRef: React.RefObject<HTMLDivElement>;
-    listRef: React.RefObject<List>;
-    groupedListRef: React.RefObject<IGroupedList>;
-    focusZoneRef: React.RefObject<IFocusZone>;
-    headerRef: React.RefObject<IDetailsHeader>;
-    selectionZoneRef: React.RefObject<SelectionZone>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    rootRef: React.MutableRefObject<HTMLDivElement | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    listRef: React.MutableRefObject<List | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    groupedListRef: React.MutableRefObject<IGroupedList | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    focusZoneRef: React.MutableRefObject<IFocusZone | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    headerRef: React.MutableRefObject<IDetailsHeader | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    selectionZoneRef: React.MutableRefObject<SelectionZone | null>;
     onGroupExpandStateChanged: (isSomeGroupExpanded: boolean) => void;
     onColumnIsSizingChanged: (column: IColumn, isSizing: boolean) => void;
     onRowDidMount: (row: DetailsRowBase) => void;
@@ -105,8 +113,8 @@ type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
     onToggleCollapse: (collapsed: boolean) => void;
     onActiveRowChanged: (el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
     onBlur: (event: React.FocusEvent<HTMLElement>) => void;
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    onRenderDefaultRow: (detailsRowProps: IDetailsRowProps) => JSX.Element;
+
+    onRenderDefaultRow: (detailsRowProps: IDetailsRowProps) => JSXElement;
   };
 
 /**
@@ -116,8 +124,7 @@ type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
  */
 const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   props: IDetailsListInnerProps,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-): JSX.Element | null => {
+): JSXElement | null => {
   const { selection } = props;
 
   const {
@@ -240,15 +247,13 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }
 
   const defaultOnRenderDetailsHeader = React.useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    (detailsHeaderProps: IDetailsHeaderProps): JSX.Element | null => {
+    (detailsHeaderProps: IDetailsHeaderProps): JSXElement | null => {
       return <DetailsHeader {...detailsHeaderProps} />;
     },
     [],
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const defaultOnRenderDetailsFooter = React.useCallback((): JSX.Element | null => {
+  const defaultOnRenderDetailsFooter = React.useCallback((): JSXElement | null => {
     return null;
   }, []);
 
@@ -890,7 +895,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     return 0;
   }
 
-  public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }) {
+  public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }): void {
     const NO_COLUMNS: IColumn[] = [];
 
     const { columns = NO_COLUMNS, selectionMode, checkboxVisibility, columnReorderOptions } = this.props;
@@ -940,7 +945,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     this._async.dispose();
   }
 
-  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
+  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void {
     this._notifyColumnsResized();
 
     const doc = getDocumentEx(this.context);
@@ -983,8 +988,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     return (
       <DetailsListInner
         {...this.props}
@@ -1016,11 +1020,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     this._forceListUpdates();
   }
 
-  protected _onRenderRow = (
-    props: IDetailsRowProps,
-    defaultRender?: IRenderFunction<IDetailsRowProps>,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element => {
+  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSXElement => {
     return <DetailsRow {...props} />;
   };
 
@@ -1532,7 +1532,7 @@ export function buildColumns(
   groupedColumnKey?: string,
   isMultiline?: boolean,
   columnActionsMode?: ColumnActionsMode,
-) {
+): IColumn[] {
   const columns: IColumn[] = [];
 
   if (items && items.length) {

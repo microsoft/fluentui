@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { ShimmeredDetailsList } from './ShimmeredDetailsList';
 
 // Populate mock items for testing
@@ -19,7 +19,7 @@ function mockItems(count: number): any {
 
 describe('ShimmeredDetailsList', () => {
   it('renders List correctly', () => {
-    const component = renderer.create(
+    const { container } = render(
       <ShimmeredDetailsList
         items={mockItems(5)}
         onRenderRow={() => null}
@@ -28,7 +28,6 @@ describe('ShimmeredDetailsList', () => {
         onShouldVirtualize={() => false}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

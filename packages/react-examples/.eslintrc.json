@@ -3,9 +3,10 @@
   "root": true,
   "rules": {
     "import/no-webpack-loader-syntax": "off",
-    "@typescript-eslint/no-explicit-any": "off",
     "no-alert": "off",
     "no-restricted-globals": "off",
-    "@typescript-eslint/no-deprecated": "warn"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-deprecated": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }

@@ -2,13 +2,14 @@ import * as React from 'react';
 import { classNamesFunction } from '../../Utilities';
 import type { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 
+import type { JSXElement } from '@fluentui/utilities';
+
 /**
  * A component corresponding the content rendered inside the callout of the keytip component.
  * {@docCategory Keytips}
  */
 export class KeytipContentBase extends React.Component<IKeytipProps, {}> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { content, styles, theme, disabled, visible } = this.props;
 
     const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();

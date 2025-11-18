@@ -36,7 +36,7 @@ const focusSelectedOption = (
   options: IChoiceGroupOption[],
   keyChecked: IChoiceGroupProps['selectedKey'],
   id: string,
-  focusProviders?: React.RefObject<HTMLElement>[],
+  focusProviders?: React.RefObject<HTMLElement | null>[],
   doc?: Document,
 ) => {
   const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
@@ -57,7 +57,7 @@ const useComponentRef = (
   keyChecked: IChoiceGroupProps['selectedKey'],
   id: string,
   componentRef?: IRefObject<IChoiceGroup>,
-  focusProviders?: React.RefObject<HTMLElement>[],
+  focusProviders?: React.RefObject<HTMLElement | null>[],
 ) => {
   const doc = useDocumentEx();
   React.useImperativeHandle(

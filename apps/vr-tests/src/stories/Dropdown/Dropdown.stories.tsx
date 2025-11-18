@@ -1,5 +1,7 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import {
   Dropdown,
   DropdownMenuItemType,
@@ -7,27 +9,27 @@ import {
   Icon,
   IDropdownOption,
 } from '@fluentui/react';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 
 export default {
   title: 'Dropdown',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Dropdown')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Dropdown')
         .hover('.ms-Dropdown')
-        .snapshot('click', { cropTo: '.ms-Layer' })
+        .snapshot('click')
         .hover('.ms-Dropdown-item')
-        .snapshot('hover item', { cropTo: '.ms-Layer' })
+        .snapshot('hover item')
         .end(),
-    ),
-  ],
-};
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Dropdown>;
 
 export const Root = () => (
   <Dropdown
@@ -94,7 +96,7 @@ export const CustomDropdown = () => (
     label="Custom example:"
     id="Customdrop1"
     ariaLabel="Custom dropdown example"
-    onRenderPlaceholder={(props: IDropdownProps): JSX.Element => {
+    onRenderPlaceholder={(props: IDropdownProps): React.ReactElement => {
       return (
         <div className="dropdownExample-placeholder">
           <Icon style={{ marginRight: '8px' }} iconName={'MessageFill'} aria-hidden="true" />
@@ -102,7 +104,7 @@ export const CustomDropdown = () => (
         </div>
       );
     }}
-    onRenderTitle={(options: IDropdownOption[]): JSX.Element => {
+    onRenderTitle={(options: IDropdownOption[]): React.ReactElement => {
       const option = options[0];
 
       return (
@@ -119,7 +121,7 @@ export const CustomDropdown = () => (
         </div>
       );
     }}
-    onRenderOption={(option: IDropdownOption): JSX.Element => {
+    onRenderOption={(option: IDropdownOption): React.ReactElement => {
       return (
         <div>
           {option.data && option.data.icon && (
@@ -134,7 +136,7 @@ export const CustomDropdown = () => (
         </div>
       );
     }}
-    onRenderCaretDown={(): JSX.Element => {
+    onRenderCaretDown={(): React.ReactElement => {
       return <Icon iconName="CirclePlus" />;
     }}
     options={[

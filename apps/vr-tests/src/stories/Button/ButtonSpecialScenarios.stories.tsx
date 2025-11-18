@@ -1,7 +1,8 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import type { StoryParameters } from 'storywright';
+import { TestWrapperDecorator } from '../../utilities';
 import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
 
 const baseProps: IButtonProps = {
@@ -15,10 +16,12 @@ const baseProps: IButtonProps = {
 export default {
   title: 'Button Special Scenarios (compat)',
 
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof DefaultButton>;
 
 export const PrimaryWithPlaceholder = () => (
