@@ -93,7 +93,7 @@ describe(`workspace-plugin`, () => {
           ],
         },
         "options": Object {
-          "command": "yarn cross-env ESLINT_USE_FLAT_CONFIG=false eslint src",
+          "command": "yarn cross-env   eslint src",
           "cwd": "proj",
         },
         "outputs": Array [
