@@ -54,7 +54,6 @@ export const LegendsControlledExample: React.FunctionComponent = () => {
         legends={legends}
         canSelectMultipleLegends
         selectedLegends={selectedLegends}
-        // eslint-disable-next-line react/jsx-no-bind
         onChange={onChange}
         styles={{ root: { marginBottom: 10 } }}
       />
