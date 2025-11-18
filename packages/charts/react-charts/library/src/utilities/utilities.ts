@@ -1360,12 +1360,13 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
   isRTL: boolean,
   scaleType?: AxisScaleType,
   hasMarkersMode?: boolean,
+  xMinVal?: number,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
   let [xMin, xMax] = getScatterXDomainExtent(points, scaleType) as [number, number];
 
   if (hasMarkersMode) {
-    const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType);
+    const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType, xMinVal);
     xMin = xMin - xPadding.start;
     xMax = xMax + xPadding.end;
   }
@@ -2206,6 +2207,7 @@ export const getDomainPaddingForMarkers = (
   minVal: number,
   maxVal: number,
   scaleType?: AxisScaleType,
+  xMinVal?: number,
 ): { start: number; end: number } => {
   if (scaleType === 'log') {
     return {
@@ -2214,7 +2216,16 @@ export const getDomainPaddingForMarkers = (
     };
   }
 
-  const defaultPadding = (maxVal - minVal) * 0.1;
+  /* if user explicitly sets xMinVal, we will check that to avoid excessive padding on the min side.
+     if the difference between minVal and xMinVal is more than 10% of the data range, we set padding to 0 on that side
+     this is to avoid cases where xMinVal is significantly smaller than minVal, which would lead to excessive padding.
+     In other cases, we apply the default 10% padding on both sides.
+  */
+  const defaultPadding = xMinVal
+    ? (maxVal - minVal) * 0.1 > Math.abs(minVal - Math.min(minVal, xMinVal!))
+      ? 0
+      : (maxVal - minVal) * 0.1
+    : (maxVal - minVal) * 0.1;
   return {
     start: defaultPadding,
     end: defaultPadding,
