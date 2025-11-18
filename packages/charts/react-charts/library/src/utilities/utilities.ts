@@ -780,7 +780,7 @@ export function createNumericYAxis(
   isIntegralDataset: boolean,
   chartType: ChartTypes,
   useSecondaryYScale: boolean = false,
-  roundedYTicks: boolean = false,
+  roundedTicks: boolean = false,
   scaleType?: AxisScaleType,
   _useRtl?: boolean,
 ): ScaleLinear<number, number> {
@@ -808,7 +808,7 @@ export function createNumericYAxis(
   const tempVal = maxOfYVal || yMinMaxValues.endValue || 0;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = Math.min(yMinMaxValues.startValue || 0, yMinValue || 0);
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedYTicks);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
   let yMin = finalYmin;
   let yMax = domainValues[domainValues.length - 1];
   if (chartType === ChartTypes.ScatterChart) {

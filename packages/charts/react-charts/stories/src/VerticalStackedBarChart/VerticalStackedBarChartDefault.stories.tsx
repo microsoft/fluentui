@@ -350,7 +350,7 @@ export const VerticalStackedBarDefault = (): JSXElement => {
             yAxisTitle={showAxisTitles ? 'Variation of number of sales' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
-            roundedYTicks={true}
+            roundedTicks={true}
             styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>
@@ -372,7 +372,7 @@ export const VerticalStackedBarDefault = (): JSXElement => {
             }}
             hideLabels={hideLabels}
             roundCorners={roundCorners}
-            roundedYTicks={true}
+            roundedTicks={true}
             styles={{ svgTooltip: classes.svgTooltip }}
           />
         </div>

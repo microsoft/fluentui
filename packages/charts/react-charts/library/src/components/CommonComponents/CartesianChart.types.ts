@@ -728,7 +728,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     isIntegralDataset: boolean,
     chartType: ChartTypes,
     useSecondaryYScale?: boolean,
-    roundedYTicks?: boolean,
+    roundedTicks?: boolean,
     scaleType?: AxisScaleType,
     _useRtl?: boolean,
   ) => ScaleLinear<number, number, never>;
