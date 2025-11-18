@@ -265,8 +265,8 @@ export function createNumericXAxis(
     tick0,
     tickText,
   } = xAxisParams;
-  const dStartValue = typeof domainNRangeValues.dStartValue === 'number' ? domainNRangeValues.dStartValue : 0;
-  const dEndValue = typeof domainNRangeValues.dEndValue === 'number' ? domainNRangeValues.dEndValue : 0;
+  const dStartValue = domainNRangeValues.dStartValue as number;
+  const dEndValue = domainNRangeValues.dEndValue as number;
   const finalXmin = xAxisParams.xMinValue !== undefined ? Math.min(dStartValue, xAxisParams.xMinValue) : dStartValue;
   const finalXmax = xAxisParams.xMaxValue !== undefined ? Math.max(dEndValue, xAxisParams.xMaxValue) : dEndValue;
   const xAxisScale = createNumericScale(scaleType)
