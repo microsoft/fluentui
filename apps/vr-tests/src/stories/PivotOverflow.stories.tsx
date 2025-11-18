@@ -23,17 +23,17 @@ export default {
   parameters: {
     storyWright: {
       steps: new Steps()
-        .executeScript('document.getElementById("testWrapper").style.width = "500px"')
+        .executeScript('document.querySelector(".testWrapper").style.width = "500px"')
         .snapshot('Medium', { cropTo: '.testWrapper' })
-        .executeScript('document.getElementById("testWrapper").style.width = "750px"')
+        .executeScript('document.querySelector(".testWrapper").style.width = "750px"')
         .snapshot('Wide', { cropTo: '.testWrapper' })
-        .executeScript('document.getElementById("testWrapper").style.width = "250px"')
+        .executeScript('document.querySelector(".testWrapper").style.width = "250px"')
         .click('.ms-Pivot-overflowMenuButton')
-        .wait(1500)
+        .wait(2500)
         .click('.ms-Pivot-linkInMenu[data-last-tab]')
         .snapshot('Narrow - Last tab selected', { cropTo: '.testWrapper' })
         .click('.ms-Pivot-overflowMenuButton')
-        .wait(1500)
+        .wait(2500)
         .hover('.ms-Pivot-overflowMenuButton')
         .snapshot('Narrow - Overflow menu', { cropTo: '.testWrapper' })
         .end(),

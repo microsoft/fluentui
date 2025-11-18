@@ -37,7 +37,7 @@ export default {
         .snapshot('hover datepicker', { cropTo: '.testWrapper' })
         .click('.ms-DatePicker')
         .hover('.ms-DatePicker')
-        .snapshot('click', { cropTo: '.ms-Layer' })
+        .snapshot('click')
         .end(),
     },
   } satisfies StoryParameters,
