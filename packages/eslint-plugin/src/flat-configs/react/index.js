@@ -1,11 +1,11 @@
 // @ts-check
 const configHelpers = require('../../utils/configHelpers');
 const baseConfig = require('../base/index');
-const tseslint = require('typescript-eslint');
 const reactConfig = require('./config');
 const reactCompilerPlugin = require('eslint-plugin-react-compiler');
 const { __internal } = require('../../internal-flat');
 const { createReactCrossVersionRules } = require('../../shared/react-cross-version-rules');
+const { defineConfig } = require('eslint/config');
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
@@ -18,10 +18,10 @@ const v9PackageDeps = Object.keys(configHelpers.getPackageJson({ root, name: 're
   pkg => !unstableV9Packages.has(pkg),
 );
 
-/** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config(
-  ...baseConfig,
-  ...reactConfig,
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig(
+  baseConfig,
+  reactConfig,
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -81,13 +81,26 @@ module.exports = tseslint.config(
     },
   },
   {
-    files: ['**/*.cy.{ts,tsx,js}', '**/isConformant.{ts,tsx,js}'],
+    files: ['**/*.cy.{ts,tsx,js}', 'isConformant.{ts,tsx,js}'],
     rules: {
       'import/no-extraneous-dependencies': 'off',
       'react/jsx-no-bind': 'off',
       'react-compiler/react-compiler': 'off',
+      '@typescript-eslint/no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['@cypress/react'],
+              importNames: ['mount'],
+              message: "Use 'mount' from @fluentui/scripts-cypress instead.",
+            },
+          ],
+        },
+      ],
     },
   },
+
   {
     files: ['**/*.test.{ts,tsx}'],
     rules: {

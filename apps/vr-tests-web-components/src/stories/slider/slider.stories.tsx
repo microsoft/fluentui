@@ -19,8 +19,8 @@ export default {
     storyWright: {
       steps: new Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
-        .focus('[role="slider"]')
-        .keys('[role="slider"]', Keys.rightArrow)
+        .focus('fluent-slider')
+        .keys('fluent-slider', Keys.rightArrow)
         .snapshot('rightArrow', { cropTo: '.testWrapper' })
         .end(),
     },

@@ -5,7 +5,7 @@ import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useRtl } from '../../utilities/index';
 import { FunnelChartDataPoint, FunnelChartProps } from './FunnelChart.types';
-import { Legend, Legends, LegendContainer } from '../Legends/index';
+import { Legend, Legends } from '../Legends/index';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
@@ -18,8 +18,8 @@ import {
   getStackedHorizontalFunnelSegmentGeometry,
   getStackedVerticalFunnelSegmentGeometry,
 } from './funnelGeometry';
-import { ChartPopoverProps, ImageExportOptions } from '../../index';
-import { toImage } from '../../utilities/image-export-utils';
+import { ChartPopoverProps } from '../../index';
+import { useImageExport } from '../../utilities/hooks';
 
 export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forwardRef<
   HTMLDivElement,
@@ -34,25 +34,14 @@ export const FunnelChart: React.FunctionComponent<FunnelChartProps> = React.forw
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
-  const chartContainerRef = React.useRef<HTMLDivElement | null>(null);
   const isStacked = isStackedFunnelData(props.data);
-  const _legendsRef = React.useRef<LegendContainer>(null);
+  const { chartContainerRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend, false);
 
   React.useEffect(() => {
     if (props.legendProps?.selectedLegends) {
       setSelectedLegends(props.legendProps.selectedLegends);
     }
   }, [props.legendProps?.selectedLegends]);
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(chartContainerRef.current, _legendsRef.current?.toSVG, isRTL, opts);
-      },
-    }),
-    [],
-  );
 
   function _handleHover(
     data: FunnelChartDataPoint,

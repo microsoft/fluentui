@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 12 Nov 2025 04:07:28 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.133",
+      "version": "3.0.0-beta.133",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f0d9d1c1237eac8c1891c0fbc25d5a0af02ad8c4",
+            "comment": "fix: ensure required radio error message is announced by assistive technology"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Nov 2025 04:12:08 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.132",
       "version": "3.0.0-beta.132",
