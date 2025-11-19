@@ -20,6 +20,7 @@ export const plugin: {
         };
     };
     rules: {
+        "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [], unknown, RuleListener>;
         "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
     };
 };

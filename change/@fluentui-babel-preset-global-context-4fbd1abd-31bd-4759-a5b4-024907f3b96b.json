@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update enforce-use-client eslint rule name",
+  "packageName": "@fluentui/babel-preset-global-context",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}
