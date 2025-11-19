@@ -12,6 +12,11 @@ export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
   const colorTokens = generateColorTokens(brand);
 
   return {
+    // For testing semantic tokens, remove later
+    'smtc-lightness-selected-hover': '5',
+    'smtc-lightness-selected-pressed': '-10',
+    'smtc-lightness-hover': '5',
+    'smtc-lightness-pressed': '-10',
     ...borderRadius,
     ...fontSizes,
     ...lineHeights,

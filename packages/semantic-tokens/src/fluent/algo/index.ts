@@ -256,4 +256,6 @@ export {
   groupInputStrokePressed,
   groupInputUnderlineStrokePressed,
   groupInputUnderlineStrokeHover,
+  groupInputIconForegroundHover,
+  groupInputIconForegroundPressed,
 } from './input/tokens';

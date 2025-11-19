@@ -104,4 +104,4 @@ export const ctrlCompoundbuttonLargePaddingBottom = `calc(${groupButtonPaddingBo
 export const ctrlCompoundbuttonLargePaddingHorizontal = `calc(${groupButtonPaddingHorizontal} / 12 * 16)`;
 
 // Extension algo tokens
-export const groupButtonSubtleIconForegroundPressed = `hsl(from ${groupButtonSubtleIconForegroundHover} h s calc(l + ${lightnessPressed} - ${lightnessHover}))`;
+export const groupButtonSubtleIconForegroundPressed = `hsl(from ${groupButtonSubtleIconForegroundHover} h s calc(l + ${lightnessPressed} / 2))`;

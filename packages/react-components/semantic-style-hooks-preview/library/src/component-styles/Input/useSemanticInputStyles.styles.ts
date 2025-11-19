@@ -1,6 +1,6 @@
 'use client';
 
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InputState } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
@@ -36,7 +36,7 @@ const horizontalPadding = {
 // Maintaining the correct corner radius:
 // Use the whole border-radius as the height and only put radii on the bottom corners.
 // (Otherwise the radius would be automatically reduced to fit available space.)
-// max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
+// max() ensures the focus border still shows up even if someone sets semanticTokens.groupInputCorner to 0.
 const inputBottomFocusBorderStroke = `max(${semanticTokens.groupInputUnderlineStrokewidthSelected}, ${semanticTokens.groupInputCorner})`;
 
 const useRootClassName = makeResetStyles({
@@ -116,7 +116,6 @@ const useRootClassName = makeResetStyles({
 const useRootStyles = makeStyles({
   small: {
     minHeight: fieldHeights.small,
-    ...typographyStyles.caption1,
     // Todo: Font sizes will likely be moved to extension tokens
     fontSize: `calc(${semanticTokens.groupInputFontsize} / 7 * 6)`,
     lineHeight: `calc(${semanticTokens.groupInputLineheight} / 5 * 4)`,
@@ -126,7 +125,6 @@ const useRootStyles = makeStyles({
   },
   large: {
     minHeight: fieldHeights.large,
-    ...typographyStyles.body2,
     // Todo: Font sizes will likely be moved to extension tokens
     fontSize: `calc(${semanticTokens.groupInputFontsize} / 7 * 8)`,
     lineHeight: `calc(${semanticTokens.groupInputLineheight} / 10 * 11)`,

@@ -252,4 +252,6 @@ export {
   groupInputStrokePressed,
   groupInputUnderlineStrokePressed,
   groupInputUnderlineStrokeHover,
+  groupInputIconForegroundHover,
+  groupInputIconForegroundPressed,
 } from './algo/index';

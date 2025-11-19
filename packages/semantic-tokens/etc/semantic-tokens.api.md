@@ -797,7 +797,7 @@ export const groupButtonSubtleIconForegroundHover = "var(--smtc-group-button-sub
 export const groupButtonSubtleIconForegroundHoverSelected = "hsl(from var(--smtc-group-button-subtle-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--colorNeutralForeground2BrandSelected))) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonSubtleIconForegroundPressed = "hsl(from var(--smtc-group-button-subtle-icon-foreground-hover, var(--smtc-foreground-brand-primary, var(--colorNeutralForeground2BrandHover))) h s calc(l + var(--smtc-lightness-pressed, -10) - var(--smtc-lightness-hover, -5)))";
+export const groupButtonSubtleIconForegroundPressed = "hsl(from var(--smtc-group-button-subtle-icon-foreground-hover, var(--smtc-foreground-brand-primary, var(--colorNeutralForeground2BrandHover))) h s calc(l + var(--smtc-lightness-pressed, -10) / 2))";
 
 // @public (undocumented)
 export const groupButtonSubtleIconForegroundPressedSelected = "hsl(from var(--smtc-group-button-subtle-icon-foreground-selected, var(--smtc-foreground-brand-onloud, var(--colorNeutralForeground2BrandSelected))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
@@ -884,6 +884,12 @@ export const groupInputGap = "var(--smtc-group-input-gap, var(--spacingHorizonta
 export const groupInputIconForeground = "var(--smtc-group-input-icon-foreground, var(--colorNeutralForeground3))";
 
 // @public (undocumented)
+export const groupInputIconForegroundHover = "hsl(from var(--smtc-group-input-icon-foreground, var(--colorNeutralForeground3)) h s calc(l + var(--smtc-lightness-hover, -5)))";
+
+// @public (undocumented)
+export const groupInputIconForegroundPressed = "hsl(from var(--smtc-group-input-icon-foreground, var(--colorNeutralForeground3)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
+
+// @public (undocumented)
 export const groupInputIconSize = "var(--smtc-group-input-icon-size, 20px)";
 
 // @public (undocumented)
@@ -926,7 +932,7 @@ export const groupInputUnderlineStrokeHover = "hsl(from var(--smtc-group-input-u
 export const groupInputUnderlineStrokePressed = "hsl(from var(--smtc-group-input-underline-stroke, var(--colorNeutralStrokeAccessible)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
-export const groupInputUnderlineStrokePressedSelected = "hsl(from var(--smtc-group-input-underline-stroke-selected, var(--colorCompoundBrandStroke)) h s calc(l + var(--smtc-lightness-selected-pressed, -10)))";
+export const groupInputUnderlineStrokePressedSelected = "hsl(from var(--smtc-group-input-underline-stroke-selected, var(--colorCompoundBrandStroke)) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const groupInputUnderlineStrokeSelected = "var(--smtc-group-input-underline-stroke-selected, var(--colorCompoundBrandStroke))";

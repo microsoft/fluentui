@@ -1,3 +1,5 @@
+'use client';
+
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { useSemanticInputStyles } from '../Input';
