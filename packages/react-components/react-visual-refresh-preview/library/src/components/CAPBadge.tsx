@@ -1,12 +1,63 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { BadgeState } from '@fluentui/react-components';
+import { BadgeState, useBadgeStyles_unstable } from '@fluentui/react-components';
+import { tokens } from '@fluentui/react-theme';
+
+const textPadding = tokens.spacingHorizontalXXS;
 
 const useCAPBadgeStyles = makeStyles({
-  root: {},
+  root: {
+    padding: `0 calc(${tokens.spacingHorizontalSNudge} + ${textPadding})`,
+  },
+
+  tiny: {
+    padding: 'unset',
+  },
+
+  'extra-small': {
+    padding: 'unset',
+  },
+
+  small: {
+    padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
+  },
+
+  medium: {
+    // Set by root
+  },
+
+  large: {
+    padding: `0 calc(${tokens.spacingHorizontalSNudge} + ${textPadding})`,
+  },
+
+  'extra-large': {
+    padding: `0 calc(${tokens.spacingHorizontalS} + ${textPadding})`,
+  },
+});
+
+const useCAPBadgeIconStyles = makeStyles({
+  beforeTextSmall: {
+    marginRight: textPadding,
+  },
+  afterTextSmall: {
+    marginLeft: textPadding,
+  },
 });
 
 export function useCAPBadgeStylesHook(state: BadgeState) {
+  // Apply base Badge styles first
+  useBadgeStyles_unstable(state);
+
+  // Then override with CAP styles
   const styles = useCAPBadgeStyles();
-  state.root.className = mergeClasses(state.root.className, styles.root);
+  const iconStyles = useCAPBadgeIconStyles();
+
+  state.root.className = mergeClasses(state.root.className, styles.root, styles[state.size]);
+
+  // Override icon spacing for small size
+  if (state.icon && state.size === 'small') {
+    const iconPositionClass = state.iconPosition === 'after' ? iconStyles.afterTextSmall : iconStyles.beforeTextSmall;
+    state.icon.className = mergeClasses(state.icon.className, iconPositionClass);
+  }
+
   return state;
 }
