@@ -32,6 +32,14 @@ const useCAPBadgeStyles = makeStyles({
   'extra-large': {
     padding: `0 calc(${tokens.spacingHorizontalS} + ${textPadding})`,
   },
+
+  // shape
+  'rounded-extra-large': { borderRadius: tokens.borderRadiusXLarge },
+  'rounded-large': { borderRadius: tokens.borderRadiusLarge },
+  'rounded-medium': { borderRadius: tokens.borderRadiusMedium },
+  'rounded-small': { borderRadius: tokens.borderRadiusMedium },
+  'rounded-extra-small': { borderRadius: tokens.borderRadiusSmall },
+  'rounded-tiny': { borderRadius: tokens.borderRadiusSmall },
 });
 
 const useCAPBadgeIconStyles = makeStyles({
@@ -51,7 +59,12 @@ export function useCAPBadgeStylesHook(state: BadgeState) {
   const styles = useCAPBadgeStyles();
   const iconStyles = useCAPBadgeIconStyles();
 
-  state.root.className = mergeClasses(state.root.className, styles.root, styles[state.size]);
+  state.root.className = mergeClasses(
+    state.root.className,
+    styles.root,
+    styles[state.size],
+    state.shape === 'rounded' && styles[`rounded-${state.size}`],
+  );
 
   // Override icon spacing for small size
   if (state.icon && state.size === 'small') {
