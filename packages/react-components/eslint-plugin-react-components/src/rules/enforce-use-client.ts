@@ -2,7 +2,7 @@ import { AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
 
 import { createRule } from './utils/create-rule';
 
-// NOTE: The rule will be available in ESLint configs as "@fluentui/enforce-use-client"
+// NOTE: The rule will be available in ESLint configs as "@fluentui/react-components/enforce-use-client"
 export const RULE_NAME = 'enforce-use-client';
 
 type MessageIds = 'missingUseClient' | 'unnecessaryUseClient';

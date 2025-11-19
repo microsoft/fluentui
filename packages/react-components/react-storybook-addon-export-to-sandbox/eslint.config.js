@@ -7,7 +7,7 @@ module.exports = defineConfig([
   ...fluentPlugin.configs['flat/node'],
   {
     rules: {
-      '@fluentui/enforce-use-client': 'off',
+      '@fluentui/react-components/enforce-use-client': 'off',
     },
   },
 ]);

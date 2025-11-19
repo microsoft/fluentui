@@ -3,7 +3,7 @@
   "root": true,
   "ignorePatterns": ["!**/*", "src/react-18/**/*", "src/react-17/**/*"],
   "rules": {
-    "@fluentui/enforce-use-client": "off",
+    "@fluentui/react-components/enforce-use-client": "off",
     "@nx/workspace-no-restricted-globals": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/no-extraneous-dependencies": "off",
