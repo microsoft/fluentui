@@ -9,7 +9,7 @@ export const AnimatedBadge = (args: CounterBadgeProps): JSXElement => {
 
   return (
     <div>
-      <CounterBadge count={count} />
+      <CounterBadge count={count} isAnimated={true} />
       <div>
         <button onClick={() => setCount(count + 1)}>Increase</button>
         <button onClick={() => setCount(count - 1)}>Decrease</button>
