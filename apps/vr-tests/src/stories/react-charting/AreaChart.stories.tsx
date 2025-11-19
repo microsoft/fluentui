@@ -18,7 +18,11 @@ export default {
 
 const stepsWithHover = new Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
-  .hover('.ms-AreaChart-line')
+  // to hover over the area charts and show the callout
+  .executeScript(
+    // eslint-disable-next-line @fluentui/max-len
+    `document.querySelector('rect').dispatchEvent(new MouseEvent('mouseover',{bubbles: true,cancelable: true,clientX:400,clientY:100}))`,
+  )
   .snapshot('hover', { cropTo: '.testWrapper' })
   .end();
 

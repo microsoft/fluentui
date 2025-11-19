@@ -243,12 +243,12 @@ export default {
   parameters: {
     storyWright: {
       steps: new Steps()
-        .snapshot('default', { cropTo: '.ms-Layer' })
+        .snapshot('default')
         .hover('.ms-ContextualMenu-linkContent')
-        .snapshot('hover', { cropTo: '.ms-Layer' })
+        .snapshot('hover')
         .click('.ms-ContextualMenu-linkContent')
         .hover('.ms-ContextualMenu-linkContent')
-        .snapshot('click', { cropTo: '.ms-Layer' })
+        .snapshot('click')
         .end(),
     },
   } satisfies StoryParameters,

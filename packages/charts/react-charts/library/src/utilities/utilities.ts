@@ -176,6 +176,8 @@ export interface IXAxisParams extends AxisProps {
   containerWidth: number;
   hideTickOverlap?: boolean;
   calcMaxLabelWidth: (x: (string | number)[]) => number;
+  xMaxValue?: number;
+  xMinValue?: number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
@@ -263,8 +265,12 @@ export function createNumericXAxis(
     tick0,
     tickText,
   } = xAxisParams;
+  const dStartValue = domainNRangeValues.dStartValue as number;
+  const dEndValue = domainNRangeValues.dEndValue as number;
+  const finalXmin = xAxisParams.xMinValue !== undefined ? Math.min(dStartValue, xAxisParams.xMinValue) : dStartValue;
+  const finalXmax = xAxisParams.xMaxValue !== undefined ? Math.max(dEndValue, xAxisParams.xMaxValue) : dEndValue;
   const xAxisScale = createNumericScale(scaleType)
-    .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
+    .domain([finalXmin, finalXmax])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
 
