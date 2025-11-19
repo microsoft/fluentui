@@ -1,6 +1,8 @@
-import { ESLintUtils, AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES, TSESTree } from '@typescript-eslint/utils';
 
-// NOTE: The rule will be available in ESLint configs as "@nx/workspace-enforce-use-client"
+import { createRule } from './utils/create-rule';
+
+// NOTE: The rule will be available in ESLint configs as "@fluentui/enforce-use-client"
 export const RULE_NAME = 'enforce-use-client';
 
 type MessageIds = 'missingUseClient' | 'unnecessaryUseClient';
@@ -103,7 +105,7 @@ const isPotentialCustomHook = (name: string): boolean =>
 /**
  * ESLint rule configuration and metadata
  */
-export const rule = ESLintUtils.RuleCreator(() => __filename)<[], MessageIds>({
+export const rule = createRule<[], MessageIds>({
   name: RULE_NAME,
   meta: {
     type: 'problem',

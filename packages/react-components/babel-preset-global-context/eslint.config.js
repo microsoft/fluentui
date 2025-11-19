@@ -6,7 +6,7 @@ module.exports = [
   ...fluentPlugin.configs['flat/node'],
   {
     rules: {
-      '@nx/workspace-enforce-use-client': 'off',
+      '@fluentui/enforce-use-client': 'off',
     },
   },
 ];
