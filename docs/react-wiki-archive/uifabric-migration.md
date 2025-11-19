@@ -95,7 +95,7 @@ React is removing support for `componentWillReceiveProps` and will only be suppo
 
 ### Util - autobind decorator removed _(Notify only)_
 
-Fabric 6 and earlier versions shipped a decorator called `autobind`. Autobind takes a function definition and binds it to `this` on class instantiation, such that all calls to the method would have a predicable `this` value regardless of their invocation.
+Fabric 6 and earlier versions shipped a decorator called `autobind`. Autobind takes a function definition and binds it to `this` on class instantiation, such that all calls to the method would have a predictable `this` value regardless of their invocation.
 
 In practice, a const lambda function provides the same guarantees of binding `this` without the need for annotation support, which is not on by default.
 

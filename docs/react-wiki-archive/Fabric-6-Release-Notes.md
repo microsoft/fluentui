@@ -6,7 +6,7 @@ be compatible with React 16+ strict mode.
 
 In addition we've adjusted a number of things to take full advantage of
 Webpack 4 tree shaking. This will definitely help with our never ending quest
-to keep bundle sizes managable.
+to keep bundle sizes manageable.
 
 In this release we've tried to minimize the number of changes to keep it
 straightforward for upgrading. There are a lot of things we would like to
@@ -78,7 +78,7 @@ of:
 3. forwardRef. This has been a painpoint in React for a long long time, and
    has caused us to do unnatural things in the API such as introducing
    `componentRef`, and adding utilities in our `BaseDecorator` base class for
-   hoisting memebers. All of this can now be updated.
+   hoisting members. All of this can now be updated.
 
 4. Official context api! We use context in a number of places today, mostly
    for pushing the theme through the API surface. Now with a formal context
