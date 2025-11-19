@@ -179,6 +179,86 @@ export const CAPBadgeStory = () => {
             );
           },
         },
+        {
+          title: 'Brand / Outline / Important',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="important" appearance="outline">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Brand / Outline / Brand',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="brand" appearance="outline">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Brand / Outline / Danger',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="danger" appearance="outline">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Brand / Outline / Warning',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="warning" appearance="outline">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Brand / Outline / Success',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="success" appearance="outline">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Brand / Outline / Informative',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="informative" appearance="outline">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Brand / Outline / Subtle',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="subtle" appearance="outline">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Brand / Outline / Severe',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="severe" appearance="outline">
+                Badge
+              </Badge>
+            );
+          },
+        },
       ]}
     />
   );

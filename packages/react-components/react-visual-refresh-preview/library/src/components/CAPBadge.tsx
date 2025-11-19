@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { BadgeState, useBadgeStyles_unstable } from '@fluentui/react-components';
 import { tokens } from '@fluentui/react-theme';
 
@@ -40,6 +40,31 @@ const useCAPBadgeStyles = makeStyles({
   'rounded-small': { borderRadius: tokens.borderRadiusMedium },
   'rounded-extra-small': { borderRadius: tokens.borderRadiusSmall },
   'rounded-tiny': { borderRadius: tokens.borderRadiusSmall },
+
+  'outline-brand': {
+    ...shorthands.borderColor(tokens.colorBrandStroke2),
+  },
+  'outline-warning': {
+    ...shorthands.borderColor(tokens.colorStatusWarningBorder1),
+  },
+  'outline-important': {
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+  },
+  'outline-danger': {
+    ...shorthands.borderColor(tokens.colorStatusDangerBorder1),
+  },
+  'outline-success': {
+    ...shorthands.borderColor(tokens.colorStatusSuccessBorder1),
+  },
+  'outline-informative': {
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+  },
+  'outline-subtle': {
+    ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
+  },
+  'outline-severe': {
+    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeBorder2),
+  },
 });
 
 const useCAPBadgeIconStyles = makeStyles({
@@ -64,6 +89,7 @@ export function useCAPBadgeStylesHook(state: BadgeState) {
     styles.root,
     styles[state.size],
     state.shape === 'rounded' && styles[`rounded-${state.size}`],
+    state.appearance === 'outline' && styles[`outline-${state.color}`],
   );
 
   // Override icon spacing for small size
