@@ -19,8 +19,9 @@ export const inputGroup: GroupPart = {
     'fontsize',
     'fontweight',
     'lineheight',
-    'stroke',
   ],
+  states: ['', 'selected'],
+  stateProperties: ['stroke'],
   exceptions: [
     {
       // Disabled state uses unified colors for foreground/background

@@ -129,12 +129,12 @@ const useRootStyles = makeStyles({
     },
 
     ':active': {
-      border: `${semanticTokens.groupInputStrokewidth} solid ${semanticTokens.groupInputStrokePressed}`,
+      border: `${semanticTokens.groupInputStrokewidth} solid ${semanticTokens.groupInputStrokeSelected}`,
       borderBottomColor: semanticTokens.groupInputUnderlineStrokePressed,
     },
 
     ':focus-within': {
-      border: `${semanticTokens.groupInputStrokewidth} solid ${semanticTokens.groupInputStrokePressed}`,
+      border: `${semanticTokens.groupInputStrokewidth} solid ${semanticTokens.groupInputStrokeSelected}`,
       borderBottomColor: semanticTokens.groupInputUnderlineStrokeSelected,
     },
   },

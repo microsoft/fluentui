@@ -139,15 +139,15 @@ export const buttonFallbacks: GroupFallback = {
   },
   groupButtonSubtleBackground: {
     fluent: tokens.colorSubtleBackground,
-    generic: 'backgroundBrandTransparent',
+    generic: 'backgroundNeutralTransparent',
   },
   groupButtonSubtleBackgroundHover: {
     fluent: tokens.colorSubtleBackgroundHover,
-    generic: 'backgroundBrandTransparentHover',
+    generic: 'backgroundNeutralTransparentHover',
   },
   groupButtonSubtleBackgroundPressed: {
     fluent: tokens.colorSubtleBackgroundPressed,
-    generic: 'backgroundBrandTransparentPressed',
+    generic: 'backgroundNeutralTransparentPressed',
   },
   groupButtonSubtleBackgroundSelected: {
     fluent: tokens.colorSubtleBackgroundSelected,

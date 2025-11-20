@@ -85,6 +85,7 @@ export type GroupTokens = {
   groupInputFontweight: string;
   groupInputLineheight: string;
   groupInputStroke: string;
+  groupInputStrokeSelected: string;
   groupInputForegroundDisabled: string;
   groupInputBackgroundDisabled: string;
   groupInputStrokeDisabled: string;

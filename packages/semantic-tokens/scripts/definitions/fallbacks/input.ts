@@ -26,6 +26,9 @@ export const inputFallbacks: GroupFallback = {
   groupInputStroke: {
     fluent: tokens.colorNeutralStroke1,
   },
+  groupInputStrokeSelected: {
+    fluent: tokens.colorNeutralStroke1Pressed,
+  },
   groupInputUnderlineStroke: {
     fluent: tokens.colorNeutralStrokeAccessible,
   },

@@ -227,6 +227,8 @@ export {
   groupButtonSubtleBackgroundPressedSelected,
   groupButtonSubtleIconForegroundHoverSelected,
   groupButtonSubtleIconForegroundPressedSelected,
+  groupButtonSubtleBackgroundHover,
+  groupButtonSubtleBackgroundPressed,
 
   // Compound Button - scale
   ctrlCompoundbuttonSmallIcononlyPadding,
@@ -249,7 +251,6 @@ export {
   // Input - Color
   groupInputUnderlineStrokePressedSelected,
   groupInputStrokeHover,
-  groupInputStrokePressed,
   groupInputUnderlineStrokePressed,
   groupInputUnderlineStrokeHover,
   groupInputIconForegroundHover,

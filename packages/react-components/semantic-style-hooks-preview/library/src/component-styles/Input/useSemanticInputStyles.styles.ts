@@ -140,7 +140,7 @@ const useRootStyles = makeStyles({
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
-      ...shorthands.borderColor(semanticTokens.groupInputStrokePressed),
+      ...shorthands.borderColor(semanticTokens.groupInputStrokeSelected),
       borderBottomColor: semanticTokens.groupInputUnderlineStrokePressed,
     },
   },

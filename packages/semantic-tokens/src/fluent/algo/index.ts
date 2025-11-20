@@ -212,6 +212,8 @@ export {
   groupButtonPrimaryStrokePressed,
   groupButtonTransparentForegroundPressed,
   groupButtonTransparentForegroundHover,
+  groupButtonSubtleBackgroundHover,
+  groupButtonSubtleBackgroundPressed,
 
   // Color - selected
   groupButtonNeutralBackgroundHoverSelected,
@@ -253,7 +255,6 @@ export {
 export {
   groupInputUnderlineStrokePressedSelected,
   groupInputStrokeHover,
-  groupInputStrokePressed,
   groupInputUnderlineStrokePressed,
   groupInputUnderlineStrokeHover,
   groupInputIconForegroundHover,

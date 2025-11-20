@@ -206,7 +206,7 @@ const useRootStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonNeutralBackgroundHover,
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundHover,
       color: semanticTokens.groupButtonSubtleForegroundSelected,
       ...shorthands.borderColor(semanticTokens.groupButtonSubtleStroke),
       [`& .${iconFilledClassName}`]: {
@@ -221,7 +221,7 @@ const useRootStyles = makeStyles({
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonNeutralBackgroundPressed,
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundPressed,
       color: semanticTokens.groupButtonSubtleForegroundSelected,
       ...shorthands.borderColor(semanticTokens.groupButtonSubtleStroke),
       [`& .${iconFilledClassName}`]: {
