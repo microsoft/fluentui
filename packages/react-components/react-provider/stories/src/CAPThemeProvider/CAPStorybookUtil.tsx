@@ -1,19 +1,14 @@
 import * as React from 'react';
 import { FluentProvider, makeStyles, teamsLightV21Theme } from '@fluentui/react-components';
-import {
-  CAPThemeProvider,
-  CAP_THEME_ONE_DRIVE,
-  CAP_THEME_SHAREPOINT,
-  CAP_THEME_TEAMS,
-} from '@fluentui/react-visual-refresh-preview';
+import { CAPThemeProvider, CAP_THEME_ONE_DRIVE, CAP_THEME_SHAREPOINT, CAP_THEME_TEAMS } from '@fluentui/react-provider';
 
-export interface VisualRefreshExample {
+export interface CAPThemeExample {
   title: string;
   render(variant: 'v9' | 'cap'): React.ReactElement | 'NOT_IMPLEMENTED';
 }
 
-export const VisualRefreshExamples = ({ examples }: { examples: VisualRefreshExample[] }) => {
-  const styles = useVisualRefreshExamplesStyles();
+export const CAPThemeExamples = ({ examples }: { examples: CAPThemeExample[] }) => {
+  const styles = useCAPThemeExamplesStyles();
   return (
     <FluentProvider>
       <div className={styles.table}>
@@ -48,7 +43,7 @@ export const VisualRefreshExamples = ({ examples }: { examples: VisualRefreshExa
   );
 };
 
-function renderExample(example: VisualRefreshExample, variant: 'v9' | 'cap') {
+function renderExample(example: CAPThemeExample, variant: 'v9' | 'cap') {
   const result = example.render(variant);
   if (result === 'NOT_IMPLEMENTED') {
     return <span style={{ color: 'red' }}>NOT IMPLEMENTED</span>;
@@ -56,7 +51,7 @@ function renderExample(example: VisualRefreshExample, variant: 'v9' | 'cap') {
   return result;
 }
 
-const useVisualRefreshExamplesStyles = makeStyles({
+const useCAPThemeExamplesStyles = makeStyles({
   table: {
     display: 'flex',
     flexDirection: 'column',

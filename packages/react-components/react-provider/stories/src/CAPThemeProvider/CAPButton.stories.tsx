@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-components';
-import { VisualRefreshExamples } from './StorybookUtil';
+import { CAPThemeExamples } from './CAPStorybookUtil';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export const CAPButtonStory = () => {
   return (
-    <VisualRefreshExamples
+    <CAPThemeExamples
       examples={[
         {
           title: 'Default',

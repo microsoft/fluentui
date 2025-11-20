@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import type { JSXElement } from '@fluentui/react-utilities';
-import { CAPThemeProvider, CAP_THEME_TEAMS } from '@fluentui/react-visual-refresh-preview';
+import { CAPThemeProvider, CAP_THEME_TEAMS } from '@fluentui/react-provider';
 import { VISUAL_UPDATE_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
@@ -16,11 +16,7 @@ export const withVisualUpdate = (StoryFn: () => JSXElement, context: FluentStory
   const isVisualUpdateEnabled = globals[VISUAL_UPDATE_ID] ?? false;
 
   if (isVisualUpdateEnabled) {
-    return (
-      <CAPThemeProvider theme={{ ...CAP_THEME_TEAMS }}>
-        {StoryFn()}
-      </CAPThemeProvider>
-    );
+    return <CAPThemeProvider theme={{ ...CAP_THEME_TEAMS }}>{StoryFn()}</CAPThemeProvider>;
   }
 
   return StoryFn();

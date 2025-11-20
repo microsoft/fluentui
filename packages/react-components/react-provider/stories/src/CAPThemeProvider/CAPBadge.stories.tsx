@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Badge } from '@fluentui/react-components';
-import { VisualRefreshExamples } from './StorybookUtil';
+import { CAPThemeExamples } from './CAPStorybookUtil';
 import { CircleRegular } from '@fluentui/react-icons';
 
 export const CAPBadgeStory = () => {
   return (
-    <VisualRefreshExamples
+    <CAPThemeExamples
       examples={[
         {
           title: 'Tiny',

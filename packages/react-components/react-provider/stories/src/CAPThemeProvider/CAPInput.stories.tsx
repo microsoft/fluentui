@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Input } from '@fluentui/react-components';
-import { VisualRefreshExamples } from './StorybookUtil';
+import { CAPThemeExamples } from './CAPStorybookUtil';
 
 export const CAPInputStory = () => {
   return (
-    <VisualRefreshExamples
+    <CAPThemeExamples
       examples={[
         {
           title: 'Default',
