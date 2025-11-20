@@ -18,6 +18,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.71.1 ]------------------------------- -->
+## [v0.71.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.71.1) (20-11-2025)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.71.0..@fluentui/react-northstar_v0.71.1)
+
+### Fixes
+- Fix handling of `as` prop in some components https://github.com/microsoft/fluentui/pull/35508
+
 <!--------------------------------[ v0.71.0 ]------------------------------- -->
 ## [v0.71.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.71.0) (03-11-2025)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.70.0..@fluentui/react-northstar_v0.71.0)
