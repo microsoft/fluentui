@@ -3,7 +3,7 @@ import { ToolbarMenuRadioGroupWrapper } from 'src/components/Toolbar/ToolbarMenu
 
 describe('ToolbarMenuRadioGroupWrapper', () => {
   isConformant(ToolbarMenuRadioGroupWrapper, {
-    defaultAs: 'span',
+    defaultAs: 'li',
     testPath: __filename,
     constructorName: 'ToolbarMenuRadioGroupWrapper',
   });

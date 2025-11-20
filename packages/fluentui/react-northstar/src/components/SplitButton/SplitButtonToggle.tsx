@@ -68,7 +68,6 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
 
     const {
       accessibility = buttonBehavior,
-      as,
       children,
       content,
       disabled,
@@ -83,10 +82,11 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
 
     const hasChildren = childrenExist(children);
 
+    const ElementType = getElementType(props, 'button');
     const getA11Props = useAccessibility(accessibility, {
       debugName: SplitButtonToggle.displayName,
       mapPropsToBehavior: () => ({
-        as: String(as),
+        as: String(ElementType),
         disabled,
       }),
       actionHandlers: {
@@ -115,7 +115,6 @@ export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButton
     });
 
     const unhandledProps = useUnhandledProps(SplitButtonToggle.handledProps, props);
-    const ElementType = getElementType(props, 'button');
 
     const handleClick = (e: React.SyntheticEvent) => {
       if (disabled) {

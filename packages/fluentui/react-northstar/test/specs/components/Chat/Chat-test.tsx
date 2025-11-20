@@ -8,7 +8,7 @@ const chatImplementsCollectionShorthandProp = implementsCollectionShorthandProp(
 
 describe('Chat', () => {
   isConformant(Chat, {
-    defaultAs: 'span',
+    defaultAs: 'ul',
     testPath: __filename,
     constructorName: 'Chat',
     skipAsPropTests: 'as-component',
