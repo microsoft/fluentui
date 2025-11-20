@@ -1,4 +1,4 @@
-export const lightnessHover = 'var(--smtc-lightness-hover, 5)';
+export const lightnessHover = 'var(--smtc-lightness-hover, -5)';
 export const lightnessPressed = 'var(--smtc-lightness-pressed, -10)';
 export const lightnessSelectedHover = 'var(--smtc-lightness-selected-hover, 5)';
 export const lightnessSelectedPressed = 'var(--smtc-lightness-selected-pressed, -10)';

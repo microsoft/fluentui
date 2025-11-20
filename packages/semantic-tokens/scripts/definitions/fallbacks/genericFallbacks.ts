@@ -16,7 +16,7 @@ export const genericFallbacks: GenericFallbacks = {
     fluent: tokens.borderRadiusNone,
   },
   lightnessHover: {
-    fluent: '5',
+    fluent: '-5',
   },
   lightnessPressed: {
     fluent: '-10',
