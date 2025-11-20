@@ -24,7 +24,6 @@ import {
   groupButtonSubtleBackgroundSelected,
   groupButtonSubtleIconForegroundSelected,
   groupButtonOutlineBackgroundSelected,
-  groupButtonSubtleBackground,
 } from '../../../groups/button/tokens';
 
 import {
@@ -88,8 +87,8 @@ export const groupButtonSubtleBackgroundSelectedHover = `hsl(from ${groupButtonS
 export const groupButtonSubtleBackgroundSelectedPressed = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${lightnessSelectedPressed}))`;
 export const groupButtonSubtleIconForegroundSelectedHover = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${lightnessHover}))`;
 export const groupButtonSubtleIconForegroundSelectedPressed = `hsl(from ${groupButtonSubtleIconForegroundSelected} h s calc(l + ${lightnessPressed}))`;
-export const groupButtonSubtleBackgroundHover = `hsla(from ${groupButtonSubtleBackground} h s calc(l + ${lightnessHover}) / 5%)`;
-export const groupButtonSubtleBackgroundPressed = `hsla(from ${groupButtonSubtleBackground} h s calc(l + ${lightnessPressed}) / 15%)`;
+export const groupButtonSubtleBackgroundHover = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${lightnessHover}))`;
+export const groupButtonSubtleBackgroundPressed = `hsl(from ${groupButtonSubtleBackgroundSelected} h s calc(l + ${lightnessPressed}))`;
 
 // Compound button tokens
 export const ctrlCompoundbuttonSmallIcononlyPadding = `calc(${groupButtonIcononlyPadding} / 5 * 4)`;

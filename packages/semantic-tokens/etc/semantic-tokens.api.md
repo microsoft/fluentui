@@ -767,10 +767,10 @@ export const groupButtonSubtleBackground = "var(--smtc-group-button-subtle-backg
 export const groupButtonSubtleBackgroundDisabled = "var(--smtc-group-button-subtle-background-disabled, var(--smtc-background-disabled, var(--colorTransparentBackground)))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundHover = "hsla(from var(--smtc-group-button-subtle-background, var(--smtc-background-neutral-transparent, var(--colorSubtleBackground))) h s calc(l + var(--smtc-lightness-hover, -5)) / 5%)";
+export const groupButtonSubtleBackgroundHover = "hsl(from var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--colorSubtleBackgroundSelected))) h s calc(l + var(--smtc-lightness-hover, -5)))";
 
 // @public (undocumented)
-export const groupButtonSubtleBackgroundPressed = "hsla(from var(--smtc-group-button-subtle-background, var(--smtc-background-neutral-transparent, var(--colorSubtleBackground))) h s calc(l + var(--smtc-lightness-pressed, -10)) / 15%)";
+export const groupButtonSubtleBackgroundPressed = "hsl(from var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--colorSubtleBackgroundSelected))) h s calc(l + var(--smtc-lightness-pressed, -10)))";
 
 // @public (undocumented)
 export const groupButtonSubtleBackgroundSelected = "var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--colorSubtleBackgroundSelected)))";
