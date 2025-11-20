@@ -49,7 +49,7 @@ export const CAPTokensSchema = {
 
 export const CAPTokens = {
   ...(Object.keys(CAPTokensSchema).reduce((acc: any, key) => {
-    return { ...acc, [key]: `var(--cap-${key})` };
+    return { ...acc, [key]: `var(--${key})` };
   }) as any),
 } as Record<keyof typeof CAPTokensSchema, string>;
 

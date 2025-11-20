@@ -22,13 +22,8 @@ export const CAPThemeProvider = ({
       useInputStyles_unstable: state => useCAPInputStylesHook(state as InputState),
     };
   }, []);
-
-  const styles: React.CSSProperties = {};
-  for (const [tokenName, tokenValue] of Object.entries(theme)) {
-    (styles as any)[`--cap-${tokenName}`] = tokenValue;
-  }
   return (
-    <FluentProvider theme={theme} customStyleHooks_unstable={customStyleHooks} style={styles}>
+    <FluentProvider theme={theme} customStyleHooks_unstable={customStyleHooks}>
       {children}
     </FluentProvider>
   );
