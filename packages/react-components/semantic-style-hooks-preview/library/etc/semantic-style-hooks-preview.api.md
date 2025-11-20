@@ -16,6 +16,22 @@ import { ToggleButtonState } from '@fluentui/react-button';
 export const bebopSemanticTokens: Record<string, string>;
 
 // @public (undocumented)
+export const defaultDarkSemanticLightnessTokens: {
+    'smtc-lightness-selected-hover': string;
+    'smtc-lightness-selected-pressed': string;
+    'smtc-lightness-hover': string;
+    'smtc-lightness-pressed': string;
+};
+
+// @public (undocumented)
+export const defaultLightSemanticLightnessTokens: {
+    'smtc-lightness-selected-hover': string;
+    'smtc-lightness-selected-pressed': string;
+    'smtc-lightness-hover': string;
+    'smtc-lightness-pressed': string;
+};
+
+// @public (undocumented)
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks;
 
 // @public (undocumented)
