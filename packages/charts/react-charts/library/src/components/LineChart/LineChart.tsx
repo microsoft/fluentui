@@ -234,6 +234,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           isRTL,
           props.xScaleType,
           _hasMarkersMode,
+          props.xMinValue,
+          props.xMaxValue,
         );
       } else if (xAxisType === XAxisTypes.DateAxis) {
         domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
@@ -550,6 +552,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               xScaleType: props.xScaleType,
               yScaleType: props.yScaleType,
               secondaryYScaleType: props.secondaryYScaleType,
+              xMinValue: props.xMinValue,
+              xMaxValue: props.xMaxValue,
             })
           : 0;
         if (_points[i].data.length === 1) {

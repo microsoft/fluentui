@@ -210,6 +210,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         isRTL,
         props.xScaleType,
         true,
+        props.xMinValue,
+        props.xMaxValue,
       );
     } else if (xAxisType === XAxisTypes.DateAxis) {
       domainNRangeValue = domainRangeOfDateForAreaLineScatterVerticalBarCharts(
@@ -386,6 +388,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
             yScalePrimary: _yAxisScale,
             xScaleType: props.xScaleType,
             yScaleType: props.yScaleType,
+            xMinValue: props.xMinValue,
+            xMaxValue: props.xMaxValue,
           })
         : 0;
 

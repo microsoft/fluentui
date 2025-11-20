@@ -1367,12 +1367,13 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
   scaleType?: AxisScaleType,
   hasMarkersMode?: boolean,
   xMinVal?: number,
+  xMaxVal?: number,
 ): IDomainNRange {
   const isScatterPolar = isScatterPolarSeries(points);
   let [xMin, xMax] = getScatterXDomainExtent(points, scaleType) as [number, number];
 
   if (hasMarkersMode) {
-    const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType, xMinVal);
+    const xPadding = getDomainPaddingForMarkers(xMin, xMax, scaleType, xMinVal, xMaxVal);
     xMin = xMin - xPadding.start;
     xMax = xMax + xPadding.end;
   }
@@ -2214,6 +2215,7 @@ export const getDomainPaddingForMarkers = (
   maxVal: number,
   scaleType?: AxisScaleType,
   xMinVal?: number,
+  xMaxVal?: number,
 ): { start: number; end: number } => {
   if (scaleType === 'log') {
     return {
@@ -2222,16 +2224,18 @@ export const getDomainPaddingForMarkers = (
     };
   }
 
-  /* if user explicitly sets xMinVal, we will check that to avoid excessive padding on the min side.
-     if the difference between minVal and xMinVal is more than 10% of the data range, we set padding to 0 on that side
-     this is to avoid cases where xMinVal is significantly smaller than minVal, which would lead to excessive padding.
-     In other cases, we apply the default 10% padding on both sides.
+  /* if user explicitly sets xMinVal or xMaxVal, we will check that to avoid excessive padding on either side.
+     If the difference between minVal and xMinVal is more than 10% of the data range, we set padding to 0 on that side.
+     this is to avoid cases where xMinVal is significantly smaller than minVal or xMaxVal is significantly larger than
+     maxVal, which would lead to excessive padding. In other cases, we apply the default 10% padding on both sides.
   */
-  const defaultPadding = xMinVal
-    ? (maxVal - minVal) * 0.1 > Math.abs(minVal - Math.min(minVal, xMinVal!))
-      ? 0
-      : (maxVal - minVal) * 0.1
-    : (maxVal - minVal) * 0.1;
+  const rangePadding = (maxVal - minVal) * 0.1;
+
+  // If explicit bounds are set and they're far from the data range, don't add extra padding
+  const hasExcessivePaddingAtMin = xMinVal !== undefined && rangePadding > Math.abs(minVal - Math.min(minVal, xMinVal));
+  const hasExcessivePaddingAtMax = xMaxVal !== undefined && rangePadding > Math.abs(maxVal - Math.max(maxVal, xMaxVal));
+
+  const defaultPadding = hasExcessivePaddingAtMin && hasExcessivePaddingAtMax ? 0 : rangePadding;
   return {
     start: defaultPadding,
     end: defaultPadding,
@@ -2281,6 +2285,8 @@ export const getRangeForScatterMarkerSize = ({
   xScaleType,
   yScaleType: primaryYScaleType,
   secondaryYScaleType,
+  xMinValue,
+  xMaxValue,
 }: {
   data: LineChartPoints[] | ScatterChartPoints[];
   xScale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number>;
@@ -2290,6 +2296,8 @@ export const getRangeForScatterMarkerSize = ({
   xScaleType?: AxisScaleType;
   yScaleType?: AxisScaleType;
   secondaryYScaleType?: AxisScaleType;
+  xMinValue?: number;
+  xMaxValue?: number;
 }): number => {
   // Note: This function is executed after the scale is created, so the actual padding can be
   // obtained by calculating the difference between the respective minimums or maximums of the
@@ -2301,7 +2309,7 @@ export const getRangeForScatterMarkerSize = ({
   // it the other way around (i.e., adjusting the scale domain first with padding and then scaling
   // the markers to fit inside the plot area).
   const [xMin, xMax] = getScatterXDomainExtent(data, xScaleType);
-  const xPadding = getDomainPaddingForMarkers(+xMin, +xMax, xScaleType);
+  const xPadding = getDomainPaddingForMarkers(+xMin, +xMax, xScaleType, xMinValue, xMaxValue);
   const scaleXMin = xMin instanceof Date ? new Date(+xMin - xPadding.start) : xMin - xPadding.start;
   const scaleXMax = xMax instanceof Date ? new Date(+xMax + xPadding.end) : xMax + xPadding.end;
   const extraXPixels = Math.min(Math.abs(xScale(xMin) - xScale(scaleXMin)), Math.abs(xScale(scaleXMax) - xScale(xMax)));
