@@ -57,19 +57,78 @@ export type CAPTheme = {
   [k in keyof typeof CAPTokens]: string;
 };
 
+function token(t: {
+  semanticToken: string | null;
+  fluentV9Token: keyof typeof tokens | null;
+  fallbackValue?: string;
+}): string {
+  const parts = [
+    t.semanticToken ? `var(--${t.semanticToken})` : undefined,
+    t.fluentV9Token ? tokens[t.fluentV9Token] : undefined,
+    t.fallbackValue,
+  ];
+  let cssVar = '';
+  for (const part of parts) {
+    if (!part) continue;
+    if (cssVar.startsWith('var(')) {
+      cssVar = cssVar.replace(/\)$/, `, ${part})`);
+    } else {
+      cssVar += part;
+    }
+  }
+  return cssVar;
+}
+
 export const CAP_THEME = {
-  buttonPrimaryBackgroundColor: tokens.colorBrandBackground,
-  buttonPrimaryBackgroundColorHover: tokens.colorBrandBackgroundHover,
-  buttonSecondaryBackgroundColor: '#FAFAFA',
-  buttonSecondaryBackgroundColorHover: '#F0F0F0', // NeutralBackground3.Hover
-  buttonSubtleBackgroundColor: tokens.colorBrandBackground,
-  buttonSubtleBackgroundColorHover: tokens.colorBrandBackground,
-  buttonOutlineBackgroundColor: tokens.colorTransparentBackground,
-  buttonOutlineBackgroundColorHover: tokens.colorTransparentBackground,
-  buttonTintBackgroundColor: 'red',
-  buttonTintBackgroundColorHover: '',
+  buttonPrimaryBackgroundColor: token({
+    semanticToken: 'foobar',
+    fluentV9Token: 'colorBrandBackground',
+  }),
+  buttonPrimaryBackgroundColorHover: token({
+    semanticToken: null,
+    fluentV9Token: 'colorBrandBackgroundHover',
+  }),
+  buttonSecondaryBackgroundColor: token({
+    semanticToken: null,
+    fluentV9Token: null,
+    fallbackValue: '#FAFAFA',
+  }),
+  buttonSecondaryBackgroundColorHover: token({
+    semanticToken: null,
+    fluentV9Token: null,
+    fallbackValue: '#F0F0F0', // NeutralBackground3
+  }),
+  buttonSubtleBackgroundColor: token({
+    semanticToken: null,
+    fluentV9Token: 'colorBrandBackground',
+  }),
+  buttonSubtleBackgroundColorHover: token({
+    semanticToken: null,
+    fluentV9Token: 'colorBrandBackground',
+  }),
+  buttonOutlineBackgroundColor: token({
+    semanticToken: null,
+    fluentV9Token: 'colorTransparentBackground',
+  }),
+  buttonOutlineBackgroundColorHover: token({
+    semanticToken: null,
+    fluentV9Token: 'colorTransparentBackground',
+  }),
+  buttonTintBackgroundColor: token({
+    semanticToken: null,
+    fluentV9Token: null,
+    fallbackValue: 'red',
+  }),
+  buttonTintBackgroundColorHover: token({
+    semanticToken: null,
+    fluentV9Token: null,
+    fallbackValue: '',
+  }),
   // TODO: switch to BrandForegroundCompound when available
-  colorBrandForegroundCompound: tokens.colorBrandForeground1,
+  colorBrandForegroundCompound: token({
+    semanticToken: null,
+    fluentV9Token: 'colorBrandForeground1',
+  }),
 } as const satisfies CAPTheme;
 
 export const CAP_THEME_TEAMS = {
