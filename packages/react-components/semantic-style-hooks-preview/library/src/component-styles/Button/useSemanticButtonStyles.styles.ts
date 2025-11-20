@@ -264,24 +264,6 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: semanticTokens.backgroundNeutralTransparent,
       ...shorthands.borderColor('transparent'),
-      // Transparent button uses the 'base' selected color for hover state
-      color: semanticTokens.groupButtonTransparentForegroundSelected,
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-      [`& .${buttonClassNames.icon}`]: {
-        // Transparent button uses the 'base' selected color for hover state
-        color: semanticTokens.groupButtonTransparentForegroundSelected,
-      },
-    },
-
-    ':hover:active': {
-      backgroundColor: semanticTokens.backgroundNeutralTransparent,
-      ...shorthands.borderColor('transparent'),
-      // Transparent button uses the 'hover' lightness for pressed state
       color: semanticTokens.groupButtonTransparentForegroundHover,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
@@ -289,10 +271,24 @@ const useRootStyles = makeStyles({
       [`& .${iconRegularClassName}`]: {
         display: 'none',
       },
+      [`& .${buttonClassNames.icon}`]: {
+        color: semanticTokens.groupButtonTransparentForegroundHover,
+      },
+    },
+
+    ':hover:active': {
+      backgroundColor: semanticTokens.backgroundNeutralTransparent,
+      ...shorthands.borderColor('transparent'),
+      color: semanticTokens.groupButtonTransparentForegroundPressed,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
 
       [`& .${buttonClassNames.icon}`]: {
-        // Transparent button uses the 'hover' lightness for pressed state
-        color: semanticTokens.groupButtonTransparentForegroundHover,
+        color: semanticTokens.groupButtonTransparentForegroundPressed,
       },
     },
 

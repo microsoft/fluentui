@@ -16,19 +16,24 @@ import { defaultTheme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
-import { SEMANTIC_STYLE_HOOKS, bebopSemanticTokens } from '@fluentui/semantic-style-hooks-preview';
+import {
+  SEMANTIC_STYLE_HOOKS,
+  bebopSemanticTokens,
+  defaultDarkSemanticLightnessTokens,
+  defaultLightSemanticLightnessTokens,
+} from '@fluentui/semantic-style-hooks-preview';
 
 // TODO: Remove this when merging Semantic tokens to master
 const bebopCustomTheme = { ...webLightTheme, ...bebopSemanticTokens };
 
 const themes: Record<ThemeIds | 'bebop-light', Theme> = {
-  'web-light': webLightTheme,
-  'web-dark': webDarkTheme,
-  'teams-light': teamsLightTheme,
-  'teams-dark': teamsDarkTheme,
+  'web-light': { ...webLightTheme, ...defaultLightSemanticLightnessTokens },
+  'web-dark': { ...webDarkTheme, ...defaultDarkSemanticLightnessTokens },
+  'teams-light': { ...teamsLightTheme, ...defaultLightSemanticLightnessTokens },
+  'teams-dark': { ...teamsDarkTheme, ...defaultDarkSemanticLightnessTokens },
   'teams-high-contrast': teamsHighContrastTheme,
-  'teams-light-v21': teamsLightV21Theme,
-  'teams-dark-v21': teamsDarkV21Theme,
+  'teams-light-v21': { ...teamsLightV21Theme, ...defaultLightSemanticLightnessTokens },
+  'teams-dark-v21': { ...teamsDarkV21Theme, ...defaultDarkSemanticLightnessTokens },
   'bebop-light': bebopCustomTheme,
 } as const;
 

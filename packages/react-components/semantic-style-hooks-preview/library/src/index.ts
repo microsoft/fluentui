@@ -8,4 +8,8 @@ export {
 } from './component-styles//Button';
 
 export { bebopSemanticTokens } from './themes/bebopLight';
+export {
+  defaultLightSemanticLightnessTokens,
+  defaultDarkSemanticLightnessTokens,
+} from './themes/defaultSemanticLightness';
 export { useSemanticInputStyles } from './component-styles//Input/useSemanticInputStyles.styles';
