@@ -4,7 +4,7 @@ import { ToolbarMenuDivider } from 'src/components/Toolbar/ToolbarMenuDivider';
 
 describe('ToolbarMenuDivider', () => {
   isConformant(ToolbarMenuDivider, {
-    defaultAs: 'span',
+    defaultAs: 'li',
     testPath: __filename,
     constructorName: 'ToolbarMenuDivider',
   });

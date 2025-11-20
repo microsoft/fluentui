@@ -6,6 +6,6 @@ import { Image } from 'src/components/Image/Image';
 const labelImplementsShorthandProp = implementsShorthandProp(Label);
 
 describe('Label', () => {
-  isConformant(Label, { defaultAs: 'label', testPath: __filename, constructorName: 'Label' });
+  isConformant(Label, { defaultAs: 'span', testPath: __filename, constructorName: 'Label' });
   labelImplementsShorthandProp('image', Image, { mapsValueToProp: 'src' });
 });

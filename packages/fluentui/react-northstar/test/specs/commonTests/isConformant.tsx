@@ -149,14 +149,7 @@ export function isConformant(
           // silence element nesting warnings
           consoleUtil.disableOnce();
 
-          const wrapper = mount(
-            <Component
-              {...{
-                ...(defaultAs && { as: defaultAs }),
-                ...requiredProps,
-              }}
-            />,
-          );
+          const wrapper = mount(<Component {...requiredProps} />);
           const component = getComponent(wrapper);
 
           expect(component.is(defaultAs ?? 'div')).toEqual(true);

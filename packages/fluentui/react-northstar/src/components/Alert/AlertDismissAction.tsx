@@ -84,7 +84,6 @@ export const AlertDismissAction = React.forwardRef<
 
   const {
     accessibility = buttonBehavior,
-    as = 'button',
     children,
     className,
     content = {},
@@ -101,10 +100,11 @@ export const AlertDismissAction = React.forwardRef<
   const hasChildren = childrenExist(children);
   const hasContent = !!content && !_.isEmpty(content);
 
+  const ElementType = getElementType(props, 'button');
   const getA11Props = useAccessibility(accessibility, {
     debugName: AlertDismissAction.displayName,
     mapPropsToBehavior: () => ({
-      as: String(as),
+      as: String(ElementType),
       disabled,
     }),
     actionHandlers: {
@@ -135,7 +135,6 @@ export const AlertDismissAction = React.forwardRef<
   });
 
   const unhandledProps = useUnhandledProps(AlertDismissAction.handledProps, props);
-  const ElementType = getElementType(props);
 
   const handleClick = (e: React.SyntheticEvent) => {
     if (disabled) {

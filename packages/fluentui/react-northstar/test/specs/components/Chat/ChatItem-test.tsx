@@ -6,7 +6,7 @@ const chatItemImplementsShorthandProp = implementsShorthandProp(ChatItem);
 
 describe('ChatItem', () => {
   isConformant(ChatItem, {
-    defaultAs: 'span',
+    defaultAs: 'li',
     testPath: __filename,
     constructorName: 'ChatItem',
   });

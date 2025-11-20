@@ -103,7 +103,6 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
       disabled,
       accessibility = accordionTitleBehavior,
       canBeCollapsed,
-      as,
       active,
       accordionContentId,
       className,
@@ -111,6 +110,7 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
       styles,
       variables,
     } = props;
+
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(AccordionTitle.handledProps, props);
 
@@ -126,7 +126,7 @@ export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleP
       mapPropsToBehavior: () => ({
         hasContent: !!content,
         canBeCollapsed,
-        as: String(as),
+        as: String(ElementType),
         active,
         disabled,
         accordionContentId,
