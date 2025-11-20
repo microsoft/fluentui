@@ -1,6 +1,12 @@
 import { tokens } from '@fluentui/react-components';
 
-const EXPECTED_SEMANTIC_TOKENS = [] as const;
+const EXPECTED_SEMANTIC_TOKENS = [
+  // card
+  'stroke/card/onPrimary/default/rest',
+  'cornerRadius/ctrl/card',
+  'padding/card/header/body/default/inside',
+  'padding/card/header/body/default/outside',
+] as const;
 type ExpectedSemanticToken = (typeof EXPECTED_SEMANTIC_TOKENS)[number];
 
 const TOKEN_TYPES = ['color', 'dimension'] as const;
@@ -33,7 +39,20 @@ const ButtonTokens = {
   buttonTintBackgroundColorHover: { type: 'color', semanticToken: null },
 } as const satisfies Record<string, TokenSchema>;
 
-const CardTokens = {} as const satisfies Record<string, TokenSchema>;
+const CardTokens = {
+  cardBackgroundColor: { type: 'color', semanticToken: null },
+  cardForegroundColor: { type: 'color', semanticToken: null },
+  cardBackgroundColorHover: { type: 'color', semanticToken: null },
+  cardForegroundColorHover: { type: 'color', semanticToken: null },
+  cardBackgroundColorPressed: { type: 'color', semanticToken: null },
+  cardForegroundColorPressed: { type: 'color', semanticToken: null },
+  cardBackgroundColorDisabled: { type: 'color', semanticToken: null },
+  cardForegroundColorDisabled: { type: 'color', semanticToken: null },
+  cardCornerRadius: { type: 'dimension', semanticToken: 'cornerRadius/ctrl/card' },
+  cardHeaderPaddingOutside: { type: 'dimension', semanticToken: 'padding/card/header/body/default/outside' },
+  cardHeaderPaddingInside: { type: 'dimension', semanticToken: 'padding/card/header/body/default/inside' },
+  cardFooterHorizontalGap: { type: 'dimension', semanticToken: null },
+} as const satisfies Record<string, TokenSchema>;
 
 const DialogTokens = {} as const satisfies Record<string, TokenSchema>;
 
@@ -64,6 +83,7 @@ export type CAPTheme = {
 };
 
 export const CAP_THEME = {
+  // button
   buttonPrimaryBackgroundColor: tokens.colorBrandBackground,
   buttonPrimaryBackgroundColorHover: tokens.colorBrandBackgroundHover,
   buttonSecondaryBackgroundColor: null,
@@ -74,6 +94,21 @@ export const CAP_THEME = {
   buttonOutlineBackgroundColorHover: tokens.colorTransparentBackground,
   buttonTintBackgroundColor: 'red',
   buttonTintBackgroundColorHover: null,
+
+  // card
+  cardCornerRadius: tokens.borderRadiusXLarge, // 8px
+  cardBackgroundColor: tokens.colorNeutralBackground1,
+  cardForegroundColor: tokens.colorNeutralBackground1,
+  cardBackgroundColorHover: '',
+  cardForegroundColorHover: '',
+  cardBackgroundColorPressed: '',
+  cardForegroundColorPressed: '',
+  cardBackgroundColorDisabled: '',
+  cardForegroundColorDisabled: '',
+  cardHeaderPaddingOutside: tokens.spacingVerticalM,
+  cardHeaderPaddingInside: tokens.spacingVerticalS,
+  cardFooterHorizontalGap: tokens.spacingHorizontalS,
+
   // TODO: switch to BrandForegroundCompound when available
   colorBrandForegroundCompound: tokens.colorBrandForeground1,
 } as const satisfies CAPTheme;
