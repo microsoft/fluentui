@@ -13,6 +13,7 @@ import {
   useSemanticSearchBoxStyles,
   useSemanticTextareaStyles,
   useSemanticSpinButtonStyles,
+  useSemanticComboboxStyles,
 } from './Input';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
@@ -28,4 +29,5 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   useTextareaStyles_unstable: useSemanticTextareaStyles,
   useFieldStyles_unstable: useSemanticFieldStyles,
   useSpinButtonStyles_unstable: useSemanticSpinButtonStyles,
+  useComboboxStyles_unstable: useSemanticComboboxStyles,
 };

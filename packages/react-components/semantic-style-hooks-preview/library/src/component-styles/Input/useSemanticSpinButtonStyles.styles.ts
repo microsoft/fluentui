@@ -19,7 +19,7 @@ const fieldHeights = {
 // Use the whole border-radius as the height and only put radii on the bottom corners.
 // (Otherwise the radius would be automatically reduced to fit available space.)
 // max() ensures the focus border still shows up even if someone sets semanticTokens.groupInputCorner to 0.
-const inputBottomFocusBorderStroke = `max(${semanticTokens.groupInputUnderlineStrokewidthSelected}, ${semanticTokens.groupInputCorner})`;
+const inputBottomFocusBorderStrokewidth = `max(${semanticTokens.groupInputUnderlineStrokewidthSelected}, ${semanticTokens.groupInputCorner})`;
 
 const useRootClassName = makeResetStyles({
   display: 'inline-grid',
@@ -74,7 +74,7 @@ const useRootClassName = makeResetStyles({
     // Use the whole border-radius as the height and only put radii on the bottom corners.
     // (Otherwise the radius would be automatically reduced to fit available space.)
     // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
-    height: inputBottomFocusBorderStroke,
+    height: inputBottomFocusBorderStrokewidth,
     borderBottomLeftRadius: semanticTokens.groupInputCorner,
     borderBottomRightRadius: semanticTokens.groupInputCorner,
 

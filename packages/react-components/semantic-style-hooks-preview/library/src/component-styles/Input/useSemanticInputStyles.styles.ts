@@ -37,7 +37,7 @@ const horizontalPadding = {
 // Use the whole border-radius as the height and only put radii on the bottom corners.
 // (Otherwise the radius would be automatically reduced to fit available space.)
 // max() ensures the focus border still shows up even if someone sets semanticTokens.groupInputCorner to 0.
-const inputBottomFocusBorderStroke = `max(${semanticTokens.groupInputUnderlineStrokewidthSelected}, ${semanticTokens.groupInputCorner})`;
+const inputBottomFocusBorderStrokewidth = `max(${semanticTokens.groupInputUnderlineStrokewidthSelected}, ${semanticTokens.groupInputCorner})`;
 
 const useRootClassName = makeResetStyles({
   display: 'inline-flex',
@@ -71,7 +71,7 @@ const useRootClassName = makeResetStyles({
     bottom: '-1px',
     right: '-1px',
 
-    height: inputBottomFocusBorderStroke,
+    height: inputBottomFocusBorderStrokewidth,
     borderBottomLeftRadius: semanticTokens.groupInputCorner,
     borderBottomRightRadius: semanticTokens.groupInputCorner,
 
@@ -323,7 +323,7 @@ const useContentStyles = makeStyles({
     // included in useContentClassName
   },
   large: {
-    '> svg': { fontSize: `calc(${semanticTokens.groupInputIconSize} * 1.25)` },
+    '> svg': { fontSize: `calc(${semanticTokens.groupInputIconSize} * 1.2)` },
   },
 });
 

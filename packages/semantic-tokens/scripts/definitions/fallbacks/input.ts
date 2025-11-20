@@ -70,9 +70,9 @@ export const inputFallbacks: GroupFallback = {
     fluent: '20px',
   },
   groupInputStrokewidth: {
-    fluent: '1px',
+    fluent: tokens.strokeWidthThin,
   },
   groupInputUnderlineStrokewidthSelected: {
-    fluent: '2px',
+    fluent: tokens.strokeWidthThick,
   },
 };
