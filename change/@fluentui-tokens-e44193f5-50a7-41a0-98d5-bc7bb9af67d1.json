@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "DO NOT MERGE: Modify legacy themes to enable hover/pressed via lightness",
+  "packageName": "@fluentui/tokens",
+  "email": "99835933+Mitch-At-Work@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
