@@ -135,7 +135,6 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       accessibility,
       // @ts-ignore
       active,
-      as,
       children,
       content,
       icon,
@@ -161,10 +160,11 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
 
     const hasChildren = childrenExist(children);
 
+    const ElementType = getElementType(props);
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       mapPropsToBehavior: () => ({
-        as,
+        as: String(ElementType),
         active,
         disabled,
         disabledFocusable,
@@ -209,7 +209,6 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
     const slotProps = composeOptions.resolveSlotProps<ButtonProps>(props);
 
     const unhandledProps = useUnhandledProps(composeOptions.handledProps, props);
-    const ElementType = getElementType(props);
 
     const renderIcon = () => {
       return createShorthand(composeOptions.slots.icon, icon, {

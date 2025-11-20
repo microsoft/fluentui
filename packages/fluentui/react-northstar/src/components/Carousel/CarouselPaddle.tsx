@@ -80,7 +80,6 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
 
     const {
       accessibility = buttonBehavior,
-      as,
       children,
       className,
       content = {},
@@ -96,10 +95,11 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
 
     const hasChildren = childrenExist(children);
 
+    const ElementType = getElementType(props, 'button');
     const getA11Props = useAccessibility(accessibility, {
       debugName: CarouselPaddle.displayName,
       mapPropsToBehavior: () => ({
-        as: String(as),
+        as: String(ElementType),
         disabled,
       }),
       actionHandlers: {
@@ -129,7 +129,6 @@ export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddle
     });
 
     const unhandledProps = useUnhandledProps(CarouselPaddle.handledProps, props);
-    const ElementType = getElementType(props, 'button');
 
     const handleClick = (e: React.SyntheticEvent) => {
       if (disabled) {

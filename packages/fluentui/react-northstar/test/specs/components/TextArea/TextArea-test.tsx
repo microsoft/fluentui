@@ -6,7 +6,7 @@ import * as faker from 'faker';
 
 describe('TextArea', () => {
   isConformant(TextArea, {
-    defaultAs: 'span',
+    defaultAs: 'textarea',
     testPath: __filename,
     constructorName: 'TextArea',
     autoControlledProps: ['value'],
