@@ -106,7 +106,7 @@ const useRootClassName = makeResetStyles({
   },
   ':focus-within:active::after': {
     // This is if the user clicks the field again while it's already focused
-    borderBottomColor: semanticTokens.groupInputUnderlineStrokePressedSelected,
+    borderBottomColor: semanticTokens.groupInputUnderlineStrokeSelectedPressed,
   },
   ':focus-within': {
     outline: '2px solid transparent',

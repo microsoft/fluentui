@@ -97,7 +97,7 @@ const useRootStyles = makeStyles({
   filled: {
     border: `${semanticTokens.groupInputStroke} solid ${semanticTokens.strokeNeutralTransparent}`,
     ':hover,:focus-within': {
-      ...shorthands.borderColor(semanticTokens.strokeNeutralTransparentHoverSelected),
+      ...shorthands.borderColor(semanticTokens.strokeNeutralTransparentSelectedHover),
     },
   },
   'filled-darker': {

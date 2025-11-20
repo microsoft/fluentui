@@ -11,13 +11,18 @@ export const groupInputFontweight = 'var(--smtc-group-input-fontweight, var(--fo
 export const groupInputLineheight = 'var(--smtc-group-input-lineheight, var(--lineHeightBase300))';
 export const groupInputStroke = 'var(--smtc-group-input-stroke, var(--colorNeutralStroke1))';
 export const groupInputStrokeSelected = 'var(--smtc-group-input-stroke-selected, var(--colorNeutralStroke1Pressed))';
-export const groupInputForegroundDisabled = 'var(--smtc-group-input-foreground-disabled, var(--colorNeutralForegroundDisabled))';
-export const groupInputBackgroundDisabled = 'var(--smtc-group-input-background-disabled, var(--smtc-background-neutral-transparent, var(--colorTransparentBackground)))';
+export const groupInputForegroundDisabled =
+  'var(--smtc-group-input-foreground-disabled, var(--colorNeutralForegroundDisabled))';
+export const groupInputBackgroundDisabled =
+  'var(--smtc-group-input-background-disabled, var(--smtc-background-neutral-transparent, var(--colorTransparentBackground)))';
 export const groupInputStrokeDisabled = 'var(--smtc-group-input-stroke-disabled, var(--colorNeutralStrokeDisabled))';
 export const groupInputStrokeInvalid = 'var(--smtc-group-input-stroke-invalid, var(--colorPaletteRedBorder2))';
-export const groupInputPlaceholderForeground = 'var(--smtc-group-input-placeholder-foreground, var(--colorNeutralForeground4))';
-export const groupInputUnderlineStroke = 'var(--smtc-group-input-underline-stroke, var(--colorNeutralStrokeAccessible))';
-export const groupInputUnderlineStrokeSelected = 'var(--smtc-group-input-underline-stroke-selected, var(--colorCompoundBrandStroke))';
+export const groupInputPlaceholderForeground =
+  'var(--smtc-group-input-placeholder-foreground, var(--colorNeutralForeground4))';
+export const groupInputUnderlineStroke =
+  'var(--smtc-group-input-underline-stroke, var(--colorNeutralStrokeAccessible))';
+export const groupInputUnderlineStrokeSelected =
+  'var(--smtc-group-input-underline-stroke-selected, var(--colorCompoundBrandStroke))';
 export const groupInputUnderlineStrokewidthSelected = 'var(--smtc-group-input-underline-strokewidth-selected, 2px)';
 export const groupInputIconForeground = 'var(--smtc-group-input-icon-foreground, var(--colorNeutralForeground3))';
 export const groupInputIconSize = 'var(--smtc-group-input-icon-size, 20px)';

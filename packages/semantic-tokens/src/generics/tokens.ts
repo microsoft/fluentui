@@ -24,7 +24,8 @@ export const backgroundSuccessSubtle = 'var(--smtc-background-success-subtle)';
 export const backgroundBrandHeavy = 'var(--smtc-background-brand-heavy)';
 export const backgroundBrandTransparent = 'var(--smtc-background-brand-transparent, var(--colorTransparentBackground))';
 export const backgroundNeutralHeavy = 'var(--smtc-background-neutral-heavy)';
-export const backgroundNeutralTransparent = 'var(--smtc-background-neutral-transparent, var(--colorTransparentBackground))';
+export const backgroundNeutralTransparent =
+  'var(--smtc-background-neutral-transparent, var(--colorTransparentBackground))';
 export const backgroundDisabled = 'var(--smtc-background-disabled)';
 export const strokeNeutralLoud = 'var(--smtc-stroke-neutral-loud)';
 export const strokeNeutralSubtle = 'var(--smtc-stroke-neutral-subtle)';
@@ -48,7 +49,8 @@ export const foregroundBrandPrimary = 'var(--smtc-foreground-brand-primary)';
 export const foregroundBrandOnloud = 'var(--smtc-foreground-brand-onloud)';
 export const foregroundDangerPrimary = 'var(--smtc-foreground-danger-primary, var(--colorPaletteRedForeground1))';
 export const foregroundDangerOnloud = 'var(--smtc-foreground-danger-onloud)';
-export const foregroundWarningPrimary = 'var(--smtc-foreground-warning-primary, var(--colorPaletteDarkOrangeForeground1))';
+export const foregroundWarningPrimary =
+  'var(--smtc-foreground-warning-primary, var(--colorPaletteDarkOrangeForeground1))';
 export const foregroundWarningOnloud = 'var(--smtc-foreground-warning-onloud)';
 export const foregroundSuccessPrimary = 'var(--smtc-foreground-success-primary, var(--colorPaletteGreenForeground1))';
 export const foregroundSuccessOnloud = 'var(--smtc-foreground-success-onloud)';
