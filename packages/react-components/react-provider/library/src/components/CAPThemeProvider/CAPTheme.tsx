@@ -1,30 +1,36 @@
 import { tokens } from '@fluentui/react-components';
 
-const TOKEN_TYPES = ['color', 'length'] as const;
+const EXPECTED_SEMANTIC_TOKENS = [] as const;
+type ExpectedSemanticToken = (typeof EXPECTED_SEMANTIC_TOKENS)[number];
+
+const TOKEN_TYPES = ['color', 'dimension'] as const;
 
 type TokenType = (typeof TOKEN_TYPES)[number];
 
 export interface TokenSchema {
   type: TokenType;
+  /**
+   * What's the name of the semantic token that we expect to exist? When semantic tokens v2
+   * is released, our token should be replaced by this one.
+   */
+  semanticToken: ExpectedSemanticToken | null;
 }
 
-const ColorTokenSchema = { type: 'color' } as const satisfies TokenSchema;
-
 const BadgeTokens = {
-  colorBrandForegroundCompound: ColorTokenSchema,
+  colorBrandForegroundCompound: { type: 'color', semanticToken: null },
 } as const satisfies Record<string, TokenSchema>;
 
 const ButtonTokens = {
-  buttonPrimaryBackgroundColor: ColorTokenSchema,
-  buttonPrimaryBackgroundColorHover: ColorTokenSchema,
-  buttonSecondaryBackgroundColor: ColorTokenSchema,
-  buttonSecondaryBackgroundColorHover: ColorTokenSchema,
-  buttonSubtleBackgroundColor: ColorTokenSchema,
-  buttonSubtleBackgroundColorHover: ColorTokenSchema,
-  buttonOutlineBackgroundColor: ColorTokenSchema,
-  buttonOutlineBackgroundColorHover: ColorTokenSchema,
-  buttonTintBackgroundColor: ColorTokenSchema,
-  buttonTintBackgroundColorHover: ColorTokenSchema,
+  buttonPrimaryBackgroundColor: { type: 'color', semanticToken: null },
+  buttonPrimaryBackgroundColorHover: { type: 'color', semanticToken: null },
+  buttonSecondaryBackgroundColor: { type: 'color', semanticToken: null },
+  buttonSecondaryBackgroundColorHover: { type: 'color', semanticToken: null },
+  buttonSubtleBackgroundColor: { type: 'color', semanticToken: null },
+  buttonSubtleBackgroundColorHover: { type: 'color', semanticToken: null },
+  buttonOutlineBackgroundColor: { type: 'color', semanticToken: null },
+  buttonOutlineBackgroundColorHover: { type: 'color', semanticToken: null },
+  buttonTintBackgroundColor: { type: 'color', semanticToken: null },
+  buttonTintBackgroundColorHover: { type: 'color', semanticToken: null },
 } as const satisfies Record<string, TokenSchema>;
 
 const CardTokens = {} as const satisfies Record<string, TokenSchema>;
@@ -54,81 +60,22 @@ export const CAPTokens = {
 } as Record<keyof typeof CAPTokensSchema, string>;
 
 export type CAPTheme = {
-  [k in keyof typeof CAPTokens]: string;
+  [k in keyof typeof CAPTokens]: string | null;
 };
 
-function token(t: {
-  semanticToken: string | null;
-  fluentV9Token: keyof typeof tokens | null;
-  fallbackValue?: string;
-}): string {
-  const parts = [
-    t.semanticToken ? `var(--${t.semanticToken})` : undefined,
-    t.fluentV9Token ? tokens[t.fluentV9Token] : undefined,
-    t.fallbackValue,
-  ];
-  let cssVar = '';
-  for (const part of parts) {
-    if (!part) continue;
-    if (cssVar.startsWith('var(')) {
-      cssVar = cssVar.replace(/\)$/, `, ${part})`);
-    } else {
-      cssVar += part;
-    }
-  }
-  return cssVar;
-}
-
 export const CAP_THEME = {
-  buttonPrimaryBackgroundColor: token({
-    semanticToken: 'foobar',
-    fluentV9Token: 'colorBrandBackground',
-  }),
-  buttonPrimaryBackgroundColorHover: token({
-    semanticToken: null,
-    fluentV9Token: 'colorBrandBackgroundHover',
-  }),
-  buttonSecondaryBackgroundColor: token({
-    semanticToken: null,
-    fluentV9Token: null,
-    fallbackValue: '#FAFAFA',
-  }),
-  buttonSecondaryBackgroundColorHover: token({
-    semanticToken: null,
-    fluentV9Token: null,
-    fallbackValue: '#F0F0F0', // NeutralBackground3
-  }),
-  buttonSubtleBackgroundColor: token({
-    semanticToken: null,
-    fluentV9Token: 'colorBrandBackground',
-  }),
-  buttonSubtleBackgroundColorHover: token({
-    semanticToken: null,
-    fluentV9Token: 'colorBrandBackground',
-  }),
-  buttonOutlineBackgroundColor: token({
-    semanticToken: null,
-    fluentV9Token: 'colorTransparentBackground',
-  }),
-  buttonOutlineBackgroundColorHover: token({
-    semanticToken: null,
-    fluentV9Token: 'colorTransparentBackground',
-  }),
-  buttonTintBackgroundColor: token({
-    semanticToken: null,
-    fluentV9Token: null,
-    fallbackValue: 'red',
-  }),
-  buttonTintBackgroundColorHover: token({
-    semanticToken: null,
-    fluentV9Token: null,
-    fallbackValue: '',
-  }),
+  buttonPrimaryBackgroundColor: tokens.colorBrandBackground,
+  buttonPrimaryBackgroundColorHover: tokens.colorBrandBackgroundHover,
+  buttonSecondaryBackgroundColor: null,
+  buttonSecondaryBackgroundColorHover: null,
+  buttonSubtleBackgroundColor: tokens.colorBrandBackground,
+  buttonSubtleBackgroundColorHover: tokens.colorBrandBackground,
+  buttonOutlineBackgroundColor: tokens.colorTransparentBackground,
+  buttonOutlineBackgroundColorHover: tokens.colorTransparentBackground,
+  buttonTintBackgroundColor: 'red',
+  buttonTintBackgroundColorHover: null,
   // TODO: switch to BrandForegroundCompound when available
-  colorBrandForegroundCompound: token({
-    semanticToken: null,
-    fluentV9Token: 'colorBrandForeground1',
-  }),
+  colorBrandForegroundCompound: tokens.colorBrandForeground1,
 } as const satisfies CAPTheme;
 
 export const CAP_THEME_TEAMS = {
