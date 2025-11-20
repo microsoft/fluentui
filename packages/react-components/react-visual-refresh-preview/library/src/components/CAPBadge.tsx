@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { BadgeState, useBadgeStyles_unstable } from '@fluentui/react-components';
 import { tokens } from '@fluentui/react-theme';
+import { CAP_THEME } from '../CAPTheme';
 
 const textPadding = tokens.spacingHorizontalXXS;
 
@@ -62,8 +63,43 @@ const useCAPBadgeStyles = makeStyles({
   'outline-subtle': {
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
   },
-  'outline-severe': {
-    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeBorder2),
+
+  'tint-brand': {
+    color: CAP_THEME.colorBrandForegroundCompound,
+  },
+
+  'ghost-brand': {
+    color: CAP_THEME.colorBrandForegroundCompound,
+  },
+
+  'filled-warning': {
+    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: tokens.colorStatusWarningBackground3,
+  },
+
+  'tint-informative': {
+    backgroundColor: tokens.colorNeutralBackground5,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+  },
+
+  'filled-important': {
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    color: tokens.colorNeutralForegroundOnBrand,
+  },
+
+  'tint-important': {
+    backgroundColor: tokens.colorNeutralBackground5,
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+  },
+
+  'filled-subtle': {
+    color: tokens.colorNeutralForeground3,
+    backgroundColor: tokens.colorNeutralBackground5,
+  },
+
+  'tint-subtle': {
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
   },
 });
 
@@ -89,7 +125,8 @@ export function useCAPBadgeStylesHook(state: BadgeState) {
     styles.root,
     styles[state.size],
     state.shape === 'rounded' && styles[`rounded-${state.size}`],
-    state.appearance === 'outline' && styles[`outline-${state.color}`],
+    `${state.appearance}-${state.color}` in styles &&
+      styles[`${state.appearance}-${state.color}` as keyof typeof styles],
   );
 
   // Override icon spacing for small size

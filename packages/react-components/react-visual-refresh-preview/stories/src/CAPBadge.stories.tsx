@@ -180,7 +180,7 @@ export const CAPBadgeStory = () => {
           },
         },
         {
-          title: 'Brand / Outline / Important',
+          title: 'Outline / Important',
           render() {
             return (
               <Badge icon={<CircleRegular />} color="important" appearance="outline">
@@ -190,7 +190,7 @@ export const CAPBadgeStory = () => {
           },
         },
         {
-          title: 'Brand / Outline / Brand',
+          title: 'Outline / Brand',
           render() {
             return (
               <Badge icon={<CircleRegular />} color="brand" appearance="outline">
@@ -200,7 +200,7 @@ export const CAPBadgeStory = () => {
           },
         },
         {
-          title: 'Brand / Outline / Danger',
+          title: 'Outline / Danger',
           render() {
             return (
               <Badge icon={<CircleRegular />} color="danger" appearance="outline">
@@ -210,7 +210,7 @@ export const CAPBadgeStory = () => {
           },
         },
         {
-          title: 'Brand / Outline / Warning',
+          title: 'Outline / Warning',
           render() {
             return (
               <Badge icon={<CircleRegular />} color="warning" appearance="outline">
@@ -220,7 +220,7 @@ export const CAPBadgeStory = () => {
           },
         },
         {
-          title: 'Brand / Outline / Success',
+          title: 'Outline / Success',
           render() {
             return (
               <Badge icon={<CircleRegular />} color="success" appearance="outline">
@@ -230,7 +230,7 @@ export const CAPBadgeStory = () => {
           },
         },
         {
-          title: 'Brand / Outline / Informative',
+          title: 'Outline / Informative',
           render() {
             return (
               <Badge icon={<CircleRegular />} color="informative" appearance="outline">
@@ -240,7 +240,7 @@ export const CAPBadgeStory = () => {
           },
         },
         {
-          title: 'Brand / Outline / Subtle',
+          title: 'Outline / Subtle',
           render() {
             return (
               <Badge icon={<CircleRegular />} color="subtle" appearance="outline">
@@ -250,10 +250,90 @@ export const CAPBadgeStory = () => {
           },
         },
         {
-          title: 'Brand / Outline / Severe',
+          title: 'Outline / Severe',
           render() {
             return (
               <Badge icon={<CircleRegular />} color="severe" appearance="outline">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Brand / Tint',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="brand" appearance="tint">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Brand / Ghost',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="brand" appearance="ghost">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Warning / Filled',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="warning" appearance="filled">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Informative / Tint',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="informative" appearance="tint">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Important / Filled',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="important" appearance="filled">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Important / Tint',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="important" appearance="tint">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Subtle / Filled',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="subtle" appearance="filled">
+                Badge
+              </Badge>
+            );
+          },
+        },
+        {
+          title: 'Subtle / Tint',
+          render() {
+            return (
+              <Badge icon={<CircleRegular />} color="subtle" appearance="tint">
                 Badge
               </Badge>
             );

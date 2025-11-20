@@ -10,7 +10,9 @@ export interface TokenSchema {
 
 const ColorTokenSchema = { type: 'color' } as const satisfies TokenSchema;
 
-const BadgeTokens = {} as const satisfies Record<string, TokenSchema>;
+const BadgeTokens = {
+  colorBrandForegroundCompound: ColorTokenSchema,
+} as const satisfies Record<string, TokenSchema>;
 
 const ButtonTokens = {
   buttonPrimaryBackgroundColor: ColorTokenSchema,
@@ -66,6 +68,8 @@ export const CAP_THEME = {
   buttonOutlineBackgroundColorHover: tokens.colorTransparentBackground,
   buttonTintBackgroundColor: 'red',
   buttonTintBackgroundColorHover: '',
+  // TODO: switch to BrandForegroundCompound when available
+  colorBrandForegroundCompound: tokens.colorBrandForeground1,
 } as const satisfies CAPTheme;
 
 export const CAP_THEME_TEAMS = {
