@@ -7,14 +7,12 @@ import {
   useSemanticSplitButtonStyles,
   useSemanticToggleButtonStyles,
 } from './Button';
-import {
-  useSemanticFieldStyles,
-  useSemanticInputStyles,
-  useSemanticSearchBoxStyles,
-  useSemanticTextareaStyles,
-  useSemanticSpinButtonStyles,
-  useSemanticComboboxStyles,
-} from './Input';
+import { useSemanticInputStyles } from './Input';
+import { useSemanticComboboxStyles } from './Combobox';
+import { useSemanticFieldStyles } from './Field';
+import { useSemanticSearchBoxStyles } from './Search';
+import { useSemanticSpinButtonStyles } from './SpinButton';
+import { useSemanticTextareaStyles } from './TextArea';
 
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Button styles

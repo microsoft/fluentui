@@ -187,6 +187,7 @@ const useInputStyles = makeStyles({
     border: 'none',
     color: semanticTokens.groupInputForeground,
     fontFamily: semanticTokens.groupInputFontfamily,
+    fontWeight: semanticTokens.groupInputFontweight,
 
     '&:focus': {
       outlineStyle: 'none',
@@ -200,15 +201,20 @@ const useInputStyles = makeStyles({
 
   // size variants
   small: {
-    ...typographyStyles.caption1,
+    // Todo: Font sizes will likely be moved to extension tokens
+    fontSize: `calc(${semanticTokens.groupInputFontsize} / 7 * 6)`,
+    lineHeight: `calc(${semanticTokens.groupInputLineheight} / 5 * 4)`,
     padding: `0 0 0 ${`calc(${inputPadding.small} + ${inputGap.small})`}`,
   },
   medium: {
-    ...typographyStyles.body1,
+    fontSize: semanticTokens.groupInputFontsize,
+    lineHeight: semanticTokens.groupInputLineheight,
     padding: `0 0 0 ${`calc(${inputPadding.medium} + ${inputGap.medium})`}`,
   },
   large: {
-    ...typographyStyles.body2,
+    // Todo: Font sizes will likely be moved to extension tokens
+    fontSize: `calc(${semanticTokens.groupInputFontsize} / 7 * 8)`,
+    lineHeight: `calc(${semanticTokens.groupInputLineheight} / 10 * 11)`,
     padding: `0 0 0 ${`calc(${inputPadding.large} + ${inputGap.large})`}`,
   },
   disabled: {
