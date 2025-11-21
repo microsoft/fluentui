@@ -9,7 +9,7 @@ export default {
 
   decorators: [TestWrapperDecorator],
   parameters: {
-    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.ms-Layer' }).end() },
+    storyWright: { steps: new Steps().snapshot('default').end() },
   } satisfies StoryParameters,
 };
 

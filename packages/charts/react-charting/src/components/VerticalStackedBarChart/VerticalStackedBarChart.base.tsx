@@ -710,7 +710,7 @@ export class VerticalStackedBarChartBase
         legendsOfLine.push(legend);
       });
     }
-    const totalLegends: ILegend[] = legendsOfLine.concat(actions);
+    const totalLegends: ILegend[] = actions.concat(legendsOfLine);
     return (
       <Legends
         legends={totalLegends}

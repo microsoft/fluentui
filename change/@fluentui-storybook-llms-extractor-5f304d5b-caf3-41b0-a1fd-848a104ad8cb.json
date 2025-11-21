@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update Playwright to 1.55.1 to fix SSL certificate verification vulnerability",
+  "packageName": "@fluentui/storybook-llms-extractor",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
