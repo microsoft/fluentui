@@ -67,12 +67,12 @@ export const buttonFallbacks: GroupFallback = {
     // TODO: Review generic mapping
     generic: 'backgroundNeutralHeavy',
   },
-  groupButtonNeutralBackgroundHoverSelected: {
+  groupButtonNeutralBackgroundSelectedHover: {
     fluent: tokens.colorNeutralBackground1Hover,
     // TODO: Review generic mapping
     generic: 'backgroundNeutralHeavyHover',
   },
-  groupButtonNeutralBackgroundPressedSelected: {
+  groupButtonNeutralBackgroundSelectedPressed: {
     fluent: tokens.colorNeutralBackground1Pressed,
     // TODO: Review generic mapping
     generic: 'backgroundNeutralHeavyPressed',
@@ -97,11 +97,11 @@ export const buttonFallbacks: GroupFallback = {
     fluent: tokens.colorBrandBackgroundSelected,
     generic: 'backgroundBrandHeavy',
   },
-  groupButtonPrimaryBackgroundHoverSelected: {
+  groupButtonPrimaryBackgroundSelectedHover: {
     fluent: tokens.colorBrandBackgroundHover,
     generic: 'backgroundBrandHeavyHover',
   },
-  groupButtonPrimaryBackgroundPressedSelected: {
+  groupButtonPrimaryBackgroundSelectedPressed: {
     fluent: tokens.colorBrandBackgroundPressed,
     generic: 'backgroundBrandHeavyPressed',
   },
@@ -125,11 +125,11 @@ export const buttonFallbacks: GroupFallback = {
     fluent: tokens.colorTransparentBackgroundSelected,
     generic: 'backgroundBrandLoud',
   },
-  groupButtonOutlineBackgroundHoverSelected: {
+  groupButtonOutlineBackgroundSelectedHover: {
     fluent: tokens.colorTransparentBackgroundHover,
     generic: 'backgroundBrandLoudHover',
   },
-  groupButtonOutlineBackgroundPressedSelected: {
+  groupButtonOutlineBackgroundSelectedPressed: {
     fluent: tokens.colorTransparentBackgroundPressed,
     generic: 'backgroundBrandLoudPressed',
   },
@@ -139,25 +139,25 @@ export const buttonFallbacks: GroupFallback = {
   },
   groupButtonSubtleBackground: {
     fluent: tokens.colorSubtleBackground,
-    generic: 'backgroundBrandTransparent',
+    generic: 'backgroundNeutralTransparent',
   },
   groupButtonSubtleBackgroundHover: {
     fluent: tokens.colorSubtleBackgroundHover,
-    generic: 'backgroundBrandTransparentHover',
+    generic: 'backgroundNeutralTransparentHover',
   },
   groupButtonSubtleBackgroundPressed: {
     fluent: tokens.colorSubtleBackgroundPressed,
-    generic: 'backgroundBrandTransparentPressed',
+    generic: 'backgroundNeutralTransparentPressed',
   },
   groupButtonSubtleBackgroundSelected: {
     fluent: tokens.colorSubtleBackgroundSelected,
     generic: 'backgroundNeutralSubtle',
   },
-  groupButtonSubtleBackgroundHoverSelected: {
+  groupButtonSubtleBackgroundSelectedHover: {
     fluent: tokens.colorSubtleBackgroundHover,
     generic: 'backgroundNeutralSubtleHover',
   },
-  groupButtonSubtleBackgroundPressedSelected: {
+  groupButtonSubtleBackgroundSelectedPressed: {
     fluent: tokens.colorSubtleBackgroundPressed,
     generic: 'backgroundNeutralSubtlePressed',
   },
@@ -181,11 +181,11 @@ export const buttonFallbacks: GroupFallback = {
     fluent: tokens.colorNeutralStroke1Selected,
     generic: 'strokeBrandLoud',
   },
-  groupButtonNeutralStrokeHoverSelected: {
+  groupButtonNeutralStrokeSelectedHover: {
     fluent: tokens.colorNeutralStroke1Hover,
     generic: 'strokeBrandLoudHover',
   },
-  groupButtonNeutralStrokePressedSelected: {
+  groupButtonNeutralStrokeSelectedPressed: {
     fluent: tokens.colorNeutralStroke1Pressed,
     generic: 'strokeBrandLoudPressed',
   },
@@ -209,11 +209,11 @@ export const buttonFallbacks: GroupFallback = {
     fluent: 'transparent',
     generic: 'strokeBrandLoud',
   },
-  groupButtonPrimaryStrokeHoverSelected: {
+  groupButtonPrimaryStrokeSelectedHover: {
     fluent: 'transparent',
     generic: 'strokeBrandLoudHover',
   },
-  groupButtonPrimaryStrokePressedSelected: {
+  groupButtonPrimaryStrokeSelectedPressed: {
     fluent: 'transparent',
     generic: 'strokeBrandLoudPressed',
   },
@@ -237,11 +237,11 @@ export const buttonFallbacks: GroupFallback = {
     fluent: tokens.colorNeutralStroke1,
     generic: 'strokeNeutralLoud',
   },
-  groupButtonOutlineStrokeHoverSelected: {
+  groupButtonOutlineStrokeSelectedHover: {
     fluent: tokens.colorNeutralStroke1Selected,
     generic: 'strokeNeutralLoudHover',
   },
-  groupButtonOutlineStrokePressedSelected: {
+  groupButtonOutlineStrokeSelectedPressed: {
     fluent: tokens.colorNeutralStroke1Selected,
     generic: 'strokeNeutralLoudPressed',
   },
@@ -265,11 +265,11 @@ export const buttonFallbacks: GroupFallback = {
     fluent: 'transparent',
     generic: 'strokeNeutralTransparent',
   },
-  groupButtonSubtleStrokeHoverSelected: {
+  groupButtonSubtleStrokeSelectedHover: {
     fluent: 'transparent',
     generic: 'strokeNeutralTransparentHover',
   },
-  groupButtonSubtleStrokePressedSelected: {
+  groupButtonSubtleStrokeSelectedPressed: {
     fluent: 'transparent',
     generic: 'strokeNeutralTransparentPressed',
   },
@@ -310,10 +310,10 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonSmallCornerDisabled: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonSmallCornerHoverSelected: {
+  groupButtonSmallCornerSelectedHover: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonSmallCornerPressedSelected: {
+  groupButtonSmallCornerSelectedPressed: {
     fluent: tokens.borderRadiusMedium,
   },
   groupButtonSmallCornerSelected: {
@@ -352,13 +352,13 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonCornerPressed: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonCornerPressedSelected: {
+  groupButtonCornerSelectedPressed: {
     fluent: tokens.borderRadiusMedium,
   },
   groupButtonCornerHover: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonCornerHoverSelected: {
+  groupButtonCornerSelectedHover: {
     fluent: tokens.borderRadiusMedium,
   },
   groupButtonCornerDisabled: {
@@ -397,13 +397,13 @@ export const buttonFallbacks: GroupFallback = {
   groupButtonLargeCornerHover: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonLargeCornerHoverSelected: {
+  groupButtonLargeCornerSelectedHover: {
     fluent: tokens.borderRadiusMedium,
   },
   groupButtonLargeCornerPressed: {
     fluent: tokens.borderRadiusMedium,
   },
-  groupButtonLargeCornerPressedSelected: {
+  groupButtonLargeCornerSelectedPressed: {
     fluent: tokens.borderRadiusMedium,
   },
   groupButtonLargeCornerSelected: {
@@ -443,11 +443,11 @@ export const buttonFallbacks: GroupFallback = {
     fluent: tokens.colorNeutralForeground1Selected,
     generic: 'foregroundBrandOnloud',
   },
-  groupButtonNeutralForegroundHoverSelected: {
+  groupButtonNeutralForegroundSelectedHover: {
     fluent: tokens.colorNeutralForeground1Hover,
     generic: 'foregroundBrandOnloudHover',
   },
-  groupButtonNeutralForegroundPressedSelected: {
+  groupButtonNeutralForegroundSelectedPressed: {
     fluent: tokens.colorNeutralForeground1Pressed,
     generic: 'foregroundBrandOnloudPressed',
   },
@@ -471,13 +471,13 @@ export const buttonFallbacks: GroupFallback = {
     fluent: tokens.colorNeutralForegroundOnBrand,
     generic: 'strokeBrandOnloudSelected',
   },
-  groupButtonPrimaryForegroundHoverSelected: {
+  groupButtonPrimaryForegroundSelectedHover: {
     fluent: tokens.colorNeutralForegroundOnBrand,
-    generic: 'foregroundBrandOnloudHoverSelected',
+    generic: 'foregroundBrandOnloudSelectedHover',
   },
-  groupButtonPrimaryForegroundPressedSelected: {
+  groupButtonPrimaryForegroundSelectedPressed: {
     fluent: tokens.colorNeutralForegroundOnBrand,
-    generic: 'foregroundBrandOnloudPressedSelected',
+    generic: 'foregroundBrandOnloudSelectedPressed',
   },
   groupButtonPrimaryForegroundDisabled: {
     fluent: tokens.colorNeutralForegroundDisabled,
@@ -499,11 +499,11 @@ export const buttonFallbacks: GroupFallback = {
     fluent: tokens.colorNeutralForeground1Selected,
     generic: 'foregroundBrandOnloud',
   },
-  groupButtonOutlineForegroundHoverSelected: {
+  groupButtonOutlineForegroundSelectedHover: {
     fluent: tokens.colorNeutralForeground1Selected,
     generic: 'foregroundBrandOnloudHover',
   },
-  groupButtonOutlineForegroundPressedSelected: {
+  groupButtonOutlineForegroundSelectedPressed: {
     fluent: tokens.colorNeutralForeground1Selected,
     generic: 'foregroundBrandOnloudPressed',
   },
@@ -527,11 +527,11 @@ export const buttonFallbacks: GroupFallback = {
     fluent: tokens.colorNeutralForeground2Selected,
     generic: 'foregroundBrandOnloud',
   },
-  groupButtonSubtleForegroundHoverSelected: {
+  groupButtonSubtleForegroundSelectedHover: {
     fluent: tokens.colorNeutralForeground2Selected,
     generic: 'foregroundBrandOnloudHover',
   },
-  groupButtonSubtleForegroundPressedSelected: {
+  groupButtonSubtleForegroundSelectedPressed: {
     fluent: tokens.colorNeutralForeground2Selected,
     generic: 'foregroundBrandOnloudPressed',
   },

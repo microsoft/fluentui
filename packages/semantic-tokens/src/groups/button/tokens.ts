@@ -29,7 +29,7 @@ export const groupButtonOutlineBackgroundSelected =
 export const groupButtonOutlineBackgroundDisabled =
   'var(--smtc-group-button-outline-background-disabled, var(--smtc-background-disabled, var(--colorTransparentBackground)))';
 export const groupButtonSubtleBackground =
-  'var(--smtc-group-button-subtle-background, var(--smtc-background-brand-transparent, var(--colorSubtleBackground)))';
+  'var(--smtc-group-button-subtle-background, var(--smtc-background-neutral-transparent, var(--colorSubtleBackground)))';
 export const groupButtonSubtleBackgroundSelected =
   'var(--smtc-group-button-subtle-background-selected, var(--smtc-background-neutral-subtle, var(--colorSubtleBackgroundSelected)))';
 export const groupButtonSubtleBackgroundDisabled =

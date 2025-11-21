@@ -22,7 +22,7 @@ export const genericFallbacks: GenericFallbacks = {
     fluent: '-10',
   },
   lightnessSelectedHover: {
-    fluent: '-5',
+    fluent: '5',
   },
   lightnessSelectedPressed: {
     fluent: '-10',
@@ -139,7 +139,7 @@ export const genericFallbacks: GenericFallbacks = {
   },
   strokeNeutralTransparent: {
     primitive: 'colorNeutralAlpha',
-    fluent: tokens.colorTransparentBackground,
+    fluent: tokens.colorTransparentStroke,
   },
   strokeDisabled: {
     primitive: 'colorNeutral4',
@@ -151,18 +151,21 @@ export const genericFallbacks: GenericFallbacks = {
     primitive: 'colorNeutral8',
   },
   foregroundDangerPrimary: {
+    fluent: tokens.colorPaletteRedForeground1,
     primitive: 'colorDanger1',
   },
   foregroundDangerOnloud: {
     primitive: 'colorNeutral8',
   },
   foregroundWarningPrimary: {
+    fluent: tokens.colorPaletteDarkOrangeForeground1,
     primitive: 'colorWarning1',
   },
   foregroundWarningOnloud: {
     primitive: 'colorNeutral8',
   },
   foregroundSuccessPrimary: {
+    fluent: tokens.colorPaletteGreenForeground1,
     primitive: 'colorSuccess1',
   },
   foregroundSuccessOnloud: {
