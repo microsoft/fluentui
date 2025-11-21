@@ -278,7 +278,7 @@ export interface CartesianChartProps {
   xMinValue?: number;
 
   /**
-   * maximum data value point in x-axis (for numeric x-axis)
+   * maximum data value point in x-axis
    */
   xMaxValue?: number;
 
