@@ -1503,7 +1503,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       const yPoint = yScale(pointToHighlight.y);
       if (!isPlottable(xPoint, yPoint)) {
         setPopoverOpen(false);
-        setActivePoint('');
         return;
       }
 
