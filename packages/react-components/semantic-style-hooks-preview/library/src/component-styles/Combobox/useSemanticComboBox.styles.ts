@@ -1,6 +1,6 @@
 'use client';
 
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { ComboboxState } from '@fluentui/react-combobox';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';

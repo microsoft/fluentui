@@ -5,11 +5,16 @@
 ```ts
 
 import { ButtonState } from '@fluentui/react-button';
+import type { ComboboxState } from '@fluentui/react-combobox';
 import { CompoundButtonState } from '@fluentui/react-button';
+import { FieldState } from '@fluentui/react-field';
 import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import type { InputState } from '@fluentui/react-input';
 import { MenuButtonState } from '@fluentui/react-button';
+import { SearchBoxState } from '@fluentui/react-search';
+import { SpinButtonState } from '@fluentui/react-spinbutton';
 import { SplitButtonState } from '@fluentui/react-button';
+import type { TextareaState } from '@fluentui/react-textarea';
 import { ToggleButtonState } from '@fluentui/react-button';
 
 // @public
@@ -37,8 +42,14 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks;
 // @public (undocumented)
 export const useSemanticButtonStyles: (_state: unknown) => ButtonState;
 
+// @public
+export const useSemanticComboboxStyles: (_state: unknown) => ComboboxState;
+
 // @public (undocumented)
 export const useSemanticCompoundButtonStyles: (_state: unknown) => CompoundButtonState;
+
+// @public
+export const useSemanticFieldStyles: (_state: unknown) => FieldState;
 
 // @public
 export const useSemanticInputStyles: (_state: unknown) => InputState;
@@ -46,8 +57,17 @@ export const useSemanticInputStyles: (_state: unknown) => InputState;
 // @public (undocumented)
 export const useSemanticMenuButtonStyles: (_state: unknown) => MenuButtonState;
 
+// @public
+export const useSemanticSearchBoxStyles: (_state: unknown) => SearchBoxState;
+
+// @public
+export const useSemanticSpinButtonStyles: (_state: unknown) => SpinButtonState;
+
 // @public (undocumented)
 export const useSemanticSplitButtonStyles: (_state: unknown) => SplitButtonState;
+
+// @public
+export const useSemanticTextareaStyles: (_state: unknown) => TextareaState;
 
 // @public (undocumented)
 export const useSemanticToggleButtonStyles: (_state: unknown) => ToggleButtonState;
