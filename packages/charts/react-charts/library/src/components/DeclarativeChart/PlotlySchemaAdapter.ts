@@ -3378,25 +3378,27 @@ export const getAllupLegendsProps = (
           true,
         );
 
-        pieSeries.labels?.forEach((label, labelIndex: number) => {
-          const legend = `${label}`;
-          // resolve color for each legend from the extracted colors
-          const color: string = resolveColor(
-            colors,
-            labelIndex,
-            legend,
-            colorMap,
-            input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
-            isDarkTheme,
-            true,
-          );
-          if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
-            allupLegends.push({
-              title: legend,
-              color,
-            });
-          }
-        });
+        if (isArrayOrTypedArray(pieSeries.labels)) {
+          pieSeries.labels!.forEach((label, labelIndex: number) => {
+            const legend = `${label}`;
+            // resolve color for each legend from the extracted colors
+            const color: string = resolveColor(
+              colors,
+              labelIndex,
+              legend,
+              colorMap,
+              input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+              isDarkTheme,
+              true,
+            );
+            if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
+              allupLegends.push({
+                title: legend,
+                color,
+              });
+            }
+          });
+        }
       } else if (isNonPlotType(traceInfo[index].type) === false) {
         const plotSeries = series as Partial<PlotData>;
         const name = plotSeries.legendgroup;
@@ -3991,8 +3993,8 @@ const getAxisType = (data: Data[], ax: AxisObject): AxisType => {
   const values: Datum[] = [];
   data.forEach((series: Partial<PlotData>) => {
     const axId = series[`${axLetter}axis`];
-    if (axId === ax._id || (!axId && ax._id === axLetter)) {
-      series[axLetter]?.forEach(val => {
+    if ((axId === ax._id || (!axId && ax._id === axLetter)) && isArrayOrTypedArray(series[axLetter])) {
+      series[axLetter]!.forEach(val => {
         if (!isInvalidValue(val)) {
           values.push(val as Datum);
         }

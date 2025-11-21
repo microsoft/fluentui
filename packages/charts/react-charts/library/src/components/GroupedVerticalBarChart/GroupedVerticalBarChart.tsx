@@ -52,6 +52,7 @@ import {
 } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import { useImageExport } from '../../utilities/hooks';
+import { isInvalidValue } from '@fluentui/chart-utilities';
 
 type NumericScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -385,7 +386,10 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const { barData, lineData } = _prepareChartData();
-  const _xAxisType: XAxisTypes = getTypeOfAxis(barData[0].name, true) as XAxisTypes;
+  const firstXValue = barData[0]?.name ?? lineData[0]?.data[0]?.x;
+  const _xAxisType: XAxisTypes = isInvalidValue(firstXValue)
+    ? XAxisTypes.StringAxis
+    : (getTypeOfAxis(firstXValue, true) as XAxisTypes);
   const { barLegends, lineLegends, xAxisLabels, datasetForBars } = _createDataSetOfGVBC(barData, lineData);
   _barLegends = barLegends;
   _lineLegends = lineLegends;
