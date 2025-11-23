@@ -7,10 +7,14 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IIconOptions } from '@fluentui/style-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export const DEFAULT_BASE_URL = "https://res.cdn.office.net/files/fabric-cdn-prod_20251107.003/assets/item-types/";
 
 // @public (undocumented)
 export const DEFAULT_ICON_SIZE: FileTypeIconSize;
@@ -102,6 +106,12 @@ export type FileTypeIconState = ComponentState<FileTypeIconSlots> & Required<Pic
 };
 
 // @public
+export function getFileTypeIconAsHTMLString(options: IFileTypeIconOptions, baseUrl?: string): string | undefined;
+
+// @public
+export function getFileTypeIconAsUrl(options: IFileTypeIconOptions, baseUrl?: string): string | undefined;
+
+// @public
 export function getFileTypeIconNameFromExtensionOrType(extension: string | undefined, type: FileIconType | undefined): string;
 
 // @public
@@ -114,6 +124,9 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): {
 export function getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType?: ImageFileType, win?: Window): string;
 
 // @public (undocumented)
+export const ICON_SIZES: number[];
+
+// @public (undocumented)
 export interface IFileTypeIconOptions {
     extension?: string;
     imageFileType?: ImageFileType;
@@ -123,6 +136,9 @@ export interface IFileTypeIconOptions {
 
 // @public (undocumented)
 export type ImageFileType = 'svg' | 'png';
+
+// @public (undocumented)
+export function initializeFileTypeIcons(baseUrl?: string, options?: Partial<IIconOptions>): void;
 
 // @public
 export const renderFileTypeIcon_unstable: (state: FileTypeIconState) => JSXElement;

@@ -38,7 +38,7 @@ export type FileTypeIconProps = ComponentProps<FileTypeIconSlots> & {
 
   /**
    * The base URL for the icon assets. If not provided, uses the default Fluent CDN.
-   * @default 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20251119.001/assets/item-types/'
+   * @default 'https://res.cdn.office.net/files/fabric-cdn-prod_20251119.001/assets/item-types/'
    */
   baseUrl?: string;
 };

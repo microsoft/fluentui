@@ -29,6 +29,8 @@
     "@fluentui/react-shared-contexts": "^9.26.0",
     "@fluentui/react-theme": "^9.2.0",
     "@fluentui/react-utilities": "^9.25.4",
+    "@fluentui/style-utilities": "^8.13.4",
+    "@fluentui/utilities": "^8.15.1",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

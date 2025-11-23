@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { FileTypeIconProps, FileTypeIconState } from './FileTypeIcon.types';
-import { getFileTypeIconProps, DEFAULT_ICON_SIZE } from '../../utils/getFileTypeIconProps';
+import {
+  getFileTypeIconNameFromExtensionOrType,
+  getFileTypeIconSuffix,
+  DEFAULT_ICON_SIZE,
+} from '../../utils/getFileTypeIconProps';
 
-const DEFAULT_BASE_URL = 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20251119.001/assets/item-types/';
+const DEFAULT_BASE_URL = 'https://res.cdn.office.net/files/fabric-cdn-prod_20251119.001/assets/item-types/';
 
 /**
  * Returns the props and state required to render the FileTypeIcon component.
@@ -20,16 +24,23 @@ export const useFileTypeIcon_unstable = (
     baseUrl = DEFAULT_BASE_URL,
   } = props;
 
-  // Get the icon name using the utility function
-  const iconProps = getFileTypeIconProps({
-    extension,
-    type,
-    size,
-    imageFileType,
-  });
+  // Get the base icon name and suffix separately using v8 pattern
+  const baseIconName = getFileTypeIconNameFromExtensionOrType(extension, type);
+  const baseSuffix = getFileTypeIconSuffix(size, imageFileType);
+  const suffixArray = baseSuffix.split('_'); // eg: ['96', '3x', 'svg'] or ['96', 'svg']
 
-  // Construct the full icon URL
-  const iconUrl = `${baseUrl}${iconProps.iconName}.${imageFileType}`;
+  // Construct the full icon URL using v8's folder-based pattern
+  let iconUrl: string;
+  if (suffixArray.length === 3) {
+    // suffix is of type 96_3x_svg - it has a pixel ratio > 1
+    iconUrl = `${baseUrl}${size}_${suffixArray[1]}/${baseIconName}.${suffixArray[2]}`;
+  } else if (suffixArray.length === 2) {
+    // suffix is of type 96_svg - it has a pixel ratio of 1
+    iconUrl = `${baseUrl}${size}/${baseIconName}.${suffixArray[1]}`;
+  } else {
+    // Fallback to 1x format for unexpected cases
+    iconUrl = `${baseUrl}${size}/${baseIconName}.${imageFileType}`;
+  }
 
   const state: FileTypeIconState = {
     size,
@@ -42,7 +53,7 @@ export const useFileTypeIcon_unstable = (
       getIntrinsicElementProps('img', {
         ref,
         src: iconUrl,
-        alt: iconProps['aria-label'] || 'File type icon',
+        alt: extension || 'File type icon',
         ...props,
         // Remove our custom props from being passed to the img element
         extension: undefined,

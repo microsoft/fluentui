@@ -1,4 +1,4 @@
-import { FileTypeIcon } from './FileTypeIcon';
+import { FileTypeIcon } from '@fluentui/file-type-icons-preview';
 
 console.log(FileTypeIcon);
 
