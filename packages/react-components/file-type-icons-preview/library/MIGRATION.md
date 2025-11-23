@@ -4,32 +4,42 @@ This guide helps you migrate from `@fluentui/react-file-type-icons` (v8) to `@fl
 
 ## Overview
 
-The v9 version provides a React component-based API instead of utility functions, following Fluent UI v9 patterns and conventions.
+The v9 version provides a **modern React component-based API** while maintaining **full backward compatibility** with all v8 utility functions.
 
-## Package Installation
+**Key Points:**
+
+- ✅ All v8 utilities exported and work identically
+- ✅ No breaking API changes for utility functions
+- 🆕 New component API available (recommended but optional)
+
+## Installation
 
 ```bash
-# Remove the v8 package
 npm uninstall @fluentui/react-file-type-icons
-
-# Install the v9 preview package
 npm install @fluentui/react-file-type-icons-preview
 ```
 
-## Breaking Changes
+## What's Changed
 
-### 1. Component-based API instead of utility functions
+### Package Name (Breaking Change)
 
-**v8 (utility-based):**
+The only breaking change is the package name:
+
+- **Old**: `@fluentui/react-file-type-icons`
+- **New**: `@fluentui/react-file-type-icons-preview`
+
+### New Component API (Recommended)
+
+**v8 (utility-based) - Still works:**
 
 ```tsx
-import { getFileTypeIconProps, FileIconType } from '@fluentui/react-file-type-icons';
+import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
 
 const iconProps = getFileTypeIconProps({ extension: 'docx', size: 48 });
 <img src={iconProps.iconName} alt="Document" />;
 ```
 
-**v9 (component-based):**
+**v9 (component-based) - Recommended:**
 
 ```tsx
 import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
@@ -37,68 +47,11 @@ import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
 <FileTypeIcon extension="docx" size={48} />;
 ```
 
-### 2. Simplified Props
-
-The v9 component automatically handles icon name resolution and URL construction internally.
-
-**v8:**
-
-```tsx
-const iconProps = getFileTypeIconProps({
-  extension: 'docx',
-  size: 48,
-  imageFileType: 'png',
-});
-// Manually construct URL and set on img element
-```
-
-**v9:**
-
-```tsx
-<FileTypeIcon extension="docx" size={48} imageFileType="png" />
-```
-
-### 3. Type Usage
-
-**v8:**
-
-```tsx
-import { FileIconType, getFileTypeIconProps } from '@fluentui/react-file-type-icons';
-
-const iconProps = getFileTypeIconProps({ type: FileIconType.folder });
-```
-
-**v9:**
-
-```tsx
-import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons-preview';
-
-<FileTypeIcon type={FileIconType.folder} />;
-```
-
-### 4. Custom Base URL
-
-**v8:**
-
-```tsx
-const iconProps = getFileTypeIconProps({
-  extension: 'docx',
-  size: 48,
-});
-const customUrl = `https://my-cdn.com/${iconProps.iconName}`;
-```
-
-**v9:**
-
-```tsx
-<FileTypeIcon extension="docx" size={48} baseUrl="https://my-cdn.com/assets/item-types/" />
-```
-
 ## Migration Examples
 
-### Example 1: Document Icon
+### Document Icons
 
-**Before (v8):**
+**Before:**
 
 ```tsx
 import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
@@ -116,7 +69,7 @@ function DocumentItem({ filename }) {
 }
 ```
 
-**After (v9):**
+**After:**
 
 ```tsx
 import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
@@ -133,22 +86,18 @@ function DocumentItem({ filename }) {
 }
 ```
 
-### Example 2: Folder Icon
+### Folder Icons
 
-**Before (v8):**
+**Before:**
 
 ```tsx
 import { getFileTypeIconProps, FileIconType } from '@fluentui/react-file-type-icons';
 
-const folderIconProps = getFileTypeIconProps({
-  type: FileIconType.folder,
-  size: 48,
-});
-
-<img src={folderIconProps.iconName} alt="Folder" />;
+const iconProps = getFileTypeIconProps({ type: FileIconType.folder, size: 48 });
+<img src={iconProps.iconName} alt="Folder" />;
 ```
 
-**After (v9):**
+**After:**
 
 ```tsx
 import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons-preview';
@@ -156,93 +105,39 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons-prev
 <FileTypeIcon type={FileIconType.folder} size={48} />;
 ```
 
-### Example 3: Dynamic File List
+## Incremental Migration
 
-**Before (v8):**
-
-```tsx
-import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
-
-function FileList({ files }) {
-  return (
-    <ul>
-      {files.map(file => {
-        const extension = file.name.split('.').pop();
-        const iconProps = getFileTypeIconProps({ extension, size: 24 });
-
-        return (
-          <li key={file.id}>
-            <img src={iconProps.iconName} alt={file.name} style={{ width: 24, height: 24 }} />
-            {file.name}
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-```
-
-**After (v9):**
-
-```tsx
-import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
-
-function FileList({ files }) {
-  return (
-    <ul>
-      {files.map(file => {
-        const extension = file.name.split('.').pop();
-
-        return (
-          <li key={file.id}>
-            <FileTypeIcon extension={extension} size={24} />
-            {file.name}
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-```
-
-## Utilities Still Available
-
-If you need to access the underlying utilities for custom use cases, they are still exported:
+**You don't have to migrate all code at once!** All v8 utilities work identically in v9:
 
 ```tsx
 import {
-  getFileTypeIconProps,
-  FileIconType,
-  getFileTypeIconNameFromExtensionOrType,
+  FileTypeIcon, // v9 component (new)
+  getFileTypeIconAsUrl, // v8 utility (still works)
 } from '@fluentui/react-file-type-icons-preview';
 
-// Use utilities if you need custom logic
-const iconName = getFileTypeIconNameFromExtensionOrType({ extension: 'docx' });
+function MyComponent() {
+  return (
+    <div>
+      {/* Old code - still works */}
+      <img src={getFileTypeIconAsUrl({ extension: 'docx', size: 32 })} alt="Document" />
+
+      {/* New code - recommended */}
+      <FileTypeIcon extension="docx" size={32} />
+    </div>
+  );
+}
 ```
 
-## Benefits of Migration
+## Benefits of the New Component API
 
-1. **Simpler API**: Use a React component instead of manually handling URLs and img elements
-2. **Better TypeScript**: Full type safety with v9's improved type definitions
-3. **Consistent with Fluent UI v9**: Follows the same patterns as other v9 components
-4. **Automatic optimization**: The component handles pixel ratio and image format internally
-5. **Better accessibility**: Built-in alt text and ARIA support
-
-## Feature Parity
-
-The v9 package maintains full feature parity with v8:
-
-- ✅ All file type icons (100+ extensions)
-- ✅ Special types (folder, genericFile, listItem, etc.)
-- ✅ All sizes (16, 20, 24, 32, 40, 48, 64, 96)
-- ✅ SVG and PNG support
-- ✅ Custom base URL
-- ✅ Device pixel ratio handling
+1. **Simpler** - No manual URL handling or img element construction
+2. **Better TypeScript** - Full type safety with v9's type definitions
+3. **Accessible** - Built-in alt text and ARIA support
+4. **Optimized** - Automatic pixel ratio and format handling
 
 ## Need Help?
 
-If you encounter issues during migration:
+If you encounter issues:
 
 1. Check the [Storybook examples](https://aka.ms/fluentui-storybook)
-2. Review the [API documentation](https://aka.ms/fluentui-api)
-3. Open an issue on [GitHub](https://github.com/microsoft/fluentui)
+2. Open an issue on [GitHub](https://github.com/microsoft/fluentui)

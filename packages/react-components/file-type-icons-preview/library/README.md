@@ -8,144 +8,97 @@ These are not production-ready components and **should never be used in product*
 
 ### FileTypeIcon
 
-The `FileTypeIcon` component displays an icon representing a file type based on its extension or a special type (like folder). It automatically selects the appropriate icon from the Fluent Design file type icon set.
+Displays an icon representing a file type based on its extension or a special type (like folder). Automatically selects the appropriate icon from the Fluent Design file type icon set.
 
 #### Features
 
 - 🎨 **100+ file type icons** - Supports all common file extensions
 - 📏 **Multiple sizes** - 16, 20, 24, 32, 40, 48, 64, and 96 pixels
-- 🖼️ **Format support** - Renders icons as SVG or PNG
+- 🖼️ **Format support** - SVG (default) or PNG
 - 📁 **Special types** - Folder, list items, and other non-file icons
-- ♿ **Accessible** - Includes proper alt text for screen readers
-- 🎯 **Automatic optimization** - Handles device pixel ratio for crisp display
+- ♿ **Accessible** - Proper alt text for screen readers
 
 ## Usage
 
-### Basic Usage
-
-```tsx
-import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
-
-// Display a Word document icon
-<FileTypeIcon extension="docx" size={48} />
-
-// Display a folder icon
-<FileTypeIcon type={FileIconType.folder} size={32} />
-```
-
-### File Extensions
-
-The component recognizes 100+ file extensions:
-
-```tsx
-import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
-
-<FileTypeIcon extension="docx" />  // Word document
-<FileTypeIcon extension="xlsx" />  // Excel spreadsheet
-<FileTypeIcon extension="pptx" />  // PowerPoint presentation
-<FileTypeIcon extension="pdf" />   // PDF document
-<FileTypeIcon extension="zip" />   // Archive file
-<FileTypeIcon extension="mp4" />   // Video file
-<FileTypeIcon extension="jpg" />   // Image file
-```
-
-### Sizes
-
-All standard Fluent UI icon sizes are supported:
-
-```tsx
-<FileTypeIcon extension="docx" size={16} />
-<FileTypeIcon extension="docx" size={20} />
-<FileTypeIcon extension="docx" size={24} />
-<FileTypeIcon extension="docx" size={32} />
-<FileTypeIcon extension="docx" size={40} />
-<FileTypeIcon extension="docx" size={48} />
-<FileTypeIcon extension="docx" size={64} />
-<FileTypeIcon extension="docx" size={96} />
-```
-
-### Special Types
-
-Use the `type` prop for non-extension-based icons:
+### Basic Examples
 
 ```tsx
 import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons-preview';
 
-<FileTypeIcon type={FileIconType.folder} />
-<FileTypeIcon type={FileIconType.genericFile} />
-<FileTypeIcon type={FileIconType.sharedFolder} />
-<FileTypeIcon type={FileIconType.listItem} />
-<FileTypeIcon type={FileIconType.docset} />
+// File extension
+<FileTypeIcon extension="docx" size={48} />
+
+// Special type
+<FileTypeIcon type={FileIconType.folder} size={32} />
+
+// Common file types
+<FileTypeIcon extension="pdf" />
+<FileTypeIcon extension="xlsx" />
+<FileTypeIcon extension="mp4" />
+```
+
+### Sizes
+
+```tsx
+<FileTypeIcon extension="docx" size={16} />
+<FileTypeIcon extension="docx" size={24} />
+<FileTypeIcon extension="docx" size={32} />
+<FileTypeIcon extension="docx" size={48} />
 ```
 
 ### Image Format
 
-Choose between SVG (default) or PNG:
-
 ```tsx
-// SVG (default, recommended for most cases)
+// SVG (default, recommended)
 <FileTypeIcon extension="docx" imageFileType="svg" />
 
-// PNG (better for certain legacy scenarios)
+// PNG (for legacy scenarios)
 <FileTypeIcon extension="docx" imageFileType="png" />
 ```
 
 ### Custom CDN
 
-Override the default Fluent CDN with your own:
-
 ```tsx
 <FileTypeIcon extension="docx" baseUrl="https://my-cdn.com/file-icons/" />
 ```
 
-### With Custom Styling
-
-Apply custom className or style:
+### Custom Styling
 
 ```tsx
-<FileTypeIcon extension="docx" className="my-custom-class" style={{ borderRadius: '4px' }} />
+<FileTypeIcon extension="docx" className="my-class" style={{ borderRadius: '4px' }} />
 ```
 
 ## Migration from v8
 
 If you're migrating from `@fluentui/react-file-type-icons` (v8), see the [Migration Guide](./MIGRATION.md).
 
-### Quick Comparison
-
-**v8 (utility-based):**
+**v8:**
 
 ```tsx
 import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
-
 const iconProps = getFileTypeIconProps({ extension: 'docx', size: 48 });
 <img src={iconProps.iconName} alt="Document" />;
 ```
 
-**v9 (component-based):**
+**v9:**
 
 ```tsx
 import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
-
 <FileTypeIcon extension="docx" size={48} />;
 ```
 
 ## Utilities
 
-The underlying utilities are also exported for advanced use cases:
+Underlying utilities are exported for advanced use cases:
 
 ```tsx
-import {
-  getFileTypeIconProps,
-  FileIconType,
-  getFileTypeIconNameFromExtensionOrType,
-  FileTypeIconMap,
-} from '@fluentui/react-file-type-icons-preview';
+import { getFileTypeIconProps, getFileTypeIconAsUrl, FileIconType } from '@fluentui/react-file-type-icons-preview';
 
-// Get icon name for custom logic
-const iconName = getFileTypeIconNameFromExtensionOrType({ extension: 'docx' });
+// Get icon URL
+const url = getFileTypeIconAsUrl({ extension: 'docx', size: 48 });
 
-// Get full icon props
-const iconProps = getFileTypeIconProps({ extension: 'docx', size: 48 });
+// Get icon props
+const props = getFileTypeIconProps({ extension: 'docx', size: 48 });
 ```
 
 ## API
