@@ -26,6 +26,10 @@
       "@fluentui/eslint-plugin-react-components": [
         "packages/react-components/eslint-plugin-react-components/src/index.ts"
       ],
+      "@fluentui/file-type-icons-preview": ["packages/react-components/file-type-icons-preview/library/src/index.ts"],
+      "@fluentui/file-type-icons-preview-stories": [
+        "packages/react-components/file-type-icons-preview/stories/src/index.ts"
+      ],
       "@fluentui/global-context": ["packages/react-components/global-context/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/react-components/keyboard-keys/src/index.ts"],

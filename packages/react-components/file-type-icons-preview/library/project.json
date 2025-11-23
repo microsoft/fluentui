@@ -1,0 +1,8 @@
+{
+  "name": "file-type-icons-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/file-type-icons-preview/library/src",
+  "tags": ["platform:web", "vNext"],
+  "implicitDependencies": []
+}
