@@ -9,8 +9,7 @@ The component automatically selects the appropriate icon from the comprehensive 
 Use FileTypeIcon when you need to:
 
 - **Display file lists or grids** - Help users quickly identify file types in recent lists, document libraries, file browsers, or search results
-- **Show file attachments** - Indicate attachment types in emails, messages, or forms
-- **Create file upload interfaces** - Provide visual feedback about accepted or uploaded file types
+- **Show file attachments or file upload interfaces** - Indicate attachment types in emails, messages, or forms. Provide visual feedback about accepted or uploaded file types
 - **Represent documents in workflows** - Show file types in approval processes, cloud content management interfaces, document workflows, or collaboration tools
 
 This control integrates seamlessly with other Fluent UI v9 components using the same design principles. It can be used in `DataGrid`, `List`, and `Card` components for displaying file collections, following consistent theming, spacing and sizing patterns with the broader Fluent Design System.

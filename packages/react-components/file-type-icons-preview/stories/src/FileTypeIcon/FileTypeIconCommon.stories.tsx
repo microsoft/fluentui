@@ -45,15 +45,10 @@ const useStyles = makeStyles({
 });
 
 const fileTypeCategories = {
-  documents: ['docx', 'doc', 'pdf', 'txt', 'rtf', 'odt'],
-  spreadsheets: ['xlsx', 'xls', 'csv', 'ods'],
-  presentations: ['pptx', 'ppt', 'odp'],
-  images: ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'svg', 'ico', 'webp'],
-  media: ['mp4', 'avi', 'mov', 'wmv', 'mp3', 'wav', 'flac', 'aac'],
-  web: ['html', 'htm', 'css', 'js', 'jsx', 'ts', 'tsx', 'json', 'xml'],
-  code: ['py', 'java', 'c', 'cpp', 'cs', 'go', 'rb', 'php', 'swift'],
-  archives: ['zip', 'rar', '7z', 'tar', 'gz', 'iso'],
-  data: ['sql', 'db', 'mdb', 'accdb', 'xml', 'json', 'yaml'],
+  documents: ['docx', 'xlsx', 'pdf', 'txt', 'rtf', 'odt', 'pptx', 'csv'],
+  media: ['jpg', 'svg', 'mp4', 'mp3', 'wav', 'aac'],
+  code: ['html', 'url', 'json', 'xml', 'py', 'java', 'cpp'],
+  data: ['zip', 'tar', 'sql', 'accdb', 'xml'],
 };
 
 export const CommonFileTypes = (): JSXElement => {
@@ -62,7 +57,7 @@ export const CommonFileTypes = (): JSXElement => {
   return (
     <div className={styles.container}>
       <div className={styles.categorySection}>
-        <div className={styles.categoryTitle}>Documents</div>
+        <div className={styles.categoryTitle}>Common Documents</div>
         <div className={styles.grid}>
           {fileTypeCategories.documents.map(ext => (
             <div key={ext} className={styles.item}>
@@ -74,43 +69,7 @@ export const CommonFileTypes = (): JSXElement => {
       </div>
 
       <div className={styles.categorySection}>
-        <div className={styles.categoryTitle}>Spreadsheets</div>
-        <div className={styles.grid}>
-          {fileTypeCategories.spreadsheets.map(ext => (
-            <div key={ext} className={styles.item}>
-              <FileTypeIcon extension={ext} size={48} />
-              <div className={styles.label}>.{ext}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.categorySection}>
-        <div className={styles.categoryTitle}>Presentations</div>
-        <div className={styles.grid}>
-          {fileTypeCategories.presentations.map(ext => (
-            <div key={ext} className={styles.item}>
-              <FileTypeIcon extension={ext} size={48} />
-              <div className={styles.label}>.{ext}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.categorySection}>
-        <div className={styles.categoryTitle}>Images</div>
-        <div className={styles.grid}>
-          {fileTypeCategories.images.map(ext => (
-            <div key={ext} className={styles.item}>
-              <FileTypeIcon extension={ext} size={48} />
-              <div className={styles.label}>.{ext}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.categorySection}>
-        <div className={styles.categoryTitle}>Audio & Video</div>
+        <div className={styles.categoryTitle}>Media Files</div>
         <div className={styles.grid}>
           {fileTypeCategories.media.map(ext => (
             <div key={ext} className={styles.item}>
@@ -122,19 +81,7 @@ export const CommonFileTypes = (): JSXElement => {
       </div>
 
       <div className={styles.categorySection}>
-        <div className={styles.categoryTitle}>Web Files</div>
-        <div className={styles.grid}>
-          {fileTypeCategories.web.map(ext => (
-            <div key={ext} className={styles.item}>
-              <FileTypeIcon extension={ext} size={48} />
-              <div className={styles.label}>.{ext}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.categorySection}>
-        <div className={styles.categoryTitle}>Programming</div>
+        <div className={styles.categoryTitle}>Web & Programming</div>
         <div className={styles.grid}>
           {fileTypeCategories.code.map(ext => (
             <div key={ext} className={styles.item}>
@@ -146,19 +93,7 @@ export const CommonFileTypes = (): JSXElement => {
       </div>
 
       <div className={styles.categorySection}>
-        <div className={styles.categoryTitle}>Archives</div>
-        <div className={styles.grid}>
-          {fileTypeCategories.archives.map(ext => (
-            <div key={ext} className={styles.item}>
-              <FileTypeIcon extension={ext} size={48} />
-              <div className={styles.label}>.{ext}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.categorySection}>
-        <div className={styles.categoryTitle}>Data & Databases</div>
+        <div className={styles.categoryTitle}>Data Files</div>
         <div className={styles.grid}>
           {fileTypeCategories.data.map(ext => (
             <div key={ext} className={styles.item}>
