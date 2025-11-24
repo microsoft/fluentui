@@ -77,7 +77,8 @@
     "@fluentui/react-motion": "^9.11.4",
     "@fluentui/react-carousel": "^9.8.12",
     "@fluentui/react-color-picker": "^9.2.11",
-    "@fluentui/react-nav": "^9.3.14"
+    "@fluentui/react-nav": "^9.3.14",
+    "@fluentui/file-type-icons-preview": "^0.0.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { FileTypeIcon } from '@fluentui/file-type-icons-preview';
 import type { Meta } from '@storybook/react';
 
@@ -11,7 +10,7 @@ export { UrlAndHtmlFunctions } from './FileTypeIconUrlAndHtml.stories';
 import descriptionMd from './FileTypeIconDescription.md';
 
 export default {
-  title: 'Preview Components/FileTypeIcon',
+  title: 'Icons/Filetype Icons',
   component: FileTypeIcon,
   parameters: {
     docs: {
