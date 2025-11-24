@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type SeriesChildMapping = Record<string, { element: React.ReactElement; index: number }>;
+export type SequenceChildMapping = Record<string, { element: React.ReactElement; index: number }>;
 
 /**
  * Given `children`, return an object mapping key to child element and its index.
@@ -15,8 +15,8 @@ export type SeriesChildMapping = Record<string, { element: React.ReactElement; i
  * @param children - React children to map
  * @returns Object mapping child keys to { element, index }
  */
-export function getSeriesChildMapping(children: React.ReactNode | undefined): SeriesChildMapping {
-  const childMapping: SeriesChildMapping = {};
+export function getSequenceChildMapping(children: React.ReactNode | undefined): SequenceChildMapping {
+  const childMapping: SequenceChildMapping = {};
 
   if (children) {
     React.Children.toArray(children).forEach((child, index) => {
@@ -33,14 +33,14 @@ export function getSeriesChildMapping(children: React.ReactNode | undefined): Se
 }
 
 /**
- * Convert Series children to an ordered array of elements.
+ * Convert Sequence children to an ordered array of elements.
  * This is a convenience function that extracts just the elements in order.
  *
  * @param children - React children to convert
  * @returns Array of React elements in their original order
  */
-export function getSeriesChildArray(children: React.ReactNode | undefined): React.ReactElement[] {
-  const mapping = getSeriesChildMapping(children);
+export function getSequenceChildArray(children: React.ReactNode | undefined): React.ReactElement[] {
+  const mapping = getSequenceChildMapping(children);
   return Object.values(mapping)
     .sort((a, b) => a.index - b.index)
     .map(item => item.element);

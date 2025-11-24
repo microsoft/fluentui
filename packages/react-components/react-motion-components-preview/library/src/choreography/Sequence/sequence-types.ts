@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 /**
- * Props for the Series component that manages sequential animations.
+ * Props for the Sequence component that manages sequential animations.
  */
-export interface SeriesProps {
+export interface SequenceProps {
   /** React elements (motion components) to animate in sequence. */
   children: React.ReactNode;
 
@@ -16,12 +16,12 @@ export interface SeriesProps {
   iterations?: number | 'infinite';
 
   /**
-   * Props to be passed to all child components in the series.
+   * Props to be passed to all child components in the sequence.
    * Useful for applying common settings (e.g., duration, easing) to all children.
    */
   commonProps?: Record<string, unknown>;
 
-  /** Callback invoked when the series sequence completes (after all iterations). */
+  /** Callback invoked when the sequence completes (after all iterations). */
   onMotionFinish?: () => void;
 }
 

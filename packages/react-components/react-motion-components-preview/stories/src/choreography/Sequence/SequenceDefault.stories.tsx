@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, tokens } from '@fluentui/react-components';
-import { Blur, ScaleRelaxed, SlideRelaxed, Series } from '@fluentui/react-motion-components-preview';
+import { Blur, ScaleRelaxed, SlideRelaxed, Sequence } from '@fluentui/react-motion-components-preview';
 
 // import description from './ExperimentsWipe.stories.md';
 
@@ -59,8 +59,8 @@ export const Default = () => {
   const duration = 700;
   const animateOpacity = true;
 
-  const series = (
-    <Series iterations="infinite">
+  const sequence = (
+    <Sequence iterations="infinite">
       <Blur.In duration={duration} animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
       </Blur.In>
@@ -95,12 +95,12 @@ export const Default = () => {
       <SlideRelaxed.Out fromX="100%" animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
       </SlideRelaxed.Out>
-    </Series>
+    </Sequence>
   );
 
   return (
     <div className={classes.container}>
-      <div className={classes.card}>{series}</div>
+      <div className={classes.card}>{sequence}</div>
     </div>
   );
 };

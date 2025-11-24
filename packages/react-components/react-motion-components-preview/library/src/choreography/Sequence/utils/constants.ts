@@ -1,5 +1,5 @@
 /**
- * Default timing constants for series animations (milliseconds).
+ * Default timing constants for sequence animations (milliseconds).
  */
 
 import { motionTokens } from '@fluentui/react-motion';

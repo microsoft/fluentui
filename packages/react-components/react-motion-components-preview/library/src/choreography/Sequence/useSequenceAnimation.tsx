@@ -2,15 +2,15 @@
 
 import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
-import type { SeriesProps } from './series-types';
-import type { SeriesChildMapping } from './utils';
+import type { SequenceProps } from './sequence-types';
+import type { SequenceChildMapping } from './utils';
 
-export interface UseSeriesAnimationParams extends Pick<SeriesProps, 'iterations' | 'onMotionFinish'> {
+export interface UseSequenceAnimationParams extends Pick<SequenceProps, 'iterations' | 'onMotionFinish'> {
   /** Mapping of child keys to elements and indices */
-  childMapping: SeriesChildMapping;
+  childMapping: SequenceChildMapping;
 }
 
-export interface UseSeriesAnimationResult {
+export interface UseSequenceAnimationResult {
   /** The current index of the component being animated */
   currentIndex: number;
   /** The current iteration number (0-based) */
@@ -19,26 +19,11 @@ export interface UseSeriesAnimationResult {
   handleChildFinish: () => void;
 }
 
-/**
- * Hook that manages the sequential animation of a series of components.
- *
- * Behavior:
- * - Starts with the first component (index 0)
- * - When a component finishes, advances to the next component
- * - When all components finish, either:
- *   - Repeats the sequence if iterations > 1 or iterations === 'infinite'
- *   - Calls the parent onMotionFinish callback if sequence is complete
- *
- * @param childMapping - Mapping of child keys to elements and indices
- * @param iterations - Number of times to repeat (1 for once, 'infinite' for loop)
- * @param onMotionFinish - Callback when the entire series completes
- * @returns Current animation state and child finish handler
- */
-export function useSeriesAnimation({
+export function useSequenceAnimation({
   childMapping,
   iterations = 1,
   onMotionFinish,
-}: UseSeriesAnimationParams): UseSeriesAnimationResult {
+}: UseSequenceAnimationParams): UseSequenceAnimationResult {
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [currentIteration, setCurrentIteration] = React.useState(0);
 
