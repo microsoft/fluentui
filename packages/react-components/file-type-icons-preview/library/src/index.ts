@@ -23,6 +23,5 @@ export type {
   ImageFileType,
   IFileTypeIconOptions,
 } from './utils/getFileTypeIconProps';
-export { getFileTypeIconAsUrl } from './utils/getFileTypeIconAsUrl';
-export { getFileTypeIconAsHTMLString } from './utils/getFileTypeIconAsHTMLString';
+export { getFileTypeIconAsUrl, getFileTypeIconAsHTMLString } from './utils/getFileTypeIconAsUrl';
 export { initializeFileTypeIcons, DEFAULT_BASE_URL, ICON_SIZES } from './utils/initializeFileTypeIcons';
