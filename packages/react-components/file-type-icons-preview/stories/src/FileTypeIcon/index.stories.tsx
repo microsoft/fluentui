@@ -1,8 +1,7 @@
 import { FileTypeIcon } from '@fluentui/file-type-icons-preview';
 import type { Meta } from '@storybook/react';
 
-export { Default } from './FileTypeIconDefault.stories';
-export { Sizes } from './FileTypeIconSizes.stories';
+export { Sizes as Default } from './FileTypeIconSizes.stories';
 export { CommonFileTypes } from './FileTypeIconCommon.stories';
 export { SpecialTypes } from './FileTypeIconSpecialTypes.stories';
 export { UrlAndHtmlFunctions } from './FileTypeIconUrlAndHtml.stories';

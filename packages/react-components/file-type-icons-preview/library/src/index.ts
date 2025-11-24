@@ -10,7 +10,6 @@ export type { FileTypeIconProps, FileTypeIconSlots, FileTypeIconState } from './
 
 // Utility exports (for backward compatibility and advanced usage)
 export { FileIconType } from './utils/FileIconType';
-export type { FileIconTypeInput } from './utils/FileIconType';
 export { FileTypeIconMap } from './utils/FileTypeIconMap';
 export {
   getFileTypeIconProps,

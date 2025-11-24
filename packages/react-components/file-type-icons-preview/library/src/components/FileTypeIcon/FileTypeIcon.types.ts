@@ -1,5 +1,5 @@
 import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
-import type { FileIconTypeInput } from '../../utils/FileIconType';
+import type { FileIconType } from '../../utils/FileIconType';
 import type { FileTypeIconSize, ImageFileType } from '../../utils/getFileTypeIconProps';
 
 export type FileTypeIconSlots = {
@@ -22,7 +22,7 @@ export type FileTypeIconProps = ComponentProps<FileTypeIconSlots> & {
    * file type icons that are not associated with a file extension,
    * such as folder.
    */
-  type?: FileIconTypeInput;
+  type?: FileIconType;
 
   /**
    * The size of the icon in pixels.
