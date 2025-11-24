@@ -61,9 +61,10 @@ import {
   findCalloutPoints,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
+import type { JSXElement } from '@fluentui/utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -195,20 +196,20 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private margins: IMargins;
   private eventLabelHeight: number = 36;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private lines: JSX.Element[];
+  private lines: JSXElement[];
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _renderedColorFillBars: JSX.Element[];
+  private _renderedColorFillBars: JSXElement[];
   private _colorFillBars: IColorFillBarsProps[];
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
+  private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSXElement;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
   private _yScaleSecondary: ScaleLinear<number, number> | undefined;
   private _hasMarkersMode: boolean = false;
   private _isXAxisDateType: boolean = false;
@@ -284,7 +285,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
 
@@ -414,7 +415,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRTL, opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRTL,
+      opts,
+    );
   };
 
   private _getDomainNRangeValues = (
@@ -426,7 +432,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -563,7 +568,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
+  private _createLegends(data: LineChartDataWithIndex[]): JSXElement {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const mapLegendToPoints: Record<string, LineChartDataWithIndex[]> = {};
@@ -716,9 +721,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   };
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
+  private _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const lines: JSX.Element[] = [];
+    const lines: JSXElement[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
@@ -736,11 +741,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     for (let i = this._points.length - 1; i >= 0; i--) {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const linesForLine: JSX.Element[] = [];
+      const linesForLine: JSXElement[] = [];
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const bordersForLine: JSX.Element[] = [];
+      const bordersForLine: JSXElement[] = [];
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const pointsForLine: JSX.Element[] = [];
+      const pointsForLine: JSXElement[] = [];
 
       const legendVal: string = this._points[i].legend;
       const lineColor: string = this._points[i].color!;
@@ -959,11 +964,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         );
 
         // Add individual markers if mode includes 'markers'
-        const showMarkers = lineMode?.includes('markers') || !lineMode; // Show markers by default if no mode specified
+        const showMarkers = !!lineMode?.includes('markers');
         if (showMarkers) {
           for (let k = 0; k < this._points[i].data.length; k++) {
             const { x, y } = this._points[i].data[k];
-            const xPoint = this._xAxisScale(x instanceof Date ? x.getTime() : x);
+            const xPoint = this._xAxisScale(x);
             const yPoint = yScale(y);
 
             if (isPlottable(xPoint, yPoint)) {
@@ -1493,7 +1498,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _createColorFillBars = (containerHeight: number) => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const colorFillBars: JSX.Element[] = [];
+    const colorFillBars: JSXElement[] = [];
     if (this.state.isSelectedLegend) {
       this._colorFillBars = this.state.selectedColorBarLegend;
     } else {

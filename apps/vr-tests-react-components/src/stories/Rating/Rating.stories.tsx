@@ -4,14 +4,15 @@ import { Steps } from 'storywright';
 import { CircleRegular, CircleFilled, SquareRegular, SquareFilled } from '@fluentui/react-icons';
 import { Rating } from '@fluentui/react-rating';
 
-import { withStoryWrightSteps, TestWrapperDecoratorFixedWidth } from '../../utilities';
+import { TestWrapperDecoratorFixedWidth } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 export default {
   title: 'Rating Converged',
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Rating>;
 
 export const RatingSizeSmall = () => <Rating size="small" />;

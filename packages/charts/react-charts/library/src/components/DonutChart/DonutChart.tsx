@@ -7,14 +7,13 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
-import { Legend, Legends, LegendContainer } from '../../index';
+import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS } from '../../utilities/index';
+import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { ImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { useImageExport } from '../../utilities/hooks';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -24,8 +23,13 @@ const MIN_LEGEND_CONTAINER_HEIGHT = 40;
  * {@docCategory DonutChart}
  */
 export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwardRef<HTMLDivElement, DonutChartProps>(
-  (props, forwardedRef) => {
-    const _rootElem = React.useRef<HTMLDivElement | null>(null);
+  ({ innerRadius = 0, hideLabels = true, ...restProps }, forwardedRef) => {
+    const props = { innerRadius, hideLabels, ...restProps };
+    const { chartContainerRef: _rootElem, legendsRef: _legendsRef } = useImageExport(
+      props.componentRef,
+      props.hideLegend,
+      false,
+    );
     const _uniqText: string = useId('_Pie_');
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let _calloutAnchorPoint: ChartDataPoint | null;
@@ -47,8 +51,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const prevPropsRef = React.useRef<DonutChartProps | null>(null);
-    const _legendsRef = React.useRef<LegendContainer>(null);
-    const _isRTL: boolean = useRtl();
 
     React.useEffect(() => {
       _fitParentContainer();
@@ -72,17 +74,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       prevSize.current.width = props.width;
     }, [props.width, props.height]);
 
-    React.useImperativeHandle(
-      props.componentRef,
-      () => ({
-        chartContainer: _rootElem.current,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return toImage(_rootElem.current, _legendsRef.current?.toSVG, _isRTL, opts);
-        },
-      }),
-      [],
-    );
-
     function _elevateToMinimums(data: ChartDataPoint[]) {
       let sumOfData = 0;
       const minPercent = 0.01;
@@ -105,6 +96,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       return elevatedData;
     }
     function _createLegends(chartData: ChartDataPoint[]): JSXElement {
+      if (props.order === 'sorted') {
+        chartData.sort((a: ChartDataPoint, b: ChartDataPoint) => {
+          return b.data! - a.data!;
+        });
+      }
       const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
         const color: string = point.color!;
         // mapping data to the format Legends component needs
@@ -305,18 +301,20 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
 
     const classes = useDonutChartStyles(props);
 
-    const legendBars = _createLegends(points);
+    const legendBars = _createLegends(points.filter(d => d.data! >= 0));
     const donutMarginHorizontal = props.hideLabels ? 0 : 80;
     const donutMarginVertical = props.hideLabels ? 0 : 40;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
-    const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
+    const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const focusAttributes = useFocusableGroup();
     return !_isChartEmpty() ? (
       <div
         className={classes.root}
-        ref={(rootElem: HTMLDivElement | null) => (_rootElem.current = rootElem)}
+        ref={(rootElem: HTMLDivElement | null) => {
+          _rootElem.current = rootElem;
+        }}
         onMouseLeave={_handleChartMouseLeave}
       >
         {props.xAxisAnnotation && (
@@ -349,7 +347,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         <ChartPopover
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
-          culture={props.culture ?? 'en-us'}
+          culture={props.culture}
           positioning={{
             target: refSelected,
           }}
@@ -371,7 +369,12 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           isCartesian={false}
         />
         {!hideLegend && (
-          <div ref={(e: HTMLDivElement) => (legendContainer.current = e)} className={classes.legendContainer}>
+          <div
+            ref={(e: HTMLDivElement) => {
+              legendContainer.current = e;
+            }}
+            className={classes.legendContainer}
+          >
             {legendBars}
           </div>
         )}
@@ -383,7 +386,3 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
 );
 
 DonutChart.displayName = 'DonutChart';
-DonutChart.defaultProps = {
-  innerRadius: 0,
-  hideLabels: true,
-};

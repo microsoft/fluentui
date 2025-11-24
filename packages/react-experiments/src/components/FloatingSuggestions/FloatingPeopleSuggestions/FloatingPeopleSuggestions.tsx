@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSXElement } from '@fluentui/utilities';
 import { DefaultPeopleSuggestionsItem } from './defaults/DefaultPeopleSuggestionsItem';
 import { FloatingSuggestions } from '../FloatingSuggestions';
 import type { IPersonaProps } from '@fluentui/react/lib/Persona';
@@ -12,7 +13,7 @@ export type IFloatingPeopleSuggestionsProps<TPersona> = PartiallyOptional<
 
 export const FloatingPeopleSuggestions = <TPersona extends IPersonaProps = IPersonaProps>(
   props: IFloatingPeopleSuggestionsProps<TPersona>,
-) => {
+): JSXElement => {
   return <FloatingSuggestions<TPersona> onRenderSuggestionsItem={DefaultPeopleSuggestionsItem} {...props} />;
 };
 export type SelectedPeopleList<TPersona extends IPersonaProps = IPersonaProps> = FloatingSuggestions<TPersona>;

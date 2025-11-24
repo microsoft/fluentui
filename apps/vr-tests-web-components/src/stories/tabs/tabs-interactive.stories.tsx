@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { default as parse } from 'html-react-parser';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
 import { TabDefinition, TabsDefinition, TabPanelDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
@@ -9,18 +9,6 @@ TabsDefinition.define(FluentDesignSystem.registry);
 TabPanelDefinition.define(FluentDesignSystem.registry);
 
 const secondTabId = 'second-tab-id';
-
-const createDecorator =
-  (steps: unknown[], wrapperStyle: React.CSSProperties = { width: '380px' }) =>
-  (story: () => React.ReactElement) => {
-    return (
-      <StoryWright steps={steps}>
-        <div className="testWrapper" style={wrapperStyle}>
-          {story()}
-        </div>
-      </StoryWright>
-    );
-  };
 
 const horizontalSteps = new Steps()
   .snapshot('normal', { cropTo: '.testWrapper' })
@@ -50,6 +38,15 @@ const appearanceSteps = new Steps()
 
 export default {
   title: 'Tabs',
+  decorators: [
+    (story: () => React.ReactElement) => {
+      return (
+        <div className="testWrapper" style={{ width: '380px' }}>
+          {story()}
+        </div>
+      );
+    },
+  ],
 };
 
 export const Navigation = () =>
@@ -66,7 +63,11 @@ export const Navigation = () =>
     <fluent-tab-panel>Fourth Panel</fluent-tab-panel>
   </fluent-tabs>
   `);
-Navigation.decorators = [createDecorator(horizontalSteps)];
+Navigation.parameters = {
+  storyWright: {
+    steps: horizontalSteps,
+  },
+};
 
 export const NavigationRTL = getStoryVariant(Navigation, RTL);
 
@@ -85,7 +86,11 @@ export const NavigationVertical = () =>
   </fluent-tabs>
   `);
 
-Navigation.decorators = [createDecorator(verticalSteps)];
+Navigation.parameters = {
+  storyWright: {
+    steps: verticalSteps,
+  },
+};
 
 export const NavigationOverDisabledItem = () =>
   parse(`
@@ -101,7 +106,11 @@ export const NavigationOverDisabledItem = () =>
     <fluent-tab-panel>Fourth Panel</fluent-tab-panel>
   </fluent-tabs>
   `);
-NavigationOverDisabledItem.decorators = [createDecorator(horizontalSteps)];
+NavigationOverDisabledItem.parameters = {
+  storyWright: {
+    steps: horizontalSteps,
+  },
+};
 
 export const AppearanceTransparent = () =>
   parse(`
@@ -117,7 +126,11 @@ export const AppearanceTransparent = () =>
     <fluent-tab-panel>Fourth Panel</fluent-tab-panel>
   </fluent-tabs>
   `);
-AppearanceTransparent.decorators = [createDecorator(appearanceSteps)];
+AppearanceTransparent.parameters = {
+  storyWright: {
+    steps: appearanceSteps,
+  },
+};
 
 export const AppearanceSubtle = () =>
   parse(`
@@ -133,4 +146,8 @@ export const AppearanceSubtle = () =>
     <fluent-tab-panel>Fourth Panel</fluent-tab-panel>
   </fluent-tabs>
   `);
-AppearanceSubtle.decorators = [createDecorator(appearanceSteps)];
+AppearanceSubtle.parameters = {
+  storyWright: {
+    steps: appearanceSteps,
+  },
+};

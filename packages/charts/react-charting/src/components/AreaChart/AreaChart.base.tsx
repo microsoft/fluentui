@@ -49,8 +49,9 @@ import {
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ScaleLinear } from 'd3-scale';
+import type { JSXElement } from '@fluentui/utilities';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -132,7 +133,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _data: any;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _chart: JSX.Element[];
+  private _chart: JSXElement[];
   private margins: IMargins;
   private _rectId: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -146,8 +147,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _enableComputationOptimization: boolean;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
   private _containsSecondaryYAxis = false;
   private _hasDuplicateXValues = false;
   private _hasMissingXValues = false;
@@ -205,7 +206,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  public render(): JSX.Element {
+  public render(): JSXElement {
     if (!this._isChartEmpty()) {
       const { lineChartData } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
@@ -219,7 +220,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       this._opacity = opacity;
       this._data = data.renderData;
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const legends: JSX.Element = this._getLegendData(points);
+      const legends: JSXElement = this._getLegendData(points);
 
       const tickParams = {
         tickValues: this.props.tickValues,
@@ -304,7 +305,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, getRTL(), opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      getRTL(),
+      opts,
+    );
   };
 
   private _getMinMaxOfYAxis = (points: ILineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) =>
@@ -734,7 +740,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  private _getLegendData = (points: ILineChartPoints[]): JSX.Element => {
+  private _getLegendData = (points: ILineChartPoints[]): JSXElement => {
     const data = points;
     const actions: ILegend[] = [];
 
@@ -840,12 +846,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     xElement: SVGElement,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-  ): JSX.Element[] => {
+  ): JSXElement[] => {
     const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
 
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    const graph: JSX.Element[] = [];
+    const graph: JSXElement[] = [];
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._data.forEach((singleStackedData: Array<any>, index: number) => {

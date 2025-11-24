@@ -2,16 +2,11 @@
 
 exports[`DetailsList handles paged updates to items within groups 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-fixed
         is-horizontalConstrained
@@ -35,13 +30,12 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={5}
-      aria-rowcount={7}
+      aria-colcount="5"
+      aria-rowcount="7"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div>
@@ -57,24 +51,15 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 ms-GroupedList
                 &:focus {
@@ -100,33 +85,28 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
             role="presentation"
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -138,23 +118,22 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       </div>
                       <div
                         aria-label="two 1"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection2"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={0}
+                              data-list-index="0"
                               role="presentation"
                             >
                               <div>
@@ -170,9 +149,9 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={1}
+                              data-list-index="1"
                               role="presentation"
                             >
                               <div>
@@ -186,18 +165,17 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -209,23 +187,22 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       </div>
                       <div
                         aria-label="two 2"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection3"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={2}
+                              data-list-index="2"
                               role="presentation"
                             >
                               <div>
@@ -241,9 +218,9 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={3}
+                              data-list-index="3"
                               role="presentation"
                             >
                               <div>
@@ -268,16 +245,11 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
 
 exports[`DetailsList handles paged updates to items within groups 2`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-fixed
         is-horizontalConstrained
@@ -301,13 +273,12 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={5}
-      aria-rowcount={7}
+      aria-colcount="5"
+      aria-rowcount="7"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div>
@@ -323,24 +294,15 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 ms-GroupedList
                 &:focus {
@@ -366,33 +328,28 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
             role="presentation"
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -404,23 +361,22 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       </div>
                       <div
                         aria-label="two 1"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection2"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={0}
+                              data-list-index="0"
                               role="presentation"
                             >
                               <div>
@@ -436,9 +392,9 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={1}
+                              data-list-index="1"
                               role="presentation"
                             >
                               <div>
@@ -460,18 +416,17 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -483,23 +438,22 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       </div>
                       <div
                         aria-label="two 2"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection3"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={2}
+                              data-list-index="2"
                               role="presentation"
                             >
                               <div>
@@ -515,9 +469,9 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={3}
+                              data-list-index="3"
                               role="presentation"
                             >
                               <div>
@@ -550,16 +504,11 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
 
 exports[`DetailsList handles updates to items and groups 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-fixed
         is-horizontalConstrained
@@ -583,13 +532,12 @@ exports[`DetailsList handles updates to items and groups 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={5}
-      aria-rowcount={9}
+      aria-colcount="5"
+      aria-rowcount="9"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div>
@@ -605,24 +553,15 @@ exports[`DetailsList handles updates to items and groups 1`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 ms-GroupedList
                 &:focus {
@@ -648,33 +587,28 @@ exports[`DetailsList handles updates to items and groups 1`] = `
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
             role="presentation"
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -686,23 +620,22 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       </div>
                       <div
                         aria-label="one 1"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection2"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={0}
+                              data-list-index="0"
                               role="presentation"
                             >
                               <div>
@@ -724,18 +657,17 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -747,23 +679,22 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       </div>
                       <div
                         aria-label="one 2"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection3"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={1}
+                              data-list-index="1"
                               role="presentation"
                             >
                               <div>
@@ -785,18 +716,17 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={2}
+                    data-list-index="2"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -808,23 +738,22 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       </div>
                       <div
                         aria-label="one 3"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection4"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={2}
+                              data-list-index="2"
                               role="presentation"
                             >
                               <div>
@@ -846,18 +775,17 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={3}
+                    data-list-index="3"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -869,23 +797,22 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       </div>
                       <div
                         aria-label="one 4"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection5"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={3}
+                              data-list-index="3"
                               role="presentation"
                             >
                               <div>
@@ -918,16 +845,11 @@ exports[`DetailsList handles updates to items and groups 1`] = `
 
 exports[`DetailsList handles updates to items and groups 2`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-fixed
         is-horizontalConstrained
@@ -951,13 +873,12 @@ exports[`DetailsList handles updates to items and groups 2`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={5}
-      aria-rowcount={9}
+      aria-colcount="5"
+      aria-rowcount="9"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div>
@@ -973,24 +894,15 @@ exports[`DetailsList handles updates to items and groups 2`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 ms-GroupedList
                 &:focus {
@@ -1016,33 +928,28 @@ exports[`DetailsList handles updates to items and groups 2`] = `
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
             role="presentation"
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -1054,23 +961,22 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       </div>
                       <div
                         aria-label="one 1"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection2"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={0}
+                              data-list-index="0"
                               role="presentation"
                             >
                               <div>
@@ -1092,18 +998,17 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -1115,23 +1020,22 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       </div>
                       <div
                         aria-label="one 2"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection3"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={1}
+                              data-list-index="1"
                               role="presentation"
                             >
                               <div>
@@ -1153,18 +1057,17 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={2}
+                    data-list-index="2"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -1176,23 +1079,22 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       </div>
                       <div
                         aria-label="one 3"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection4"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={2}
+                              data-list-index="2"
                               role="presentation"
                             >
                               <div>
@@ -1214,18 +1116,17 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={3}
+                    data-list-index="3"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -1237,23 +1138,22 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       </div>
                       <div
                         aria-label="one 4"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection5"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={3}
+                              data-list-index="3"
                               role="presentation"
                             >
                               <div>
@@ -1286,16 +1186,11 @@ exports[`DetailsList handles updates to items and groups 2`] = `
 
 exports[`DetailsList handles updates to items and groups 3`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-fixed
         is-horizontalConstrained
@@ -1319,13 +1214,12 @@ exports[`DetailsList handles updates to items and groups 3`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={5}
-      aria-rowcount={7}
+      aria-colcount="5"
+      aria-rowcount="7"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div>
@@ -1341,24 +1235,15 @@ exports[`DetailsList handles updates to items and groups 3`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 ms-GroupedList
                 &:focus {
@@ -1384,33 +1269,28 @@ exports[`DetailsList handles updates to items and groups 3`] = `
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
             role="presentation"
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -1422,23 +1302,22 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       </div>
                       <div
                         aria-label="two 1"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection8"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={0}
+                              data-list-index="0"
                               role="presentation"
                             >
                               <div>
@@ -1454,9 +1333,9 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={1}
+                              data-list-index="1"
                               role="presentation"
                             >
                               <div>
@@ -1478,18 +1357,17 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -1501,23 +1379,22 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       </div>
                       <div
                         aria-label="two 2"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection9"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={2}
+                              data-list-index="2"
                               role="presentation"
                             >
                               <div>
@@ -1533,9 +1410,9 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={3}
+                              data-list-index="3"
                               role="presentation"
                             >
                               <div>
@@ -1568,16 +1445,11 @@ exports[`DetailsList handles updates to items and groups 3`] = `
 
 exports[`DetailsList handles updates to items and groups 4`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-fixed
         is-horizontalConstrained
@@ -1601,13 +1473,12 @@ exports[`DetailsList handles updates to items and groups 4`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={5}
-      aria-rowcount={7}
+      aria-colcount="5"
+      aria-rowcount="7"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div>
@@ -1623,24 +1494,15 @@ exports[`DetailsList handles updates to items and groups 4`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 ms-GroupedList
                 &:focus {
@@ -1666,33 +1528,28 @@ exports[`DetailsList handles updates to items and groups 4`] = `
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
             role="presentation"
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -1704,23 +1561,22 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       </div>
                       <div
                         aria-label="two 1"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection8"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={0}
+                              data-list-index="0"
                               role="presentation"
                             >
                               <div>
@@ -1736,9 +1592,9 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={1}
+                              data-list-index="1"
                               role="presentation"
                             >
                               <div>
@@ -1760,18 +1616,17 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -1783,23 +1638,22 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       </div>
                       <div
                         aria-label="two 2"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection9"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={2}
+                              data-list-index="2"
                               role="presentation"
                             >
                               <div>
@@ -1815,9 +1669,9 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={3}
+                              data-list-index="3"
                               role="presentation"
                             >
                               <div>
@@ -1850,16 +1704,11 @@ exports[`DetailsList handles updates to items and groups 4`] = `
 
 exports[`DetailsList renders List correctly 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-horizontalConstrained
         {
@@ -1882,17 +1731,16 @@ exports[`DetailsList renders List correctly 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={4}
-      aria-rowcount={6}
+      aria-colcount="4"
+      aria-rowcount="6"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-FocusZone
               ms-DetailsHeader
               &:focus {
@@ -1928,15 +1776,11 @@ exports[`DetailsList renders List correctly 1`] = `
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
           data-tabster="{\\"uncontrolled\\": {}}"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
-          onMouseMove={[Function]}
           role="row"
         >
           <div
             aria-labelledby="header1-checkTooltip"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
@@ -1987,15 +1831,14 @@ exports[`DetailsList renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
-            onClick={[Function]}
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              class="ms-DetailsHeader-checkTooltip"
             >
               <div
-                aria-checked={false}
-                className=
+                aria-checked="false"
+                class=
                     ms-DetailsRow-check
                     ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
@@ -2064,14 +1907,14 @@ exports[`DetailsList renders List correctly 1`] = `
                       z-index: 1;
                     }
                 data-automationid="DetailsRowCheck"
-                data-is-focusable={true}
-                data-selection-toggle={true}
+                data-is-focusable="true"
+                data-selection-toggle="true"
                 id="header1-check"
                 role="checkbox"
-                tabIndex={-1}
+                tabindex="0"
               >
                 <div
-                  className=
+                  class=
                       ms-Check
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -2111,8 +1954,8 @@ exports[`DetailsList renders List correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-circle
                         {
@@ -2145,17 +1988,13 @@ exports[`DetailsList renders List correctly 1`] = `
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-check
                         {
@@ -2193,11 +2032,7 @@ exports[`DetailsList renders List correctly 1`] = `
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
@@ -2208,7 +2043,7 @@ exports[`DetailsList renders List correctly 1`] = `
           <div
             aria-labelledby="header1-key-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -2273,21 +2108,16 @@ exports[`DetailsList renders List correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="key"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -2299,7 +2129,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -2341,12 +2171,9 @@ exports[`DetailsList renders List correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-key"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -2363,8 +2190,8 @@ exports[`DetailsList renders List correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -2411,17 +2238,15 @@ exports[`DetailsList renders List correctly 1`] = `
                   margin-right: -8px;
                   margin-top: 0;
                 }
-            data-is-focusable={false}
-            data-sizer-index={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="0"
             role="button"
+            tabindex="-1"
           />
           <div
             aria-labelledby="header1-name-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -2486,21 +2311,16 @@ exports[`DetailsList renders List correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="name"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -2512,7 +2332,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -2554,12 +2374,9 @@ exports[`DetailsList renders List correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-name"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -2576,8 +2393,8 @@ exports[`DetailsList renders List correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -2624,17 +2441,15 @@ exports[`DetailsList renders List correctly 1`] = `
                   margin-right: -8px;
                   margin-top: 0;
                 }
-            data-is-focusable={false}
-            data-sizer-index={1}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="1"
             role="button"
+            tabindex="-1"
           />
           <div
             aria-labelledby="header1-value-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -2699,21 +2514,16 @@ exports[`DetailsList renders List correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="value"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -2725,7 +2535,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -2767,12 +2577,9 @@ exports[`DetailsList renders List correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-value"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -2789,8 +2596,8 @@ exports[`DetailsList renders List correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -2837,34 +2644,23 @@ exports[`DetailsList renders List correctly 1`] = `
                   margin-right: 0px;
                   margin-top: 0px;
                 }
-            data-is-focusable={false}
-            data-sizer-index={2}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="2"
             role="button"
+            tabindex="-1"
           />
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 &:focus {
                   outline: none;
@@ -2876,52 +2672,47 @@ exports[`DetailsList renders List correctly 1`] = `
                 }
             data-focuszone-id="FocusZone3"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={2}
+                    data-list-index="2"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={3}
+                    data-list-index="3"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={4}
+                    data-list-index="4"
                     role="presentation"
                   />
                 </div>
@@ -2937,16 +2728,11 @@ exports[`DetailsList renders List correctly 1`] = `
 
 exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-horizontalConstrained
         {
@@ -2969,17 +2755,16 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={6}
-      aria-rowcount={6}
+      aria-colcount="6"
+      aria-rowcount="6"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-FocusZone
               ms-DetailsHeader
               &:focus {
@@ -3015,15 +2800,11 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
           data-tabster="{\\"uncontrolled\\": {}}"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
-          onMouseMove={[Function]}
           role="row"
         >
           <div
             aria-labelledby="header1-checkTooltip"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
@@ -3074,15 +2855,14 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
-            onClick={[Function]}
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              class="ms-DetailsHeader-checkTooltip"
             >
               <div
-                aria-checked={false}
-                className=
+                aria-checked="false"
+                class=
                     ms-DetailsRow-check
                     ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
@@ -3151,14 +2931,14 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       z-index: 1;
                     }
                 data-automationid="DetailsRowCheck"
-                data-is-focusable={true}
-                data-selection-toggle={true}
+                data-is-focusable="true"
+                data-selection-toggle="true"
                 id="header1-check"
                 role="checkbox"
-                tabIndex={-1}
+                tabindex="0"
               >
                 <div
-                  className=
+                  class=
                       ms-Check
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -3198,8 +2978,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-circle
                         {
@@ -3232,17 +3012,13 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-check
                         {
@@ -3280,11 +3056,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
@@ -3295,7 +3067,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           <div
             aria-label="column_0"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -3360,21 +3132,16 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_0"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -3386,7 +3153,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -3428,12 +3195,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_0"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -3452,7 +3216,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           <div
             aria-label="column_1"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -3517,21 +3281,16 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_1"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -3543,7 +3302,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -3585,12 +3344,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_1"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -3609,7 +3365,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           <div
             aria-label="column_2"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -3674,21 +3430,16 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_2"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -3700,7 +3451,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -3742,12 +3493,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_2"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -3766,7 +3514,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           <div
             aria-label="column_3"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -3831,21 +3579,16 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_3"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -3857,7 +3600,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -3899,12 +3642,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_3"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -3923,7 +3663,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           <div
             aria-label="column_4"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -3988,21 +3728,16 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_4"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -4014,7 +3749,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -4056,12 +3791,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_4"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -4080,24 +3812,15 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 &:focus {
                   outline: none;
@@ -4109,52 +3832,47 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 }
             data-focuszone-id="FocusZone3"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={2}
+                    data-list-index="2"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={3}
+                    data-list-index="3"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={4}
+                    data-list-index="4"
                     role="presentation"
                   />
                 </div>
@@ -4170,16 +3888,11 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
 
 exports[`DetailsList renders List in compact mode correctly 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         ms-DetailsList--Compact
         is-horizontalConstrained
@@ -4203,17 +3916,16 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={4}
-      aria-rowcount={6}
+      aria-colcount="4"
+      aria-rowcount="6"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-FocusZone
               ms-DetailsHeader
               &:focus {
@@ -4249,15 +3961,11 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
           data-tabster="{\\"uncontrolled\\": {}}"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
-          onMouseMove={[Function]}
           role="row"
         >
           <div
             aria-labelledby="header1-checkTooltip"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
@@ -4308,15 +4016,14 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
-            onClick={[Function]}
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              class="ms-DetailsHeader-checkTooltip"
             >
               <div
-                aria-checked={false}
-                className=
+                aria-checked="false"
+                class=
                     ms-DetailsRow-check
                     ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
@@ -4385,14 +4092,14 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       z-index: 1;
                     }
                 data-automationid="DetailsRowCheck"
-                data-is-focusable={true}
-                data-selection-toggle={true}
+                data-is-focusable="true"
+                data-selection-toggle="true"
                 id="header1-check"
                 role="checkbox"
-                tabIndex={-1}
+                tabindex="0"
               >
                 <div
-                  className=
+                  class=
                       ms-Check
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -4432,8 +4139,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-circle
                         {
@@ -4466,17 +4173,13 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-check
                         {
@@ -4514,11 +4217,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
@@ -4529,7 +4228,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           <div
             aria-labelledby="header1-key-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -4594,21 +4293,16 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="key"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -4620,7 +4314,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -4662,12 +4356,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-key"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -4684,8 +4375,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -4732,17 +4423,15 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   margin-right: -8px;
                   margin-top: 0;
                 }
-            data-is-focusable={false}
-            data-sizer-index={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="0"
             role="button"
+            tabindex="-1"
           />
           <div
             aria-labelledby="header1-name-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -4807,21 +4496,16 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="name"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -4833,7 +4517,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -4875,12 +4559,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-name"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -4897,8 +4578,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -4945,17 +4626,15 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   margin-right: -8px;
                   margin-top: 0;
                 }
-            data-is-focusable={false}
-            data-sizer-index={1}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="1"
             role="button"
+            tabindex="-1"
           />
           <div
             aria-labelledby="header1-value-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -5020,21 +4699,16 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="value"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -5046,7 +4720,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -5088,12 +4762,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-value"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -5110,8 +4781,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -5158,34 +4829,23 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   margin-right: 0px;
                   margin-top: 0px;
                 }
-            data-is-focusable={false}
-            data-sizer-index={2}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="2"
             role="button"
+            tabindex="-1"
           />
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 &:focus {
                   outline: none;
@@ -5197,52 +4857,47 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 }
             data-focuszone-id="FocusZone3"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={2}
+                    data-list-index="2"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={3}
+                    data-list-index="3"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={4}
+                    data-list-index="4"
                     role="presentation"
                   />
                 </div>
@@ -5258,16 +4913,11 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
 
 exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-fixed
         is-horizontalConstrained
@@ -5291,17 +4941,16 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={4}
-      aria-rowcount={6}
+      aria-colcount="4"
+      aria-rowcount="6"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-FocusZone
               ms-DetailsHeader
               &:focus {
@@ -5337,15 +4986,11 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
           data-tabster="{\\"uncontrolled\\": {}}"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
-          onMouseMove={[Function]}
           role="row"
         >
           <div
             aria-labelledby="header1-checkTooltip"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
@@ -5396,15 +5041,14 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
-            onClick={[Function]}
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              class="ms-DetailsHeader-checkTooltip"
             >
               <div
-                aria-checked={false}
-                className=
+                aria-checked="false"
+                class=
                     ms-DetailsRow-check
                     ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
@@ -5473,14 +5117,14 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       z-index: 1;
                     }
                 data-automationid="DetailsRowCheck"
-                data-is-focusable={true}
-                data-selection-toggle={true}
+                data-is-focusable="true"
+                data-selection-toggle="true"
                 id="header1-check"
                 role="checkbox"
-                tabIndex={-1}
+                tabindex="0"
               >
                 <div
-                  className=
+                  class=
                       ms-Check
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -5520,8 +5164,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-circle
                         {
@@ -5554,17 +5198,13 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-check
                         {
@@ -5602,11 +5242,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
@@ -5617,7 +5253,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           <div
             aria-labelledby="header1-key-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -5682,21 +5318,16 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="key"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 320,
-              }
-            }
+            style="width: 320px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -5708,7 +5339,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -5750,12 +5381,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-key"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -5772,8 +5400,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -5820,17 +5448,15 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   margin-right: -8px;
                   margin-top: 0;
                 }
-            data-is-focusable={false}
-            data-sizer-index={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="0"
             role="button"
+            tabindex="-1"
           />
           <div
             aria-labelledby="header1-name-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -5895,21 +5521,16 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="name"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 320,
-              }
-            }
+            style="width: 320px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -5921,7 +5542,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -5963,12 +5584,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-name"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -5985,8 +5603,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -6033,17 +5651,15 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   margin-right: -8px;
                   margin-top: 0;
                 }
-            data-is-focusable={false}
-            data-sizer-index={1}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="1"
             role="button"
+            tabindex="-1"
           />
           <div
             aria-labelledby="header1-value-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -6108,21 +5724,16 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="value"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 320,
-              }
-            }
+            style="width: 320px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -6134,7 +5745,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -6176,12 +5787,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-value"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -6198,8 +5806,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -6246,34 +5854,23 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   margin-right: 0px;
                   margin-top: 0px;
                 }
-            data-is-focusable={false}
-            data-sizer-index={2}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="2"
             role="button"
+            tabindex="-1"
           />
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 &:focus {
                   outline: none;
@@ -6285,52 +5882,47 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 }
             data-focuszone-id="FocusZone3"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={2}
+                    data-list-index="2"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={3}
+                    data-list-index="3"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={4}
+                    data-list-index="4"
                     role="presentation"
                   />
                 </div>
@@ -6346,16 +5938,11 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
 
 exports[`DetailsList renders List with custom icon as column divider 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-horizontalConstrained
         {
@@ -6378,17 +5965,16 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={6}
-      aria-rowcount={6}
+      aria-colcount="6"
+      aria-rowcount="6"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-FocusZone
               ms-DetailsHeader
               &:focus {
@@ -6424,15 +6010,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
           data-tabster="{\\"uncontrolled\\": {}}"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
-          onMouseMove={[Function]}
           role="row"
         >
           <div
             aria-labelledby="header1-checkTooltip"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
@@ -6483,15 +6065,14 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
-            onClick={[Function]}
             role="columnheader"
           >
             <span
-              className="ms-DetailsHeader-checkTooltip"
+              class="ms-DetailsHeader-checkTooltip"
             >
               <div
-                aria-checked={false}
-                className=
+                aria-checked="false"
+                class=
                     ms-DetailsRow-check
                     ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
@@ -6560,14 +6141,14 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       z-index: 1;
                     }
                 data-automationid="DetailsRowCheck"
-                data-is-focusable={true}
-                data-selection-toggle={true}
+                data-is-focusable="true"
+                data-selection-toggle="true"
                 id="header1-check"
                 role="checkbox"
-                tabIndex={-1}
+                tabindex="0"
               >
                 <div
-                  className=
+                  class=
                       ms-Check
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -6607,8 +6188,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-circle
                         {
@@ -6641,17 +6222,13 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
                   <i
-                    aria-hidden={true}
-                    className=
+                    aria-hidden="true"
+                    class=
                         ms-Icon
                         ms-Check-check
                         {
@@ -6689,11 +6266,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    style={
-                      Object {
-                        "fontFamily": "\\"FabricMDL2Icons\\"",
-                      }
-                    }
+                    style="font-family: \\"FabricMDL2Icons\\";"
                   >
                     
                   </i>
@@ -6704,7 +6277,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           <div
             aria-label="column_0"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -6769,21 +6342,16 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_0"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -6795,7 +6363,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -6837,12 +6405,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_0"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -6864,7 +6429,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           <div
             aria-label="column_1"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -6929,21 +6494,16 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_1"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -6955,7 +6515,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -6997,12 +6557,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_1"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -7024,7 +6581,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           <div
             aria-label="column_2"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -7089,21 +6646,16 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_2"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -7115,7 +6667,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -7157,12 +6709,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_2"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -7184,7 +6733,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           <div
             aria-label="column_3"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -7249,21 +6798,16 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_3"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -7275,7 +6819,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -7317,12 +6861,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_3"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -7344,7 +6885,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           <div
             aria-label="column_4"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -7409,21 +6950,16 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="column_key_4"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -7435,7 +6971,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -7477,12 +7013,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       z-index: 1;
                     }
                 id="header1-column_key_4"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -7504,24 +7037,15 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 &:focus {
                   outline: none;
@@ -7533,52 +7057,47 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 }
             data-focuszone-id="FocusZone3"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={2}
+                    data-list-index="2"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={3}
+                    data-list-index="3"
                     role="presentation"
                   />
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={4}
+                    data-list-index="4"
                     role="presentation"
                   />
                 </div>
@@ -7594,16 +7113,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
 
 exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
 <div
-  className="ms-Viewport"
-  style={
-    Object {
-      "minHeight": 1,
-      "minWidth": 1,
-    }
-  }
+  class="ms-Viewport"
+  style="min-width: 1px; min-height: 1px;"
 >
   <div
-    className=
+    class=
         ms-DetailsList
         is-horizontalConstrained
         {
@@ -7626,17 +7140,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
     data-is-scrollable="false"
   >
     <div
-      aria-colcount={4}
-      aria-rowcount={8}
+      aria-colcount="4"
+      aria-rowcount="8"
       role="grid"
     >
       <div
-        className="ms-DetailsList-headerWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-headerWrapper"
         role="presentation"
       >
         <div
-          className=
+          class=
               ms-FocusZone
               ms-DetailsHeader
               &:focus {
@@ -7672,15 +7185,11 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
           data-tabster="{\\"uncontrolled\\": {}}"
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onMouseDownCapture={[Function]}
-          onMouseMove={[Function]}
           role="row"
         >
           <div
-            aria-expanded={true}
-            className=
+            aria-expanded="true"
+            class=
                 ms-DetailsHeader-cell
                 {
                   align-items: center;
@@ -7739,13 +7248,13 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 &:active {
                   background-color: #edebe9;
                 }
-            data-is-focusable={true}
-            onClick={[Function]}
+            data-is-focusable="true"
             role="columnheader"
+            tabindex="0"
           >
             <i
-              aria-hidden={true}
-              className=
+              aria-hidden="true"
+              class=
                   ms-Icon
                   ms-DetailsHeader-collapseButton
                   {
@@ -7766,16 +7275,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     transition: transform .1s linear;
                   }
               data-icon-name="ChevronRightMed"
-              style={
-                Object {
-                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
-                }
-              }
+              style="font-family: \\"FabricMDL2Icons-3\\";"
             >
               
             </i>
             <span
-              className=
+              class=
 
                   {
                     border: 0px;
@@ -7798,7 +7303,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           <div
             aria-labelledby="header1-key-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -7863,21 +7368,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="key"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -7889,7 +7389,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -7931,12 +7431,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-key"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -7953,8 +7450,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -8001,17 +7498,15 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   margin-right: -8px;
                   margin-top: 0;
                 }
-            data-is-focusable={false}
-            data-sizer-index={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="0"
             role="button"
+            tabindex="-1"
           />
           <div
             aria-labelledby="header1-name-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -8076,21 +7571,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="name"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -8102,7 +7592,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -8144,12 +7634,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-name"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -8166,8 +7653,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -8214,17 +7701,15 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   margin-right: -8px;
                   margin-top: 0;
                 }
-            data-is-focusable={false}
-            data-sizer-index={1}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="1"
             role="button"
+            tabindex="-1"
           />
           <div
             aria-labelledby="header1-value-name"
             aria-sort="none"
-            className=
+            class=
                 ms-DetailsHeader-cell
                 is-actionable
                 {
@@ -8289,21 +7774,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   display: block;
                 }
             data-automationid="ColumnsHeaderColumn"
-            data-is-draggable={false}
+            data-is-draggable="false"
             data-is-focusable="true"
             data-item-key="value"
-            draggable={false}
-            onBlur={[Function]}
-            onFocus={[Function]}
+            draggable="false"
             role="columnheader"
-            style={
-              Object {
-                "width": 120,
-              }
-            }
+            style="width: 120px;"
+            tabindex="-1"
           >
             <span
-              className=
+              class=
 
                   {
                     bottom: 0px;
@@ -8315,7 +7795,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   }
             >
               <span
-                className=
+                class=
                     ms-DetailsHeader-cellTitle
                     {
                       align-items: stretch;
@@ -8357,12 +7837,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       z-index: 1;
                     }
                 id="header1-value"
-                onClick={[Function]}
-                onContextMenu={[Function]}
-                onKeyDown={[Function]}
               >
                 <span
-                  className=
+                  class=
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
@@ -8379,8 +7856,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             </span>
           </div>
           <div
-            aria-hidden={true}
-            className=
+            aria-hidden="true"
+            class=
                 ms-DetailsHeader-cellSizer
                 {
                   background: transparent;
@@ -8427,34 +7904,23 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   margin-right: 0px;
                   margin-top: 0px;
                 }
-            data-is-focusable={false}
-            data-sizer-index={2}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
+            data-is-focusable="false"
+            data-sizer-index="2"
             role="button"
+            tabindex="-1"
           />
         </div>
       </div>
       <div
-        className="ms-DetailsList-contentWrapper"
-        onKeyDown={[Function]}
+        class="ms-DetailsList-contentWrapper"
         role="presentation"
       >
         <div
-          className="ms-SelectionZone"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onDoubleClick={[Function]}
-          onFocusCapture={[Function]}
-          onKeyDown={[Function]}
-          onKeyDownCapture={[Function]}
-          onMouseDown={[Function]}
-          onMouseDownCapture={[Function]}
+          class="ms-SelectionZone"
           role="presentation"
         >
           <div
-            className=
+            class=
                 ms-FocusZone
                 ms-GroupedList
                 &:focus {
@@ -8480,33 +7946,28 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-focuszone-id="FocusZone3"
             data-is-scrollable="false"
             data-tabster="{\\"uncontrolled\\": {}}"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDownCapture={[Function]}
             role="presentation"
           >
             <div
-              className="ms-List"
+              class="ms-List"
               role="presentation"
             >
               <div
-                className="ms-List-surface"
+                class="ms-List-surface"
                 role="presentation"
               >
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={0}
+                    data-list-index="0"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -8514,10 +7975,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       role="presentation"
                     >
                       <div
-                        aria-expanded={true}
+                        aria-expanded="true"
                         aria-labelledby="GroupHeader5"
-                        aria-rowindex={2}
-                        className=
+                        aria-rowindex="2"
+                        class=
                             ms-GroupHeader
                             {
                               -moz-osx-font-smoothing: grayscale;
@@ -8578,15 +8039,13 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                               opacity: 0;
                             }
-                        data-is-focusable={true}
-                        data-selection-index={0}
-                        data-selection-span={2}
-                        onKeyUp={[Function]}
+                        data-is-focusable="true"
+                        data-selection-index="0"
+                        data-selection-span="2"
                         role="row"
-                        style={Object {}}
                       >
                         <div
-                          className=
+                          class=
 
                               {
                                 align-items: center;
@@ -8596,7 +8055,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                           role="presentation"
                         >
                           <div
-                            className=
+                            class=
                                 ms-GroupHeader-dropIcon
                                 {
                                   color: #605e5c;
@@ -8614,8 +8073,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             role="presentation"
                           >
                             <i
-                              aria-hidden={true}
-                              className=
+                              aria-hidden="true"
+                              class=
 
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -8636,9 +8095,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             role="gridcell"
                           >
                             <button
-                              aria-expanded={true}
+                              aria-expanded="true"
                               aria-label="expand collapse group"
-                              className=
+                              class=
                                   ms-GroupHeader-expand
                                   {
                                     align-items: center;
@@ -8691,14 +8150,13 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   &:active {
                                     background-color: #e1dfdd;
                                   }
-                              data-is-focusable={false}
-                              data-selection-disabled={true}
-                              onClick={[Function]}
+                              data-is-focusable="false"
+                              data-selection-disabled="true"
                               type="button"
                             >
                               <i
-                                aria-hidden={true}
-                                className=
+                                aria-hidden="true"
+                                class=
 
                                     {
                                       -moz-osx-font-smoothing: grayscale;
@@ -8720,8 +8178,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             </button>
                           </div>
                           <div
-                            aria-colspan={3}
-                            className=
+                            aria-colspan="3"
+                            class=
                                 ms-GroupHeader-title
                                 {
                                   cursor: pointer;
@@ -8733,16 +8191,15 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
-                            data-selection-invoke={true}
+                            data-selection-invoke="true"
                             id="GroupHeader5"
-                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
                               Group 0
                             </span>
                             <span
-                              className=
+                              class=
 
                                   {
                                     padding-bottom: 0px;
@@ -8760,29 +8217,28 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       </div>
                       <div
                         aria-label="Group 0"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection4"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={0}
+                              data-list-index="0"
                               role="presentation"
                             >
                               <div
-                                aria-rowindex={3}
-                                aria-selected={false}
-                                className=
+                                aria-rowindex="3"
+                                aria-selected="false"
+                                class=
                                     ms-FocusZone
                                     ms-DetailsRow
                                     is-contentUnselectable
@@ -8871,30 +8327,22 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone9"
-                                data-is-focusable={true}
-                                data-item-index={0}
-                                data-selection-index={0}
-                                data-selection-touch-invoke={true}
+                                data-is-focusable="true"
+                                data-item-index="0"
+                                data-selection-index="0"
+                                data-selection-touch-invoke="true"
                                 data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-0"
-                                onFocus={[Function]}
-                                onKeyDown={[Function]}
-                                onMouseDownCapture={[Function]}
                                 role="row"
-                                tabIndex={0}
+                                tabindex="0"
                               >
                                 <span
-                                  className="ms-GroupSpacer"
+                                  class="ms-GroupSpacer"
                                   role="gridcell"
-                                  style={
-                                    Object {
-                                      "display": "inline-block",
-                                      "width": 36,
-                                    }
-                                  }
+                                  style="display: inline-block; width: 36px;"
                                 />
                                 <div
-                                  className=
+                                  class=
                                       ms-DetailsRow-fields
                                       {
                                         align-items: stretch;
@@ -8904,7 +8352,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -8961,16 +8409,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="key"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     0
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -9027,16 +8471,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="name"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     Item 0
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -9093,11 +8533,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="value"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     0
                                   </div>
@@ -9105,15 +8541,15 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={1}
+                              data-list-index="1"
                               role="presentation"
                             >
                               <div
-                                aria-rowindex={4}
-                                aria-selected={false}
-                                className=
+                                aria-rowindex="4"
+                                aria-selected="false"
+                                class=
                                     ms-FocusZone
                                     ms-DetailsRow
                                     is-contentUnselectable
@@ -9202,29 +8638,21 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone11"
-                                data-is-focusable={true}
-                                data-item-index={1}
-                                data-selection-index={1}
-                                data-selection-touch-invoke={true}
+                                data-is-focusable="true"
+                                data-item-index="1"
+                                data-selection-index="1"
+                                data-selection-touch-invoke="true"
                                 data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-1"
-                                onFocus={[Function]}
-                                onKeyDown={[Function]}
-                                onMouseDownCapture={[Function]}
                                 role="row"
                               >
                                 <span
-                                  className="ms-GroupSpacer"
+                                  class="ms-GroupSpacer"
                                   role="gridcell"
-                                  style={
-                                    Object {
-                                      "display": "inline-block",
-                                      "width": 36,
-                                    }
-                                  }
+                                  style="display: inline-block; width: 36px;"
                                 />
                                 <div
-                                  className=
+                                  class=
                                       ms-DetailsRow-fields
                                       {
                                         align-items: stretch;
@@ -9234,7 +8662,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -9291,16 +8719,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="key"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     1
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -9357,16 +8781,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="name"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     Item 1
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -9423,11 +8843,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="value"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     1
                                   </div>
@@ -9441,18 +8857,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   </div>
                 </div>
                 <div
-                  className="ms-List-page"
+                  class="ms-List-page"
                   role="presentation"
-                  style={Object {}}
                 >
                   <div
-                    className="ms-List-cell"
+                    class="ms-List-cell"
                     data-automationid="ListCell"
-                    data-list-index={1}
+                    data-list-index="1"
                     role="presentation"
                   >
                     <div
-                      className=
+                      class=
                           ms-GroupedList-group
                           {
                             transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -9460,10 +8875,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       role="presentation"
                     >
                       <div
-                        aria-expanded={true}
+                        aria-expanded="true"
                         aria-labelledby="GroupHeader7"
-                        aria-rowindex={5}
-                        className=
+                        aria-rowindex="5"
+                        class=
                             ms-GroupHeader
                             {
                               -moz-osx-font-smoothing: grayscale;
@@ -9524,15 +8939,13 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                               opacity: 0;
                             }
-                        data-is-focusable={true}
-                        data-selection-index={2}
-                        data-selection-span={3}
-                        onKeyUp={[Function]}
+                        data-is-focusable="true"
+                        data-selection-index="2"
+                        data-selection-span="3"
                         role="row"
-                        style={Object {}}
                       >
                         <div
-                          className=
+                          class=
 
                               {
                                 align-items: center;
@@ -9542,7 +8955,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                           role="presentation"
                         >
                           <div
-                            className=
+                            class=
                                 ms-GroupHeader-dropIcon
                                 {
                                   color: #605e5c;
@@ -9560,8 +8973,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             role="presentation"
                           >
                             <i
-                              aria-hidden={true}
-                              className=
+                              aria-hidden="true"
+                              class=
 
                                   {
                                     -moz-osx-font-smoothing: grayscale;
@@ -9582,9 +8995,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             role="gridcell"
                           >
                             <button
-                              aria-expanded={true}
+                              aria-expanded="true"
                               aria-label="expand collapse group"
-                              className=
+                              class=
                                   ms-GroupHeader-expand
                                   {
                                     align-items: center;
@@ -9637,14 +9050,13 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   &:active {
                                     background-color: #e1dfdd;
                                   }
-                              data-is-focusable={false}
-                              data-selection-disabled={true}
-                              onClick={[Function]}
+                              data-is-focusable="false"
+                              data-selection-disabled="true"
                               type="button"
                             >
                               <i
-                                aria-hidden={true}
-                                className=
+                                aria-hidden="true"
+                                class=
 
                                     {
                                       -moz-osx-font-smoothing: grayscale;
@@ -9666,8 +9078,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             </button>
                           </div>
                           <div
-                            aria-colspan={3}
-                            className=
+                            aria-colspan="3"
+                            class=
                                 ms-GroupHeader-title
                                 {
                                   cursor: pointer;
@@ -9679,16 +9091,15 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
-                            data-selection-invoke={true}
+                            data-selection-invoke="true"
                             id="GroupHeader7"
-                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
                               Group 1
                             </span>
                             <span
-                              className=
+                              class=
 
                                   {
                                     padding-bottom: 0px;
@@ -9706,29 +9117,28 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       </div>
                       <div
                         aria-label="Group 1"
-                        className="ms-List"
+                        class="ms-List"
                         id="GroupedListSection6"
                         role="rowgroup"
                       >
                         <div
-                          className="ms-List-surface"
+                          class="ms-List-surface"
                           role="presentation"
                         >
                           <div
-                            className="ms-List-page"
+                            class="ms-List-page"
                             role="presentation"
-                            style={Object {}}
                           >
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={2}
+                              data-list-index="2"
                               role="presentation"
                             >
                               <div
-                                aria-rowindex={6}
-                                aria-selected={false}
-                                className=
+                                aria-rowindex="6"
+                                aria-selected="false"
+                                class=
                                     ms-FocusZone
                                     ms-DetailsRow
                                     is-contentUnselectable
@@ -9817,29 +9227,21 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone13"
-                                data-is-focusable={true}
-                                data-item-index={2}
-                                data-selection-index={2}
-                                data-selection-touch-invoke={true}
+                                data-is-focusable="true"
+                                data-item-index="2"
+                                data-selection-index="2"
+                                data-selection-touch-invoke="true"
                                 data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-2"
-                                onFocus={[Function]}
-                                onKeyDown={[Function]}
-                                onMouseDownCapture={[Function]}
                                 role="row"
                               >
                                 <span
-                                  className="ms-GroupSpacer"
+                                  class="ms-GroupSpacer"
                                   role="gridcell"
-                                  style={
-                                    Object {
-                                      "display": "inline-block",
-                                      "width": 36,
-                                    }
-                                  }
+                                  style="display: inline-block; width: 36px;"
                                 />
                                 <div
-                                  className=
+                                  class=
                                       ms-DetailsRow-fields
                                       {
                                         align-items: stretch;
@@ -9849,7 +9251,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -9906,16 +9308,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="key"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     2
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -9972,16 +9370,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="name"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     Item 2
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -10038,11 +9432,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="value"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     2
                                   </div>
@@ -10050,15 +9440,15 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={3}
+                              data-list-index="3"
                               role="presentation"
                             >
                               <div
-                                aria-rowindex={7}
-                                aria-selected={false}
-                                className=
+                                aria-rowindex="7"
+                                aria-selected="false"
+                                class=
                                     ms-FocusZone
                                     ms-DetailsRow
                                     is-contentUnselectable
@@ -10147,29 +9537,21 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone15"
-                                data-is-focusable={true}
-                                data-item-index={3}
-                                data-selection-index={3}
-                                data-selection-touch-invoke={true}
+                                data-is-focusable="true"
+                                data-item-index="3"
+                                data-selection-index="3"
+                                data-selection-touch-invoke="true"
                                 data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-3"
-                                onFocus={[Function]}
-                                onKeyDown={[Function]}
-                                onMouseDownCapture={[Function]}
                                 role="row"
                               >
                                 <span
-                                  className="ms-GroupSpacer"
+                                  class="ms-GroupSpacer"
                                   role="gridcell"
-                                  style={
-                                    Object {
-                                      "display": "inline-block",
-                                      "width": 36,
-                                    }
-                                  }
+                                  style="display: inline-block; width: 36px;"
                                 />
                                 <div
-                                  className=
+                                  class=
                                       ms-DetailsRow-fields
                                       {
                                         align-items: stretch;
@@ -10179,7 +9561,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -10236,16 +9618,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="key"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     3
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -10302,16 +9680,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="name"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     Item 3
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -10368,11 +9742,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="value"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     3
                                   </div>
@@ -10380,15 +9750,15 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               </div>
                             </div>
                             <div
-                              className="ms-List-cell"
+                              class="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={4}
+                              data-list-index="4"
                               role="presentation"
                             >
                               <div
-                                aria-rowindex={8}
-                                aria-selected={false}
-                                className=
+                                aria-rowindex="8"
+                                aria-selected="false"
+                                class=
                                     ms-FocusZone
                                     ms-DetailsRow
                                     is-contentUnselectable
@@ -10477,29 +9847,21 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     }
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone17"
-                                data-is-focusable={true}
-                                data-item-index={4}
-                                data-selection-index={4}
-                                data-selection-touch-invoke={true}
+                                data-is-focusable="true"
+                                data-item-index="4"
+                                data-selection-index="4"
+                                data-selection-touch-invoke="true"
                                 data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-4"
-                                onFocus={[Function]}
-                                onKeyDown={[Function]}
-                                onMouseDownCapture={[Function]}
                                 role="row"
                               >
                                 <span
-                                  className="ms-GroupSpacer"
+                                  class="ms-GroupSpacer"
                                   role="gridcell"
-                                  style={
-                                    Object {
-                                      "display": "inline-block",
-                                      "width": 36,
-                                    }
-                                  }
+                                  style="display: inline-block; width: 36px;"
                                 />
                                 <div
-                                  className=
+                                  class=
                                       ms-DetailsRow-fields
                                       {
                                         align-items: stretch;
@@ -10509,7 +9871,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -10566,16 +9928,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="key"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     4
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -10632,16 +9990,12 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="name"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     Item 4
                                   </div>
                                   <div
-                                    className=
+                                    class=
                                         ms-DetailsRow-cell
                                         {
                                           box-sizing: border-box;
@@ -10698,11 +10052,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     data-automation-key="value"
                                     data-automationid="DetailsRowCell"
                                     role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
+                                    style="width: 120px;"
                                   >
                                     4
                                   </div>

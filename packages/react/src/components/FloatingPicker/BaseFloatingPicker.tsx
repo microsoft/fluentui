@@ -27,7 +27,7 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
 
   protected root = React.createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<T>;
-  protected suggestionsControl: React.RefObject<SuggestionsControl<T>> = React.createRef();
+  protected suggestionsControl: React.RefObject<SuggestionsControl<T> | null> = React.createRef();
   protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> =
     SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
   protected currentPromise: PromiseLike<T[]>;

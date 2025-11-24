@@ -1,13 +1,23 @@
-// NOTE (React 17,18):
-// - exposes JSX namespace in React <19
-// - this bare import wont enhance global scope with JSX namespace as it doesn't exists in React >=19.
-//   - In React 19 it causes no harm so can live as is
-import 'react/jsx-runtime';
+import type * as React from 'react';
 
-// NOTE (React 19):
-// - exposes JSX namespace in React >=19
-// - JSX export doesn't exists in React <=17. To make our runtime compatible across various React major versions we need to expose JSX namespace to type checker
-//   - In React 17 it causes tsc to fail, thus we need to turn checker off
+/**
+ * Cross React Major Version compatible Intrinsic Element Keys
+ */
+type JSXIntrinsicElementKeys = Exclude<React.ElementType, React.ComponentType>
+/**
+ * Cross React Major Version compatible IntrinsicElement Dictionary
+ */
+type JSXIntrinsicElements = { [K in JSXIntrinsicElementKeys]: React.ComponentProps<K> };
 
-// @ts-ignore
-export type { JSX } from 'react/jsx-runtime'
+export namespace JSX {
+  type ElementType = string | React.JSXElementConstructor<any>;
+  interface Element extends React.ReactElement<any, any> {}
+  interface ElementClass extends React.Component<any> {
+    render(): React.ReactNode;
+  }
+  interface ElementAttributesProperty { props : {} }
+  interface ElementChildrenAttribute  { children: {} }
+  interface IntrinsicAttributes extends React.Attributes {}
+  interface IntrinsicClassAttributes<T> extends React.ClassAttributes<T> {}
+  interface IntrinsicElements extends JSXIntrinsicElements {}
+}

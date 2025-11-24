@@ -101,7 +101,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     const { overflowStyles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSXElement[] = [];
-    props.legends.map((legend, index) => {
+    dataToRender.map((legend, index) => {
       const hoverCardElement = _renderButton(legend, index);
       overflowHoverCardLegends.push(hoverCardElement);
     });
@@ -119,7 +119,9 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-multiselectable': canSelectMultipleLegends,
           })}
           className={classes.root}
-          ref={el => (_rootElem.current = el)}
+          ref={el => {
+            _rootElem.current = el;
+          }}
         >
           <Overflow>
             <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>

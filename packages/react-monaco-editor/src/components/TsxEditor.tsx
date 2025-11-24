@@ -23,7 +23,7 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
 
   // Hooks must be called unconditionally, so we have to create a backup ref here even if we
   // immediately throw it away to use the one passed in.
-  const backupModelRef = React.useRef<IMonacoTextModel>();
+  const backupModelRef = React.useRef<IMonacoTextModel | undefined>(undefined);
   const modelRef = editorProps.modelRef || backupModelRef;
 
   // Load the globals before loading the editor (otherwise there will be an error executing the
@@ -38,7 +38,7 @@ export const TsxEditor: React.FunctionComponent<ITsxEditorProps> = (props: ITsxE
 
   // Store the latest onChange in a ref to ensure that we get the latest values
   // without forcing re-rendering
-  const onChangeRef = React.useRef<IEditorProps['onChange']>();
+  const onChangeRef = React.useRef<IEditorProps['onChange'] | undefined>(undefined);
   onChangeRef.current = (text: string) => {
     if (editorProps.onChange) {
       // If the consumer provided an additional onChange, call that too

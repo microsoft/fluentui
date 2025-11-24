@@ -34,7 +34,7 @@ describe('AlphaSlider', () => {
         >
           <input
             class="fui-ColorSlider__input fui-AlphaSlider__input"
-            id="slider-r8"
+            id="slider-_r_8_"
             type="range"
             value="100"
           />

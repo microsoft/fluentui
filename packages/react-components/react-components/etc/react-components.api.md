@@ -826,6 +826,7 @@ import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import { presenceBlockedRegular } from '@fluentui/react-badge';
 import { presenceBusyFilled } from '@fluentui/react-badge';
+import { PresenceComponent } from '@fluentui/react-motion';
 import { PresenceComponentProps } from '@fluentui/react-motion';
 import { presenceDndFilled } from '@fluentui/react-badge';
 import { presenceDndRegular } from '@fluentui/react-badge';
@@ -3667,6 +3668,8 @@ export { PresenceBadgeStatus }
 export { presenceBlockedRegular }
 
 export { presenceBusyFilled }
+
+export { PresenceComponent }
 
 export { PresenceComponentProps }
 

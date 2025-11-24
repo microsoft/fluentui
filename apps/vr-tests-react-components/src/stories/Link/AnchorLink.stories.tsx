@@ -2,14 +2,15 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-import { InvertedBackground, steps } from './utils';
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
+import { InvertedBackground, BrandBackground, steps } from './utils';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities';
+import type { StoryParameters } from 'storywright';
 
 const AnchorLink = (props: LinkProps & { as?: 'a' }) => <Link as="a" {...props} href="https://www.bing.com" />;
 
 export default {
   title: 'Link Converged - Rendered as anchor',
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof Link>;
 
 export const StandAlone = () => <AnchorLink>Stand-alone link</AnchorLink>;
@@ -68,6 +69,15 @@ export const InvertedDisabled = () => (
   </InvertedBackground>
 );
 InvertedDisabled.storyName = 'Inverted disabled';
+
+export const Brand = () => (
+  <BrandBackground>
+    <AnchorLink>Link on brand background</AnchorLink>
+  </BrandBackground>
+);
+
+export const BrandDarkMode = getStoryVariant(Brand, DARK_MODE);
+export const BrandHighContrast = getStoryVariant(Brand, HIGH_CONTRAST);
 
 export const InvertedDisabledHighContrast = getStoryVariant(InvertedDisabled, HIGH_CONTRAST);
 

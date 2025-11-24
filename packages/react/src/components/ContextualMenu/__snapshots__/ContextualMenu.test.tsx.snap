@@ -1,160 +1,178 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present in DOM when hidden (snapshot) 1`] = `
-<button
-  aria-controls={null}
-  aria-expanded={false}
-  aria-haspopup={true}
-  className=
-      ms-Button
-      ms-Button--default
-      ms-Button--hasMenu
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        align-items: center;
-        background-color: #ffffff;
-        border-radius: 2px;
-        border: 1px solid #8a8886;
-        box-sizing: border-box;
-        color: #323130;
-        cursor: pointer;
-        display: inline-flex;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        justify-content: center;
-        min-height: 32px;
-        min-width: 80px;
-        outline: transparent;
-        padding-bottom: 0;
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-top: 0;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        user-select: none;
-      }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid transparent;
-        bottom: 2px;
-        content: "";
-        left: 2px;
-        outline: 1px solid #605e5c;
-        position: absolute;
-        right: 2px;
-        top: 2px;
-        z-index: 1;
-      }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-        bottom: -2px;
-        left: -2px;
-        outline-color: ButtonText;
-        right: -2px;
-        top: -2px;
-      }
-      :host(.ms-Fabric--isFocusVisible) &:focus:after {
-        border: 1px solid transparent;
-        bottom: 2px;
-        content: "";
-        left: 2px;
-        outline: 1px solid #605e5c;
-        position: absolute;
-        right: 2px;
-        top: 2px;
-        z-index: 1;
-      }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-        bottom: -2px;
-        left: -2px;
-        outline-color: ButtonText;
-        right: -2px;
-        top: -2px;
-      }
-      &:active > span {
-        left: 0px;
-        position: relative;
-        top: 0px;
-      }
-      &:hover {
-        background-color: #f3f2f1;
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
-        border-color: Highlight;
-        color: Highlight;
-      }
-      &:active {
-        background-color: #edebe9;
-        color: #201f1e;
-      }
-  data-is-focusable={true}
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  onKeyPress={[Function]}
-  onKeyUp={[Function]}
-  onMouseDown={[Function]}
-  onMouseUp={[Function]}
-  type="button"
->
-  <span
-    className=
-        ms-Button-flexContainer
-        {
-          align-items: center;
-          display: flex;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-        }
-    data-automationid="splitbuttonprimary"
-  >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Icon
-          ms-Button-menuIcon
-          {
-            display: inline-block;
-            text-decoration: inherit;
-          }
+<body>
+  <div>
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      class=
+          ms-Button
+          ms-Button--default
+          ms-Button--hasMenu
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            font-family: "FabricMDL2Icons";
-            font-style: normal;
-            font-weight: normal;
-            speak: none;
-          }
-          {
-            flex-shrink: 0;
-            font-size: 12px;
-            height: 16px;
-            line-height: 16px;
-            margin-bottom: 0;
-            margin-left: 4px;
-            margin-right: 4px;
-            margin-top: 0;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
+            box-sizing: border-box;
+            color: #323130;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            justify-content: center;
+            min-height: 32px;
+            min-width: 80px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0;
+            position: relative;
             text-align: center;
+            text-decoration: none;
+            user-select: none;
           }
-      data-icon-name="ChevronDown"
-      style={
-        Object {
-          "fontFamily": "\\"FabricMDL2Icons\\"",
-        }
-      }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid transparent;
+            bottom: 2px;
+            content: "";
+            left: 2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > span {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          &:hover {
+            background-color: #f3f2f1;
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+            border-color: Highlight;
+            color: Highlight;
+          }
+          &:active {
+            background-color: #edebe9;
+            color: #201f1e;
+          }
+      data-is-focusable="true"
+      type="button"
     >
-      
-    </i>
-    <span
-      className="ms-layer"
+      <span
+        class=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+        data-automationid="splitbuttonprimary"
+      >
+        <i
+          aria-hidden="true"
+          class=
+              ms-Icon
+              ms-Button-menuIcon
+              {
+                display: inline-block;
+                text-decoration: inherit;
+              }
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 12px;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                text-align: center;
+              }
+          data-icon-name="ChevronDown"
+          style="font-family: \\"FabricMDL2Icons\\";"
+        >
+          
+        </i>
+        <span
+          class="ms-layer"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    id="fluent-default-layer-host"
+    style="position: fixed; z-index: 1000000;"
+  >
+    <div
+      class=
+          ms-Layer
+          ms-Layer--fixed
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            bottom: 0px;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            left: 0px;
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            visibility: hidden;
+            z-index: 1000000;
+          }
+      data-portal-element="true"
     >
       <div
-        className=
+        class=
             ms-Fabric
             ms-Layer-content
             {
@@ -175,51 +193,17 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
             & textarea {
               font-family: inherit;
             }
-        onBlur={[Function]}
-        onChange={[Function]}
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onDoubleClick={[Function]}
-        onDrag={[Function]}
-        onDragEnd={[Function]}
-        onDragEnter={[Function]}
-        onDragExit={[Function]}
-        onDragLeave={[Function]}
-        onDragOver={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseMove={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        onMouseUp={[Function]}
-        onSubmit={[Function]}
-        onTouchCancel={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
       >
         <div
-          className=
+          class=
               ms-Callout-container
               {
                 position: relative;
               }
-          style={
-            Object {
-              "visibility": "hidden",
-            }
-          }
+          style="visibility: hidden;"
         >
           <div
-            className=
+            class=
                 ms-Callout
                 ms-ContextualMenu-Callout
                 {
@@ -243,19 +227,40 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                 &::-moz-focus-inner {
                   border: 0px;
                 }
-            hidden={true}
-            onScroll={[Function]}
-            style={
-              Object {
-                "filter": "opacity(0)",
-                "opacity": 0,
-                "pointerEvents": "none",
-              }
-            }
-            tabIndex={-1}
+            hidden=""
+            style="opacity: 0; filter: opacity(0); pointer-events: none;"
+            tabindex="-1"
           >
             <div
-              className=
+              class=
+                  ms-Callout-beak
+                  {
+                    background-color: #ffffff;
+                    border: inherit;
+                    box-shadow: inherit;
+                    box-sizing: border-box;
+                    height: 16px;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    width: 16px;
+                  }
+              style="left: 0px; top: 0px;"
+            />
+            <div
+              class=
+                  ms-Callout-beakCurtain
+                  {
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    bottom: 0px;
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
+            />
+            <div
+              class=
                   ms-Callout-main
                   {
                     background-color: #ffffff;
@@ -265,33 +270,20 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                     position: relative;
                     width: 100%;
                   }
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onMouseUp={[Function]}
-              onScroll={[Function]}
-              style={
-                Object {
-                  "maxHeight": "100%",
-                  "outline": "none",
-                  "overflowY": undefined,
-                }
-              }
+              style="outline: none; max-height: 100%;"
             >
               <div
-                className=
+                class=
                     ms-ContextualMenu-container
                     &:focus {
                       outline: 0px;
                     }
                 id="id__0-menu"
-                onFocusCapture={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
                 role="menu"
-                tabIndex={-1}
+                tabindex="-1"
               >
                 <div
-                  className=
+                  class=
                       ms-FocusZone
                       ms-ContextualMenu
                       is-open
@@ -310,12 +302,9 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                       }
                   data-focuszone-id="FocusZone3"
                   data-tabster="{\\"uncontrolled\\": {}, \\"focusable\\": { \\"excludeFromMover\\": true }}"
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onMouseDownCapture={[Function]}
                 >
                   <ul
-                    className=
+                    class=
                         ms-ContextualMenu-list
                         is-open
                         {
@@ -329,12 +318,10 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                           padding-right: 0;
                           padding-top: 0;
                         }
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
                     role="presentation"
                   >
                     <li
-                      className=
+                      class=
                           ms-ContextualMenu-item
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -349,12 +336,12 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                       role="presentation"
                     >
                       <button
-                        aria-disabled={false}
-                        aria-expanded={false}
-                        aria-haspopup={true}
-                        aria-posinset={1}
-                        aria-setsize={1}
-                        className=
+                        aria-disabled="false"
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-posinset="1"
+                        aria-setsize="1"
+                        class=
                             ms-ContextualMenu-link
                             {
                               -moz-osx-font-smoothing: grayscale;
@@ -440,16 +427,11 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                             :host(.ms-Fabric--isFocusVisible) &:hover {
                               background: inherit;
                             }
-                        onClick={[Function]}
-                        onKeyDown={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseMove={[Function]}
                         role="menuitem"
+                        tabindex="0"
                       >
                         <div
-                          className=
+                          class=
                               ms-ContextualMenu-linkContent
                               {
                                 align-items: center;
@@ -460,7 +442,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                               }
                         >
                           <span
-                            className=
+                            class=
                                 ms-ContextualMenu-itemText
                                 {
                                   display: inline-block;
@@ -478,8 +460,8 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                             Test1
                           </span>
                           <i
-                            aria-hidden={true}
-                            className=
+                            aria-hidden="true"
+                            class=
                                 ms-ContextualMenu-submenuIcon
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -521,7 +503,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
           </div>
         </div>
       </div>
-    </span>
-  </span>
-</button>
+    </div>
+  </div>
+</body>
 `;

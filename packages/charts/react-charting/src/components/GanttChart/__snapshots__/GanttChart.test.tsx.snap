@@ -28,7 +28,9 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -883,7 +885,9 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -930,13 +934,13 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
         >
           <path
             class="domain"
-            d="M59.5,6V0.5H580.5V6"
+            d="M40.5,6V0.5H580.5V6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(76.67582417582418,0)"
+            transform="translate(58.302197802197796,0)"
           >
             <line
               stroke="currentColor"
@@ -954,7 +958,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(254.15934065934067,0)"
+            transform="translate(242.25824175824175,0)"
           >
             <line
               stroke="currentColor"
@@ -972,7 +976,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(425.9175824175824,0)"
+            transform="translate(420.2802197802198,0)"
           >
             <line
               stroke="currentColor"
@@ -1018,7 +1022,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           font-size="10"
           id="yAxisGElementchart_5"
           text-anchor="end"
-          transform="translate(59, 0)"
+          transform="translate(40, 0)"
         >
           <path
             class="domain"
@@ -1172,8 +1176,8 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             role="img"
             rx="0"
             tabindex="0"
-            width="34.35164835164835"
-            x="76.17582417582418"
+            width="35.604395604395606"
+            x="57.802197802197796"
             y="18.705882352941174"
           />
           <rect
@@ -1185,8 +1189,8 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             role="img"
             rx="0"
             tabindex="-1"
-            width="74.42857142857144"
-            x="116.25274725274724"
+            width="77.14285714285715"
+            x="99.34065934065934"
             y="9.411764705882348"
           />
           <rect
@@ -1198,8 +1202,8 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             role="img"
             rx="0"
             tabindex="-1"
-            width="62.978021978022014"
-            x="196.4065934065934"
+            width="65.27472527472528"
+            x="182.41758241758242"
             y="0.117647058823529"
           />
           <rect
@@ -1211,8 +1215,8 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             role="img"
             rx="0"
             tabindex="-1"
-            width="34.35164835164835"
-            x="265.1098901098901"
+            width="35.60439560439562"
+            x="253.6263736263736"
             y="-9.176470588235297"
           />
           <rect
@@ -1224,8 +1228,8 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             role="img"
             rx="0"
             tabindex="-1"
-            width="74.42857142857144"
-            x="305.1868131868132"
+            width="77.14285714285717"
+            x="295.16483516483515"
             y="-18.470588235294123"
           />
           <rect
@@ -1237,8 +1241,8 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             role="img"
             rx="0"
             tabindex="-1"
-            width="51.527472527472526"
-            x="465.4945054945055"
+            width="53.4065934065934"
+            x="461.31868131868134"
             y="-27.764705882352946"
           />
           <rect
@@ -1250,8 +1254,8 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             role="img"
             rx="0"
             tabindex="-1"
-            width="74.4285714285715"
-            x="385.34065934065933"
+            width="77.14285714285717"
+            x="378.24175824175825"
             y="-37.05882352941177"
           />
           <rect
@@ -1263,8 +1267,8 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
             role="img"
             rx="0"
             tabindex="-1"
-            width="34.351648351648464"
-            x="522.7472527472527"
+            width="35.60439560439568"
+            x="520.6593406593406"
             y="-46.352941176470594"
           />
         </g>
@@ -1661,7 +1665,9 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2456,7 +2462,9 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             &:focus {
               outline: none;
             }
-
+            {
+              position: relative;
+            }
         data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -3239,7 +3247,9 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4024,7 +4034,9 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -5066,7 +5078,9 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -5886,7 +5900,9 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -6668,7 +6684,9 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -7610,7 +7628,9 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           &:focus {
             outline: none;
           }
-
+          {
+            position: relative;
+          }
       data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

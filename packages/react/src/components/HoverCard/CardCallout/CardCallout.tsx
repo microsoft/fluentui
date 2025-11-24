@@ -14,7 +14,7 @@ export interface ICardCalloutProps extends Omit<IBaseCardProps<{}, {}, {}>, 'con
   content?: JSXElement;
 }
 
-export const CardCallout = (props: ICardCalloutProps) => {
+export const CardCallout = (props: ICardCalloutProps): JSXElement | null => {
   const {
     gapSpace = 0,
     directionalHint = DirectionalHint.bottomLeftEdge,

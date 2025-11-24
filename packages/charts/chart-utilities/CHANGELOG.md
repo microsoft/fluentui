@@ -1,8 +1,35 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Fri, 10 Oct 2025 07:20:53 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 10:09:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.36](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.36)
+
+Tue, 11 Nov 2025 10:09:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.35..@fluentui/chart-utilities_v1.1.36)
+
+### Patches
+
+- feat(chart-utilities): Adding annotation only chart ([PR #35390](https://github.com/microsoft/fluentui/pull/35390) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.35)
+
+Thu, 23 Oct 2025 10:23:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.34..@fluentui/chart-utilities_v1.1.35)
+
+### Patches
+
+- feat: map deprecated plotly create_gantt() scatter traces to gantt chart ([PR #35334](https://github.com/microsoft/fluentui/pull/35334) by kumarkshitij@microsoft.com)
+
+## [1.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.34)
+
+Thu, 16 Oct 2025 07:21:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.33..@fluentui/chart-utilities_v1.1.34)
+
+### Patches
+
+- fix: resolve React 19 incompatible types ([PR #35303](https://github.com/microsoft/fluentui/pull/35303) by martinhochel@microsoft.com)
 
 ## [1.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.33)
 

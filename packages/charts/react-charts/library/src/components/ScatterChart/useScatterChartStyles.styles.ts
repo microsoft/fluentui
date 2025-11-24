@@ -25,6 +25,8 @@ export const scatterChartClassNames: SlotClassNames<ScatterChartStyles> = {
   svgTooltip: '',
   chart: '',
   axisAnnotation: '',
+  plotContainer: '',
+  annotationLayer: '',
 };
 
 /**

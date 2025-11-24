@@ -12,7 +12,7 @@ import { mergeClasses } from '@griffel/react';
  */
 export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const onResizeRef = React.useRef<ResponsiveContainerProps['onResize']>();
+  const onResizeRef = React.useRef<ResponsiveContainerProps['onResize'] | undefined>(undefined);
   const childClasses = useResponsiveChildStyles();
 
   const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});

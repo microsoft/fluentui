@@ -9,12 +9,13 @@ import {
 } from '@fluentui/react-experiments';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
+import type { StoryParameters } from 'storywright';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import { TestWrapperDecorator } from '../utilities';
 
 interface IDocumentItem {
-  name: JSX.Element;
-  activity: JSX.Element;
+  name: React.ReactElement;
+  activity: React.ReactElement;
 }
 
 interface IDocumentTileWithThumbnailProps {
@@ -22,7 +23,7 @@ interface IDocumentTileWithThumbnailProps {
   item: IDocumentItem;
 }
 
-const DocumentTileBox = (props: { children: React.ReactNode }): JSX.Element => {
+const DocumentTileBox = (props: { children: React.ReactNode }): React.ReactElement => {
   return (
     <div
       style={{
@@ -38,7 +39,7 @@ const DocumentTileBox = (props: { children: React.ReactNode }): JSX.Element => {
 
 const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbnailProps> = (
   props: IDocumentTileWithThumbnailProps,
-): JSX.Element => {
+): React.ReactElement => {
   function renderForeground(foregroundProps: { foregroundSize?: ISize }) {
     const { foregroundSize = { width: 0, height: 0 } } = foregroundProps;
 
@@ -81,11 +82,12 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
 export default {
   title: 'Tile',
 
-  decorators: [
-    story => <Fabric>{story()}</Fabric>,
-    TestWrapperDecorator,
-    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
-  ],
+  decorators: [story => <Fabric>{story()}</Fabric>, TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Tile>;
 
 export const DocumentTileWithFitLandscapeImage = () => (

@@ -7,6 +7,6 @@ export { MenuGridGroupHeader } from './MenuGridGroupHeader';
 export { renderMenuGridGroupHeader_unstable } from './renderMenuGridGroupHeader';
 export { useMenuGridGroupHeader_unstable } from './useMenuGridGroupHeader';
 export {
-  MenuGridGroupHeaderClassNames,
+  menuGridGroupHeaderClassNames,
   useMenuGridGroupHeaderStyles_unstable,
 } from './useMenuGridGroupHeaderStyles.styles';

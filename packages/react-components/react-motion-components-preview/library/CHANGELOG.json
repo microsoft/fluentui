@@ -2,6 +2,51 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Thu, 06 Nov 2025 17:24:17 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "ead2f2739c6ad522edc7a8b180026dc87e47fbd0",
+            "comment": "feat(motion): Add Stagger choreography component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Nov 2025 15:01:23 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "60123376d329582d3eb0e33298452027b6b11706",
+            "comment": "feat(motion): export standard motion atoms"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Oct 2025 16:22:05 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "54f4a26b54e74d96af223a54a3eb90cda29a2060",
+            "comment": "feat(motion): standardize from/to parameters"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Oct 2025 14:19:04 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.11.0",
       "version": "0.11.0",

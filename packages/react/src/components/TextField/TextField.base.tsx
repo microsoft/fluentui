@@ -139,7 +139,7 @@ export class TextFieldBase
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._async.dispose();
   }
 
@@ -302,7 +302,7 @@ export class TextFieldBase
   /**
    * Sets focus on the text field
    */
-  public focus() {
+  public focus(): void {
     if (this._textElement.current) {
       this._textElement.current.focus();
     }
@@ -311,7 +311,7 @@ export class TextFieldBase
   /**
    * Blurs the text field.
    */
-  public blur() {
+  public blur(): void {
     if (this._textElement.current) {
       this._textElement.current.blur();
     }
@@ -320,7 +320,7 @@ export class TextFieldBase
   /**
    * Selects the text field
    */
-  public select() {
+  public select(): void {
     if (this._textElement.current) {
       this._textElement.current.select();
     }

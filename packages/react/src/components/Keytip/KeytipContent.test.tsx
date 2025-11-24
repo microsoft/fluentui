@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { KeytipContent } from './KeytipContent';
 
 const sequence: string[] = ['a'];
@@ -7,26 +7,19 @@ const keyCont = 'A';
 
 describe('Keytip', () => {
   it('renders visible Keytip correctly', () => {
-    const componentContent = renderer.create(
-      <KeytipContent visible={true} content={keyCont} keySequences={sequence} />,
-    );
-    const tree = componentContent.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<KeytipContent visible={true} content={keyCont} keySequences={sequence} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders visible disabled Keytip correctly', () => {
-    const componentContent = renderer.create(
+    const { container } = render(
       <KeytipContent visible={true} disabled={true} content={keyCont} keySequences={sequence} />,
     );
-    const tree = componentContent.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders invisible Keytip correctly', () => {
-    const componentContent = renderer.create(
-      <KeytipContent visible={false} content={keyCont} keySequences={sequence} />,
-    );
-    const tree = componentContent.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<KeytipContent visible={false} content={keyCont} keySequences={sequence} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

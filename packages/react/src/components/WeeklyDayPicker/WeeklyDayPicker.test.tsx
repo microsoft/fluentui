@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { WeeklyDayPicker } from './WeeklyDayPicker';
 import { resetIds } from '@fluentui/utilities';
-import { safeCreate } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
 import { DayOfWeek } from '@fluentui/date-time-utilities';
 import { defaultWeeklyDayPickerStrings } from './defaults';
 import { isConformant } from '../../common/isConformant';
@@ -17,27 +17,22 @@ describe('WeeklyDayPicker', () => {
   });
 
   it('renders default WeeklyDayPicker correctly', () => {
-    safeCreate(
+    const { container } = render(
       <WeeklyDayPicker strings={defaultWeeklyDayPickerStrings} today={new Date('Jan 1 2019')} />,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders WeeklyDayPicker with FirstDayOfWeek=Wednesday correctly', () => {
-    safeCreate(
+    const { container } = render(
       <WeeklyDayPicker
         strings={defaultWeeklyDayPickerStrings}
         firstDayOfWeek={DayOfWeek.Friday}
         today={new Date('Jan 1 2019')}
       />,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
     );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({

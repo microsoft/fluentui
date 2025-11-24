@@ -7,6 +7,9 @@ interface FadeAtomParams extends BaseAtomParams {
 
   /** The starting opacity value. Defaults to 0. */
   fromOpacity?: number;
+
+  /** The ending opacity value. Defaults to 1. */
+  toOpacity?: number;
 }
 
 /**
@@ -16,6 +19,7 @@ interface FadeAtomParams extends BaseAtomParams {
  * @param easing - The easing curve for the motion. Defaults to `motionTokens.curveLinear`.
  * @param delay - The delay before the motion starts. Defaults to 0.
  * @param fromOpacity - The starting opacity value. Defaults to 0.
+ * @param toOpacity - The ending opacity value. Defaults to 1.
  * @returns A motion atom object with opacity keyframes and the supplied duration and easing.
  */
 export const fadeAtom = ({
@@ -24,8 +28,9 @@ export const fadeAtom = ({
   easing = motionTokens.curveLinear,
   delay = 0,
   fromOpacity = 0,
+  toOpacity = 1,
 }: FadeAtomParams): AtomMotion => {
-  const keyframes = [{ opacity: fromOpacity }, { opacity: 1 }];
+  const keyframes = [{ opacity: fromOpacity }, { opacity: toOpacity }];
   if (direction === 'exit') {
     keyframes.reverse();
   }

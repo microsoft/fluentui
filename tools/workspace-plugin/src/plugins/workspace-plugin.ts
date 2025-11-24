@@ -322,18 +322,27 @@ function buildLintTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(projectRoot, '.eslintrc.json')) && !existsSync(join(projectRoot, '.eslintrc.js'))) {
+  const hasFlatConfig = existsSync(join(projectRoot, 'eslint.config.js'));
+  const hasLegacyConfig =
+    existsSync(join(projectRoot, '.eslintrc.json')) || existsSync(join(projectRoot, '.eslintrc.js'));
+
+  if (!hasFlatConfig && !hasLegacyConfig) {
     return null;
   }
 
+  const command = hasFlatConfig
+    ? `${config.pmc.exec} eslint src`
+    : `${config.pmc.exec} cross-env ESLINT_USE_FLAT_CONFIG=false eslint src`;
+
   return {
+    executor: 'nx:run-commands',
     cache: true,
-    command: `${config.pmc.exec} eslint src`,
-    options: { cwd: projectRoot },
+    options: { cwd: projectRoot, command },
     inputs: [
       'default',
       '{projectRoot}/.eslintrc.json',
       '{projectRoot}/.eslintrc.js',
+      '{projectRoot}/eslint.config.js',
       '{workspaceRoot}/.eslintrc.json',
       '{workspaceRoot}/.eslintignore',
       '{workspaceRoot}/eslint.config.js',
@@ -452,12 +461,18 @@ function buildE2eTarget(
   }
 
   if (hasPlaywright) {
+    const [major, minor, _patch] = process.versions.node.split('.').map(n => parseInt(n, 10));
+    let env = {};
+    if (major > 22 || (major === 22 && minor >= 18)) {
+      env = { NODE_OPTIONS: '--no-experimental-strip-types' };
+    }
     return {
       command: `${config.pmc.exec} playwright test`,
-      options: { cwd: projectRoot },
+      options: { cwd: projectRoot, env },
       configurations: {
         local: {
           command: `${config.pmc.exec} playwright test --ui`,
+          options: { env },
         },
       },
       inputs: [

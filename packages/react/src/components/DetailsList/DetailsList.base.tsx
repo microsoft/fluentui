@@ -92,11 +92,17 @@ type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
   IDetailsListState & {
     selection: ISelection;
     dragDropHelper: DragDropHelper | undefined;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     rootRef: React.MutableRefObject<HTMLDivElement | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     listRef: React.MutableRefObject<List | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     groupedListRef: React.MutableRefObject<IGroupedList | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     focusZoneRef: React.MutableRefObject<IFocusZone | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     headerRef: React.MutableRefObject<IDetailsHeader | null>;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     selectionZoneRef: React.MutableRefObject<SelectionZone | null>;
     onGroupExpandStateChanged: (isSomeGroupExpanded: boolean) => void;
     onColumnIsSizingChanged: (column: IColumn, isSizing: boolean) => void;
@@ -889,7 +895,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     return 0;
   }
 
-  public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }) {
+  public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }): void {
     const NO_COLUMNS: IColumn[] = [];
 
     const { columns = NO_COLUMNS, selectionMode, checkboxVisibility, columnReorderOptions } = this.props;
@@ -939,7 +945,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     this._async.dispose();
   }
 
-  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
+  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void {
     this._notifyColumnsResized();
 
     const doc = getDocumentEx(this.context);
@@ -1526,7 +1532,7 @@ export function buildColumns(
   groupedColumnKey?: string,
   isMultiline?: boolean,
   columnActionsMode?: ColumnActionsMode,
-) {
+): IColumn[] {
   const columns: IColumn[] = [];
 
   if (items && items.length) {

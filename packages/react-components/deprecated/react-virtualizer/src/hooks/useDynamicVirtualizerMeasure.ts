@@ -43,6 +43,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   const { targetDocument } = useFluent();
   const container = React.useRef<HTMLElement | null>(null);
   const handleScrollResize = React.useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (scrollRef: React.MutableRefObject<HTMLElement | null>) => {
       if (!scrollRef?.current) {
         // Error? ignore?
@@ -137,6 +138,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
 
       _observer: ResizeObserver,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       scrollRef?: React.MutableRefObject<HTMLElement | null>,
     ) => {
       if (scrollRef) {

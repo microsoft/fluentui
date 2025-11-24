@@ -11,6 +11,7 @@ import {
   AxisScaleType,
   IAccessibilityProps,
   IChart,
+  IChartAnnotation,
   IDataPoint,
   IGanttChartDataPoint,
   IGroupedVerticalBarChartData,
@@ -26,6 +27,7 @@ import { IChartHoverCardProps } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
 import { ScaleBand, ScaleLinear } from 'd3-scale';
+import type { JSXElement } from '@fluentui/utilities';
 
 /**
  * Cartesian Chart style properties
@@ -194,9 +196,19 @@ export interface ICartesianChartStyles {
   chartWrapper?: IStyle;
 
   /**
+   * Styles for the element wrapping the svg and overlays for annotation
+   */
+  plotContainer?: IStyle;
+
+  /**
    * Styles for the svg tooltip
    */
   svgTooltip?: IStyle;
+
+  /**
+   * Styles applied to the annotation layer root element
+   */
+  annotationLayer?: IStyle;
 
   /**
    * Styles for the chart svg element
@@ -334,6 +346,11 @@ export interface ICartesianChartProps {
    * @default 10
    */
   xAxistickSize?: number;
+
+  /**
+   * Text annotations rendered on top of the chart area
+   */
+  annotations?: IChartAnnotation[];
 
   /**
    * defines the space between the tick line and the data label
@@ -551,6 +568,17 @@ export interface ICartesianChartProps {
    * Use this to control `tickStep`, `tick0`, etc.
    */
   yAxis?: AxisProps;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
 }
 
 export interface IYValueHover {
@@ -609,7 +637,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Legends of the chart.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  legendBars: JSX.Element | null;
+  legendBars: JSXElement | null;
 
   /**
    * Callout props
@@ -709,6 +737,11 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   svgFocusZoneProps?: IFocusZoneProps;
 
   /**
+   * Annotations to render on top of the chart area.
+   */
+  annotations?: IChartAnnotation[];
+
+  /**
    * The prop used to define the culture to localize the numbers and date
    */
   culture?: string;
@@ -798,7 +831,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | string[] | undefined,
-    shiftX: number,
   ) => IDomainNRange;
 
   /**
@@ -808,6 +840,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     yAxisParams: IYAxisParams,
     dataPoints: string[],
     isRtl: boolean,
+    axisData: IAxisData,
     barWidth: number | undefined,
     chartType?: ChartTypes,
   ) => ScaleBand<string>;
