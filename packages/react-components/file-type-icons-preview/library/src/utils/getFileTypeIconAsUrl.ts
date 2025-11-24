@@ -8,8 +8,7 @@ import type { IFileTypeIconOptions } from './getFileTypeIconProps';
 
 /**
  * Given the `fileTypeIconOptions`, this function returns the CDN-based URL for `FileTypeIcon`.
- * Similar to `getFileTypeIconProps`, this also accepts the same type of object
- * but rather than returning the `iconName`, this returns the raw URL.
+ * Similar to `getFileTypeIconProps`, but rather than returning the `iconName`, this returns the raw URL.
  * @param options
  * @param baseUrl - optionally provide a custom CDN base url to fetch icons from
  */
@@ -33,9 +32,8 @@ export function getFileTypeIconAsUrl(
 }
 
 /**
- * Given the `fileTypeIconOptions`, this function returns the DOM element for the `FileTypeIcon`
- * as an HTML string. Similar to `getFileTypeIconProps`, this also accepts the same type of object
- * but rather than returning the `iconName`, this returns the entire DOM element as a string.
+ * Given the `fileTypeIconOptions`, similar to `getFileTypeIconProps`, this function returns
+ * an <img> tag DOM element that renders the icon, as a string.
  * @param options
  * @param baseUrl - optionally provide a custom CDN base url to fetch icons from
  */
@@ -49,8 +47,6 @@ export function getFileTypeIconAsHTMLString(
     return undefined;
   }
 
-  const { size = DEFAULT_ICON_SIZE, imageFileType = 'svg' } = options;
-  //const suffix = getFileTypeIconSuffix(size, imageFileType);
-
+  const { size = DEFAULT_ICON_SIZE } = options;
   return `<img src="${url}" height="${size}" width="${size}" />`;
 }

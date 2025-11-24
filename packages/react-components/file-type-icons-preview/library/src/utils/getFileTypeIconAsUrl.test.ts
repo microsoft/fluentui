@@ -1,5 +1,76 @@
 import { getFileTypeIconAsUrl, getFileTypeIconAsHTMLString } from './getFileTypeIconAsUrl';
 import { DEFAULT_BASE_URL } from './initializeFileTypeIcons';
+import { getFileTypeIconNameFromExtensionOrType } from './getFileTypeIconProps';
+import { FileIconType } from './FileIconType';
+
+describe('getFileTypeIconNameFromExtensionOrType', () => {
+  describe('with FileIconType enum values', () => {
+    it('should map all FileIconType enum values to specific icon names', () => {
+      // Test all 22 enum values
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.docset)).toBe('docset');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.folder)).toBe('folder');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.genericFile)).toBe('genericfile');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.listItem)).toBe('listitem');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.sharedFolder)).toBe('sharedfolder');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.multiple)).toBe('multiple');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.stream)).toBe('video');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.news)).toBe('sponews');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.desktopFolder)).toBe('desktopfolder');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.documentsFolder)).toBe('documentsfolder');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.picturesFolder)).toBe('picturesfolder');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.linkedFolder)).toBe('linkedfolder');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.list)).toBe('splist');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.form)).toBe('form');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.sway)).toBe('sway');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.playlist)).toBe('playlist');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.loopworkspace)).toBe('loopworkspace');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.planner)).toBe('planner');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.todoItem)).toBe('todoitem');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.portfolio)).toBe('portfolio');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.album)).toBe('album');
+      expect(getFileTypeIconNameFromExtensionOrType(undefined, FileIconType.listForm)).toBe('listform');
+    });
+
+    it('should not return genericfile for any valid FileIconType enum', () => {
+      // Verify no enum value falls back to the default
+      const enumValues = [
+        FileIconType.docset,
+        FileIconType.folder,
+        FileIconType.genericFile,
+        FileIconType.listItem,
+        FileIconType.sharedFolder,
+        FileIconType.multiple,
+        FileIconType.stream,
+        FileIconType.news,
+        FileIconType.desktopFolder,
+        FileIconType.documentsFolder,
+        FileIconType.picturesFolder,
+        FileIconType.linkedFolder,
+        FileIconType.list,
+        FileIconType.form,
+        FileIconType.sway,
+        FileIconType.playlist,
+        FileIconType.loopworkspace,
+        FileIconType.planner,
+        FileIconType.todoItem,
+        FileIconType.portfolio,
+        FileIconType.album,
+        FileIconType.listForm,
+      ];
+
+      enumValues.forEach(enumValue => {
+        const result = getFileTypeIconNameFromExtensionOrType(undefined, enumValue);
+        expect(result).toBeDefined();
+        // Only FileIconType.genericFile should map to 'genericfile'
+        if (enumValue !== FileIconType.genericFile) {
+          expect(result).not.toBe('genericfile');
+        } else {
+          expect(result).toBe('genericfile');
+        }
+      });
+    });
+  });
+});
 
 describe('getFileTypeIconAsUrl', () => {
   // Store original DPR once at the start
