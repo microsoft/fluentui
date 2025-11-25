@@ -17,13 +17,7 @@ export const useFileTypeIcon_unstable = (
   props: FileTypeIconProps,
   ref: React.Ref<HTMLImageElement>,
 ): FileTypeIconState => {
-  const {
-    extension,
-    type,
-    size = DEFAULT_ICON_SIZE,
-    imageFileType = 'svg',
-    baseUrl = DEFAULT_BASE_URL,
-  } = props;
+  const { extension, type, size = DEFAULT_ICON_SIZE, imageFileType = 'svg', baseUrl = DEFAULT_BASE_URL } = props;
 
   // Get the base icon name and suffix separately using v8 pattern
   const baseIconName = getFileTypeIconNameFromExtensionOrType(extension, type);

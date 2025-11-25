@@ -190,10 +190,10 @@ export const EdgeCases = (): JSXElement => {
       </div>
 
       <div className={styles.section}>
-        <div className={styles.sectionTitle}>Case Sensitivity</div>
+        <div className={styles.sectionTitle}>Case Sensitivity and Periods</div>
         <div className={styles.description}>
           File extensions are handled in a case-insensitive manner. The component recognizes extensions regardless of
-          capitalization.
+          capitalization. Periods before the extension will be ignored.
         </div>
         <div className={styles.exampleGrid}>
           <div className={styles.exampleItem}>
@@ -205,24 +205,16 @@ export const EdgeCases = (): JSXElement => {
             <div className={styles.label}>.pdf</div>
           </div>
           <div className={styles.exampleItem}>
-            <FileTypeIcon extension="Pdf" size={32} />
+            <FileTypeIcon extension=".Pdf" size={32} />
             <div className={styles.label}>.Pdf</div>
           </div>
-          <div className={styles.exampleItem}>
-            <FileTypeIcon extension="PdF" size={32} />
-            <div className={styles.label}>.PdF</div>
-          </div>
         </div>
-        <div className={styles.fallbackNote}>All variations display the same PDF icon</div>
-      </div>
-
-      <div className={styles.section}>
-        <div className={styles.sectionTitle}>Best Practice: Handle Edge Cases in Your Code</div>
-        <div className={styles.description}>
-          When integrating FileTypeIcon, consider extracting and normalizing file extensions from full filenames:
+        <div className={styles.fallbackNote}>All variations display the same PDF icon. If you want to further sanitize
+          your code, consider extracting and normalizing file extensions from full filenames:
         </div>
-        <code className={styles.codeBlock}>
-          {`// Extract extension from filename
+        <pre className={styles.codeBlock}>
+          <code>
+            {`// Extract extension from filename
 const getExtension = (filename: string): string => {
   const parts = filename.split('.');
   return parts.length > 1 ? parts[parts.length - 1].toLowerCase() : '';
@@ -233,29 +225,10 @@ const filename = "Report.Final.PDF";
 const extension = getExtension(filename); // "pdf"
 
 <FileTypeIcon extension={extension} size={32} />`}
-        </code>
+          </code>
+        </pre>
       </div>
 
-      <div className={styles.section}>
-        <div className={styles.sectionTitle}>Extensions with Leading Dots</div>
-        <div className={styles.description}>
-          The extension prop should be provided without the leading dot. If a dot is included, the component handles it
-          appropriately.
-        </div>
-        <div className={styles.exampleGrid}>
-          <div className={styles.exampleItem}>
-            <FileTypeIcon extension="docx" size={32} />
-            <div className={styles.label}>extension="docx" ✓</div>
-          </div>
-          <div className={styles.exampleItem}>
-            <FileTypeIcon extension=".docx" size={32} />
-            <div className={styles.label}>extension=".docx"</div>
-          </div>
-        </div>
-        <div className={styles.warningBox}>
-          <strong>Best Practice:</strong> Always provide extensions without the leading dot for consistent behavior.
-        </div>
-      </div>
     </div>
   );
 };

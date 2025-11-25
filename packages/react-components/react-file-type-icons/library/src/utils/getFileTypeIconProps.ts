@@ -86,7 +86,6 @@ export function getFileTypeIconNameFromExtensionOrType(
     // Strip periods, force lowercase.
     extension = extension.replace('.', '').toLowerCase();
     return _extensionToIconName[extension] || GENERIC_FILE;
-
   } else if (type) {
     if (!_typeToIconName) {
       _typeToIconName = {};
@@ -131,11 +130,10 @@ export function getFileTypeIconSuffix(
   if (imageFileType === 'svg' && devicePixelRatio > 1 && devicePixelRatio <= 1.9) {
     // 1.5x is a special case where SVGs need a different image.
     devicePixelRatioSuffix = '_1.5x';
-
   } else if (imageFileType === 'png') {
     // To look good, PNGs should use a different image for higher device pixel ratios
     if (devicePixelRatio > 1 && devicePixelRatio <= 1.5) {
-      devicePixelRatioSuffix ='_1.5x';
+      devicePixelRatioSuffix = '_1.5x';
     } else if (devicePixelRatio > 1.5 && devicePixelRatio <= 2) {
       devicePixelRatioSuffix = '_2x';
     } else if (devicePixelRatio > 2 && devicePixelRatio <= 3) {

@@ -297,10 +297,7 @@ describe('getFileTypeIconAsHTMLString', () => {
     const customBaseUrl = 'https://custom.cdn.com/icons/';
 
     it('should use custom base URL in HTML string', () => {
-      const result = getFileTypeIconAsHTMLString(
-        { extension: 'docx', size: 16, imageFileType: 'svg' },
-        customBaseUrl,
-      );
+      const result = getFileTypeIconAsHTMLString({ extension: 'docx', size: 16, imageFileType: 'svg' }, customBaseUrl);
       expect(result).toBe(`<img src="${customBaseUrl}16/docx.svg" height="16" width="16" />`);
     });
   });

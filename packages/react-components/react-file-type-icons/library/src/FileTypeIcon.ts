@@ -1,8 +1,4 @@
-export type {
-  FileTypeIconProps,
-  FileTypeIconSlots,
-  FileTypeIconState,
-} from './components/FileTypeIcon/index';
+export type { FileTypeIconProps, FileTypeIconSlots, FileTypeIconState } from './components/FileTypeIcon/index';
 export {
   FileTypeIcon,
   fileTypeIconClassNames,

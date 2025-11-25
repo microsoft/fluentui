@@ -35,12 +35,16 @@ export const Default = (): JSXElement => {
       <div className={styles.iconGroup}>
         <FileTypeIcon extension="docx" size={16} />
         <div className={styles.label}>16px</div>
-        <div className={styles.description}>Compact UIs, toolbars, dense tables. Example shows a Word document filetype icon.</div>
+        <div className={styles.description}>
+          Compact UIs, toolbars, dense tables. Example shows a Word document filetype icon.
+        </div>
       </div>
       <div className={styles.iconGroup}>
         <FileTypeIcon type={FileIconType.folder} size={20} />
         <div className={styles.label}>20px</div>
-        <div className={styles.description}>Compact lists, navigation items. Example shows a folder, referenced via FileIconType.</div>
+        <div className={styles.description}>
+          Compact lists, navigation items. Example shows a folder, referenced via FileIconType.
+        </div>
       </div>
       <div className={styles.iconGroup}>
         <FileTypeIcon extension="docx" size={24} />
@@ -50,7 +54,9 @@ export const Default = (): JSXElement => {
       <div className={styles.iconGroup}>
         <FileTypeIcon extension="ppt" size={32} />
         <div className={styles.label}>32px</div>
-        <div className={styles.description}>Standard cards, file browsers. Example shows a PowerPoint presentation with a legacy file extension.</div>
+        <div className={styles.description}>
+          Standard cards, file browsers. Example shows a PowerPoint presentation with a legacy file extension.
+        </div>
       </div>
       <div className={styles.iconGroup}>
         <FileTypeIcon extension="mp4" size={40} />
@@ -60,7 +66,9 @@ export const Default = (): JSXElement => {
       <div className={styles.iconGroup}>
         <FileTypeIcon type={FileIconType.list} size={48} />
         <div className={styles.label}>48px</div>
-        <div className={styles.description}>Grid views, attachment previews. Example shows a Microsoft Lists object.</div>
+        <div className={styles.description}>
+          Grid views, attachment previews. Example shows a Microsoft Lists object.
+        </div>
       </div>
       <div className={styles.iconGroup}>
         <FileTypeIcon extension="txt" size={64} />
@@ -84,4 +92,3 @@ Default.parameters = {
     },
   },
 };
-
