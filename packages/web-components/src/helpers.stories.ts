@@ -1,5 +1,5 @@
 import type { ElementViewTemplate, FASTElement, ViewTemplate } from '@microsoft/fast-element';
-import type { AnnotatedStoryFn, Args, ComponentAnnotations, Renderer, StoryAnnotations } from '@storybook/csf';
+import type { AnnotatedStoryFn, Args, ComponentAnnotations, Renderer, StoryAnnotations } from 'storybook/internal/csf';
 
 /**
  * A helper that returns a function to bind a Storybook story to a ViewTemplate.

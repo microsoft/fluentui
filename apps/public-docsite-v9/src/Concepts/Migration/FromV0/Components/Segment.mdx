@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v0/Components/Segment Migration" />
 
@@ -30,16 +30,48 @@ export const Component = () => {
 
 ## How to migrate props:
 
-| `Segment` props           | migrate guide                                                                                            |
-| ------------------------- | -------------------------------------------------------------------------------------------------------- |
-| as, className             | keep it as is                                                                                            |
-| content                   | move `content` to JSX children.                                                                          |
-| variables, styles, design | see [Migrate style overrides](#migrate-style-overrides) in this document                                 |
-| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) |
-| ref, key                  | keep it as is                                                                                            |
-| color                     | REMOVED: use styles and color tokens to style it properly                                                |
-| disabled                  | REMOVED: use styles and color tokens to style it properly                                                |
-| inverted                  | REMOVED: use styles and color tokens to style it properly                                                |
+<table>
+  <thead>
+    <tr>
+      <th>`Segment` props</th>
+      <th>migrate guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>as, className</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>move `content` to JSX children.</td>
+    </tr>
+    <tr>
+      <td>variables, styles, design</td>
+      <td>see [Migrate style overrides](#migrate-style-overrides) in this document</td>
+    </tr>
+    <tr>
+      <td>accessibility</td>
+      <td>see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs)</td>
+    </tr>
+    <tr>
+      <td>ref, key</td>
+      <td>keep it as is</td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>REMOVED: use styles and color tokens to style it properly</td>
+    </tr>
+    <tr>
+      <td>disabled</td>
+      <td>REMOVED: use styles and color tokens to style it properly</td>
+    </tr>
+    <tr>
+      <td>inverted</td>
+      <td>REMOVED: use styles and color tokens to style it properly</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 

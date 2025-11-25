@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/addon-docs';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
 import { SlotSketch } from './SlotSketch.stories';
 
 <Meta title="Concepts/Developer/Customizing Components with Slots" />
@@ -211,11 +211,28 @@ Currently, `AlternateAs` only supports intrinsic element types.
 This is necessary to ensure components restrict slots where `Type` is a component type.
 Substituting other component types has caused deep typing, accessibility, and event handler problems in the past.
 
-| Slot                                 | Renders                                                                                           |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| `Slot<'div'>`                        | A `div` is always rendered                                                                        |
-| `Slot<typeof Button>`                | A `Button` component accepting `Button` props is rendered                                         |
-| `Slot<'span', 'div' `&#124;` 'pre'>` | A `span` is rendered by default. A caller can opt to render `div` or `pre` by using the `as` prop |
+<table>
+  <thead>
+    <tr>
+      <th>Slot</th>
+      <th>Renders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`Slot<'div'>`</td>
+      <td>A `div` is always rendered</td>
+    </tr>
+    <tr>
+      <td>`Slot<typeof Button>`</td>
+      <td>A `Button` component accepting `Button` props is rendered</td>
+    </tr>
+    <tr>
+      <td>`Slot<'span', 'div' `&#124;` 'pre'>`</td>
+      <td>A `span` is rendered by default. A caller can opt to render `div` or `pre` by using the `as` prop</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Slot definition
 
