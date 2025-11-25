@@ -16,7 +16,7 @@ const BasicExample = () => {
   return (
     <>
       <Label id={labelId}>Basic Range Slider Example</Label>
-      <RangeSlider defaultValue={[20, 80]} aria-labelledby={labelId} />
+      <RangeSlider defaultValue={{ start: 20, end: 80 }} aria-labelledby={labelId} />
     </>
   );
 };
@@ -25,14 +25,14 @@ const BasicExample = () => {
 const BasicExample = () => {
   return (
     <Field label="Basic Range Slider Example">
-      <RangeSlider defaultValue={[20, 80]} vertical />
+      <RangeSlider defaultValue={{ start: 20, end: 80 }} vertical />
     </Field>
   );
 };
 
 // Controlled usage
 const ControlledExample = () => {
-  const [value, setValue] = React.useState<[number, number]>([25, 75]);
+  const [value, setValue] = React.useState({ start: 25, end: 75 });
   return <RangeSlider value={value} onChange={(ev, data) => setValue(data.value)} min={0} max={100} step={5} />;
 };
 ```
@@ -60,17 +60,17 @@ The RangeSlider supports the following variants:
 
 ### Props
 
-| Prop           | Type                                                                               | Default    | Description                                                                                                                                                                            |
-| -------------- | ---------------------------------------------------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `defaultValue` | `[number, number]`                                                                 | `[0, 10]`  | The starting range values for an uncontrolled RangeSlider. Mutually exclusive with `value` prop.                                                                                       |
-| `disabled`     | `boolean`                                                                          | `false`    | Whether to render the RangeSlider as disabled.                                                                                                                                         |
-| `max`          | `number`                                                                           | `100`      | The max value of the RangeSlider.                                                                                                                                                      |
-| `min`          | `number`                                                                           | `0`        | The min value of the RangeSlider.                                                                                                                                                      |
-| `size`         | `'small' \| 'medium'`                                                              | `'medium'` | The size of the RangeSlider.                                                                                                                                                           |
-| `step`         | `number`                                                                           | `1`        | The number of steps that the RangeSlider's values will increment upon change. When provided, the RangeSlider will snap to the closest available values. This must be a positive value. |
-| `value`        | `[number, number]`                                                                 | -          | The current range values of the controlled RangeSlider. Mutually exclusive with `defaultValue` prop.                                                                                   |
-| `vertical`     | `boolean`                                                                          | `false`    | Render the RangeSlider in a vertical orientation, smallest value on the bottom.                                                                                                        |
-| `onChange`     | `(ev: React.ChangeEvent<HTMLInputElement>, data: RangeSliderOnChangeData) => void` | -          | Triggers a callback when the range values have been changed. This will be called on every individual step.                                                                             |
+| Prop           | Type                                                                               | Default               | Description                                                                                                                                                                            |
+| -------------- | ---------------------------------------------------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `defaultValue` | `{start: number, end: number}`                                                     | `{start: 0, end: 10}` | The starting range values for an uncontrolled RangeSlider. Mutually exclusive with `value` prop.                                                                                       |
+| `disabled`     | `boolean`                                                                          | `false`               | Whether to render the RangeSlider as disabled.                                                                                                                                         |
+| `max`          | `number`                                                                           | `100`                 | The max value of the RangeSlider.                                                                                                                                                      |
+| `min`          | `number`                                                                           | `0`                   | The min value of the RangeSlider.                                                                                                                                                      |
+| `size`         | `'small' \| 'medium'`                                                              | `'medium'`            | The size of the RangeSlider.                                                                                                                                                           |
+| `step`         | `number`                                                                           | `1`                   | The number of steps that the RangeSlider's values will increment upon change. When provided, the RangeSlider will snap to the closest available values. This must be a positive value. |
+| `value`        | `{start: number, end: number}`                                                     | -                     | The current range values of the controlled RangeSlider. Mutually exclusive with `defaultValue` prop.                                                                                   |
+| `vertical`     | `boolean`                                                                          | `false`               | Render the RangeSlider in a vertical orientation, smallest value on the bottom.                                                                                                        |
+| `onChange`     | `(ev: React.ChangeEvent<HTMLInputElement>, data: RangeSliderOnChangeData) => void` | -                     | Triggers a callback when the range values have been changed. This will be called on every individual step.                                                                             |
 
 ### Slots
 
@@ -78,15 +78,15 @@ The RangeSlider supports the following variants:
 | ------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `root`       | `div`   | The root of the RangeSlider. The root slot receives the `className` and `style` specified directly on the `<RangeSlider>`. All other native props will be applied to the primary slot, `input`.                                   |
 | `rail`       | `div`   | The RangeSlider's base. It is used to visibly display the min and max selectable values.                                                                                                                                          |
-| `lowerThumb` | `div`   | The lower draggable thumb used to select the minimum value of the range. This is the element containing `role = 'slider'`.                                                                                                        |
-| `upperThumb` | `div`   | The upper draggable thumb used to select the maximum value of the range. This is the element containing `role = 'slider'`.                                                                                                        |
+| `startThumb` | `div`   | The start draggable thumb used to select the minimum value of the range. This is the element containing `role = 'slider'`.                                                                                                        |
+| `endThumb`   | `div`   | The end draggable thumb used to select the maximum value of the range. This is the element containing `role = 'slider'`.                                                                                                          |
 | `input`      | `input` | The hidden input for mouse/touch interactions. This is the PRIMARY slot: all native properties specified directly on `<RangeSlider>` will be applied to this slot, except `className` and `style`, which remain on the root slot. |
 
 ### Types
 
 ```typescript
 type RangeSliderOnChangeData = {
-  value: [number, number]; // The range values [lower, upper] of the RangeSlider
+  value: { start: number; end: number }; // The current start and end values of the RangeSlider
 };
 ```
 
@@ -95,7 +95,7 @@ type RangeSliderOnChangeData = {
 ### Public
 
 ```tsx
-<RangeSlider defaultValue={[20, 80]} />
+<RangeSlider defaultValue={{ start: 20, end: 80 }} />
 ```
 
 ### Internal
@@ -104,8 +104,8 @@ type RangeSliderOnChangeData = {
 <slots.root {...slotProps.root}>
   <slots.input {...slotProps.input} />
   <slots.rail {...slotProps.rail} />
-  <slots.lowerThumb {...slotProps.lowerThumb} />
-  <slots.upperThumb {...slotProps.upperThumb} />
+  <slots.startThumb {...slotProps.startThumb} />
+  <slots.endThumb {...slotProps.endThumb} />
 </slots.root>
 ```
 
@@ -120,10 +120,11 @@ The component uses the following hooks internally:
 
 ```html
 <div class="fui-RangeSlider">
-  <input type="range" aria-hidden="true" tabindex="-1" value="20,80" />
-  <div class="fui-Slider__rail" />
+  <input type="range" aria-hidden="true" tabindex="-1" value="20" />
+  <input type="range" aria-hidden="true" tabindex="-1" value="80" />
+  <div class="fui-RangeSlider__rail" />
   <div
-    class="fui-RangeSlider__lowerThumb"
+    class="fui-RangeSlider__startThumb"
     role="slider"
     tabindex="0"
     aria-labelledby="label-123"
@@ -133,7 +134,7 @@ The component uses the following hooks internally:
     aria-valuetext="20"
   />
   <div
-    class="fui-RangeSlider__upperThumb"
+    class="fui-RangeSlider__endThumb"
     role="slider"
     tabindex="0"
     aria-labelledby="label-123"
@@ -147,26 +148,7 @@ The component uses the following hooks internally:
 
 ## Migration
 
-### Migration from v8
-
-No direct migration path - RangeSlider is a new component in Fluent UI React v9. However, here are some key differences between the v8 Slider and v9 RangeSlider:
-
-**V8 Slider used a pure div-based approach:**
-
-- Uses `<div>` and `<span>` elements with `role="slider"` for interactive controls
-- All mouse/touch coordinate calculations and event handling implemented manually
-
-**V9 RangeSlider uses a hybrid approach:**
-
-- Hidden `<input type="range" aria-hidden="true">` for form integration and native browser event handling
-- `<div role="slider">` thumbs for the accessible interface
-- Benefits: Native form submission, reduced complexity, better browser compatibility
-
-This hybrid approach provides the best of both worlds: native browser behavior for form handling while maintaining full control over the accessible user experience.
-
-### Migration from v0
-
-No migration needed - RangeSlider is a new component in Fluent UI React v9.
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 
@@ -176,17 +158,17 @@ No migration needed - RangeSlider is a new component in Fluent UI React v9.
 
 Each thumb can be focused and operated independently:
 
-| Key                 | Description                                                                    |
-| ------------------- | ------------------------------------------------------------------------------ |
-| `Tab`               | Moves focus between the lower thumb, upper thumb, and other focusable elements |
-| `Up`/`Right` Arrow  | Increments the focused thumb's value by the `step` prop                        |
-| `Down`/`Left` Arrow | Decrements the focused thumb's value by the `step` prop                        |
-| `PageUp`            | Increments the focused thumb's value by 10 × `step`                            |
-| `PageDown`          | Decrements the focused thumb's value by 10 × `step`                            |
-| `Home`              | Sets the focused thumb's value to its minimum allowed value                    |
-| `End`               | Sets the focused thumb's value to its maximum allowed value                    |
+| Key                 | Description                                                                  |
+| ------------------- | ---------------------------------------------------------------------------- |
+| `Tab`               | Moves focus between the start thumb, end thumb, and other focusable elements |
+| `Up`/`Right` Arrow  | Increments the focused thumb's value by the `step` prop                      |
+| `Down`/`Left` Arrow | Decrements the focused thumb's value by the `step` prop                      |
+| `PageUp`            | Increments the focused thumb's value by 10 × `step`                          |
+| `PageDown`          | Decrements the focused thumb's value by 10 × `step`                          |
+| `Home`              | Sets the focused thumb's value to its minimum allowed value                  |
+| `End`               | Sets the focused thumb's value to its maximum allowed value                  |
 
-**Collision Detection**: The lower thumb cannot be moved past the upper thumb, and vice versa. When thumbs meet, they stop at the collision point rather than switching positions.
+**Collision Detection**: The start thumb cannot be moved past the end thumb, and vice versa. When thumbs meet, they stop at the collision point rather than switching positions.
 
 #### Cursor
 
@@ -214,12 +196,12 @@ Handles the same events as cursor interaction with touch-optimized behavior.
 | `root`       | (none)   | Container div with focus-within behavior                                            |
 | `input`      | (none)   | Hidden native input (`aria-hidden="true"`, `tabindex="-1"`) for form integration    |
 | `rail`       | (none)   | Visual presentation only                                                            |
-| `lowerThumb` | `slider` | `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-valuetext`, `tabindex="0"` |
-| `upperThumb` | `slider` | `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-valuetext`, `tabindex="0"` |
+| `startThumb` | `slider` | `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-valuetext`, `tabindex="0"` |
+| `endThumb`   | `slider` | `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-valuetext`, `tabindex="0"` |
 
 ### Keyboard Navigation
 
-**Tab Order**: Lower thumb → Upper thumb → next focusable element
+**Tab Order**: Start thumb → End thumb → next focusable element
 
 **Arrow Key Navigation** (per ARIA pattern):
 
@@ -249,4 +231,4 @@ Handles the same events as cursor interaction with touch-optimized behavior.
 ### Labeling and States
 
 - **Disabled**: Both thumbs receive `aria-disabled="true"` and are removed from tab order (`tabindex="-1"`)
-- **Labeled**: When used inside a `<Field>` component, thumbs automatically receive `aria-labelledby` referencing the Field's label. When using standalone `<Label>` elements, developers should provide an `id` on the Label and pass it via the `aria-labelledby` prop to RangeSlider (e.g., `<Label id={labelId}>...</Label>` and `<RangeSlider aria-labelledby={labelId} />`). Alternatively, distinct labels can be provided to individual thumbs via slot props: `lowerThumb={{ 'aria-label': 'Minimum' }}` and `upperThumb={{ 'aria-label': 'Maximum' }}`.
+- **Labeled**: When used inside a `<Field>` component, thumbs automatically receive `aria-labelledby` referencing the Field's label. When using standalone `<Label>` elements, developers should provide an `id` on the Label and pass it via the `aria-labelledby` prop to RangeSlider (e.g., `<Label id={labelId}>...</Label>` and `<RangeSlider aria-labelledby={labelId} />`). Alternatively, distinct labels can be provided to individual thumbs via slot props: `startThumb={{ 'aria-label': 'Minimum' }}` and `endThumb={{ 'aria-label': 'Maximum' }}`.
