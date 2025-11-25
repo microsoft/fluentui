@@ -351,7 +351,9 @@ describe('getFileTypeIconAsHTMLString', () => {
         { extension: 'pdf', size: 16, imageFileType: 'png' },
         DEFAULT_BASE_URL,
       );
-      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}16_1.5x/pdf.png" height="16" width="16" alt="pdf file icon" />`);
+      expect(result).toBe(
+        `<img src="${DEFAULT_BASE_URL}16_1.5x/pdf.png" height="16" width="16" alt="pdf file icon" />`,
+      );
     });
 
     it('should return correct HTML string for 2x DPI with xlsx extension', () => {
@@ -365,7 +367,9 @@ describe('getFileTypeIconAsHTMLString', () => {
         { extension: 'xlsx', size: 16, imageFileType: 'png' },
         DEFAULT_BASE_URL,
       );
-      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}16_2x/xlsx.png" height="16" width="16" alt="xlsx file icon" />`);
+      expect(result).toBe(
+        `<img src="${DEFAULT_BASE_URL}16_2x/xlsx.png" height="16" width="16" alt="xlsx file icon" />`,
+      );
     });
   });
 
@@ -389,7 +393,9 @@ describe('getFileTypeIconAsHTMLString', () => {
         { extension: 'pdf', size: 20, imageFileType: 'svg' },
         DEFAULT_BASE_URL,
       );
-      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}20_1.5x/pdf.svg" height="20" width="20" alt="pdf file icon" />`);
+      expect(result).toBe(
+        `<img src="${DEFAULT_BASE_URL}20_1.5x/pdf.svg" height="20" width="20" alt="pdf file icon" />`,
+      );
     });
   });
 

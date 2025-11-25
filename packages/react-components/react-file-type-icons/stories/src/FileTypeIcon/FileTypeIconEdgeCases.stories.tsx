@@ -215,8 +215,9 @@ export const EdgeCases = (): JSXElement => {
             <div className={styles.label}>.Pdf</div>
           </div>
         </div>
-        <div className={styles.fallbackNote}>All variations display the same PDF icon. If you want to further sanitize
-          your code, consider extracting and normalizing file extensions from full filenames:
+        <div className={styles.fallbackNote}>
+          All variations display the same PDF icon. If you want to further sanitize your code, consider extracting and
+          normalizing file extensions from full filenames:
         </div>
         <pre className={styles.codeBlock}>
           <code>
@@ -234,7 +235,6 @@ const extension = getExtension(filename); // "pdf"
           </code>
         </pre>
       </div>
-
     </div>
   );
 };

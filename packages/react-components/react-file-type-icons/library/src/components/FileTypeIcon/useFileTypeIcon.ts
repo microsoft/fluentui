@@ -17,7 +17,13 @@ export const useFileTypeIcon_unstable = (
   props: FileTypeIconProps,
   ref: React.Ref<HTMLImageElement>,
 ): FileTypeIconState => {
-  const { extension, type, size: requestedSize = DEFAULT_ICON_SIZE, imageFileType = 'svg', baseUrl = getConfiguredBaseUrl() } = props;
+  const {
+    extension,
+    type,
+    size: requestedSize = DEFAULT_ICON_SIZE,
+    imageFileType = 'svg',
+    baseUrl = getConfiguredBaseUrl(),
+  } = props;
 
   // Validate and adjust size to nearest available
   const size = getValidIconSize(requestedSize);
