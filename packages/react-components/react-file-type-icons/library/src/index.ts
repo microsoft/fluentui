@@ -15,14 +15,9 @@ export {
   getFileTypeIconProps,
   getFileTypeIconNameFromExtensionOrType,
   getFileTypeIconSuffix,
+  getValidIconSize,
   DEFAULT_ICON_SIZE,
 } from './utils/getFileTypeIconProps';
 export type { FileTypeIconSize, ImageFileType, FileTypeIconOptions } from './utils/getFileTypeIconProps';
 export { getFileTypeIconAsUrl, getFileTypeIconAsHTMLString } from './utils/getFileTypeIconAsUrl';
-export {
-  initializeFileTypeIcons,
-  getConfiguredBaseUrl,
-  resetConfiguredBaseUrl,
-  DEFAULT_BASE_URL,
-  ICON_SIZES,
-} from './utils/initializeFileTypeIcons';
+export { initializeFileTypeIcons, DEFAULT_BASE_URL, ICON_SIZES } from './utils/initializeFileTypeIcons';

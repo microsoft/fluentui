@@ -2,12 +2,10 @@ import * as React from 'react';
 import { isConformant } from '../../testing/isConformant';
 import { render } from '@testing-library/react';
 import { FileTypeIcon } from './FileTypeIcon';
+import type { FileTypeIconProps } from './FileTypeIcon.types';
 import { FileIconType } from '../../utils/FileIconType';
-import {
-  initializeFileTypeIcons,
-  resetConfiguredBaseUrl,
-  DEFAULT_BASE_URL,
-} from '../../utils/initializeFileTypeIcons';
+import { initializeFileTypeIcons, DEFAULT_BASE_URL } from '../../utils/initializeFileTypeIcons';
+import { resetConfiguredBaseUrl } from '../../testing';
 
 describe('FileTypeIcon', () => {
   isConformant({
@@ -75,6 +73,59 @@ describe('FileTypeIcon', () => {
     const img = result.container.querySelector('img');
     expect(img).toBeTruthy();
     expect(img?.src).toContain('genericfile');
+  });
+
+  it('handles compound extensions like .tar.gz by using last extension', () => {
+    const result = render(<FileTypeIcon extension=".tar.gz" />);
+    const img = result.container.querySelector('img');
+    expect(img).toBeTruthy();
+    // gz maps to archive icon
+    expect(img?.src).toContain('archive');
+  });
+
+  it('handles compound extensions like file.min.js', () => {
+    const result = render(<FileTypeIcon extension="file.min.js" />);
+    const img = result.container.querySelector('img');
+    expect(img).toBeTruthy();
+    // js maps to code icon
+    expect(img?.src).toContain('code');
+  });
+});
+
+describe('FileTypeIcon size fallback', () => {
+  it('uses next smallest size when 30 is requested (falls back to 24)', () => {
+    const result = render(<FileTypeIcon extension="docx" size={30 as FileTypeIconProps['size']} />);
+    const img = result.container.querySelector('img');
+    expect(img).toBeTruthy();
+    expect(img?.src).toContain('/24/');
+  });
+
+  it('uses next smallest size when 50 is requested (falls back to 48)', () => {
+    const result = render(<FileTypeIcon extension="pdf" size={50 as FileTypeIconProps['size']} />);
+    const img = result.container.querySelector('img');
+    expect(img).toBeTruthy();
+    expect(img?.src).toContain('/48/');
+  });
+
+  it('uses largest size (96) when size above maximum is requested', () => {
+    const result = render(<FileTypeIcon extension="xlsx" size={100 as FileTypeIconProps['size']} />);
+    const img = result.container.querySelector('img');
+    expect(img).toBeTruthy();
+    expect(img?.src).toContain('/96/');
+  });
+
+  it('uses largest size (96) when size 128 is requested', () => {
+    const result = render(<FileTypeIcon extension="pptx" size={128 as FileTypeIconProps['size']} />);
+    const img = result.container.querySelector('img');
+    expect(img).toBeTruthy();
+    expect(img?.src).toContain('/96/');
+  });
+
+  it('uses smallest size (16) when size below minimum is requested', () => {
+    const result = render(<FileTypeIcon extension="txt" size={8 as FileTypeIconProps['size']} />);
+    const img = result.container.querySelector('img');
+    expect(img).toBeTruthy();
+    expect(img?.src).toContain('/16/');
   });
 });
 

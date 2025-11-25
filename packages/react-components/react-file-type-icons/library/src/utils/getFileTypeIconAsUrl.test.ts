@@ -1,6 +1,6 @@
 import { getFileTypeIconAsUrl, getFileTypeIconAsHTMLString } from './getFileTypeIconAsUrl';
 import { DEFAULT_BASE_URL } from './initializeFileTypeIcons';
-import { getFileTypeIconNameFromExtensionOrType } from './getFileTypeIconProps';
+import { getFileTypeIconNameFromExtensionOrType, getValidIconSize } from './getFileTypeIconProps';
 import { FileIconType } from './FileIconType';
 
 describe('getFileTypeIconNameFromExtensionOrType', () => {
@@ -68,6 +68,126 @@ describe('getFileTypeIconNameFromExtensionOrType', () => {
           expect(result).toBe('genericfile');
         }
       });
+    });
+  });
+
+  describe('with compound extensions', () => {
+    it('should extract the last extension from .tar.gz', () => {
+      // .tar.gz should extract 'gz' and map to appropriate icon
+      const result = getFileTypeIconNameFromExtensionOrType('.tar.gz', undefined);
+      expect(result).toBe('archive'); // gz maps to archive icon
+    });
+
+    it('should extract the last extension from archive.tar.bz2', () => {
+      const result = getFileTypeIconNameFromExtensionOrType('archive.tar.bz2', undefined);
+      // bz2 is not a known extension, should fall back to genericfile
+      expect(result).toBe('genericfile');
+    });
+
+    it('should extract the last extension from file.min.js', () => {
+      const result = getFileTypeIconNameFromExtensionOrType('file.min.js', undefined);
+      expect(result).toBe('code'); // js maps to code icon
+    });
+
+    it('should extract the last extension from styles.module.css', () => {
+      const result = getFileTypeIconNameFromExtensionOrType('styles.module.css', undefined);
+      expect(result).toBe('code'); // css maps to code icon
+    });
+
+    it('should handle simple extension with leading dot', () => {
+      const result = getFileTypeIconNameFromExtensionOrType('.docx', undefined);
+      expect(result).toBe('docx');
+    });
+
+    it('should handle simple extension without leading dot', () => {
+      const result = getFileTypeIconNameFromExtensionOrType('pdf', undefined);
+      expect(result).toBe('pdf');
+    });
+  });
+});
+
+describe('getValidIconSize', () => {
+  describe('with exact valid sizes', () => {
+    it('should return exact size when 16 is requested', () => {
+      expect(getValidIconSize(16)).toBe(16);
+    });
+
+    it('should return exact size when 20 is requested', () => {
+      expect(getValidIconSize(20)).toBe(20);
+    });
+
+    it('should return exact size when 24 is requested', () => {
+      expect(getValidIconSize(24)).toBe(24);
+    });
+
+    it('should return exact size when 32 is requested', () => {
+      expect(getValidIconSize(32)).toBe(32);
+    });
+
+    it('should return exact size when 40 is requested', () => {
+      expect(getValidIconSize(40)).toBe(40);
+    });
+
+    it('should return exact size when 48 is requested', () => {
+      expect(getValidIconSize(48)).toBe(48);
+    });
+
+    it('should return exact size when 64 is requested', () => {
+      expect(getValidIconSize(64)).toBe(64);
+    });
+
+    it('should return exact size when 96 is requested', () => {
+      expect(getValidIconSize(96)).toBe(96);
+    });
+  });
+
+  describe('with sizes requiring fallback to smaller', () => {
+    it('should return 16 when 18 is requested (next smallest)', () => {
+      expect(getValidIconSize(18)).toBe(16);
+    });
+
+    it('should return 20 when 22 is requested (next smallest)', () => {
+      expect(getValidIconSize(22)).toBe(20);
+    });
+
+    it('should return 24 when 30 is requested (next smallest)', () => {
+      expect(getValidIconSize(30)).toBe(24);
+    });
+
+    it('should return 32 when 35 is requested (next smallest)', () => {
+      expect(getValidIconSize(35)).toBe(32);
+    });
+
+    it('should return 64 when 80 is requested (next smallest)', () => {
+      expect(getValidIconSize(80)).toBe(64);
+    });
+  });
+
+  describe('with sizes larger than maximum', () => {
+    it('should return 96 when 100 is requested', () => {
+      expect(getValidIconSize(100)).toBe(96);
+    });
+
+    it('should return 96 when 128 is requested', () => {
+      expect(getValidIconSize(128)).toBe(96);
+    });
+
+    it('should return 96 when 256 is requested', () => {
+      expect(getValidIconSize(256)).toBe(96);
+    });
+  });
+
+  describe('with sizes smaller than minimum', () => {
+    it('should return 16 when 10 is requested', () => {
+      expect(getValidIconSize(10)).toBe(16);
+    });
+
+    it('should return 16 when 8 is requested', () => {
+      expect(getValidIconSize(8)).toBe(16);
+    });
+
+    it('should return 16 when 1 is requested', () => {
+      expect(getValidIconSize(1)).toBe(16);
     });
   });
 });

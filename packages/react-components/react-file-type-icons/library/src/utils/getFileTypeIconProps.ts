@@ -1,5 +1,6 @@
 import { FileTypeIconMap } from './FileTypeIconMap';
 import { FileIconType } from './FileIconType';
+import { ICON_SIZES } from './initializeFileTypeIcons';
 
 let _extensionToIconName: { [key: string]: string };
 let _typeToIconName: { [key: number]: string };
@@ -33,6 +34,45 @@ export interface FileTypeIconOptions {
    * @default 'svg'
    */
   imageFileType?: ImageFileType;
+}
+
+/**
+ * Gets the nearest valid icon size. If the requested size is not available,
+ * returns the next smallest available size. If the requested size is larger
+ * than all available sizes, returns the largest available size (96).
+ * If the requested size is smaller than all available sizes, returns the smallest (16).
+ *
+ * @param size - The requested icon size
+ * @returns The nearest valid icon size from ICON_SIZES
+ */
+export function getValidIconSize(size: number): FileTypeIconSize {
+  // ICON_SIZES is already sorted: [16, 20, 24, 32, 40, 48, 64, 96]
+  const sortedSizes = ICON_SIZES as FileTypeIconSize[];
+
+  // If exact match exists, return it
+  if (sortedSizes.includes(size as FileTypeIconSize)) {
+    return size as FileTypeIconSize;
+  }
+
+  // If size is larger than the largest available, return the largest
+  if (size > sortedSizes[sortedSizes.length - 1]) {
+    return sortedSizes[sortedSizes.length - 1];
+  }
+
+  // If size is smaller than the smallest available, return the smallest
+  if (size < sortedSizes[0]) {
+    return sortedSizes[0];
+  }
+
+  // Find the next smallest available size
+  for (let i = sortedSizes.length - 1; i >= 0; i--) {
+    if (sortedSizes[i] <= size) {
+      return sortedSizes[i];
+    }
+  }
+
+  // Fallback to default (should never reach here)
+  return DEFAULT_ICON_SIZE;
 }
 
 /**
@@ -83,8 +123,10 @@ export function getFileTypeIconNameFromExtensionOrType(
       }
     }
 
-    // Strip periods, force lowercase.
-    extension = extension.replace('.', '').toLowerCase();
+    // Extract only the last extension (handles compound extensions like .tar.gz -> gz)
+    // and force lowercase
+    const lastDotIndex = extension.lastIndexOf('.');
+    extension = (lastDotIndex >= 0 ? extension.substring(lastDotIndex + 1) : extension).toLowerCase();
     return _extensionToIconName[extension] || GENERIC_FILE;
   } else if (type) {
     if (!_typeToIconName) {
@@ -111,16 +153,20 @@ export function getFileTypeIconNameFromExtensionOrType(
 
 /**
  * Gets the suffix for the icon name based on size, file type, and device pixel ratio.
- * @param size - The icon size in pixels
+ * If the requested size is not available, it will be adjusted to the nearest valid size.
+ * @param size - The icon size in pixels (will be validated against available sizes)
  * @param imageFileType - The image file type ('svg' or 'png')
  * @param win - Optional window object for testing
  * @returns The icon name suffix
  */
 export function getFileTypeIconSuffix(
-  size: FileTypeIconSize,
+  size: FileTypeIconSize | number,
   imageFileType: ImageFileType = 'svg',
   win?: Window,
 ): string {
+  // Validate and adjust size to nearest available
+  const validSize = getValidIconSize(size);
+
   // eslint-disable-next-line @nx/workspace-no-restricted-globals
   win ??= typeof window !== 'undefined' ? window : ({ devicePixelRatio: 1 } as Window);
   const devicePixelRatio: number = win.devicePixelRatio;
@@ -143,5 +189,5 @@ export function getFileTypeIconSuffix(
     }
   }
 
-  return size + devicePixelRatioSuffix + '_' + imageFileType;
+  return validSize + devicePixelRatioSuffix + '_' + imageFileType;
 }

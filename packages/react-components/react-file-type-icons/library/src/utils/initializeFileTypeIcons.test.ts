@@ -1,9 +1,5 @@
-import {
-  initializeFileTypeIcons,
-  getConfiguredBaseUrl,
-  resetConfiguredBaseUrl,
-  DEFAULT_BASE_URL,
-} from './initializeFileTypeIcons';
+import { initializeFileTypeIcons, DEFAULT_BASE_URL } from './initializeFileTypeIcons';
+import { getConfiguredBaseUrl, resetConfiguredBaseUrl } from '../testing';
 import { getFileTypeIconAsUrl, getFileTypeIconAsHTMLString } from './getFileTypeIconAsUrl';
 
 describe('initializeFileTypeIcons', () => {
