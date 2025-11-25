@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "plugin swc-plugin-de-indent-template-literal is crashing, removing",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
