@@ -1,15 +1,14 @@
 import { FileTypeIcon } from '@fluentui/file-type-icons-preview';
 import type { Meta } from '@storybook/react';
 
-export { Sizes as Default } from './FileTypeIconSizes.stories';
+export { Default } from './FileTypeIconDefault.stories';
 export { CommonFileTypes } from './FileTypeIconCommon.stories';
-export { SpecialTypes } from './FileTypeIconSpecialTypes.stories';
-export { UrlAndHtmlFunctions } from './FileTypeIconUrlAndHtml.stories';
+export { UrlAndHtml } from './FileTypeIconUrlAndHtml.stories';
+export { BestPractices } from './FileTypeIconBestPractices.stories';
 export { Accessibility } from './FileTypeIconAccessibility.stories';
 export { EdgeCases } from './FileTypeIconEdgeCases.stories';
 
 import descriptionMd from './FileTypeIconDescription.md';
-import bestPracticesMd from './FileTypeIconBestPractices.md';
 
 export default {
   title: 'Icons/Filetype Icons',
@@ -17,7 +16,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: descriptionMd,
       },
     },
   },

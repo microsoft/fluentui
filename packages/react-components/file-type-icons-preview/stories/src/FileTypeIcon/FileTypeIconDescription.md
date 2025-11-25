@@ -1,12 +1,10 @@
 # FileTypeIcon
 
-Filetype icons represent a file or other "digital object" based on its extension or a special type (like folder). The Fluent UI design system component helps you provide consistent, recognizable visual representations of the user's items and documents across your application aligned with Microsoft 365.
+Filetype icons represent a file or other "digital object" based on its extension or a special type (like folder). This Fluent UI design system component provides consistent, recognizable visual representations of the user's items and documents across your application, aligned with Microsoft 365.
 
 The component automatically selects the appropriate icon from the comprehensive Fluent Design file type icon set and handles device pixel ratio for optimal display quality on all screens.
 
-## When to use Filetype Icons
-
-Use FileTypeIcon when you need to:
+## Use Filetype Icons when you need to:
 
 - **Display file lists or grids** - Help users quickly identify file types in recent lists, document libraries, file browsers, or search results
 - **Show file attachments or file upload interfaces** - Indicate attachment types in emails, messages, or forms. Provide visual feedback about accepted or uploaded file types

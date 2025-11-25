@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { tokens } from '@fluentui/react-components';
-import { FileTypeIcon } from '@fluentui/file-type-icons-preview';
+import { FileTypeIcon, FileIconType } from '@fluentui/file-type-icons-preview';
 import { makeStyles, shorthands } from '@griffel/react';
 
 const useStyles = makeStyles({
@@ -50,6 +50,14 @@ const fileTypeCategories = {
   code: ['html', 'url', 'json', 'xml', 'py', 'java', 'cpp'],
   data: ['zip', 'tar', 'sql', 'accdb', 'xml'],
 };
+
+const specialTypes = [
+  { type: FileIconType.folder, label: 'Folder' },
+  { type: FileIconType.genericFile, label: 'Generic File' },
+  { type: FileIconType.sharedFolder, label: 'Shared Folder' },
+  { type: FileIconType.listItem, label: 'List Item' },
+  { type: FileIconType.docset, label: 'Docset' },
+];
 
 export const CommonFileTypes = (): JSXElement => {
   const styles = useStyles();
@@ -103,6 +111,21 @@ export const CommonFileTypes = (): JSXElement => {
           ))}
         </div>
       </div>
+
+      <div className={styles.categorySection}>
+        <div className={styles.categoryTitle}>Special Types</div>
+        <p style={{ marginBottom: '12px', color: tokens.colorNeutralForeground3 }}>
+          These types are not based on file extensions, but represent objects like folders and list items.
+        </p>
+        <div className={styles.grid}>
+          {specialTypes.map(({ type, label }) => (
+            <div key={type} className={styles.item}>
+              <FileTypeIcon type={type} size={48} />
+              <div className={styles.label}>{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
@@ -111,7 +134,9 @@ CommonFileTypes.parameters = {
   docs: {
     description: {
       story:
-        'FileTypeIcon supports a comprehensive library of common file extensions organized by category. This includes documents, spreadsheets, presentations, images, media files, web files, code files, archives, and database files. Each file type has a distinct, recognizable icon.',
+        'FileTypeIcon supports a comprehensive library of file extensions organized by category (documents, media, code, data) and special types that are not based on file extensions (folder, shared folder, list item, docset, generic file).',
     },
   },
 };
+
+CommonFileTypes.storyName = 'File Types';
