@@ -75,9 +75,9 @@ function calculateLabels(lineDefs: LineDef[], textWidth: number, maxX: number, m
     // base case 2
     if (currentIdx === lineDefs.length - 1) {
       if (lastX < leftXBoundary) {
-        return [{ x: x, anchor: 'end', aggregatedIdx: [currentIdx] }];
+        return [{ x, anchor: 'end', aggregatedIdx: [currentIdx] }];
       } else if (x + textWidth < maxX) {
-        return [{ x: x, anchor: 'start', aggregatedIdx: [currentIdx] }];
+        return [{ x, anchor: 'start', aggregatedIdx: [currentIdx] }];
       }
 
       return [];
@@ -97,7 +97,6 @@ function calculateLabels(lineDefs: LineDef[], textWidth: number, maxX: number, m
 
     let idx = findIndex(
       lineDefs,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ds => ds.x > bd && (ds.x - textWidth >= bd || ds.x + textWidth < maxX),
       currentIdx + 1,
     );

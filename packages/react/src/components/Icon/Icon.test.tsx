@@ -12,13 +12,7 @@ describe('Icon', () => {
   });
 
   it('sets Icon name with ariaLabel', () => {
-    const { container } = render(
-      <Icon
-        iconName="CompassNW"
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        ariaLabel="asdf"
-      />,
-    );
+    const { container } = render(<Icon iconName="CompassNW" ariaLabel="asdf" />);
     const iconInstance = container.querySelector('i');
 
     expect(iconInstance).toHaveAttribute('role', 'img');

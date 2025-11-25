@@ -12,7 +12,6 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     justify: 'start',
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement | null {
     const { children, direction, layoutGap, justify } = this.props;
 

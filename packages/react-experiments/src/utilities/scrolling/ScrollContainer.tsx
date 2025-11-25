@@ -76,7 +76,6 @@ export class ScrollContainer
     this._callbacks.push(callback);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { children, className } = this.props;
 
