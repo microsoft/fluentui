@@ -10,7 +10,30 @@ const SVG_SUFFIX = '_svg';
 export const DEFAULT_BASE_URL = `${FLUENT_CDN_BASE_URL}/assets/item-types/`;
 export const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
 
+// Module-level state to track the configured base URL
+let _configuredBaseUrl: string | undefined;
+
+/**
+ * Returns the configured base URL if `initializeFileTypeIcons` was called with a custom URL,
+ * otherwise returns the default CDN base URL.
+ * This is used internally by FileTypeIcon component and utility functions.
+ */
+export function getConfiguredBaseUrl(): string {
+  return _configuredBaseUrl ?? DEFAULT_BASE_URL;
+}
+
+/**
+ * Resets the configured base URL to undefined, causing `getConfiguredBaseUrl` to return
+ * the default CDN base URL. This is primarily intended for testing purposes.
+ */
+export function resetConfiguredBaseUrl(): void {
+  _configuredBaseUrl = undefined;
+}
+
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {
+  // Store the configured base URL for use by v9 components and utilities
+  _configuredBaseUrl = baseUrl;
+
   ICON_SIZES.forEach((size: number) => {
     _initializeIcons(baseUrl, size, options);
   });

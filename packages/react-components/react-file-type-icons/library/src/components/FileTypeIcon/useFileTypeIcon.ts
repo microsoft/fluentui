@@ -7,7 +7,7 @@ import {
   DEFAULT_ICON_SIZE,
 } from '../../utils/getFileTypeIconProps';
 import { FileIconType } from '../../utils/FileIconType';
-import { DEFAULT_BASE_URL } from '../../utils/initializeFileTypeIcons';
+import { getConfiguredBaseUrl } from '../../utils/initializeFileTypeIcons';
 
 /**
  * Returns the props and state required to render the FileTypeIcon component.
@@ -16,7 +16,7 @@ export const useFileTypeIcon_unstable = (
   props: FileTypeIconProps,
   ref: React.Ref<HTMLImageElement>,
 ): FileTypeIconState => {
-  const { extension, type, size = DEFAULT_ICON_SIZE, imageFileType = 'svg', baseUrl = DEFAULT_BASE_URL } = props;
+  const { extension, type, size = DEFAULT_ICON_SIZE, imageFileType = 'svg', baseUrl = getConfiguredBaseUrl() } = props;
 
   // Get the base icon name and suffix separately using v8 pattern
   const baseIconName = getFileTypeIconNameFromExtensionOrType(extension, type);

@@ -1,4 +1,4 @@
-import { DEFAULT_BASE_URL } from './initializeFileTypeIcons';
+import { getConfiguredBaseUrl } from './initializeFileTypeIcons';
 import {
   getFileTypeIconNameFromExtensionOrType,
   getFileTypeIconSuffix,
@@ -11,11 +11,13 @@ import { FileIconType } from './FileIconType';
  * Given the `fileTypeIconOptions`, this function returns the CDN-based URL for `FileTypeIcon`.
  * Similar to `getFileTypeIconProps`, but rather than returning the `iconName`, this returns the raw URL.
  * @param options
- * @param baseUrl - optionally provide a custom CDN base url to fetch icons from
+ * @param baseUrl - optionally provide a custom CDN base url to fetch icons from.
+ *                  If not provided, uses the URL configured via `initializeFileTypeIcons()`,
+ *                  or falls back to the default CDN URL.
  */
 export function getFileTypeIconAsUrl(
   options: FileTypeIconOptions,
-  baseUrl: string = DEFAULT_BASE_URL,
+  baseUrl: string = getConfiguredBaseUrl(),
 ): string | undefined {
   const { extension, size = DEFAULT_ICON_SIZE, type, imageFileType = 'svg' } = options;
   const baseIconName = getFileTypeIconNameFromExtensionOrType(extension, type);
@@ -36,11 +38,13 @@ export function getFileTypeIconAsUrl(
  * Given the `fileTypeIconOptions`, similar to `getFileTypeIconProps`, this function returns
  * an <img> tag DOM element that renders the icon, as a string.
  * @param options
- * @param baseUrl - optionally provide a custom CDN base url to fetch icons from
+ * @param baseUrl - optionally provide a custom CDN base url to fetch icons from.
+ *                  If not provided, uses the URL configured via `initializeFileTypeIcons()`,
+ *                  or falls back to the default CDN URL.
  */
 export function getFileTypeIconAsHTMLString(
   options: FileTypeIconOptions,
-  baseUrl: string = DEFAULT_BASE_URL,
+  baseUrl: string = getConfiguredBaseUrl(),
 ): string | undefined {
   const url = getFileTypeIconAsUrl(options, baseUrl);
 
