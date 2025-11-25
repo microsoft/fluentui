@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
+import { tokens } from '@fluentui/react-components';
 import { getFileTypeIconAsUrl, getFileTypeIconAsHTMLString } from '@fluentui/react-file-type-icons';
 import { makeStyles, shorthands } from '@griffel/react';
 
@@ -14,12 +15,12 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: '12px',
     ...shorthands.padding('16px'),
-    ...shorthands.border('1px', 'solid', '#e0e0e0'),
-    ...shorthands.borderRadius('8px'),
+    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
   sectionTitle: {
-    fontSize: '16px',
-    fontWeight: '600',
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
     marginBottom: '8px',
   },
   grid: {
@@ -32,12 +33,12 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: '8px',
     ...shorthands.padding('12px'),
-    backgroundColor: '#f5f5f5',
-    ...shorthands.borderRadius('4px'),
+    backgroundColor: tokens.colorNeutralBackground2,
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
   },
   cardTitle: {
-    fontSize: '14px',
-    fontWeight: '600',
+    fontSize: tokens.fontSizeBase300,
+    fontWeight: tokens.fontWeightSemibold,
     marginBottom: '4px',
   },
   iconPreview: {
@@ -45,23 +46,23 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     ...shorthands.padding('12px'),
-    backgroundColor: '#ffffff',
-    ...shorthands.borderRadius('4px'),
+    backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
     minHeight: '60px',
   },
   code: {
-    fontSize: '11px',
-    fontFamily: 'monospace',
-    backgroundColor: '#ffffff',
+    fontSize: tokens.fontSizeBase100,
+    fontFamily: tokens.fontFamilyMonospace,
+    backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.padding('8px'),
-    ...shorthands.borderRadius('4px'),
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
     overflowX: 'auto',
     wordBreak: 'break-all',
   },
   label: {
-    fontSize: '12px',
-    color: '#666',
-    fontWeight: '500',
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground3,
+    fontWeight: tokens.fontWeightMedium,
   },
 });
 

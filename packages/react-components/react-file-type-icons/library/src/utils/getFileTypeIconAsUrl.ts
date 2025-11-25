@@ -5,6 +5,7 @@ import {
   DEFAULT_ICON_SIZE,
 } from './getFileTypeIconProps';
 import type { FileTypeIconOptions } from './getFileTypeIconProps';
+import { FileIconType } from './FileIconType';
 
 /**
  * Given the `fileTypeIconOptions`, this function returns the CDN-based URL for `FileTypeIcon`.
@@ -47,6 +48,8 @@ export function getFileTypeIconAsHTMLString(
     return undefined;
   }
 
-  const { size = DEFAULT_ICON_SIZE } = options;
-  return `<img src="${url}" height="${size}" width="${size}" />`;
+  const { size = DEFAULT_ICON_SIZE, extension, type } = options;
+  // Generate alt text: use extension if provided, otherwise get the enum name for type
+  const altText = extension || (type !== undefined ? FileIconType[type] : '');
+  return `<img src="${url}" height="${size}" width="${size}" alt="${altText} file icon" />`;
 }

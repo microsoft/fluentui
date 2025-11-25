@@ -7,8 +7,7 @@ import {
   DEFAULT_ICON_SIZE,
 } from '../../utils/getFileTypeIconProps';
 import { FileIconType } from '../../utils/FileIconType';
-
-const DEFAULT_BASE_URL = 'https://res.cdn.office.net/files/fabric-cdn-prod_20251119.001/assets/item-types/';
+import { DEFAULT_BASE_URL } from '../../utils/initializeFileTypeIcons';
 
 /**
  * Returns the props and state required to render the FileTypeIcon component.

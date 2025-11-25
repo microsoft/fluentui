@@ -49,7 +49,7 @@ export const Default = (): JSXElement => {
       <div className={styles.iconGroup}>
         <FileTypeIcon extension="docx" size={24} />
         <div className={styles.label}>24px</div>
-        <div className={styles.description}>Standard list items, search results. Example shows a PDF.</div>
+        <div className={styles.description}>Standard list items, search results. Example shows a Word document.</div>
       </div>
       <div className={styles.iconGroup}>
         <FileTypeIcon extension="ppt" size={32} />

@@ -62,6 +62,12 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     overflowX: 'auto',
   },
+  truncatedText: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    flex: 1,
+  },
 });
 
 export const EdgeCases = (): JSXElement => {
@@ -177,7 +183,7 @@ export const EdgeCases = (): JSXElement => {
         </div>
         <div className={styles.exampleItem}>
           <FileTypeIcon extension="pdf" size={32} />
-          <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>
+          <div className={styles.truncatedText}>
             <div className={styles.label}>
               This_is_a_very_long_filename_that_could_cause_layout_issues_in_some_contexts_Q4_2025_Final_Report_v3.pdf
             </div>
@@ -198,11 +204,11 @@ export const EdgeCases = (): JSXElement => {
         <div className={styles.exampleGrid}>
           <div className={styles.exampleItem}>
             <FileTypeIcon extension="PDF" size={32} />
-            <div className={styles.label}>.PDF</div>
+            <div className={styles.label}>PDF</div>
           </div>
           <div className={styles.exampleItem}>
             <FileTypeIcon extension="pdf" size={32} />
-            <div className={styles.label}>.pdf</div>
+            <div className={styles.label}>pdf</div>
           </div>
           <div className={styles.exampleItem}>
             <FileTypeIcon extension=".Pdf" size={32} />

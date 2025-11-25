@@ -26,7 +26,7 @@ export default {
       description: 'The size of the icon in pixels',
       table: {
         type: { summary: '16 | 20 | 24 | 32 | 40 | 48 | 64 | 96' },
-        defaultValue: { summary: '48' },
+        defaultValue: { summary: '16' },
       },
     },
     extension: {

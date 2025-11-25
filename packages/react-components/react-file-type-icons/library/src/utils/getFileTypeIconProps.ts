@@ -122,7 +122,7 @@ export function getFileTypeIconSuffix(
   win?: Window,
 ): string {
   // eslint-disable-next-line @nx/workspace-no-restricted-globals
-  win ??= window;
+  win ??= typeof window !== 'undefined' ? window : ({ devicePixelRatio: 1 } as Window);
   const devicePixelRatio: number = win.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 

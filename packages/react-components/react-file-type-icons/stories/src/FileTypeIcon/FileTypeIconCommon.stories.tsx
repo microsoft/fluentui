@@ -42,13 +42,17 @@ const useStyles = makeStyles({
     textAlign: 'center',
     color: tokens.colorNeutralForeground2,
   },
+  specialTypesDescription: {
+    marginBottom: '12px',
+    color: tokens.colorNeutralForeground3,
+  },
 });
 
 const fileTypeCategories = {
   documents: ['docx', 'xlsx', 'pdf', 'txt', 'rtf', 'odt', 'pptx', 'csv'],
   media: ['jpg', 'svg', 'mp4', 'mp3', 'wav', 'aac'],
   code: ['html', 'url', 'json', 'xml', 'py', 'java', 'cpp'],
-  data: ['zip', 'tar', 'sql', 'accdb', 'xml'],
+  data: ['zip', 'tar', 'sql', 'accdb'],
 };
 
 const specialTypes = [
@@ -114,7 +118,7 @@ export const CommonFileTypes = (): JSXElement => {
 
       <div className={styles.categorySection}>
         <div className={styles.categoryTitle}>Special Types</div>
-        <p style={{ marginBottom: '12px', color: tokens.colorNeutralForeground3 }}>
+        <p className={styles.specialTypesDescription}>
           These types are not based on file extensions, but represent objects like folders and list items.
         </p>
         <div className={styles.grid}>

@@ -217,7 +217,7 @@ describe('getFileTypeIconAsHTMLString', () => {
         { extension: 'docx', size: 16, imageFileType: 'png' },
         DEFAULT_BASE_URL,
       );
-      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}16/docx.png" height="16" width="16" />`);
+      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}16/docx.png" height="16" width="16" alt="docx file icon" />`);
     });
 
     it('should return correct HTML string for 1.5x DPI with pdf extension', () => {
@@ -231,7 +231,7 @@ describe('getFileTypeIconAsHTMLString', () => {
         { extension: 'pdf', size: 16, imageFileType: 'png' },
         DEFAULT_BASE_URL,
       );
-      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}16_1.5x/pdf.png" height="16" width="16" />`);
+      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}16_1.5x/pdf.png" height="16" width="16" alt="pdf file icon" />`);
     });
 
     it('should return correct HTML string for 2x DPI with xlsx extension', () => {
@@ -245,7 +245,7 @@ describe('getFileTypeIconAsHTMLString', () => {
         { extension: 'xlsx', size: 16, imageFileType: 'png' },
         DEFAULT_BASE_URL,
       );
-      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}16_2x/xlsx.png" height="16" width="16" />`);
+      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}16_2x/xlsx.png" height="16" width="16" alt="xlsx file icon" />`);
     });
   });
 
@@ -255,7 +255,7 @@ describe('getFileTypeIconAsHTMLString', () => {
         { extension: 'docx', size: 24, imageFileType: 'svg' },
         DEFAULT_BASE_URL,
       );
-      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}24/docx.svg" height="24" width="24" />`);
+      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}24/docx.svg" height="24" width="24" alt="docx file icon" />`);
     });
 
     it('should return correct HTML string for 1.5x DPI with SVG', () => {
@@ -269,7 +269,7 @@ describe('getFileTypeIconAsHTMLString', () => {
         { extension: 'pdf', size: 20, imageFileType: 'svg' },
         DEFAULT_BASE_URL,
       );
-      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}20_1.5x/pdf.svg" height="20" width="20" />`);
+      expect(result).toBe(`<img src="${DEFAULT_BASE_URL}20_1.5x/pdf.svg" height="20" width="20" alt="pdf file icon" />`);
     });
   });
 
@@ -281,6 +281,7 @@ describe('getFileTypeIconAsHTMLString', () => {
       );
       expect(result).toContain('height="32"');
       expect(result).toContain('width="32"');
+      expect(result).toContain('alt="docx file icon"');
     });
 
     it('should include correct size attributes for size 48', () => {
@@ -290,6 +291,7 @@ describe('getFileTypeIconAsHTMLString', () => {
       );
       expect(result).toContain('height="48"');
       expect(result).toContain('width="48"');
+      expect(result).toContain('alt="xlsx file icon"');
     });
   });
 
@@ -298,16 +300,28 @@ describe('getFileTypeIconAsHTMLString', () => {
 
     it('should use custom base URL in HTML string', () => {
       const result = getFileTypeIconAsHTMLString({ extension: 'docx', size: 16, imageFileType: 'svg' }, customBaseUrl);
-      expect(result).toBe(`<img src="${customBaseUrl}16/docx.svg" height="16" width="16" />`);
+      expect(result).toBe(`<img src="${customBaseUrl}16/docx.svg" height="16" width="16" alt="docx file icon" />`);
     });
   });
 
   describe('edge cases', () => {
-    it('should handle undefined URL gracefully', () => {
-      // This would only happen if getFileTypeIconAsUrl returns undefined
-      // which shouldn't happen in normal circumstances, but we test for robustness
+    it('should handle unknown extension gracefully with alt text', () => {
+      // Unknown extensions should still generate valid HTML with alt text
       const result = getFileTypeIconAsHTMLString({ extension: 'unknown', size: 16 }, DEFAULT_BASE_URL);
       expect(result).toBeDefined();
+      expect(result).toContain('alt="unknown file icon"');
+    });
+
+    it('should generate alt text from FileIconType when extension is not provided', () => {
+      const result = getFileTypeIconAsHTMLString({ type: FileIconType.folder, size: 16 }, DEFAULT_BASE_URL);
+      expect(result).toBeDefined();
+      expect(result).toContain('alt="folder file icon"');
+    });
+
+    it('should generate empty alt text prefix when neither extension nor type is provided', () => {
+      const result = getFileTypeIconAsHTMLString({ size: 16 }, DEFAULT_BASE_URL);
+      expect(result).toBeDefined();
+      expect(result).toContain('alt=" file icon"');
     });
   });
 });
