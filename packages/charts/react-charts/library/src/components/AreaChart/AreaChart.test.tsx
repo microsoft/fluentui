@@ -8,6 +8,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 expect.extend(toHaveNoViolations);
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
 
 function updateChartWidthAndHeight() {
   jest.useFakeTimers();
@@ -15,7 +16,7 @@ function updateChartWidthAndHeight() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
+  window.Element.prototype.getBoundingClientRect = () =>
     ({
       bottom: 44,
       height: 50,
@@ -23,12 +24,30 @@ function updateChartWidthAndHeight() {
       right: 35.67,
       top: 20,
       width: 650,
+      x: 10,
+      y: 20,
     } as DOMRect);
+
+  window.getComputedStyle = (element: Element) => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  };
 }
 
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.getComputedStyle = originalGetComputedStyle;
 }
 
 const chart1Points = [
@@ -473,6 +492,8 @@ describe.skip('Area chart rendering with date x-axis data', () => {
 });
 
 describe('Area chart - Subcomponent Area', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   testWithoutWait('Should render the Areas with the specified colors', AreaChart, { data: chartData }, container => {
     const areas = getById(container, /graph-areaChart/i);
     // Assert
@@ -483,6 +504,8 @@ describe('Area chart - Subcomponent Area', () => {
 });
 
 describe('Area chart - Subcomponent legend', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   testWithoutWait(
     'Should highlight the corresponding Area on mouse over on legends',
     AreaChart,
@@ -627,9 +650,7 @@ describe('AreaChart - Accessibility tests', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<AreaChart data={chartData} />);
     let axeResults;
-    await act(async () => {
-      axeResults = await axe(container);
-    });
+    axeResults = await axe(container);
     expect(axeResults).toHaveNoViolations();
   });
 });
@@ -670,6 +691,8 @@ const points: LineChartPoints[] = [
 ];
 
 describe('AreaChart snapShot testing', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   it('renders Areachart correctly', async () => {
     let wrapper = render(<AreaChart data={chartData} />);
     expect(wrapper).toMatchSnapshot();
@@ -735,6 +758,8 @@ describe('AreaChart snapShot testing', () => {
 });
 
 describe('AreaChart - basic props', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   it('Should not mount legend when hideLegend true ', () => {
     let wrapper = render(<AreaChart data={chartData} hideLegend={true} />);
     const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
@@ -804,6 +829,8 @@ describe('AreaChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   it('No prop changes', () => {
     const props = {
       data: { chartTitle: 'AreaChart', lineChartData: chartPoints },
@@ -833,6 +860,8 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('AreaChart - mouse events', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   it('Should render callout correctly on mouseover', () => {
     let wrapper = render(<AreaChart data={chartData} />);
     const bars = wrapper.container.querySelectorAll('rect');
@@ -901,6 +930,8 @@ describe('AreaChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   it('No empty chart aria label div rendered', () => {
     let wrapper = render(<AreaChart data={chartData} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
@@ -915,6 +946,8 @@ describe('Render empty chart aria label div when chart is empty', () => {
 });
 
 describe('Area chart rendering with duplicate values', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
   testWithoutWait(
     'Should return the correct dataset for duplicate values',
     AreaChart,

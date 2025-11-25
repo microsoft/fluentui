@@ -12,6 +12,7 @@ import { GanttChartDataPoint } from '../../types/index';
 expect.extend(toHaveNoViolations);
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
 
 function updateChartWidthAndHeight() {
   jest.useFakeTimers();
@@ -28,6 +29,20 @@ function updateChartWidthAndHeight() {
       top: 20,
       width: 600,
     } as DOMRect);
+  window.getComputedStyle = (element: Element) => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  };
 }
 
 beforeEach(() => {
@@ -38,6 +53,7 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
   window.requestAnimationFrame = originalRAF;
+  window.getComputedStyle = originalGetComputedStyle;
   jest.useRealTimers();
 });
 

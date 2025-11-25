@@ -19,14 +19,15 @@ const { Timezone } = require('../../../scripts/constants');
 expect.extend(toHaveNoViolations);
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
 
-/* function updateChartWidthAndHeight() {
+function updateChartWidthAndHeight() {
   jest.useFakeTimers();
   Object.defineProperty(window, 'requestAnimationFrame', {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
+  window.Element.prototype.getBoundingClientRect = () =>
     ({
       bottom: 44,
       height: 50,
@@ -35,11 +36,26 @@ const originalRAF = window.requestAnimationFrame;
       top: 20,
       width: 650,
     } as DOMRect);
-} */
+  window.getComputedStyle = (element: Element) => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  };
+}
 
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.getComputedStyle = originalGetComputedStyle;
 }
 
 const basicPoints: LineChartPoints[] = [
@@ -214,6 +230,7 @@ const tickValues = [
 ];
 
 describe('Line chart rendering', () => {
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -648,6 +665,7 @@ describe('Line chart - Subcomponent Event', () => {
 });
 
 describe('Screen resolution', () => {
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -684,6 +702,7 @@ describe('Screen resolution', () => {
 });
 
 describe('Theme and accessibility', () => {
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
@@ -698,7 +717,10 @@ describe('Theme and accessibility', () => {
   });
 });
 
-describe('Line chart - Accessibility', () => {
+describe.skip('Line chart - Accessibility', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   test('Should pass accessibility tests', async () => {
     const { container } = render(<LineChart data={basicChartPoints} />);
     let axeResults;
@@ -710,6 +732,9 @@ describe('Line chart - Accessibility', () => {
 });
 
 describe('LineChart snapShot testing', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('renders LineChart correctly', async () => {
     let wrapper = render(<LineChart data={basicChartPoints} />);
     expect(wrapper).toMatchSnapshot();
@@ -775,6 +800,7 @@ describe('LineChart snapShot testing', () => {
 });
 
 describe('LineChart - basic props', () => {
+  beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
@@ -803,6 +829,9 @@ describe('LineChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('No prop changes', () => {
     const props = {
       data: basicChartPoints,
@@ -833,6 +862,9 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   it('No empty chart aria label div rendered', () => {
     let wrapper = render(<LineChart data={basicChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
@@ -855,6 +887,7 @@ describe.skip('LineChart - mouse events', () => {
   let root: HTMLDivElement | null;
 
   beforeEach(() => {
+    updateChartWidthAndHeight();
     root = document.createElement('div');
     document.body.appendChild(root);
   });

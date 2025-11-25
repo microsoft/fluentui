@@ -13,7 +13,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
     >
       <svg
         class="fui-cart__chart"
-        height="NaN"
+        height="300"
         style="display: block;"
         width="650"
       >
@@ -24,7 +24,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, NaN)"
+          transform="translate(0, 265)"
         >
           <path
             class="domain"
@@ -309,13 +309,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         >
           <path
             class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
+            d="M-6,265.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,265.5)"
           >
             <line
               stroke="currentColor"
@@ -334,7 +334,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,204.25)"
           >
             <line
               stroke="currentColor"
@@ -353,7 +353,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,143)"
           >
             <line
               stroke="currentColor"
@@ -372,7 +372,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,81.75)"
           >
             <line
               stroke="currentColor"
@@ -391,7 +391,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,20.5)"
           >
             <line
               stroke="currentColor"
@@ -413,7 +413,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
-              height="NaN"
+              height="49"
               id="_VBC_bar__r_5s_-0"
               opacity="1"
               role="img"
@@ -421,7 +421,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="0"
               width="16"
               x="56"
-              y="NaN"
+              y="216"
             />
             <text
               aria-hidden="true"
@@ -429,7 +429,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
-              y="NaN"
+              y="210"
             >
               10k
             </text>
@@ -438,7 +438,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
-              height="NaN"
+              height="245"
               id="_VBC_bar__r_5s_-1"
               opacity="1"
               role="img"
@@ -446,7 +446,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="0"
               width="16"
               x="264.46153846153845"
-              y="NaN"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -454,7 +454,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
-              y="NaN"
+              y="14"
             >
               50k
             </text>
@@ -463,7 +463,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
-              height="NaN"
+              height="147"
               id="_VBC_bar__r_5s_-2"
               opacity="1"
               role="img"
@@ -471,7 +471,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="0"
               width="16"
               x="577.1538461538462"
-              y="NaN"
+              y="118"
             />
             <text
               aria-hidden="true"
@@ -479,7 +479,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
-              y="NaN"
+              y="112"
             >
               30k
             </text>
@@ -578,7 +578,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
     >
       <svg
         class="fui-cart__chart"
-        height="NaN"
+        height="300"
         style="display: block;"
         width="650"
       >
@@ -589,7 +589,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, NaN)"
+          transform="translate(0, 265)"
         >
           <path
             class="domain"
@@ -874,13 +874,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         >
           <path
             class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
+            d="M-6,265.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,265.5)"
           >
             <line
               stroke="currentColor"
@@ -899,7 +899,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,204.25)"
           >
             <line
               stroke="currentColor"
@@ -918,7 +918,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,143)"
           >
             <line
               stroke="currentColor"
@@ -937,7 +937,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,81.75)"
           >
             <line
               stroke="currentColor"
@@ -956,7 +956,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,20.5)"
           >
             <line
               stroke="currentColor"
@@ -978,7 +978,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
-              height="NaN"
+              height="49"
               id="_VBC_bar__r_63_-0"
               opacity="1"
               role="img"
@@ -986,7 +986,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="0"
               width="16"
               x="56"
-              y="NaN"
+              y="216"
             />
             <text
               aria-hidden="true"
@@ -994,7 +994,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
-              y="NaN"
+              y="210"
             >
               10k
             </text>
@@ -1003,7 +1003,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
-              height="NaN"
+              height="245"
               id="_VBC_bar__r_63_-1"
               opacity="1"
               role="img"
@@ -1011,7 +1011,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="0"
               width="16"
               x="264.46153846153845"
-              y="NaN"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -1019,7 +1019,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
-              y="NaN"
+              y="14"
             >
               50k
             </text>
@@ -1028,7 +1028,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
-              height="NaN"
+              height="147"
               id="_VBC_bar__r_63_-2"
               opacity="1"
               role="img"
@@ -1036,7 +1036,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="0"
               width="16"
               x="577.1538461538462"
-              y="NaN"
+              y="118"
             />
             <text
               aria-hidden="true"
@@ -1044,7 +1044,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
-              y="NaN"
+              y="112"
             >
               30k
             </text>
@@ -1147,7 +1147,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
       >
         <svg
           class="fui-cart__chart"
-          height="NaN"
+          height="300"
           style="display: block;"
           width="650"
         >
@@ -1158,7 +1158,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             font-size="10"
             id="xAxisGElementchart_"
             text-anchor="middle"
-            transform="translate(0, NaN)"
+            transform="translate(0, 265)"
           >
             <path
               class="domain"
@@ -1443,13 +1443,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
           >
             <path
               class="domain"
-              d="M-6,NaNH0.5V20.5H-6"
+              d="M-6,265.5H0.5V20.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,265.5)"
             >
               <line
                 stroke="currentColor"
@@ -1468,7 +1468,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,204.25)"
             >
               <line
                 stroke="currentColor"
@@ -1487,7 +1487,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,143)"
             >
               <line
                 stroke="currentColor"
@@ -1506,7 +1506,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,81.75)"
             >
               <line
                 stroke="currentColor"
@@ -1525,7 +1525,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,NaN)"
+              transform="translate(0,20.5)"
             >
               <line
                 stroke="currentColor"
@@ -1547,7 +1547,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               <rect
                 aria-label="2020/04/30. First, 10%."
                 fill="aqua"
-                height="NaN"
+                height="49"
                 id="_VBC_bar__r_6b_-0"
                 opacity="1"
                 role="img"
@@ -1555,7 +1555,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 tabindex="0"
                 width="16"
                 x="56"
-                y="NaN"
+                y="216"
               />
               <text
                 aria-hidden="true"
@@ -1563,7 +1563,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="middle"
                 x="64"
-                y="NaN"
+                y="210"
               >
                 10k
               </text>
@@ -1572,7 +1572,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               <rect
                 aria-label="2020/04/30. Second, 20%."
                 fill="blue"
-                height="NaN"
+                height="245"
                 id="_VBC_bar__r_6b_-1"
                 opacity="1"
                 role="img"
@@ -1580,7 +1580,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 tabindex="0"
                 width="16"
                 x="264.46153846153845"
-                y="NaN"
+                y="20"
               />
               <text
                 aria-hidden="true"
@@ -1588,7 +1588,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="middle"
                 x="272.46153846153845"
-                y="NaN"
+                y="14"
               >
                 50k
               </text>
@@ -1597,7 +1597,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               <rect
                 aria-label="2020/04/30. Third, 37%."
                 fill="navy"
-                height="NaN"
+                height="147"
                 id="_VBC_bar__r_6b_-2"
                 opacity="1"
                 role="img"
@@ -1605,7 +1605,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 tabindex="0"
                 width="16"
                 x="577.1538461538462"
-                y="NaN"
+                y="118"
               />
               <text
                 aria-hidden="true"
@@ -1613,7 +1613,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 style="direction: ltr; unicode-bidi: isolate;"
                 text-anchor="middle"
                 x="585.1538461538462"
-                y="NaN"
+                y="112"
               >
                 30k
               </text>
@@ -1724,7 +1724,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
     >
       <svg
         class="fui-cart__chart"
-        height="NaN"
+        height="300"
         style="display: block;"
         width="650"
       >
@@ -1735,7 +1735,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, NaN)"
+          transform="translate(0, 265)"
         >
           <path
             class="domain"
@@ -2020,13 +2020,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
         >
           <path
             class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
+            d="M-6,265.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,265.5)"
           >
             <line
               stroke="currentColor"
@@ -2045,7 +2045,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,204.25)"
           >
             <line
               stroke="currentColor"
@@ -2064,7 +2064,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,143)"
           >
             <line
               stroke="currentColor"
@@ -2083,7 +2083,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,81.75)"
           >
             <line
               stroke="currentColor"
@@ -2102,7 +2102,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,20.5)"
           >
             <line
               stroke="currentColor"
@@ -2124,7 +2124,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
-              height="NaN"
+              height="49"
               id="_VBC_bar__r_6i_-0"
               opacity="1"
               role="img"
@@ -2132,7 +2132,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               tabindex="0"
               width="16"
               x="56"
-              y="NaN"
+              y="216"
             />
             <text
               aria-hidden="true"
@@ -2140,7 +2140,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
-              y="NaN"
+              y="210"
             >
               10k
             </text>
@@ -2149,7 +2149,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
-              height="NaN"
+              height="245"
               id="_VBC_bar__r_6i_-1"
               opacity="1"
               role="img"
@@ -2157,7 +2157,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               tabindex="0"
               width="16"
               x="264.46153846153845"
-              y="NaN"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -2165,7 +2165,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
-              y="NaN"
+              y="14"
             >
               50k
             </text>
@@ -2174,7 +2174,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
-              height="NaN"
+              height="147"
               id="_VBC_bar__r_6i_-2"
               opacity="1"
               role="img"
@@ -2182,7 +2182,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               tabindex="0"
               width="16"
               x="577.1538461538462"
-              y="NaN"
+              y="118"
             />
             <text
               aria-hidden="true"
@@ -2190,7 +2190,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
-              y="NaN"
+              y="112"
             >
               30k
             </text>
@@ -2289,1258 +2289,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
     >
       <svg
         class="fui-cart__chart"
-        height="NaN"
-        style="display: block;"
-        width="0"
-      >
-        <g
-          class="fui-cart__xAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="xAxisGElementchart_"
-          text-anchor="middle"
-          transform="translate(0, NaN)"
-        >
-          <path
-            class="domain"
-            d="M49.5,6V0.5H-28.5V6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(49.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate;"
-              y="16"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(19.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate;"
-              y="16"
-            >
-              10,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(-10.500000000000005,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate;"
-              y="16"
-            >
-              20,000
-            </text>
-          </g>
-        </g>
-        <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
-        >
-          <path
-            class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              −50k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              −37.5k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              −25k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              −12.5k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              0
-            </text>
-          </g>
-        </g>
-        <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              fill="qualitative.1"
-              height="NaN"
-              id="_VBC_bar__r_p_-0"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="1"
-              x="48.5"
-              y="NaN"
-            />
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              fill="qualitative.2"
-              height="NaN"
-              id="_VBC_bar__r_p_-1"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="1"
-              x="18.5"
-              y="NaN"
-            />
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              fill="qualitative.3"
-              height="NaN"
-              id="_VBC_bar__r_p_-2"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="1"
-              x="-26.500000000000004"
-              y="NaN"
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <div
-      class="fui-cart__legendContainer"
-    >
-      <div
-        aria-label="Legends"
-        aria-multiselectable="false"
-        class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
-      >
-        <div
-          class="fui-Overflow fui-legend__resizableArea"
-          style="text-align: unset;"
-        >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Third
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Vertical bar chart rendering Should render the vertical bar chart with numeric x-axis data 1`] = `
-<div>
-  <div
-    class="fui-cart__root"
-    id="chart_"
-    role="presentation"
-  >
-    <div
-      class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-    >
-      <svg
-        class="fui-cart__chart"
-        height="NaN"
-        style="display: block;"
-        width="0"
-      >
-        <g
-          class="fui-cart__xAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="xAxisGElementchart_"
-          text-anchor="middle"
-          transform="translate(0, NaN)"
-        >
-          <path
-            class="domain"
-            d="M49.5,6V0.5H-28.5V6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(49.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate;"
-              y="16"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(19.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate;"
-              y="16"
-            >
-              10,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(-10.500000000000005,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate;"
-              y="16"
-            >
-              20,000
-            </text>
-          </g>
-        </g>
-        <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
-        >
-          <path
-            class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              12.5k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              25k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              37.5k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              50k
-            </text>
-          </g>
-        </g>
-        <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              fill="aqua"
-              height="NaN"
-              id="_VBC_bar__r_4_-0"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="1"
-              x="48.5"
-              y="NaN"
-            />
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              fill="blue"
-              height="NaN"
-              id="_VBC_bar__r_4_-1"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="1"
-              x="18.5"
-              y="NaN"
-            />
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              fill="navy"
-              height="NaN"
-              id="_VBC_bar__r_4_-2"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="1"
-              x="-26.500000000000004"
-              y="NaN"
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <div
-      class="fui-cart__legendContainer"
-    >
-      <div
-        aria-label="Legends"
-        aria-multiselectable="false"
-        class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
-      >
-        <div
-          class="fui-Overflow fui-legend__resizableArea"
-          style="text-align: unset;"
-        >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Third
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Vertical bar chart rendering Should render the vertical bar chart with string x-axis data 1`] = `
-<div>
-  <div
-    class="fui-cart__root"
-    id="chart_"
-    role="presentation"
-  >
-    <div
-      class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-    >
-      <svg
-        class="fui-cart__chart"
-        height="NaN"
-        style="display: block;"
-        width="0"
-      >
-        <g
-          class="fui-cart__xAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="xAxisGElementchart_"
-          text-anchor="middle"
-          transform="translate(0, NaN)"
-        >
-          <path
-            class="domain"
-            d="M48.5,6V0.5H-27.5V6"
-            stroke="currentColor"
-          />
-        </g>
-        <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
-        >
-          <path
-            class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              875
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              1.75k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              2.63k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              3.5k
-            </text>
-          </g>
-        </g>
-        <g>
-          <g
-            transform="translate(0, 0)"
-          >
-            <rect
-              aria-label="This is a medium long label. . 3500."
-              fill="#627CEF"
-              height="NaN"
-              id="_VBC_bar__r_b_-0"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="7.600000000000001"
-              x="40.400000000000006"
-              y="NaN"
-            />
-          </g>
-          <g
-            transform="translate(0, 0)"
-          >
-            <rect
-              aria-label="This is a long label This is a long label. 2500."
-              fill="#C19C00"
-              height="NaN"
-              id="_VBC_bar__r_b_-1"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="7.600000000000001"
-              x="17.6"
-              y="NaN"
-            />
-          </g>
-          <g
-            transform="translate(0, 0)"
-          >
-            <rect
-              aria-label="This label is as long as the previous one. 1900."
-              fill="#E650AF"
-              height="NaN"
-              id="_VBC_bar__r_b_-2"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="7.600000000000001"
-              x="-5.199999999999999"
-              y="NaN"
-            />
-          </g>
-          <g
-            transform="translate(0, 0)"
-          >
-            <rect
-              aria-label="A short label. 2800."
-              fill="#0E7878"
-              height="NaN"
-              id="_VBC_bar__r_b_-3"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="7.600000000000001"
-              x="-28"
-              y="NaN"
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <div
-      class="fui-cart__legendContainer"
-    >
-      <div
-        aria-label="Legends"
-        aria-multiselectable="false"
-        class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
-      >
-        <div
-          class="fui-Overflow fui-legend__resizableArea"
-          style="text-align: unset;"
-        >
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0E7878; --rect-borderColor: #0E7878;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(14, 120, 120); border-color: rgb(14, 120, 120); --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              undefined
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Vertical bar chart rendering should render the vertical bar chart with some positive and some negative y value bars correctly 1`] = `
-<div>
-  <div
-    class="fui-cart__root"
-    id="chart_"
-    role="presentation"
-  >
-    <div
-      class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-    >
-      <svg
-        class="fui-cart__chart"
-        height="NaN"
-        style="display: block;"
-        width="0"
-      >
-        <g
-          class="fui-cart__xAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="xAxisGElementchart_"
-          text-anchor="middle"
-          transform="translate(0, NaN)"
-        >
-          <path
-            class="domain"
-            d="M49.5,6V0.5H-28.5V6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(49.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate;"
-              y="16"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(19.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate;"
-              y="16"
-            >
-              10,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(-10.500000000000005,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate;"
-              y="16"
-            >
-              20,000
-            </text>
-          </g>
-        </g>
-        <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
-        >
-          <path
-            class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              −60k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              −40k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              −20k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              20k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,NaN)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-60"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
-            >
-              40k
-            </text>
-          </g>
-        </g>
-        <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              fill="qualitative.1"
-              height="NaN"
-              id="_VBC_bar__r_10_-0"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="1"
-              x="48.5"
-              y="NaN"
-            />
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              fill="qualitative.2"
-              height="NaN"
-              id="_VBC_bar__r_10_-1"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="1"
-              x="18.5"
-              y="NaN"
-            />
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              fill="qualitative.3"
-              height="NaN"
-              id="_VBC_bar__r_10_-2"
-              opacity="1"
-              role="img"
-              rx="0"
-              tabindex="0"
-              width="1"
-              x="-26.500000000000004"
-              y="NaN"
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <div
-      class="fui-cart__legendContainer"
-    >
-      <div
-        aria-label="Legends"
-        aria-multiselectable="false"
-        class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
-      >
-        <div
-          class="fui-Overflow fui-legend__resizableArea"
-          style="text-align: unset;"
-        >
-          <button
-            aria-label="First"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Third
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`VerticalBarChart - mouse events Should render callout correctly on mouseover 1`] = `
-<div>
-  <div
-    class="fui-cart__root"
-    id="chart_"
-    role="presentation"
-  >
-    <div
-      class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-    >
-      <svg
-        class="fui-cart__chart"
-        height="NaN"
+        height="300"
         style="display: block;"
         width="650"
       >
@@ -3551,7 +2300,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, NaN)"
+          transform="translate(0, 265)"
         >
           <path
             class="domain"
@@ -3836,13 +2585,578 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         >
           <path
             class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
+            d="M-6,265.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,265.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              −50k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,204.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              −37.5k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,143)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              −25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              −12.5k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <rect
+              aria-label="2020/04/30. First, 10%."
+              fill="qualitative.1"
+              height="49"
+              id="_VBC_bar__r_p_-0"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="56"
+              y="20"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="64"
+              y="81"
+            >
+              −10k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Second, 20%."
+              fill="qualitative.2"
+              height="245"
+              id="_VBC_bar__r_p_-1"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="264.46153846153845"
+              y="20"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="272.46153846153845"
+              y="277"
+            >
+              −50k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Third, 37%."
+              fill="qualitative.3"
+              height="147"
+              id="_VBC_bar__r_p_-2"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="577.1538461538462"
+              y="20"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="585.1538461538462"
+              y="179"
+            >
+              −30k
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: unset;"
+        >
+          <button
+            aria-label="First"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical bar chart rendering Should render the vertical bar chart with numeric x-axis data 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 265)"
+        >
+          <path
+            class="domain"
+            d="M64.5,6V0.5H606.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(64.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(106.19230769230771,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              2000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(147.8846153846154,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              4000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(189.5769230769231,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              6000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(231.26923076923077,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              8000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(272.96153846153845,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(314.6538461538462,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              12,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(356.3461538461538,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              14,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(398.03846153846155,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              16,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(439.7307692307692,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              18,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(481.42307692307696,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(523.1153846153845,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              22,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(564.8076923076924,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              24,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(606.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              26,000
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,265.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,265.5)"
           >
             <line
               stroke="currentColor"
@@ -3861,7 +3175,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,204.25)"
           >
             <line
               stroke="currentColor"
@@ -3880,7 +3194,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,143)"
           >
             <line
               stroke="currentColor"
@@ -3899,7 +3213,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,81.75)"
           >
             <line
               stroke="currentColor"
@@ -3918,7 +3232,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,20.5)"
           >
             <line
               stroke="currentColor"
@@ -3940,15 +3254,15 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
-              height="NaN"
-              id="_VBC_bar__r_6p_-0"
+              height="49"
+              id="_VBC_bar__r_4_-0"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="56"
-              y="NaN"
+              y="216"
             />
             <text
               aria-hidden="true"
@@ -3956,7 +3270,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
-              y="NaN"
+              y="210"
             >
               10k
             </text>
@@ -3965,15 +3279,15 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
-              height="NaN"
-              id="_VBC_bar__r_6p_-1"
+              height="245"
+              id="_VBC_bar__r_4_-1"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="264.46153846153845"
-              y="NaN"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -3981,7 +3295,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
-              y="NaN"
+              y="14"
             >
               50k
             </text>
@@ -3990,15 +3304,15 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
-              height="NaN"
-              id="_VBC_bar__r_6p_-2"
+              height="147"
+              id="_VBC_bar__r_4_-2"
               opacity="1"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="577.1538461538462"
-              y="NaN"
+              y="118"
             />
             <text
               aria-hidden="true"
@@ -4006,7 +3320,1526 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
-              y="NaN"
+              y="112"
+            >
+              30k
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: unset;"
+        >
+          <button
+            aria-label="First"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: blue; border-color: blue; --rect-content-high-contrast: linear-gradient(to right, blue, blue);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical bar chart rendering Should render the vertical bar chart with string x-axis data 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 265)"
+        >
+          <path
+            class="domain"
+            d="M255.5,6V0.5H415.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(263,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              This is a medium long label. 
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(311,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              This is a long label This is a long label
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(359,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              This label is as long as the previous one
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(407,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              A short label
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,265.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,265.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,204.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              875
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,143)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              1.75k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              2.63k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              3.5k
+            </text>
+          </g>
+        </g>
+        <g>
+          <g
+            transform="translate(0, 0)"
+          >
+            <rect
+              aria-label="This is a medium long label. . 3500."
+              fill="#627CEF"
+              height="245"
+              id="_VBC_bar__r_b_-0"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="255"
+              y="20"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="263"
+              y="14"
+            >
+              3.5k
+            </text>
+          </g>
+          <g
+            transform="translate(0, 0)"
+          >
+            <rect
+              aria-label="This is a long label This is a long label. 2500."
+              fill="#C19C00"
+              height="175"
+              id="_VBC_bar__r_b_-1"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="303"
+              y="90"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="311"
+              y="84"
+            >
+              2.5k
+            </text>
+          </g>
+          <g
+            transform="translate(0, 0)"
+          >
+            <rect
+              aria-label="This label is as long as the previous one. 1900."
+              fill="#E650AF"
+              height="133"
+              id="_VBC_bar__r_b_-2"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="351"
+              y="132"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="359"
+              y="126"
+            >
+              1.9k
+            </text>
+          </g>
+          <g
+            transform="translate(0, 0)"
+          >
+            <rect
+              aria-label="A short label. 2800."
+              fill="#0E7878"
+              height="196"
+              id="_VBC_bar__r_b_-3"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="399"
+              y="69"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="407"
+              y="63"
+            >
+              2.8k
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: unset;"
+        >
+          <button
+            aria-label="undefined"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0E7878; --rect-borderColor: #0E7878;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; background-color: rgb(14, 120, 120); border-color: rgb(14, 120, 120); --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              undefined
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical bar chart rendering should render the vertical bar chart with some positive and some negative y value bars correctly 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 265)"
+        >
+          <path
+            class="domain"
+            d="M64.5,6V0.5H606.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(64.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(106.19230769230771,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              2000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(147.8846153846154,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              4000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(189.5769230769231,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              6000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(231.26923076923077,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              8000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(272.96153846153845,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(314.6538461538462,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              12,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(356.3461538461538,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              14,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(398.03846153846155,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              16,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(439.7307692307692,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              18,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(481.42307692307696,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(523.1153846153845,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              22,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(564.8076923076924,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              24,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(606.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              26,000
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,265.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,265.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              −60k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,216.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              −40k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,167.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              −20k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,118.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,69.49999999999999)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              20k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              40k
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <rect
+              aria-label="2020/04/30. First, 10%."
+              fill="qualitative.1"
+              height="24.5"
+              id="_VBC_bar__r_10_-0"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="56"
+              y="93.5"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="64"
+              y="87.5"
+            >
+              10k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Second, 20%."
+              fill="qualitative.2"
+              height="122.5"
+              id="_VBC_bar__r_10_-1"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="264.46153846153845"
+              y="118"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="272.46153846153845"
+              y="252.5"
+            >
+              −50k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Third, 37%."
+              fill="qualitative.3"
+              height="73.5"
+              id="_VBC_bar__r_10_-2"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="577.1538461538462"
+              y="44.5"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="585.1538461538462"
+              y="38.5"
+            >
+              30k
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        role="listbox"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+          style="text-align: unset;"
+        >
+          <button
+            aria-label="First"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: qualitative.1; --rect-borderColor: qualitative.1;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.1, qualitative.1);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: qualitative.2; --rect-borderColor: qualitative.2;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.2, qualitative.2);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: qualitative.3; --rect-borderColor: qualitative.3;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+              style="height: 12px; --rect-content-high-contrast: linear-gradient(to right, qualitative.3, qualitative.3);"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalBarChart - mouse events Should render callout correctly on mouseover 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      class="fui-cart__chartWrapper"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    >
+      <svg
+        class="fui-cart__chart"
+        height="300"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_"
+          text-anchor="middle"
+          transform="translate(0, 265)"
+        >
+          <path
+            class="domain"
+            d="M64.5,6V0.5H606.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(64.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(106.19230769230771,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              2000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(147.8846153846154,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              4000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(189.5769230769231,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              6000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(231.26923076923077,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              8000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(272.96153846153845,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(314.6538461538462,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              12,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(356.3461538461538,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              14,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(398.03846153846155,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              16,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(439.7307692307692,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              18,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(481.42307692307696,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(523.1153846153845,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              22,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(564.8076923076924,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              24,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(606.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              26,000
+            </text>
+          </g>
+        </g>
+        <g
+          class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,265.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,265.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,204.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              12.5k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,143)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              37.5k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+              x="-10"
+            >
+              50k
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <rect
+              aria-label="2020/04/30. First, 10%."
+              fill="aqua"
+              height="49"
+              id="_VBC_bar__r_6p_-0"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="56"
+              y="216"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="64"
+              y="210"
+            >
+              10k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Second, 20%."
+              fill="blue"
+              height="245"
+              id="_VBC_bar__r_6p_-1"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="264.46153846153845"
+              y="20"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="272.46153846153845"
+              y="14"
+            >
+              50k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Third, 37%."
+              fill="navy"
+              height="147"
+              id="_VBC_bar__r_6p_-2"
+              opacity="1"
+              role="img"
+              rx="0"
+              tabindex="0"
+              width="16"
+              x="577.1538461538462"
+              y="118"
+            />
+            <text
+              aria-hidden="true"
+              class="fui-vbc__barLabel"
+              style="direction: ltr; unicode-bidi: isolate;"
+              text-anchor="middle"
+              x="585.1538461538462"
+              y="112"
             >
               30k
             </text>
@@ -4161,7 +4994,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
     >
       <svg
         class="fui-cart__chart"
-        height="NaN"
+        height="300"
         style="display: block;"
         width="650"
       >
@@ -4172,7 +5005,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, NaN)"
+          transform="translate(0, 265)"
         >
           <path
             class="domain"
@@ -4457,13 +5290,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         >
           <path
             class="domain"
-            d="M-6,NaNH0.5V20.5H-6"
+            d="M-6,265.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,265.5)"
           >
             <line
               stroke="currentColor"
@@ -4482,7 +5315,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,204.25)"
           >
             <line
               stroke="currentColor"
@@ -4501,7 +5334,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,143)"
           >
             <line
               stroke="currentColor"
@@ -4520,7 +5353,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,81.75)"
           >
             <line
               stroke="currentColor"
@@ -4539,7 +5372,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,NaN)"
+            transform="translate(0,20.5)"
           >
             <line
               stroke="currentColor"
@@ -4561,7 +5394,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             <rect
               aria-label="2020/04/30. First, 10%."
               fill="aqua"
-              height="NaN"
+              height="49"
               id="_VBC_bar__r_71_-0"
               opacity="1"
               role="img"
@@ -4569,7 +5402,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               tabindex="0"
               width="16"
               x="56"
-              y="NaN"
+              y="216"
             />
             <text
               aria-hidden="true"
@@ -4577,7 +5410,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="64"
-              y="NaN"
+              y="210"
             >
               10k
             </text>
@@ -4586,7 +5419,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             <rect
               aria-label="2020/04/30. Second, 20%."
               fill="blue"
-              height="NaN"
+              height="245"
               id="_VBC_bar__r_71_-1"
               opacity="1"
               role="img"
@@ -4594,7 +5427,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               tabindex="0"
               width="16"
               x="264.46153846153845"
-              y="NaN"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -4602,7 +5435,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="272.46153846153845"
-              y="NaN"
+              y="14"
             >
               50k
             </text>
@@ -4611,7 +5444,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             <rect
               aria-label="2020/04/30. Third, 37%."
               fill="navy"
-              height="NaN"
+              height="147"
               id="_VBC_bar__r_71_-2"
               opacity="1"
               role="img"
@@ -4619,7 +5452,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               tabindex="0"
               width="16"
               x="577.1538461538462"
-              y="NaN"
+              y="118"
             />
             <text
               aria-hidden="true"
@@ -4627,7 +5460,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               style="direction: ltr; unicode-bidi: isolate;"
               text-anchor="middle"
               x="585.1538461538462"
-              y="NaN"
+              y="112"
             >
               30k
             </text>
@@ -4759,7 +5592,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
   >
     <svg
       class="fui-cart__chart"
-      height="NaN"
+      height="300"
       style="display: block;"
       width="650"
     >
@@ -4770,7 +5603,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         font-size="10"
         id="xAxisGElementchart_"
         text-anchor="middle"
-        transform="translate(0, NaN)"
+        transform="translate(0, 265)"
       >
         <path
           class="domain"
@@ -5055,13 +5888,13 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
       >
         <path
           class="domain"
-          d="M-6,NaNH0.5V20.5H-6"
+          d="M-6,265.5H0.5V20.5H-6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,265.5)"
         >
           <line
             stroke="currentColor"
@@ -5080,7 +5913,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,204.25)"
         >
           <line
             stroke="currentColor"
@@ -5099,7 +5932,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,143)"
         >
           <line
             stroke="currentColor"
@@ -5118,7 +5951,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,81.75)"
         >
           <line
             stroke="currentColor"
@@ -5137,7 +5970,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,20.5)"
         >
           <line
             stroke="currentColor"
@@ -5159,45 +5992,45 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height="NaN"
-            id="_VBC_bar__r_8v_-0"
+            height="49"
+            id="_VBC_bar__r_8o_-0"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="56"
-            y="NaN"
+            y="216"
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height="NaN"
-            id="_VBC_bar__r_8v_-1"
+            height="245"
+            id="_VBC_bar__r_8o_-1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="264.46153846153845"
-            y="NaN"
+            y="20"
           />
         </g>
         <g>
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height="NaN"
-            id="_VBC_bar__r_8v_-2"
+            height="147"
+            id="_VBC_bar__r_8o_-2"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="577.1538461538462"
-            y="NaN"
+            y="118"
           />
         </g>
       </g>
@@ -5292,7 +6125,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
   >
     <svg
       class="fui-cart__chart"
-      height="NaN"
+      height="300"
       style="display: block;"
       width="650"
     >
@@ -5303,7 +6136,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         font-size="10"
         id="xAxisGElementchart_"
         text-anchor="middle"
-        transform="translate(0, NaN)"
+        transform="translate(0, 265)"
       >
         <path
           class="domain"
@@ -5588,13 +6421,13 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
       >
         <path
           class="domain"
-          d="M-6,NaNH0.5V20.5H-6"
+          d="M-6,265.5H0.5V20.5H-6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,265.5)"
         >
           <line
             stroke="currentColor"
@@ -5613,7 +6446,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,204.25)"
         >
           <line
             stroke="currentColor"
@@ -5632,7 +6465,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,143)"
         >
           <line
             stroke="currentColor"
@@ -5651,7 +6484,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,81.75)"
         >
           <line
             stroke="currentColor"
@@ -5670,7 +6503,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,20.5)"
         >
           <line
             stroke="currentColor"
@@ -5692,15 +6525,15 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height="NaN"
-            id="_VBC_bar__r_96_-0"
+            height="49"
+            id="_VBC_bar__r_8v_-0"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="56"
-            y="NaN"
+            y="216"
           />
           <text
             aria-hidden="true"
@@ -5708,7 +6541,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
-            y="NaN"
+            y="210"
           >
             10k
           </text>
@@ -5717,15 +6550,15 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height="NaN"
-            id="_VBC_bar__r_96_-1"
+            height="245"
+            id="_VBC_bar__r_8v_-1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="264.46153846153845"
-            y="NaN"
+            y="20"
           />
           <text
             aria-hidden="true"
@@ -5733,7 +6566,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
-            y="NaN"
+            y="14"
           >
             50k
           </text>
@@ -5742,15 +6575,15 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height="NaN"
-            id="_VBC_bar__r_96_-2"
+            height="147"
+            id="_VBC_bar__r_8v_-2"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="577.1538461538462"
-            y="NaN"
+            y="118"
           />
           <text
             aria-hidden="true"
@@ -5758,7 +6591,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
-            y="NaN"
+            y="112"
           >
             30k
           </text>
@@ -5855,7 +6688,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
   >
     <svg
       class="fui-cart__chart"
-      height="NaN"
+      height="300"
       style="display: block;"
       width="650"
     >
@@ -5866,7 +6699,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         font-size="10"
         id="xAxisGElementchart_"
         text-anchor="middle"
-        transform="translate(0, NaN)"
+        transform="translate(0, 265)"
       >
         <path
           class="domain"
@@ -6151,13 +6984,13 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
       >
         <path
           class="domain"
-          d="M-6,NaNH0.5V20.5H-6"
+          d="M-6,265.5H0.5V20.5H-6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,265.5)"
         >
           <line
             stroke="currentColor"
@@ -6176,7 +7009,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,204.25)"
         >
           <line
             stroke="currentColor"
@@ -6195,7 +7028,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,143)"
         >
           <line
             stroke="currentColor"
@@ -6214,7 +7047,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,81.75)"
         >
           <line
             stroke="currentColor"
@@ -6233,7 +7066,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,20.5)"
         >
           <line
             stroke="currentColor"
@@ -6255,15 +7088,15 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height="NaN"
-            id="_VBC_bar__r_9d_-0"
+            height="49"
+            id="_VBC_bar__r_96_-0"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="16"
             x="56"
-            y="NaN"
+            y="216"
           />
           <text
             aria-hidden="true"
@@ -6271,7 +7104,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
-            y="NaN"
+            y="210"
           >
             10k
           </text>
@@ -6280,15 +7113,15 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height="NaN"
-            id="_VBC_bar__r_9d_-1"
+            height="245"
+            id="_VBC_bar__r_96_-1"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="16"
             x="264.46153846153845"
-            y="NaN"
+            y="20"
           />
           <text
             aria-hidden="true"
@@ -6296,7 +7129,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
-            y="NaN"
+            y="14"
           >
             50k
           </text>
@@ -6305,15 +7138,15 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height="NaN"
-            id="_VBC_bar__r_9d_-2"
+            height="147"
+            id="_VBC_bar__r_96_-2"
             opacity="1"
             role="img"
             rx="3"
             tabindex="0"
             width="16"
             x="577.1538461538462"
-            y="NaN"
+            y="118"
           />
           <text
             aria-hidden="true"
@@ -6321,7 +7154,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
-            y="NaN"
+            y="112"
           >
             30k
           </text>
@@ -6418,7 +7251,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
   >
     <svg
       class="fui-cart__chart"
-      height="NaN"
+      height="300"
       style="display: block;"
       width="650"
     >
@@ -6429,7 +7262,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         font-size="10"
         id="xAxisGElementchart_"
         text-anchor="middle"
-        transform="translate(0, NaN)"
+        transform="translate(0, 265)"
       >
         <path
           class="domain"
@@ -6714,13 +7547,13 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
       >
         <path
           class="domain"
-          d="M-6,NaNH0.5V20.5H-6"
+          d="M-6,265.5H0.5V20.5H-6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,265.5)"
         >
           <line
             stroke="currentColor"
@@ -6739,7 +7572,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,204.25)"
         >
           <line
             stroke="currentColor"
@@ -6758,7 +7591,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,143)"
         >
           <line
             stroke="currentColor"
@@ -6777,7 +7610,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,81.75)"
         >
           <line
             stroke="currentColor"
@@ -6796,7 +7629,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,20.5)"
         >
           <line
             stroke="currentColor"
@@ -6818,15 +7651,15 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height="NaN"
-            id="_VBC_bar__r_7g_-0"
+            height="49"
+            id="_VBC_bar__r_79_-0"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="56"
-            y="NaN"
+            y="216"
           />
           <text
             aria-hidden="true"
@@ -6834,7 +7667,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
-            y="NaN"
+            y="210"
           >
             10k
           </text>
@@ -6843,15 +7676,15 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height="NaN"
-            id="_VBC_bar__r_7g_-1"
+            height="245"
+            id="_VBC_bar__r_79_-1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="264.46153846153845"
-            y="NaN"
+            y="20"
           />
           <text
             aria-hidden="true"
@@ -6859,7 +7692,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
-            y="NaN"
+            y="14"
           >
             50k
           </text>
@@ -6868,15 +7701,15 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height="NaN"
-            id="_VBC_bar__r_7g_-2"
+            height="147"
+            id="_VBC_bar__r_79_-2"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="577.1538461538462"
-            y="NaN"
+            y="118"
           />
           <text
             aria-hidden="true"
@@ -6884,7 +7717,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
-            y="NaN"
+            y="112"
           >
             30k
           </text>
@@ -6981,7 +7814,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
   >
     <svg
       class="fui-cart__chart"
-      height="NaN"
+      height="300"
       style="display: block;"
       width="650"
     >
@@ -6992,7 +7825,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         font-size="10"
         id="xAxisGElementchart_"
         text-anchor="middle"
-        transform="translate(0, NaN)"
+        transform="translate(0, 265)"
       >
         <path
           class="domain"
@@ -7277,13 +8110,13 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
       >
         <path
           class="domain"
-          d="M-6,NaNH0.5V20.5H-6"
+          d="M-6,265.5H0.5V20.5H-6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,265.5)"
         >
           <line
             stroke="currentColor"
@@ -7302,7 +8135,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,204.25)"
         >
           <line
             stroke="currentColor"
@@ -7321,7 +8154,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,143)"
         >
           <line
             stroke="currentColor"
@@ -7340,7 +8173,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,81.75)"
         >
           <line
             stroke="currentColor"
@@ -7359,7 +8192,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,20.5)"
         >
           <line
             stroke="currentColor"
@@ -7381,15 +8214,15 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height="NaN"
-            id="_VBC_bar__r_84_-0"
+            height="49"
+            id="_VBC_bar__r_7t_-0"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="56"
-            y="NaN"
+            y="216"
           />
           <text
             aria-hidden="true"
@@ -7397,7 +8230,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
-            y="NaN"
+            y="210"
           >
             10k
           </text>
@@ -7406,15 +8239,15 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height="NaN"
-            id="_VBC_bar__r_84_-1"
+            height="245"
+            id="_VBC_bar__r_7t_-1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="264.46153846153845"
-            y="NaN"
+            y="20"
           />
           <text
             aria-hidden="true"
@@ -7422,7 +8255,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
-            y="NaN"
+            y="14"
           >
             50k
           </text>
@@ -7431,15 +8264,15 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height="NaN"
-            id="_VBC_bar__r_84_-2"
+            height="147"
+            id="_VBC_bar__r_7t_-2"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="577.1538461538462"
-            y="NaN"
+            y="118"
           />
           <text
             aria-hidden="true"
@@ -7447,7 +8280,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
-            y="NaN"
+            y="112"
           >
             30k
           </text>
@@ -7955,7 +8788,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
             height="1"
-            id="_VBC_bar__r_7n_-0"
+            id="_VBC_bar__r_7g_-0"
             opacity="1"
             role="img"
             rx="0"
@@ -7980,7 +8813,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
             height="5"
-            id="_VBC_bar__r_7n_-1"
+            id="_VBC_bar__r_7g_-1"
             opacity="1"
             role="img"
             rx="0"
@@ -8005,7 +8838,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
             height="3"
-            id="_VBC_bar__r_7n_-2"
+            id="_VBC_bar__r_7g_-2"
             opacity="1"
             role="img"
             rx="0"
@@ -8043,7 +8876,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
   >
     <svg
       class="fui-cart__chart"
-      height="NaN"
+      height="300"
       style="display: block;"
       width="650"
     >
@@ -8054,7 +8887,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         font-size="10"
         id="xAxisGElementchart_"
         text-anchor="middle"
-        transform="translate(0, NaN)"
+        transform="translate(0, 265)"
       >
         <path
           class="domain"
@@ -8339,13 +9172,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
       >
         <path
           class="domain"
-          d="M-6,NaNH0.5V20.5H-6"
+          d="M-6,265.5H0.5V20.5H-6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,265.5)"
         >
           <line
             stroke="currentColor"
@@ -8364,7 +9197,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,204.25)"
         >
           <line
             stroke="currentColor"
@@ -8383,7 +9216,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,143)"
         >
           <line
             stroke="currentColor"
@@ -8402,7 +9235,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,81.75)"
         >
           <line
             stroke="currentColor"
@@ -8421,7 +9254,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,20.5)"
         >
           <line
             stroke="currentColor"
@@ -8443,14 +9276,14 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height="NaN"
-            id="_VBC_bar__r_7t_-0"
+            height="49"
+            id="_VBC_bar__r_7m_-0"
             opacity="1"
             role="img"
             rx="0"
             width="16"
             x="56"
-            y="NaN"
+            y="216"
           />
           <text
             aria-hidden="true"
@@ -8458,7 +9291,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
-            y="NaN"
+            y="210"
           >
             10k
           </text>
@@ -8467,14 +9300,14 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height="NaN"
-            id="_VBC_bar__r_7t_-1"
+            height="245"
+            id="_VBC_bar__r_7m_-1"
             opacity="1"
             role="img"
             rx="0"
             width="16"
             x="264.46153846153845"
-            y="NaN"
+            y="20"
           />
           <text
             aria-hidden="true"
@@ -8482,7 +9315,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
-            y="NaN"
+            y="14"
           >
             50k
           </text>
@@ -8491,14 +9324,14 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height="NaN"
-            id="_VBC_bar__r_7t_-2"
+            height="147"
+            id="_VBC_bar__r_7m_-2"
             opacity="1"
             role="img"
             rx="0"
             width="16"
             x="577.1538461538462"
-            y="NaN"
+            y="118"
           />
           <text
             aria-hidden="true"
@@ -8506,7 +9339,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
-            y="NaN"
+            y="112"
           >
             30k
           </text>
@@ -8603,7 +9436,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
   >
     <svg
       class="fui-cart__chart"
-      height="NaN"
+      height="300"
       style="display: block;"
       width="650"
     >
@@ -8614,7 +9447,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         font-size="10"
         id="xAxisGElementchart_"
         text-anchor="middle"
-        transform="translate(0, NaN)"
+        transform="translate(0, 265)"
       >
         <path
           class="domain"
@@ -9095,13 +9928,13 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
       >
         <path
           class="domain"
-          d="M-6,NaNH0.5V20.5H-6"
+          d="M-6,265.5H0.5V20.5H-6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,265.5)"
         >
           <line
             stroke="currentColor"
@@ -9120,7 +9953,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,204.25)"
         >
           <line
             stroke="currentColor"
@@ -9139,7 +9972,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,143)"
         >
           <line
             stroke="currentColor"
@@ -9158,7 +9991,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,81.75)"
         >
           <line
             stroke="currentColor"
@@ -9177,7 +10010,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,20.5)"
         >
           <line
             stroke="currentColor"
@@ -9199,15 +10032,15 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height="NaN"
-            id="_VBC_bar__r_8a_-0"
+            height="49"
+            id="_VBC_bar__r_83_-0"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="56"
-            y="NaN"
+            y="216"
           />
           <text
             aria-hidden="true"
@@ -9215,7 +10048,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
-            y="NaN"
+            y="210"
           >
             10k
           </text>
@@ -9224,15 +10057,15 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height="NaN"
-            id="_VBC_bar__r_8a_-1"
+            height="245"
+            id="_VBC_bar__r_83_-1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="264.46153846153845"
-            y="NaN"
+            y="20"
           />
           <text
             aria-hidden="true"
@@ -9240,7 +10073,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
-            y="NaN"
+            y="14"
           >
             50k
           </text>
@@ -9249,15 +10082,15 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height="NaN"
-            id="_VBC_bar__r_8a_-2"
+            height="147"
+            id="_VBC_bar__r_83_-2"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="577.1538461538462"
-            y="NaN"
+            y="118"
           />
           <text
             aria-hidden="true"
@@ -9265,7 +10098,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
-            y="NaN"
+            y="112"
           >
             30k
           </text>
@@ -9362,7 +10195,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
   >
     <svg
       class="fui-cart__chart"
-      height="NaN"
+      height="300"
       style="display: block;"
       width="650"
     >
@@ -9373,7 +10206,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         font-size="10"
         id="xAxisGElementchart_"
         text-anchor="middle"
-        transform="translate(0, NaN)"
+        transform="translate(0, 265)"
       >
         <path
           class="domain"
@@ -9770,13 +10603,13 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       >
         <path
           class="domain"
-          d="M-6,NaNH0.5V20.5H-6"
+          d="M-6,265.5H0.5V20.5H-6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,265.5)"
         >
           <line
             stroke="currentColor"
@@ -9795,7 +10628,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,204.25)"
         >
           <line
             stroke="currentColor"
@@ -9814,7 +10647,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,143)"
         >
           <line
             stroke="currentColor"
@@ -9833,7 +10666,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,81.75)"
         >
           <line
             stroke="currentColor"
@@ -9852,7 +10685,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,20.5)"
         >
           <line
             stroke="currentColor"
@@ -9874,15 +10707,15 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height="NaN"
-            id="_VBC_bar__r_8h_-0"
+            height="49"
+            id="_VBC_bar__r_8a_-0"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="56"
-            y="NaN"
+            y="216"
           />
           <text
             aria-hidden="true"
@@ -9890,7 +10723,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
-            y="NaN"
+            y="210"
           >
             10k
           </text>
@@ -9899,15 +10732,15 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height="NaN"
-            id="_VBC_bar__r_8h_-1"
+            height="245"
+            id="_VBC_bar__r_8a_-1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="264.46153846153845"
-            y="NaN"
+            y="20"
           />
           <text
             aria-hidden="true"
@@ -9915,7 +10748,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
-            y="NaN"
+            y="14"
           >
             50k
           </text>
@@ -9924,15 +10757,15 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height="NaN"
-            id="_VBC_bar__r_8h_-2"
+            height="147"
+            id="_VBC_bar__r_8a_-2"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="577.1538461538462"
-            y="NaN"
+            y="118"
           />
           <text
             aria-hidden="true"
@@ -9940,7 +10773,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
-            y="NaN"
+            y="112"
           >
             30k
           </text>
@@ -10037,7 +10870,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
   >
     <svg
       class="fui-cart__chart"
-      height="NaN"
+      height="300"
       style="display: block;"
       width="650"
     >
@@ -10048,7 +10881,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         font-size="10"
         id="xAxisGElementchart_"
         text-anchor="middle"
-        transform="translate(0, NaN)"
+        transform="translate(0, 265)"
       >
         <path
           class="domain"
@@ -10333,13 +11166,13 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
       >
         <path
           class="domain"
-          d="M-6,NaNH0.5V20.5H-6"
+          d="M-6,265.5H0.5V20.5H-6"
           stroke="currentColor"
         />
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,265.5)"
         >
           <line
             stroke="currentColor"
@@ -10358,7 +11191,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,204.25)"
         >
           <line
             stroke="currentColor"
@@ -10377,7 +11210,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,143)"
         >
           <line
             stroke="currentColor"
@@ -10396,7 +11229,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,81.75)"
         >
           <line
             stroke="currentColor"
@@ -10415,7 +11248,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         <g
           class="tick"
           opacity="1"
-          transform="translate(0,NaN)"
+          transform="translate(0,20.5)"
         >
           <line
             stroke="currentColor"
@@ -10437,15 +11270,15 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           <rect
             aria-label="2020/04/30. First, 10%."
             fill="aqua"
-            height="NaN"
-            id="_VBC_bar__r_8o_-0"
+            height="49"
+            id="_VBC_bar__r_8h_-0"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="56"
-            y="NaN"
+            y="216"
           />
           <text
             aria-hidden="true"
@@ -10453,7 +11286,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="64"
-            y="NaN"
+            y="210"
           >
             10k
           </text>
@@ -10462,15 +11295,15 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           <rect
             aria-label="2020/04/30. Second, 20%."
             fill="blue"
-            height="NaN"
-            id="_VBC_bar__r_8o_-1"
+            height="245"
+            id="_VBC_bar__r_8h_-1"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="264.46153846153845"
-            y="NaN"
+            y="20"
           />
           <text
             aria-hidden="true"
@@ -10478,7 +11311,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="272.46153846153845"
-            y="NaN"
+            y="14"
           >
             50k
           </text>
@@ -10487,15 +11320,15 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           <rect
             aria-label="2020/04/30. Third, 37%."
             fill="navy"
-            height="NaN"
-            id="_VBC_bar__r_8o_-2"
+            height="147"
+            id="_VBC_bar__r_8h_-2"
             opacity="1"
             role="img"
             rx="0"
             tabindex="0"
             width="16"
             x="577.1538461538462"
-            y="NaN"
+            y="118"
           />
           <text
             aria-hidden="true"
@@ -10503,7 +11336,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             style="direction: ltr; unicode-bidi: isolate;"
             text-anchor="middle"
             x="585.1538461538462"
-            y="NaN"
+            y="112"
           >
             30k
           </text>
