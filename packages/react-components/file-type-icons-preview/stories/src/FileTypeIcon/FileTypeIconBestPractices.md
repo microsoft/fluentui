@@ -1,4 +1,4 @@
-# FileTypeIcon best practices
+# Best practices
 
 - **Use SVG format (default) for better scalability and smaller file sizes** - SVG icons scale perfectly at any size and are more performant than PNG.
 - **Choose appropriate sizes based on UI density**:
