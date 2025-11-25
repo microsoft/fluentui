@@ -7,7 +7,6 @@ import bestPracticesMd from './FileTypeIconBestPractices.md';
 export { Default } from './FileTypeIconDefault.stories';
 export { CommonFileTypes } from './FileTypeIconCommon.stories';
 export { UrlAndHtml } from './FileTypeIconUrlAndHtml.stories';
-export { Accessibility } from './FileTypeIconAccessibility.stories';
 export { EdgeCases } from './FileTypeIconEdgeCases.stories';
 
 export default {

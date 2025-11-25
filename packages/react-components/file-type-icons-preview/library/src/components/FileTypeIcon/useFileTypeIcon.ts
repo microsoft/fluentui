@@ -6,6 +6,7 @@ import {
   getFileTypeIconSuffix,
   DEFAULT_ICON_SIZE,
 } from '../../utils/getFileTypeIconProps';
+import { FileIconType } from '../../utils/FileIconType';
 
 const DEFAULT_BASE_URL = 'https://res.cdn.office.net/files/fabric-cdn-prod_20251119.001/assets/item-types/';
 
@@ -42,6 +43,9 @@ export const useFileTypeIcon_unstable = (
     iconUrl = `${baseUrl}${size}/${baseIconName}.${imageFileType}`;
   }
 
+  // Generate alt text: use extension if provided, otherwise get the enum name for type
+  const altText = extension || (type !== undefined ? FileIconType[type] : '');
+
   const state: FileTypeIconState = {
     size,
     imageFileType,
@@ -53,7 +57,7 @@ export const useFileTypeIcon_unstable = (
       getIntrinsicElementProps('img', {
         ref,
         src: iconUrl,
-        alt: extension || 'File type icon',
+        alt: `${altText} file icon`,
         ...props,
         // Remove our custom props from being passed to the img element
         extension: undefined,
