@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding react-file-type-icons package for FluentUI v9",
+  "packageName": "@fluentui/react-utilities",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
