@@ -1,5 +1,5 @@
 {
-  "name": "react-file-type-icons",
+  "name": "react-file-type-icons-v8",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-file-type-icons/src",

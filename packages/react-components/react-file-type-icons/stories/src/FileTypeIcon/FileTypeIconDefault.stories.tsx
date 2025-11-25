@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { tokens } from '@fluentui/react-components';
-import { FileIconType, FileTypeIcon } from '@fluentui/file-type-icons-preview';
+import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
 import { makeStyles } from '@griffel/react';
 
 const useStyles = makeStyles({

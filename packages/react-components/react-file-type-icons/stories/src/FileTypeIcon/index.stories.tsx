@@ -1,4 +1,4 @@
-import { FileTypeIcon } from '@fluentui/file-type-icons-preview';
+import { FileTypeIcon } from '@fluentui/react-file-type-icons';
 import type { Meta } from '@storybook/react';
 
 import descriptionMd from './FileTypeIconDescription.md';

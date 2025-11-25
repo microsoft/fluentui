@@ -1,8 +1,6 @@
-# @fluentui/file-type-icons-preview
+# @fluentui/react-file-type-icons
 
 **File Type Icons components for [Fluent UI React](https://react.fluentui.dev/)**
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
 ## Components
 
@@ -23,7 +21,7 @@ Displays an icon representing a file type based on its extension or a special ty
 ### Basic Examples
 
 ```tsx
-import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons-preview';
+import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons';
 
 // File extension
 <FileTypeIcon extension="docx" size={48} />
@@ -83,7 +81,7 @@ const iconProps = getFileTypeIconProps({ extension: 'docx', size: 48 });
 **v9:**
 
 ```tsx
-import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
+import { FileTypeIcon } from '@fluentui/react-file-type-icons';
 <FileTypeIcon extension="docx" size={48} />;
 ```
 
@@ -92,7 +90,7 @@ import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
 Underlying utilities are exported for advanced use cases:
 
 ```tsx
-import { getFileTypeIconProps, getFileTypeIconAsUrl, FileIconType } from '@fluentui/react-file-type-icons-preview';
+import { getFileTypeIconProps, getFileTypeIconAsUrl, FileIconType } from '@fluentui/react-file-type-icons';
 
 // Get icon URL
 const url = getFileTypeIconAsUrl({ extension: 'docx', size: 48 });

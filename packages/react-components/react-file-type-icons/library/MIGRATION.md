@@ -1,6 +1,6 @@
-# Migration Guide: react-file-type-icons to react-file-type-icons-preview
+# Migration Guide: react-file-type-icons to react-file-type-icons
 
-This guide helps you migrate from `@fluentui/react-file-type-icons` (v8) to `@fluentui/react-file-type-icons-preview` (v9).
+This guide helps you migrate from `@fluentui/react-file-type-icons` (v8) to `@fluentui/react-file-type-icons` (v9).
 
 ## Overview
 
@@ -15,8 +15,7 @@ The v9 version provides a **modern React component-based API** while maintaining
 ## Installation
 
 ```bash
-npm uninstall @fluentui/react-file-type-icons
-npm install @fluentui/react-file-type-icons-preview
+npm install @fluentui/react-file-type-icons
 ```
 
 ## What's Changed
@@ -26,7 +25,7 @@ npm install @fluentui/react-file-type-icons-preview
 The only breaking change is the package name:
 
 - **Old**: `@fluentui/react-file-type-icons`
-- **New**: `@fluentui/react-file-type-icons-preview`
+- **New**: `@fluentui/react-file-type-icons`
 
 ### New Component API (Recommended)
 
@@ -42,7 +41,7 @@ const iconProps = getFileTypeIconProps({ extension: 'docx', size: 48 });
 **v9 (component-based) - Recommended:**
 
 ```tsx
-import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
+import { FileTypeIcon } from '@fluentui/react-file-type-icons';
 
 <FileTypeIcon extension="docx" size={48} />;
 ```
@@ -72,7 +71,7 @@ function DocumentItem({ filename }) {
 **After:**
 
 ```tsx
-import { FileTypeIcon } from '@fluentui/react-file-type-icons-preview';
+import { FileTypeIcon } from '@fluentui/react-file-type-icons';
 
 function DocumentItem({ filename }) {
   const extension = filename.split('.').pop();
@@ -100,7 +99,7 @@ const iconProps = getFileTypeIconProps({ type: FileIconType.folder, size: 48 });
 **After:**
 
 ```tsx
-import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons-preview';
+import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons';
 
 <FileTypeIcon type={FileIconType.folder} size={48} />;
 ```
@@ -113,7 +112,7 @@ import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons-prev
 import {
   FileTypeIcon, // v9 component (new)
   getFileTypeIconAsUrl, // v8 utility (still works)
-} from '@fluentui/react-file-type-icons-preview';
+} from '@fluentui/react-file-type-icons';
 
 function MyComponent() {
   return (

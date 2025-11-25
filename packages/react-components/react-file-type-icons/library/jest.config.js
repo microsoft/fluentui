@@ -23,7 +23,7 @@ if (swcJestConfig.swcrc === undefined) {
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'file-type-icons-preview',
+  displayName: 'react-file-type-icons',
   preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
