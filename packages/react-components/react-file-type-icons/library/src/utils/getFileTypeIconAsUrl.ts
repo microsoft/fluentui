@@ -10,7 +10,7 @@ import { FileIconType } from './FileIconType';
 /**
  * Given the `fileTypeIconOptions`, this function returns the CDN-based URL for `FileTypeIcon`.
  * Similar to `getFileTypeIconProps`, but rather than returning the `iconName`, this returns the raw URL.
- * @param options
+ * @param options - Provide extension, FileIconType, size, and imageFileType for the requested icon.
  * @param baseUrl - optionally provide a custom CDN base url to fetch icons from.
  *                  If not provided, uses the URL configured via `initializeFileTypeIcons()`,
  *                  or falls back to the default CDN URL.
@@ -37,7 +37,7 @@ export function getFileTypeIconAsUrl(
 /**
  * Given the `fileTypeIconOptions`, similar to `getFileTypeIconProps`, this function returns
  * an <img> tag DOM element that renders the icon, as a string.
- * @param options
+ * @param options - Provide extension, FileIconType, size, and imageFileType for the requested icon.
  * @param baseUrl - optionally provide a custom CDN base url to fetch icons from.
  *                  If not provided, uses the URL configured via `initializeFileTypeIcons()`,
  *                  or falls back to the default CDN URL.
