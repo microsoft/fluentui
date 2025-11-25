@@ -127,7 +127,10 @@ export function getFileTypeIconProps(options: FileTypeIconOptions): {
 };
 
 // @public
-export function getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType?: ImageFileType, win?: Window): string;
+export function getFileTypeIconSuffix(size: FileTypeIconSize | number, imageFileType?: ImageFileType, win?: Window): string;
+
+// @public
+export function getValidIconSize(size: number): FileTypeIconSize;
 
 // @public (undocumented)
 export const ICON_SIZES: number[];
