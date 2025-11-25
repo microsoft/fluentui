@@ -67,9 +67,6 @@ export enum FileIconType {
     todoItem = 19
 }
 
-// @public (undocumented)
-export type FileIconTypeInput = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22;
-
 // @public
 export const FileTypeIcon: ForwardRefComponent<FileTypeIconProps>;
 
@@ -80,13 +77,22 @@ export const fileTypeIconClassNames: SlotClassNames<FileTypeIconSlots>;
 export const FileTypeIconMap: {
     [key: string]: {
         extensions?: string[];
+        types?: FileIconType[];
     };
 };
 
 // @public (undocumented)
+export interface FileTypeIconOptions {
+    extension?: string;
+    imageFileType?: ImageFileType;
+    size?: FileTypeIconSize;
+    type?: FileIconType;
+}
+
+// @public (undocumented)
 export type FileTypeIconProps = ComponentProps<FileTypeIconSlots> & {
     extension?: string;
-    type?: FileIconTypeInput;
+    type?: FileIconType;
     size?: FileTypeIconSize;
     imageFileType?: ImageFileType;
     baseUrl?: string;
@@ -106,16 +112,16 @@ export type FileTypeIconState = ComponentState<FileTypeIconSlots> & Required<Pic
 };
 
 // @public
-export function getFileTypeIconAsHTMLString(options: IFileTypeIconOptions, baseUrl?: string): string | undefined;
+export function getFileTypeIconAsHTMLString(options: FileTypeIconOptions, baseUrl?: string): string | undefined;
 
 // @public
-export function getFileTypeIconAsUrl(options: IFileTypeIconOptions, baseUrl?: string): string | undefined;
+export function getFileTypeIconAsUrl(options: FileTypeIconOptions, baseUrl?: string): string | undefined;
 
 // @public
 export function getFileTypeIconNameFromExtensionOrType(extension: string | undefined, type: FileIconType | undefined): string;
 
 // @public
-export function getFileTypeIconProps(options: IFileTypeIconOptions): {
+export function getFileTypeIconProps(options: FileTypeIconOptions): {
     iconName: string;
     'aria-label'?: string;
 };
@@ -125,14 +131,6 @@ export function getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType?: Im
 
 // @public (undocumented)
 export const ICON_SIZES: number[];
-
-// @public (undocumented)
-export interface IFileTypeIconOptions {
-    extension?: string;
-    imageFileType?: ImageFileType;
-    size?: FileTypeIconSize;
-    type?: FileIconTypeInput;
-}
 
 // @public (undocumented)
 export type ImageFileType = 'svg' | 'png';

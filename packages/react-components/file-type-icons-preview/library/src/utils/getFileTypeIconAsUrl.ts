@@ -4,7 +4,7 @@ import {
   getFileTypeIconSuffix,
   DEFAULT_ICON_SIZE,
 } from './getFileTypeIconProps';
-import type { IFileTypeIconOptions } from './getFileTypeIconProps';
+import type { FileTypeIconOptions } from './getFileTypeIconProps';
 
 /**
  * Given the `fileTypeIconOptions`, this function returns the CDN-based URL for `FileTypeIcon`.
@@ -13,7 +13,7 @@ import type { IFileTypeIconOptions } from './getFileTypeIconProps';
  * @param baseUrl - optionally provide a custom CDN base url to fetch icons from
  */
 export function getFileTypeIconAsUrl(
-  options: IFileTypeIconOptions,
+  options: FileTypeIconOptions,
   baseUrl: string = DEFAULT_BASE_URL,
 ): string | undefined {
   const { extension, size = DEFAULT_ICON_SIZE, type, imageFileType = 'svg' } = options;
@@ -38,7 +38,7 @@ export function getFileTypeIconAsUrl(
  * @param baseUrl - optionally provide a custom CDN base url to fetch icons from
  */
 export function getFileTypeIconAsHTMLString(
-  options: IFileTypeIconOptions,
+  options: FileTypeIconOptions,
   baseUrl: string = DEFAULT_BASE_URL,
 ): string | undefined {
   const url = getFileTypeIconAsUrl(options, baseUrl);

@@ -10,7 +10,7 @@ export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
 export type ImageFileType = 'svg' | 'png';
 
-export interface IFileTypeIconOptions {
+export interface FileTypeIconOptions {
   /**
    * The file extension, such as .pptx, for which you need an icon.
    * For file type icons that are not associated with a file
@@ -36,13 +36,13 @@ export interface IFileTypeIconOptions {
 }
 
 /**
- * This function returns properties for a file type icon given the IFileTypeIconOptions.
+ * This function returns properties for a file type icon given the FileTypeIconOptions.
  * It accounts for different device pixel ratios. For example,
  * `getFileTypeIconProps({ extension: 'doc', size: 16, imageFileType: 'png' })`
  * will return `{ iconName: 'docx16_2x_png' }` if the `devicePixelRatio` is 2.
  * @param options - Configuration options for the file type icon
  */
-export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string; 'aria-label'?: string } {
+export function getFileTypeIconProps(options: FileTypeIconOptions): { iconName: string; 'aria-label'?: string } {
   // First, obtain the base name of the icon using the extension or type.
   const { extension, type, size, imageFileType } = options;
 
@@ -122,7 +122,7 @@ export function getFileTypeIconSuffix(
   imageFileType: ImageFileType = 'svg',
   win?: Window,
 ): string {
-  // eslint-disable-next-line no-restricted-globals
+  // eslint-disable-next-line @nx/workspace-no-restricted-globals
   win ??= window;
   const devicePixelRatio: number = win.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
