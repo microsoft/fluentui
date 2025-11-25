@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.133",
+  "version": "3.0.0-rc.0",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -94,7 +94,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.26 || ^2.0.0"
+    "@microsoft/fast-element": "^2.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -102,7 +102,7 @@
       "minor",
       "patch"
     ],
-    "tag": "beta"
+    "tag": "rc"
   },
   "customElements": "./custom-elements.json"
 }
