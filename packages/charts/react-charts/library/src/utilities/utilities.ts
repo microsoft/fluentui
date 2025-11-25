@@ -1031,28 +1031,24 @@ export function calloutData(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   combinedResult.forEach((ele: any) => {
     const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
+    const newPoint = {
+      legend: ele.legend,
+      y: ele.y,
+      color: ele.color!,
+      xAxisCalloutData: ele.xAxisCalloutData,
+      yAxisCalloutData: ele.yAxisCalloutData,
+      callOutAccessibilityData: ele.callOutAccessibilityData,
+      index: ele.index,
+    };
+
     if (xValue in xValToDataPoints) {
-      xValToDataPoints[xValue].push({
-        legend: ele.legend,
-        y: ele.y,
-        color: ele.color!,
-        xAxisCalloutData: ele.xAxisCalloutData,
-        yAxisCalloutData: ele.yAxisCalloutData,
-        callOutAccessibilityData: ele.callOutAccessibilityData,
-        index: ele.index,
-      });
+      // Check if a point with the same legend and y-value already exists
+      const existingPoint = xValToDataPoints[xValue].find(p => p.legend === newPoint.legend && p.y === newPoint.y);
+      if (!existingPoint) {
+        xValToDataPoints[xValue].push(newPoint);
+      }
     } else {
-      xValToDataPoints[xValue] = [
-        {
-          legend: ele.legend,
-          y: ele.y,
-          color: ele.color!,
-          xAxisCalloutData: ele.xAxisCalloutData,
-          yAxisCalloutData: ele.yAxisCalloutData,
-          callOutAccessibilityData: ele.callOutAccessibilityData,
-          index: ele.index,
-        },
-      ];
+      xValToDataPoints[xValue] = [newPoint];
     }
   });
 
