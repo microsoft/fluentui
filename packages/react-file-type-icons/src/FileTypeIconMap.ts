@@ -1,11 +1,9 @@
-import { FileIconType } from './FileIconType';
-
 /**
  * Enumeration of icon file names, and what extensions they map to.
  * Please keep items alphabetical. Items without extensions may require specific logic in the code to map.
  * Always use getFileTypeIconProps to get the most up-to-date icon at the right pixel density.
  */
-export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: FileIconType[] } } = {
+export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   accdb: {
     extensions: ['accdb', 'mdb'],
   },
@@ -15,9 +13,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },
-  album: {
-    types: [FileIconType.album],
-  },
+  album: {},
   audio: {
     extensions: [
       'aif',
@@ -279,15 +275,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   designer: {
     extensions: ['design'],
   },
-  desktopfolder: {
-    types: [FileIconType.desktopFolder],
-  },
-  docset: {
-    types: [FileIconType.docset],
-  },
-  documentsfolder: {
-    types: [FileIconType.documentsFolder],
-  },
+  desktopfolder: {},
+  docset: {},
+  documentsfolder: {},
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
@@ -300,18 +290,13 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
   },
-  folder: {
-    types: [FileIconType.folder],
-  },
+  favoritesfolder: {},
+  folder: {},
   font: {
     extensions: ['ttf', 'otf', 'woff'],
   },
-  form: {
-    types: [FileIconType.form],
-  },
-  genericfile: {
-    types: [FileIconType.genericFile],
-  },
+  form: {},
+  genericfile: {},
   html: {
     extensions: ['htm', 'html', 'mht', 'mhtml'],
   },
@@ -321,27 +306,17 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
-  linkedfolder: {
-    types: [FileIconType.linkedFolder],
-  },
-  listform: {
-    types: [FileIconType.listForm],
-  },
-  listitem: {
-    types: [FileIconType.listItem],
-  },
+  linkedfolder: {},
+  listform: {},
+  listitem: {},
   loop: {
     extensions: ['fluid', 'loop', 'note'],
   },
-  loopworkspace: {
-    types: [FileIconType.loopworkspace],
-  },
+  loopworkspace: {},
   officescript: {
     extensions: ['osts'],
   },
-  splist: {
-    types: [FileIconType.list],
-  },
+  splist: {},
   mcworld: {
     extensions: ['mcworld'],
   },
@@ -384,9 +359,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   mpt: {
     extensions: ['mpt'],
   },
-  multiple: {
-    types: [FileIconType.multiple],
-  },
+  multiple: {},
   one: {
     // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
     extensions: ['one', 'onepart'],
@@ -446,15 +419,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
     ],
   },
   photo360: {},
-  picturesfolder: {
-    types: [FileIconType.picturesFolder],
-  },
-  planner: {
-    types: [FileIconType.planner],
-  },
-  portfolio: {
-    types: [FileIconType.portfolio],
-  },
+  picturesfolder: {},
+  planner: {},
+  portfolio: {},
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },
@@ -476,24 +443,16 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
   spo: {
     extensions: ['aspx'],
   },
-  sponews: {
-    types: [FileIconType.news],
-  },
+  sponews: {},
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
   rtf: {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
-  sharedfolder: {
-    types: [FileIconType.sharedFolder],
-  },
-  playlist: {
-    types: [FileIconType.playlist],
-  },
-  sway: {
-    types: [FileIconType.sway],
-  },
+  sharedfolder: {},
+  playlist: {},
+  sway: {},
   sysfile: {
     extensions: [
       'bak',
@@ -527,9 +486,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
       'xll',
     ],
   },
-  todoitem: {
-    types: [FileIconType.todoItem],
-  },
+  todoitem: {},
   txt: {
     extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'],
   },
@@ -562,7 +519,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[]; types?: 
     ],
   },
   video: {
-    types: [FileIconType.stream],
     extensions: [
       '3g2',
       '3gp',
