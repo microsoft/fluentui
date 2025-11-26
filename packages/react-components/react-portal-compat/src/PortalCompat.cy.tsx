@@ -3,7 +3,7 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import type { JSXElement } from '@fluentui/react-utilities/';
-import { PortalCompatProvider } from './index';
+import { PortalCompatProvider } from '@fluentui/react-portal-compat';
 import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 
 const mount = (element: JSXElement) => {

@@ -41,14 +41,6 @@
       "options": {
         "cwd": "{projectRoot}"
       }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "tools/workspace-plugin/jest.config.ts",
-        "passWithNoTests": true
-      }
     }
   }
 }

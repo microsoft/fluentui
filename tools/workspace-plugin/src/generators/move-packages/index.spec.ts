@@ -59,15 +59,11 @@ describe('move-packages generator', () => {
   });
 
   describe('general', () => {
-    it(
-      'should run successfully',
-      async () => {
-        await generator(tree, options);
-        const config = readProjectConfiguration(tree, options.name);
-        expect(config).toBeDefined();
-      },
-      10000,
-    );
+    it('should run successfully', async () => {
+      await generator(tree, options);
+      const config = readProjectConfiguration(tree, options.name);
+      expect(config).toBeDefined();
+    });
 
     describe('schema validation', () => {
       it('should throw if --name && --allConverged are both specified', async () => {
@@ -209,28 +205,24 @@ describe('move-packages generator', () => {
       setupDummyPackage(tree, { name: '@proj/react-old', version: '8.0.1' });
     });
 
-    it(
-      `should move all v9 packages in batch`,
-      async () => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const projects = [
-          options.name,
-          '@proj/react-foo',
-          '@proj/react-bar',
-          '@proj/react-moo',
-          '@proj/react-old',
-        ] as const;
+    it(`should move all v9 packages in batch`, async () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const projects = [
+        options.name,
+        '@proj/react-foo',
+        '@proj/react-bar',
+        '@proj/react-moo',
+        '@proj/react-old',
+      ] as const;
 
-        const destinationFolder = 'testFolder';
-        await generator(tree, { allConverged: true, destination: destinationFolder });
+      const destinationFolder = 'testFolder';
+      await generator(tree, { allConverged: true, destination: destinationFolder });
 
-        expect(tree.exists(`packages/${destinationFolder}/react-foo/src/index.ts`)).toBeTruthy();
-        expect(tree.exists(`packages/${destinationFolder}/react-bar/src/index.ts`)).toBeTruthy();
-        expect(tree.exists(`packages/${destinationFolder}/react-moo/src/index.ts`)).toBeTruthy();
-        expect(tree.exists(`packages/${destinationFolder}/react-old/src/index.ts`)).toBeFalsy();
-      },
-      10000,
-    );
+      expect(tree.exists(`packages/${destinationFolder}/react-foo/src/index.ts`)).toBeTruthy();
+      expect(tree.exists(`packages/${destinationFolder}/react-bar/src/index.ts`)).toBeTruthy();
+      expect(tree.exists(`packages/${destinationFolder}/react-moo/src/index.ts`)).toBeTruthy();
+      expect(tree.exists(`packages/${destinationFolder}/react-old/src/index.ts`)).toBeFalsy();
+    });
   });
 
   describe('--allV8', () => {
@@ -241,28 +233,24 @@ describe('move-packages generator', () => {
       setupDummyPackage(tree, { name: '@proj/react-old', version: '9.0.1' });
     });
 
-    it(
-      `should move all v8 packages in batch`,
-      async () => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const projects = [
-          options.name,
-          '@proj/react-foo',
-          '@proj/react-bar',
-          '@proj/react-moo',
-          '@proj/react-old',
-        ] as const;
+    it(`should move all v8 packages in batch`, async () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const projects = [
+        options.name,
+        '@proj/react-foo',
+        '@proj/react-bar',
+        '@proj/react-moo',
+        '@proj/react-old',
+      ] as const;
 
-        const destinationFolder = 'testFolder';
-        await generator(tree, { allV8: true, destination: destinationFolder });
+      const destinationFolder = 'testFolder';
+      await generator(tree, { allV8: true, destination: destinationFolder });
 
-        expect(tree.exists(`packages/${destinationFolder}/react-foo/src/index.ts`)).toBeTruthy();
-        expect(tree.exists(`packages/${destinationFolder}/react-bar/src/index.ts`)).toBeTruthy();
-        expect(tree.exists(`packages/${destinationFolder}/react-moo/src/index.ts`)).toBeTruthy();
-        expect(tree.exists(`packages/${destinationFolder}/react-old/src/index.ts`)).toBeFalsy();
-      },
-      10000,
-    );
+      expect(tree.exists(`packages/${destinationFolder}/react-foo/src/index.ts`)).toBeTruthy();
+      expect(tree.exists(`packages/${destinationFolder}/react-bar/src/index.ts`)).toBeTruthy();
+      expect(tree.exists(`packages/${destinationFolder}/react-moo/src/index.ts`)).toBeTruthy();
+      expect(tree.exists(`packages/${destinationFolder}/react-old/src/index.ts`)).toBeFalsy();
+    });
   });
 });
 

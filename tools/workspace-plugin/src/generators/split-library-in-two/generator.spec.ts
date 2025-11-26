@@ -34,12 +34,10 @@ describe('split-library-in-two generator', () => {
     jest.spyOn(output, 'error').mockImplementation(noop);
   });
 
-  it(
-    'should split v9 project into 2',
-    async () => {
-      const oldConfig = readProjectConfiguration(tree, options.project);
+  it('should split v9 project into 2', async () => {
+    const oldConfig = readProjectConfiguration(tree, options.project);
 
-      await splitLibraryInTwoGenerator(tree, options);
+    await splitLibraryInTwoGenerator(tree, options);
 
     const newConfig = readProjectConfiguration(tree, options.project);
     const storiesConfig = readProjectConfiguration(tree, `${options.project}-stories`);
@@ -326,7 +324,7 @@ describe('split-library-in-two generator', () => {
       export const tags = ['autodocs'];
       "
     `);
-  }, 10000);
+  });
 });
 
 function setup(tree: Tree) {
