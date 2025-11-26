@@ -70,6 +70,11 @@ const commonFileTypes = ['docx', 'pdf', 'xlsx'];
 
 export const UrlAndHtml = (): JSXElement => {
   const styles = useStyles();
+  const [devicePixelRatio, setDevicePixelRatio] = React.useState<number | string>('N/A');
+
+  React.useEffect(() => {
+    setDevicePixelRatio(window.devicePixelRatio);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -199,7 +204,7 @@ export const UrlAndHtml = (): JSXElement => {
       <div className={styles.section}>
         <div className={styles.sectionTitle}>Current Device Information</div>
         <div className={styles.code}>
-          Device Pixel Ratio: {typeof window !== 'undefined' ? window.devicePixelRatio : 'N/A'}
+          Device Pixel Ratio: {devicePixelRatio}
         </div>
         <div className={styles.label}>
           This affects which icon variant is loaded for PNG images. SVG images scale better but may use 1.5x variant for
