@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Tue, 11 Nov 2025 10:09:28 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Nov 2025 09:34:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.13.5)
+
+Wed, 26 Nov 2025 09:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.13.4..@fluentui/style-utilities_v8.13.5)
+
+### Patches
+
+- cdn url change to support latest vault/list filetype icons ([PR #35471](https://github.com/microsoft/fluentui/pull/35471) by caperez@microsoft.com)
 
 ## [8.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.13.4)
 
