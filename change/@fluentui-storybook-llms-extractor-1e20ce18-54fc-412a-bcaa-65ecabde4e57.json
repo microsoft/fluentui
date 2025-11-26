@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fixing compilation config issues",
-  "packageName": "@fluentui/storybook-llms-extractor",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "none"
-}

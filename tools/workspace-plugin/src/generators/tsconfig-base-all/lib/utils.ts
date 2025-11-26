@@ -1,4 +1,5 @@
 // use this module to define any kind of generic utilities that are used in more than 1 place within the generator implementation
+import path from 'path';
 import { readJson, Tree } from '@nx/devkit';
 
 /**
@@ -10,8 +11,8 @@ export function createPathAliasesConfig(tree: Tree) {
   const existingTsConfig = tree.exists(tsConfigAllPath) ? readJson(tree, tsConfigAllPath) : null;
 
   const baseConfigs = {
-    v8: readJson(tree, '/tsconfig.base.v8.json'),
-    v9: readJson(tree, '/tsconfig.base.json'),
+    v8: readJson(tree, path.join('/tsconfig.base.v8.json')),
+    v9: readJson(tree, path.join('/tsconfig.base.json')),
   };
   const tsConfigBase = '.';
   const mergedTsConfig = {
