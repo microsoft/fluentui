@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "cleanup of stray .d.ts",
+  "packageName": "@fluentui/storybook-llms-extractor",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}

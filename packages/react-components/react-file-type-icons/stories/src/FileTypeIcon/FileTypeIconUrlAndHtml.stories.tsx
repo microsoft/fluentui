@@ -202,8 +202,8 @@ const UrlAndHtmlComponent = (): JSXElement => {
           Device Pixel Ratio: {typeof window !== 'undefined' ? window.devicePixelRatio : 'N/A'}
         </div>
         <div className={styles.label}>
-          This affects which icon variant is loaded for PNG images. SVG images scale better but may use 1.5x variant
-          for better rendering.
+          This affects which icon variant is loaded for PNG images. SVG images scale better but may use 1.5x variant for
+          better rendering.
         </div>
       </div>
     </div>
