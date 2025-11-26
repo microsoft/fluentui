@@ -67,7 +67,7 @@ export type MenuGridGroupContextValue = {
 
 // @public (undocumented)
 export type MenuGridGroupContextValues = {
-    MenuGridGroup: MenuGridGroupContextValue;
+    menuGridGroup: MenuGridGroupContextValue;
 };
 
 // @public
