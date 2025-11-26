@@ -68,7 +68,7 @@ const useStyles = makeStyles({
 
 const commonFileTypes = ['docx', 'pdf', 'xlsx'];
 
-const UrlAndHtmlComponent = (): JSXElement => {
+export const UrlAndHtml = (): JSXElement => {
   const styles = useStyles();
 
   return (
@@ -210,15 +210,13 @@ const UrlAndHtmlComponent = (): JSXElement => {
   );
 };
 
-export const UrlAndHtml = {
-  render: UrlAndHtmlComponent,
-  name: 'URL and HTML Functions',
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Demonstrates the `getFileTypeIconAsUrl()` and `getFileTypeIconAsHTMLString()` utility functions with different DPI settings (1x, 1.5x, 2x) and common file types (docx, pdf, xlsx). These functions are useful when you need direct access to CDN URLs or HTML markup for file type icons.',
-      },
+UrlAndHtml.parameters = {
+  docs: {
+    description: {
+      story:
+        'Demonstrates the `getFileTypeIconAsUrl()` and `getFileTypeIconAsHTMLString()` utility functions with different DPI settings (1x, 1.5x, 2x) and common file types (docx, pdf, xlsx). These functions are useful when you need direct access to CDN URLs or HTML markup for file type icons.',
     },
   },
 };
+
+UrlAndHtml.storyName = 'URL and HTML Functions';
