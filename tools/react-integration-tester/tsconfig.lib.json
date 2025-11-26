@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "rootDir": "src",
     "outDir": "../../dist/out-tsc",
     "declaration": true,
     "types": ["node"]

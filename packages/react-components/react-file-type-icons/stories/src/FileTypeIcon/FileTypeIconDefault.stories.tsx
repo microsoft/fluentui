@@ -1,8 +1,8 @@
+/* eslint-disable @fluentui/no-restricted-imports */
 import * as React from 'react';
+import { makeStyles, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
-import { tokens } from '@fluentui/react-components';
 import { FileIconType, FileTypeIcon } from '@fluentui/react-file-type-icons';
-import { makeStyles } from '@griffel/react';
 
 const useStyles = makeStyles({
   container: {

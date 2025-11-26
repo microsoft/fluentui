@@ -1,8 +1,8 @@
+/* eslint-disable @fluentui/no-restricted-imports */
 import * as React from 'react';
+import { makeStyles, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
-import { tokens } from '@fluentui/react-components';
 import { FileTypeIcon } from '@fluentui/react-file-type-icons';
-import { makeStyles, shorthands } from '@griffel/react';
 
 const useStyles = makeStyles({
   container: {
@@ -34,9 +34,9 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
-    ...shorthands.padding('12px'),
+    padding: '12px',
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
   },
   label: {
     fontSize: tokens.fontSizeBase300,
@@ -48,16 +48,16 @@ const useStyles = makeStyles({
     fontStyle: 'italic',
   },
   warningBox: {
-    ...shorthands.padding('12px', '16px'),
+    padding: '12px 16px',
     backgroundColor: tokens.colorPaletteYellowBackground2,
-    ...shorthands.borderLeft('4px', 'solid', tokens.colorPaletteYellowBorder1),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderLeft: `4px solid ${tokens.colorPaletteYellowBorder1}`,
+    borderRadius: tokens.borderRadiusMedium,
     fontSize: tokens.fontSizeBase300,
   },
   codeBlock: {
     backgroundColor: tokens.colorNeutralBackground3,
-    ...shorthands.padding('12px'),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    padding: '12px',
+    borderRadius: tokens.borderRadiusMedium,
     fontFamily: tokens.fontFamilyMonospace,
     fontSize: tokens.fontSizeBase200,
     overflowX: 'auto',

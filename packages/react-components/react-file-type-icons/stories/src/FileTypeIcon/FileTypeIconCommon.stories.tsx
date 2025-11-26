@@ -1,8 +1,8 @@
+/* eslint-disable @fluentui/no-restricted-imports */
 import * as React from 'react';
+import { makeStyles, tokens } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
-import { tokens } from '@fluentui/react-components';
 import { FileTypeIcon, FileIconType } from '@fluentui/react-file-type-icons';
-import { makeStyles, shorthands } from '@griffel/react';
 
 const useStyles = makeStyles({
   container: {
@@ -30,9 +30,9 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     gap: '8px',
-    ...shorthands.padding('12px'),
+    padding: '12px',
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: tokens.borderRadiusMedium,
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
     },

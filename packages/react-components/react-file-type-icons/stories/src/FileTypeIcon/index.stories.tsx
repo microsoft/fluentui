@@ -1,5 +1,6 @@
-import { FileTypeIcon } from '@fluentui/react-file-type-icons';
+/* eslint-disable @fluentui/no-restricted-imports */
 import type { Meta } from '@storybook/react';
+import { FileTypeIcon } from '@fluentui/react-file-type-icons';
 
 import descriptionMd from './FileTypeIconDescription.md';
 import bestPracticesMd from './FileTypeIconBestPractices.md';
