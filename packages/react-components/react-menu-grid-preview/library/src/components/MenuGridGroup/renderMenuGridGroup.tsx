@@ -15,7 +15,7 @@ export const renderMenuGridGroup_unstable = (
   assertSlots<MenuGridGroupSlots>(state);
 
   return (
-    <MenuGridGroupContextProvider value={contextValues.MenuGridGroup}>
+    <MenuGridGroupContextProvider value={contextValues.menuGridGroup}>
       <state.root />
     </MenuGridGroupContextProvider>
   );
