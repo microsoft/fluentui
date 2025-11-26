@@ -203,9 +203,7 @@ export const UrlAndHtml = (): JSXElement => {
       {/* Interactive Example */}
       <div className={styles.section}>
         <div className={styles.sectionTitle}>Current Device Information</div>
-        <div className={styles.code}>
-          Device Pixel Ratio: {devicePixelRatio}
-        </div>
+        <div className={styles.code}>Device Pixel Ratio: {devicePixelRatio}</div>
         <div className={styles.label}>
           This affects which icon variant is loaded for PNG images. SVG images scale better but may use 1.5x variant for
           better rendering.
