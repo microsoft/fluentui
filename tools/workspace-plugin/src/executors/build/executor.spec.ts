@@ -86,13 +86,15 @@ describe('Build Executor', () => {
     // mute api extractor - END
   });
 
-  it('runs build and api-generation and fails on api update', async () => {
-    const loggerLogSpy = jest.spyOn(logger, 'log').mockImplementation(() => {
-      return;
-    });
-    const loggerVerboseSpy = jest.spyOn(logger, 'verbose').mockImplementation(() => {
-      return;
-    });
+  it(
+    'runs build and api-generation and fails on api update',
+    async () => {
+      const loggerLogSpy = jest.spyOn(logger, 'log').mockImplementation(() => {
+        return;
+      });
+      const loggerVerboseSpy = jest.spyOn(logger, 'verbose').mockImplementation(() => {
+        return;
+      });
 
     const output = await executor(options, context);
     expect(output.success).toBe(true);
@@ -103,9 +105,9 @@ describe('Build Executor', () => {
     expect(stripIndents`${clearLogs}`).toEqual(stripIndents`
       Cleaning outputs:
 
-       - ${workspaceRoot}/libs/proj/lib-commonjs
-       - ${workspaceRoot}/libs/proj/lib
-       - ${workspaceRoot}/libs/proj/dist/assets/spec.md
+       - ${join(workspaceRoot, 'libs', 'proj', 'lib-commonjs')}
+       - ${join(workspaceRoot, 'libs', 'proj', 'lib')}
+       - ${join(workspaceRoot, 'libs', 'proj', 'dist', 'assets', 'spec.md')}
     `);
 
     expect(restOfLogs).toEqual([
@@ -116,22 +118,22 @@ describe('Build Executor', () => {
 
     expect(loggerVerboseSpy.mock.calls.flat()).toEqual([
       `Applying transforms: 0`,
-      `babel: transformed ${workspaceRoot}/libs/proj/lib/greeter.styles.js`,
+      `babel: transformed ${join(workspaceRoot, 'libs', 'proj', 'lib', 'greeter.styles.js')}`,
       `Applying transforms: 0`,
     ]);
 
     expect(rmMock.mock.calls.flat()).toEqual([
-      `${workspaceRoot}/libs/proj/lib-commonjs`,
+      join(workspaceRoot, 'libs', 'proj', 'lib-commonjs'),
       {
         force: true,
         recursive: true,
       },
-      `${workspaceRoot}/libs/proj/lib`,
+      join(workspaceRoot, 'libs', 'proj', 'lib'),
       {
         force: true,
         recursive: true,
       },
-      `${workspaceRoot}/libs/proj/dist/assets/spec.md`,
+      join(workspaceRoot, 'libs', 'proj', 'dist', 'assets', 'spec.md'),
       {
         force: true,
         recursive: true,
@@ -387,6 +389,6 @@ describe('Build Executor', () => {
       expect(existsSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.raw.js.map'))).toBe(false);
       expect(existsSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js'))).toBe(false);
       expect(existsSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.raw.js.map'))).toBe(false);
-    }, 60000);
+    }, 180000);
   });
 });

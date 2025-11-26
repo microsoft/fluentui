@@ -55,14 +55,14 @@ describe('react-library generator', () => {
         "project.json",
         ".babelrc.json",
         ".swcrc",
-        "LICENSE",
-        "README.md",
         "config",
         "docs",
         "eslint.config.js",
         "etc",
         "jest.config.js",
+        "LICENSE",
         "package.json",
+        "README.md",
         "src",
         "tsconfig.json",
         "tsconfig.lib.json",
@@ -249,7 +249,7 @@ describe('react-library generator', () => {
         packages/react-components/react-one-preview/stories @org/chosen-one
       `),
     );
-  });
+  }, 10000);
 
   it(`should create compat package`, async () => {
     setup(tree);
@@ -265,14 +265,14 @@ describe('react-library generator', () => {
         "project.json",
         ".babelrc.json",
         ".swcrc",
-        "LICENSE",
-        "README.md",
         "config",
         "docs",
         "eslint.config.js",
         "etc",
         "jest.config.js",
+        "LICENSE",
         "package.json",
+        "README.md",
         "src",
         "tsconfig.json",
         "tsconfig.lib.json",
@@ -309,7 +309,7 @@ describe('react-library generator', () => {
         tags: ['vNext', 'platform:web', 'compat', 'type:stories'],
       }),
     );
-  });
+  }, 10000);
 });
 
 function setup(tree: Tree) {

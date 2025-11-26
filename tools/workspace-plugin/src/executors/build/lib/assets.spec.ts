@@ -1,4 +1,4 @@
-import { join } from 'node:path';
+import { join, normalize } from 'node:path';
 
 // ==== mock start ====
 import { cp } from 'node:fs/promises';
@@ -36,16 +36,16 @@ describe(`assets`, () => {
     expect(actual).toBe(true);
     expect(cpMock.mock.calls.flat()).toEqual([
       // from
-      `${rootDir}/libs/proj/world.md`,
+      join(rootDir, 'libs', 'proj', 'world.md'),
       // to
-      `${rootDir}/libs/proj/dist/world.md`,
+      join(rootDir, 'libs', 'proj', 'dist', 'world.md'),
       {
         recursive: true,
       },
       // from
-      `${rootDir}/libs/proj/hello.txt`,
+      join(rootDir, 'libs', 'proj', 'hello.txt'),
       // to
-      `${rootDir}/libs/proj/dist/copied-assets/hello.txt`,
+      join(rootDir, 'libs', 'proj', 'dist', 'copied-assets', 'hello.txt'),
       {
         recursive: true,
       },
@@ -72,9 +72,9 @@ describe(`assets`, () => {
     expect(actual).toBe(true);
     expect(cpMock.mock.calls.flat()).toEqual([
       // from
-      `${rootDir}/libs/proj/hello.md__tmpl__`,
+      join(rootDir, 'libs', 'proj', 'hello.md__tmpl__'),
       // to
-      `${rootDir}/libs/proj/dist/copied-assets/hello.md`,
+      join(rootDir, 'libs', 'proj', 'dist', 'copied-assets', 'hello.md'),
       {
         recursive: true,
       },

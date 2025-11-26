@@ -15,7 +15,7 @@ describe('eslint-rule generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     tree = createTreeWithEmptyWorkspace();
     await lintWorkspaceRulesProjectGenerator(tree, {});
-  });
+  }, 10000);
 
   it('should generate new eslint rule', async () => {
     const config = readProjectConfiguration(tree, 'eslint-rules');

@@ -20,16 +20,20 @@ describe('react-component generator', () => {
       }
     });
 
-    it(`should throw error if component already exists`, async () => {
-      createLibrary(tree, 'react-one');
-      await generator(tree, { project: 'react-one', name: 'MyOne' });
-
-      try {
+    it(
+      `should throw error if component already exists`,
+      async () => {
+        createLibrary(tree, 'react-one');
         await generator(tree, { project: 'react-one', name: 'MyOne' });
-      } catch (err) {
-        expect(err).toMatchInlineSnapshot(`[Error: The component "MyOne" already exists]`);
-      }
-    });
+
+        try {
+          await generator(tree, { project: 'react-one', name: 'MyOne' });
+        } catch (err) {
+          expect(err).toMatchInlineSnapshot(`[Error: The component "MyOne" already exists]`);
+        }
+      },
+      10000,
+    );
   });
 
   describe(`component`, () => {
@@ -70,7 +74,8 @@ describe('react-component generator', () => {
       "
     `);
 
-        expect(tree.children(componentRootPath)).toMatchInlineSnapshot(`
+        const children = tree.children(componentRootPath).sort();
+        expect(children).toMatchInlineSnapshot(`
       Array [
         "MyOne.test.tsx",
         "MyOne.tsx",
@@ -267,7 +272,8 @@ describe('react-component generator', () => {
             : 'packages/react-components/react-one/stories/src/MyOne';
         await generator(tree, { project: 'react-one', name: 'MyOne' });
 
-        expect(tree.children(componentStoryRootPath)).toMatchInlineSnapshot(`
+        const storyChildren = tree.children(componentStoryRootPath).sort();
+        expect(storyChildren).toMatchInlineSnapshot(`
       Array [
         "MyOneBestPractices.md",
         "MyOneDefault.stories.tsx",

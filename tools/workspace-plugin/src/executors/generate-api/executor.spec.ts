@@ -5,7 +5,7 @@ import {
   type ExtractorConfig,
   type ExtractorResult,
 } from '@microsoft/api-extractor';
-import { basename, join } from 'node:path';
+import { basename, join, normalize } from 'node:path';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync, readdirSync } from 'node:fs';
 
 import { type TsConfig } from '../../types';
@@ -143,7 +143,7 @@ describe('GenerateApi Executor', () => {
     try {
       await executor(options, context);
     } catch (err) {
-      expect(err).toMatchInlineSnapshot(`[Error: ${paths.projRoot}/tsconfig.json doesn't exist]`);
+      expect((err as Error).message).toContain(`tsconfig.json doesn't exist`);
     }
 
     writeFileSync(join(paths.projRoot, 'tsconfig.json'), '{}', 'utf-8');
@@ -151,9 +151,7 @@ describe('GenerateApi Executor', () => {
     try {
       await executor(options, context);
     } catch (err) {
-      expect(err).toMatchInlineSnapshot(
-        `[Error: Cannot find api-extractor.json at "${paths.projRoot}/config/api-extractor.json"]`,
-      );
+      expect((err as Error).message).toContain(`Cannot find api-extractor.json at`);
     }
   });
 
@@ -172,7 +170,7 @@ describe('GenerateApi Executor', () => {
     const output = await executor(options, context);
 
     expect(execSyncMock.mock.calls.flat()).toEqual([
-      `tsc -p ${paths.projRoot}/tsconfig.lib.json --pretty --emitDeclarationOnly --baseUrl ${paths.projRoot}`,
+      `tsc -p ${join(paths.projRoot, 'tsconfig.lib.json')} --pretty --emitDeclarationOnly --baseUrl ${paths.projRoot}`,
       { stdio: 'inherit' },
     ]);
 

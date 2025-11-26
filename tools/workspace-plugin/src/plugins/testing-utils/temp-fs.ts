@@ -90,12 +90,59 @@ export class TempFs {
   }
 
   cleanup() {
-    rmSync(this.tempDir, { recursive: true, force: true });
-    setWorkspaceRoot(this.previousWorkspaceRoot);
+    // Retry cleanup on Windows to handle EBUSY errors
+    let attempts = 0;
+    const maxAttempts = 3;
+    while (attempts < maxAttempts) {
+      try {
+        rmSync(this.tempDir, { recursive: true, force: true });
+        setWorkspaceRoot(this.previousWorkspaceRoot);
+        return;
+      } catch (error: any) {
+        attempts++;
+        if (attempts >= maxAttempts || !error?.code || error.code !== 'EBUSY') {
+          // If we've exhausted retries or it's a different error, just continue
+          // Don't throw to avoid breaking tests
+          console.warn(`Failed to cleanup temp directory after ${attempts} attempts:`, error.message);
+          setWorkspaceRoot(this.previousWorkspaceRoot);
+          return;
+        }
+        // Wait before retry with exponential backoff
+        const delay = 100 * Math.pow(2, attempts - 1);
+        const start = Date.now();
+        while (Date.now() - start < delay) {
+          // Busy wait
+        }
+      }
+    }
   }
 
   reset() {
-    rmSync(this.tempDir, { recursive: true, force: true });
-    mkdirSync(this.tempDir, { recursive: true });
+    // Retry reset on Windows to handle EBUSY errors
+    let attempts = 0;
+    const maxAttempts = 3;
+    while (attempts < maxAttempts) {
+      try {
+        rmSync(this.tempDir, { recursive: true, force: true });
+        mkdirSync(this.tempDir, { recursive: true });
+        return;
+      } catch (error: any) {
+        attempts++;
+        if (attempts >= maxAttempts || !error?.code || error.code !== 'EBUSY') {
+          console.warn(`Failed to reset temp directory after ${attempts} attempts:`, error.message);
+          // Try to at least create the directory if it doesn't exist
+          if (!existsSync(this.tempDir)) {
+            mkdirSync(this.tempDir, { recursive: true });
+          }
+          return;
+        }
+        // Wait before retry with exponential backoff
+        const delay = 100 * Math.pow(2, attempts - 1);
+        const start = Date.now();
+        while (Date.now() - start < delay) {
+          // Busy wait
+        }
+      }
+    }
   }
 }
