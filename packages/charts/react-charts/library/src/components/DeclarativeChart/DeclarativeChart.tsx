@@ -14,7 +14,7 @@ import type { GridProperties } from './PlotlySchemaAdapter';
 import { tokens } from '@fluentui/react-theme';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
 import { Theme, webLightTheme } from '@fluentui/tokens';
-import * as d3Color from 'd3-color';
+import { hsl as d3Hsl } from 'd3-color';
 
 import {
   correctYearMonth,
@@ -326,8 +326,8 @@ const useIsDarkTheme = (): boolean => {
   const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
 
   // Get background and foreground colors
-  const backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
-  const foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
+  const backgroundColor = d3Hsl(v9Theme.colorNeutralBackground1);
+  const foregroundColor = d3Hsl(v9Theme.colorNeutralForeground1);
 
   const isDarkTheme = backgroundColor.l < foregroundColor.l;
 
