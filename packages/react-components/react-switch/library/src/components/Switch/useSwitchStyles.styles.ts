@@ -6,6 +6,8 @@ import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwitchSlots, SwitchState } from './Switch.types';
 
+const switchTranslateVar = '--fui-switch-translate';
+
 export const switchClassNames: SlotClassNames<SwitchSlots> = {
   root: 'fui-Switch',
   indicator: 'fui-Switch__indicator',
@@ -75,6 +77,7 @@ const useIndicatorBaseClassName = makeResetStyles({
     transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
     transitionProperty: 'transform',
+    transform: `translateX(var(${switchTranslateVar}, 0px))`,
 
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.01ms',
@@ -108,9 +111,7 @@ const useInputBaseClassName = makeResetStyles({
   // Checked (both enabled and disabled)
   ':checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      '> *': {
-        transform: `translateX(${trackWidthMedium - thumbSizeMedium - spaceBetweenThumbAndTrack}px)`,
-      },
+      [switchTranslateVar]: `${trackWidthMedium - thumbSizeMedium - spaceBetweenThumbAndTrack}px`,
     },
   },
 
@@ -248,9 +249,7 @@ const useInputStyles = makeStyles({
     width: `calc(${trackWidthSmall}px + 2 * ${tokens.spacingHorizontalS})`,
     ':checked': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        '> *': {
-          transform: `translateX(${trackWidthSmall - thumbSizeSmall - spaceBetweenThumbAndTrack}px)`,
-        },
+        [switchTranslateVar]: `${trackWidthSmall - thumbSizeSmall - spaceBetweenThumbAndTrack}px`,
       },
     },
   },
