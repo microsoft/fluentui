@@ -31,6 +31,6 @@ export type InlineDrawerState = Required<
   ComponentState<NonNullable<InlineDrawerSlots>> &
     DrawerBaseState &
     Pick<InlineDrawerProps, 'separator'> & {
-      animationDirection: PresenceDirection | null;
+      animationDirection: PresenceDirection;
     }
 >;
