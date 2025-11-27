@@ -45,16 +45,14 @@ import {
   Legends,
   YValueHover,
   ChartPopoverProps,
-  Chart,
-  ImageExportOptions,
-  LegendContainer,
   LineSeries,
   getColorFromToken,
   BarSeries,
   ChildProps,
 } from '../../index';
-import { toImage } from '../../utilities/image-export-utils';
 import { tokens } from '@fluentui/react-theme';
+import { useImageExport } from '../../utilities/hooks';
+import { isInvalidValue } from '@fluentui/chart-utilities';
 
 type NumericScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -102,9 +100,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _barLegends: string[] = [];
   let _lineLegends: string[] = [];
   let _legendColorMap: Record<string, [string, string]> = {};
-  const cartesianChartRef = React.useRef<Chart>(null);
+  const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
   const Y_ORIGIN: number = 0;
-  const _legendsRef = React.useRef<LegendContainer>(null);
   const _rectRef = React.useRef<SVGRectElement>(null);
   const _uniqDotId = useId('gvbc_dot_');
 
@@ -130,17 +127,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
   }, [props.legendProps?.selectedLegends]);
-
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-      toImage: (opts?: ImageExportOptions): Promise<string> => {
-        return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _useRtl, opts);
-      },
-    }),
-    [],
-  );
 
   const _adjustProps = () => {
     _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
@@ -400,7 +386,10 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const { barData, lineData } = _prepareChartData();
-  const _xAxisType: XAxisTypes = getTypeOfAxis(barData[0].name, true) as XAxisTypes;
+  const firstXValue = barData[0]?.name ?? lineData[0]?.data[0]?.x;
+  const _xAxisType: XAxisTypes = isInvalidValue(firstXValue)
+    ? XAxisTypes.StringAxis
+    : (getTypeOfAxis(firstXValue, true) as XAxisTypes);
   const { barLegends, lineLegends, xAxisLabels, datasetForBars } = _createDataSetOfGVBC(barData, lineData);
   _barLegends = barLegends;
   _lineLegends = lineLegends;
@@ -433,7 +422,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {

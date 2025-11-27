@@ -66,6 +66,7 @@ describe('useOverflowContainer', () => {
     const { result, rerender } = renderHook(() => {
       return useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined });
     });
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (result.current.containerRef as React.MutableRefObject<HTMLDivElement>).current = document.createElement('div');
     rerender();
     expect(observeMock).toHaveBeenCalledTimes(1);

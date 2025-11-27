@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: force release",
-  "packageName": "@fluentui/babel-preset-global-context",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

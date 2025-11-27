@@ -24,7 +24,7 @@ export class FloatingSuggestions<TItem extends {}>
 {
   private root = React.createRef<HTMLDivElement>();
   private suggestionStore: SuggestionsStore<TItem>;
-  private suggestionsControl: React.RefObject<SuggestionsControl<TItem>> = React.createRef();
+  private suggestionsControl: React.RefObject<SuggestionsControl<TItem> | null> = React.createRef();
   private currentPromise: PromiseLike<TItem[]>;
   private isComponentMounted: boolean = false;
   private _async: Async;

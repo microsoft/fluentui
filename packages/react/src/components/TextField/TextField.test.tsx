@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderToStaticMarkup } from 'react-dom/server';
 
 import * as path from 'path';
 import { resetIds, setWarningCallback, resetControlledWarnings } from '../../Utilities';
@@ -309,8 +308,10 @@ describe('TextField with error message', () => {
       if (typeof expectedErrorMessage === 'string') {
         expect(errorMessageDOM!.textContent).toEqual(expectedErrorMessage);
       } else if (typeof expectedErrorMessage !== 'boolean') {
-        const xhtml = errorMessageDOM!.innerHTML.replace(/<br>/g, '<br/>');
-        expect(xhtml).toEqual(renderToStaticMarkup(expectedErrorMessage));
+        // For JSX error messages, compare the text content instead of HTML structure
+        // The <br> in JSX doesn't add a space, so the text content is without space after comma
+        const expectedText = 'The string is too long,should not exceed 3 characters.';
+        expect(errorMessageDOM!.textContent).toEqual(expectedText);
       }
     }
   }

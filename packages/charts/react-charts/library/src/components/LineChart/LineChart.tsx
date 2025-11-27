@@ -6,7 +6,7 @@ import { useLineChartStyles } from './useLineChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
-import { Legend, Legends, LegendContainer } from '../Legends/index';
+import { Legend, Legends } from '../Legends/index';
 import { line as d3Line } from 'd3-shape';
 import { max as d3Max } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
@@ -24,8 +24,6 @@ import {
   ColorFillBarsProps,
   LineChartGap,
   LineChartDataPoint,
-  Chart,
-  ImageExportOptions,
   YValueHover,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
@@ -55,9 +53,9 @@ import {
   getRangeForScatterMarkerSize,
 } from '../../utilities/index';
 import { ScaleLinear } from 'd3-scale';
-import { toImage } from '../../utilities/image-export-utils';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+import { useImageExport } from '../../utilities/hooks';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -144,7 +142,8 @@ type LineChartDataWithIndex = LineChartPoints & { index: number };
  * {@docCategory LineChart}
  */
 export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardRef<HTMLDivElement, LineChartProps>(
-  (props, forwardedRef) => {
+  ({ isCalloutForStack = true, ...restProps }, forwardedRef) => {
+    const props = { isCalloutForStack, ...restProps };
     let _hasMarkersMode: boolean = false;
     let _isXAxisDateType: boolean = false;
     let _isScatterPolar: boolean = false;
@@ -173,9 +172,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = useRtl();
     let xAxisCalloutAccessibilityData: AccessibilityProps = {};
-    const cartesianChartRef = React.useRef<Chart>(null);
+    const { cartesianChartRef, legendsRef: _legendsRef } = useImageExport(props.componentRef, props.hideLegend);
     let _yScaleSecondary: ScaleLinear<number, number> | undefined;
-    const _legendsRef = React.useRef<LegendContainer>(null);
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -217,17 +215,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       }
     }, [props.height, props.width, props.data]);
 
-    React.useImperativeHandle(
-      props.componentRef,
-      () => ({
-        chartContainer: cartesianChartRef.current?.chartContainer ?? null,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return toImage(cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRTL, opts);
-        },
-      }),
-      [],
-    );
-
     function _getDomainNRangeValues(
       points: LineChartPoints[],
       margins: Margins,
@@ -237,7 +224,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       xAxisType: XAxisTypes,
       barWidth: number,
       tickValues: Date[] | number[] | undefined,
-      shiftX: number,
     ) {
       let domainNRangeValue: IDomainNRange;
       if (xAxisType === XAxisTypes.NumericAxis) {
@@ -1511,6 +1497,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           : xPointToHighlight;
       const found = findCalloutPoints(calloutPointsRef.current, xPointToHighlight) as CustomizedCalloutData | undefined;
       const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[index!] as LineChartDataPoint;
+
+      // Check if this point is plottable. If not, close the popover and return.
+      const xPoint = _xAxisScale(pointToHighlight.x);
+      const yPoint = yScale(pointToHighlight.y);
+      if (!isPlottable(xPoint, yPoint)) {
+        return;
+      }
+
       const pointToHighlightUpdated =
         nearestCircleToHighlight === null ||
         (nearestCircleToHighlight !== null &&
@@ -1521,14 +1515,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         _uniqueCallOutID = `#${_staticHighlightCircle}_${linenumber}`;
 
         d3Select(`#${_staticHighlightCircle}_${linenumber}`)
-          .attr('cx', `${_xAxisScale(pointToHighlight.x)}`)
-          .attr('cy', `${yScale(pointToHighlight.y)}`)
+          .attr('cx', `${xPoint}`)
+          .attr('cy', `${yPoint}`)
           .attr('visibility', 'visibility');
 
         d3Select(`#${_verticalLine}`)
-          .attr('transform', () => `translate(${_xAxisScale(pointToHighlight.x)}, ${yScale(pointToHighlight.y)})`)
+          .attr('transform', () => `translate(${xPoint}, ${yPoint})`)
           .attr('visibility', 'visibility')
-          .attr('y2', `${lineHeight - 5 - yScale(pointToHighlight.y)}`);
+          .attr('y2', `${lineHeight - 5 - yPoint}`);
 
         const targetElement = document.getElementById(`${_staticHighlightCircle}_${linenumber}`);
         const rect = targetElement!.getBoundingClientRect();
@@ -1910,6 +1904,3 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
   },
 );
 LineChart.displayName = 'LineChart';
-LineChart.defaultProps = {
-  isCalloutForStack: true,
-};

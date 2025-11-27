@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.131",
+  "version": "3.0.0-rc.1",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -79,8 +79,8 @@
     "@fluentui/scripts-api-extractor": "*",
     "@microsoft/fast-element": "2.0.0",
     "@tensile-perf/web-components": "~0.2.2",
-    "@storybook/html": "7.6.20",
-    "@storybook/html-webpack5": "7.6.20",
+    "@storybook/html": "8.6.14",
+    "@storybook/html-webpack5": "8.6.14",
     "@wc-toolkit/cem-validator": "1.0.3",
     "@wc-toolkit/cem-inheritance": "1.2.2",
     "@wc-toolkit/module-path-resolver": "1.0.0",
@@ -94,7 +94,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.26 || ^2.0.0"
+    "@microsoft/fast-element": "^2.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -102,7 +102,7 @@
       "minor",
       "patch"
     ],
-    "tag": "beta"
+    "tag": "rc"
   },
   "customElements": "./custom-elements.json"
 }

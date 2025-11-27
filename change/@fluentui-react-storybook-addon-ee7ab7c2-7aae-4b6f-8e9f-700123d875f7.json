@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "BREAKING: upgrade storybook to v8",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

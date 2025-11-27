@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
@@ -10,7 +10,7 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
-import type { PreparedStory, Renderer, SBEnumType } from '@storybook/types';
+import type { PreparedStory, Renderer, SBEnumType } from '@storybook/core/types';
 
 import { tokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
@@ -164,50 +164,73 @@ function withSlotEnhancer(story: PreparedStory, options: { slotsApi?: boolean; n
   const argAsProp = hasArgAsProp ? (story.argTypes.as.type as SBEnumType).value : null;
   let hasArgAsSlot = false;
 
+  type ArgTypes = Record<
+    string,
+    {
+      table?: { type: { summary?: string } };
+      type: { name?: string };
+    }
+  >;
+
   type InternalComponentApi = {
     __docgenInfo: {
-      props?: Record<string, { type: { name: string } }>;
+      props?: ArgTypes;
     };
-    [k: string]: unknown;
   };
 
-  const transformPropsWithSlotShorthand = (props: Record<string, { type: { name: string } }>) => {
-    Object.entries(props).forEach(([key, argType]) => {
-      const value: string = argType?.type?.name;
+  const transformArgTypeNameWithSlotShorthand = (typeName: string) => {
+    const match = typeName.match(slotRegex);
 
-      const match = value.match(slotRegex);
+    if (match) {
+      hasArgAsSlot = true;
+      return `Slot<\"${match[1]}\">`;
+    }
 
-      // Transformation for Slot with `AlternateAs` specified (mutates DocGen Object reference)
-      if (match) {
-        props[key].type.name = `Slot<\"${match[1]}\">`;
+    if (typeName.includes('WithSlotShorthandValue')) {
+      hasArgAsSlot = true;
+      return `Slot`;
+    }
+
+    return typeName;
+  };
+
+  /**
+   * Transform the arg types with slot shorthand (mutates the arg types object reference)
+   * This is necessary to ensure that the arg types are correctly displayed in the docs page
+   */
+  const transformArgTypesWithSlotShorthand = (argTypes: ArgTypes) => {
+    Object.values(argTypes).forEach(argType => {
+      // Transform the type summary if it exists
+      if (argType?.table?.type?.summary) {
+        argType.table.type.summary = transformArgTypeNameWithSlotShorthand(argType.table.type.summary);
       }
-      // Transformation for Slot with `WithSlotShorthandValue` (mutates DocGen Object reference)
-      else if (value.includes('WithSlotShorthandValue')) {
-        props[key].type.name = `Slot`;
-      }
-
-      if (value.includes('Slot')) {
-        hasArgAsSlot = true;
+      // Transform the type name if it exists
+      if (argType?.type?.name) {
+        argType.type.name = transformArgTypeNameWithSlotShorthand(argType.type.name);
       }
     });
   };
 
-  const transformComponent = (component: InternalComponentApi) => {
+  const transformComponentDocGenProps = (component: InternalComponentApi) => {
     const docGenProps = component?.__docgenInfo?.props;
     if (docGenProps) {
-      transformPropsWithSlotShorthand(docGenProps);
+      transformArgTypesWithSlotShorthand(docGenProps);
     }
   };
 
-  const component = story.component as InternalComponentApi;
-  const subcomponents = story.subcomponents as Record<string, InternalComponentApi>;
+  const component = story.moduleExport;
 
   if (options.slotsApi) {
-    transformComponent(component);
-    if (subcomponents) {
-      Object.values(subcomponents).forEach(subcomponent => {
-        transformComponent(subcomponent);
-      });
+    // Transform the arg types with slot shorthand (mutates the arg types object reference)
+    transformArgTypesWithSlotShorthand(story.argTypes as ArgTypes);
+
+    // Transform the component doc gen props with slot shorthand (mutates the component doc gen props object reference)
+    transformComponentDocGenProps(component);
+
+    // Transform the subcomponents doc gen props with slot shorthand
+    // (mutates the subcomponents doc gen props object reference)
+    if (story.subcomponents) {
+      Object.values(story.subcomponents).forEach(transformComponentDocGenProps);
     }
   }
 
@@ -281,7 +304,7 @@ const RenderArgsTable = ({
           </AdditionalApiDocs>
         )}
       </div>
-      <ArgsTable of={component} />
+      <ArgTypes of={component} />
     </>
   );
 };
@@ -379,9 +402,12 @@ export const FluentDocsPage = (): JSXElement => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
+          <RenderPrimaryStory
+            primaryStory={primaryStory as unknown as PrimaryStory}
+            skipPrimaryStory={skipPrimaryStory}
+          />
           <RenderArgsTable
-            story={primaryStory}
+            story={primaryStory as unknown as PrimaryStory}
             hideArgsTable={hideArgsTable}
             showSlotsApi={argTable.slotsApi}
             showNativePropsApi={argTable.nativePropsApi}

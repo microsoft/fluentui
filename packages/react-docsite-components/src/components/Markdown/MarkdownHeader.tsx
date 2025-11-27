@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction, IStyleFunctionOrObject, styled, IStyleFunction } from '@fluentui/react/lib/Utilities';
+import type { JSXIntrinsicElementKeys } from '@fluentui/utilities';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { FontSizes, NeutralColors } from '@fluentui/theme';
 
@@ -7,7 +8,7 @@ import { FontSizes, NeutralColors } from '@fluentui/theme';
  * The component props.
  */
 export interface IMarkdownHeaderProps {
-  as?: keyof React.ReactHTML;
+  as?: JSXIntrinsicElementKeys;
   children?: React.ReactNode;
   className?: string;
   id?: string;

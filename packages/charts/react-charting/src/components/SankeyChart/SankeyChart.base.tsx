@@ -27,7 +27,7 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from './SankeyChart.types';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
@@ -843,7 +843,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         <div
           className={classNames.root}
           role={'presentation'}
-          ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+          ref={(rootElem: HTMLDivElement) => {
+            this.chartContainer = rootElem;
+          }}
           onMouseLeave={this._onCloseCallout}
         >
           {/*
@@ -901,7 +903,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this.chartContainer, undefined, this._isRtl, opts);
+    return exportChartsAsImage([{ container: this.chartContainer }], undefined, this._isRtl, opts);
   };
 
   private _computeNodeAttributes(

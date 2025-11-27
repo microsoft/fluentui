@@ -593,7 +593,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     role="none"
                   >
                     <button
-                      aria-label="Supported Builds"
+                      aria-label="Metadata1"
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="4"
@@ -652,106 +652,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                         class=
 
                             {
-                              background-color: #e3008c;
-                              border-color: #e3008c;
-                              border: 1px solid;
-                              content: ;
-                              height: 4px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #e3008c, #e3008c);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Supported Builds
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Metadata1"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
                               background-color: #0078d4;
                               border-color: #0078d4;
                               border: 1px solid;
@@ -794,7 +694,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                   >
                     <button
                       aria-label="Metadata2"
-                      aria-posinset="3"
+                      aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -894,7 +794,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                   >
                     <button
                       aria-label="Metadata3"
-                      aria-posinset="4"
+                      aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -980,6 +880,106 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             }
                       >
                         Metadata3
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Supported Builds"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e3008c;
+                              border-color: #e3008c;
+                              border: 1px solid;
+                              content: ;
+                              height: 4px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e3008c, #e3008c);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Supported Builds
                       </div>
                     </button>
                   </div>
@@ -1587,7 +1587,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     role="none"
                   >
                     <button
-                      aria-label="Supported Builds"
+                      aria-label="Metadata1"
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="4"
@@ -1646,106 +1646,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                         class=
 
                             {
-                              background-color: #e3008c;
-                              border-color: #e3008c;
-                              border: 1px solid;
-                              content: ;
-                              height: 4px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #e3008c, #e3008c);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Supported Builds
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Metadata1"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
                               background-color: #0078d4;
                               border-color: #0078d4;
                               border: 1px solid;
@@ -1788,7 +1688,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                   >
                     <button
                       aria-label="Metadata2"
-                      aria-posinset="3"
+                      aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -1888,7 +1788,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                   >
                     <button
                       aria-label="Metadata3"
-                      aria-posinset="4"
+                      aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -1974,6 +1874,106 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                             }
                       >
                         Metadata3
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Supported Builds"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e3008c;
+                              border-color: #e3008c;
+                              border: 1px solid;
+                              content: ;
+                              height: 4px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e3008c, #e3008c);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Supported Builds
                       </div>
                     </button>
                   </div>
@@ -2581,7 +2581,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     role="none"
                   >
                     <button
-                      aria-label="Supported Builds"
+                      aria-label="Metadata1"
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="4"
@@ -2640,106 +2640,6 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                         class=
 
                             {
-                              background-color: #e3008c;
-                              border-color: #e3008c;
-                              border: 1px solid;
-                              content: ;
-                              height: 4px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #e3008c, #e3008c);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Supported Builds
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Metadata1"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
                               background-color: #0078d4;
                               border-color: #0078d4;
                               border: 1px solid;
@@ -2782,7 +2682,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                   >
                     <button
                       aria-label="Metadata2"
-                      aria-posinset="3"
+                      aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -2882,7 +2782,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                   >
                     <button
                       aria-label="Metadata3"
-                      aria-posinset="4"
+                      aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -2968,6 +2868,106 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                             }
                       >
                         Metadata3
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Supported Builds"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e3008c;
+                              border-color: #e3008c;
+                              border: 1px solid;
+                              content: ;
+                              height: 4px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e3008c, #e3008c);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Supported Builds
                       </div>
                     </button>
                   </div>
@@ -10372,7 +10372,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     role="none"
                   >
                     <button
-                      aria-label="Supported Builds"
+                      aria-label="Metadata1"
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="4"
@@ -10431,106 +10431,6 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                         class=
 
                             {
-                              background-color: #e3008c;
-                              border-color: #e3008c;
-                              border: 1px solid;
-                              content: ;
-                              height: 4px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #e3008c, #e3008c);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Supported Builds
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Metadata1"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
                               background-color: #0078d4;
                               border-color: #0078d4;
                               border: 1px solid;
@@ -10573,7 +10473,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                   >
                     <button
                       aria-label="Metadata2"
-                      aria-posinset="3"
+                      aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -10673,7 +10573,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                   >
                     <button
                       aria-label="Metadata3"
-                      aria-posinset="4"
+                      aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="4"
                       class=
@@ -10759,6 +10659,106 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                             }
                       >
                         Metadata3
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Supported Builds"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e3008c;
+                              border-color: #e3008c;
+                              border: 1px solid;
+                              content: ;
+                              height: 4px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e3008c, #e3008c);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Supported Builds
                       </div>
                     </button>
                   </div>

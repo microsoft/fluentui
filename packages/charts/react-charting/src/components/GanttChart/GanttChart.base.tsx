@@ -26,7 +26,7 @@ import {
   getScalePadding,
   getDateFormatLevel,
 } from '../../utilities/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
 import type { JSXElement } from '@fluentui/utilities';
 
@@ -73,10 +73,15 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
     () => ({
       chartContainer: _cartesianChartRef.current?.chartContainer ?? null,
       toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return toImage(_cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, getRTL(), opts);
+        return exportChartsAsImage(
+          [{ container: _cartesianChartRef.current?.chartContainer }],
+          props.hideLegend ? undefined : _legendsRef.current?.toSVG,
+          getRTL(),
+          opts,
+        );
       },
     }),
-    [],
+    [props.hideLegend],
   );
 
   const _points = React.useMemo(() => {
@@ -183,7 +188,6 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       xAxisType: XAxisTypes,
       barWidth: number,
       tickValues: Date[] | number[] | undefined,
-      shiftX: number,
     ): IDomainNRange => {
       const xValues: (Date | number)[] = [];
       points.forEach(point => {
@@ -196,8 +200,8 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
       return {
         dStartValue: isRTL ? xMax : xMin,
         dEndValue: isRTL ? xMin : xMax,
-        rStartValue: margins.left! + (isRTL ? 0 : shiftX),
-        rEndValue: containerWidth - margins.right! - (isRTL ? shiftX : 0),
+        rStartValue: margins.left!,
+        rEndValue: containerWidth - margins.right!,
       };
     },
     [],

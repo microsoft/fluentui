@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: force release",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

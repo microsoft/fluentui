@@ -14,7 +14,6 @@ import {
   DialogTrigger,
   Image,
   makeStyles,
-  shorthands,
   tokens,
   typographyStyles,
 } from '@fluentui/react-components';
@@ -22,7 +21,7 @@ import {
 const useStyles = makeStyles({
   surface: {
     padding: 0,
-    ...shorthands.border('none'),
+    border: 'none',
     overflow: 'hidden',
   },
   carousel: { padding: 0 },

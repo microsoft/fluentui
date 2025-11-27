@@ -180,7 +180,7 @@ packages/react-components/react-theme/library @microsoft/teams-prg
 packages/react-components/react-theme/stories @microsoft/teams-prg
 packages/react-components/react-utilities @microsoft/teams-prg @microsoft/cxe-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
-packages/style-utilities @dzearing @microsoft/cxe-red
+packages/style-utilities @bigbadcapers @microsoft/cxe-red
 packages/style-utilities/src/interfaces @phkuo @dzearing @microsoft/cxe-red
 packages/style-utilities/src/styles @phkuo @dzearing @microsoft/cxe-red
 packages/theme @dzearing @microsoft/cxe-red
@@ -258,7 +258,7 @@ packages/react-components/react-toolbar/stories @microsoft/teams-prg @chpalac @l
 packages/react-components/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
 packages/react-components/react-theme-sass @microsoft/teams-prg
-packages/react-components/theme-designer @microsoft/cxe-red @ms-acalzaretto
+packages/react-components/theme-designer @microsoft/cxe-red
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table/library @microsoft/teams-prg

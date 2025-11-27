@@ -11,6 +11,7 @@ const { __internal } = require('../internal-flat');
 const { globalIgnores } = require('eslint/config');
 const airbnbConfig = require('eslint-config-airbnb-extended/legacy');
 const rules = require('../rules');
+const { defineConfig } = require('eslint/config');
 
 const IGNORES = [
   '**/coverage',
@@ -110,6 +111,7 @@ const disabledRules = {
   'no-await-in-loop': 'off',
   'max-len': 'off',
   'no-empty-character-class': 'off',
+  'default-param-last': 'off',
 };
 
 /** @type {import('eslint').Linter.RulesRecord} */
@@ -193,8 +195,8 @@ const typeAwareRules = {
   '@typescript-eslint/no-deprecated': 'error',
 };
 
-/** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config(
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig(
   globalIgnores(IGNORES),
   ...airbnbConfig.configs.base.legacy,
   importPlugin.flatConfigs.typescript,
@@ -242,8 +244,7 @@ module.exports = tseslint.config(
     },
   },
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [tseslint.configs.eslintRecommended],
+    ...tseslint.configs.eslintRecommended,
     languageOptions: {
       parser: tseslint.parser,
     },
@@ -252,6 +253,7 @@ module.exports = tseslint.config(
        * `@typescript-eslint`plugin eslint rules
        * @see https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin
        */
+      ...tseslint.configs.eslintRecommended.rules,
       ...configHelpers.getNamingConventionRule(),
       '@typescript-eslint/ban-ts-comment': 'error',
       '@typescript-eslint/explicit-member-accessibility': [

@@ -48,7 +48,7 @@ export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref)
 
   const { className, muted, ...rest } = props;
 
-  const videoRef = React.useRef<HTMLVideoElement>();
+  const videoRef = React.useRef<HTMLVideoElement>(null);
 
   const classes = useVideoStyles();
   React.useEffect(() => {

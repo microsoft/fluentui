@@ -67,14 +67,14 @@ export type MenuGridGroupContextValue = {
 
 // @public (undocumented)
 export type MenuGridGroupContextValues = {
-    MenuGridGroup: MenuGridGroupContextValue;
+    menuGridGroup: MenuGridGroupContextValue;
 };
 
 // @public
 export const MenuGridGroupHeader: ForwardRefComponent<MenuGridGroupHeaderProps>;
 
 // @public (undocumented)
-export const MenuGridGroupHeaderClassNames: SlotClassNames<MenuGridGroupHeaderSlots>;
+export const menuGridGroupHeaderClassNames: SlotClassNames<MenuGridGroupHeaderSlots>;
 
 // @public (undocumented)
 export type MenuGridGroupHeaderProps = ComponentProps<MenuGridGroupHeaderSlots>;

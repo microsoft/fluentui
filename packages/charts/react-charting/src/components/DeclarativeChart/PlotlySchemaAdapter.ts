@@ -26,6 +26,7 @@ import {
   ISankeyChartData,
   ILineChartLineOptions,
   IGanttChartDataPoint,
+  IScatterChartPoints,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -38,6 +39,7 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { IChartTableProps } from '../ChartTable/index';
+import type { IAnnotationOnlyChartProps } from '../AnnotationOnlyChart/AnnotationOnlyChart.types';
 import {
   DEFAULT_DATE_STRING,
   findNumericMinMaxOfY,
@@ -45,6 +47,7 @@ import {
   MIN_DONUT_RADIUS,
 } from '../../utilities/utilities';
 import type {
+  Annotations,
   Datum,
   Layout,
   PlotlySchema,
@@ -61,7 +64,6 @@ import type {
   TraceInfo,
   DTickValue,
   AxisType,
-  Annotations,
   Shape,
 } from '@fluentui/chart-utilities';
 import {
@@ -327,6 +329,7 @@ export const _getGaugeAxisColor = (
   colorway: string[] | undefined,
   colorwayType: ColorwayType,
   color: Color | undefined,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): string => {
@@ -358,6 +361,32 @@ export const resolveXAxisPoint = (
     return x;
   }
   return x;
+};
+
+/**
+ * Extracts unique X-axis categories from Plotly data traces
+ * @param data Array of Plotly data traces
+ * @returns Array of unique x values
+ */
+const extractXCategories = (data: Data[] | undefined): Datum[] => {
+  return Array.from(
+    new Set(
+      (data ?? [])
+        .flatMap(trace => {
+          const xData = (trace as Partial<PlotData>).x;
+          if (!xData) {
+            return [];
+          }
+          if (Array.isArray(xData)) {
+            return xData.flat().map(x => {
+              return x;
+            });
+          }
+          return [];
+        })
+        .filter(x => x !== undefined && x !== null),
+    ),
+  );
 };
 
 /**
@@ -983,6 +1012,16 @@ const convertPlotlyAnnotation = (
     }
   }
 
+  const textAngle = (annotation as { textangle?: number | string })?.textangle;
+  if (typeof textAngle === 'number' && !Number.isNaN(textAngle)) {
+    styleProps.rotation = textAngle;
+  } else if (typeof textAngle === 'string' && textAngle.toLowerCase() !== 'auto') {
+    const parsedAngle = Number(textAngle);
+    if (!Number.isNaN(parsedAngle)) {
+      styleProps.rotation = parsedAngle;
+    }
+  }
+
   if (Object.keys(layoutProps).length > 0) {
     chartAnnotation.layout = layoutProps;
   }
@@ -1109,9 +1148,48 @@ export const normalizeObjectArrayForGVBC = (
   return { traces, x };
 };
 
+export const transformPlotlyJsonToAnnotationChartProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  _colorMap: React.MutableRefObject<Map<string, string>>,
+  _colorwayType: ColorwayType,
+  _isDarkTheme?: boolean,
+): IAnnotationOnlyChartProps => {
+  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot) ?? [];
+  const titles = getTitles(input.layout);
+  const layoutTitle = titles.chartTitle || undefined;
+
+  const layoutWithMeta = input.layout as Partial<Layout> & { meta?: { description?: string } };
+  const description =
+    typeof layoutWithMeta?.meta?.description === 'string' ? layoutWithMeta.meta.description : undefined;
+
+  const width = typeof input.layout?.width === 'number' ? input.layout.width : undefined;
+  const height = typeof input.layout?.height === 'number' ? input.layout.height : undefined;
+  const paperBackgroundColor = typeof input.layout?.paper_bgcolor === 'string' ? input.layout.paper_bgcolor : undefined;
+  const plotBackgroundColor = typeof input.layout?.plot_bgcolor === 'string' ? input.layout.plot_bgcolor : undefined;
+  const fontColor = typeof input.layout?.font?.color === 'string' ? input.layout.font.color : undefined;
+  const fontFamily = typeof input.layout?.font?.family === 'string' ? input.layout.font.family : undefined;
+  const margin = input.layout?.margin;
+
+  return {
+    annotations,
+    chartTitle: layoutTitle,
+    description,
+    width,
+    height,
+    paperBackgroundColor,
+    plotBackgroundColor,
+    fontColor,
+    fontFamily,
+    margin,
+  };
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1215,6 +1293,7 @@ export const transformPlotlyJsonToDonutProps = (
 export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1322,15 +1401,19 @@ export const transformPlotlyJsonToVSBCProps = (
       });
     });
   });
-  const xCategories = (input.data[0] as Partial<PlotData>)?.x ?? [];
+  const xCategories = extractXCategories(input.data);
 
   (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
     .forEach((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
       const resolveX = (val: Datum) => {
-        if (typeof val === 'number' && Array.isArray(xCategories) && xCategories[val] !== undefined) {
-          return xCategories[val];
+        if (typeof val === 'number' && Array.isArray(xCategories)) {
+          if (xCategories[val] !== undefined) {
+            return xCategories[val];
+          } else {
+            return xCategories[shapeIdx];
+          }
         }
         return val;
       };
@@ -1355,20 +1438,26 @@ export const transformPlotlyJsonToVSBCProps = (
 
       const y0Val = resolveY(shape.y0!);
       const y1Val = resolveY(shape.y1!);
-      mapXToDataPoints[x0Key as string].lineData!.push({
-        legend: `Reference_${shapeIdx}`,
-        y: y0Val as string,
-        color: rgb(lineColor!).formatHex8() ?? lineColor,
-        lineOptions: getLineOptions(shape.line),
-        useSecondaryYScale: false,
-      });
-      mapXToDataPoints[x1Key as string].lineData!.push({
-        legend: `Reference_${shapeIdx}`,
-        y: y1Val as string,
-        color: rgb(lineColor!).formatHex8() ?? lineColor,
-        lineOptions: getLineOptions(shape.line),
-        useSecondaryYScale: false,
-      });
+
+      if (mapXToDataPoints[x0Key as string]) {
+        mapXToDataPoints[x0Key as string].lineData!.push({
+          legend: `Reference_${shapeIdx}`,
+          y: y0Val as string,
+          color: rgb(lineColor!).formatHex8() ?? lineColor,
+          lineOptions: getLineOptions(shape.line),
+          useSecondaryYScale: false,
+        });
+      }
+
+      if (mapXToDataPoints[x1Key as string]) {
+        mapXToDataPoints[x1Key as string].lineData!.push({
+          legend: `Reference_${shapeIdx}`,
+          y: y1Val as string,
+          color: rgb(lineColor!).formatHex8() ?? lineColor,
+          lineOptions: getLineOptions(shape.line),
+          useSecondaryYScale: false,
+        });
+      }
     });
 
   const vsbcData = Object.values(mapXToDataPoints);
@@ -1406,6 +1495,7 @@ export const transformPlotlyJsonToVSBCProps = (
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1565,6 +1655,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideLegend,
     roundCorners: true,
     wrapXAxisLables: true,
+    showYAxisLables: true,
     ...getTitles(processedInput.layout),
     ...getAxisCategoryOrderProps(processedInput.data, processedInput.layout),
     ...getYMinMaxValues(processedInput.data[0], processedInput.layout),
@@ -1579,6 +1670,7 @@ export const transformPlotlyJsonToGVBCProps = (
 export const transformPlotlyJsonToVBCProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1678,6 +1770,7 @@ export const transformPlotlyJsonToVBCProps = (
     hideLegend,
     roundCorners: true,
     wrapXAxisLables: typeof vbcData[0]?.x === 'string',
+    showYAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -1688,6 +1781,7 @@ export const transformPlotlyJsonToVBCProps = (
 export const transformPlotlyJsonToAreaChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1705,6 +1799,7 @@ export const transformPlotlyJsonToAreaChartProps = (
 export const transformPlotlyJsonToLineChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1722,6 +1817,7 @@ export const transformPlotlyJsonToLineChartProps = (
 export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1760,6 +1856,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
   chartType: ScatterChartTypes,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1874,12 +1971,20 @@ const transformPlotlyJsonToScatterTraceProps = (
   const xMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.x;
   const yMinValue = chartData[0]?.data[0]?.y;
   const yMaxValue = chartData[0]?.data[chartData[0].data.length - 1]?.y;
-  const lineShape: ILineChartPoints[] = (input.layout?.shapes ?? [])
+  const xCategories = extractXCategories(input.data);
+  const lineShape: ILineChartPoints[] | IScatterChartPoints[] = (input.layout?.shapes ?? [])
     .filter(shape => shape.type === 'line')
     .map((shape, shapeIdx) => {
       const lineColor = shape.line?.color;
 
       const resolveX = (val: Datum) => {
+        if (typeof val === 'number' && Array.isArray(xCategories)) {
+          if (xCategories[val] !== undefined) {
+            return xCategories[val];
+          } else {
+            return xCategories[shapeIdx];
+          }
+        }
         if (shape.xref === 'paper') {
           if (val === 0) {
             return xMinValue;
@@ -1913,13 +2018,13 @@ const transformPlotlyJsonToScatterTraceProps = (
       return {
         legend: `Reference_${shapeIdx}`,
         data: [
-          { x: resolveX(shape.x0!), y: resolveY(shape.y0!) },
-          { x: resolveX(shape.x1!), y: resolveY(shape.y1!) },
+          { x: resolveXValue(resolveX(shape.x0!)), y: resolveY(shape.y0!) },
+          { x: resolveXValue(resolveX(shape.x1!)), y: resolveY(shape.y1!) },
         ],
         color: rgb(lineColor!).formatHex8() ?? lineColor,
         lineOptions: getLineOptions(shape.line),
         useSecondaryYScale: false,
-      } as ILineChartPoints;
+      } as ILineChartPoints | IScatterChartPoints;
     });
 
   const yMinMax = getYMinMaxValues(input.data[0], input.layout);
@@ -1932,11 +2037,11 @@ const transformPlotlyJsonToScatterTraceProps = (
   const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
 
   const chartProps: IChartProps = {
-    lineChartData: [...chartData, ...lineShape],
+    lineChartData: [...chartData, ...(lineShape as ILineChartPoints[])],
   };
 
   const scatterChartProps: IChartProps = {
-    scatterChartData: chartData,
+    scatterChartData: [...chartData, ...(lineShape as IScatterChartPoints[])],
   };
 
   const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
@@ -1950,7 +2055,8 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideLegend,
     useUTC: false,
     optimizeLargeData: numDataPoints > 1000,
-    shouldWrapLabels: shouldWrapLabels,
+    wrapXAxisLables: shouldWrapLabels,
+    showYAxisLables: true,
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
@@ -1990,6 +2096,7 @@ const transformPlotlyJsonToScatterTraceProps = (
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -2069,6 +2176,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 export const transformPlotlyJsonToGanttChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -2170,6 +2278,7 @@ export const transformPlotlyJsonToGanttChartProps = (
 export const transformPlotlyJsonToHeatmapProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -2332,6 +2441,7 @@ export const transformPlotlyJsonToHeatmapProps = (
 export const transformPlotlyJsonToSankeyProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -2406,6 +2516,7 @@ export const transformPlotlyJsonToSankeyProps = (
 export const transformPlotlyJsonToGaugeProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -2594,6 +2705,7 @@ function mergeCells(tableCells?: TableData['cells'], templateCells?: TableData['
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -2742,6 +2854,7 @@ function getCategoriesAndValues(series: Partial<PlotData>): {
 export const transformPlotlyJsonToFunnelChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -3217,6 +3330,7 @@ const getLegendShape = (series: Partial<PlotData>): ILegend['shape'] => {
 
 export const getAllupLegendsProps = (
   input: PlotlySchema,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   traceInfo: TraceInfo[],
@@ -3243,25 +3357,27 @@ export const getAllupLegendsProps = (
           true,
         );
 
-        pieSeries.labels?.forEach((label, labelIndex: number) => {
-          const legend = `${label}`;
-          // resolve color for each legend from the extracted colors
-          const color: string = resolveColor(
-            colors,
-            labelIndex,
-            legend,
-            colorMap,
-            input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
-            isDarkTheme,
-            true,
-          );
-          if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
-            allupLegends.push({
-              title: legend,
-              color,
-            });
-          }
-        });
+        if (isArrayOrTypedArray(pieSeries.labels)) {
+          pieSeries.labels!.forEach((label, labelIndex: number) => {
+            const legend = `${label}`;
+            // resolve color for each legend from the extracted colors
+            const color: string = resolveColor(
+              colors,
+              labelIndex,
+              legend,
+              colorMap,
+              input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+              isDarkTheme,
+              true,
+            );
+            if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
+              allupLegends.push({
+                title: legend,
+                color,
+              });
+            }
+          });
+        }
       } else if (isNonPlotType(traceInfo[index].type) === false) {
         const plotSeries = series as Partial<PlotData>;
         const name = plotSeries.legendgroup;
@@ -3362,7 +3478,7 @@ const getIndexFromKey = (key: string, pattern: string): number => {
 };
 
 export const isNonPlotType = (chartType: string): boolean => {
-  return ['donut', 'sankey', 'pie'].includes(chartType);
+  return ['donut', 'sankey', 'pie', 'annotation'].includes(chartType);
 };
 
 export const getGridProperties = (
@@ -3889,8 +4005,8 @@ const getAxisType = (data: Data[], ax: IAxisObject): AxisType => {
   const values: Datum[] = [];
   data.forEach((series: Partial<PlotData>) => {
     const axId = series[`${axLetter}axis`];
-    if (axId === ax._id || (!axId && ax._id === axLetter)) {
-      series[axLetter]?.forEach(val => {
+    if ((axId === ax._id || (!axId && ax._id === axLetter)) && isArrayOrTypedArray(series[axLetter])) {
+      series[axLetter]!.forEach(val => {
         if (!isInvalidValue(val)) {
           values.push(val as Datum);
         }

@@ -128,6 +128,7 @@ export interface IRotateLabelProps {
 
 export interface IAxisData {
   yAxisDomainValues: number[];
+  yAxisTickText: string[];
 }
 
 export interface IMargins {
@@ -175,6 +176,8 @@ export interface IXAxisParams extends AxisProps {
   containerWidth: number;
   hideTickOverlap?: boolean;
   calcMaxLabelWidth: (x: (string | number)[]) => number;
+  xMaxValue?: number;
+  xMinValue?: number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
@@ -262,8 +265,12 @@ export function createNumericXAxis(
     tick0,
     tickText,
   } = xAxisParams;
+  const dStartValue = domainNRangeValues.dStartValue as number;
+  const dEndValue = domainNRangeValues.dEndValue as number;
+  const finalXmin = xAxisParams.xMinValue !== undefined ? Math.min(dStartValue, xAxisParams.xMinValue) : dStartValue;
+  const finalXmax = xAxisParams.xMaxValue !== undefined ? Math.max(dEndValue, xAxisParams.xMaxValue) : dEndValue;
   const xAxisScale = createNumericScale(scaleType)
-    .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
+    .domain([finalXmin, finalXmax])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
 
@@ -705,6 +712,7 @@ export function prepareDatapoints(
 export function createYAxisForHorizontalBarChartWithAxis(
   yAxisParams: IYAxisParams,
   isRtl: boolean,
+  axisData: IAxisData,
 ): ScaleLinear<number, number> {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -758,6 +766,10 @@ export function createYAxisForHorizontalBarChartWithAxis(
   }
 
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+
+  axisData.yAxisDomainValues = yAxisScale.domain();
+  axisData.yAxisTickText = (yAxis.tickValues() ?? yAxisScale.ticks(yAxisTickCount)).map(yAxis.tickFormat()!);
+
   return yAxisScale;
 }
 
@@ -833,13 +845,8 @@ export function createNumericYAxis(
   if (customTickValues) {
     yAxis.tickValues(customTickValues);
     axisData.yAxisDomainValues = customTickValues;
-  } else {
-    if (scaleType === 'log') {
-      axisData.yAxisDomainValues = yAxisScale.ticks();
-    } else {
-      yAxis.tickValues(domainValues);
-      axisData.yAxisDomainValues = domainValues;
-    }
+  } else if (scaleType !== 'log') {
+    yAxis.tickValues(domainValues);
   }
 
   const tickFormat = (domainValue: NumberValue, index: number, defaultFormat?: (val: NumberValue) => string) => {
@@ -865,6 +872,10 @@ export function createNumericYAxis(
         .style('unicode-bidi', 'isolate')
         .style('text-anchor', !useSecondaryYScale && (_useRtl ? 'start' : 'end'))
     : '';
+
+  axisData.yAxisDomainValues = yAxisScale.domain();
+  axisData.yAxisTickText = (yAxis.tickValues() ?? yAxisScale.ticks(yAxisTickCount)).map(yAxis.tickFormat()!);
+
   return yAxisScale;
 }
 
@@ -878,6 +889,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   yAxisParams: IYAxisParams,
   dataPoints: string[],
   isRtl: boolean,
+  axisData: IAxisData,
   barWidth: number,
 ): ScaleBand<string> => {
   const {
@@ -910,6 +922,9 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   };
   const yAxis = axis.tickPadding(tickPadding).tickValues(customTickValues).tickFormat(tickFormat);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+
+  axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
+
   return yAxisScale;
 };
 
@@ -923,6 +938,7 @@ export const createStringYAxis = (
   yAxisParams: IYAxisParams,
   dataPoints: string[],
   isRtl: boolean,
+  axisData: IAxisData,
   barWidth?: number,
   chartType?: ChartTypes,
 ): ScaleBand<string> => {
@@ -960,6 +976,9 @@ export const createStringYAxis = (
     axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   }
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+
+  axisData.yAxisTickText = yAxis.tickValues()!.map(yAxis.tickFormat()!);
+
   return yAxisScale;
 };
 
@@ -1433,14 +1452,13 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
-  shiftX: number,
   X_ORIGIN?: number,
 ): IDomainNRange {
   const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN!);
   const xMax = longestBars.longestPositiveBar;
   const xMin = longestBars.longestNegativeBar;
-  const rMin = isRTL ? margins.left! : margins.left! + shiftX;
-  const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
+  const rMin = margins.left!;
+  const rMax = containerWidth - margins.right!;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN!), rStartValue: rMin, rEndValue: rMax }

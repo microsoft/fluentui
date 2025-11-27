@@ -9,6 +9,7 @@ export type VirtualizerContextProps = {
   /*
    * These optional props are used in dynamic virtualizer
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   childProgressiveSizes?: React.MutableRefObject<number[]>;
 };
 

@@ -109,7 +109,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     this._isLegendSelected = Object.keys(this.state.selectedLegends).length > 0;
     const dataToRender = this._generateData();
     return (
-      <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
+      <div
+        className={this._classNames.root}
+        ref={el => {
+          this._rootElem = el;
+        }}
+      >
         {this.props.enabledWrapLines ? (
           this._onRenderData(dataToRender)
         ) : (
@@ -128,7 +133,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     svgWidth: number,
     isRTL: boolean = false,
   ): {
-    node: SVGGElement | null;
+    node: SVGSVGElement | null;
     width: number;
     height: number;
   } => {
@@ -344,7 +349,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
         <div role="option">
           <div
             className={classNames.overflowIndicationTextStyle}
-            ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
+            ref={(rootElem: HTMLDivElement) => {
+              this._hoverCardRef = rootElem;
+            }}
             {...(allowFocusOnLegends && {
               role: 'button',
               'aria-expanded': this.state.isHoverCardVisible,

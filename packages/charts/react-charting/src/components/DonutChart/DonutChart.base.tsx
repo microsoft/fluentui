@@ -17,7 +17,7 @@ import {
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import type { JSXElement } from '@fluentui/utilities';
 
@@ -54,7 +54,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string | null;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -141,7 +141,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
-        ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
+        ref={(rootElem: HTMLElement | null) => {
+          this._rootElem = rootElem;
+        }}
         onMouseLeave={this._handleChartMouseLeave}
       >
         {this.props.xAxisAnnotation && (
@@ -234,7 +236,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._rootElem, this._legendsRef.current?.toSVG, getRTL(), opts);
+    return exportChartsAsImage(
+      [{ container: this._rootElem }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      getRTL(),
+      opts,
+    );
   };
 
   private _closeCallout = () => {

@@ -20,6 +20,7 @@ describe('useOverflowItem', () => {
     renderHook(
       () => {
         const ref = useOverflowItem('test', 0, '0');
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         (ref as React.MutableRefObject<HTMLDivElement>).current = document.createElement('div');
       },
       {
@@ -49,6 +50,7 @@ describe('useOverflowItem', () => {
     const { unmount } = renderHook(
       () => {
         const ref = useOverflowItem('test', 0, '0');
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         (ref as React.MutableRefObject<HTMLDivElement>).current = document.createElement('div');
       },
       {

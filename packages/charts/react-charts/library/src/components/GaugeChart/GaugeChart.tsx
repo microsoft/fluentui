@@ -17,12 +17,11 @@ import {
 } from '../../utilities/index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import { Legend, LegendShape, Legends, Shape, LegendContainer } from '../Legends/index';
+import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
 import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { ImageExportOptions } from '../../types/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { useImageExport } from '../../utilities/hooks';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -105,7 +104,6 @@ export interface ExtendedSegment extends GaugeChartSegment {
 
 export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwardRef<HTMLDivElement, GaugeChartProps>(
   (props, forwardedRef) => {
-    const _legendsRef = React.useRef<LegendContainer>(null);
     const _getMargins = () => {
       const { hideMinMax, chartTitle, sublabel } = props;
       return {
@@ -117,7 +115,11 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     };
     const _margins: { left: number; right: number; top: number; bottom: number } = _getMargins();
     const _legendsHeight: number = !props.hideLegend ? 32 : 0;
-    const _rootElem = React.useRef<HTMLDivElement | null>(null);
+    const { chartContainerRef: _rootElem, legendsRef: _legendsRef } = useImageExport(
+      props.componentRef,
+      props.hideLegend,
+      false,
+    );
     const _isRTL: boolean = useRtl();
     const [width, setWidth] = React.useState<number>(140 + _getMargins().left + _getMargins().right);
     const [height, setHeight] = React.useState<number>(70 + _getMargins().top + _getMargins().bottom + _legendsHeight);
@@ -158,17 +160,6 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       }
       prevPropsRef.current = props;
     }, [props]);
-
-    React.useImperativeHandle(
-      props.componentRef,
-      () => ({
-        chartContainer: _rootElem.current,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return toImage(_rootElem.current, _legendsRef.current?.toSVG, _isRTL, opts);
-        },
-      }),
-      [],
-    );
 
     const classes = useGaugeChartStyles(props);
     function _getStylesBasedOnBreakpoint() {
@@ -588,7 +579,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const { arcs } = _processProps();
     const focusAttributes = useFocusableGroup();
     return (
-      <div className={classes.root} ref={el => (_rootElem.current = el)}>
+      <div
+        className={classes.root}
+        ref={el => {
+          _rootElem.current = el;
+        }}
+      >
         <div className={classes.chartWrapper} {...focusAttributes}>
           <svg
             className={classes.chart}

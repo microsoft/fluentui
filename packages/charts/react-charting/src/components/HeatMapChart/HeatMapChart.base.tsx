@@ -38,7 +38,7 @@ import {
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import type { JSXElement } from '@fluentui/utilities';
 
 type DataSet = {
@@ -136,8 +136,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _calloutAnchorPoint: FlattenData | null;
   private _emptyChartId: string;
   private margins: IMargins;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public constructor(props: IHeatMapChartProps) {
     super(props);
@@ -282,7 +282,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, getRTL(), opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      getRTL(),
+      opts,
+    );
   };
 
   private _getMinMaxOfYAxis = () => {
@@ -298,7 +303,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {

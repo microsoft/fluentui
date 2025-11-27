@@ -4,7 +4,6 @@
     "isolatedModules": false,
     "types": ["node", "cypress", "cypress-real-events"],
     "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types"],
-
     "lib": ["ES2019", "dom"]
   },
   "include": ["**/*.cy.ts", "**/*.cy.tsx"]

@@ -302,7 +302,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
       \`\`\`js
       module.exports = {
-        stories: ['../${newProjectSourceRoot}/**/*.stories.mdx', '../${newProjectSourceRoot}/**/index.stories.@(ts|tsx)'],
+        stories: ['../${newProjectSourceRoot}/**/*.mdx', '../${newProjectSourceRoot}/**/index.stories.@(ts|tsx)'],
       }
       \`\`\`
 
@@ -324,13 +324,22 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
       },
     },
     publicApi: stripIndents`export {}`,
-    eslintrc: {
-      extends: ['plugin:@fluentui/eslint-plugin/react'],
-      root: true,
-      rules: {
-        'import/no-extraneous-dependencies': ['error', { packageDir: ['.', options.projectOffsetFromRoot.updated] }],
-      },
+    eslintConfig: `// @ts-check
+
+const fluentPlugin = require('@fluentui/eslint-plugin');
+
+module.exports = [
+  ...fluentPlugin.configs['flat/react'],
+  {
+    rules: {
+      'import/no-extraneous-dependencies': [
+        'error',
+        { packageDir: ['.', '${options.projectOffsetFromRoot.updated}'] },
+      ],
     },
+  },
+];
+`,
     tsconfig: {
       root: {
         ...options.oldContent.tsConfig,
@@ -361,7 +370,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   tree.write(joinPathFragments(newProjectRoot, 'README.md'), templates.readme);
   tree.write(joinPathFragments(newProjectSourceRoot, 'index.ts'), templates.publicApi);
-  writeJson(tree, joinPathFragments(newProjectRoot, '.eslintrc.json'), templates.eslintrc);
+  tree.write(joinPathFragments(newProjectRoot, 'eslint.config.js'), templates.eslintConfig);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.json'), templates.tsconfig.root);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.lib.json'), templates.tsconfig.lib);
   writeJson(tree, joinPathFragments(newProjectRoot, 'package.json'), templates.packageJson);

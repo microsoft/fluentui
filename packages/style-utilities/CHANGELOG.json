@@ -2,6 +2,42 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Wed, 26 Nov 2025 09:34:50 GMT",
+      "tag": "@fluentui/style-utilities_v8.13.5",
+      "version": "8.13.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "696579c0feb8927350471487b133478f181352cd",
+            "comment": "cdn url change to support latest vault/list filetype icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Nov 2025 10:09:28 GMT",
+      "tag": "@fluentui/style-utilities_v8.13.4",
+      "version": "8.13.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.7.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/utilities to v8.17.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Oct 2025 10:23:23 GMT",
       "tag": "@fluentui/style-utilities_v8.13.3",
       "version": "8.13.3",

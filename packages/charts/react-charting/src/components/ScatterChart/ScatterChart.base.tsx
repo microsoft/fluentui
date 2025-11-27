@@ -3,7 +3,7 @@ import { IChildProps, IScatterChartStyleProps, IScatterChartStyles, IScatterChar
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import {
   areArraysEqual,
   createNumericYAxis,
@@ -42,7 +42,7 @@ import {
 import { classNamesFunction, DirectionalHint, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
 import { ILineChartPoints } from '../../types/IDataPoint';
-import { toImage as convertToImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { renderScatterPolarCategoryLabels } from '../../utilities/scatterpolar-utils';
 import type { JSXElement } from '@fluentui/utilities';
@@ -120,10 +120,15 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
       toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return convertToImage(cartesianChartRef.current?.chartContainer, legendsRef.current?.toSVG, getRTL(), opts);
+        return exportChartsAsImage(
+          [{ container: cartesianChartRef.current?.chartContainer }],
+          props.hideLegend ? undefined : legendsRef.current?.toSVG,
+          getRTL(),
+          opts,
+        );
       },
     }),
-    [],
+    [props.hideLegend],
   );
 
   const _xAxisType: XAxisTypes =
@@ -223,6 +228,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
     return (
       <Legends
+        ref={legendsRef}
         legends={[...legendDataItems]}
         enabledWrapLines={props.enabledLegendsWrapLines}
         overflowProps={props.legendsOverflowProps}
@@ -476,21 +482,28 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         _xBandwidth.current = _xAxisScale.current?.bandwidth() / 2;
       }
 
-      const maxMarkerSize = d3Max(_points.current, (point: IScatterChartPoints) => {
-        return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
-          return item.markerSize as number;
-        });
-      })!;
-      const extraMaxPixels =
-        _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis
-          ? getRangeForScatterMarkerSize({
-              data: _points.current,
-              xScale: _xAxisScale.current,
-              yScalePrimary: _yAxisScale.current,
-              xScaleType: props.xScaleType,
-              yScaleType: props.yScaleType,
-            })
-          : 0;
+      const minMarkerSize =
+        d3Min(_points.current, (point: IScatterChartPoints) => {
+          return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
+            return item.markerSize as number;
+          });
+        }) ?? 0;
+      const maxMarkerSize =
+        d3Max(_points.current, (point: IScatterChartPoints) => {
+          return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
+            return item.markerSize as number;
+          });
+        }) ?? 0;
+      const isContinuousXY = _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis;
+      const extraMaxPixels = isContinuousXY
+        ? getRangeForScatterMarkerSize({
+            data: _points.current,
+            xScale: _xAxisScale.current,
+            yScalePrimary: _yAxisScale.current,
+            xScaleType: props.xScaleType,
+            yScaleType: props.yScaleType,
+          })
+        : 0;
 
       for (let i = _points.current?.length - 1; i >= 0; i--) {
         // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -517,14 +530,17 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           const pointMarkerSize = (_points.current?.[i]?.data[j] as IScatterChartDataPoint).markerSize;
           const minPixel = 4;
           const maxPixel = 16;
-          const circleRadius =
-            pointMarkerSize && maxMarkerSize !== 0
-              ? _xAxisType !== XAxisTypes.StringAxis
-                ? (pointMarkerSize * extraMaxPixels) / maxMarkerSize
-                : minPixel + ((pointMarkerSize - minPixel) / (maxMarkerSize - minPixel)) * (maxPixel - minPixel)
-              : activePoint === circleId
-              ? 6
-              : 4;
+          let circleRadius = activePoint === circleId ? 6 : 4;
+
+          if (pointMarkerSize) {
+            if (isContinuousXY && maxMarkerSize !== 0) {
+              circleRadius = (pointMarkerSize * extraMaxPixels) / maxMarkerSize;
+            } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
+              circleRadius =
+                minPixel +
+                ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * (maxPixel - minPixel);
+            }
+          }
 
           const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
 

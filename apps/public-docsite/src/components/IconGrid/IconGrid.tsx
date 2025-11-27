@@ -31,7 +31,7 @@ export type IIconGridProps = IFontIconGridProps | ISvgIconGridProps;
 
 interface IFontIconDefinition {
   name: string;
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
   iconType: 'core-font' | 'react-font';
 }
 

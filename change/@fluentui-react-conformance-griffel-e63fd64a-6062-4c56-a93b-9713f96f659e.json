@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: force release",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,74 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Wed, 26 Nov 2025 09:34:51 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.15.1",
+      "version": "8.15.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.125.2",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.8.3",
+            "commit": "7340400092f5d4b1ee09ce1f4de5ca403624cc21"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Nov 2025 10:09:23 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.15.0",
+      "version": "8.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "3326f9334123af1649ed51cbb7012c9434b8de9c",
+            "comment": "feat: use react-dom/client "
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.125.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/theme to v2.7.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-hooks to v8.10.1",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.8.2",
+            "commit": "2d64a43959efc05cedf85750bc73e339af8b9c0f"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "52217c6abc71c0c8c3e537f1e2648fb542c30ee0",
+            "comment": "chore: migrate source to react 19"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Oct 2025 12:37:13 GMT",
       "tag": "@fluentui/react-docsite-components_v8.14.1",
       "version": "8.14.1",

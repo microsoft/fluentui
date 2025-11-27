@@ -106,8 +106,12 @@ type EmptyIntrinsicElements =
  * * Disallows children for empty tags like 'img'.
  */
 type IntrinsicElementProps<Type extends JSXIntrinsicElementKeys> = Type extends EmptyIntrinsicElements
-  ? PropsWithoutChildren<React.PropsWithRef<JSXIntrinsicElement<Type>>>
-  : React.PropsWithRef<JSXIntrinsicElement<Type>>;
+  ? PropsWithoutChildren<
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      React.PropsWithRef<JSXIntrinsicElement<Type>>
+    >
+  : // eslint-disable-next-line @typescript-eslint/no-deprecated
+    React.PropsWithRef<JSXIntrinsicElement<Type>>;
 
 /**
  * The props type and shorthand value for a slot. Type is either a single intrinsic element like `'div'`,

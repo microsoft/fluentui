@@ -61,7 +61,7 @@ import {
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { ILegendContainer } from '../Legends/index';
-import { toImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import type { JSXElement } from '@fluentui/utilities';
 
 enum CircleVisbility {
@@ -118,8 +118,8 @@ export class VerticalBarChartBase
   private _emptyChartId: string;
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
-  private _cartesianChartRef: React.RefObject<IChart>;
-  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _cartesianChartRef: React.RefObject<IChart | null>;
+  private _legendsRef: React.RefObject<ILegendContainer | null>;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -270,7 +270,12 @@ export class VerticalBarChartBase
   }
 
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+    return exportChartsAsImage(
+      [{ container: this._cartesianChartRef.current?.chartContainer }],
+      this.props.hideLegend ? undefined : this._legendsRef.current?.toSVG,
+      this._isRtl,
+      opts,
+    );
   };
 
   private _getDomainNRangeValues = (
@@ -282,7 +287,6 @@ export class VerticalBarChartBase
     xAxisType: XAxisTypes,
     barWidth: number,
     tickValues: Date[] | number[] | undefined,
-    shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
@@ -406,7 +410,9 @@ export class VerticalBarChartBase
             // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
             // and avoid conveying duplicate info, make these line points non-focusable.
             data-is-focusable={this._legendHighlighted(lineLegendText!)}
-            ref={e => (circleRef.refElement = e)}
+            ref={e => {
+              circleRef.refElement = e;
+            }}
             onFocus={this._lineFocus.bind(this, item.point, circleRef)}
             onBlur={this._handleChartMouseLeave}
           />

@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-import { InvertedBackground, steps } from './utils';
+import { InvertedBackground, BrandBackground, steps } from './utils';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities';
 import type { StoryParameters } from 'storywright';
 
@@ -42,7 +42,6 @@ export const InlineDisabledFocusable = () => (
     used alongside other text content.
   </div>
 );
-
 export const Inverted = () => (
   <InvertedBackground>
     <SpanLink>Link on inverted background</SpanLink>
@@ -72,4 +71,14 @@ export const WrapsCorrectlyAsAnInlineElement = () => (
     expected.
   </div>
 );
+
+export const Brand = () => (
+  <BrandBackground>
+    <SpanLink>Link on brand background</SpanLink>
+  </BrandBackground>
+);
+
+export const BrandDarkMode = getStoryVariant(Brand, DARK_MODE);
+export const BrandHighContrast = getStoryVariant(Brand, HIGH_CONTRAST);
+
 WrapsCorrectlyAsAnInlineElement.storyName = 'Wraps correctly as an inline element';

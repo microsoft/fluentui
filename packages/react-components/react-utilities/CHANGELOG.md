@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 31 Oct 2025 16:22:01 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 19:18:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.25.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.4)
+
+Tue, 11 Nov 2025 19:18:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.25.3..@fluentui/react-utilities_v9.25.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.26.0 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+
+## [9.25.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.3)
+
+Thu, 06 Nov 2025 15:01:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.25.2..@fluentui/react-utilities_v9.25.3)
+
+### Patches
+
+- fix: Add referrerPolicy to anchor element property whitelist ([PR #35447](https://github.com/microsoft/fluentui/pull/35447) by 198982749+Copilot@users.noreply.github.com)
+- refactor(react-utilities): improve types for useAnimationFrame ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by robertpenner@microsoft.com)
+- chore: migrate source to react 19 ([PR #35434](https://github.com/microsoft/fluentui/pull/35434) by martinhochel@microsoft.com)
 
 ## [9.25.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.25.2)
 

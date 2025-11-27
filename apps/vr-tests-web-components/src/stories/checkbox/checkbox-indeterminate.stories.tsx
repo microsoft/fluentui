@@ -22,7 +22,7 @@ export default {
       steps: new Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
         .executeScript(
-          'document.getElementsByTagName("fluent-checkbox").forEach(checkbox => checkbox.indeterminate = true)',
+          'Array.from(document.getElementsByTagName("fluent-checkbox")).forEach(checkbox => checkbox.indeterminate = true)',
         )
         .snapshot('indeterminate', { cropTo: '.testWrapper' })
         .end(),

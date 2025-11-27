@@ -47,7 +47,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _isRTL: boolean = getRTL();
-  private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private barChartSvgRef: React.RefObject<SVGSVGElement | null>;
   private _emptyChartId: string;
 
   constructor(props: IHorizontalBarChartProps) {

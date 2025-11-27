@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Fri, 31 Oct 2025 16:22:06 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Nov 2025 19:18:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.129](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.129)
+
+Tue, 11 Nov 2025 19:18:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.128..@fluentui/react-alert_v9.0.0-beta.129)
+
+### Changes
+
+- chore: Bump @griffel/react package. ([PR #35469](https://github.com/microsoft/fluentui/pull/35469) by estebanmu@microsoft.com)
+- Bump @fluentui/react-avatar to v9.9.12 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-button to v9.6.12 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-tabster to v9.26.10 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-utilities to v9.25.4 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.3 ([PR #35462](https://github.com/microsoft/fluentui/pull/35462) by beachball)
+
+## [9.0.0-beta.128](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.128)
+
+Thu, 06 Nov 2025 15:01:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.127..@fluentui/react-alert_v9.0.0-beta.128)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.9.11 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-button to v9.6.11 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-tabster to v9.26.9 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-utilities to v9.25.3 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.3.2 ([PR #35466](https://github.com/microsoft/fluentui/pull/35466) by beachball)
 
 ## [9.0.0-beta.127](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.127)
 

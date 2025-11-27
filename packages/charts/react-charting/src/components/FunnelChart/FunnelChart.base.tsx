@@ -12,7 +12,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IImageExportOptions } from '../../types/index';
-import { toImage as convertToImage } from '../../utilities/image-export-utils';
+import { exportChartsAsImage } from '../../utilities/image-export-utils';
 import { getContrastTextColor } from '../../utilities/utilities';
 import {
   getHorizontalFunnelSegmentGeometry,
@@ -28,7 +28,7 @@ const getClassNames = classNamesFunction<IFunnelChartStyleProps, IFunnelChartSty
 export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React.forwardRef<
   HTMLDivElement,
   IFunnelChartProps
->((props, forwardedRef) => {
+>(({ orientation = 'vertical', ...props }, forwardedRef) => {
   const _tooltipId: string = getId('FunnelChartTooltipId_');
   const _emptyChartId: string = getId('_FunnelChart_empty');
   const isRTL = getRTL();
@@ -53,10 +53,15 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     () => ({
       chartContainer: chartContainerRef ?? null,
       toImage: (opts?: IImageExportOptions): Promise<string> => {
-        return convertToImage(chartContainerRef.current, legendsRef.current?.toSVG, getRTL(), opts);
+        return exportChartsAsImage(
+          [{ container: chartContainerRef.current }],
+          props.hideLegend ? undefined : legendsRef.current?.toSVG,
+          getRTL(),
+          opts,
+        );
       },
     }),
-    [],
+    [props.hideLegend],
   );
 
   function _handleHover(data: IFunnelChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {
@@ -248,7 +253,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
     return data.map((d, i) => {
       const geometryProps =
-        props.orientation === 'vertical'
+        orientation === 'vertical'
           ? getVerticalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL })
           : getHorizontalFunnelSegmentGeometry({ d, i, data, funnelWidth, funnelHeight, isRTL });
 
@@ -302,7 +307,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     }));
 
     const geom =
-      props.orientation === 'vertical'
+      orientation === 'vertical'
         ? getStackedVerticalFunnelSegmentGeometry({
             ...geometryParams,
             stages: stagesWithSubValues,
@@ -493,7 +498,3 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
   );
 });
 FunnelChartBase.displayName = 'FunnelChart';
-// eslint-disable-next-line @typescript-eslint/no-deprecated
-FunnelChartBase.defaultProps = {
-  orientation: 'vertical',
-};

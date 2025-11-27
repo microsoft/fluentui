@@ -186,7 +186,7 @@ const Target: React.FC<{ children?: React.ReactNode }> = props => {
   const setOpen = useContextSelector(Context, v => v!.setOpen);
   const targetRef = useContextSelector(Context, v => v!.targetRef);
 
-  return React.cloneElement(props.children as React.ReactElement, {
+  return React.cloneElement(props.children as React.ReactElement<any>, {
     'aria-expanded': `${open}`,
     onClick: () => setOpen(true),
     ref: targetRef,
