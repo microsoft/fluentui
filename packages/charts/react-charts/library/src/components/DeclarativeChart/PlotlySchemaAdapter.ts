@@ -214,6 +214,18 @@ const getYMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => 
   return {};
 };
 
+const getXMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => {
+  const range = getXAxisProperties(series, layout)?.range;
+  if (range && range.length === 2) {
+    return {
+      xMinValue: range[0],
+      xMaxValue: range[1],
+      showRoundOffXTickValues: false,
+    };
+  }
+  return {};
+};
+
 const getYAxisProperties = (series: Data, layout: Partial<Layout> | undefined): Partial<LayoutAxis> | undefined => {
   return layout?.yaxis;
 };
@@ -1486,6 +1498,7 @@ export const transformPlotlyJsonToVSBCProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
@@ -1660,6 +1673,8 @@ export const transformPlotlyJsonToGVBCProps = (
     hideLegend,
     roundCorners: true,
     showYAxisLables: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(processedInput.data[0], processedInput.layout),
     ...getTitles(processedInput.layout),
     ...getAxisCategoryOrderProps(processedInput.data, processedInput.layout),
     ...getYMinMaxValues(processedInput.data[0], processedInput.layout),
@@ -1771,6 +1786,8 @@ export const transformPlotlyJsonToVBCProps = (
     hideLegend,
     roundCorners: true,
     showYAxisLables: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
@@ -2051,6 +2068,8 @@ const transformPlotlyJsonToScatterTraceProps = (
     wrapXAxisLabels: shouldWrapLabels,
     optimizeLargeData: numDataPoints > 1000,
     showYAxisLables: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...yAxisTickFormat,
@@ -2068,7 +2087,6 @@ const transformPlotlyJsonToScatterTraceProps = (
   } else {
     return {
       data: isScatterChart ? scatterChartProps : chartProps,
-      roundedTicks: true,
       ...commonProps,
       ...yMinMax,
       ...(isScatterChart
@@ -2158,6 +2176,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     showYAxisLablesTooltip: true,
     hideLegend,
     roundCorners: true,
+    roundedTicks: true,
+    ...getXMinMaxValues(input.data[0], input.layout),
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getBarProps(input.data, input.layout, true),
@@ -3358,25 +3378,27 @@ export const getAllupLegendsProps = (
           true,
         );
 
-        pieSeries.labels?.forEach((label, labelIndex: number) => {
-          const legend = `${label}`;
-          // resolve color for each legend from the extracted colors
-          const color: string = resolveColor(
-            colors,
-            labelIndex,
-            legend,
-            colorMap,
-            input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
-            isDarkTheme,
-            true,
-          );
-          if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
-            allupLegends.push({
-              title: legend,
-              color,
-            });
-          }
-        });
+        if (isArrayOrTypedArray(pieSeries.labels)) {
+          pieSeries.labels!.forEach((label, labelIndex: number) => {
+            const legend = `${label}`;
+            // resolve color for each legend from the extracted colors
+            const color: string = resolveColor(
+              colors,
+              labelIndex,
+              legend,
+              colorMap,
+              input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+              isDarkTheme,
+              true,
+            );
+            if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
+              allupLegends.push({
+                title: legend,
+                color,
+              });
+            }
+          });
+        }
       } else if (isNonPlotType(traceInfo[index].type) === false) {
         const plotSeries = series as Partial<PlotData>;
         const name = plotSeries.legendgroup;
@@ -3971,8 +3993,8 @@ const getAxisType = (data: Data[], ax: AxisObject): AxisType => {
   const values: Datum[] = [];
   data.forEach((series: Partial<PlotData>) => {
     const axId = series[`${axLetter}axis`];
-    if (axId === ax._id || (!axId && ax._id === axLetter)) {
-      series[axLetter]?.forEach(val => {
+    if ((axId === ax._id || (!axId && ax._id === axLetter)) && isArrayOrTypedArray(series[axLetter])) {
+      series[axLetter]!.forEach(val => {
         if (!isInvalidValue(val)) {
           values.push(val as Datum);
         }

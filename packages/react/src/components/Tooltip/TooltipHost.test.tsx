@@ -122,7 +122,7 @@ describe('TooltipHost', () => {
         props,
         // eslint-disable-next-line @typescript-eslint/no-shadow
         render,
-      ) => render?.({ ...props, content: props?.content + ' suffix' }) || null,
+      ) => render?.({ ...props, content: (props?.content ?? '') + ' suffix' }) || null,
     };
 
     render(<TooltipHost content={'prefix'} id="tooltipId" tooltipProps={tooltipProps} />);

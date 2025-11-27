@@ -6,7 +6,7 @@ import { useScatterChartStyles } from './useScatterChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import {
@@ -132,7 +132,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       : YAxisType.NumericAxis;
 
   const pointsRef = React.useRef<ScatterChartDataWithIndex[] | []>([]);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
   React.useEffect(() => {
     /** note that height and width are not used to resize or set as dimesions of the chart,
@@ -181,7 +180,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     points: ScatterChartPoints[],
     yAxisType?: YAxisType,
   ): { startValue: number; endValue: number } {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType);
     const yPadding = getDomainPaddingForMarkers(startValue, endValue, props.yScaleType);
 
@@ -372,22 +370,28 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       _xBandwidth = _xAxisScale.bandwidth() / 2;
     }
 
-    const maxMarkerSize = d3Max(_points, (point: ScatterChartPoints) => {
-      return d3Max(point.data as ScatterChartDataPoint[], (item: ScatterChartDataPoint) => {
-        return item.markerSize as number;
-      });
-    })!;
-
-    const extraMaxPixels =
-      _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis
-        ? getRangeForScatterMarkerSize({
-            data: _points,
-            xScale: _xAxisScale,
-            yScalePrimary: _yAxisScale,
-            xScaleType: props.xScaleType,
-            yScaleType: props.yScaleType,
-          })
-        : 0;
+    const minMarkerSize =
+      d3Min(_points, (point: ScatterChartPoints) => {
+        return d3Min(point.data as ScatterChartDataPoint[], (item: ScatterChartDataPoint) => {
+          return item.markerSize as number;
+        });
+      }) ?? 0;
+    const maxMarkerSize =
+      d3Max(_points, (point: ScatterChartPoints) => {
+        return d3Max(point.data as ScatterChartDataPoint[], (item: ScatterChartDataPoint) => {
+          return item.markerSize as number;
+        });
+      }) ?? 0;
+    const isContinuousXY = _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis;
+    const extraMaxPixels = isContinuousXY
+      ? getRangeForScatterMarkerSize({
+          data: _points,
+          xScale: _xAxisScale,
+          yScalePrimary: _yAxisScale,
+          xScaleType: props.xScaleType,
+          yScaleType: props.yScaleType,
+        })
+      : 0;
 
     for (let i = _points.length - 1; i >= 0; i--) {
       const pointsForSeries: JSXElement[] = [];
@@ -412,14 +416,16 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         const pointMarkerSize = (_points[i].data[j] as ScatterChartDataPoint).markerSize;
         const minPixel = 4;
         const maxPixel = 16;
-        const circleRadius =
-          pointMarkerSize && maxMarkerSize !== 0
-            ? _xAxisType !== XAxisTypes.StringAxis
-              ? (pointMarkerSize * extraMaxPixels) / maxMarkerSize
-              : minPixel + ((pointMarkerSize - minPixel) / (maxMarkerSize - minPixel)) * (maxPixel - minPixel)
-            : activePoint === circleId
-            ? 6
-            : 4;
+        let circleRadius = activePoint === circleId ? 6 : 4;
+
+        if (pointMarkerSize) {
+          if (isContinuousXY && maxMarkerSize !== 0) {
+            circleRadius = (pointMarkerSize * extraMaxPixels) / maxMarkerSize;
+          } else if (!isContinuousXY && maxMarkerSize !== minMarkerSize) {
+            circleRadius =
+              minPixel + ((pointMarkerSize - minMarkerSize) / (maxMarkerSize - minMarkerSize)) * (maxPixel - minPixel);
+          }
+        }
 
         const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Use proper property name for MenuGridGroup context",
+  "packageName": "@fluentui/react-menu-grid-preview",
+  "email": "adam.samec@gmail.com",
+  "dependentChangeType": "patch"
+}

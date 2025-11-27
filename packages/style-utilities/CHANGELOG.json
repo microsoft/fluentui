@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Wed, 26 Nov 2025 09:34:50 GMT",
+      "tag": "@fluentui/style-utilities_v8.13.5",
+      "version": "8.13.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "696579c0feb8927350471487b133478f181352cd",
+            "comment": "cdn url change to support latest vault/list filetype icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 10:09:28 GMT",
       "tag": "@fluentui/style-utilities_v8.13.4",
       "version": "8.13.4",

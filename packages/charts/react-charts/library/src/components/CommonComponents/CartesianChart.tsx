@@ -217,6 +217,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       containerWidth: containerWidth,
       hideTickOverlap: props.rotateXAxisLables ? false : hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
+      xMinValue: props.xMinValue,
+      xMaxValue: props.xMaxValue,
       ...props.xAxis,
     };
 

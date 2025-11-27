@@ -129,7 +129,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         selectedPointIndex = index;
       }
     });
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     let color: string;
     if (useSingleColor) {
       //if useSingle color , then check if user has given a palette or not
@@ -153,7 +152,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
   function _renderCallout(props?: HorizontalBarChartWithAxisDataPoint): JSXElement | null {
     return props ? _renderContentForOnlyBars(props) : null;
   }
@@ -236,12 +234,10 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
 
   function _onBarHover(
     point: HorizontalBarChartWithAxisDataPoint,
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     color: string,
     mouseEvent: React.MouseEvent<SVGElement, MouseEvent>,
   ): void {
     mouseEvent.persist();
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     if ((isLegendSelected === false || _isLegendHighlighted(point.legend)) && _calloutAnchorPoint !== point) {
       _calloutAnchorPoint = point;
       setPopoverOpen(true);
@@ -266,7 +262,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     setPopoverOpen(false);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
   function _onBarFocus(
     event: React.FocusEvent<SVGRectElement, Element>,
     point: HorizontalBarChartWithAxisDataPoint,
@@ -281,7 +276,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     cy = targetRect.top + targetRect.height / 2;
     _updatePosition(cx, cy);
     if ((isLegendSelected === false || _isLegendHighlighted(point.legend)) && _calloutAnchorPoint !== point) {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
       _refArray.forEach((obj: RefArrayData, index: number) => {
         if (refArrayIndexNumber === index) {
           setPopoverOpen(true);

@@ -61,7 +61,7 @@ import {
   calcRequiredWidth,
   sortAxisCategories,
 } from '../../utilities/index';
-import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+import { formatDateToLocaleString, isInvalidValue } from '@fluentui/chart-utilities';
 import { useImageExport } from '../../utilities/hooks';
 
 type NumericScale = D3ScaleLinear<number, number>;
@@ -326,7 +326,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       getColorFromToken(DataVizPalette.color10),
     ];
     _colors = defaultColors;
-    _xAxisType = getTypeOfAxis(props.data[0].xAxisPoint, true) as XAxisTypes;
+    const firstXValue = _points[0]?.xAxisPoint;
+    _xAxisType = isInvalidValue(firstXValue) ? XAxisTypes.StringAxis : (getTypeOfAxis(firstXValue, true) as XAxisTypes);
     _lineObject = _getFormattedLineData(props.data);
     _xAxisInnerPadding = getScalePadding(
       props.xAxisInnerPadding,
