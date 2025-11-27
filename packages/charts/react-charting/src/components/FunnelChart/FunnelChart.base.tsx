@@ -242,11 +242,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     );
   }
 
-  function _createFunnel(
-    containerHeight: number,
-    containerWidth: number,
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSXElement[] {
+  function _createFunnel(containerHeight: number, containerWidth: number): JSXElement[] {
     const { data } = props;
     const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
@@ -298,8 +294,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
       funnelHeight: number;
       isRTL: boolean;
     },
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSXElement {
+  ): JSXElement {
     // Ensure stages have subValues for geometry functions
     const stagesWithSubValues = geometryParams.stages.map(s => ({
       ...s,
@@ -347,11 +342,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     });
   }
 
-  function _createStackedFunnel(
-    containerHeight: number,
-    containerWidth: number,
-  ): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSXElement[] {
+  function _createStackedFunnel(containerHeight: number, containerWidth: number): JSXElement[] {
     const { data } = props;
 
     const stages = data;
@@ -361,7 +352,6 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     const funnelWidth = containerWidth;
     const funnelHeight = containerHeight * 0.8;
 
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const paths: JSXElement[] = [];
 
     const geometryParams = {
@@ -386,8 +376,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
     return paths;
   }
 
-  function _renderLegends(): // eslint-disable-next-line @typescript-eslint/no-deprecated
-  JSXElement {
+  function _renderLegends(): JSXElement {
     if (props.hideLegend) {
       return <></>;
     }

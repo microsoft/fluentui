@@ -233,7 +233,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const _getLegendData = (): JSXElement => {
     const actions: Legend[] = [];
 
@@ -534,11 +533,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     containerHeight: number,
     xElement: SVGElement,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const singleGroup: JSXElement[] = [];
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const barLabelsForGroup: JSXElement[] = [];
 
     // Get the actual legends present at this x-axis point

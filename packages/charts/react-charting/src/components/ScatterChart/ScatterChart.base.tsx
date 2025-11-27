@@ -78,7 +78,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _uniqueCallOutID = React.useRef<string | null>(null);
   const _refArray = React.useMemo(() => [], []);
   const margins = React.useRef<IMargins | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   const renderSeries = React.useRef<JSXElement[]>([]);
   let _xAxisLabels: string[] = [];
   const _xAxisCalloutAccessibilityData: IAccessibilityProps = {};
@@ -193,7 +193,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     setIsSelectedLegend(false);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   function _createLegends(data: ScatterChartDataWithIndex[]): JSXElement {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
@@ -468,9 +467,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   );
 
   const _createPlot = React.useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (xElement: SVGElement, containerHeight: number): JSXElement[] => {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const series: JSXElement[] = [];
       if (isSelectedLegend) {
         _points.current = selectedLegendPoints;
@@ -506,7 +503,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         : 0;
 
       for (let i = _points.current?.length - 1; i >= 0; i--) {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const pointsForSeries: JSXElement[] = [];
 
         const legendVal: string = _points.current?.[i]?.legend;
@@ -726,7 +722,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
 
   const _getNumericMinMaxOfY = React.useCallback(
     (points: IScatterChartPoints[], yAxisType?: YAxisType): { startValue: number; endValue: number } => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
       const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, undefined, props.yScaleType);
       const yPadding = getDomainPaddingForMarkers(startValue, endValue, props.yScaleType);
 
@@ -815,7 +810,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       componentRef={cartesianChartRef}
       {...(_isScatterPolarRef.current ? { yMaxValue: 1, yMinValue: -1 } : {})}
       /* eslint-disable react/jsx-no-bind */
-      // eslint-disable-next-line react/no-children-prop
+
       children={(childProps: IChildProps) => {
         _xAxisScale.current = childProps.xScale!;
         _yAxisScale.current = childProps.yScalePrimary!;

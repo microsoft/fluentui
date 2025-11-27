@@ -636,7 +636,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   legendBars: JSXElement | null;
 
   /**

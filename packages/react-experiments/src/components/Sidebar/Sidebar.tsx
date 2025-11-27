@@ -53,7 +53,6 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { theme, styles, collapseButtonStyles, className, collapseButtonAriaLabel, footerItems, id, items } =
       this.props;
@@ -137,13 +136,12 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
   public getCollapsed(): boolean {
     return this.state.isCollapsed;
   }
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _renderItemInSidebar(item: ISidebarItemProps): JSXElement | null {
     if (!item) {
       return null;
     }
     if (item.onRender) {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
       return item.onRender(item, () => undefined) as JSXElement;
     } else if (item.items && item.items.length > 0) {
       return this._renderSidebarItemWithChildren(item);
@@ -151,7 +149,6 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     return this._renderSidebarButton(item);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSidebarButton(item: ISidebarItemProps, overrideCollapse: boolean = false): JSXElement | null {
     if (!item) {
       return null;
@@ -182,7 +179,6 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSidebarItemWithChildren(item: ISidebarItemProps): JSXElement | null {
     if (!item || !item.items) {
       return null;
@@ -195,7 +191,6 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     return this._renderSidebarButtonWithMenu(item);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSidebarAccordion(item: ISidebarItemProps): JSXElement | null {
     if (!item || !item.items) {
       return null;
@@ -244,7 +239,6 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderAccordionItems(items: ISidebarItemProps[] | undefined): JSXElement | null {
     if (!items) {
       return null;
@@ -261,7 +255,6 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     return <div>{children}</div>;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSidebarButtonWithMenu(item: ISidebarItemProps): JSXElement | null {
     if (!item || !item.items) {
       return null;
@@ -366,7 +359,6 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     return className;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderSidebarButtonMenuItem = (item: any, dismissMenu: () => void): JSXElement | null => {
     return this._renderSidebarButton(item, true);
   };

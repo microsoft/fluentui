@@ -137,7 +137,6 @@ function renderChart<TProps>(
   commonProps: Partial<TProps>,
   cellRow: number,
   cellColumn: number,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSXElement {
   const chartProps = transformer(...transformerArgs);
   return (
@@ -386,9 +385,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   function createLegends(legendProps: ILegendsProps): JSXElement {
-    // eslint-disable-next-line react/jsx-no-bind
     return (
       <Legends {...legendProps} selectedLegends={activeLegends} onChange={onActiveLegendsChange} ref={legendsRef} />
     );
