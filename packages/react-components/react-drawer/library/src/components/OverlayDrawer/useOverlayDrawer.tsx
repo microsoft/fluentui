@@ -62,7 +62,7 @@ export const useOverlayDrawer_unstable = (
       inertTrapFocus,
       modalType,
       unmountOnClose,
-      surfaceMotion: mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size, dir, unmountOnClose }),
+      surfaceMotion: mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size, dir }),
       /**
        * children is not needed here because we construct the children in the render function,
        * but it's required by DialogProps
