@@ -75,7 +75,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     if (!this._isChartEmpty()) {
       this._adjustProps();
@@ -174,7 +173,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   directionalHint={DirectionalHint.topAutoEdge}
                   id={this._calloutId}
                   onDismiss={this._closeCallout}
-                  // eslint-disable-next-line @typescript-eslint/no-deprecated
                   preventDismissOnLostFocus={true}
                   /** Keep the callout updated with details of focused/hovered bar */
                   shouldUpdateWhenHidden={true}
@@ -235,7 +233,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     palette: IPalette,
     benchmarkData?: IChartDataPoint,
     targetData?: IChartDataPoint,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): [JSXElement[], JSXElement] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
@@ -439,7 +436,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _generateEmptyBar(barHeight: number, color: string): JSXElement {
     return (
       <g key={0} className={this._classNames.opacityChangeOnHover}>

@@ -72,7 +72,6 @@ const ASSETS: {
 };
 
 export class FolderCover extends React.Component<IFolderCoverProps, IFolderCoverState> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement | null {
     const {
       folderCoverSize: size = 'large',
@@ -122,7 +121,7 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       </div>
     );
   }
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _renderChildren({ children }: Pick<IFolderCoverProps, 'children'>): JSXElement | null {
     const finalChildren =
       typeof children === 'function' ? children(getFolderCoverLayoutFromProps(this.props)) : children;
@@ -139,7 +138,6 @@ export interface IFolderCoverLayout {
   contentSize: ISize;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 export function getFolderCoverLayout(element: JSXElement): IFolderCoverLayout {
   const folderCoverProps: IFolderCoverProps = element.props;
 
@@ -156,7 +154,6 @@ function getFolderCoverLayoutFromProps(folderCoverProps: IFolderCoverProps): IFo
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
 export function renderFolderCoverWithLayout(element: JSXElement, props: Partial<IFolderCoverProps>): JSXElement {
   const Tag = element.type;
 

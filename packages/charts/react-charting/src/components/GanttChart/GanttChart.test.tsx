@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { render, screen, fireEvent, act, cleanup } from '@testing-library/react';
 import { DarkTheme } from '@fluentui/theme-samples';

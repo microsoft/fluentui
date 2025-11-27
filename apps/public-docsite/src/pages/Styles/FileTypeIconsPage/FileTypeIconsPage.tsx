@@ -10,7 +10,6 @@ import * as styles from './FileTypeIconsPage.module.scss';
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FileTypeIconsPage/docs';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 const documentIcons = require<{ name: string }[]>('@fluentui/public-docsite/lib/data/product-icons-documents.json');
 
 export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
