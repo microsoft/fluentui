@@ -1,4 +1,4 @@
-import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { PresenceDirection, PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 import type { DrawerMotionParams } from '../../shared/drawerMotions';
@@ -28,5 +28,9 @@ export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> &
  * State used in rendering InlineDrawer
  */
 export type InlineDrawerState = Required<
-  ComponentState<NonNullable<InlineDrawerSlots>> & DrawerBaseState & Pick<InlineDrawerProps, 'separator'>
+  ComponentState<NonNullable<InlineDrawerSlots>> &
+    DrawerBaseState &
+    Pick<InlineDrawerProps, 'separator'> & {
+      animationDirection: PresenceDirection | null;
+    }
 >;

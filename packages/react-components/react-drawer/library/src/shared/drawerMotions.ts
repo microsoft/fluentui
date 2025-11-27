@@ -70,42 +70,36 @@ export function getPositionProperty(
 /**
  * @internal
  */
-export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(
-  ({ position, size, dir, unmountOnClose }) => {
-    const keyframes: Keyframe[] = [
-      {
-        /**
-         * TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs
-         * The work will be done in the #32817
-         */
-        transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
-        opacity: 0,
-        ...(!unmountOnClose
-          ? { [getPositionProperty(position, dir)]: `calc(-1 * var(${drawerCSSVars.drawerSizeVar}))` }
-          : {}),
-      },
-      {
-        transform: 'translate3d(0, 0, 0)',
-        opacity: 1,
-        ...(!unmountOnClose ? { [getPositionProperty(position, dir)]: '0px' } : {}),
-      },
-    ];
-    const duration = durations[size];
+export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({ position, size, dir }) => {
+  const keyframes: Keyframe[] = [
+    {
+      /**
+       * TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs
+       * The work will be done in the #32817
+       */
+      transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
+      opacity: 0,
+    },
+    {
+      transform: 'translate3d(0, 0, 0)',
+      opacity: 1,
+    },
+  ];
+  const duration = durations[size];
 
-    return {
-      enter: {
-        keyframes,
-        duration,
-        easing: motionTokens.curveDecelerateMid,
-      },
-      exit: {
-        keyframes: [...keyframes].reverse(),
-        duration,
-        easing: motionTokens.curveAccelerateMin,
-      },
-    };
-  },
-);
+  return {
+    enter: {
+      keyframes,
+      duration,
+      easing: motionTokens.curveDecelerateMid,
+    },
+    exit: {
+      keyframes: [...keyframes].reverse(),
+      duration,
+      easing: motionTokens.curveAccelerateMin,
+    },
+  };
+});
 
 /**
  * @internal
