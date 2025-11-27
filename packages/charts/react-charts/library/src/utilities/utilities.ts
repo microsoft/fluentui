@@ -250,7 +250,8 @@ export function createNumericXAxis(
   _useRtl?: boolean,
 ): {
   xScale: ScaleLinear<number, number>;
-  tickValues: string[];
+  tickValues: number[];
+  tickTexts: string[];
 } {
   const {
     domainNRangeValues,
@@ -318,8 +319,9 @@ export function createNumericXAxis(
       .style('direction', 'ltr')
       .style('unicode-bidi', 'isolate');
   }
-  const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
-  return { xScale: xAxisScale, tickValues };
+  const tickValues = customTickValues ?? xAxisScale.ticks(tickCount);
+  const tickTexts = tickValues.map(xAxis.tickFormat()!);
+  return { xScale: xAxisScale, tickValues, tickTexts };
 }
 
 /**
@@ -438,7 +440,7 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: string | boolean,
   chartType?: ChartTypes,
-): { xScale: ScaleTime<number, number>; tickValues: string[] } {
+): { xScale: ScaleTime<number, number>; tickValues: Date[]; tickTexts: string[] } {
   const {
     domainNRangeValues,
     xAxisElement,
@@ -531,8 +533,9 @@ export function createDateXAxis(
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = (customTickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
-  return { xScale: xAxisScale, tickValues };
+  const tickValues = customTickValues ?? xAxisScale.ticks(tickCount);
+  const tickTexts = tickValues.map(xAxis.tickFormat()!);
+  return { xScale: xAxisScale, tickValues, tickTexts };
 }
 
 /**
@@ -553,6 +556,7 @@ export function createStringXAxis(
 ): {
   xScale: ScaleBand<string>;
   tickValues: string[];
+  tickTexts: string[];
 } {
   const {
     domainNRangeValues,
@@ -621,7 +625,7 @@ export function createStringXAxis(
       .style('direction', 'ltr')
       .style('unicode-bidi', 'isolate');
   }
-  return { xScale: xAxisScale, tickValues: tickValues.map(xAxis.tickFormat()!) };
+  return { xScale: xAxisScale, tickValues, tickTexts: tickValues.map(xAxis.tickFormat()!) };
 }
 
 export function useRtl(): boolean {
@@ -2475,4 +2479,162 @@ export const findCalloutPoints = (
     x,
     values: calloutPointsByX[key],
   };
+};
+
+export const automatic = (
+  tickValues: string[],
+  tickTexts: string[],
+  scale: any,
+  width: number,
+  axisNode: SVGGElement | null,
+) => {
+  // 1. find category width and wrap text so that it fits inside category width.
+  let isWrappingRequired = false;
+  let isTruncationRequired = false;
+
+  // for LTR
+  let start = 0;
+  let end = width;
+  const range = scale.range();
+  if (range[1] - range[0] < 0) {
+    // for RTL
+    start = width;
+    end = 0;
+  }
+
+  const maxWidths: number[] = [];
+
+  for (let i = 0; i < tickValues.length; i++) {
+    const tickPosition = scale(tickValues[i])!;
+    const tickSize = calculateLongestLabelWidth([tickTexts[i]]);
+    const l = Math.abs(i - 1 >= 0 ? (tickPosition - scale(tickValues[i - 1])!) / 2 : tickPosition - start);
+    const r = Math.abs(i + 1 < tickValues.length ? (scale(tickValues[i + 1])! - tickPosition) / 2 : end - tickPosition);
+    const maxWidth = Math.min(l, r) * 2 - 8; // 4px padding on both sides
+
+    maxWidths.push(maxWidth);
+
+    if (tickSize > maxWidth) {
+      // tick doesn't fit, try wrapping
+      const tickWrapSize = calculateLongestLabelWidth(tickTexts[i].split(/\s+/));
+      if (tickWrapSize <= maxWidth) {
+        // tick fits after wrapping
+        isWrappingRequired = true;
+      } else {
+        // tick doesn't fit even after wrapping, fallback to truncation and stepwise rendering
+        isTruncationRequired = true;
+      }
+    }
+  }
+
+  // 2. if some text (word) still overflows, stop wrapping, double the category width,
+  // truncate the text with ellipsis and render the tick text at alternate levels.
+  if (isTruncationRequired) {
+    return truncate(tickValues, tickTexts, scale, width, axisNode);
+  } else if (isWrappingRequired) {
+    return wrap(tickTexts, axisNode, maxWidths);
+  }
+  return 0;
+};
+
+const wrap = (tickTexts: string[], axisNode: SVGGElement | null, maxWidths: number[]) => {
+  let maxLines = 1;
+  d3Select(axisNode)
+    .selectAll('.tick text')
+    .each(function (_, i) {
+      const text = d3Select(this).text(null);
+      const y = text.attr('y');
+      let dy = parseFloat(text.attr('dy'));
+      const words = tickTexts[i].split(/\s+/).reverse();
+      let word: string = '';
+      let line: string[] = [];
+      let lineNumber: number = 0;
+      let tspan = text
+        .append('tspan')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', dy + 'em');
+
+      while ((word = words.pop()!)) {
+        line.push(word);
+        tspan.text(line.join(' '));
+
+        if (calculateLongestLabelWidth([line.join(' ')]) > maxWidths[i] && line.length > 1) {
+          line.pop();
+          tspan.text(line.join(' '));
+          line = [word];
+          dy += 1.1;
+          lineNumber += 1;
+          tspan = text
+            .append('tspan')
+            .text(word)
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', dy + 'em');
+        }
+      }
+      maxLines = Math.max(maxLines, lineNumber + 1);
+    });
+
+  return (maxLines - 1) * 12;
+};
+
+const truncate = (
+  tickValues: string[],
+  tickTexts: string[],
+  scale: any,
+  width: number,
+  axisNode: SVGGElement | null,
+) => {
+  // for LTR
+  let start = 0;
+  let end = width;
+  const range = scale.range();
+  if (range[1] - range[0] < 0) {
+    // for RTL
+    start = width;
+    end = 0;
+  }
+
+  d3Select(axisNode)
+    .selectAll('.tick text')
+    .each(function (_, i) {
+      const tickPosition = scale(tickValues[i])!;
+      const l = Math.abs(i - 1 >= 0 ? tickPosition - scale(tickValues[i - 1])! : tickPosition - start);
+      const r = Math.abs(i + 1 < tickValues.length ? scale(tickValues[i + 1])! - tickPosition : end - tickPosition);
+      const maxWidth = Math.min(l, r) * 2 - 8; // 4px padding on both sides
+
+      const text = d3Select(this).text(null);
+      const y = text.attr('y');
+      let dy = parseFloat(text.attr('dy'));
+      if (calculateLongestLabelWidth([tickTexts[i]]) <= maxWidth) {
+        const tspan = text.append('tspan').text(tickTexts[i]).attr('x', 0).attr('y', y);
+        if (i % 2 === 1) {
+          tspan.attr('dy', dy + 1.1 + 'em');
+        }
+        return;
+      }
+
+      let lo = 1;
+      let hi = tickTexts[i].length;
+      while (lo < hi) {
+        const mid = Math.floor(lo + (hi - lo + 1) / 2);
+        const truncatedText = tickTexts[i].slice(0, mid) + '...';
+
+        if (calculateLongestLabelWidth([truncatedText]) <= maxWidth) {
+          lo = mid;
+        } else {
+          hi = mid - 1;
+        }
+      }
+      const tspan = text
+        .append('tspan')
+        .text(tickTexts[i].slice(0, lo) + '...')
+        .attr('x', 0)
+        .attr('y', y);
+      if (i % 2 === 1) {
+        tspan.attr('dy', dy + 1.1 + 'em');
+      }
+    });
+
+  return tickValues.length > 1 ? 12 : 0;
 };
