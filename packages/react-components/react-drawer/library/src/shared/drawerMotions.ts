@@ -7,7 +7,7 @@ import { drawerCSSVars } from './useDrawerBaseStyles.styles';
 import { fadeAtom } from '@fluentui/react-motion-components-preview';
 
 export type DrawerMotionParams = Required<
-  Pick<DrawerBaseProps, 'size' | 'position' | 'unmountOnClose'> & Pick<FluentProviderContextValue, 'dir'>
+  Pick<DrawerBaseProps, 'size' | 'position'> & Pick<FluentProviderContextValue, 'dir'>
 >;
 export type OverlayDrawerSurfaceMotionParams = Required<Pick<DrawerBaseProps, 'size'>>;
 
@@ -43,28 +43,6 @@ export function getPositionTransform(
   }
 
   return 'translate3d(0, 0, 0)';
-}
-
-/**
- * @internal
- */
-export function getPositionProperty(
-  position: DrawerBaseProps['position'],
-  dir: FluentProviderContextValue['dir'],
-): string {
-  if (position === 'start') {
-    return dir === 'ltr' ? 'marginLeft' : 'marginRight';
-  }
-
-  if (position === 'end') {
-    return dir === 'ltr' ? 'marginRight' : 'marginLeft';
-  }
-
-  if (position === 'bottom') {
-    return 'marginBottom';
-  }
-
-  return 'marginLeft';
 }
 
 /**
