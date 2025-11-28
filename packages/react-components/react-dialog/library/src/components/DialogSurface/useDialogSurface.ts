@@ -59,7 +59,7 @@ export const useDialogSurface_unstable = (
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     props.onKeyDown?.(event);
 
-    if (event.key === Escape && !event.isDefaultPrevented()) {
+    if (modalType === 'modal' && event.key === Escape && !event.isDefaultPrevented()) {
       requestOpenChange({
         event,
         open: false,
