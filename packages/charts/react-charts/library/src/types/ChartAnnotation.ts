@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export type ChartAnnotationCoordinate = {
   /** Cartesian data coordinates mapped through the chart scales or
-   * Normalised coordinates within the plot area (0-1) or
+   * Normalised coordinates within the plot area or viewport (0-1) or
    * Absolute pixel position relative to the chart's SVG origin
    */
   type: 'data' | 'relative' | 'pixel';

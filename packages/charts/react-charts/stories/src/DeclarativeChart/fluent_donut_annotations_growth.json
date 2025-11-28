@@ -1,0 +1,130 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "type": "pie",
+      "hole": 0.6,
+      "labels": ["New subscriptions", "Renewals", "Expansion", "Trials converted", "Win-back"],
+      "values": [240, 180, 120, 80, 60],
+      "textinfo": "label+percent",
+      "marker": {
+        "colors": ["#8764B8", "#4F6BED", "#1E9AAA", "#C239B3", "#F7B548"],
+        "line": {
+          "color": "transparent"
+        }
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Subscription revenue mix",
+      "x": 0.5
+    },
+    "showlegend": false,
+    "margin": {
+      "t": 60,
+      "b": 40,
+      "l": 40,
+      "r": 40
+    },
+    "annotations": [
+      {
+        "text": "New\n$240M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.24,
+        "y": 0.86,
+        "showarrow": true,
+        "arrowcolor": "#8764B8",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": -30,
+        "ay": -35,
+        "bordercolor": "#8764B8",
+        "bgcolor": "rgba(135, 100, 184, 0.16)",
+        "font": {
+          "color": "#1B1A19",
+          "size": 12
+        }
+      },
+      {
+        "text": "Renewals\n$180M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.78,
+        "y": 0.82,
+        "showarrow": true,
+        "arrowcolor": "#4F6BED",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": 32,
+        "ay": -30,
+        "bordercolor": "#4F6BED",
+        "bgcolor": "rgba(79, 107, 237, 0.12)",
+        "font": {
+          "color": "#1B1A19",
+          "size": 12
+        }
+      },
+      {
+        "text": "Expansion\n$120M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.84,
+        "y": 0.32,
+        "showarrow": true,
+        "arrowcolor": "#1E9AAA",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": 36,
+        "ay": 24,
+        "bordercolor": "#1E9AAA",
+        "bgcolor": "rgba(30, 154, 170, 0.16)",
+        "font": {
+          "color": "#1B1A19",
+          "size": 12
+        }
+      },
+      {
+        "text": "Trials\n$80M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.2,
+        "y": 0.28,
+        "showarrow": true,
+        "arrowcolor": "#C239B3",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": -36,
+        "ay": 28,
+        "bordercolor": "#C239B3",
+        "bgcolor": "rgba(194, 57, 179, 0.16)",
+        "font": {
+          "color": "#1B1A19",
+          "size": 12
+        }
+      },
+      {
+        "text": "Win-back\n$60M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.5,
+        "y": 0.95,
+        "showarrow": true,
+        "arrowcolor": "#F7B548",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": 0,
+        "ay": -40,
+        "bordercolor": "#F7B548",
+        "bgcolor": "rgba(247, 181, 72, 0.18)",
+        "font": {
+          "color": "#1B1A19",
+          "size": 12
+        }
+      }
+    ]
+  },
+  "frames": [],
+  "selectedLegends": []
+}

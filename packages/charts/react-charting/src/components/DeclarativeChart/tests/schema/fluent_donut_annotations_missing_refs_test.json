@@ -1,0 +1,25 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "type": "pie",
+      "hole": 0.5,
+      "labels": ["Category A", "Category B"],
+      "values": [60, 40]
+    }
+  ],
+  "layout": {
+    "annotations": [
+      {
+        "text": "Total\\n100",
+        "x": 0.5,
+        "y": 0.5,
+        "showarrow": false,
+        "font": {
+          "size": 16
+        }
+      }
+    ]
+  },
+  "frames": []
+}

@@ -30,6 +30,8 @@ const DEFAULT_FOREIGN_OBJECT_HEIGHT = 60;
 const MIN_ARROW_SIZE = 6;
 const MAX_ARROW_SIZE = 24;
 const ARROW_SIZE_SCALE = 0.35;
+const MIN_CONNECTOR_ARROW_LENGTH = 8;
+const CONNECTOR_START_RATIO = 0.4;
 const MAX_SIMPLE_MARKUP_DEPTH = 5;
 const CHAR_CODE_LESS_THAN = '<'.codePointAt(0)!;
 const CHAR_CODE_GREATER_THAN = '>'.codePointAt(0)!;
@@ -314,8 +316,37 @@ const resolveCoordinates = (
       if (typeof coordinates.x !== 'number' || typeof coordinates.y !== 'number') {
         return undefined;
       }
-      anchor.x = context.plotRect.x + context.plotRect.width * coordinates.x;
-      anchor.y = context.plotRect.y + context.plotRect.height * coordinates.y;
+      const useViewportSpace = layout?.clipToBounds === false;
+      if (useViewportSpace) {
+        const svgWidth = context.svgRect.width;
+        const svgHeight = context.svgRect.height;
+        if (!Number.isFinite(svgWidth) || !Number.isFinite(svgHeight)) {
+          return undefined;
+        }
+        const padding = context.viewportPadding;
+        const paddingLeft =
+          typeof padding?.left === 'number' && Number.isFinite(padding.left) && padding.left > 0 ? padding.left : 0;
+        const paddingRight =
+          typeof padding?.right === 'number' && Number.isFinite(padding.right) && padding.right > 0 ? padding.right : 0;
+        const paddingTop =
+          typeof padding?.top === 'number' && Number.isFinite(padding.top) && padding.top > 0 ? padding.top : 0;
+        const paddingBottom =
+          typeof padding?.bottom === 'number' && Number.isFinite(padding.bottom) && padding.bottom > 0
+            ? padding.bottom
+            : 0;
+
+        const effectiveWidth = Math.max(svgWidth - paddingLeft - paddingRight, 0);
+        const effectiveHeight = Math.max(svgHeight - paddingTop - paddingBottom, 0);
+
+        const resolvedX = paddingLeft + coordinates.x * (effectiveWidth > 0 ? effectiveWidth : 0);
+        const resolvedY = paddingTop + coordinates.y * (effectiveHeight > 0 ? effectiveHeight : 0);
+
+        anchor.x = Number.isFinite(resolvedX) ? resolvedX : paddingLeft + effectiveWidth / 2;
+        anchor.y = Number.isFinite(resolvedY) ? resolvedY : paddingTop + effectiveHeight / 2;
+      } else {
+        anchor.x = context.plotRect.x + context.plotRect.width * coordinates.x;
+        anchor.y = context.plotRect.y + context.plotRect.height * coordinates.y;
+      }
       break;
     }
     case 'pixel': {
@@ -485,17 +516,36 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
     const baseTopLeftX = resolved.point.x + offsetX;
     const baseTopLeftY = resolved.point.y + offsetY;
 
-    const usePlotBounds = layout?.clipToBounds !== false;
-    const viewportX = usePlotBounds ? context.plotRect.x : 0;
-    const viewportY = usePlotBounds ? context.plotRect.y : 0;
-    const viewportWidth = usePlotBounds ? context.plotRect.width : context.svgRect.width ?? 0;
-    const viewportHeight = usePlotBounds ? context.plotRect.height : context.svgRect.height ?? 0;
+    const usesViewportSpace = annotation.coordinates?.type === 'relative' && layout?.clipToBounds === false;
+    const clampRect = usesViewportSpace
+      ? {
+          x: 0,
+          y: 0,
+          width:
+            typeof context.svgRect.width === 'number' && Number.isFinite(context.svgRect.width)
+              ? context.svgRect.width
+              : 0,
+          height:
+            typeof context.svgRect.height === 'number' && Number.isFinite(context.svgRect.height)
+              ? context.svgRect.height
+              : 0,
+        }
+      : layout?.clipToBounds !== false
+      ? context.plotRect
+      : undefined;
 
-    const maxTopLeftX = viewportWidth > 0 ? viewportX + viewportWidth - width : baseTopLeftX;
-    const maxTopLeftY = viewportHeight > 0 ? viewportY + viewportHeight - height : baseTopLeftY;
+    const clampX = clampRect && typeof clampRect.x === 'number' && Number.isFinite(clampRect.x) ? clampRect.x : 0;
+    const clampY = clampRect && typeof clampRect.y === 'number' && Number.isFinite(clampRect.y) ? clampRect.y : 0;
+    const clampWidth =
+      clampRect && typeof clampRect.width === 'number' && Number.isFinite(clampRect.width) ? clampRect.width : 0;
+    const clampHeight =
+      clampRect && typeof clampRect.height === 'number' && Number.isFinite(clampRect.height) ? clampRect.height : 0;
 
-    let topLeftX = viewportWidth > 0 ? clamp(baseTopLeftX, viewportX, Math.max(viewportX, maxTopLeftX)) : baseTopLeftX;
-    let topLeftY = viewportHeight > 0 ? clamp(baseTopLeftY, viewportY, Math.max(viewportY, maxTopLeftY)) : baseTopLeftY;
+    const maxTopLeftX = clampWidth > 0 ? clampX + clampWidth - width : baseTopLeftX;
+    const maxTopLeftY = clampHeight > 0 ? clampY + clampHeight - height : baseTopLeftY;
+
+    let topLeftX = clampWidth > 0 ? clamp(baseTopLeftX, clampX, Math.max(clampX, maxTopLeftX)) : baseTopLeftX;
+    let topLeftY = clampHeight > 0 ? clamp(baseTopLeftY, clampY, Math.max(clampY, maxTopLeftY)) : baseTopLeftY;
 
     let displayPoint = {
       x: topLeftX - offsetX,
@@ -524,9 +574,9 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
         let desiredTopLeftY = desiredDisplayY + offsetY;
 
         desiredTopLeftX =
-          viewportWidth > 0 ? clamp(desiredTopLeftX, viewportX, Math.max(viewportX, maxTopLeftX)) : desiredTopLeftX;
+          clampWidth > 0 ? clamp(desiredTopLeftX, clampX, Math.max(clampX, maxTopLeftX)) : desiredTopLeftX;
         desiredTopLeftY =
-          viewportHeight > 0 ? clamp(desiredTopLeftY, viewportY, Math.max(viewportY, maxTopLeftY)) : desiredTopLeftY;
+          clampHeight > 0 ? clamp(desiredTopLeftY, clampY, Math.max(clampY, maxTopLeftY)) : desiredTopLeftY;
 
         topLeftX = desiredTopLeftX;
         topLeftY = desiredTopLeftY;
@@ -625,22 +675,42 @@ export const ChartAnnotationLayer: React.FC<ChartAnnotationLayerProps> = React.m
       const ux = dx / distance;
       const uy = dy / distance;
 
-      const sizeBasis = Math.max(1, Math.min(width, height));
-      const proportionalSize = sizeBasis * ARROW_SIZE_SCALE;
-      const maxByPadding = startPadding > 0 ? startPadding * 1.25 : MAX_ARROW_SIZE;
-      const maxByDistance = distance * 0.6;
-      const markerSize = clamp(proportionalSize, MIN_ARROW_SIZE, Math.min(MAX_ARROW_SIZE, maxByPadding, maxByDistance));
-      const markerStrokeWidth = clamp(strokeWidth, 1, markerSize / 2);
+      const availableDistance = Math.max(distance - endPadding, 0);
+      const startLimitByArrow = availableDistance - MIN_CONNECTOR_ARROW_LENGTH;
+      const startLimitByRatio = availableDistance * CONNECTOR_START_RATIO;
+      const startLimit = Math.min(availableDistance, Math.max(startLimitByRatio, startLimitByArrow));
+      const effectiveStartPadding = availableDistance > 0 ? Math.max(0, Math.min(startPadding, startLimit)) : 0;
 
       const start: AnnotationPoint = {
-        x: displayPoint.x + ux * startPadding,
-        y: displayPoint.y + uy * startPadding,
+        x: displayPoint.x + ux * effectiveStartPadding,
+        y: displayPoint.y + uy * effectiveStartPadding,
       };
 
       const end: AnnotationPoint = {
         x: resolved.anchor.x - ux * endPadding,
         y: resolved.anchor.y - uy * endPadding,
       };
+
+      const arrowLength = Math.max(distance - effectiveStartPadding - endPadding, 0);
+
+      const sizeBasis = Math.max(1, Math.min(width, height));
+      const proportionalSize = sizeBasis * ARROW_SIZE_SCALE;
+      const maxByPadding = startPadding > 0 ? startPadding * 1.25 : MAX_ARROW_SIZE;
+      const maxByDistance = distance * 0.6;
+      let markerSize = clamp(proportionalSize, MIN_ARROW_SIZE, Math.min(MAX_ARROW_SIZE, maxByPadding, maxByDistance));
+
+      if (arrowLength > 0) {
+        const markerMinByLength = Math.max(1, Math.min(MIN_ARROW_SIZE, arrowLength));
+        const markerMaxByLength = Math.max(
+          markerMinByLength,
+          Math.min(MAX_ARROW_SIZE, maxByPadding, maxByDistance, arrowLength),
+        );
+        markerSize = clamp(markerSize, markerMinByLength, markerMaxByLength);
+      } else {
+        markerSize = Math.min(markerSize, MIN_ARROW_SIZE);
+      }
+
+      const markerStrokeWidth = clamp(strokeWidth, 1, markerSize / 2);
 
       connectors.push({
         key: `${key}-connector`,

@@ -1,0 +1,47 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "hole": 0.5,
+      "type": "pie",
+      "marker": {
+        "line": {
+          "color": "transparent"
+        }
+      },
+      "labels": ["North", "South", "East", "West"],
+      "values": [10, 15, 5, 2]
+    }
+  ],
+  "layout": {
+    "title": "Regional distribution",
+    "margin": {
+      "b": 30,
+      "l": 30,
+      "r": 30,
+      "t": 30
+    },
+    "showlegend": true,
+    "annotations": [
+      {
+        "text": "Total: 32",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.5,
+        "y": 0.5,
+        "xanchor": "center",
+        "yanchor": "middle",
+        "showarrow": false,
+        "font": {
+          "size": 14,
+          "color": "#323130"
+        },
+        "bgcolor": "rgba(245, 246, 249, 0.9)",
+        "bordercolor": "#d0d6e3",
+        "borderwidth": 1
+      }
+    ]
+  },
+  "frames": [],
+  "selectedLegends": ["North"]
+}

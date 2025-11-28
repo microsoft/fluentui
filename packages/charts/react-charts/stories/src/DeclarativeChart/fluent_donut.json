@@ -1,0 +1,111 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "hole": 0.55,
+      "type": "pie",
+      "labels": ["North", "South", "East", "West"],
+      "values": [180, 140, 90, 70],
+      "textinfo": "label+percent",
+      "marker": {
+        "colors": ["#4F6BED", "#FAAD14", "#10B981", "#C2410C"],
+        "line": {
+          "color": "transparent"
+        }
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "Quarterly revenue by region",
+      "x": 0.5
+    },
+    "showlegend": false,
+    "margin": {
+      "t": 60,
+      "b": 40,
+      "l": 40,
+      "r": 40
+    },
+    "annotations": [
+      {
+        "text": "North\n$180M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.12,
+        "y": 0.72,
+        "showarrow": true,
+        "arrowcolor": "#4F6BED",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": -35,
+        "ay": -10,
+        "bordercolor": "#4F6BED",
+        "bgcolor": "rgba(79, 107, 237, 0.12)",
+        "font": {
+          "color": "#1B1A19",
+          "size": 12
+        }
+      },
+      {
+        "text": "South\n$140M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.82,
+        "y": 0.7,
+        "showarrow": true,
+        "arrowcolor": "#FAAD14",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": 35,
+        "ay": -15,
+        "bordercolor": "#FAAD14",
+        "bgcolor": "rgba(250, 173, 20, 0.16)",
+        "font": {
+          "color": "#1B1A19",
+          "size": 12
+        }
+      },
+      {
+        "text": "East\n$90M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.82,
+        "y": 0.28,
+        "showarrow": true,
+        "arrowcolor": "#10B981",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": 32,
+        "ay": 18,
+        "bordercolor": "#10B981",
+        "bgcolor": "rgba(16, 185, 129, 0.16)",
+        "font": {
+          "color": "#1B1A19",
+          "size": 12
+        }
+      },
+      {
+        "text": "West\n$70M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.18,
+        "y": 0.28,
+        "showarrow": true,
+        "arrowcolor": "#C2410C",
+        "arrowwidth": 2,
+        "arrowhead": 3,
+        "ax": -40,
+        "ay": 20,
+        "bordercolor": "#C2410C",
+        "bgcolor": "rgba(194, 65, 12, 0.16)",
+        "font": {
+          "color": "#1B1A19",
+          "size": 12
+        }
+      }
+    ]
+  },
+  "frames": [],
+  "selectedLegends": []
+}

@@ -7,13 +7,18 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS } from '../../utilities/index';
+import { areArraysEqual, getColorFromToken, getNextColor, MIN_DONUT_RADIUS, useRtl } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
-import { useId } from '@fluentui/react-utilities';
+import { useId, useMergedRefs } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { ChartPopover } from '../CommonComponents/ChartPopover';
+import { ChartPopover, ChartAnnotationLayer } from '../CommonComponents';
 import { useImageExport } from '../../utilities/hooks';
+import {
+  useDonutAnnotationLayout,
+  computeAnnotationViewportPadding,
+  resolveDonutViewportLayout,
+} from './useDonutAnnotationLayout';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -30,10 +35,11 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       props.hideLegend,
       false,
     );
+    const rootRef = useMergedRefs(_rootElem, forwardedRef);
     const _uniqText: string = useId('_Pie_');
+    const _emptyChartId: string = useId('_DonutChart_empty');
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let _calloutAnchorPoint: ChartDataPoint | null;
-    let _emptyChartId: string | null;
     const legendContainer = React.useRef<HTMLDivElement | null>(null);
     const prevSize = React.useRef<{ width?: number; height?: number }>({});
 
@@ -51,6 +57,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const prevPropsRef = React.useRef<DonutChartProps | null>(null);
+    const _isRTL: boolean = useRtl();
 
     React.useEffect(() => {
       _fitParentContainer();
@@ -74,50 +81,33 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       prevSize.current.width = props.width;
     }, [props.width, props.height]);
 
-    function _elevateToMinimums(data: ChartDataPoint[]) {
-      let sumOfData = 0;
-      const minPercent = 0.01;
-      const elevatedData: ChartDataPoint[] = [];
-      data.forEach(item => {
-        sumOfData += item.data!;
-      });
-      data.forEach(item => {
-        elevatedData.push(
-          minPercent * sumOfData > item.data! && item.data! > 0
-            ? {
-                ...item,
-                data: minPercent * sumOfData,
-                yAxisCalloutData:
-                  item.yAxisCalloutData === undefined ? item.data!.toLocaleString() : item.yAxisCalloutData,
-              }
-            : item,
-        );
-      });
-      return elevatedData;
-    }
-    function _createLegends(chartData: ChartDataPoint[]): JSXElement {
-      if (props.order === 'sorted') {
-        chartData.sort((a: ChartDataPoint, b: ChartDataPoint) => {
-          return b.data! - a.data!;
-        });
+    function _createLegends(chartData: ChartDataPoint[]): JSXElement | undefined {
+      if (!chartData || chartData.length === 0) {
+        return undefined;
       }
-      const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
-        const color: string = point.color!;
-        // mapping data to the format Legends component needs
-        const legend: Legend = {
-          title: point.legend!,
-          color,
+
+      const dataForLegend =
+        props.order === 'sorted' ? [...chartData].sort((a, b) => (b.data ?? 0) - (a.data ?? 0)) : chartData;
+
+      const legendDataItems: Legend[] = dataForLegend.map((point, index) => {
+        const legendTitle = point.legend ?? '';
+        const resolvedColor =
+          typeof point.color === 'string' && point.color.length > 0 ? point.color : getNextColor(index, 0);
+
+        return {
+          title: legendTitle,
+          color: resolvedColor,
           hoverAction: () => {
             _handleChartMouseLeave();
-            setActiveLegend(point.legend!);
+            setActiveLegend(legendTitle);
           },
           onMouseOutAction: () => {
             setActiveLegend(undefined);
           },
         };
-        return legend;
       });
-      const legends = (
+
+      return (
         <Legends
           legends={legendDataItems}
           centerLegends
@@ -128,7 +118,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           legendRef={_legendsRef}
         />
       );
-      return legends;
     }
     function _onLegendSelectionChange(
       selectedLegends: string[],
@@ -248,17 +237,47 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     }
 
     function _addDefaultColors(donutChartDataPoint?: ChartDataPoint[]): ChartDataPoint[] {
-      return donutChartDataPoint
-        ? donutChartDataPoint.map((item, index) => {
-            let defaultColor: string;
-            if (typeof item.color === 'undefined') {
-              defaultColor = getNextColor(index, 0);
-            } else {
-              defaultColor = getColorFromToken(item.color);
-            }
-            return { ...item, defaultColor };
-          })
-        : [];
+      if (!donutChartDataPoint || donutChartDataPoint.length === 0) {
+        return [];
+      }
+
+      return donutChartDataPoint.map((item, index) => {
+        const resolvedColor =
+          typeof item.color === 'string' && item.color.length > 0
+            ? getColorFromToken(item.color)
+            : getNextColor(index, 0);
+
+        return { ...item, color: resolvedColor };
+      });
+    }
+
+    function _elevateToMinimums(data: ChartDataPoint[]): ChartDataPoint[] {
+      if (!data || data.length === 0) {
+        return [];
+      }
+
+      const minPercent = 0.01;
+      const sumOfData = data.reduce((sum, point) => sum + (point.data ?? 0), 0);
+
+      if (sumOfData <= 0) {
+        return data;
+      }
+
+      const minimumValue = minPercent * sumOfData;
+
+      return data.map(point => {
+        const value = point.data ?? 0;
+
+        if (value > 0 && value < minimumValue) {
+          return {
+            ...point,
+            data: minimumValue,
+            yAxisCalloutData: point.yAxisCalloutData === undefined ? value.toLocaleString() : point.yAxisCalloutData,
+          };
+        }
+
+        return point;
+      });
     }
 
     /**
@@ -281,16 +300,24 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       }
       if (props.parentRef || _rootElem.current) {
         const container = props.parentRef ? props.parentRef : _rootElem.current!;
-        const currentContainerWidth = container.getBoundingClientRect().width;
-        const currentContainerHeight =
-          container.getBoundingClientRect().height > legendContainerHeight
-            ? container.getBoundingClientRect().height
-            : 200;
-        const shouldResize =
-          _width !== currentContainerWidth || _height !== currentContainerHeight - legendContainerHeight;
-        if (shouldResize) {
-          setWidth(currentContainerWidth);
-          setHeight(currentContainerHeight - legendContainerHeight);
+        const containerRect = container.getBoundingClientRect();
+        const measuredWidth = containerRect.width;
+        const measuredHeight = containerRect.height;
+
+        const nextWidth = measuredWidth > 0 ? measuredWidth : _width ?? 200;
+
+        const measuredAvailableHeight = measuredHeight - legendContainerHeight;
+        const nextHeightCandidate = measuredAvailableHeight > 0 ? measuredAvailableHeight : undefined;
+        const fallbackHeight =
+          _height ?? Math.max((_width ?? 200) - legendContainerHeight, 200 - legendContainerHeight);
+        const nextHeight = nextHeightCandidate ?? fallbackHeight;
+
+        if (typeof nextWidth === 'number' && nextWidth !== _width) {
+          setWidth(nextWidth);
+        }
+
+        if (typeof nextHeight === 'number' && nextHeight !== _height) {
+          setHeight(nextHeight);
         }
       }
       //});
@@ -298,51 +325,74 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
 
     const { data, hideLegend = false } = props;
     const points = _addDefaultColors(data?.chartData);
+    const annotations = props.annotations ?? [];
+    const hasAnnotations = annotations.length > 0;
 
     const classes = useDonutChartStyles(props);
 
     const legendBars = _createLegends(points.filter(d => d.data! >= 0));
-    const donutMarginHorizontal = props.hideLabels ? 0 : 80;
-    const donutMarginVertical = props.hideLabels ? 0 : 40;
-    const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
+
+    const {
+      annotationContext,
+      plotContainerStyle,
+      resolvedSvgWidth,
+      resolvedSvgHeight,
+      outerRadius,
+      svgStyle: svgPositionStyle,
+    } = useDonutAnnotationLayout({
+      annotations,
+      width: _width,
+      height: _height,
+      hideLabels: props.hideLabels,
+      isRtl: _isRTL,
+    });
     const chartData = _elevateToMinimums(points);
     const valueInsideDonut =
       props.innerRadius! > MIN_DONUT_RADIUS ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const focusAttributes = useFocusableGroup();
     return !_isChartEmpty() ? (
-      <div
-        className={classes.root}
-        ref={(rootElem: HTMLDivElement | null) => {
-          _rootElem.current = rootElem;
-        }}
-        onMouseLeave={_handleChartMouseLeave}
-      >
+      <div className={classes.root} ref={rootRef} onMouseLeave={_handleChartMouseLeave}>
         {props.xAxisAnnotation && (
           <text className={classes.axisAnnotation} x={_width! / 2} y={_height! - 10} textAnchor="middle">
             {props.xAxisAnnotation}
           </text>
         )}
         <div className={classes.chartWrapper} {...focusAttributes}>
-          <svg className={classes.chart} aria-label={data?.chartTitle} width={_width} height={_height}>
-            <Pie
-              width={_width!}
-              height={_height!}
-              outerRadius={outerRadius}
-              innerRadius={props.innerRadius!}
-              data={chartData!}
-              onFocusCallback={_focusCallback}
-              hoverOnCallback={_hoverCallback}
-              hoverLeaveCallback={_hoverLeave}
-              uniqText={_uniqText}
-              onBlurCallback={_onBlur}
-              activeArc={_getHighlightedLegend()}
-              focusedArcId={focusedArcId || ''}
-              href={props.href!}
-              valueInsideDonut={_toLocaleString(valueInsideDonut)}
-              showLabelsInPercent={props.showLabelsInPercent}
-              hideLabels={props.hideLabels}
-            />
-          </svg>
+          <div className={classes.plotContainer} style={plotContainerStyle}>
+            <svg
+              className={classes.chart}
+              aria-label={data?.chartTitle}
+              width={resolvedSvgWidth}
+              height={resolvedSvgHeight}
+              style={svgPositionStyle}
+            >
+              <Pie
+                width={resolvedSvgWidth}
+                height={resolvedSvgHeight}
+                outerRadius={outerRadius}
+                innerRadius={props.innerRadius!}
+                data={chartData!}
+                onFocusCallback={_focusCallback}
+                hoverOnCallback={_hoverCallback}
+                hoverLeaveCallback={_hoverLeave}
+                uniqText={_uniqText}
+                onBlurCallback={_onBlur}
+                activeArc={_getHighlightedLegend()}
+                focusedArcId={focusedArcId || ''}
+                href={props.href!}
+                valueInsideDonut={_toLocaleString(valueInsideDonut)}
+                showLabelsInPercent={props.showLabelsInPercent}
+                hideLabels={props.hideLabels}
+              />
+            </svg>
+            {hasAnnotations && annotationContext ? (
+              <ChartAnnotationLayer
+                annotations={annotations}
+                context={annotationContext}
+                className={classes.annotationLayer}
+              />
+            ) : null}
+          </div>
         </div>
         <ChartPopover
           xCalloutValue={xCalloutValue}
@@ -380,9 +430,15 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         )}
       </div>
     ) : (
-      <div id={_emptyChartId!} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );
   },
 );
+
+/** @internal Testing utilities for verifying donut layout behaviour */
+export const __donutChartInternals = {
+  computeAnnotationViewportPadding,
+  resolveDonutViewportLayout,
+};
 
 DonutChart.displayName = 'DonutChart';

@@ -1,0 +1,136 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "hole": 0.5,
+      "type": "pie",
+      "labels": ["Cloud", "Security", "AI", "Collaboration"],
+      "values": [180, 120, 140, 100],
+      "textinfo": "label+percent",
+      "marker": {
+        "colors": ["#115EA3", "#8A2DA5", "#0B6A0B", "#D83B01"],
+        "line": {
+          "color": "transparent"
+        }
+      }
+    }
+  ],
+  "layout": {
+    "title": {
+      "text": "FY26 strategic investment mix",
+      "x": 0.5
+    },
+    "showlegend": false,
+    "margin": {
+      "t": 80,
+      "b": 60,
+      "l": 60,
+      "r": 60
+    },
+    "annotations": [
+      {
+        "text": "Total budget\n$540M",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.5,
+        "y": 0.5,
+        "xanchor": "center",
+        "yanchor": "middle",
+        "showarrow": false,
+        "bgcolor": "rgba(255, 255, 255, 0.92)",
+        "bordercolor": "#605E5C",
+        "borderwidth": 1,
+        "font": {
+          "size": 14,
+          "color": "#201F1E"
+        }
+      },
+      {
+        "text": "Cloud momentum",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.18,
+        "y": 0.95,
+        "xanchor": "center",
+        "yanchor": "bottom",
+        "showarrow": true,
+        "arrowcolor": "#115EA3",
+        "arrowwidth": 2,
+        "ax": -25,
+        "ay": -30,
+        "bgcolor": "rgba(17, 94, 163, 0.12)",
+        "bordercolor": "#115EA3",
+        "borderwidth": 1.2,
+        "font": {
+          "size": 12,
+          "color": "#201F1E"
+        }
+      },
+      {
+        "text": "Security uplift",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.82,
+        "y": 0.94,
+        "xanchor": "center",
+        "yanchor": "bottom",
+        "showarrow": true,
+        "arrowcolor": "#8A2DA5",
+        "arrowwidth": 2,
+        "ax": 24,
+        "ay": -26,
+        "bgcolor": "rgba(138, 45, 165, 0.14)",
+        "bordercolor": "#8A2DA5",
+        "borderwidth": 1.2,
+        "font": {
+          "size": 12,
+          "color": "#201F1E"
+        }
+      },
+      {
+        "text": "AI acceleration",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.78,
+        "y": 0.2,
+        "xanchor": "left",
+        "yanchor": "middle",
+        "showarrow": true,
+        "arrowcolor": "#0B6A0B",
+        "arrowwidth": 2,
+        "ax": 34,
+        "ay": 20,
+        "bgcolor": "rgba(11, 106, 11, 0.16)",
+        "bordercolor": "#0B6A0B",
+        "borderwidth": 1.2,
+        "font": {
+          "size": 12,
+          "color": "#201F1E"
+        }
+      },
+      {
+        "text": "Collaboration refresh",
+        "xref": "paper",
+        "yref": "paper",
+        "x": 0.22,
+        "y": 0.24,
+        "xanchor": "right",
+        "yanchor": "middle",
+        "showarrow": true,
+        "arrowcolor": "#D83B01",
+        "arrowwidth": 2,
+        "ax": -34,
+        "ay": 24,
+        "bgcolor": "rgba(216, 59, 1, 0.14)",
+        "bordercolor": "#D83B01",
+        "borderwidth": 1.2,
+        "font": {
+          "size": 12,
+          "color": "#201F1E"
+        }
+      }
+    ]
+  },
+  "frames": [],
+  "selectedLegends": []
+}
