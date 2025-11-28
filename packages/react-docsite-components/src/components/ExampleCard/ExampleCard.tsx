@@ -34,7 +34,6 @@ const regionStyles: IStackComponent['styles'] = (props, theme) => ({
 });
 
 export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _monacoModelRef: React.MutableRefObject<IMonacoTextModel | undefined> = { current: undefined };
   /**
    * Transformed version of the initial `props.code` for editing and/or export to codepen,
