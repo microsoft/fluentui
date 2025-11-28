@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "only modal dialog closes on Esc key press",
+  "packageName": "@fluentui/react-dialog",
+  "email": "kakrookaran@gmail.com",
+  "dependentChangeType": "patch"
+}
