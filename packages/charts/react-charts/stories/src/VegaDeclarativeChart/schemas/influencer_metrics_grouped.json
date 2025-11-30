@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Influencer performance metrics",
+  "data": {
+    "values": [
+      { "influencer": "TechGuru", "metric": "Engagement Rate", "value": 8.5 },
+      { "influencer": "TechGuru", "metric": "Conversion Rate", "value": 3.2 },
+      { "influencer": "StyleIcon", "metric": "Engagement Rate", "value": 12.3 },
+      { "influencer": "StyleIcon", "metric": "Conversion Rate", "value": 4.8 },
+      { "influencer": "FoodieLife", "metric": "Engagement Rate", "value": 9.7 },
+      { "influencer": "FoodieLife", "metric": "Conversion Rate", "value": 2.9 },
+      { "influencer": "FitnessPro", "metric": "Engagement Rate", "value": 11.2 },
+      { "influencer": "FitnessPro", "metric": "Conversion Rate", "value": 5.5 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "influencer", "type": "nominal", "axis": { "title": "Influencer" } },
+    "y": { "field": "value", "type": "quantitative", "axis": { "title": "Rate (%)" } },
+    "color": { "field": "metric", "type": "nominal", "legend": { "title": "Metric" } },
+    "xOffset": { "field": "metric" }
+  },
+  "title": "Influencer Performance Comparison"
+}

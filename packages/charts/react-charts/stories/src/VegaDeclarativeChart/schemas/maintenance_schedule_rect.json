@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Maintenance schedule tracking",
+  "data": {
+    "values": [
+      { "machine": "Machine 1", "week": "Week 1", "status": "Scheduled" },
+      { "machine": "Machine 1", "week": "Week 2", "status": "Completed" },
+      { "machine": "Machine 1", "week": "Week 3", "status": "None" },
+      { "machine": "Machine 1", "week": "Week 4", "status": "None" },
+      { "machine": "Machine 2", "week": "Week 1", "status": "None" },
+      { "machine": "Machine 2", "week": "Week 2", "status": "Scheduled" },
+      { "machine": "Machine 2", "week": "Week 3", "status": "Completed" },
+      { "machine": "Machine 2", "week": "Week 4", "status": "None" },
+      { "machine": "Machine 3", "week": "Week 1", "status": "Completed" },
+      { "machine": "Machine 3", "week": "Week 2", "status": "None" },
+      { "machine": "Machine 3", "week": "Week 3", "status": "None" },
+      { "machine": "Machine 3", "week": "Week 4", "status": "Scheduled" }
+    ]
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+    "y": { "field": "machine", "type": "ordinal", "axis": { "title": "Machine" } },
+    "color": {
+      "field": "status",
+      "type": "nominal",
+      "scale": { "domain": ["None", "Scheduled", "Completed"], "range": ["#f0f0f0", "#ffcc00", "#2ca02c"] },
+      "legend": { "title": "Status" }
+    }
+  },
+  "title": "Maintenance Schedule Calendar"
+}

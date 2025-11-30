@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Monthly expenses with full month name formatting",
+  "width": 600,
+  "height": 350,
+  "data": {
+    "values": [
+      { "month": "2024-01-01", "expenses": 12500 },
+      { "month": "2024-02-01", "expenses": 13200 },
+      { "month": "2024-03-01", "expenses": 11800 },
+      { "month": "2024-04-01", "expenses": 14500 },
+      { "month": "2024-05-01", "expenses": 13900 },
+      { "month": "2024-06-01", "expenses": 15200 }
+    ]
+  },
+  "mark": { "type": "area", "color": "#FFB900", "opacity": 0.7 },
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "temporal",
+      "axis": {
+        "title": "Month",
+        "format": "%B"
+      }
+    },
+    "y": {
+      "field": "expenses",
+      "type": "quantitative",
+      "axis": {
+        "title": "Operating Expenses",
+        "format": "$,.0f"
+      }
+    }
+  },
+  "title": "Monthly Operating Expenses (Full Month Names)"
+}

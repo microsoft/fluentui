@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Social media reach growth",
+  "data": {
+    "values": [
+      { "date": "2024-01", "platform": "Facebook", "reach": 125000 },
+      { "date": "2024-02", "platform": "Facebook", "reach": 138000 },
+      { "date": "2024-03", "platform": "Facebook", "reach": 142000 },
+      { "date": "2024-04", "platform": "Facebook", "reach": 155000 },
+      { "date": "2024-05", "platform": "Facebook", "reach": 168000 },
+      { "date": "2024-06", "platform": "Facebook", "reach": 180000 },
+      { "date": "2024-01", "platform": "Instagram", "reach": 95000 },
+      { "date": "2024-02", "platform": "Instagram", "reach": 112000 },
+      { "date": "2024-03", "platform": "Instagram", "reach": 135000 },
+      { "date": "2024-04", "platform": "Instagram", "reach": 158000 },
+      { "date": "2024-05", "platform": "Instagram", "reach": 185000 },
+      { "date": "2024-06", "platform": "Instagram", "reach": 215000 }
+    ]
+  },
+  "mark": "area",
+  "encoding": {
+    "x": { "field": "date", "type": "temporal", "axis": { "title": "Month", "format": "%b %Y" } },
+    "y": { "field": "reach", "type": "quantitative", "axis": { "title": "Reach (users)", "format": ",.0f" } },
+    "color": { "field": "platform", "type": "nominal", "legend": { "title": "Platform" } },
+    "opacity": { "value": 0.7 }
+  },
+  "title": "Social Media Reach Growth"
+}

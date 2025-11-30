@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Learning progress tracking",
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+        "y": { "field": "assignments", "type": "quantitative", "axis": { "title": "Assignments Completed" } },
+        "color": { "value": "lightgreen" }
+      }
+    },
+    {
+      "mark": { "type": "line", "point": true, "color": "purple" },
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal" },
+        "y": { "field": "comprehension", "type": "quantitative", "axis": { "title": "Comprehension Score" } }
+      }
+    }
+  ],
+  "data": {
+    "values": [
+      { "week": "Week 1", "assignments": 4, "comprehension": 65 },
+      { "week": "Week 2", "assignments": 5, "comprehension": 70 },
+      { "week": "Week 3", "assignments": 6, "comprehension": 75 },
+      { "week": "Week 4", "assignments": 5, "comprehension": 78 },
+      { "week": "Week 5", "assignments": 7, "comprehension": 82 },
+      { "week": "Week 6", "assignments": 6, "comprehension": 85 }
+    ]
+  },
+  "resolve": { "scale": { "y": "independent" } },
+  "title": "Weekly Learning Progress"
+}

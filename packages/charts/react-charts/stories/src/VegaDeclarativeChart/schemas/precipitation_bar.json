@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Monthly precipitation levels",
+  "data": {
+    "values": [
+      { "month": "Jan", "precipitation": 78 },
+      { "month": "Feb", "precipitation": 65 },
+      { "month": "Mar", "precipitation": 95 },
+      { "month": "Apr", "precipitation": 112 },
+      { "month": "May", "precipitation": 125 },
+      { "month": "Jun", "precipitation": 98 },
+      { "month": "Jul", "precipitation": 45 },
+      { "month": "Aug", "precipitation": 52 },
+      { "month": "Sep", "precipitation": 87 },
+      { "month": "Oct", "precipitation": 102 },
+      { "month": "Nov", "precipitation": 118 },
+      { "month": "Dec", "precipitation": 92 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "month", "type": "ordinal", "axis": { "title": "Month", "labelAngle": 0 }, "sort": null },
+    "y": { "field": "precipitation", "type": "quantitative", "axis": { "title": "Precipitation (mm)" } },
+    "color": { "field": "precipitation", "type": "quantitative", "scale": { "scheme": "blues" }, "legend": null }
+  },
+  "title": "Average Monthly Precipitation"
+}

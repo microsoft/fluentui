@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Treatment outcome comparison",
+  "data": {
+    "values": [
+      { "treatment": "Treatment A", "outcome": "Full Recovery", "patients": 145 },
+      { "treatment": "Treatment A", "outcome": "Partial Recovery", "patients": 78 },
+      { "treatment": "Treatment A", "outcome": "No Change", "patients": 23 },
+      { "treatment": "Treatment B", "outcome": "Full Recovery", "patients": 168 },
+      { "treatment": "Treatment B", "outcome": "Partial Recovery", "patients": 65 },
+      { "treatment": "Treatment B", "outcome": "No Change", "patients": 18 },
+      { "treatment": "Treatment C", "outcome": "Full Recovery", "patients": 132 },
+      { "treatment": "Treatment C", "outcome": "Partial Recovery", "patients": 89 },
+      { "treatment": "Treatment C", "outcome": "No Change", "patients": 31 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "treatment", "type": "nominal", "axis": { "title": "Treatment Type" } },
+    "y": { "field": "patients", "type": "quantitative", "axis": { "title": "Number of Patients" } },
+    "color": {
+      "field": "outcome",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Full Recovery", "Partial Recovery", "No Change"],
+        "range": ["#2ca02c", "#ff7f0e", "#d62728"]
+      },
+      "legend": { "title": "Outcome" }
+    },
+    "xOffset": { "field": "outcome" }
+  },
+  "title": "Treatment Outcomes Comparison"
+}

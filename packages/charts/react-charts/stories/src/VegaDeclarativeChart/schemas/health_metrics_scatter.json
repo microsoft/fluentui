@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Health metrics correlation",
+  "data": {
+    "values": [
+      { "steps": 8500, "calories": 420, "sleepHours": 7.5, "user": "User 1" },
+      { "steps": 12000, "calories": 580, "sleepHours": 8.0, "user": "User 2" },
+      { "steps": 6500, "calories": 320, "sleepHours": 6.5, "user": "User 3" },
+      { "steps": 10500, "calories": 510, "sleepHours": 7.8, "user": "User 4" },
+      { "steps": 9200, "calories": 450, "sleepHours": 7.2, "user": "User 5" },
+      { "steps": 15000, "calories": 720, "sleepHours": 8.5, "user": "User 6" },
+      { "steps": 7800, "calories": 380, "sleepHours": 6.8, "user": "User 7" },
+      { "steps": 11500, "calories": 560, "sleepHours": 7.9, "user": "User 8" }
+    ]
+  },
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "steps", "type": "quantitative", "axis": { "title": "Daily Steps", "format": ",.0f" } },
+    "y": { "field": "calories", "type": "quantitative", "axis": { "title": "Calories Burned" } },
+    "size": {
+      "field": "sleepHours",
+      "type": "quantitative",
+      "legend": { "title": "Sleep (hours)" },
+      "scale": { "range": [100, 500] }
+    },
+    "color": { "field": "sleepHours", "type": "quantitative", "scale": { "scheme": "viridis" }, "legend": null },
+    "tooltip": [
+      { "field": "user", "type": "nominal" },
+      { "field": "steps", "type": "quantitative", "format": ",.0f" },
+      { "field": "calories", "type": "quantitative" },
+      { "field": "sleepHours", "type": "quantitative", "title": "Sleep Hours", "format": ".1f" }
+    ]
+  },
+  "title": "Steps vs Calories (sized by Sleep)"
+}

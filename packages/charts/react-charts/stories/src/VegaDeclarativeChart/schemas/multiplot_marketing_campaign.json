@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Marketing campaign performance: Email vs Social Media",
+  "data": {
+    "values": [
+      { "week": "W1", "channel": "Email", "impressions": 125000, "clicks": 3500, "conversions": 280 },
+      { "week": "W2", "channel": "Email", "impressions": 132000, "clicks": 3850, "conversions": 315 },
+      { "week": "W3", "channel": "Email", "impressions": 128000, "clicks": 3720, "conversions": 298 },
+      { "week": "W4", "channel": "Email", "impressions": 145000, "clicks": 4200, "conversions": 352 },
+      { "week": "W1", "channel": "Social", "impressions": 285000, "clicks": 8200, "conversions": 420 },
+      { "week": "W2", "channel": "Social", "impressions": 312000, "clicks": 9100, "conversions": 485 },
+      { "week": "W3", "channel": "Social", "impressions": 298000, "clicks": 8650, "conversions": 455 },
+      { "week": "W4", "channel": "Social", "impressions": 335000, "clicks": 9800, "conversions": 525 }
+    ]
+  },
+  "hconcat": [
+    {
+      "title": "Impressions by Channel",
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+        "y": { "field": "impressions", "type": "quantitative", "axis": { "title": "Impressions", "format": ",.0f" } },
+        "color": { "field": "channel", "type": "nominal", "legend": { "title": "Channel" } }
+      },
+      "width": 250,
+      "height": 220
+    },
+    {
+      "title": "Click-Through Performance",
+      "mark": { "type": "line", "point": true },
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+        "y": { "field": "clicks", "type": "quantitative", "axis": { "title": "Clicks", "format": ",.0f" } },
+        "color": { "field": "channel", "type": "nominal" },
+        "strokeWidth": { "value": 2 }
+      },
+      "width": 250,
+      "height": 220
+    },
+    {
+      "title": "Conversion Results",
+      "mark": { "type": "bar", "opacity": 0.8 },
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+        "y": { "field": "conversions", "type": "quantitative", "axis": { "title": "Conversions", "format": ",.0f" } },
+        "color": { "field": "channel", "type": "nominal" }
+      },
+      "width": 250,
+      "height": 220
+    }
+  ]
+}

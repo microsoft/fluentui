@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "E-commerce conversion funnel",
+  "data": {
+    "values": [
+      { "stage": "Page Views", "count": 50000 },
+      { "stage": "Product Views", "count": 12500 },
+      { "stage": "Add to Cart", "count": 3750 },
+      { "stage": "Checkout Started", "count": 2250 },
+      { "stage": "Payment Info", "count": 1800 },
+      { "stage": "Order Completed", "count": 1575 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": { "field": "stage", "type": "nominal", "axis": { "title": "Funnel Stage" }, "sort": null },
+    "x": { "field": "count", "type": "quantitative", "axis": { "title": "Users", "format": ",.0f" } },
+    "color": { "field": "count", "type": "quantitative", "scale": { "scheme": "blues" }, "legend": null }
+  },
+  "title": "Conversion Funnel Analysis"
+}

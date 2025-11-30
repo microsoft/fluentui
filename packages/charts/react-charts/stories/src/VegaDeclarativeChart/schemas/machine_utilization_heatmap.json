@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Machine utilization heatmap",
+  "data": {
+    "values": [
+      { "machine": "Machine 1", "shift": "Day Shift", "utilization": 92 },
+      { "machine": "Machine 1", "shift": "Night Shift", "utilization": 78 },
+      { "machine": "Machine 2", "shift": "Day Shift", "utilization": 88 },
+      { "machine": "Machine 2", "shift": "Night Shift", "utilization": 82 },
+      { "machine": "Machine 3", "shift": "Day Shift", "utilization": 95 },
+      { "machine": "Machine 3", "shift": "Night Shift", "utilization": 85 },
+      { "machine": "Machine 4", "shift": "Day Shift", "utilization": 87 },
+      { "machine": "Machine 4", "shift": "Night Shift", "utilization": 75 },
+      { "machine": "Machine 5", "shift": "Day Shift", "utilization": 90 },
+      { "machine": "Machine 5", "shift": "Night Shift", "utilization": 80 }
+    ]
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": { "field": "shift", "type": "ordinal", "axis": { "title": "Shift" } },
+    "y": { "field": "machine", "type": "ordinal", "axis": { "title": "Machine" } },
+    "color": {
+      "field": "utilization",
+      "type": "quantitative",
+      "scale": { "scheme": "greenblue" },
+      "legend": { "title": "Utilization %" }
+    },
+    "tooltip": [
+      { "field": "machine", "type": "ordinal" },
+      { "field": "shift", "type": "ordinal" },
+      { "field": "utilization", "type": "quantitative", "title": "Utilization %", "format": ".0f" }
+    ]
+  },
+  "title": "Machine Utilization by Shift"
+}

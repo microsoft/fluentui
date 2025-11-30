@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Vertical multi-plot: Product performance metrics over quarters",
+  "data": {
+    "values": [
+      { "quarter": "Q1", "revenue": 125000, "profit": 35000, "margin": 28 },
+      { "quarter": "Q2", "revenue": 142000, "profit": 45000, "margin": 31.7 },
+      { "quarter": "Q3", "revenue": 158000, "profit": 52000, "margin": 32.9 },
+      { "quarter": "Q4", "revenue": 175000, "profit": 61000, "margin": 34.9 }
+    ]
+  },
+  "vconcat": [
+    {
+      "title": "Revenue & Profit Trend",
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "quarter", "type": "ordinal", "axis": { "title": "Quarter" } },
+        "y": { "field": "revenue", "type": "quantitative", "axis": { "title": "Amount ($)", "format": "$,.0f" } }
+      },
+      "height": 150
+    },
+    {
+      "title": "Profit Margin %",
+      "mark": { "type": "line", "point": true, "color": "#2ecc71" },
+      "encoding": {
+        "x": { "field": "quarter", "type": "ordinal", "axis": { "title": "Quarter" } },
+        "y": { "field": "margin", "type": "quantitative", "axis": { "title": "Margin %", "format": ".1f" } }
+      },
+      "height": 150
+    },
+    {
+      "title": "Profit Distribution",
+      "mark": "area",
+      "encoding": {
+        "x": { "field": "quarter", "type": "ordinal", "axis": { "title": "Quarter" } },
+        "y": { "field": "profit", "type": "quantitative", "axis": { "title": "Profit ($)", "format": "$,.0f" } }
+      },
+      "height": 150
+    }
+  ]
+}

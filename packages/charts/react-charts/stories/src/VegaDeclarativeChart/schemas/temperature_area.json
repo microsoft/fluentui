@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Daily temperature variation",
+  "data": {
+    "values": [
+      { "date": "2024-06-01", "temp": 72 },
+      { "date": "2024-06-02", "temp": 75 },
+      { "date": "2024-06-03", "temp": 78 },
+      { "date": "2024-06-04", "temp": 76 },
+      { "date": "2024-06-05", "temp": 80 },
+      { "date": "2024-06-06", "temp": 82 },
+      { "date": "2024-06-07", "temp": 79 },
+      { "date": "2024-06-08", "temp": 77 },
+      { "date": "2024-06-09", "temp": 74 },
+      { "date": "2024-06-10", "temp": 73 }
+    ]
+  },
+  "mark": "area",
+  "encoding": {
+    "x": { "field": "date", "type": "temporal", "axis": { "title": "Date" } },
+    "y": { "field": "temp", "type": "quantitative", "axis": { "title": "Temperature (°F)" } }
+  },
+  "title": "Daily Temperature Variation"
+}

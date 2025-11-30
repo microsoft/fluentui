@@ -90,7 +90,12 @@ export interface Schema {
    * Plotly schema represented as JSON object
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  plotlySchema: any;
+  plotlySchema?: any;
+
+  /**
+   * Selected legends (used for multi-select legend interaction)
+   */
+  selectedLegends?: string[];
 }
 
 /**
@@ -342,6 +347,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >(({ colorwayType = 'default', ...props }, forwardedRef) => {
+  // Default Plotly adapter path
   const { plotlySchema } = sanitizeJson(props.chartSchema);
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {

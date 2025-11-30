@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sales data with formatted dates and currency",
+  "width": 600,
+  "height": 350,
+  "data": {
+    "values": [
+      { "date": "2024-01-01", "revenue": 125000, "orders": 450 },
+      { "date": "2024-02-01", "revenue": 148000, "orders": 523 },
+      { "date": "2024-03-01", "revenue": 167000, "orders": 601 },
+      { "date": "2024-04-01", "revenue": 189000, "orders": 678 },
+      { "date": "2024-05-01", "revenue": 203000, "orders": 734 },
+      { "date": "2024-06-01", "revenue": 221000, "orders": 789 },
+      { "date": "2024-07-01", "revenue": 245000, "orders": 856 },
+      { "date": "2024-08-01", "revenue": 267000, "orders": 912 },
+      { "date": "2024-09-01", "revenue": 289000, "orders": 978 },
+      { "date": "2024-10-01", "revenue": 312000, "orders": 1045 },
+      { "date": "2024-11-01", "revenue": 334000, "orders": 1123 },
+      { "date": "2024-12-01", "revenue": 367000, "orders": 1201 }
+    ]
+  },
+  "mark": { "type": "line", "point": true, "strokeWidth": 3 },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "axis": {
+        "title": "Month",
+        "format": "%b %Y"
+      }
+    },
+    "y": {
+      "field": "revenue",
+      "type": "quantitative",
+      "axis": {
+        "title": "Revenue",
+        "format": "$,.0f"
+      }
+    }
+  },
+  "title": "Monthly Revenue with Date & Currency Formatting"
+}

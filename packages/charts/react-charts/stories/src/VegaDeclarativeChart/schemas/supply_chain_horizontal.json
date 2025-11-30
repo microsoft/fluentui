@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Supply chain lead times",
+  "data": {
+    "values": [
+      { "supplier": "Supplier A", "leadTime": 12 },
+      { "supplier": "Supplier B", "leadTime": 8 },
+      { "supplier": "Supplier C", "leadTime": 15 },
+      { "supplier": "Supplier D", "leadTime": 6 },
+      { "supplier": "Supplier E", "leadTime": 10 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": { "field": "supplier", "type": "nominal", "axis": { "title": "Supplier" }, "sort": "-x" },
+    "x": { "field": "leadTime", "type": "quantitative", "axis": { "title": "Lead Time (days)" } },
+    "color": { "field": "leadTime", "type": "quantitative", "scale": { "scheme": "oranges" }, "legend": null }
+  },
+  "title": "Supplier Lead Times"
+}

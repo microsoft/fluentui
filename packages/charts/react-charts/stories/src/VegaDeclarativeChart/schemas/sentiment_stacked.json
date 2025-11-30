@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Social media sentiment analysis",
+  "data": {
+    "values": [
+      { "date": "2024-01", "sentiment": "Positive", "count": 3500 },
+      { "date": "2024-01", "sentiment": "Neutral", "count": 1800 },
+      { "date": "2024-01", "sentiment": "Negative", "count": 450 },
+      { "date": "2024-02", "sentiment": "Positive", "count": 4200 },
+      { "date": "2024-02", "sentiment": "Neutral", "count": 2100 },
+      { "date": "2024-02", "sentiment": "Negative", "count": 380 },
+      { "date": "2024-03", "sentiment": "Positive", "count": 4800 },
+      { "date": "2024-03", "sentiment": "Neutral", "count": 2300 },
+      { "date": "2024-03", "sentiment": "Negative", "count": 320 },
+      { "date": "2024-04", "sentiment": "Positive", "count": 5200 },
+      { "date": "2024-04", "sentiment": "Neutral", "count": 2450 },
+      { "date": "2024-04", "sentiment": "Negative", "count": 290 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "date", "type": "temporal", "axis": { "title": "Month", "format": "%b %Y" } },
+    "y": { "field": "count", "type": "quantitative", "axis": { "title": "Mentions" } },
+    "color": {
+      "field": "sentiment",
+      "type": "nominal",
+      "scale": { "domain": ["Positive", "Neutral", "Negative"], "range": ["#2ca02c", "#1f77b4", "#d62728"] },
+      "legend": { "title": "Sentiment" }
+    }
+  },
+  "title": "Social Sentiment Analysis Over Time"
+}

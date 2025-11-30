@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Student dropout analysis",
+  "data": {
+    "values": [
+      { "year": "Year 1", "enrolled": 1000, "active": 1000 },
+      { "year": "Year 2", "enrolled": 1000, "active": 920 },
+      { "year": "Year 3", "enrolled": 1000, "active": 865 },
+      { "year": "Year 4", "enrolled": 1000, "active": 825 },
+      { "year": "Year 5", "enrolled": 1000, "active": 798 },
+      { "year": "Year 6", "enrolled": 1000, "active": 785 }
+    ]
+  },
+  "mark": { "type": "line", "point": true, "strokeWidth": 2 },
+  "encoding": {
+    "x": { "field": "year", "type": "ordinal", "axis": { "title": "Academic Year" } },
+    "y": {
+      "field": "active",
+      "type": "quantitative",
+      "axis": { "title": "Active Students" },
+      "scale": { "domain": [700, 1050] }
+    },
+    "tooltip": [
+      { "field": "year", "type": "ordinal" },
+      { "field": "active", "type": "quantitative", "title": "Active Students" },
+      { "field": "enrolled", "type": "quantitative", "title": "Originally Enrolled" }
+    ]
+  },
+  "title": "Student Retention Analysis"
+}

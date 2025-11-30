@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Daily order volume tracking",
+  "data": {
+    "values": [
+      { "date": "2024-11-01", "orders": 342 },
+      { "date": "2024-11-02", "orders": 378 },
+      { "date": "2024-11-03", "orders": 295 },
+      { "date": "2024-11-04", "orders": 412 },
+      { "date": "2024-11-05", "orders": 456 },
+      { "date": "2024-11-06", "orders": 398 },
+      { "date": "2024-11-07", "orders": 367 },
+      { "date": "2024-11-08", "orders": 423 },
+      { "date": "2024-11-09", "orders": 389 },
+      { "date": "2024-11-10", "orders": 445 }
+    ]
+  },
+  "mark": { "type": "line", "point": true, "tooltip": true },
+  "encoding": {
+    "x": { "field": "date", "type": "temporal", "axis": { "title": "Date", "format": "%b %d" } },
+    "y": { "field": "orders", "type": "quantitative", "axis": { "title": "Number of Orders" } }
+  },
+  "title": "Daily Order Volume"
+}

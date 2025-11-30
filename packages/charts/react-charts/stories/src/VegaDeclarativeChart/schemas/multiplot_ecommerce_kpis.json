@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "E-commerce KPIs: Orders, Revenue, and Conversion Rate",
+  "data": {
+    "values": [
+      { "week": "Week 1", "orders": 342, "revenue": 28500, "visitors": 12400, "conversionRate": 2.76 },
+      { "week": "Week 2", "orders": 389, "revenue": 32100, "visitors": 13200, "conversionRate": 2.95 },
+      { "week": "Week 3", "orders": 425, "revenue": 35800, "visitors": 14100, "conversionRate": 3.01 },
+      { "week": "Week 4", "orders": 461, "revenue": 39200, "visitors": 15600, "conversionRate": 2.96 }
+    ]
+  },
+  "hconcat": [
+    {
+      "title": "Weekly Orders",
+      "mark": { "type": "bar", "color": "#16a085" },
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+        "y": { "field": "orders", "type": "quantitative", "axis": { "title": "Orders", "format": ",.0f" } }
+      },
+      "width": 220,
+      "height": 200
+    },
+    {
+      "title": "Revenue Growth",
+      "mark": { "type": "line", "point": true, "color": "#2980b9", "strokeWidth": 3 },
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+        "y": { "field": "revenue", "type": "quantitative", "axis": { "title": "Revenue ($)", "format": "$,.0f" } }
+      },
+      "width": 220,
+      "height": 200
+    },
+    {
+      "title": "Conversion Rate %",
+      "mark": { "type": "bar", "color": "#8e44ad" },
+      "encoding": {
+        "x": { "field": "week", "type": "ordinal", "axis": { "title": "Week" } },
+        "y": { "field": "conversionRate", "type": "quantitative", "axis": { "title": "Rate %", "format": ".2f" } }
+      },
+      "width": 220,
+      "height": 200
+    }
+  ]
+}

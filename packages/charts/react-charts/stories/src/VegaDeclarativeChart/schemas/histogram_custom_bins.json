@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Histogram with custom bin configuration specifying maximum number of bins",
+  "title": "Sales Amount Distribution - Custom Bins",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "values": [
+      { "amount": 125 },
+      { "amount": 230 },
+      { "amount": 450 },
+      { "amount": 680 },
+      { "amount": 890 },
+      { "amount": 1200 },
+      { "amount": 1350 },
+      { "amount": 1580 },
+      { "amount": 1790 },
+      { "amount": 2100 },
+      { "amount": 2340 },
+      { "amount": 2590 },
+      { "amount": 2850 },
+      { "amount": 3100 },
+      { "amount": 3420 },
+      { "amount": 3680 },
+      { "amount": 3920 },
+      { "amount": 4150 },
+      { "amount": 4390 },
+      { "amount": 4650 },
+      { "amount": 180 },
+      { "amount": 320 },
+      { "amount": 560 },
+      { "amount": 790 },
+      { "amount": 950 },
+      { "amount": 1100 },
+      { "amount": 1450 },
+      { "amount": 1620 },
+      { "amount": 1850 },
+      { "amount": 2050 },
+      { "amount": 2280 },
+      { "amount": 2510 },
+      { "amount": 2780 },
+      { "amount": 3050 },
+      { "amount": 3290 },
+      { "amount": 3540 },
+      { "amount": 3810 },
+      { "amount": 4080 },
+      { "amount": 4320 },
+      { "amount": 4590 },
+      { "amount": 210 },
+      { "amount": 380 },
+      { "amount": 610 },
+      { "amount": 820 },
+      { "amount": 1020 },
+      { "amount": 1240 },
+      { "amount": 1490 },
+      { "amount": 1710 },
+      { "amount": 1920 },
+      { "amount": 2180 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "amount",
+      "type": "quantitative",
+      "bin": {
+        "maxbins": 10
+      },
+      "axis": {
+        "title": "Sales Amount ($)"
+      }
+    },
+    "y": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "axis": {
+        "title": "Number of Transactions"
+      }
+    }
+  }
+}

@@ -1,0 +1,471 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial ratios heatmap without errors 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 100%; height: 100%;"
+    >
+      <div
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
+      >
+        <div
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+        >
+          <svg
+            aria-label="Financial Ratios Heatmap. Heat map chart with 12 data points. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="310"
+            style="display: block;"
+            width="0"
+          >
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, 255)"
+            >
+              <path
+                class="domain"
+                d="M64.5,0.5H-43.5"
+                stroke="currentColor"
+              />
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              width="6"
+              x="7"
+              y="296"
+            />
+            <text
+              aria-describedby="tooltip-_r_3_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_2_"
+              text-anchor="middle"
+              x="10"
+              y="302"
+            >
+              ...
+            </text>
+            <span
+              hidden=""
+            />
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(64, 0)"
+            >
+              <path
+                class="domain"
+                d="M0.5,255.5V20.5"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,225.18656716417908)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Current Ratio
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,166.72885572139305)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Quick Ratio
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,108.27114427860695)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  Debt-to-Equity
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,49.813432835820876)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="0"
+                />
+                <text
+                  dy="0.32em"
+                  fill="currentColor"
+                  x="-10"
+                >
+                  ROE
+                </text>
+              </g>
+            </g>
+            <g
+              aria-label="Company A, ROE. , 15.2."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(208, 28, 47)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                15.2
+              </text>
+            </g>
+            <g
+              aria-label="Company B, ROE. , 12.7."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(173, 49, 82)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                12.7
+              </text>
+            </g>
+            <g
+              aria-label="Company C, ROE. , 18.5."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 21.169154228855703)"
+            >
+              <rect
+                fill="rgb(255, 0, 0)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                18.5
+              </text>
+            </g>
+            <g
+              aria-label="Company A, Debt-to-Equity. , 0.8."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(4, 148, 251)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                0.8
+              </text>
+            </g>
+            <g
+              aria-label="Company B, Debt-to-Equity. , 1.3."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(11, 143, 244)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.3
+              </text>
+            </g>
+            <g
+              aria-label="Company C, Debt-to-Equity. , 0.5."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 79.62686567164178)"
+            >
+              <rect
+                fill="rgb(0, 150, 255)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                0.5
+              </text>
+            </g>
+            <g
+              aria-label="Company A, Quick Ratio. , 1.5."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(14, 142, 241)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.5
+              </text>
+            </g>
+            <g
+              aria-label="Company B, Quick Ratio. , 1.2."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(10, 144, 245)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.2
+              </text>
+            </g>
+            <g
+              aria-label="Company C, Quick Ratio. , 1.9."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 138.08457711442787)"
+            >
+              <rect
+                fill="rgb(20, 138, 235)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.9
+              </text>
+            </g>
+            <g
+              aria-label="Company A, Current Ratio. , 2.1."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(28.23841059602649, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(23, 137, 232)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                2.1
+              </text>
+            </g>
+            <g
+              aria-label="Company B, Current Ratio. , 1.8."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-7.523178807947019, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(18, 139, 237)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                1.8
+              </text>
+            </g>
+            <g
+              aria-label="Company C, Current Ratio. , 2.5."
+              fill-opacity="1"
+              role="img"
+              tabindex="0"
+              transform="translate(-43.28476821192053, 196.5422885572139)"
+            >
+              <rect
+                fill="rgb(28, 134, 227)"
+                height="57.28855721393035"
+                width="35.04635761589404"
+              />
+              <text
+                class="fui-hmc__text"
+                dominant-baseline="middle"
+                fill="var(--colorNeutralForeground1)"
+                text-anchor="middle"
+                transform="translate(17.52317880794702, 28.644278606965177)"
+              >
+                2.5
+              </text>
+            </g>
+            <rect
+              class="fui-cart_svgTooltip"
+              height="3"
+              transform="translate(0,
+                 227)rotate(-90)"
+              width="6"
+              x="83"
+              y="18"
+            />
+            <text
+              aria-describedby="tooltip-_r_5_"
+              class="fui-cart__axisTitle"
+              id="tooltip-host_r_4_"
+              text-anchor="middle"
+              transform="translate(0,
+                 227)rotate(-90)"
+              x="86"
+              y="24"
+            >
+              Financial Ratio
+            </text>
+            <span
+              hidden=""
+            />
+          </svg>
+        </div>
+        <div
+          class="fui-cart__legendContainer"
+        >
+          <div
+            aria-label="Legends"
+            aria-multiselectable="false"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+            role="listbox"
+          >
+            <div
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
+            >
+              <button
+                aria-label=""
+                aria-selected="false"
+                class="fui-Button fui-legend__legend"
+                data-overflow-item=""
+                role="option"
+                style="--rect-height: 12px; --rect-backgroundColor: rgb(0, 154, 255); --rect-borderColor: rgb(0, 154, 255);"
+                type="button"
+              >
+                <div
+                  class="fui-legend__rect"
+                  style="height: 12px; background-color: rgb(0, 154, 255); border-color: rgb(0, 154, 255); --rect-content-high-contrast: linear-gradient(to right, rgb(0, 154, 255), rgb(0, 154, 255));"
+                />
+                <div
+                  class="fui-legend__text"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

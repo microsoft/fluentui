@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Conversion rates with percentage formatting",
+  "width": 550,
+  "height": 350,
+  "data": {
+    "values": [
+      { "week": "Week 1", "conversion_rate": 0.034 },
+      { "week": "Week 2", "conversion_rate": 0.041 },
+      { "week": "Week 3", "conversion_rate": 0.038 },
+      { "week": "Week 4", "conversion_rate": 0.045 },
+      { "week": "Week 5", "conversion_rate": 0.052 },
+      { "week": "Week 6", "conversion_rate": 0.048 },
+      { "week": "Week 7", "conversion_rate": 0.055 },
+      { "week": "Week 8", "conversion_rate": 0.059 }
+    ]
+  },
+  "mark": { "type": "bar", "color": "#0078D4" },
+  "encoding": {
+    "x": {
+      "field": "week",
+      "type": "ordinal",
+      "axis": { "title": "Week" }
+    },
+    "y": {
+      "field": "conversion_rate",
+      "type": "quantitative",
+      "axis": {
+        "title": "Conversion Rate",
+        "format": ".1%"
+      }
+    }
+  },
+  "title": "Weekly Conversion Rate (Percentage Formatting)"
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Tournament progression",
+  "data": {
+    "values": [
+      { "round": "Round 1", "team": "Team A", "score": 85 },
+      { "round": "Round 1", "team": "Team B", "score": 78 },
+      { "round": "Round 1", "team": "Team C", "score": 92 },
+      { "round": "Round 1", "team": "Team D", "score": 88 },
+      { "round": "Semifinals", "team": "Team A", "score": 95 },
+      { "round": "Semifinals", "team": "Team C", "score": 91 },
+      { "round": "Finals", "team": "Team A", "score": 102 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": { "field": "team", "type": "nominal", "axis": { "title": "Team" } },
+    "x": { "field": "score", "type": "quantitative", "axis": { "title": "Score" } },
+    "color": { "field": "round", "type": "nominal", "legend": { "title": "Round" } },
+    "tooltip": [
+      { "field": "team", "type": "nominal" },
+      { "field": "round", "type": "nominal" },
+      { "field": "score", "type": "quantitative" }
+    ]
+  },
+  "title": "Tournament Bracket Scores"
+}

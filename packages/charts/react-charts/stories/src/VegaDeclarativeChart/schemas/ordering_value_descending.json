@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top selling products ordered by sales value (descending)",
+  "width": 500,
+  "height": 350,
+  "data": {
+    "values": [
+      { "product": "Widget A", "units_sold": 1200 },
+      { "product": "Widget B", "units_sold": 3500 },
+      { "product": "Widget C", "units_sold": 890 },
+      { "product": "Widget D", "units_sold": 4200 },
+      { "product": "Widget E", "units_sold": 2100 },
+      { "product": "Widget F", "units_sold": 1580 },
+      { "product": "Widget G", "units_sold": 2900 },
+      { "product": "Widget H", "units_sold": 750 }
+    ]
+  },
+  "mark": { "type": "bar", "color": "#D83B01" },
+  "encoding": {
+    "x": {
+      "field": "product",
+      "type": "nominal",
+      "sort": { "field": "units_sold", "op": "sum", "order": "descending" },
+      "axis": { "title": "Product", "labelAngle": -45 }
+    },
+    "y": {
+      "field": "units_sold",
+      "type": "quantitative",
+      "axis": {
+        "title": "Units Sold",
+        "format": ",.0f"
+      }
+    }
+  },
+  "title": "Best Selling Products (Ordered by Sales Volume)"
+}

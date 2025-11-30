@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Quarterly revenue by product category",
+  "data": {
+    "values": [
+      { "quarter": "Q1", "category": "Electronics", "revenue": 45000 },
+      { "quarter": "Q1", "category": "Clothing", "revenue": 32000 },
+      { "quarter": "Q1", "category": "Food", "revenue": 28000 },
+      { "quarter": "Q2", "category": "Electronics", "revenue": 52000 },
+      { "quarter": "Q2", "category": "Clothing", "revenue": 38000 },
+      { "quarter": "Q2", "category": "Food", "revenue": 31000 },
+      { "quarter": "Q3", "category": "Electronics", "revenue": 48000 },
+      { "quarter": "Q3", "category": "Clothing", "revenue": 41000 },
+      { "quarter": "Q3", "category": "Food", "revenue": 29000 },
+      { "quarter": "Q4", "category": "Electronics", "revenue": 61000 },
+      { "quarter": "Q4", "category": "Clothing", "revenue": 47000 },
+      { "quarter": "Q4", "category": "Food", "revenue": 35000 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "quarter", "type": "nominal", "axis": { "title": "Quarter" } },
+    "y": { "field": "revenue", "type": "quantitative", "axis": { "title": "Revenue ($)" } },
+    "color": { "field": "category", "type": "nominal" }
+  },
+  "title": "Quarterly Revenue by Category"
+}

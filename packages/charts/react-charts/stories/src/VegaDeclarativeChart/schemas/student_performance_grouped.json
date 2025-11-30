@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Student performance by subject",
+  "data": {
+    "values": [
+      { "student": "Student A", "subject": "Math", "score": 85 },
+      { "student": "Student A", "subject": "Science", "score": 78 },
+      { "student": "Student A", "subject": "English", "score": 92 },
+      { "student": "Student B", "subject": "Math", "score": 72 },
+      { "student": "Student B", "subject": "Science", "score": 88 },
+      { "student": "Student B", "subject": "English", "score": 81 },
+      { "student": "Student C", "subject": "Math", "score": 95 },
+      { "student": "Student C", "subject": "Science", "score": 91 },
+      { "student": "Student C", "subject": "English", "score": 87 },
+      { "student": "Student D", "subject": "Math", "score": 68 },
+      { "student": "Student D", "subject": "Science", "score": 75 },
+      { "student": "Student D", "subject": "English", "score": 79 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "student", "type": "nominal", "axis": { "title": "Student" } },
+    "y": { "field": "score", "type": "quantitative", "axis": { "title": "Score" } },
+    "color": { "field": "subject", "type": "nominal", "legend": { "title": "Subject" } },
+    "xOffset": { "field": "subject" }
+  },
+  "title": "Student Performance by Subject"
+}

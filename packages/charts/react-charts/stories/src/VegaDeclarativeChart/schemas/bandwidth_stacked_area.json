@@ -1,0 +1,23 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Network bandwidth usage",
+  "data": {
+    "values": [
+      { "hour": "2024-11-27T00:00:00", "inbound": 125, "outbound": 95 },
+      { "hour": "2024-11-27T04:00:00", "inbound": 85, "outbound": 65 },
+      { "hour": "2024-11-27T08:00:00", "inbound": 245, "outbound": 185 },
+      { "hour": "2024-11-27T12:00:00", "inbound": 385, "outbound": 295 },
+      { "hour": "2024-11-27T16:00:00", "inbound": 425, "outbound": 325 },
+      { "hour": "2024-11-27T20:00:00", "inbound": 285, "outbound": 215 }
+    ]
+  },
+  "transform": [{ "fold": ["inbound", "outbound"], "as": ["direction", "bandwidth"] }],
+  "mark": "area",
+  "encoding": {
+    "x": { "field": "hour", "type": "temporal", "axis": { "title": "Hour", "format": "%H:%M" } },
+    "y": { "field": "bandwidth", "type": "quantitative", "axis": { "title": "Bandwidth (Mbps)" } },
+    "color": { "field": "direction", "type": "nominal", "legend": { "title": "Direction" } },
+    "opacity": { "value": 0.7 }
+  },
+  "title": "Network Bandwidth Usage"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Market share distribution",
+  "data": {
+    "values": [
+      { "company": "Company A", "share": 35 },
+      { "company": "Company B", "share": 28 },
+      { "company": "Company C", "share": 22 },
+      { "company": "Company D", "share": 15 }
+    ]
+  },
+  "mark": { "type": "arc", "innerRadius": 60, "outerRadius": 120 },
+  "encoding": {
+    "theta": { "field": "share", "type": "quantitative" },
+    "color": { "field": "company", "type": "nominal" }
+  },
+  "title": "Market Share Distribution"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Patient age distribution",
+  "data": {
+    "values": [
+      { "ageGroup": "0-10", "patients": 145 },
+      { "ageGroup": "11-20", "patients": 98 },
+      { "ageGroup": "21-30", "patients": 234 },
+      { "ageGroup": "31-40", "patients": 312 },
+      { "ageGroup": "41-50", "patients": 287 },
+      { "ageGroup": "51-60", "patients": 342 },
+      { "ageGroup": "61-70", "patients": 398 },
+      { "ageGroup": "71-80", "patients": 276 },
+      { "ageGroup": "81+", "patients": 189 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "ageGroup", "type": "ordinal", "axis": { "title": "Age Group", "labelAngle": 0 } },
+    "y": { "field": "patients", "type": "quantitative", "axis": { "title": "Number of Patients" } },
+    "color": { "field": "patients", "type": "quantitative", "scale": { "scheme": "teal" }, "legend": null }
+  },
+  "title": "Patient Age Distribution"
+}

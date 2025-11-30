@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sales comparison by quarter and region",
+  "data": {
+    "values": [
+      { "quarter": "Q1", "region": "North", "sales": 45000 },
+      { "quarter": "Q1", "region": "South", "sales": 38000 },
+      { "quarter": "Q2", "region": "North", "sales": 52000 },
+      { "quarter": "Q2", "region": "South", "sales": 41000 },
+      { "quarter": "Q3", "region": "North", "sales": 48000 },
+      { "quarter": "Q3", "region": "South", "sales": 39000 },
+      { "quarter": "Q4", "region": "North", "sales": 61000 },
+      { "quarter": "Q4", "region": "South", "sales": 47000 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "quarter", "type": "nominal", "axis": { "title": "Quarter" } },
+    "y": { "field": "sales", "type": "quantitative", "axis": { "title": "Sales ($)" } },
+    "color": { "field": "region", "type": "nominal" },
+    "xOffset": { "field": "region" }
+  },
+  "title": "Quarterly Sales by Region"
+}

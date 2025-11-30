@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Daily impression trends",
+  "data": {
+    "values": [
+      { "date": "2024-11-01", "impressions": 125000 },
+      { "date": "2024-11-02", "impressions": 132000 },
+      { "date": "2024-11-03", "impressions": 118000 },
+      { "date": "2024-11-04", "impressions": 145000 },
+      { "date": "2024-11-05", "impressions": 156000 },
+      { "date": "2024-11-06", "impressions": 142000 },
+      { "date": "2024-11-07", "impressions": 138000 },
+      { "date": "2024-11-08", "impressions": 168000 },
+      { "date": "2024-11-09", "impressions": 175000 },
+      { "date": "2024-11-10", "impressions": 182000 }
+    ]
+  },
+  "mark": { "type": "line", "point": true, "strokeWidth": 2 },
+  "encoding": {
+    "x": { "field": "date", "type": "temporal", "axis": { "title": "Date", "format": "%b %d" } },
+    "y": { "field": "impressions", "type": "quantitative", "axis": { "title": "Impressions", "format": ",.0f" } },
+    "tooltip": [
+      { "field": "date", "type": "temporal", "format": "%B %d, %Y" },
+      { "field": "impressions", "type": "quantitative", "format": ",.0f" }
+    ]
+  },
+  "title": "Daily Ad Impressions Trend"
+}

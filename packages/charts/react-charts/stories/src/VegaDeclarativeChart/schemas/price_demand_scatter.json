@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Price vs demand relationship",
+  "data": {
+    "values": [
+      { "price": 299, "demand": 1250, "product": "Budget Model" },
+      { "price": 499, "demand": 2100, "product": "Mid-Range" },
+      { "price": 699, "demand": 1800, "product": "Premium" },
+      { "price": 999, "demand": 950, "product": "Pro Model" },
+      { "price": 1299, "demand": 420, "product": "Ultra Pro" },
+      { "price": 399, "demand": 1950, "product": "Standard" },
+      { "price": 599, "demand": 1650, "product": "Plus" }
+    ]
+  },
+  "mark": { "type": "circle", "size": 200 },
+  "encoding": {
+    "x": { "field": "price", "type": "quantitative", "axis": { "title": "Price ($)", "format": "$,.0f" } },
+    "y": { "field": "demand", "type": "quantitative", "axis": { "title": "Monthly Demand (units)" } },
+    "color": { "field": "product", "type": "nominal", "legend": { "title": "Product" } },
+    "tooltip": [
+      { "field": "product", "type": "nominal" },
+      { "field": "price", "type": "quantitative", "format": "$,.0f" },
+      { "field": "demand", "type": "quantitative", "format": ",.0f" }
+    ]
+  },
+  "title": "Price vs Demand Analysis"
+}

@@ -698,6 +698,54 @@ const createAnnotationId = (text: string, index: number): string => {
 
 const DEFAULT_ARROW_OFFSET = -40;
 
+const resolveAlignProperty = <T>(
+  primaryValue: string | undefined,
+  fallbackValue: string | undefined,
+  mapper: (value?: string) => T | undefined,
+): T | undefined => mapper(primaryValue) ?? mapper(fallbackValue);
+
+const calculateOffset = (
+  arrowValue: unknown,
+  arrowRef: string | undefined,
+  shiftValue: unknown,
+): { offset?: number; hasExplicit: boolean } => {
+  let hasExplicit = false;
+  let total = 0;
+  const arrow = toFiniteNumber(arrowValue);
+  const ref = typeof arrowRef === 'string' ? arrowRef.toLowerCase() : undefined;
+  if (arrow !== undefined && (ref === undefined || ref === 'pixel')) {
+    total += arrow;
+    hasExplicit = true;
+  }
+  const shift = toFiniteNumber(shiftValue);
+  if (shift !== undefined) {
+    total += shift;
+    hasExplicit = true;
+  }
+  return { offset: hasExplicit && total !== 0 ? total : undefined, hasExplicit };
+};
+
+const resolveRelativeCoordinate = (
+  axis: 'x' | 'y',
+  refType: 'axis' | 'relative',
+  value: unknown,
+  annotation: NonNullable<PlotlyAnnotation>,
+  layout: Partial<Layout> | undefined,
+  data: Data[] | undefined,
+): number | undefined => {
+  const normalize = (val: number | undefined) => (axis === 'y' ? transformRelativeYForChart(val) : val);
+  if (refType === 'relative') {
+    return normalize(toFiniteNumber(value));
+  }
+  const axisRef = (axis === 'x' ? annotation.xref : annotation.yref) as string | undefined;
+  const relative = toRelativeCoordinate(
+    value,
+    getAxisLayoutByRef(layout, axisRef, axis),
+    getAxisNumericRangeFromData(axis, axisRef, layout, data),
+  );
+  return relative === undefined ? undefined : normalize(relative);
+};
+
 const mapArrowsideToArrow = (annotation: PlotlyAnnotation): ChartAnnotationArrowHead => {
   let includeStart = false;
   let includeEnd = false;
@@ -772,84 +820,60 @@ const convertPlotlyAnnotation = (
     return undefined;
   }
 
-  const xRefType = resolveRefType(annotation.xref as string | undefined, 'x');
-  const yRefType = resolveRefType(annotation.yref as string | undefined, 'y');
+  const resolvedAnnotation = annotation as NonNullable<PlotlyAnnotation>;
+
+  const xRefType = resolveRefType(resolvedAnnotation.xref as string | undefined, 'x');
+  const yRefType = resolveRefType(resolvedAnnotation.yref as string | undefined, 'y');
 
   if (!xRefType || !yRefType) {
     return undefined;
   }
 
-  let coordinates: ChartAnnotation['coordinates'] | undefined;
-
-  if (xRefType === 'axis' && yRefType === 'axis') {
-    const xAxisLayout = getAxisLayoutByRef(layout, annotation.xref as string | undefined, 'x');
-    const yAxisLayout = getAxisLayoutByRef(layout, annotation.yref as string | undefined, 'y');
-    const xValue = convertDataValue(annotation.x, xAxisLayout);
-    const yValue = convertDataValue(annotation.y, yAxisLayout);
-    if (xValue === undefined || yValue === undefined) {
-      return undefined;
+  const coordinates: ChartAnnotation['coordinates'] | undefined = (() => {
+    if (xRefType === 'axis' && yRefType === 'axis') {
+      const xAxisLayout = getAxisLayoutByRef(layout, resolvedAnnotation.xref as string | undefined, 'x');
+      const yAxisLayout = getAxisLayoutByRef(layout, resolvedAnnotation.yref as string | undefined, 'y');
+      const xValue = convertDataValue(resolvedAnnotation.x, xAxisLayout);
+      const yValue = convertDataValue(resolvedAnnotation.y, yAxisLayout);
+      if (xValue === undefined || yValue === undefined) {
+        return undefined;
+      }
+      const yRefNormalized = typeof resolvedAnnotation.yref === 'string' ? resolvedAnnotation.yref.toLowerCase() : undefined;
+      return {
+        type: 'data',
+        x: xValue,
+        y: yValue,
+        ...(yRefNormalized === 'y2' ? { yAxis: 'secondary' as const } : {}),
+      };
     }
-    const yRefNormalized = typeof annotation.yref === 'string' ? annotation.yref.toLowerCase() : undefined;
-    coordinates = {
-      type: 'data',
-      x: xValue,
-      y: yValue,
-      ...(yRefNormalized === 'y2' ? { yAxis: 'secondary' as const } : {}),
-    };
-  } else if (xRefType === 'relative' && yRefType === 'relative') {
-    const xValue = toFiniteNumber(annotation.x);
-    const yValue = toFiniteNumber(annotation.y);
-    const chartRelativeY = transformRelativeYForChart(yValue);
-    if (xValue === undefined || chartRelativeY === undefined) {
-      return undefined;
+    if (xRefType === 'pixel' && yRefType === 'pixel') {
+      const xValue = toFiniteNumber(resolvedAnnotation.x);
+      const yValue = toFiniteNumber(resolvedAnnotation.y);
+      if (xValue === undefined || yValue === undefined) {
+        return undefined;
+      }
+      return {
+        type: 'pixel',
+        x: xValue,
+        y: yValue,
+      };
     }
-    coordinates = {
-      type: 'relative',
-      x: xValue,
-      y: chartRelativeY,
-    };
-  } else if (xRefType === 'relative' && yRefType === 'axis') {
-    const xValue = toFiniteNumber(annotation.x);
-    const yAxisLayout = getAxisLayoutByRef(layout, annotation.yref as string | undefined, 'y');
-    const yFallbackRange = getAxisNumericRangeFromData('y', annotation.yref as string | undefined, layout, data);
-    const yRelative = toRelativeCoordinate(annotation.y, yAxisLayout, yFallbackRange);
-    const chartRelativeY = transformRelativeYForChart(yRelative);
-    if (xValue === undefined || chartRelativeY === undefined) {
-      return undefined;
+    if (xRefType !== 'pixel' && yRefType !== 'pixel') {
+      const xRelative = resolveRelativeCoordinate('x', xRefType === 'axis' ? 'axis' : 'relative', resolvedAnnotation.x, resolvedAnnotation, layout, data);
+      const yRelative = resolveRelativeCoordinate('y', yRefType === 'axis' ? 'axis' : 'relative', resolvedAnnotation.y, resolvedAnnotation, layout, data);
+      if (xRelative === undefined || yRelative === undefined) {
+        return undefined;
+      }
+      return {
+        type: 'relative',
+        x: xRelative,
+        y: yRelative,
+      };
     }
-    coordinates = {
-      type: 'relative',
-      x: xValue,
-      y: chartRelativeY,
-    };
-  } else if (xRefType === 'axis' && yRefType === 'relative') {
-    const yValue = toFiniteNumber(annotation.y);
-    const xAxisLayout = getAxisLayoutByRef(layout, annotation.xref as string | undefined, 'x');
-    const xFallbackRange = getAxisNumericRangeFromData('x', annotation.xref as string | undefined, layout, data);
-    const xRelative = toRelativeCoordinate(annotation.x, xAxisLayout, xFallbackRange);
-    const chartRelativeY = transformRelativeYForChart(yValue);
-    if (xRelative === undefined || chartRelativeY === undefined) {
-      return undefined;
-    }
-    coordinates = {
-      type: 'relative',
-      x: xRelative,
-      y: chartRelativeY,
-    };
-  } else if (xRefType === 'pixel' && yRefType === 'pixel') {
-    const xValue = toFiniteNumber(annotation.x);
-    const yValue = toFiniteNumber(annotation.y);
-    if (xValue === undefined || yValue === undefined) {
-      return undefined;
-    }
-    coordinates = {
-      type: 'pixel',
-      x: xValue,
-      y: yValue,
-    };
-  } else {
     return undefined;
-  }
+  })();
+
+  if (!coordinates) return undefined;
 
   const textValue = annotation.text;
   const rawText = textValue === undefined || textValue === null ? '' : String(textValue);
@@ -872,68 +896,19 @@ const convertPlotlyAnnotation = (
     layoutProps.clipToBounds = true;
   }
 
-  const horizontalAlign = mapHorizontalAlign(annotation.xanchor as string | undefined);
-  if (horizontalAlign) {
-    layoutProps.align = horizontalAlign;
-  }
+  const horizontalAlign = resolveAlignProperty(resolvedAnnotation.xanchor as string | undefined, (resolvedAnnotation as { align?: string }).align, mapHorizontalAlign);
+  if (horizontalAlign) layoutProps.align = horizontalAlign;
 
-  if (!layoutProps.align) {
-    const alignProp = mapHorizontalAlign((annotation as { align?: string }).align);
-    if (alignProp) {
-      layoutProps.align = alignProp;
-    }
-  }
+  const verticalAlign = resolveAlignProperty(resolvedAnnotation.yanchor as string | undefined, (resolvedAnnotation as { valign?: string }).valign, mapVerticalAlign);
+  if (verticalAlign) layoutProps.verticalAlign = verticalAlign;
 
-  const verticalAlign = mapVerticalAlign(annotation.yanchor as string | undefined);
-  if (verticalAlign) {
-    layoutProps.verticalAlign = verticalAlign;
-  }
+  const offsetX = calculateOffset(resolvedAnnotation.ax, resolvedAnnotation.axref as string | undefined, resolvedAnnotation.xshift);
+  const offsetY = calculateOffset(resolvedAnnotation.ay, resolvedAnnotation.ayref as string | undefined, resolvedAnnotation.yshift);
 
-  if (!layoutProps.verticalAlign) {
-    const valignProp = mapVerticalAlign((annotation as { valign?: string }).valign);
-    if (valignProp) {
-      layoutProps.verticalAlign = valignProp;
-    }
-  }
+  if (offsetX.offset !== undefined) layoutProps.offsetX = offsetX.offset;
+  if (offsetY.offset !== undefined) layoutProps.offsetY = offsetY.offset;
 
-  const offsetXComponents: number[] = [];
-  let hasExplicitOffset = false;
-  const ax = toFiniteNumber(annotation.ax);
-  const axRef = typeof annotation.axref === 'string' ? annotation.axref.toLowerCase() : undefined;
-  if (ax !== undefined && (axRef === undefined || axRef === 'pixel')) {
-    offsetXComponents.push(ax);
-    hasExplicitOffset = true;
-  }
-  const xShift = toFiniteNumber(annotation.xshift);
-  if (xShift !== undefined) {
-    offsetXComponents.push(xShift);
-    hasExplicitOffset = true;
-  }
-  if (offsetXComponents.length > 0) {
-    const offsetX = offsetXComponents.reduce((sum, value) => sum + value, 0);
-    if (offsetX !== 0) {
-      layoutProps.offsetX = offsetX;
-    }
-  }
-
-  const offsetYComponents: number[] = [];
-  const ay = toFiniteNumber(annotation.ay);
-  const ayRef = typeof annotation.ayref === 'string' ? annotation.ayref.toLowerCase() : undefined;
-  if (ay !== undefined && (ayRef === undefined || ayRef === 'pixel')) {
-    offsetYComponents.push(ay);
-    hasExplicitOffset = true;
-  }
-  const yShift = toFiniteNumber(annotation.yshift);
-  if (yShift !== undefined) {
-    offsetYComponents.push(yShift);
-    hasExplicitOffset = true;
-  }
-  if (offsetYComponents.length > 0) {
-    const offsetY = offsetYComponents.reduce((sum, value) => sum + value, 0);
-    if (offsetY !== 0) {
-      layoutProps.offsetY = offsetY;
-    }
-  }
+  const hasExplicitOffset = offsetX.hasExplicit || offsetY.hasExplicit;
 
   if (showArrow && !hasExplicitOffset && layoutProps.offsetY === undefined) {
     layoutProps.offsetY = DEFAULT_ARROW_OFFSET;
