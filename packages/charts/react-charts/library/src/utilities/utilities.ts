@@ -81,6 +81,7 @@ import {
   isInvalidValue,
   isNumber,
 } from '@fluentui/chart-utilities';
+import { cartesianchartClassNames } from '../components/CommonComponents/useCartesianChartStyles.styles';
 
 export const MIN_DOMAIN_MARGIN = 8;
 export const MIN_DONUT_RADIUS = 1;
@@ -448,6 +449,7 @@ export function createDateXAxis(
     tickPadding = 6,
     xAxistickSize = 6,
     xAxisCount,
+    hideTickOverlap,
     calcMaxLabelWidth,
     tickStep,
     tick0,
@@ -508,10 +510,11 @@ export function createDateXAxis(
     return formatDateToLocaleString(domainValue, culture, useUTC ? true : false, false, formatOptions);
   };
 
-  const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 40;
-  const [start, end] = xAxisScale.range();
-  const maxPossibleTickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
-  tickCount = Math.min(maxPossibleTickCount, xAxisCount ?? tickCount);
+  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
+    const longestLabelWidth = calcMaxLabelWidth(xAxisScale.ticks().map(tickFormat)) + 40;
+    const [start, end] = xAxisScale.range();
+    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
+  }
 
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
@@ -1155,8 +1158,10 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
       const maxWidth = Array.isArray(width) ? width[tickIndex] : width;
       while ((word = words.pop()!)) {
         line.push(word);
-        tspan.text(line.join(' '));
-        if (getStringSize(line.join(' '), '.tick text', chartContainer).width > maxWidth && line.length > 1) {
+        const label = line.join(' ');
+        tspan.text(label);
+        const labelWidth = getTextSize(label, `.${cartesianchartClassNames.xAxis} text`, chartContainer).width;
+        if (labelWidth > maxWidth && line.length > 1) {
           line.pop();
           tspan.text(line.join(' '));
           line = [word];
@@ -1173,7 +1178,9 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
   });
   if (!showXAxisLablesTooltip) {
     let maxHeight: number = 12; // intial value to render corretly first time
-    const boxHeight = document.querySelector('.tick tspan')?.getBoundingClientRect().height ?? 0;
+    const boxHeight =
+      (chartContainer ?? document).querySelector(`.${cartesianchartClassNames.xAxis} tspan`)?.getBoundingClientRect()
+        .height ?? 0;
     if (boxHeight > maxHeight) {
       maxHeight = boxHeight;
     }
@@ -2135,16 +2142,11 @@ export const measureTextWithDOM = (
     measurementSpan = document.createElement('span');
     measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
     measurementSpan.setAttribute('aria-hidden', 'true');
-
-    if (chartContainer) {
-      chartContainer.appendChild(measurementSpan);
-    } else {
-      document.body.appendChild(measurementSpan);
-    }
+    (chartContainer ?? document.body).appendChild(measurementSpan);
   }
 
   Object.assign(measurementSpan.style, MEASUREMENT_SPAN_STYLE);
-  const refEl = document.querySelector(cssSelector);
+  const refEl = (chartContainer ?? document).querySelector(cssSelector);
   if (refEl) {
     copyStyle(TEXT_STYLE_PROPERTIES, refEl, measurementSpan);
   }
@@ -2155,15 +2157,15 @@ export const measureTextWithDOM = (
 };
 
 const CACHE_SIZE = 2000;
-const stringCache = new Map<string, { width: number; height: number }>();
+const textSizeCache = new Map<string, { width: number; height: number }>();
 
-export const getStringSize = (
+export const getTextSize = (
   text: string | number,
   cssSelector: string,
   chartContainer?: HTMLElement | null,
 ): { width: number; height: number } => {
   const cacheKey = `${text}|${cssSelector}`;
-  const cachedResult = stringCache.get(cacheKey);
+  const cachedResult = textSizeCache.get(cacheKey);
 
   if (cachedResult) {
     return cachedResult;
@@ -2171,13 +2173,14 @@ export const getStringSize = (
 
   const { width, height } = measureTextWithDOM(text, cssSelector, chartContainer);
 
-  if (stringCache.size >= CACHE_SIZE) {
-    const firstKey = stringCache.keys().next().value;
+  // TODO: Improve cache eviction strategy if needed (e.g., LRU)
+  if (textSizeCache.size >= CACHE_SIZE) {
+    const firstKey = textSizeCache.keys().next().value;
     if (!isInvalidValue(firstKey)) {
-      stringCache.delete(firstKey!);
+      textSizeCache.delete(firstKey!);
     }
   }
-  stringCache.set(cacheKey, { width, height });
+  textSizeCache.set(cacheKey, { width, height });
 
   return { width, height };
 };
@@ -2505,8 +2508,8 @@ export const autoLayoutXAxisLabels = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return scale(tickValues[index] as any) ?? 0;
   };
-  const getTextWidth = (text: string) => {
-    return getStringSize(text, '.tick text', chartContainer).width;
+  const getLabelWidth = (text: string) => {
+    return getTextSize(text, `.${cartesianchartClassNames.xAxis} text`, chartContainer).width;
   };
 
   for (let i = 0; i < tickValues.length; i++) {
@@ -2515,12 +2518,12 @@ export const autoLayoutXAxisLabels = (
     const rightSpace = Math.abs(i + 1 < tickValues.length ? (getTickPosition(i + 1) - position) / 2 : end - position);
     const maxAvailableWidth = Math.min(leftSpace, rightSpace) * 2 - 8; // 4px padding on both sides
     const label = tickLabels[i];
-    const labelWidth = getTextWidth(label);
+    const labelWidth = getLabelWidth(label);
 
     maxWidths.push(maxAvailableWidth);
 
     if (labelWidth > maxAvailableWidth) {
-      const longestWordWidth = Math.max(...label.split(/\s+/).map(word => getTextWidth(word)));
+      const longestWordWidth = Math.max(...label.split(/\s+/).map(word => getLabelWidth(word)));
       if (longestWordWidth <= maxAvailableWidth) {
         requiresWrap = true;
       } else {
@@ -2558,6 +2561,10 @@ const truncateAndStaggerXAxisLabels = (
   containerWidth: number,
   chartContainer?: HTMLElement | null,
 ): number => {
+  if (!axisNode) {
+    return 0;
+  }
+
   let maxHeight = 12;
 
   const [rangeStart, rangeEnd] = scale.range();
@@ -2569,8 +2576,8 @@ const truncateAndStaggerXAxisLabels = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return scale(tickValues[index] as any) ?? 0;
   };
-  const getTextSize = (text: string) => {
-    return getStringSize(text, '.tick text', chartContainer);
+  const getLabelSize = (text: string) => {
+    return getTextSize(text, `.${cartesianchartClassNames.xAxis} text`, chartContainer);
   };
 
   d3Select(axisNode)
@@ -2581,35 +2588,28 @@ const truncateAndStaggerXAxisLabels = (
       const rightSpace = Math.abs(i + 1 < tickValues.length ? getTickPosition(i + 1) - position : end - position);
       const maxAvailableWidth = Math.min(leftSpace, rightSpace) * 2 - 8; // 4px padding on both sides
       const label = tickLabels[i];
-      const { width: labelWidth, height: labelHeight } = getTextSize(label);
-      maxHeight = Math.max(maxHeight, labelHeight);
       const textNode = d3Select(this).text(null).attr('data-full', label);
       const lineHeight = 1.1; // ems
       const y = textNode.attr('y');
       const dy = parseFloat(textNode.attr('dy'));
-
-      if (labelWidth <= maxAvailableWidth) {
-        textNode
-          .append('tspan')
-          .attr('x', 0)
-          .attr('y', y)
-          .attr('dy', (i % 2 === 1 ? lineHeight : 0) + dy + 'em')
-          .text(label);
-        return;
-      }
 
       textNode
         .append('tspan')
         .attr('x', 0)
         .attr('y', y)
         .attr('dy', (i % 2 === 1 ? lineHeight : 0) + dy + 'em')
-        .text(truncateTextToFitWidth(label, maxAvailableWidth, (s: string) => getTextSize(s).width));
+        .text(truncateTextToFitWidth(label, maxAvailableWidth, (s: string) => getLabelSize(s).width));
+      maxHeight = Math.max(maxHeight, getLabelSize(label).height);
     });
 
   return tickValues.length > 1 ? maxHeight : 0;
 };
 
 const truncateTextToFitWidth = (text: string, maxWidth: number, measure: (s: string) => number): string => {
+  if (measure(text) <= maxWidth) {
+    return text;
+  }
+
   let lo = 1;
   let hi = text.length;
 
