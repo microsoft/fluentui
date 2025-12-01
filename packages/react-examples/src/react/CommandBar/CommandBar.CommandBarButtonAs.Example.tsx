@@ -59,7 +59,7 @@ const overflowButtonProps: IButtonProps = {
 };
 
 /** Command bar which renders the Share button with a coachmark */
-// eslint-disable-next-line @fluentui/max-len
+
 const IndividualCommandBarButtonAsExample: React.FunctionComponent<
   IIndividualCommandBarButtonAsExampleProps
 > = props => {

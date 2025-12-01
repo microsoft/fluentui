@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { presenceMotionSlot } from '@fluentui/react-motion';
+import { PresenceDirection, presenceMotionSlot } from '@fluentui/react-motion';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -29,6 +29,7 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
   const { size, position, open, unmountOnClose } = useDrawerDefaultProps(props);
   const { separator = false, surfaceMotion } = props;
   const { dir } = useFluent();
+  const [animationDirection, setAnimationDirection] = React.useState<PresenceDirection>(open ? 'enter' : 'exit');
 
   return {
     components: {
@@ -53,6 +54,7 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
     size,
     separator,
     unmountOnClose,
+    animationDirection,
     surfaceMotion: presenceMotionSlot<DrawerMotionParams>(surfaceMotion, {
       elementType: InlineDrawerMotion,
       defaultProps: {
@@ -60,9 +62,14 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
         size,
         dir,
         visible: open,
-        unmountOnClose,
         appear: unmountOnClose,
         unmountOnExit: unmountOnClose,
+        onMotionFinish: (_, { direction }) => setAnimationDirection(direction),
+        onMotionStart: (_, { direction }) => {
+          if (direction === 'enter') {
+            setAnimationDirection('enter');
+          }
+        },
       },
     }),
 

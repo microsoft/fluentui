@@ -221,8 +221,6 @@ describe('Donut Chart - axe-core', () => {
   });
 });
 
-/* eslint-disable @typescript-eslint/no-deprecated */
-
 describe('DonutChart snapShot testing', () => {
   it('renders DonutChart correctly', () => {
     const { container } = render(<DonutChart data={chartPointsDC} innerRadius={55} />);

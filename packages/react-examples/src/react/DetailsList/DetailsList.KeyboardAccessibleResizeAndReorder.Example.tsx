@@ -222,12 +222,12 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         switch (ev.key) {
           case 'ArrowLeft':
             detailsList?.updateColumn(column, {
-              width: column?.currentWidth ? column?.currentWidth * 0.9 : column.minWidth,
+              width: column?.currentWidth ? column.currentWidth * 0.9 : column.minWidth,
             });
             break;
           case 'ArrowRight':
             detailsList?.updateColumn(column, {
-              width: column?.currentWidth ? column?.currentWidth * 1.1 : column.minWidth,
+              width: column?.currentWidth ? column.currentWidth * 1.1 : column.minWidth,
             });
             break;
         }
