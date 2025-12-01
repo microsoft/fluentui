@@ -3,7 +3,6 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import { useMenuGrid_unstable } from './useMenuGrid';
 import { useMenuGridContextValues_unstable } from './useMenuGridContextValues';
-import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 describe('useMenuGridContextValues_unstable', () => {
   it('should return a value for "menuGrid"', () => {
