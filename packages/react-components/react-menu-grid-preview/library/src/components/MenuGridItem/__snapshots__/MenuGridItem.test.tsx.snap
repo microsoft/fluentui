@@ -7,7 +7,7 @@ exports[`MenuGridItem renders a default state 1`] = `
   tabindex="0"
 >
   <div
-    class="fui-MenuGridCell fui-MenuGridRow__content"
+    class="fui-MenuGridCell fui-MenuGridItem__content"
     role="gridcell"
   >
     Default MenuGridItem

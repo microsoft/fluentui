@@ -7,6 +7,19 @@ describe('MenuGridItem', () => {
   isConformant({
     Component: MenuGridItem,
     displayName: 'MenuGridItem',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            content: 'Test Content',
+            subText: 'Test Sub Text',
+            firstSubAction: 'Test First Sub Action',
+            secondSubAction: 'Test Second Sub Action',
+          },
+        },
+      ],
+    },
   });
 
   /**
