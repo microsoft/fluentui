@@ -5,7 +5,7 @@ import { IStackTokens, Stack } from '@fluentui/react';
 import type { JSXElement } from '@fluentui/utilities';
 
 // Workaround to prevent errors on usage of Slider, without disabling all deprecation checks
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+
 const Slider = DeprecatedSlider;
 
 export interface ISliderBasicExampleState {

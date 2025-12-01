@@ -58,9 +58,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     },
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const renderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSXElement => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderCalloutItem = (item: string, index: number | undefined): JSXElement => {
       const listOption = (): void => {
         onCalloutDismiss();

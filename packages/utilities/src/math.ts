@@ -14,7 +14,7 @@ export function getDistanceBetweenPoints(point1: Point, point2: Point): number {
   const top2 = point2.top || point2.y || 0;
   /* eslint-enable @typescript-eslint/no-deprecated */
 
-  let distance = Math.sqrt(Math.pow(left1 - left2, 2) + Math.pow(top1 - top2, 2));
+  let distance = Math.sqrt((left1 - left2) ** 2 + (top1 - top2) ** 2);
 
   return distance;
 }
@@ -114,6 +114,6 @@ export function calculatePrecision(value: number | string): number {
  * @param precision - The number of decimal places to round the number to
  */
 export function precisionRound(value: number, precision: number, base: number = 10): number {
-  const exp = Math.pow(base, precision);
+  const exp = base ** precision;
   return Math.round(value * exp) / exp;
 }
