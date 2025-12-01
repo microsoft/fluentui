@@ -1,4 +1,4 @@
-import { RangeSlider } from '@fluentui/react-slider';
+import { RangeSlider } from '@fluentui/react-components';
 
 import descriptionMd from './RangeSliderDescription.md';
 import bestPracticesMd from './RangeSliderBestPractices.md';
