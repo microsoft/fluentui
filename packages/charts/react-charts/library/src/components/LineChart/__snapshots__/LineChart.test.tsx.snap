@@ -1995,11 +1995,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId__r_8e_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -6869,21 +6864,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="20"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="20"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -6902,21 +6890,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="40"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="40"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -6935,21 +6916,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="60"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="60"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -7332,13 +7306,13 @@ Object {
             </div>
           </div>
         </div>
+        <div
+          class="fui-line__tooltip"
+          id="LineChartTooltipId__r_8e_"
+          style="opacity: 0;"
+        />
       </div>
     </div>
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId__r_8e_"
-      style="opacity: 0;"
-    />
   </body>,
   "container": <div>
     <div
@@ -7382,21 +7356,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="20"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="20"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -7415,21 +7382,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="40"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="40"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -7448,21 +7408,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="60"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="60"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -7845,6 +7798,11 @@ Object {
           </div>
         </div>
       </div>
+      <div
+        class="fui-line__tooltip"
+        id="LineChartTooltipId__r_8e_"
+        style="opacity: 0;"
+      />
     </div>
   </div>,
   "debug": [Function],
@@ -7907,11 +7865,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-line__tooltip"
-      id="LineChartTooltipId__r_8e_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"

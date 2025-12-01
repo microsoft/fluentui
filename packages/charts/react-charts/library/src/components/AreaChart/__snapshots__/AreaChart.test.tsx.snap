@@ -4101,11 +4101,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-ac__tooltip"
-      id="AreaChartTooltipID_r_5i_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -5877,11 +5872,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-ac__tooltip"
-      id="AreaChartTooltipID_r_5i_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -7653,11 +7643,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-ac__tooltip"
-      id="AreaChartTooltipID_r_5i_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -19810,21 +19795,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="20"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="20"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -19843,21 +19821,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="25"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="25"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -19876,21 +19847,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="30"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="30"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -19909,21 +19873,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="35"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="35"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -19942,21 +19899,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="40"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="40"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -19975,21 +19925,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="45"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="45"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -20008,21 +19951,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="50"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="50"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -20041,21 +19977,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="55"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="55"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -20074,21 +20003,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="60"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="60"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -20107,21 +20029,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="65"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="65"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="LessLength"
                     x="0"
                     y="11"
                   >
@@ -20761,13 +20676,13 @@ Object {
             </div>
           </div>
         </div>
+        <div
+          class="fui-ac__tooltip"
+          id="AreaChartTooltipID_r_5i_"
+          style="opacity: 0;"
+        />
       </div>
     </div>
-    <div
-      class="fui-ac__tooltip"
-      id="AreaChartTooltipID_r_5i_"
-      style="opacity: 0;"
-    />
   </body>,
   "container": <div>
     <div
@@ -20811,21 +20726,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="20"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="20"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -20844,21 +20752,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="25"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="25"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -20877,21 +20778,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="30"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="30"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -20910,21 +20804,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="35"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="35"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -20943,21 +20830,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="40"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="40"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -20976,21 +20856,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="45"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="45"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -21009,21 +20882,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="50"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="50"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -21042,21 +20908,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="55"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="55"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -21075,21 +20934,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="60"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="60"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -21108,21 +20960,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="65"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="65"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="LessLength"
                   x="0"
                   y="11"
                 >
@@ -21762,6 +21607,11 @@ Object {
           </div>
         </div>
       </div>
+      <div
+        class="fui-ac__tooltip"
+        id="AreaChartTooltipID_r_5i_"
+        style="opacity: 0;"
+      />
     </div>
   </div>,
   "debug": [Function],
@@ -21824,11 +21674,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-ac__tooltip"
-      id="AreaChartTooltipID_r_5i_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -21871,15 +21716,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="20"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="20"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -21898,15 +21742,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="25"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="25"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -21925,15 +21768,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="30"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="30"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -21952,15 +21794,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="35"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="35"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -21979,15 +21820,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="40"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="40"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -22006,15 +21846,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="45"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="45"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -22033,15 +21872,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="50"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="50"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -22060,15 +21898,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="55"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="55"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -22087,15 +21924,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="60"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="60"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -22114,15 +21950,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="65"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="16"
                 >
                   <tspan
-                    data-="65"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="16"
                   >
@@ -22762,6 +22597,13 @@ Object {
             </div>
           </div>
         </div>
+        <span
+          aria-hidden="true"
+          id="fui_measurement_span"
+          style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+        >
+          65
+        </span>
       </div>
     </div>
   </body>,
@@ -22807,15 +22649,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="20"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="20"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -22834,15 +22675,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="25"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="25"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -22861,15 +22701,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="30"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="30"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -22888,15 +22727,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="35"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="35"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -22915,15 +22753,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="40"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="40"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -22942,15 +22779,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="45"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="45"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -22969,15 +22805,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="50"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="50"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -22996,15 +22831,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="55"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="55"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -23023,15 +22857,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="60"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="60"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -23050,15 +22883,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="65"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="16"
               >
                 <tspan
-                  data-="65"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="16"
                 >
@@ -23698,6 +23530,13 @@ Object {
           </div>
         </div>
       </div>
+      <span
+        aria-hidden="true"
+        id="fui_measurement_span"
+        style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+      >
+        65
+      </span>
     </div>
   </div>,
   "debug": [Function],

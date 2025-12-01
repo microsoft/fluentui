@@ -4858,21 +4858,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="Metadata info multi lines text Completed"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="Metadata info multi lines text Completed"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="showDots"
                     x="0"
                     y="11"
                   >
@@ -4891,21 +4884,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="Meta Data2"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="Meta Data2"
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="showDots"
                     x="0"
                     y="11"
                   >
@@ -4924,21 +4910,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="Single line text "
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="Single line text "
                     dy="0.71em"
-                    id="BaseSpan"
-                    x="0"
-                    y="11"
-                  />
-                  <tspan
-                    dy="0.71em"
-                    id="showDots"
                     x="0"
                     y="11"
                   >
@@ -5272,13 +5251,13 @@ Object {
             </div>
           </div>
         </div>
+        <div
+          class="fui-gvbc**tooltip"
+          id="GVBCTooltipId__r_2d_"
+          style="opacity: 0;"
+        />
       </div>
     </div>
-    <div
-      class="fui-gvbc**tooltip"
-      id="GVBCTooltipId__r_2d_"
-      style="opacity: 0;"
-    />
   </body>,
   "container": <div>
     <div
@@ -5322,21 +5301,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="Metadata info multi lines text Completed"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="Metadata info multi lines text Completed"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="showDots"
                   x="0"
                   y="11"
                 >
@@ -5355,21 +5327,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="Meta Data2"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="Meta Data2"
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="showDots"
                   x="0"
                   y="11"
                 >
@@ -5388,21 +5353,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="Single line text "
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="Single line text "
                   dy="0.71em"
-                  id="BaseSpan"
-                  x="0"
-                  y="11"
-                />
-                <tspan
-                  dy="0.71em"
-                  id="showDots"
                   x="0"
                   y="11"
                 >
@@ -5736,6 +5694,11 @@ Object {
           </div>
         </div>
       </div>
+      <div
+        class="fui-gvbc**tooltip"
+        id="GVBCTooltipId__r_2d_"
+        style="opacity: 0;"
+      />
     </div>
   </div>,
   "debug": [Function],
@@ -5798,11 +5761,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-gvbc**tooltip"
-      id="GVBCTooltipId__r_2d_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -5845,15 +5803,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="Metadata info multi lines text Completed"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="Metadata info multi lines text Completed"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="11"
                   >
@@ -5861,7 +5818,6 @@ Object {
                   </tspan>
                   <tspan
                     dy="1.81em"
-                    id="WordBreakId"
                     x="0"
                     y="11"
                   >
@@ -5869,7 +5825,6 @@ Object {
                   </tspan>
                   <tspan
                     dy="2.91em"
-                    id="WordBreakId"
                     x="0"
                     y="11"
                   >
@@ -5877,7 +5832,6 @@ Object {
                   </tspan>
                   <tspan
                     dy="4.01em"
-                    id="WordBreakId"
                     x="0"
                     y="11"
                   >
@@ -5885,7 +5839,6 @@ Object {
                   </tspan>
                   <tspan
                     dy="5.11em"
-                    id="WordBreakId"
                     x="0"
                     y="11"
                   >
@@ -5893,7 +5846,6 @@ Object {
                   </tspan>
                   <tspan
                     dy="6.21em"
-                    id="WordBreakId"
                     x="0"
                     y="11"
                   >
@@ -5912,15 +5864,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="Meta Data2"
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="Meta Data2"
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="11"
                   >
@@ -5928,7 +5879,6 @@ Object {
                   </tspan>
                   <tspan
                     dy="1.81em"
-                    id="WordBreakId"
                     x="0"
                     y="11"
                   >
@@ -5947,15 +5897,14 @@ Object {
                 />
                 <text
                   aria-hidden="true"
+                  data-full="Single line text "
                   dy="0.71em"
                   fill="currentColor"
                   style="direction: ltr; unicode-bidi: isolate;"
                   y="11"
                 >
                   <tspan
-                    data-="Single line text "
                     dy="0.71em"
-                    id="BaseSpan"
                     x="0"
                     y="11"
                   >
@@ -5963,7 +5912,6 @@ Object {
                   </tspan>
                   <tspan
                     dy="1.81em"
-                    id="WordBreakId"
                     x="0"
                     y="11"
                   >
@@ -5971,7 +5919,6 @@ Object {
                   </tspan>
                   <tspan
                     dy="2.91em"
-                    id="WordBreakId"
                     x="0"
                     y="11"
                   >
@@ -6305,6 +6252,13 @@ Object {
             </div>
           </div>
         </div>
+        <span
+          aria-hidden="true"
+          id="fui_measurement_span"
+          style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+        >
+          line text
+        </span>
       </div>
     </div>
   </body>,
@@ -6350,15 +6304,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="Metadata info multi lines text Completed"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="Metadata info multi lines text Completed"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="11"
                 >
@@ -6366,7 +6319,6 @@ Object {
                 </tspan>
                 <tspan
                   dy="1.81em"
-                  id="WordBreakId"
                   x="0"
                   y="11"
                 >
@@ -6374,7 +6326,6 @@ Object {
                 </tspan>
                 <tspan
                   dy="2.91em"
-                  id="WordBreakId"
                   x="0"
                   y="11"
                 >
@@ -6382,7 +6333,6 @@ Object {
                 </tspan>
                 <tspan
                   dy="4.01em"
-                  id="WordBreakId"
                   x="0"
                   y="11"
                 >
@@ -6390,7 +6340,6 @@ Object {
                 </tspan>
                 <tspan
                   dy="5.11em"
-                  id="WordBreakId"
                   x="0"
                   y="11"
                 >
@@ -6398,7 +6347,6 @@ Object {
                 </tspan>
                 <tspan
                   dy="6.21em"
-                  id="WordBreakId"
                   x="0"
                   y="11"
                 >
@@ -6417,15 +6365,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="Meta Data2"
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="Meta Data2"
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="11"
                 >
@@ -6433,7 +6380,6 @@ Object {
                 </tspan>
                 <tspan
                   dy="1.81em"
-                  id="WordBreakId"
                   x="0"
                   y="11"
                 >
@@ -6452,15 +6398,14 @@ Object {
               />
               <text
                 aria-hidden="true"
+                data-full="Single line text "
                 dy="0.71em"
                 fill="currentColor"
                 style="direction: ltr; unicode-bidi: isolate;"
                 y="11"
               >
                 <tspan
-                  data-="Single line text "
                   dy="0.71em"
-                  id="BaseSpan"
                   x="0"
                   y="11"
                 >
@@ -6468,7 +6413,6 @@ Object {
                 </tspan>
                 <tspan
                   dy="1.81em"
-                  id="WordBreakId"
                   x="0"
                   y="11"
                 >
@@ -6476,7 +6420,6 @@ Object {
                 </tspan>
                 <tspan
                   dy="2.91em"
-                  id="WordBreakId"
                   x="0"
                   y="11"
                 >
@@ -6810,6 +6753,13 @@ Object {
           </div>
         </div>
       </div>
+      <span
+        aria-hidden="true"
+        id="fui_measurement_span"
+        style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+      >
+        line text
+      </span>
     </div>
   </div>,
   "debug": [Function],
@@ -6872,11 +6822,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-gvbc**tooltip"
-      id="GVBCTooltipId__r_2d_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"

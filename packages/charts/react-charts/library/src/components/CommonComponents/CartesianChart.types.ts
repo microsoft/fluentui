@@ -514,10 +514,14 @@ export interface CartesianChartProps {
    */
   xAxis?: AxisProps & {
     /**
+     * Controls how x-axis tick labels are laid out.
+     *
+     * - `'auto'`: Tick labels are automatically wrapped, truncated, and staggered
+     *   across alternating levels based on the available space to prevent overlap.
      *
      * @default 'default'
      */
-    tickLayout?: 'default' | 'auto' | 'wrap' | 'truncate' | 'rotate';
+    tickLayout?: 'default' | 'auto';
   };
 
   /**

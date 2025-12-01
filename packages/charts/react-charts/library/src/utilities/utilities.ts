@@ -81,7 +81,6 @@ import {
   isInvalidValue,
   isNumber,
 } from '@fluentui/chart-utilities';
-import { cartesianchartClassNames } from '../components/CommonComponents/useCartesianChartStyles.styles';
 
 export const MIN_DOMAIN_MARGIN = 8;
 export const MIN_DONUT_RADIUS = 1;
@@ -1160,7 +1159,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
         line.push(word);
         const label = line.join(' ');
         tspan.text(label);
-        const labelWidth = getTextSize(label, `.${cartesianchartClassNames.xAxis} text`, chartContainer).width;
+        const labelWidth = getTextSize(label, `.fui-cart__xAxis text`, chartContainer).width;
         if (labelWidth > maxWidth && line.length > 1) {
           line.pop();
           tspan.text(line.join(' '));
@@ -1179,8 +1178,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
   if (!showXAxisLablesTooltip) {
     let maxHeight: number = 12; // intial value to render corretly first time
     const boxHeight =
-      (chartContainer ?? document).querySelector(`.${cartesianchartClassNames.xAxis} tspan`)?.getBoundingClientRect()
-        .height ?? 0;
+      (chartContainer ?? document).querySelector(`.fui-cart__xAxis tspan`)?.getBoundingClientRect().height ?? 0;
     if (boxHeight > maxHeight) {
       maxHeight = boxHeight;
     }
@@ -2509,7 +2507,7 @@ export const autoLayoutXAxisLabels = (
     return scale(tickValues[index] as any) ?? 0;
   };
   const getLabelWidth = (text: string) => {
-    return getTextSize(text, `.${cartesianchartClassNames.xAxis} text`, chartContainer).width;
+    return getTextSize(text, `.fui-cart__xAxis text`, chartContainer).width;
   };
 
   for (let i = 0; i < tickValues.length; i++) {
@@ -2577,7 +2575,7 @@ const truncateAndStaggerXAxisLabels = (
     return scale(tickValues[index] as any) ?? 0;
   };
   const getLabelSize = (text: string) => {
-    return getTextSize(text, `.${cartesianchartClassNames.xAxis} text`, chartContainer);
+    return getTextSize(text, `.fui-cart__xAxis text`, chartContainer);
   };
 
   d3Select(axisNode)

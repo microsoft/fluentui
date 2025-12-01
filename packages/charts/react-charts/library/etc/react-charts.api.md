@@ -237,7 +237,7 @@ export interface CartesianChartProps {
     width?: number;
     wrapXAxisLables?: boolean;
     xAxis?: AxisProps & {
-        tickLayout?: 'default' | 'auto' | 'wrap' | 'truncate' | 'rotate';
+        tickLayout?: 'default' | 'auto';
     };
     xAxisAnnotation?: string;
     xAxisCategoryOrder?: AxisCategoryOrder;

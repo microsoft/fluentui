@@ -1887,9 +1887,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
-  const xAxisType = getAxisType(input.data, getAxisObjects(input.data, input.layout).x);
-  const resolveXValue = getAxisValueResolver(xAxisType);
-  const shouldWrapLabels = xAxisType === 'category';
+  const resolveXValue = getAxisValueResolver(getAxisType(input.data, getAxisObjects(input.data, input.layout).x));
   const chartData: LineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
