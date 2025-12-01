@@ -256,7 +256,7 @@ type RangeSliderOnChangeData = {
 
 ### RangeSlider Migration
 
-RangeSlider follows the same guidance outlined in [MIGRATION.md](./MIGRATION.md). Dual-thumb functionality that was previously out-of-scope for Slider now lives here.
+RangeSlider follows the same guidance outlined in [MIGRATION.md](./MIGRATION.md).
 
 ### RangeSlider Behaviors
 
