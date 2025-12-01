@@ -856,6 +856,10 @@ import { RadioOnChangeData } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import { RadioSlots } from '@fluentui/react-radio';
 import { RadioState } from '@fluentui/react-radio';
+import { RangeSlider } from '@fluentui/react-slider';
+import { rangeSliderClassNames } from '@fluentui/react-slider';
+import { RangeSliderProps } from '@fluentui/react-slider';
+import { RangeSliderState } from '@fluentui/react-slider';
 import { Rating } from '@fluentui/react-rating';
 import { ratingClassNames } from '@fluentui/react-rating';
 import { RatingContextValues } from '@fluentui/react-rating';
@@ -995,6 +999,7 @@ import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
+import { renderRangeSlider_unstable } from '@fluentui/react-slider';
 import { renderRating_unstable } from '@fluentui/react-rating';
 import { renderRatingDisplay_unstable } from '@fluentui/react-rating';
 import { renderRatingItem_unstable } from '@fluentui/react-rating';
@@ -1845,6 +1850,8 @@ import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useRangeSlider_unstable } from '@fluentui/react-slider';
+import { useRangeSliderStyles_unstable } from '@fluentui/react-slider';
 import { useRating_unstable } from '@fluentui/react-rating';
 import { useRatingContextValues } from '@fluentui/react-rating';
 import { useRatingDisplay_unstable } from '@fluentui/react-rating';
@@ -3729,6 +3736,14 @@ export { RadioSlots }
 
 export { RadioState }
 
+export { RangeSlider }
+
+export { rangeSliderClassNames }
+
+export { RangeSliderProps }
+
+export { RangeSliderState }
+
 export { Rating }
 
 export { ratingClassNames }
@@ -4006,6 +4021,8 @@ export { renderProgressBar_unstable }
 export { renderRadio_unstable }
 
 export { renderRadioGroup_unstable }
+
+export { renderRangeSlider_unstable }
 
 export { renderRating_unstable }
 
@@ -5706,6 +5723,10 @@ export { useRadioGroupContextValues }
 export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
+
+export { useRangeSlider_unstable }
+
+export { useRangeSliderStyles_unstable }
 
 export { useRating_unstable }
 
