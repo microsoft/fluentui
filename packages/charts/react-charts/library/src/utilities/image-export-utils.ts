@@ -2,7 +2,7 @@
 
 import { create as d3Create, select as d3Select, Selection } from 'd3-selection';
 import { isHTMLElement } from '@fluentui/react-utilities';
-import { copyStyle, createMeasurementSpan } from './index';
+import { copyStyle, measureTextWithDOM } from './index';
 import { ImageExportOptions } from '../types/index';
 import { Legend, LegendContainer } from '../Legends';
 import {
@@ -310,8 +310,8 @@ export function cloneLegendsToSVG(
 
   for (let i = 0; i < legends.length; i++) {
     const textOffset = LEGEND_PADDING + LEGEND_SHAPE_SIZE + LEGEND_SHAPE_MARGIN_END;
-    const legendText = createMeasurementSpan(legends[i].title, textClassName, legendContainer);
-    const legendWidth = textOffset + legendText.getBoundingClientRect().width + LEGEND_PADDING;
+    const legendText = measureTextWithDOM(legends[i].title, `.${textClassName}`, legendContainer);
+    const legendWidth = textOffset + legendText.width + LEGEND_PADDING;
     const legendItem = legendGroup.append('g');
 
     legendLine.push({ elem: legendItem, width: legendWidth });
@@ -344,7 +344,7 @@ export function cloneLegendsToSVG(
       .attr('dominant-baseline', 'hanging')
       .style('opacity', isLegendActive ? 1 : INACTIVE_LEGEND_TEXT_OPACITY)
       .text(legends[i].title)
-      .call(selection => copyStyle(LEGEND_TEXT_STYLE_PROPERTIES_MAP, legendText, selection.node()!));
+      .call(selection => copyStyle(LEGEND_TEXT_STYLE_PROPERTIES_MAP, legendText.node, selection.node()!));
 
     legendX += legendWidth;
   }

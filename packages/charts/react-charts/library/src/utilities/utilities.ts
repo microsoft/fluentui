@@ -22,7 +22,7 @@ import {
   type ScaleBand,
   type ScaleTime,
 } from 'd3-scale';
-import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
+import { select as d3Select, selectAll as d3SelectAll, Selection } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import type { JSXElement } from '@fluentui/react-utilities';
 import {
@@ -118,7 +118,8 @@ export interface IWrapLabelProps {
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
-  width?: number;
+  width?: number | number[];
+  chartContainer?: HTMLElement | null;
 }
 
 export interface IRotateLabelProps {
@@ -251,7 +252,7 @@ export function createNumericXAxis(
 ): {
   xScale: ScaleLinear<number, number>;
   tickValues: number[];
-  tickTexts: string[];
+  tickLabels: string[];
 } {
   const {
     domainNRangeValues,
@@ -320,8 +321,8 @@ export function createNumericXAxis(
       .style('unicode-bidi', 'isolate');
   }
   const tickValues = customTickValues ?? xAxisScale.ticks(tickCount);
-  const tickTexts = tickValues.map(xAxis.tickFormat()!);
-  return { xScale: xAxisScale, tickValues, tickTexts };
+  const tickLabels = tickValues.map(xAxis.tickFormat()!);
+  return { xScale: xAxisScale, tickValues, tickLabels };
 }
 
 /**
@@ -440,7 +441,7 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: string | boolean,
   chartType?: ChartTypes,
-): { xScale: ScaleTime<number, number>; tickValues: Date[]; tickTexts: string[] } {
+): { xScale: ScaleTime<number, number>; tickValues: Date[]; tickLabels: string[] } {
   const {
     domainNRangeValues,
     xAxisElement,
@@ -534,8 +535,8 @@ export function createDateXAxis(
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
   const tickValues = customTickValues ?? xAxisScale.ticks(tickCount);
-  const tickTexts = tickValues.map(xAxis.tickFormat()!);
-  return { xScale: xAxisScale, tickValues, tickTexts };
+  const tickLabels = tickValues.map(xAxis.tickFormat()!);
+  return { xScale: xAxisScale, tickValues, tickLabels };
 }
 
 /**
@@ -556,7 +557,7 @@ export function createStringXAxis(
 ): {
   xScale: ScaleBand<string>;
   tickValues: string[];
-  tickTexts: string[];
+  tickLabels: string[];
 } {
   const {
     domainNRangeValues,
@@ -625,7 +626,7 @@ export function createStringXAxis(
       .style('direction', 'ltr')
       .style('unicode-bidi', 'isolate');
   }
-  return { xScale: xAxisScale, tickValues, tickTexts: tickValues.map(xAxis.tickFormat()!) };
+  return { xScale: xAxisScale, tickValues, tickLabels: tickValues.map(xAxis.tickFormat()!) };
 }
 
 export function useRtl(): boolean {
@@ -1114,14 +1115,21 @@ export const DEFAULT_WRAP_WIDTH = 10;
  * @returns
  */
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | undefined {
-  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip, width = DEFAULT_WRAP_WIDTH } = wrapLabelProps;
+  const {
+    node,
+    xAxis,
+    noOfCharsToTruncate,
+    showXAxisLablesTooltip,
+    width = DEFAULT_WRAP_WIDTH,
+    chartContainer,
+  } = wrapLabelProps;
   if (node === null) {
     return;
   }
   const axisNode = d3Select(node).call(xAxis);
   let removeVal = 0;
   let maxLines = 1;
-  axisNode.selectAll('.tick text').each(function () {
+  axisNode.selectAll('.tick text').each(function (_, tickIndex) {
     const text = d3Select(this);
     const totalWord = text.text();
     const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
@@ -1135,40 +1143,25 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
     const dy = parseFloat(text.attr('dy'));
     let tspan = text
       .text(null)
+      .attr('data-full', totalWord)
       .append('tspan')
       .attr('x', 0)
       .attr('y', y)
-      .attr('id', 'BaseSpan')
-      .attr('dy', dy + 'em')
-      .attr('data-', totalWord);
+      .attr('dy', dy + 'em');
 
-    if (showXAxisLablesTooltip && totalWordLength > noOfCharsToTruncate) {
-      tspan = text
-        .append('tspan')
-        .attr('id', 'showDots')
-        .attr('x', 0)
-        .attr('y', y)
-        .attr('dy', dy + 'em')
-        .text(truncatedWord);
-    } else if (showXAxisLablesTooltip && totalWordLength <= noOfCharsToTruncate) {
-      tspan = text
-        .append('tspan')
-        .attr('id', 'LessLength')
-        .attr('x', 0)
-        .attr('y', y)
-        .attr('dy', dy + 'em')
-        .text(totalWord);
+    if (showXAxisLablesTooltip) {
+      tspan.text(totalWordLength > noOfCharsToTruncate ? truncatedWord : totalWord);
     } else {
+      const maxWidth = Array.isArray(width) ? width[tickIndex] : width;
       while ((word = words.pop()!)) {
         line.push(word);
         tspan.text(line.join(' '));
-        if (tspan.node()!.getComputedTextLength() > width && line.length > 1) {
+        if (getStringSize(line.join(' '), '.tick text', chartContainer).width > maxWidth && line.length > 1) {
           line.pop();
           tspan.text(line.join(' '));
           line = [word];
           tspan = text
             .append('tspan')
-            .attr('id', 'WordBreakId')
             .attr('x', 0)
             .attr('y', y)
             .attr('dy', ++lineNumber * lineHeight + dy + 'em')
@@ -1180,10 +1173,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
   });
   if (!showXAxisLablesTooltip) {
     let maxHeight: number = 12; // intial value to render corretly first time
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const outerHTMLElement = document.getElementById('WordBreakId') as any;
-    const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
-    const boxHeight = BoxCordinates && BoxCordinates.height;
+    const boxHeight = document.querySelector('.tick tspan')?.getBoundingClientRect().height ?? 0;
     if (boxHeight > maxHeight) {
       maxHeight = boxHeight;
     }
@@ -1207,7 +1197,6 @@ export function createYAxisLabels(
   if (node === null) {
     return;
   }
-  let tickIndex = 0;
   const axisNode = d3Select(node).call(yAxis);
   axisNode.selectAll('.tick text').each(function () {
     const text = d3Select(this);
@@ -1216,38 +1205,19 @@ export function createYAxisLabels(
       ? `...${text.text().slice(0, noOfCharsToTruncate)}`
       : `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
-    const padding = 0; // ems
     const y = text.attr('y');
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
-    const dx = 0;
-    const uid = tickIndex++;
-    text
+    const tspan = text
       .text(null)
+      .attr('data-full', totalWord)
       .append('tspan')
       .attr('x', x)
       .attr('y', y)
-      .attr('id', `BaseSpan-${uid}`)
-      .attr('dy', dy + 'em')
-      .attr('data-', totalWord);
+      .attr('dy', dy + 'em');
 
-    if (truncateLabel && totalWordLength > noOfCharsToTruncate) {
-      text
-        .append('tspan')
-        .attr('id', `showDots-${uid}`)
-        .attr('x', x)
-        .attr('y', y)
-        .attr('dy', dy + 'em')
-        .attr('dx', padding + dx + 'em')
-        .text(truncatedWord);
-    } else {
-      text
-        .append('tspan')
-        .attr('id', `LessLength-${uid}`)
-        .attr('x', x)
-        .attr('y', y)
-        .attr('dx', padding + dx + 'em')
-        .text(totalWord);
+    if (truncateLabel) {
+      tspan.text(totalWordLength > noOfCharsToTruncate ? truncatedWord : totalWord);
     }
   });
 }
@@ -1305,35 +1275,34 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function tooltipOfAxislabels(axistooltipProps: any): null | undefined {
-  const { tooltipCls, axis, id } = axistooltipProps;
+  const { tooltipCls, axis, id, chartContainer } = axistooltipProps;
   if (axis === null) {
     return null;
   }
-  const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-  const aa = axis!.selectAll('[id^="BaseSpan-"]')._groups[0];
-  const baseSpanLength = aa && Object.keys(aa)!.length;
-  const originalDataArray: string[] = [];
-  for (let i = 0; i < baseSpanLength; i++) {
-    const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
-    originalDataArray.push(originalData);
-  }
-  const tickObject = axis!.selectAll('.tick')._groups[0];
-  const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
-  for (let i = 0; i < tickObjectLength; i++) {
-    const d1 = tickObject[i];
-    d3Select(d1)
+  const div = (chartContainer ? d3Select<HTMLElement, unknown>(chartContainer) : d3Select<HTMLElement, unknown>('body'))
+    .append('div')
+    .attr('id', id)
+    .attr('class', tooltipCls)
+    .style('opacity', 0);
+  (axis as Selection<SVGGElement, unknown, null, undefined>).selectAll('.tick text').each(function () {
+    const tick = d3Select(this);
+    const fullLabel = tick.attr('data-full');
+    if (tick.text() === fullLabel) {
+      return;
+    }
+    tick
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .on('mouseover', (event: any, d) => {
         div.style('opacity', 0.9);
         div
-          .html(originalDataArray[i])
+          .html(fullLabel)
           .style('left', event.pageX + 'px')
           .style('top', event.pageY - 28 + 'px');
       })
       .on('mouseout', d => {
         div.style('opacity', 0);
       });
-  }
+  });
 }
 
 /**
@@ -2136,12 +2105,6 @@ export function copyStyle(properties: string[] | Record<string, string>, fromEl:
   }
 }
 
-let measurementSpanCounter = 0;
-function getUniqueMeasurementSpanId() {
-  measurementSpanCounter++;
-  return `measurement_span_${measurementSpanCounter}`;
-}
-
 const MEASUREMENT_SPAN_STYLE = {
   position: 'absolute',
   visibility: 'hidden',
@@ -2152,31 +2115,71 @@ const MEASUREMENT_SPAN_STYLE = {
   border: 'none',
   whiteSpace: 'pre',
 };
+const MEASUREMENT_SPAN_ID = 'fui_measurement_span';
+const TEXT_STYLE_PROPERTIES = [
+  'font-size',
+  'font-family',
+  'font-weight',
+  'font-style',
+  'letter-spacing',
+  'text-transform',
+];
 
-export const createMeasurementSpan = (
+export const measureTextWithDOM = (
   text: string | number,
-  className: string,
-  parentElement?: HTMLElement | null,
-): HTMLSpanElement => {
-  const MEASUREMENT_SPAN_ID = getUniqueMeasurementSpanId();
+  cssSelector: string,
+  chartContainer?: HTMLElement | null,
+): { node: HTMLElement; width: number; height: number } => {
   let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
   if (!measurementSpan) {
     measurementSpan = document.createElement('span');
     measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
     measurementSpan.setAttribute('aria-hidden', 'true');
 
-    if (parentElement) {
-      parentElement.appendChild(measurementSpan);
+    if (chartContainer) {
+      chartContainer.appendChild(measurementSpan);
     } else {
       document.body.appendChild(measurementSpan);
     }
   }
 
-  measurementSpan.setAttribute('class', className);
   Object.assign(measurementSpan.style, MEASUREMENT_SPAN_STYLE);
+  const refEl = document.querySelector(cssSelector);
+  if (refEl) {
+    copyStyle(TEXT_STYLE_PROPERTIES, refEl, measurementSpan);
+  }
   measurementSpan.textContent = `${text}`;
 
-  return measurementSpan;
+  const rect = measurementSpan.getBoundingClientRect();
+  return { node: measurementSpan, width: rect.width, height: rect.height };
+};
+
+const CACHE_SIZE = 2000;
+const stringCache = new Map<string, { width: number; height: number }>();
+
+export const getStringSize = (
+  text: string | number,
+  cssSelector: string,
+  chartContainer?: HTMLElement | null,
+): { width: number; height: number } => {
+  const cacheKey = `${text}|${cssSelector}`;
+  const cachedResult = stringCache.get(cacheKey);
+
+  if (cachedResult) {
+    return cachedResult;
+  }
+
+  const { width, height } = measureTextWithDOM(text, cssSelector, chartContainer);
+
+  if (stringCache.size >= CACHE_SIZE) {
+    const firstKey = stringCache.keys().next().value;
+    if (!isInvalidValue(firstKey)) {
+      stringCache.delete(firstKey!);
+    }
+  }
+  stringCache.set(cacheKey, { width, height });
+
+  return { width, height };
 };
 
 /**
@@ -2481,160 +2484,145 @@ export const findCalloutPoints = (
   };
 };
 
-export const automatic = (
-  tickValues: string[],
-  tickTexts: string[],
-  scale: any,
-  width: number,
-  axisNode: SVGGElement | null,
-) => {
-  // 1. find category width and wrap text so that it fits inside category width.
-  let isWrappingRequired = false;
-  let isTruncationRequired = false;
-
-  // for LTR
-  let start = 0;
-  let end = width;
-  const range = scale.range();
-  if (range[1] - range[0] < 0) {
-    // for RTL
-    start = width;
-    end = 0;
-  }
-
+export const autoLayoutXAxisLabels = (
+  tickValues: number[] | Date[] | string[],
+  tickLabels: string[],
+  scale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number> | ScaleBand<string>,
+  axisNode: SVGSVGElement | null,
+  containerWidth: number,
+  chartContainer?: HTMLElement | null,
+): number => {
+  let requiresWrap = false;
+  let requiresTruncate = false;
   const maxWidths: number[] = [];
 
+  const [rangeStart, rangeEnd] = scale.range();
+  const isRTL = rangeEnd - rangeStart < 0;
+  const start = isRTL ? containerWidth : 0;
+  const end = isRTL ? 0 : containerWidth;
+
+  const getTickPosition = (index: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return scale(tickValues[index] as any) ?? 0;
+  };
+  const getTextWidth = (text: string) => {
+    return getStringSize(text, '.tick text', chartContainer).width;
+  };
+
   for (let i = 0; i < tickValues.length; i++) {
-    const tickPosition = scale(tickValues[i])!;
-    const tickSize = calculateLongestLabelWidth([tickTexts[i]]);
-    const l = Math.abs(i - 1 >= 0 ? (tickPosition - scale(tickValues[i - 1])!) / 2 : tickPosition - start);
-    const r = Math.abs(i + 1 < tickValues.length ? (scale(tickValues[i + 1])! - tickPosition) / 2 : end - tickPosition);
-    const maxWidth = Math.min(l, r) * 2 - 8; // 4px padding on both sides
+    const position = getTickPosition(i);
+    const leftSpace = Math.abs(i > 0 ? (position - getTickPosition(i - 1)) / 2 : position - start);
+    const rightSpace = Math.abs(i + 1 < tickValues.length ? (getTickPosition(i + 1) - position) / 2 : end - position);
+    const maxAvailableWidth = Math.min(leftSpace, rightSpace) * 2 - 8; // 4px padding on both sides
+    const label = tickLabels[i];
+    const labelWidth = getTextWidth(label);
 
-    maxWidths.push(maxWidth);
+    maxWidths.push(maxAvailableWidth);
 
-    if (tickSize > maxWidth) {
-      // tick doesn't fit, try wrapping
-      const tickWrapSize = calculateLongestLabelWidth(tickTexts[i].split(/\s+/));
-      if (tickWrapSize <= maxWidth) {
-        // tick fits after wrapping
-        isWrappingRequired = true;
+    if (labelWidth > maxAvailableWidth) {
+      const longestWordWidth = Math.max(...label.split(/\s+/).map(word => getTextWidth(word)));
+      if (longestWordWidth <= maxAvailableWidth) {
+        requiresWrap = true;
       } else {
-        // tick doesn't fit even after wrapping, fallback to truncation and stepwise rendering
-        isTruncationRequired = true;
+        requiresTruncate = true;
       }
     }
   }
 
-  // 2. if some text (word) still overflows, stop wrapping, double the category width,
-  // truncate the text with ellipsis and render the tick text at alternate levels.
-  if (isTruncationRequired) {
-    return truncate(tickValues, tickTexts, scale, width, axisNode);
-  } else if (isWrappingRequired) {
-    return wrap(tickTexts, axisNode, maxWidths);
+  if (requiresTruncate) {
+    return truncateAndStaggerXAxisLabels(tickValues, tickLabels, scale, axisNode, containerWidth, chartContainer);
   }
+
+  if (requiresWrap) {
+    return (
+      createWrapOfXLabels({
+        node: axisNode,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        xAxis: scale as any,
+        noOfCharsToTruncate: 100,
+        showXAxisLablesTooltip: false,
+        width: maxWidths,
+        chartContainer,
+      }) ?? 0
+    );
+  }
+
   return 0;
 };
 
-const wrap = (tickTexts: string[], axisNode: SVGGElement | null, maxWidths: number[]) => {
-  let maxLines = 1;
-  d3Select(axisNode)
-    .selectAll('.tick text')
-    .each(function (_, i) {
-      const text = d3Select(this).text(null);
-      const y = text.attr('y');
-      let dy = parseFloat(text.attr('dy'));
-      const words = tickTexts[i].split(/\s+/).reverse();
-      let word: string = '';
-      let line: string[] = [];
-      let lineNumber: number = 0;
-      let tspan = text
-        .append('tspan')
-        .attr('x', 0)
-        .attr('y', y)
-        .attr('dy', dy + 'em');
+const truncateAndStaggerXAxisLabels = (
+  tickValues: number[] | Date[] | string[],
+  tickLabels: string[],
+  scale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number> | ScaleBand<string>,
+  axisNode: SVGSVGElement | null,
+  containerWidth: number,
+  chartContainer?: HTMLElement | null,
+): number => {
+  let maxHeight = 12;
 
-      while ((word = words.pop()!)) {
-        line.push(word);
-        tspan.text(line.join(' '));
+  const [rangeStart, rangeEnd] = scale.range();
+  const isRTL = rangeEnd - rangeStart < 0;
+  const start = isRTL ? containerWidth : 0;
+  const end = isRTL ? 0 : containerWidth;
 
-        if (calculateLongestLabelWidth([line.join(' ')]) > maxWidths[i] && line.length > 1) {
-          line.pop();
-          tspan.text(line.join(' '));
-          line = [word];
-          dy += 1.1;
-          lineNumber += 1;
-          tspan = text
-            .append('tspan')
-            .text(word)
-            .attr('x', 0)
-            .attr('y', y)
-            .attr('dy', dy + 'em');
-        }
-      }
-      maxLines = Math.max(maxLines, lineNumber + 1);
-    });
-
-  return (maxLines - 1) * 12;
-};
-
-const truncate = (
-  tickValues: string[],
-  tickTexts: string[],
-  scale: any,
-  width: number,
-  axisNode: SVGGElement | null,
-) => {
-  // for LTR
-  let start = 0;
-  let end = width;
-  const range = scale.range();
-  if (range[1] - range[0] < 0) {
-    // for RTL
-    start = width;
-    end = 0;
-  }
+  const getTickPosition = (index: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return scale(tickValues[index] as any) ?? 0;
+  };
+  const getTextSize = (text: string) => {
+    return getStringSize(text, '.tick text', chartContainer);
+  };
 
   d3Select(axisNode)
     .selectAll('.tick text')
     .each(function (_, i) {
-      const tickPosition = scale(tickValues[i])!;
-      const l = Math.abs(i - 1 >= 0 ? tickPosition - scale(tickValues[i - 1])! : tickPosition - start);
-      const r = Math.abs(i + 1 < tickValues.length ? scale(tickValues[i + 1])! - tickPosition : end - tickPosition);
-      const maxWidth = Math.min(l, r) * 2 - 8; // 4px padding on both sides
+      const position = getTickPosition(i);
+      const leftSpace = Math.abs(i > 0 ? position - getTickPosition(i - 1) : position - start);
+      const rightSpace = Math.abs(i + 1 < tickValues.length ? getTickPosition(i + 1) - position : end - position);
+      const maxAvailableWidth = Math.min(leftSpace, rightSpace) * 2 - 8; // 4px padding on both sides
+      const label = tickLabels[i];
+      const { width: labelWidth, height: labelHeight } = getTextSize(label);
+      maxHeight = Math.max(maxHeight, labelHeight);
+      const textNode = d3Select(this).text(null).attr('data-full', label);
+      const lineHeight = 1.1; // ems
+      const y = textNode.attr('y');
+      const dy = parseFloat(textNode.attr('dy'));
 
-      const text = d3Select(this).text(null);
-      const y = text.attr('y');
-      let dy = parseFloat(text.attr('dy'));
-      if (calculateLongestLabelWidth([tickTexts[i]]) <= maxWidth) {
-        const tspan = text.append('tspan').text(tickTexts[i]).attr('x', 0).attr('y', y);
-        if (i % 2 === 1) {
-          tspan.attr('dy', dy + 1.1 + 'em');
-        }
+      if (labelWidth <= maxAvailableWidth) {
+        textNode
+          .append('tspan')
+          .attr('x', 0)
+          .attr('y', y)
+          .attr('dy', (i % 2 === 1 ? lineHeight : 0) + dy + 'em')
+          .text(label);
         return;
       }
 
-      let lo = 1;
-      let hi = tickTexts[i].length;
-      while (lo < hi) {
-        const mid = Math.floor(lo + (hi - lo + 1) / 2);
-        const truncatedText = tickTexts[i].slice(0, mid) + '...';
-
-        if (calculateLongestLabelWidth([truncatedText]) <= maxWidth) {
-          lo = mid;
-        } else {
-          hi = mid - 1;
-        }
-      }
-      const tspan = text
+      textNode
         .append('tspan')
-        .text(tickTexts[i].slice(0, lo) + '...')
         .attr('x', 0)
-        .attr('y', y);
-      if (i % 2 === 1) {
-        tspan.attr('dy', dy + 1.1 + 'em');
-      }
+        .attr('y', y)
+        .attr('dy', (i % 2 === 1 ? lineHeight : 0) + dy + 'em')
+        .text(truncateTextToFitWidth(label, maxAvailableWidth, (s: string) => getTextSize(s).width));
     });
 
-  return tickValues.length > 1 ? 12 : 0;
+  return tickValues.length > 1 ? maxHeight : 0;
+};
+
+const truncateTextToFitWidth = (text: string, maxWidth: number, measure: (s: string) => number): string => {
+  let lo = 1;
+  let hi = text.length;
+
+  while (lo < hi) {
+    const mid = Math.floor((lo + hi + 1) / 2);
+    const candidate = text.slice(0, mid) + '...';
+
+    if (measure(candidate) <= maxWidth) {
+      lo = mid;
+    } else {
+      hi = mid - 1;
+    }
+  }
+
+  return text.slice(0, lo) + '...';
 };

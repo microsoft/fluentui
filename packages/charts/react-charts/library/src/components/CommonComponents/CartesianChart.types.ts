@@ -512,7 +512,13 @@ export interface CartesianChartProps {
    * Configuration for the x-axis.
    * Use this to control `tickStep`, `tick0`, etc.
    */
-  xAxis?: AxisProps;
+  xAxis?: AxisProps & {
+    /**
+     *
+     * @default 'default'
+     */
+    tickLayout?: 'default' | 'auto' | 'wrap' | 'truncate' | 'rotate';
+  };
 
   /**
    * Configuration for the y-axis.

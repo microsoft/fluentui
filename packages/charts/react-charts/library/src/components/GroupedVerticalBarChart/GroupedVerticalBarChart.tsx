@@ -638,6 +638,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
         axis: xAxisElement,
+        chartContainer: cartesianChartRef.current?.chartContainer,
       };
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
