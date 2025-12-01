@@ -1489,7 +1489,6 @@ export const transformPlotlyJsonToVSBCProps = (
     yMinValue,
     mode: 'plotly',
     ...secondaryYAxisValues,
-    wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
     hideTickOverlap: true,
     barGapMax: 2,
     hideLegend,
@@ -1669,7 +1668,6 @@ export const transformPlotlyJsonToGVBCProps = (
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
-    wrapXAxisLables: true,
     hideLegend,
     roundCorners: true,
     showYAxisLables: true,
@@ -1781,7 +1779,6 @@ export const transformPlotlyJsonToVBCProps = (
     height: input.layout?.height ?? 350,
     mode: 'histogram',
     hideTickOverlap: true,
-    wrapXAxisLables: typeof vbcData[0]?.x === 'string',
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
@@ -2065,7 +2062,6 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideTickOverlap: true,
     hideLegend,
     useUTC: false,
-    wrapXAxisLabels: shouldWrapLabels,
     optimizeLargeData: numDataPoints > 1000,
     showYAxisLables: true,
     roundedTicks: true,
@@ -2442,7 +2438,6 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
-    wrapXAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
     ...getAxisTickProps(input.data, input.layout),
@@ -3825,17 +3820,25 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 
     const axType = getAxisType(data, ax);
 
+    if (axId === 'x' && axType === 'category') {
+      props.xAxis = {
+        tickLayout: 'auto',
+      };
+    }
+
     if ((!ax.tickmode || ax.tickmode === 'array') && isArrayOrTypedArray(ax.tickvals)) {
       const tickValues = axType === 'date' ? ax.tickvals!.map((v: string | number | Date) => new Date(v)) : ax.tickvals;
 
       if (axId === 'x') {
         props.tickValues = tickValues;
         props.xAxis = {
+          ...props.xAxis,
           tickText: ax.ticktext,
         };
       } else if (axId === 'y') {
         props.yAxisTickValues = tickValues;
         props.yAxis = {
+          ...props.yAxis,
           tickText: ax.ticktext,
         };
       }
@@ -3848,11 +3851,13 @@ const getAxisTickProps = (data: Data[], layout: Partial<Layout> | undefined): Ge
 
       if (axId === 'x') {
         props.xAxis = {
+          ...props.xAxis,
           tickStep: dtick,
           tick0,
         };
       } else if (axId === 'y') {
         props.yAxis = {
+          ...props.yAxis,
           tickStep: dtick,
           tick0,
         };
