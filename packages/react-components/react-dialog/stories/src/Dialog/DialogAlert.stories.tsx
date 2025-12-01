@@ -22,8 +22,8 @@ export const Alert = (): JSXElement => {
         <DialogBody>
           <DialogTitle>Alert dialog title</DialogTitle>
           <DialogContent>
-            This dialog cannot be dismissed by clicking on the backdrop nor by pressing Escape. Close button should be
-            pressed to dismiss this Alert
+            This dialog cannot be dismissed by clicking on the backdrop. Close button should be pressed to dismiss this
+            Alert
           </DialogContent>
           <DialogActions>
             <Button appearance="primary">Do Something</Button>
