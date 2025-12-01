@@ -30,6 +30,9 @@ export const Appearance = (): JSXElement => {
       <Button appearance="transparent" icon={<CalendarMonth />}>
         Transparent
       </Button>
+      <Button appearance="tint" icon={<CalendarMonth />}>
+        Tint
+      </Button>
     </div>
   );
 };
