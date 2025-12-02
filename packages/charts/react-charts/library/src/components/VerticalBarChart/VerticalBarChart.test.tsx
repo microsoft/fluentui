@@ -864,7 +864,6 @@ describe('VerticalBarChart - accessibility', () => {
   });
 });
 
-/* eslint-disable @typescript-eslint/no-deprecated */
 describe('VerticalBarChart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);

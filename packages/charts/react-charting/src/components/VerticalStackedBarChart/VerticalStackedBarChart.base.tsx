@@ -122,7 +122,7 @@ export class VerticalStackedBarChartBase
   private _points: IVerticalStackedChartProps[];
   private _dataset: IVerticalStackedBarDataPoint[];
   private _xAxisLabels: string[];
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _bars: JSXElement[];
   private _xAxisType: XAxisTypes;
   private _barWidth: number;
@@ -210,7 +210,7 @@ export class VerticalStackedBarChartBase
       const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
       const { isCalloutForStack = false } = this.props;
       this._dataset = this._createDataSetLayer();
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+
       const legendBars: JSXElement = this._getLegendData(
         this._points,
         this.props.theme!.palette,
@@ -420,7 +420,6 @@ export class VerticalStackedBarChartBase
     containerHeight: number,
     containerWidth: number,
     yScaleSecondary?: NumericScale,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement => {
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
@@ -612,7 +611,6 @@ export class VerticalStackedBarChartBase
     this.margins = margins;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderCallout(props?: IVSChartDataPoint): JSXElement | null {
     return props ? (
       <ChartHoverCard
@@ -652,7 +650,6 @@ export class VerticalStackedBarChartBase
     data: IVerticalStackedChartProps[],
     palette: IPalette,
     lineLegends: LineLegends[],
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement {
     if (this.props.hideLegend) {
       return <></>;
@@ -948,7 +945,6 @@ export class VerticalStackedBarChartBase
     yBarScale: NumericScale | StringScale,
     containerHeight: number,
     xElement: SVGElement,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement[] => {
     const { barCornerRadius = 0, barMinimumHeight = 0 } = this.props;
     const _isHavingLines = this.props.data.some(
@@ -1224,7 +1220,7 @@ export class VerticalStackedBarChartBase
       };
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+
     return bars.filter((bar): bar is JSXElement => !!bar);
   };
 

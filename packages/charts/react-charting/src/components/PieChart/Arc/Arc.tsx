@@ -33,7 +33,6 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     _updateChart(newProps);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { arc } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
@@ -65,7 +64,6 @@ export class LabeledArc extends Arc {
     this._arcId = getId('piechart_arc');
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { data, culture } = this.props;
     const gap = 4;

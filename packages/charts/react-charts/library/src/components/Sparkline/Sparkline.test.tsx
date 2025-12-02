@@ -126,7 +126,6 @@ describe('Sparkline Chart - axe-core', () => {
 });
 
 describe('Sparkline snapShot testing', () => {
-  /* eslint-disable @typescript-eslint/no-deprecated */
   it('renders Sparkline correctly', () => {
     const { container } = render(<Sparkline data={sparkline1Points} showLegend={true} />);
     expect(container.firstChild).toMatchSnapshot();
@@ -136,7 +135,6 @@ describe('Sparkline snapShot testing', () => {
     const { container } = render(<Sparkline data={sparkline2Points} showLegend={false} />);
     expect(container.firstChild).toMatchSnapshot();
   });
-  /* eslint-enable @typescript-eslint/no-deprecated */
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
