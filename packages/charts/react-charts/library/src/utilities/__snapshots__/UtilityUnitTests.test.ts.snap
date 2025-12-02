@@ -4235,7 +4235,7 @@ exports[`tooltipOfAxislabels should render a tooltip for x-axis labels 1`] = `
             x="0"
             y="16"
           >
-            X-axis label 1
+            X-axis lab...
           </tspan>
         </text>
       </g>
@@ -4261,7 +4261,7 @@ exports[`tooltipOfAxislabels should render a tooltip for x-axis labels 1`] = `
             x="0"
             y="16"
           >
-            X-axis label 2
+            X-axis lab...
           </tspan>
         </text>
       </g>
@@ -4287,24 +4287,19 @@ exports[`tooltipOfAxislabels should render a tooltip for x-axis labels 1`] = `
             x="0"
             y="16"
           >
-            X-axis label 3
+            X-axis lab...
           </tspan>
         </text>
       </g>
     </g>
   </svg>
-  <span
-    aria-hidden="true"
-    id="fui_measurement_span"
-    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre;"
-  >
-    X-axis label 3
-  </span>
   <div
     class="tooltip-1"
     id="VBCTooltipId_1"
-    style="opacity: 0;"
-  />
+    style="opacity: 0.9;"
+  >
+    X-axis label 1
+  </div>
 </body>
 `;
 

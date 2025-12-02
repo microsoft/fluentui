@@ -7298,21 +7298,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="0"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="0"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7331,21 +7324,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="2"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="2"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7364,21 +7350,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="4"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="4"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7397,21 +7376,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="6"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="6"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7430,21 +7402,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="8"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="8"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7463,21 +7428,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="10"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="10"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7496,21 +7454,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="12"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="12"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7529,21 +7480,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="14"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="14"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7562,21 +7506,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="16"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="16"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7595,21 +7532,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="18"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="18"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7628,21 +7558,14 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           />
           <text
             aria-hidden="true"
+            data-full="20"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="11"
           >
             <tspan
-              data-="20"
               dy="0.71em"
-              id="BaseSpan"
-              x="0"
-              y="11"
-            />
-            <tspan
-              dy="0.71em"
-              id="LessLength"
               x="0"
               y="11"
             >
@@ -7917,6 +7840,11 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
       </div>
     </div>
   </div>
+  <div
+    class="fui-vsbc__tooltip"
+    id="VSBCTooltipId__r_3n_"
+    style="opacity: 0;"
+  />
 </div>
 `;
 
@@ -7962,15 +7890,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="0"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="0"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -7989,15 +7916,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="2"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="2"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8016,15 +7942,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="4"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="4"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8043,15 +7968,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="6"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="6"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8070,15 +7994,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="8"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="8"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8097,15 +8020,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="10"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="10"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8124,15 +8046,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="12"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="12"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8151,15 +8072,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="14"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="14"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8178,15 +8098,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="16"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="16"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8205,15 +8124,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="18"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="18"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8232,15 +8150,14 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           />
           <text
             aria-hidden="true"
+            data-full="20"
             dy="0.71em"
             fill="currentColor"
             style="direction: ltr; unicode-bidi: isolate;"
             y="16"
           >
             <tspan
-              data-="20"
               dy="0.71em"
-              id="BaseSpan"
               x="0"
               y="16"
             >
@@ -8515,6 +8432,13 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    id="fui_measurement_span"
+    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+  >
+    20
+  </span>
 </div>
 `;
 
