@@ -291,7 +291,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
         axis: d3Select(xAxisElement.current),
-        chartContainer: chartContainer.current,
+        container: chartContainer.current,
       });
     } else {
       _transformXAxisLabels();
@@ -412,7 +412,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
         axis: _yAxisElement,
-        chartContainer: chartContainer.current,
+        container: chartContainer.current,
       };
       _yAxisElement && tooltipOfAxislabels(ytooltipProps);
     }
@@ -614,7 +614,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         showXAxisLablesTooltip: props.showXAxisLablesTooltip || false,
         noOfCharsToTruncate: props.noOfCharsToTruncate || 4,
         width: maxXAxisLabelWidth,
-        chartContainer: chartContainer.current,
+        container: chartContainer.current,
       };
       _removalValueForTextTuncate = createWrapOfXLabels(wrapLabelProps) ?? 0;
     }

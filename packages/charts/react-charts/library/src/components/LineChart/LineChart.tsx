@@ -1357,7 +1357,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           tooltipCls: classes.tooltip!,
           id: _tooltipId,
           axis: xAxisElement,
-          chartContainer: cartesianChartRef.current?.chartContainer,
+          container: cartesianChartRef.current?.chartContainer,
         };
         xAxisElement && tooltipOfAxislabels(tooltipProps);
       }

@@ -119,7 +119,7 @@ export interface IWrapLabelProps {
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
   width?: number | number[];
-  chartContainer?: HTMLElement | null;
+  container?: HTMLElement | null;
 }
 
 export interface IRotateLabelProps {
@@ -1123,7 +1123,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
     noOfCharsToTruncate,
     showXAxisLablesTooltip,
     width = DEFAULT_WRAP_WIDTH,
-    chartContainer,
+    container,
   } = wrapLabelProps;
   if (node === null) {
     return;
@@ -1159,7 +1159,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
         line.push(word);
         const label = line.join(' ');
         tspan.text(label);
-        const labelWidth = getTextSize(label, `.fui-cart__xAxis text`, chartContainer).width;
+        const labelWidth = getTextSize(label, `.fui-cart__xAxis text`, container).width;
         if (labelWidth > maxWidth && line.length > 1) {
           line.pop();
           tspan.text(line.join(' '));
@@ -1178,7 +1178,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps): number | u
   if (!showXAxisLablesTooltip) {
     let maxHeight: number = 12; // intial value to render corretly first time
     const boxHeight =
-      (chartContainer ?? document).querySelector(`.fui-cart__xAxis tspan`)?.getBoundingClientRect().height ?? 0;
+      (container ?? document).querySelector(`.fui-cart__xAxis tspan`)?.getBoundingClientRect().height ?? 0;
     if (boxHeight > maxHeight) {
       maxHeight = boxHeight;
     }
@@ -1280,11 +1280,11 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function tooltipOfAxislabels(axistooltipProps: any): null | undefined {
-  const { tooltipCls, axis, id, chartContainer } = axistooltipProps;
+  const { tooltipCls, axis, id, container } = axistooltipProps;
   if (axis === null) {
     return null;
   }
-  const div = (chartContainer ? d3Select<HTMLElement, unknown>(chartContainer) : d3Select<HTMLElement, unknown>('body'))
+  const div = (container ? d3Select<HTMLElement, unknown>(container) : d3Select<HTMLElement, unknown>('body'))
     .append('div')
     .attr('id', id)
     .attr('class', tooltipCls)
@@ -1983,8 +1983,8 @@ export function areArraysEqual(arr1?: string[], arr2?: string[]): boolean {
 
 const cssVarRegExp = /var\((--[a-zA-Z0-9\-]+)\)/g;
 
-export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: string): string {
-  const containerStyles = getComputedStyle(chartContainer);
+export function resolveCSSVariables(container: HTMLElement, styleRules: string): string {
+  const containerStyles = getComputedStyle(container);
   return styleRules.replace(cssVarRegExp, (match, group1) => {
     return containerStyles.getPropertyValue(group1);
   });
@@ -2133,18 +2133,18 @@ const TEXT_STYLE_PROPERTIES = [
 export const measureTextWithDOM = (
   text: string | number,
   cssSelector: string,
-  chartContainer?: HTMLElement | null,
+  container?: HTMLElement | null,
 ): { node: HTMLElement; width: number; height: number } => {
   let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
   if (!measurementSpan) {
     measurementSpan = document.createElement('span');
     measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
     measurementSpan.setAttribute('aria-hidden', 'true');
-    (chartContainer ?? document.body).appendChild(measurementSpan);
+    (container ?? document.body).appendChild(measurementSpan);
   }
 
   Object.assign(measurementSpan.style, MEASUREMENT_SPAN_STYLE);
-  const refEl = (chartContainer ?? document).querySelector(cssSelector);
+  const refEl = (container ?? document).querySelector(cssSelector);
   if (refEl) {
     copyStyle(TEXT_STYLE_PROPERTIES, refEl, measurementSpan);
   }
@@ -2160,7 +2160,7 @@ const textSizeCache = new Map<string, { width: number; height: number }>();
 export const getTextSize = (
   text: string | number,
   cssSelector: string,
-  chartContainer?: HTMLElement | null,
+  container?: HTMLElement | null,
 ): { width: number; height: number } => {
   const cacheKey = `${text}|${cssSelector}`;
   const cachedResult = textSizeCache.get(cacheKey);
@@ -2169,7 +2169,7 @@ export const getTextSize = (
     return cachedResult;
   }
 
-  const { width, height } = measureTextWithDOM(text, cssSelector, chartContainer);
+  const { width, height } = measureTextWithDOM(text, cssSelector, container);
 
   // TODO: Improve cache eviction strategy if needed (e.g., LRU)
   if (textSizeCache.size >= CACHE_SIZE) {
@@ -2491,7 +2491,7 @@ export const autoLayoutXAxisLabels = (
   scale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number> | ScaleBand<string>,
   axisNode: SVGSVGElement | null,
   containerWidth: number,
-  chartContainer?: HTMLElement | null,
+  container?: HTMLElement | null,
 ): number => {
   let requiresWrap = false;
   let requiresTruncate = false;
@@ -2507,7 +2507,7 @@ export const autoLayoutXAxisLabels = (
     return (scale(tickValues[index] as any) ?? 0) + ('bandwidth' in scale ? scale.bandwidth() / 2 : 0);
   };
   const getLabelWidth = (text: string) => {
-    return getTextSize(text, `.fui-cart__xAxis text`, chartContainer).width;
+    return getTextSize(text, `.fui-cart__xAxis text`, container).width;
   };
 
   for (let i = 0; i < tickValues.length; i++) {
@@ -2531,7 +2531,7 @@ export const autoLayoutXAxisLabels = (
   }
 
   if (requiresTruncate) {
-    return truncateAndStaggerXAxisLabels(tickValues, tickLabels, scale, axisNode, containerWidth, chartContainer);
+    return truncateAndStaggerXAxisLabels(tickValues, tickLabels, scale, axisNode, containerWidth, container);
   }
 
   if (requiresWrap) {
@@ -2543,7 +2543,7 @@ export const autoLayoutXAxisLabels = (
         noOfCharsToTruncate: 100,
         showXAxisLablesTooltip: false,
         width: maxWidths,
-        chartContainer,
+        container,
       }) ?? 0
     );
   }
@@ -2557,7 +2557,7 @@ const truncateAndStaggerXAxisLabels = (
   scale: ScaleContinuousNumeric<number, number> | ScaleTime<number, number> | ScaleBand<string>,
   axisNode: SVGSVGElement | null,
   containerWidth: number,
-  chartContainer?: HTMLElement | null,
+  container?: HTMLElement | null,
 ): number => {
   if (!axisNode) {
     return 0;
@@ -2575,7 +2575,7 @@ const truncateAndStaggerXAxisLabels = (
     return (scale(tickValues[index] as any) ?? 0) + ('bandwidth' in scale ? scale.bandwidth() / 2 : 0);
   };
   const getLabelSize = (text: string) => {
-    return getTextSize(text, `.fui-cart__xAxis text`, chartContainer);
+    return getTextSize(text, `.fui-cart__xAxis text`, container);
   };
 
   d3Select(axisNode)

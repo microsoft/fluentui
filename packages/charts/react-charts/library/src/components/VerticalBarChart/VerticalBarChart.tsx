@@ -720,7 +720,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
         axis: xAxisElement,
-        chartContainer: cartesianChartRef.current?.chartContainer,
+        container: cartesianChartRef.current?.chartContainer,
       };
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
@@ -809,7 +809,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         id: _tooltipId,
         axis: xAxisElement,
         showTooltip: props.showXAxisLablesTooltip,
-        chartContainer: cartesianChartRef.current?.chartContainer,
+        container: cartesianChartRef.current?.chartContainer,
       };
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
@@ -892,7 +892,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
         axis: xAxisElement,
-        chartContainer: cartesianChartRef.current?.chartContainer,
+        container: cartesianChartRef.current?.chartContainer,
       };
       xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
