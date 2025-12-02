@@ -2504,7 +2504,7 @@ export const autoLayoutXAxisLabels = (
 
   const getTickPosition = (index: number) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return scale(tickValues[index] as any) ?? 0;
+    return (scale(tickValues[index] as any) ?? 0) + ('bandwidth' in scale ? scale.bandwidth() / 2 : 0);
   };
   const getLabelWidth = (text: string) => {
     return getTextSize(text, `.fui-cart__xAxis text`, chartContainer).width;
@@ -2572,7 +2572,7 @@ const truncateAndStaggerXAxisLabels = (
 
   const getTickPosition = (index: number) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return scale(tickValues[index] as any) ?? 0;
+    return (scale(tickValues[index] as any) ?? 0) + ('bandwidth' in scale ? scale.bandwidth() / 2 : 0);
   };
   const getLabelSize = (text: string) => {
     return getTextSize(text, `.fui-cart__xAxis text`, chartContainer);
