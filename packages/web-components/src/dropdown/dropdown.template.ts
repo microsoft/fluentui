@@ -81,7 +81,7 @@ export function dropdownTemplate<T extends BaseDropdown>(options: DropdownOption
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       @mousedown="${(x, c) => x.mousedownHandler(c.event as MouseEvent)}"
     >
-      <div class="control">
+      <div class="control" part="control">
         <slot name="control" ${ref('controlSlot')}></slot>
         <slot name="indicator" ${ref('indicatorSlot')}>${staticallyCompose(options.indicator)}</slot>
       </div>
