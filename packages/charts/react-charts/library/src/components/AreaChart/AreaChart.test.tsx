@@ -9,6 +9,7 @@ expect.extend(toHaveNoViolations);
 
 const originalRAF = window.requestAnimationFrame;
 const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.Element.prototype.getBoundingClientRect;
 
 function updateChartWidthAndHeight() {
   jest.useFakeTimers();
@@ -16,19 +17,17 @@ function updateChartWidthAndHeight() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.Element.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 50,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 650,
-      x: 10,
-      y: 20,
-    } as DOMRect);
-
-  window.getComputedStyle = (element: Element) => {
+  window.Element.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 50,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 650,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
     const style = originalGetComputedStyle(element);
     return {
       ...style,
@@ -41,12 +40,13 @@ function updateChartWidthAndHeight() {
         return style.getPropertyValue(prop);
       },
     } as CSSStyleDeclaration;
-  };
+  });
 }
 
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
   window.getComputedStyle = originalGetComputedStyle;
 }
 
@@ -650,7 +650,9 @@ describe('AreaChart - Accessibility tests', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<AreaChart data={chartData} />);
     let axeResults;
-    axeResults = await axe(container);
+    await act(async () => {
+      axeResults = await axe(container);
+    });
     expect(axeResults).toHaveNoViolations();
   });
 });

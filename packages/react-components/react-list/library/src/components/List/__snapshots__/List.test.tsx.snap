@@ -107,7 +107,7 @@ exports[`List selection multiselect items are properly rendered with all attribu
       >
         <input
           class="fui-Checkbox__input"
-          id="checkbox-2"
+          id="checkbox-_r_1n_"
           tabindex="-1"
           type="checkbox"
         />
@@ -132,7 +132,7 @@ exports[`List selection multiselect items are properly rendered with all attribu
       >
         <input
           class="fui-Checkbox__input"
-          id="checkbox-4"
+          id="checkbox-_r_1p_"
           tabindex="-1"
           type="checkbox"
         />
@@ -168,7 +168,7 @@ exports[`List selection single select items are properly rendered with all attri
       >
         <input
           class="fui-Checkbox__input"
-          id="checkbox-2"
+          id="checkbox-_r_1j_"
           tabindex="-1"
           type="checkbox"
         />
@@ -193,7 +193,7 @@ exports[`List selection single select items are properly rendered with all attri
       >
         <input
           class="fui-Checkbox__input"
-          id="checkbox-4"
+          id="checkbox-_r_1l_"
           tabindex="-1"
           type="checkbox"
         />

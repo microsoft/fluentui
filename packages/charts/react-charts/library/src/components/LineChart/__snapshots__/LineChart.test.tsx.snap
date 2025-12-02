@@ -1283,9 +1283,9 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       <svg
         aria-label="LineChart"
         class="fui-cart__chart"
-        height="310"
+        height="300"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class="fui-cart__xAxis"
@@ -1294,11 +1294,11 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, 275)"
+          transform="translate(0, 265)"
         >
           <path
             class="domain"
-            d="M40.5,6V0.5H-19.5V6"
+            d="M40.5,6V0.5H630.5V6"
             stroke="currentColor"
           />
           <g
@@ -1323,7 +1323,64 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <g
             class="tick"
             opacity="1"
-            transform="translate(16.5,0)"
+            transform="translate(99.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(158.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(217.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              35
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(276.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1342,7 +1399,64 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <g
             class="tick"
             opacity="1"
-            transform="translate(-7.500000000000002,0)"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              45
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(394.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(453.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              55
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(512.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1358,6 +1472,44 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               60
             </text>
           </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(571.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              65
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(630.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              70
+            </text>
+          </g>
         </g>
         <g
           class="fui-cart__yAxis"
@@ -1370,24 +1522,24 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         >
           <path
             class="domain"
-            d="M-6,275.5H0.5V20.5H-6"
+            d="M-6,265.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,275.5)"
+            transform="translate(0,265.5)"
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               0
             </text>
@@ -1395,18 +1547,18 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,211.75)"
+            transform="translate(0,204.25)"
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               23
             </text>
@@ -1414,18 +1566,18 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,148)"
+            transform="translate(0,143)"
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               46
             </text>
@@ -1433,18 +1585,18 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,84.25)"
+            transform="translate(0,81.75)"
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               69
             </text>
@@ -1456,14 +1608,14 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               92
             </text>
@@ -1474,12 +1626,12 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             id="verticalLine_r_cd_"
             stroke="#323130"
             stroke-dasharray="5,5"
-            transform="translate(-20, 191.84782608695653)"
+            transform="translate(630, 185.1086956521739)"
             visibility="visibility"
             x1="0"
             x2="0"
             y1="0"
-            y2="84.15217391304347"
+            y2="80.8913043478261"
           />
           <g>
             <g
@@ -1492,17 +1644,17 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 stroke="yellow"
                 stroke-linecap="round"
                 stroke-width="4"
-                x1="-20"
-                x2="16"
-                y1="191.84782608695653"
-                y2="53.2608695652174"
+                x1="630"
+                x2="276"
+                y1="185.1086956521739"
+                y2="51.95652173913044"
               />
               <path
                 aria-label="70. metaData3, 30."
-                d="M-25.5 191.84782608695653
-     A5.5 5.5 0 1 0 -14.5 191.84782608695653
-     M-25.5 191.84782608695653
-     A 5.5 5.5 0 1 1 -14.5 191.84782608695653
+                d="M624.5 185.1086956521739
+     A5.5 5.5 0 1 0 635.5 185.1086956521739
+     M624.5 185.1086956521739
+     A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
                 data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
@@ -1515,10 +1667,10 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               />
               <path
                 aria-label="40. metaData3, 80."
-                d="M15.5 53.2608695652174
-     A0.5 0.5 0 1 0 16.5 53.2608695652174
-     M15.5 53.2608695652174
-     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+                d="M275.5 51.95652173913044
+     A0.5 0.5 0 1 0 276.5 51.95652173913044
+     M275.5 51.95652173913044
+     A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                 data-is-focusable="true"
                 fill="yellow"
@@ -1530,8 +1682,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 tabindex="0"
               />
               <circle
-                cx="16"
-                cy="53.2608695652174"
+                cx="276"
+                cy="51.95652173913044"
                 focusable="false"
                 id="circle_r_ca__2_11D"
                 opacity="0"
@@ -1550,17 +1702,17 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 stroke="green"
                 stroke-linecap="round"
                 stroke-width="4"
-                x1="28"
-                x2="4"
-                y1="108.69565217391303"
-                y2="25.543478260869563"
+                x1="158"
+                x2="394"
+                y1="105.21739130434783"
+                y2="25.326086956521735"
               />
               <path
                 aria-label="30. metaData2, 60."
-                d="M27.5 108.69565217391303
-     A0.5 0.5 0 1 0 28.5 108.69565217391303
-     M27.5 108.69565217391303
-     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+                d="M157.5 105.21739130434783
+     A0.5 0.5 0 1 0 158.5 105.21739130434783
+     M157.5 105.21739130434783
+     A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
                 data-is-focusable="true"
                 fill="green"
@@ -1573,10 +1725,10 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               />
               <path
                 aria-label="50. metaData2, 90."
-                d="M3.5 25.543478260869563
-     A0.5 0.5 0 1 0 4.5 25.543478260869563
-     M3.5 25.543478260869563
-     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+                d="M393.5 25.326086956521735
+     A0.5 0.5 0 1 0 394.5 25.326086956521735
+     M393.5 25.326086956521735
+     A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
                 data-is-focusable="true"
                 fill="green"
@@ -1588,8 +1740,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 tabindex="0"
               />
               <circle
-                cx="4"
-                cy="25.543478260869563"
+                cx="394"
+                cy="25.326086956521735"
                 focusable="false"
                 id="circle_r_ca__1_11D"
                 opacity="0"
@@ -1609,16 +1761,16 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 stroke-linecap="round"
                 stroke-width="4"
                 x1="40"
-                x2="16"
-                y1="136.41304347826087"
-                y2="53.2608695652174"
+                x2="276"
+                y1="131.84782608695653"
+                y2="51.95652173913044"
               />
               <path
                 aria-label="20. metaData1, 50."
-                d="M39.5 136.41304347826087
-     A0.5 0.5 0 1 0 40.5 136.41304347826087
-     M39.5 136.41304347826087
-     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+                d="M39.5 131.84782608695653
+     A0.5 0.5 0 1 0 40.5 131.84782608695653
+     M39.5 131.84782608695653
+     A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
                 data-is-focusable="true"
                 fill="red"
@@ -1631,10 +1783,10 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               />
               <path
                 aria-label="40. metaData1, 80."
-                d="M15.5 53.2608695652174
-     A0.5 0.5 0 1 0 16.5 53.2608695652174
-     M15.5 53.2608695652174
-     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+                d="M275.5 51.95652173913044
+     A0.5 0.5 0 1 0 276.5 51.95652173913044
+     M275.5 51.95652173913044
+     A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                 data-is-focusable="true"
                 fill="red"
@@ -1646,8 +1798,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 tabindex="0"
               />
               <circle
-                cx="16"
-                cy="53.2608695652174"
+                cx="276"
+                cy="51.95652173913044"
                 focusable="false"
                 id="circle_r_ca__0_11D"
                 opacity="0"
@@ -1811,9 +1963,9 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       <svg
         aria-label="LineChart"
         class="fui-cart__chart"
-        height="310"
+        height="300"
         style="display: block;"
-        width="0"
+        width="650"
       >
         <g
           class="fui-cart__xAxis"
@@ -1822,11 +1974,11 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           font-size="10"
           id="xAxisGElementchart_"
           text-anchor="middle"
-          transform="translate(0, 275)"
+          transform="translate(0, 265)"
         >
           <path
             class="domain"
-            d="M40.5,6V0.5H-19.5V6"
+            d="M40.5,6V0.5H630.5V6"
             stroke="currentColor"
           />
           <g
@@ -1851,7 +2003,64 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <g
             class="tick"
             opacity="1"
-            transform="translate(16.5,0)"
+            transform="translate(99.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              25
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(158.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(217.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              35
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(276.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1870,7 +2079,64 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <g
             class="tick"
             opacity="1"
-            transform="translate(-7.500000000000002,0)"
+            transform="translate(335.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              45
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(394.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              50
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(453.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              55
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(512.5,0)"
           >
             <line
               stroke="currentColor"
@@ -1886,6 +2152,44 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               60
             </text>
           </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(571.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              65
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(630.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              style="direction: ltr; unicode-bidi: isolate;"
+              y="16"
+            >
+              70
+            </text>
+          </g>
         </g>
         <g
           class="fui-cart__yAxis"
@@ -1898,24 +2202,24 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         >
           <path
             class="domain"
-            d="M-6,275.5H0.5V20.5H-6"
+            d="M-6,265.5H0.5V20.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,275.5)"
+            transform="translate(0,265.5)"
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               0
             </text>
@@ -1923,18 +2227,18 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,211.75)"
+            transform="translate(0,204.25)"
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               23
             </text>
@@ -1942,18 +2246,18 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,148)"
+            transform="translate(0,143)"
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               46
             </text>
@@ -1961,18 +2265,18 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,84.25)"
+            transform="translate(0,81.75)"
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               69
             </text>
@@ -1984,14 +2288,14 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           >
             <line
               stroke="currentColor"
-              x2="-60"
+              x2="590"
             />
             <text
               aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
-              x="-70"
+              x="-10"
             >
               92
             </text>
@@ -2002,12 +2306,12 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             id="verticalLine_r_dn_"
             stroke="#323130"
             stroke-dasharray="5,5"
-            transform="translate(-20, 191.84782608695653)"
+            transform="translate(630, 185.1086956521739)"
             visibility="visibility"
             x1="0"
             x2="0"
             y1="0"
-            y2="84.15217391304347"
+            y2="80.8913043478261"
           />
           <g>
             <g
@@ -2020,17 +2324,17 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 stroke="yellow"
                 stroke-linecap="round"
                 stroke-width="4"
-                x1="-20"
-                x2="16"
-                y1="191.84782608695653"
-                y2="53.2608695652174"
+                x1="630"
+                x2="276"
+                y1="185.1086956521739"
+                y2="51.95652173913044"
               />
               <path
                 aria-label="70. metaData3, 30."
-                d="M-25.5 191.84782608695653
-     A5.5 5.5 0 1 0 -14.5 191.84782608695653
-     M-25.5 191.84782608695653
-     A 5.5 5.5 0 1 1 -14.5 191.84782608695653
+                d="M624.5 185.1086956521739
+     A5.5 5.5 0 1 0 635.5 185.1086956521739
+     M624.5 185.1086956521739
+     A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
                 data-is-focusable="true"
                 fill="var(--colorNeutralBackground1)"
@@ -2043,10 +2347,10 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               />
               <path
                 aria-label="40. metaData3, 80."
-                d="M15.5 53.2608695652174
-     A0.5 0.5 0 1 0 16.5 53.2608695652174
-     M15.5 53.2608695652174
-     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+                d="M275.5 51.95652173913044
+     A0.5 0.5 0 1 0 276.5 51.95652173913044
+     M275.5 51.95652173913044
+     A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                 data-is-focusable="true"
                 fill="yellow"
@@ -2058,8 +2362,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 tabindex="0"
               />
               <circle
-                cx="16"
-                cy="53.2608695652174"
+                cx="276"
+                cy="51.95652173913044"
                 focusable="false"
                 id="circle_r_dk__2_11D"
                 opacity="0"
@@ -2078,17 +2382,17 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 stroke="green"
                 stroke-linecap="round"
                 stroke-width="4"
-                x1="28"
-                x2="4"
-                y1="108.69565217391303"
-                y2="25.543478260869563"
+                x1="158"
+                x2="394"
+                y1="105.21739130434783"
+                y2="25.326086956521735"
               />
               <path
                 aria-label="30. metaData2, 60."
-                d="M27.5 108.69565217391303
-     A0.5 0.5 0 1 0 28.5 108.69565217391303
-     M27.5 108.69565217391303
-     A 0.5 0.5 0 1 1 28.5 108.69565217391303
+                d="M157.5 105.21739130434783
+     A0.5 0.5 0 1 0 158.5 105.21739130434783
+     M157.5 105.21739130434783
+     A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
                 data-is-focusable="true"
                 fill="green"
@@ -2101,10 +2405,10 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               />
               <path
                 aria-label="50. metaData2, 90."
-                d="M3.5 25.543478260869563
-     A0.5 0.5 0 1 0 4.5 25.543478260869563
-     M3.5 25.543478260869563
-     A 0.5 0.5 0 1 1 4.5 25.543478260869563
+                d="M393.5 25.326086956521735
+     A0.5 0.5 0 1 0 394.5 25.326086956521735
+     M393.5 25.326086956521735
+     A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
                 data-is-focusable="true"
                 fill="green"
@@ -2116,8 +2420,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 tabindex="0"
               />
               <circle
-                cx="4"
-                cy="25.543478260869563"
+                cx="394"
+                cy="25.326086956521735"
                 focusable="false"
                 id="circle_r_dk__1_11D"
                 opacity="0"
@@ -2137,16 +2441,16 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 stroke-linecap="round"
                 stroke-width="4"
                 x1="40"
-                x2="16"
-                y1="136.41304347826087"
-                y2="53.2608695652174"
+                x2="276"
+                y1="131.84782608695653"
+                y2="51.95652173913044"
               />
               <path
                 aria-label="20. metaData1, 50."
-                d="M39.5 136.41304347826087
-     A0.5 0.5 0 1 0 40.5 136.41304347826087
-     M39.5 136.41304347826087
-     A 0.5 0.5 0 1 1 40.5 136.41304347826087
+                d="M39.5 131.84782608695653
+     A0.5 0.5 0 1 0 40.5 131.84782608695653
+     M39.5 131.84782608695653
+     A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
                 data-is-focusable="true"
                 fill="red"
@@ -2159,10 +2463,10 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               />
               <path
                 aria-label="40. metaData1, 80."
-                d="M15.5 53.2608695652174
-     A0.5 0.5 0 1 0 16.5 53.2608695652174
-     M15.5 53.2608695652174
-     A 0.5 0.5 0 1 1 16.5 53.2608695652174
+                d="M275.5 51.95652173913044
+     A0.5 0.5 0 1 0 276.5 51.95652173913044
+     M275.5 51.95652173913044
+     A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                 data-is-focusable="true"
                 fill="red"
@@ -2174,8 +2478,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 tabindex="0"
               />
               <circle
-                cx="16"
-                cy="53.2608695652174"
+                cx="276"
+                cy="51.95652173913044"
                 focusable="false"
                 id="circle_r_dk__0_11D"
                 opacity="0"
@@ -2301,7 +2605,7 @@ Object {
   >
     <div
       class="fui-line__tooltip"
-      id="LineChartTooltipId__r_3s_"
+      id="LineChartTooltipId__r_8e_"
       style="opacity: 0;"
     />
     <div>
@@ -2657,7 +2961,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_4i_"
+                id="verticalLine_r_94_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -2672,7 +2976,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_4g__2_1"
+                    id="lineID_r_92__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -2691,7 +2995,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_4f__2_1"
+                    id="circle_r_91__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -2707,7 +3011,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_4f__2_11L"
+                    id="circle_r_91__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -2718,7 +3022,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_4f__2_11D"
+                    id="circle_r_91__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -2730,7 +3034,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_4g__1_1"
+                    id="lineID_r_92__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -2749,7 +3053,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_4f__1_1"
+                    id="circle_r_91__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -2765,7 +3069,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_4f__1_11L"
+                    id="circle_r_91__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -2776,7 +3080,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_4f__1_11D"
+                    id="circle_r_91__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -2788,7 +3092,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_4g__0_1"
+                    id="lineID_r_92__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -2807,7 +3111,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_4f__0_1"
+                    id="circle_r_91__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -2823,7 +3127,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_4f__0_11L"
+                    id="circle_r_91__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -2834,7 +3138,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_4f__0_11D"
+                    id="circle_r_91__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3275,7 +3579,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_4i_"
+              id="verticalLine_r_94_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -3290,7 +3594,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_4g__2_1"
+                  id="lineID_r_92__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -3309,7 +3613,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_4f__2_1"
+                  id="circle_r_91__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -3325,7 +3629,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_4f__2_11L"
+                  id="circle_r_91__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -3336,7 +3640,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_4f__2_11D"
+                  id="circle_r_91__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3348,7 +3652,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_4g__1_1"
+                  id="lineID_r_92__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -3367,7 +3671,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_4f__1_1"
+                  id="circle_r_91__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -3383,7 +3687,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_4f__1_11L"
+                  id="circle_r_91__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -3394,7 +3698,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_4f__1_11D"
+                  id="circle_r_91__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3406,7 +3710,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_4g__0_1"
+                  id="lineID_r_92__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -3425,7 +3729,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_4f__0_1"
+                  id="circle_r_91__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -3441,7 +3745,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_4f__0_11L"
+                  id="circle_r_91__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -3452,7 +3756,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_4f__0_11D"
+                  id="circle_r_91__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3952,7 +4256,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_2c_"
+                id="verticalLine_r_6u_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -3967,7 +4271,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_2a__2_1"
+                    id="lineID_r_6s__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -3986,7 +4290,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_29__2_1"
+                    id="circle_r_6r__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -4002,7 +4306,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_29__2_11L"
+                    id="circle_r_6r__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -4013,7 +4317,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_29__2_11D"
+                    id="circle_r_6r__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4025,7 +4329,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_2a__1_1"
+                    id="lineID_r_6s__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -4044,7 +4348,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_29__1_1"
+                    id="circle_r_6r__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -4060,7 +4364,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_29__1_11L"
+                    id="circle_r_6r__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -4071,7 +4375,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_29__1_11D"
+                    id="circle_r_6r__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4083,7 +4387,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_2a__0_1"
+                    id="lineID_r_6s__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -4102,7 +4406,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_29__0_1"
+                    id="circle_r_6r__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -4118,7 +4422,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_29__0_11L"
+                    id="circle_r_6r__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -4129,7 +4433,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_29__0_11D"
+                    id="circle_r_6r__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -4570,7 +4874,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_2c_"
+              id="verticalLine_r_6u_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -4585,7 +4889,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_2a__2_1"
+                  id="lineID_r_6s__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -4604,7 +4908,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_29__2_1"
+                  id="circle_r_6r__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -4620,7 +4924,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_29__2_11L"
+                  id="circle_r_6r__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -4631,7 +4935,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_29__2_11D"
+                  id="circle_r_6r__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -4643,7 +4947,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_2a__1_1"
+                  id="lineID_r_6s__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -4662,7 +4966,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_29__1_1"
+                  id="circle_r_6r__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -4678,7 +4982,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_29__1_11L"
+                  id="circle_r_6r__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -4689,7 +4993,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_29__1_11D"
+                  id="circle_r_6r__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -4701,7 +5005,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_2a__0_1"
+                  id="lineID_r_6s__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -4720,7 +5024,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_29__0_1"
+                  id="circle_r_6r__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -4736,7 +5040,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_29__0_11L"
+                  id="circle_r_6r__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -4747,7 +5051,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_29__0_11D"
+                  id="circle_r_6r__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5247,7 +5551,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_3f_"
+                id="verticalLine_r_81_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5262,7 +5566,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_3d__2_1"
+                    id="lineID_r_7v__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -5281,7 +5585,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_3c__2_1"
+                    id="circle_r_7u__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5297,7 +5601,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_3c__2_11L"
+                    id="circle_r_7u__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -5308,7 +5612,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_3c__2_11D"
+                    id="circle_r_7u__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5320,7 +5624,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_3d__1_1"
+                    id="lineID_r_7v__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -5339,7 +5643,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_3c__1_1"
+                    id="circle_r_7u__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5355,7 +5659,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_3c__1_11L"
+                    id="circle_r_7u__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -5366,7 +5670,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_3c__1_11D"
+                    id="circle_r_7u__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5378,7 +5682,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_3d__0_1"
+                    id="lineID_r_7v__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -5397,7 +5701,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_3c__0_1"
+                    id="circle_r_7u__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -5413,7 +5717,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_3c__0_11L"
+                    id="circle_r_7u__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -5424,7 +5728,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_3c__0_11D"
+                    id="circle_r_7u__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -5875,7 +6179,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_3f_"
+              id="verticalLine_r_81_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -5890,7 +6194,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_3d__2_1"
+                  id="lineID_r_7v__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -5909,7 +6213,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_3c__2_1"
+                  id="circle_r_7u__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -5925,7 +6229,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_3c__2_11L"
+                  id="circle_r_7u__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -5936,7 +6240,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_3c__2_11D"
+                  id="circle_r_7u__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -5948,7 +6252,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_3d__1_1"
+                  id="lineID_r_7v__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -5967,7 +6271,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_3c__1_1"
+                  id="circle_r_7u__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -5983,7 +6287,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_3c__1_11L"
+                  id="circle_r_7u__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -5994,7 +6298,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_3c__1_11D"
+                  id="circle_r_7u__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6006,7 +6310,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_3d__0_1"
+                  id="lineID_r_7v__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -6025,7 +6329,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_3c__0_1"
+                  id="circle_r_7u__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -6041,7 +6345,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_3c__0_11L"
+                  id="circle_r_7u__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -6052,7 +6356,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_3c__0_11D"
+                  id="circle_r_7u__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -6562,7 +6866,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_2o_"
+                id="verticalLine_r_7a_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -6577,7 +6881,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_2m__2_1"
+                    id="lineID_r_78__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -6596,7 +6900,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_2l__2_1"
+                    id="circle_r_77__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -6612,7 +6916,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_2l__2_11L"
+                    id="circle_r_77__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -6623,7 +6927,7 @@ Object {
                     cx="276"
                     cy="19.34782608695652"
                     focusable="false"
-                    id="circle_r_2l__2_11D"
+                    id="circle_r_77__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6635,7 +6939,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_2m__1_1"
+                    id="lineID_r_78__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -6654,7 +6958,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_2l__1_1"
+                    id="circle_r_77__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -6670,7 +6974,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_2l__1_11L"
+                    id="circle_r_77__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -6681,7 +6985,7 @@ Object {
                     cx="394"
                     cy="19.891304347826086"
                     focusable="false"
-                    id="circle_r_2l__1_11D"
+                    id="circle_r_77__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -6693,7 +6997,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_2m__0_1"
+                    id="lineID_r_78__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -6712,7 +7016,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_2l__0_1"
+                    id="circle_r_77__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -6728,7 +7032,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_2l__0_11L"
+                    id="circle_r_77__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -6739,7 +7043,7 @@ Object {
                     cx="276"
                     cy="19.34782608695652"
                     focusable="false"
-                    id="circle_r_2l__0_11D"
+                    id="circle_r_77__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -7106,7 +7410,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_2o_"
+              id="verticalLine_r_7a_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -7121,7 +7425,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_2m__2_1"
+                  id="lineID_r_78__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -7140,7 +7444,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_2l__2_1"
+                  id="circle_r_77__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -7156,7 +7460,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_2l__2_11L"
+                  id="circle_r_77__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -7167,7 +7471,7 @@ Object {
                   cx="276"
                   cy="19.34782608695652"
                   focusable="false"
-                  id="circle_r_2l__2_11D"
+                  id="circle_r_77__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7179,7 +7483,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_2m__1_1"
+                  id="lineID_r_78__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -7198,7 +7502,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_2l__1_1"
+                  id="circle_r_77__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -7214,7 +7518,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_2l__1_11L"
+                  id="circle_r_77__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -7225,7 +7529,7 @@ Object {
                   cx="394"
                   cy="19.891304347826086"
                   focusable="false"
-                  id="circle_r_2l__1_11D"
+                  id="circle_r_77__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7237,7 +7541,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_2m__0_1"
+                  id="lineID_r_78__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -7256,7 +7560,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_2l__0_1"
+                  id="circle_r_77__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -7272,7 +7576,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_2l__0_11L"
+                  id="circle_r_77__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -7283,7 +7587,7 @@ Object {
                   cx="276"
                   cy="19.34782608695652"
                   focusable="false"
-                  id="circle_r_2l__0_11D"
+                  id="circle_r_77__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -7709,7 +8013,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_33_"
+                id="verticalLine_r_7l_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -7724,7 +8028,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_31__2_1"
+                    id="lineID_r_7j__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -7743,7 +8047,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_30__2_1"
+                    id="circle_r_7i__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -7759,7 +8063,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_30__2_11L"
+                    id="circle_r_7i__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -7770,7 +8074,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_30__2_11D"
+                    id="circle_r_7i__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -7782,7 +8086,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_31__1_1"
+                    id="lineID_r_7j__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -7801,7 +8105,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_30__1_1"
+                    id="circle_r_7i__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -7817,7 +8121,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_30__1_11L"
+                    id="circle_r_7i__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -7828,7 +8132,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_30__1_11D"
+                    id="circle_r_7i__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -7840,7 +8144,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_31__0_1"
+                    id="lineID_r_7j__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -7859,7 +8163,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_30__0_1"
+                    id="circle_r_7i__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -7875,7 +8179,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_30__0_11L"
+                    id="circle_r_7i__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -7886,7 +8190,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_30__0_11D"
+                    id="circle_r_7i__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -8327,7 +8631,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_33_"
+              id="verticalLine_r_7l_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -8342,7 +8646,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_31__2_1"
+                  id="lineID_r_7j__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -8361,7 +8665,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_30__2_1"
+                  id="circle_r_7i__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -8377,7 +8681,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_30__2_11L"
+                  id="circle_r_7i__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -8388,7 +8692,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_30__2_11D"
+                  id="circle_r_7i__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8400,7 +8704,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_31__1_1"
+                  id="lineID_r_7j__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -8419,7 +8723,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_30__1_1"
+                  id="circle_r_7i__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -8435,7 +8739,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_30__1_11L"
+                  id="circle_r_7i__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -8446,7 +8750,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_30__1_11D"
+                  id="circle_r_7i__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -8458,7 +8762,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_31__0_1"
+                  id="lineID_r_7j__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -8477,7 +8781,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_30__0_1"
+                  id="circle_r_7i__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -8493,7 +8797,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_30__0_11L"
+                  id="circle_r_7i__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -8504,7 +8808,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_30__0_11D"
+                  id="circle_r_7i__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -9158,7 +9462,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_3q_"
+                id="verticalLine_r_8c_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -9173,7 +9477,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_3o__2_1"
+                    id="lineID_r_8a__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -9192,7 +9496,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_3n__2_1"
+                    id="circle_r_89__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -9208,7 +9512,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_3n__2_11L"
+                    id="circle_r_89__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -9219,7 +9523,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_3n__2_11D"
+                    id="circle_r_89__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -9231,7 +9535,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_3o__1_1"
+                    id="lineID_r_8a__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -9250,7 +9554,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_3n__1_1"
+                    id="circle_r_89__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -9266,7 +9570,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_3n__1_11L"
+                    id="circle_r_89__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -9277,7 +9581,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_3n__1_11D"
+                    id="circle_r_89__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -9289,7 +9593,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_3o__0_1"
+                    id="lineID_r_8a__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -9308,7 +9612,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_3n__0_1"
+                    id="circle_r_89__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -9324,7 +9628,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_3n__0_11L"
+                    id="circle_r_89__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -9335,7 +9639,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_3n__0_11D"
+                    id="circle_r_89__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -9424,7 +9728,7 @@ Object {
     </div>
     <div
       class="fui-line__tooltip"
-      id="LineChartTooltipId__r_3s_"
+      id="LineChartTooltipId__r_8e_"
       style="opacity: 0;"
     />
   </body>,
@@ -9935,7 +10239,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_3q_"
+              id="verticalLine_r_8c_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -9950,7 +10254,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_3o__2_1"
+                  id="lineID_r_8a__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -9969,7 +10273,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_3n__2_1"
+                  id="circle_r_89__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -9985,7 +10289,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_3n__2_11L"
+                  id="circle_r_89__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -9996,7 +10300,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_3n__2_11D"
+                  id="circle_r_89__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -10008,7 +10312,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_3o__1_1"
+                  id="lineID_r_8a__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -10027,7 +10331,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_3n__1_1"
+                  id="circle_r_89__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -10043,7 +10347,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_3n__1_11L"
+                  id="circle_r_89__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -10054,7 +10358,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_3n__1_11D"
+                  id="circle_r_89__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -10066,7 +10370,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_3o__0_1"
+                  id="lineID_r_8a__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -10085,7 +10389,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_3n__0_1"
+                  id="circle_r_89__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -10101,7 +10405,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_3n__0_11L"
+                  id="circle_r_89__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -10112,7 +10416,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_3n__0_11D"
+                  id="circle_r_89__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -10261,7 +10565,7 @@ Object {
   >
     <div
       class="fui-line__tooltip"
-      id="LineChartTooltipId__r_3s_"
+      id="LineChartTooltipId__r_8e_"
       style="opacity: 0;"
     />
     <div>
@@ -10617,7 +10921,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_46_"
+                id="verticalLine_r_8o_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -10632,7 +10936,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_44__2_1"
+                    id="lineID_r_8m__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -10651,7 +10955,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_43__2_1"
+                    id="circle_r_8l__2_1"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -10667,7 +10971,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="yellow"
-                    id="circle_r_43__2_11L"
+                    id="circle_r_8l__2_11L"
                     opacity="1"
                     role="img"
                     stroke="yellow"
@@ -10678,7 +10982,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_43__2_11D"
+                    id="circle_r_8l__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -10690,7 +10994,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_44__1_1"
+                    id="lineID_r_8m__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -10709,7 +11013,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_43__1_1"
+                    id="circle_r_8l__1_1"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -10725,7 +11029,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="green"
-                    id="circle_r_43__1_11L"
+                    id="circle_r_8l__1_11L"
                     opacity="1"
                     role="img"
                     stroke="green"
@@ -10736,7 +11040,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_43__1_11D"
+                    id="circle_r_8l__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -10748,7 +11052,7 @@ Object {
                   role="region"
                 >
                   <line
-                    id="lineID_r_44__0_1"
+                    id="lineID_r_8m__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -10767,7 +11071,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_43__0_1"
+                    id="circle_r_8l__0_1"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -10783,7 +11087,7 @@ Object {
      "
                     data-is-focusable="true"
                     fill="red"
-                    id="circle_r_43__0_11L"
+                    id="circle_r_8l__0_11L"
                     opacity="1"
                     role="img"
                     stroke="red"
@@ -10794,7 +11098,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_43__0_11D"
+                    id="circle_r_8l__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -11235,7 +11539,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_46_"
+              id="verticalLine_r_8o_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -11250,7 +11554,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_44__2_1"
+                  id="lineID_r_8m__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -11269,7 +11573,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_43__2_1"
+                  id="circle_r_8l__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -11285,7 +11589,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_43__2_11L"
+                  id="circle_r_8l__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -11296,7 +11600,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_43__2_11D"
+                  id="circle_r_8l__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -11308,7 +11612,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_44__1_1"
+                  id="lineID_r_8m__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -11327,7 +11631,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_43__1_1"
+                  id="circle_r_8l__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -11343,7 +11647,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_43__1_11L"
+                  id="circle_r_8l__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -11354,7 +11658,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_43__1_11D"
+                  id="circle_r_8l__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -11366,7 +11670,7 @@ Object {
                 role="region"
               >
                 <line
-                  id="lineID_r_44__0_1"
+                  id="lineID_r_8m__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -11385,7 +11689,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_43__0_1"
+                  id="circle_r_8l__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -11401,7 +11705,7 @@ Object {
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_43__0_11L"
+                  id="circle_r_8l__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -11412,7 +11716,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_43__0_11D"
+                  id="circle_r_8l__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -11812,7 +12116,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         </g>
         <g>
           <line
-            id="verticalLine_r_17_"
+            id="verticalLine_r_5d_"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -11827,7 +12131,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_15__2_1"
+                id="lineID_r_5b__2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -11846,7 +12150,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_14__2_1"
+                id="circle_r_5a__2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -11862,7 +12166,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_14__2_11L"
+                id="circle_r_5a__2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -11873,7 +12177,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_14__2_11D"
+                id="circle_r_5a__2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -11885,7 +12189,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_15__1_1"
+                id="lineID_r_5b__1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -11904,7 +12208,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle_r_14__1_1"
+                id="circle_r_5a__1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -11920,7 +12224,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle_r_14__1_11L"
+                id="circle_r_5a__1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -11931,7 +12235,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="394"
                 cy="25.326086956521735"
                 focusable="false"
-                id="circle_r_14__1_11D"
+                id="circle_r_5a__1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -11943,7 +12247,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_15__0_1"
+                id="lineID_r_5b__0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -11962,7 +12266,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle_r_14__0_1"
+                id="circle_r_5a__0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -11978,7 +12282,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle_r_14__0_11L"
+                id="circle_r_5a__0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -11989,7 +12293,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_14__0_11D"
+                id="circle_r_5a__0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12337,7 +12641,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         </g>
         <g>
           <line
-            id="verticalLine_r_1j_"
+            id="verticalLine_r_5p_"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -12352,7 +12656,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_1h__2_1"
+                id="lineID_r_5n__2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -12371,7 +12675,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_1g__2_1"
+                id="circle_r_5m__2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -12387,7 +12691,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle_r_1g__2_11L"
+                id="circle_r_5m__2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -12398,7 +12702,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_1g__2_11D"
+                id="circle_r_5m__2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12410,7 +12714,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_1h__1_1"
+                id="lineID_r_5n__1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -12429,7 +12733,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle_r_1g__1_1"
+                id="circle_r_5m__1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -12445,7 +12749,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle_r_1g__1_11L"
+                id="circle_r_5m__1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -12456,7 +12760,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="394"
                 cy="25.326086956521735"
                 focusable="false"
-                id="circle_r_1g__1_11D"
+                id="circle_r_5m__1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12468,7 +12772,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               role="region"
             >
               <line
-                id="lineID_r_1h__0_1"
+                id="lineID_r_5n__0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -12487,7 +12791,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle_r_1g__0_1"
+                id="circle_r_5m__0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -12503,7 +12807,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle_r_1g__0_11L"
+                id="circle_r_5m__0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -12514,7 +12818,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_1g__0_11D"
+                id="circle_r_5m__0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -12606,7 +12910,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 exports[`Theme and accessibility Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider_r_1s_"
+    class="fui-FluentProvider fui-FluentProvider_r_62_"
     dir="ltr"
   >
     <div
@@ -12961,7 +13265,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
           </g>
           <g>
             <line
-              id="verticalLine_r_20_"
+              id="verticalLine_r_66_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -12976,7 +13280,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineID_r_1u__2_1"
+                  id="lineID_r_64__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -12995,7 +13299,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_1t__2_1"
+                  id="circle_r_63__2_1"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -13011,7 +13315,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="yellow"
-                  id="circle_r_1t__2_11L"
+                  id="circle_r_63__2_11L"
                   opacity="1"
                   role="img"
                   stroke="yellow"
@@ -13022,7 +13326,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_1t__2_11D"
+                  id="circle_r_63__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -13034,7 +13338,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineID_r_1u__1_1"
+                  id="lineID_r_64__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -13053,7 +13357,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_1t__1_1"
+                  id="circle_r_63__1_1"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -13069,7 +13373,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="green"
-                  id="circle_r_1t__1_11L"
+                  id="circle_r_63__1_11L"
                   opacity="1"
                   role="img"
                   stroke="green"
@@ -13080,7 +13384,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_1t__1_11D"
+                  id="circle_r_63__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -13092,7 +13396,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                 role="region"
               >
                 <line
-                  id="lineID_r_1u__0_1"
+                  id="lineID_r_64__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -13111,7 +13415,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_1t__0_1"
+                  id="circle_r_63__0_1"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -13127,7 +13431,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
      "
                   data-is-focusable="true"
                   fill="red"
-                  id="circle_r_1t__0_11L"
+                  id="circle_r_63__0_11L"
                   opacity="1"
                   role="img"
                   stroke="red"
@@ -13138,7 +13442,7 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_1t__0_11D"
+                  id="circle_r_63__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"

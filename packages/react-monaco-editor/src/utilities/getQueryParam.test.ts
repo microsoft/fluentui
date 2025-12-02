@@ -1,5 +1,10 @@
 import { getQueryParam } from './getQueryParam';
-import * as Utilities from '@fluentui/react/lib/Utilities';
+import { getWindow } from '@fluentui/react/lib/Utilities';
+
+jest.mock('@fluentui/react/lib/Utilities', () => ({
+  ...jest.requireActual('@fluentui/react/lib/Utilities'),
+  getWindow: jest.fn(),
+}));
 
 describe('getQueryParam', () => {
   it('returns null if no query', () => {
@@ -35,14 +40,11 @@ describe('getQueryParam', () => {
   });
 
   it('defaults to using window.location.href', () => {
-    // Mock getWindow to return a window with custom location
     const mockWindow = {
       location: { href: 'http://whatever?foo=1' },
     } as Window;
-    jest.spyOn(Utilities, 'getWindow').mockReturnValue(mockWindow);
+    jest.mocked(getWindow).mockReturnValue(mockWindow);
 
     expect(getQueryParam('foo')).toBe('1');
-
-    jest.restoreAllMocks();
   });
 });

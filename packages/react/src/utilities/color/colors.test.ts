@@ -170,6 +170,7 @@ describe('color utilities', () => {
       expect(cssColor('rgb(0)')).toBeUndefined(); // not enough numbers
       expect(cssColor('rgb(0, 0, 0, 0)')).toBeUndefined(); // too many numbers for rgb non-a
       expect(cssColor('rgb(foo)')).toBeUndefined();
+      expect(cssColor('rgb(0, 0, 0, 0, 0)')).toBeUndefined(); // too many numbers
       // Note: Modern CSS parsers (JSDOM 25+) accept rgba(0, 0, 0) and default alpha to 1
       expect(cssColor('rgba(0, 0, 0)')).toEqual({ r: 0, g: 0, b: 0, a: 100 });
     });

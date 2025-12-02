@@ -28,6 +28,7 @@ beforeAll(() => {
 
 const originalRAF = window.requestAnimationFrame;
 const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.HTMLElement.prototype.getBoundingClientRect;
 
 function sharedBeforeEach() {
   jest.useFakeTimers();
@@ -35,16 +36,17 @@ function sharedBeforeEach() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 50,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 650,
-    } as DOMRect);
-  window.getComputedStyle = (element: Element) => {
+  window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 50,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 650,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
     const style = originalGetComputedStyle(element);
     return {
       ...style,
@@ -57,11 +59,12 @@ function sharedBeforeEach() {
         return style.getPropertyValue(prop);
       },
     } as CSSStyleDeclaration;
-  };
+  });
 }
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.HTMLElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
   window.getComputedStyle = originalGetComputedStyle;
 }
 

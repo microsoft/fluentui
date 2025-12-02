@@ -81,13 +81,13 @@ describe('StyledText', () => {
 
   it.each`
     atMention | color
-    ${true}   | ${'var(--colorBrandForegroundLink)'}
-    ${'me'}   | ${'var(--colorPalettePumpkinBorderActive)'}
+    ${true}   | ${'colorBrandForegroundLink'}
+    ${'me'}   | ${'colorPalettePumpkinBorderActive'}
   `(`applies the correct atMention styles`, ({ atMention, color }) => {
     const { getByText } = render(<StyledText atMention={atMention}>Test</StyledText>);
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      color: ${color};
+      color: var(--${color});
     `);
   });
 

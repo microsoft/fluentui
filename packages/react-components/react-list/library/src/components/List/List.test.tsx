@@ -8,14 +8,6 @@ import { ListItemActionEventData } from '../ListItem/ListItem.types';
 import { EventHandler } from '@fluentui/react-utilities';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
-// Mock useId from @fluentui/react-utilities to return CSS-safe IDs without special characters.
-// React's useId generates IDs with commas that create invalid CSS selectors in JSDOM 25+,
-// causing console.error logs that React 19's act() collects as AggregateError.
-jest.mock('@fluentui/react-utilities', () => ({
-  ...jest.requireActual('@fluentui/react-utilities'),
-  ...jest.requireActual('../../testing/createUseIdMock').createUseIdMock(),
-}));
-
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
 }

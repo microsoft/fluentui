@@ -20,6 +20,7 @@ expect.extend(toHaveNoViolations);
 
 const originalRAF = window.requestAnimationFrame;
 const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.Element.prototype.getBoundingClientRect;
 
 function updateChartWidthAndHeight() {
   jest.useFakeTimers();
@@ -27,16 +28,17 @@ function updateChartWidthAndHeight() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.Element.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 50,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 650,
-    } as DOMRect);
-  window.getComputedStyle = (element: Element) => {
+  window.Element.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 50,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 650,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
     const style = originalGetComputedStyle(element);
     return {
       ...style,
@@ -49,12 +51,13 @@ function updateChartWidthAndHeight() {
         return style.getPropertyValue(prop);
       },
     } as CSSStyleDeclaration;
-  };
+  });
 }
 
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
   window.getComputedStyle = originalGetComputedStyle;
 }
 
@@ -416,8 +419,10 @@ const eventAnnotationProps = {
   mergedLabel: (count: number) => `${count} events`,
 };
 
-// @FIXME: does not work with jest v30
-describe.skip('Line chart - Subcomponent line', () => {
+describe('Line chart - Subcomponent line', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should render the lines with the specified colors',
     LineChart,
@@ -443,8 +448,10 @@ describe.skip('Line chart - Subcomponent line', () => {
   );
 });
 
-// @FIXME: does not work with jest v30
-describe.skip('Line chart - Subcomponent legend', () => {
+describe('Line chart - Subcomponent legend', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should highlight the corresponding Line on mouse over on legends',
     LineChart,
@@ -587,8 +594,10 @@ describe.skip('Line chart - Subcomponent legend', () => {
   );
 });
 
-// @FIXME: does not work with jest v30
-describe.skip('Line chart - Subcomponent Time Range', () => {
+describe('Line chart - Subcomponent Time Range', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
   testWithWait(
     'Should render time range with sepcified data',
     LineChart,
@@ -717,10 +726,7 @@ describe('Theme and accessibility', () => {
   });
 });
 
-describe.skip('Line chart - Accessibility', () => {
-  beforeEach(updateChartWidthAndHeight);
-  afterEach(sharedAfterEach);
-
+describe('Line chart - Accessibility', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<LineChart data={basicChartPoints} />);
     let axeResults;
@@ -882,8 +888,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 });
 
-// @FIXME: failing with jest v30
-describe.skip('LineChart - mouse events', () => {
+describe('LineChart - mouse events', () => {
   let root: HTMLDivElement | null;
 
   beforeEach(() => {
@@ -901,7 +906,6 @@ describe.skip('LineChart - mouse events', () => {
     }
   });
 
-  // @FIXME: this tests is failing with jest 29.7.0
   it('Should render callout correctly on mouseover', () => {
     // Render the LineChart and simulate mouseover using React Testing Library
     const { container } = render(<LineChart data={basicChartPoints} />, { container: root! });
