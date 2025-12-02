@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add small variant to the Switch component",
+  "packageName": "@fluentui/react-switch",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
