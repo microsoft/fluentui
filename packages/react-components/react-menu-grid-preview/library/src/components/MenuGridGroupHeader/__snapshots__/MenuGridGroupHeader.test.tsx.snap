@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuGridGroupHeader renders a default state 1`] = `
+<div
+  aria-hidden="true"
+  class="fui-MenuGridGroupHeader"
+  id=""
+  role="presentation"
+>
+  Default MenuGridGroupHeader
+</div>
+`;

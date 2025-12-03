@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
-import { ChartProps, Sparkline } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import * as React from 'react';
+import { ChartProps, Sparkline } from './index';
 
 expect.extend(toHaveNoViolations);
 
@@ -126,7 +126,6 @@ describe('Sparkline Chart - axe-core', () => {
 });
 
 describe('Sparkline snapShot testing', () => {
-  /* eslint-disable @typescript-eslint/no-deprecated */
   it('renders Sparkline correctly', () => {
     const { container } = render(<Sparkline data={sparkline1Points} showLegend={true} />);
     expect(container.firstChild).toMatchSnapshot();
@@ -136,7 +135,6 @@ describe('Sparkline snapShot testing', () => {
     const { container } = render(<Sparkline data={sparkline2Points} showLegend={false} />);
     expect(container.firstChild).toMatchSnapshot();
   });
-  /* eslint-enable @typescript-eslint/no-deprecated */
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
@@ -150,5 +148,31 @@ describe('Render empty chart aria label div when chart is empty', () => {
     let wrapper = render(<Sparkline data={emptySparklinePoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
+  });
+});
+
+describe('Sparkline dimension props', () => {
+  it('should apply custom width prop to SVG element', () => {
+    const customWidth = 150;
+    const { container } = render(<Sparkline data={sparkline1Points} width={customWidth} />);
+    const svg = container.querySelector('svg');
+    expect(svg).toHaveAttribute('width', customWidth.toString());
+  });
+
+  it('should apply custom height prop to SVG element', () => {
+    const customHeight = 40;
+    const { container } = render(<Sparkline data={sparkline1Points} height={customHeight} />);
+    const svg = container.querySelector('svg');
+    expect(svg).toHaveAttribute('height', customHeight.toString());
+  });
+
+  it('should apply custom valueTextWidth prop to legend SVG', () => {
+    const customValueTextWidth = 120;
+    const { container } = render(
+      <Sparkline data={sparkline1Points} showLegend={true} valueTextWidth={customValueTextWidth} />,
+    );
+    const svgElements = container.querySelectorAll('svg');
+    // Second SVG is the legend text
+    expect(svgElements[1]).toHaveAttribute('width', customValueTextWidth.toString());
   });
 });

@@ -34,7 +34,6 @@ export class Pie extends React.Component<IPieProps, {}> {
       .padAngle(0);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSXElement => {
     let color = d && d.data && d.data.color;
     let nextColor = color;
@@ -73,7 +72,6 @@ export class Pie extends React.Component<IPieProps, {}> {
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { pie, data } = this.props;
     const focusData = this._pieForFocusRing(data);

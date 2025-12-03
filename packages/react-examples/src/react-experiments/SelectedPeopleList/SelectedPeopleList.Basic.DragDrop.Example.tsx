@@ -18,7 +18,7 @@ export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSXEleme
   const [draggedItem, setDraggedItem] = React.useState<IPersona>();
   const [draggedIndex, setDraggedIndex] = React.useState(-1);
   const dragDropHelper = new DragDropHelper({
-    selection: selection,
+    selection,
     minimumPixelsForDrag: 5,
   });
 

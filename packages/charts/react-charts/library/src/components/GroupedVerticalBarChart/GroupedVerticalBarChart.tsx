@@ -52,6 +52,7 @@ import {
 } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import { useImageExport } from '../../utilities/hooks';
+import { isInvalidValue } from '@fluentui/chart-utilities';
 
 type NumericScale = ScaleLinear<number, number>;
 type StringScale = ScaleBand<string>;
@@ -232,7 +233,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const _getLegendData = (): JSXElement => {
     const actions: Legend[] = [];
 
@@ -385,7 +385,10 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const { barData, lineData } = _prepareChartData();
-  const _xAxisType: XAxisTypes = getTypeOfAxis(barData[0].name, true) as XAxisTypes;
+  const firstXValue = barData[0]?.name ?? lineData[0]?.data[0]?.x;
+  const _xAxisType: XAxisTypes = isInvalidValue(firstXValue)
+    ? XAxisTypes.StringAxis
+    : (getTypeOfAxis(firstXValue, true) as XAxisTypes);
   const { barLegends, lineLegends, xAxisLabels, datasetForBars } = _createDataSetOfGVBC(barData, lineData);
   _barLegends = barLegends;
   _lineLegends = lineLegends;
@@ -530,11 +533,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     containerHeight: number,
     xElement: SVGElement,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const singleGroup: JSXElement[] = [];
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const barLabelsForGroup: JSXElement[] = [];
 
     // Get the actual legends present at this x-axis point
