@@ -57,7 +57,7 @@ Popper is also used by the following OSS UI libraries in industry:
 <!--
 Why are we making this change? What problem are we solving? What do we expect to gain from this?
 
-This section is important as the motivation or problem statement is indepenent from the proposed change. Even if this RFC is not accepted this Motivation can be used for alternative solutions.
+This section is important as the motivation or problem statement is independent from the proposed change. Even if this RFC is not accepted this Motivation can be used for alternative solutions.
 
 In the end, please make sure to present a neutral Problem statement, rather than one that motivates a particular solution
 -->
@@ -70,7 +70,7 @@ accessibility and usability problems:
 - Cannot follow mouse cursor or be used as a context menu
 - Hard to modify the behaviour at runtime
 
-Therefore, most solutions are writting in complex javascript that requires handling of all the boundary and scroll cases
+Therefore, most solutions are writing in complex javascript that requires handling of all the boundary and scroll cases
 at runtime. This results in very complicated code, that needs to be actively maintained and improved. Looking
 [at the current v7 documentation of Callout](https://developer.microsoft.com/en-us/fluentui#/controls/web/callout), there are
 more than 20 issues that stretch back to 2018 that still have not been resolved.
@@ -86,7 +86,7 @@ can be time consuming and slow down or block development for some components
 
 ## Detailed Design or Proposal
 
-<!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
+<!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the intended audience to understand. -->
 
 The important part of this RFC is to get quorum on using popper in Fluent. This will allow us to offload the heavy effort
 of managing out of order DOM popoverse and focus on delivering value to our partners through usable components.
