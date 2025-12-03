@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`PersonaCoin does not render the initials when showInitialsUntilImageLoads is false 1`] = `
 <div

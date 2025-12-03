@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
 <div>
@@ -60,6 +60,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                   <div
                     class="fui-chartAnnotationLayer__annotation"
                     data-annotation-key="annotation-1"
+                    style="background-color: var(--colorNeutralBackground1);"
                   >
                     <div
                       aria-label="Test Annotation 1"
@@ -104,7 +105,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with all props 1`] = `
                 class="fui-chartAnnotationLayer__annotation fui-chartAnnotationLayer__measurement"
                 data-annotation-key="annotation-1"
                 data-chart-annotation-measurement="true"
-                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden; background-color: var(--colorNeutralBackground1);"
               >
                 <div
                   class="fui-chartAnnotationLayer__annotationContent"
@@ -186,6 +187,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                   <div
                     class="fui-chartAnnotationLayer__annotation"
                     data-annotation-key="annotation-1"
+                    style="background-color: var(--colorNeutralBackground1);"
                   >
                     <div
                       aria-label="Test Annotation 1"
@@ -230,7 +232,7 @@ exports[`AnnotationOnlyChart Snapshots matches snapshot with default props 1`] =
                 class="fui-chartAnnotationLayer__annotation fui-chartAnnotationLayer__measurement"
                 data-annotation-key="annotation-1"
                 data-chart-annotation-measurement="true"
-                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden;"
+                style="position: absolute; left: 210px; top: 170px; pointer-events: none; visibility: hidden; background-color: var(--colorNeutralBackground1);"
               >
                 <div
                   class="fui-chartAnnotationLayer__annotationContent"

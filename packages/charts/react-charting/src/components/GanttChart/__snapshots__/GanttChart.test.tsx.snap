@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`GanttChart interaction and accessibility tests should render custom callout content using onRenderCalloutPerDataPoint when a bar is hovered 1`] = `
 <div>
