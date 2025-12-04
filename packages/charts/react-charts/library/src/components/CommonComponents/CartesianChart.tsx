@@ -287,12 +287,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         containerWidth,
         chartContainer.current,
       );
-      tooltipOfAxislabels({
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        axis: d3Select(xAxisElement.current),
-        container: chartContainer.current,
-      });
     } else {
       _transformXAxisLabels();
     }
@@ -380,22 +374,28 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     _yAxisTickText.current = axisData.yAxisTickText;
     props.getAxisData && props.getAxisData(axisData);
 
-    // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
-    // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
-    // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with _tooltipId)
-    if (!props.showYAxisLablesTooltip) {
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        //eslint-disable-next-line no-empty
-      } catch (e) {}
+    // Removing previously created tooltips.
+    try {
+      // eslint-disable-next-line @nx/workspace-no-restricted-globals
+      document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
+      // eslint-disable-next-line no-empty
+    } catch (e) {}
+    // Used to display tooltip at x axis labels.
+    if (props.showXAxisLablesTooltip || props.xAxis?.tickLayout === 'auto') {
+      const _xAxisElement = d3Select(xAxisElement.current).call(xScale);
+      const tooltipProps = {
+        tooltipCls: classes.tooltip!,
+        id: _tooltipId,
+        axis: _xAxisElement,
+        container: chartContainer.current,
+      };
+      _xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     // Used to display tooltip at y axis labels.
     if (props.showYAxisLablesTooltip) {
       // To create y axis tick values by if specified truncating the rest of the text
       // and showing elipsis or showing the whole string,
       yScalePrimary &&
-        // Note: This function should be invoked within the showYAxisLablesTooltip check,
-        // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
         createYAxisLabels(
           yAxisElement.current!,
           yScalePrimary,
@@ -403,11 +403,8 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           props.showYAxisLablesTooltip || false,
           _useRtl,
         );
-      const _yAxisElement = d3Select(yAxisElement.current!).call(yScalePrimary);
-      try {
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        //eslint-disable-next-line no-empty
-      } catch (e) {}
+
+      const _yAxisElement = d3Select(yAxisElement.current).call(yScalePrimary);
       const ytooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
