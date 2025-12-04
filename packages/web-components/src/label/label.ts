@@ -1,14 +1,16 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { LabelSize, LabelWeight } from './label.options.js';
+import { BaseLabel } from './label.base';
 
 /**
- * The base class used for constructing a fluent-label custom element
+ * A Label Custom HTML Element.
+ * Based on BaseLabel and includes style and layout specific attributes
  *
  * @tag fluent-label
  *
  * @public
  */
-export class Label extends FASTElement {
+export class Label extends BaseLabel {
   /**
    * 	Specifies font size of a label
    *
@@ -28,24 +30,4 @@ export class Label extends FASTElement {
    */
   @attr
   public weight?: LabelWeight;
-
-  /**
-   * 	Specifies styles for label when associated input is disabled
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: disabled
-   */
-  @attr({ mode: 'boolean' })
-  public disabled: boolean = false;
-
-  /**
-   * 	Specifies styles for label when associated input is a required field
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: required
-   */
-  @attr({ mode: 'boolean' })
-  public required: boolean = false;
 }

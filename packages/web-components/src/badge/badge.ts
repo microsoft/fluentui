@@ -1,13 +1,16 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/index.js';
 import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
+import { BaseBadge } from './badge.base';
 
 /**
- * The base class used for constructing a fluent-badge custom element
- * @public
+ * A Badge Custom HTML Element.
+ * Based on BaseBadge and includes style and layout specific attributes
+ *
+ * @tag fluent-badge
  */
-export class Badge extends FASTElement {
+export class Badge extends BaseBadge {
   /**
    * The appearance the badge should have.
    *

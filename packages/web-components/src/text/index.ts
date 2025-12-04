@@ -1,4 +1,5 @@
 export { Text } from './text.js';
+export { BaseText } from './text.base.js';
 export { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 export { template as TextTemplate } from './text.template.js';
 export { styles as TextStyles } from './text.styles.js';

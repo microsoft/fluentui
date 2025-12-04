@@ -38,6 +38,7 @@ export {
   BadgeSize,
   BadgeStyles,
   BadgeTemplate,
+  BaseBadge
 } from './badge/index.js';
 export {
   BaseButton,
@@ -72,6 +73,7 @@ export {
   CompoundButtonTemplate,
 } from './compound-button/index.js';
 export {
+  BaseCounterBadge,
   CounterBadge,
   CounterBadgeAppearance,
   CounterBadgeColor,
@@ -139,7 +141,7 @@ export {
 export type { SlottableInput } from './field/index.js';
 export { FluentDesignSystem } from './fluent-design-system.js';
 export { Image, ImageDefinition, ImageFit, ImageShape, ImageStyles, ImageTemplate } from './image/index.js';
-export { Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
+export { BaseLabel,Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
 export {
   BaseAnchor,
   AnchorButton,
@@ -151,6 +153,7 @@ export {
   AnchorTarget,
 } from './anchor-button/index.js';
 export {
+  BaseMessageBar,
   MessageBar,
   MessageBarDefinition,
   MessageBarIntent,
@@ -219,6 +222,7 @@ export {
   RatingDisplayTemplate,
 } from './rating-display/index.js';
 export {
+  BaseSlider,
   Slider,
   SliderDefinition,
   SliderMode,
@@ -311,6 +315,7 @@ export {
 } from './text-input/index.js';
 export type { TextInputOptions } from './text-input/index.js';
 export {
+  BaseText,
   Text,
   TextAlign,
   TextDefinition,

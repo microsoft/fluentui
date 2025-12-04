@@ -1,4 +1,5 @@
 export { CounterBadge } from './counter-badge.js';
+export { BaseCounterBadge } from './counter-badge.base.js';
 export {
   CounterBadgeAppearance,
   CounterBadgeColor,
