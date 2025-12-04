@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
@@ -3761,7 +3761,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(14, 120, 120); border-color: #0e7878; --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
+              style="height: 12px; background-color: rgb(14, 120, 120); border-color: rgb(14, 120, 120); --rect-content-high-contrast: linear-gradient(to right, #0E7878, #0E7878);"
             />
             <div
               class="fui-legend__text"
@@ -4968,7 +4968,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: blue;"
+                style="color: blue; font-size: var(--fontSizeHero700);"
               >
                 50,000
               </div>
@@ -10751,7 +10751,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
   <span
     aria-hidden="true"
     id="fui_measurement_span"
-    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
+    style="position: absolute; visibility: hidden; top: -20000px; left: 0px; padding: 0px; margin: 0px; white-space: pre; font-size: var(--fontSizeBase100); font-family: var(--fontFamilyBase); font-weight: var(--fontWeightSemibold);"
   >
     26,000
   </span>
