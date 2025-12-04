@@ -1275,30 +1275,41 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function tooltipOfAxislabels(axistooltipProps: any): null | undefined {
+export function tooltipOfAxislabels(axistooltipProps: {
+  tooltipCls: string;
+  axis: Selection<SVGSVGElement | null, unknown, null, undefined>;
+  id: string;
+  container?: HTMLElement | null;
+}): null | undefined {
   const { tooltipCls, axis, id, container } = axistooltipProps;
   if (axis === null) {
     return null;
   }
-  const div = (container ? d3Select<HTMLElement, unknown>(container) : d3Select<HTMLElement, unknown>('body'))
+  const div = ((container ? d3Select(container) : d3Select('body')) as Selection<HTMLElement, unknown, null, undefined>)
     .append('div')
     .attr('id', id)
     .attr('class', tooltipCls)
     .style('opacity', 0);
-  (axis as Selection<SVGGElement, unknown, null, undefined>).selectAll('.tick text').each(function () {
-    const tick = d3Select(this);
-    const fullLabel = tick.attr('data-full');
-    if (tick.text() === fullLabel) {
+  axis.selectAll<SVGTextElement, unknown>('.tick text').each(function () {
+    const tickSelection = d3Select(this);
+    const fullLabel = tickSelection.attr('data-full');
+    if (tickSelection.text() === fullLabel) {
       return;
     }
-    tick
+    const tickEl = this;
+    tickSelection
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .on('mouseover', (event: any, d) => {
-        div.style('opacity', 0.9);
+        const containerBounds = container?.getBoundingClientRect();
+        const tickBounds = tickEl.getBoundingClientRect();
+        const tooltipBottom = containerBounds ? containerBounds.bottom - (tickBounds.top - 4) : tickBounds.top - 4;
+        const tooltipLeft = (tickBounds.left + tickBounds.right) / 2 - (containerBounds?.left ?? 0);
         div
           .html(fullLabel)
-          .style('left', event.pageX + 'px')
-          .style('top', event.pageY - 28 + 'px');
+          .style('bottom', `${tooltipBottom}px`)
+          .style('left', `${tooltipLeft}px`)
+          .style('transform', 'translateX(-50%)')
+          .style('opacity', 0.9);
       })
       .on('mouseout', d => {
         div.style('opacity', 0);

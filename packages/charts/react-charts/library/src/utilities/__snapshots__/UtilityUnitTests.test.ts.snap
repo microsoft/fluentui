@@ -4292,7 +4292,7 @@ exports[`tooltipOfAxislabels should render a tooltip for x-axis labels 1`] = `
   <div
     class="tooltip-1"
     id="VBCTooltipId_1"
-    style="opacity: 0.9; left: 0px; top: -28px;"
+    style="opacity: 0.9; bottom: -4px; left: 0px; transform: translateX(-50%);"
   >
     X-axis label 1
   </div>
