@@ -1,5 +1,6 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
+import { BaseText } from './text.base';
 
 /**
  * A text HTML Element.
@@ -9,7 +10,7 @@ import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
  *
  * @public
  */
-export class Text extends FASTElement {
+export class Text extends BaseText {
   /**
    * The text will not wrap
    * NOTE: In Fluent UI React v9 this is "wrap"
