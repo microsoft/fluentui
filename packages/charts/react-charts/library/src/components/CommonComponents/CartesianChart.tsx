@@ -382,7 +382,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     } catch (e) {}
     // Used to display tooltip at x axis labels.
     if (props.showXAxisLablesTooltip || props.xAxis?.tickLayout === 'auto') {
-      const _xAxisElement = d3Select(xAxisElement.current).call(xScale);
+      const _xAxisElement = xAxisElement.current ? d3Select(xAxisElement.current).call(xScale) : null;
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,
@@ -404,7 +404,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           _useRtl,
         );
 
-      const _yAxisElement = d3Select(yAxisElement.current).call(yScalePrimary);
+      const _yAxisElement = yAxisElement.current ? d3Select(yAxisElement.current).call(yScalePrimary) : null;
       const ytooltipProps = {
         tooltipCls: classes.tooltip!,
         id: _tooltipId,

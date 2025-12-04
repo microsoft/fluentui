@@ -1277,7 +1277,7 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function tooltipOfAxislabels(axistooltipProps: {
   tooltipCls: string;
-  axis: Selection<SVGSVGElement | null, unknown, null, undefined>;
+  axis: Selection<SVGSVGElement, unknown, null, undefined> | null;
   id: string;
   container?: HTMLElement | null;
 }): null | undefined {
