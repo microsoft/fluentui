@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: reduce bundle size by removing the getIntrinsicElementProps helper",
+  "packageName": "@fluentui/react-button",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
