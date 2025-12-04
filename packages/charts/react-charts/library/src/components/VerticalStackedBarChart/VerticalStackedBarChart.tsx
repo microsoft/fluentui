@@ -1173,19 +1173,36 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           tabIndex: !props.hideTooltip ? 0 : undefined,
         };
       let showLabel = false;
-      let barLabel = 0;
+      let barLabel: string | number = 0;
+      let selectedBarTotalValue: number = 0;
+
       if (!props.hideLabels && _yAxisType !== YAxisType.StringAxis) {
+        let customBarLabel: string | undefined = undefined;
+        
         if (_noLegendHighlighted()) {
+          // Find the last bar with a barLabel for the entire stack (reverse iteration)
+          for (let i = barsToDisplay.length - 1; i >= 0; i--) {
+            if (barsToDisplay[i].barLabel) {
+              customBarLabel = barsToDisplay[i].barLabel;
+              break;
+            }
+          }
           showLabel = true;
-          barLabel = barTotalValue;
+          selectedBarTotalValue = barTotalValue;
         } else {
+          // Single loop to calculate total and find custom label for highlighted legends
           barsToDisplay.forEach(point => {
             if (_isLegendHighlighted(point.legend)) {
               showLabel = true;
-              barLabel += point.data as number;
+              selectedBarTotalValue += point.data as number;
+              if (point.barLabel) {
+                customBarLabel = point.barLabel; // Always use the last one found
+              }
             }
           });
         }
+        
+        barLabel = customBarLabel ?? selectedBarTotalValue;
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
@@ -1206,7 +1223,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             <text
               x={xPoint + _barWidth / 2}
               //if total bar value >=0, show label above top bar, otherwise below bottom bar
-              y={barLabel >= Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
+              y={selectedBarTotalValue >= Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={classes.barLabel}
               aria-label={`Total: ${barLabel}`}
@@ -1214,7 +1231,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
               style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
             >
-              {typeof props.yAxisTickFormat === 'function'
+              {typeof barLabel === 'string'
+                ? barLabel
+                : typeof props.yAxisTickFormat === 'function'
                 ? props.yAxisTickFormat(barLabel)
                 : formatScientificLimitWidth(barLabel)}
             </text>

@@ -376,6 +376,34 @@ export const resolveXAxisPoint = (
 };
 
 /**
+ * Formats text values according to the texttemplate specification
+ * @param textValue The raw text value to format
+ * @param textTemplate The template string (e.g., "%{text:.1f}%")
+ * @param index Optional index for array-based templates
+ * @returns Formatted text string
+ */
+const formatTextWithTemplate = (
+  textValue: string | number,
+  textTemplate?: string | string[],
+  index?: number,
+): string => {
+  if (!textTemplate) {
+    return String(textValue);
+  }
+  const numVal = typeof textValue === 'number' ? textValue : parseFloat(String(textValue));
+  if (isNaN(numVal)) {
+    return String(textValue);
+  }
+  const template = typeof textTemplate === 'string' ? textTemplate : textTemplate[index || 0] || '';
+  if (template.includes('%{text') && template.includes('}%')) {
+    const precisionMatch = template.match(/\.(\d+)f/);
+    const precision = precisionMatch ? parseInt(precisionMatch[1], 10) : 1;
+    return `${numVal.toFixed(precision)}%`;
+  }
+  return String(textValue);
+};
+
+/**
  * Extracts unique X-axis categories from Plotly data traces
  * @param data Array of Plotly data traces
  * @returns Array of unique x values
@@ -1264,7 +1292,7 @@ export const transformPlotlyJsonToDonutProps = (
   const width: number = input.layout?.width ?? 440;
   const height: number = input.layout?.height ?? 220;
   const hideLabels: boolean = firstData.textinfo
-    ? !['value', 'percent', 'label+percent'].includes(firstData.textinfo)
+    ? !['value', 'percent', 'label+percent', 'percent+label'].includes(firstData.textinfo)
     : false;
   const donutMarginHorizontal: number = hideLabels ? 0 : 80;
   const donutMarginVertical: number = 40 + (hideLabels ? 0 : 40);
@@ -1295,7 +1323,9 @@ export const transformPlotlyJsonToDonutProps = (
     height,
     innerRadius,
     hideLabels,
-    showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
+    showLabelsInPercent: firstData.textinfo
+      ? ['percent', 'label+percent', 'percent+label'].includes(firstData.textinfo)
+      : true,
     roundCorners: true,
     order: 'sorted',
   };
@@ -1340,6 +1370,11 @@ export const transformPlotlyJsonToVSBCProps = (
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
       const rangeYValues = series.y!.slice(rangeStart, rangeEnd);
+      const textValues = Array.isArray(series.text)
+        ? series.text.slice(rangeStart, rangeEnd)
+        : typeof series.text === 'string'
+        ? series.text
+        : undefined;
 
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
@@ -1368,12 +1403,19 @@ export const transformPlotlyJsonToVSBCProps = (
         const opacity = getOpacity(series, index2);
         const yVal: number | string = rangeYValues[index2] as number | string;
         const yAxisCalloutData = getFormattedCalloutYData(yVal, yAxisTickFormat);
+        let barLabel = Array.isArray(textValues) ? textValues[index2] : textValues;
+
+        // Apply texttemplate formatting if specified
+        if (barLabel && series.texttemplate) {
+          barLabel = formatTextWithTemplate(barLabel, series.texttemplate, index2);
+        }
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
             yAxisCalloutData,
+            ...(barLabel ? { barLabel: String(barLabel) } : {}),
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -1762,6 +1804,12 @@ export const transformPlotlyJsonToVBCProps = (
         isXString ? bin.length : getBinSize(bin as Bin<number, number>),
       );
 
+      // Handle text values and texttemplate formatting for histogram bins
+      let barLabel = Array.isArray(series.text) ? series.text[index] : series.text;
+      if (barLabel && series.texttemplate) {
+        barLabel = formatTextWithTemplate(barLabel, series.texttemplate, index);
+      }
+
       vbcData.push({
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
         y: yVal,
@@ -1770,6 +1818,7 @@ export const transformPlotlyJsonToVBCProps = (
         ...(isXString
           ? {}
           : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
+        ...(barLabel ? { barLabel: String(barLabel) } : {}),
       });
     });
   });
@@ -2297,6 +2346,12 @@ export const transformPlotlyJsonToHeatmapProps = (
   const heatmapDataPoints: HeatMapChartDataPoint[] = [];
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
+  const annotations = getChartAnnotationsFromLayout(input.layout, input.data, isMultiPlot);
+
+  // Helper function to find matching annotation for cell coordinates
+  const findAnnotationForCell = (x: number, y: number): string | undefined => {
+    return annotations?.find(annotation => annotation.coordinates.x === x && annotation.coordinates.y === y)?.text;
+  };
 
   if (firstData.type === 'histogram2d') {
     const xValues: (string | number)[] = [];
@@ -2347,11 +2402,13 @@ export const transformPlotlyJsonToHeatmapProps = (
           isYString ? yBin.length : getBinSize(yBin as Bin<number, number>),
         );
 
+        const annotationText = findAnnotationForCell(xIdx, yIdx);
+
         heatmapDataPoints.push({
           x: isXString ? xBin.join(', ') : getBinCenter(xBin as Bin<number, number>),
           y: isYString ? yBin.join(', ') : getBinCenter(yBin as Bin<number, number>),
           value: zVal,
-          rectText: zVal,
+          rectText: annotationText || zVal,
         });
 
         if (typeof zVal === 'number') {
@@ -2366,11 +2423,13 @@ export const transformPlotlyJsonToHeatmapProps = (
       firstData.y?.forEach((yVal: any, yIdx: number) => {
         const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
 
+        const annotationText = findAnnotationForCell(xIdx, yIdx);
+
         heatmapDataPoints.push({
           x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
           y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
           value: zVal,
-          rectText: zVal,
+          rectText: annotationText || zVal,
         });
 
         if (typeof zVal === 'number') {
@@ -2446,6 +2505,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
     ...getAxisTickProps(input.data, input.layout),
+    ...(annotations ? { annotations } : {}),
   };
 };
 
