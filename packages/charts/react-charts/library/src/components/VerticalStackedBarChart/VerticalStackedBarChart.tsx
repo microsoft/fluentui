@@ -1175,34 +1175,28 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       let showLabel = false;
       let barLabel: string | number = 0;
       let selectedBarTotalValue: number = 0;
-
+      let customBarLabel: string | undefined = undefined;
       if (!props.hideLabels && _yAxisType !== YAxisType.StringAxis) {
-        let customBarLabel: string | undefined = undefined;
-        
+        // Collect all bars with barLabel that match the legend filter
+        const barLabelsToDisplay = barsToDisplay.filter(
+          point => point.barLabel && (_noLegendHighlighted() || _isLegendHighlighted(point.legend)),
+        );
+        if (barLabelsToDisplay.length > 0) {
+          customBarLabel = barLabelsToDisplay[barLabelsToDisplay.length - 1].barLabel!;
+        }
         if (_noLegendHighlighted()) {
-          // Find the last bar with a barLabel for the entire stack (reverse iteration)
-          for (let i = barsToDisplay.length - 1; i >= 0; i--) {
-            if (barsToDisplay[i].barLabel) {
-              customBarLabel = barsToDisplay[i].barLabel;
-              break;
-            }
-          }
           showLabel = true;
+          barLabel = customBarLabel ?? barTotalValue;
           selectedBarTotalValue = barTotalValue;
         } else {
-          // Single loop to calculate total and find custom label for highlighted legends
           barsToDisplay.forEach(point => {
             if (_isLegendHighlighted(point.legend)) {
               showLabel = true;
               selectedBarTotalValue += point.data as number;
-              if (point.barLabel) {
-                customBarLabel = point.barLabel; // Always use the last one found
-              }
             }
           });
+          barLabel = customBarLabel ?? selectedBarTotalValue;
         }
-        
-        barLabel = customBarLabel ?? selectedBarTotalValue;
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
