@@ -92,23 +92,11 @@ describe('Dialog', () => {
     jest.useFakeTimers();
     const onDismissed = jest.fn();
 
-    const { queryByRole, rerender } = render(
-      <DialogBase
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        isOpen
-        modalProps={{ onDismissed }}
-      />,
-    );
+    const { queryByRole, rerender } = render(<DialogBase isOpen modalProps={{ onDismissed }} />);
 
     expect(queryByRole('dialog')).toBeTruthy();
 
-    rerender(
-      <DialogBase
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        isOpen={false}
-        modalProps={{ onDismissed }}
-      />,
-    );
+    rerender(<DialogBase isOpen={false} modalProps={{ onDismissed }} />);
 
     act(() => {
       jest.runAllTimers();

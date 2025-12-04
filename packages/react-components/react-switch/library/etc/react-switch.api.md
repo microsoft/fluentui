@@ -31,10 +31,11 @@ export type SwitchOnChangeData = {
 };
 
 // @public
-export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange'> & {
+export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange' | 'size'> & {
     checked?: boolean;
     defaultChecked?: boolean;
     labelPosition?: 'above' | 'after' | 'before';
+    size?: 'small' | 'medium';
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
 };
 
@@ -47,7 +48,7 @@ export type SwitchSlots = {
 };
 
 // @public
-export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition'>>;
+export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition' | 'size'>>;
 
 // @public
 export const useSwitch_unstable: (props: SwitchProps, ref: React_2.Ref<HTMLInputElement>) => SwitchState;

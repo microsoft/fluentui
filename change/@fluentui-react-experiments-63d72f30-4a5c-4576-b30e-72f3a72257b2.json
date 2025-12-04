@@ -1,0 +1,7 @@
+{
+  "comment": "chore: remove unused eslint-disable directives",
+  "type": "patch",
+  "packageName": "@fluentui/react-experiments",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

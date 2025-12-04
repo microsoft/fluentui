@@ -308,7 +308,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       yAxisType?: YAxisType,
       useSecondaryYScale?: boolean,
     ): { startValue: number; endValue: number } {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
       const { startValue, endValue } = findNumericMinMaxOfY(
         points,
         yAxisType,
@@ -551,7 +550,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             })
           : 0;
         if (_points[i].data.length === 1) {
-          // eslint-disable-next-line @typescript-eslint/no-shadow
           const {
             x: x1,
             y: y1,
@@ -1834,8 +1832,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         onChartMouseLeave={_handleChartMouseLeave}
         enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
         componentRef={cartesianChartRef}
-        /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
         children={(props: ChildProps) => {
           _xAxisScale = props.xScale!;
           _yScalePrimary = props.yScalePrimary!;

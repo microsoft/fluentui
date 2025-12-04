@@ -25,7 +25,7 @@ if (swcJestConfig.swcrc === undefined) {
 module.exports = {
   displayName: 'react-theme-sass',
   preset: '../../../jest.preset.js',
-  testEnvironment: 'jest-environment-node-single-context',
+  testEnvironment: 'node',
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
   },

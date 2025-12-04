@@ -33,8 +33,8 @@ export const useOverlayDrawer_unstable = (
   props: OverlayDrawerProps,
   ref: React.Ref<HTMLElement>,
 ): OverlayDrawerState => {
-  const { open, size, position } = useDrawerDefaultProps(props);
-  const { backdropMotion, modalType = 'modal', inertTrapFocus, onOpenChange, surfaceMotion, mountNode } = props;
+  const { open, size, position, unmountOnClose } = useDrawerDefaultProps(props);
+  const { modalType = 'modal', inertTrapFocus, onOpenChange, backdropMotion, surfaceMotion, mountNode } = props;
   const { dir, targetDocument } = useFluent();
   const { element: mountNodeElement } = toMountNodeProps(mountNode);
   const hasMountNodeElement = Boolean(mountNodeElement && targetDocument?.body !== mountNodeElement);
@@ -46,15 +46,12 @@ export const useOverlayDrawer_unstable = (
     {
       ...props,
       ref,
+      unmountOnClose,
       backdrop: hasCustomBackdrop ? { ...backdropProps } : null,
       backdropMotion: mergePresenceSlots(backdropMotion, OverlaySurfaceBackdropMotion, { size }),
     },
     {
-      /**
-       * Drawer accepts a `div` or `aside` element type, but Dialog only accepts a `div` element type.
-       * We need to cast the ref to a `div` element type to not break Dialog's ref type.
-       */
-      elementType: OverlayDrawerSurface as unknown as 'div',
+      elementType: OverlayDrawerSurface,
     },
   );
 
@@ -64,6 +61,7 @@ export const useOverlayDrawer_unstable = (
       onOpenChange,
       inertTrapFocus,
       modalType,
+      unmountOnClose,
       surfaceMotion: mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size, dir }),
       /**
        * children is not needed here because we construct the children in the render function,
@@ -89,6 +87,7 @@ export const useOverlayDrawer_unstable = (
     size,
     position,
     hasMountNodeElement,
+    unmountOnClose,
 
     // Deprecated props
     mountNode,

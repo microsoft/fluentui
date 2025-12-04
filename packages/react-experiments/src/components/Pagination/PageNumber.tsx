@@ -8,7 +8,6 @@ export class PageNumber extends React.Component<IPageNumberProps, {}> {
     super(props);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { ariaLabel, page, selected, className } = this.props;
 

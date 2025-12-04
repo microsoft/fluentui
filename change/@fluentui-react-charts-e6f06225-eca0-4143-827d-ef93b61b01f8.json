@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix duplicate points issue in scatter polar chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

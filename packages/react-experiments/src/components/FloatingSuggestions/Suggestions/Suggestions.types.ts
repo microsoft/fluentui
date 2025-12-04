@@ -88,7 +88,6 @@ export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>,
 }
 
 export interface ISuggestionsHeaderFooterProps {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   renderItem: () => JSXElement;
   onExecute?: () => void;
   className?: string;
@@ -98,7 +97,7 @@ export interface ISuggestionsHeaderFooterProps {
 
 export interface ISuggestionsHeaderFooterItemProps {
   componentRef?: IRefObject<{}>;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   renderItem: () => JSXElement;
   onExecute?: () => void;
   isSelected: boolean;

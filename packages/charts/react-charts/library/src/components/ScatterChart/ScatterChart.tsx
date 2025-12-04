@@ -130,7 +130,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       : YAxisType.NumericAxis;
 
   const pointsRef = React.useRef<ScatterChartDataWithIndex[] | []>([]);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
   React.useEffect(() => {
     /** note that height and width are not used to resize or set as dimesions of the chart,
@@ -179,7 +178,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     points: ScatterChartPoints[],
     yAxisType?: YAxisType,
   ): { startValue: number; endValue: number } {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType);
     const yPadding = getDomainPaddingForMarkers(startValue, endValue, props.yScaleType);
 

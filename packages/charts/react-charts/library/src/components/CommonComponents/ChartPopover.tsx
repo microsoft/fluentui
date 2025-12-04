@@ -45,7 +45,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
   return (
     <div id={useId('callout')} ref={forwardedRef} className={classes.calloutContainer}>
       <Popover
-        positioning={{ target: target, autoSize: 'always', offset: 20, coverTarget: false }}
+        positioning={{ target, autoSize: 'always', offset: 20, coverTarget: false }}
         open={props.isPopoverOpen}
         inline
       >
@@ -113,7 +113,6 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
     </div>
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _multiValueCallout() {
     const yValueHoverSubCountsExists: boolean = _yValueHoverSubCountsExists(props.YValueHover) ?? false;
     return (

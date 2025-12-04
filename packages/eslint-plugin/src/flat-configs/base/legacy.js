@@ -8,6 +8,18 @@ module.exports = defineConfig(
   core,
   {
     rules: {
+      'prefer-regex-literals': 'off',
+      'no-promise-executor-return': 'off',
+    },
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+      },
+    },
+    rules: {
       /**
        * `@typescript-eslint`plugin eslint rules
        * @see https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin
