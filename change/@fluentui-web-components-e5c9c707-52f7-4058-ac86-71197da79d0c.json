@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Create base classes for elements with presentational attributes",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
