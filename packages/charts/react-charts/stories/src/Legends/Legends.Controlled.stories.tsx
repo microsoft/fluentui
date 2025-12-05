@@ -1,4 +1,3 @@
- 
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Legends, Legend, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
@@ -57,13 +56,7 @@ export const LegendsControlled = (): JSXElement => {
         <Button onClick={handleSelectAll}>Select all</Button>
       </div>
       <div style={{ marginBottom: 10 }}>
-        <Legends
-          legends={legends}
-          canSelectMultipleLegends
-          selectedLegends={selectedLegends}
-           
-          onChange={onChange}
-        />
+        <Legends legends={legends} canSelectMultipleLegends selectedLegends={selectedLegends} onChange={onChange} />
       </div>
       Selected legends: {selectedLegends.join(', ')}
     </div>
