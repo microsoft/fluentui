@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use transition animation instead of margin",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

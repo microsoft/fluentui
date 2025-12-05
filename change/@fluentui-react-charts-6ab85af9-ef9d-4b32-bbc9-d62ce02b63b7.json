@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add support for x rounded tick values ",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

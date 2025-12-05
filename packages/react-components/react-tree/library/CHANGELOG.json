@@ -2,6 +2,35 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Fri, 05 Dec 2025 22:38:27 GMT",
+      "tag": "@fluentui/react-tree_v9.15.7",
+      "version": "9.15.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "7254163+mindlessroman@users.noreply.github.com",
+            "package": "@fluentui/react-tree",
+            "commit": "9add8b4263c5e044b145ffddf14101a51e9fef70",
+            "comment": "fix: Making TreeItemLayout and TreeItemPersonaLayout render a tree's appearance the same way"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.7.0",
+            "commit": "a9c009ef9e91f11a45346ab77a95ed6d931d48dc"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e3c76a57aeeae11b11cd3b62c7d274897530889e",
+            "comment": "chore: migrate to eslint flat config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Nov 2025 19:18:14 GMT",
       "tag": "@fluentui/react-tree_v9.15.6",
       "version": "9.15.6",

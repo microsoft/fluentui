@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Tue, 11 Nov 2025 19:18:10 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Dec 2025 22:38:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.5.0)
+
+Fri, 05 Dec 2025 22:38:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.4.11..@fluentui/react-switch_v9.5.0)
+
+### Minor changes
+
+- feat: add small variant to the Switch component ([PR #35505](https://github.com/microsoft/fluentui/pull/35505) by dmytrokirpa@microsoft.com)
 
 ## [9.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.4.11)
 

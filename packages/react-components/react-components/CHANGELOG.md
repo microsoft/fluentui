@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 11 Nov 2025 19:18:06 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Dec 2025 22:38:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.72.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.8)
+
+Fri, 05 Dec 2025 22:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.72.7..@fluentui/react-components_v9.72.8)
+
+### Minor changes
+
+- `@fluentui/react-switch`
+  - feat: add small variant to the Switch component ([PR #35505](https://github.com/microsoft/fluentui/pull/35505) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-divider`
+  - feat: implement headless style hook for Divider component ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-drawer`
+  - feat: add support to keep Drawer mounted on clos ([PR #35212](https://github.com/microsoft/fluentui/pull/35212) by marcosvmmoura@gmail.com)
+- `@fluentui/react-button`
+  - feat: introduce headless style hooks for button components ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - fix: Making TreeItemLayout and TreeItemPersonaLayout render a tree's appearance the same way ([PR #35373](https://github.com/microsoft/fluentui/pull/35373) by 7254163+mindlessroman@users.noreply.github.com)
+- `@fluentui/react-drawer`
+  - fix: use transition animation instead of margin ([PR #35523](https://github.com/microsoft/fluentui/pull/35523) by marcosvmmoura@gmail.com)
+- `@fluentui/react-menu-grid-preview`
+  - Use proper property name for MenuGridGroup context ([PR #35521](https://github.com/microsoft/fluentui/pull/35521) by adam.samec@gmail.com)
+  - Fix id for MenuGridGroupHeader ([PR #35529](https://github.com/microsoft/fluentui/pull/35529) by adam.samec@gmail.com)
+  - Fix MenuGridItem class names and MenuGridGroup class names object name ([PR #35525](https://github.com/microsoft/fluentui/pull/35525) by adam.samec@gmail.com)
+- `@fluentui/react-button`
+  - fix: update active state styles to include keyboard press events ([PR #35514](https://github.com/microsoft/fluentui/pull/35514) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - fix: handle frequent uncaught exceptions ([PR #35495](https://github.com/microsoft/fluentui/pull/35495) by kumarkshitij@microsoft.com)
+  - remove redundant styles ([PR #35476](https://github.com/microsoft/fluentui/pull/35476) by anushgupta@microsoft.com)
+  - fix incomplete donut and VSBC bug ([PR #35484](https://github.com/microsoft/fluentui/pull/35484) by anushgupta@microsoft.com)
+  - fix width and height props not being applied to SVG path dimensions ([PR #35479](https://github.com/microsoft/fluentui/pull/35479) by 120502241+jepagan_microsoft@users.noreply.github.com)
+  - add support for x rounded tick values  ([PR #35490](https://github.com/microsoft/fluentui/pull/35490) by anushgupta@microsoft.com)
+  - fix popover issue ([PR #35501](https://github.com/microsoft/fluentui/pull/35501) by anushgupta@microsoft.com)
+  - set reference line legends after the main chart legends ([PR #35481](https://github.com/microsoft/fluentui/pull/35481) by anushgupta@microsoft.com)
+  - fix duplicate points issue in scatter polar chart ([PR #35516](https://github.com/microsoft/fluentui/pull/35516) by anushgupta@microsoft.com)
+  - feat: enable multiplot image export ([PR #35483](https://github.com/microsoft/fluentui/pull/35483) by kumarkshitij@microsoft.com)
+  - fix(react-charts): Ensuring annotation keeps tied with chart always ([PR #35486](https://github.com/microsoft/fluentui/pull/35486) by 120183316+srmukher@users.noreply.github.com)
 
 ## [9.72.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.72.7)
 

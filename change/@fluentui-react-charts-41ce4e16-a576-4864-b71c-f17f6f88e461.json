@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "remove redundant styles",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
