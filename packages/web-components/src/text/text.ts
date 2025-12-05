@@ -1,21 +1,16 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
+import { BaseText } from './text.base';
 
 /**
- * The base class used for constructing a fluent-text custom element
+ * A text HTML Element.
+ * Based on BaseText and includes style and layout specific attributes
  *
  * @tag fluent-text
  *
  * @public
  */
-export class Text extends FASTElement {
-  /**
-   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
+export class Text extends BaseText {
   /**
    * The text will not wrap
    * NOTE: In Fluent UI React v9 this is "wrap"

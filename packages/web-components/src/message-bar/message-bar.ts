@@ -1,29 +1,15 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
+import { BaseMessageBar } from './message-bar.base';
 
 /**
- * A Message Bar Custom HTML Element.
+ * A MessageBar Custom HTML Element.
+ * Based on BaseMessageBar and includes style and layout specific attributes
  *
  * @tag fluent-message-bar
  *
- * @slot actions - Content that can be provided for the actions
- * @slot dismiss - Content that can be provided for the dismiss button
- * @slot - The default slot for the content
- * @public
  */
-export class MessageBar extends FASTElement {
-  /**
-   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
-  constructor() {
-    super();
-    this.elementInternals.role = 'status';
-  }
-
+export class MessageBar extends BaseMessageBar {
   /**
    * Sets the shape of the Message Bar.
    *
@@ -53,12 +39,4 @@ export class MessageBar extends FASTElement {
    */
   @attr
   public intent?: MessageBarIntent;
-
-  /**
-   * @public
-   * Method to emit a `dismiss` event when the message bar is dismissed
-   */
-  public dismissMessageBar = () => {
-    this.$emit('dismiss', {});
-  };
 }

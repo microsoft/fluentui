@@ -1,6 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
-import { toggleState } from '../utils/element-internals.js';
 
 /**
  *
