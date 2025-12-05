@@ -3559,7 +3559,7 @@ const getIndexFromKey = (key: string, pattern: string): number => {
 };
 
 export const isNonPlotType = (chartType: string): boolean => {
-  return ['donut', 'sankey', 'pie', 'annotation', 'table'].includes(chartType);
+  return ['donut', 'sankey', 'pie', 'annotation', 'table', 'gauge', 'funnel'].includes(chartType);
 };
 
 export const getGridProperties = (
