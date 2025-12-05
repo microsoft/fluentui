@@ -53,7 +53,79 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <g
             class="tick"
             opacity="1"
-            transform="translate(132.98618784530387,0)"
+            transform="translate(61.38397790055249,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(82.26795580110496,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(103.15193370165746,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(124.03591160220994,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(144.91988950276243,0)"
           >
             <line
               stroke="currentColor"
@@ -71,7 +143,61 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <g
             class="tick"
             opacity="1"
-            transform="translate(216.52209944751382,0)"
+            transform="translate(165.8038674033149,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(186.6878453038674,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(207.57182320441987,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(228.45580110497235,0)"
           >
             <line
               stroke="currentColor"
@@ -89,7 +215,61 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <g
             class="tick"
             opacity="1"
-            transform="translate(309.00828729281767,0)"
+            transform="translate(249.33977900552486,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(270.22375690607737,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(291.1077348066298,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(311.99171270718233,0)"
           >
             <line
               stroke="currentColor"
@@ -107,7 +287,79 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <g
             class="tick"
             opacity="1"
-            transform="translate(398.5110497237569,0)"
+            transform="translate(332.8756906077348,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(353.7596685082873,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(374.64364640883974,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(395.52762430939225,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(416.41160220994476,0)"
           >
             <line
               stroke="currentColor"
@@ -125,7 +377,61 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <g
             class="tick"
             opacity="1"
-            transform="translate(490.99723756906076,0)"
+            transform="translate(437.2955801104972,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(458.1795580110497,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(479.06353591160223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(499.9475138121547,0)"
           >
             <line
               stroke="currentColor"
@@ -143,7 +449,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
           <g
             class="tick"
             opacity="1"
-            transform="translate(580.5,0)"
+            transform="translate(520.8314917127071,0)"
           >
             <line
               stroke="currentColor"
@@ -155,7 +461,43 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               fill="currentColor"
               y="30"
             >
-              Jul 2017
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(541.7154696132596,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(562.5994475138122,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
             </text>
           </g>
         </g>
@@ -504,7 +846,7 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
           <g
             class="tick"
             opacity="1"
-            transform="translate(58.302197802197796,0)"
+            transform="translate(40.5,0)"
           >
             <line
               stroke="currentColor"
@@ -516,13 +858,13 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               y="30"
             >
-              May 01
+              Apr 28
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(242.25824175824175,0)"
+            transform="translate(82.03846153846155,0)"
           >
             <line
               stroke="currentColor"
@@ -534,13 +876,13 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               y="30"
             >
-              Jun 01
+              May 05
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(420.2802197802198,0)"
+            transform="translate(123.5769230769231,0)"
           >
             <line
               stroke="currentColor"
@@ -552,7 +894,205 @@ exports[`GanttChart rendering and behavior tests should display full y-axis tick
               fill="currentColor"
               y="30"
             >
-              Jul 01
+              May 12
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(165.1153846153846,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 19
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(206.6538461538462,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(248.1923076923077,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 02
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(289.7307692307692,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 09
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(331.2692307692308,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 16
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(372.8076923076923,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 23
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(414.34615384615387,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(455.8846153846154,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jul 07
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(497.4230769230769,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jul 14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(538.9615384615385,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jul 21
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(580.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jul 28
             </text>
           </g>
         </g>
@@ -938,7 +1478,79 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(132.98618784530387,0)"
+            transform="translate(61.38397790055249,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(82.26795580110496,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(103.15193370165746,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(124.03591160220994,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(144.91988950276243,0)"
           >
             <line
               stroke="currentColor"
@@ -956,7 +1568,61 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(216.52209944751382,0)"
+            transform="translate(165.8038674033149,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(186.6878453038674,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(207.57182320441987,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(228.45580110497235,0)"
           >
             <line
               stroke="currentColor"
@@ -974,7 +1640,61 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(309.00828729281767,0)"
+            transform="translate(249.33977900552486,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(270.22375690607737,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(291.1077348066298,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(311.99171270718233,0)"
           >
             <line
               stroke="currentColor"
@@ -992,7 +1712,79 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(398.5110497237569,0)"
+            transform="translate(332.8756906077348,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(353.7596685082873,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(374.64364640883974,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(395.52762430939225,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(416.41160220994476,0)"
           >
             <line
               stroke="currentColor"
@@ -1010,7 +1802,61 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(490.99723756906076,0)"
+            transform="translate(437.2955801104972,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(458.1795580110497,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(479.06353591160223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(499.9475138121547,0)"
           >
             <line
               stroke="currentColor"
@@ -1028,7 +1874,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
-            transform="translate(580.5,0)"
+            transform="translate(520.8314917127071,0)"
           >
             <line
               stroke="currentColor"
@@ -1040,7 +1886,43 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               fill="currentColor"
               y="30"
             >
-              Jul 2017
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(541.7154696132596,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(562.5994475138122,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
             </text>
           </g>
         </g>
@@ -1362,7 +2244,79 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <g
               class="tick"
               opacity="1"
-              transform="translate(132.98618784530387,0)"
+              transform="translate(61.38397790055249,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Jan 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(82.26795580110496,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Jan 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(103.15193370165746,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Jan 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(124.03591160220994,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Jan 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(144.91988950276243,0)"
             >
               <line
                 stroke="currentColor"
@@ -1380,7 +2334,61 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <g
               class="tick"
               opacity="1"
-              transform="translate(216.52209944751382,0)"
+              transform="translate(165.8038674033149,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Feb 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(186.6878453038674,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Feb 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(207.57182320441987,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Feb 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(228.45580110497235,0)"
             >
               <line
                 stroke="currentColor"
@@ -1398,7 +2406,61 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <g
               class="tick"
               opacity="1"
-              transform="translate(309.00828729281767,0)"
+              transform="translate(249.33977900552486,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Mar 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(270.22375690607737,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Mar 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(291.1077348066298,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Mar 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(311.99171270718233,0)"
             >
               <line
                 stroke="currentColor"
@@ -1416,7 +2478,79 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <g
               class="tick"
               opacity="1"
-              transform="translate(398.5110497237569,0)"
+              transform="translate(332.8756906077348,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Apr 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(353.7596685082873,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Apr 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(374.64364640883974,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Apr 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(395.52762430939225,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Apr 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(416.41160220994476,0)"
             >
               <line
                 stroke="currentColor"
@@ -1434,7 +2568,61 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <g
               class="tick"
               opacity="1"
-              transform="translate(490.99723756906076,0)"
+              transform="translate(437.2955801104972,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                May 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(458.1795580110497,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                May 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(479.06353591160223,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                May 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(499.9475138121547,0)"
             >
               <line
                 stroke="currentColor"
@@ -1452,7 +2640,7 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
             <g
               class="tick"
               opacity="1"
-              transform="translate(580.5,0)"
+              transform="translate(520.8314917127071,0)"
             >
               <line
                 stroke="currentColor"
@@ -1464,7 +2652,43 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
                 fill="currentColor"
                 y="30"
               >
-                Jul 2017
+                Jun 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(541.7154696132596,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Jun 2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(562.5994475138122,0)"
+            >
+              <line
+                stroke="currentColor"
+                y2="20"
+              />
+              <text
+                aria-hidden="true"
+                dy="0.71em"
+                fill="currentColor"
+                y="30"
+              >
+                Jun 2017
               </text>
             </g>
           </g>
@@ -1789,7 +3013,79 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(132.98618784530387,0)"
+                  transform="translate(61.38397790055249,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Jan 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(82.26795580110496,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Jan 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(103.15193370165746,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Jan 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(124.03591160220994,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Jan 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(144.91988950276243,0)"
                 >
                   <line
                     stroke="currentColor"
@@ -1807,7 +3103,61 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(216.52209944751382,0)"
+                  transform="translate(165.8038674033149,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Feb 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(186.6878453038674,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Feb 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(207.57182320441987,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Feb 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(228.45580110497235,0)"
                 >
                   <line
                     stroke="currentColor"
@@ -1825,7 +3175,61 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(309.00828729281767,0)"
+                  transform="translate(249.33977900552486,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Mar 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(270.22375690607737,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Mar 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(291.1077348066298,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Mar 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(311.99171270718233,0)"
                 >
                   <line
                     stroke="currentColor"
@@ -1843,7 +3247,79 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(398.5110497237569,0)"
+                  transform="translate(332.8756906077348,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Apr 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(353.7596685082873,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Apr 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(374.64364640883974,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Apr 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(395.52762430939225,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Apr 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(416.41160220994476,0)"
                 >
                   <line
                     stroke="currentColor"
@@ -1861,7 +3337,61 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(490.99723756906076,0)"
+                  transform="translate(437.2955801104972,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    May 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(458.1795580110497,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    May 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(479.06353591160223,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    May 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(499.9475138121547,0)"
                 >
                   <line
                     stroke="currentColor"
@@ -1879,7 +3409,7 @@ Object {
                 <g
                   class="tick"
                   opacity="1"
-                  transform="translate(580.5,0)"
+                  transform="translate(520.8314917127071,0)"
                 >
                   <line
                     stroke="currentColor"
@@ -1891,7 +3421,43 @@ Object {
                     fill="currentColor"
                     y="30"
                   >
-                    Jul 2017
+                    Jun 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(541.7154696132596,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Jun 2017
+                  </text>
+                </g>
+                <g
+                  class="tick"
+                  opacity="1"
+                  transform="translate(562.5994475138122,0)"
+                >
+                  <line
+                    stroke="currentColor"
+                    y2="20"
+                  />
+                  <text
+                    aria-hidden="true"
+                    dy="0.71em"
+                    fill="currentColor"
+                    y="30"
+                  >
+                    Jun 2017
                   </text>
                 </g>
               </g>
@@ -2211,7 +3777,79 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(132.98618784530387,0)"
+                transform="translate(61.38397790055249,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Jan 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(82.26795580110496,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Jan 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(103.15193370165746,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Jan 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(124.03591160220994,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Jan 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(144.91988950276243,0)"
               >
                 <line
                   stroke="currentColor"
@@ -2229,7 +3867,61 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(216.52209944751382,0)"
+                transform="translate(165.8038674033149,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Feb 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(186.6878453038674,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Feb 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(207.57182320441987,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Feb 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(228.45580110497235,0)"
               >
                 <line
                   stroke="currentColor"
@@ -2247,7 +3939,61 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(309.00828729281767,0)"
+                transform="translate(249.33977900552486,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Mar 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(270.22375690607737,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Mar 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(291.1077348066298,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Mar 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(311.99171270718233,0)"
               >
                 <line
                   stroke="currentColor"
@@ -2265,7 +4011,79 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(398.5110497237569,0)"
+                transform="translate(332.8756906077348,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Apr 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(353.7596685082873,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Apr 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(374.64364640883974,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Apr 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(395.52762430939225,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Apr 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(416.41160220994476,0)"
               >
                 <line
                   stroke="currentColor"
@@ -2283,7 +4101,61 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(490.99723756906076,0)"
+                transform="translate(437.2955801104972,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  May 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(458.1795580110497,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  May 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(479.06353591160223,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  May 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(499.9475138121547,0)"
               >
                 <line
                   stroke="currentColor"
@@ -2301,7 +4173,7 @@ Object {
               <g
                 class="tick"
                 opacity="1"
-                transform="translate(580.5,0)"
+                transform="translate(520.8314917127071,0)"
               >
                 <line
                   stroke="currentColor"
@@ -2313,7 +4185,43 @@ Object {
                   fill="currentColor"
                   y="30"
                 >
-                  Jul 2017
+                  Jun 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(541.7154696132596,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Jun 2017
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(562.5994475138122,0)"
+              >
+                <line
+                  stroke="currentColor"
+                  y2="20"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.71em"
+                  fill="currentColor"
+                  y="30"
+                >
+                  Jun 2017
                 </text>
               </g>
             </g>
@@ -2684,6 +4592,42 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
+            transform="translate(77.29120879120879,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2021
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(110.52197802197803,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2021
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
             transform="translate(147.3131868131868,0)"
           >
             <line
@@ -2697,6 +4641,42 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="30"
             >
               Apr 2021
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(182.91758241758242,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2021
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(219.70879120879118,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2021
             </text>
           </g>
           <g
@@ -2720,6 +4700,42 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
+            transform="translate(292.1043956043956,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Aug 2021
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(328.8956043956044,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Sep 2021
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
             transform="translate(364.5,0)"
           >
             <line
@@ -2738,6 +4754,42 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
           <g
             class="tick"
             opacity="1"
+            transform="translate(401.29120879120876,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Nov 2021
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(436.8956043956044,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Dec 2021
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
             transform="translate(473.6868131868132,0)"
           >
             <line
@@ -2751,6 +4803,42 @@ exports[`GanttChart rendering and behavior tests should render GanttChart correc
               y="30"
             >
               Jan 2022
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(510.478021978022,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2022
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(543.7087912087912,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2022
             </text>
           </g>
           <g
@@ -3123,7 +5211,79 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <g
             class="tick"
             opacity="1"
-            transform="translate(132.98618784530387,0)"
+            transform="translate(61.38397790055249,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(82.26795580110496,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(103.15193370165746,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(124.03591160220994,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(144.91988950276243,0)"
           >
             <line
               stroke="currentColor"
@@ -3141,7 +5301,61 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <g
             class="tick"
             opacity="1"
-            transform="translate(216.52209944751382,0)"
+            transform="translate(165.8038674033149,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(186.6878453038674,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(207.57182320441987,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(228.45580110497235,0)"
           >
             <line
               stroke="currentColor"
@@ -3159,7 +5373,61 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <g
             class="tick"
             opacity="1"
-            transform="translate(309.00828729281767,0)"
+            transform="translate(249.33977900552486,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(270.22375690607737,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(291.1077348066298,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(311.99171270718233,0)"
           >
             <line
               stroke="currentColor"
@@ -3177,7 +5445,79 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <g
             class="tick"
             opacity="1"
-            transform="translate(398.5110497237569,0)"
+            transform="translate(332.8756906077348,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(353.7596685082873,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(374.64364640883974,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(395.52762430939225,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(416.41160220994476,0)"
           >
             <line
               stroke="currentColor"
@@ -3195,7 +5535,61 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <g
             class="tick"
             opacity="1"
-            transform="translate(490.99723756906076,0)"
+            transform="translate(437.2955801104972,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(458.1795580110497,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(479.06353591160223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(499.9475138121547,0)"
           >
             <line
               stroke="currentColor"
@@ -3213,7 +5607,7 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
           <g
             class="tick"
             opacity="1"
-            transform="translate(580.5,0)"
+            transform="translate(520.8314917127071,0)"
           >
             <line
               stroke="currentColor"
@@ -3225,7 +5619,43 @@ exports[`GanttChart rendering and behavior tests should render bars with gradien
               fill="currentColor"
               y="30"
             >
-              Jul 2017
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(541.7154696132596,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(562.5994475138122,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
             </text>
           </g>
         </g>
@@ -3581,7 +6011,79 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <g
             class="tick"
             opacity="1"
-            transform="translate(132.98618784530387,0)"
+            transform="translate(61.38397790055249,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(82.26795580110496,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(103.15193370165746,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(124.03591160220994,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(144.91988950276243,0)"
           >
             <line
               stroke="currentColor"
@@ -3599,7 +6101,61 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <g
             class="tick"
             opacity="1"
-            transform="translate(216.52209944751382,0)"
+            transform="translate(165.8038674033149,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(186.6878453038674,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(207.57182320441987,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(228.45580110497235,0)"
           >
             <line
               stroke="currentColor"
@@ -3617,7 +6173,61 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <g
             class="tick"
             opacity="1"
-            transform="translate(309.00828729281767,0)"
+            transform="translate(249.33977900552486,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(270.22375690607737,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(291.1077348066298,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(311.99171270718233,0)"
           >
             <line
               stroke="currentColor"
@@ -3635,7 +6245,79 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <g
             class="tick"
             opacity="1"
-            transform="translate(398.5110497237569,0)"
+            transform="translate(332.8756906077348,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(353.7596685082873,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(374.64364640883974,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(395.52762430939225,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(416.41160220994476,0)"
           >
             <line
               stroke="currentColor"
@@ -3653,7 +6335,61 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <g
             class="tick"
             opacity="1"
-            transform="translate(490.99723756906076,0)"
+            transform="translate(437.2955801104972,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(458.1795580110497,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(479.06353591160223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(499.9475138121547,0)"
           >
             <line
               stroke="currentColor"
@@ -3671,7 +6407,7 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
           <g
             class="tick"
             opacity="1"
-            transform="translate(580.5,0)"
+            transform="translate(520.8314917127071,0)"
           >
             <line
               stroke="currentColor"
@@ -3683,7 +6419,43 @@ exports[`GanttChart rendering and behavior tests should render bars with rounded
               fill="currentColor"
               y="30"
             >
-              Jul 2017
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(541.7154696132596,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(562.5994475138122,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
             </text>
           </g>
         </g>
@@ -4001,7 +6773,79 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <g
             class="tick"
             opacity="1"
-            transform="translate(132.98618784530387,0)"
+            transform="translate(61.38397790055249,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(82.26795580110496,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(103.15193370165746,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(124.03591160220994,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jan 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(144.91988950276243,0)"
           >
             <line
               stroke="currentColor"
@@ -4019,7 +6863,61 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <g
             class="tick"
             opacity="1"
-            transform="translate(216.52209944751382,0)"
+            transform="translate(165.8038674033149,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(186.6878453038674,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(207.57182320441987,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Feb 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(228.45580110497235,0)"
           >
             <line
               stroke="currentColor"
@@ -4037,7 +6935,61 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <g
             class="tick"
             opacity="1"
-            transform="translate(309.00828729281767,0)"
+            transform="translate(249.33977900552486,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(270.22375690607737,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(291.1077348066298,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Mar 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(311.99171270718233,0)"
           >
             <line
               stroke="currentColor"
@@ -4055,7 +7007,79 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <g
             class="tick"
             opacity="1"
-            transform="translate(398.5110497237569,0)"
+            transform="translate(332.8756906077348,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(353.7596685082873,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(374.64364640883974,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(395.52762430939225,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Apr 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(416.41160220994476,0)"
           >
             <line
               stroke="currentColor"
@@ -4073,7 +7097,61 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <g
             class="tick"
             opacity="1"
-            transform="translate(490.99723756906076,0)"
+            transform="translate(437.2955801104972,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(458.1795580110497,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(479.06353591160223,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(499.9475138121547,0)"
           >
             <line
               stroke="currentColor"
@@ -4091,7 +7169,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
           <g
             class="tick"
             opacity="1"
-            transform="translate(580.5,0)"
+            transform="translate(520.8314917127071,0)"
           >
             <line
               stroke="currentColor"
@@ -4103,7 +7181,43 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               fill="currentColor"
               y="30"
             >
-              Jul 2017
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(541.7154696132596,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(562.5994475138122,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 2017
             </text>
           </g>
         </g>
@@ -4452,7 +7566,7 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
           <g
             class="tick"
             opacity="1"
-            transform="translate(58.302197802197796,0)"
+            transform="translate(40.5,0)"
           >
             <line
               stroke="currentColor"
@@ -4464,13 +7578,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               fill="currentColor"
               y="30"
             >
-              May 01
+              Apr 28
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(242.25824175824175,0)"
+            transform="translate(82.03846153846155,0)"
           >
             <line
               stroke="currentColor"
@@ -4482,13 +7596,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               fill="currentColor"
               y="30"
             >
-              Jun 01
+              May 05
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(420.2802197802198,0)"
+            transform="translate(123.5769230769231,0)"
           >
             <line
               stroke="currentColor"
@@ -4500,7 +7614,205 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               fill="currentColor"
               y="30"
             >
-              Jul 01
+              May 12
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(165.1153846153846,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 19
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(206.6538461538462,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              May 26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(248.1923076923077,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 02
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(289.7307692307692,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 09
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(331.2692307692308,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 16
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(372.8076923076923,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 23
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(414.34615384615387,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jun 30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(455.8846153846154,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jul 07
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(497.4230769230769,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jul 14
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(538.9615384615385,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jul 21
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(580.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="20"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="30"
+            >
+              Jul 28
             </text>
           </g>
         </g>
@@ -4528,20 +7840,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Final Inspections"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Final Inspections"
                 dy="0.32em"
-                id="BaseSpan-0"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots-0"
                 x="-16"
               >
                 Fina...
@@ -4558,20 +7863,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Interior Finishing"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Interior Finishing"
                 dy="0.32em"
-                id="BaseSpan-1"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots-1"
                 x="-16"
               >
                 Inte...
@@ -4588,20 +7886,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Exterior Finishing"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Exterior Finishing"
                 dy="0.32em"
-                id="BaseSpan-2"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots-2"
                 x="-16"
               >
                 Exte...
@@ -4618,20 +7909,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Plumbing/Electrical"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Plumbing/Electrical"
                 dy="0.32em"
-                id="BaseSpan-3"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots-3"
                 x="-16"
               >
                 Plum...
@@ -4648,20 +7932,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Roof Installation"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Roof Installation"
                 dy="0.32em"
-                id="BaseSpan-4"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots-4"
                 x="-16"
               >
                 Roof...
@@ -4678,20 +7955,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Framing"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Framing"
                 dy="0.32em"
-                id="BaseSpan-5"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots-5"
                 x="-16"
               >
                 Fram...
@@ -4708,20 +7978,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Foundation Work"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Foundation Work"
                 dy="0.32em"
-                id="BaseSpan-6"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots-6"
                 x="-16"
               >
                 Foun...
@@ -4738,20 +8001,13 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
               x2="-6"
             />
             <text
+              data-full="Site Preparation"
               dy="0.32em"
               fill="currentColor"
               x="-16"
             >
               <tspan
-                data-="Site Preparation"
                 dy="0.32em"
-                id="BaseSpan-7"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                dy="0.32em"
-                id="showDots-7"
                 x="-16"
               >
                 Site...
@@ -4933,6 +8189,11 @@ exports[`GanttChart rendering and behavior tests should truncate y-axis tick lab
         </div>
       </div>
     </div>
+    <div
+      class="fui-cart__tooltip"
+      id="tooltip__r_j_"
+      style="opacity: 0;"
+    />
   </div>
 </div>
 `;

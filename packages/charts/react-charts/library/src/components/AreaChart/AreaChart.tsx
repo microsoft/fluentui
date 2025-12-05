@@ -1,10 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { useAreaChartStyles } from './useAreaChartStyles.styles';
 import { max as d3Max, bisector } from 'd3-array';
 import { pointer } from 'd3-selection';
-import { select as d3Select } from 'd3-selection';
 import { tokens } from '@fluentui/react-theme';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
 import {
@@ -25,7 +23,6 @@ import {
   ChartTypes,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfAxislabels,
   getNextColor,
   getColorFromToken,
   getSecureProps,
@@ -91,7 +88,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     const _verticalLineId: string = useId('verticalLine_');
     const _circleId: string = useId('circle');
     const _rectId: string = useId('rectangle');
-    const _tooltipId: string = useId('AreaChartTooltipID');
     //enableComputationOptimization is used for optimized code to group data points by x value
     //from O(n^2) to O(n) using a map.
     const _enableComputationOptimization: boolean = true;
@@ -148,8 +144,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       }
       prevPropsRef.current = props;
     }, [props]);
-
-    const classes = useAreaChartStyles(props);
 
     function _getMinMaxOfYAxis(points: LineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) {
       return findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
@@ -846,29 +840,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           {...getSecureProps(pointLineOptions)}
         />,
       );
-      // Removing un wanted tooltip div from DOM, when prop not provided.
-      if (!props.showXAxisLablesTooltip) {
-        try {
-          // eslint-disable-next-line @nx/workspace-no-restricted-globals
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
-      // Used to display tooltip at x axis labels.
-      if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
-        const xAxisElement = d3Select(xElement).call(xScale);
-        try {
-          // eslint-disable-next-line @nx/workspace-no-restricted-globals
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-        const tooltipProps = {
-          tooltipCls: classes.tooltip!,
-          id: _tooltipId,
-          axis: xAxisElement,
-        };
-        xAxisElement && tooltipOfAxislabels(tooltipProps);
-      }
       return graph;
     }
 

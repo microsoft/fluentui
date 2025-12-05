@@ -919,11 +919,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip__r_28_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -1947,11 +1942,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip__r_28_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"
@@ -6357,20 +6347,13 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String One"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
                 >
                   <tspan
-                    data-="String One"
                     dy="0.32em"
-                    id="BaseSpan-0"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="0em"
-                    dy="0.32em"
-                    id="showDots-0"
                     x="-16"
                   >
                     Stri...
@@ -6387,20 +6370,13 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String Two"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
                 >
                   <tspan
-                    data-="String Two"
                     dy="0.32em"
-                    id="BaseSpan-1"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="0em"
-                    dy="0.32em"
-                    id="showDots-1"
                     x="-16"
                   >
                     Stri...
@@ -6417,20 +6393,13 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String Three"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
                 >
                   <tspan
-                    data-="String Three"
                     dy="0.32em"
-                    id="BaseSpan-2"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="0em"
-                    dy="0.32em"
-                    id="showDots-2"
                     x="-16"
                   >
                     Stri...
@@ -6447,20 +6416,13 @@ Object {
                   x2="-6"
                 />
                 <text
+                  data-full="String Four"
                   dy="0.32em"
                   fill="currentColor"
                   x="-16"
                 >
                   <tspan
-                    data-="String Four"
                     dy="0.32em"
-                    id="BaseSpan-3"
-                    x="-16"
-                  />
-                  <tspan
-                    dx="0em"
-                    dy="0.32em"
-                    id="showDots-3"
                     x="-16"
                   >
                     Stri...
@@ -6568,13 +6530,13 @@ Object {
             </div>
           </div>
         </div>
+        <div
+          class="fui-cart__tooltip"
+          id="tooltip__r_28_"
+          style="opacity: 0;"
+        />
       </div>
     </div>
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip__r_28_"
-      style="opacity: 0;"
-    />
   </body>,
   "container": <div>
     <div
@@ -6841,20 +6803,13 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String One"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
               >
                 <tspan
-                  data-="String One"
                   dy="0.32em"
-                  id="BaseSpan-0"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  dy="0.32em"
-                  id="showDots-0"
                   x="-16"
                 >
                   Stri...
@@ -6871,20 +6826,13 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String Two"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
               >
                 <tspan
-                  data-="String Two"
                   dy="0.32em"
-                  id="BaseSpan-1"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  dy="0.32em"
-                  id="showDots-1"
                   x="-16"
                 >
                   Stri...
@@ -6901,20 +6849,13 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String Three"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
               >
                 <tspan
-                  data-="String Three"
                   dy="0.32em"
-                  id="BaseSpan-2"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  dy="0.32em"
-                  id="showDots-2"
                   x="-16"
                 >
                   Stri...
@@ -6931,20 +6872,13 @@ Object {
                 x2="-6"
               />
               <text
+                data-full="String Four"
                 dy="0.32em"
                 fill="currentColor"
                 x="-16"
               >
                 <tspan
-                  data-="String Four"
                   dy="0.32em"
-                  id="BaseSpan-3"
-                  x="-16"
-                />
-                <tspan
-                  dx="0em"
-                  dy="0.32em"
-                  id="showDots-3"
                   x="-16"
                 >
                   Stri...
@@ -7052,6 +6986,11 @@ Object {
           </div>
         </div>
       </div>
+      <div
+        class="fui-cart__tooltip"
+        id="tooltip__r_28_"
+        style="opacity: 0;"
+      />
     </div>
   </div>,
   "debug": [Function],
@@ -7114,11 +7053,6 @@ Object {
   "baseElement": <body
     data-tabster="{\\"root\\":{}}"
   >
-    <div
-      class="fui-cart__tooltip"
-      id="tooltip__r_28_"
-      style="opacity: 0;"
-    />
     <div>
       <div
         class="fui-cart__root"

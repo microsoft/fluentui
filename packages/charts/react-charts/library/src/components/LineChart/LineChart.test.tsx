@@ -635,10 +635,10 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
     { data: dateChartPoints, showXAxisLablesTooltip: true },
     container => {
       // Arrange
-      const xAxisLabels = getById(container, /showDots/i);
+      const xAxisLabels = container.querySelectorAll('tspan');
       fireEvent.mouseOver(xAxisLabels[0]);
       // Assert
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
+      expect(xAxisLabels[0].textContent).toEqual('Febr...');
     },
     undefined,
     undefined,

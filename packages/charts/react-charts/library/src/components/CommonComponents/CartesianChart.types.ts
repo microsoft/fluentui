@@ -512,7 +512,17 @@ export interface CartesianChartProps {
    * Configuration for the x-axis.
    * Use this to control `tickStep`, `tick0`, etc.
    */
-  xAxis?: AxisProps;
+  xAxis?: AxisProps & {
+    /**
+     * Controls how x-axis tick labels are laid out.
+     *
+     * - `'auto'`: Tick labels are automatically wrapped, truncated, and staggered
+     *   across alternating levels based on the available space to prevent overlap.
+     *
+     * @default 'default'
+     */
+    tickLayout?: 'default' | 'auto';
+  };
 
   /**
    * Configuration for the y-axis.

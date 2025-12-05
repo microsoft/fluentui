@@ -119,9 +119,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             'aria-multiselectable': canSelectMultipleLegends,
           })}
           className={classes.root}
-          ref={el => {
-            _rootElem.current = el;
-          }}
+          ref={_rootElem}
         >
           <Overflow>
             <div className={classes.resizableArea} style={{ textAlign: props.centerLegends ? 'center' : 'unset' }}>
@@ -149,6 +147,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           })}
           style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
           className={classes.root}
+          ref={_rootElem}
         >
           <div className={classes.resizableArea} style={{ display: 'flex', flexWrap: 'wrap', overflow: 'auto' }}>
             {dataToRender.map(item => (
