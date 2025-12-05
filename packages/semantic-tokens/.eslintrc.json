@@ -1,0 +1,20 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "root": true,
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["react", "react-dom"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["./src/fluentOverrides.ts", "./src/fluentLegacyVariants.ts"],
+      "rules": {
+        "sort-keys": ["error"]
+      }
+    }
+  ]
+}
