@@ -138,6 +138,9 @@
   "parallel": 3,
   "useInferencePlugins": false,
   "defaultBase": "master",
+  "tui": {
+    "enabled": false
+  },
   "plugins": [
     {
       "plugin": "./tools/workspace-plugin/src/plugins/workspace-plugin.ts",
