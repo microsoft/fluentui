@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding react-file-type-icons package for FluentUI v9. This package is now suffixed with v8 in the repo, but published to the same @fluentui/react-file-type-icons namespace in NPM with no suffix, just retaining the 8.x.x semver.",
+  "packageName": "@fluentui/react-file-type-icons-v8",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}

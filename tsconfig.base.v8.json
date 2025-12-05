@@ -27,7 +27,7 @@
       "@fluentui/react-date-time": ["packages/react-date-time/src/index.ts"],
       "@fluentui/react-experiments": ["packages/react-experiments/src/index.ts"],
       "@fluentui/react-experiments/lib/*": ["packages/react-experiments/src/*"],
-      "@fluentui/react-file-type-icons": ["packages/react-file-type-icons/src/index.ts"],
+      "@fluentui/react-file-type-icons-v8": ["packages/react-file-type-icons/src/index.ts"],
       "@fluentui/react-focus": ["packages/react-focus/src/index.ts"],
       "@fluentui/react-hooks": ["packages/react-hooks/src/index.ts"],
       "@fluentui/scheme-utilities": ["packages/scheme-utilities/src/index.ts"],

@@ -70,6 +70,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useDropdownStyles_unstable: CustomStyleHook;
   useEmptySwatchStyles_unstable: CustomStyleHook;
   useFieldStyles_unstable: CustomStyleHook;
+  useFileTypeIconStyles_unstable: CustomStyleHook;
   useFlatTreeStyles_unstable: CustomStyleHook;
   useImageStyles_unstable: CustomStyleHook;
   useImageSwatchStyles_unstable: CustomStyleHook;

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Associating this older public docsite with the v8 version of the file-type-icons package (new workspace name got -v8 suffix added)",
+  "packageName": "@fluentui/public-docsite-setup",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
