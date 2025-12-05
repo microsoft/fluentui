@@ -42,6 +42,7 @@ export type CheckboxSlots = {
     label?: Slot<typeof Label>;
     input: NonNullable<Slot<'input'>>;
     indicator: Slot<'div', 'span'>;
+    checkmarkIcon: Slot<'svg', 'div' | 'span' | 'img'>;
 };
 
 // @public
