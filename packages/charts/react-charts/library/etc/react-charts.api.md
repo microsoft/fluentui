@@ -1710,6 +1710,7 @@ export const VerticalBarChart: React_2.FunctionComponent<VerticalBarChartProps>;
 
 // @public (undocumented)
 export interface VerticalBarChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     legend?: string;
@@ -1811,6 +1812,7 @@ export interface VerticalStackedChartProps {
 
 // @public (undocumented)
 export interface VSChartDataPoint {
+    barLabel?: string;
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
     culture?: string;
