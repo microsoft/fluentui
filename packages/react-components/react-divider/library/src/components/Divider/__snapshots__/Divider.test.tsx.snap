@@ -28,6 +28,7 @@ exports[`Divider renders a divider with a different color 1`] = `
 <div
   aria-orientation="horizontal"
   class="fui-Divider"
+  color="#FF00FF"
   role="separator"
 />
 `;
