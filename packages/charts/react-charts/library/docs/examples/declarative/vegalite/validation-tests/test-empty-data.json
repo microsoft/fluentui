@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Test case: Empty data array (should throw validation error)",
+  "mark": "line",
+  "data": {
+    "values": []
+  },
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "quantitative",
+      "axis": { "title": "X Axis" }
+    },
+    "y": {
+      "field": "y",
+      "type": "quantitative",
+      "axis": { "title": "Y Axis" }
+    }
+  },
+  "title": "Empty Data Test (Should Error)"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Average shipping times by carrier",
+  "data": {
+    "values": [
+      { "carrier": "Express Air", "min": 1, "q1": 1.5, "median": 2, "q3": 2.5, "max": 3 },
+      { "carrier": "Standard Ground", "min": 3, "q1": 4, "median": 5, "q3": 6, "max": 7 },
+      { "carrier": "Economy", "min": 5, "q1": 7, "median": 9, "q3": 11, "max": 14 },
+      { "carrier": "International", "min": 10, "q1": 14, "median": 18, "q3": 22, "max": 30 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": { "field": "carrier", "type": "nominal", "axis": { "title": "Shipping Carrier" } },
+    "x": { "field": "median", "type": "quantitative", "axis": { "title": "Median Shipping Days" } },
+    "color": { "field": "carrier", "type": "nominal", "legend": null }
+  },
+  "title": "Median Shipping Times by Carrier"
+}

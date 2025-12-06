@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Game scores over season",
+  "data": {
+    "values": [
+      { "game": 1, "score": 98 },
+      { "game": 2, "score": 105 },
+      { "game": 3, "score": 92 },
+      { "game": 4, "score": 110 },
+      { "game": 5, "score": 88 },
+      { "game": 6, "score": 115 },
+      { "game": 7, "score": 102 },
+      { "game": 8, "score": 97 },
+      { "game": 9, "score": 108 },
+      { "game": 10, "score": 112 }
+    ]
+  },
+  "mark": { "type": "line", "point": true, "strokeWidth": 2, "color": "purple" },
+  "encoding": {
+    "x": { "field": "game", "type": "quantitative", "axis": { "title": "Game Number" } },
+    "y": { "field": "score", "type": "quantitative", "axis": { "title": "Score" } },
+    "tooltip": [
+      { "field": "game", "type": "quantitative", "title": "Game" },
+      { "field": "score", "type": "quantitative", "title": "Score" }
+    ]
+  },
+  "title": "Team Scoring Timeline"
+}

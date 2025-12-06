@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Inventory levels over time",
+  "data": {
+    "values": [
+      { "date": "2024-01", "product": "Laptops", "units": 450 },
+      { "date": "2024-02", "product": "Laptops", "units": 380 },
+      { "date": "2024-03", "product": "Laptops", "units": 420 },
+      { "date": "2024-04", "product": "Laptops", "units": 520 },
+      { "date": "2024-05", "product": "Laptops", "units": 480 },
+      { "date": "2024-06", "product": "Laptops", "units": 550 },
+      { "date": "2024-01", "product": "Tablets", "units": 680 },
+      { "date": "2024-02", "product": "Tablets", "units": 590 },
+      { "date": "2024-03", "product": "Tablets", "units": 720 },
+      { "date": "2024-04", "product": "Tablets", "units": 650 },
+      { "date": "2024-05", "product": "Tablets", "units": 780 },
+      { "date": "2024-06", "product": "Tablets", "units": 820 }
+    ]
+  },
+  "mark": "area",
+  "encoding": {
+    "x": { "field": "date", "type": "temporal", "axis": { "title": "Month", "format": "%b %Y" } },
+    "y": { "field": "units", "type": "quantitative", "axis": { "title": "Inventory Units" } },
+    "color": { "field": "product", "type": "nominal" },
+    "opacity": { "value": 0.7 }
+  },
+  "title": "Inventory Levels by Product"
+}

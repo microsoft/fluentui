@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Course enrollment breakdown",
+  "data": {
+    "values": [
+      { "course": "Computer Science", "enrolled": 450 },
+      { "course": "Engineering", "enrolled": 380 },
+      { "course": "Business", "enrolled": 520 },
+      { "course": "Arts & Humanities", "enrolled": 290 },
+      { "course": "Natural Sciences", "enrolled": 360 },
+      { "course": "Social Sciences", "enrolled": 310 }
+    ]
+  },
+  "mark": { "type": "arc", "innerRadius": 65, "padAngle": 0.01 },
+  "encoding": {
+    "theta": { "field": "enrolled", "type": "quantitative" },
+    "color": {
+      "field": "course",
+      "type": "nominal",
+      "scale": { "scheme": "category20" },
+      "legend": { "title": "Course" }
+    },
+    "tooltip": [
+      { "field": "course", "type": "nominal" },
+      { "field": "enrolled", "type": "quantitative", "title": "Students", "format": ",.0f" }
+    ]
+  },
+  "title": "Course Enrollment Distribution"
+}

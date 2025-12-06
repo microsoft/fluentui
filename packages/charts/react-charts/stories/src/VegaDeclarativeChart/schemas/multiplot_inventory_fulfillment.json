@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Product inventory and fulfillment metrics",
+  "data": {
+    "values": [
+      { "category": "Electronics", "inStock": 1250, "reserved": 340, "shipped": 2850, "returned": 85 },
+      { "category": "Clothing", "inStock": 2840, "reserved": 580, "shipped": 4200, "returned": 156 },
+      { "category": "Home & Garden", "inStock": 1680, "reserved": 320, "shipped": 2100, "returned": 62 },
+      { "category": "Sports", "inStock": 980, "reserved": 210, "shipped": 1450, "returned": 48 },
+      { "category": "Books", "inStock": 3200, "reserved": 450, "shipped": 1850, "returned": 38 }
+    ]
+  },
+  "vconcat": [
+    {
+      "title": "Current Inventory Status",
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "category", "type": "nominal", "axis": { "title": "Product Category" } },
+        "y": { "field": "inStock", "type": "quantitative", "axis": { "title": "Units in Stock", "format": ",.0f" } },
+        "color": { "value": "#16a085" }
+      },
+      "height": 150
+    },
+    {
+      "title": "Orders Reserved vs Shipped",
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "category", "type": "nominal", "axis": { "title": "Product Category" } },
+        "y": { "field": "value", "type": "quantitative", "axis": { "title": "Units", "format": ",.0f" } },
+        "color": { "field": "status", "type": "nominal", "legend": { "title": "Status" } }
+      },
+      "transform": [{ "fold": ["reserved", "shipped"], "as": ["status", "value"] }],
+      "height": 150
+    },
+    {
+      "title": "Return Rate Analysis",
+      "mark": { "type": "bar", "color": "#e74c3c" },
+      "encoding": {
+        "x": { "field": "category", "type": "nominal", "axis": { "title": "Product Category" } },
+        "y": { "field": "returned", "type": "quantitative", "axis": { "title": "Returns", "format": ",.0f" } }
+      },
+      "height": 150
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A basic histogram showing the distribution of values with automatic binning",
+  "title": "Value Distribution - Histogram",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "values": [
+      { "value": 12 },
+      { "value": 15 },
+      { "value": 18 },
+      { "value": 22 },
+      { "value": 25 },
+      { "value": 28 },
+      { "value": 32 },
+      { "value": 35 },
+      { "value": 38 },
+      { "value": 42 },
+      { "value": 45 },
+      { "value": 48 },
+      { "value": 52 },
+      { "value": 55 },
+      { "value": 58 },
+      { "value": 62 },
+      { "value": 65 },
+      { "value": 68 },
+      { "value": 72 },
+      { "value": 75 },
+      { "value": 78 },
+      { "value": 82 },
+      { "value": 85 },
+      { "value": 88 },
+      { "value": 92 },
+      { "value": 95 },
+      { "value": 14 },
+      { "value": 19 },
+      { "value": 24 },
+      { "value": 29 },
+      { "value": 34 },
+      { "value": 39 },
+      { "value": 44 },
+      { "value": 49 },
+      { "value": 54 },
+      { "value": 59 },
+      { "value": 64 },
+      { "value": 69 },
+      { "value": 74 },
+      { "value": 79 },
+      { "value": 84 },
+      { "value": 89 },
+      { "value": 94 },
+      { "value": 16 },
+      { "value": 21 },
+      { "value": 26 },
+      { "value": 31 },
+      { "value": 36 },
+      { "value": 41 },
+      { "value": 46 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "value",
+      "type": "quantitative",
+      "bin": true,
+      "axis": {
+        "title": "Value Range"
+      }
+    },
+    "y": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "axis": {
+        "title": "Frequency"
+      }
+    }
+  }
+}

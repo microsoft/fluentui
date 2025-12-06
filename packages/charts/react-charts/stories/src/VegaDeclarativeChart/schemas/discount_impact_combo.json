@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Discount impact on sales volume",
+  "layer": [
+    {
+      "mark": { "type": "line", "color": "steelblue" },
+      "encoding": {
+        "x": { "field": "discount", "type": "quantitative", "axis": { "title": "Discount Percentage (%)" } },
+        "y": { "field": "sales", "type": "quantitative", "axis": { "title": "Sales Volume (units)" } }
+      }
+    },
+    {
+      "mark": { "type": "circle", "size": 150, "color": "steelblue" },
+      "encoding": {
+        "x": { "field": "discount", "type": "quantitative" },
+        "y": { "field": "sales", "type": "quantitative" },
+        "tooltip": [
+          { "field": "discount", "type": "quantitative", "title": "Discount %", "format": ".0f" },
+          { "field": "sales", "type": "quantitative", "title": "Sales", "format": ",.0f" }
+        ]
+      }
+    }
+  ],
+  "data": {
+    "values": [
+      { "discount": 0, "sales": 1200 },
+      { "discount": 5, "sales": 1450 },
+      { "discount": 10, "sales": 1820 },
+      { "discount": 15, "sales": 2280 },
+      { "discount": 20, "sales": 2650 },
+      { "discount": 25, "sales": 2950 },
+      { "discount": 30, "sales": 3180 },
+      { "discount": 35, "sales": 3250 }
+    ]
+  },
+  "title": "Discount Impact on Sales Volume"
+}

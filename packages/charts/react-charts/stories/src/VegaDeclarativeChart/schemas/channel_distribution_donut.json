@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Marketing channel distribution",
+  "data": {
+    "values": [
+      { "channel": "Email", "budget": 45000 },
+      { "channel": "Social Media", "budget": 85000 },
+      { "channel": "Search Ads", "budget": 120000 },
+      { "channel": "Display Ads", "budget": 65000 },
+      { "channel": "Content Marketing", "budget": 55000 },
+      { "channel": "Influencer", "budget": 75000 }
+    ]
+  },
+  "mark": { "type": "arc", "innerRadius": 60, "padAngle": 0.015 },
+  "encoding": {
+    "theta": { "field": "budget", "type": "quantitative" },
+    "color": {
+      "field": "channel",
+      "type": "nominal",
+      "scale": { "scheme": "set2" },
+      "legend": { "title": "Marketing Channel" }
+    },
+    "tooltip": [
+      { "field": "channel", "type": "nominal" },
+      { "field": "budget", "type": "quantitative", "format": "$,.0f", "title": "Budget" }
+    ]
+  },
+  "title": "Marketing Budget by Channel"
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Line chart with annotations and reference lines.",
+  "layer": [
+    {
+      "data": {
+        "values": [
+          { "date": "2023-01-01", "value": 28 },
+          { "date": "2023-01-02", "value": 55 },
+          { "date": "2023-01-03", "value": 43 },
+          { "date": "2023-01-04", "value": 91 },
+          { "date": "2023-01-05", "value": 81 }
+        ]
+      },
+      "mark": "line",
+      "encoding": {
+        "x": { "field": "date", "type": "temporal", "axis": { "title": "Date" } },
+        "y": { "field": "value", "type": "quantitative", "axis": { "title": "Value" } }
+      }
+    },
+    {
+      "mark": { "type": "rule", "color": "red", "strokeDash": [4, 4] },
+      "encoding": {
+        "y": { "datum": 60 }
+      }
+    },
+    {
+      "mark": { "type": "text", "align": "right", "dx": -5, "dy": -5 },
+      "encoding": {
+        "x": { "datum": "2023-01-03" },
+        "y": { "datum": 60 },
+        "text": { "datum": "Target: 60" }
+      }
+    }
+  ],
+  "title": "Line Chart with Annotations"
+}

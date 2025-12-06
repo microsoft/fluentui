@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Server load distribution",
+  "data": {
+    "values": [
+      { "server": "Server 1", "hour": "00:00", "load": 35 },
+      { "server": "Server 1", "hour": "06:00", "load": 42 },
+      { "server": "Server 1", "hour": "12:00", "load": 78 },
+      { "server": "Server 1", "hour": "18:00", "load": 85 },
+      { "server": "Server 2", "hour": "00:00", "load": 38 },
+      { "server": "Server 2", "hour": "06:00", "load": 45 },
+      { "server": "Server 2", "hour": "12:00", "load": 82 },
+      { "server": "Server 2", "hour": "18:00", "load": 88 },
+      { "server": "Server 3", "hour": "00:00", "load": 32 },
+      { "server": "Server 3", "hour": "06:00", "load": 40 },
+      { "server": "Server 3", "hour": "12:00", "load": 75 },
+      { "server": "Server 3", "hour": "18:00", "load": 80 }
+    ]
+  },
+  "mark": "rect",
+  "encoding": {
+    "x": { "field": "hour", "type": "ordinal", "axis": { "title": "Hour" } },
+    "y": { "field": "server", "type": "ordinal", "axis": { "title": "Server" } },
+    "color": {
+      "field": "load",
+      "type": "quantitative",
+      "scale": { "scheme": "redyellowgreen", "domain": [0, 100], "reverse": true },
+      "legend": { "title": "CPU Load %" }
+    },
+    "tooltip": [
+      { "field": "server", "type": "ordinal" },
+      { "field": "hour", "type": "ordinal" },
+      { "field": "load", "type": "quantitative", "title": "Load %", "format": ".0f" }
+    ]
+  },
+  "title": "Server Load Heatmap"
+}

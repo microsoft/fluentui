@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "CO2 emissions over time",
+  "data": {
+    "values": [
+      { "year": "1990", "emissions": 22.7 },
+      { "year": "1995", "emissions": 23.5 },
+      { "year": "2000", "emissions": 25.1 },
+      { "year": "2005", "emissions": 28.8 },
+      { "year": "2010", "emissions": 32.5 },
+      { "year": "2015", "emissions": 35.2 },
+      { "year": "2020", "emissions": 33.8 },
+      { "year": "2023", "emissions": 36.1 }
+    ]
+  },
+  "mark": { "type": "area", "line": true, "point": true, "color": "gray", "opacity": 0.7 },
+  "encoding": {
+    "x": { "field": "year", "type": "ordinal", "axis": { "title": "Year" } },
+    "y": { "field": "emissions", "type": "quantitative", "axis": { "title": "CO₂ Emissions (Gt)", "format": ".1f" } },
+    "tooltip": [
+      { "field": "year", "type": "ordinal" },
+      { "field": "emissions", "type": "quantitative", "title": "Emissions (Gt)", "format": ".1f" }
+    ]
+  },
+  "title": "Global CO₂ Emissions Trend"
+}

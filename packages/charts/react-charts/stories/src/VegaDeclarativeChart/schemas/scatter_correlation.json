@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Advertising spend vs Sales correlation",
+  "data": {
+    "values": [
+      { "adSpend": 5000, "sales": 45000, "channel": "Digital" },
+      { "adSpend": 7000, "sales": 52000, "channel": "Digital" },
+      { "adSpend": 6000, "sales": 48000, "channel": "Digital" },
+      { "adSpend": 8000, "sales": 61000, "channel": "Digital" },
+      { "adSpend": 4000, "sales": 38000, "channel": "TV" },
+      { "adSpend": 6500, "sales": 47000, "channel": "TV" },
+      { "adSpend": 5500, "sales": 41000, "channel": "TV" },
+      { "adSpend": 7500, "sales": 55000, "channel": "TV" }
+    ]
+  },
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "adSpend", "type": "quantitative", "axis": { "title": "Ad Spend ($)" } },
+    "y": { "field": "sales", "type": "quantitative", "axis": { "title": "Sales ($)" } },
+    "color": { "field": "channel", "type": "nominal" },
+    "size": { "value": 100 }
+  },
+  "title": "Ad Spend vs Sales Correlation"
+}
