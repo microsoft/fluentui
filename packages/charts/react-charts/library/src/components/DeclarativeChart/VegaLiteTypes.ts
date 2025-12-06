@@ -251,6 +251,126 @@ export interface VegaLiteColorEncoding {
 }
 
 /**
+ * Vega-Lite size encoding channel
+ */
+export interface VegaLiteSizeEncoding {
+  /**
+   * Field name for size encoding
+   */
+  field?: string;
+
+  /**
+   * Data type
+   */
+  type?: VegaLiteType;
+
+  /**
+   * Fixed size value
+   */
+  value?: number;
+}
+
+/**
+ * Vega-Lite shape encoding channel
+ */
+export interface VegaLiteShapeEncoding {
+  /**
+   * Field name for shape encoding
+   */
+  field?: string;
+
+  /**
+   * Data type
+   */
+  type?: VegaLiteType;
+
+  /**
+   * Fixed shape value
+   */
+  value?: string;
+}
+
+/**
+ * Vega-Lite theta encoding channel for pie/donut charts and polar coordinates
+ */
+export interface VegaLiteThetaEncoding {
+  /**
+   * Field name
+   */
+  field?: string;
+
+  /**
+   * Data type
+   */
+  type?: VegaLiteType;
+
+  /**
+   * Aggregate function
+   */
+  aggregate?: 'count' | 'sum' | 'mean' | 'average' | 'median' | 'min' | 'max';
+
+  /**
+   * Axis configuration for polar charts
+   */
+  axis?: VegaLiteAxis | null;
+
+  /**
+   * Scale configuration for polar charts
+   */
+  scale?: VegaLiteScale | null;
+}
+
+/**
+ * Vega-Lite radius encoding channel for polar charts
+ */
+export interface VegaLiteRadiusEncoding {
+  /**
+   * Field name
+   */
+  field?: string;
+
+  /**
+   * Data type
+   */
+  type?: VegaLiteType;
+
+  /**
+   * Aggregate function
+   */
+  aggregate?: 'count' | 'sum' | 'mean' | 'average' | 'median' | 'min' | 'max';
+
+  /**
+   * Axis configuration
+   */
+  axis?: VegaLiteAxis | null;
+
+  /**
+   * Scale configuration
+   */
+  scale?: VegaLiteScale | null;
+}
+
+/**
+ * Vega-Lite text encoding channel
+ */
+export interface VegaLiteTextEncoding {
+  /**
+   * Field name
+   */
+  field?: string;
+
+  /**
+   * Data type
+   */
+  type?: VegaLiteType;
+
+  /**
+   * Fixed text value
+   */
+  value?: string;
+}
+
+/**
  * Vega-Lite encoding channels
  */
 export interface VegaLiteEncoding {
@@ -270,33 +390,24 @@ export interface VegaLiteEncoding {
   color?: VegaLiteColorEncoding;
 
   /**
-   * Size encoding
-   * TODO: Implement size encoding for point marks
+   * Size encoding for point marks
    */
-  size?: {
-    field?: string;
-    type?: VegaLiteType;
-    value?: number;
-  };
+  size?: VegaLiteSizeEncoding;
 
   /**
-   * Shape encoding
-   * TODO: Implement shape encoding for point marks
+   * Shape encoding for point marks
    */
-  shape?: {
-    field?: string;
-    type?: VegaLiteType;
-    value?: string;
-  };
+  shape?: VegaLiteShapeEncoding;
 
   /**
-   * Theta encoding for pie/donut charts
+   * Theta encoding for pie/donut charts and polar coordinates
    */
-  theta?: {
-    field?: string;
-    type?: VegaLiteType;
-    aggregate?: 'count' | 'sum' | 'mean' | 'average' | 'median' | 'min' | 'max';
-  };
+  theta?: VegaLiteThetaEncoding;
+
+  /**
+   * Radius encoding for polar charts
+   */
+  radius?: VegaLiteRadiusEncoding;
 
   /**
    * X2 encoding for interval marks (rect, rule, bar with ranges)
@@ -311,11 +422,7 @@ export interface VegaLiteEncoding {
   /**
    * Text encoding for text marks
    */
-  text?: {
-    field?: string;
-    type?: VegaLiteType;
-    value?: string;
-  };
+  text?: VegaLiteTextEncoding;
 }
 
 /**
@@ -353,6 +460,14 @@ export type VegaLiteMarkDef =
        * Overall opacity
        */
       opacity?: number;
+      /**
+       * Inner radius for arc/pie/donut marks (0-1 or pixel value)
+       */
+      innerRadius?: number;
+      /**
+       * Outer radius for arc/pie marks (pixel value)
+       */
+      outerRadius?: number;
     };
 
 /**
@@ -513,4 +628,47 @@ export interface VegaLiteSpec {
    * TODO: Implement config resolution
    */
   config?: Record<string, unknown>;
+
+  /**
+   * Interactive selection definitions
+   * TODO: Implement selection support
+   */
+  selection?: Record<string, unknown>;
+
+  /**
+   * Facet specification for small multiples
+   * TODO: Implement facet support
+   */
+  facet?: Record<string, unknown>;
+
+  /**
+   * Repeat specification for small multiples
+   * TODO: Implement repeat support
+   */
+  repeat?: Record<string, unknown>;
+
+  /**
+   * Scale resolution configuration
+   * Controls whether scales are shared or independent across views
+   */
+  resolve?: {
+    scale?: {
+      x?: 'shared' | 'independent';
+      y?: 'shared' | 'independent';
+      color?: 'shared' | 'independent';
+      opacity?: 'shared' | 'independent';
+      size?: 'shared' | 'independent';
+      shape?: 'shared' | 'independent';
+    };
+    axis?: {
+      x?: 'shared' | 'independent';
+      y?: 'shared' | 'independent';
+    };
+    legend?: {
+      color?: 'shared' | 'independent';
+      opacity?: 'shared' | 'independent';
+      size?: 'shared' | 'independent';
+      shape?: 'shared' | 'independent';
+    };
+  };
 }

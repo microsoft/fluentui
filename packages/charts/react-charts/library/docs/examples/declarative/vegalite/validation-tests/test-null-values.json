@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Test case: Valid data with null values (should gracefully skip nulls)",
+  "mark": "line",
+  "data": {
+    "values": [
+      { "x": 1, "y": 28 },
+      { "x": 2, "y": null },
+      { "x": 3, "y": 43 },
+      { "x": null, "y": 55 },
+      { "x": 4, "y": 91 },
+      { "x": 5, "y": 81 }
+    ]
+  },
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "quantitative",
+      "axis": { "title": "X Axis" }
+    },
+    "y": {
+      "field": "y",
+      "type": "quantitative",
+      "axis": { "title": "Y Axis" }
+    }
+  },
+  "title": "Null Values Test (Should Skip Nulls Gracefully)",
+  "width": 600,
+  "height": 400
+}

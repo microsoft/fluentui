@@ -1,0 +1,589 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VegaLiteSchemaAdapter Polar Charts transformVegaLiteToPolarLineChartProps Should transform multi-series polar line chart 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 0,
+          },
+          Object {
+            "x": 1.2246467991473532e-16,
+            "y": 2,
+          },
+          Object {
+            "x": -1.5,
+            "y": 1.8369701987210297e-16,
+          },
+          Object {
+            "x": -1.8369701987210297e-16,
+            "y": -1,
+          },
+        ],
+        "legend": "A",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": Array [
+          Object {
+            "x": 0.5,
+            "y": 0,
+          },
+          Object {
+            "x": 9.184850993605148e-17,
+            "y": 1.5,
+          },
+          Object {
+            "x": -1,
+            "y": 1.2246467991473532e-16,
+          },
+          Object {
+            "x": -9.184850993605148e-17,
+            "y": -0.5,
+          },
+        ],
+        "legend": "B",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter Polar Charts transformVegaLiteToPolarLineChartProps Should transform polar line chart with categorical theta 1`] = `
+Object {
+  "data": Object {
+    "chartTitle": "Directional Data",
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 10,
+            "y": 0,
+          },
+          Object {
+            "x": 9.18485099360515e-16,
+            "y": 15,
+          },
+          Object {
+            "x": -8,
+            "y": 9.797174393178826e-16,
+          },
+          Object {
+            "x": -2.204364238465236e-15,
+            "y": -12,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter Polar Charts transformVegaLiteToPolarLineChartProps Should transform polar line chart with numeric theta and radius 1`] = `
+Object {
+  "data": Object {
+    "chartTitle": "Polar Line Chart",
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 0,
+          },
+          Object {
+            "x": 1.4142135623730951,
+            "y": 1.414213562373095,
+          },
+          Object {
+            "x": 9.184850993605148e-17,
+            "y": 1.5,
+          },
+          Object {
+            "x": -1.7677669529663687,
+            "y": 1.7677669529663689,
+          },
+          Object {
+            "x": -2,
+            "y": 2.4492935982947064e-16,
+          },
+          Object {
+            "x": -1.0606601717798214,
+            "y": -1.0606601717798212,
+          },
+          Object {
+            "x": -1.8369701987210297e-16,
+            "y": -1,
+          },
+          Object {
+            "x": 0.3535533905932737,
+            "y": -0.35355339059327384,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter Polar Charts transformVegaLiteToPolarScatterChartProps Should transform multi-series polar scatter chart 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 0,
+          },
+          Object {
+            "x": 1.2246467991473532e-16,
+            "y": 2,
+          },
+        ],
+        "legend": "A",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": Array [
+          Object {
+            "x": 0.5,
+            "y": 0,
+          },
+          Object {
+            "x": 9.184850993605148e-17,
+            "y": 1.5,
+          },
+        ],
+        "legend": "B",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter Polar Charts transformVegaLiteToPolarScatterChartProps Should transform polar scatter chart with numeric theta and radius 1`] = `
+Object {
+  "chartTitle": "Polar Scatter Plot",
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 0,
+          },
+          Object {
+            "x": 1.4142135623730951,
+            "y": 1.414213562373095,
+          },
+          Object {
+            "x": 9.184850993605148e-17,
+            "y": 1.5,
+          },
+          Object {
+            "x": -1.7677669529663687,
+            "y": 1.7677669529663689,
+          },
+          Object {
+            "x": -2,
+            "y": 2.4492935982947064e-16,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter Polar Charts transformVegaLiteToPolarScatterChartProps Should transform polar scatter chart with size encoding 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "markerSize": 100,
+            "x": 1,
+            "y": 0,
+          },
+          Object {
+            "markerSize": 200,
+            "x": 1.2246467991473532e-16,
+            "y": 2,
+          },
+          Object {
+            "markerSize": 150,
+            "x": -1.5,
+            "y": 1.8369701987210297e-16,
+          },
+          Object {
+            "markerSize": 100,
+            "x": -1.8369701987210297e-16,
+            "y": -1,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter getVegaLiteLegendsProps Should generate legends for multi-series chart 1`] = `
+Object {
+  "canSelectMultipleLegends": true,
+  "centerLegends": true,
+  "enabledWrapLines": true,
+  "legends": Array [
+    Object {
+      "color": "#637cef",
+      "title": "Alpha",
+    },
+    Object {
+      "color": "#e3008c",
+      "title": "Beta",
+    },
+    Object {
+      "color": "#2aa0a4",
+      "title": "Gamma",
+    },
+  ],
+}
+`;
+
+exports[`VegaLiteSchemaAdapter getVegaLiteLegendsProps Should return empty legends when no color encoding 1`] = `
+Object {
+  "canSelectMultipleLegends": true,
+  "centerLegends": true,
+  "enabledWrapLines": true,
+  "legends": Array [],
+}
+`;
+
+exports[`VegaLiteSchemaAdapter getVegaLiteTitles Should extract chart and axis titles 1`] = `
+Object {
+  "chartTitle": "Sales Over Time",
+  "xAxisTitle": "Month",
+  "yAxisTitle": "Sales ($)",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter getVegaLiteTitles Should handle object-form title 1`] = `
+Object {
+  "chartTitle": "Main Title",
+  "xAxisTitle": undefined,
+  "yAxisTitle": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter getVegaLiteTitles Should return empty titles for minimal spec 1`] = `
+Object {
+  "chartTitle": undefined,
+  "xAxisTitle": undefined,
+  "yAxisTitle": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should extract axis titles and formats 1`] = `
+Object {
+  "chartTitle": "X Axis",
+  "data": Object {
+    "chartTitle": "Chart with Formats",
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 100,
+          },
+          Object {
+            "x": 2,
+            "y": 200,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": 400,
+  "hideLegend": false,
+  "tickFormat": ".0f",
+  "width": 800,
+  "yAxisTickCount": 5,
+  "yAxisTickFormat": ".2f",
+  "yAxisTitle": "Y Axis",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should handle interpolation mapping 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+        ],
+        "legend": "default",
+        "lineOptions": Object {
+          "curve": "monotoneX",
+        },
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should handle y-axis domain/range 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 50,
+          },
+          Object {
+            "x": 2,
+            "y": 150,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+  "yMaxValue": 200,
+  "yMinValue": 0,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should hide legend when disabled 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+        ],
+        "legend": "A",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": Array [
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+        ],
+        "legend": "B",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": true,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should transform basic line chart with quantitative axes 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+          Object {
+            "x": 3,
+            "y": 43,
+          },
+          Object {
+            "x": 4,
+            "y": 91,
+          },
+          Object {
+            "x": 5,
+            "y": 81,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should transform layered spec with line and point marks 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+          Object {
+            "x": 3,
+            "y": 43,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should transform line chart with temporal x-axis 1`] = `
+Object {
+  "chartTitle": "Date",
+  "data": Object {
+    "chartTitle": "Time Series Chart",
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 2024-01-01T00:00:00.000Z,
+            "y": 100,
+          },
+          Object {
+            "x": 2024-02-01T00:00:00.000Z,
+            "y": 150,
+          },
+          Object {
+            "x": 2024-03-01T00:00:00.000Z,
+            "y": 120,
+          },
+          Object {
+            "x": 2024-04-01T00:00:00.000Z,
+            "y": 180,
+          },
+        ],
+        "legend": "default",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+  "yAxisTitle": "Value",
+}
+`;
+
+exports[`VegaLiteSchemaAdapter transformVegaLiteToLineChartProps Should transform multi-series chart with color encoding 1`] = `
+Object {
+  "data": Object {
+    "lineChartData": Array [
+      Object {
+        "color": "#637cef",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 28,
+          },
+          Object {
+            "x": 2,
+            "y": 55,
+          },
+          Object {
+            "x": 3,
+            "y": 43,
+          },
+        ],
+        "legend": "A",
+      },
+      Object {
+        "color": "#e3008c",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 35,
+          },
+          Object {
+            "x": 2,
+            "y": 60,
+          },
+          Object {
+            "x": 3,
+            "y": 50,
+          },
+        ],
+        "legend": "B",
+      },
+    ],
+  },
+  "height": undefined,
+  "hideLegend": false,
+  "width": undefined,
+}
+`;

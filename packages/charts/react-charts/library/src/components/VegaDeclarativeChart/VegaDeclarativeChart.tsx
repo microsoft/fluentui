@@ -118,6 +118,8 @@ function isVConcatSpec(spec: VegaLiteSpec): boolean {
 /**
  * Check if spec is any kind of concatenation
  */
+// @ts-ignore - Function reserved for future use
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function isConcatSpec(spec: VegaLiteSpec): boolean {
   return isHConcatSpec(spec) || isVConcatSpec(spec);
 }
@@ -306,7 +308,7 @@ function renderSingleChart(
   chartRef: React.RefObject<Chart | null>,
   multiSelectLegendProps: any,
   interactiveCommonProps: any,
-): JSX.Element {
+): React.ReactElement {
   const chartType = getChartType(spec);
   const chartConfig = vegaChartMap[chartType.type];
   
