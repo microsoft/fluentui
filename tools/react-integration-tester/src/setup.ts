@@ -296,6 +296,7 @@ async function installDependenciesAtReactRoot(reactVersionRootPath: string, opts
         throw err;
       }
       // brief backoff
+      // eslint-disable-next-line no-promise-executor-return
       await new Promise(r => setTimeout(r, 1500 * attempt));
     }
   }

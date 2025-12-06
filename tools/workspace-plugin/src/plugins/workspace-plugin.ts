@@ -322,7 +322,10 @@ function buildLintTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  const hasFlatConfig = existsSync(join(projectRoot, 'eslint.config.js'));
+  const hasFlatConfig =
+    existsSync(join(projectRoot, 'eslint.config.js')) ||
+    existsSync(join(projectRoot, 'eslint.config.cjs')) ||
+    existsSync(join(projectRoot, 'eslint.config.mjs'));
   const hasLegacyConfig =
     existsSync(join(projectRoot, '.eslintrc.json')) || existsSync(join(projectRoot, '.eslintrc.js'));
 
@@ -343,6 +346,8 @@ function buildLintTarget(
       '{projectRoot}/.eslintrc.json',
       '{projectRoot}/.eslintrc.js',
       '{projectRoot}/eslint.config.js',
+      '{projectRoot}/eslint.config.cjs',
+      '{projectRoot}/eslint.config.mjs',
       '{workspaceRoot}/.eslintrc.json',
       '{workspaceRoot}/.eslintignore',
       '{workspaceRoot}/eslint.config.js',
@@ -638,7 +643,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           cwd: '{projectRoot}',
         },
         cache: true,
-        inputs: inputs,
+        inputs,
         outputs: [
           `{workspaceRoot}/tmp/rit/react-${reactVersion}/${config.projectJSON.name}-react-${reactVersion}-${projectSuffixId}`,
         ],
@@ -664,7 +669,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
           options: { cwd: '{projectRoot}' },
           cache: true,
-          inputs: inputs,
+          inputs,
           outputs: [],
           dependsOn: [targetNamePrepare],
           metadata: {
@@ -694,7 +699,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           command: `${config.pmc.exec} rit --project-id ${projectSuffixId} --react ${reactVersion} --run ${runOption} --verbose`,
           options: { cwd: '{projectRoot}' },
           cache: true,
-          inputs: inputs,
+          inputs,
           outputs: [],
           parallelism: runOption === 'e2e' ? false : true,
           // this should be set via nx.json
@@ -728,7 +733,7 @@ function buildReactIntegrationTesterProjectConfiguration(
           params: 'forward',
         };
       }),
-    inputs: inputs,
+    inputs,
     outputs: [],
     metadata: {
       technologies: ['react-integration-tester'],

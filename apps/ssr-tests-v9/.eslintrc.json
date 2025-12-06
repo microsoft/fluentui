@@ -1,9 +1,0 @@
-{
-  "extends": ["plugin:@fluentui/eslint-plugin/node"],
-  "root": true,
-  "rules": {
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "import/no-extraneous-dependencies": ["error", { "packageDir": ["../../", "./"] }],
-    "no-restricted-globals": "off"
-  }
-}
