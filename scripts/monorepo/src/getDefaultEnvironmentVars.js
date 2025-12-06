@@ -35,7 +35,6 @@ const getVariables = options => {
  * environment variable name and value is the non-stringified value.
  */
 const getDefaultEnvironmentVars = (isProduction, otherValues) => ({
-   
   'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : process.env.NODE_ENV || 'development'),
   ...(otherValues && getVariables(otherValues)),
 });
