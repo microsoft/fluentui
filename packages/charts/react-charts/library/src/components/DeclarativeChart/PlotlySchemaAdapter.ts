@@ -2231,7 +2231,7 @@ export const transformPlotlyJsonToGanttChartProps = (
             )
           : resolveColor(extractedColors, i, legend, colorMap, input.layout?.template?.layout?.colorway, isDarkTheme);
         const opacity = getOpacity(series, i);
-        const base = +resolveGanttXValue(series.base?.[i] as Datum);
+        const base = +resolveGanttXValue((isArrayOrTypedArray(series.base) ? series.base![i] : series.base) as Datum);
         const xVal = +resolveGanttXValue(series.x?.[i] as Datum);
 
         ganttData.push({
@@ -3716,7 +3716,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
 
     const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
     if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
-      result[propName] = ax!.categoryarray;
+      result[propName] = ax?.autorange === 'reversed' ? ax!.categoryarray!.slice().reverse() : ax!.categoryarray;
       return;
     }
 
