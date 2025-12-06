@@ -47,10 +47,10 @@ import { isInvalidValue } from '@fluentui/chart-utilities';
 
 /**
  * Vega-Lite to Fluent Charts adapter for line/point charts.
- * 
+ *
  * Transforms Vega-Lite JSON specifications into Fluent LineChart props.
  * Supports basic line charts with temporal/quantitative axes and color-encoded series.
- * 
+ *
  * TODO: Future enhancements
  * - Multi-view layouts (facet, concat, repeat)
  * - Selection interactions
@@ -167,7 +167,9 @@ function parseValue(value: unknown, isTemporalType: boolean): Date | number | st
  * Maps Vega-Lite interpolate to Fluent curve options
  * Note: Only maps to curve types supported by LineChartLineOptions
  */
-function mapInterpolateToCurve(interpolate: VegaLiteInterpolate | undefined): 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | undefined {
+function mapInterpolateToCurve(
+  interpolate: VegaLiteInterpolate | undefined,
+): 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | undefined {
   if (!interpolate) {
     return undefined;
   }
@@ -233,8 +235,11 @@ function extractAnnotations(spec: VegaLiteSpec): ChartAnnotation[] {
       const xValue = encoding.x.value || encoding.x.field;
       const yValue = encoding.y.value || encoding.y.field;
 
-      if (textValue && (xValue !== undefined || encoding.x.datum !== undefined) && 
-          (yValue !== undefined || encoding.y.datum !== undefined)) {
+      if (
+        textValue &&
+        (xValue !== undefined || encoding.x.datum !== undefined) &&
+        (yValue !== undefined || encoding.y.datum !== undefined)
+      ) {
         annotations.push({
           id: `text-annotation-${index}`,
           text: String(textValue),
@@ -309,10 +314,11 @@ function extractColorFillBars(spec: VegaLiteSpec, isDarkTheme?: boolean): ColorF
 
     // Rect marks with x and x2 become color fill bars (vertical regions)
     if (mark === 'rect' && encoding.x && encoding.x2) {
-      const color = typeof layer.mark === 'object' && layer.mark.color 
-        ? layer.mark.color 
-        : getNextColor(colorIndex++, 0, isDarkTheme);
-      
+      const color =
+        typeof layer.mark === 'object' && layer.mark.color
+          ? layer.mark.color
+          : getNextColor(colorIndex++, 0, isDarkTheme);
+
       // Extract start and end x values
       const startX = encoding.x.datum || encoding.x.value;
       const endX = encoding.x2.datum || encoding.x2.value;
@@ -372,20 +378,14 @@ function extractTickConfig(spec: VegaLiteSpec): {
  * @param chartType - Chart type for error message context
  * @throws Error if data is empty or field has no valid values
  */
-function validateDataArray(
-  data: Array<Record<string, unknown>>,
-  field: string,
-  chartType: string,
-): void {
+function validateDataArray(data: Array<Record<string, unknown>>, field: string, chartType: string): void {
   if (!data || data.length === 0) {
     throw new Error(`VegaLiteSchemaAdapter: Empty data array for ${chartType}`);
   }
 
   const hasValidValues = data.some(row => row[field] !== undefined && row[field] !== null);
   if (!hasValidValues) {
-    throw new Error(
-      `VegaLiteSchemaAdapter: No valid values found for field '${field}' in ${chartType}`,
-    );
+    throw new Error(`VegaLiteSchemaAdapter: No valid values found for field '${field}' in ${chartType}`);
   }
 }
 
@@ -399,8 +399,7 @@ function validateNoNestedArrays(data: Array<Record<string, unknown>>, field: str
   const hasNestedArrays = data.some(row => Array.isArray(row[field]));
   if (hasNestedArrays) {
     throw new Error(
-      `VegaLiteSchemaAdapter: Nested arrays not supported for field '${field}'. ` +
-      `Use flat data structures only.`,
+      `VegaLiteSchemaAdapter: Nested arrays not supported for field '${field}'. ` + `Use flat data structures only.`,
     );
   }
 }
@@ -430,17 +429,13 @@ function validateEncodingType(
 
   if (expectedType === 'quantitative') {
     if (typeof sampleValue !== 'number' && !isFinite(Number(sampleValue))) {
-      throw new Error(
-        `VegaLiteSchemaAdapter: Field '${field}' marked as quantitative but contains non-numeric values`,
-      );
+      throw new Error(`VegaLiteSchemaAdapter: Field '${field}' marked as quantitative but contains non-numeric values`);
     }
   } else if (expectedType === 'temporal') {
-    const isValidDate = sampleValue instanceof Date || 
-                       (typeof sampleValue === 'string' && !isNaN(Date.parse(sampleValue)));
+    const isValidDate =
+      sampleValue instanceof Date || (typeof sampleValue === 'string' && !isNaN(Date.parse(sampleValue)));
     if (!isValidDate) {
-      throw new Error(
-        `VegaLiteSchemaAdapter: Field '${field}' marked as temporal but contains invalid date values`,
-      );
+      throw new Error(`VegaLiteSchemaAdapter: Field '${field}' marked as temporal but contains invalid date values`);
     }
   }
 }
@@ -463,17 +458,17 @@ function validateEncodingCompatibility(mark: string, encoding: VegaLiteEncoding)
     if (!isXCategorical && !isYCategorical) {
       throw new Error(
         'VegaLiteSchemaAdapter: Bar charts require at least one categorical axis (nominal/ordinal) ' +
-        'or use bin encoding for histograms',
+          'or use bin encoding for histograms',
       );
     }
   }
 
   // Scatter charts benefit from quantitative axes (warning, not error)
-  if ((mark === 'point' || mark === 'circle' || mark === 'square') && 
-      (xType !== 'quantitative' || yType !== 'quantitative')) {
-    console.warn(
-      'VegaLiteSchemaAdapter: Scatter charts typically use quantitative x and y axes for best results',
-    );
+  if (
+    (mark === 'point' || mark === 'circle' || mark === 'square') &&
+    (xType !== 'quantitative' || yType !== 'quantitative')
+  ) {
+    console.warn('VegaLiteSchemaAdapter: Scatter charts typically use quantitative x and y axes for best results');
   }
 }
 
@@ -485,20 +480,18 @@ function warnUnsupportedFeatures(spec: VegaLiteSpec): void {
   if (spec.transform && spec.transform.length > 0) {
     console.warn(
       'VegaLiteSchemaAdapter: Transform pipeline is not yet supported. ' +
-      'Data transformations will be ignored. Apply transformations to your data before passing to the chart.',
+        'Data transformations will be ignored. Apply transformations to your data before passing to the chart.',
     );
   }
 
   if (spec.selection) {
-    console.warn(
-      'VegaLiteSchemaAdapter: Interactive selections are not yet supported.',
-    );
+    console.warn('VegaLiteSchemaAdapter: Interactive selections are not yet supported.');
   }
 
   if (spec.repeat || spec.facet) {
     console.warn(
       'VegaLiteSchemaAdapter: Repeat and facet specifications are not yet supported. ' +
-      'Use hconcat/vconcat for multi-plot layouts.',
+        'Use hconcat/vconcat for multi-plot layouts.',
     );
   }
 }
@@ -582,7 +575,7 @@ function extractAxisCategoryOrderProps(encoding: VegaLiteEncoding): {
 /**
  * Initializes the transformation context by normalizing spec and extracting common data
  * This reduces boilerplate across all transformer functions
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param skipWarnings - Whether to skip unsupported feature warnings (default: false)
  * @returns Normalized context with unit specs, data values, encoding, and mark properties
@@ -614,7 +607,7 @@ function initializeTransformContext(spec: VegaLiteSpec, skipWarnings = false) {
 
 /**
  * Extracts common encoding fields from Vega-Lite encoding
- * 
+ *
  * @param encoding - Vega-Lite encoding specification
  * @returns Object containing extracted field names
  */
@@ -631,7 +624,7 @@ function extractEncodingFields(encoding: VegaLiteEncoding) {
 
 /**
  * Extracts color configuration from Vega-Lite encoding
- * 
+ *
  * @param encoding - Vega-Lite encoding specification
  * @returns Color scheme and range configuration
  */
@@ -645,7 +638,7 @@ function extractColorConfig(encoding: VegaLiteEncoding) {
 /**
  * Builds common chart properties from Vega-Lite spec and encoding
  * Consolidates title, axis type, category order, and tick configuration extraction
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param encoding - Vega-Lite encoding specification
  * @returns Object containing common chart properties
@@ -671,7 +664,7 @@ function buildCommonChartProps(spec: VegaLiteSpec, encoding: VegaLiteEncoding) {
 /**
  * Projects polar coordinates (theta, radius) to Cartesian coordinates (x, y)
  * Similar to PlotlySchemaAdapter's projectPolarToCartesian
- * 
+ *
  * @param dataValues - Array of data rows
  * @param thetaField - Field name for theta (angle) values
  * @param radiusField - Field name for radius values
@@ -706,14 +699,14 @@ function projectPolarToCartesian(
   // Find min/max radius
   const minRadius = radiusValues.length > 0 ? Math.min(...radiusValues) : 0;
   const maxRadius = radiusValues.length > 0 ? Math.max(...radiusValues) : 0;
-  
+
   // Calculate radius shift if there are negative values
   const radiusShift = minRadius < 0 ? -minRadius : 0;
 
   // Get polar axis settings from encoding (similar to Plotly's polar.angularaxis)
   const directionClockwise = false; // Vega-Lite default is counter-clockwise
   const rotationDegrees = 0; // Default rotation
-  
+
   const dirMultiplier = directionClockwise ? -1 : 1;
   const startAngleInRad = (rotationDegrees * Math.PI) / 180;
 
@@ -808,7 +801,7 @@ function groupDataBySeries(
 
 /**
  * Transforms Vega-Lite specification to Fluent LineChart props
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -883,8 +876,8 @@ export function transformVegaLiteToLineChartProps(
   const yAxisTickCount = encoding.y?.axis?.tickCount;
 
   // Extract domain/range for min/max values
-  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? encoding.y.scale.domain[0] as number : undefined;
-  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? encoding.y.scale.domain[1] as number : undefined;
+  const yMinValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[0] as number) : undefined;
+  const yMaxValue = Array.isArray(encoding.y?.scale?.domain) ? (encoding.y.scale.domain[1] as number) : undefined;
 
   // Extract annotations and color fill bars from layers
   const annotations = extractAnnotations(spec);
@@ -925,7 +918,7 @@ export function transformVegaLiteToLineChartProps(
 /**
  * Generates legend props from Vega-Lite specification
  * Used for multi-plot scenarios where legends are rendered separately
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1015,9 +1008,9 @@ export function getVegaLiteTitles(spec: VegaLiteSpec): {
 
 /**
  * Transforms Vega-Lite specification to Fluent VerticalBarChart props
- * 
+ *
  * Supports bar mark with quantitative y-axis and nominal/ordinal x-axis
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1064,7 +1057,7 @@ export function transformVegaLiteToVerticalBarChartProps(
     }
 
     const legend = colorField && row[colorField] !== undefined ? String(row[colorField]) : String(xValue);
-    
+
     if (!colorIndex.has(legend)) {
       colorIndex.set(legend, currentColorIndex++);
     }
@@ -1097,9 +1090,9 @@ export function transformVegaLiteToVerticalBarChartProps(
 
 /**
  * Transforms Vega-Lite specification to Fluent VerticalStackedBarChart props
- * 
+ *
  * Supports stacked bar charts with color encoding for stacking
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1118,7 +1111,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     const mark = typeof s.mark === 'string' ? s.mark : s.mark?.type;
     return mark === 'bar';
   });
-  
+
   const lineSpecs = unitSpecs.filter(s => {
     const mark = typeof s.mark === 'string' ? s.mark : s.mark?.type;
     return mark === 'line' || mark === 'point';
@@ -1175,7 +1168,8 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     }
 
     // Use static color if provided, otherwise use color scheme/scale
-    const color = colorValue || markProps.color || getVegaColor(colorIndex.get(legend)!, colorScheme, colorRange, isDarkTheme);
+    const color =
+      colorValue || markProps.color || getVegaColor(colorIndex.get(legend)!, colorScheme, colorRange, isDarkTheme);
 
     mapXToDataPoints[xKey].chartData.push({
       legend,
@@ -1199,7 +1193,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     }
 
     const lineLegendBase = lineColorField ? 'Line' : `Line ${lineIndex + 1}`;
-    
+
     lineDataValues.forEach(row => {
       const xValue = row[lineXField];
       const yValue = row[lineYField];
@@ -1209,9 +1203,8 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
       }
 
       const xKey = String(xValue);
-      const lineLegend = lineColorField && row[lineColorField] !== undefined 
-        ? String(row[lineColorField]) 
-        : lineLegendBase;
+      const lineLegend =
+        lineColorField && row[lineColorField] !== undefined ? String(row[lineColorField]) : lineLegendBase;
 
       // Ensure x-axis point exists
       if (!mapXToDataPoints[xKey]) {
@@ -1266,9 +1259,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   const titles = getVegaLiteTitles(spec);
 
   // Check if we have secondary Y-axis data
-  const hasSecondaryYAxis = chartData.some(point => 
-    point.lineData?.some(line => line.useSecondaryYScale)
-  );
+  const hasSecondaryYAxis = chartData.some(point => point.lineData?.some(line => line.useSecondaryYScale));
 
   // Extract secondary Y-axis properties from line layers
   let secondaryYAxisProps = {};
@@ -1276,7 +1267,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
     const lineSpec = lineSpecs[0];
     const lineEncoding = lineSpec.encoding || {};
     const lineYAxis = lineEncoding.y?.axis;
-    
+
     if (lineYAxis?.title) {
       secondaryYAxisProps = {
         secondaryYAxistitle: lineYAxis.title,
@@ -1313,9 +1304,9 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
 
 /**
  * Transforms Vega-Lite specification to Fluent GroupedVerticalBarChart props
- * 
+ *
  * Supports grouped bar charts with color encoding for grouping
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1394,9 +1385,9 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
 
 /**
  * Transforms Vega-Lite specification to Fluent HorizontalBarChartWithAxis props
- * 
+ *
  * Supports horizontal bar charts with quantitative x-axis and nominal/ordinal y-axis
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1430,7 +1421,7 @@ export function transformVegaLiteToHorizontalBarChartProps(
     }
 
     const legend = colorField && row[colorField] !== undefined ? String(row[colorField]) : String(yValue);
-    
+
     if (!colorIndex.has(legend)) {
       colorIndex.set(legend, currentColorIndex++);
     }
@@ -1477,15 +1468,15 @@ export function transformVegaLiteToHorizontalBarChartProps(
 
 /**
  * Transforms Vega-Lite specification to Fluent AreaChart props
- * 
+ *
  * Area charts use the same data structure as line charts but with filled areas.
  * Supports temporal/quantitative x-axis and quantitative y-axis with color-encoded series
- * 
+ *
  * Vega-Lite Stacking Behavior:
  * - If y.stack is null or undefined with no color encoding: mode = 'tozeroy' (fill to zero baseline)
  * - If y.stack is 'zero' or color encoding exists: mode = 'tonexty' (stacked areas)
  * - Multiple series with color encoding automatically stack
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1499,22 +1490,22 @@ export function transformVegaLiteToAreaChartProps(
   // Area charts use the same structure as line charts in Fluent Charts
   // The only difference is the component renders with filled areas
   const lineChartProps = transformVegaLiteToLineChartProps(spec, colorMap, isDarkTheme);
-  
+
   // Determine stacking mode based on Vega-Lite spec
   const unitSpecs = normalizeSpec(spec);
   const primarySpec = unitSpecs[0];
   const encoding = primarySpec?.encoding || {};
-  
+
   // Check if stacking is enabled
   // In Vega-Lite, area charts stack by default when color encoding is present
   // stack can be explicitly set to null to disable stacking
   const hasColorEncoding = !!encoding.color?.field;
   const stackConfig = encoding.y?.stack;
   const isStacked = stackConfig !== null && (stackConfig === 'zero' || hasColorEncoding);
-  
+
   // Set mode: 'tozeroy' for single series, 'tonexty' for stacked
   const mode: 'tozeroy' | 'tonexty' = isStacked ? 'tonexty' : 'tozeroy';
-  
+
   return {
     ...lineChartProps,
     mode,
@@ -1523,9 +1514,9 @@ export function transformVegaLiteToAreaChartProps(
 
 /**
  * Transforms Vega-Lite specification to Fluent ScatterChart props
- * 
+ *
  * Supports scatter plots with quantitative x and y axes and color-encoded series
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1551,14 +1542,14 @@ export function transformVegaLiteToScatterChartProps(
 
   // Group data by series (color encoding)
   const groupedData: Record<string, Array<Record<string, unknown>>> = {};
-  
+
   dataValues.forEach(row => {
     const seriesName = colorField && row[colorField] !== undefined ? String(row[colorField]) : 'default';
-    
+
     if (!groupedData[seriesName]) {
       groupedData[seriesName] = [];
     }
-    
+
     groupedData[seriesName].push(row);
   });
 
@@ -1566,7 +1557,7 @@ export function transformVegaLiteToScatterChartProps(
 
   const chartData: LineChartPoints[] = seriesNames.map((seriesName, index) => {
     const seriesData = groupedData[seriesName];
-    
+
     const points: ScatterChartDataPoint[] = seriesData.map(row => {
       const xValue = parseValue(row[xField], isXTemporal);
       const yValue = parseValue(row[yField], isYTemporal);
@@ -1580,9 +1571,10 @@ export function transformVegaLiteToScatterChartProps(
     });
 
     // Get color for this series
-    const colorValue = colorField && encoding.color?.scale?.range && Array.isArray(encoding.color.scale.range)
-      ? encoding.color.scale.range[index]
-      : markProps.color;
+    const colorValue =
+      colorField && encoding.color?.scale?.range && Array.isArray(encoding.color.scale.range)
+        ? encoding.color.scale.range[index]
+        : markProps.color;
     const color = typeof colorValue === 'string' ? colorValue : getNextColor(index, 0, isDarkTheme);
 
     return {
@@ -1634,9 +1626,9 @@ export function transformVegaLiteToScatterChartProps(
 
 /**
  * Transforms Vega-Lite specification to Fluent DonutChart props
- * 
+ *
  * Supports pie/donut charts with arc marks and theta encoding
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1662,9 +1654,7 @@ export function transformVegaLiteToDonutChartProps(
 
   // Extract innerRadius from mark properties if available
   const mark = primarySpec.mark;
-  const innerRadius = typeof mark === 'object' && mark?.innerRadius !== undefined 
-    ? mark.innerRadius 
-    : 0;
+  const innerRadius = typeof mark === 'object' && mark?.innerRadius !== undefined ? mark.innerRadius : 0;
 
   const chartData: ChartDataPoint[] = [];
   const colorIndex = new Map<string, number>();
@@ -1702,9 +1692,9 @@ export function transformVegaLiteToDonutChartProps(
 
 /**
  * Transforms Vega-Lite specification to Fluent HeatMapChart props
- * 
+ *
  * Supports heatmaps with rect marks and x/y/color encodings
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1739,7 +1729,7 @@ export function transformVegaLiteToHeatMapChartProps(
     }
 
     const value = typeof colorValue === 'number' ? colorValue : 0;
-    
+
     minValue = Math.min(minValue, value);
     maxValue = Math.max(maxValue, value);
 
@@ -1764,11 +1754,11 @@ export function transformVegaLiteToHeatMapChartProps(
   const steps = 5;
   const domainValues: number[] = [];
   const rangeValues: string[] = [];
-  
+
   for (let i = 0; i < steps; i++) {
     const t = i / (steps - 1);
     domainValues.push(minValue + (maxValue - minValue) * t);
-    
+
     // Generate gradient from blue to red (cold to hot)
     // In dark theme, use different colors
     if (isDarkTheme) {
@@ -1814,7 +1804,7 @@ function getBinCenter(bin: Bin<number, number>): number {
 
 /**
  * Helper function to calculate histogram aggregation function
- * 
+ *
  * @param aggregate - Aggregation type (count, sum, mean, min, max)
  * @param bin - Binned data values
  * @returns Aggregated value
@@ -1841,10 +1831,10 @@ function calculateHistogramAggregate(
 
 /**
  * Transforms Vega-Lite specification to Fluent VerticalBarChart props for histogram rendering
- * 
+ *
  * Supports histograms with binned x-axis and aggregated y-axis
  * Vega-Lite syntax: `{ "mark": "bar", "encoding": { "x": { "field": "value", "bin": true }, "y": { "aggregate": "count" } } }`
- * 
+ *
  * @param spec - Vega-Lite specification
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -1895,7 +1885,7 @@ export function transformVegaLiteToHistogramProps(
   }
 
   const bins = binGenerator(values);
-  
+
   // Calculate histogram data points
   const histogramData: VerticalBarChartDataPoint[] = bins.map(bin => {
     const x = getBinCenter(bin);
@@ -1931,7 +1921,7 @@ export function transformVegaLiteToHistogramProps(
  * Transforms Vega-Lite polar line chart specification to Fluent LineChart props
  * Supports line charts with theta (angle) and radius encodings for polar coordinates
  * Projects polar coordinates to Cartesian (x, y) for rendering
- * 
+ *
  * @param spec - Vega-Lite specification with theta and radius encodings
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -2021,7 +2011,7 @@ export function transformVegaLiteToPolarLineChartProps(
  * Transforms Vega-Lite polar scatter chart specification to Fluent ScatterChart props
  * Supports scatter charts with theta (angle) and radius encodings for polar coordinates
  * Projects polar coordinates to Cartesian (x, y) for rendering
- * 
+ *
  * @param spec - Vega-Lite specification with theta and radius encodings
  * @param colorMap - Color mapping ref for consistent coloring
  * @param isDarkTheme - Whether dark theme is active
@@ -2090,7 +2080,7 @@ export function transformVegaLiteToPolarScatterChartProps(
   });
 
   const titles = getVegaLiteTitles(spec);
-  
+
   const chartProps: ChartProps = {
     lineChartData,
   };
@@ -2105,4 +2095,3 @@ export function transformVegaLiteToPolarScatterChartProps(
     hideLegend: encoding.color?.legend?.disable ?? false,
   };
 }
-

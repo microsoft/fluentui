@@ -1,18 +1,18 @@
 /**
  * Vega-Lite TypeScript interfaces for declarative chart specifications.
  * This is a minimal subset focused on line/point charts with basic encodings.
- * 
+ *
  * RECOMMENDED: For full type coverage, install the official vega-lite package:
  * ```
  * npm install vega-lite
  * ```
  * Then import `TopLevelSpec` from 'vega-lite' for complete schema support.
- * 
+ *
  * The types provided here are a lightweight alternative that covers common use cases
  * without requiring the full vega-lite dependency (~5.8MB unpacked).
- * 
+ *
  * Full Vega-Lite spec: https://vega.github.io/vega-lite/docs/
- * 
+ *
  * TODO: Add support for:
  * - Transform operations (filter, aggregate, calculate, etc.)
  * - Remote data sources (url, named datasets)
@@ -36,12 +36,31 @@ export type VegaLiteMark = 'line' | 'point' | 'circle' | 'square' | 'bar' | 'are
 /**
  * Vega-Lite scale type
  */
-export type VegaLiteScaleType = 'linear' | 'log' | 'pow' | 'sqrt' | 'symlog' | 'time' | 'utc' | 'ordinal' | 'band' | 'point';
+export type VegaLiteScaleType =
+  | 'linear'
+  | 'log'
+  | 'pow'
+  | 'sqrt'
+  | 'symlog'
+  | 'time'
+  | 'utc'
+  | 'ordinal'
+  | 'band'
+  | 'point';
 
 /**
  * Vega-Lite interpolation method
  */
-export type VegaLiteInterpolate = 'linear' | 'linear-closed' | 'step' | 'step-before' | 'step-after' | 'basis' | 'cardinal' | 'monotone' | 'natural';
+export type VegaLiteInterpolate =
+  | 'linear'
+  | 'linear-closed'
+  | 'step'
+  | 'step-before'
+  | 'step-after'
+  | 'basis'
+  | 'cardinal'
+  | 'monotone'
+  | 'natural';
 
 /**
  * Vega-Lite axis configuration

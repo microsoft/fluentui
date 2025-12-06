@@ -44,13 +44,11 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
         title: 'Heatmap Chart',
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: heatmapSpec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: heatmapSpec }} />);
 
       // Heatmap should render successfully
       expect(container.firstChild).toBeTruthy();
-      
+
       // Should have SVG element
       const svg = container.querySelector('svg');
       expect(svg).toBeTruthy();
@@ -72,9 +70,7 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: heatmapSpec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: heatmapSpec }} />);
 
       expect(container).toMatchSnapshot();
     });
@@ -110,13 +106,11 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
         title: 'Sales and Profit Trend',
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: comboSpec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: comboSpec }} />);
 
       // Should render successfully with both bars and lines
       expect(container.firstChild).toBeTruthy();
-      
+
       // Should NOT warn about bar+line combo (it's supported now)
       expect(console.warn).not.toHaveBeenCalled();
     });
@@ -124,15 +118,30 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
     it('should match snapshot for line+bar combo', () => {
       const comboSpec = {
         layer: [
-          { mark: 'bar', encoding: { x: { field: 'x', type: 'ordinal' as const }, y: { field: 'y1', type: 'quantitative' as const } } },
-          { mark: 'line', encoding: { x: { field: 'x', type: 'ordinal' as const }, y: { field: 'y2', type: 'quantitative' as const } } },
+          {
+            mark: 'bar',
+            encoding: {
+              x: { field: 'x', type: 'ordinal' as const },
+              y: { field: 'y1', type: 'quantitative' as const },
+            },
+          },
+          {
+            mark: 'line',
+            encoding: {
+              x: { field: 'x', type: 'ordinal' as const },
+              y: { field: 'y2', type: 'quantitative' as const },
+            },
+          },
         ],
-        data: { values: [{ x: 'A', y1: 10, y2: 20 }, { x: 'B', y1: 15, y2: 25 }] },
+        data: {
+          values: [
+            { x: 'A', y1: 10, y2: 20 },
+            { x: 'B', y1: 15, y2: 25 },
+          ],
+        },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: comboSpec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: comboSpec }} />);
 
       expect(container).toMatchSnapshot();
     });
@@ -169,16 +178,14 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
         title: 'Line Chart with Color Fill Bars',
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: colorFillSpec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: colorFillSpec }} />);
 
       // Should render (the rect from first layer, though it may not display properly without x/y fields)
       expect(container.firstChild).toBeTruthy();
-      
+
       // Should have warned about layered spec
       expect(console.warn).toHaveBeenCalledWith(
-        expect.stringContaining('Layered specifications with multiple chart types are not fully supported')
+        expect.stringContaining('Layered specifications with multiple chart types are not fully supported'),
       );
     });
   });
@@ -195,9 +202,7 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       // Should still render but as different chart type
       expect(container.firstChild).toBeTruthy();
@@ -213,9 +218,7 @@ describe('VegaDeclarativeChart - Issue Fixes', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       // Should render but not as heatmap
       expect(container.firstChild).toBeTruthy();

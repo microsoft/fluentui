@@ -838,7 +838,8 @@ const convertPlotlyAnnotation = (
       if (xValue === undefined || yValue === undefined) {
         return undefined;
       }
-      const yRefNormalized = typeof resolvedAnnotation.yref === 'string' ? resolvedAnnotation.yref.toLowerCase() : undefined;
+      const yRefNormalized =
+        typeof resolvedAnnotation.yref === 'string' ? resolvedAnnotation.yref.toLowerCase() : undefined;
       return {
         type: 'data',
         x: xValue,
@@ -859,8 +860,22 @@ const convertPlotlyAnnotation = (
       };
     }
     if (xRefType !== 'pixel' && yRefType !== 'pixel') {
-      const xRelative = resolveRelativeCoordinate('x', xRefType === 'axis' ? 'axis' : 'relative', resolvedAnnotation.x, resolvedAnnotation, layout, data);
-      const yRelative = resolveRelativeCoordinate('y', yRefType === 'axis' ? 'axis' : 'relative', resolvedAnnotation.y, resolvedAnnotation, layout, data);
+      const xRelative = resolveRelativeCoordinate(
+        'x',
+        xRefType === 'axis' ? 'axis' : 'relative',
+        resolvedAnnotation.x,
+        resolvedAnnotation,
+        layout,
+        data,
+      );
+      const yRelative = resolveRelativeCoordinate(
+        'y',
+        yRefType === 'axis' ? 'axis' : 'relative',
+        resolvedAnnotation.y,
+        resolvedAnnotation,
+        layout,
+        data,
+      );
       if (xRelative === undefined || yRelative === undefined) {
         return undefined;
       }
@@ -896,14 +911,30 @@ const convertPlotlyAnnotation = (
     layoutProps.clipToBounds = true;
   }
 
-  const horizontalAlign = resolveAlignProperty(resolvedAnnotation.xanchor as string | undefined, (resolvedAnnotation as { align?: string }).align, mapHorizontalAlign);
+  const horizontalAlign = resolveAlignProperty(
+    resolvedAnnotation.xanchor as string | undefined,
+    (resolvedAnnotation as { align?: string }).align,
+    mapHorizontalAlign,
+  );
   if (horizontalAlign) layoutProps.align = horizontalAlign;
 
-  const verticalAlign = resolveAlignProperty(resolvedAnnotation.yanchor as string | undefined, (resolvedAnnotation as { valign?: string }).valign, mapVerticalAlign);
+  const verticalAlign = resolveAlignProperty(
+    resolvedAnnotation.yanchor as string | undefined,
+    (resolvedAnnotation as { valign?: string }).valign,
+    mapVerticalAlign,
+  );
   if (verticalAlign) layoutProps.verticalAlign = verticalAlign;
 
-  const offsetX = calculateOffset(resolvedAnnotation.ax, resolvedAnnotation.axref as string | undefined, resolvedAnnotation.xshift);
-  const offsetY = calculateOffset(resolvedAnnotation.ay, resolvedAnnotation.ayref as string | undefined, resolvedAnnotation.yshift);
+  const offsetX = calculateOffset(
+    resolvedAnnotation.ax,
+    resolvedAnnotation.axref as string | undefined,
+    resolvedAnnotation.xshift,
+  );
+  const offsetY = calculateOffset(
+    resolvedAnnotation.ay,
+    resolvedAnnotation.ayref as string | undefined,
+    resolvedAnnotation.yshift,
+  );
 
   if (offsetX.offset !== undefined) layoutProps.offsetX = offsetX.offset;
   if (offsetY.offset !== undefined) layoutProps.offsetY = offsetY.offset;

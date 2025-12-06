@@ -388,11 +388,7 @@ describe('VegaLiteSchemaAdapter', () => {
         const spec: VegaLiteSpec = {
           mark: 'line',
           data: {
-            values: [
-              { x: null, y: 10 },
-              { x: undefined, y: 20 },
-              { y: 30 },
-            ],
+            values: [{ x: null, y: 10 }, { x: undefined, y: 20 }, { y: 30 }],
           },
           encoding: {
             x: { field: 'x', type: 'quantitative' },
@@ -652,10 +648,7 @@ describe('VegaLiteSchemaAdapter', () => {
         const spec: VegaLiteSpec = {
           mark: 'bar',
           data: {
-            values: [
-              { value: 'text1' },
-              { value: 'text2' },
-            ],
+            values: [{ value: 'text1' }, { value: 'text2' }],
           },
           encoding: {
             x: { field: 'value', bin: true },
@@ -672,13 +665,7 @@ describe('VegaLiteSchemaAdapter', () => {
         const spec: VegaLiteSpec = {
           mark: 'bar',
           data: {
-            values: [
-              { value: 10 },
-              { value: 20 },
-              { value: 30 },
-              { value: 25 },
-              { value: 15 },
-            ],
+            values: [{ value: 10 }, { value: 20 }, { value: 30 }, { value: 25 }, { value: 15 }],
           },
           encoding: {
             x: { field: 'value', bin: true },
@@ -746,9 +733,7 @@ describe('VegaLiteSchemaAdapter', () => {
 
         transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-        expect(consoleWarnSpy).toHaveBeenCalledWith(
-          expect.stringContaining('Transform pipeline is not yet supported'),
-        );
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expect.stringContaining('Transform pipeline is not yet supported'));
       });
 
       test('Should warn about selections', () => {
@@ -955,7 +940,9 @@ describe('VegaLiteSchemaAdapter', () => {
         expect(result).toMatchSnapshot();
         expect(result.data.lineChartData).toHaveLength(1);
         expect(result.data.lineChartData![0].data).toHaveLength(4);
-        expect(result.data.lineChartData![0].data.every(p => typeof p.x === 'number' && typeof p.y === 'number')).toBe(true);
+        expect(result.data.lineChartData![0].data.every(p => typeof p.x === 'number' && typeof p.y === 'number')).toBe(
+          true,
+        );
       });
 
       test('Should transform multi-series polar line chart', () => {
@@ -1001,8 +988,9 @@ describe('VegaLiteSchemaAdapter', () => {
           },
         };
 
-        expect(() => transformVegaLiteToPolarLineChartProps(spec, { current: colorMap }, false))
-          .toThrow('Both theta and radius encodings are required for polar line charts');
+        expect(() => transformVegaLiteToPolarLineChartProps(spec, { current: colorMap }, false)).toThrow(
+          'Both theta and radius encodings are required for polar line charts',
+        );
       });
 
       test('Should throw error when radius encoding is missing', () => {
@@ -1016,8 +1004,9 @@ describe('VegaLiteSchemaAdapter', () => {
           },
         };
 
-        expect(() => transformVegaLiteToPolarLineChartProps(spec, { current: colorMap }, false))
-          .toThrow('Both theta and radius encodings are required for polar line charts');
+        expect(() => transformVegaLiteToPolarLineChartProps(spec, { current: colorMap }, false)).toThrow(
+          'Both theta and radius encodings are required for polar line charts',
+        );
       });
     });
 

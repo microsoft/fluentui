@@ -258,8 +258,14 @@ describe('VegaDeclarativeChart - All Schemas Validation', () => {
     console.log('VEGA-LITE SCHEMA VALIDATION SUMMARY');
     console.log('='.repeat(80));
     console.log(`Total Schemas Tested: ${testResults.length}`);
-    console.log(`✅ Successfully Transformed: ${successful.length} (${((successful.length / testResults.length) * 100).toFixed(1)}%)`);
-    console.log(`❌ Failed Transformation: ${failed.length} (${((failed.length / testResults.length) * 100).toFixed(1)}%)`);
+    console.log(
+      `✅ Successfully Transformed: ${successful.length} (${((successful.length / testResults.length) * 100).toFixed(
+        1,
+      )}%)`,
+    );
+    console.log(
+      `❌ Failed Transformation: ${failed.length} (${((failed.length / testResults.length) * 100).toFixed(1)}%)`,
+    );
     console.log(`⚠️  With Unsupported Features: ${withUnsupportedFeatures.length}`);
     console.log('='.repeat(80));
 

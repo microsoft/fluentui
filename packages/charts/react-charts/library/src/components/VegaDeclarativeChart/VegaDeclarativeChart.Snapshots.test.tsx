@@ -6,7 +6,7 @@ import * as path from 'path';
 
 /**
  * Snapshot tests for VegaDeclarativeChart with all schema files
- * 
+ *
  * These tests render each schema and capture snapshots to detect unintended changes
  * in the chart rendering output.
  */
@@ -38,59 +38,144 @@ function loadAllSchemas(): SchemaFile[] {
       const content = fs.readFileSync(filePath, 'utf-8');
       const spec = JSON.parse(content);
       const name = file.replace('.json', '');
-      
+
       // Categorize based on name patterns
       let category = 'Other';
-      if (name.includes('linechart') || name.includes('areachart') || name.includes('barchart') || 
-          name.includes('scatterchart') || name.includes('donutchart') || name.includes('heatmapchart') ||
-          name.includes('grouped_bar') || name.includes('stacked_bar') || name.includes('line_bar_combo')) {
+      if (
+        name.includes('linechart') ||
+        name.includes('areachart') ||
+        name.includes('barchart') ||
+        name.includes('scatterchart') ||
+        name.includes('donutchart') ||
+        name.includes('heatmapchart') ||
+        name.includes('grouped_bar') ||
+        name.includes('stacked_bar') ||
+        name.includes('line_bar_combo')
+      ) {
         category = 'Basic';
-      } else if (name.includes('stock') || name.includes('portfolio') || name.includes('profit') || 
-                 name.includes('revenue') || name.includes('cashflow') || name.includes('budget') || 
-                 name.includes('expense') || name.includes('roi') || name.includes('financial') || 
-                 name.includes('dividend')) {
+      } else if (
+        name.includes('stock') ||
+        name.includes('portfolio') ||
+        name.includes('profit') ||
+        name.includes('revenue') ||
+        name.includes('cashflow') ||
+        name.includes('budget') ||
+        name.includes('expense') ||
+        name.includes('roi') ||
+        name.includes('financial') ||
+        name.includes('dividend')
+      ) {
         category = 'Financial';
-      } else if (name.includes('orders') || name.includes('conversion') || name.includes('product') || 
-                 name.includes('inventory') || name.includes('customer') || name.includes('price') || 
-                 name.includes('seasonal') || name.includes('category') || name.includes('shipping') || 
-                 name.includes('discount') || name.includes('sales') || name.includes('market')) {
+      } else if (
+        name.includes('orders') ||
+        name.includes('conversion') ||
+        name.includes('product') ||
+        name.includes('inventory') ||
+        name.includes('customer') ||
+        name.includes('price') ||
+        name.includes('seasonal') ||
+        name.includes('category') ||
+        name.includes('shipping') ||
+        name.includes('discount') ||
+        name.includes('sales') ||
+        name.includes('market')
+      ) {
         category = 'E-Commerce';
-      } else if (name.includes('campaign') || name.includes('engagement') || name.includes('social') || 
-                 name.includes('ad') || name.includes('ctr') || name.includes('channel') || 
-                 name.includes('influencer') || name.includes('viral') || name.includes('sentiment') || 
-                 name.includes('impression') || name.includes('lead')) {
+      } else if (
+        name.includes('campaign') ||
+        name.includes('engagement') ||
+        name.includes('social') ||
+        name.includes('ad') ||
+        name.includes('ctr') ||
+        name.includes('channel') ||
+        name.includes('influencer') ||
+        name.includes('viral') ||
+        name.includes('sentiment') ||
+        name.includes('impression') ||
+        name.includes('lead')
+      ) {
         category = 'Marketing';
-      } else if (name.includes('patient') || name.includes('age') || name.includes('disease') || 
-                 name.includes('treatment') || name.includes('hospital') || name.includes('bmi') || 
-                 name.includes('recovery') || name.includes('medication') || name.includes('symptom') || 
-                 name.includes('health')) {
+      } else if (
+        name.includes('patient') ||
+        name.includes('age') ||
+        name.includes('disease') ||
+        name.includes('treatment') ||
+        name.includes('hospital') ||
+        name.includes('bmi') ||
+        name.includes('recovery') ||
+        name.includes('medication') ||
+        name.includes('symptom') ||
+        name.includes('health')
+      ) {
         category = 'Healthcare';
-      } else if (name.includes('test') || name.includes('grade') || name.includes('course') || 
-                 name.includes('student') || name.includes('attendance') || name.includes('study') || 
-                 name.includes('graduation') || name.includes('skill') || name.includes('learning') || 
-                 name.includes('dropout')) {
+      } else if (
+        name.includes('test') ||
+        name.includes('grade') ||
+        name.includes('course') ||
+        name.includes('student') ||
+        name.includes('attendance') ||
+        name.includes('study') ||
+        name.includes('graduation') ||
+        name.includes('skill') ||
+        name.includes('learning') ||
+        name.includes('dropout')
+      ) {
         category = 'Education';
-      } else if (name.includes('production') || name.includes('defect') || name.includes('machine') || 
-                 name.includes('downtime') || name.includes('quality') || name.includes('shift') || 
-                 name.includes('turnover') || name.includes('supply') || name.includes('efficiency') || 
-                 name.includes('maintenance')) {
+      } else if (
+        name.includes('production') ||
+        name.includes('defect') ||
+        name.includes('machine') ||
+        name.includes('downtime') ||
+        name.includes('quality') ||
+        name.includes('shift') ||
+        name.includes('turnover') ||
+        name.includes('supply') ||
+        name.includes('efficiency') ||
+        name.includes('maintenance')
+      ) {
         category = 'Manufacturing';
-      } else if (name.includes('temperature') || name.includes('precipitation') || name.includes('co2') || 
-                 name.includes('renewable') || name.includes('air') || name.includes('weather') || 
-                 name.includes('sea') || name.includes('biodiversity') || name.includes('energy') || 
-                 name.includes('climate')) {
+      } else if (
+        name.includes('temperature') ||
+        name.includes('precipitation') ||
+        name.includes('co2') ||
+        name.includes('renewable') ||
+        name.includes('air') ||
+        name.includes('weather') ||
+        name.includes('sea') ||
+        name.includes('biodiversity') ||
+        name.includes('energy') ||
+        name.includes('climate')
+      ) {
         category = 'Climate';
-      } else if (name.includes('api') || name.includes('error') || name.includes('server') || 
-                 name.includes('deployment') || name.includes('user_sessions') || name.includes('bug') || 
-                 name.includes('performance') || name.includes('code') || name.includes('bandwidth') || 
-                 name.includes('system') || name.includes('website') || name.includes('log_scale')) {
+      } else if (
+        name.includes('api') ||
+        name.includes('error') ||
+        name.includes('server') ||
+        name.includes('deployment') ||
+        name.includes('user_sessions') ||
+        name.includes('bug') ||
+        name.includes('performance') ||
+        name.includes('code') ||
+        name.includes('bandwidth') ||
+        name.includes('system') ||
+        name.includes('website') ||
+        name.includes('log_scale')
+      ) {
         category = 'Technology';
-      } else if (name.includes('player') || name.includes('team') || name.includes('game') || 
-                 name.includes('season') || name.includes('attendance_bar') || name.includes('league') || 
-                 name.includes('streaming') || name.includes('genre') || name.includes('tournament')) {
+      } else if (
+        name.includes('player') ||
+        name.includes('team') ||
+        name.includes('game') ||
+        name.includes('season') ||
+        name.includes('attendance_bar') ||
+        name.includes('league') ||
+        name.includes('streaming') ||
+        name.includes('genre') ||
+        name.includes('tournament')
+      ) {
         category = 'Sports';
       }
-      
+
       schemas.push({ name, spec, category });
     } catch (error: any) {
       console.error(`Error loading schema ${file}:`, error.message);
@@ -99,7 +184,19 @@ function loadAllSchemas(): SchemaFile[] {
 
   return schemas.sort((a, b) => {
     if (a.category !== b.category) {
-      const categoryOrder = ['Basic', 'Financial', 'E-Commerce', 'Marketing', 'Healthcare', 'Education', 'Manufacturing', 'Climate', 'Technology', 'Sports', 'Other'];
+      const categoryOrder = [
+        'Basic',
+        'Financial',
+        'E-Commerce',
+        'Marketing',
+        'Healthcare',
+        'Education',
+        'Manufacturing',
+        'Climate',
+        'Technology',
+        'Sports',
+        'Other',
+      ];
       return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
     }
     return a.name.localeCompare(b.name);
@@ -108,7 +205,7 @@ function loadAllSchemas(): SchemaFile[] {
 
 describe('VegaDeclarativeChart - Snapshot Tests', () => {
   const allSchemas = loadAllSchemas();
-  
+
   if (allSchemas.length === 0) {
     it('should load schema files', () => {
       expect(allSchemas.length).toBeGreaterThan(0);
@@ -132,12 +229,8 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
     describe(`${category} Charts`, () => {
       schemas.forEach(({ name, spec }) => {
         it(`should render ${name} correctly`, () => {
-          const { container } = render(
-            <VegaDeclarativeChart 
-              chartSchema={{ vegaLiteSpec: spec }} 
-            />
-          );
-          
+          const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
+
           // Snapshot the entire rendered output
           expect(container).toMatchSnapshot();
         });
@@ -157,10 +250,8 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
-      
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
+
       expect(container).toMatchSnapshot();
     });
 
@@ -169,13 +260,9 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
       if (!spec) return;
 
       const { container } = render(
-        <VegaDeclarativeChart 
-          chartSchema={{ vegaLiteSpec: spec }}
-          width={800}
-          height={600}
-        />
+        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} width={800} height={600} />,
       );
-      
+
       expect(container).toMatchSnapshot();
     });
 
@@ -183,13 +270,8 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
       const spec = allSchemas[0]?.spec;
       if (!spec) return;
 
-      const { container } = render(
-        <VegaDeclarativeChart 
-          chartSchema={{ vegaLiteSpec: spec }}
-          isDarkTheme={true}
-        />
-      );
-      
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} isDarkTheme={true} />);
+
       expect(container).toMatchSnapshot();
     });
 
@@ -212,14 +294,14 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
       };
 
       const { container } = render(
-        <VegaDeclarativeChart 
-          chartSchema={{ 
+        <VegaDeclarativeChart
+          chartSchema={{
             vegaLiteSpec: spec,
-            selectedLegends: ['A']
+            selectedLegends: ['A'],
           }}
-        />
+        />,
       );
-      
+
       expect(container).toMatchSnapshot();
     });
   });
@@ -232,33 +314,32 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
     Object.entries(schemasByCategory).forEach(([category, schemas]) => {
       console.log(`  ${category}: ${schemas.length} schemas`);
     });
-    
+
     expect(allSchemas.length).toBeGreaterThan(100);
   });
 });
 
 describe('VegaDeclarativeChart - Transformation Snapshots', () => {
   const allSchemas = loadAllSchemas();
-  
+
   if (allSchemas.length === 0) return;
 
   describe('Chart Props Transformation', () => {
     // Test a sample from each category to verify transformation
     const sampleSchemas = allSchemas.filter((_, index) => index % 10 === 0);
-    
+
     sampleSchemas.forEach(({ name, spec }) => {
       it(`should transform ${name} to Fluent chart props`, () => {
         // The transformation happens inside VegaDeclarativeChart
         // We capture the rendered output which includes the transformed props
-        const { container } = render(
-          <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-        );
-        
+        const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
+
         // Verify chart was rendered (contains SVG or chart elements)
-        const hasChart = container.querySelector('svg') !== null || 
-                        container.querySelector('[class*="chart"]') !== null ||
-                        container.querySelector('[class*="Chart"]') !== null;
-        
+        const hasChart =
+          container.querySelector('svg') !== null ||
+          container.querySelector('[class*="chart"]') !== null ||
+          container.querySelector('[class*="Chart"]') !== null;
+
         expect(hasChart).toBe(true);
         expect(container.firstChild).toMatchSnapshot();
       });

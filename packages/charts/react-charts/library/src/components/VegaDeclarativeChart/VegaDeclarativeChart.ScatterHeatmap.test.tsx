@@ -42,7 +42,7 @@ describe('VegaDeclarativeChart - Scatter Charts', () => {
 
     // Check that an SVG element is rendered
     expect(container.querySelector('svg')).toBeInTheDocument();
-    
+
     // Check for scatter plot elements (circles or points)
     const circles = container.querySelectorAll('circle');
     expect(circles.length).toBeGreaterThan(0);
@@ -170,7 +170,7 @@ describe('VegaDeclarativeChart - Heatmap Charts', () => {
 
     // Check that an SVG element is rendered
     expect(container.querySelector('svg')).toBeInTheDocument();
-    
+
     // Check for heatmap rectangles
     const rects = container.querySelectorAll('rect');
     expect(rects.length).toBeGreaterThan(0);

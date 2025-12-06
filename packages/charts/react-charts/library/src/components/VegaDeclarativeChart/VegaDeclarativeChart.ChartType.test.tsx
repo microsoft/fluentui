@@ -4,7 +4,7 @@ import { VegaDeclarativeChart } from './VegaDeclarativeChart';
 
 /**
  * Tests to verify correct chart type detection and rendering
- * 
+ *
  * These tests specifically address:
  * 1. Grouped bar charts (with xOffset) should render as GroupedVerticalBarChart, not VerticalStackedBarChart
  * 2. Donut charts (with innerRadius) should render with innerRadius, not as pie charts
@@ -32,13 +32,11 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       // Should render successfully without errors
       expect(container.firstChild).toBeTruthy();
-      
+
       // Grouped bar chart should create SVG with bars
       const svg = container.querySelector('svg');
       expect(svg).toBeTruthy();
@@ -63,9 +61,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       // Should render successfully
       expect(container.firstChild).toBeTruthy();
@@ -92,12 +88,10 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container.firstChild).toBeTruthy();
-      
+
       // Donut chart should have SVG
       const svg = container.querySelector('svg');
       expect(svg).toBeTruthy();
@@ -119,9 +113,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container.firstChild).toBeTruthy();
       const svg = container.querySelector('svg');
@@ -150,12 +142,10 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container.firstChild).toBeTruthy();
-      
+
       // Heatmap should have SVG
       const svg = container.querySelector('svg');
       expect(svg).toBeTruthy();
@@ -180,9 +170,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container).toMatchSnapshot();
     });
@@ -202,9 +190,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container).toMatchSnapshot();
     });
@@ -225,9 +211,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container).toMatchSnapshot();
     });

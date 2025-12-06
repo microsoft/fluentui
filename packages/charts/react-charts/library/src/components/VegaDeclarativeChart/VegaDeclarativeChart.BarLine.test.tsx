@@ -40,17 +40,15 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       // Should render
       expect(container.firstChild).toBeTruthy();
-      
+
       // Check for SVG (chart rendered)
       const svg = container.querySelector('svg');
       expect(svg).toBeTruthy();
-      
+
       // Snapshot the entire output
       expect(container).toMatchSnapshot();
     });
@@ -82,9 +80,7 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container.firstChild).toBeTruthy();
       expect(container.querySelector('svg')).toBeTruthy();
@@ -119,9 +115,7 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container.firstChild).toBeTruthy();
       expect(container.querySelector('svg')).toBeTruthy();
@@ -160,25 +154,23 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
         title: 'Sales and Profit Trend',
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: lineBarComboSpec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: lineBarComboSpec }} />);
 
       // Should render successfully
       expect(container.firstChild).toBeTruthy();
-      
+
       // Should have SVG
       const svg = container.querySelector('svg');
       expect(svg).toBeTruthy();
-      
+
       // Verify bars exist (rect elements for bars)
       const rects = container.querySelectorAll('rect');
       expect(rects.length).toBeGreaterThan(0);
-      
+
       // Verify lines exist (path elements for lines)
       const paths = container.querySelectorAll('path');
       expect(paths.length).toBeGreaterThan(0);
-      
+
       expect(container).toMatchSnapshot();
     });
   });
@@ -187,8 +179,21 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
     it('should detect bar+line combo and use stacked-bar type', () => {
       const spec = {
         layer: [
-          { mark: 'bar', encoding: { x: { field: 'x', type: 'ordinal' as const }, y: { field: 'y1', type: 'quantitative' as const }, color: { field: 'cat', type: 'nominal' as const } } },
-          { mark: 'line', encoding: { x: { field: 'x', type: 'ordinal' as const }, y: { field: 'y2', type: 'quantitative' as const } } },
+          {
+            mark: 'bar',
+            encoding: {
+              x: { field: 'x', type: 'ordinal' as const },
+              y: { field: 'y1', type: 'quantitative' as const },
+              color: { field: 'cat', type: 'nominal' as const },
+            },
+          },
+          {
+            mark: 'line',
+            encoding: {
+              x: { field: 'x', type: 'ordinal' as const },
+              y: { field: 'y2', type: 'quantitative' as const },
+            },
+          },
         ],
         data: { values: [{ x: 'A', y1: 10, y2: 15, cat: 'C1' }] },
       };
@@ -228,9 +233,7 @@ describe('VegaDeclarativeChart - Bar+Line Combo Rendering', () => {
         },
       };
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       // Should still render (fallback behavior)
       expect(container.firstChild).toBeTruthy();

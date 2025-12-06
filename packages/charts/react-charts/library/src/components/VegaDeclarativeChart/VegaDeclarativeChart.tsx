@@ -29,12 +29,12 @@ import type { Chart } from '../../types/index';
 
 /**
  * Vega-Lite specification type
- * 
+ *
  * For full type support, install the vega-lite package:
  * ```
  * npm install vega-lite
  * ```
- * 
+ *
  * Then you can import and use TopLevelSpec:
  * ```typescript
  * import type { TopLevelSpec } from 'vega-lite';
@@ -49,7 +49,7 @@ export type VegaLiteSpec = any;
 export interface VegaSchema {
   /**
    * Vega-Lite specification
-   * 
+   *
    * @see https://vega.github.io/vega-lite/docs/spec.html
    */
   vegaLiteSpec: VegaLiteSpec;
@@ -141,7 +141,7 @@ function getVegaConcatGridProperties(spec: VegaLiteSpec): {
       specs: spec.hconcat,
     };
   }
-  
+
   if (isVConcatSpec(spec)) {
     return {
       templateRows: `repeat(${spec.vconcat.length}, 1fr)`,
@@ -150,7 +150,7 @@ function getVegaConcatGridProperties(spec: VegaLiteSpec): {
       specs: spec.vconcat,
     };
   }
-  
+
   return {
     templateRows: '1fr',
     templateColumns: '1fr',
@@ -176,9 +176,18 @@ const ResponsiveHeatMapChart = withResponsiveContainer(HeatMapChart);
 type VegaChartTypeMap = {
   line: { transformer: typeof transformVegaLiteToLineChartProps; renderer: typeof ResponsiveLineChart };
   bar: { transformer: typeof transformVegaLiteToVerticalBarChartProps; renderer: typeof ResponsiveVerticalBarChart };
-  'stacked-bar': { transformer: typeof transformVegaLiteToVerticalStackedBarChartProps; renderer: typeof ResponsiveVerticalStackedBarChart };
-  'grouped-bar': { transformer: typeof transformVegaLiteToGroupedVerticalBarChartProps; renderer: typeof ResponsiveGroupedVerticalBarChart };
-  'horizontal-bar': { transformer: typeof transformVegaLiteToHorizontalBarChartProps; renderer: typeof ResponsiveHorizontalBarChartWithAxis };
+  'stacked-bar': {
+    transformer: typeof transformVegaLiteToVerticalStackedBarChartProps;
+    renderer: typeof ResponsiveVerticalStackedBarChart;
+  };
+  'grouped-bar': {
+    transformer: typeof transformVegaLiteToGroupedVerticalBarChartProps;
+    renderer: typeof ResponsiveGroupedVerticalBarChart;
+  };
+  'horizontal-bar': {
+    transformer: typeof transformVegaLiteToHorizontalBarChartProps;
+    renderer: typeof ResponsiveHorizontalBarChartWithAxis;
+  };
   area: { transformer: typeof transformVegaLiteToAreaChartProps; renderer: typeof ResponsiveAreaChart };
   scatter: { transformer: typeof transformVegaLiteToScatterChartProps; renderer: typeof ResponsiveScatterChart };
   donut: { transformer: typeof transformVegaLiteToDonutChartProps; renderer: typeof ResponsiveDonutChart };
@@ -189,9 +198,18 @@ type VegaChartTypeMap = {
 const vegaChartMap: VegaChartTypeMap = {
   line: { transformer: transformVegaLiteToLineChartProps, renderer: ResponsiveLineChart },
   bar: { transformer: transformVegaLiteToVerticalBarChartProps, renderer: ResponsiveVerticalBarChart },
-  'stacked-bar': { transformer: transformVegaLiteToVerticalStackedBarChartProps, renderer: ResponsiveVerticalStackedBarChart },
-  'grouped-bar': { transformer: transformVegaLiteToGroupedVerticalBarChartProps, renderer: ResponsiveGroupedVerticalBarChart },
-  'horizontal-bar': { transformer: transformVegaLiteToHorizontalBarChartProps, renderer: ResponsiveHorizontalBarChartWithAxis },
+  'stacked-bar': {
+    transformer: transformVegaLiteToVerticalStackedBarChartProps,
+    renderer: ResponsiveVerticalStackedBarChart,
+  },
+  'grouped-bar': {
+    transformer: transformVegaLiteToGroupedVerticalBarChartProps,
+    renderer: ResponsiveGroupedVerticalBarChart,
+  },
+  'horizontal-bar': {
+    transformer: transformVegaLiteToHorizontalBarChartProps,
+    renderer: ResponsiveHorizontalBarChartWithAxis,
+  },
   area: { transformer: transformVegaLiteToAreaChartProps, renderer: ResponsiveAreaChart },
   scatter: { transformer: transformVegaLiteToScatterChartProps, renderer: ResponsiveScatterChart },
   donut: { transformer: transformVegaLiteToDonutChartProps, renderer: ResponsiveDonutChart },
@@ -203,22 +221,32 @@ const vegaChartMap: VegaChartTypeMap = {
  * Determines the chart type based on Vega-Lite spec
  */
 function getChartType(spec: VegaLiteSpec): {
-  type: 'line' | 'bar' | 'stacked-bar' | 'grouped-bar' | 'horizontal-bar' | 'area' | 'scatter' | 'donut' | 'heatmap' | 'histogram';
+  type:
+    | 'line'
+    | 'bar'
+    | 'stacked-bar'
+    | 'grouped-bar'
+    | 'horizontal-bar'
+    | 'area'
+    | 'scatter'
+    | 'donut'
+    | 'heatmap'
+    | 'histogram';
   mark: string;
 } {
   // Handle layered specs - check if it's a bar+line combo for stacked bar with lines
   if (spec.layer && spec.layer.length > 1) {
-    const marks = spec.layer.map((layer: any) => typeof layer.mark === 'string' ? layer.mark : layer.mark?.type);
+    const marks = spec.layer.map((layer: any) => (typeof layer.mark === 'string' ? layer.mark : layer.mark?.type));
     const hasBar = marks.includes('bar');
     const hasLine = marks.includes('line') || marks.includes('point');
-    
+
     // Bar + line combo should use stacked bar chart (which supports line overlays)
     if (hasBar && hasLine) {
       const barLayer = spec.layer.find((layer: any) => {
         const mark = typeof layer.mark === 'string' ? layer.mark : layer.mark?.type;
         return mark === 'bar';
       });
-      
+
       if (barLayer?.encoding?.color?.field) {
         return { type: 'stacked-bar', mark: 'bar' };
       }
@@ -226,74 +254,76 @@ function getChartType(spec: VegaLiteSpec): {
       return { type: 'stacked-bar', mark: 'bar' };
     }
   }
-  
+
   // Handle layered specs - use first layer's mark for other cases
   const mark = spec.layer ? spec.layer[0]?.mark : spec.mark;
   const markType = typeof mark === 'string' ? mark : mark?.type;
-  
+
   const encoding = spec.layer ? spec.layer[0]?.encoding : spec.encoding;
   const hasColorEncoding = !!encoding?.color?.field;
-  
+
   // Arc marks for pie/donut charts
   // Donut charts have innerRadius defined in mark properties
   if (markType === 'arc' && encoding?.theta) {
     return { type: 'donut', mark: markType };
   }
-  
+
   // Rect marks for heatmaps
   // For heatmaps, we need rect mark with x, y, and color (quantitative) encodings
   // Must have actual field names, not just datum values
-  if (markType === 'rect' && 
-      encoding?.x?.field && 
-      encoding?.y?.field && 
-      encoding?.color?.field && 
-      encoding?.color?.type === 'quantitative') {
+  if (
+    markType === 'rect' &&
+    encoding?.x?.field &&
+    encoding?.y?.field &&
+    encoding?.color?.field &&
+    encoding?.color?.type === 'quantitative'
+  ) {
     return { type: 'heatmap', mark: markType };
   }
-  
+
   // Bar charts
   if (markType === 'bar') {
     // Check for histogram: binned x-axis with aggregate y-axis
     if (encoding?.x?.bin) {
       return { type: 'histogram', mark: markType };
     }
-    
+
     const isXNominal = encoding?.x?.type === 'nominal' || encoding?.x?.type === 'ordinal';
     const isYNominal = encoding?.y?.type === 'nominal' || encoding?.y?.type === 'ordinal';
-    
+
     // Horizontal bar: x is quantitative, y is nominal/ordinal
     if (isYNominal && !isXNominal) {
       return { type: 'horizontal-bar', mark: markType };
     }
-    
+
     // Vertical bars with color encoding
     if (hasColorEncoding) {
       // Check for xOffset encoding which indicates grouped bars
       // @ts-ignore - xOffset is a valid Vega-Lite encoding
       const hasXOffset = !!encoding?.xOffset?.field;
-      
+
       if (hasXOffset) {
         return { type: 'grouped-bar', mark: markType };
       }
-      
+
       // Otherwise, default to stacked bar
       return { type: 'stacked-bar', mark: markType };
     }
-    
+
     // Simple vertical bar
     return { type: 'bar', mark: markType };
   }
-  
+
   // Area charts
   if (markType === 'area') {
     return { type: 'area', mark: markType };
   }
-  
+
   // Scatter/point charts
   if (markType === 'point' || markType === 'circle' || markType === 'square') {
     return { type: 'scatter', mark: markType };
   }
-  
+
   // Line charts (default)
   return { type: 'line', mark: markType };
 }
@@ -311,14 +341,14 @@ function renderSingleChart(
 ): React.ReactElement {
   const chartType = getChartType(spec);
   const chartConfig = vegaChartMap[chartType.type];
-  
+
   if (!chartConfig) {
     throw new Error(`VegaDeclarativeChart: Unsupported chart type '${chartType.type}'`);
   }
-  
+
   const { transformer, renderer: ChartRenderer } = chartConfig;
   const chartProps = transformer(spec, colorMap, isDarkTheme) as any;
-  
+
   // Special handling for charts with different prop patterns
   if (chartType.type === 'donut') {
     return <ChartRenderer {...chartProps} legendProps={multiSelectLegendProps} />;
@@ -331,7 +361,7 @@ function renderSingleChart(
 
 /**
  * VegaDeclarativeChart - Render Vega-Lite specifications with Fluent UI styling
- * 
+ *
  * Supported chart types:
  * - Line charts: mark: 'line' or 'point'
  * - Area charts: mark: 'area'
@@ -343,12 +373,12 @@ function renderSingleChart(
  * - Donut/Pie charts: mark: 'arc' with theta encoding
  * - Heatmaps: mark: 'rect' with x, y, and color (quantitative) encodings
  * - Combo charts: Layered specs with bar + line marks render as VerticalStackedBarChart with line overlays
- * 
+ *
  * Multi-plot Support:
  * - Horizontal concatenation (hconcat): Multiple charts side-by-side
  * - Vertical concatenation (vconcat): Multiple charts stacked vertically
  * - Shared data and encoding are merged from parent spec to each subplot
- * 
+ *
  * Limitations:
  * - Most layered specifications (multiple chart types) are not fully supported
  * - Bar + Line combinations ARE supported and will render properly
@@ -358,14 +388,14 @@ function renderSingleChart(
  *   uses a horizontal bar chart (y: nominal, x: quantitative) which is the standard way to
  *   represent funnel data in Vega-Lite. For specialized funnel visualizations with tapering
  *   shapes, consider using Plotly's native funnel chart type instead.
- * 
+ *
  * Note: Sankey, Gantt, and Gauge charts are not standard Vega-Lite marks.
  * These specialized visualizations would require custom extensions or alternative approaches.
- * 
+ *
  * @example Line Chart
  * ```tsx
  * import { VegaDeclarativeChart } from '@fluentui/react-charts';
- * 
+ *
  * const spec = {
  *   mark: 'line',
  *   data: { values: [{ x: 1, y: 10 }, { x: 2, y: 20 }] },
@@ -374,10 +404,10 @@ function renderSingleChart(
  *     y: { field: 'y', type: 'quantitative' }
  *   }
  * };
- * 
+ *
  * <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />
  * ```
- * 
+ *
  * @example Area Chart
  * ```tsx
  * const areaSpec = {
@@ -388,10 +418,10 @@ function renderSingleChart(
  *     y: { field: 'value', type: 'quantitative' }
  *   }
  * };
- * 
+ *
  * <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: areaSpec }} />
  * ```
- * 
+ *
  * @example Scatter Chart
  * ```tsx
  * const scatterSpec = {
@@ -403,10 +433,10 @@ function renderSingleChart(
  *     size: { field: 'size', type: 'quantitative' }
  *   }
  * };
- * 
+ *
  * <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: scatterSpec }} />
  * ```
- * 
+ *
  * @example Vertical Bar Chart
  * ```tsx
  * const barSpec = {
@@ -417,10 +447,10 @@ function renderSingleChart(
  *     y: { field: 'val', type: 'quantitative' }
  *   }
  * };
- * 
+ *
  * <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: barSpec }} />
  * ```
- * 
+ *
  * @example Stacked Bar Chart
  * ```tsx
  * const stackedSpec = {
@@ -435,10 +465,10 @@ function renderSingleChart(
  *     color: { field: 'group', type: 'nominal' }
  *   }
  * };
- * 
+ *
  * <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: stackedSpec }} />
  * ```
- * 
+ *
  * @example Donut Chart
  * ```tsx
  * const donutSpec = {
@@ -449,10 +479,10 @@ function renderSingleChart(
  *     color: { field: 'category', type: 'nominal' }
  *   }
  * };
- * 
+ *
  * <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: donutSpec }} />
  * ```
- * 
+ *
  * @example Heatmap
  * ```tsx
  * const heatmapSpec = {
@@ -468,7 +498,7 @@ function renderSingleChart(
  *     color: { field: 'value', type: 'quantitative' }
  *   }
  * };
- * 
+ *
  * <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: heatmapSpec }} />
  * ```
  */
@@ -512,11 +542,11 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
       // Check if this is a concat spec (multiple charts side-by-side or stacked)
       if (isHConcatSpec(vegaLiteSpec) || isVConcatSpec(vegaLiteSpec)) {
         const gridProps = getVegaConcatGridProperties(vegaLiteSpec);
-        
+
         return (
-          <div 
-            ref={forwardedRef} 
-            className={props.className} 
+          <div
+            ref={forwardedRef}
+            className={props.className}
             style={{
               ...props.style,
               display: 'grid',
@@ -535,10 +565,10 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
                   ...(subSpec.encoding || {}),
                 },
               };
-              
+
               const cellRow = gridProps.isHorizontal ? 1 : index + 1;
               const cellColumn = gridProps.isHorizontal ? index + 1 : 1;
-              
+
               return (
                 <div
                   key={`chart_${index}`}
@@ -563,24 +593,26 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
           </div>
         );
       }
-      
+
       // Check if this is a layered spec (composite chart)
       if (vegaLiteSpec.layer && vegaLiteSpec.layer.length > 1) {
         // Check if it's a supported bar+line combo
-        const marks = vegaLiteSpec.layer.map((layer: any) => typeof layer.mark === 'string' ? layer.mark : layer.mark?.type);
+        const marks = vegaLiteSpec.layer.map((layer: any) =>
+          typeof layer.mark === 'string' ? layer.mark : layer.mark?.type,
+        );
         const hasBar = marks.includes('bar');
         const hasLine = marks.includes('line') || marks.includes('point');
         const isBarLineCombo = hasBar && hasLine;
-        
+
         // Only warn for unsupported layered specs
         if (!isBarLineCombo) {
           console.warn(
             'VegaDeclarativeChart: Layered specifications with multiple chart types are not fully supported. ' +
-            'Only the first layer will be rendered. Bar+Line combinations are supported via VerticalStackedBarChart.'
+              'Only the first layer will be rendered. Bar+Line combinations are supported via VerticalStackedBarChart.',
           );
         }
       }
-      
+
       // Render single chart
       const chartComponent = renderSingleChart(
         vegaLiteSpec,
