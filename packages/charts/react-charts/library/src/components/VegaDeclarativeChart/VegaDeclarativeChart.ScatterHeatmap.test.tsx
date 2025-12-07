@@ -331,4 +331,3 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
     expect(container.querySelector('svg')).toBeInTheDocument();
   });
 });
-

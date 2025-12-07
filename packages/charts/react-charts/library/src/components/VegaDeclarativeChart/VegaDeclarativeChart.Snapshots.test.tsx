@@ -259,9 +259,7 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
       const spec = allSchemas[0]?.spec;
       if (!spec) return;
 
-      const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />,
-      );
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container).toMatchSnapshot();
     });
