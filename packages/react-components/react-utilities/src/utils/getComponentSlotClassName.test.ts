@@ -33,22 +33,23 @@ describe('getComponentSlotClassName', () => {
 
   describe('with component state', () => {
     const createButtonState = (
-      overrides: Partial<ButtonState & { className?: string }> = {},
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      state: ButtonState & Record<string, any> = {},
     ): ComponentState<ButtonSlots> & ButtonState => {
-      const { className = '', ...stateOverrides } = overrides;
+      const { className = '', ...stateOverrides } = state;
       return {
         appearance: 'primary',
         size: 'medium',
         disabled: false,
         iconOnly: false,
         iconPosition: 'before',
-        ...stateOverrides,
         components: {
           root: 'button',
           icon: 'span',
         },
         root: slot.always<React.ComponentProps<'button'>>({ className }, { elementType: 'button' }),
         icon: slot.optional<React.ComponentProps<'span'>>({}, { elementType: 'span' }),
+        ...stateOverrides,
       };
     };
 
@@ -81,7 +82,7 @@ describe('getComponentSlotClassName', () => {
     it('ignores falsy state values (false, undefined, null, empty string)', () => {
       const state = createButtonState({
         disabled: false,
-        appearance: undefined as any,
+        appearance: undefined,
         iconOnly: false,
       });
       const result = getComponentSlotClassName('fui-Button', state.root, state);
@@ -93,9 +94,8 @@ describe('getComponentSlotClassName', () => {
     });
 
     it('ignores non-primitive state values (objects, functions)', () => {
-      const state = createButtonState() as any;
-      state.customObj = { foo: 'bar' };
-      state.customFn = () => {};
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      const state = createButtonState({ foo: 'bar', customFn: () => {} });
 
       const result = getComponentSlotClassName('fui-Button', state.root, state);
 
