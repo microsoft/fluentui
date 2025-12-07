@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: implement getComponentSlotClassName utility for dynamic class name generation",
+  "packageName": "@fluentui/react-utilities",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
