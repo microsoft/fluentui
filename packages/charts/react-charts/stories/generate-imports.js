@@ -12,14 +12,14 @@ const imports = files.map(file => {
   const name = file.replace('.json', '');
   const camelCase = name
     .split(/[-_]/)
-    .map((part, i) => i === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1))
+    .map((part, i) => (i === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)))
     .join('');
   const varName = camelCase + 'Schema';
-  
+
   return {
     file: name,
     varName,
-    import: `import ${varName} from './schemas/${name}.json';`
+    import: `import ${varName} from './schemas/${name}.json';`,
   };
 });
 

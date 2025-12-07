@@ -58,74 +58,159 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 // Categorize schemas for better organization
 function categorizeSchemas(): Map<string, string[]> {
   const categories = new Map<string, string[]>();
-  
+
   SCHEMA_NAMES.forEach(name => {
     let category = 'Other';
-    
+
     // Categorization logic based on schema name patterns
-    if (name.includes('stock') || name.includes('portfolio') || name.includes('profit') || 
-        name.includes('revenue') || name.includes('cashflow') || name.includes('budget') || 
-        name.includes('expense') || name.includes('roi') || name.includes('financial') || 
-        name.includes('dividend')) {
+    if (
+      name.includes('stock') ||
+      name.includes('portfolio') ||
+      name.includes('profit') ||
+      name.includes('revenue') ||
+      name.includes('cashflow') ||
+      name.includes('budget') ||
+      name.includes('expense') ||
+      name.includes('roi') ||
+      name.includes('financial') ||
+      name.includes('dividend')
+    ) {
       category = 'Financial';
-    } else if (name.includes('orders') || name.includes('conversion') || name.includes('product') || 
-               name.includes('inventory') || name.includes('customer') || name.includes('price') || 
-               name.includes('seasonal') || name.includes('category') || name.includes('shipping') || 
-               name.includes('discount') || name.includes('sales') || name.includes('market')) {
+    } else if (
+      name.includes('orders') ||
+      name.includes('conversion') ||
+      name.includes('product') ||
+      name.includes('inventory') ||
+      name.includes('customer') ||
+      name.includes('price') ||
+      name.includes('seasonal') ||
+      name.includes('category') ||
+      name.includes('shipping') ||
+      name.includes('discount') ||
+      name.includes('sales') ||
+      name.includes('market')
+    ) {
       category = 'E-Commerce';
-    } else if (name.includes('campaign') || name.includes('engagement') || name.includes('social') || 
-               name.includes('ad') || name.includes('ctr') || name.includes('channel') || 
-               name.includes('influencer') || name.includes('viral') || name.includes('sentiment') || 
-               name.includes('impression') || name.includes('lead')) {
+    } else if (
+      name.includes('campaign') ||
+      name.includes('engagement') ||
+      name.includes('social') ||
+      name.includes('ad') ||
+      name.includes('ctr') ||
+      name.includes('channel') ||
+      name.includes('influencer') ||
+      name.includes('viral') ||
+      name.includes('sentiment') ||
+      name.includes('impression') ||
+      name.includes('lead')
+    ) {
       category = 'Marketing';
-    } else if (name.includes('patient') || name.includes('age') || name.includes('disease') || 
-               name.includes('treatment') || name.includes('hospital') || name.includes('bmi') || 
-               name.includes('recovery') || name.includes('medication') || name.includes('symptom') || 
-               name.includes('health')) {
+    } else if (
+      name.includes('patient') ||
+      name.includes('age') ||
+      name.includes('disease') ||
+      name.includes('treatment') ||
+      name.includes('hospital') ||
+      name.includes('bmi') ||
+      name.includes('recovery') ||
+      name.includes('medication') ||
+      name.includes('symptom') ||
+      name.includes('health')
+    ) {
       category = 'Healthcare';
-    } else if (name.includes('test') || name.includes('grade') || name.includes('course') || 
-               name.includes('student') || name.includes('attendance') || name.includes('study') || 
-               name.includes('graduation') || name.includes('skill') || name.includes('learning') || 
-               name.includes('dropout')) {
+    } else if (
+      name.includes('test') ||
+      name.includes('grade') ||
+      name.includes('course') ||
+      name.includes('student') ||
+      name.includes('attendance') ||
+      name.includes('study') ||
+      name.includes('graduation') ||
+      name.includes('skill') ||
+      name.includes('learning') ||
+      name.includes('dropout')
+    ) {
       category = 'Education';
-    } else if (name.includes('production') || name.includes('defect') || name.includes('machine') || 
-               name.includes('downtime') || name.includes('quality') || name.includes('shift') || 
-               name.includes('turnover') || name.includes('supply') || name.includes('efficiency') || 
-               name.includes('maintenance')) {
+    } else if (
+      name.includes('production') ||
+      name.includes('defect') ||
+      name.includes('machine') ||
+      name.includes('downtime') ||
+      name.includes('quality') ||
+      name.includes('shift') ||
+      name.includes('turnover') ||
+      name.includes('supply') ||
+      name.includes('efficiency') ||
+      name.includes('maintenance')
+    ) {
       category = 'Manufacturing';
-    } else if (name.includes('temperature') || name.includes('precipitation') || name.includes('co2') || 
-               name.includes('renewable') || name.includes('air') || name.includes('weather') || 
-               name.includes('sea') || name.includes('biodiversity') || name.includes('energy') || 
-               name.includes('climate')) {
+    } else if (
+      name.includes('temperature') ||
+      name.includes('precipitation') ||
+      name.includes('co2') ||
+      name.includes('renewable') ||
+      name.includes('air') ||
+      name.includes('weather') ||
+      name.includes('sea') ||
+      name.includes('biodiversity') ||
+      name.includes('energy') ||
+      name.includes('climate')
+    ) {
       category = 'Climate';
-    } else if (name.includes('api') || name.includes('error') || name.includes('server') || 
-               name.includes('deployment') || name.includes('user_sessions') || name.includes('bug') || 
-               name.includes('performance') || name.includes('code') || name.includes('bandwidth') || 
-               name.includes('system') || name.includes('website') || name.includes('log_scale')) {
+    } else if (
+      name.includes('api') ||
+      name.includes('error') ||
+      name.includes('server') ||
+      name.includes('deployment') ||
+      name.includes('user_sessions') ||
+      name.includes('bug') ||
+      name.includes('performance') ||
+      name.includes('code') ||
+      name.includes('bandwidth') ||
+      name.includes('system') ||
+      name.includes('website') ||
+      name.includes('log_scale')
+    ) {
       category = 'Technology';
-    } else if (name.includes('player') || name.includes('team') || name.includes('game') || 
-               name.includes('season') || name.includes('attendance_bar') || name.includes('league') || 
-               name.includes('streaming') || name.includes('genre') || name.includes('tournament')) {
+    } else if (
+      name.includes('player') ||
+      name.includes('team') ||
+      name.includes('game') ||
+      name.includes('season') ||
+      name.includes('attendance_bar') ||
+      name.includes('league') ||
+      name.includes('streaming') ||
+      name.includes('genre') ||
+      name.includes('tournament')
+    ) {
       category = 'Sports';
-    } else if (name.includes('linechart') || name.includes('areachart') || name.includes('barchart') || 
-               name.includes('scatterchart') || name.includes('donutchart') || name.includes('heatmapchart') ||
-               name.includes('grouped_bar') || name.includes('stacked_bar') || name.includes('line_bar_combo')) {
+    } else if (
+      name.includes('linechart') ||
+      name.includes('areachart') ||
+      name.includes('barchart') ||
+      name.includes('scatterchart') ||
+      name.includes('donutchart') ||
+      name.includes('heatmapchart') ||
+      name.includes('grouped_bar') ||
+      name.includes('stacked_bar') ||
+      name.includes('line_bar_combo')
+    ) {
       category = 'Basic Charts';
     }
-    
+
     if (!categories.has(category)) {
       categories.set(category, []);
     }
     categories.get(category)!.push(name);
   });
-  
+
   return categories;
 }
 
 const SCHEMA_CATEGORIES = categorizeSchemas();
 
 // Generate options from all schemas
-const ALL_OPTIONS: Array<{key: string, text: string, category: string}> = [];
+const ALL_OPTIONS: Array<{ key: string; text: string; category: string }> = [];
 SCHEMA_CATEGORIES.forEach((schemas, category) => {
   schemas.forEach(schemaName => {
     const text = schemaName
@@ -140,7 +225,19 @@ SCHEMA_CATEGORIES.forEach((schemas, category) => {
 ALL_OPTIONS.sort((a, b) => {
   if (a.category !== b.category) {
     // Priority order for categories
-    const categoryOrder = ['Basic Charts', 'Financial', 'E-Commerce', 'Marketing', 'Healthcare', 'Education', 'Manufacturing', 'Climate', 'Technology', 'Sports', 'Other'];
+    const categoryOrder = [
+      'Basic Charts',
+      'Financial',
+      'E-Commerce',
+      'Marketing',
+      'Healthcare',
+      'Education',
+      'Manufacturing',
+      'Climate',
+      'Technology',
+      'Sports',
+      'Other',
+    ];
     return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
   }
   return a.text.localeCompare(b.text);
@@ -191,14 +288,24 @@ export const Default = () => {
   }
 
   const filteredOptions =
-    selectedCategory === 'All'
-      ? ALL_OPTIONS
-      : ALL_OPTIONS.filter(opt => opt.category === selectedCategory);
+    selectedCategory === 'All' ? ALL_OPTIONS : ALL_OPTIONS.filter(opt => opt.category === selectedCategory);
 
   const categories = ['All', ...Array.from(SCHEMA_CATEGORIES.keys())].sort((a, b) => {
     if (a === 'All') return -1;
     if (b === 'All') return 1;
-    const categoryOrder = ['Basic Charts', 'Financial', 'E-Commerce', 'Marketing', 'Healthcare', 'Education', 'Manufacturing', 'Climate', 'Technology', 'Sports', 'Other'];
+    const categoryOrder = [
+      'Basic Charts',
+      'Financial',
+      'E-Commerce',
+      'Marketing',
+      'Healthcare',
+      'Education',
+      'Manufacturing',
+      'Climate',
+      'Technology',
+      'Sports',
+      'Other',
+    ];
     return categoryOrder.indexOf(a) - categoryOrder.indexOf(b);
   });
 
@@ -206,25 +313,28 @@ export const Default = () => {
     <div style={{ padding: '20px' }}>
       <h1>Vega-Lite Declarative Chart - {SCHEMA_NAMES.length} Schemas</h1>
       <p>
-        This component renders charts from Vega-Lite specifications. Browse through {SCHEMA_NAMES.length} real-world chart examples
-        across {SCHEMA_CATEGORIES.size} categories. Select a chart type or edit the JSON schema below to customize the visualization.
+        This component renders charts from Vega-Lite specifications. Browse through {SCHEMA_NAMES.length} real-world
+        chart examples across {SCHEMA_CATEGORIES.size} categories. Select a chart type or edit the JSON schema below to
+        customize the visualization.
       </p>
 
       <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', flexWrap: 'wrap' }}>
         <Field label="Category">
-          <Dropdown
-            value={selectedCategory}
-            onOptionSelect={handleCategoryChange}
-            style={{ width: '150px' }}
-          >
+          <Dropdown value={selectedCategory} onOptionSelect={handleCategoryChange} style={{ width: '150px' }}>
             {categories.map(category => (
-              <Option key={category} value={category} text={`${category} (${category === 'All' ? SCHEMA_NAMES.length : (SCHEMA_CATEGORIES.get(category)?.length || 0)})`}>
-                {category} ({category === 'All' ? SCHEMA_NAMES.length : (SCHEMA_CATEGORIES.get(category)?.length || 0)})
+              <Option
+                key={category}
+                value={category}
+                text={`${category} (${
+                  category === 'All' ? SCHEMA_NAMES.length : SCHEMA_CATEGORIES.get(category)?.length || 0
+                })`}
+              >
+                {category} ({category === 'All' ? SCHEMA_NAMES.length : SCHEMA_CATEGORIES.get(category)?.length || 0})
               </Option>
             ))}
           </Dropdown>
         </Field>
-        
+
         <Field label="Chart Type">
           <Dropdown
             value={filteredOptions.find(opt => opt.key === selectedChart)?.text || 'Line Chart'}
@@ -261,67 +371,97 @@ export const Default = () => {
                 fontSize: '12px',
                 padding: '10px',
                 border: '1px solid #ccc',
-              borderRadius: '4px',
-            }}
-          />
-        </Field>
-        {parseError && (
-          <div style={{ color: 'red', marginTop: '10px' }}>
-            <strong>JSON Parse Error:</strong> {parseError}
-          </div>
-        )}
+                borderRadius: '4px',
+              }}
+            />
+          </Field>
+          {parseError && (
+            <div style={{ color: 'red', marginTop: '10px' }}>
+              <strong>JSON Parse Error:</strong> {parseError}
+            </div>
+          )}
+        </div>
+
+        <div>
+          <Field label="Chart Preview">
+            <ErrorBoundary>
+              {parsedSchema ? (
+                <div style={{ width: `${width}px`, height: `${height}px` }}>
+                  <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: parsedSchema }} />
+                </div>
+              ) : (
+                <div style={{ color: 'red' }}>Invalid JSON schema. Please check your syntax.</div>
+              )}
+            </ErrorBoundary>
+          </Field>
+        </div>
       </div>
 
-      <div>
-        <Field label="Chart Preview">
-          <ErrorBoundary>
-            {parsedSchema ? (
-              <div style={{ width: `${width}px`, height: `${height}px` }}>
-                <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: parsedSchema }} />
-              </div>
-            ) : (
-              <div style={{ color: 'red' }}>Invalid JSON schema. Please check your syntax.</div>
-            )}
-          </ErrorBoundary>
-        </Field>
+      <div style={{ marginTop: '20px' }}>
+        <h3>Chart Categories ({SCHEMA_NAMES.length} Total):</h3>
+        <ul style={{ columns: 3 }}>
+          {Array.from(SCHEMA_CATEGORIES.entries())
+            .sort((a, b) => {
+              const categoryOrder = [
+                'Basic Charts',
+                'Financial',
+                'E-Commerce',
+                'Marketing',
+                'Healthcare',
+                'Education',
+                'Manufacturing',
+                'Climate',
+                'Technology',
+                'Sports',
+                'Other',
+              ];
+              return categoryOrder.indexOf(a[0]) - categoryOrder.indexOf(b[0]);
+            })
+            .map(([cat, schemas]) => (
+              <li key={cat}>
+                <strong>{cat}:</strong> {schemas.length} charts
+              </li>
+            ))}
+        </ul>
+
+        <h3 style={{ marginTop: '20px' }}>Features Supported:</h3>
+        <ul>
+          <li>
+            <strong>Line Charts:</strong> Temporal or quantitative x-axis with multiple series
+          </li>
+          <li>
+            <strong>Area Charts:</strong> Filled line charts for showing trends
+          </li>
+          <li>
+            <strong>Scatter Charts:</strong> Point marks with optional size encoding
+          </li>
+          <li>
+            <strong>Bar Charts:</strong> Horizontal and vertical bar visualizations, stacked and grouped
+          </li>
+          <li>
+            <strong>Donut Charts:</strong> Arc marks with innerRadius for donut effect
+          </li>
+          <li>
+            <strong>Heatmaps:</strong> Rect marks with color scale
+          </li>
+          <li>
+            <strong>Combo Charts:</strong> Layered visualizations (line + bar, line + area, etc.)
+          </li>
+          <li>
+            <strong>Scale Types:</strong> Linear, logarithmic, temporal, ordinal, nominal
+          </li>
+          <li>
+            <strong>Transforms:</strong> Data transformations like fold for reshaping
+          </li>
+        </ul>
       </div>
     </div>
-
-    <div style={{ marginTop: '20px' }}>
-      <h3>Chart Categories ({SCHEMA_NAMES.length} Total):</h3>
-      <ul style={{ columns: 3 }}>
-        {Array.from(SCHEMA_CATEGORIES.entries())
-          .sort((a, b) => {
-            const categoryOrder = ['Basic Charts', 'Financial', 'E-Commerce', 'Marketing', 'Healthcare', 'Education', 'Manufacturing', 'Climate', 'Technology', 'Sports', 'Other'];
-            return categoryOrder.indexOf(a[0]) - categoryOrder.indexOf(b[0]);
-          })
-          .map(([cat, schemas]) => (
-            <li key={cat}>
-              <strong>{cat}:</strong> {schemas.length} charts
-            </li>
-          ))}
-      </ul>
-      
-      <h3 style={{ marginTop: '20px' }}>Features Supported:</h3>
-      <ul>
-        <li><strong>Line Charts:</strong> Temporal or quantitative x-axis with multiple series</li>
-        <li><strong>Area Charts:</strong> Filled line charts for showing trends</li>
-        <li><strong>Scatter Charts:</strong> Point marks with optional size encoding</li>
-        <li><strong>Bar Charts:</strong> Horizontal and vertical bar visualizations, stacked and grouped</li>
-        <li><strong>Donut Charts:</strong> Arc marks with innerRadius for donut effect</li>
-        <li><strong>Heatmaps:</strong> Rect marks with color scale</li>
-        <li><strong>Combo Charts:</strong> Layered visualizations (line + bar, line + area, etc.)</li>
-        <li><strong>Scale Types:</strong> Linear, logarithmic, temporal, ordinal, nominal</li>
-        <li><strong>Transforms:</strong> Data transformations like fold for reshaping</li>
-      </ul>
-    </div>
-  </div>
   );
-};Default.parameters = {
+};
+Default.parameters = {
   docs: {
     description: {
-      story:
-        `A comprehensive showcase of ${SCHEMA_NAMES.length} Vega-Lite chart schemas covering real-world scenarios across Financial, Healthcare, Education, Manufacturing, Climate, Technology, Sports, and more domains. Demonstrates line, area, scatter, bar, donut, heatmap charts with various axis types, scales, and combo visualizations.`,
+      story: `A comprehensive showcase of ${SCHEMA_NAMES.length} Vega-Lite chart schemas covering real-world scenarios across Financial, Healthcare, Education, Manufacturing, Climate, Technology, Sports, and more domains. Demonstrates line, area, scatter, bar, donut, heatmap charts with various axis types, scales, and combo visualizations.`,
     },
   },
 };
