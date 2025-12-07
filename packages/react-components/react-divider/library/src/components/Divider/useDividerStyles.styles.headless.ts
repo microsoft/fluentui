@@ -14,17 +14,10 @@ export const dividerClassNames: SlotClassNames<DividerSlots> = {
 export const useDividerStyles_unstable = (state: DividerState): DividerState => {
   'use no memo';
 
-  state.root.className = getComponentSlotClassName(
-    dividerClassNames.root
-    state.root,
-    state
-  );
+  state.root.className = getComponentSlotClassName(dividerClassNames.root, state.root, state);
 
   if (state.wrapper) {
-    state.wrapper.className = getComponentSlotClassName(
-      dividerClassNames.wrapper,
-      state.wrapper,
-    );
+    state.wrapper.className = getComponentSlotClassName(dividerClassNames.wrapper, state.wrapper);
   }
 
   return state;
