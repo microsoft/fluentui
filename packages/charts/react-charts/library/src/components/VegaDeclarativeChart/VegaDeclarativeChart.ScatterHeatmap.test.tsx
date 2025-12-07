@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { VegaDeclarativeChart } from './VegaDeclarativeChart';
-import type { IVegaDeclarativeChartProps } from './VegaDeclarativeChart.types';
+import type { VegaDeclarativeChartProps } from './VegaDeclarativeChart';
 
 // Suppress console warnings for cleaner test output
 beforeAll(() => {
@@ -34,7 +34,7 @@ describe('VegaDeclarativeChart - Scatter Charts', () => {
       },
     };
 
-    const props: IVegaDeclarativeChartProps = {
+    const props: VegaDeclarativeChartProps = {
       chartSchema: { vegaLiteSpec: scatterSpec },
     };
 
@@ -72,7 +72,7 @@ describe('VegaDeclarativeChart - Scatter Charts', () => {
       },
     };
 
-    const props: IVegaDeclarativeChartProps = {
+    const props: VegaDeclarativeChartProps = {
       chartSchema: { vegaLiteSpec: scatterSpec },
     };
 
@@ -124,7 +124,7 @@ describe('VegaDeclarativeChart - Scatter Charts', () => {
       title: 'BMI Distribution Scatter',
     };
 
-    const props: IVegaDeclarativeChartProps = {
+    const props: VegaDeclarativeChartProps = {
       chartSchema: { vegaLiteSpec: bmiScatterSpec },
     };
 
@@ -162,7 +162,7 @@ describe('VegaDeclarativeChart - Heatmap Charts', () => {
       },
     };
 
-    const props: IVegaDeclarativeChartProps = {
+    const props: VegaDeclarativeChartProps = {
       chartSchema: { vegaLiteSpec: heatmapSpec },
     };
 
@@ -217,7 +217,7 @@ describe('VegaDeclarativeChart - Heatmap Charts', () => {
       title: 'Air Quality Index Heatmap',
     };
 
-    const props: IVegaDeclarativeChartProps = {
+    const props: VegaDeclarativeChartProps = {
       chartSchema: { vegaLiteSpec: airQualitySpec },
     };
 
@@ -273,7 +273,7 @@ describe('VegaDeclarativeChart - Heatmap Charts', () => {
       title: 'Weekly Attendance Patterns',
     };
 
-    const props: IVegaDeclarativeChartProps = {
+    const props: VegaDeclarativeChartProps = {
       chartSchema: { vegaLiteSpec: attendanceSpec },
     };
 
@@ -303,7 +303,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
       },
     };
 
-    const props: IVegaDeclarativeChartProps = {
+    const props: VegaDeclarativeChartProps = {
       chartSchema: { vegaLiteSpec: scatterSpec },
     };
 
@@ -323,7 +323,7 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
       },
     };
 
-    const props: IVegaDeclarativeChartProps = {
+    const props: VegaDeclarativeChartProps = {
       chartSchema: { vegaLiteSpec: heatmapSpec },
     };
 
@@ -331,3 +331,4 @@ describe('VegaDeclarativeChart - Chart Type Detection', () => {
     expect(container.querySelector('svg')).toBeInTheDocument();
   });
 });
+

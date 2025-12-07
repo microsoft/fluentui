@@ -936,8 +936,12 @@ const convertPlotlyAnnotation = (
     resolvedAnnotation.yshift,
   );
 
-  if (offsetX.offset !== undefined) layoutProps.offsetX = offsetX.offset;
-  if (offsetY.offset !== undefined) layoutProps.offsetY = offsetY.offset;
+  if (offsetX.offset !== undefined) {
+    layoutProps.offsetX = offsetX.offset;
+  }
+  if (offsetY.offset !== undefined) {
+    layoutProps.offsetY = offsetY.offset;
+  }
 
   const hasExplicitOffset = offsetX.hasExplicit || offsetY.hasExplicit;
 

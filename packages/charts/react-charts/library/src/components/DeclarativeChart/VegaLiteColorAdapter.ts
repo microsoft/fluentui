@@ -210,9 +210,7 @@ function getSchemeMapping(scheme: string | undefined): string[] | undefined {
     case 'set1':
     case 'set2':
     case 'set3':
-      console.warn(
-        `VegaLiteColorAdapter: Color scheme '${scheme}' is not yet mapped to Fluent colors. Using default palette.`,
-      );
+      // Color schemes not yet mapped to Fluent colors. Using default palette.
       return undefined;
     default:
       return undefined;

@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 // Using custom VegaLiteTypes for internal adapter logic
 // For public API, VegaDeclarativeChart accepts vega-lite's TopLevelSpec
@@ -92,13 +90,13 @@ function extractDataValues(data: VegaLiteData | undefined): Array<Record<string,
 
   // TODO: Handle data.url - load remote data
   if (data.url) {
-    console.warn('VegaLiteSchemaAdapter: Remote data URLs are not yet supported');
+    // Remote data URLs are not yet supported
     return [];
   }
 
   // TODO: Handle data.name - resolve named datasets
   if (data.name) {
-    console.warn('VegaLiteSchemaAdapter: Named datasets are not yet supported');
+    // Named datasets are not yet supported
     return [];
   }
 
@@ -136,7 +134,7 @@ function normalizeSpec(spec: VegaLiteSpec): VegaLiteUnitSpec[] {
     ];
   }
 
-  console.warn('VegaLiteSchemaAdapter: Unsupported spec structure');
+  // Unsupported spec structure
   return [];
 }
 
@@ -468,7 +466,7 @@ function validateEncodingCompatibility(mark: string, encoding: VegaLiteEncoding)
     (mark === 'point' || mark === 'circle' || mark === 'square') &&
     (xType !== 'quantitative' || yType !== 'quantitative')
   ) {
-    console.warn('VegaLiteSchemaAdapter: Scatter charts typically use quantitative x and y axes for best results');
+    // Scatter charts typically use quantitative x and y axes for best results
   }
 }
 
@@ -478,21 +476,17 @@ function validateEncodingCompatibility(mark: string, encoding: VegaLiteEncoding)
  */
 function warnUnsupportedFeatures(spec: VegaLiteSpec): void {
   if (spec.transform && spec.transform.length > 0) {
-    console.warn(
-      'VegaLiteSchemaAdapter: Transform pipeline is not yet supported. ' +
-        'Data transformations will be ignored. Apply transformations to your data before passing to the chart.',
-    );
+    // Transform pipeline is not yet supported.
+    // Data transformations will be ignored. Apply transformations to your data before passing to the chart.
   }
 
   if (spec.selection) {
-    console.warn('VegaLiteSchemaAdapter: Interactive selections are not yet supported.');
+    // Interactive selections are not yet supported.
   }
 
   if (spec.repeat || spec.facet) {
-    console.warn(
-      'VegaLiteSchemaAdapter: Repeat and facet specifications are not yet supported. ' +
-        'Use hconcat/vconcat for multi-plot layouts.',
-    );
+    // Repeat and facet specifications are not yet supported.
+    // Use hconcat/vconcat for multi-plot layouts.
   }
 }
 
@@ -643,8 +637,7 @@ function extractColorConfig(encoding: VegaLiteEncoding) {
  * @param encoding - Vega-Lite encoding specification
  * @returns Object containing common chart properties
  */
-// @ts-ignore - Function reserved for future use
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// @ts-expect-error - Function reserved for future use
 function buildCommonChartProps(spec: VegaLiteSpec, encoding: VegaLiteEncoding) {
   const titles = getVegaLiteTitles(spec);
   const categoryOrderProps = extractAxisCategoryOrderProps(encoding);

@@ -260,7 +260,7 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
       if (!spec) return;
 
       const { container } = render(
-        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} width={800} height={600} />,
+        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />,
       );
 
       expect(container).toMatchSnapshot();
@@ -270,7 +270,7 @@ describe('VegaDeclarativeChart - Snapshot Tests', () => {
       const spec = allSchemas[0]?.spec;
       if (!spec) return;
 
-      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} isDarkTheme={true} />);
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
 
       expect(container).toMatchSnapshot();
     });

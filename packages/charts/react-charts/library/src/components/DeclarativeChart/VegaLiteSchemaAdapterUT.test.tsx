@@ -708,7 +708,9 @@ describe('VegaLiteSchemaAdapter', () => {
       let consoleWarnSpy: jest.SpyInstance;
 
       beforeEach(() => {
-        consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+        consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {
+          // Mock implementation
+        });
       });
 
       afterEach(() => {
