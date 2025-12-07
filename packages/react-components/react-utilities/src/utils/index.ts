@@ -8,6 +8,7 @@ export { getReactElementRef } from './getReactElementRef';
 export { getRTLSafeKey } from './getRTLSafeKey';
 export { mergeCallbacks } from './mergeCallbacks';
 export { omit } from './omit';
+export { getComponentSlotClassName } from './getComponentSlotClassName';
 export {
   anchorProperties,
   audioProperties,
