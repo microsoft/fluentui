@@ -151,7 +151,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@types/react-frame-component": "4.1.1",
-    "@types/react-is": "19.2.1",
+    "@types/react-is": "19.2.0",
     "@types/react-test-renderer": "19.1.0",
     "@types/react-transition-group": "4.4.6",
     "@types/react-window": "^1.8.2",
