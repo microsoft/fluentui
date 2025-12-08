@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "enable right border",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "110662505+Bashamega@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
