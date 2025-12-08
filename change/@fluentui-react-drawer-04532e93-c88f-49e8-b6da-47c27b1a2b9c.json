@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add support to keep Drawer mounted on clos",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

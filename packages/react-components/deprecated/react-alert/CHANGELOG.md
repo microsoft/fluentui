@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Tue, 11 Nov 2025 19:18:16 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Dec 2025 22:38:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.130](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.130)
+
+Fri, 05 Dec 2025 22:38:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.129..@fluentui/react-alert_v9.0.0-beta.130)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.7.0 ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by beachball)
 
 ## [9.0.0-beta.129](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.129)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix id for MenuGridGroupHeader",
-  "packageName": "@fluentui/react-menu-grid-preview",
-  "email": "adam.samec@gmail.com",
-  "dependentChangeType": "patch"
-}

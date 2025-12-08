@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-carousel
 
-This log was last generated on Tue, 11 Nov 2025 19:18:18 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Dec 2025 22:38:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.8.13)
+
+Fri, 05 Dec 2025 22:38:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.8.12..@fluentui/react-carousel_v9.8.13)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.7.0 ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by beachball)
 
 ## [9.8.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.8.12)
 
