@@ -50,8 +50,8 @@
     "d3-fetch": "3.0.1",
     "d3-format": "^3.0.0",
     "d3-time-format": "^3.0.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
     "react-shadow": "20.3.0",
     "tslib": "^2.1.0"
   }

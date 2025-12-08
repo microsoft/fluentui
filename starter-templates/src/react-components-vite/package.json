@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@fluentui/react-components": "^9.72.2",
-    "@fluentui/react-icons": "^2.0.311",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "@fluentui/react-components": "^9.56.3",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
   },
   "devDependencies": {
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
+    "@types/react": "^19.2.1",
+    "@types/react-dom": "^19.2.1",
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "~5.7.3",
     "vite": "^6.0.5"

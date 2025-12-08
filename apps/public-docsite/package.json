@@ -48,8 +48,8 @@
     "@fluentui/utilities": "*",
     "@microsoft/load-themed-styles": "^1.10.26",
     "office-ui-fabric-core": "^11.0.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
     "tslib": "^2.1.0",
     "whatwg-fetch": "2.0.4"
   }
