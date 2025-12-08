@@ -102,7 +102,7 @@ const useClasses = makeStyles({
   root: {
     // ❌ This is not supported, TypeScript compiler will throw, styles will not be inserted to DOM
     padding: '2px 4px 8px 16px',
-    // ✅ Use shorthand functions to avoid writting CSS longhands
+    // ✅ Use shorthand functions to avoid writing CSS longhands
     ...shorthands.padding('2px', '4px', '8px', '16px'),
   },
 });

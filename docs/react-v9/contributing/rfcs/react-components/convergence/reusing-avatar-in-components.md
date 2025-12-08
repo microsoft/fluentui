@@ -17,7 +17,7 @@ will help us make easier decisions for component reuse in the future.
 
 Fluent UI v9 has design requirements on each of its components. These requirements are compiled from product
 usage. This is a good thing since our components can be easily used to power products. However one of the consequences
-of stricter design requirements it the resuse of our own components. Sometimes the component reusage can involve
+of stricter design requirements is the reuse of our own components. Sometimes the component reusage can involve
 different defaults. How can we handle this in React Library?
 
 ## Problem statement
@@ -32,7 +32,7 @@ Both of these components use `Avatar` and require a default size when used in th
       <TableCell>
         {/* The Avatar should have size 20 to follow the Table size */}
         <TableCellLayout media={<Avatar />}>Main content</TableCellLayout>
-      </TabeCell>
+      </TableCell>
     </TableRow>
   </TableBody>
 </Table>
@@ -80,7 +80,7 @@ export const renderTableCellLayout_unstable = state => {
 
 - Extra code in base component
 - Needs prototyping and investigation
-- If the slot is not speicfic enough -> all avatars under this context will be affected
+- If the slot is not specific enough -> all avatars under this context will be affected
 - This might not scale - AvatarContext, IconContext...
 
 ## Discarded Solutions
@@ -97,7 +97,7 @@ avatar with these components.
       <TableCell>
         {/* Explicitly set the size */}
         <TableCellLayout media={<Avatar size={20} />}>Main content</TableCellLayout>
-      </TabeCell>
+      </TableCell>
     </TableRow>
   </TableBody>
 </Table>
@@ -187,9 +187,9 @@ export function TableAvatar: React.FC<AvatarProps>(props) {
   <TableBody>
     <TableRow>
       <TableCell>
-        {/* This will be sized automtically */}
+        {/* This will be sized automatically */}
         <TableCellLayout media={<TableAvatar />}>Main content</TableCellLayout>
-      </TabeCell>
+      </TableCell>
     </TableRow>
   </TableBody>
 </Table>
@@ -243,11 +243,11 @@ export function renderTableCellLayout() {
     <TableRow>
       <TableCell>
         <TableCellLayout icon={<Icon />}>Main content</TableCellLayout>
-      </TabeCell>
+      </TableCell>
       <TableCell>
         {/* Internally the slot will override the size */}
         <TableCellLayout avatar={{ presence: 'available' }}>Main content</TableCellLayout>
-      </TabeCell>
+      </TableCell>
     </TableRow>
   </TableBody>
 </Table>

@@ -76,7 +76,7 @@ const App = () => {
 };
 ```
 
-Additionaly in the `FluentProvider` we will strip and classnames that are known to be created by a standard `makeStyles`
+Additionally in the `FluentProvider` we will strip and classnames that are known to be created by a standard `makeStyles`
 call and trigger a warning. This will ensure that there is only **correct** way of overriding the provider styles.
 
 #### Pros and Cons
@@ -95,7 +95,7 @@ call and trigger a warning. This will ensure that there is only **correct** way 
 ### Document usage of extra providers
 
 We can document how to override `FluentProvider` styles using the required extra providers so that the
-default provider styles can be overriden.
+default provider styles can be overridden.
 
 ```tsx
 import { makeStyles, RendererProvider, TextDirectionProvider } from '@fluentui/react-components';

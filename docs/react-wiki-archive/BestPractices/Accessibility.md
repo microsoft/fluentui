@@ -10,9 +10,9 @@ We best support high contrast in Microsoft Edge and Internet Explorer 11. Mozill
 
 The recommended approach is to use the semantically correct elements to match your scenario. For example, use a `<button>` element for a Button and not a `<div>`. Sometimes, you'll have to use a similar, but not exactly right, element. For example, when making a custom checkbox, you can wrap it in a `<button>` element. This will cause it to pick up the correct colors in all three supported browsers.
 
-As a backup approach, high contrast-specific colors can be manually applied in CSS under the `-ms-high-constrast` media query. This approach should ONLY be used in complex scenarios which can't be represented by standard elements, since it only works in Microsoft Edge and Internet Explorer.
+As a backup approach, high contrast-specific colors can be manually applied in CSS under the `-ms-high-contrast` media query. This approach should ONLY be used in complex scenarios which can't be represented by standard elements, since it only works in Microsoft Edge and Internet Explorer.
 
-In this case, colors should be chosen only from the [system colors](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#System_Colors) palette, and only applied under the `-ms-high-constrast` media query. System colors should only be used under the media query (rather than unconditionally) because the actual corresponding colors are unlikely to match design specifications when high contrast is off.
+In this case, colors should be chosen only from the [system colors](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#System_Colors) palette, and only applied under the `-ms-high-contrast` media query. System colors should only be used under the media query (rather than unconditionally) because the actual corresponding colors are unlikely to match design specifications when high contrast is off.
 
 Note that background images can disappear in high contrast mode. Any icons or images that are required for functionality must not be background images.
 

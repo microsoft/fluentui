@@ -110,7 +110,7 @@ Examples include:
 - Input components like `Input`, `Checkbox`, `Dropdown`, etc. These wrap the actual `<input>` or `<select>` element with styling/layout elements, but the `<input>` or `<select>` should be the primary slot.
 - Example from v8 (may look different in converged): Modal's actual React root element is usually a Layer, but from a user standpoint it makes a lot more sense to apply top-level props to the modal _content's_ root element.
 
-### Propsed Implementation
+### Proposed Implementation
 
 #### Typings
 
