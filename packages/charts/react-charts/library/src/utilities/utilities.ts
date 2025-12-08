@@ -1305,7 +1305,7 @@ export function tooltipOfAxislabels(axistooltipProps: {
         const tooltipBottom = containerBounds ? containerBounds.bottom - (tickBounds.top - 4) : tickBounds.top - 4;
         const tooltipLeft = (tickBounds.left + tickBounds.right) / 2 - (containerBounds?.left ?? 0);
         div
-          .html(fullLabel)
+          .text(fullLabel)
           .style('bottom', `${tooltipBottom}px`)
           .style('left', `${tooltipLeft}px`)
           .style('transform', 'translateX(-50%)')
