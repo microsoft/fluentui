@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: adds test to ensure combobox on Table behavior",
+  "packageName": "@fluentui/react-table",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
