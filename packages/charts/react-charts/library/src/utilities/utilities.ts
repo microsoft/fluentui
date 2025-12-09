@@ -2232,15 +2232,17 @@ export const getDomainPaddingForMarkers = (
   const rangePadding = (maxVal - minVal) * 0.1;
 
   // If explicit bounds are set and they're far from the data range, don't add extra padding
-  const hasExcessivePaddingAtMin =
+  const paddingAlreadySatisfiedAtMin =
     userMinVal !== undefined && rangePadding > Math.abs(minVal - Math.min(minVal, userMinVal));
-  const hasExcessivePaddingAtMax =
+  const paddingAlreadySatisfiedAtMax =
     userMaxVal !== undefined && rangePadding > Math.abs(maxVal - Math.max(maxVal, userMaxVal));
 
-  const defaultPadding = hasExcessivePaddingAtMin && hasExcessivePaddingAtMax ? 0 : rangePadding;
+  const startPadding = paddingAlreadySatisfiedAtMin ? 0 : rangePadding;
+  const endPadding = paddingAlreadySatisfiedAtMax ? 0 : rangePadding;
+
   return {
-    start: defaultPadding,
-    end: defaultPadding,
+    start: startPadding,
+    end: endPadding,
   };
 };
 
