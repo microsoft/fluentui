@@ -17,7 +17,8 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*"
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/react-combobox": "*"
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.8",

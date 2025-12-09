@@ -21,7 +21,8 @@ import { useId, type JSXElement } from '@fluentui/react-utilities';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { Combobox, ComboboxProps, Option, useArrowNavigationGroup } from '@fluentui/react-components';
+import { Combobox, ComboboxProps, Option } from '@fluentui/react-combobox';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
