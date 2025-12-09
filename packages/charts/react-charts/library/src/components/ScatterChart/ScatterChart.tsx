@@ -385,20 +385,19 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         });
       }) ?? 0;
     const isContinuousXY = _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis;
-    const extraMaxPixels =
-      _xAxisType !== XAxisTypes.StringAxis && _yAxisType !== YAxisType.StringAxis
-        ? getRangeForScatterMarkerSize({
-            data: _points,
-            xScale: _xAxisScale,
-            yScalePrimary: _yAxisScale,
-            xScaleType: props.xScaleType,
-            yScaleType: props.yScaleType,
-            xMinValue: props.xMinValue,
-            xMaxValue: props.xMaxValue,
-            yMinValue: props.yMinValue,
-            yMaxValue: props.yMaxValue,
-          })
-        : 0;
+    const extraMaxPixels = isContinuousXY
+      ? getRangeForScatterMarkerSize({
+          data: _points,
+          xScale: _xAxisScale,
+          yScalePrimary: _yAxisScale,
+          xScaleType: props.xScaleType,
+          yScaleType: props.yScaleType,
+          xMinValue: props.xMinValue,
+          xMaxValue: props.xMaxValue,
+          yMinValue: props.yMinValue,
+          yMaxValue: props.yMaxValue,
+        })
+      : 0;
 
     for (let i = _points.length - 1; i >= 0; i--) {
       const pointsForSeries: JSXElement[] = [];
