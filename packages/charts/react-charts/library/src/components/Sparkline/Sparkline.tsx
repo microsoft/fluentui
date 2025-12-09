@@ -1,14 +1,14 @@
 'use client';
 
-import * as React from 'react';
-import { useSparklineStyles } from './useSparklineStyles.styles';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+import { extent as d3Extent, max as d3Max } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
-import { max as d3Max, extent as d3Extent } from 'd3-array';
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import * as React from 'react';
+import { SparklineProps } from '../../index';
 import { LineChartDataPoint } from '../../types/DataPoint';
 import { useRtl } from '../../utilities/index';
-import { SparklineProps } from '../../index';
+import { useSparklineStyles } from './useSparklineStyles.styles';
 
 /**
  * Sparkline is the context wrapper and container for all Sparkline content/controls,
@@ -29,9 +29,11 @@ export const Sparkline: React.FunctionComponent<SparklineProps> = React.forwardR
     let _emptyChartId: string = '_SparklineChart_empty';
     let _isRTL: boolean = useRtl();
     const [points, setPoints] = React.useState<LineChartDataPoint[]>([]);
-    const width = 80;
-    const height = 20;
-    const valueTextWidth = 80;
+
+    // Use props with default fallbacks instead of hardcoded values
+    const width = props.width ?? 80;
+    const height = props.height ?? 20;
+    const valueTextWidth = props.valueTextWidth ?? 80;
 
     const line = React.useMemo(() => {
       return d3Line<LineChartDataPoint>()

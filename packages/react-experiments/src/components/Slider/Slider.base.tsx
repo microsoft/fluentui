@@ -72,7 +72,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
 
     this.state = {
-      value: value,
+      value,
       renderedValue: undefined,
     };
   }
@@ -401,7 +401,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
     let numDec = 0;
     if (isFinite(step!)) {
-      while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
+      while (Math.round(step! * 10 ** numDec) / 10 ** numDec !== step!) {
         numDec++;
       }
     }

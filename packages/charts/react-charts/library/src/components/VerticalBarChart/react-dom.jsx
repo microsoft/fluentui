@@ -1,5 +1,5 @@
 import React from 'react';
-const reactDom = jest.genMockFromModule('react-dom');
+const reactDom = jest.createMockFromModule('react-dom');
 
 function mockCreatePortal(element, target) {
   return (

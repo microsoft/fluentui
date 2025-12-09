@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-nav
 
-This log was last generated on Tue, 11 Nov 2025 19:18:27 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Dec 2025 22:38:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.3.15)
+
+Fri, 05 Dec 2025 22:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.3.14..@fluentui/react-nav_v9.3.15)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.7.0 ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by beachball)
+- Bump @fluentui/react-divider to v9.5.0 ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by beachball)
+- Bump @fluentui/react-drawer to v9.11.0 ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by beachball)
 
 ## [9.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.3.14)
 

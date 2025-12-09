@@ -99,7 +99,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     if (!this._isChartEmpty()) {
       const { data, theme, culture } = this.props;
@@ -120,7 +119,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       this._longestBarTotalValue = this._computeLongestBarTotalValue();
 
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const bars: JSXElement[] = data!.map((singleChartData: IChartProps, index: number) => {
         const singleChartBars = this._createBarsAndLegends(
           singleChartData!,
@@ -151,7 +149,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             directionalHint={DirectionalHint.topAutoEdge}
             id={this._calloutId}
             onDismiss={this._closeCallout}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
             preventDismissOnLostFocus={true}
             /** Keep the callout updated with details of focused/hovered bar */
             shouldUpdateWhenHidden={true}
@@ -195,7 +192,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: boolean,
     href?: string,
     barNo?: number,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSXElement {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
@@ -499,7 +495,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSXElement => {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];

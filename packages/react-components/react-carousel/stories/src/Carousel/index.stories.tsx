@@ -16,6 +16,7 @@ import bestPracticesMd from './CarouselBestPractices.md';
 
 export { Default } from './CarouselDefault.stories';
 export { TopNavigation } from './CarouselTopNavigation.stories';
+export { Appearance } from './CarouselAppearance.stories';
 export { Responsive } from './CarouselResponsive.stories';
 export { Controlled } from './CarouselControlled.stories';
 export { ImageSlideshow } from './CarouselImageBox.stories';

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Tue, 11 Nov 2025 19:18:18 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Dec 2025 22:38:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.7)
+
+Fri, 05 Dec 2025 22:38:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.6..@fluentui/react-charts_v9.3.7)
+
+### Patches
+
+- fix: handle frequent uncaught exceptions ([PR #35495](https://github.com/microsoft/fluentui/pull/35495) by kumarkshitij@microsoft.com)
+- remove redundant styles ([PR #35476](https://github.com/microsoft/fluentui/pull/35476) by anushgupta@microsoft.com)
+- fix incomplete donut and VSBC bug ([PR #35484](https://github.com/microsoft/fluentui/pull/35484) by anushgupta@microsoft.com)
+- fix width and height props not being applied to SVG path dimensions ([PR #35479](https://github.com/microsoft/fluentui/pull/35479) by 120502241+jepagan_microsoft@users.noreply.github.com)
+- add support for x rounded tick values  ([PR #35490](https://github.com/microsoft/fluentui/pull/35490) by anushgupta@microsoft.com)
+- fix popover issue ([PR #35501](https://github.com/microsoft/fluentui/pull/35501) by anushgupta@microsoft.com)
+- set reference line legends after the main chart legends ([PR #35481](https://github.com/microsoft/fluentui/pull/35481) by anushgupta@microsoft.com)
+- fix duplicate points issue in scatter polar chart ([PR #35516](https://github.com/microsoft/fluentui/pull/35516) by anushgupta@microsoft.com)
+- feat: enable multiplot image export ([PR #35483](https://github.com/microsoft/fluentui/pull/35483) by kumarkshitij@microsoft.com)
+- fix(react-charts): Ensuring annotation keeps tied with chart always ([PR #35486](https://github.com/microsoft/fluentui/pull/35486) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/react-button to v9.7.0 ([PR #35537](https://github.com/microsoft/fluentui/pull/35537) by beachball)
 
 ## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.6)
 

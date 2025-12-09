@@ -40,6 +40,8 @@ beforeAll(() => {
 });
 
 const originalRAF = window.requestAnimationFrame;
+const originalGetComputedStyle = window.getComputedStyle;
+const originalGetBoundingClientRect = window.HTMLElement.prototype.getBoundingClientRect;
 
 function sharedBeforeEach() {
   jest.useFakeTimers();
@@ -47,19 +49,36 @@ function sharedBeforeEach() {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
   });
-  window.HTMLElement.prototype.getBoundingClientRect = () =>
-    ({
-      bottom: 44,
-      height: 50,
-      left: 10,
-      right: 35.67,
-      top: 20,
-      width: 650,
-    } as DOMRect);
+  window.HTMLElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({
+    bottom: 44,
+    height: 50,
+    left: 10,
+    right: 35.67,
+    top: 20,
+    width: 650,
+    x: 10,
+    y: 20,
+  } as DOMRect);
+  window.getComputedStyle = jest.fn().mockImplementation(element => {
+    const style = originalGetComputedStyle(element);
+    return {
+      ...style,
+      marginTop: '0px',
+      marginBottom: '0px',
+      getPropertyValue: (prop: string) => {
+        if (prop === 'margin-top' || prop === 'margin-bottom') {
+          return '0px';
+        }
+        return style.getPropertyValue(prop);
+      },
+    } as CSSStyleDeclaration;
+  });
 }
 function sharedAfterEach() {
   jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
+  window.HTMLElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+  window.getComputedStyle = originalGetComputedStyle;
 }
 
 const pointsWithLine = [
@@ -288,6 +307,7 @@ const simpleDatePoints = [
 const secondaryYScalePoints = [{ yMaxValue: 50000, yMinValue: 10000 }];
 
 describe('Vertical bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -517,6 +537,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
 });
 
 describe('Vertical bar chart - Subcomponent line', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithoutWait('Should render line along with bars', VerticalBarChart, { data: pointsWithLine }, container => {
@@ -568,6 +589,7 @@ describe('Vertical bar chart - Subcomponent line', () => {
 });
 
 describe('Vertical bar chart - Subcomponent Legends', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -659,6 +681,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Vertical bar chart - Subcomponent callout', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
@@ -747,6 +770,7 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 });
 
 describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -771,6 +795,7 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Screen resolution', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testScreenResolutionChanges(() => {
@@ -781,6 +806,7 @@ describe('Screen resolution', () => {
 });
 
 describe('Theme Change', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   test('Should reflect theme change', () => {
     // Arrange
@@ -795,6 +821,7 @@ describe('Theme Change', () => {
 });
 
 describe('Vertical bar chart re-rendering', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   test('Should re-render the vertical bar chart with data', async () => {
@@ -814,6 +841,7 @@ describe('Vertical bar chart re-rendering', () => {
 });
 
 describe('VerticalBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -852,8 +880,6 @@ describe('VerticalBarChart - mouse events', () => {
 });
 
 describe('VerticalBarChart - accessibility', () => {
-  afterEach(sharedAfterEach);
-
   test('Should pass accessibility tests', async () => {
     const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
     let axeResults;
@@ -864,7 +890,6 @@ describe('VerticalBarChart - accessibility', () => {
   });
 });
 
-/* eslint-disable @typescript-eslint/no-deprecated */
 describe('VerticalBarChart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
@@ -922,6 +947,7 @@ describe('VerticalBarChart snapShot testing', () => {
 /* eslint-enable @typescript-eslint/no-deprecated */
 
 describe('VerticalBarChart - basic props', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
@@ -979,6 +1005,8 @@ describe('VerticalBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('No prop changes', () => {
     const props = {
       data: chartPointsVBC,
@@ -1008,6 +1036,8 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('No empty chart aria label div rendered', () => {
     let wrapper = render(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
@@ -1022,6 +1052,8 @@ describe('Render empty chart aria label div when chart is empty', () => {
 });
 
 describe('Render empty chart calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
   it('No prop changes', () => {
     const props = {
       data: chartPointsVBC,

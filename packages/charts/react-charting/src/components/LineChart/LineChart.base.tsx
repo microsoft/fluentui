@@ -195,15 +195,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _refArray: IRefArrayData[];
   private margins: IMargins;
   private eventLabelHeight: number = 36;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private lines: JSXElement[];
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _renderedColorFillBars: JSXElement[];
   private _colorFillBars: IColorFillBarsProps[];
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSXElement;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
@@ -284,7 +284,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSXElement {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
@@ -354,7 +353,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
         ref={this._cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
+
         children={(props: IChildProps) => {
           this._xAxisScale = props.xScale!;
           this._yScalePrimary = props.yScalePrimary!;
@@ -508,7 +507,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     yAxisType?: YAxisType,
     useSecondaryYScale?: boolean,
   ): { startValue: number; endValue: number } => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(
       points,
       yAxisType,
@@ -567,7 +565,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createLegends(data: LineChartDataWithIndex[]): JSXElement {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
@@ -720,9 +717,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
     }
   };
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+
   private _createLines(xElement: SVGElement, containerHeight: number): JSXElement[] {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const lines: JSXElement[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
@@ -740,11 +736,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     });
 
     for (let i = this._points.length - 1; i >= 0; i--) {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const linesForLine: JSXElement[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+
       const bordersForLine: JSXElement[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+
       const pointsForLine: JSXElement[] = [];
 
       const legendVal: string = this._points[i].legend;
@@ -1497,7 +1492,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   private _createColorFillBars = (containerHeight: number) => {
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const colorFillBars: JSXElement[] = [];
     if (this.state.isSelectedLegend) {
       this._colorFillBars = this.state.selectedColorBarLegend;

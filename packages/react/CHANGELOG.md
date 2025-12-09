@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 11 Nov 2025 10:09:28 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Nov 2025 09:34:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.125.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.125.2)
+
+Wed, 26 Nov 2025 09:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.125.1..@fluentui/react_v8.125.2)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.6.2 ([commit](https://github.com/microsoft/fluentui/commit/7340400092f5d4b1ee09ce1f4de5ca403624cc21) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.69 ([commit](https://github.com/microsoft/fluentui/commit/7340400092f5d4b1ee09ce1f4de5ca403624cc21) by beachball)
+- Bump @fluentui/react-focus to v8.10.2 ([commit](https://github.com/microsoft/fluentui/commit/7340400092f5d4b1ee09ce1f4de5ca403624cc21) by beachball)
+- Bump @fluentui/style-utilities to v8.13.5 ([commit](https://github.com/microsoft/fluentui/commit/7340400092f5d4b1ee09ce1f4de5ca403624cc21) by beachball)
 
 ## [8.125.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.125.1)
 

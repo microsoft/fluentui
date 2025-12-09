@@ -312,7 +312,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       yAxisType?: YAxisType,
       useSecondaryYScale?: boolean,
     ): { startValue: number; endValue: number } {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
       const { startValue, endValue } = findNumericMinMaxOfY(
         points,
         yAxisType,
@@ -559,7 +558,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             })
           : 0;
         if (_points[i].data.length === 1) {
-          // eslint-disable-next-line @typescript-eslint/no-shadow
           const {
             x: x1,
             y: y1,
@@ -1503,6 +1501,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           : xPointToHighlight;
       const found = findCalloutPoints(calloutPointsRef.current, xPointToHighlight) as CustomizedCalloutData | undefined;
       const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[index!] as LineChartDataPoint;
+
+      // Check if this point is plottable. If not, close the popover and return.
+      const xPoint = _xAxisScale(pointToHighlight.x);
+      const yPoint = yScale(pointToHighlight.y);
+      if (!isPlottable(xPoint, yPoint)) {
+        return;
+      }
+
       const pointToHighlightUpdated =
         nearestCircleToHighlight === null ||
         (nearestCircleToHighlight !== null &&
@@ -1513,14 +1519,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         _uniqueCallOutID = `#${_staticHighlightCircle}_${linenumber}`;
 
         d3Select(`#${_staticHighlightCircle}_${linenumber}`)
-          .attr('cx', `${_xAxisScale(pointToHighlight.x)}`)
-          .attr('cy', `${yScale(pointToHighlight.y)}`)
+          .attr('cx', `${xPoint}`)
+          .attr('cy', `${yPoint}`)
           .attr('visibility', 'visibility');
 
         d3Select(`#${_verticalLine}`)
-          .attr('transform', () => `translate(${_xAxisScale(pointToHighlight.x)}, ${yScale(pointToHighlight.y)})`)
+          .attr('transform', () => `translate(${xPoint}, ${yPoint})`)
           .attr('visibility', 'visibility')
-          .attr('y2', `${lineHeight - 5 - yScale(pointToHighlight.y)}`);
+          .attr('y2', `${lineHeight - 5 - yPoint}`);
 
         const targetElement = document.getElementById(`${_staticHighlightCircle}_${linenumber}`);
         const rect = targetElement!.getBoundingClientRect();
@@ -1855,8 +1861,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         onChartMouseLeave={_handleChartMouseLeave}
         enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
         componentRef={cartesianChartRef}
-        /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
         children={(props: ChildProps) => {
           _xAxisScale = props.xScale!;
           _yScalePrimary = props.yScalePrimary!;
