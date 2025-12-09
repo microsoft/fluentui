@@ -3521,15 +3521,15 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.40.1.tgz#e9f09b802f1291839247399028beaef9ce034c81"
   integrity sha512-h8d28xzYb98fMQKUz0w2fMc1XuGzLLjdyxVIbhbil4ELfk5/orZlSTpF/xdI9C8K0I8lCkq+1En2RJsawZekkg==
 
-"@rollup/rollup-linux-x64-gnu@4.40.0":
-  version "4.40.0"
-  resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.40.0.tgz#68b045a720bd9b4d905f462b997590c2190a6de0"
-  integrity sha512-RcDGMtqF9EFN8i2RYN2W+64CdHruJ5rPqrlYw+cgM3uOVPSsnAQps7cpjXe9be/yDp8UC7VLoCoKC8J3Kn2FkQ==
-
 "@rollup/rollup-linux-x64-gnu@4.40.1":
   version "4.40.1"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.40.1.tgz#0413169dc00470667dea8575c1129d4e7a73eb29"
   integrity sha512-XiK5z70PEFEFqcNj3/zRSz/qX4bp4QIraTy9QjwJAb/Z8GM7kVUsD0Uk8maIPeTyPCP03ChdI+VVmJriKYbRHQ==
+
+"@rollup/rollup-linux-x64-gnu@4.53.3":
+  version "4.53.3"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.53.3.tgz#fd0dea3bb9aa07e7083579f25e1c2285a46cb9fa"
+  integrity sha512-3EhFi1FU6YL8HTUJZ51imGJWEX//ajQPfqWLI3BQq4TlvHy4X0MOr5q3D2Zof/ka0d5FNdPwZXm3Yyib/UEd+w==
 
 "@rollup/rollup-linux-x64-musl@4.40.1":
   version "4.40.1"
@@ -19465,15 +19465,15 @@ table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^8.5.5:
-  version "8.5.5"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-8.5.5.tgz#fcd90edd8c5cd0bd42cd09a025b31afe6946fa15"
-  integrity sha512-fqoBWIZRPJ2LuAqQWbGGE1KkKz6sX+6ROOeHlXIyRM7qD7XZK0gWc50mJbI8G48wuy8201/kvGkYq3p+QmSTAg==
+tabster@^8.6.2:
+  version "8.6.2"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-8.6.2.tgz#573005911d602090d60eb6ff8515fe7aabeefcde"
+  integrity sha512-SRt/mFhfunYDWUZcebnKGbWfhN36FSoX7eiGJ7kVfpI9N90WlqOZzoUaDWx+IQA1M/uHujqRqnBGYk6hFtEXhw==
   dependencies:
     keyborg "2.6.0"
     tslib "^2.8.1"
   optionalDependencies:
-    "@rollup/rollup-linux-x64-gnu" "4.40.0"
+    "@rollup/rollup-linux-x64-gnu" "4.53.3"
 
 tachometer@0.7.1:
   version "0.7.1"
